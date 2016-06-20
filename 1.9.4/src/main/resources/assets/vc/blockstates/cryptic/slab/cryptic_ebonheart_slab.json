@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "half=bottom,variant=stone": { "model": "ea:cryptic/slab/ebonheart/half_ebonheart_slab" },
+        "half=top,variant=stone": { "model": "ea:cryptic/slab/ebonheart/upper_ebonheart_slab" }
+    }
+}

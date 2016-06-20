@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "normal":   { "model": "ea:cryptic/block/cryptic_velious_block_brick" }
+    }
+}

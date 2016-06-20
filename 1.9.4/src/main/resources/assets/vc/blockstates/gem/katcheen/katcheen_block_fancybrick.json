@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "normal":   { "model": "ea:gem/katcheen/katcheen_block_fancybrick" }
+    }
+}

@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "seamless=false,variant=stone": { "model": "ea:cryptic/slab/katcheen/full_katcheen_slab" },
+        "seamless=true,variant=stone":    { "model": "ea:cryptic/slab/katcheen/full_katcheen_slab" }
+    }
+}

@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "seamless=false,variant=stone": { "model": "ea:slab/katcheen/full_katcheen_slab" },
+        "seamless=true,variant=stone":    { "model": "ea:slab/katcheen/full_katcheen_slab" }
+    }
+}

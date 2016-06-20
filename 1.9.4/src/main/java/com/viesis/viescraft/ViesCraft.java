@@ -27,7 +27,7 @@ public class ViesCraft
 	public static CommonProxy proxy;
 	public static Configuration config = null;
 	
-	public static final VCTabBlocks tabViesCraftBlocks = new VCTabBlocks("tabViesCraftBlocks");
+	//public static final VCTabBlocks tabViesCraftBlocks = new VCTabBlocks("tabViesCraftBlocks");
 	public static final VCTabItems tabViesCraftItems = new VCTabItems("tabViesCraftItems");
 	
 	@Mod.Instance(Reference.MOD_ID)

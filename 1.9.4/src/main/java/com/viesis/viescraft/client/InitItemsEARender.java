@@ -1,5 +1,9 @@
 package com.viesis.viescraft.client;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.item.Item;
+
 import com.viesis.viescraft.api.ItemsEA;
 //import net.minecraft.client.resources.model.ModelResourceLocation;
 
@@ -27,8 +31,10 @@ public final class InitItemsEARender extends ItemsEA {
 		registerRender(cryptic_ebonheart);
 		registerRender(cryptic_obsidian_shards);
 		registerRender(cryptic_glowstone_shards);
-		
+		*/
 		registerRender(enchanted_ebonheart);
+		
+		/**
 		registerRender(empowered_blade);
 		
 		registerRender(glowing_disc);
@@ -103,7 +109,7 @@ public final class InitItemsEARender extends ItemsEA {
 		
 		registerRender(ebon_airship);
 		//registerRender(test_shield);
-		
+		*/
 	}
 	
 	public static void registerRender(Item item)
@@ -112,8 +118,5 @@ public final class InitItemsEARender extends ItemsEA {
 	}
 	
 	
-	*/
-		
-	}
 }
 

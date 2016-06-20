@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "seamless=false,variant=stone": { "model": "ea:cryptic/slab/obsidian/full_obsidian_slab" },
+        "seamless=true,variant=stone":    { "model": "ea:cryptic/slab/obsidian/full_obsidian_slab" }
+    }
+}

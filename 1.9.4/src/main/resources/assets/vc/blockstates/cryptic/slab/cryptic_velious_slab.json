@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "half=bottom,variant=stone": { "model": "ea:cryptic/slab/velious/half_velious_slab" },
+        "half=top,variant=stone": { "model": "ea:cryptic/slab/velious/upper_velious_slab" }
+    }
+}

@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "half=bottom,variant=stone": { "model": "ea:slab/arcanite/half_arcanite_slab" },
+        "half=top,variant=stone": { "model": "ea:slab/arcanite/upper_arcanite_slab" }
+    }
+}

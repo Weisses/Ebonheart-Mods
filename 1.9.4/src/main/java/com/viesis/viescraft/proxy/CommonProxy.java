@@ -4,16 +4,19 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
+import com.viesis.viescraft.init.InitEntityEA;
+import com.viesis.viescraft.init.InitItemsEA;
+
 public class CommonProxy {
 	
 	public void preInit(FMLPreInitializationEvent event) 
 	{
 		//SoundEventsEA.registerSounds();
 		
-		//InitItemsEA.preInit();
-		//InitItemsEA.register();
+		InitItemsEA.preInit();
+		InitItemsEA.register();
 		//InitBlocksEA.preInit();
-		//InitEntityEA.preInit();
+		InitEntityEA.preInit();
 		
 		
 		//=======================================//

@@ -1,11 +1,19 @@
 package com.viesis.viescraft.init;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import net.minecraft.item.Item;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+
 import com.viesis.viescraft.api.ItemsEA;
+import com.viesis.viescraft.common.items.resources.ItemEnchantedEbonheart;
+import com.viesis.viescraft.common.items.tools.ItemAirship;
 
 //@SuppressWarnings("WeakerAccess")
 public class InitItemsEA extends ItemsEA {
 	
-	//public static final Set<Item> items = new HashSet<>();
+	public static final Set<Item> items = new HashSet<>();
 	
 	//public static final Item.ToolMaterial arcaniteToolMaterial = EnumHelper.addToolMaterial("arcaniteToolMaterial", 2, 315, 6.5F, 2.5F, 15);
 	//public static final Item.ToolMaterial katcheenToolMaterial = EnumHelper.addToolMaterial("katcheenToolMaterial", 3, 1400, 8.5F, 4.0F, 20);
@@ -47,9 +55,9 @@ public class InitItemsEA extends ItemsEA {
 		mirroring_disc = registerItem(new ItemMirroringDisc("disc/mirroring_disc", SoundEventsEA.lostwoods));
 		
 		empowered_blade = registerItem(new ItemEmpoweredBlade());
-		
+		*/
 		enchanted_ebonheart = registerItem(new ItemEnchantedEbonheart());
-		
+		/**
 		arcanite_pickaxe = registerItem(new ItemArcanitePickaxe(arcaniteToolMaterial));
 		arcanite_axe = registerItem(new ItemArcaniteAxe(ToolMaterial.IRON));
 		arcanite_shovel = registerItem(new ItemArcaniteShovel(arcaniteToolMaterial));
@@ -116,6 +124,8 @@ public class InitItemsEA extends ItemsEA {
 		necrosis = registerItem(new ItemNecrosis(legendaryToolMaterial));
 		
 		
+		*/
+		
 		ebon_airship = //registerItem(
 				//new ItemBoat(EntityBoat.Type.OAK);
 				new ItemAirship
@@ -125,7 +135,6 @@ public class InitItemsEA extends ItemsEA {
 						);
 		
 		
-		//test_door = registerItem(new EAItemDoor(InitBlocksEA.test_door));
 		
 	}
 	
@@ -145,7 +154,5 @@ public class InitItemsEA extends ItemsEA {
 		
 	}
 	
-	*/
-		
-	}
+	
 }

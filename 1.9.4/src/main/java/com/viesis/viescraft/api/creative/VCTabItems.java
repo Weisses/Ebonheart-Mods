@@ -16,6 +16,6 @@ public class VCTabItems extends CreativeTabs {
 	@Override
 	public Item getTabIconItem() 
 	{
-		return InitItemsEA.necrocite;
+		return InitItemsEA.enchanted_ebonheart;
 	}
 }

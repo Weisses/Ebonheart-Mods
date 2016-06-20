@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "half=bottom,variant=stone": { "model": "ea:cryptic/slab/obsidian/half_obsidian_slab" },
+        "half=top,variant=stone": { "model": "ea:cryptic/slab/obsidian/upper_obsidian_slab" }
+    }
+}

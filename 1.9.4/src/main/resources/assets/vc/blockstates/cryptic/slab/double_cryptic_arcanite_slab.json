@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "seamless=false,variant=stone": { "model": "ea:cryptic/slab/arcanite/full_arcanite_slab" },
+        "seamless=true,variant=stone":    { "model": "ea:cryptic/slab/arcanite/full_arcanite_slab" }
+    }
+}

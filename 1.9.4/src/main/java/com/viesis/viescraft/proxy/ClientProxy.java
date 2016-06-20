@@ -4,6 +4,9 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
+import com.viesis.viescraft.client.InitEntityEARender;
+import com.viesis.viescraft.client.InitItemsEARender;
+
 public class ClientProxy extends CommonProxy {
 	
 	@Override
@@ -20,9 +23,9 @@ public class ClientProxy extends CommonProxy {
 	{
 		super.init(event);
 		
-		//InitItemsEARender.registerRenders();
+		InitItemsEARender.registerRenders();
 		//InitBlocksEARender.registerRenders();
-		//InitEntityEARender.registerRenders();
+		InitEntityEARender.registerRenders();
 		
 		//---------------------------
 		//InitEntityEARender.registerParticle(null, null);

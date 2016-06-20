@@ -59,18 +59,20 @@ public class EntityEnchantedEbonheart extends EntityThrowable {
         if (!this.worldObj.isRemote)
         {
         	this.worldObj.playEvent(2002, new BlockPos(this), 0);
-            int i = 3 + this.worldObj.rand.nextInt(15) + this.worldObj.rand.nextInt(15);
+            //int i = 3 + this.worldObj.rand.nextInt(15) + this.worldObj.rand.nextInt(15);
             
-            while (i > 0)
-            {
-                int j = EntityXPOrb.getXPSplit(i);
-                i -= j;
-                this.worldObj.spawnEntityInWorld(new EntityXPOrb(this.worldObj, this.posX, this.posY, this.posZ, j));
+            //while (i > 0)
+            //{
+            //    int j = EntityXPOrb.getXPSplit(i);
+            //    i -= j;
+                //this.worldObj.spawnEntityInWorld(new EntityXPOrb(this.worldObj, this.posX, this.posY, this.posZ, j));
                 
+            //    this.worldObj.spawnEntityInWorld(new EntityAirshipEA(this.worldObj, this.posX, this.posY, this.posZ));
                 
                     
-            }
+            //}
 
+            this.worldObj.spawnEntityInWorld(new EntityAirshipEA(this.worldObj, this.posX, this.posY, this.posZ));
             this.setDead();
         }
         
