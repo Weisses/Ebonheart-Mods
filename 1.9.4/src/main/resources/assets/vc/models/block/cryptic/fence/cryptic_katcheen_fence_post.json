@@ -1,6 +1,0 @@
-{
-	"parent": "block/fence_post",
-	"textures": {
-		"texture": "ea:blocks/block/cryptic_katcheen_block"
-	}
-}

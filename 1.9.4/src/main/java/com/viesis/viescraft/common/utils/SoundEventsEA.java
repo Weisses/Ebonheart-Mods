@@ -11,11 +11,12 @@ import com.viesis.viescraft.api.SoundsEA;
 public class SoundEventsEA extends SoundsEA {
     
     	
-    	
+    	/**
     	
     	//Register the {@link SoundEvent}s.
     	public static void registerSounds() 
     	{
+    		
     		island = registerSound("record.glowing_disc");
     		dire = registerSound("record.shimmering_disc");
     		marble = registerSound("record.laminate_disc");
@@ -30,5 +31,5 @@ public class SoundEventsEA extends SoundsEA {
     		final ResourceLocation soundID = new ResourceLocation(Reference.MOD_ID, soundName);
     		return GameRegistry.register(new SoundEvent(soundID).setRegistryName(soundID));
     	}
-    	
+    	*/
 }

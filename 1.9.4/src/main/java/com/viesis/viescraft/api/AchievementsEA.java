@@ -3,7 +3,7 @@ package com.viesis.viescraft.api;
 import net.minecraft.stats.Achievement;
 
 public class AchievementsEA {
-	
+	/**
 	public static Achievement mine_draconium_ore;
 	public static Achievement mine_velious_ore;
 	public static Achievement mine_arcanite_ore;
@@ -79,5 +79,7 @@ public class AchievementsEA {
 	
 	public static final String NECROSIS = "achievement.necrosis";
 	public static final String CONSECRATION = "achievement.consecration";
+	
+	*/
 	
 }

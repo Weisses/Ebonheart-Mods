@@ -1,8 +1,0 @@
-{
-    "variants": {
-        "axis=none":  { "model": "ea:cryptic/pillar/obsidian_pillar" },
-        "axis=y":   { "model": "ea:cryptic/pillar/obsidian_pillar" },
-        "axis=z":   { "model": "ea:cryptic/pillar/obsidian_pillar", "x": 90 },
-        "axis=x":   { "model": "ea:cryptic/pillar/obsidian_pillar", "x": 90, "y": 90 }
-    }
-}

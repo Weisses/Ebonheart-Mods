@@ -1,9 +1,0 @@
-{
-    "variants": {
-        "facing=up": { "model": "ea:cryptic/draconium/normal_draconium_torch" },
-        "facing=east": { "model": "ea:cryptic/draconium/normal_draconium_torch_wall" },
-        "facing=south": { "model": "ea:cryptic/draconium/normal_draconium_torch_wall", "y": 90 },
-        "facing=west": { "model": "ea:cryptic/draconium/normal_draconium_torch_wall", "y": 180 },
-        "facing=north": { "model": "ea:cryptic/draconium/normal_draconium_torch_wall", "y": 270 }
-    }
-}

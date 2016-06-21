@@ -1,8 +1,0 @@
-{
-    "variants": {
-        "axis=none":  { "model": "ea:gem/mystic/cobblestone/cobble_mystic_block_green" },
-        "axis=y":   { "model": "ea:gem/mystic/cobblestone/cobble_mystic_block_green" },
-        "axis=z":   { "model": "ea:gem/mystic/cobblestone/cobble_mystic_block_green", "x": 90 },
-        "axis=x":   { "model": "ea:gem/mystic/cobblestone/cobble_mystic_block_green", "x": 90, "y": 90 }
-    }
-}

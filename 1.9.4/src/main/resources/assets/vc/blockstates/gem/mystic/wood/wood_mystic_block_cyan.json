@@ -1,8 +1,0 @@
-{
-    "variants": {
-        "facing=north": { "model": "ea:gem/mystic/wood/wood_mystic_block_cyan" },
-        "facing=south": { "model": "ea:gem/mystic/wood/wood_mystic_block_cyan", "y": 180 },
-        "facing=west":  { "model": "ea:gem/mystic/wood/wood_mystic_block_cyan", "y": 270 },
-        "facing=east":  { "model": "ea:gem/mystic/wood/wood_mystic_block_cyan", "y": 90 }
-    }
-}

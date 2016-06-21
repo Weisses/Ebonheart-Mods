@@ -1,6 +1,0 @@
-{
-    "variants": {
-        "seamless=false,variant=stone": { "model": "ea:cryptic/slab/glowstone/full_glowstone_slab" },
-        "seamless=true,variant=stone":    { "model": "ea:cryptic/slab/glowstone/full_glowstone_slab" }
-    }
-}

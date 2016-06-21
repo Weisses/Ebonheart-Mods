@@ -1,6 +1,0 @@
-{
-    "parent": "block/crop",
-    "textures": {
-        "crop": "ea:blocks/plants/hellionfruit_stage_1"
-    }
-}

@@ -1,8 +1,0 @@
-{
-    "parent": "block/stairs",
-    "textures": {
-        "bottom": "ea:blocks/stairs/cryptic_draconium_stairs",
-        "top": "ea:blocks/stairs/cryptic_draconium_stairs",
-        "side": "ea:blocks/stairs/cryptic_draconium_stairs"
-    }
-}

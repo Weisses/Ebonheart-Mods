@@ -12,13 +12,14 @@ public class VCTabBlocks extends CreativeTabs {
 	public VCTabBlocks(String label) 
 	{
 		super(label);
-		this.setBackgroundImageName("ebonarts.png");
+		this.setBackgroundImageName("viescraft.png");
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public Item getTabIconItem() 
 	{
-		return Item.getItemFromBlock(BlocksEA.soularite_block);
+		return null;
+		//return Item.getItemFromBlock(BlocksEA.soularite_block);
 	}
 }

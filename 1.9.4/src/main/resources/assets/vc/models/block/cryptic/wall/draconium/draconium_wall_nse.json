@@ -1,6 +1,0 @@
-{
-    "parent": "block/wall_nse",
-    "textures": {
-        "wall": "ea:blocks/block/cryptic_draconium_block"
-    }
-}

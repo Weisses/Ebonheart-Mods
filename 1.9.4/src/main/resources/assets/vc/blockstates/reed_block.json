@@ -1,8 +1,0 @@
-{
-    "variants": {
-        "facing=north": { "model": "ea:reed_block" },
-        "facing=south": { "model": "ea:reed_block", "y": 180 },
-        "facing=west":  { "model": "ea:reed_block", "y": 270 },
-        "facing=east":  { "model": "ea:reed_block", "y": 90 }
-    }
-}

@@ -1,8 +1,0 @@
-{
-    "parent": "block/inner_stairs",
-    "textures": {
-        "bottom": "ea:blocks/stairs/cryptic_obsidian_stairs",
-        "top": "ea:blocks/stairs/cryptic_obsidian_stairs",
-        "side": "ea:blocks/stairs/cryptic_obsidian_stairs"
-    }
-}

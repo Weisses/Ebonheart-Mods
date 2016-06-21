@@ -1,6 +1,0 @@
-{
-    "parent": "block/wall_ns_above",
-    "textures": {
-        "wall": "ea:blocks/block/cryptic_katcheen_block"
-    }
-}

@@ -5,7 +5,7 @@ import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 import com.viesis.viescraft.ViesCraft;
 import com.viesis.viescraft.common.entity.EntityAirshipEA;
-import com.viesis.viescraft.common.entity.EntityEnchantedEbonheart;
+import com.viesis.viescraft.common.entity.EntityItemViesdenburg;
 
 public class InitEntityEA {
 	
@@ -16,7 +16,7 @@ public class InitEntityEA {
 
 		
 		//throwingRock = new ItemThrowingRock().setUnlocalizedName("throwingRock");
-		register(EntityEnchantedEbonheart.class, "Enchanted Ebonheart", 64, 20, true);
+		register(EntityItemViesdenburg.class, "Enchanted Ebonheart", 64, 20, true);
 		register(EntityAirshipEA.class, "Airship Ebonheart", 64, 20, true);
 		
 	}

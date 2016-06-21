@@ -1,8 +1,0 @@
-{
-    "variants": {
-        "facing=north": { "model": "ea:ladder/arcanite/arcanite_ladder" },
-        "facing=east":  { "model": "ea:ladder/arcanite/arcanite_ladder", "y": 90 },
-        "facing=south": { "model": "ea:ladder/arcanite/arcanite_ladder", "y": 180 },
-        "facing=west":  { "model": "ea:ladder/arcanite/arcanite_ladder", "y": 270 }
-    }
-}

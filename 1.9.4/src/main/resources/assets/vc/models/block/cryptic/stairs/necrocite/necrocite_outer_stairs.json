@@ -1,8 +1,0 @@
-{
-    "parent": "block/outer_stairs",
-    "textures": {
-        "bottom": "ea:blocks/stairs/cryptic_necrocite_stairs",
-        "top": "ea:blocks/stairs/cryptic_necrocite_stairs",
-        "side": "ea:blocks/stairs/cryptic_necrocite_stairs"
-    }
-}

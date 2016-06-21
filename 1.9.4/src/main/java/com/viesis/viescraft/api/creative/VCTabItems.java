@@ -10,12 +10,12 @@ public class VCTabItems extends CreativeTabs {
 	public VCTabItems(String label) 
 	{
 		super(label);
-		this.setBackgroundImageName("ebonarts.png");
+		this.setBackgroundImageName("viescraft.png");
 	}
 
 	@Override
 	public Item getTabIconItem() 
 	{
-		return InitItemsEA.enchanted_ebonheart;
+		return InitItemsEA.viesdenburg;
 	}
 }

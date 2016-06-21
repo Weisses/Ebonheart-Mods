@@ -1,8 +1,0 @@
-{
-    "parent": "block/stairs",
-    "textures": {
-        "bottom": "ea:blocks/stairs/arcanite_stairs",
-        "top": "ea:blocks/stairs/arcanite_stairs",
-        "side": "ea:blocks/stairs/arcanite_stairs"
-    }
-}

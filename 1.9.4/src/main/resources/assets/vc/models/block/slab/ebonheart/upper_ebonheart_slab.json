@@ -1,8 +1,0 @@
-{
-    "parent": "block/upper_slab",
-    "textures": {
-        "bottom": "ea:blocks/slab/ebonheart_slab_bottom",
-        "top": "ea:blocks/slab/ebonheart_slab_top",
-        "side": "ea:blocks/slab/ebonheart_slab_side"
-    }
-}

@@ -1,6 +1,0 @@
-{
-    "parent": "block/fence_side",
-    "textures": {
-        "texture": "ea:blocks/block/cryptic_glowstone_brick_base"
-    }
-}

@@ -14,7 +14,7 @@ public class CommonProxy {
 		//SoundEventsEA.registerSounds();
 		
 		InitItemsEA.preInit();
-		InitItemsEA.register();
+		//InitItemsEA.register();
 		//InitBlocksEA.preInit();
 		InitEntityEA.preInit();
 		

@@ -1,8 +1,0 @@
-{
-    "parent": "block/inner_stairs",
-    "textures": {
-        "bottom": "ea:blocks/stairs/glowstone_stairs",
-        "top": "ea:blocks/stairs/glowstone_stairs",
-        "side": "ea:blocks/stairs/glowstone_stairs"
-    }
-}

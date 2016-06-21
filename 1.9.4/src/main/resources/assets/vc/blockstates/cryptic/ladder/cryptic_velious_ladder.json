@@ -1,8 +1,0 @@
-{
-    "variants": {
-        "facing=north": { "model": "ea:cryptic/ladder/velious/velious_ladder" },
-        "facing=east":  { "model": "ea:cryptic/ladder/velious/velious_ladder", "y": 90 },
-        "facing=south": { "model": "ea:cryptic/ladder/velious/velious_ladder", "y": 180 },
-        "facing=west":  { "model": "ea:cryptic/ladder/velious/velious_ladder", "y": 270 }
-    }
-}

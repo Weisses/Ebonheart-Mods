@@ -32,7 +32,7 @@ public final class InitItemsEARender extends ItemsEA {
 		registerRender(cryptic_obsidian_shards);
 		registerRender(cryptic_glowstone_shards);
 		*/
-		registerRender(enchanted_ebonheart);
+		//registerRender(enchanted_ebonheart);
 		
 		/**
 		registerRender(empowered_blade);
@@ -110,6 +110,10 @@ public final class InitItemsEARender extends ItemsEA {
 		registerRender(ebon_airship);
 		//registerRender(test_shield);
 		*/
+		
+		registerRender(viesdenburg);
+		
+		
 	}
 	
 	public static void registerRender(Item item)

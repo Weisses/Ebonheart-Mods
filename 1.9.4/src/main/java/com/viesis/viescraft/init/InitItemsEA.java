@@ -7,8 +7,7 @@ import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import com.viesis.viescraft.api.ItemsEA;
-import com.viesis.viescraft.common.items.resources.ItemEnchantedEbonheart;
-import com.viesis.viescraft.common.items.tools.ItemAirship;
+import com.viesis.viescraft.common.items.resources.ItemViesdenburg;
 
 //@SuppressWarnings("WeakerAccess")
 public class InitItemsEA extends ItemsEA {
@@ -56,7 +55,7 @@ public class InitItemsEA extends ItemsEA {
 		
 		empowered_blade = registerItem(new ItemEmpoweredBlade());
 		*/
-		enchanted_ebonheart = registerItem(new ItemEnchantedEbonheart());
+		viesdenburg = registerItem(new ItemViesdenburg());
 		/**
 		arcanite_pickaxe = registerItem(new ItemArcanitePickaxe(arcaniteToolMaterial));
 		arcanite_axe = registerItem(new ItemArcaniteAxe(ToolMaterial.IRON));
@@ -126,13 +125,13 @@ public class InitItemsEA extends ItemsEA {
 		
 		*/
 		
-		ebon_airship = //registerItem(
-				//new ItemBoat(EntityBoat.Type.OAK);
-				new ItemAirship
-				(
+		//ebon_airship = //registerItem(
+		//		//new ItemBoat(EntityBoat.Type.OAK);
+		//		new ItemAirship
+		//		(
 						//EntityBoat.Type.OAK
 						//EntityAirship.Type.OAK
-						);
+		//				);
 		
 		
 		
@@ -147,12 +146,12 @@ public class InitItemsEA extends ItemsEA {
 	}
 	
 	
-	public static void register()
-	{
+	//public static void register()
+	//{
 		
-		GameRegistry.registerItem(ebon_airship, ebon_airship.getUnlocalizedName().substring(5));
+	//	GameRegistry.registerItem(ebon_airship, ebon_airship.getUnlocalizedName().substring(5));
 		
-	}
+	//}
 	
 	
 }

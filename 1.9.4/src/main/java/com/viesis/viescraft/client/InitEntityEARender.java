@@ -6,8 +6,8 @@ import net.minecraft.entity.Entity;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
 import com.viesis.viescraft.api.ItemsEA;
-import com.viesis.viescraft.client.projectile.RenderEnchantedEbonheart;
-import com.viesis.viescraft.common.entity.EntityEnchantedEbonheart;
+import com.viesis.viescraft.client.projectile.RenderItemViesdenburg;
+import com.viesis.viescraft.common.entity.EntityItemViesdenburg;
 
 public final class InitEntityEARender extends ItemsEA {
 	
@@ -16,7 +16,7 @@ public final class InitEntityEARender extends ItemsEA {
 	public static void registerRenders()
 	{
 		
-		registerRender(EntityEnchantedEbonheart.class
+		registerRender(EntityItemViesdenburg.class
 				//, RenderEnchantedEbonheart::new
 				);
 		
@@ -31,7 +31,7 @@ public final class InitEntityEARender extends ItemsEA {
 		
 		//RenderingRegistry.registerEntityRenderingHandler(classIn, renderFactory);
 		
-		RenderingRegistry.registerEntityRenderingHandler(classIn, new RenderEnchantedEbonheart(EARender));
+		RenderingRegistry.registerEntityRenderingHandler(classIn, new RenderItemViesdenburg(EARender));
 		
 		//RenderingRegistry.registerEntityRenderingHandler(EntityAirshipEA.class, new RenderEnchantedEbonheart(EARender));
 		

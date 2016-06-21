@@ -30,18 +30,18 @@ public class BlockOreArcanite extends Block {
 		this.setSoundType(SoundType.STONE);
 	}
 
-	@Override
-	public ArrayList<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState blockstate, int fortune) 
-	{
-		Random rand = new Random();
-		int d = rand.nextInt(100) + 1;
+	//@Override
+	//public ArrayList<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState blockstate, int fortune) 
+	//{
+	//	Random rand = new Random();
+	//	int d = rand.nextInt(100) + 1;
 		
-		ArrayList<ItemStack> drops = new ArrayList<ItemStack>();
-		drops.add(new ItemStack(InitItemsEA.arcanite));
-		if (d < 10)
-			drops.add(new ItemStack(InitItemsEA.ebonheart));
-		return drops;
-	}
+	//	ArrayList<ItemStack> drops = new ArrayList<ItemStack>();
+		//drops.add(new ItemStack(InitItemsEA.arcanite));
+	//	if (d < 10)
+		//	drops.add(new ItemStack(InitItemsEA.ebonheart));
+	//	return drops;
+	//}
     
     public int quantityDroppedWithBonus(int fortune, Random random)
     {

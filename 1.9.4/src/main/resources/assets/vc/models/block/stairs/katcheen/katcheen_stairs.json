@@ -1,8 +1,0 @@
-{
-    "parent": "block/stairs",
-    "textures": {
-        "bottom": "ea:blocks/stairs/katcheen_stairs",
-        "top": "ea:blocks/stairs/katcheen_stairs",
-        "side": "ea:blocks/stairs/katcheen_stairs"
-    }
-}

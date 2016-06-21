@@ -4,7 +4,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 
 public class ItemsEA {
-	
+	/**
 	//public static Item test_book;
 	public static Item draconium_dust;
 	public static Item velious;
@@ -145,5 +145,9 @@ public class ItemsEA {
 	//public static Item tier_3_catalyst;
 	//public static Item tier_4_catalyst;
 	//public static Item OmniTool;
+	*/
+	
+	public static Item viesdenburg;
+	
 	
 }

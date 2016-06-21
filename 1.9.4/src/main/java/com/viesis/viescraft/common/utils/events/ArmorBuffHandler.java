@@ -10,7 +10,7 @@ import com.viesis.viescraft.common.entity.modifiers.EAAttributeModifier;
 import com.viesis.viescraft.init.InitItemsEA;
 
 public class ArmorBuffHandler {
-	
+	/**
     @SubscribeEvent
     public void onPlayerTick(TickEvent.PlayerTickEvent event) 
     {
@@ -96,5 +96,5 @@ public class ArmorBuffHandler {
         } 
     	
     }
-    
+    */
 }

@@ -3,7 +3,7 @@ package com.viesis.viescraft.api;
 import net.minecraft.block.Block;
 
 public class BlocksEA {
-	
+	/**
 	public static Block draconium_ore;
 	public static Block velious_ore;
 	public static Block arcanite_ore;
@@ -357,5 +357,5 @@ public class BlocksEA {
 	public static Block cryptic_obsidian_block_fancybrick;
 	public static Block cryptic_glowstone_block_fancybrick;
 	public static Block cryptic_ebonheart_block_fancybrick;
-	
+	*/
 }

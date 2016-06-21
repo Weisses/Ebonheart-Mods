@@ -1,8 +1,0 @@
-{
-    "parent": "block/half_slab",
-    "textures": {
-        "bottom": "ea:blocks/slab/cryptic_glowstone_slab_bottom",
-        "top": "ea:blocks/slab/cryptic_glowstone_slab_top",
-        "side": "ea:blocks/slab/cryptic_glowstone_slab_side"
-    }
-}

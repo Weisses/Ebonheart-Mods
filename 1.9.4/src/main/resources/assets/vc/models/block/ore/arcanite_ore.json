@@ -1,6 +1,0 @@
-{
-    "parent": "block/cube_all",
-    "textures": {
-        "all": "ea:blocks/ores/arcanite_ore"
-    }
-}

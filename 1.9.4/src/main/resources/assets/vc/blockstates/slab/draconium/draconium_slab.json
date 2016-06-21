@@ -1,6 +1,0 @@
-{
-    "variants": {
-        "half=bottom,variant=stone": { "model": "ea:slab/draconium/half_draconium_slab" },
-        "half=top,variant=stone": { "model": "ea:slab/draconium/upper_draconium_slab" }
-    }
-}
