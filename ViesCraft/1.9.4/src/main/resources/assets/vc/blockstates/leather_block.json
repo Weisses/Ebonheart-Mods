@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "ea:leather_block" },
+        "facing=south": { "model": "ea:leather_block", "y": 180 },
+        "facing=west":  { "model": "ea:leather_block", "y": 270 },
+        "facing=east":  { "model": "ea:leather_block", "y": 90 }
+    }
+}

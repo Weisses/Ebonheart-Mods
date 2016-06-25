@@ -1,0 +1,21 @@
+< en_US.lang - English localization file for the ViesCraft Mod >
+
+//-----Creative Tabs-----
+itemGroup.tabViesCraftBlocks=ViesCraft Blocks
+itemGroup.tabViesCraftItems=ViesCraft Items
+
+//-----Items-----
+item.vc:viesdenburg.name=Viesdenburg
+
+//-----Ores-----
+tile.vc:ore/draconium_ore.name=Draconium Ore
+
+//-----Blocks-----
+tile.vc:plant/hellion_fruit_crop.name=Hellion Fruit Plant
+
+//-----Tools-----
+item.vc:tool/arcanite_pickaxe.name=Arcanite Pickaxe
+
+//-----Achievements-----
+achievement.vc:alchemical_compendium=And so it begins!
+achievement.vc:alchemical_compendium.desc=Obtain an Alchemical Compendium.
