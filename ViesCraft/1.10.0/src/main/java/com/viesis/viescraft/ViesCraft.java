@@ -42,7 +42,6 @@ public class ViesCraft
 		try
 		{
 			config.load();
-			//MovementControl.initMovement();
 			LogHelper.info("Good news everyone! The configuration has been loaded!");
 		}
 		catch (Exception e)

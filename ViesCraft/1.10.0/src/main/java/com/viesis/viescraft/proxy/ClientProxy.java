@@ -15,7 +15,7 @@ public class ClientProxy extends CommonProxy {
 	public void preInit(FMLPreInitializationEvent event) 
 	{
 		super.preInit(event);
-		Keybinds.init1();
+		//Keybinds.init1();
 		
 		//---------------------------
 		//InitTileEntitiesEA.registerRenders();

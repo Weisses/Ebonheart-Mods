@@ -1,21 +1,22 @@
 package com.viesis.viescraft.common.utils.gui;
 
+import com.viesis.viescraft.common.entity.EntityAirshipVC;
+
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 
-import com.viesis.viescraft.testbed.ContainerAirship;
-import com.viesis.viescraft.testbed.EntityAirship;
-
 public class AirshipGui extends GuiContainer {
 
-	private EntityAirship airship;
+	private EntityAirshipVC airship;
 	
-	public AirshipGui(GuiScreen screen, InventoryPlayer inventoryplayer,EntityAirship air) 
+	public AirshipGui(GuiScreen screen, InventoryPlayer inventoryplayer, EntityAirshipVC air) 
 	{
-		super(new ContainerAirship(inventoryplayer, air));
+		super(null
+				//new ContainerAirshipVC(inventoryplayer, air)
+				);
 		
-		airship = air;
+		//airship = air;
 	}
 	/**
 	@Override
