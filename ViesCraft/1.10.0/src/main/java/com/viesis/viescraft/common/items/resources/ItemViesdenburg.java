@@ -24,24 +24,23 @@ public class ItemViesdenburg extends Item {
 	
 	public ItemViesdenburg() 
 	{
-		ItemHelper.setItemName(this, "viesdenburg");
-		this.setMaxStackSize(16);
+		ItemHelper.setItemName(this, "item_viesdenburg");
+		this.setMaxStackSize(1);
 	}
 	
 	@SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List toolTip, boolean advanced) 
 	{
-		//toolTip.add(TextFormatting.DARK_AQUA + "A Steampunk Airship.");
-		toolTip.add(TextFormatting.DARK_AQUA + "Hold " + TextFormatting.WHITE + "[Shift + Right-Click]" + TextFormatting.DARK_AQUA + " to throw this");
-		toolTip.add(TextFormatting.DARK_AQUA + "item and unleash the airship within.");
-		toolTip.add(TextFormatting.DARK_AQUA + "No assembly required!");
+		toolTip.add(TextFormatting.DARK_PURPLE + "Hold " + TextFormatting.WHITE + "[Shift + Right-Click]" + TextFormatting.DARK_PURPLE + " to throw this");
+		toolTip.add(TextFormatting.DARK_PURPLE + "item and unleash the airship within.");
+		toolTip.add(TextFormatting.DARK_PURPLE + "No assembly required!");
 	}
 	
-	@SideOnly(Side.CLIENT)
-    public boolean hasEffect(ItemStack stack)
-    {
-        return true;
-    }
+	//@SideOnly(Side.CLIENT)
+    //public boolean hasEffect(ItemStack stack)
+    //{
+    //    return true;
+    //}
 	
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand)
     {
@@ -69,6 +68,6 @@ public class ItemViesdenburg extends Item {
 	
 	public EnumRarity getRarity(ItemStack stack)
     {
-        return EnumRarity.RARE;
+        return EnumRarity.EPIC;
     }
 }

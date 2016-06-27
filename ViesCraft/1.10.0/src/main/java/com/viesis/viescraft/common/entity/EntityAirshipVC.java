@@ -16,6 +16,7 @@ import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityWaterMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -37,22 +38,25 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.google.common.collect.Lists;
-import com.viesis.viescraft.init.InitItemsEA;
+import com.viesis.viescraft.init.InitItemsVC;
 
-
-public class EntityAirshipVC extends EntityVC {
+public class EntityAirshipVC extends EntityVC implements IInventory{
 	
 	private static final DataParameter<Integer> TIME_SINCE_HIT = EntityDataManager.<Integer>createKey(EntityAirshipVC.class, DataSerializers.VARINT);
     private static final DataParameter<Integer> FORWARD_DIRECTION = EntityDataManager.<Integer>createKey(EntityAirshipVC.class, DataSerializers.VARINT);
     private static final DataParameter<Float> DAMAGE_TAKEN = EntityDataManager.<Float>createKey(EntityAirshipVC.class, DataSerializers.FLOAT);
     private static final DataParameter<Integer> BOAT_TYPE = EntityDataManager.<Integer>createKey(EntityBoat.class, DataSerializers.VARINT);
     
+    
+    
+    
 	public EntityAirshipVC(World worldIn)
     {
         super(worldIn);
         
         this.preventEntitySpawning = true;
-        this.setSize(1.375F, 0.5625F);
+        this.setSize(1.0F, 1.0F);
+        
     }
 
     public EntityAirshipVC(World worldIn, double x, double y, double z)
@@ -84,7 +88,7 @@ public class EntityAirshipVC extends EntityVC {
 	
 	public Item getItemBoat()
     {
-        return InitItemsEA.viesdenburg;
+        return InitItemsVC.item_viesdenburg;
     }
 	
     /**
@@ -96,9 +100,7 @@ public class EntityAirshipVC extends EntityVC {
         {
             return false;
         }
-        else if (
-        		//!this.worldObj.isRemote && 
-        		!this.isDead)
+        else if (!this.isDead)
         {
             if (source instanceof EntityDamageSourceIndirect && source.getEntity() != null && this.isPassenger(source.getEntity()))
             {
@@ -635,9 +637,36 @@ public class EntityAirshipVC extends EntityVC {
             	{
             		
             		this.worldObj.createExplosion(this, this.posX, this.posY + (double)(this.height / 16.0F), this.posZ, 2.0F, true);
-            	
+            		
+            		int drop1 = random.nextInt(100) + 1;
+            		int drop2 = random.nextInt(100) + 1;
+            		int drop3 = random.nextInt(100) + 1;
+            		int drop4 = random.nextInt(100) + 1;
+            		
+            	    if (drop1 < 75)
+                	{
+            	    	this.dropItemWithOffset(InitItemsVC.airship_balloon, 1, 0.0F);
+                	}
+            	    
+            	    if (drop2 < 55)
+                	{
+            	    	this.dropItemWithOffset(InitItemsVC.airship_engine, 1, 0.0F);
+                	
+            	    	if (drop3 < 35)
+                    	{
+                	    	this.dropItemWithOffset(InitItemsVC.airship_engine, 1, 0.0F);
+                    	}
+                	}
+            	    
+            	    if (drop4 < 15)
+                	{
+            	    	this.dropItemWithOffset(InitItemsVC.airship_ignition, 1, 0.0F);
+                	}
             	}
+            	
             	this.setAirshipDead();
+            	
+            	
             	
             	
             }
@@ -665,14 +694,6 @@ public class EntityAirshipVC extends EntityVC {
             {
             	this.motionY *= (double)this.momentum;//+= d1;
             }
-
-            //if (d2 > 0.0D)
-            //{
-            //    double d3 = 0.65D;
-            //    this.motionY += d2 * (-d0 / 0.65D);
-            //    double d4 = 0.75D;
-            //    this.motionY *= 0.75D;
-            //}
         }
     }
 
@@ -1047,12 +1068,59 @@ public class EntityAirshipVC extends EntityVC {
             return values()[0];
         }
     }
-
+    
+    
+    @Override
+    public void setDead()
+    {
+    	this.playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 0.5F, 0.4F / .5F * 0.4F + 0.8F);
+        this.isDead = true;
+        
+        if (!this.worldObj.isRemote)
+    	{
+        	this.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, 
+					this.posX + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
+					this.posY + 0.5D,
+					this.posZ + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
+					0.0D, 0.0D, 0.0D, new int[0]);
+        	
+        	for (int ii = 0; ii < 10; ++ii)
+        	{
+        		int d = random.nextInt(100) + 1;
+        		
+        		if (d <= 2)
+        		{
+        			this.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, 
+        					this.posX + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
+        					this.posY + 0.5D,
+        					this.posZ + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
+        					0.0D, 0.0D, 0.0D, new int[0]);
+        		}
+        		if (d <= 15)
+        		{
+        			this.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_NORMAL, 
+        					this.posX + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
+        					this.posY + 0.5D,
+        					this.posZ + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
+        					0.0D, 0.25D, 0.0D, new int[0]);
+        		}
+        		if (d <= 25)
+        		{
+        			this.worldObj.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, 
+        					this.posX + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
+        					this.posY + 0.5D,
+        					this.posZ + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
+        					0.0D, 0.0D, 0.0D, new int[0]);
+        		}
+        	}
+    	}
+    }
+    
     public void setAirshipDead()
     {
     	if (!this.worldObj.isRemote)
     	{
-    		this.playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 0.5F, 0.4F / .5F * 0.4F + 0.8F);
+    		
     		this.setDead();
     	}
     	else
@@ -1061,6 +1129,12 @@ public class EntityAirshipVC extends EntityVC {
         	{
     			int d = random.nextInt(100) + 1;
 				
+    			this.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, 
+    					this.posX + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
+    					this.posY + 0.5D,
+    					this.posZ + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
+    					0.0D, 0.0D, 0.0D, new int[0]);
+            	
 				if (d <= 2)
 				{
 					this.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, 
@@ -1089,23 +1163,107 @@ public class EntityAirshipVC extends EntityVC {
     	}
     }
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+	@Override
+	public int getSizeInventory() {
+		// TODO Auto-generated method stub
+		return 18;
+	}
 
-	//@Override
-	//public void onInventoryChanged(InventoryBasic invBasic) {
+	@Override
+	public ItemStack getStackInSlot(int index) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ItemStack decrStackSize(int index, int count) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ItemStack removeStackFromSlot(int index) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void setInventorySlotContents(int index, ItemStack stack) {
 		// TODO Auto-generated method stub
 		
-	//}
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+		
+	}
+
+	@Override
+	public int getInventoryStackLimit() {
+		// TODO Auto-generated method stub
+		return 64;
+	}
+
+	@Override
+	public void markDirty() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean isUseableByPlayer(EntityPlayer player) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void openInventory(EntityPlayer player) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void closeInventory(EntityPlayer player) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean isItemValidForSlot(int index, ItemStack stack) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public int getField(int id) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void setField(int id, int value) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int getFieldCount() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void clear() {
+		// TODO Auto-generated method stub
+		
+	}
+
 
     
     

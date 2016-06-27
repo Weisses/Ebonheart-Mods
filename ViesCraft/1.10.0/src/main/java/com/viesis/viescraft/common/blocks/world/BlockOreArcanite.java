@@ -15,7 +15,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 import com.viesis.viescraft.common.blocks.BlockHelper;
-import com.viesis.viescraft.init.InitItemsEA;
+import com.viesis.viescraft.init.InitItemsVC;
 
 public class BlockOreArcanite extends Block {
 	

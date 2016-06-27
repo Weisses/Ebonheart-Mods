@@ -1,10 +1,10 @@
 package com.viesis.viescraft.client;
 
-import com.viesis.viescraft.api.BlocksEA;
+import com.viesis.viescraft.api.BlocksVC;
 //import net.minecraft.client.resources.model.ModelBakery;
 //import net.minecraft.client.resources.model.ModelResourceLocation;
 
-public final class InitBlocksEARender extends BlocksEA {
+public final class InitBlocksVCRender extends BlocksVC {
 	
 	public static void registerRenders()
 	{

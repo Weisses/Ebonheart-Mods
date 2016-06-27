@@ -3,7 +3,7 @@ package com.viesis.viescraft.api.creative;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
-import com.viesis.viescraft.init.InitItemsEA;
+import com.viesis.viescraft.init.InitItemsVC;
 
 public class VCTabItems extends CreativeTabs {
 
@@ -16,6 +16,6 @@ public class VCTabItems extends CreativeTabs {
 	@Override
 	public Item getTabIconItem() 
 	{
-		return InitItemsEA.viesdenburg;
+		return InitItemsVC.item_viesdenburg;
 	}
 }

@@ -6,8 +6,8 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 import com.viesis.viescraft.api.util.Keybinds;
-import com.viesis.viescraft.client.InitEntityEARender;
-import com.viesis.viescraft.client.InitItemsEARender;
+import com.viesis.viescraft.client.InitEntityVCRender;
+import com.viesis.viescraft.client.InitItemsVCRender;
 
 public class ClientProxy extends CommonProxy {
 	
@@ -26,9 +26,9 @@ public class ClientProxy extends CommonProxy {
 	{
 		super.init(event);
 		
-		InitItemsEARender.registerRenders();
+		InitItemsVCRender.registerRenders();
 		//InitBlocksEARender.registerRenders();
-		InitEntityEARender.registerRenders();
+		InitEntityVCRender.registerRenders();
 		
 		//---------------------------
 		//InitEntityEARender.registerParticle(null, null);

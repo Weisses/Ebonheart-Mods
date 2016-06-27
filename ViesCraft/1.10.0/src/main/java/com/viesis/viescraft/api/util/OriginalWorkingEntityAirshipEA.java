@@ -42,7 +42,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.google.common.collect.Lists;
-import com.viesis.viescraft.init.InitItemsEA;
+import com.viesis.viescraft.init.InitItemsVC;
 
 
 public class OriginalWorkingEntityAirshipEA extends Entity {
@@ -224,7 +224,7 @@ public class OriginalWorkingEntityAirshipEA extends Entity {
 
     public Item getItemBoat()
     {
-        return InitItemsEA.viesdenburg;
+        return InitItemsVC.item_viesdenburg;
     }
 	
     /**

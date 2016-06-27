@@ -1,11 +1,13 @@
 package com.viesis.viescraft.init;
 
+import net.minecraft.item.ItemStack;
+import net.minecraft.stats.Achievement;
 import net.minecraftforge.common.AchievementPage;
 
-import com.viesis.viescraft.api.AchievementsEA;
+import com.viesis.viescraft.api.AchievementsVC;
 import com.viesis.viescraft.api.Reference;
 
-public class InitAchievementsEA extends AchievementsEA {
+public class InitAchievementsVC extends AchievementsVC {
 	
 	public static final AchievementPage achievementPageEA = new AchievementPage(Reference.MOD_NAME);
 	
@@ -18,6 +20,10 @@ public class InitAchievementsEA extends AchievementsEA {
     
     private static void addAchievements()
     {
+    	airship_create = addAchievement(AIRSHIP_CREATE, "airship_create", 1, 0, new ItemStack(InitItemsVC.item_viesdenburg), (Achievement)null);//.func_180788_c();
+		
+    	airship_water = addAchievement(AIRSHIP_WATER, "airship_water", 3, 0, new ItemStack(InitItemsVC.item_viesdenburg), (Achievement)null);//.func_180788_c();
+    	
     /**	mine_draconium_ore = addAchievement(MINE_DRACONIUM_ORE, "mine_draconium_ore", -1, -1, new ItemStack(InitBlocksEA.draconium_ore), null);
     	glowing_disc = addAchievement(GLOWING_DISC, "glowing_disc", -3, -2, new ItemStack(InitItemsEA.glowing_disc), mine_draconium_ore);//.func_180788_c();
 		
@@ -57,7 +63,9 @@ public class InitAchievementsEA extends AchievementsEA {
 		vengeance_armor = addAchievement(VENGEANCE_ARMOR, "vengeance_armor", -1, -4, new ItemStack(InitItemsEA.vengeance_chestplate), (Achievement)enchanted_ebonheart).setSpecial();//.func_180788_c();
 		celestial_armor = addAchievement(CELESTIAL_ARMOR, "celestial_armor", 3, -4, new ItemStack(InitItemsEA.celestial_chestplate), (Achievement)enchanted_ebonheart).setSpecial();//.func_180788_c();
 		
+		*/
     }
+    
     
     private static Achievement addAchievement(String unlocalizedName, String identifier, int column, int row, ItemStack iconStack, Achievement parent)
     {
@@ -66,6 +74,6 @@ public class InitAchievementsEA extends AchievementsEA {
         achievementPageEA.getAchievements().add(achievement);
         return achievement;
         
-        */
+        
     }
 }

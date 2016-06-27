@@ -1,6 +1,6 @@
 package com.viesis.viescraft.api;
 
-public class BlocksEA {
+public class BlocksVC {
 	
 	/**
 	public static Block draconium_ore;

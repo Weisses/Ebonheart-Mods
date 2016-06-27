@@ -10,7 +10,7 @@ import com.viesis.viescraft.api.Reference;
 
 
 
-public final class InitTileEntitiesEA {
+public final class InitTileEntitiesVC {
 	
 	//public static Block Test_Block_Tile_Entity;
 	

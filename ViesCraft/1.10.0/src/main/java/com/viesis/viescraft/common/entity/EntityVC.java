@@ -6,6 +6,7 @@ import java.util.Random;
 import javax.annotation.Nullable;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -34,10 +35,6 @@ public class EntityVC extends Entity {
     public boolean downInputDown;
     public double waterLevel;
     
-    /**
-     * How much the boat should glide given the slippery blocks it's currently gliding over.
-     * Halved every tick.
-     */
     public float boatGlide;
     public EntityAirshipVC.Status status;
     public EntityAirshipVC.Status previousStatus;
@@ -161,6 +158,38 @@ public class EntityVC extends Entity {
         List<Entity> list = this.getPassengers();
         return list.isEmpty() ? null : (Entity)list.get(0);
     }
+    
+    
+    
+    
+    
+    
+    
+    public boolean interact(EntityPlayer entityplayer) 
+    {
+
+		if (this.isRidingOrBeingRiddenBy(entityplayer)) 
+		{
+			return true;
+		}
+		if (!worldObj.isRemote) 
+		{
+			ItemStack itemstack = entityplayer.inventory.getCurrentItem();
+			if (itemstack != null && itemstack.getItem() == Items.BOW) 
+			{
+				return false;
+			} 
+			else 
+			{
+				entityplayer.startRiding(this);
+			}
+		}
+
+		return true;
+
+	}
+    
+    
     
     
     

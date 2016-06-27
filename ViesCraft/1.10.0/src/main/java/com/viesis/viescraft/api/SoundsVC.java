@@ -2,7 +2,7 @@ package com.viesis.viescraft.api;
 
 import net.minecraft.util.SoundEvent;
 
-public class SoundsEA {
+public class SoundsVC {
 	/**
 	public static SoundEvent island;
 	public static SoundEvent dire;

@@ -1,12 +1,19 @@
 package com.viesis.viescraft.proxy;
 
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 
-import com.viesis.viescraft.api.util.MovementControl;
-import com.viesis.viescraft.init.InitEntityEA;
-import com.viesis.viescraft.init.InitItemsEA;
+import com.viesis.viescraft.ViesCraft;
+import com.viesis.viescraft.common.AchievementTriggersVC;
+import com.viesis.viescraft.common.utils.events.ArmorBuffHandler;
+import com.viesis.viescraft.common.utils.gui.GuiHandler;
+import com.viesis.viescraft.init.InitAchievementsVC;
+import com.viesis.viescraft.init.InitEntityVC;
+import com.viesis.viescraft.init.InitItemsVC;
+import com.viesis.viescraft.init.InitRecipesVC;
 
 public class CommonProxy {
 	
@@ -14,10 +21,10 @@ public class CommonProxy {
 	{
 		//SoundEventsEA.registerSounds();
 		
-		InitItemsEA.preInit();
+		InitItemsVC.preInit();
 		//InitItemsEA.register();
 		//InitBlocksEA.preInit();
-		InitEntityEA.preInit();
+		InitEntityVC.preInit();
 		
 		
 		//=======================================//
@@ -27,19 +34,19 @@ public class CommonProxy {
 	
 	public void init(FMLInitializationEvent event) 
 	{
-		//InitRecipesEA.initShapedRecipe();
-		//InitRecipesEA.initShapelessRecipe();
+		InitRecipesVC.initShapedRecipe();
+		InitRecipesVC.initShapelessRecipe();
 		//InitRecipesEA.initSmeltingRecipe();
-		//InitAchievementsEA.init();
+		InitAchievementsVC.init();
 		
 		//WorldChestHooks.init();
 		
-		//MinecraftForge.EVENT_BUS.register(new AchievementTriggersEA());
-		//MinecraftForge.EVENT_BUS.register(new ArmorBuffHandler());
+		MinecraftForge.EVENT_BUS.register(new AchievementTriggersVC());
+		MinecraftForge.EVENT_BUS.register(new ArmorBuffHandler());
 	    
 		
 		//GameRegistry.registerWorldGenerator(new WorldGeneratorEA(), 0);
-		//NetworkRegistry.INSTANCE.registerGuiHandler(EbonArtsMod.instance, new GuiHandler());
+		NetworkRegistry.INSTANCE.registerGuiHandler(ViesCraft.instance, new GuiHandler());
 	}
 	
 	public void postInit(FMLPostInitializationEvent event) 

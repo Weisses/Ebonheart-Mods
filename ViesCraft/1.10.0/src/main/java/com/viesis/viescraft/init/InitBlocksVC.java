@@ -1,8 +1,8 @@
 package com.viesis.viescraft.init;
 
-import com.viesis.viescraft.api.BlocksEA;
+import com.viesis.viescraft.api.BlocksVC;
 
-public class InitBlocksEA extends BlocksEA {
+public class InitBlocksVC extends BlocksVC {
 	
 	//public static final Set<Block> blocks = new HashSet<>();
 	

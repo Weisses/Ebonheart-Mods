@@ -6,9 +6,9 @@ import net.minecraft.util.SoundEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import com.viesis.viescraft.api.Reference;
-import com.viesis.viescraft.api.SoundsEA;
+import com.viesis.viescraft.api.SoundsVC;
 
-public class SoundEventsEA extends SoundsEA {
+public class SoundEventsEA extends SoundsVC {
     
     	
     	/**

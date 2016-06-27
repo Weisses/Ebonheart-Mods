@@ -7,7 +7,7 @@ import com.viesis.viescraft.ViesCraft;
 import com.viesis.viescraft.common.entity.EntityAirshipVC;
 import com.viesis.viescraft.common.entity.EntityItemViesdenburg;
 
-public class InitEntityEA {
+public class InitEntityVC {
 	
 	private static int entityID = 1;
 	

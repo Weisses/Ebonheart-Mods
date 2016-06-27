@@ -1,5 +1,7 @@
 package com.viesis.viescraft.common.entity;
 
+import java.util.Random;
+
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.init.SoundEvents;
@@ -8,6 +10,8 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
 public class EntityItemViesdenburg extends EntityThrowable {
+	
+	Random random = new Random();
 	
     public EntityItemViesdenburg(World worldIn)
     {
@@ -24,9 +28,6 @@ public class EntityItemViesdenburg extends EntityThrowable {
         super(worldIn, x, y, z);
     }
     
-    /**
-     * Gets the amount of gravity to apply to the thrown entity with each tick.
-     */
     protected float getGravityVelocity()
     {
         return 0.07F;
@@ -42,27 +43,8 @@ public class EntityItemViesdenburg extends EntityThrowable {
         return -20.0F;
     }
     
-    /** 
-     * Called when this EntityThrowable hits a block or entity.
-     */
     protected void onImpact(RayTraceResult result)
     {
-    	
-    	
-    	if (this.worldObj.isRemote)
-    	{
-    		for (int ii = 0; ii < 10; ++ii)
-        	{
-        		this.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, this.posX + rand.nextDouble(), this.posY + 0.5D, this.posZ + rand.nextDouble(), 0.0D, 0.0D, 0.0D, new int[0]);
-        		this.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_NORMAL, this.posX + rand.nextDouble(), this.posY + 0.5D, this.posZ + rand.nextDouble(), 0.0D, 0.0D, 0.0D, new int[0]);
-        		this.worldObj.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, this.posX, this.posY + 0.5D, this.posZ, 0.0D, 0.0D, 0.0D, new int[0]);
-        	}
-    		
-        	for (int ii = 0; ii < 20; ++ii)
-        	{
-        		this.worldObj.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, this.posX, this.posY + 0.5D, this.posZ, 0.0D, 0.0D, 0.0D, new int[0]);
-        	}
-    	}
         if (!this.worldObj.isRemote)
         {
         	this.playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 0.5F, 0.4F / .5F * 0.4F + 0.8F);
@@ -70,5 +52,43 @@ public class EntityItemViesdenburg extends EntityThrowable {
             this.worldObj.spawnEntityInWorld(new EntityAirshipVC(this.worldObj, this.posX, this.posY, this.posZ));
             this.setDead();
         }
+        else
+    	{
+    		for (int ii = 0; ii < 10; ++ii)
+        	{
+    			int d = random.nextInt(100) + 1;
+				
+    			this.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, 
+    					this.posX + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
+    					this.posY + 0.5D,
+    					this.posZ + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
+    					0.0D, 0.0D, 0.0D, new int[0]);
+            	
+				if (d <= 2)
+				{
+					this.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, 
+						this.posX + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
+						this.posY + 0.5D,
+						this.posZ + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
+						0.0D, 0.0D, 0.0D, new int[0]);
+				}
+				if (d <= 15)
+				{
+					this.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_NORMAL, 
+						this.posX + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
+						this.posY + 0.5D,
+						this.posZ + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
+						0.0D, 0.25D, 0.0D, new int[0]);
+				}
+				if (d <= 25)
+				{
+					this.worldObj.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, 
+						this.posX + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
+						this.posY + 0.5D,
+						this.posZ + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
+						0.0D, 0.0D, 0.0D, new int[0]);
+				}
+			}
+    	}
     }
 }

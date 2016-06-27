@@ -2,7 +2,7 @@ package com.viesis.viescraft.api;
 
 import net.minecraft.stats.Achievement;
 
-public class AchievementsEA {
+public class AchievementsVC {
 	
 	public static Achievement airship_create;
 	public static Achievement airship_water;

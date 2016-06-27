@@ -12,7 +12,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 
 import com.viesis.viescraft.common.blocks.BlockHelper;
-import com.viesis.viescraft.init.InitItemsEA;
+import com.viesis.viescraft.init.InitItemsVC;
 
 public class BlockMultiOre extends Block {
 

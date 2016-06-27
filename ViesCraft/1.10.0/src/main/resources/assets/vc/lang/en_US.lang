@@ -5,7 +5,10 @@ itemGroup.tabViesCraftBlocks=ViesCraft Blocks
 itemGroup.tabViesCraftItems=ViesCraft Items
 
 //-----Items-----
-item.vc:viesdenburg.name=Viesdenburg
+item.vc:airship_balloon.name=Airship Balloon
+item.vc:airship_engine.name=Airship Engine
+item.vc:airship_ignition.name=Airship Ignition
+item.vc:item_viesdenburg.name=Viesdenburg
 
 //-----Ores-----
 tile.vc:ore/draconium_ore.name=Draconium Ore
@@ -17,5 +20,8 @@ tile.vc:plant/hellion_fruit_crop.name=Hellion Fruit Plant
 item.vc:tool/arcanite_pickaxe.name=Arcanite Pickaxe
 
 //-----Achievements-----
-achievement.vc:alchemical_compendium=And so it begins!
-achievement.vc:alchemical_compendium.desc=Obtain an Alchemical Compendium.
+achievement.vc:airship_create=Breaking the Sound Barrier!
+achievement.vc:airship_create.desc=Craft an airship.
+
+achievement.vc:airship_water=Setting sail on the S.S. Fail!
+achievement.vc:airship_water.desc=Crash an airship into water.

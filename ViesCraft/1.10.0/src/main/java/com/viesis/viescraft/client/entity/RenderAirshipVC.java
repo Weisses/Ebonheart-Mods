@@ -10,25 +10,25 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.viesis.viescraft.api.Reference;
-import com.viesis.viescraft.client.model.ModelTest;
+import com.viesis.viescraft.client.model.ModelAirshipVC;
 import com.viesis.viescraft.common.entity.EntityAirshipVC;
 
 @SideOnly(Side.CLIENT)
-public class RenderTest extends Render<EntityAirshipVC>
+public class RenderAirshipVC extends Render<EntityAirshipVC>
 {
 	
 	public static final ResourceLocation ENTITY_TEXTURE = new ResourceLocation(Reference.MOD_ID, "textures/models/viesdenburg.png");
-	public static final ResourceLocation ENTITY_TEXTURE1 = new ResourceLocation(Reference.MOD_ID, "textures/models/viesdenburg1.png");
+	//public static final ResourceLocation ENTITY_TEXTURE1 = new ResourceLocation(Reference.MOD_ID, "textures/models/viesdenburg1.png");
     
 	//private static final ResourceLocation[] BOAT_TEXTURES = new ResourceLocation[] {new ResourceLocation("textures/entity/boat/boat_oak.png"), new ResourceLocation("textures/entity/boat/boat_spruce.png"), new ResourceLocation("textures/entity/boat/boat_birch.png"), new ResourceLocation("textures/entity/boat/boat_jungle.png"), new ResourceLocation("textures/entity/boat/boat_acacia.png"), new ResourceLocation("textures/entity/boat/boat_darkoak.png")};
     /** instance of ModelTest for rendering */
-	protected ModelBase modelTest = new ModelTest();
+	protected ModelBase modelTest = new ModelAirshipVC();
 	
 
-    public RenderTest(RenderManager renderManagerIn)
+    public RenderAirshipVC(RenderManager renderManagerIn)
     {
         super(renderManagerIn);
-        this.shadowSize = 0.5F;
+        this.shadowSize = 1.0F;
     }
 
     /**

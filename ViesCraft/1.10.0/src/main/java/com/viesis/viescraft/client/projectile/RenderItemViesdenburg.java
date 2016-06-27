@@ -15,7 +15,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.common.entity.EntityItemViesdenburg;
-import com.viesis.viescraft.init.InitItemsEA;
+import com.viesis.viescraft.init.InitItemsVC;
 
 @SideOnly(Side.CLIENT)
 public class RenderItemViesdenburg extends Render<EntityItemViesdenburg>
@@ -47,7 +47,7 @@ public class RenderItemViesdenburg extends Render<EntityItemViesdenburg>
         GlStateManager.translate((float)x, (float)y, (float)z);
         GlStateManager.enableRescaleNormal();
         GlStateManager.scale(this.scale, this.scale, this.scale);
-        TextureAtlasSprite textureatlassprite = Minecraft.getMinecraft().getRenderItem().getItemModelMesher().getParticleIcon(InitItemsEA.viesdenburg);
+        TextureAtlasSprite textureatlassprite = Minecraft.getMinecraft().getRenderItem().getItemModelMesher().getParticleIcon(InitItemsVC.item_viesdenburg);
         Tessellator tessellator = Tessellator.getInstance();
         VertexBuffer vertexbuffer = tessellator.getBuffer();
         //WorldRenderer worldrenderer = tessellator.getWorldRenderer();
