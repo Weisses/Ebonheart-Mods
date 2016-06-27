@@ -8,7 +8,7 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 import com.viesis.viescraft.ViesCraft;
 import com.viesis.viescraft.common.AchievementTriggersVC;
-import com.viesis.viescraft.common.utils.events.ArmorBuffHandler;
+import com.viesis.viescraft.common.utils.events.AirshipHandler;
 import com.viesis.viescraft.common.utils.gui.GuiHandler;
 import com.viesis.viescraft.init.InitAchievementsVC;
 import com.viesis.viescraft.init.InitEntityVC;
@@ -22,7 +22,6 @@ public class CommonProxy {
 		//SoundEventsEA.registerSounds();
 		
 		InitItemsVC.preInit();
-		//InitItemsEA.register();
 		//InitBlocksEA.preInit();
 		InitEntityVC.preInit();
 		
@@ -36,13 +35,10 @@ public class CommonProxy {
 	{
 		InitRecipesVC.initShapedRecipe();
 		InitRecipesVC.initShapelessRecipe();
-		//InitRecipesEA.initSmeltingRecipe();
 		InitAchievementsVC.init();
 		
-		//WorldChestHooks.init();
-		
 		MinecraftForge.EVENT_BUS.register(new AchievementTriggersVC());
-		MinecraftForge.EVENT_BUS.register(new ArmorBuffHandler());
+		MinecraftForge.EVENT_BUS.register(new AirshipHandler());
 	    
 		
 		//GameRegistry.registerWorldGenerator(new WorldGeneratorEA(), 0);

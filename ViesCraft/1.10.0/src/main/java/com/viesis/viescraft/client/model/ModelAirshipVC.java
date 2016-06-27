@@ -11,8 +11,10 @@
 
 package com.viesis.viescraft.client.model;
 
+import com.viesis.viescraft.ViesCraft;
 import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.common.entity.EntityAirshipVC;
+import com.viesis.viescraft.configs.ViesCraftConfig;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
@@ -362,9 +364,13 @@ public class ModelAirshipVC extends ModelBase
     Engine_L1.render(f5);
     Engine_L1a.render(f5);
     Engine_L1b.render(f5);
-    Propeller_1a.render(f5);
-    Propeller_1b.render(f5);
-    Propeller_1c.render(f5);
+    
+    if(ViesCraftConfig.modelAnimation)
+	{
+    	Propeller_1a.render(f5);
+    	Propeller_1b.render(f5);
+    	Propeller_1c.render(f5);
+	}
   }
   
   private void setRotation(ModelRenderer model, float x, float y, float z)
@@ -378,20 +384,23 @@ public class ModelAirshipVC extends ModelBase
   {
     super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
     
-    long now = System.nanoTime();
-	int elapsed = (int) ((now - lastframe) / (1000000));
-	// 1000000 nanoseconds = .001 seconds
+    
+    if(ViesCraftConfig.modelAnimation)
+	{
+    	long now = System.nanoTime();
+    	int elapsed = (int) ((now - lastframe) / (1000000));
+    	// 1000000 nanoseconds = .001 seconds
 	
-	bladespin = (float) elapsed / 300.0f;
-	// 0.001 seconds / 300 = 3.3333 repeating.
+    	bladespin = (float) elapsed / 300.0f;
+    	// 0.001 seconds / 300 = 3.3333 repeating.
 	
-	lastframe = now;
+    	lastframe = now;
 	
     
-	this.Propeller_1a.rotateAngleZ += (bladespin * 2);
-    this.Propeller_1b.rotateAngleZ += (bladespin * 2);
-    this.Propeller_1c.rotateAngleZ += (bladespin * 2);
-    
+    	this.Propeller_1a.rotateAngleZ += (bladespin * 2);
+    	this.Propeller_1b.rotateAngleZ += (bladespin * 2);
+    	this.Propeller_1c.rotateAngleZ += (bladespin * 2);
+	}
   }
 
 }

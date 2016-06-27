@@ -41,6 +41,7 @@ public class EntityVC extends Entity {
     public double lastYd;
 	
     public int fuelTime = 0;
+    public int currentFuelTime;
     
     Random random = new Random();
     
@@ -159,75 +160,56 @@ public class EntityVC extends Entity {
         return list.isEmpty() ? null : (Entity)list.get(0);
     }
     
-    
-    
-    
-    
-    
-    
-    public boolean interact(EntityPlayer entityplayer) 
+    @Override
+    public void onKillCommand()
     {
-
-		if (this.isRidingOrBeingRiddenBy(entityplayer)) 
+        
+    }
+    
+    
+    
+    
+    
+    /**
+     * WIP
+     * 
+     * @param itemstack
+     * @return
+     */
+    
+    
+    
+    
+    public int getFuelTime(ItemStack itemstack) 
+    {
+		if (itemstack == null) 
 		{
-			return true;
-		}
-		if (!worldObj.isRemote) 
-		{
-			ItemStack itemstack = entityplayer.inventory.getCurrentItem();
-			if (itemstack != null && itemstack.getItem() == Items.BOW) 
-			{
-				return false;
-			} 
-			else 
-			{
-				entityplayer.startRiding(this);
-			}
-		}
-
-		return true;
-
-	}
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    private int getFuelTime(ItemStack itemstack) {
-		if (itemstack == null) {
 			return 0;
 		}
-		Item i = itemstack.getItem();//.shiftedIndex;
-		//if (i < 256 && Block.blocksList[i].blockMaterial == Material.wood) {
-		//	return 300;
-		//}
-		//if (i == Item.stick.shiftedIndex) {
-		//	return 100;
-		//}
-		if (i == Items.COAL) {
+		Item i = itemstack.getItem();
+		
+		if (i == Items.COAL) 
+		{
 			return 1600;
 		}
-		if (i == Items.LAVA_BUCKET) {
+		else if (i == Items.LAVA_BUCKET) 
+		{
 			return 20000;
 		}
-		//if (i == Blocks.COAL_BLOCK) {
-		//	return 100;
-		//}
-		if (i == Items.GUNPOWDER) {
+		
+		else if (i == Items.GUNPOWDER) 
+		{
 			return 200;
-		} else {
-			return currentFuelTime; //ModLoader.addAllFuel(i,0);
+		} 
+		else 
+		{
+			return currentFuelTime;
 		}
 	}
 
-	int currentFuelTime;
+	
 
-	public int getFuelScaled(int i) {
+	public int getFuelScale(int i) {
 		return (fuelTime * i) / 600;
 	}
     

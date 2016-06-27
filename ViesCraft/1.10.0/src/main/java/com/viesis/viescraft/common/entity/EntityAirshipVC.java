@@ -48,14 +48,18 @@ public class EntityAirshipVC extends EntityVC implements IInventory{
     private static final DataParameter<Integer> BOAT_TYPE = EntityDataManager.<Integer>createKey(EntityBoat.class, DataSerializers.VARINT);
     
     
+    private float AirshipSpeedTurn = 0.2F;
+    private float AirshipSpeedForward = 0.0125F;
     
+    private float AirshipSpeedUp = 0.004F;
+    private float AirshipSpeedDown = 0.004F;
     
 	public EntityAirshipVC(World worldIn)
     {
         super(worldIn);
         
         this.preventEntitySpawning = true;
-        this.setSize(1.0F, 1.0F);
+        this.setSize(1.0F, 0.35F);
         
     }
 
@@ -706,12 +710,12 @@ public class EntityAirshipVC extends EntityVC implements IInventory{
 
             if (this.leftInputDown)
             {
-                this.deltaRotation += -0.4F;//+= -1.0F;
+                this.deltaRotation -= AirshipSpeedTurn; //-0.2F;//  -0.4    += -1.0F;
             }
 
             if (this.rightInputDown)
             {
-                this.deltaRotation += 0.4F;//+= 1.0F;
+                this.deltaRotation += AirshipSpeedTurn; //0.2F;//  0.4    += 1.0F;
             }
 
             if (this.rightInputDown != this.leftInputDown && !this.forwardInputDown && !this.backInputDown)
@@ -724,23 +728,23 @@ public class EntityAirshipVC extends EntityVC implements IInventory{
 
             if (this.forwardInputDown)
             {
-                f += 0.0125F;//+= 0.04F;
+                f += AirshipSpeedForward; //0.0125F;//+= 0.04F;
                 
             }
 
             if (this.backInputDown)
             {
-                f -= 0.005F;
+                f -= AirshipSpeedForward * 0.5;//0.005F;
             }
             
             if (this.upInputDown)
             {
-                f1 += 0.005F;
+                f1 += AirshipSpeedUp;//0.005F;
             }
             
             if (this.downInputDown)
             {
-                f1 -= 0.005F;
+                f1 -= AirshipSpeedDown;//0.005F;
             }
 
             this.motionX += (double)(MathHelper.sin(-this.rotationYaw * 0.017453292F) * f);
@@ -976,9 +980,7 @@ public class EntityAirshipVC extends EntityVC implements IInventory{
     
 
     @SideOnly(Side.CLIENT)
-    public void updateInputs(
-    		//boolean leftInput, boolean rightInput, boolean forwardInput, boolean backInput, boolean upInput, boolean downInput
-    		)
+    public void updateInputs()
     {
     	
     	this.leftInputDown = Minecraft.getMinecraft().gameSettings.keyBindLeft.isKeyDown();//.isPressed();

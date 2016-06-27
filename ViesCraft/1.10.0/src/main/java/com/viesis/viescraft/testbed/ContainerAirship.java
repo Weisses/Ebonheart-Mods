@@ -2,7 +2,7 @@
 // Jad home page: http://www.kpdus.com/jad.html
 // Decompiler options: packimports(3) braces deadcode 
 
-package com.ebonheart.EbonArtsMod.testbed;
+package com.viesis.viescraft.testbed;
 
 import java.util.List;
 

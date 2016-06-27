@@ -2,8 +2,8 @@
 {
   "modid": "vc",
   "name": "ViesCraft",
-  "description": "Setting sail on the S.S. Fail!",
-  "version": "v0.0.9a",
+  "description": "Airships through the eyes of Viesis!",
+  "version": "v0.2.6a",
   "mcversion": "1.10.0",
   "url": "http://ebonarts.us/",
   "updateUrl": "",

@@ -43,7 +43,7 @@ public class ViesCraft
 		{
 			config.load();
 			//MovementControl.initMovement();
-			LogHelper.info("Configuration loaded.");
+			LogHelper.info("Good news everyone! The configuration has been loaded!");
 		}
 		catch (Exception e)
 		{
