@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockFurnace;
 import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.BlockPlanks;
 import net.minecraft.block.material.Material;
@@ -11,23 +13,44 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.IMerchant;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.item.EntityBoat;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityWaterMob;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.inventory.Container;
+import net.minecraft.inventory.ContainerFurnace;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.ISidedInventory;
+import net.minecraft.inventory.ItemStackHelper;
+import net.minecraft.inventory.SlotFurnaceFuel;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.ItemSword;
+import net.minecraft.item.ItemTool;
+import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
+import net.minecraft.stats.StatList;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EntityDamageSourceIndirect;
 import net.minecraft.util.EntitySelectors;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.datafix.DataFixer;
+import net.minecraft.util.datafix.FixTypes;
+import net.minecraft.util.datafix.walkers.ItemStackDataLists;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -38,14 +61,18 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.google.common.collect.Lists;
+import com.viesis.viescraft.ViesCraft;
+import com.viesis.viescraft.common.utils.gui.GuiHandler;
 import com.viesis.viescraft.init.InitItemsVC;
 
-public class EntityAirshipVC extends EntityVC implements IInventory{
+public class EntityAirshipVC extends EntityFuelVC implements IInventory {
 	
 	private static final DataParameter<Integer> TIME_SINCE_HIT = EntityDataManager.<Integer>createKey(EntityAirshipVC.class, DataSerializers.VARINT);
     private static final DataParameter<Integer> FORWARD_DIRECTION = EntityDataManager.<Integer>createKey(EntityAirshipVC.class, DataSerializers.VARINT);
     private static final DataParameter<Float> DAMAGE_TAKEN = EntityDataManager.<Float>createKey(EntityAirshipVC.class, DataSerializers.FLOAT);
     private static final DataParameter<Integer> BOAT_TYPE = EntityDataManager.<Integer>createKey(EntityBoat.class, DataSerializers.VARINT);
+    
+    
     
     
     private float AirshipSpeedTurn = 0.18F;
@@ -57,6 +84,7 @@ public class EntityAirshipVC extends EntityVC implements IInventory{
 	public EntityAirshipVC(World worldIn)
     {
         super(worldIn);
+        
         
         this.preventEntitySpawning = true;
         this.setSize(1.0F, 0.35F);
@@ -83,13 +111,13 @@ public class EntityAirshipVC extends EntityVC implements IInventory{
         this.dataManager.register(DAMAGE_TAKEN, Float.valueOf(0.0F));
         
 	}
-	
-	
-	
-	//==============================================
-	
-	
-	
+
+    
+    
+    //================================================================================
+    
+    
+    
 	public Item getItemBoat()
     {
         return InitItemsVC.item_viesdenburg;
@@ -177,9 +205,22 @@ public class EntityAirshipVC extends EntityVC implements IInventory{
     
     
     
+    //private void test(EntityPlayer player, World world)
+    //{
+    	
+    //	if (!world.isRemote) {
+    //        player.openGui(ViesCraft.instance, GuiHandler.ENTITYAIRSHIPVC_GUI, world, posX, posY, posZ);
+    //    }
+    	
+    //}
     
     
     
+    
+
+    
+    
+    //================================================================================
     
     
     
@@ -304,7 +345,7 @@ public class EntityAirshipVC extends EntityVC implements IInventory{
 
                 if (!entity.isPassenger(this))
                 {
-                	//if (flag && this.getPassengers().size() < 2 && !entity.isRiding() && entity.width < this.width && entity instanceof EntityLivingBase && !(entity instanceof EntityWaterMob) && !(entity instanceof EntityPlayer))
+                	if (flag && this.getPassengers().size() < 2 && !entity.isRiding() && entity.width < this.width && entity instanceof EntityLivingBase && !(entity instanceof EntityWaterMob) && !(entity instanceof EntityPlayer))
                     if (flag && this.getPassengers().size() < 1 && !entity.isRiding() && entity.width < this.width && entity instanceof EntityLivingBase && !(entity instanceof EntityWaterMob) && !(entity instanceof EntityPlayer))
                     {
                         entity.startRiding(this);
@@ -333,6 +374,15 @@ public class EntityAirshipVC extends EntityVC implements IInventory{
             this.setRotation(this.rotationYaw, this.rotationPitch);
         }
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -603,6 +653,12 @@ public class EntityAirshipVC extends EntityVC implements IInventory{
     
     
     
+
+    
+    
+    //================================================================================
+    
+    
     
     /**
      * Update the boat's speed, based on momentum.
@@ -646,6 +702,7 @@ public class EntityAirshipVC extends EntityVC implements IInventory{
             		int drop2 = random.nextInt(100) + 1;
             		int drop3 = random.nextInt(100) + 1;
             		int drop4 = random.nextInt(100) + 1;
+            		int drop5 = random.nextInt(100) + 1;
             		
             	    if (drop1 < 75)
                 	{
@@ -662,7 +719,12 @@ public class EntityAirshipVC extends EntityVC implements IInventory{
                     	}
                 	}
             	    
-            	    if (drop4 < 15)
+            	    if (drop4 < 35)
+                	{
+            	    	this.dropItemWithOffset(Items.MINECART, 1, 0.0F);
+                	}
+            	    
+            	    if (drop5 < 15)
                 	{
             	    	this.dropItemWithOffset(InitItemsVC.airship_ignition, 1, 0.0F);
                 	}
@@ -701,6 +763,13 @@ public class EntityAirshipVC extends EntityVC implements IInventory{
         }
     }
 
+
+    
+    
+    //================================================================================
+    
+    
+    
     private void controlBoat()
     {
         if (this.isBeingRidden())
@@ -1171,108 +1240,6 @@ public class EntityAirshipVC extends EntityVC implements IInventory{
     
     
     
-    
-    
-    
-    
-	@Override
-	public int getSizeInventory() {
-		// TODO Auto-generated method stub
-		return 18;
-	}
-
-	@Override
-	public ItemStack getStackInSlot(int index) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ItemStack decrStackSize(int index, int count) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ItemStack removeStackFromSlot(int index) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setInventorySlotContents(int index, ItemStack stack) {
-		// TODO Auto-generated method stub
-		
-		
-	}
-
-	@Override
-	public int getInventoryStackLimit() {
-		// TODO Auto-generated method stub
-		return 64;
-	}
-
-	@Override
-	public void markDirty() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public boolean isUseableByPlayer(EntityPlayer player) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public void openInventory(EntityPlayer player) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void closeInventory(EntityPlayer player) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public boolean isItemValidForSlot(int index, ItemStack stack) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public int getField(int id) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public void setField(int id, int value) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public int getFieldCount() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public void clear() {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-    
-    
-    
-    
-    
-    
 	
 	
 	
@@ -1335,8 +1302,13 @@ public class EntityAirshipVC extends EntityVC implements IInventory{
 	
 	
 	
-	
-	
+    
+    
+    
+    
+    
+    
+    
 	
 	
 }
