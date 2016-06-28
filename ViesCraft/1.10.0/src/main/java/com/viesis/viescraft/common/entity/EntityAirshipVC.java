@@ -48,11 +48,11 @@ public class EntityAirshipVC extends EntityVC implements IInventory{
     private static final DataParameter<Integer> BOAT_TYPE = EntityDataManager.<Integer>createKey(EntityBoat.class, DataSerializers.VARINT);
     
     
-    private float AirshipSpeedTurn = 0.2F;
+    private float AirshipSpeedTurn = 0.18F;
     private float AirshipSpeedForward = 0.0125F;
     
-    private float AirshipSpeedUp = 0.004F;
-    private float AirshipSpeedDown = 0.004F;
+    private float AirshipSpeedUp = 0.0035F;
+    private float AirshipSpeedDown = 0.0035F;
     
 	public EntityAirshipVC(World worldIn)
     {

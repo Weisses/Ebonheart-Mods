@@ -52,13 +52,13 @@ public class ViesCraftConfig
 		//FMLCommonHandler.instance().bus().register(ViesCraft.instance);
 		
 		//actual config
-		final String RECIPES = ViesCraft.config.CATEGORY_GENERAL + ViesCraft.config.CATEGORY_SPLITTER + TextFormatting.GREEN + "Recipes";
+		//final String RECIPES = ViesCraft.config.CATEGORY_GENERAL + ViesCraft.config.CATEGORY_SPLITTER + TextFormatting.GREEN + "Recipes";
 		final String PARTICLES = ViesCraft.config.CATEGORY_GENERAL + ViesCraft.config.CATEGORY_SPLITTER + TextFormatting.AQUA + "Animation";
 		
-		ViesCraft.config.addCustomCategoryComment(RECIPES, "Enable, disable, or modify item recipes.");
+		//ViesCraft.config.addCustomCategoryComment(RECIPES, "Enable, disable, or modify item recipes.");
 		//weaponRecipe = ViesCraft.config.get(RECIPES, TextFormatting.YELLOW + WEAPONRECIPE_NAME, WEAPONRECIPE_DEFAULT).getBoolean(WEAPONRECIPE_DEFAULT);
 		//armorRecipe = ViesCraft.config.get(RECIPES, TextFormatting.YELLOW + ARMORRECIPE_NAME, ARMORRECIPE_DEFAULT).getBoolean(ARMORRECIPE_DEFAULT);
-		toolRecipe = ViesCraft.config.get(RECIPES, TextFormatting.YELLOW + TOOLRECIPE_NAME, TOOLRECIPE_DEFAULT).getBoolean(TOOLRECIPE_DEFAULT);
+		//toolRecipe = ViesCraft.config.get(RECIPES, TextFormatting.YELLOW + TOOLRECIPE_NAME, TOOLRECIPE_DEFAULT).getBoolean(TOOLRECIPE_DEFAULT);
 		//decraftRecipe1 = ViesCraft.config.get(RECIPES, TextFormatting.YELLOW + DECRAFTRECIPE1_NAME, DECRAFTRECIPE1_DEFAULT).getBoolean(DECRAFTRECIPE1_DEFAULT);
 		
 		//vanillaRecipe = ViesCraft.config.get(RECIPES, TextFormatting.WHITE + VANILLARECIPE_NAME, VANILLARECIPE_DEFAULT).getBoolean(VANILLARECIPE_DEFAULT);
