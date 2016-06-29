@@ -16,7 +16,7 @@ public class InitEntityVC {
 
 		
 		//throwingRock = new ItemThrowingRock().setUnlocalizedName("throwingRock");
-		register(EntityItemViesdenburg.class, "Enchanted Ebonheart", 64, 20, true);
+		register(EntityItemViesdenburg.class, "EnchantedEbonheart", 64, 20, true);
 		register(EntityAirshipVC.class, "Airship Ebonheart", 64, 1, true);
 		
 	}
