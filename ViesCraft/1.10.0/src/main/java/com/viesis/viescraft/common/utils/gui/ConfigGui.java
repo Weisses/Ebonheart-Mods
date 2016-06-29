@@ -17,7 +17,7 @@ import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.client.InitEntityVCRender;
 
 public class ConfigGui extends GuiConfig {
-
+	
 	public ConfigGui(GuiScreen screen) 
 	{
 		super(screen, new ConfigElement(ViesCraft.config.getCategory(Configuration.CATEGORY_GENERAL)).getChildElements(), Reference.MOD_NAME, true, true, GuiConfig.getAbridgedConfigPath(ViesCraft.config.toString()));

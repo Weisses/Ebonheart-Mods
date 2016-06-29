@@ -18,11 +18,11 @@ public class InitItemsVC extends ItemsVC {
 	
 	public static void preInit()
 	{
-		
 		airship_balloon = registerItem(new ItemBalloon());
 		airship_engine = registerItem(new ItemEngine());
 		airship_ignition = registerItem(new ItemIgnition());
 		item_viesdenburg = registerItem(new ItemViesdenburg());
+		
 		
 	}
 	

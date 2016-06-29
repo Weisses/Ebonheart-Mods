@@ -23,6 +23,7 @@ public class InitAchievementsVC extends AchievementsVC {
     	airship_create = addAchievement(AIRSHIP_CREATE, "airship_create", 1, 0, new ItemStack(InitItemsVC.item_viesdenburg), (Achievement)null).setSpecial();
     	airship_water = addAchievement(AIRSHIP_WATER, "airship_water", 3, 0, new ItemStack(InitItemsVC.item_viesdenburg), (Achievement)null);
     	
+    	
     }
     
     
@@ -32,7 +33,5 @@ public class InitAchievementsVC extends AchievementsVC {
         achievement.registerStat();
         achievementPageEA.getAchievements().add(achievement);
         return achievement;
-        
-        
     }
 }

@@ -20,8 +20,7 @@ import com.viesis.viescraft.configs.ViesCraftConfig;
 import com.viesis.viescraft.proxy.CommonProxy;
 
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.MOD_VERSION, guiFactory = Reference.CONFIG_GUI)
-public class ViesCraft
-{
+public class ViesCraft {
     
     @SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.SERVER_PROXY_CLASS)
 	public static CommonProxy proxy;

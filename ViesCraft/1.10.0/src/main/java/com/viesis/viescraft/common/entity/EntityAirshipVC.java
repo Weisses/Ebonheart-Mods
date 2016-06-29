@@ -810,7 +810,7 @@ public class EntityAirshipVC extends EntityFuelVC implements IInventory {
             	
             	this.openGuiAirshipInventory(this, this.horseChest);
             	
-            	System.out.println("Open Inventory");
+            	//System.out.println("Open Inventory");
             }
             
         }

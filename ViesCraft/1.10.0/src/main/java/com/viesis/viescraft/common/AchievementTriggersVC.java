@@ -6,11 +6,12 @@ import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import com.viesis.viescraft.init.InitAchievementsVC;
 import com.viesis.viescraft.init.InitItemsVC;
 
-
-
 public class AchievementTriggersVC extends InitAchievementsVC {
-
-	//Pickup an item achievement
+	
+	/**
+	 * Pickup an item for an achievement
+	 * @param event
+	 */
 	@SubscribeEvent
 	public void onPickup(PlayerEvent.ItemPickupEvent event) 
 	{
@@ -22,14 +23,16 @@ public class AchievementTriggersVC extends InitAchievementsVC {
 		
 	}
 	
-	
-	//Craft an item achievement
+	/**
+	 * Craft an item for an achievement
+	 * @param event
+	 */
 	@SubscribeEvent
 	public void onCraft(PlayerEvent.ItemCraftedEvent event) 
 	{
 		if(event.crafting.getItem() == InitItemsVC.item_viesdenburg) 
 		{
-			event.player.addStat(airship_create);//.triggerAchievement(InitAchievementsEA.nether_bound);
+			event.player.addStat(airship_create);
 		}
 		
 		//if(event.crafting.getItem() == InitItemsEA.obsidian_shards) 

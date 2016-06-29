@@ -6,6 +6,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraftforge.fml.client.IModGuiFactory;
 
+import com.viesis.viescraft.common.utils.gui.AirshipGui;
 import com.viesis.viescraft.common.utils.gui.ConfigGui;
 
 public class VCGuiFactory implements IModGuiFactory {

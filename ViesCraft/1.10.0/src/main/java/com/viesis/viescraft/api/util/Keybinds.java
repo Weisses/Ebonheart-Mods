@@ -43,7 +43,7 @@ public class Keybinds {
 		vcLeft = new KeyBinding("vc.key.moveLeft", Keyboard.KEY_A, "vc.key.viescraft");
 		vcRight = new KeyBinding("vc.key.moveRight", Keyboard.KEY_D, "vc.key.viescraft");
 		vcUp = new KeyBinding("vc.key.moveUp", Keyboard.KEY_SPACE, "vc.key.viescraft");
-		vcDown = new KeyBinding("vc.key.moveDown", Keyboard.KEY_TAB, "vc.key.viescraft");
+		vcDown = new KeyBinding("vc.key.moveDown", Keyboard.KEY_X, "vc.key.viescraft");
 	    
 		vcInventory = new KeyBinding("vc.key.openInventory", Keyboard.KEY_R, "vc.key.viescraft");
 	    

@@ -6,50 +6,24 @@ import com.viesis.viescraft.client.InitEntityVCRender;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 public class ViesCraftConfig 
 {
-	
-	//public static boolean horseRecipe;
-	//public static boolean vanillaRecipe;
 	public static boolean toolRecipe;
-	//public static boolean weaponRecipe;
-	//public static boolean armorRecipe;
 	public static boolean modelAnimation;
-	//public static boolean musicRecipe;
-	//public static boolean plantParticle;
-	//public static boolean decraftRecipe1;
-	//public static boolean decraftRecipe2;
-	//public static final boolean HORSERECIPE_DEFAULT = false;
-	//public static final String HORSERECIPE_NAME = "Disable crafting Horse Armor/Saddles?";
-	//public static final boolean VANILLARECIPE_DEFAULT = false;
-	//public static final String VANILLARECIPE_NAME = "Disable crafting special vanilla items?";
+	
 	public static final boolean TOOLRECIPE_DEFAULT = false;
 	public static final String TOOLRECIPE_NAME = "Coming soon.";
-	//public static final boolean WEAPONRECIPE_DEFAULT = false;
-	//public static final String WEAPONRECIPE_NAME = "Disable crafting Mod Weapons?";
-	//public static final boolean ARMORRECIPE_DEFAULT = false;
-	//public static final String ARMORRECIPE_NAME = "Disable crafting Mod Armor?";
 	public static final boolean MODELANIMATION_DEFAULT = true;
 	public static final String MODELANIMATION_NAME = "Enable Airship Animation?";
-	//public static final boolean MUSICRECIPE_DEFAULT = false;
-	//public static final String MUSICRECIPE_NAME = "Disable crafting Music Discs?";
-	//public static final boolean PLANTANIMATION_DEFAULT = false;
-	//public static final String PLANTANIMATION_NAME = "Disable Mod Crop Particles?";
-	//public static final boolean DECRAFTRECIPE1_DEFAULT = false;
-	//public static final String DECRAFTRECIPE1_NAME = "Disable decrafting Mod Items?";
-	
-	//public static final boolean DECRAFTRECIPE2_DEFAULT = false;
-	//public static final String DECRAFTRECIPE2_NAME = "Disable decrafting Vanilla Items?";
 	
 	public static void syncConfig()
 	{
 		
 		MinecraftForge.EVENT_BUS.register(ViesCraft.instance);
-		
-		//FMLCommonHandler.instance().bus().register(ViesCraft.instance);
 		
 		//actual config
 		//final String RECIPES = ViesCraft.config.CATEGORY_GENERAL + ViesCraft.config.CATEGORY_SPLITTER + TextFormatting.GREEN + "Recipes";
