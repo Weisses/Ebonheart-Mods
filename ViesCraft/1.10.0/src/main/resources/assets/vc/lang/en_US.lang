@@ -11,13 +11,13 @@ item.vc:airship_ignition.name=Airship Ignition
 item.vc:item_viesdenburg.name=Viesdenburg
 
 //-----Ores-----
-tile.vc:ore/draconium_ore.name=Placeholder1
+tile.vc:ore/draconium_ore.name=Draconium Ore
 
 //-----Blocks-----
-tile.vc:plant/hellion_fruit_crop.name=Placeholder2
+tile.vc:plant/hellion_fruit_crop.name=Hellion Fruit Plant
 
 //-----Tools-----
-item.vc:tool/arcanite_pickaxe.name=Placeholder3
+item.vc:tool/arcanite_pickaxe.name=Arcanite Pickaxe
 
 //-----Achievements-----
 achievement.vc:airship_create=Breaking the Sound Barrier!
@@ -25,13 +25,3 @@ achievement.vc:airship_create.desc=Craft an airship.
 
 achievement.vc:airship_water=Setting sail on the S.S. Fail!
 achievement.vc:airship_water.desc=Crash an airship into water.
-
-//-----Keybinds-----
-vc.key.viescraft=ViesCraft Controls
-vc.key.moveForward=Move Forward
-vc.key.moveBack=Move Back
-vc.key.moveLeft=Turn Left
-vc.key.moveRight=Turn Right
-vc.key.moveUp=Ascend
-vc.key.moveDown=Descend
-vc.key.openInventory=WIP-Placeholder

@@ -32,13 +32,12 @@ public class EntityVC extends Entity  implements IInventory {
 	
 	
 	private ItemStack[] inventory;
-    public String customName;
+    private String customName;
     
 	/** How much of current speed to retain. Value zero to one. */
     public float momentum;
     public float outOfControlTicks;
     public float deltaRotation;
-    public float alphaRotation;
     public int lerpSteps;
     public double boatPitch;
     public double lerpY;
@@ -51,9 +50,6 @@ public class EntityVC extends Entity  implements IInventory {
     public boolean backInputDown;
     public boolean upInputDown;
     public boolean downInputDown;
-    
-    public boolean openInputDown;
-    
     public double waterLevel;
     
     public float boatGlide;
@@ -88,7 +84,20 @@ public class EntityVC extends Entity  implements IInventory {
 	
     
     
-    
+    @Override
+    public String getName() {
+        return this.hasCustomName() ? this.customName : "container.tutorial_tile_entity";
+    }
+
+    @Override
+    public boolean hasCustomName() {
+        return this.customName != null && !this.customName.equals("");
+    }
+
+    @Override
+    public ITextComponent getDisplayName() {
+        return this.hasCustomName() ? new TextComponentString(this.getName()) : new TextComponentTranslation(this.getName());
+    }
     
     
 	

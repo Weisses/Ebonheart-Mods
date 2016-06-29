@@ -16,6 +16,7 @@ import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.api.creative.VCTabBlocks;
 import com.viesis.viescraft.api.creative.VCTabItems;
 import com.viesis.viescraft.api.util.LogHelper;
+import com.viesis.viescraft.api.util.MovementControl;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 import com.viesis.viescraft.proxy.CommonProxy;
 
@@ -45,7 +46,7 @@ public class ViesCraft
 		}
 		catch (Exception e)
 		{
-			LogHelper.error("ViesCraft has a problem loading it's configuration.");
+			LogHelper.error("Ebon Arts has a problem loading it's configuration.");
 			throw new RuntimeException(e);
 		}
 		finally

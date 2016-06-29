@@ -17,14 +17,12 @@ import net.minecraft.entity.IMerchant;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.item.EntityBoat;
 import net.minecraft.entity.passive.EntityAnimal;
-import net.minecraft.entity.passive.EntityHorse;
 import net.minecraft.entity.passive.EntityWaterMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.inventory.AnimalChest;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerFurnace;
 import net.minecraft.inventory.IInventory;
@@ -57,9 +55,6 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextComponentString;
-import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -67,8 +62,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.google.common.collect.Lists;
 import com.viesis.viescraft.ViesCraft;
-import com.viesis.viescraft.api.Reference;
-import com.viesis.viescraft.api.util.Keybinds;
 import com.viesis.viescraft.common.utils.gui.GuiHandler;
 import com.viesis.viescraft.init.InitItemsVC;
 
@@ -79,7 +72,7 @@ public class EntityAirshipVC extends EntityFuelVC implements IInventory {
     private static final DataParameter<Float> DAMAGE_TAKEN = EntityDataManager.<Float>createKey(EntityAirshipVC.class, DataSerializers.FLOAT);
     private static final DataParameter<Integer> BOAT_TYPE = EntityDataManager.<Integer>createKey(EntityBoat.class, DataSerializers.VARINT);
     
-    private EntityAirshipVC horseChest;
+    
     
     
     private float AirshipSpeedTurn = 0.18F;
@@ -92,7 +85,7 @@ public class EntityAirshipVC extends EntityFuelVC implements IInventory {
     {
         super(worldIn);
         
-        //this.isGlowing();
+        
         this.preventEntitySpawning = true;
         this.setSize(1.0F, 0.35F);
         
@@ -118,16 +111,13 @@ public class EntityAirshipVC extends EntityFuelVC implements IInventory {
         this.dataManager.register(DAMAGE_TAKEN, Float.valueOf(0.0F));
         
 	}
-	
-	
+
+    
     
     //================================================================================
     
-	
     
-	/**
-     * Main entity item drop.
-     */
+    
 	public Item getItemBoat()
     {
         return InitItemsVC.item_viesdenburg;
@@ -186,6 +176,8 @@ public class EntityAirshipVC extends EntityFuelVC implements IInventory {
         this.setDamageTaken(this.getDamageTaken() * 11.0F);
     }
 
+    
+	
     /**
      * Set the position and rotation values directly without any clamping.
      */
@@ -199,12 +191,36 @@ public class EntityAirshipVC extends EntityFuelVC implements IInventory {
         this.lerpXRot = (double)pitch;
         this.lerpSteps = 10;
     }
+
+    
+
     
     
     
-    //==================================//
-    //            On Update             //
-	//==================================//
+    
+    
+    
+    
+    
+    
+    
+    
+    //private void test(EntityPlayer player, World world)
+    //{
+    	
+    //	if (!world.isRemote) {
+    //        player.openGui(ViesCraft.instance, GuiHandler.ENTITYAIRSHIPVC_GUI, world, posX, posY, posZ);
+    //    }
+    	
+    //}
+    
+    
+    
+    
+
+    
+    
+    //================================================================================
     
     
     
@@ -214,7 +230,7 @@ public class EntityAirshipVC extends EntityFuelVC implements IInventory {
     public void onUpdate()
     {
         this.previousStatus = this.status;
-        this.status = this.getAirshipStatus();
+        this.status = this.getBoatStatus();
 
         if (this.status != EntityAirshipVC.Status.UNDER_WATER && this.status != EntityAirshipVC.Status.UNDER_FLOWING_WATER)
         {
@@ -244,40 +260,67 @@ public class EntityAirshipVC extends EntityFuelVC implements IInventory {
         this.prevPosY = this.posY;
         this.prevPosZ = this.posZ;
         super.onUpdate();
-        this.tickFall();
+        this.tickLerp();
 
+        //this.isGlowing();
+        
+        //boolean boost = false;
+        
+        //if (fuelTime > 0) {
+		//	fuelTime--;
+		//}
+        
         
         
         if (this.canPassengerSteer())
         {
-            
+            //if (this.getPassengers().size() == 0 || !(this.getPassengers().get(0) instanceof EntityPlayer))
+            //{
+            //    this.setPaddleState(false, false);
+            //}
+
+        	
+        	//if (!worldObj.isRemote) 
+        	//{
+    		//	if (fuelTime == 0) 
+    		//	{
+    		//		if (fuelTime > 0) 
+    		//		{
+    					
+    		//		}
+    				
+    		//	}
+    			
+    		//}
+        	
+        	
+        	
+        	
+        	
+        	
+        	
             this.updateMotion();
-            
-            
-            
-            
-            
+
             if (this.worldObj.isRemote)
             {
             	
             	this.updateInputs();
             	
             	
-            	this.controlAirship();
-            	
-            	this.controlAirshipExtra();
-            	//if (Keybinds.ping.isKeyDown())
-                //{
-                //	System.out.println("pong");
-                	
-                //}
+            	this.controlBoat();
             	
             	
-            	
-            	
+            	/**
+            	if(Keybinds.ping.isKeyDown()
+            			//Keybinds.ping.isPressed()
+            			)
+                    System.out.println("ping");
+                if(Keybinds.pong.isKeyDown())
+                    System.out.println("pong");
+            	*/
             	
             }
-            
+
             this.moveEntity(this.motionX, this.motionY, this.motionZ);
         }
         else
@@ -285,9 +328,6 @@ public class EntityAirshipVC extends EntityFuelVC implements IInventory {
             this.motionX = 0.0D;
             this.motionY = 0.0D;
             this.motionZ = 0.0D;
-            
-            
-            
         }
 
         
@@ -319,10 +359,7 @@ public class EntityAirshipVC extends EntityFuelVC implements IInventory {
         }
     }
 
-    /**
-     * Downward empty movement.
-     */
-    private void tickFall()
+    private void tickLerp()
     {
         if (this.lerpSteps > 0 && !this.canPassengerSteer())
         {
@@ -337,19 +374,22 @@ public class EntityAirshipVC extends EntityFuelVC implements IInventory {
             this.setRotation(this.rotationYaw, this.rotationPitch);
         }
     }
-
     
     
-    //==================================//
-    //          Airship Status          //
-	//==================================//
+    
+    
+    
+    
+    
+    
+    
     
     
     
     /**
      * Determines whether the boat is in water, gliding on land, or in air
      */
-    private EntityAirshipVC.Status getAirshipStatus()
+    private EntityAirshipVC.Status getBoatStatus()
     {
         EntityAirshipVC.Status EntityAirshipEA$status = this.getUnderwaterStatus();
 
@@ -599,12 +639,24 @@ public class EntityAirshipVC extends EntityFuelVC implements IInventory {
     {
         return (float)p_184452_2_.getY() + getBlockLiquidHeight(p_184452_0_, p_184452_1_, p_184452_2_);
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     
     
-    //==================================//
-    //         Speed and Motion         //
-	//==================================//
+    //================================================================================
     
     
     
@@ -613,9 +665,12 @@ public class EntityAirshipVC extends EntityFuelVC implements IInventory {
      */
     private void updateMotion()
     {
-        double d0 = 0.0D;
+        double d0 = 0.0D;//-0.03999999910593033D;
+        //double d1 = d0;
         double d1 = this.func_189652_ae() ? 0.0D : -0.03999999910593033D;
+        //double d2 = 0.0D;
         double d5 = -0.001D;
+        
         this.momentum = 0.05F;
 
         if (this.previousStatus == EntityAirshipVC.Status.IN_AIR && this.status != EntityAirshipVC.Status.IN_AIR && this.status != EntityAirshipVC.Status.ON_LAND)
@@ -630,13 +685,17 @@ public class EntityAirshipVC extends EntityFuelVC implements IInventory {
         {
             if (this.status == EntityAirshipVC.Status.IN_WATER)
             {
+            	
             	this.momentum = 0.45F;
+            	
             }
             else if (this.status == EntityAirshipVC.Status.UNDER_FLOWING_WATER 
         	  || this.status == EntityAirshipVC.Status.UNDER_WATER)
             {
+        	
             	if (!this.worldObj.isRemote)
             	{
+            		
             		this.worldObj.createExplosion(this, this.posX, this.posY + (double)(this.height / 16.0F), this.posZ, 2.0F, true);
             		
             		int drop1 = random.nextInt(100) + 1;
@@ -670,13 +729,22 @@ public class EntityAirshipVC extends EntityFuelVC implements IInventory {
             	    	this.dropItemWithOffset(InitItemsVC.airship_ignition, 1, 0.0F);
                 	}
             	}
+            	
             	this.setAirshipDead();
+            	
+            	
+            	
+            	
             }
             else if (this.status == EntityAirshipVC.Status.IN_AIR
             	  || this.status == EntityAirshipVC.Status.ON_LAND)
             {
+                
             	this.momentum = 0.9F;
+            	
             }
+            
+            
             
             this.motionX *= (double)this.momentum;
             this.motionZ *= (double)this.momentum;
@@ -684,7 +752,9 @@ public class EntityAirshipVC extends EntityFuelVC implements IInventory {
             
             if(this.getControllingPassenger() == null)
         	{
+            	
             	this.motionY += d5;
+            	//this.motionY += d1;
         	}
             else
             {
@@ -692,8 +762,15 @@ public class EntityAirshipVC extends EntityFuelVC implements IInventory {
             }
         }
     }
+
+
     
-    private void controlAirship()
+    
+    //================================================================================
+    
+    
+    
+    private void controlBoat()
     {
         if (this.isBeingRidden())
         {
@@ -702,10 +779,7 @@ public class EntityAirshipVC extends EntityFuelVC implements IInventory {
 
             if (this.leftInputDown)
             {
-                this.deltaRotation -= AirshipSpeedTurn;
-                this.alphaRotation -= AirshipSpeedTurn;
-                
-                //-0.2F;//  -0.4    += -1.0F;
+                this.deltaRotation -= AirshipSpeedTurn; //-0.2F;//  -0.4    += -1.0F;
             }
 
             if (this.rightInputDown)
@@ -741,88 +815,25 @@ public class EntityAirshipVC extends EntityFuelVC implements IInventory {
             {
                 f1 -= AirshipSpeedDown;//0.005F;
             }
-            
-            
 
             this.motionX += (double)(MathHelper.sin(-this.rotationYaw * 0.017453292F) * f);
             this.motionZ += (double)(MathHelper.cos(this.rotationYaw * 0.017453292F) * f);
+            
+            
             this.motionY += (double)(3.017453292F * f1);
             
-            this.rotationPitch += 10;
-            
-            
-            
-            
+            //this.setPaddleState(this.rightInputDown || this.forwardInputDown, this.leftInputDown || this.forwardInputDown);
         }
     }
 
-    
-    
-    //==================================//
-    //               Gui                //
-	//==================================//
-    
-    
-    public void openGUI(EntityPlayer entityplayer)
-    {
-        if (!this.worldObj.isRemote && (!this.isBeingRidden() || this.isPassenger(entityplayer)) )
-        {
-            this.horseChest.setCustomName("Test");
-            this.openGuiAirshipInventory(this, this.horseChest);
-            
-            //playerEntity//.openGui(ViesCraft.instance, GuiHandler.ENTITYAIRSHIPVC_GUI, getEntityWorld(), posX, posY, posZ);
-            
-            //.openGuiHorseInventory(this, this.horseChest);
-        }
-    }
-    
-    public void openGuiAirshipInventory(EntityAirshipVC airship, IInventory inventoryIn)
-    {
-    	//boolean test = this.getControllingPassenger() instanceof EntityPlayer;
-    }
-    
-    /**
-    
-    @Override
-    public String getName() {
-        return this.hasCustomName() ? this.customName : Reference.MOD_ID + ".tutorial_tile_entity";
-    }
 
-    @Override
-    public boolean hasCustomName() {
-        return this.customName != null && !this.customName.equals("");
-    }
 
-    @Override
-    public ITextComponent getDisplayName() {
-        return this.hasCustomName() ? new TextComponentString(this.getName()) : new TextComponentTranslation(this.getName());
-    }
-    
-    */
-    
-    private void controlAirshipExtra()
-    {
-        if (this.isBeingRidden())
-        {
-            
-            if (this.openInputDown)
-            {
-            	
-            	this.openGuiAirshipInventory(this, this.horseChest);
-            	
-            	System.out.println("Open Inventory");
-            }
-            
-        }
-    }
     
     
     
     
     
-    //==================================//
-    //               Misc               //
-	//==================================//
+    
     
     
     
@@ -920,8 +931,7 @@ public class EntityAirshipVC extends EntityFuelVC implements IInventory {
 
     protected void updateFallState(double y, boolean onGroundIn, IBlockState state, BlockPos pos)
     {
-        /**
-    	this.lastYd = this.motionY;
+        this.lastYd = this.motionY;
 
         if (!this.isRiding())
         {
@@ -964,9 +974,6 @@ public class EntityAirshipVC extends EntityFuelVC implements IInventory {
                 this.fallDistance = (float)((double)this.fallDistance - y);
             }
         }
-        
-        
-        */
     }
 
     //public boolean getPaddleState(int p_184457_1_)
@@ -1045,14 +1052,13 @@ public class EntityAirshipVC extends EntityFuelVC implements IInventory {
     public void updateInputs()
     {
     	
-    	this.leftInputDown = Keybinds.vcLeft.isKeyDown();//Minecraft.getMinecraft().gameSettings.keyBindLeft.isKeyDown();//.isPressed();
-        this.rightInputDown = Keybinds.vcRight.isKeyDown();//Minecraft.getMinecraft().gameSettings.keyBindRight.isKeyDown();
-        this.forwardInputDown = Keybinds.vcForward.isKeyDown();//Minecraft.getMinecraft().gameSettings.keyBindForward.isKeyDown();//.isPressed();
-        this.backInputDown = Keybinds.vcBack.isKeyDown();//Minecraft.getMinecraft().gameSettings.keyBindBack.isKeyDown();
-        this.upInputDown = Keybinds.vcUp.isKeyDown();//Minecraft.getMinecraft().gameSettings.keyBindJump.isKeyDown();
-        this.downInputDown = Keybinds.vcDown.isKeyDown();//Minecraft.getMinecraft().gameSettings.keyBindPlayerList.isKeyDown();
+    	this.leftInputDown = Minecraft.getMinecraft().gameSettings.keyBindLeft.isKeyDown();//.isPressed();
+        this.rightInputDown = Minecraft.getMinecraft().gameSettings.keyBindRight.isKeyDown();
+        this.forwardInputDown = Minecraft.getMinecraft().gameSettings.keyBindForward.isKeyDown();//.isPressed();
+        this.backInputDown = Minecraft.getMinecraft().gameSettings.keyBindBack.isKeyDown();
+        this.upInputDown = Minecraft.getMinecraft().gameSettings.keyBindJump.isKeyDown();
+        this.downInputDown = Minecraft.getMinecraft().gameSettings.keyBindPlayerList.isKeyDown();
            	
-        this.openInputDown = Keybinds.vcInventory.isPressed();
         
     }
     
