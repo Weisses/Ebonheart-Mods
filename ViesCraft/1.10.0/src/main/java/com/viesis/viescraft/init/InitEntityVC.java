@@ -13,7 +13,6 @@ public class InitEntityVC {
 	
 	public static void preInit()
 	{
-
 		
 		//throwingRock = new ItemThrowingRock().setUnlocalizedName("throwingRock");
 		register(EntityItemViesdenburg.class, "EnchantedEbonheart", 64, 20, true);
