@@ -4,6 +4,8 @@ import java.util.UUID;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.monster.EntityWitch;
+import net.minecraft.entity.passive.EntityAnimal;
+import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -22,26 +24,77 @@ public class AirshipHandler {
     public void onPlayerTick(TickEvent.PlayerTickEvent event) 
     {
     	boolean isRiding = false;
-    	UUID airship = null;
+    	
+    	boolean isInAir = false;
+    	boolean isInWater = false;
+    	boolean isInLava = false;
+    	boolean isAnimalPassenger = false;
+    	
+    	//Entity test = null;
+    	//boolean test = event.player.getRidingEntity() instanceof EntityAirshipVC;
+    	//UUID airship = null;
     	
 		if(event.player.getRidingEntity() instanceof EntityAirshipVC)
         {
     		isRiding = true;
-    		airship = event.player.getRidingEntity().getUniqueID();
+    		//LogHelper.info( event.player.getRidingEntity().isPassenger(test)
+    				//instanceof EntityChicken
+    		//		);
+    				//event.player.hasAchievement(InitAchievementsVC.airship_airborn));
+    		//airship = event.player.getRidingEntity().getUniqueID();
         }
 		
 		//===================================================================
     	
 		if (isRiding) 
     	{
-    		//LogHelper.info("Riding in an Airship.");
-    		//LogHelper.info(airship);
-    		
-    		if (event.player.getRidingEntity().isInWater()) 
+			if (event.player.getRidingEntity().isInWater()) 
     		{
-    			//LogHelper.info("Airship Underwater!");
-    			event.player.addStat(InitAchievementsVC.airship_water);
+    			isInWater = true;
     	    }
-        }
+			
+			if (event.player.getRidingEntity().isInLava()) 
+    		{
+    			isInLava = true;
+    	    }
+    		
+			if (event.player.getRidingEntity().isBeingRidden()) 
+			{
+				isInAir = true;
+			}
+			
+			//if (//event.player.getRidingEntity().getPassengers()
+				//event.player.getRidingEntity().isBeingRidden() instanceof EntityAnimal
+				//&& 
+			//	event.player.getRidingEntity().getPassengers() instanceof EntityAnimal
+			//	) 
+			//{
+			//	isAnimalPassenger = true;
+			//}
+    	}
+		
+		if (isInAir) 
+    	{
+			//LogHelper.info("Airship is in the Air!");
+			event.player.addStat(InitAchievementsVC.airship_airborn);
+    	}
+		
+		if (isInWater) 
+    	{
+			//LogHelper.info("Airship is Underwater!");
+			event.player.addStat(InitAchievementsVC.airship_water);
+    	}
+		
+		if (isInLava) 
+    	{
+			//LogHelper.info("Airship is in Lava!");
+			event.player.addStat(InitAchievementsVC.airship_lava);
+    	}
+		
+		//if (isAnimalPassenger) 
+    	//{
+		//	LogHelper.info("Airship's passenger is an animal!");
+			//event.player.addStat(InitAchievementsVC.airship_lava);
+    	//}
     }
 }

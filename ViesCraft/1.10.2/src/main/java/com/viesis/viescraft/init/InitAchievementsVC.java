@@ -20,9 +20,10 @@ public class InitAchievementsVC extends AchievementsVC {
     
     private static void addAchievements()
     {
-    	airship_create = addAchievement(AIRSHIP_CREATE, "airship_create", 1, 0, new ItemStack(InitItemsVC.item_viesdenburg), (Achievement)null).setSpecial();
-    	airship_water = addAchievement(AIRSHIP_WATER, "airship_water", 3, 0, new ItemStack(InitItemsVC.item_viesdenburg), (Achievement)null);
-    	
+    	airship_create = addAchievement(AIRSHIP_CREATE, "airship_create", 1, 0, new ItemStack(InitItemsVC.achievement_airship_create), (Achievement)null);
+    	airship_airborn = addAchievement(AIRSHIP_AIRBORN, "airship_airborn", 1, 2, new ItemStack(InitItemsVC.achievement_airship_airborn), (Achievement)airship_create);
+    	airship_water = addAchievement(AIRSHIP_WATER, "airship_water", -1, 3, new ItemStack(InitItemsVC.achievement_airship_water), (Achievement)airship_airborn).setSpecial();
+    	airship_lava = addAchievement(AIRSHIP_LAVA, "airship_lava", 3, 3, new ItemStack(InitItemsVC.achievement_airship_lava), (Achievement)airship_airborn).setSpecial();
     	
     }
     

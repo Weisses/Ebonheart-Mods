@@ -92,7 +92,7 @@ public class EntityAirshipVC extends EntityFuelVC implements IInventory {
     {
         super(worldIn);
         
-        //this.isGlowing();
+        
         this.preventEntitySpawning = true;
         this.setSize(1.0F, 0.35F);
         
@@ -245,7 +245,7 @@ public class EntityAirshipVC extends EntityFuelVC implements IInventory {
         this.prevPosZ = this.posZ;
         super.onUpdate();
         this.tickFall();
-
+        
         
         
         if (this.canPassengerSteer())
