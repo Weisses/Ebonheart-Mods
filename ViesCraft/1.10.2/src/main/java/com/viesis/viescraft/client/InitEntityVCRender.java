@@ -11,6 +11,10 @@ import com.viesis.viescraft.client.entity.RenderAirshipVC;
 import com.viesis.viescraft.client.projectile.RenderItemViesdenburg;
 import com.viesis.viescraft.common.entity.EntityAirshipVC;
 import com.viesis.viescraft.common.entity.EntityItemViesdenburg;
+import com.viesis.viescraft.testbed.client.render.RenderAirshipVCtest;
+import com.viesis.viescraft.testbed.client.render.RenderItemAirship;
+import com.viesis.viescraft.testbed.common.entity.EntityAirshipVCtest;
+import com.viesis.viescraft.testbed.common.entity.EntityItemAirship;
 
 public final class InitEntityVCRender extends ItemsVC {
 	
@@ -23,6 +27,11 @@ public final class InitEntityVCRender extends ItemsVC {
 		
 		registerRender(EntityAirshipVC.class,  new RenderAirshipVC(EARender));
 		
+		
+		
+		//registerRender(EntityAirshipVCtest.class,  new RenderAirshipVCtest(EARender, null, 0));
+		
+		//registerRender(EntityItemAirship.class,  new RenderItemAirship(EARender));
 		
 	}
 	

@@ -1,4 +1,4 @@
-package com.viesis.viescraft.common.utils.gui;
+package com.viesis.viescraft.client.gui;
 
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraftforge.client.MinecraftForgeClient;

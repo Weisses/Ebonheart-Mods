@@ -1,4 +1,4 @@
-package com.viesis.viescraft.common.utils.gui;
+package com.viesis.viescraft.api.gui;
 
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.achievement.GuiAchievements;

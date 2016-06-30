@@ -1,6 +1,7 @@
 package com.viesis.viescraft.common.entity;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.annotation.Nullable;
 
@@ -68,8 +69,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import com.google.common.collect.Lists;
 import com.viesis.viescraft.ViesCraft;
 import com.viesis.viescraft.api.Reference;
+import com.viesis.viescraft.api.gui.GuiHandler;
 import com.viesis.viescraft.api.util.Keybinds;
-import com.viesis.viescraft.common.utils.gui.GuiHandler;
+import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.init.InitItemsVC;
 
 public class EntityAirshipVC extends EntityFuelVC implements IInventory {
@@ -79,8 +81,9 @@ public class EntityAirshipVC extends EntityFuelVC implements IInventory {
     private static final DataParameter<Float> DAMAGE_TAKEN = EntityDataManager.<Float>createKey(EntityAirshipVC.class, DataSerializers.FLOAT);
     private static final DataParameter<Integer> BOAT_TYPE = EntityDataManager.<Integer>createKey(EntityBoat.class, DataSerializers.VARINT);
     
-    private EntityAirshipVC horseChest;
+    private EntityAirshipVC airshipChest;
     
+    //EntityPlayer playerIn = Minecraft.getMinecraft().thePlayer;
     
     private float AirshipSpeedTurn = 0.18F;
     private float AirshipSpeedForward = 0.0125F;
@@ -95,6 +98,7 @@ public class EntityAirshipVC extends EntityFuelVC implements IInventory {
         
         this.preventEntitySpawning = true;
         this.setSize(1.0F, 0.35F);
+        
         
     }
 
@@ -254,7 +258,7 @@ public class EntityAirshipVC extends EntityFuelVC implements IInventory {
             this.updateMotion();
             
             
-            
+           
             
             
             if (this.worldObj.isRemote)
@@ -262,10 +266,12 @@ public class EntityAirshipVC extends EntityFuelVC implements IInventory {
             	
             	this.updateInputs();
             	
-            	
+            	//this.openGUI(playerIn);
             	this.controlAirship();
             	
             	this.controlAirshipExtra();
+            	
+            	
             	//if (Keybinds.ping.isKeyDown())
                 //{
                 //	System.out.println("pong");
@@ -763,54 +769,53 @@ public class EntityAirshipVC extends EntityFuelVC implements IInventory {
 	//==================================//
     
     
-    public void openGUI(EntityPlayer entityplayer)
-    {
-        if (!this.worldObj.isRemote && (!this.isBeingRidden() || this.isPassenger(entityplayer)) )
-        {
-            this.horseChest.setCustomName("Test");
-            this.openGuiAirshipInventory(this, this.horseChest);
-            
+    //public void openGUI(EntityPlayer entityplayer)
+    //{
+    //	System.out.println("Open Inventory - Step 2");
+    	//this.openGUI(entityplayer);
+     //   if (
+     //   		!this.worldObj.isRemote 
+        		//&& 
+        		//(this.isBeingRidden()) 
+        	
+     //   		)
+    //    {
+    //        this.airshipChest.setCustomName(this.getName());
+    //        this.openGuiAirshipInventory(this, this.airshipChest);
+    //        LogHelper.info("Open Inventory - third!");
             //playerEntity//.openGui(ViesCraft.instance, GuiHandler.ENTITYAIRSHIPVC_GUI, getEntityWorld(), posX, posY, posZ);
             
             //.openGuiHorseInventory(this, this.horseChest);
-        }
-    }
+    //    }
+    //}
     
-    public void openGuiAirshipInventory(EntityAirshipVC airship, IInventory inventoryIn)
-    {
+    //public void openGuiAirshipInventory(EntityAirshipVC airship, IInventory inventoryIn)
+    //{
+    	
+    //	LogHelper.info("Open Inventory - more");
     	//boolean test = this.getControllingPassenger() instanceof EntityPlayer;
-    }
+    //}
     
-    /**
     
-    @Override
-    public String getName() {
-        return this.hasCustomName() ? this.customName : Reference.MOD_ID + ".tutorial_tile_entity";
-    }
-
-    @Override
-    public boolean hasCustomName() {
-        return this.customName != null && !this.customName.equals("");
-    }
-
-    @Override
-    public ITextComponent getDisplayName() {
-        return this.hasCustomName() ? new TextComponentString(this.getName()) : new TextComponentTranslation(this.getName());
-    }
-    
-    */
     
     private void controlAirshipExtra()
     {
-        if (this.isBeingRidden())
+    	EntityPlayer player = Minecraft.getMinecraft().thePlayer;
+        //UUID test1 = this.getControllingPassenger().getUniqueID();
+    	if (this.isBeingRidden())
         {
             
             if (this.openInputDown)
             {
             	
-            	this.openGuiAirshipInventory(this, this.horseChest);
+            	player.openGui(ViesCraft.instance, GuiHandler.ENTITYAIRSHIPVC_GUI, this.getEntityWorld(), this.getPosition().getX(), this.getPosition().getY(), this.getPosition().getZ());
+            	//this.openGuiAirshipInventory(this, this.horseChest);
+            	//this.openGUI(player);
             	
-            	//System.out.println("Open Inventory");
+            	
+            	System.out.println("Open Inventory - Step 1");
+            	System.out.println(player);
+            	
             }
             
         }

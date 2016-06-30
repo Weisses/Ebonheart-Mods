@@ -87,7 +87,11 @@ public class EntityVC extends Entity  implements IInventory {
     }
 	
     
-    
+    public boolean isCurrentlyFlying()
+    {
+		return true;
+    	
+    }
     
     
     

@@ -8,7 +8,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.api.SoundsVC;
 
-public class SoundEventsEA extends SoundsVC {
+public class SoundEventsVC extends SoundsVC {
     
     	
     	/**

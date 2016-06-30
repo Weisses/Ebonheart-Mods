@@ -14,4 +14,6 @@ public class ItemsVC {
 	public static Item achievement_airship_water;
 	public static Item achievement_airship_lava;
 	
+	//public static Item test;
+	
 }

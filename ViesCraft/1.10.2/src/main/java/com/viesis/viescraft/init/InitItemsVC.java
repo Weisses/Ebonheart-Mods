@@ -15,6 +15,7 @@ import com.viesis.viescraft.common.items.resources.achievements.ItemAchievementA
 import com.viesis.viescraft.common.items.resources.achievements.ItemAchievementCreate;
 import com.viesis.viescraft.common.items.resources.achievements.ItemAchievementLava;
 import com.viesis.viescraft.common.items.resources.achievements.ItemAchievementWater;
+import com.viesis.viescraft.testbed.common.items.ItemAirship;
 
 public class InitItemsVC extends ItemsVC {
 	
@@ -32,6 +33,7 @@ public class InitItemsVC extends ItemsVC {
 		achievement_airship_water = registerItem(new ItemAchievementWater());
 		achievement_airship_lava = registerItem(new ItemAchievementLava());
 		
+		//test = registerItem(new ItemAirship());
 		
 	}
 	

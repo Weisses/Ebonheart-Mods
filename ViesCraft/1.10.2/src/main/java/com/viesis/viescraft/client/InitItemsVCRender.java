@@ -21,6 +21,8 @@ public final class InitItemsVCRender extends ItemsVC {
 		registerRender(achievement_airship_water);
 		registerRender(achievement_airship_lava);
 		
+		//registerRender(test);
+		
 	}
 	
 	public static void registerRender(Item item)
