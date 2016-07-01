@@ -1,24 +1,29 @@
-package com.viesis.viescraft.client;
+package com.viesis.viescraft.client.gui;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
+import com.viesis.viescraft.common.entity.ContainerAirshipVC;
 import com.viesis.viescraft.common.entity.EntityAirshipVC;
 
 
 
-public class GuiTestTileEntity extends GuiContainer {
+public class GuiAirshipVC extends GuiContainer//GuiInventory
+{
 
     private IInventory playerInv;
     private EntityAirshipVC te;
     private ITextComponent icc;
     
-	public GuiTestTileEntity(IInventory playerInv, EntityAirshipVC te) {
-		super(new ContainerTestTileEntity(playerInv, te));
-
+	public GuiAirshipVC(InventoryPlayer playerInv, EntityAirshipVC te) {
+		//super(new EntityAirshipVC(playerInv, te));
+		super(new ContainerAirshipVC(playerInv, te));
 		this.playerInv = playerInv;
 		this.te = te;
 		
@@ -29,7 +34,7 @@ public class GuiTestTileEntity extends GuiContainer {
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
 		GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
-		this.mc.getTextureManager().bindTexture(new ResourceLocation("ea:textures/gui/container/test_tile_entity.png"));
+		this.mc.getTextureManager().bindTexture(new ResourceLocation("vc:textures/gui/container/test_tile_entity.png"));
 		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
 	}
 

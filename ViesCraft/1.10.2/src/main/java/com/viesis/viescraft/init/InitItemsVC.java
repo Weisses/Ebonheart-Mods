@@ -26,6 +26,11 @@ public class InitItemsVC extends ItemsVC {
 		airship_balloon = registerItem(new ItemBalloon());
 		airship_engine = registerItem(new ItemEngine());
 		airship_ignition = registerItem(new ItemIgnition());
+		
+		item_airship_base = registerItem(new ItemAirship());
+		
+		
+		
 		item_viesdenburg = registerItem(new ItemViesdenburg());
 		
 		achievement_airship_create = registerItem(new ItemAchievementCreate());

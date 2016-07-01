@@ -102,7 +102,10 @@ public class EntityVC extends EntityLiving {
         if (this.getLeashed() && this.getLeashedToEntity() != null && this.getLeashedToEntity().worldObj == this.worldObj)
         {
             Entity entity = this.getLeashedToEntity();
-            this.setHomePosAndDistance(new BlockPos((int)entity.posX, (int)entity.posY, (int)entity.posZ), 5);
+            this.setHomePosAndDistance(new BlockPos((int)entity.posX, (int)entity.posY, (int)entity.posZ), 
+            		5
+            		//5
+            		);
             float f = this.getDistanceToEntity(entity);
 
             //if (this instanceof EntityTameable && ((EntityTameable)this).isSitting())

@@ -800,7 +800,7 @@ public class EntityAirshipVC extends EntityFuelVC implements IInventory {
     
     private void controlAirshipExtra()
     {
-    	EntityPlayer player = Minecraft.getMinecraft().thePlayer;
+    	//EntityPlayer player = Minecraft.getMinecraft().thePlayer;
         //UUID test1 = this.getControllingPassenger().getUniqueID();
     	if (this.isBeingRidden())
         {
@@ -808,13 +808,13 @@ public class EntityAirshipVC extends EntityFuelVC implements IInventory {
             if (this.openInputDown)
             {
             	
-            	player.openGui(ViesCraft.instance, GuiHandler.ENTITYAIRSHIPVC_GUI, this.getEntityWorld(), this.getPosition().getX(), this.getPosition().getY(), this.getPosition().getZ());
+            	//player.openGui(ViesCraft.instance, GuiHandler.ENTITYAIRSHIPVC_GUI, this.getEntityWorld(), this.getPosition().getX(), this.getPosition().getY(), this.getPosition().getZ());
             	//this.openGuiAirshipInventory(this, this.horseChest);
             	//this.openGUI(player);
             	
             	
-            	System.out.println("Open Inventory - Step 1");
-            	System.out.println(player);
+            	//System.out.println("Open Inventory - Step 1");
+            	//System.out.println(player);
             	
             }
             

@@ -2,7 +2,10 @@ package com.viesis.viescraft.testbed.common.entity;
 
 import java.util.Random;
 
+import com.viesis.viescraft.common.entity.EntityAirshipVC;
+
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.util.EnumParticleTypes;
@@ -49,9 +52,19 @@ public class EntityItemAirship extends EntityThrowable {
         {
         	this.playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 0.5F, 0.4F / .5F * 0.4F + 0.8F);
         	
-            this.worldObj.spawnEntityInWorld(new EntityAirshipVCtest(this.worldObj
+        	
+        	this.worldObj.spawnEntityInWorld(new 
+        			//EntityAirshipVC
+        			EntityAirshipBase
+        			
+        			(this.worldObj, this.posX, this.posY, this.posZ));
+            //this.worldObj.spawnEntityInWorld(new 
+            		//EntityAirshipVCtest
+            		//EntityChicken
+            //		testVC
+            //		(this.worldObj
             		//, this.posX, this.posY, this.posZ
-            		));
+            //		));
             this.setDead();
         }
         else

@@ -7,6 +7,7 @@ import com.viesis.viescraft.ViesCraft;
 import com.viesis.viescraft.common.entity.EntityAirshipVC;
 import com.viesis.viescraft.common.entity.EntityItemViesdenburg;
 
+
 public class InitEntityVC {
 	
 	private static int entityID = 1;
@@ -14,7 +15,10 @@ public class InitEntityVC {
 	public static void preInit()
 	{
 		register(EntityItemViesdenburg.class, "EnchantedEbonheart", 64, 20, true);
-		register(EntityAirshipVC.class, "Airship Ebonheart", 64, 1, true);
+		register(EntityAirshipVC.class, "AirshipEbonheart", 64, 1, true);
+		
+		//register(EntityItemAirship.class, "EnchantedEbonheartNEW", 64, 20, true);
+		//register(EntityAirshipVCtest.class, "AirshipEbonheartNEW", 64, 1, true);
 		
 		
 	}

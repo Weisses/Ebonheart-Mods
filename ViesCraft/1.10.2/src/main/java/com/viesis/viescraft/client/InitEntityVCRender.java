@@ -11,14 +11,20 @@ import com.viesis.viescraft.client.entity.RenderAirshipVC;
 import com.viesis.viescraft.client.projectile.RenderItemViesdenburg;
 import com.viesis.viescraft.common.entity.EntityAirshipVC;
 import com.viesis.viescraft.common.entity.EntityItemViesdenburg;
-import com.viesis.viescraft.testbed.client.render.RenderAirshipVCtest;
+import com.viesis.viescraft.testbed.client.model.ModelAirshipVC;
+import com.viesis.viescraft.testbed.client.render.RenderEntityAirshipBase;
 import com.viesis.viescraft.testbed.client.render.RenderItemAirship;
-import com.viesis.viescraft.testbed.common.entity.EntityAirshipVCtest;
+import com.viesis.viescraft.testbed.common.entity.EntityAirshipBase;
 import com.viesis.viescraft.testbed.common.entity.EntityItemAirship;
+
+
 
 public final class InitEntityVCRender extends ItemsVC {
 	
 	public static RenderManager EARender = Minecraft.getMinecraft().getRenderManager(); 
+	 //public static ModelHorse test1 = new ModelHorse();
+	 
+	 public static ModelAirshipVC test = new ModelAirshipVC();
 	
 	public static void registerRenders()
 	{
@@ -29,9 +35,15 @@ public final class InitEntityVCRender extends ItemsVC {
 		
 		
 		
-		//registerRender(EntityAirshipVCtest.class,  new RenderAirshipVCtest(EARender, null, 0));
 		
-		//registerRender(EntityItemAirship.class,  new RenderItemAirship(EARender));
+		//registerRender(EntityAirshipVCtest.class,  new RenderAirshipVCtest(EARender, test, 0));
+		
+		registerRender(EntityItemAirship.class,  new RenderItemAirship(EARender));
+		
+		
+		
+		
+		registerRender(EntityAirshipBase.class,  new RenderEntityAirshipBase(EARender, test, 0));
 		
 	}
 	

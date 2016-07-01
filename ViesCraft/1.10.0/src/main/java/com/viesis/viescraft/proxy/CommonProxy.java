@@ -7,9 +7,9 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 import com.viesis.viescraft.ViesCraft;
+import com.viesis.viescraft.api.gui.GuiHandler;
 import com.viesis.viescraft.common.AchievementTriggersVC;
 import com.viesis.viescraft.common.utils.events.AirshipHandler;
-import com.viesis.viescraft.common.utils.gui.GuiHandler;
 import com.viesis.viescraft.init.InitAchievementsVC;
 import com.viesis.viescraft.init.InitEntityVC;
 import com.viesis.viescraft.init.InitItemsVC;

@@ -1,10 +1,11 @@
 package com.viesis.viescraft.testbed.common.entity;
 
+import net.minecraft.entity.passive.IAnimals;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 
 
-public class EntityAirshipBaseVC extends EntityFuelVC 
+public class EntityAirshipBaseVC extends EntityFuelVC //implements IAnimals
 {
 
 	public EntityAirshipBaseVC(World worldIn) 

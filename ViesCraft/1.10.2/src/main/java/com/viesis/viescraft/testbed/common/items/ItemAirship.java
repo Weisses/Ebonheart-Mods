@@ -25,7 +25,7 @@ public class ItemAirship extends Item {
 	
 	public ItemAirship() 
 	{
-		ItemHelper.setItemName(this, "test");
+		ItemHelper.setItemName(this, "item_airship_base");
 		this.setMaxStackSize(1);
 	}
 	
