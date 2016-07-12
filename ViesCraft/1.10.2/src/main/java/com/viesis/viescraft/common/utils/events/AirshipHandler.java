@@ -1,22 +1,10 @@
 package com.viesis.viescraft.common.utils.events;
 
-import java.util.UUID;
-
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.monster.EntityWitch;
-import net.minecraft.entity.passive.EntityAnimal;
-import net.minecraft.entity.passive.EntityChicken;
-import net.minecraft.world.World;
-import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
-import com.viesis.viescraft.api.util.LogHelper;
-import com.viesis.viescraft.common.entity.EntityAirshipVC;
-import com.viesis.viescraft.common.entity.EntityAirshipVC.Status;
+import com.viesis.viescraft.common.entity.EntityAirshipBase;
 import com.viesis.viescraft.init.InitAchievementsVC;
-import com.viesis.viescraft.init.InitItemsVC;
 
 public class AirshipHandler {
 	
@@ -34,7 +22,7 @@ public class AirshipHandler {
     	//boolean test = event.player.getRidingEntity() instanceof EntityAirshipVC;
     	//UUID airship = null;
     	
-		if(event.player.getRidingEntity() instanceof EntityAirshipVC)
+		if(event.player.getRidingEntity() instanceof EntityAirshipBase)
         {
     		isRiding = true;
     		//LogHelper.info( event.player.getRidingEntity().isPassenger(test)

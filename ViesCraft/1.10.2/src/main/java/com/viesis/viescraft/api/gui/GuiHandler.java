@@ -5,10 +5,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 
-import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.client.gui.GuiAirshipVC;
 import com.viesis.viescraft.common.entity.ContainerAirshipVC;
-import com.viesis.viescraft.common.entity.EntityAirshipVC;
+import com.viesis.viescraft.common.entity.EntityAirshipBase;
 
 public class GuiHandler implements IGuiHandler {
 	
@@ -29,9 +28,9 @@ public class GuiHandler implements IGuiHandler {
 			//LogHelper.info("works to getServerGuiElement");
 			Entity entity = world.getEntityByID(x);
 			
-			if(entity instanceof EntityAirshipVC)
+			if(entity instanceof EntityAirshipBase)
 			{
-			return new ContainerAirshipVC(player.inventory, (EntityAirshipVC)entity);
+			return new ContainerAirshipVC(player.inventory, (EntityAirshipBase)entity);
 			}
 		}
 			//if (ID == 0)
@@ -58,8 +57,8 @@ public class GuiHandler implements IGuiHandler {
 		if (ID == 0)
 		{
 			Entity entity = world.getEntityByID(x);
-			if(entity instanceof EntityAirshipVC)
-				return new GuiAirshipVC(player.inventory, (EntityAirshipVC)entity);
+			if(entity instanceof EntityAirshipBase)
+				return new GuiAirshipVC(player.inventory, (EntityAirshipBase)entity);
 			
 			//return new GuiEntityAirship(player.inventory, null);
 		}

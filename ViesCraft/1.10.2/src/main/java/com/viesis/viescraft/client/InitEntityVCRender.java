@@ -7,15 +7,15 @@ import net.minecraft.entity.Entity;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
 import com.viesis.viescraft.api.ItemsVC;
-import com.viesis.viescraft.client.entity.RenderAirshipVC;
-import com.viesis.viescraft.client.projectile.RenderItemViesdenburg;
-import com.viesis.viescraft.common.entity.EntityAirshipVC;
-import com.viesis.viescraft.common.entity.EntityItemViesdenburg;
-import com.viesis.viescraft.testbed.client.model.ModelAirshipVC;
-import com.viesis.viescraft.testbed.client.render.RenderEntityAirshipBase;
-import com.viesis.viescraft.testbed.client.render.RenderItemAirship;
-import com.viesis.viescraft.testbed.common.entity.EntityAirshipBase;
-import com.viesis.viescraft.testbed.common.entity.EntityItemAirship;
+import com.viesis.viescraft.client.entity.model.ModelAirshipBase;
+import com.viesis.viescraft.client.entity.render.RenderAirshipBase;
+import com.viesis.viescraft.client.entity.render.RenderAirshipFurnace;
+import com.viesis.viescraft.client.projectile.RenderItemAirship;
+import com.viesis.viescraft.client.projectile.RenderItemAirshipFurnace;
+import com.viesis.viescraft.common.entity.EntityAirshipBase;
+import com.viesis.viescraft.common.entity.EntityAirshipFurnace;
+import com.viesis.viescraft.common.entity.EntityItemAirship;
+import com.viesis.viescraft.common.entity.EntityItemAirshipFurnace;
 
 
 
@@ -24,14 +24,14 @@ public final class InitEntityVCRender extends ItemsVC {
 	public static RenderManager EARender = Minecraft.getMinecraft().getRenderManager(); 
 	 //public static ModelHorse test1 = new ModelHorse();
 	 
-	 public static ModelAirshipVC test = new ModelAirshipVC();
+	 //public static ModelAirshipBase test = new ModelAirshipBase();
 	
 	public static void registerRenders()
 	{
 		
-		registerRender(EntityItemViesdenburg.class,  new RenderItemViesdenburg(EARender));
+		//registerRender(EntityItemViesdenburg.class,  new RenderItemViesdenburg(EARender));
 		
-		registerRender(EntityAirshipVC.class,  new RenderAirshipVC(EARender));
+		//registerRender(EntityAirshipVC.class,  new RenderAirshipVC(EARender));
 		
 		
 		
@@ -40,10 +40,14 @@ public final class InitEntityVCRender extends ItemsVC {
 		
 		registerRender(EntityItemAirship.class,  new RenderItemAirship(EARender));
 		
+		registerRender(EntityItemAirshipFurnace.class,  new RenderItemAirshipFurnace(EARender));
 		
 		
 		
-		registerRender(EntityAirshipBase.class,  new RenderEntityAirshipBase(EARender, test, 0));
+		registerRender(EntityAirshipBase.class,  new RenderAirshipBase(EARender));
+				//new RenderEntityAirshipBase(EARender, test, 0));
+		
+		registerRender(EntityAirshipFurnace.class,  new RenderAirshipFurnace(EARender));
 		
 	}
 	

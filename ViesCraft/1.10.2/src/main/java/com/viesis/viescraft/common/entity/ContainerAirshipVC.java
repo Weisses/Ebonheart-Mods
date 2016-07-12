@@ -8,9 +8,9 @@ import net.minecraft.item.ItemStack;
 
 public class ContainerAirshipVC extends Container {
 
-	protected EntityAirshipVC entityAirship;
+	protected EntityAirshipBase entityAirship;
 	
-	public ContainerAirshipVC(InventoryPlayer inventoryPlayer, EntityAirshipVC te)
+	public ContainerAirshipVC(InventoryPlayer inventoryPlayer, EntityAirshipBase te)
 	{
 		
 		
@@ -20,7 +20,7 @@ public class ContainerAirshipVC extends Container {
 		{ 
 			for (int j = 0; j < 3; j++) 
 			{ 
-				addSlotToContainer(new Slot(entityAirship, j + i * 3, 62 + j * 18, 17 + i * 18)); 
+				//addSlotToContainer(new Slot(entityAirship, j + i * 3, 62 + j * 18, 17 + i * 18)); 
 			} 
 		}
 		
@@ -29,8 +29,9 @@ public class ContainerAirshipVC extends Container {
 	@Override
 	public boolean canInteractWith(EntityPlayer playerIn) 
 	{
+		return false;
 		// TODO Auto-generated method stub
-		return entityAirship.isUseableByPlayer(playerIn);
+		//return entityAirship.isUseableByPlayer(playerIn);
 	}
 	
 	protected void bindPlayerInventory(InventoryPlayer inventoryPlayer) 
@@ -60,14 +61,14 @@ public class ContainerAirshipVC extends Container {
 			stack = stackInSlot.copy();
 
 		//merges the item into player inventory since its in the tileEntity 
-			if (slot < entityAirship.getSizeInventory()) 
+			/**if (slot < entityAirship.getSizeInventory()) 
 			{ 
 				if (!this.mergeItemStack(stackInSlot, entityAirship.getSizeInventory(), 36 + entityAirship.getSizeInventory(), true)) 
 				{ 
 					return null; 
 				} 
 			} //places it into the tileEntity is possible since its in the player inventory else if (!this.mergeItemStack(stackInSlot, 0, tileEntity.getSizeInventory(), false)) { return null; }
-
+*/
 			if (stackInSlot.stackSize == 0) 
 			{ 
 				slotObject.putStack(null); 

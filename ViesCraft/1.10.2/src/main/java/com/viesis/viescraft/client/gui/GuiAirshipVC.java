@@ -1,16 +1,14 @@
 package com.viesis.viescraft.client.gui;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
 import com.viesis.viescraft.common.entity.ContainerAirshipVC;
-import com.viesis.viescraft.common.entity.EntityAirshipVC;
+import com.viesis.viescraft.common.entity.EntityAirshipBase;
 
 
 
@@ -18,11 +16,11 @@ public class GuiAirshipVC extends GuiContainer//GuiInventory
 {
 
     private IInventory playerInv;
-    private EntityAirshipVC te;
+    private EntityAirshipBase te;
     private ITextComponent icc;
     
-	public GuiAirshipVC(InventoryPlayer playerInv, EntityAirshipVC te) {
-		//super(new EntityAirshipVC(playerInv, te));
+	public GuiAirshipVC(InventoryPlayer playerInv, EntityAirshipBase te) {
+		//super(new EntityAirshipBase(playerInv, te));
 		super(new ContainerAirshipVC(playerInv, te));
 		this.playerInv = playerInv;
 		this.te = te;

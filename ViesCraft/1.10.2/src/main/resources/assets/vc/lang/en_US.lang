@@ -8,6 +8,7 @@ itemGroup.tabViesCraftItems=ViesCraft Items
 item.vc:airship_balloon.name=Airship Balloon
 item.vc:airship_engine.name=Airship Engine
 item.vc:airship_ignition.name=Airship Ignition
+item.vc:item_airship_base.name=Airship Mach 1
 item.vc:item_viesdenburg.name=Viesdenburg
 
 //-----Ores-----
