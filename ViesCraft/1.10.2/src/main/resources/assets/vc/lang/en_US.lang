@@ -8,7 +8,7 @@ itemGroup.tabViesCraftItems=ViesCraft Items
 item.vc:airship_balloon.name=Airship Balloon
 item.vc:airship_engine.name=Airship Engine
 item.vc:airship_ignition.name=Airship Ignition
-item.vc:item_airship_base.name=Airship Mach 1
+item.vc:item_airship_base.name=Viesdenburg
 item.vc:item_viesdenburg.name=Viesdenburg
 
 //-----Ores-----
@@ -21,7 +21,13 @@ tile.vc:plant/hellion_fruit_crop.name=Placeholder2
 item.vc:tool/arcanite_pickaxe.name=Placeholder3
 
 //-----Achievements-----
-achievement.vc:airship_create=Tinkering at its finest!
+achievement.vc:airship_create_engine=Tinkering at its finest!
+achievement.vc:airship_create_engine.desc=Craft an airship engine.
+
+achievement.vc:airship_create_ignition=I'm all fired up!
+achievement.vc:airship_create_ignition.desc=Craft an airship ignition.
+
+achievement.vc:airship_create=Fry tested. Professor approved!
 achievement.vc:airship_create.desc=Craft an airship.
 
 achievement.vc:airship_airborn=Breaking the Sound Barrier!

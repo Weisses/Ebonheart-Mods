@@ -20,9 +20,13 @@ public class InitAchievementsVC extends AchievementsVC {
     
     private static void addAchievements()
     {
-    	airship_create = addAchievement(AIRSHIP_CREATE, "airship_create", 1, 0, new ItemStack(InitItemsVC.item_viesdenburg), (Achievement)null).setSpecial();
-    	airship_water = addAchievement(AIRSHIP_WATER, "airship_water", 3, 0, new ItemStack(InitItemsVC.item_viesdenburg), (Achievement)null);
+    	airship_create_engine = addAchievement(AIRSHIP_CREATE_ENGINE, "airship_create_engine", 0, -2, new ItemStack(InitItemsVC.achievement_airship_create_engine), (Achievement)null);
+    	airship_create_ignition = addAchievement(AIRSHIP_CREATE_IGNITION, "airship_create_ignition", 2, -2, new ItemStack(InitItemsVC.achievement_airship_create_ignition), (Achievement)airship_create_engine);
+    	airship_create = addAchievement(AIRSHIP_CREATE, "airship_create", 1, 0, new ItemStack(InitItemsVC.achievement_airship_create), (Achievement)airship_create_ignition).setSpecial();
     	
+    	airship_airborn = addAchievement(AIRSHIP_AIRBORN, "airship_airborn", 1, 2, new ItemStack(InitItemsVC.achievement_airship_airborn), (Achievement)null);
+    	airship_water = addAchievement(AIRSHIP_WATER, "airship_water", -1, 3, new ItemStack(InitItemsVC.achievement_airship_water), (Achievement)airship_airborn).setSpecial();
+    	airship_lava = addAchievement(AIRSHIP_LAVA, "airship_lava", 3, 3, new ItemStack(InitItemsVC.achievement_airship_lava), (Achievement)airship_airborn).setSpecial();
     	
     }
     

@@ -22,13 +22,13 @@ public class InitEntityVC {
 		register(EntityItemAirship.class, "vc.ItemAirship", 64, 20, true);
 		//register(EntityAirshipVCtest.class, "AirshipEbonheartNEW", 64, 1, true);
 		
-		register(EntityItemAirshipFurnace.class, "vc.ItemAirshipFurnace", 64, 20, true);
+		//register(EntityItemAirshipFurnace.class, "vc.ItemAirshipFurnace", 64, 20, true);
 		
 		
 		
-		register(EntityAirshipBase.class, "AirshipVCBase", 64, 1, true);
+		register(EntityAirshipBase.class, "AirshipEbonheart", 64, 1, true);
 		
-		register(EntityAirshipFurnace.class, "AirshipVCFurnace", 64, 1, true);
+		//register(EntityAirshipFurnace.class, "AirshipVCFurnace", 64, 1, true);
 		
 		
 	}

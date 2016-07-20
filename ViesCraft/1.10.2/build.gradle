@@ -20,7 +20,7 @@ plugins {
     id "net.minecraftforge.gradle.forge" version "2.0.2"
 }
 */
-version = "0.2.9b-mc1.10.2"
+version = "0.3.4a-mc1.10.2"
 group= "com.viesis.ViesCraft" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "ViesCraft"
 
@@ -28,7 +28,7 @@ sourceCompatibility = 1.7
 targetCompatibility = 1.7
 
 minecraft {
-    version = "1.10.2-12.18.0.2002-1.10.0"
+    version = "1.10.2-12.18.1.2011"
     runDir = "run"
     
     // the mappings can be changed at any time, and must be in the following format.

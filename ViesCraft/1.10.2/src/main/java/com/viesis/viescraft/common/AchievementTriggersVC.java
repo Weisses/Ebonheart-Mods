@@ -30,6 +30,16 @@ public class AchievementTriggersVC extends InitAchievementsVC {
 	@SubscribeEvent
 	public void onCraft(PlayerEvent.ItemCraftedEvent event) 
 	{
+		if(event.crafting.getItem() == InitItemsVC.airship_engine) 
+		{
+			event.player.addStat(airship_create_engine);
+		}
+		
+		if(event.crafting.getItem() == InitItemsVC.airship_ignition) 
+		{
+			event.player.addStat(airship_create_ignition);
+		}
+		
 		if(event.crafting.getItem() == InitItemsVC.item_airship_base) 
 		{
 			event.player.addStat(airship_create);

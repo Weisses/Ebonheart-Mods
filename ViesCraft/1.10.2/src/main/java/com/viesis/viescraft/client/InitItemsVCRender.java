@@ -20,7 +20,7 @@ public final class InitItemsVCRender extends ItemsVC {
 		
 		
 		
-		//registerRender(item_viesdenburg);
+		registerRender(item_viesdenburg);
 		
 		registerRender(achievement_airship_create_engine);
 		registerRender(achievement_airship_create_ignition);

@@ -11,6 +11,7 @@ import com.viesis.viescraft.common.items.resources.ItemAirship;
 import com.viesis.viescraft.common.items.resources.ItemBalloon;
 import com.viesis.viescraft.common.items.resources.ItemEngine;
 import com.viesis.viescraft.common.items.resources.ItemIgnition;
+import com.viesis.viescraft.common.items.resources.ItemViesdenburg;
 import com.viesis.viescraft.common.items.resources.achievements.ItemAchievementAirborn;
 import com.viesis.viescraft.common.items.resources.achievements.ItemAchievementCreate;
 import com.viesis.viescraft.common.items.resources.achievements.ItemAchievementEngine;
@@ -32,7 +33,7 @@ public class InitItemsVC extends ItemsVC {
 		//item_airship_furnace = registerItem(new ItemAirshipFurnace());
 		
 		
-		//item_viesdenburg = registerItem(new ItemViesdenburg());
+		item_viesdenburg = registerItem(new ItemViesdenburg());
 		
 		achievement_airship_create_engine = registerItem(new ItemAchievementEngine());
 		achievement_airship_create_ignition = registerItem(new ItemAchievementIgnition());

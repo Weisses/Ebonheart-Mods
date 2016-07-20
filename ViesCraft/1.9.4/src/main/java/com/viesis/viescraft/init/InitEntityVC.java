@@ -4,8 +4,11 @@ import net.minecraft.entity.Entity;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 import com.viesis.viescraft.ViesCraft;
-import com.viesis.viescraft.common.entity.EntityAirshipVC;
-import com.viesis.viescraft.common.entity.EntityItemViesdenburg;
+import com.viesis.viescraft.common.entity.EntityAirshipBase;
+import com.viesis.viescraft.common.entity.EntityAirshipFurnace;
+import com.viesis.viescraft.common.entity.EntityItemAirship;
+import com.viesis.viescraft.common.entity.EntityItemAirshipFurnace;
+
 
 public class InitEntityVC {
 	
@@ -13,8 +16,19 @@ public class InitEntityVC {
 	
 	public static void preInit()
 	{
-		register(EntityItemViesdenburg.class, "EnchantedEbonheart", 64, 20, true);
-		register(EntityAirshipVC.class, "Airship Ebonheart", 64, 1, true);
+		//register(EntityItemViesdenburg.class, "EnchantedEbonheart", 64, 20, true);
+		//register(EntityAirshipVC.class, "AirshipEbonheart", 64, 1, true);
+		
+		register(EntityItemAirship.class, "vc.ItemAirship", 64, 20, true);
+		//register(EntityAirshipVCtest.class, "AirshipEbonheartNEW", 64, 1, true);
+		
+		//register(EntityItemAirshipFurnace.class, "vc.ItemAirshipFurnace", 64, 20, true);
+		
+		
+		
+		register(EntityAirshipBase.class, "AirshipEbonheart", 64, 1, true);
+		
+		//register(EntityAirshipFurnace.class, "AirshipVCFurnace", 64, 1, true);
 		
 		
 	}

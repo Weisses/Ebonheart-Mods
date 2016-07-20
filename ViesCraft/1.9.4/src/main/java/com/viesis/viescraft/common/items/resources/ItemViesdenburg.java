@@ -17,7 +17,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import com.viesis.viescraft.common.entity.EntityItemViesdenburg;
+import com.viesis.viescraft.common.entity.EntityItemAirship;
 import com.viesis.viescraft.common.items.ItemHelper;
 
 public class ItemViesdenburg extends Item {
@@ -26,6 +26,7 @@ public class ItemViesdenburg extends Item {
 	{
 		ItemHelper.setItemName(this, "item_viesdenburg");
 		this.setMaxStackSize(1);
+		this.setCreativeTab(null);
 	}
 	
 	@SideOnly(Side.CLIENT)
@@ -55,7 +56,7 @@ public class ItemViesdenburg extends Item {
 			
 			if (!worldIn.isRemote)
 			{
-				EntityItemViesdenburg entityenchantedebonheart = new EntityItemViesdenburg(worldIn, playerIn);
+				EntityItemAirship entityenchantedebonheart = new EntityItemAirship(worldIn, playerIn);
 				entityenchantedebonheart.setHeadingFromThrower(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, -20.0F, 0.7F, 1.0F);
 				worldIn.spawnEntityInWorld(entityenchantedebonheart);
 			}
