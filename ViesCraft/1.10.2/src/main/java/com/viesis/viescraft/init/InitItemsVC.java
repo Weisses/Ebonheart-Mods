@@ -8,6 +8,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import com.viesis.viescraft.api.ItemsVC;
 import com.viesis.viescraft.common.items.resources.ItemAirship;
+import com.viesis.viescraft.common.items.resources.ItemAirshipV2;
 import com.viesis.viescraft.common.items.resources.ItemBalloon;
 import com.viesis.viescraft.common.items.resources.ItemEngine;
 import com.viesis.viescraft.common.items.resources.ItemIgnition;
@@ -30,6 +31,7 @@ public class InitItemsVC extends ItemsVC {
 		airship_ignition = registerItem(new ItemIgnition());
 		
 		item_airship_base = registerItem(new ItemAirship());
+		item_airship_v2 = registerItem(new ItemAirshipV2());
 		//item_airship_furnace = registerItem(new ItemAirshipFurnace());
 		
 		

@@ -5,9 +5,8 @@ import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 import com.viesis.viescraft.ViesCraft;
 import com.viesis.viescraft.common.entity.EntityAirshipBase;
-import com.viesis.viescraft.common.entity.EntityAirshipFurnace;
+import com.viesis.viescraft.common.entity.EntityAirshipBase2;
 import com.viesis.viescraft.common.entity.EntityItemAirship;
-import com.viesis.viescraft.common.entity.EntityItemAirshipFurnace;
 
 
 public class InitEntityVC {
@@ -27,6 +26,7 @@ public class InitEntityVC {
 		
 		
 		register(EntityAirshipBase.class, "AirshipEbonheart", 64, 1, true);
+		register(EntityAirshipBase2.class, "AirshipV2", 64, 1, true);
 		
 		//register(EntityAirshipFurnace.class, "AirshipVCFurnace", 64, 1, true);
 		

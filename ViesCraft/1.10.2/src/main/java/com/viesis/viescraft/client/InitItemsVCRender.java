@@ -16,6 +16,7 @@ public final class InitItemsVCRender extends ItemsVC {
 		registerRender(airship_ignition);
 		
 		registerRender(item_airship_base);
+		registerRender(item_airship_v2);
 		//registerRender(item_airship_furnace);
 		
 		
