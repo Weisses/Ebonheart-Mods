@@ -3,6 +3,7 @@
 //-----Creative Tabs-----
 itemGroup.tabViesCraftBlocks=ViesCraft Blocks
 itemGroup.tabViesCraftItems=ViesCraft Items
+itemGroup.tabViesCraftAirships=ViesCraft Airships
 
 //-----Items-----
 item.vc:airship_balloon.name=Airship Balloon
@@ -10,6 +11,42 @@ item.vc:airship_engine.name=Airship Engine
 item.vc:airship_ignition.name=Airship Ignition
 item.vc:item_airship_base.name=Viesdenburg
 item.vc:item_viesdenburg.name=Viesdenburg
+
+item.vc:item_paint_black.name=Black Airship Paint
+item.vc:item_paint_blue.name=Blue Airship Paint
+item.vc:item_paint_brown.name=Brown Airship Paint
+item.vc:item_paint_cyan.name=Cyan Airship Paint
+item.vc:item_paint_gray.name=Gray Airship Paint
+item.vc:item_paint_green.name=Green Airship Paint
+item.vc:item_paint_lightblue.name=Light Blue Airship Paint
+item.vc:item_paint_lightgray.name=Light Gray Airship Paint
+item.vc:item_paint_lime.name=Lime Airship Paint
+item.vc:item_paint_magenta.name=Magenta Airship Paint
+item.vc:item_paint_orange.name=Orange Airship Paint
+item.vc:item_paint_pink.name=Pink Airship Paint
+item.vc:item_paint_purple.name=Purple Airship Paint
+item.vc:item_paint_red.name=Red Airship Paint
+item.vc:item_paint_white.name=White Airship Paint
+item.vc:item_paint_yellow.name=Yellow Airship Paint
+
+item.vc:item_airship_normal.name=Viesdenburg
+item.vc:item_airship_black.name=Black Viesdenburg
+item.vc:item_airship_blue.name=Blue Viesdenburg
+item.vc:item_airship_brown.name=Brown Viesdenburg
+item.vc:item_airship_cyan.name=Cyan Viesdenburg
+item.vc:item_airship_gray.name=Gray Viesdenburg
+item.vc:item_airship_green.name=Green Viesdenburg
+item.vc:item_airship_lightblue.name=Light Blue Viesdenburg
+item.vc:item_airship_lightgray.name=Light Gray Viesdenburg
+item.vc:item_airship_lime.name=Lime Viesdenburg
+item.vc:item_airship_magenta.name=Magenta Viesdenburg
+item.vc:item_airship_orange.name=Orange Viesdenburg
+item.vc:item_airship_pink.name=Pink Viesdenburg
+item.vc:item_airship_purple.name=Purple Viesdenburg
+item.vc:item_airship_red.name=Red Viesdenburg
+item.vc:item_airship_white.name=White Viesdenburg
+item.vc:item_airship_yellow.name=Yellow Viesdenburg
+
 
 //-----Ores-----
 tile.vc:ore/draconium_ore.name=Placeholder1
@@ -29,6 +66,9 @@ achievement.vc:airship_create_ignition.desc=Craft an airship ignition.
 
 achievement.vc:airship_create=Fry tested. Professor approved!
 achievement.vc:airship_create.desc=Craft an airship.
+
+achievement.vc:airship_create_color=Flying with style!
+achievement.vc:airship_create_color.desc=Craft a colored airship.
 
 achievement.vc:airship_airborn=Breaking the Sound Barrier!
 achievement.vc:airship_airborn.desc=Pilot an airship.

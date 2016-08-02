@@ -13,6 +13,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import com.viesis.viescraft.api.Reference;
+import com.viesis.viescraft.api.creative.VCTabAirships;
 import com.viesis.viescraft.api.creative.VCTabBlocks;
 import com.viesis.viescraft.api.creative.VCTabItems;
 import com.viesis.viescraft.api.util.LogHelper;
@@ -28,6 +29,7 @@ public class ViesCraft {
 	
 	//public static final VCTabBlocks tabViesCraftBlocks = new VCTabBlocks("tabViesCraftBlocks");
 	public static final VCTabItems tabViesCraftItems = new VCTabItems("tabViesCraftItems");
+	public static final VCTabAirships tabViesCraftAirships = new VCTabAirships("tabViesCraftAirships");
 	
 	@Mod.Instance(Reference.MOD_ID)
 	public static ViesCraft instance;

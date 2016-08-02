@@ -7,8 +7,8 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
-import com.viesis.viescraft.common.entity.ContainerAirshipVC;
-import com.viesis.viescraft.common.entity.EntityAirshipBase;
+import com.viesis.viescraft.common.entity.old.ContainerAirshipVC;
+import com.viesis.viescraft.common.entity.old.EntityAirshipBase;
 
 
 

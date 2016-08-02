@@ -40,9 +40,29 @@ public class AchievementTriggersVC extends InitAchievementsVC {
 			event.player.addStat(airship_create_ignition);
 		}
 		
-		if(event.crafting.getItem() == InitItemsVC.item_airship_base) 
+		if(event.crafting.getItem() == InitItemsVC.item_airship_normal) 
 		{
 			event.player.addStat(airship_create);
+		}
+		
+		if(event.crafting.getItem() == InitItemsVC.item_airship_black
+		|| event.crafting.getItem() == InitItemsVC.item_airship_blue
+		|| event.crafting.getItem() == InitItemsVC.item_airship_brown
+		|| event.crafting.getItem() == InitItemsVC.item_airship_cyan
+		|| event.crafting.getItem() == InitItemsVC.item_airship_gray
+		|| event.crafting.getItem() == InitItemsVC.item_airship_green
+		|| event.crafting.getItem() == InitItemsVC.item_airship_lightblue
+		|| event.crafting.getItem() == InitItemsVC.item_airship_lightgray
+		|| event.crafting.getItem() == InitItemsVC.item_airship_lime
+		|| event.crafting.getItem() == InitItemsVC.item_airship_magenta
+		|| event.crafting.getItem() == InitItemsVC.item_airship_orange
+		|| event.crafting.getItem() == InitItemsVC.item_airship_pink
+		|| event.crafting.getItem() == InitItemsVC.item_airship_purple
+		|| event.crafting.getItem() == InitItemsVC.item_airship_red
+		|| event.crafting.getItem() == InitItemsVC.item_airship_white
+		|| event.crafting.getItem() == InitItemsVC.item_airship_yellow) 
+		{
+			event.player.addStat(airship_create_color);
 		}
 		
 		//if(event.crafting.getItem() == InitItemsEA.obsidian_shards) 

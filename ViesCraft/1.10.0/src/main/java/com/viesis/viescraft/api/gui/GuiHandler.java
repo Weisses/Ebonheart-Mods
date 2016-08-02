@@ -6,8 +6,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 
 import com.viesis.viescraft.client.gui.GuiAirshipVC;
-import com.viesis.viescraft.common.entity.ContainerAirshipVC;
-import com.viesis.viescraft.common.entity.EntityAirshipBase;
+import com.viesis.viescraft.common.entity.old.ContainerAirshipVC;
+import com.viesis.viescraft.common.entity.old.EntityAirshipBase;
 
 public class GuiHandler implements IGuiHandler {
 	

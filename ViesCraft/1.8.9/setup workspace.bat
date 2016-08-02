@@ -1,1 +1,0 @@
-gradlew -Dorg.gradle.jvmargs=-Xmx4096m setupDecompWorkspace
