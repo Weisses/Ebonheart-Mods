@@ -15,6 +15,7 @@ import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipLightGray;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipLime;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipMagenta;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipNormal;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipNormal.Type;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipOrange;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipPink;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipPurple;
@@ -79,14 +80,14 @@ public class InitEntityVC {
 		
 		
 		
-		
 		//===========================================
 		
 		
+		
 		register(EntityAirshipNormal.class, "airship." + EntityAirshipNormal.Type.NORMAL.getName(), 64, 1, true);
-		register(EntityAirshipBlack.class, "airship." + EntityAirshipBlack.Type.BLACK.getName(), 64, 1, true);
-		register(EntityAirshipBlue.class, "airship." + EntityAirshipBlue.Type.BLUE.getName(), 64, 1, true);
-		register(EntityAirshipBrown.class, "airship." + EntityAirshipBrown.Type.BROWN.getName(), 64, 1, true);
+		register(EntityAirshipBlack.class, "airship." + EntityAirshipNormal.Type.BLACK.getName(), 64, 1, true);
+		register(EntityAirshipBlue.class, "airship." + EntityAirshipNormal.Type.BLUE.getName(), 64, 1, true);
+		register(EntityAirshipBrown.class, "airship." + EntityAirshipNormal.Type.BROWN.getName(), 64, 1, true);
 		register(EntityAirshipCyan.class, "airship." + EntityAirshipNormal.Type.CYAN.getName(), 64, 1, true);
 		register(EntityAirshipGray.class, "airship." + EntityAirshipNormal.Type.GRAY.getName(), 64, 1, true);
 		register(EntityAirshipGreen.class, "airship." + EntityAirshipNormal.Type.GREEN.getName(), 64, 1, true);
@@ -119,5 +120,10 @@ public class InitEntityVC {
 	public static void register(Class<? extends Entity> entityClass, String entityName, int trackingRange, int updateFrequency, boolean sendsVelocityUpdates)
 	{
 		EntityRegistry.registerModEntity(entityClass, entityName, entityID++, ViesCraft.instance, trackingRange, updateFrequency, sendsVelocityUpdates);
+	}
+	
+	public static void register1(Class<? extends Entity> class1, String entityName, int trackingRange, int updateFrequency, boolean sendsVelocityUpdates)
+	{
+		EntityRegistry.registerModEntity(class1, entityName, entityID++, ViesCraft.instance, trackingRange, updateFrequency, sendsVelocityUpdates);
 	}
 }
