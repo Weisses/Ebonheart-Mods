@@ -14,7 +14,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.viesis.viescraft.api.Reference;
-import com.viesis.viescraft.common.entity.airshipitems.EntityItemAirshipWhite;
+import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipWhite;
 import com.viesis.viescraft.init.InitItemsVC;
 
 @SideOnly(Side.CLIENT)

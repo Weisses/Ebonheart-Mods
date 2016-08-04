@@ -2,7 +2,7 @@ package com.viesis.viescraft.common.entity.old;
 
 import java.util.Random;
 
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipNormal;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipCore;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;
@@ -53,7 +53,7 @@ public class EntityItemAirship extends EntityThrowable {
         	this.playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 0.5F, 0.4F / .5F * 0.4F + 0.8F);
         	
         	
-        	this.worldObj.spawnEntityInWorld(  new EntityAirshipNormal(this.worldObj, this.posX, this.posY + 0.5F, this.posZ));
+        	this.worldObj.spawnEntityInWorld(  new EntityAirshipCore(this.worldObj, this.posX, this.posY + 0.5F, this.posZ));
         	
             //this.worldObj.spawnEntityInWorld(new 
             		//EntityAirshipVCtest

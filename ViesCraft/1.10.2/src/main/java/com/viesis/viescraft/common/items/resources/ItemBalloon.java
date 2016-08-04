@@ -29,6 +29,6 @@ public class ItemBalloon extends Item {
 	
 	public EnumRarity getRarity(ItemStack stack)
     {
-        return EnumRarity.UNCOMMON;
+        return EnumRarity.COMMON;
     }
 }

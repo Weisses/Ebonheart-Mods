@@ -10,7 +10,6 @@ public final class InitItemsVCRender extends ItemsVC {
 	
 	public static void registerRenders()
 	{
-		
 		registerRender(airship_balloon);
 		registerRender(airship_engine);
 		registerRender(airship_ignition);
@@ -50,7 +49,16 @@ public final class InitItemsVCRender extends ItemsVC {
 		registerRender(item_paint_white);
 		registerRender(item_paint_yellow);
 		
+		registerRender(achievement_airship_create_engine);
+		registerRender(achievement_airship_create_ignition);
+		registerRender(achievement_airship_create);
+		registerRender(achievement_airship_create_color);
 		
+		registerRender(achievement_airship_airborn);
+		registerRender(achievement_airship_water);
+		registerRender(achievement_airship_lava);
+		
+		//=======================================
 		
 		registerRender(item_airship_base);
 		//registerRender(item_airship_v2);
@@ -60,14 +68,6 @@ public final class InitItemsVCRender extends ItemsVC {
 		
 		registerRender(item_viesdenburg);
 		
-		registerRender(achievement_airship_create_engine);
-		registerRender(achievement_airship_create_ignition);
-		registerRender(achievement_airship_create);
-		registerRender(achievement_airship_create_color);
-		
-		registerRender(achievement_airship_airborn);
-		registerRender(achievement_airship_water);
-		registerRender(achievement_airship_lava);
 		
 		//registerRender(test);
 		

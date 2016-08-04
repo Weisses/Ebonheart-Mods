@@ -11,12 +11,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.client.entity.model.ModelAirship;
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipMagenta;
+import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipMagenta;
 import com.viesis.viescraft.common.entity.old.EntityAirshipBase;
 
 @SideOnly(Side.CLIENT)
-public class RenderAirshipMagenta extends Render<EntityAirshipMagenta>
-{
+public class RenderAirshipMagenta extends Render<EntityAirshipMagenta> {
 	
 	private static final ResourceLocation[] ENTITY_TEXTURE = new ResourceLocation[] 
 	{

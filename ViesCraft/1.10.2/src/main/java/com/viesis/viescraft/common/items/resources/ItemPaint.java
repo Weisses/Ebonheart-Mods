@@ -17,15 +17,15 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipNormal;
-import com.viesis.viescraft.common.entity.airshipitems.EntityItemAirshipBlack;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipCore;
+import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipBlack;
 import com.viesis.viescraft.common.items.ItemHelper;
 
 public class ItemPaint extends Item{
 	
-	private final EntityAirshipNormal.Type type;
+	private final EntityAirshipCore.Type type;
 	
-	public ItemPaint(EntityAirshipNormal.Type typeIn) 
+	public ItemPaint(EntityAirshipCore.Type typeIn) 
 	{
 		this.type = typeIn;
 		ItemHelper.setItemName(this, "item_paint_" + typeIn.getName());

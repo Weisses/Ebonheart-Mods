@@ -11,22 +11,34 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.client.entity.model.ModelAirship;
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipNormal;
-import com.viesis.viescraft.common.entity.old.EntityAirshipBase;
+import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipNormal;
 
 @SideOnly(Side.CLIENT)
-public class RenderAirshipNormal extends Render<EntityAirshipNormal>
-{
+public class RenderAirshipNormal extends Render<EntityAirshipNormal> {
 	
 	private static final ResourceLocation[] ENTITY_TEXTURE = new ResourceLocation[] 
 	{
+		//new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_black.png"),
+		//new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_red.png"),
+		//new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_green.png"),
+		//new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_brown.png"),
+		//new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_blue.png"),
+		//new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_purple.png"),
+		//new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_cyan.png"),
+		//new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_lightgray.png"),
+		//new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_gray.png"),
+		//new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_pink.png"),
+		//new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_lime.png"),
+		//new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_yellow.png"),
+		//new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_lightblue.png"),
+		//new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_magenta.png"),
+		//new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_orange.png"),
+		//new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_white.png"),
 		new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_normal.png")
-		
 	};
 	
 	/** instance of ModelTest for rendering */
 	protected ModelBase modelTest = new ModelAirship();
-	
 	
     public RenderAirshipNormal(RenderManager renderManagerIn)
     {

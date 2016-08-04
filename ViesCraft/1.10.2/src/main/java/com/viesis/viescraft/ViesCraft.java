@@ -18,7 +18,7 @@ import com.viesis.viescraft.api.creative.VCTabAirships;
 import com.viesis.viescraft.api.creative.VCTabBlocks;
 import com.viesis.viescraft.api.creative.VCTabItems;
 import com.viesis.viescraft.api.util.LogHelper;
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipNormal;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipCore;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 import com.viesis.viescraft.proxy.CommonProxy;
 

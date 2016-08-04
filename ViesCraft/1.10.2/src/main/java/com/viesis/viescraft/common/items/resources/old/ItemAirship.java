@@ -17,7 +17,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import com.viesis.viescraft.common.entity.airshipitems.EntityItemAirshipNormal;
+import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipNormal;
 import com.viesis.viescraft.common.entity.old.EntityItemAirship;
 import com.viesis.viescraft.common.items.ItemHelper;
 

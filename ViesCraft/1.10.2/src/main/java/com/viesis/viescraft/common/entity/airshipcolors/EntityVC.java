@@ -125,7 +125,7 @@ public class EntityVC extends Entity {
      */
     public void applyEntityCollision(Entity entityIn)
     {
-        if (entityIn instanceof EntityAirshipNormal)
+        if (entityIn instanceof EntityAirshipCore)
         {
             if (entityIn.getEntityBoundingBox().minY < this.getEntityBoundingBox().maxY)
             {
