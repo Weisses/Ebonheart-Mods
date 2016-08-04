@@ -613,7 +613,6 @@ public class EntityAirshipBase extends EntityVC {
     private void updateMotion()
     {
         double d0 = 0.0D;
-        double d1 = this.func_189652_ae() ? 0.0D : -0.03999999910593033D;
         double d5 = -0.001D;
         this.momentum = 0.05F;
 

@@ -47,6 +47,8 @@ item.vc:item_airship_red.name=Red Viesdenburg
 item.vc:item_airship_white.name=White Viesdenburg
 item.vc:item_airship_yellow.name=Yellow Viesdenburg
 
+//-----Tools-----
+entity.vc.airship.normal:=Placeholder3
 
 //-----Ores-----
 tile.vc:ore/draconium_ore.name=Placeholder1

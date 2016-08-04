@@ -1,6 +1,7 @@
 package com.viesis.viescraft.init;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.init.Biomes;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 import com.viesis.viescraft.ViesCraft;

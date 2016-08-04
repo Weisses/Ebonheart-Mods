@@ -181,7 +181,4 @@ public class EntityVC extends Entity {
     {
         
     }
-    
-    
-    
 }
