@@ -47,8 +47,24 @@ item.vc:item_airship_red.name=Red Viesdenburg
 item.vc:item_airship_white.name=White Viesdenburg
 item.vc:item_airship_yellow.name=Yellow Viesdenburg
 
-//-----Tools-----
-entity.vc.airship.normal:=Placeholder3
+//-----Entity-----
+entity.vc.airship.normal.name=Viesdenburg
+entity.vc.airship.black.name=Black Viesdenburg
+entity.vc.airship.blue.name=Blue Viesdenburg
+entity.vc.airship.brown.name=Brown Viesdenburg
+entity.vc.airship.cyan.name=Cyan Viesdenburg
+entity.vc.airship.gray.name=Gray Viesdenburg
+entity.vc.airship.green.name=Green Viesdenburg
+entity.vc.airship.lightblue.name=Light Blue Viesdenburg
+entity.vc.airship.lightgray.name=Light Gray Viesdenburg
+entity.vc.airship.lime.name=Lime Viesdenburg
+entity.vc.airship.magenta.name=Magenta Viesdenburg
+entity.vc.airship.orange.name=Orange Viesdenburg
+entity.vc.airship.pink.name=Pink Viesdenburg
+entity.vc.airship.purple.name=Purple Viesdenburg
+entity.vc.airship.red.name=Red Viesdenburg
+entity.vc.airship.white.name=White Viesdenburg
+entity.vc.airship.yellow.name=Yellow Viesdenburg
 
 //-----Ores-----
 tile.vc:ore/draconium_ore.name=Placeholder1
