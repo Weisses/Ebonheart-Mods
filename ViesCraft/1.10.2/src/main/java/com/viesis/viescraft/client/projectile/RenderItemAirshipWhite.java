@@ -18,8 +18,7 @@ import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipWhite
 import com.viesis.viescraft.init.InitItemsVC;
 
 @SideOnly(Side.CLIENT)
-public class RenderItemAirshipWhite extends Render<EntityItemAirshipWhite>
-{
+public class RenderItemAirshipWhite extends Render<EntityItemAirshipWhite> {
 	
 	public static final ResourceLocation ENTITY_TEXTURE = new ResourceLocation(Reference.MOD_ID, "textures/items/gems/enchanted_ebonheart.png");
     private float scale;

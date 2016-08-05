@@ -1,14 +1,14 @@
 package com.viesis.viescraft.client.particle;
 
-import net.minecraft.client.particle.ParticleSpell;
+import net.minecraft.client.particle.ParticleFlame;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class EntitySprintFX extends ParticleSpell {
+public class EntitySmokeFX extends ParticleFlame {
     
-	public EntitySprintFX(World parWorld,
+	public EntitySmokeFX(World parWorld,
             double parX, double parY, double parZ,
             double parMotionX, double parMotionY, double parMotionZ) 
     {

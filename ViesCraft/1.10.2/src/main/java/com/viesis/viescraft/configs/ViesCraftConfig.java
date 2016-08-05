@@ -14,11 +14,14 @@ public class ViesCraftConfig
 {
 	public static boolean toolRecipe;
 	public static boolean modelAnimation;
+	public static boolean modelTurnAngle;
 	
 	public static final boolean TOOLRECIPE_DEFAULT = false;
 	public static final String TOOLRECIPE_NAME = "Coming soon.";
 	public static final boolean MODELANIMATION_DEFAULT = true;
 	public static final String MODELANIMATION_NAME = "Enable Airship Animation?";
+	public static final boolean MODELTURNANGLE_DEFAULT = true;
+	public static final String MODELTURNANGLE_NAME = "Enable Airship Turning Tilt?";
 	
 	public static void syncConfig()
 	{
@@ -45,6 +48,8 @@ public class ViesCraftConfig
 		
 		ViesCraft.config.addCustomCategoryComment(PARTICLES, "Enable or disable airship animation.");
 		modelAnimation = ViesCraft.config.get(PARTICLES, TextFormatting.YELLOW + MODELANIMATION_NAME, MODELANIMATION_DEFAULT).getBoolean(MODELANIMATION_DEFAULT);
+		modelTurnAngle = ViesCraft.config.get(PARTICLES, TextFormatting.YELLOW + MODELTURNANGLE_NAME, MODELTURNANGLE_DEFAULT).getBoolean(MODELTURNANGLE_DEFAULT);
+		
 		//plantParticle = ViesCraft.config.get(PARTICLES, TextFormatting.YELLOW + PLANTANIMATION_NAME, PLANTANIMATION_DEFAULT).getBoolean(PLANTANIMATION_DEFAULT);
 		
 		

@@ -12,7 +12,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.client.entity.model.ModelAirship;
 import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipBlue;
-import com.viesis.viescraft.common.entity.old.EntityAirshipBase;
+import com.viesis.viescraft.configs.ViesCraftConfig;
 
 @SideOnly(Side.CLIENT)
 public class RenderAirshipBlue extends Render<EntityAirshipBlue> {
@@ -61,17 +61,40 @@ public class RenderAirshipBlue extends Render<EntityAirshipBlue> {
         super.doRender(entity, x, y, z, entityYaw, partialTicks);
     }
 
-    public void setupRotation(EntityAirshipBlue p_188311_1_, float p_188311_2_, float p_188311_3_)
+    public void setupRotation(EntityAirshipBlue entity, float p_188311_2_, float p_188311_3_)
     {
         GlStateManager.rotate(180.0F - p_188311_2_, 0.0F, 1.0F, 0.0F);
-        float f = (float)p_188311_1_.getTimeSinceHit() - p_188311_3_;
-        float f1 = p_188311_1_.getDamageTaken() - p_188311_3_;
+        float f = (float)entity.getTimeSinceHit() - p_188311_3_;
+        float f1 = entity.getDamageTaken() - p_188311_3_;
 
         
-        float g = (float)p_188311_1_.getTimeSinceHit() - p_188311_3_;
-        float g1 = p_188311_1_.getDamageTaken() - p_188311_3_;
-
+        float g = (float)entity.getTimeSinceHit() - p_188311_3_;
+        float g1 = entity.getDamageTaken() - p_188311_3_;
         
+        if(ViesCraftConfig.modelTurnAngle)
+		{
+	        if(entity.leftInputDown)
+	        {
+	        	GlStateManager.rotate(5, 0.0F, 0.0F, 0.1F);
+	        }
+	        
+	        if(entity.leftInputDown
+	        && entity.backInputDown)
+	        {
+	        	GlStateManager.rotate(10, 0.0F, 0.0F, -0.1F);
+	        }
+	        
+	        if(entity.rightInputDown)
+	        {
+	        	GlStateManager.rotate(5, 0.0F, 0.0F, -0.1F);
+	        }
+	        
+	        if(entity.rightInputDown
+	        && entity.backInputDown)
+	        {
+	        	GlStateManager.rotate(10, 0.0F, 0.0F, 0.1F);
+	        }
+		}
         
         if (f1 < 0.0F)
         {
@@ -82,7 +105,7 @@ public class RenderAirshipBlue extends Render<EntityAirshipBlue> {
         {
             GlStateManager.rotate(MathHelper.sin(f) * f * f1 / 10.0F *  
             		//1
-            		(float)p_188311_1_.getForwardDirection()
+            		(float)entity.getForwardDirection()
             		, 0.0F, 0.0F, 1.0F);
         }
 

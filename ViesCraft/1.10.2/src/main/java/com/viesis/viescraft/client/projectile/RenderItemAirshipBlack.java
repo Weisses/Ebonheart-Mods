@@ -18,8 +18,7 @@ import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipBlack
 import com.viesis.viescraft.init.InitItemsVC;
 
 @SideOnly(Side.CLIENT)
-public class RenderItemAirshipBlack extends Render<EntityItemAirshipBlack>
-{
+public class RenderItemAirshipBlack extends Render<EntityItemAirshipBlack> {
 	
 	public static final ResourceLocation ENTITY_TEXTURE = new ResourceLocation(Reference.MOD_ID, "textures/items/item_airship.png");
     private float scale;

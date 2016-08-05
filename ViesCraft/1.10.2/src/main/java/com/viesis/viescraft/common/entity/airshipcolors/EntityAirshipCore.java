@@ -42,6 +42,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.google.common.collect.Lists;
+import com.viesis.viescraft.ViesCraft;
 import com.viesis.viescraft.api.util.Keybinds;
 import com.viesis.viescraft.init.InitItemsVC;
 
@@ -296,7 +297,7 @@ public class EntityAirshipCore extends EntityVC {
                 	
                 //}
             	
-            	
+            	//ViesCraft.proxy.generateSmokeParticles(this);
             	
             	
             	

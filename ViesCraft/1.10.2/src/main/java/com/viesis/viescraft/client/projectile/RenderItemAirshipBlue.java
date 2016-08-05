@@ -1,4 +1,4 @@
-package com.viesis.viescraft.client.projectile;
+  package com.viesis.viescraft.client.projectile;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
@@ -18,8 +18,7 @@ import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipBlue;
 import com.viesis.viescraft.init.InitItemsVC;
 
 @SideOnly(Side.CLIENT)
-public class RenderItemAirshipBlue extends Render<EntityItemAirshipBlue>
-{
+public class RenderItemAirshipBlue extends Render<EntityItemAirshipBlue> {
 	
 	public static final ResourceLocation ENTITY_TEXTURE = new ResourceLocation(Reference.MOD_ID, "textures/items/gems/enchanted_ebonheart.png");
     private float scale;

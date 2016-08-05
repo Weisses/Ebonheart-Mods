@@ -4,6 +4,7 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
+import com.viesis.viescraft.ViesCraft;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 
 public class ModelAirship extends ModelBase {
@@ -452,5 +453,7 @@ public class ModelAirship extends ModelBase {
 			this.Propeller_1b.rotateAngleZ += (bladespin * 2);
 			this.Propeller_1c.rotateAngleZ += (bladespin * 2);
 		}
+		
+		//ViesCraft.proxy.generateSmokeParticles(entity);
 	}
 }

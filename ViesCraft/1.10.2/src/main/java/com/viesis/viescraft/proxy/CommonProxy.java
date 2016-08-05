@@ -1,5 +1,6 @@
 package com.viesis.viescraft.proxy;
 
+import net.minecraft.entity.Entity;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -49,6 +50,8 @@ public class CommonProxy {
 	{
 		
 	}
+	
+	public void generateSmokeParticles(Entity entity) { }
 	
 	//public void generateSprintParticles(Entity entity) { }
 	
