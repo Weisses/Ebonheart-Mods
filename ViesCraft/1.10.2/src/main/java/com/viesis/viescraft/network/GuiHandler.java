@@ -4,12 +4,17 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 
+import com.viesis.viescraft.WIP.stuff.EntityAirship;
+import com.viesis.viescraft.client.gui.GuiEntityAirshipCore;
+import com.viesis.viescraft.common.entity.airshipcolors.ContainerAirshipCore;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipCore;
+
 public class GuiHandler implements IGuiHandler {
 	
 	public static GuiHandler instance;
 	public static final int ENTITYAIRSHIPVC_GUI = 0;
 	//public static final int TEST_TILE_ENTITY_GUI = 1;
-	
+
 	public GuiHandler() {
     	instance = this;
     	//LogHelper.info("works to HERE!");
@@ -31,6 +36,8 @@ public class GuiHandler implements IGuiHandler {
 		
 		//if (ID == ENTITYAIRSHIPVC_GUI)
 			//return new ContainerModTileEntity(player.inventory, ); //(EntityAirshipNormal) world.getTileEntity(new BlockPos(x, y, z)));
+		if (ID == ENTITYAIRSHIPVC_GUI)
+			return new ContainerAirshipCore(player.inventory, (EntityAirshipCore)player.getRidingEntity());
 
 		return null;
 		
@@ -51,6 +58,8 @@ public class GuiHandler implements IGuiHandler {
 		
 		//if (ID == ENTITYAIRSHIPVC_GUI)
 			//return new GuiModTileEntity(player.inventory, );//(EntityAirshipNormal) world.getTileEntity(new BlockPos(x, y, z)));
+		if (ID == ENTITYAIRSHIPVC_GUI)
+			return new GuiEntityAirshipCore(new ContainerAirshipCore(player.inventory, (EntityAirshipCore)player.getRidingEntity()));
 
 		return null;
 	}

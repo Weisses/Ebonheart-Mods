@@ -8,6 +8,7 @@ import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.BlockPlanks;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityBoat;
@@ -43,10 +44,13 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.google.common.collect.Lists;
 import com.viesis.viescraft.ViesCraft;
+import com.viesis.viescraft.WIP.stuff.EntityAirship;
+import com.viesis.viescraft.WIP.stuff.GuiAirship;
 import com.viesis.viescraft.api.util.Keybinds;
+import com.viesis.viescraft.client.gui.GuiEntityAirshipCore;
 import com.viesis.viescraft.init.InitItemsVC;
 
-public class EntityAirshipCore extends EntityVC {
+public class EntityAirshipCore extends EntityVC implements IInventory {
 	
 	private static final DataParameter<Integer> TIME_SINCE_HIT = EntityDataManager.<Integer>createKey(EntityAirshipCore.class, DataSerializers.VARINT);
 	private static final DataParameter<Integer> FORWARD_DIRECTION = EntityDataManager.<Integer>createKey(EntityAirshipCore.class, DataSerializers.VARINT);
@@ -288,7 +292,7 @@ public class EntityAirshipCore extends EntityVC {
             	//this.openGUI(playerIn);
             	this.controlAirship();
             	
-            	//this.controlAirshipExtra();
+            	this.controlAirshipExtra();
             	
             	
             	//if (Keybinds.ping.isKeyDown())
@@ -825,13 +829,14 @@ public class EntityAirshipCore extends EntityVC {
             
             if (this.openInputDown)
             {
-            	
+            	//this.openInventory(player);
+            	Minecraft.getMinecraft().displayGuiScreen(new GuiEntityAirshipCore(new ContainerAirshipCore(Minecraft.getMinecraft().thePlayer.inventory, this)));
             	//player.openGui(ViesCraft.instance, GuiHandler.EntityAirshipBase_GUI, this.getEntityWorld(), this.getPosition().getX(), this.getPosition().getY(), this.getPosition().getZ());
             	//this.openGuiAirshipInventory(this, this.horseChest);
             	//this.openGUI(player);
             	
             	
-            	//System.out.println("Open Inventory - Step 1");
+            	System.out.println("Open Inventory - Step 1");
             	//System.out.println(player);
             	
             }
@@ -1295,7 +1300,17 @@ public class EntityAirshipCore extends EntityVC {
     
     
     
-    /**
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
@@ -1435,7 +1450,7 @@ public class EntityAirshipCore extends EntityVC {
 	public void setCustomName(String customName) {
 		this.customName = customName;
 	}
-	
+	/**
 	@Override
 	public void readFromNBT(NBTTagCompound nbt) {
 		super.readFromNBT(nbt);
