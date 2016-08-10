@@ -5,24 +5,18 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import net.minecraft.block.BlockLiquid;
-import net.minecraft.block.BlockPlanks;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.item.EntityBoat;
-import net.minecraft.entity.item.EntityMinecartFurnace;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityWaterMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.datasync.DataParameter;
 import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
@@ -31,8 +25,6 @@ import net.minecraft.util.EntityDamageSourceIndirect;
 import net.minecraft.util.EntitySelectors;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -43,14 +35,10 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.google.common.collect.Lists;
-import com.viesis.viescraft.ViesCraft;
-import com.viesis.viescraft.WIP.stuff.EntityAirship;
-import com.viesis.viescraft.WIP.stuff.GuiAirship;
 import com.viesis.viescraft.api.util.Keybinds;
-import com.viesis.viescraft.client.gui.GuiEntityAirshipCore;
 import com.viesis.viescraft.init.InitItemsVC;
 
-public class EntityAirshipCore extends EntityVC implements IInventory {
+public class EntityAirshipCore extends EntityVC {
 	
 	private static final DataParameter<Integer> TIME_SINCE_HIT = EntityDataManager.<Integer>createKey(EntityAirshipCore.class, DataSerializers.VARINT);
 	private static final DataParameter<Integer> FORWARD_DIRECTION = EntityDataManager.<Integer>createKey(EntityAirshipCore.class, DataSerializers.VARINT);
@@ -58,24 +46,22 @@ public class EntityAirshipCore extends EntityVC implements IInventory {
 	private static final DataParameter<Integer> BOAT_TYPE = EntityDataManager.<Integer>createKey(EntityAirshipCore.class, DataSerializers.VARINT);
     
 	private static final DataParameter<Boolean> POWERED = EntityDataManager.<Boolean>createKey(EntityAirshipCore.class, DataSerializers.BOOLEAN);
-    private int fuel;
-    private ItemStack[] inventory;
-	private String customName;
-	
+    
+	public int fuel;
+    
 	public EntityAirshipCore.Status status;
     public EntityAirshipCore.Status previousStatus;
     
-    private float AirshipSpeedTurn = 0.18F;
-    private float AirshipSpeedForward = 0.0125F;
-    private float AirshipSpeedUp = 0.0035F;
-    private float AirshipSpeedDown = 0.0035F;
+    public float AirshipSpeedTurn = 0.18F;
+    public float AirshipSpeedForward = 0.0125F;
+    public float AirshipSpeedUp = 0.0035F;
+    public float AirshipSpeedDown = 0.0035F;
     
 	public EntityAirshipCore(World worldIn)
     {
         super(worldIn);
         
         this.ignoreFrustumCheck = true;
-        
         this.preventEntitySpawning = true;
         this.setSize(1.0F, 0.35F);
     }
@@ -98,7 +84,7 @@ public class EntityAirshipCore extends EntityVC implements IInventory {
 		this.dataManager.register(TIME_SINCE_HIT, Integer.valueOf(0));
         this.dataManager.register(FORWARD_DIRECTION, Integer.valueOf(1));
         this.dataManager.register(DAMAGE_TAKEN, Float.valueOf(0.0F));
-        this.dataManager.register(POWERED, Boolean.valueOf(false));
+        //this.dataManager.register(POWERED, Boolean.valueOf(false));
         
         this.dataManager.register(BOAT_TYPE, Integer.valueOf(EntityAirshipCore.Type.NORMAL.ordinal()));
 	}
@@ -137,7 +123,7 @@ public class EntityAirshipCore extends EntityVC implements IInventory {
     //}
 	public Item getItemBoat()
     {
-		return InitItemsVC.item_airship_normal;
+		return null;//InitItemsVC.item_airship_normal;
 		
     }
 	
@@ -171,7 +157,7 @@ public class EntityAirshipCore extends EntityVC implements IInventory {
                         this.dropItemWithOffset(this.getItemBoat(), 1, 0.0F);
                     }
 
-                    this.setAirshipDead();
+                    this.setDeadVC();
                 }
 
                 return true;
@@ -219,6 +205,9 @@ public class EntityAirshipCore extends EntityVC implements IInventory {
     /**
      * Called to update the entity's position/logic.
      */
+    
+    
+    
     public void onUpdate()
     {
         this.previousStatus = this.status;
@@ -256,22 +245,22 @@ public class EntityAirshipCore extends EntityVC implements IInventory {
         
         
         
-        if (this.fuel > 0)
-        {
-            --this.fuel;
-        }
+        //if (this.fuel > 0)
+        //{
+        //    --this.fuel;
+        //}
 
-        if (this.fuel <= 0)
-        {
-            this.momentum = 0;
-        }
+        //if (this.fuel <= 0)
+        //{
+        //    this.momentum = 0;
+        //}
 
-        this.setMinecartPowered(this.fuel > 0);
+        //this.setMinecartPowered(this.fuel > 0);
 
-        if (this.isMinecartPowered() && this.rand.nextInt(4) == 0)
-        {
-            this.worldObj.spawnParticle(EnumParticleTypes.SMOKE_LARGE, this.posX, this.posY + 0.8D, this.posZ, 0.0D, 0.0D, 0.0D, new int[0]);
-        }
+        //if (this.isMinecartPowered() && this.rand.nextInt(4) == 0)
+        //{
+        //    this.worldObj.spawnParticle(EnumParticleTypes.SMOKE_LARGE, this.posX, this.posY + 0.8D, this.posZ, 0.0D, 0.0D, 0.0D, new int[0]);
+        //}
         
         
         
@@ -281,7 +270,7 @@ public class EntityAirshipCore extends EntityVC implements IInventory {
             this.updateMotion();
             
             
-           
+            //this.controlAirshipExtra();
             
             
             if (this.worldObj.isRemote)
@@ -348,10 +337,12 @@ public class EntityAirshipCore extends EntityVC implements IInventory {
         }
     }
 
+    
+    
     /**
      * Downward empty movement.
      */
-    private void tickFall()
+    public void tickFall()
     {
         if (this.lerpSteps > 0 && !this.canPassengerSteer())
         {
@@ -378,7 +369,7 @@ public class EntityAirshipCore extends EntityVC implements IInventory {
     /**
      * Determines whether the boat is in water, gliding on land, or in air
      */
-    private EntityAirshipCore.Status getAirshipStatus()
+    public EntityAirshipCore.Status getAirshipStatus()
     {
         EntityAirshipCore.Status EntityAirshipEA$status = this.getUnderwaterStatus();
 
@@ -640,7 +631,7 @@ public class EntityAirshipCore extends EntityVC implements IInventory {
     /**
      * Update the boat's speed, based on momentum.
      */
-    private void updateMotion()
+    public void updateMotion()
     {
         double d0 = 0.0D;
         double d5 = -0.001D;
@@ -698,7 +689,7 @@ public class EntityAirshipCore extends EntityVC implements IInventory {
             	    	this.dropItemWithOffset(InitItemsVC.airship_ignition, 1, 0.0F);
                 	}
             	}
-            	this.setAirshipDead();
+            	this.setDeadVC();
             }
             else if (this.status == EntityAirshipCore.Status.IN_AIR
             	  || this.status == EntityAirshipCore.Status.ON_LAND)
@@ -721,7 +712,7 @@ public class EntityAirshipCore extends EntityVC implements IInventory {
         }
     }
     
-    private void controlAirship()
+    public void controlAirship()
     {
         if (this.isBeingRidden())
         {
@@ -791,8 +782,9 @@ public class EntityAirshipCore extends EntityVC implements IInventory {
 	//==================================//
     
     
-    //public void openGUI(EntityPlayer entityplayer)
+    //public void openGUI(World world, EntityPlayer player)
     //{
+    	//player.openGui(Reference.MOD_ID, GuiHandler.GUI_AIRSHIP_BLACK, world, player.getPosition().getX(), player.getPosition().getY(), player.getPosition().getZ());
     //	System.out.println("Open Inventory - Step 2");
     	//this.openGUI(entityplayer);
      //   if (
@@ -820,28 +812,37 @@ public class EntityAirshipCore extends EntityVC implements IInventory {
     
     
     
-    private void controlAirshipExtra()
+    protected void controlAirshipExtra()
     {
+    	
+    	
+    	
     	//EntityPlayer player = Minecraft.getMinecraft().thePlayer;
         //UUID test1 = this.getControllingPassenger().getUniqueID();
-    	if (this.isBeingRidden())
-        {
+    	//if (this.isBeingRidden())
+        //{
             
-            if (this.openInputDown)
-            {
+        //    if (this.openInputDown)
+         //   {
+         //   	this.openGUI(worldObj, Minecraft.getMinecraft().thePlayer);
             	//this.openInventory(player);
-            	Minecraft.getMinecraft().displayGuiScreen(new GuiEntityAirshipCore(new ContainerAirshipCore(Minecraft.getMinecraft().thePlayer.inventory, this)));
+            	
+            	
+            	//Minecraft.getMinecraft().displayGuiScreen(new GuiEntityAirshipCore(new ContainerAirshipCore(Minecraft.getMinecraft().thePlayer.inventory, this)));
+            	
+            	
             	//player.openGui(ViesCraft.instance, GuiHandler.EntityAirshipBase_GUI, this.getEntityWorld(), this.getPosition().getX(), this.getPosition().getY(), this.getPosition().getZ());
             	//this.openGuiAirshipInventory(this, this.horseChest);
             	//this.openGUI(player);
             	
             	
-            	System.out.println("Open Inventory - Step 1");
+            	
+         //   	System.out.println("Open Inventory - Step 1");
             	//System.out.println(player);
             	
-            }
+        //    }
             
-        }
+        //}
     }
     
     
@@ -920,18 +921,38 @@ public class EntityAirshipCore extends EntityVC implements IInventory {
     /**
      * (abstract) Protected helper method to write subclass entity data to NBT.
      */
-    protected void writeEntityToNBT(NBTTagCompound compound)
+    @Override
+    public void writeEntityToNBT(NBTTagCompound compound)
     {
     	super.writeEntityToNBT(compound);
     	
     	compound.setShort("Fuel", (short)this.fuel);
         compound.setString("Type", this.getBoatType().getName());
+        /**
+        NBTTagList list = new NBTTagList();
+		for (int i = 0; i < this.getSizeInventory(); ++i) 
+		{
+			if (this.getStackInSlot(i) != null) 
+			{
+				NBTTagCompound stackTag = new NBTTagCompound();
+				stackTag.setByte("Slot", (byte) i);
+				this.getStackInSlot(i).writeToNBT(stackTag);
+				list.appendTag(stackTag);
+			}
+		}
+		compound.setTag("Items", list);
+        
+		if (this.hasCustomName()) {
+			compound.setString("CustomName", this.getCustomName());
+		}
+		*/
     }
 
     /**
      * (abstract) Protected helper method to read subclass entity data from NBT.
      */
-    protected void readEntityFromNBT(NBTTagCompound compound)
+    @Override
+    public void readEntityFromNBT(NBTTagCompound compound)
     {
     	super.readEntityFromNBT(compound);
     	
@@ -940,6 +961,22 @@ public class EntityAirshipCore extends EntityVC implements IInventory {
         {
             this.setBoatType(EntityAirshipCore.Type.getTypeFromString(compound.getString("Type")));
         }
+        
+        /**
+        NBTTagList list = compound.getTagList("Items", 10);
+		for (int i = 0; i < list.tagCount(); ++i) 
+		{
+			NBTTagCompound stackTag = list.getCompoundTagAt(i);
+			int slot = stackTag.getByte("Slot") & 255;
+			this.setInventorySlotContents(slot, ItemStack.loadItemStackFromNBT(stackTag));
+		}
+
+		if (compound.hasKey("CustomName", 8)) 
+		{
+			this.setCustomName(compound.getString("CustomName"));
+		}
+		*/
+        
     }
 
     public boolean processInitialInteract(EntityPlayer player, @Nullable ItemStack stack, EnumHand hand)
@@ -1085,9 +1122,7 @@ public class EntityAirshipCore extends EntityVC implements IInventory {
         private final String name;
         private final int metadata;
 
-        private Type(
-        		int metadataIn, 
-        		String nameIn)
+        private Type(int metadataIn, String nameIn)
         {
             this.name = nameIn;
             this.metadata = metadataIn;
@@ -1138,12 +1173,17 @@ public class EntityAirshipCore extends EntityVC implements IInventory {
 
 
     @Override
-    public void setDead()
+    public void setDeadVC()
     {
-    	this.playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 0.5F, 0.4F / .5F * 0.4F + 0.8F);
-        this.isDead = true;
+    	if (!this.worldObj.isRemote)
+    	{
+    		this.setAirshipDead();
+    		this.playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 0.5F, 0.4F / .5F * 0.4F + 0.8F);
+    		
+    		this.isDead = true;
         
-        if (!this.worldObj.isRemote)
+    	}
+    	else
     	{
         	this.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, 
 					this.posX + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
@@ -1185,9 +1225,12 @@ public class EntityAirshipCore extends EntityVC implements IInventory {
     
     public void setAirshipDead()
     {
+    	
+    	
+    	/**
     	if (!this.worldObj.isRemote)
     	{
-    		
+    		//InventoryHelper.dropInventoryItems(world, pos, te);
     		this.setDead();
     	}
     	else
@@ -1228,6 +1271,9 @@ public class EntityAirshipCore extends EntityVC implements IInventory {
 				}
 			}
     	}
+    	
+    	*/
+    	
     }
 
     
@@ -1283,15 +1329,15 @@ public class EntityAirshipCore extends EntityVC implements IInventory {
     
     
     
-    protected boolean isMinecartPowered()
-    {
-        return ((Boolean)this.dataManager.get(POWERED)).booleanValue();
-    }
+    //protected boolean isMinecartPowered()
+    //{
+    //    return ((Boolean)this.dataManager.get(POWERED)).booleanValue();
+    //}
 
-    protected void setMinecartPowered(boolean p_94107_1_)
-    {
-        this.dataManager.set(POWERED, Boolean.valueOf(p_94107_1_));
-    }
+    //protected void setMinecartPowered(boolean p_94107_1_)
+    //{
+    //    this.dataManager.set(POWERED, Boolean.valueOf(p_94107_1_));
+    //}
 
     
     
@@ -1313,12 +1359,28 @@ public class EntityAirshipCore extends EntityVC implements IInventory {
     
     
     
+    /**
     
+    public String getCustomName() {
+		return this.customName;
+	}
+
+	public void setCustomName(String customName) {
+		this.customName = customName;
+	}
     
-    
-    
-    
-    
+	@Override
+	public String getName() {
+		return this.hasCustomName() ? this.customName : "container.entityairshipcore";
+	}
+
+	@Override
+	public boolean hasCustomName() {
+		return this.customName != null && !this.customName.equals("");
+	}
+	
+	
+	
     
 	@Override
 	public int getSizeInventory() {
@@ -1327,27 +1389,38 @@ public class EntityAirshipCore extends EntityVC implements IInventory {
 
 	@Override
 	public ItemStack getStackInSlot(int index) {
-		if (index < 0 || index >= this.getSizeInventory())
+		if(index <0 || index >= this.getSizeInventory())
+		{
 			return null;
+		}
+		
 		return this.inventory[index];
 	}
 
 	@Override
-	public ItemStack decrStackSize(int index, int count) {
-		if (this.getStackInSlot(index) != null) {
+	public ItemStack decrStackSize(int index, int count) 
+	{
+		if (this.getStackInSlot(index) != null) 
+		{
 			ItemStack itemstack;
 
-			if (this.getStackInSlot(index).stackSize <= count) {
+			if (this.getStackInSlot(index).stackSize <= count) 
+			{
 				itemstack = this.getStackInSlot(index);
 				this.setInventorySlotContents(index, null);
 				this.markDirty();
 				return itemstack;
-			} else {
+			} 
+			else 
+			{
 				itemstack = this.getStackInSlot(index).splitStack(count);
 
-				if (this.getStackInSlot(index).stackSize <= 0) {
+				if (this.getStackInSlot(index).stackSize <= 0) 
+				{
 					this.setInventorySlotContents(index, null);
-				} else {
+				} 
+				else 
+				{
 					//Just to show that changes happened
 					this.setInventorySlotContents(index, this.getStackInSlot(index));
 				}
@@ -1355,36 +1428,47 @@ public class EntityAirshipCore extends EntityVC implements IInventory {
 				this.markDirty();
 				return itemstack;
 			}
-		} else {
+		} 
+		else 
+		{
 			return null;
 		}
 	}
 
 	@Override
-	public ItemStack removeStackFromSlot(int index) {
-		// TODO Auto-generated method stub
-		return null;
+	public ItemStack removeStackFromSlot(int index) 
+	{
+		ItemStack stack = this.getStackInSlot(index);
+		this.setInventorySlotContents(index, null);
+		return stack;
 	}
 
 	@Override
-	public void setInventorySlotContents(int index, ItemStack stack) {
+	public void setInventorySlotContents(int index, ItemStack stack) 
+	{
 		if (index < 0 || index >= this.getSizeInventory())
+		{
 			return;
+		}
 
 		if (stack != null && stack.stackSize > this.getInventoryStackLimit())
+		{
 			stack.stackSize = this.getInventoryStackLimit();
+		}
 
 		if (stack != null && stack.stackSize == 0)
+		{
 			stack = null;
+		}
 
 		this.inventory[index] = stack;
-
 		this.markDirty();
 	}
 
 	@Override
-	public int getInventoryStackLimit() {
-		return 64;
+	public int getInventoryStackLimit() 
+	{
+		return 128;
 	}
 
 	@Override
@@ -1394,62 +1478,59 @@ public class EntityAirshipCore extends EntityVC implements IInventory {
 	}
 
 	@Override
-	public boolean isUseableByPlayer(EntityPlayer player) {
-		return true;//this.worldObj.getTileEntity(this.getPos()) == this && player.getDistanceSq(this.pos.add(0.5, 0.5, 0.5)) <= 64;
+	public boolean isUseableByPlayer(EntityPlayer player) 
+	{
+		return (EntityAirshipCore)player.getRidingEntity() == this
+				;//this.worldObj.getTileEntity(this.getPos()) == this && player.getDistanceSq(this.pos.add(0.5, 0.5, 0.5)) <= 64;
 	}
 
 	@Override
-	public void openInventory(EntityPlayer player) {
+	public void openInventory(EntityPlayer player) 
+	{
+		//player.addStat( -=jAchievement=-);
+	}
+
+	@Override
+	public void closeInventory(EntityPlayer player) 
+	{
 		
 	}
 
 	@Override
-	public void closeInventory(EntityPlayer player) {
-		
-	}
-
-	@Override
-	public boolean isItemValidForSlot(int index, ItemStack stack) {
+	public boolean isItemValidForSlot(int index, ItemStack stack) 
+	{
 		
 		return true;
 	}
 
 	@Override
-	public int getField(int id) {
+	public int getField(int id) 
+	{
 		return 0;
 	}
 
 	@Override
-	public void setField(int id, int value) {
+	public void setField(int id, int value) 
+	{
 		
 	}
 
 	@Override
-	public int getFieldCount() {
+	public int getFieldCount() 
+	{
 		return 0;
 	}
 
 	@Override
-	public void clear() {
+	public void clear() 
+	{
 		for (int i = 0; i < this.getSizeInventory(); i++)
+		{
 			this.setInventorySlotContents(i, null);
+		}
 	}
-	@Override
-	public String getName() {
-		return this.hasCustomName() ? this.customName : "container.tutorial_tile_entity";
-	}
-
-	@Override
-	public boolean hasCustomName() {
-		return this.customName != null && !this.customName.equals("");
-	}
-	public String getCustomName() {
-		return this.customName;
-	}
-
-	public void setCustomName(String customName) {
-		this.customName = customName;
-	}
+	*/
+	
 	/**
 	@Override
 	public void readFromNBT(NBTTagCompound nbt) {

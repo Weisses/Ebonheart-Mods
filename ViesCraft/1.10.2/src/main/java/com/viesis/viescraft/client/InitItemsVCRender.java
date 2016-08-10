@@ -57,20 +57,6 @@ public final class InitItemsVCRender extends ItemsVC {
 		registerRender(achievement_airship_airborn);
 		registerRender(achievement_airship_water);
 		registerRender(achievement_airship_lava);
-		
-		//=======================================
-		
-		registerRender(item_airship_base);
-		//registerRender(item_airship_v2);
-		//registerRender(item_airship_furnace);
-		
-		
-		
-		registerRender(item_viesdenburg);
-		
-		
-		//registerRender(test);
-		
 	}
 	
 	public static void registerRender(Item item)

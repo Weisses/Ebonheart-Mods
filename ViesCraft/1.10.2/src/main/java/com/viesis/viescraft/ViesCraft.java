@@ -1,24 +1,21 @@
 package com.viesis.viescraft;
 
-import net.minecraft.init.Blocks;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.registry.EntityRegistry;
+import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 
 import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.api.creative.VCTabAirships;
-import com.viesis.viescraft.api.creative.VCTabBlocks;
 import com.viesis.viescraft.api.creative.VCTabItems;
 import com.viesis.viescraft.api.util.LogHelper;
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipCore;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 import com.viesis.viescraft.proxy.CommonProxy;
 
@@ -28,6 +25,7 @@ public class ViesCraft {
     @SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.SERVER_PROXY_CLASS)
 	public static CommonProxy proxy;
 	public static Configuration config = null;
+	public static SimpleNetworkWrapper network;
 	
 	//public static final VCTabBlocks tabViesCraftBlocks = new VCTabBlocks("tabViesCraftBlocks");
 	public static final VCTabItems tabViesCraftItems = new VCTabItems("tabViesCraftItems");
@@ -36,7 +34,6 @@ public class ViesCraft {
 	@Mod.Instance(Reference.MOD_ID)
 	public static ViesCraft instance;
 	
-    
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
@@ -46,14 +43,14 @@ public class ViesCraft {
 			config.load();
 			LogHelper.info("Good news everyone! The configuration has been loaded!");
 		}
-		catch (Exception e)
+		catch(Exception e)
 		{
 			LogHelper.error("ViesCraft has a problem loading it's configuration.");
 			throw new RuntimeException(e);
 		}
 		finally
 		{
-			if (config.hasChanged()) 
+			if(config.hasChanged()) 
 			{
 				config.save();
 				LogHelper.info("Configuration changed, saved.");

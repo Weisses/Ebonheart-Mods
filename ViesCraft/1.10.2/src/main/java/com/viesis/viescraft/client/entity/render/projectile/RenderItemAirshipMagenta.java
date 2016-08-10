@@ -1,4 +1,4 @@
-package com.viesis.viescraft.client.projectile;
+package com.viesis.viescraft.client.entity.render.projectile;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
@@ -14,17 +14,16 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.viesis.viescraft.api.Reference;
-import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipNormal;
-import com.viesis.viescraft.common.entity.old.EntityItemAirship;
+import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipMagenta;
 import com.viesis.viescraft.init.InitItemsVC;
 
 @SideOnly(Side.CLIENT)
-public class RenderItemAirshipNormal extends Render<EntityItemAirshipNormal> {
+public class RenderItemAirshipMagenta extends Render<EntityItemAirshipMagenta> {
 	
-	public static final ResourceLocation ENTITY_TEXTURE = new ResourceLocation(Reference.MOD_ID, "textures/items/item_airship.png");
+	public static final ResourceLocation ENTITY_TEXTURE = new ResourceLocation(Reference.MOD_ID, "textures/items/gems/enchanted_ebonheart.png");
     private float scale;
     
-    public RenderItemAirshipNormal(RenderManager renderManagerIn)
+    public RenderItemAirshipMagenta(RenderManager renderManagerIn)
     {
         super(renderManagerIn);
         this.scale = 0.5f;
@@ -40,14 +39,14 @@ public class RenderItemAirshipNormal extends Render<EntityItemAirshipNormal> {
      * (Render<T extends Entity>) and this method has signature public void func_76986_a(T entity, double d, double d1,
      * double d2, float f, float f1). But JAD is pre 1.5 so doe
      */
-    public void doRender(EntityItemAirshipNormal entity, double x, double y, double z, float entityYaw, float partialTicks)
+    public void doRender(EntityItemAirshipMagenta entity, double x, double y, double z, float entityYaw, float partialTicks)
     {
         GlStateManager.pushMatrix();
         this.bindEntityTexture(entity);
         GlStateManager.translate((float)x, (float)y, (float)z);
         GlStateManager.enableRescaleNormal();
         GlStateManager.scale(this.scale, this.scale, this.scale);
-        TextureAtlasSprite textureatlassprite = Minecraft.getMinecraft().getRenderItem().getItemModelMesher().getParticleIcon(InitItemsVC.item_airship_normal);
+        TextureAtlasSprite textureatlassprite = Minecraft.getMinecraft().getRenderItem().getItemModelMesher().getParticleIcon(InitItemsVC.item_airship_magenta);
         Tessellator tessellator = Tessellator.getInstance();
         VertexBuffer vertexbuffer = tessellator.getBuffer();
         //WorldRenderer worldrenderer = tessellator.getWorldRenderer();
@@ -75,7 +74,7 @@ public class RenderItemAirshipNormal extends Render<EntityItemAirshipNormal> {
      * Returns the location of an entity's texture. Doesn't seem to be called unless you call Render.bindEntityTexture.
      */
     @Override
-    protected ResourceLocation getEntityTexture(EntityItemAirshipNormal entity)
+    protected ResourceLocation getEntityTexture(EntityItemAirshipMagenta entity)
     {
         return //ENTITY_TEXTURE;
         		TextureMap.LOCATION_BLOCKS_TEXTURE;

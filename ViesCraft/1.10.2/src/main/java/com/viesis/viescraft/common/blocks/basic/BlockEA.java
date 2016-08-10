@@ -10,7 +10,6 @@ import net.minecraft.world.IBlockAccess;
 
 import com.viesis.viescraft.common.blocks.BlockHelper;
 
-
 public class BlockEA extends Block {
 	
 	public BlockEA(String unlocalizedName) 

@@ -36,10 +36,6 @@ import com.viesis.viescraft.common.items.resources.ItemBalloon;
 import com.viesis.viescraft.common.items.resources.ItemEngine;
 import com.viesis.viescraft.common.items.resources.ItemIgnition;
 import com.viesis.viescraft.common.items.resources.ItemPaint;
-import com.viesis.viescraft.common.items.resources.old.ItemAirship;
-import com.viesis.viescraft.common.items.resources.old.ItemAirshipV2;
-import com.viesis.viescraft.common.items.resources.old.ItemAirshiptest;
-import com.viesis.viescraft.common.items.resources.old.ItemViesdenburg;
 
 public class InitItemsVC extends ItemsVC {
 	
@@ -51,11 +47,7 @@ public class InitItemsVC extends ItemsVC {
 		airship_engine = registerItem(new ItemEngine());
 		airship_ignition = registerItem(new ItemIgnition());
 		
-		
-		item_airship_normal = registerItem(new 
-				ItemAirshipNormal()
-				//ItemAirshiptest(EntityAirshipNormal.Type.BLACK)
-				);
+		item_airship_normal = registerItem(new ItemAirshipNormal());
 		item_airship_black = registerItem(new ItemAirshipBlack());
 		item_airship_blue = registerItem(new ItemAirshipBlue());
 		item_airship_brown = registerItem(new ItemAirshipBrown());
@@ -66,10 +58,7 @@ public class InitItemsVC extends ItemsVC {
 		item_airship_lightgray = registerItem(new ItemAirshipLightGray());
 		item_airship_lime = registerItem(new ItemAirshipLime());
 		item_airship_magenta = registerItem(new ItemAirshipMagenta());
-		item_airship_orange = registerItem(new 
-				ItemAirshipOrange()
-				//ItemAirshiptest(EntityAirshipNormal.Type.ORANGE)
-				);
+		item_airship_orange = registerItem(new ItemAirshipOrange());
 		item_airship_pink = registerItem(new ItemAirshipPink());
 		item_airship_purple = registerItem(new ItemAirshipPurple());
 		item_airship_red = registerItem(new ItemAirshipRed());
@@ -93,20 +82,6 @@ public class InitItemsVC extends ItemsVC {
 		item_paint_white = registerItem(new ItemPaint(EntityAirshipCore.Type.WHITE));
 		item_paint_yellow = registerItem(new ItemPaint(EntityAirshipCore.Type.YELLOW));
 		
-		
-		//item_airship_black = registerItem(new ItemAirshiptest(EntityAirshipNormal.Type.BLACK));
-		//item_airship_blue = registerItem(new ItemAirshiptest(EntityAirshipNormal.Type.BLUE));
-		//item_airship_red = registerItem(new ItemAirshiptest(EntityAirshipNormal.Type.RED));
-		
-		
-		
-		item_airship_base = registerItem(new ItemAirship());
-		//item_airship_v2 = registerItem(new ItemAirshipV2());
-		//item_airship_furnace = registerItem(new ItemAirshipFurnace());
-		
-		
-		item_viesdenburg = registerItem(new ItemViesdenburg());
-		
 		achievement_airship_create_engine = registerItem(new ItemAchievementEngine());
 		achievement_airship_create_ignition = registerItem(new ItemAchievementIgnition());
 		achievement_airship_create = registerItem(new ItemAchievementCreate());
@@ -115,9 +90,6 @@ public class InitItemsVC extends ItemsVC {
 		achievement_airship_airborn = registerItem(new ItemAchievementAirborn());
 		achievement_airship_water = registerItem(new ItemAchievementWater());
 		achievement_airship_lava = registerItem(new ItemAchievementLava());
-		
-		//test = registerItem(new ItemAirship());
-		
 	}
 	
 	private static <V extends Item> V registerItem(V item) 

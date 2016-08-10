@@ -6,16 +6,9 @@ import java.util.Random;
 import javax.annotation.Nullable;
 
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextComponentBase;
-import net.minecraft.util.text.TextComponentString;
-import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.World;
 
 public class EntityVC extends Entity {
@@ -40,14 +33,13 @@ public class EntityVC extends Entity {
     public boolean backInputDown;
     public boolean upInputDown;
     public boolean downInputDown;
-    public boolean openInputDown;
+    public static boolean openInputDown;
 	
-    Random random = new Random();
+    public Random random = new Random();
     
 	public EntityVC(World worldIn) 
 	{
 		super(worldIn);
-		
 	}
 	
 	@Override
@@ -61,20 +53,18 @@ public class EntityVC extends Entity {
 	{
 		
 	}
-
+	
 	@Override
 	protected void writeEntityToNBT(NBTTagCompound compound) 
 	{
 		
 	}
-
+	
     
     
     //==================================//
     //          Misc Attributes         //
 	//==================================//
-    
-    
     
 	/**
      * returns if this entity triggers Block.onEntityWalking on the blocks they walk on. used for spiders and wolves to
@@ -94,7 +84,7 @@ public class EntityVC extends Entity {
     {
         return entityIn.getEntityBoundingBox();
     }
-
+    
     /**
      * Returns the collision bounding box for this entity
      */
@@ -103,7 +93,7 @@ public class EntityVC extends Entity {
     {
         return this.getEntityBoundingBox();
     }
-
+    
     /**
      * Returns true if this entity should push and be pushed by other entities when colliding.
      */
@@ -111,7 +101,7 @@ public class EntityVC extends Entity {
     {
         return true;
     }
-
+    
     /**
      * Returns the Y offset from the entity's position for any entity riding this one.
      */
@@ -181,4 +171,9 @@ public class EntityVC extends Entity {
     {
         
     }
+    
+	public void setDeadVC() 
+	{
+		
+	}
 }

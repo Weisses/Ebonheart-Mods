@@ -53,9 +53,9 @@ public class ItemsVC {
 	
 	//=============================================
 	
-	public static Item item_airship_base;
-	public static Item item_airship_v2;
-	public static Item item_airship_furnace;
-	public static Item item_viesdenburg;
+	//public static Item item_airship_base;
+	//public static Item item_airship_v2;
+	//public static Item item_airship_furnace;
+	//public static Item item_viesdenburg;
 	
 }

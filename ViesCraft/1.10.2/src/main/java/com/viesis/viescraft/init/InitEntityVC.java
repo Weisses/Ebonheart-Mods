@@ -38,9 +38,6 @@ import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipPurpl
 import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipRed;
 import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipWhite;
 import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipYellow;
-import com.viesis.viescraft.common.entity.old.EntityAirshipBase;
-import com.viesis.viescraft.common.entity.old.EntityItemAirship;
-
 
 public class InitEntityVC {
 	
@@ -48,17 +45,6 @@ public class InitEntityVC {
 	
 	public static void preInit()
 	{
-		//register(EntityItemViesdenburg.class, "EnchantedEbonheart", 64, 20, true);
-		//register(EntityAirshipVC.class, "AirshipEbonheart", 64, 1, true);
-		
-		register(EntityItemAirship.class, "item.airship", 64, 20, true);
-		//register(EntityAirshipVCtest.class, "AirshipEbonheartNEW", 64, 1, true);
-		
-		//register(EntityItemAirshipFurnace.class, "vc.ItemAirshipFurnace", 64, 20, true);
-		
-		//===========================================
-		
-		
 		register(EntityItemAirshipNormal.class, "item.airship.normal", 64, 20, true);
 		register(EntityItemAirshipBlack.class, "item.airship.black", 64, 20, true);
 		register(EntityItemAirshipBlue.class, "item.airship.blue", 64, 20, true);
@@ -77,11 +63,7 @@ public class InitEntityVC {
 		register(EntityItemAirshipWhite.class, "item.airship.white", 64, 20, true);
 		register(EntityItemAirshipYellow.class, "item.airship.yellow", 64, 20, true);
 		
-		
-		
 		//===========================================
-		
-		
 		
 		register(EntityAirshipNormal.class, "airship.normal", 64, 1, true);
 		register(EntityAirshipBlack.class, "airship.black", 64, 1, true);
@@ -100,20 +82,6 @@ public class InitEntityVC {
 		register(EntityAirshipRed.class, "airship.red", 64, 1, true);
 		register(EntityAirshipWhite.class, "airship.white", 64, 1, true);
 		register(EntityAirshipYellow.class, "airship.yellow", 64, 1, true);
-		
-		
-		
-		////register(EntityAirshipNormal.class, "airship." + EntityAirshipNormal.Type.BLACK.getName(), 64, 1, true);
-		////register(EntityAirshipNormal.class, "airship." + EntityAirshipNormal.Type.RED.getName(), 64, 1, true);
-		
-		
-		
-		register(EntityAirshipBase.class, "AirshipEbonheart", 64, 1, true);
-		//register(EntityAirshipBase2.class, "AirshipV2", 64, 1, true);
-		
-		//register(EntityAirshipFurnace.class, "AirshipVCFurnace", 64, 1, true);
-		
-		
 	}
 	
 	public static void register(Class<? extends Entity> entityClass, String entityName, int trackingRange, int updateFrequency, boolean sendsVelocityUpdates)

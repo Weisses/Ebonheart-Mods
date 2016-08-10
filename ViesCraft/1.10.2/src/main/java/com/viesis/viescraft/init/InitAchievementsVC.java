@@ -28,9 +28,7 @@ public class InitAchievementsVC extends AchievementsVC {
     	airship_airborn = addAchievement(AIRSHIP_AIRBORN, "airship_airborn", 1, 2, new ItemStack(InitItemsVC.achievement_airship_airborn), (Achievement)null);
     	airship_water = addAchievement(AIRSHIP_WATER, "airship_water", -1, 3, new ItemStack(InitItemsVC.achievement_airship_water), (Achievement)airship_airborn).setSpecial();
     	airship_lava = addAchievement(AIRSHIP_LAVA, "airship_lava", 3, 3, new ItemStack(InitItemsVC.achievement_airship_lava), (Achievement)airship_airborn).setSpecial();
-    	
     }
-    
     
     private static Achievement addAchievement(String unlocalizedName, String identifier, int column, int row, ItemStack iconStack, Achievement parent)
     {

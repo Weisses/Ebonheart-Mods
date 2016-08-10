@@ -11,25 +11,24 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 
 import com.google.common.base.Predicate;
 
-public class WorldGenSingleMinable extends WorldGenerator 
-{
-
+public class WorldGenSingleMinable extends WorldGenerator {
+	
 	private IBlockState block;
 	private Predicate<IBlockState> target;
-
+	
 	//used to gen single ore.
 	public WorldGenSingleMinable(IBlockState block, Predicate<IBlockState> target) 
 	{
 		this.block = block;
 		this.target = target;
 	}
-
+	
 	@SuppressWarnings("unchecked")
 	public WorldGenSingleMinable(IBlockState block) 
 	{
 		this(block, BlockMatcher.forBlock(Blocks.STONE));
 	}
-
+	
 	@Override
 	public boolean generate(World world, Random rand, BlockPos pos) 
 	{

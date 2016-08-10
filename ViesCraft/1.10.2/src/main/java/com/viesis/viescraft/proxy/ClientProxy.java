@@ -34,7 +34,6 @@ public class ClientProxy extends CommonProxy {
 		InitEntityVCRender.registerRenders();
 		
 		//---------------------------
-		//InitEntityEARender.registerParticle(null, null);
 		//InitBlocksEARender.registerSpecialRenders();
 	}
 	
@@ -42,7 +41,6 @@ public class ClientProxy extends CommonProxy {
 	public void postInit(FMLPostInitializationEvent event) 
 	{
 		super.postInit(event);
-		
 	}
 	
 	//=============================================================

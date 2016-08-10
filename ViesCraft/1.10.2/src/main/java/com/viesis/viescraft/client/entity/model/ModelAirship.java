@@ -14,7 +14,6 @@ public class ModelAirship extends ModelBase {
 	
 	//fields
 	//ModelRenderer Balloon_1a;
-    
 	ModelRenderer Balloon_1aM;
 	ModelRenderer Balloon_1bF;
 	ModelRenderer Balloon_1cF;

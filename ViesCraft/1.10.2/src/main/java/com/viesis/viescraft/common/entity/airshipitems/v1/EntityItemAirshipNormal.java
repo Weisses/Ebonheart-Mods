@@ -1,9 +1,6 @@
 package com.viesis.viescraft.common.entity.airshipitems.v1;
 
-import java.util.Random;
-
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.RayTraceResult;

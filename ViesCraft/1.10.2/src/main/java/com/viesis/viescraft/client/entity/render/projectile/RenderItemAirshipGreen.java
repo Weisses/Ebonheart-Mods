@@ -1,4 +1,4 @@
-package com.viesis.viescraft.client.projectile;
+package com.viesis.viescraft.client.entity.render.projectile;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
@@ -14,16 +14,16 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.viesis.viescraft.api.Reference;
-import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipOrange;
+import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipGreen;
 import com.viesis.viescraft.init.InitItemsVC;
 
 @SideOnly(Side.CLIENT)
-public class RenderItemAirshipOrange extends Render<EntityItemAirshipOrange> {
+public class RenderItemAirshipGreen extends Render<EntityItemAirshipGreen> {
 	
 	public static final ResourceLocation ENTITY_TEXTURE = new ResourceLocation(Reference.MOD_ID, "textures/items/gems/enchanted_ebonheart.png");
     private float scale;
     
-    public RenderItemAirshipOrange(RenderManager renderManagerIn)
+    public RenderItemAirshipGreen(RenderManager renderManagerIn)
     {
         super(renderManagerIn);
         this.scale = 0.5f;
@@ -39,14 +39,14 @@ public class RenderItemAirshipOrange extends Render<EntityItemAirshipOrange> {
      * (Render<T extends Entity>) and this method has signature public void func_76986_a(T entity, double d, double d1,
      * double d2, float f, float f1). But JAD is pre 1.5 so doe
      */
-    public void doRender(EntityItemAirshipOrange entity, double x, double y, double z, float entityYaw, float partialTicks)
+    public void doRender(EntityItemAirshipGreen entity, double x, double y, double z, float entityYaw, float partialTicks)
     {
         GlStateManager.pushMatrix();
         this.bindEntityTexture(entity);
         GlStateManager.translate((float)x, (float)y, (float)z);
         GlStateManager.enableRescaleNormal();
         GlStateManager.scale(this.scale, this.scale, this.scale);
-        TextureAtlasSprite textureatlassprite = Minecraft.getMinecraft().getRenderItem().getItemModelMesher().getParticleIcon(InitItemsVC.item_airship_orange);
+        TextureAtlasSprite textureatlassprite = Minecraft.getMinecraft().getRenderItem().getItemModelMesher().getParticleIcon(InitItemsVC.item_airship_green);
         Tessellator tessellator = Tessellator.getInstance();
         VertexBuffer vertexbuffer = tessellator.getBuffer();
         //WorldRenderer worldrenderer = tessellator.getWorldRenderer();
@@ -74,7 +74,7 @@ public class RenderItemAirshipOrange extends Render<EntityItemAirshipOrange> {
      * Returns the location of an entity's texture. Doesn't seem to be called unless you call Render.bindEntityTexture.
      */
     @Override
-    protected ResourceLocation getEntityTexture(EntityItemAirshipOrange entity)
+    protected ResourceLocation getEntityTexture(EntityItemAirshipGreen entity)
     {
         return //ENTITY_TEXTURE;
         		TextureMap.LOCATION_BLOCKS_TEXTURE;

@@ -4,12 +4,8 @@ import java.util.Random;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;
-import net.minecraft.init.SoundEvents;
-import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
-
-import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipNormal;
 
 public class EntityItemAirshipCore extends EntityThrowable {
 	
