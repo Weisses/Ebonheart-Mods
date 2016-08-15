@@ -1,3 +1,5 @@
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
 
 import com.viesis.viescraft.ViesCraft;
@@ -6,6 +8,193 @@ import com.viesis.viescraft.network.GuiHandler;
 
 public class Ark {
 
+//KeyBinds.java
+
+	/**
+	 * 
+	 * 
+	//private static ItemStack[] inventoryFuel = new ItemStack[1];
+	//private static ItemStack[] furnaceItemStacks = new ItemStack[3];
+	//public ItemStack[] inventory;
+	//public ItemStack[] furnaceItemStacks = new ItemStack[3];
+	
+	
+	/////////OnUpdate
+        //else
+        //{
+        //	canAirshipFly = false;
+        //}
+        
+        //this.setMinecartPowered(this.fuel > 0);
+
+        //if (this.isMinecartPowered() && this.rand.nextInt(4) == 0)
+        //{
+        //    this.worldObj.spawnParticle(EnumParticleTypes.SMOKE_LARGE, this.posX, this.posY + 0.8D, this.posZ, 0.0D, 0.0D, 0.0D, new int[0]);
+        //}
+        //if(!this.worldObj.isRemote)
+        //{
+        //	LogHelper.info(inventory[9]);
+        //}
+	
+        	//int test = getItemBurnTime(inventory[9]);
+        	
+        	//LogHelper.info("Testing = " + test);
+        	
+	//LogHelper.info(isBurning());
+	@Override
+	public int getSizeInventory() 
+	{
+		return inventory.length
+				//9
+				;
+	}
+	@Override
+	public boolean isUseableByPlayer(EntityPlayer player) 
+	{
+		return true;
+		////return (EntityAirshipCore)player.getRidingEntity() == this;
+		//this.worldObj.getTileEntity(this.getPos()) == this && player.getDistanceSq(this.pos.add(0.5, 0.5, 0.5)) <= 64;
+	}
+	
+	
+	
+	
+	//private static final byte cook_field_id = 0;
+	//private static final byte first_burn_time_remaining_id = 1;
+	//private static final byte first_burn_time_initial_field_id = first_burn_time_remaining_id;
+	//private static final byte number_of_fields = first_burn_time_initial_field_id + (byte)fuel;
+	
+	//@Override
+	//public int getField(int id) 
+	//{
+		//return 0;
+		
+	//}
+	
+	//@Override
+	//public void setField(int id, int value){}
+	
+	//@Override
+	//public int getFieldCount() 
+	//{
+	//	return 0;
+	//}
+	
+	/////////////writeEntityToNBT
+	 
+    	//compound.setString("Type", this.getBoatType().getName());
+        
+		//if (this.hasCustomName()) 
+		//{
+			//compound.setString("CustomName", this.getCustomName());
+		//}
+	/////////////readEntityFromNBT
+	
+    	
+        //if (compound.hasKey("Type", 8))
+        //{
+        //    this.setBoatType(EntityAirshipCore.Type.getTypeFromString(compound.getString("Type")));
+        //}
+        
+		//if (compound.hasKey("CustomName", 8)) 
+		//{
+			//this.setCustomName(compound.getString("CustomName"));
+		//}
+	
+    public Packet getDescriptionPacket() {
+		NBTTagCompound nbtTagCompound = new NBTTagCompound();
+		writeToNBT(nbtTagCompound);
+		//final int metadata = 0;
+		return new SPacketEntity();
+	}
+	
+	public void onDataPacket(NetworkManager net, SPacketEntity pkt) {
+		NBTTagCompound nbtTagCompound = new NBTTagCompound();
+		readEntityFromNBT(nbtTagCompound);
+	}
+	
+	//@Override
+	public static boolean isItemValidForFuelSlot(//int index, 
+			ItemStack stack) 
+	{
+		//return true;
+		
+		if (index == 2)
+        {
+            return false;
+        }
+        else if (index != 1)
+        {
+            return true;
+        }
+        else
+        {
+        
+		
+        	//ItemStack itemstack = furnaceItemStacks[1];
+            
+        	//ItemStack itemstack = inventory[10];
+            return isItemFuel(stack);
+            		//|| SlotFurnaceFuel.isBucket(stack) 
+            		//&& (itemstack == null || itemstack.getItem() != Items.BUCKET);
+        //}
+		
+		//return Items.COAL;
+		 
+		 
+	}
+	
+	
+    public void fuelFlight()
+    {
+    	//if(!canAirshipFly) 
+        //{
+        	int numberOfFuelBurning = burnFuel();
+			
+			if(numberOfFuelBurning > 0) 
+			{
+				//canAirshipFly = true;
+				cookTime += numberOfFuelBurning;
+			} 
+			else 
+			{
+				//canAirshipFly = false;
+				//cookTime -= 2;
+				cookTime = 0;
+			}
+			
+			if(cookTime < 0) 
+			{
+				cookTime = 0;
+			}
+			
+			////if(cookTime >= cook_time_for_completion) 
+			////{
+				//smeltItem();
+			////	cookTime = 1;
+			////}
+			//while(cookTime > 0)
+			//{
+			//	canAirshipFly = true;
+			//}
+		//} 
+        //else 
+        //{
+		//	cookTime = 0;
+		//}
+    	
+
+		int numberBurning = numberOfBurningFuelSlots();
+		if(cachedNumberOfBurningSlots != numberBurning) {
+			cachedNumberOfBurningSlots = numberBurning;
+			
+		}
+        
+    }
+    
+	
+	
+	
 	
 //KeyBinds.java
 
@@ -648,9 +837,77 @@ draconium_ore = registerBlock(new BlockOreDraconium(2, 0.4f, 10f));
     	 * 
 	*/
 	
+//KeyBinds.java
+
+	/**
+	 * 
+	 * 
 	
+    //@Override
+    //public void openGUI(World world, EntityPlayer player)
+    //{
+    	//player.openGui(Reference.MOD_ID, GuiHandler.GUI_AIRSHIP_BLACK, world, player.getPosition().getX(), player.getPosition().getY(), player.getPosition().getZ());
+    //}
+	//LogHelper.info(Minecraft.getMinecraft().inGameHasFocus);
+       //Minecraft.getMinecraft().gameSettings.isKeyDown(Keybinds.vcInventory))     
 	
+            	
+            	//LogHelper.info(Minecraft.getMinecraft().inGameHasFocus);
+            	//if( Minecraft.getMinecraft().setIngameNotInFocus()
+            	///		Minecraft.getMinecraft().currentScreen == ((GuiEntityAirshipBlack)null)
+            	//		Minecraft.getMinecraft().thePlayer.get
+            	//	)
+            	//{
+            		
+            	//}
+            		//Minecraft.getMinecraft().currentScreen == GuiHandler.GUI_AIRSHIP_BLACK
+            	
+            	//PacketDispatcher.sendToServer(new OpenGuiMessage(GuiHandler.GUI_AIRSHIP_BLACK));
+        //LogHelper.info(Minecraft.getMinecraft().inGameHasFocus);
+            	//this.openGUI(this.worldObj, playerVC);
+            	//Minecraft.getMinecraft().thePlayer.displayGui(null);
+            			//Minecraft.getMinecraft().thePlayer
+            			
+            			//ViesCraft.network.sendToServer(new VCMessage("foobar"));
+            	//ViesCraft.network.sendTo(new SomeMessage(), somePlayer);
+            			
+            	///}	
+            	///else if (Minecraft.getMinecraft().currentScreen != ((GuiEntityAirshipBlack)null)
+            	///		)
+            	///{
+            	///	NetworkHandler.sendToServer(new MessageGuiCloseBlack());
+            	
+            	///}    	
 	
+    //public String getCustomName() 
+    //{
+	//	return this.customName;
+	//}
+    
+	//public void setCustomName(String customName) 
+	//{
+	//	this.customName = customName;
+	//}
+    
+	//@Override
+	//public String getName() 
+	//{
+		//return this.hasCustomName() ? this.customName : "container.vc.airship.black";
+	//}
+	
+	//@Override
+	//public boolean hasCustomName() 
+	//{
+	//	return this.customName != null && !this.customName.equals("");
+	//}
+	
+	//@Override
+	//public ITextComponent getDisplayName() 
+	//{
+	//	return this.hasCustomName() ? new TextComponentString(this.getName()) : new TextComponentTranslation(this.getName());
+	//}
+
+	*/
 	
 	
 }

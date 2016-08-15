@@ -6,7 +6,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
 
 import com.viesis.viescraft.api.Reference;
-import com.viesis.viescraft.network.server.MessageGuiOpenBlack;
+import com.viesis.viescraft.network.server.MessageGuiOpen;
 
 public class NetworkHandler {
 	
@@ -17,7 +17,7 @@ public class NetworkHandler {
 		INSTANCE =  NetworkRegistry.INSTANCE.newSimpleChannel (Reference.MOD_ID);
 		
 		//Registering the messages
-		INSTANCE.registerMessage(MessageGuiOpenBlack.class, MessageGuiOpenBlack.class, 0, Side.SERVER);
+		INSTANCE.registerMessage(MessageGuiOpen.class, MessageGuiOpen.class, 0, Side.SERVER);
 		
 	}
 	

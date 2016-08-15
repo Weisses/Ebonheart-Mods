@@ -1,6 +1,8 @@
 package com.viesis.viescraft.common.entity.airshipcolors.v1;
 
+import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipCore;
@@ -32,6 +34,7 @@ public class EntityAirshipBlue extends EntityAirshipCore {
 	/**
      * Main entity item drop.
      */
+    @Override
 	public Item getItemBoat()
     {
 		return InitItemsVC.item_airship_blue;

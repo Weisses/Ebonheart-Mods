@@ -11,6 +11,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.client.entity.model.ModelAirship;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipCore;
 import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipNormal;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 
@@ -64,8 +65,7 @@ public class RenderAirshipNormal extends Render<EntityAirshipNormal> {
         }
 
         this.modelTest.render(entity, partialTicks, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
-        //this.modelTest1.render(entity, partialTicks, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
-
+        
         if (this.renderOutlines)
         {
             GlStateManager.disableOutlineMode();
@@ -135,7 +135,8 @@ public class RenderAirshipNormal extends Render<EntityAirshipNormal> {
     /**
      * Returns the location of an entity's texture. Doesn't seem to be called unless you call Render.bindEntityTexture.
      */
-    protected ResourceLocation getEntityTexture(EntityAirshipNormal entity)
+    protected ResourceLocation getEntityTexture(EntityAirshipNormal
+    		entity)
     {
         return ENTITY_TEXTURE[entity.getBoatType().ordinal()];
     }
