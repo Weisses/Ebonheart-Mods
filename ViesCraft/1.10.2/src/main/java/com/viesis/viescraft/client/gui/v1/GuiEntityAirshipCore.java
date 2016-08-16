@@ -36,6 +36,80 @@ public class GuiEntityAirshipCore extends GuiContainer {
 		this.mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":" + "textures/gui/container_airship.png"));
 		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
 		
+		//int i = (this.width - this.xSize) / 2;
+        //int j = (this.height - this.ySize) / 2;
+        
+		if (EntityAirshipCore.isAirshipBurning(this.airship))
+        {
+			int x = airship.getFuelScaled(10);
+            int k = this.getBurnLeftScaled(47);
+            this.drawTexturedModalRect(
+            		this.guiLeft + 156, this.guiTop + 19,//i + 56, j + 36 + 12 - k, 
+            		176,  50,//176, 12 - k, 
+            		8, 1 + k);//8, 48 + k);//14, k + 1);
+            this.drawTexturedModalRect(
+            		this.guiLeft + 129, this.guiTop + 48,//i + 79, j + 34, 
+            		176, 14, 
+            		26, 16);
+        }
+
+        //int l = this.getCookProgressScaled(24);
+      //Light bulbs that are lite up.
+        //this.drawTexturedModalRect(
+        //		this.guiLeft + 129, this.guiTop + 48,//i + 79, j + 34, 
+        //		176, 14, 
+        //		16 + 1, 16);
+    }
+
+    //private int getCookProgressScaled(int pixels)
+    //{
+    //    int i = this.airship.getField(2);
+    //    int j = this.airship.getField(3);
+    //    return j != 0 && i != 0 ? i * pixels / j : 0;
+    //}
+
+    private int getBurnLeftScaled(int pixels)
+    {
+        int i = this.airship.getField(1);
+
+        if (i == 0)
+        {
+            i = 201;
+        }
+
+        return this.airship.getField(0) * pixels / i;
+    }
+		
+
+    
+	@Override
+	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
+	{
+		String s = this.airship.getDisplayName().getUnformattedText();
+		////this.fontRendererObj.drawString(s, 8, 6, 4210752);
+		this.fontRendererObj.drawString("Fuel", 150, 6, 4210752);
+		// This sets the Airship name in the top center.
+		//this.fontRendererObj.drawString(s, 88 - this.fontRendererObj.getStringWidth(s) / 2, 6, 4210752);
+		this.fontRendererObj.drawString(this.playerInv.getDisplayName().getUnformattedText(), 8, 72, 4210752);
+	}
+	
+	@Override
+	protected void keyTyped(char typedChar, int keyCode) throws IOException
+    {
+		if (keyCode == 1 
+        ||	keyCode == Keybinds.vcInventory.getKeyCode()
+        || this.mc.gameSettings.keyBindInventory.isActiveAndMatches(keyCode))
+        {
+            this.mc.thePlayer.closeScreen();
+        }
+    }
+}		
+		
+		
+		
+		
+		
+		/**
 		if (EntityAirshipCore.isBurning(this.airship))
         {
 			int x = airship.getFuelScaled(10);
@@ -47,8 +121,9 @@ public class GuiEntityAirshipCore extends GuiContainer {
         }
 		int l = this.getCookProgressScaled(24);
 		//Light bulbs that are lite up.
-        this.drawTexturedModalRect(this.guiLeft + 129, this.guiTop + 48, 176, 14, l + 
-        		1, 16);
+        this.drawTexturedModalRect(this.guiLeft + 129, this.guiTop + 48, 
+        176, 14, 
+        l + 1, 16);
 	}
 	
 	private int getCookProgressScaled(int pixels)
@@ -76,26 +151,5 @@ public class GuiEntityAirshipCore extends GuiContainer {
     
     
     
-    
-	@Override
-	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
-	{
-		String s = this.airship.getDisplayName().getUnformattedText();
-		////this.fontRendererObj.drawString(s, 8, 6, 4210752);
-		this.fontRendererObj.drawString("Fuel", 150, 6, 4210752);
-		// This sets the Airship name in the top center.
-		//this.fontRendererObj.drawString(s, 88 - this.fontRendererObj.getStringWidth(s) / 2, 6, 4210752);
-		this.fontRendererObj.drawString(this.playerInv.getDisplayName().getUnformattedText(), 8, 72, 4210752);
-	}
-	
-	@Override
-	protected void keyTyped(char typedChar, int keyCode) throws IOException
-    {
-		if (keyCode == 1 
-        ||	keyCode == Keybinds.vcInventory.getKeyCode()
-        || this.mc.gameSettings.keyBindInventory.isActiveAndMatches(keyCode))
-        {
-            this.mc.thePlayer.closeScreen();
-        }
-    }
 }
+*/

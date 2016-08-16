@@ -91,7 +91,7 @@ public class EntityAirshipCore extends EntityVC implements IInventory//, ITickab
 	private int [] burnTimeRemaining = new int[fuel_slots];
 	private int [] burnTimeInitialValue = new int[fuel_slots];
 	
-	private int cookTime;
+	//private int cookTime;
 	private static final short cook_time_for_completion = 200; // 10 Seconds IRL
 	private int cachedNumberOfBurningSlots = -1;
 	
@@ -264,23 +264,37 @@ public class EntityAirshipCore extends EntityVC implements IInventory//, ITickab
         
         this.fuelFlight();
 		
-        if (!this.worldObj.isRemote)
+        if (this.worldObj.isRemote)
         {
-        	LogHelper.info(fuelTime);
+        	LogHelper.info("Is Burning = " + isAirshipBurning());
+        	//LogHelper.info("Burn Time = " + airshipBurnTime);
         }
         if (this.canPassengerSteer())
         {
-        	
         	this.updateMotion();
-        	
-            if (this.worldObj.isRemote)
+        
+        	if (this.worldObj.isRemote)
             {
-            	this.updateInputs();
-            	this.controlAirship();
-            	this.controlAirshipExtra();
-            	
-            	//LogHelper.info(isBurning());
+        		this.updateInputs();
+        		this.controlAirshipGui();
             }
+        	
+        	if(isAirshipBurning())
+        	{
+        		if (this.worldObj.isRemote)
+                {
+                	this.controlAirshipBurning();
+                } 
+        	}
+        	
+        	if(!isAirshipBurning())
+        	{
+        		if (this.worldObj.isRemote)
+                {
+                	this.controlAirship();
+                } 
+        	}
+            
             
             
             this.moveEntity(this.motionX, this.motionY, this.motionZ);
@@ -419,15 +433,15 @@ public class EntityAirshipCore extends EntityVC implements IInventory//, ITickab
             this.deltaRotation *= this.momentum;
             
             if(this.getControllingPassenger() == null
-            		|| cookTime == 0)
+            		|| !isAirshipBurning())
         	{
             	this.motionY += d5;
         	}
+            
             else
             {
             	this.motionY *= (double)this.momentum;//+= d1;
             }
-            
             
         }
     }
@@ -462,31 +476,34 @@ public class EntityAirshipCore extends EntityVC implements IInventory//, ITickab
 
             if (this.forwardInputDown)
             {
-            	if(cookTime > 0)
-            	{
-            		f += AirshipSpeedForward; //0.0125F;//+= 0.04F;
-            	}
-            	else
-            	{
+            	//if(isAirshipBurning())
+            	//{
+            	//	f += AirshipSpeedForward; //0.0125F;//+= 0.04F;
+            	//}
+            	//else
+            	//{
             		f += 0.0030F;
-            	}
+            	//}
             }
 
             if (this.backInputDown)
             {
-            	if(cookTime > 0)
-            	{
-            		f -= AirshipSpeedForward * 0.5; //0.0125F;//+= 0.04F;
-            	}
-            	else
-            	{
+            	//if(isAirshipBurning())
+            	//{
+            	//	f -= AirshipSpeedForward * 0.5; //0.0125F;//+= 0.04F;
+            	//}
+            	//else
+            	//{
             		f -= 0.0030F * 0.5;
-            	}
+            	//}
             }
             
-            if (this.upInputDown && cookTime > 0)
+            if (this.upInputDown)
             {
-                f1 += AirshipSpeedUp;//0.005F;
+            	//if(isAirshipBurning())
+            	//{
+            	//	f1 += AirshipSpeedUp;//0.005F;
+            	//}
             }
             
             if (this.downInputDown)
@@ -504,13 +521,75 @@ public class EntityAirshipCore extends EntityVC implements IInventory//, ITickab
         }
     }
     
-    
+    public void controlAirshipBurning()
+    {
+        if (this.isBeingRidden())
+        {
+            float f = 0.0F;
+            float f1 = 0.0F;
+            
+            if (this.leftInputDown)
+            {
+                this.deltaRotation -= AirshipSpeedTurn;
+                this.alphaRotation -= AirshipSpeedTurn;
+                
+                //-0.2F;//  -0.4    += -1.0F;
+            }
+
+            if (this.rightInputDown)
+            {
+                this.deltaRotation += AirshipSpeedTurn; //0.2F;//  0.4    += 1.0F;
+            }
+
+            if (this.rightInputDown != this.leftInputDown && !this.forwardInputDown && !this.backInputDown)
+            {
+                f += 0.005F;
+                
+            }
+
+            this.rotationYaw += this.deltaRotation;
+
+            if (this.forwardInputDown)
+            {
+            	
+            		f += AirshipSpeedForward; //0.0125F;//+= 0.04F;
+            	
+            }
+
+            if (this.backInputDown)
+            {
+            	
+            		f -= AirshipSpeedForward * 0.5; //0.0125F;//+= 0.04F;
+            	
+            }
+            
+            if (this.upInputDown)
+            {
+            	
+            		f1 += AirshipSpeedUp;//0.005F;
+            	
+            }
+            
+            if (this.downInputDown)
+            {
+                f1 -= AirshipSpeedDown;//0.005F;
+            }
+            
+            
+
+            this.motionX += (double)(MathHelper.sin(-this.rotationYaw * 0.017453292F) * f);
+            this.motionZ += (double)(MathHelper.cos(this.rotationYaw * 0.017453292F) * f);
+            this.motionY += (double)(3.017453292F * f1);
+            
+            this.rotationPitch += 10;
+        }
+    }
     
     //==================================//
     // TODO          GUI                //
 	//==================================//
 	
-    protected void controlAirshipExtra()
+    protected void controlAirshipGui()
     {
     	if (this.isBeingRidden())
         {
@@ -1165,24 +1244,24 @@ public class EntityAirshipCore extends EntityVC implements IInventory//, ITickab
     
     public void fuelFlight()
     {
-    	boolean flag = this.isBurning();
+    	boolean flag = this.isAirshipBurning();
         boolean flag1 = false;
 
-        if (this.isBurning())
+        if (this.isAirshipBurning())
         {
             --this.airshipBurnTime;
         }
 
-        if (!this.worldObj.isRemote)
-        {
-            if (this.isBurning() || this.inventory[9] != null) //&& this.inventory[0] != null)
+        //if (!this.worldObj.isRemote)
+        //{
+            if (this.isAirshipBurning() || this.inventory[9] != null) //&& this.inventory[0] != null)
             {
-                if (!this.isBurning()) //&& this.canSmelt())
+                if (!this.isAirshipBurning()) //&& this.canSmelt())
                 {
                     this.airshipBurnTime = getItemBurnTime(this.inventory[9]);
                     this.currentItemBurnTime = this.airshipBurnTime;
 
-                    if (this.isBurning())
+                    if (this.isAirshipBurning())
                     {
                         flag1 = true;
 
@@ -1198,14 +1277,14 @@ public class EntityAirshipCore extends EntityVC implements IInventory//, ITickab
                     }
                 }
 
-                if (this.isBurning()) // && this.canSmelt())
+                if (this.isAirshipBurning()) // && this.canSmelt())
                 {
                     ++this.fuelTime;
 
                     if (this.fuelTime == this.totalFuelTime)
                     {
                         this.fuelTime = 0;
-                        this.totalFuelTime = this.getFuelTime(this.inventory[0]);
+                        this.totalFuelTime = this.getFuelTime(this.inventory[9]);
                         //this.smeltItem();
                         flag1 = true;
                     }
@@ -1215,18 +1294,19 @@ public class EntityAirshipCore extends EntityVC implements IInventory//, ITickab
                     this.fuelTime = 0;
                 }
             }
-            else if (!this.isBurning() && this.fuelTime > 0)
+            else if (!this.isAirshipBurning() && this.fuelTime > 0)
             {
                 this.fuelTime = MathHelper.clamp_int(this.fuelTime - 2, 0, this.totalFuelTime);
             }
 
-            if (flag != this.isBurning())
+            if (flag != this.isAirshipBurning())
             {
                 flag1 = true;
-                //BlockFurnace.setState(this.isBurning(), this.worldObj, this.pos);
+                //BlockFurnace.setState(this.isAirshipBurning(), this.worldObj, this.pos);
             }
-        }
+        //}
 
+        
         if (flag1)
         {
             this.markDirty();
@@ -1280,6 +1360,7 @@ public class EntityAirshipCore extends EntityVC implements IInventory//, ITickab
         
     }
     
+    /**
 	private int burnFuel()
 	{
 		int burningCount = 0;
@@ -1321,6 +1402,10 @@ public class EntityAirshipCore extends EntityVC implements IInventory//, ITickab
 		return burningCount;
 		
 	}
+	
+	*/
+    
+    
 	/**
 	private boolean canSmelt()
 	{
@@ -1446,7 +1531,7 @@ public class EntityAirshipCore extends EntityVC implements IInventory//, ITickab
 	
 	
     //@SideOnly(Side.CLIENT)
-    //public static boolean isBurning(IInventory inventory)
+    //public static boolean isAirshipBurning(IInventory inventory)
     //{
         
     //	return inventory.getField(2) > 0;
@@ -1559,8 +1644,12 @@ public class EntityAirshipCore extends EntityVC implements IInventory//, ITickab
         	maxFuel = 2400;
         }
     	*/
-    	
-    		return (cookTime * i) / 360;
+		if (this.totalFuelTime == 0)
+        {
+			this.totalFuelTime = this.getFuelTime(this.inventory[9]);
+        }
+		
+    		return (airshipBurnTime * i) / totalFuelTime;
     	
     	//return (cookTime * i) / 360;
 		
@@ -1951,15 +2040,15 @@ public class EntityAirshipCore extends EntityVC implements IInventory//, ITickab
     /////////////////////////////////////////////////
     
     /**
-     * Furnace isBurning
+     * Is Airship Engine Burning
      */
-    public boolean isBurning()
+    public boolean isAirshipBurning()
     {
         return this.airshipBurnTime > 0;
     }
     
     @SideOnly(Side.CLIENT)
-    public static boolean isBurning(IInventory inventory)
+    public static boolean isAirshipBurning(IInventory inventory)
     {
         return inventory.getField(0) > 0;
     }
