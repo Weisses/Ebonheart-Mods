@@ -47,6 +47,42 @@ item.vc:item_airship_red.name=Red Viesdenburg
 item.vc:item_airship_white.name=White Viesdenburg
 item.vc:item_airship_yellow.name=Yellow Viesdenburg
 
+//-----Entity-----
+entity.vc.airship.normal.name=Viesdenburg
+entity.vc.airship.black.name=Black Viesdenburg
+entity.vc.airship.blue.name=Blue Viesdenburg
+entity.vc.airship.brown.name=Brown Viesdenburg
+entity.vc.airship.cyan.name=Cyan Viesdenburg
+entity.vc.airship.gray.name=Gray Viesdenburg
+entity.vc.airship.green.name=Green Viesdenburg
+entity.vc.airship.lightblue.name=Light Blue Viesdenburg
+entity.vc.airship.lightgray.name=Light Gray Viesdenburg
+entity.vc.airship.lime.name=Lime Viesdenburg
+entity.vc.airship.magenta.name=Magenta Viesdenburg
+entity.vc.airship.orange.name=Orange Viesdenburg
+entity.vc.airship.pink.name=Pink Viesdenburg
+entity.vc.airship.purple.name=Purple Viesdenburg
+entity.vc.airship.red.name=Red Viesdenburg
+entity.vc.airship.white.name=White Viesdenburg
+entity.vc.airship.yellow.name=Yellow Viesdenburg
+
+container.vc.airship.normal.name=Viesdenburg
+container.vc.airship.black.name=Black Viesdenburg
+container.vc.airship.blue.name=Blue Viesdenburg
+container.vc.airship.brown.name=Brown Viesdenburg
+container.vc.airship.cyan.name=Cyan Viesdenburg
+container.vc.airship.gray.name=Gray Viesdenburg
+container.vc.airship.green.name=Green Viesdenburg
+container.vc.airship.lightblue.name=Light Blue Viesdenburg
+container.vc.airship.lightgray.name=Light Gray Viesdenburg
+container.vc.airship.lime.name=Lime Viesdenburg
+container.vc.airship.magenta.name=Magenta Viesdenburg
+container.vc.airship.orange.name=Orange Viesdenburg
+container.vc.airship.pink.name=Pink Viesdenburg
+container.vc.airship.purple.name=Purple Viesdenburg
+container.vc.airship.red.name=Red Viesdenburg
+container.vc.airship.white.name=White Viesdenburg
+container.vc.airship.yellow.name=Yellow Viesdenburg
 
 //-----Ores-----
 tile.vc:ore/draconium_ore.name=Placeholder1
@@ -87,4 +123,4 @@ vc.key.moveLeft=Turn Left
 vc.key.moveRight=Turn Right
 vc.key.moveUp=Ascend
 vc.key.moveDown=Descend
-vc.key.openInventory=WIP-Placeholder
+vc.key.openInventory=Open Airship Gui

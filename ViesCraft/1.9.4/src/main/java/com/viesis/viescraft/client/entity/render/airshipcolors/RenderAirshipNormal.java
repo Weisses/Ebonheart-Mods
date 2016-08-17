@@ -11,22 +11,36 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.client.entity.model.ModelAirship;
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipNormal;
-import com.viesis.viescraft.common.entity.old.EntityAirshipBase;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipCore;
+import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipNormal;
+import com.viesis.viescraft.configs.ViesCraftConfig;
 
 @SideOnly(Side.CLIENT)
-public class RenderAirshipNormal extends Render<EntityAirshipNormal>
-{
+public class RenderAirshipNormal extends Render<EntityAirshipNormal> {
 	
 	private static final ResourceLocation[] ENTITY_TEXTURE = new ResourceLocation[] 
 	{
+		//new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_black.png"),
+		//new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_red.png"),
+		//new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_green.png"),
+		//new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_brown.png"),
+		//new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_blue.png"),
+		//new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_purple.png"),
+		//new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_cyan.png"),
+		//new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_lightgray.png"),
+		//new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_gray.png"),
+		//new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_pink.png"),
+		//new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_lime.png"),
+		//new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_yellow.png"),
+		//new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_lightblue.png"),
+		//new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_magenta.png"),
+		//new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_orange.png"),
+		//new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_white.png"),
 		new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_normal.png")
-		
 	};
 	
 	/** instance of ModelTest for rendering */
 	protected ModelBase modelTest = new ModelAirship();
-	
 	
     public RenderAirshipNormal(RenderManager renderManagerIn)
     {
@@ -51,8 +65,7 @@ public class RenderAirshipNormal extends Render<EntityAirshipNormal>
         }
 
         this.modelTest.render(entity, partialTicks, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
-        //this.modelTest1.render(entity, partialTicks, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
-
+        
         if (this.renderOutlines)
         {
             GlStateManager.disableOutlineMode();
@@ -63,17 +76,40 @@ public class RenderAirshipNormal extends Render<EntityAirshipNormal>
         super.doRender(entity, x, y, z, entityYaw, partialTicks);
     }
 
-    public void setupRotation(EntityAirshipNormal p_188311_1_, float p_188311_2_, float p_188311_3_)
+    public void setupRotation(EntityAirshipNormal entity, float p_188311_2_, float p_188311_3_)
     {
         GlStateManager.rotate(180.0F - p_188311_2_, 0.0F, 1.0F, 0.0F);
-        float f = (float)p_188311_1_.getTimeSinceHit() - p_188311_3_;
-        float f1 = p_188311_1_.getDamageTaken() - p_188311_3_;
+        float f = (float)entity.getTimeSinceHit() - p_188311_3_;
+        float f1 = entity.getDamageTaken() - p_188311_3_;
 
         
-        float g = (float)p_188311_1_.getTimeSinceHit() - p_188311_3_;
-        float g1 = p_188311_1_.getDamageTaken() - p_188311_3_;
-
+        float g = (float)entity.getTimeSinceHit() - p_188311_3_;
+        float g1 = entity.getDamageTaken() - p_188311_3_;
         
+        if(ViesCraftConfig.modelTurnAngle)
+		{
+	        if(entity.leftInputDown)
+	        {
+	        	GlStateManager.rotate(5, 0.0F, 0.0F, 0.1F);
+	        }
+	        
+	        if(entity.leftInputDown
+	        && entity.backInputDown)
+	        {
+	        	GlStateManager.rotate(10, 0.0F, 0.0F, -0.1F);
+	        }
+	        
+	        if(entity.rightInputDown)
+	        {
+	        	GlStateManager.rotate(5, 0.0F, 0.0F, -0.1F);
+	        }
+	        
+	        if(entity.rightInputDown
+	        && entity.backInputDown)
+	        {
+	        	GlStateManager.rotate(10, 0.0F, 0.0F, 0.1F);
+	        }
+		}
         
         if (f1 < 0.0F)
         {
@@ -84,7 +120,7 @@ public class RenderAirshipNormal extends Render<EntityAirshipNormal>
         {
             GlStateManager.rotate(MathHelper.sin(f) * f * f1 / 10.0F *  
             		//1
-            		(float)p_188311_1_.getForwardDirection()
+            		(float)entity.getForwardDirection()
             		, 0.0F, 0.0F, 1.0F);
         }
 
@@ -99,7 +135,8 @@ public class RenderAirshipNormal extends Render<EntityAirshipNormal>
     /**
      * Returns the location of an entity's texture. Doesn't seem to be called unless you call Render.bindEntityTexture.
      */
-    protected ResourceLocation getEntityTexture(EntityAirshipNormal entity)
+    protected ResourceLocation getEntityTexture(EntityAirshipNormal
+    		entity)
     {
         return ENTITY_TEXTURE[entity.getBoatType().ordinal()];
     }

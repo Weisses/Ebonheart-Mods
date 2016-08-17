@@ -3,6 +3,7 @@ package com.viesis.viescraft.api;
 import net.minecraft.util.SoundEvent;
 
 public class SoundsVC {
+	
 	/**
 	public static SoundEvent island;
 	public static SoundEvent dire;
@@ -12,4 +13,5 @@ public class SoundsVC {
 	public static SoundEvent timescar;
 	public static SoundEvent lostwoods;
     */
+	
 }

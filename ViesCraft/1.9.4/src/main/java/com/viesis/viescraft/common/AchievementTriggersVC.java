@@ -72,8 +72,6 @@ public class AchievementTriggersVC extends InitAchievementsVC {
 		
 	}
 	
-	
-	
 	//Smelt an item achievement
 	//@SubscribeEvent
 	//public void onSmelt(PlayerEvent.ItemSmeltedEvent event) {
@@ -83,5 +81,4 @@ public class AchievementTriggersVC extends InitAchievementsVC {
 		
 	//	}
 	//}
-	 
 }

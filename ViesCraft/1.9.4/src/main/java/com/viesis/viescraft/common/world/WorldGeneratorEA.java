@@ -8,8 +8,8 @@ import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.fml.common.IWorldGenerator;
 
-public class WorldGeneratorEA implements IWorldGenerator
-{
+public class WorldGeneratorEA implements IWorldGenerator {
+	
 	private WorldGenerator gen_draconium_ore; //Generates Draconium Ore (used in Overworld)
 	private WorldGenerator gen_velious_ore; //Generates Velious Ore (used in Overworld)
 	private WorldGenerator gen_arcanite_ore; //Generates Arcanite Ore (used in Overworld)
@@ -40,12 +40,9 @@ public class WorldGeneratorEA implements IWorldGenerator
 		*/
 	}
 	
-	
-
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) 
 	{
-		
 		/**
 		switch (world.provider.getDimension()) 
 		{
@@ -101,6 +98,5 @@ public class WorldGeneratorEA implements IWorldGenerator
 	    
 	    */
 	}
-	
 }
 	

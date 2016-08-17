@@ -18,14 +18,13 @@ public class EntityDamageSourceElectric extends EntityDamageSourceIndirect {
 	    this.setDamageBypassesArmor();
 	    
 	    this.indirectEntity = indirectEntityIn;
-	    
 	}
 	
 	public Entity getSourceOfDamage()
     {
         return this.damageSourceEntity;
     }
-
+	
     public Entity getEntity()
     {
         return this.indirectEntity;

@@ -1,57 +1,42 @@
 package com.viesis.viescraft.network;
 
+import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.common.network.IGuiHandler;
+
+import com.viesis.viescraft.client.gui.v1.GuiEntityAirshipCore;
+import com.viesis.viescraft.common.entity.airshipcolors.ContainerAirshipCore;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipCore;
 
 public class GuiHandler implements IGuiHandler {
 	
 	public static GuiHandler instance;
-	public static final int ENTITYAIRSHIPVC_GUI = 0;
-	//public static final int TEST_TILE_ENTITY_GUI = 1;
+	public static final int GUI_AIRSHIP_INVENTORY = 0;
 	
-	public GuiHandler() {
+	public GuiHandler() 
+	{
     	instance = this;
-    	//LogHelper.info("works to HERE!");
     }
 	
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) 
 	{
-		//if (ID == 0)
-		//{
-			//LogHelper.info("works to getServerGuiElement");
-		//	Entity entity = world.getEntityByID(x);
-			
-		//	if(entity instanceof EntityAirshipNormal)
-		//	{
-		//	return new ContainerAirshipVC(player.inventory, (EntityAirshipNormal)entity);
-		//	}
-		//}
-		
-		//if (ID == ENTITYAIRSHIPVC_GUI)
-			//return new ContainerModTileEntity(player.inventory, ); //(EntityAirshipNormal) world.getTileEntity(new BlockPos(x, y, z)));
-
+		if (ID == GUI_AIRSHIP_INVENTORY)
+		{
+			return new ContainerAirshipCore(player.inventory, (EntityAirshipCore)player.getRidingEntity());
+		}
 		return null;
-		
-		
 	}
-
+	
 	@Override
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) 
 	{
-		//if (ID == 0)
-		//{
-		//	Entity entity = world.getEntityByID(x);
-		//	if(entity instanceof EntityAirshipNormal)
-		//		return new GuiModTileEntity(player.inventory, (EntityAirshipNormal)entity);
-			
-			//return new GuiEntityAirship(player.inventory, null);
-		//}
-		
-		//if (ID == ENTITYAIRSHIPVC_GUI)
-			//return new GuiModTileEntity(player.inventory, );//(EntityAirshipNormal) world.getTileEntity(new BlockPos(x, y, z)));
-
+		if (ID == GUI_AIRSHIP_INVENTORY)
+		{
+			return new GuiEntityAirshipCore(player.inventory, (EntityAirshipCore)player.getRidingEntity());
+		}
 		return null;
 	}
 }

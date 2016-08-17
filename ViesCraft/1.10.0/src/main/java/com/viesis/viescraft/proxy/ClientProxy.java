@@ -1,6 +1,8 @@
 package com.viesis.viescraft.proxy;
 
-import net.minecraftforge.fml.common.FMLCommonHandler;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.particle.Particle;
+import net.minecraft.entity.Entity;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -8,6 +10,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import com.viesis.viescraft.api.util.Keybinds;
 import com.viesis.viescraft.client.InitEntityVCRender;
 import com.viesis.viescraft.client.InitItemsVCRender;
+import com.viesis.viescraft.client.particle.EntitySmokeFX;
 
 public class ClientProxy extends CommonProxy {
 	
@@ -31,7 +34,6 @@ public class ClientProxy extends CommonProxy {
 		InitEntityVCRender.registerRenders();
 		
 		//---------------------------
-		//InitEntityEARender.registerParticle(null, null);
 		//InitBlocksEARender.registerSpecialRenders();
 	}
 	
@@ -39,7 +41,6 @@ public class ClientProxy extends CommonProxy {
 	public void postInit(FMLPostInitializationEvent event) 
 	{
 		super.postInit(event);
-		
 	}
 	
 	//=============================================================
@@ -47,6 +48,42 @@ public class ClientProxy extends CommonProxy {
 	/**
 	 * Particles
 	 */
+	
+	@Override
+	public void generateSmokeParticles(Entity theEntity)
+	{
+	    double motionX = theEntity.worldObj.rand.nextGaussian() * 0.02D;
+	    double motionY = theEntity.worldObj.rand.nextGaussian() * 0.02D;
+	    double motionZ = theEntity.worldObj.rand.nextGaussian() * 0.02D;
+	    
+	    double test1 = theEntity.rotationPitch;
+	    //double test2 = theEntity.getLookVec().yCoord;
+	    //double test3 = theEntity.getLookVec().zCoord;
+	    
+	    Particle particleSprint = new EntitySmokeFX(
+	    	theEntity.worldObj, 
+	    	
+	    	theEntity.posX  
+	    	//(double)(MathHelper.sin(-theEntity.rotationYaw * 0.017453292F) * 0.005F)//+ theEntity.worldObj.rand.nextFloat() * theEntity.width * 2.0F - theEntity.width
+	    	
+	    	, 
+	        
+	    	theEntity.posY //+ 0.5D + theEntity.worldObj.rand.nextFloat() * theEntity.height
+	        
+	        , 
+	        
+	        theEntity.posZ  
+	    	//(double)(MathHelper.cos(theEntity.rotationYaw * 0.017453292F) * 0.005F) //+ theEntity.worldObj.rand.nextFloat() * theEntity.width * 2.0F - theEntity.width
+	        
+	        , 
+	        
+	        motionX, 
+	        motionY, 
+	        motionZ);
+	    Minecraft.getMinecraft().effectRenderer.addEffect(particleSprint);        
+	}
+	
+	
 	/**
 	@Override
 	public void generateSprintParticles(Entity theEntity)

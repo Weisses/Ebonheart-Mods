@@ -123,4 +123,4 @@ vc.key.moveLeft=Turn Left
 vc.key.moveRight=Turn Right
 vc.key.moveUp=Ascend
 vc.key.moveDown=Descend
-vc.key.openInventory=WIP-Placeholder
+vc.key.openInventory=Open Airship Gui

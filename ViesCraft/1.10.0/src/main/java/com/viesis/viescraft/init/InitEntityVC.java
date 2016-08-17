@@ -4,44 +4,40 @@ import net.minecraft.entity.Entity;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 import com.viesis.viescraft.ViesCraft;
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBlack;
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBlue;
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBrown;
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipCyan;
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipGray;
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipGreen;
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipLightBlue;
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipLightGray;
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipLime;
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipMagenta;
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipNormal;
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipNormal.Type;
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipOrange;
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipPink;
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipPurple;
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipRed;
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipWhite;
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipYellow;
-import com.viesis.viescraft.common.entity.airshipitems.EntityItemAirshipBlack;
-import com.viesis.viescraft.common.entity.airshipitems.EntityItemAirshipBlue;
-import com.viesis.viescraft.common.entity.airshipitems.EntityItemAirshipBrown;
-import com.viesis.viescraft.common.entity.airshipitems.EntityItemAirshipCyan;
-import com.viesis.viescraft.common.entity.airshipitems.EntityItemAirshipGray;
-import com.viesis.viescraft.common.entity.airshipitems.EntityItemAirshipGreen;
-import com.viesis.viescraft.common.entity.airshipitems.EntityItemAirshipLightBlue;
-import com.viesis.viescraft.common.entity.airshipitems.EntityItemAirshipLightGray;
-import com.viesis.viescraft.common.entity.airshipitems.EntityItemAirshipLime;
-import com.viesis.viescraft.common.entity.airshipitems.EntityItemAirshipMagenta;
-import com.viesis.viescraft.common.entity.airshipitems.EntityItemAirshipNormal;
-import com.viesis.viescraft.common.entity.airshipitems.EntityItemAirshipOrange;
-import com.viesis.viescraft.common.entity.airshipitems.EntityItemAirshipPink;
-import com.viesis.viescraft.common.entity.airshipitems.EntityItemAirshipPurple;
-import com.viesis.viescraft.common.entity.airshipitems.EntityItemAirshipRed;
-import com.viesis.viescraft.common.entity.airshipitems.EntityItemAirshipWhite;
-import com.viesis.viescraft.common.entity.airshipitems.EntityItemAirshipYellow;
-import com.viesis.viescraft.common.entity.old.EntityAirshipBase;
-import com.viesis.viescraft.common.entity.old.EntityItemAirship;
-
+import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipBlack;
+import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipBlue;
+import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipBrown;
+import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipCyan;
+import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipGray;
+import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipGreen;
+import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipLightBlue;
+import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipLightGray;
+import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipLime;
+import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipMagenta;
+import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipNormal;
+import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipOrange;
+import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipPink;
+import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipPurple;
+import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipRed;
+import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipWhite;
+import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipYellow;
+import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipBlack;
+import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipBlue;
+import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipBrown;
+import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipCyan;
+import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipGray;
+import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipGreen;
+import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipLightBlue;
+import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipLightGray;
+import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipLime;
+import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipMagenta;
+import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipNormal;
+import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipOrange;
+import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipPink;
+import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipPurple;
+import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipRed;
+import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipWhite;
+import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipYellow;
 
 public class InitEntityVC {
 	
@@ -49,17 +45,6 @@ public class InitEntityVC {
 	
 	public static void preInit()
 	{
-		//register(EntityItemViesdenburg.class, "EnchantedEbonheart", 64, 20, true);
-		//register(EntityAirshipVC.class, "AirshipEbonheart", 64, 1, true);
-		
-		register(EntityItemAirship.class, "item.airship", 64, 20, true);
-		//register(EntityAirshipVCtest.class, "AirshipEbonheartNEW", 64, 1, true);
-		
-		//register(EntityItemAirshipFurnace.class, "vc.ItemAirshipFurnace", 64, 20, true);
-		
-		//===========================================
-		
-		
 		register(EntityItemAirshipNormal.class, "item.airship.normal", 64, 20, true);
 		register(EntityItemAirshipBlack.class, "item.airship.black", 64, 20, true);
 		register(EntityItemAirshipBlue.class, "item.airship.blue", 64, 20, true);
@@ -78,43 +63,25 @@ public class InitEntityVC {
 		register(EntityItemAirshipWhite.class, "item.airship.white", 64, 20, true);
 		register(EntityItemAirshipYellow.class, "item.airship.yellow", 64, 20, true);
 		
-		
-		
 		//===========================================
 		
-		
-		
-		register(EntityAirshipNormal.class, "airship." + EntityAirshipNormal.Type.NORMAL.getName(), 64, 1, true);
-		register(EntityAirshipBlack.class, "airship." + EntityAirshipNormal.Type.BLACK.getName(), 64, 1, true);
-		register(EntityAirshipBlue.class, "airship." + EntityAirshipNormal.Type.BLUE.getName(), 64, 1, true);
-		register(EntityAirshipBrown.class, "airship." + EntityAirshipNormal.Type.BROWN.getName(), 64, 1, true);
-		register(EntityAirshipCyan.class, "airship." + EntityAirshipNormal.Type.CYAN.getName(), 64, 1, true);
-		register(EntityAirshipGray.class, "airship." + EntityAirshipNormal.Type.GRAY.getName(), 64, 1, true);
-		register(EntityAirshipGreen.class, "airship." + EntityAirshipNormal.Type.GREEN.getName(), 64, 1, true);
-		register(EntityAirshipLightBlue.class, "airship." + EntityAirshipNormal.Type.LIGHTBLUE.getName(), 64, 1, true);
-		register(EntityAirshipLightGray.class, "airship." + EntityAirshipNormal.Type.LIGHTGRAY.getName(), 64, 1, true);
-		register(EntityAirshipLime.class, "airship." + EntityAirshipNormal.Type.LIME.getName(), 64, 1, true);
-		register(EntityAirshipMagenta.class, "airship." + EntityAirshipNormal.Type.MAGENTA.getName(), 64, 1, true);
-		register(EntityAirshipOrange.class, "airship." + EntityAirshipNormal.Type.ORANGE.getName(), 64, 1, true);
-		register(EntityAirshipPink.class, "airship." + EntityAirshipNormal.Type.PINK.getName(), 64, 1, true);
-		register(EntityAirshipPurple.class, "airship." + EntityAirshipNormal.Type.PURPLE.getName(), 64, 1, true);
-		register(EntityAirshipRed.class, "airship." + EntityAirshipNormal.Type.RED.getName(), 64, 1, true);
-		register(EntityAirshipWhite.class, "airship." + EntityAirshipNormal.Type.WHITE.getName(), 64, 1, true);
-		register(EntityAirshipYellow.class, "airship." + EntityAirshipNormal.Type.YELLOW.getName(), 64, 1, true);
-		
-		
-		
-		////register(EntityAirshipNormal.class, "airship." + EntityAirshipNormal.Type.BLACK.getName(), 64, 1, true);
-		////register(EntityAirshipNormal.class, "airship." + EntityAirshipNormal.Type.RED.getName(), 64, 1, true);
-		
-		
-		
-		register(EntityAirshipBase.class, "AirshipEbonheart", 64, 1, true);
-		//register(EntityAirshipBase2.class, "AirshipV2", 64, 1, true);
-		
-		//register(EntityAirshipFurnace.class, "AirshipVCFurnace", 64, 1, true);
-		
-		
+		register(EntityAirshipNormal.class, "airship.normal", 64, 1, true);
+		register(EntityAirshipBlack.class, "airship.black", 64, 1, true);
+		register(EntityAirshipBlue.class, "airship.blue", 64, 1, true);
+		register(EntityAirshipBrown.class, "airship.brown", 64, 1, true);
+		register(EntityAirshipCyan.class, "airship.cyan", 64, 1, true);
+		register(EntityAirshipGray.class, "airship.gray", 64, 1, true);
+		register(EntityAirshipGreen.class, "airship.green", 64, 1, true);
+		register(EntityAirshipLightBlue.class, "airship.lightblue", 64, 1, true);
+		register(EntityAirshipLightGray.class, "airship.lightgray", 64, 1, true);
+		register(EntityAirshipLime.class, "airship.lime", 64, 1, true);
+		register(EntityAirshipMagenta.class, "airship.magenta", 64, 1, true);
+		register(EntityAirshipOrange.class, "airship.orange", 64, 1, true);
+		register(EntityAirshipPink.class, "airship.pink", 64, 1, true);
+		register(EntityAirshipPurple.class, "airship.purple", 64, 1, true);
+		register(EntityAirshipRed.class, "airship.red", 64, 1, true);
+		register(EntityAirshipWhite.class, "airship.white", 64, 1, true);
+		register(EntityAirshipYellow.class, "airship.yellow", 64, 1, true);
 	}
 	
 	public static void register(Class<? extends Entity> entityClass, String entityName, int trackingRange, int updateFrequency, boolean sendsVelocityUpdates)

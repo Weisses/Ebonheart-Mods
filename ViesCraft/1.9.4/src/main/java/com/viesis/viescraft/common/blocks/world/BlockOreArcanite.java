@@ -1,6 +1,5 @@
 package com.viesis.viescraft.common.blocks.world;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 import net.minecraft.block.Block;
@@ -9,13 +8,10 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 import com.viesis.viescraft.common.blocks.BlockHelper;
-import com.viesis.viescraft.init.InitItemsVC;
 
 public class BlockOreArcanite extends Block {
 	

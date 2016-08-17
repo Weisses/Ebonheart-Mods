@@ -29,6 +29,6 @@ public class ItemEngine extends Item {
 	
 	public EnumRarity getRarity(ItemStack stack)
     {
-        return EnumRarity.RARE;
+        return EnumRarity.UNCOMMON;
     }
 }
