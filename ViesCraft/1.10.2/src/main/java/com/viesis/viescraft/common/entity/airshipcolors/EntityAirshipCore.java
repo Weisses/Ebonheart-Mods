@@ -60,6 +60,7 @@ import com.viesis.viescraft.api.util.Keybinds;
 import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.init.InitItemsVC;
 import com.viesis.viescraft.network.NetworkHandler;
+import com.viesis.viescraft.network.client.MessageAirshipBurning;
 import com.viesis.viescraft.network.server.MessageGuiOpen;
 
 public class EntityAirshipCore extends EntityVC implements IInventory//, ITickable 
@@ -277,7 +278,7 @@ public class EntityAirshipCore extends EntityVC implements IInventory//, ITickab
         if (this.canPassengerSteer())
         {
         	this.updateMotion();
-        	
+        	//NetworkHandler.sendToServer(new MessageAirshipBurning());
         	//LogHelper.info("Is Burning = " + isAirshipBurning());
         	//LogHelper.info("Can fly = " + canAirshipFly);
         	
@@ -2107,7 +2108,7 @@ public class EntityAirshipCore extends EntityVC implements IInventory//, ITickab
     
     public int getFuelTime(@Nullable ItemStack stack)
     {
-        return 200;
+        return 1200;
     }
     /**
     public int getClientItemBurnTime()

@@ -6,6 +6,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
 
 import com.viesis.viescraft.api.Reference;
+import com.viesis.viescraft.network.client.MessageAirshipBurning;
 import com.viesis.viescraft.network.server.MessageGuiOpen;
 
 public class NetworkHandler {
@@ -18,6 +19,7 @@ public class NetworkHandler {
 		
 		//Registering the messages
 		INSTANCE.registerMessage(MessageGuiOpen.class, MessageGuiOpen.class, 0, Side.SERVER);
+		//INSTANCE.registerMessage(MessageAirshipBurning.class, MessageAirshipBurning.class, 1, Side.CLIENT);
 		
 	}
 	
