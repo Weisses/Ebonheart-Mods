@@ -75,14 +75,16 @@ public class EntityAirshipCore extends EntityVC implements IInventory//, ITickab
 	private ItemStack[] inventory = new ItemStack[10];
 	private String customName;
 	
+	//private int airshipClientBurnTime;
 	private int airshipBurnTime;//furnaceBurnTime;
     /** The number of ticks that a fresh copy of the currently-burning item would keep the furnace burning for */
     private int currentItemBurnTime;
     private int fuelTime;//cookTime
     private int totalFuelTime;//totalCookTime
     
-    
-	private boolean canAirshipFly = false;
+    private int nowBurnTime;
+	private int lastBurnTime;
+	private boolean canAirshipFly;
 	
 	public static final int fuel_slots = 1;
 	//public static final int total_slots = fuel_slots; //+ other variables
@@ -256,6 +258,8 @@ public class EntityAirshipCore extends EntityVC implements IInventory//, ITickab
             this.setDamageTaken(this.getDamageTaken() - 1.0F);
         }
         
+        
+        
         this.prevPosX = this.posX;
         this.prevPosY = this.posY;
         this.prevPosZ = this.posZ;
@@ -263,37 +267,42 @@ public class EntityAirshipCore extends EntityVC implements IInventory//, ITickab
         this.tickFall();
         
         this.fuelFlight();
+        //this.getAirshipBurning();
 		
-        if (this.worldObj.isRemote)
-        {
-        	LogHelper.info("Is Burning = " + isAirshipBurning());
-        	//LogHelper.info("Burn Time = " + airshipBurnTime);
-        }
+        //if (this.worldObj.isRemote)
+        //{
+        //	LogHelper.info("Is Burning = " + isAirshipBurning());
+        //	LogHelper.info("Can fly = " + canAirshipFly);
+        //}
         if (this.canPassengerSteer())
         {
         	this.updateMotion();
-        
+        	
+        	//LogHelper.info("Is Burning = " + isAirshipBurning());
+        	//LogHelper.info("Can fly = " + canAirshipFly);
+        	
         	if (this.worldObj.isRemote)
             {
         		this.updateInputs();
+        		this.controlAirship();
         		this.controlAirshipGui();
             }
         	
-        	if(isAirshipBurning())
-        	{
-        		if (this.worldObj.isRemote)
-                {
-                	this.controlAirshipBurning();
-                } 
-        	}
+        	//if(isAirshipBurning())
+        	//{
+        	//	if (this.worldObj.isRemote)
+            //    {
+            //    	this.controlAirshipBurning();
+            //    } 
+        	//}
         	
-        	if(!isAirshipBurning())
-        	{
-        		if (this.worldObj.isRemote)
-                {
-                	this.controlAirship();
-                } 
-        	}
+        	//if(!isAirshipBurning())
+        	//{
+        	//	if (this.worldObj.isRemote)
+            //    {
+            //    	this.controlAirship();
+            //    } 
+        	//}
             
             
             
@@ -455,15 +464,32 @@ public class EntityAirshipCore extends EntityVC implements IInventory//, ITickab
             
             if (this.leftInputDown)
             {
-                this.deltaRotation -= AirshipSpeedTurn;
-                this.alphaRotation -= AirshipSpeedTurn;
+            	if(isAirshipBurning())
+            	{
+            		this.deltaRotation -= AirshipSpeedTurn;
+                    this.alphaRotation -= AirshipSpeedTurn;
+            	}
+            	else
+            	{
+            		this.deltaRotation -= AirshipSpeedTurn * 0.5F;
+                    this.alphaRotation -= AirshipSpeedTurn * 0.5F;
+            	}
+                //this.deltaRotation -= AirshipSpeedTurn;
+                //this.alphaRotation -= AirshipSpeedTurn;
                 
                 //-0.2F;//  -0.4    += -1.0F;
             }
 
             if (this.rightInputDown)
             {
-                this.deltaRotation += AirshipSpeedTurn; //0.2F;//  0.4    += 1.0F;
+            	if(isAirshipBurning())
+            	{
+            		this.deltaRotation += AirshipSpeedTurn; //0.2F;//  0.4    += 1.0F;
+            	}
+            	else
+            	{
+            		this.deltaRotation += AirshipSpeedTurn * 0.5F;
+            	}
             }
 
             if (this.rightInputDown != this.leftInputDown && !this.forwardInputDown && !this.backInputDown)
@@ -476,34 +502,32 @@ public class EntityAirshipCore extends EntityVC implements IInventory//, ITickab
 
             if (this.forwardInputDown)
             {
-            	//if(isAirshipBurning())
-            	//{
-            	//	f += AirshipSpeedForward; //0.0125F;//+= 0.04F;
-            	//}
-            	//else
-            	//{
+            	if(isAirshipBurning())
+            	{
+            		f += AirshipSpeedForward; //0.0125F;//+= 0.04F;
+            	}
+            	else
+            	{
             		f += 0.0030F;
-            	//}
+            	}
             }
 
             if (this.backInputDown)
             {
-            	//if(isAirshipBurning())
-            	//{
-            	//	f -= AirshipSpeedForward * 0.5; //0.0125F;//+= 0.04F;
-            	//}
-            	//else
-            	//{
+            	if(isAirshipBurning())
+            	{
+            		f -= AirshipSpeedForward * 0.5; //0.0125F;//+= 0.04F;
+            	}
+            	else
+            	{
             		f -= 0.0030F * 0.5;
-            	//}
+            	}
             }
             
-            if (this.upInputDown)
+            if (this.upInputDown 
+            	&& isAirshipBurning())
             {
-            	//if(isAirshipBurning())
-            	//{
-            	//	f1 += AirshipSpeedUp;//0.005F;
-            	//}
+            	f1 += AirshipSpeedUp;//0.005F;
             }
             
             if (this.downInputDown)
@@ -520,7 +544,7 @@ public class EntityAirshipCore extends EntityVC implements IInventory//, ITickab
             this.rotationPitch += 10;
         }
     }
-    
+    /**
     public void controlAirshipBurning()
     {
         if (this.isBeingRidden())
@@ -584,7 +608,7 @@ public class EntityAirshipCore extends EntityVC implements IInventory//, ITickab
             this.rotationPitch += 10;
         }
     }
-    
+    */
     //==================================//
     // TODO          GUI                //
 	//==================================//
@@ -1604,7 +1628,7 @@ public class EntityAirshipCore extends EntityVC implements IInventory//, ITickab
     //    return getItemBurnTime(stack) > 0;
     //}
     
-	
+	/**
 	@SideOnly(Side.CLIENT)
     public int getFuelScaled(int i) {
     	
@@ -1644,7 +1668,7 @@ public class EntityAirshipCore extends EntityVC implements IInventory//, ITickab
         	maxFuel = 2400;
         }
     	*/
-		if (this.totalFuelTime == 0)
+	/**	if (this.totalFuelTime == 0)
         {
 			this.totalFuelTime = this.getFuelTime(this.inventory[9]);
         }
@@ -1655,7 +1679,7 @@ public class EntityAirshipCore extends EntityVC implements IInventory//, ITickab
 		
 		//return i;//(cookTime * i) / maxFuel;//(maxFuel / 5);//320;
 	}
-	
+	*/
 	
 	//public int getFuelTime(@Nullable ItemStack stack)
     //{
@@ -1959,6 +1983,14 @@ public class EntityAirshipCore extends EntityVC implements IInventory//, ITickab
     	compound.setInteger("BurnTime", this.airshipBurnTime);
         compound.setInteger("FuelTime", this.fuelTime);
         compound.setInteger("FuelTimeTotal", this.totalFuelTime);
+        //compound.setInteger("CurrentItemBurnTime", this.getItemBurnTime(this.inventory[9]));
+        
+        //this.getItemBurnTime(this.inventory[9])
+        
+        //this.currentItemBurnTime = this.getItemBurnTime(this.inventory[9]);
+        
+        //this.currentItemBurnTime = getItemBurnTime(this.inventory[9]);
+        //compound.setBoolean("IsAirshipBurning", this.canAirshipFly);
         NBTTagList nbttaglist = new NBTTagList();
 
         for (int i = 0; i < this.inventory.length; ++i)
@@ -2020,7 +2052,7 @@ public class EntityAirshipCore extends EntityVC implements IInventory//, ITickab
         this.fuelTime = compound.getInteger("FuelTime");
         this.totalFuelTime = compound.getInteger("FuelTimeTotal");
         this.currentItemBurnTime = getItemBurnTime(this.inventory[9]);
-
+        //this.canAirshipFly = compound.getBoolean("IsAirshipBurning");
     	/**
         NBTTagList list = compound.getTagList("Items", 10);
 		for (int i = 0; i < list.tagCount(); ++i) 
@@ -2046,6 +2078,26 @@ public class EntityAirshipCore extends EntityVC implements IInventory//, ITickab
     {
         return this.airshipBurnTime > 0;
     }
+    /**
+    public boolean getAirshipBurning()
+    {
+    	boolean flag1 = false;
+    	
+    	if (!isAirshipBurning())
+        {
+        	if(this.airshipBurnTime > 0)
+        	{
+        		flag1 = true;
+        	}
+        	else
+        	{
+        		flag1 = false;
+        	}
+        	
+        }
+    	return flag1;
+    }
+    */
     
     @SideOnly(Side.CLIENT)
     public static boolean isAirshipBurning(IInventory inventory)
@@ -2057,6 +2109,27 @@ public class EntityAirshipCore extends EntityVC implements IInventory//, ITickab
     {
         return 200;
     }
+    /**
+    public int getClientItemBurnTime()
+    {
+    	//int nowBurnTime = 0;
+    	//int lastBurnTime;
+    	
+    	
+    	if (nowBurnTime > 0)
+        {
+    		nowBurnTime = this.getItemBurnTime(this.inventory[9]);
+        }
+    	
+    	if (nowBurnTime == 0)
+        {
+    		nowBurnTime = this.getItemBurnTime(this.inventory[9]);
+        }
+    	lastBurnTime = nowBurnTime;
+    	
+		return nowBurnTime;
+    }
+    */
     
     /**
      * Returns the number of ticks that the supplied fuel item will keep the furnace burning, or 0 if the item isn't
@@ -2072,10 +2145,10 @@ public class EntityAirshipCore extends EntityVC implements IInventory//, ITickab
         {
             Item item = stack.getItem();
 
-            if (item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.AIR)
-            {
-                Block block = Block.getBlockFromItem(item);
-
+            //if (item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.AIR)
+            //{
+            //    Block block = Block.getBlockFromItem(item);
+/**
                 if (block == Blocks.WOODEN_SLAB)
                 {
                     return 150;
@@ -2090,16 +2163,20 @@ public class EntityAirshipCore extends EntityVC implements IInventory//, ITickab
                 {
                     return 16000;
                 }
-            }
+                
+                */
+            //}
 
-            if (item instanceof ItemTool && "WOOD".equals(((ItemTool)item).getToolMaterialName())) return 200;
-            if (item instanceof ItemSword && "WOOD".equals(((ItemSword)item).getToolMaterialName())) return 200;
-            if (item instanceof ItemHoe && "WOOD".equals(((ItemHoe)item).getMaterialName())) return 200;
-            if (item == Items.STICK) return 100;
-            if (item == Items.COAL) return 1800;//1600
-            if (item == Items.LAVA_BUCKET) return 20000;
-            if (item == Item.getItemFromBlock(Blocks.SAPLING)) return 100;
-            if (item == Items.BLAZE_ROD) return 2400;
+            //if (item instanceof ItemTool && "WOOD".equals(((ItemTool)item).getToolMaterialName())) return 200;
+            //if (item instanceof ItemSword && "WOOD".equals(((ItemSword)item).getToolMaterialName())) return 200;
+            //if (item instanceof ItemHoe && "WOOD".equals(((ItemHoe)item).getMaterialName())) return 200;
+            //if (item == Items.STICK) return 100;
+            if (item == Items.COAL) return 1200;//1600
+            //if (item == Items.LAVA_BUCKET) return 20000;
+            //if (item == Item.getItemFromBlock(Blocks.SAPLING)) return 100;
+            //if (item == Items.BLAZE_ROD) return 2400;
+            
+            
             return net.minecraftforge.fml.common.registry.GameRegistry.getFuelValue(stack);
         }
     }

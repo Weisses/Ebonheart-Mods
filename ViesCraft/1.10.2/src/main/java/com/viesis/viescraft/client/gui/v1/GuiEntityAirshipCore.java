@@ -41,12 +41,12 @@ public class GuiEntityAirshipCore extends GuiContainer {
         
 		if (EntityAirshipCore.isAirshipBurning(this.airship))
         {
-			int x = airship.getFuelScaled(10);
+			//int x = airship.getFuelScaled(10);
             int k = this.getBurnLeftScaled(47);
             this.drawTexturedModalRect(
-            		this.guiLeft + 156, this.guiTop + 19,//i + 56, j + 36 + 12 - k, 
-            		176,  50,//176, 12 - k, 
-            		8, 1 + k);//8, 48 + k);//14, k + 1);
+            		this.guiLeft + 156, this.guiTop + 19, //i + 56, j + 36 + 12 - k, 
+            		176,  50, //176, 12 - k, 
+            		8, 1 + k); //8, 48 + k);//14, k + 1);
             this.drawTexturedModalRect(
             		this.guiLeft + 129, this.guiTop + 48,//i + 79, j + 34, 
             		176, 14, 
@@ -74,7 +74,7 @@ public class GuiEntityAirshipCore extends GuiContainer {
 
         if (i == 0)
         {
-            i = 201;
+            i = 1200;
         }
 
         return this.airship.getField(0) * pixels / i;

@@ -7,6 +7,7 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IContainerListener;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
+import net.minecraft.inventory.SlotFurnaceFuel;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.tileentity.TileEntityFurnace;
@@ -144,7 +145,7 @@ public class ContainerAirshipCore extends Container {
 
 	/**
      * Take a stack from the specified inventory slot.
-     */
+     
     @Nullable
     public ItemStack transferStackInSlot(EntityPlayer playerIn, int index)
     {
@@ -217,7 +218,7 @@ public class ContainerAirshipCore extends Container {
 
         return itemstack;
     }
-	/**
+	*/
 	@Override
 	public ItemStack transferStackInSlot(EntityPlayer playerIn, int fromSlot) {
 		ItemStack previous = null;
@@ -249,7 +250,7 @@ public class ContainerAirshipCore extends Container {
 
 		return previous;
 	}
-	*/
+	
 	
 	
 	// SlotFuel is a slot for fuel items
