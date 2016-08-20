@@ -10,6 +10,7 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.common.AchievementTriggersVC;
 import com.viesis.viescraft.common.utils.events.AirshipHandler;
+import com.viesis.viescraft.common.utils.events.CommonPlayerTracker;
 import com.viesis.viescraft.init.InitAchievementsVC;
 import com.viesis.viescraft.init.InitEntityVC;
 import com.viesis.viescraft.init.InitItemsVC;
@@ -27,6 +28,7 @@ public class CommonProxy {
 		InitEntityVC.preInit();
 		
 		NetworkHandler.init();
+		
 		//=======================================//
 		//InitTileEntitiesEA.init();
 		//InitTileEntitiesEA.register();
@@ -40,6 +42,8 @@ public class CommonProxy {
 		
 		MinecraftForge.EVENT_BUS.register(new AchievementTriggersVC());
 		MinecraftForge.EVENT_BUS.register(new AirshipHandler());
+		MinecraftForge.EVENT_BUS.register(new CommonPlayerTracker());
+		
 		NetworkRegistry.INSTANCE.registerGuiHandler(Reference.MOD_ID, new GuiHandler());
 		
 		//GameRegistry.registerWorldGenerator(new WorldGeneratorEA(), 0);

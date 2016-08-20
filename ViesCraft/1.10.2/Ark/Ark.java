@@ -1,4 +1,6 @@
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.ItemStackHelper;
+import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
 
@@ -8,15 +10,32 @@ import com.viesis.viescraft.network.GuiHandler;
 
 public class Ark {
 
-//KeyBinds.java
+//EntityAirshipCore.java
 
 	/**
 	 * 
 	 * 
+	//private int airshipClientBurnTime;
+	
+	//public static final int fuel_slots = 1;
+	//public static final int total_slots = fuel_slots; //+ other variables
+	//public static final int first_fuel_slot = 9;
+	
+	//private int [] burnTimeRemaining = new int[fuel_slots];
+	//private int [] burnTimeInitialValue = new int[fuel_slots];
+	
+	//private int cookTime;
+	//private static final short cook_time_for_completion = 200; // 10 Seconds IRL
+	//private int cachedNumberOfBurningSlots = -1;
+	
 	//private static ItemStack[] inventoryFuel = new ItemStack[1];
 	//private static ItemStack[] furnaceItemStacks = new ItemStack[3];
 	//public ItemStack[] inventory;
 	//public ItemStack[] furnaceItemStacks = new ItemStack[3];
+	
+	//private int nowBurnTime;
+	//private int lastBurnTime;
+	//private boolean canAirshipFly;
 	
 	
 	/////////OnUpdate
@@ -25,6 +44,36 @@ public class Ark {
         //	canAirshipFly = false;
         //}
         
+        //this.getAirshipBurning();
+		
+        //if (this.worldObj.isRemote)
+        //{
+        //	LogHelper.info("Is Burning = " + isAirshipBurning());
+        //	LogHelper.info("Can fly = " + canAirshipFly);
+        //}
+         * 
+         * //NetworkHandler.sendToServer(new MessageAirshipBurning());
+        	//LogHelper.info("Is Burning = " + isAirshipBurning());
+        	//LogHelper.info("Can fly = " + canAirshipFly);
+        	
+        	//if(isAirshipBurning())
+        	//{
+        	//	if (this.worldObj.isRemote)
+            //    {
+            //    	this.controlAirshipBurning();
+            //    } 
+        	//}
+        	
+        	//if(!isAirshipBurning())
+        	//{
+        	//	if (this.worldObj.isRemote)
+            //    {
+            //    	this.controlAirship();
+            //    } 
+        	//}
+            
+            
+            
         //this.setMinecartPowered(this.fuel > 0);
 
         //if (this.isMinecartPowered() && this.rand.nextInt(4) == 0)
@@ -41,6 +90,83 @@ public class Ark {
         	//LogHelper.info("Testing = " + test);
         	
 	//LogHelper.info(isBurning());
+	 * 
+	 * 
+	 * 
+	 * //this.deltaRotation -= AirshipSpeedTurn;
+                //this.alphaRotation -= AirshipSpeedTurn;
+                
+                //-0.2F;//  -0.4    += -1.0F;
+	 * 
+	 * 
+	
+    public void controlAirshipBurning()
+    {
+        if (this.isBeingRidden())
+        {
+            float f = 0.0F;
+            float f1 = 0.0F;
+            
+            if (this.leftInputDown)
+            {
+                this.deltaRotation -= AirshipSpeedTurn;
+                this.alphaRotation -= AirshipSpeedTurn;
+                
+                //-0.2F;//  -0.4    += -1.0F;
+            }
+
+            if (this.rightInputDown)
+            {
+                this.deltaRotation += AirshipSpeedTurn; //0.2F;//  0.4    += 1.0F;
+            }
+
+            if (this.rightInputDown != this.leftInputDown && !this.forwardInputDown && !this.backInputDown)
+            {
+                f += 0.005F;
+                
+            }
+
+            this.rotationYaw += this.deltaRotation;
+
+            if (this.forwardInputDown)
+            {
+            	
+            		f += AirshipSpeedForward; //0.0125F;//+= 0.04F;
+            	
+            }
+
+            if (this.backInputDown)
+            {
+            	
+            		f -= AirshipSpeedForward * 0.5; //0.0125F;//+= 0.04F;
+            	
+            }
+            
+            if (this.upInputDown)
+            {
+            	
+            		f1 += AirshipSpeedUp;//0.005F;
+            	
+            }
+            
+            if (this.downInputDown)
+            {
+                f1 -= AirshipSpeedDown;//0.005F;
+            }
+            
+            
+
+            this.motionX += (double)(MathHelper.sin(-this.rotationYaw * 0.017453292F) * f);
+            this.motionZ += (double)(MathHelper.cos(this.rotationYaw * 0.017453292F) * f);
+            this.motionY += (double)(3.017453292F * f1);
+            
+            this.rotationPitch += 10;
+        }
+    }
+    
+	
+	
+	
 	@Override
 	public int getSizeInventory() 
 	{
@@ -144,6 +270,549 @@ public class Ark {
 		 
 	}
 	
+	/**
+    	//if(!canAirshipFly) 
+        //{
+        	int numberOfFuelBurning = burnFuel();
+			
+			if(numberOfFuelBurning > 0) 
+			{
+				//canAirshipFly = true;
+				cookTime += numberOfFuelBurning;
+			} 
+			else 
+			{
+				//canAirshipFly = false;
+				//cookTime -= 2;
+				cookTime = 0;
+			}
+			
+			if(cookTime < 0) 
+			{
+				cookTime = 0;
+			}
+			
+			////if(cookTime >= cook_time_for_completion) 
+			////{
+				//smeltItem();
+			////	cookTime = 1;
+			////}
+			//while(cookTime > 0)
+			//{
+			//	canAirshipFly = true;
+			//}
+		//} 
+        //else 
+        //{
+		//	cookTime = 0;
+		//}
+    	
+
+		////int numberBurning = numberOfBurningFuelSlots();
+		////if(cachedNumberOfBurningSlots != numberBurning) 
+		////{
+		////	cachedNumberOfBurningSlots = numberBurning;
+		////}
+		 * 
+		 * 
+		
+        
+    /**
+	private int burnFuel()
+	{
+		int burningCount = 0;
+		boolean inventoryChanged = false;
+		
+		for(int i = 0; i < fuel_slots; i++)
+		{
+			int fuelSlotNumber = 9;//i + first_fuel_slot;
+			if(burnTimeRemaining[i] > 0)
+			{
+				--burnTimeRemaining[i];
+				++burningCount;
+			}
+			if(burnTimeRemaining[i] == 0)
+			{
+				if(inventory[fuelSlotNumber] != null && getItemBurnTime(inventory[fuelSlotNumber]) > 0)
+				{
+					burnTimeRemaining[i] = burnTimeInitialValue[i] = getItemBurnTime(inventory[fuelSlotNumber]);
+					--inventory[fuelSlotNumber].stackSize;
+					++burningCount;
+					inventoryChanged = true;
+					
+					if(inventory[fuelSlotNumber].stackSize == 0)
+					{
+						inventory[fuelSlotNumber] = inventory[fuelSlotNumber].getItem().getContainerItem(inventory[fuelSlotNumber]);
+						
+					}
+					
+				}
+				
+			}
+			
+		}
+		
+		if(inventoryChanged)
+		{
+			markDirty();
+		}
+		return burningCount;
+		
+	}
+	
+	*/
+    
+    
+	/**
+	private boolean canSmelt()
+	{
+		return smeltItem(false);
+	}
+	
+	private void smeltItem()
+	{
+		smeltItem(true);
+	}
+	
+	private boolean smeltItem(boolean performSmelt) {
+		Integer firstSuitableInputSlot = null;
+		Integer firstSuitableOutputSlot = null;
+		ItemStack result = null;
+		
+		for(int inputSlot = 0
+				//first_input_slot
+				; inputSlot < 10
+				//first_input_slot + input_slots
+				; inputSlot++) {
+			if(inventory[inputSlot] != null) {
+				result = getSmeltingResultForItem(inventory[inputSlot]);
+				if(result != null) {
+					for(int outputSlot = 1
+							
+							//first_output_slot
+							; outputSlot < 4
+							//first_output_slot + output_slots
+							; outputSlot++) {
+						ItemStack outputStack = inventory[outputSlot];
+						if(outputStack == null) {
+							firstSuitableInputSlot = inputSlot;
+							firstSuitableOutputSlot = outputSlot;
+							break;
+						}
+						if(outputStack.getItem() == result.getItem() && (!outputStack.getHasSubtypes() || outputStack.getMetadata() == outputStack.getMetadata()) && ItemStack.areItemStackTagsEqual(outputStack, result)) {
+							int combinedSize = inventory[outputSlot].stackSize + result.stackSize;
+							if(combinedSize <= getInventoryStackLimit() && combinedSize <= inventory[outputSlot].getMaxStackSize()) {
+								firstSuitableInputSlot = inputSlot;
+								firstSuitableOutputSlot = outputSlot;
+								break;
+							}
+						}
+					}
+					if(firstSuitableInputSlot != null) {
+						break;
+					}
+				}
+			}
+		}
+		if(firstSuitableInputSlot == null) {
+			return false;
+		}
+		if(!performSmelt) {
+			return true;
+		}
+		inventory[firstSuitableInputSlot].stackSize--;
+		if(inventory[firstSuitableInputSlot].stackSize <= 0) {
+			inventory[firstSuitableInputSlot] = null;
+		}
+		if(inventory[firstSuitableOutputSlot] == null) {
+			inventory[firstSuitableOutputSlot] = result.copy();
+		} else {
+			inventory[firstSuitableOutputSlot].stackSize += result.stackSize;
+		}
+		markDirty();
+		return true;
+	}
+		
+	public static ItemStack getSmeltingResultForItem(ItemStack stack)
+	{
+		return FurnaceRecipes.instance().getSmeltingResult(stack);
+	}
+	*/
+	//public static short getItemBurnTime(ItemStack stack)
+	//{
+	//	int burntime = EntityAirshipCore.getItemBurnTime(stack);
+	//	return (short)MathHelper.clamp_int(burntime, 0, Short.MAX_VALUE);
+	//}
+	
+	/**
+	public int getField(int id)
+    {
+        switch (id)
+        {
+            case 0:
+                return 0;//this.furnaceBurnTime;
+            case 1:
+                return 0;//this.currentItemBurnTime;
+            case 2:
+                return this.cookTime;
+            case 3:
+                return 0;//this.burnTimeRemaining;
+            default:
+                return 0;
+        }
+    }
+
+    public void setField(int id, int value)
+    {
+        switch (id)
+        {
+            case 0:
+                //this.furnaceBurnTime = value;
+                break;
+            case 1:
+                //this.currentItemBurnTime = value;
+                break;
+            case 2:
+                this.cookTime = value;
+                break;
+            case 3:
+                //this.totalCookTime = value;
+        }
+    }
+
+    public int getFieldCount()
+    {
+        return 4;
+    }
+	*/	
+	
+	
+    //@SideOnly(Side.CLIENT)
+    //public static boolean isAirshipBurning(IInventory inventory)
+    //{
+        
+    //	return inventory.getField(2) > 0;
+    //}
+	
+	/**
+     * Returns the number of ticks that the supplied fuel item will keep the furnace burning, or 0 if the item isn't
+     * fuel
+     */
+    //public static int getItemBurnTime(ItemStack stack)
+    //{
+    //    if (stack == null)
+    //    {
+    //        return 0;
+    //    }
+    //    else
+    //    {
+    //        Item item = stack.getItem();
+
+    //        if (item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.AIR)
+    //        {
+    //            Block block = Block.getBlockFromItem(item);
+
+                //if (block == Blocks.WOODEN_SLAB)
+                //{
+                //    return 150;
+                //}
+
+                //if (block.getDefaultState().getMaterial() == Material.WOOD)
+                //{
+                //    return 300;
+                //}
+
+                //if (block == Blocks.COAL_BLOCK)
+                //{
+                //    return 16000;
+                //}
+      //      }
+
+            //if (item instanceof ItemTool && "WOOD".equals(((ItemTool)item).getToolMaterialName())) return 200;
+            //if (item instanceof ItemSword && "WOOD".equals(((ItemSword)item).getToolMaterialName())) return 200;
+            //if (item instanceof ItemHoe && "WOOD".equals(((ItemHoe)item).getMaterialName())) return 200;
+            //if (item == Items.STICK) return 100;
+    //        if (item == Items.COAL) return 1800;
+            //if (item == Items.LAVA_BUCKET) return 20000;
+            //if (item == Item.getItemFromBlock(Blocks.SAPLING)) return 100;
+            //if (item == Items.BLAZE_ROD) return 2400;
+    //        return net.minecraftforge.fml.common.registry.GameRegistry.getFuelValue(stack);
+    //    }
+    //}
+	
+	
+    //@Override
+	//public static boolean isItemFuel(ItemStack stack)
+    //{
+        /**
+         * Returns the number of ticks that the supplied fuel item will keep the furnace burning, or 0 if the item isn't
+         * fuel
+         */
+    //    return getItemBurnTime(stack) > 0;
+    //}
+    
+    
+	//public static boolean getItemMaxBurnTime(ItemStack stack)
+    //{
+        /**
+         * Returns the number of ticks that the supplied fuel item will keep the furnace burning, or 0 if the item isn't
+         * fuel
+         */
+    //    return getItemBurnTime(stack) > 0;
+    //}
+    
+	/**
+	@SideOnly(Side.CLIENT)
+    public int getFuelScaled(int i) {
+    	
+    	//ItemStack stack = new ItemStack(Items.COAL);
+    	////////ItemStack item = getStackInSlot(9);
+    	//ItemStack stackq = inventory[9];
+    	
+    	////////int maxFuel = 1;
+    	
+    	//int test = getItemBurnTime(item);
+    	//Item item = stack.getItem();
+    	//int[] item = burnTimeRemaining;
+    	//burnTimeRemaining;
+    	//int maxFuel = 10;
+    	//int maxFuel = burnTimeRemaining;
+    	
+    	/////////if (item == new ItemStack(Items.COAL)
+    	///////////&& item != null)
+    	////////////{
+    	////////////	maxFuel = 1800; //1600;
+    		
+    	////////////}
+    	/**
+        if (item == new ItemStack(Items.LAVA_BUCKET)
+        && item != null)
+        {
+        	maxFuel = 20000;
+        }
+        if (item == new ItemStack(Item.getItemFromBlock(Blocks.SAPLING))
+        && item != null)
+        {
+        	maxFuel = 100;
+        }
+        if (item == new ItemStack(Items.BLAZE_ROD)
+        && item != null)
+        {
+        	maxFuel = 2400;
+        }
+    	*/
+	/**	if (this.totalFuelTime == 0)
+        {
+			this.totalFuelTime = this.getFuelTime(this.inventory[9]);
+        }
+		
+    		return (airshipBurnTime * i) / totalFuelTime;
+    	
+    	//return (cookTime * i) / 360;
+		
+		//return i;//(cookTime * i) / maxFuel;//(maxFuel / 5);//320;
+	}
+	*/
+	
+	//public int getFuelTime(@Nullable ItemStack stack)
+    //{
+    //    return 200;
+    //}
+	/**
+    public boolean getAirshipBurning()
+    {
+    	boolean flag1 = false;
+    	
+    	if (!isAirshipBurning())
+        {
+        	if(this.airshipBurnTime > 0)
+        	{
+        		flag1 = true;
+        	}
+        	else
+        	{
+        		flag1 = false;
+        	}
+        	
+        }
+    	return flag1;
+    }
+    */
+	/**
+    public int getClientItemBurnTime()
+    {
+    	//int nowBurnTime = 0;
+    	//int lastBurnTime;
+    	
+    	
+    	if (nowBurnTime > 0)
+        {
+    		nowBurnTime = this.getItemBurnTime(this.inventory[9]);
+        }
+    	
+    	if (nowBurnTime == 0)
+        {
+    		nowBurnTime = this.getItemBurnTime(this.inventory[9]);
+        }
+    	lastBurnTime = nowBurnTime;
+    	
+		return nowBurnTime;
+    }
+    
+	
+	@Override
+	public ItemStack removeStackFromSlot(int index) 
+	{
+		return ItemStackHelper.getAndRemove(this.inventory, index);
+	
+	//ItemStack stack = this.getStackInSlot(index);
+		//this.setInventorySlotContents(index, null);
+		//return stack;
+	}
+	
+    
+    /**
+     * Returns the amount of fuel remaining from the burning item
+     * @param fuelSlot
+     * @return
+     
+    public double fractionOfFuelRemaining(int fuelSlot)
+	{
+		if(burnTimeInitialValue[fuelSlot] <= 0)
+		{
+			return 0;
+		}
+		double fraction = burnTimeRemaining[fuelSlot] / (double)burnTimeInitialValue[fuelSlot];
+		return MathHelper.clamp_double(fraction, 0.0, 1.0);
+	}
+    */
+    /**
+     * Converts ticks to seconds.
+     * @param fuelSlot
+     * @return
+     
+    public int secondsOfFuelRemaining(int fuelSlot)
+    {
+    	if(burnTimeRemaining[fuelSlot] <=0 )
+    	{
+    		return 0;
+    	}
+    	return burnTimeRemaining[fuelSlot] / 20;
+    }
+    */
+    /**
+     * Number of fuel slots that have fuel burning in them.
+     * @return
+     
+    public int numberOfBurningFuelSlots()
+    {
+    	int burningCount = 0;
+    	for(int burnTime : burnTimeRemaining)
+    	{
+    		if(burnTime > 0)
+    		{
+    			++burningCount;
+    		}
+    	}
+    	return burningCount;
+    }
+    */
+    /**
+     * Time of completion.
+     * @return
+     
+    public double fractionOfCookTimeComplete()
+    {
+    	double fraction = cookTime / (double)cook_time_for_completion;
+    	return MathHelper.clamp_double(fraction, 0.0, 1.0);
+    }
+    
+    
+    
+    
+    
+    
+    
+	@Override
+	public void setInventorySlotContents(int index, ItemStack stack) 
+	{
+		boolean flag = stack != null && stack.isItemEqual(this.inventory[index]) && ItemStack.areItemStackTagsEqual(stack, this.inventory[index]);
+        this.inventory[index] = stack;
+        
+        if (stack != null && stack.stackSize > this.getInventoryStackLimit())
+        {
+            stack.stackSize = this.getInventoryStackLimit();
+        }
+        
+        if (index == 0 && !flag)
+        {
+            this.totalFuelTime = this.getFuelTime(stack);
+            this.fuelTime = 0;
+            this.markDirty();
+        }
+		
+		if (index < 0 || index >= this.getSizeInventory())
+		{
+			return;
+		}
+
+		if (stack != null && stack.stackSize > this.getInventoryStackLimit())
+		{
+			stack.stackSize = this.getInventoryStackLimit();
+		}
+
+		if (stack != null && stack.stackSize == 0)
+		{
+			stack = null;
+		}
+
+		this.inventory[index] = stack;
+		this.markDirty();
+		
+		
+	}
+	
+	@Override
+	public ItemStack decrStackSize(int index, int count) 
+	{
+		
+		return ItemStackHelper.getAndSplit(this.inventory, index, count);
+		
+		if (this.getStackInSlot(index) != null) 
+		{
+			ItemStack itemstack;
+
+			if (this.getStackInSlot(index).stackSize <= count) 
+			{
+				itemstack = this.getStackInSlot(index);
+				this.setInventorySlotContents(index, null);
+				this.markDirty();
+				return itemstack;
+			} 
+			else 
+			{
+				itemstack = this.getStackInSlot(index).splitStack(count);
+
+				if (this.getStackInSlot(index).stackSize <= 0) 
+				{
+					this.setInventorySlotContents(index, null);
+				} 
+				else 
+				{
+					//Just to show that changes happened
+					this.setInventorySlotContents(index, this.getStackInSlot(index));
+				}
+
+				this.markDirty();
+				return itemstack;
+			}
+		} 
+		else 
+		{
+			return null;
+		}
+		
+	}
 	
     public void fuelFlight()
     {
@@ -194,7 +863,7 @@ public class Ark {
     
 	
 	
-	
+	*/
 	
 //KeyBinds.java
 
@@ -265,6 +934,197 @@ public class Ark {
 
 	*/
 	
+
+	//MessageGuiOpenBlack.java
+		/**
+		 * 
+		 * 
+		
+		
+		
+	//@Override
+	//public boolean canInteractWith(EntityPlayer playerIn) {
+	//	return this.airship.isUseableByPlayer(playerIn);
+	//}
+
+	/**
+     * Take a stack from the specified inventory slot.
+     
+    @Nullable
+    public ItemStack transferStackInSlot(EntityPlayer playerIn, int index)
+    {
+        ItemStack itemstack = null;
+        Slot slot = (Slot)this.inventorySlots.get(index);
+
+        if (slot != null && slot.getHasStack())
+        {
+            ItemStack itemstack1 = slot.getStack();
+            itemstack = itemstack1.copy();
+
+            if (index != 9)
+            {
+                if (!this.mergeItemStack(itemstack1, 3, 39, true))
+                {
+                    return null;
+                }
+
+                slot.onSlotChange(itemstack1, itemstack);
+            }
+            //else if (index != 1 && index != 0)
+            //{
+            //    if (FurnaceRecipes.instance().getSmeltingResult(itemstack1) != null)
+            //    {
+            //        if (!this.mergeItemStack(itemstack1, 0, 1, false))
+            //        {
+            //            return null;
+            //        }
+            //    }
+            //    else if (TileEntityFurnace.isItemFuel(itemstack1))
+            //    {
+            //        if (!this.mergeItemStack(itemstack1, 1, 2, false))
+            //        {
+            //            return null;
+            //        }
+            //    }
+            //    else if (index >= 3 && index < 30)
+            //    {
+            //        if (!this.mergeItemStack(itemstack1, 30, 39, false))
+            //        {
+            //            return null;
+            //        }
+            //    }
+            //    else if (index >= 30 && index < 39 && !this.mergeItemStack(itemstack1, 3, 30, false))
+            //    {
+            //        return null;
+            //    }
+            //}
+            //else if (!this.mergeItemStack(itemstack1, 3, 39, false))
+            //{
+            //    return null;
+            //}
+
+            if (itemstack1.stackSize == 0)
+            {
+                slot.putStack((ItemStack)null);
+            }
+            else
+            {
+                slot.onSlotChanged();
+            }
+
+            if (itemstack1.stackSize == itemstack.stackSize)
+            {
+                return null;
+            }
+
+            slot.onPickupFromSlot(playerIn, itemstack1);
+        }
+
+        return itemstack;
+    }
+	*/
+	@Override
+	public ItemStack transferStackInSlot(EntityPlayer playerIn, int fromSlot) {
+		ItemStack previous = null;
+		Slot slot = (Slot) this.inventorySlots.get(fromSlot);
+
+		if (slot != null && slot.getHasStack()) {
+			ItemStack current = slot.getStack();
+			previous = current.copy();
+
+			if (fromSlot < 9) {
+				// From TE Inventory to Player Inventory
+				if (!this.mergeItemStack(current, 9, 45, true))
+					return null;
+			} else {
+				// From Player Inventory to TE Inventory
+				if (!this.mergeItemStack(current, 0, 9, false))
+					return null;
+			}
+
+			if (current.stackSize == 0)
+				slot.putStack((ItemStack) null);
+			else
+				slot.onSlotChanged();
+
+			if (current.stackSize == previous.stackSize)
+				return null;
+			slot.onPickupFromSlot(playerIn, current);
+		}
+
+		return previous;
+	}
+	
+	
+	
+	// SlotFuel is a slot for fuel items
+		//public class SlotFuel extends Slot {
+	//		public SlotFuel(IInventory inventoryIn, int index, int xPosition,
+	//				int yPosition) {
+	//			super(inventoryIn, index, xPosition, yPosition);
+	//		}
+
+			// if this function returns false, the player won't be able to insert
+			// the given item into this slot
+	//		@Override
+	//		public boolean isItemValid(ItemStack stack) {
+	//			return EntityAirshipCore.isItemValidForFuelSlot(stack);
+	//		}
+	//	}
+}
+		/**
+		public void addListener(IContainerListener listener)
+	    {
+	        super.addListener(listener);
+	        listener.sendAllWindowProperties(this, this.airship);
+	    }
+
+	    /**
+	     * Looks for changes made in the container, sends them to every listener.
+	     */
+		/**  public void detectAndSendChanges()
+	    {
+	        super.detectAndSendChanges();
+
+	        for (int i = 0; i < this.listeners.size(); ++i)
+	        {
+	            IContainerListener icontainerlistener = (IContainerListener)this.listeners.get(i);
+
+	            if (this.cookTime != this.airship.getField(2))
+	            {
+	                icontainerlistener.sendProgressBarUpdate(this, 2, this.airship.getField(2));
+	            }
+
+	            if (this.furnaceBurnTime != this.airship.getField(0))
+	            {
+	                icontainerlistener.sendProgressBarUpdate(this, 0, this.airship.getField(0));
+	            }
+
+	            if (this.currentItemBurnTime != this.airship.getField(1))
+	            {
+	                icontainerlistener.sendProgressBarUpdate(this, 1, this.airship.getField(1));
+	            }
+
+	            if (this.totalCookTime != this.airship.getField(3))
+	            {
+	                icontainerlistener.sendProgressBarUpdate(this, 3, this.airship.getField(3));
+	            }
+	        }
+
+	        this.cookTime = this.airship.getField(2);
+	        this.furnaceBurnTime = this.airship.getField(0);
+	        this.currentItemBurnTime = this.airship.getField(1);
+	        this.totalCookTime = this.airship.getField(3);
+	    }
+
+	    //@SideOnly(Side.CLIENT)
+	    //public void updateProgressBar(int id, int data)
+	    //{
+	    //    this.airship.setField(id, data);
+	    //}
+			
+		}
+		*/
 //MessageGuiOpenBlack.java
 	/**
 	 * 

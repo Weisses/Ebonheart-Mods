@@ -47,6 +47,24 @@ item.vc:item_airship_red.name=Red Viesdenburg
 item.vc:item_airship_white.name=White Viesdenburg
 item.vc:item_airship_yellow.name=Yellow Viesdenburg
 
+item.vc:item_airship_v2_normal.name=Viesigible
+item.vc:item_airship_v2_black.name=Black Viesigible
+item.vc:item_airship_v2_blue.name=Blue Viesigible
+item.vc:item_airship_v2_brown.name=Brown Viesigible
+item.vc:item_airship_v2_cyan.name=Cyan Viesigible
+item.vc:item_airship_v2_gray.name=Gray Viesigible
+item.vc:item_airship_v2_green.name=Green Viesigible
+item.vc:item_airship_v2_lightblue.name=Light Blue Viesigible
+item.vc:item_airship_v2_lightgray.name=Light Gray Viesigible
+item.vc:item_airship_v2_lime.name=Lime Viesigible
+item.vc:item_airship_v2_magenta.name=Magenta Viesigible
+item.vc:item_airship_v2_orange.name=Orange Viesigible
+item.vc:item_airship_v2_pink.name=Pink Viesigible
+item.vc:item_airship_v2_purple.name=Purple Viesigible
+item.vc:item_airship_v2_red.name=Red Viesigible
+item.vc:item_airship_v2_white.name=White Viesigible
+item.vc:item_airship_v2_yellow.name=Yellow Viesigible
+
 //-----Entity-----
 entity.vc.airship.normal.name=Viesdenburg
 entity.vc.airship.black.name=Black Viesdenburg
