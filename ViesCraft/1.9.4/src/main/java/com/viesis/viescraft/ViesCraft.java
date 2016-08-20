@@ -1,16 +1,14 @@
 package com.viesis.viescraft;
 
+import java.io.File;
+
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.config.Configuration;
-import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 
 import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.api.creative.VCTabAirships;
@@ -24,12 +22,12 @@ public class ViesCraft {
     
     @SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.SERVER_PROXY_CLASS)
 	public static CommonProxy proxy;
-	public static Configuration config = null;
-	public static SimpleNetworkWrapper network;
-	
+    
 	//public static final VCTabBlocks tabViesCraftBlocks = new VCTabBlocks("tabViesCraftBlocks");
 	public static final VCTabItems tabViesCraftItems = new VCTabItems("tabViesCraftItems");
 	public static final VCTabAirships tabViesCraftAirships = new VCTabAirships("tabViesCraftAirships");
+	
+	private static File configDir;
 	
 	@Mod.Instance(Reference.MOD_ID)
 	public static ViesCraft instance;
@@ -37,41 +35,14 @@ public class ViesCraft {
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
-		config = new Configuration(event.getSuggestedConfigurationFile());
-		try
-		{
-			config.load();
-			LogHelper.info("Good news everyone! The configuration has been loaded!");
-		}
-		catch(Exception e)
-		{
-			LogHelper.error("ViesCraft has a problem loading it's configuration.");
-			throw new RuntimeException(e);
-		}
-		finally
-		{
-			if(config.hasChanged()) 
-			{
-				config.save();
-				LogHelper.info("Configuration changed, saved.");
-			}
-		}
 		MinecraftForge.EVENT_BUS.register(instance);
-		ViesCraftConfig.syncConfig();
+		
+		configDir = new File(event.getModConfigurationDirectory() + "/" + Reference.MOD_ID);
+		configDir.mkdirs();
+		ViesCraftConfig.init(new File(configDir.getPath(), Reference.MOD_ID + ".cfg"));
 		
 		this.proxy.preInit(event);
 		LogHelper.info("Pre Initialization Complete.");
-	}
-	
-	//If config changed, it syncs it.
-	@SubscribeEvent
-	public void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event)
-	{
-		if(event.getModID().equals(Reference.MOD_ID))
-		{
-			ViesCraftConfig.syncConfig();
-			LogHelper.info("Configuration synced.");
-		}
 	}
 	
 	@EventHandler

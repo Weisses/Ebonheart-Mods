@@ -26,6 +26,24 @@ public class ItemsVC {
 	public static Item item_airship_white;
 	public static Item item_airship_yellow;
 	
+	public static Item item_airship_v2_normal;
+	public static Item item_airship_v2_black;
+	public static Item item_airship_v2_blue;
+	public static Item item_airship_v2_brown;
+	public static Item item_airship_v2_cyan;
+	public static Item item_airship_v2_gray;
+	public static Item item_airship_v2_green;
+	public static Item item_airship_v2_lightblue;
+	public static Item item_airship_v2_lightgray;
+	public static Item item_airship_v2_lime;
+	public static Item item_airship_v2_magenta;
+	public static Item item_airship_v2_orange;
+	public static Item item_airship_v2_pink;
+	public static Item item_airship_v2_purple;
+	public static Item item_airship_v2_red;
+	public static Item item_airship_v2_white;
+	public static Item item_airship_v2_yellow;
+	
 	public static Item item_paint_black;
 	public static Item item_paint_blue;
 	public static Item item_paint_brown;

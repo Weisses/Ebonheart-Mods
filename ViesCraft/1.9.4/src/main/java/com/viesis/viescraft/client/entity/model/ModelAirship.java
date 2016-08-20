@@ -420,12 +420,12 @@ public class ModelAirship extends ModelBase {
     	Engine_L1a.render(f5);
     	Engine_L1b.render(f5);
     	
-    	if(ViesCraftConfig.modelAnimation)
-		{
+    	//if(ViesCraftConfig.modelAnimation)
+		//{
     		Propeller_1a.render(f5);
     		Propeller_1b.render(f5);
     		Propeller_1c.render(f5);
-		}
+		//}
   	}
   	
   	private void setRotation(ModelRenderer model, float x, float y, float z)
@@ -439,8 +439,8 @@ public class ModelAirship extends ModelBase {
   	{
 		super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 
-		if(ViesCraftConfig.modelAnimation)
-		{
+		//if(ViesCraftConfig.modelAnimation)
+		//{
 			long now = System.nanoTime();
 			int elapsed = (int) ((now - lastframe) / (1000000));
 			// 1000000 nanoseconds = .001 seconds
@@ -451,7 +451,7 @@ public class ModelAirship extends ModelBase {
 			this.Propeller_1a.rotateAngleZ += (bladespin * 2);
 			this.Propeller_1b.rotateAngleZ += (bladespin * 2);
 			this.Propeller_1c.rotateAngleZ += (bladespin * 2);
-		}
+		//}
 		
 		//ViesCraft.proxy.generateSmokeParticles(entity);
 	}

@@ -31,7 +31,25 @@ public final class InitItemsVCRender extends ItemsVC {
 		registerRender(item_airship_red);
 		registerRender(item_airship_white);
 		registerRender(item_airship_yellow);
-		
+		/**
+		registerRender(item_airship_v2_normal);
+		registerRender(item_airship_v2_black);
+		registerRender(item_airship_v2_blue);
+		registerRender(item_airship_v2_brown);
+		registerRender(item_airship_v2_cyan);
+		registerRender(item_airship_v2_gray);
+		registerRender(item_airship_v2_green);
+		registerRender(item_airship_v2_lightblue);
+		registerRender(item_airship_v2_lightgray);
+		registerRender(item_airship_v2_lime);
+		registerRender(item_airship_v2_magenta);
+		registerRender(item_airship_v2_orange);
+		registerRender(item_airship_v2_pink);
+		registerRender(item_airship_v2_purple);
+		registerRender(item_airship_v2_red);
+		registerRender(item_airship_v2_white);
+		registerRender(item_airship_v2_yellow);
+		*/
 		registerRender(item_paint_black);
 		registerRender(item_paint_blue);
 		registerRender(item_paint_brown);

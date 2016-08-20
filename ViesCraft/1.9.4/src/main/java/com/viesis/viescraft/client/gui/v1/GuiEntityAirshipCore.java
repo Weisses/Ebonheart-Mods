@@ -13,6 +13,7 @@ import com.viesis.viescraft.api.util.Keybinds;
 import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.common.entity.airshipcolors.ContainerAirshipCore;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipCore;
+import com.viesis.viescraft.configs.ViesCraftConfig;
 
 public class GuiEntityAirshipCore extends GuiContainer {
 	
@@ -74,7 +75,7 @@ public class GuiEntityAirshipCore extends GuiContainer {
 
         if (i == 0)
         {
-            i = 1200;
+        	i = (ViesCraftConfig.fuelBurnTime * 20);//i = 1200;
         }
 
         return this.airship.getField(0) * pixels / i;

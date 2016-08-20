@@ -1,9 +1,7 @@
 package com.viesis.viescraft.network;
 
-import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 
 import com.viesis.viescraft.client.gui.v1.GuiEntityAirshipCore;
@@ -14,6 +12,7 @@ public class GuiHandler implements IGuiHandler {
 	
 	public static GuiHandler instance;
 	public static final int GUI_AIRSHIP_INVENTORY = 0;
+	EntityAirshipCore entity;
 	
 	public GuiHandler() 
 	{
