@@ -12,6 +12,7 @@ public final class InitBlocksVCRender extends BlocksVC {
 	
 	public static void registerRenders()
 	{
+		registerRender(airship_workbench);
 		//registerRender(cryptic_ebonheart_block_fancybrick);
 	}
 	

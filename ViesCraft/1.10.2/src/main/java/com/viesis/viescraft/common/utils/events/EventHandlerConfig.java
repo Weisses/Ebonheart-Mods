@@ -10,9 +10,9 @@ import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.network.NetworkHandler;
 import com.viesis.viescraft.network.client.MessageConfig;
 
-public class CommonPlayerTracker {
+public class EventHandlerConfig {
 	
-	public CommonPlayerTracker()
+	public EventHandlerConfig()
 	{
 		MinecraftForge.EVENT_BUS.register(this);
 	}

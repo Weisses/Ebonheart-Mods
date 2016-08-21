@@ -1,5 +1,7 @@
 package com.viesis.viescraft.api.creative;
 
+import com.viesis.viescraft.api.BlocksVC;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.relauncher.Side;
@@ -17,7 +19,7 @@ public class VCTabBlocks extends CreativeTabs {
 	@SideOnly(Side.CLIENT)
 	public Item getTabIconItem() 
 	{
-		return null;
-		//return Item.getItemFromBlock(BlocksEA.soularite_block);
+		//return null;
+		return Item.getItemFromBlock(BlocksVC.airship_workbench);
 	}
 }

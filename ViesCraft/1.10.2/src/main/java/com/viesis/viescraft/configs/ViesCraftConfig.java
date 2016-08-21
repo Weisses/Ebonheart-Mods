@@ -18,6 +18,7 @@ public class ViesCraftConfig {
 	public static int fuelBurnTime;
 	public static int airshipSpeed;
 	public static boolean modelTurnAngle;
+	public static String airshipName; 
 	
 	public static final int FUELBURNTIME_DEFAULT = 60;
 	public static final String FUELBURNTIME_NAME = "Fuel Burn Time";
@@ -30,6 +31,10 @@ public class ViesCraftConfig {
 	public static final boolean MODELTURNANGLE_DEFAULT = true;
 	public static final String MODELTURNANGLE_NAME = "Enable Airship Turning Tilt?";
 	public static final String MODELTURNANGLE_COMMENT = "Should the airship tilt while players turn?";
+	
+	public static final String AIRSHIPNAME_DEFAULT = "Viesdenburg";
+	public static final String AIRSHIPNAME_NAME = "Airship Name";
+	public static final String AIRSHIPNAME_COMMENT = "Change the name of Airships?";
 	
 	public static void init(File file)
 	{
@@ -45,6 +50,7 @@ public class ViesCraftConfig {
 		config.addCustomCategoryComment(category1, "General airship options.");
 		fuelBurnTime = config.getInt(TextFormatting.WHITE + FUELBURNTIME_NAME, category1, FUELBURNTIME_DEFAULT, 1, 600, FUELBURNTIME_COMMENT);
 		airshipSpeed = config.getInt(TextFormatting.WHITE + AIRSHIPSPEED_NAME, category1, AIRSHIPSPEED_DEFAULT, 1, 400, AIRSHIPSPEED_COMMENT);
+		//airshipName = config.getString(AIRSHIPNAME_NAME, category1, AIRSHIPNAME_DEFAULT, AIRSHIPNAME_COMMENT);
 		
 		
 		
@@ -52,6 +58,8 @@ public class ViesCraftConfig {
 		final String category2 = CATEGORY_VC + config.CATEGORY_SPLITTER + TextFormatting.AQUA + "Animation";
 		config.addCustomCategoryComment(category2, "Client Side airship animations.");
 		modelTurnAngle = config.getBoolean(TextFormatting.WHITE + MODELTURNANGLE_NAME, category2, MODELTURNANGLE_DEFAULT, MODELTURNANGLE_COMMENT);
+		
+		
 		
 		//Save the config
 		config.save();

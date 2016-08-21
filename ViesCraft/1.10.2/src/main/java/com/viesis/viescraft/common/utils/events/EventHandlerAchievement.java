@@ -22,7 +22,7 @@ import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipWhite;
 import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipYellow;
 import com.viesis.viescraft.init.InitAchievementsVC;
 
-public class AirshipHandler {
+public class EventHandlerAchievement {
 	
     @SubscribeEvent
     public void onPlayerTick(TickEvent.PlayerTickEvent event) 
