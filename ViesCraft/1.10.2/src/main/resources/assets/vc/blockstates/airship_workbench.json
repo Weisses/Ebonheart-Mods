@@ -1,5 +1,6 @@
 {
-    "variants": {
+    "variants": 
+    {
         "normal": { "model": "vc:airship_workbench" }
     }
 }

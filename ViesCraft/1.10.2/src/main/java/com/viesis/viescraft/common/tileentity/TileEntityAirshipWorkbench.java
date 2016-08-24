@@ -2,6 +2,7 @@ package com.viesis.viescraft.common.tileentity;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -10,9 +11,9 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 
-public class TileEntityAirshipWorkbench extends TileEntity implements IInventory{
+public class TileEntityAirshipWorkbench extends TileEntity implements IInventory {
 	
-	private ItemStack[] inventory;
+	private ItemStack[] inventory = new ItemStack[9];
 	private String customName;
 	
 	public TileEntityAirshipWorkbench() {
@@ -44,7 +45,7 @@ public class TileEntityAirshipWorkbench extends TileEntity implements IInventory
 
 	@Override
 	public int getSizeInventory() {
-		return 9;
+		return inventory.length;
 	}
 
 	@Override
@@ -57,51 +58,32 @@ public class TileEntityAirshipWorkbench extends TileEntity implements IInventory
 
 	@Override
 	public ItemStack decrStackSize(int index, int count) {
-		if(this.getStackInSlot(index) != null) {
-			ItemStack itemstack;
-			
-			if(this.getStackInSlot(index).stackSize <= count) {
-				itemstack = this.getStackInSlot(index);
-				this.setInventorySlotContents(index, null);
-				this.markDirty();
-				return itemstack;
-			} else {
-				itemstack = this.getStackInSlot(index).splitStack(count);
-				
-				if(this.getStackInSlot(index).stackSize <= 0) {
-					this.setInventorySlotContents(index, null);
-				} else {
-					this.setInventorySlotContents(index, this.getStackInSlot(index));
-				}
-				
-				this.markDirty();
-				return itemstack;
-			}
-		} else {
-			return null;
-		}
+		return ItemStackHelper.getAndSplit(this.inventory, index, count);
+		
 	}
 
 	@Override
 	public ItemStack removeStackFromSlot(int index) {
-		ItemStack stack = this.getStackInSlot(index);
-		this.setInventorySlotContents(index, null);
-		return stack;
+		return ItemStackHelper.getAndRemove(this.inventory, index);
+		
 	}
 
 	@Override
 	public void setInventorySlotContents(int index, ItemStack stack) {
-		if(index < 0 || index >= this.getSizeInventory())
-			return;
-		
-		if(stack != null && stack.stackSize > this.getInventoryStackLimit())
-			stack.stackSize = this.getInventoryStackLimit();
-		
-		if(stack != null && stack.stackSize == 0)
-			stack = null;
-		
-		this.inventory[index] = stack;
-		this.markDirty();
+		boolean flag = stack != null && stack.isItemEqual(this.inventory[index]) && ItemStack.areItemStackTagsEqual(stack, this.inventory[index]);
+        this.inventory[index] = stack;
+        
+        if (stack != null && stack.stackSize > this.getInventoryStackLimit())
+        {
+            stack.stackSize = this.getInventoryStackLimit();
+        }
+        
+        if (index == 0 && !flag)
+        {
+            //this.totalFuelTime = this.getFuelTime(stack);
+            //this.fuelTime = 0;
+            this.markDirty();
+        }
 	}
 
 	@Override
@@ -146,36 +128,93 @@ public class TileEntityAirshipWorkbench extends TileEntity implements IInventory
 
 	@Override
 	public void clear() {
-		for(int i = 0; i < this.getSizeInventory(); i++) {
-			this.setInventorySlotContents(i, null);
+		for (int i = 0; i < this.inventory.length; i++)
+		{
+			this.inventory[i] = null;
 		}
 	}
 	
 	@Override
-	public NBTTagCompound writeToNBT(NBTTagCompound nbt) {
-		super.writeToNBT(nbt);
+	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
+		super.writeToNBT(compound);
 		
+		NBTTagList nbttaglist = new NBTTagList();
+        
+        for (int i = 0; i < this.inventory.length; ++i)
+        {
+            if (this.inventory[i] != null)
+            {
+                NBTTagCompound nbttagcompound = new NBTTagCompound();
+                nbttagcompound.setByte("Slot", (byte)i);
+                this.inventory[i].writeToNBT(nbttagcompound);
+                nbttaglist.appendTag(nbttagcompound);
+            }
+        }
+        
+        compound.setTag("Items", nbttaglist);
+		return compound;
+		/**
 		NBTTagList list = new NBTTagList();
-		for(int i = 0; i < this.getSizeInventory(); ++i) {
-			if(this.getStackInSlot(i) != null) {
-				NBTTagCompound stackTag = new NBTTagCompound();
-				stackTag.setByte("Slot", ((byte)i));
-				this.getStackInSlot(i).writeToNBT(stackTag);
-				list.appendTag(stackTag);
-			}
-		}
-		nbt.setTag("Items", list);
+		for (int i = 0; i < this.inventory.length; ++i)
+        {
+            if (this.inventory[i] != null)
+            {
+                NBTTagCompound nbttagcompound = new NBTTagCompound();
+                nbttagcompound.setByte("Slot", (byte)i);
+                this.inventory[i].writeToNBT(nbttagcompound);
+                list.appendTag(nbttagcompound);
+            }
+        }
 		
+		nbt.setTag("Items", list);
 		if(this.hasCustomName()) {
-			nbt.setString("CustomName", this.getCustomName());
-		}
+				nbt.setString("CustomName", this.getCustomName());
+			}
+		//if(this.hasCustomName()) {
+		//	nbt.setString("CustomName", this.getCustomName());
+		//}
 		return nbt;
+		*/
 	}
 	
 	@Override
-	public void readFromNBT(NBTTagCompound nbt) {
-		super.readFromNBT(nbt);
+	public void readFromNBT(NBTTagCompound compound) {
+		super.readFromNBT(compound);
 		
+		NBTTagList nbttaglist = compound.getTagList("Items", 10);
+        this.inventory = new ItemStack[this.getSizeInventory()];
+        
+        for (int i = 0; i < nbttaglist.tagCount(); ++i)
+        {
+            NBTTagCompound nbttagcompound = nbttaglist.getCompoundTagAt(i);
+            int j = nbttagcompound.getByte("Slot");
+            
+            if (j >= 0 && j < this.inventory.length)
+            {
+                this.inventory[j] = ItemStack.loadItemStackFromNBT(nbttagcompound);
+            }
+        }
+        
+		/**
+		NBTTagList nbttaglist = nbt.getTagList("Items", 10);
+        this.inventory = new ItemStack[this.getSizeInventory()];
+        
+        for (int i = 0; i < nbttaglist.tagCount(); ++i)
+        {
+            NBTTagCompound nbttagcompound = nbttaglist.getCompoundTagAt(i);
+            int j = nbttagcompound.getByte("Slot");
+            
+            if (j >= 0 && j < this.inventory.length)
+            {
+                this.inventory[j] = ItemStack.loadItemStackFromNBT(nbttagcompound);
+            }
+        }
+        
+        if(nbt.hasKey("CustomName", 8)) 
+        {
+    			this.setCustomName(nbt.getString("CustomName"));
+    		}
+		/**
 		NBTTagList list = nbt.getTagList("Items", 10);
 		for(int i = 0; i < list.tagCount(); ++i) {
 			NBTTagCompound stackTag = list.getCompoundTagAt(i);
@@ -183,8 +222,12 @@ public class TileEntityAirshipWorkbench extends TileEntity implements IInventory
 			this.setInventorySlotContents(slot, ItemStack.loadItemStackFromNBT(stackTag));
 		}
 		
-		if(nbt.hasKey("CustomName", 8)) {
-			this.setCustomName(nbt.getString("CustomName"));
-		}
+		//if(nbt.hasKey("CustomName", 8)) {
+		//	this.setCustomName(nbt.getString("CustomName"));
+		//}
+		 * */
+		 
 	}
+
+	
 }

@@ -5,6 +5,7 @@ import java.io.IOException;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.ResourceLocation;
@@ -22,22 +23,25 @@ import com.viesis.viescraft.configs.ViesCraftConfig;
 
 public class GuiTileEntityAirshipWorkbench extends GuiContainer {
 	
-	private IInventory playerInv;
+	//private IInventory playerInv;
+	private InventoryPlayer playerInventory;
 	private TileEntityAirshipWorkbench airship;
-	//private final World worldObj;
+	private final World worldObj;
     /** Position of the workbench */
     //private final BlockPos pos;
     
-	public GuiTileEntityAirshipWorkbench(IInventory playerInv, TileEntityAirshipWorkbench airship
+	public GuiTileEntityAirshipWorkbench(//IInventory playerInv, TileEntityAirshipWorkbench airship
+			InventoryPlayer playerInventory, World worldIn, TileEntityAirshipWorkbench airship// BlockPos posIn
+			
 			//IInventory playerInv
 			//, World world, BlockPos pos
 			)
 	{
-		super(new ContainerAirshipWorkbench(playerInv, airship));
+		super(new ContainerAirshipWorkbench(playerInventory, worldIn, airship));
 		
-		//this.worldObj = world;
-        //this.pos = pos;
-		this.playerInv = playerInv;
+		this.worldObj = worldIn;
+        //this.pos = posIn;
+		this.playerInventory = playerInventory;
 		this.airship = airship;
 		this.xSize = 176;
 		this.ySize = 166;
@@ -53,19 +57,19 @@ public class GuiTileEntityAirshipWorkbench extends GuiContainer {
 		//int i = (this.width - this.xSize) / 2;
         //int j = (this.height - this.ySize) / 2;
         
-		if (EntityAirshipCore.isAirshipBurning(this.airship))
-        {
+		//if (EntityAirshipCore.isAirshipBurning(this.airship))
+        //{
 			//int x = airship.getFuelScaled(10);
-            int k = this.getBurnLeftScaled(47);
+            //int k = this.getBurnLeftScaled(47);
             this.drawTexturedModalRect(
             		this.guiLeft + 156, this.guiTop + 19, //i + 56, j + 36 + 12 - k, 
             		176,  50, //176, 12 - k, 
-            		8, 1 + k); //8, 48 + k);//14, k + 1);
+            		8, 1); //+ k); //8, 48 + k);//14, k + 1);
             this.drawTexturedModalRect(
             		this.guiLeft + 129, this.guiTop + 48,//i + 79, j + 34, 
             		176, 14, 
             		26, 16);
-        }
+        //}
 
         //int l = this.getCookProgressScaled(24);
       //Light bulbs that are lite up.
@@ -82,7 +86,7 @@ public class GuiTileEntityAirshipWorkbench extends GuiContainer {
     //    return j != 0 && i != 0 ? i * pixels / j : 0;
     //}
 
-    private int getBurnLeftScaled(int pixels)
+    /**private int getBurnLeftScaled(int pixels)
     {
         int i = this.airship.getField(1);
 
@@ -93,18 +97,18 @@ public class GuiTileEntityAirshipWorkbench extends GuiContainer {
 
         return this.airship.getField(0) * pixels / i;
     }
-		
+		*/
 
     
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
 	{
-		String s = this.airship.getDisplayName().getUnformattedText();
+		//String s = this.airship.getDisplayName().getUnformattedText();
 		////this.fontRendererObj.drawString(s, 8, 6, 4210752);
 		this.fontRendererObj.drawString("Fuel", 150, 6, 4210752);
 		// This sets the Airship name in the top center.
 		//this.fontRendererObj.drawString(s, 88 - this.fontRendererObj.getStringWidth(s) / 2, 6, 4210752);
-		this.fontRendererObj.drawString(this.playerInv.getDisplayName().getUnformattedText(), 8, 72, 4210752);
+		//this.fontRendererObj.drawString(this.playerInv.getDisplayName().getUnformattedText(), 8, 72, 4210752);
 	}
 	
 	@Override

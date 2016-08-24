@@ -12,7 +12,7 @@ import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.client.tileentity.model.ModelAirshipWorkbench;
 import com.viesis.viescraft.common.tileentity.TileEntityAirshipWorkbench;
 
-public class RenderAirshipWorkbench extends TileEntitySpecialRenderer<TileEntityAirshipWorkbench>{
+public class RenderAirshipWorkbench extends TileEntitySpecialRenderer<TileEntityAirshipWorkbench> {
 
 	ResourceLocation texture = new ResourceLocation(Reference.MOD_ID + ":" + "textures/models/airship_workbench.png");
 	private ModelAirshipWorkbench model;
@@ -42,5 +42,7 @@ public class RenderAirshipWorkbench extends TileEntitySpecialRenderer<TileEntity
 		
 		
 	}
+	
+	
 	
 }

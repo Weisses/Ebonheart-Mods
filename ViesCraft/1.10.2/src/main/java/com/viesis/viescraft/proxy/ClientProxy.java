@@ -11,6 +11,7 @@ import com.viesis.viescraft.api.util.Keybinds;
 import com.viesis.viescraft.client.InitBlocksVCRender;
 import com.viesis.viescraft.client.InitEntityVCRender;
 import com.viesis.viescraft.client.InitItemsVCRender;
+import com.viesis.viescraft.client.InitTileEntityVCRender;
 import com.viesis.viescraft.client.gui.StatusBarRenderer;
 import com.viesis.viescraft.client.particle.EntitySmokeFX;
 import com.viesis.viescraft.init.InitTileEntitiesVC;
@@ -26,6 +27,7 @@ public class ClientProxy extends CommonProxy {
 		Keybinds.init();
 		
 		
+		
 		//---------------------------
 		//InitTileEntitiesEA.registerRenders();
 	}
@@ -37,15 +39,14 @@ public class ClientProxy extends CommonProxy {
 		
 		InitItemsVCRender.registerRenders();
 		InitBlocksVCRender.registerRenders();
-		InitEntityVCRender.registerRenders();
-		InitTileEntitiesVC.registerRenders();
-		InitTileEntitiesVC.clientRegisterRenders();
-		//MinecraftForge.EVENT_BUS.register(new EventHandlerHUD(statusBarRenderer));
+		InitTileEntityVCRender.registerRenders();
 		
+		
+		
+		
+		//MinecraftForge.EVENT_BUS.register(new EventHandlerHUD(statusBarRenderer));
 		//MinecraftForge.EVENT_BUS.register(new GuiEntityAirshipHUD(Minecraft.getMinecraft()));
 		
-		//---------------------------
-		//InitBlocksEARender.registerSpecialRenders();
 	}
 	
 	@Override

@@ -17,7 +17,7 @@ public class GuiHandler implements IGuiHandler {
 	public static GuiHandler instance;
 	public static final int GUI_AIRSHIP_INVENTORY = 0;
 	public static final int GUI_AIRSHIP_WORKBENCH = 1;
-	EntityAirshipCore entity;
+	//EntityAirshipCore entity;
 	
 	public GuiHandler() 
 	{
@@ -33,7 +33,10 @@ public class GuiHandler implements IGuiHandler {
 		}
 		if (ID == GUI_AIRSHIP_WORKBENCH)
 		{
-			return new ContainerAirshipWorkbench(player.inventory, (TileEntityAirshipWorkbench)world.getTileEntity(new BlockPos(x, y, z)));
+			////return new ContainerAirshipWorkbench(player.inventory, (TileEntityAirshipWorkbench)world.getTileEntity(new BlockPos(x, y, z)));
+			
+			return new ContainerAirshipWorkbench(player.inventory, world, (TileEntityAirshipWorkbench)world.getTileEntity(new BlockPos(x, y, z))); //player.getPosition());
+			
 			//return new ContainerAirshipWorkbench(player.inventory, 
 			//		world,
 			//		new BlockPos(x, y, z)
@@ -51,7 +54,9 @@ public class GuiHandler implements IGuiHandler {
 		}
 		if (ID == GUI_AIRSHIP_WORKBENCH)
 		{
-			return new GuiTileEntityAirshipWorkbench(player.inventory, (TileEntityAirshipWorkbench)world.getTileEntity(new BlockPos(x, y, z)));
+			return new GuiTileEntityAirshipWorkbench(player.inventory, world, (TileEntityAirshipWorkbench)world.getTileEntity(new BlockPos(x, y, z)));
+					
+					//player.inventory, (TileEntityAirshipWorkbench)world.getTileEntity(new BlockPos(x, y, z)));
 		}
 		return null;
 	}

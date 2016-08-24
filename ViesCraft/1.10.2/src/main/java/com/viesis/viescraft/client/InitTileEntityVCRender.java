@@ -1,15 +1,20 @@
 package com.viesis.viescraft.client;
 
+import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
+import com.viesis.viescraft.api.BlocksVC;
 import com.viesis.viescraft.api.ItemsVC;
+import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.client.entity.render.airshipcolors.v1.RenderAirshipBlack;
 import com.viesis.viescraft.client.entity.render.airshipcolors.v1.RenderAirshipBlue;
 import com.viesis.viescraft.client.entity.render.airshipcolors.v1.RenderAirshipBrown;
@@ -149,7 +154,8 @@ import com.viesis.viescraft.common.entity.airshipitems.v2.EntityItemAirshipV2Whi
 import com.viesis.viescraft.common.entity.airshipitems.v2.EntityItemAirshipV2Yellow;
 import com.viesis.viescraft.common.tileentity.TileEntityAirshipWorkbench;
 
-public final class InitTileEntityVCRender extends ItemsVC {
+public final class InitTileEntityVCRender //extends ItemsVC 
+{
 	
 	//public static RenderManager EARender = Minecraft.getMinecraft().getRenderManager(); 
 	
@@ -159,11 +165,24 @@ public final class InitTileEntityVCRender extends ItemsVC {
 		//registerRender(EntityItemAirshipNormal.class,  new RenderItemAirshipNormal(EARender));
 		////ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAirshipWorkbench.class, new RenderAirshipWorkbench());
 		//	
+		//registerRender(BlocksVC.airship_workbench);
 	}
-	
+	//public static void registerRender(Block block)
+	//{
+	//	Item item = Item.getItemFromBlock(block);
+	//	Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, 0, new ModelResourceLocation(Reference.MOD_ID + ":" + item.getUnlocalizedName().substring(5), "inventory"));
+	//}
 	public static <T extends TileEntity> void registerRender(Class<T> classIn, TileEntitySpecialRenderer<? super T> renderItem)
 	{
+		//ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAirshipWorkbench.class, new RenderAirshipWorkbench());
 		ClientRegistry.bindTileEntitySpecialRenderer(classIn, renderItem);
 		//RenderingRegistry.registerEntityRenderingHandler(classIn, renderItem);
 	}
+	
+	//public static void registerRenders()
+	//{
+	//	registerRender(BlocksVC.airship_workbench);
+	//}
+	
+	
 }

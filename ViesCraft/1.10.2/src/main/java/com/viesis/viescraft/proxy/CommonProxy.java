@@ -25,26 +25,23 @@ import com.viesis.viescraft.network.NetworkHandler;
 
 public class CommonProxy {
 	
-	public static ItemHUDactivator itemHUDactivator;
+	//public static ItemHUDactivator itemHUDactivator;
 	
 	public void preInit(FMLPreInitializationEvent event) 
 	{
 		//SoundEventsEA.registerSounds();
 		InitItemsVC.preInit();
 		InitBlocksVC.preInit();
-		InitTileEntitiesVC.init();
+		InitTileEntitiesVC.preInit();
 		InitEntityVC.preInit();
 		
-		NetworkHandler.init();
+		NetworkHandler.preInit();
+		
 		
 		
 		//itemHUDactivator = (ItemHUDactivator)(new ItemHUDactivator().setUnlocalizedName("mbe40_hud_overlay_item"));
 	    //GameRegistry.registerItem(itemHUDactivator, "mbe40_hud_overlay_item");
 		
-		
-		//=======================================//
-		//InitTileEntitiesEA.init();
-		//InitTileEntitiesEA.register();
 	}
 	
 	public void init(FMLInitializationEvent event) 
@@ -54,7 +51,7 @@ public class CommonProxy {
 		InitAchievementsVC.init();
 		
 		
-				MinecraftForge.EVENT_BUS.register(new AchievementTriggersVC());
+		MinecraftForge.EVENT_BUS.register(new AchievementTriggersVC());
 		MinecraftForge.EVENT_BUS.register(new EventHandlerAchievement());
 		MinecraftForge.EVENT_BUS.register(new EventHandlerConfig());
 		

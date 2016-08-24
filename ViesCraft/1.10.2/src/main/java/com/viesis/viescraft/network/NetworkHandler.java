@@ -14,7 +14,7 @@ public class NetworkHandler {
 	
 	private static SimpleNetworkWrapper INSTANCE;
 	
-	public static void init(){
+	public static void preInit(){
 		
 		INSTANCE =  NetworkRegistry.INSTANCE.newSimpleChannel (Reference.MOD_ID);
 		
