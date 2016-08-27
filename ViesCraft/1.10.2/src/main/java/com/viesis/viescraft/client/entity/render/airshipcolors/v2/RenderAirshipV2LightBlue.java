@@ -10,7 +10,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.viesis.viescraft.api.Reference;
-import com.viesis.viescraft.client.entity.model.ModelAirship;
+import com.viesis.viescraft.client.entity.model.ModelAirshipV2;
 import com.viesis.viescraft.common.entity.airshipcolors.v2.EntityAirshipV2LightBlue;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 
@@ -19,11 +19,11 @@ public class RenderAirshipV2LightBlue extends Render<EntityAirshipV2LightBlue> {
 	
 	private static final ResourceLocation[] ENTITY_TEXTURE = new ResourceLocation[] 
 	{
-		new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_lightblue.png")//, 
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v2/airship_v2_lightblue.png")//, 
 	};
 	
 	/** instance of ModelTest for rendering */
-	protected ModelBase modelTest = new ModelAirship();
+	protected ModelBase modelTest = new ModelAirshipV2();
 	
 	
     public RenderAirshipV2LightBlue(RenderManager renderManagerIn)

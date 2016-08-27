@@ -19,7 +19,7 @@ public class RenderAirshipLightBlue extends Render<EntityAirshipLightBlue> {
 	
 	private static final ResourceLocation[] ENTITY_TEXTURE = new ResourceLocation[] 
 	{
-		new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_lightblue.png")//, 
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v1/airship_v1_lightblue.png")//, 
 	};
 	
 	/** instance of ModelTest for rendering */

@@ -3,10 +3,10 @@ package com.viesis.viescraft.common.entity.airshipcolors.v1;
 import net.minecraft.item.Item;
 import net.minecraft.world.World;
 
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipCore;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
 import com.viesis.viescraft.init.InitItemsVC;
 
-public class EntityAirshipLime extends EntityAirshipCore {
+public class EntityAirshipLime extends EntityAirshipV1Core {
 	
 	public EntityAirshipLime(World worldIn)
     {

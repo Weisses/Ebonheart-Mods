@@ -9,9 +9,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ContainerAirshipCore extends Container {
+public class ContainerAirshipV2Core extends Container {
 
-	private EntityAirshipCore airship;
+	private EntityAirshipV2Core airship;
 	
 	private int fuelTime;
     private int totalFuelTime;
@@ -25,7 +25,7 @@ public class ContainerAirshipCore extends Container {
 	 * Player Inventory 9-35 .. 9  - 35
 	 * Player Inventory 0-8 ... 36 - 44
 	 */
-	public ContainerAirshipCore(IInventory playerInv, EntityAirshipCore airship) 
+	public ContainerAirshipV2Core(IInventory playerInv, EntityAirshipV2Core airship) 
 	{
 		this.airship = airship;
 		

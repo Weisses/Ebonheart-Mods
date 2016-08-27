@@ -168,7 +168,7 @@ public final class InitEntityVCRender extends ItemsVC {
 		registerRender(EntityItemAirshipWhite.class,  new RenderItemAirshipWhite(EARender));
 		registerRender(EntityItemAirshipYellow.class,  new RenderItemAirshipYellow(EARender));
 		
-		/**
+		
 		registerRender(EntityItemAirshipV2Normal.class,  new RenderItemAirshipV2Normal(EARender));
 		registerRender(EntityItemAirshipV2Black.class,  new RenderItemAirshipV2Black(EARender));
 		registerRender(EntityItemAirshipV2Blue.class,  new RenderItemAirshipV2Blue(EARender));
@@ -186,7 +186,7 @@ public final class InitEntityVCRender extends ItemsVC {
 		registerRender(EntityItemAirshipV2Red.class,  new RenderItemAirshipV2Red(EARender));
 		registerRender(EntityItemAirshipV2White.class,  new RenderItemAirshipV2White(EARender));
 		registerRender(EntityItemAirshipV2Yellow.class,  new RenderItemAirshipV2Yellow(EARender));
-		*/
+		
 		//===========================================================================
 		
 		registerRender(EntityAirshipNormal.class,  new RenderAirshipNormal(EARender));
@@ -207,7 +207,7 @@ public final class InitEntityVCRender extends ItemsVC {
 		registerRender(EntityAirshipWhite.class,  new RenderAirshipWhite(EARender));
 		registerRender(EntityAirshipYellow.class,  new RenderAirshipYellow(EARender));
 		
-		/**
+		
 		registerRender(EntityAirshipV2Normal.class,  new RenderAirshipV2Normal(EARender));
 		registerRender(EntityAirshipV2Black.class,  new RenderAirshipV2Black(EARender));
 		registerRender(EntityAirshipV2Blue.class,  new RenderAirshipV2Blue(EARender));
@@ -225,7 +225,7 @@ public final class InitEntityVCRender extends ItemsVC {
 		registerRender(EntityAirshipV2Red.class,  new RenderAirshipV2Red(EARender));
 		registerRender(EntityAirshipV2White.class,  new RenderAirshipV2White(EARender));
 		registerRender(EntityAirshipV2Yellow.class,  new RenderAirshipV2Yellow(EARender));
-		*/
+		
 	}
 	
 	public static void registerRender(Class<? extends Entity> classIn, Render<? extends Entity> renderItem)

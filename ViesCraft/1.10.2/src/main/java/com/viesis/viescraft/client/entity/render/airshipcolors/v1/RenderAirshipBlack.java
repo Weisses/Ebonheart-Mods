@@ -19,7 +19,7 @@ public class RenderAirshipBlack extends Render<EntityAirshipBlack> {
 	
 	private static final ResourceLocation[] ENTITY_TEXTURE = new ResourceLocation[] 
 	{
-		new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_black.png")//, 
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v1/airship_v1_black.png")//, 
 	};
 	
 	/** instance of ModelTest for rendering */

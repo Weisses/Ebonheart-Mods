@@ -15,8 +15,8 @@ import net.minecraft.world.World;
 import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.api.util.Keybinds;
 import com.viesis.viescraft.api.util.LogHelper;
-import com.viesis.viescraft.common.entity.airshipcolors.ContainerAirshipCore;
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipCore;
+import com.viesis.viescraft.common.entity.airshipcolors.ContainerAirshipV1Core;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
 import com.viesis.viescraft.common.tileentity.ContainerAirshipWorkbench;
 import com.viesis.viescraft.common.tileentity.TileEntityAirshipWorkbench;
 import com.viesis.viescraft.configs.ViesCraftConfig;
@@ -105,7 +105,7 @@ public class GuiTileEntityAirshipWorkbench extends GuiContainer {
 	{
 		//String s = this.airship.getDisplayName().getUnformattedText();
 		////this.fontRendererObj.drawString(s, 8, 6, 4210752);
-		this.fontRendererObj.drawString("Fuel", 150, 6, 4210752);
+		//////////////////////this.fontRendererObj.drawString("Input", 32, 6, 4210752);
 		// This sets the Airship name in the top center.
 		//this.fontRendererObj.drawString(s, 88 - this.fontRendererObj.getStringWidth(s) / 2, 6, 4210752);
 		//this.fontRendererObj.drawString(this.playerInv.getDisplayName().getUnformattedText(), 8, 72, 4210752);

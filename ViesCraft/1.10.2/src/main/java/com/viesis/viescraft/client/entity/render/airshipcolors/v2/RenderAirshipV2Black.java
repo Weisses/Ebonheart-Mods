@@ -10,7 +10,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.viesis.viescraft.api.Reference;
-import com.viesis.viescraft.client.entity.model.ModelAirship;
 import com.viesis.viescraft.client.entity.model.ModelAirshipV2;
 import com.viesis.viescraft.common.entity.airshipcolors.v2.EntityAirshipV2Black;
 import com.viesis.viescraft.configs.ViesCraftConfig;
@@ -20,7 +19,7 @@ public class RenderAirshipV2Black extends Render<EntityAirshipV2Black> {
 	
 	private static final ResourceLocation[] ENTITY_TEXTURE = new ResourceLocation[] 
 	{
-		new ResourceLocation(Reference.MOD_ID, "textures/models/airship_v2_black.png")//, 
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v2/airship_v2_black.png")//, 
 	};
 	
 	/** instance of ModelTest for rendering */

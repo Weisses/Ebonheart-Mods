@@ -96,7 +96,7 @@ public class InitEntityVC {
 		register(EntityItemAirshipRed.class, "item.airship.red", 64, 20, true);
 		register(EntityItemAirshipWhite.class, "item.airship.white", 64, 20, true);
 		register(EntityItemAirshipYellow.class, "item.airship.yellow", 64, 20, true);
-		/**
+		
 		register(EntityItemAirshipV2Normal.class, "item.airship.v2.normal", 64, 20, true);
 		register(EntityItemAirshipV2Black.class, "item.airship.v2.black", 64, 20, true);
 		register(EntityItemAirshipV2Blue.class, "item.airship.v2.blue", 64, 20, true);
@@ -114,7 +114,7 @@ public class InitEntityVC {
 		register(EntityItemAirshipV2Red.class, "item.airship.v2.red", 64, 20, true);
 		register(EntityItemAirshipV2White.class, "item.airship.v2.white", 64, 20, true);
 		register(EntityItemAirshipV2Yellow.class, "item.airship.v2.yellow", 64, 20, true);
-		*/
+		
 		//===========================================
 		
 		register(EntityAirshipNormal.class, "airship.normal", 64, 1, true);
@@ -134,7 +134,7 @@ public class InitEntityVC {
 		register(EntityAirshipRed.class, "airship.red", 64, 1, true);
 		register(EntityAirshipWhite.class, "airship.white", 64, 1, true);
 		register(EntityAirshipYellow.class, "airship.yellow", 64, 1, true);
-		/**
+		
 		register(EntityAirshipV2Normal.class, "airship.v2.normal", 64, 1, true);
 		register(EntityAirshipV2Black.class, "airship.v2.black", 64, 1, true);
 		register(EntityAirshipV2Blue.class, "airship.v2.blue", 64, 1, true);
@@ -152,7 +152,7 @@ public class InitEntityVC {
 		register(EntityAirshipV2Red.class, "airship.v2.red", 64, 1, true);
 		register(EntityAirshipV2White.class, "airship.v2.white", 64, 1, true);
 		register(EntityAirshipV2Yellow.class, "airship.v2.yellow", 64, 1, true);
-		*/
+		
 	}
 	
 	public static void register(Class<? extends Entity> entityClass, String entityName, int trackingRange, int updateFrequency, boolean sendsVelocityUpdates)

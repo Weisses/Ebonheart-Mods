@@ -31,7 +31,7 @@ public final class InitItemsVCRender extends ItemsVC {
 		registerRender(item_airship_red);
 		registerRender(item_airship_white);
 		registerRender(item_airship_yellow);
-		/**
+		
 		registerRender(item_airship_v2_normal);
 		registerRender(item_airship_v2_black);
 		registerRender(item_airship_v2_blue);
@@ -49,7 +49,7 @@ public final class InitItemsVCRender extends ItemsVC {
 		registerRender(item_airship_v2_red);
 		registerRender(item_airship_v2_white);
 		registerRender(item_airship_v2_yellow);
-		*/
+		
 		registerRender(item_paint_black);
 		registerRender(item_paint_blue);
 		registerRender(item_paint_brown);

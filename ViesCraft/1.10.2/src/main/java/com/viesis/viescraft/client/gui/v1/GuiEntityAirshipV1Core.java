@@ -11,18 +11,18 @@ import net.minecraft.util.ResourceLocation;
 import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.api.util.Keybinds;
 import com.viesis.viescraft.api.util.LogHelper;
-import com.viesis.viescraft.common.entity.airshipcolors.ContainerAirshipCore;
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipCore;
+import com.viesis.viescraft.common.entity.airshipcolors.ContainerAirshipV1Core;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 
-public class GuiEntityAirshipCore extends GuiContainer {
+public class GuiEntityAirshipV1Core extends GuiContainer {
 	
 	private IInventory playerInv;
-	private EntityAirshipCore airship;
+	private EntityAirshipV1Core airship;
 	
-	public GuiEntityAirshipCore(IInventory playerInv, EntityAirshipCore airship)
+	public GuiEntityAirshipV1Core(IInventory playerInv, EntityAirshipV1Core airship)
 	{
-		super(new ContainerAirshipCore(playerInv, airship));
+		super(new ContainerAirshipV1Core(playerInv, airship));
 		
 		this.playerInv = playerInv;
 		this.airship = airship;
@@ -40,7 +40,7 @@ public class GuiEntityAirshipCore extends GuiContainer {
 		//int i = (this.width - this.xSize) / 2;
         //int j = (this.height - this.ySize) / 2;
         
-		if (EntityAirshipCore.isAirshipBurning(this.airship))
+		if (EntityAirshipV1Core.isAirshipBurning(this.airship))
         {
 			//int x = airship.getFuelScaled(10);
             int k = this.getBurnLeftScaled(47);
@@ -75,7 +75,7 @@ public class GuiEntityAirshipCore extends GuiContainer {
 
         if (i == 0)
         {
-        	i = (ViesCraftConfig.fuelBurnTime * 20);//i = 1200;
+        	i = (ViesCraftConfig.v1FuelBurnTime * 20);//i = 1200;
         }
 
         return this.airship.getField(0) * pixels / i;

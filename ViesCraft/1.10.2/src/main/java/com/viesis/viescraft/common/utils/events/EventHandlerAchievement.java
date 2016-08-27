@@ -3,7 +3,7 @@ package com.viesis.viescraft.common.utils.events;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipCore;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
 import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipBlack;
 import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipBlue;
 import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipBrown;
@@ -33,7 +33,7 @@ public class EventHandlerAchievement {
     	boolean isInLava = false;
     	boolean isAnimalPassenger = false;
     	
-		if(event.player.getRidingEntity() instanceof EntityAirshipCore)
+		if(event.player.getRidingEntity() instanceof EntityAirshipV1Core)
         {
     		isRiding = true;
         }

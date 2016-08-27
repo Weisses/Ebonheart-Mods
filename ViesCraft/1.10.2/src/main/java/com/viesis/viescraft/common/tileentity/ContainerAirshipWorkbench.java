@@ -57,7 +57,7 @@ public class ContainerAirshipWorkbench extends Container {
         {
             for (int j = 0; j < 3; ++j)
             {
-                this.addSlotToContainer(new Slot(this.craftMatrix, j + i * 3, 30 + j * 18, 17 + i * 18));
+                this.addSlotToContainer(new Slot(this.craftMatrix, j + i * 3, 26 + j * 18, 17 + i * 18));
             }
         }
 
@@ -200,7 +200,7 @@ public class ContainerAirshipWorkbench extends Container {
                     return null;
                 }
             }
-            else if (index > 37 && index < 46)
+            else if (index >= 37 && index < 46)
             {
                 if (!this.mergeItemStack(itemstack1, 10, 37, false))
                 {

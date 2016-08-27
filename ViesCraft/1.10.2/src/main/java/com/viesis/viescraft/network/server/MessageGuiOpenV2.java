@@ -7,7 +7,7 @@ import com.viesis.viescraft.ViesCraft;
 import com.viesis.viescraft.network.GuiHandler;
 import com.viesis.viescraft.network.packet.MessageBase;
 
-public class MessageGuiOpen extends MessageBase<MessageGuiOpen> {
+public class MessageGuiOpenV2 extends MessageBase<MessageGuiOpenV2> {
 	
 	@Override
 	public void fromBytes(ByteBuf buf) 
@@ -22,14 +22,14 @@ public class MessageGuiOpen extends MessageBase<MessageGuiOpen> {
 	}
 	
 	@Override
-	public void handleClientSide(MessageGuiOpen message, EntityPlayer player) 
+	public void handleClientSide(MessageGuiOpenV2 message, EntityPlayer player) 
 	{
 		
 	}
 	
 	@Override
-	public void handleServerSide(MessageGuiOpen message, EntityPlayer player) 
+	public void handleServerSide(MessageGuiOpenV2 message, EntityPlayer player) 
 	{
-		player.openGui(ViesCraft.instance, GuiHandler.GUI_AIRSHIP_INVENTORY, player.worldObj, player.getPosition().getX(), player.getPosition().getY(), player.getPosition().getZ());
+		player.openGui(ViesCraft.instance, GuiHandler.GUI_AIRSHIP_V2_INVENTORY, player.worldObj, player.getPosition().getX(), player.getPosition().getY(), player.getPosition().getZ());
 	}
 }

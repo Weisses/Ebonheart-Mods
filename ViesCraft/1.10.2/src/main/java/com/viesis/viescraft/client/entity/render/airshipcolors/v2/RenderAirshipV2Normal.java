@@ -10,7 +10,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.viesis.viescraft.api.Reference;
-import com.viesis.viescraft.client.entity.model.ModelAirship;
+import com.viesis.viescraft.client.entity.model.ModelAirshipV2;
 import com.viesis.viescraft.common.entity.airshipcolors.v2.EntityAirshipV2Normal;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 
@@ -19,27 +19,27 @@ public class RenderAirshipV2Normal extends Render<EntityAirshipV2Normal> {
 	
 	private static final ResourceLocation[] ENTITY_TEXTURE = new ResourceLocation[] 
 	{
-		//new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_black.png"),
-		//new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_red.png"),
-		//new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_green.png"),
-		//new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_brown.png"),
-		//new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_blue.png"),
-		//new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_purple.png"),
-		//new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_cyan.png"),
-		//new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_lightgray.png"),
-		//new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_gray.png"),
-		//new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_pink.png"),
-		//new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_lime.png"),
-		//new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_yellow.png"),
-		//new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_lightblue.png"),
-		//new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_magenta.png"),
-		//new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_orange.png"),
-		//new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_white.png"),
-		new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_normal.png")
+		//new ResourceLocation(Reference.MOD_ID, "textures/models/v2/airship_v2_black.png"),
+		//new ResourceLocation(Reference.MOD_ID, "textures/models/v2/airship_v2_red.png"),
+		//new ResourceLocation(Reference.MOD_ID, "textures/models/v2/airship_v2_green.png"),
+		//new ResourceLocation(Reference.MOD_ID, "textures/models/v2/airship_v2_brown.png"),
+		//new ResourceLocation(Reference.MOD_ID, "textures/models/v2/airship_v2_blue.png"),
+		//new ResourceLocation(Reference.MOD_ID, "textures/models/v2/airship_v2_purple.png"),
+		//new ResourceLocation(Reference.MOD_ID, "textures/models/v2/airship_v2_cyan.png"),
+		//new ResourceLocation(Reference.MOD_ID, "textures/models/v2/airship_v2_lightgray.png"),
+		//new ResourceLocation(Reference.MOD_ID, "textures/models/v2/airship_v2_gray.png"),
+		//new ResourceLocation(Reference.MOD_ID, "textures/models/v2/airship_v2_pink.png"),
+		//new ResourceLocation(Reference.MOD_ID, "textures/models/v2/airship_v2_lime.png"),
+		//new ResourceLocation(Reference.MOD_ID, "textures/models/v2/airship_v2_yellow.png"),
+		//new ResourceLocation(Reference.MOD_ID, "textures/models/v2/airship_v2_lightblue.png"),
+		//new ResourceLocation(Reference.MOD_ID, "textures/models/v2/airship_v2_magenta.png"),
+		//new ResourceLocation(Reference.MOD_ID, "textures/models/v2/airship_v2_orange.png"),
+		//new ResourceLocation(Reference.MOD_ID, "textures/models/v2/airship_v2_white.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v2/airship_v2_normal.png")
 	};
 	
 	/** instance of ModelTest for rendering */
-	protected ModelBase modelTest = new ModelAirship();
+	protected ModelBase modelTest = new ModelAirshipV2();
 	
     public RenderAirshipV2Normal(RenderManager renderManagerIn)
     {

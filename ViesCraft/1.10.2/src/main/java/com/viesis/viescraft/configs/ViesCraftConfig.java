@@ -8,33 +8,46 @@ import net.minecraftforge.common.config.Configuration;
 import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.network.NetworkHandler;
 import com.viesis.viescraft.network.client.MessageConfig;
-import com.viesis.viescraft.network.server.MessageGuiOpen;
+import com.viesis.viescraft.network.server.MessageGuiOpenV1;
 
 public class ViesCraftConfig {
 	
 	public static Configuration config;
 	public static final String CATEGORY_VC = "ViesCraft Config";
 	
-	public static int fuelBurnTime;
-	public static int airshipSpeed;
+	public static int v1FuelBurnTime;
+	public static int v1AirshipSpeed;
+	
+	public static int v2FuelBurnTime;
+	public static int v2AirshipSpeed;
+	
 	public static boolean modelTurnAngle;
 	public static String airshipName; 
 	
-	public static final int FUELBURNTIME_DEFAULT = 60;
-	public static final String FUELBURNTIME_NAME = "Fuel Burn Time";
-	public static final String FUELBURNTIME_COMMENT = "How long does each piece of fuel last in seconds?";
+	public static final int V1FUELBURNTIME_DEFAULT = 60;
+	public static final String V1FUELBURNTIME_NAME = "Fuel Burn Time - Viesdenburg";
+	public static final String V1FUELBURNTIME_COMMENT = "How long does each piece of fuel last in seconds?";
 	
-	public static final int AIRSHIPSPEED_DEFAULT = 100;
-	public static final String AIRSHIPSPEED_NAME = "Airship Speed";
-	public static final String AIRSHIPSPEED_COMMENT = "How fast do airships move based on %? ";
+	public static final int V1AIRSHIPSPEED_DEFAULT = 100;
+	public static final String V1AIRSHIPSPEED_NAME = "Airship Speed - Viesdenburg";
+	public static final String V1AIRSHIPSPEED_COMMENT = "How fast do airships move based on %? ";
+	
+	public static final int V2FUELBURNTIME_DEFAULT = 60;
+	public static final String V2FUELBURNTIME_NAME = "Fuel Burn Time - Viesigible";
+	public static final String V2FUELBURNTIME_COMMENT = "How long does each piece of fuel last in seconds?";
+	
+	public static final int V2AIRSHIPSPEED_DEFAULT = 100;
+	public static final String V2AIRSHIPSPEED_NAME = "Airship Speed - Viesigible";
+	public static final String V2AIRSHIPSPEED_COMMENT = "How fast do airships move based on %? ";
+	
 	
 	public static final boolean MODELTURNANGLE_DEFAULT = true;
 	public static final String MODELTURNANGLE_NAME = "Enable Airship Turning Tilt?";
 	public static final String MODELTURNANGLE_COMMENT = "Should the airship tilt while players turn?";
 	
-	public static final String AIRSHIPNAME_DEFAULT = "Viesdenburg";
-	public static final String AIRSHIPNAME_NAME = "Airship Name";
-	public static final String AIRSHIPNAME_COMMENT = "Change the name of Airships?";
+	public static final String V1AIRSHIPNAME_DEFAULT = "Viesdenburg";
+	public static final String V1AIRSHIPNAME_NAME = "Airship Name";
+	public static final String V1AIRSHIPNAME_COMMENT = "Change the name of Airships?";
 	
 	public static void init(File file)
 	{
@@ -48,9 +61,11 @@ public class ViesCraftConfig {
 		//General settings
 		final String category1 = CATEGORY_VC + config.CATEGORY_SPLITTER + TextFormatting.GREEN + "General";
 		config.addCustomCategoryComment(category1, "General airship options.");
-		fuelBurnTime = config.getInt(TextFormatting.WHITE + FUELBURNTIME_NAME, category1, FUELBURNTIME_DEFAULT, 1, 600, FUELBURNTIME_COMMENT);
-		airshipSpeed = config.getInt(TextFormatting.WHITE + AIRSHIPSPEED_NAME, category1, AIRSHIPSPEED_DEFAULT, 1, 400, AIRSHIPSPEED_COMMENT);
+		v1FuelBurnTime = config.getInt(TextFormatting.WHITE + V1FUELBURNTIME_NAME, category1, V1FUELBURNTIME_DEFAULT, 1, 600, V1FUELBURNTIME_COMMENT);
+		v1AirshipSpeed = config.getInt(TextFormatting.WHITE + V1AIRSHIPSPEED_NAME, category1, V1AIRSHIPSPEED_DEFAULT, 100, 400, V1AIRSHIPSPEED_COMMENT);
 		//airshipName = config.getString(AIRSHIPNAME_NAME, category1, AIRSHIPNAME_DEFAULT, AIRSHIPNAME_COMMENT);
+		v2FuelBurnTime = config.getInt(TextFormatting.WHITE + V2FUELBURNTIME_NAME, category1, V2FUELBURNTIME_DEFAULT, 1, 600, V2FUELBURNTIME_COMMENT);
+		v2AirshipSpeed = config.getInt(TextFormatting.WHITE + V2AIRSHIPSPEED_NAME, category1, V2AIRSHIPSPEED_DEFAULT, 100, 400, V2AIRSHIPSPEED_COMMENT);
 		
 		
 		

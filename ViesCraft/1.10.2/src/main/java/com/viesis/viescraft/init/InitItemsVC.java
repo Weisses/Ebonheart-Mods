@@ -7,7 +7,7 @@ import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import com.viesis.viescraft.api.ItemsVC;
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipCore;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
 import com.viesis.viescraft.common.items.achievements.ItemAchievementAirborn;
 import com.viesis.viescraft.common.items.achievements.ItemAchievementCreate;
 import com.viesis.viescraft.common.items.achievements.ItemAchievementCreateColor;
@@ -81,7 +81,7 @@ public class InitItemsVC extends ItemsVC {
 		item_airship_red = registerItem(new ItemAirshipRed());
 		item_airship_white = registerItem(new ItemAirshipWhite());
 		item_airship_yellow = registerItem(new ItemAirshipYellow());
-		/**
+		
 		item_airship_v2_normal = registerItem(new ItemAirshipV2Normal());
 		item_airship_v2_black = registerItem(new ItemAirshipV2Black());
 		item_airship_v2_blue = registerItem(new ItemAirshipV2Blue());
@@ -99,23 +99,23 @@ public class InitItemsVC extends ItemsVC {
 		item_airship_v2_red = registerItem(new ItemAirshipV2Red());
 		item_airship_v2_white = registerItem(new ItemAirshipV2White());
 		item_airship_v2_yellow = registerItem(new ItemAirshipV2Yellow());
-		*/
-		item_paint_black = registerItem(new ItemPaint(EntityAirshipCore.Type.BLACK));
-		item_paint_blue = registerItem(new ItemPaint(EntityAirshipCore.Type.BLUE));
-		item_paint_brown = registerItem(new ItemPaint(EntityAirshipCore.Type.BROWN));
-		item_paint_cyan = registerItem(new ItemPaint(EntityAirshipCore.Type.CYAN));
-		item_paint_gray = registerItem(new ItemPaint(EntityAirshipCore.Type.GRAY));
-		item_paint_green = registerItem(new ItemPaint(EntityAirshipCore.Type.GREEN));
-		item_paint_lightblue = registerItem(new ItemPaint(EntityAirshipCore.Type.LIGHTBLUE));
-		item_paint_lightgray = registerItem(new ItemPaint(EntityAirshipCore.Type.LIGHTGRAY));
-		item_paint_lime = registerItem(new ItemPaint(EntityAirshipCore.Type.LIME));
-		item_paint_magenta = registerItem(new ItemPaint(EntityAirshipCore.Type.MAGENTA));
-		item_paint_orange = registerItem(new ItemPaint(EntityAirshipCore.Type.ORANGE));
-		item_paint_pink = registerItem(new ItemPaint(EntityAirshipCore.Type.PINK));
-		item_paint_purple = registerItem(new ItemPaint(EntityAirshipCore.Type.PURPLE));
-		item_paint_red = registerItem(new ItemPaint(EntityAirshipCore.Type.RED));
-		item_paint_white = registerItem(new ItemPaint(EntityAirshipCore.Type.WHITE));
-		item_paint_yellow = registerItem(new ItemPaint(EntityAirshipCore.Type.YELLOW));
+		
+		item_paint_black = registerItem(new ItemPaint(EntityAirshipV1Core.Type.BLACK));
+		item_paint_blue = registerItem(new ItemPaint(EntityAirshipV1Core.Type.BLUE));
+		item_paint_brown = registerItem(new ItemPaint(EntityAirshipV1Core.Type.BROWN));
+		item_paint_cyan = registerItem(new ItemPaint(EntityAirshipV1Core.Type.CYAN));
+		item_paint_gray = registerItem(new ItemPaint(EntityAirshipV1Core.Type.GRAY));
+		item_paint_green = registerItem(new ItemPaint(EntityAirshipV1Core.Type.GREEN));
+		item_paint_lightblue = registerItem(new ItemPaint(EntityAirshipV1Core.Type.LIGHTBLUE));
+		item_paint_lightgray = registerItem(new ItemPaint(EntityAirshipV1Core.Type.LIGHTGRAY));
+		item_paint_lime = registerItem(new ItemPaint(EntityAirshipV1Core.Type.LIME));
+		item_paint_magenta = registerItem(new ItemPaint(EntityAirshipV1Core.Type.MAGENTA));
+		item_paint_orange = registerItem(new ItemPaint(EntityAirshipV1Core.Type.ORANGE));
+		item_paint_pink = registerItem(new ItemPaint(EntityAirshipV1Core.Type.PINK));
+		item_paint_purple = registerItem(new ItemPaint(EntityAirshipV1Core.Type.PURPLE));
+		item_paint_red = registerItem(new ItemPaint(EntityAirshipV1Core.Type.RED));
+		item_paint_white = registerItem(new ItemPaint(EntityAirshipV1Core.Type.WHITE));
+		item_paint_yellow = registerItem(new ItemPaint(EntityAirshipV1Core.Type.YELLOW));
 		
 		achievement_airship_create_engine = registerItem(new ItemAchievementEngine());
 		achievement_airship_create_ignition = registerItem(new ItemAchievementIgnition());

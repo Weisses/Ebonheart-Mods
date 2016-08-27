@@ -46,14 +46,14 @@ import com.viesis.viescraft.configs.ViesCraftConfig;
 import com.viesis.viescraft.init.InitItemsVC;
 import com.viesis.viescraft.network.NetworkHandler;
 import com.viesis.viescraft.network.client.MessageConfig;
-import com.viesis.viescraft.network.server.MessageGuiOpen;
+import com.viesis.viescraft.network.server.MessageGuiOpenV1;
 
-public class EntityAirshipCore extends EntityVC implements IInventory//, ITickable 
+public class EntityAirshipV1Core extends EntityVC implements IInventory//, ITickable 
 {
-	private static final DataParameter<Integer> TIME_SINCE_HIT = EntityDataManager.<Integer>createKey(EntityAirshipCore.class, DataSerializers.VARINT);
-	private static final DataParameter<Integer> FORWARD_DIRECTION = EntityDataManager.<Integer>createKey(EntityAirshipCore.class, DataSerializers.VARINT);
-	private static final DataParameter<Float> DAMAGE_TAKEN = EntityDataManager.<Float>createKey(EntityAirshipCore.class, DataSerializers.FLOAT);
-	private static final DataParameter<Integer> BOAT_TYPE = EntityDataManager.<Integer>createKey(EntityAirshipCore.class, DataSerializers.VARINT);
+	private static final DataParameter<Integer> TIME_SINCE_HIT = EntityDataManager.<Integer>createKey(EntityAirshipV1Core.class, DataSerializers.VARINT);
+	private static final DataParameter<Integer> FORWARD_DIRECTION = EntityDataManager.<Integer>createKey(EntityAirshipV1Core.class, DataSerializers.VARINT);
+	private static final DataParameter<Float> DAMAGE_TAKEN = EntityDataManager.<Float>createKey(EntityAirshipV1Core.class, DataSerializers.FLOAT);
+	private static final DataParameter<Integer> BOAT_TYPE = EntityDataManager.<Integer>createKey(EntityAirshipV1Core.class, DataSerializers.VARINT);
     //private static final DataParameter<Boolean> POWERED = EntityDataManager.<Boolean>createKey(EntityAirshipCore.class, DataSerializers.BOOLEAN);
     
 	private ItemStack[] inventory = new ItemStack[10];
@@ -65,15 +65,15 @@ public class EntityAirshipCore extends EntityVC implements IInventory//, ITickab
     private int totalFuelTime;
     private int airshipBeingDriven;
     
-	public EntityAirshipCore.Status status;
-    public EntityAirshipCore.Status previousStatus;
+	public EntityAirshipV1Core.Status status;
+    public EntityAirshipV1Core.Status previousStatus;
     
-    public float AirshipSpeedTurn = 0.18F * (ViesCraftConfig.airshipSpeed / 100);
-    public float AirshipSpeedForward = 0.0125F * (ViesCraftConfig.airshipSpeed / 100);
-    public float AirshipSpeedUp = 0.0035F * (ViesCraftConfig.airshipSpeed / 100);
-    public float AirshipSpeedDown = 0.0035F * (ViesCraftConfig.airshipSpeed / 100);
+    public float AirshipSpeedTurn = 0.18F * (ViesCraftConfig.v1AirshipSpeed / 100);
+    public float AirshipSpeedForward = 0.0125F * (ViesCraftConfig.v1AirshipSpeed / 100);
+    public float AirshipSpeedUp = 0.0035F * (ViesCraftConfig.v1AirshipSpeed / 100);
+    public float AirshipSpeedDown = 0.0035F * (ViesCraftConfig.v1AirshipSpeed / 100);
     
-	public EntityAirshipCore(World worldIn)
+	public EntityAirshipV1Core(World worldIn)
     {
         super(worldIn);
         
@@ -83,7 +83,7 @@ public class EntityAirshipCore extends EntityVC implements IInventory//, ITickab
         this.inventory = new ItemStack[this.getSizeInventory()];
     }
 	
-    public EntityAirshipCore(World worldIn, double x, double y, double z)
+    public EntityAirshipV1Core(World worldIn, double x, double y, double z)
     {
         this(worldIn);
         this.setPosition(x, y, z);
@@ -104,7 +104,7 @@ public class EntityAirshipCore extends EntityVC implements IInventory//, ITickab
         this.dataManager.register(DAMAGE_TAKEN, Float.valueOf(0.0F));
         //this.dataManager.register(POWERED, Boolean.valueOf(false));
         
-        this.dataManager.register(BOAT_TYPE, Integer.valueOf(EntityAirshipCore.Type.NORMAL.ordinal()));
+        this.dataManager.register(BOAT_TYPE, Integer.valueOf(EntityAirshipV1Core.Type.NORMAL.ordinal()));
 	}
 	
 	
@@ -200,7 +200,7 @@ public class EntityAirshipCore extends EntityVC implements IInventory//, ITickab
         this.previousStatus = this.status;
         this.status = this.getAirshipStatus();
         
-        if (this.status != EntityAirshipCore.Status.UNDER_WATER && this.status != EntityAirshipCore.Status.UNDER_FLOWING_WATER)
+        if (this.status != EntityAirshipV1Core.Status.UNDER_WATER && this.status != EntityAirshipV1Core.Status.UNDER_FLOWING_WATER)
         {
             this.outOfControlTicks = 0.0F;
         }
@@ -325,22 +325,22 @@ public class EntityAirshipCore extends EntityVC implements IInventory//, ITickab
         double d5 = -0.001D;
         this.momentum = 0.05F;
         
-        if (this.previousStatus == EntityAirshipCore.Status.IN_AIR && this.status != EntityAirshipCore.Status.IN_AIR && this.status != EntityAirshipCore.Status.ON_LAND)
+        if (this.previousStatus == EntityAirshipV1Core.Status.IN_AIR && this.status != EntityAirshipV1Core.Status.IN_AIR && this.status != EntityAirshipV1Core.Status.ON_LAND)
         {
             this.waterLevel = this.getEntityBoundingBox().minY + (double)this.height;
             this.setPosition(this.posX, (double)(this.getWaterLevelAbove() - this.height) + 0.101D, this.posZ);
             this.motionY = 0.0D;
             this.lastYd = 0.0D;
-            this.status = EntityAirshipCore.Status.IN_WATER;
+            this.status = EntityAirshipV1Core.Status.IN_WATER;
         }
         else
         {
-            if (this.status == EntityAirshipCore.Status.IN_WATER)
+            if (this.status == EntityAirshipV1Core.Status.IN_WATER)
             {
             	this.momentum = 0.45F;
             }
-            else if (this.status == EntityAirshipCore.Status.UNDER_FLOWING_WATER 
-        	  || this.status == EntityAirshipCore.Status.UNDER_WATER)
+            else if (this.status == EntityAirshipV1Core.Status.UNDER_FLOWING_WATER 
+        	  || this.status == EntityAirshipV1Core.Status.UNDER_WATER)
             {
             	if (!this.worldObj.isRemote)
             	{
@@ -379,8 +379,8 @@ public class EntityAirshipCore extends EntityVC implements IInventory//, ITickab
             	}
             	this.setDeadVC();
             }
-            else if (this.status == EntityAirshipCore.Status.IN_AIR
-            	  || this.status == EntityAirshipCore.Status.ON_LAND)
+            else if (this.status == EntityAirshipV1Core.Status.IN_AIR
+            	  || this.status == EntityAirshipV1Core.Status.ON_LAND)
             {
             	this.momentum = 0.9F;
             }
@@ -501,7 +501,7 @@ public class EntityAirshipCore extends EntityVC implements IInventory//, ITickab
         {
     		if (this.openInputDown)	
             {
-            	NetworkHandler.sendToServer(new MessageGuiOpen());
+            	NetworkHandler.sendToServer(new MessageGuiOpenV1());
             	Minecraft.getMinecraft().setIngameFocus();		
             }
         }
@@ -629,14 +629,14 @@ public class EntityAirshipCore extends EntityVC implements IInventory//, ITickab
         return ((Integer)this.dataManager.get(FORWARD_DIRECTION)).intValue();
     }
     
-    public void setBoatType(EntityAirshipCore.Type boatType)
+    public void setBoatType(EntityAirshipV1Core.Type boatType)
     {
         this.dataManager.set(BOAT_TYPE, Integer.valueOf(boatType.ordinal()));
     }
     
-    public EntityAirshipCore.Type getBoatType()
+    public EntityAirshipV1Core.Type getBoatType()
     {
-        return EntityAirshipCore.Type.byId(((Integer)this.dataManager.get(BOAT_TYPE)).intValue());
+        return EntityAirshipV1Core.Type.byId(((Integer)this.dataManager.get(BOAT_TYPE)).intValue());
     }
     
     /**
@@ -721,7 +721,7 @@ public class EntityAirshipCore extends EntityVC implements IInventory//, ITickab
         /**
          * Get a boat type by it's enum ordinal
          */
-        public static EntityAirshipCore.Type byId(int id)
+        public static EntityAirshipV1Core.Type byId(int id)
         {
             if (id < 0 || id >= values().length)
             {
@@ -731,7 +731,7 @@ public class EntityAirshipCore extends EntityVC implements IInventory//, ITickab
             return values()[id];
         }
         
-        public static EntityAirshipCore.Type getTypeFromString(String nameIn)
+        public static EntityAirshipV1Core.Type getTypeFromString(String nameIn)
         {
             for (int i = 0; i < values().length; ++i)
             {
@@ -1045,7 +1045,7 @@ public class EntityAirshipCore extends EntityVC implements IInventory//, ITickab
     
     public int getFuelTime(@Nullable ItemStack stack)
     {
-        return (ViesCraftConfig.fuelBurnTime * 20);//1200;
+        return (ViesCraftConfig.v1FuelBurnTime * 20);//1200;
     }
     
     /**
@@ -1062,7 +1062,7 @@ public class EntityAirshipCore extends EntityVC implements IInventory//, ITickab
         {
             Item item = stack.getItem();
             
-            if (item == Items.COAL) return (ViesCraftConfig.fuelBurnTime * 20);//1200;//1600
+            if (item == Items.COAL) return (ViesCraftConfig.v1FuelBurnTime * 20);//1200;//1600
             
             return net.minecraftforge.fml.common.registry.GameRegistry.getFuelValue(stack);
         }
@@ -1116,9 +1116,9 @@ public class EntityAirshipCore extends EntityVC implements IInventory//, ITickab
     /**
      * Determines whether the boat is in water, gliding on land, or in air
      */
-    public EntityAirshipCore.Status getAirshipStatus()
+    public EntityAirshipV1Core.Status getAirshipStatus()
     {
-        EntityAirshipCore.Status EntityAirshipEA$status = this.getUnderwaterStatus();
+        EntityAirshipV1Core.Status EntityAirshipEA$status = this.getUnderwaterStatus();
         
         if (EntityAirshipEA$status != null)
         {
@@ -1127,7 +1127,7 @@ public class EntityAirshipCore extends EntityVC implements IInventory//, ITickab
         }
         else if (this.checkInWater())
         {
-            return EntityAirshipCore.Status.IN_WATER;
+            return EntityAirshipV1Core.Status.IN_WATER;
         }
         else
         {
@@ -1136,11 +1136,11 @@ public class EntityAirshipCore extends EntityVC implements IInventory//, ITickab
             if (f > 0.0F)
             {
                 this.boatGlide = f;
-                return EntityAirshipCore.Status.ON_LAND;
+                return EntityAirshipV1Core.Status.ON_LAND;
             }
             else
             {
-                return EntityAirshipCore.Status.IN_AIR;
+                return EntityAirshipV1Core.Status.IN_AIR;
             }
         }
     }
@@ -1313,7 +1313,7 @@ public class EntityAirshipCore extends EntityVC implements IInventory//, ITickab
      * Decides whether the boat is currently underwater.
      */
     @Nullable
-    private EntityAirshipCore.Status getUnderwaterStatus()
+    private EntityAirshipV1Core.Status getUnderwaterStatus()
     {
         AxisAlignedBB axisalignedbb = this.getEntityBoundingBox();
         double d0 = axisalignedbb.maxY + 0.001D;
@@ -1341,7 +1341,7 @@ public class EntityAirshipCore extends EntityVC implements IInventory//, ITickab
                         {
                             if (((Integer)iblockstate.getValue(BlockLiquid.LEVEL)).intValue() != 0)
                             {
-                                EntityAirshipCore.Status EntityAirshipEA$status = EntityAirshipCore.Status.UNDER_FLOWING_WATER;
+                                EntityAirshipV1Core.Status EntityAirshipEA$status = EntityAirshipV1Core.Status.UNDER_FLOWING_WATER;
                                 return EntityAirshipEA$status;
                             }
 
@@ -1356,7 +1356,7 @@ public class EntityAirshipCore extends EntityVC implements IInventory//, ITickab
             blockpos$pooledmutableblockpos.release();
         }
 
-        return flag ? EntityAirshipCore.Status.UNDER_WATER : null;
+        return flag ? EntityAirshipV1Core.Status.UNDER_WATER : null;
     }
 
     public static float getBlockLiquidHeight(IBlockState p_184456_0_, IBlockAccess p_184456_1_, BlockPos p_184456_2_)

@@ -102,8 +102,26 @@ container.vc.airship.red.name=Red Viesdenburg
 container.vc.airship.white.name=White Viesdenburg
 container.vc.airship.yellow.name=Yellow Viesdenburg
 
+entity.vc.airship.v2.normal.name=Viesigible
+entity.vc.airship.v2.black.name=Black Viesigible
+entity.vc.airship.v2.blue.name=Blue Viesigible
+entity.vc.airship.v2.brown.name=Brown Viesigible
+entity.vc.airship.v2.cyan.name=Cyan Viesigible
+entity.vc.airship.v2.gray.name=Gray Viesigible
+entity.vc.airship.v2.green.name=Green Viesigible
+entity.vc.airship.v2.lightblue.name=Light Blue Viesigible
+entity.vc.airship.v2.lightgray.name=Light Gray Viesigible
+entity.vc.airship.v2.lime.name=Lime Viesigible
+entity.vc.airship.v2.magenta.name=Magenta Viesigible
+entity.vc.airship.v2.orange.name=Orange Viesigible
+entity.vc.airship.v2.pink.name=Pink Viesigible
+entity.vc.airship.v2.purple.name=Purple Viesigible
+entity.vc.airship.v2.red.name=Red Viesigible
+entity.vc.airship.v2.white.name=White Viesigible
+entity.vc.airship.v2.yellow.name=Yellow Viesigible
+
 //-----Ores-----
-tile.vc:ore/draconium_ore.name=Placeholder1
+tile.vc:airship_workbench.name=Airship Workbench
 
 //-----Blocks-----
 tile.vc:plant/hellion_fruit_crop.name=Placeholder2

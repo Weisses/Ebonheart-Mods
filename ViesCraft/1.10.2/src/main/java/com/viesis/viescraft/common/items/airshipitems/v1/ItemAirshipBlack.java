@@ -56,7 +56,7 @@ public class ItemAirshipBlack extends ItemAirshipCore {
 		return new ActionResult(EnumActionResult.SUCCESS, itemStackIn);
     }
 	
-	
+	/**
 	
 	
 	
@@ -82,4 +82,5 @@ public class ItemAirshipBlack extends ItemAirshipCore {
 	    tooltip.add("Place the activator in your hotbar");
 	    tooltip.add(" to activate the custom HUD.");
 	  }
+	  */
 }
