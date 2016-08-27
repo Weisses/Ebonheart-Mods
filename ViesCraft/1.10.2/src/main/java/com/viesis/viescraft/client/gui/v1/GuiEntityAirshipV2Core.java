@@ -42,6 +42,7 @@ public class GuiEntityAirshipV2Core extends GuiContainer {
 		//int i = (this.width - this.xSize) / 2;
         //int j = (this.height - this.ySize) / 2;
         
+		if (EntityAirshipV2Core.isAirshipBurning(this.airship))
         {
 			//int x = airship.getFuelScaled(10);
             int k = this.getBurnLeftScaled(47);
@@ -76,6 +77,7 @@ public class GuiEntityAirshipV2Core extends GuiContainer {
 
         if (i == 0)
         {
+        	i = (ViesCraftConfig.v2FuelBurnTime * 20);//i = 1200;
         }
 
         return this.airship.getField(0) * pixels / i;
