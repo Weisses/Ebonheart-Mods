@@ -63,10 +63,10 @@ public class EventHandlerHUD {
 	    final int LAST_HOTBAR_SLOT_PLUS_ONE = FIRST_HOTBAR_SLOT + entityPlayerSP.inventory.getHotbarSize();
 	    for (int i = FIRST_HOTBAR_SLOT; i < LAST_HOTBAR_SLOT_PLUS_ONE; ++i) {
 	      ItemStack slotItemStack = entityPlayerSP.inventory.getStackInSlot(i);
-	      if (slotItemStack != null && slotItemStack.getItem() == CommonProxy.itemHUDactivator) {
-	        foundInHotbar = true;
-	        break;
-	      }
+/////	      if (slotItemStack != null && slotItemStack.getItem() == CommonProxy.itemHUDactivator) {
+/////	        foundInHotbar = true;
+/////	        break;
+/////	      }
 	    }
 	    if (!foundInHotbar) return;
 

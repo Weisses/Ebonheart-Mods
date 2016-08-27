@@ -11,11 +11,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.client.entity.model.ModelAirship;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipLightBlue;
+import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipV1LightBlue;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 
 @SideOnly(Side.CLIENT)
-public class RenderAirshipLightBlue extends Render<EntityAirshipLightBlue> {
+public class RenderAirshipLightBlue extends Render<EntityAirshipV1LightBlue> {
 	
 	private static final ResourceLocation[] ENTITY_TEXTURE = new ResourceLocation[] 
 	{
@@ -35,7 +35,7 @@ public class RenderAirshipLightBlue extends Render<EntityAirshipLightBlue> {
     /**
      * Renders the desired {@code T} type Entity.
      */
-    public void doRender(EntityAirshipLightBlue entity, double x, double y, double z, float entityYaw, float partialTicks)
+    public void doRender(EntityAirshipV1LightBlue entity, double x, double y, double z, float entityYaw, float partialTicks)
     {
         GlStateManager.pushMatrix();
         this.setupTranslation(x, y, z);
@@ -61,7 +61,7 @@ public class RenderAirshipLightBlue extends Render<EntityAirshipLightBlue> {
         super.doRender(entity, x, y, z, entityYaw, partialTicks);
     }
 
-    public void setupRotation(EntityAirshipLightBlue entity, float p_188311_2_, float p_188311_3_)
+    public void setupRotation(EntityAirshipV1LightBlue entity, float p_188311_2_, float p_188311_3_)
     {
         GlStateManager.rotate(180.0F - p_188311_2_, 0.0F, 1.0F, 0.0F);
         float f = (float)entity.getTimeSinceHit() - p_188311_3_;
@@ -120,7 +120,7 @@ public class RenderAirshipLightBlue extends Render<EntityAirshipLightBlue> {
     /**
      * Returns the location of an entity's texture. Doesn't seem to be called unless you call Render.bindEntityTexture.
      */
-    protected ResourceLocation getEntityTexture(EntityAirshipLightBlue entity)
+    protected ResourceLocation getEntityTexture(EntityAirshipV1LightBlue entity)
     {
         return ENTITY_TEXTURE[entity.getBoatType().ordinal()];
     }

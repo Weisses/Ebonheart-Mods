@@ -11,11 +11,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.client.entity.model.ModelAirship;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipCyan;
+import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipV1Cyan;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 
 @SideOnly(Side.CLIENT)
-public class RenderAirshipCyan extends Render<EntityAirshipCyan> {
+public class RenderAirshipCyan extends Render<EntityAirshipV1Cyan> {
 	
 	private static final ResourceLocation[] ENTITY_TEXTURE = new ResourceLocation[] 
 	{
@@ -35,7 +35,7 @@ public class RenderAirshipCyan extends Render<EntityAirshipCyan> {
     /**
      * Renders the desired {@code T} type Entity.
      */
-    public void doRender(EntityAirshipCyan entity, double x, double y, double z, float entityYaw, float partialTicks)
+    public void doRender(EntityAirshipV1Cyan entity, double x, double y, double z, float entityYaw, float partialTicks)
     {
         GlStateManager.pushMatrix();
         this.setupTranslation(x, y, z);
@@ -61,7 +61,7 @@ public class RenderAirshipCyan extends Render<EntityAirshipCyan> {
         super.doRender(entity, x, y, z, entityYaw, partialTicks);
     }
 
-    public void setupRotation(EntityAirshipCyan entity, float p_188311_2_, float p_188311_3_)
+    public void setupRotation(EntityAirshipV1Cyan entity, float p_188311_2_, float p_188311_3_)
     {
         GlStateManager.rotate(180.0F - p_188311_2_, 0.0F, 1.0F, 0.0F);
         float f = (float)entity.getTimeSinceHit() - p_188311_3_;
@@ -120,7 +120,7 @@ public class RenderAirshipCyan extends Render<EntityAirshipCyan> {
     /**
      * Returns the location of an entity's texture. Doesn't seem to be called unless you call Render.bindEntityTexture.
      */
-    protected ResourceLocation getEntityTexture(EntityAirshipCyan entity)
+    protected ResourceLocation getEntityTexture(EntityAirshipV1Cyan entity)
     {
         return ENTITY_TEXTURE[entity.getBoatType().ordinal()];
     }

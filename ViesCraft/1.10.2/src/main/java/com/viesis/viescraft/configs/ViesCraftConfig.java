@@ -22,7 +22,9 @@ public class ViesCraftConfig {
 	public static int v2AirshipSpeed;
 	
 	public static boolean modelTurnAngle;
-	public static String airshipName; 
+	
+	public static String v1AirshipName;
+	public static String v2AirshipName;
 	
 	public static final int V1FUELBURNTIME_DEFAULT = 60;
 	public static final String V1FUELBURNTIME_NAME = "Fuel Burn Time - Viesdenburg";
@@ -46,8 +48,12 @@ public class ViesCraftConfig {
 	public static final String MODELTURNANGLE_COMMENT = "Should the airship tilt while players turn?";
 	
 	public static final String V1AIRSHIPNAME_DEFAULT = "Viesdenburg";
-	public static final String V1AIRSHIPNAME_NAME = "Airship Name";
-	public static final String V1AIRSHIPNAME_COMMENT = "Change the name of Airships?";
+	public static final String V1AIRSHIPNAME_NAME = "Airship Name - Viesdenburg";
+	public static final String V1AIRSHIPNAME_COMMENT = "Change the name of Viesdenburg Airships?";
+	
+	public static final String V2AIRSHIPNAME_DEFAULT = "Viesigible";
+	public static final String V2AIRSHIPNAME_NAME = "Airship Name - Viesigible";
+	public static final String V2AIRSHIPNAME_COMMENT = "Change the name of Viesigible Airships?";
 	
 	public static void init(File file)
 	{
@@ -61,12 +67,15 @@ public class ViesCraftConfig {
 		//General settings
 		final String category1 = CATEGORY_VC + config.CATEGORY_SPLITTER + TextFormatting.GREEN + "General";
 		config.addCustomCategoryComment(category1, "General airship options.");
+		
 		v1FuelBurnTime = config.getInt(TextFormatting.WHITE + V1FUELBURNTIME_NAME, category1, V1FUELBURNTIME_DEFAULT, 1, 600, V1FUELBURNTIME_COMMENT);
 		v1AirshipSpeed = config.getInt(TextFormatting.WHITE + V1AIRSHIPSPEED_NAME, category1, V1AIRSHIPSPEED_DEFAULT, 100, 400, V1AIRSHIPSPEED_COMMENT);
-		//airshipName = config.getString(AIRSHIPNAME_NAME, category1, AIRSHIPNAME_DEFAULT, AIRSHIPNAME_COMMENT);
+		
 		v2FuelBurnTime = config.getInt(TextFormatting.WHITE + V2FUELBURNTIME_NAME, category1, V2FUELBURNTIME_DEFAULT, 1, 600, V2FUELBURNTIME_COMMENT);
 		v2AirshipSpeed = config.getInt(TextFormatting.WHITE + V2AIRSHIPSPEED_NAME, category1, V2AIRSHIPSPEED_DEFAULT, 100, 400, V2AIRSHIPSPEED_COMMENT);
 		
+		v1AirshipName = config.getString(TextFormatting.WHITE + V1AIRSHIPNAME_NAME, category1, V1AIRSHIPNAME_DEFAULT, V1AIRSHIPNAME_COMMENT);
+		v2AirshipName = config.getString(TextFormatting.WHITE + V2AIRSHIPNAME_NAME, category1, V2AIRSHIPNAME_DEFAULT, V2AIRSHIPNAME_COMMENT);
 		
 		
 		//Animation settings

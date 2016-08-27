@@ -35,6 +35,9 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -57,7 +60,7 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory//, ITick
     //private static final DataParameter<Boolean> POWERED = EntityDataManager.<Boolean>createKey(EntityAirshipCore.class, DataSerializers.BOOLEAN);
     
 	private ItemStack[] inventory = new ItemStack[10];
-	private String customName;
+	public String customName;
 	
 	private int airshipBurnTime;
     private int currentItemBurnTime;
@@ -810,6 +813,29 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory//, ITick
     // TODO       Inventory             //
 	//==================================//
     
+    public String getCustomName() {
+		return this.customName;
+	}
+	
+	public void setCustomName(String customName) {
+		this.customName = customName;
+	}
+	
+	@Override
+	public String getName() {
+		return this.hasCustomName() ? this.customName : ViesCraftConfig.v1AirshipName;
+	}
+
+	@Override
+	public boolean hasCustomName() {
+		return this.customName != null && !this.customName.equals("");
+	}
+
+	@Override
+	public ITextComponent getDisplayName() {
+		return this.hasCustomName() ? new TextComponentString(this.getName()) : new TextComponentTranslation(this.getName());
+	}
+	
 	@Override
 	public int getSizeInventory() 
 	{
@@ -1401,6 +1427,11 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory//, ITick
             }
         }
         
+        if(this.hasCustomName()) 
+        {
+			compound.setString("CustomName", this.getCustomName());
+		}
+        
         compound.setTag("Items", nbttaglist);
     }
     
@@ -1425,6 +1456,11 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory//, ITick
                 this.inventory[j] = ItemStack.loadItemStackFromNBT(nbttagcompound);
             }
         }
+        
+        if(compound.hasKey("CustomName", 8)) 
+        {
+    			this.setCustomName(compound.getString("CustomName"));
+    	}
         
         this.airshipBurnTime = compound.getInteger("BurnTime");
         this.fuelTime = compound.getInteger("FuelTime");

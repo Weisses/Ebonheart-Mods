@@ -4,22 +4,22 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipBlack;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipBlue;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipBrown;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipCyan;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipGray;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipGreen;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipLightBlue;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipLightGray;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipLime;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipMagenta;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipOrange;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipPink;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipPurple;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipRed;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipWhite;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipYellow;
+import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipV1Black;
+import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipV1Blue;
+import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipV1Brown;
+import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipV1Cyan;
+import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipV1Gray;
+import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipV1Green;
+import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipV1LightBlue;
+import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipV1LightGray;
+import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipV1Lime;
+import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipV1Magenta;
+import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipV1Orange;
+import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipV1Pink;
+import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipV1Purple;
+import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipV1Red;
+import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipV1White;
+import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipV1Yellow;
 import com.viesis.viescraft.init.InitAchievementsVC;
 
 public class EventHandlerAchievement {
