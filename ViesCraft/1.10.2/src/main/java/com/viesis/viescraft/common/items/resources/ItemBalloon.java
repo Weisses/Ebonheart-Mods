@@ -23,8 +23,8 @@ public class ItemBalloon extends Item {
 	@SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List toolTip, boolean advanced) 
 	{
-		toolTip.add(TextFormatting.GOLD + "Leather that has been processed");
-		toolTip.add(TextFormatting.GOLD + "to create a durable balloon.");
+		toolTip.add(TextFormatting.GRAY + "Leather that has been processed");
+		toolTip.add(TextFormatting.GRAY + "to create a durable balloon.");
 	}
 	
 	public EnumRarity getRarity(ItemStack stack)

@@ -31,6 +31,7 @@ public final class InitItemsVCRender extends ItemsVC {
 		registerRender(item_airship_red);
 		registerRender(item_airship_white);
 		registerRender(item_airship_yellow);
+		registerRender(item_airship_v1_admin);
 		
 		registerRender(item_airship_v2_normal);
 		registerRender(item_airship_v2_black);
@@ -49,6 +50,7 @@ public final class InitItemsVCRender extends ItemsVC {
 		registerRender(item_airship_v2_red);
 		registerRender(item_airship_v2_white);
 		registerRender(item_airship_v2_yellow);
+		registerRender(item_airship_v2_admin);
 		
 		registerRender(item_paint_black);
 		registerRender(item_paint_blue);

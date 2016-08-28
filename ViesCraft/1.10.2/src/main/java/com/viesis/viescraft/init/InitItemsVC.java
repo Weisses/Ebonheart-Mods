@@ -15,6 +15,7 @@ import com.viesis.viescraft.common.items.achievements.ItemAchievementEngine;
 import com.viesis.viescraft.common.items.achievements.ItemAchievementIgnition;
 import com.viesis.viescraft.common.items.achievements.ItemAchievementLava;
 import com.viesis.viescraft.common.items.achievements.ItemAchievementWater;
+import com.viesis.viescraft.common.items.airshipitems.v1.ItemAirshipV1Admin;
 import com.viesis.viescraft.common.items.airshipitems.v1.ItemAirshipV1Black;
 import com.viesis.viescraft.common.items.airshipitems.v1.ItemAirshipV1Blue;
 import com.viesis.viescraft.common.items.airshipitems.v1.ItemAirshipV1Brown;
@@ -32,6 +33,7 @@ import com.viesis.viescraft.common.items.airshipitems.v1.ItemAirshipV1Purple;
 import com.viesis.viescraft.common.items.airshipitems.v1.ItemAirshipV1Red;
 import com.viesis.viescraft.common.items.airshipitems.v1.ItemAirshipV1White;
 import com.viesis.viescraft.common.items.airshipitems.v1.ItemAirshipV1Yellow;
+import com.viesis.viescraft.common.items.airshipitems.v2.ItemAirshipV2Admin;
 import com.viesis.viescraft.common.items.airshipitems.v2.ItemAirshipV2Black;
 import com.viesis.viescraft.common.items.airshipitems.v2.ItemAirshipV2Blue;
 import com.viesis.viescraft.common.items.airshipitems.v2.ItemAirshipV2Brown;
@@ -81,6 +83,7 @@ public class InitItemsVC extends ItemsVC {
 		item_airship_red = registerItem(new ItemAirshipV1Red());
 		item_airship_white = registerItem(new ItemAirshipV1White());
 		item_airship_yellow = registerItem(new ItemAirshipV1Yellow());
+		item_airship_v1_admin = registerItem(new ItemAirshipV1Admin());
 		
 		item_airship_v2_normal = registerItem(new ItemAirshipV2Normal());
 		item_airship_v2_black = registerItem(new ItemAirshipV2Black());
@@ -99,6 +102,7 @@ public class InitItemsVC extends ItemsVC {
 		item_airship_v2_red = registerItem(new ItemAirshipV2Red());
 		item_airship_v2_white = registerItem(new ItemAirshipV2White());
 		item_airship_v2_yellow = registerItem(new ItemAirshipV2Yellow());
+		item_airship_v2_admin = registerItem(new ItemAirshipV2Admin());
 		
 		item_paint_black = registerItem(new ItemPaint(EntityAirshipV1Core.Type.BLACK));
 		item_paint_blue = registerItem(new ItemPaint(EntityAirshipV1Core.Type.BLUE));

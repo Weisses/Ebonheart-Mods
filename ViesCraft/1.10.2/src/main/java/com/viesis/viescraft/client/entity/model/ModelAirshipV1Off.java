@@ -7,7 +7,7 @@ import net.minecraft.entity.Entity;
 import com.viesis.viescraft.ViesCraft;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 
-public class ModelAirship extends ModelBase {
+public class ModelAirshipV1Off extends ModelBase {
 	
 	private float bladespin;
 	private long lastframe;
@@ -64,7 +64,7 @@ public class ModelAirship extends ModelBase {
     ModelRenderer Propeller_1b;
     ModelRenderer Propeller_1c;
     
-    public ModelAirship()
+    public ModelAirshipV1Off()
     {
     	textureWidth = 256;
     	textureHeight = 128;
@@ -441,16 +441,16 @@ public class ModelAirship extends ModelBase {
 
 		//if(ViesCraftConfig.modelAnimation)
 		//{
-			long now = System.nanoTime();
-			int elapsed = (int) ((now - lastframe) / (1000000));
+			////long now = System.nanoTime();
+			////int elapsed = (int) ((now - lastframe) / (1000000));
 			// 1000000 nanoseconds = .001 seconds
-			bladespin = (float) elapsed / 300.0f;
+			////bladespin = (float) elapsed / 300.0f;
 			// 0.001 seconds / 300 = 3.3333 repeating.
-			lastframe = now;
+			////lastframe = now;
 			
-			this.Propeller_1a.rotateAngleZ += (bladespin * 2);
-			this.Propeller_1b.rotateAngleZ += (bladespin * 2);
-			this.Propeller_1c.rotateAngleZ += (bladespin * 2);
+			////this.Propeller_1a.rotateAngleZ += (bladespin * 2);
+			////this.Propeller_1b.rotateAngleZ += (bladespin * 2);
+			////this.Propeller_1c.rotateAngleZ += (bladespin * 2);
 		//}
 		
 		//ViesCraft.proxy.generateSmokeParticles(entity);

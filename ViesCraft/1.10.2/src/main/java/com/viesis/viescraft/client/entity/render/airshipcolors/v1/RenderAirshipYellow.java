@@ -10,7 +10,9 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.viesis.viescraft.api.Reference;
-import com.viesis.viescraft.client.entity.model.ModelAirship;
+import com.viesis.viescraft.client.entity.model.ModelAirshipV1Off;
+import com.viesis.viescraft.client.entity.model.ModelAirshipV1On;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
 import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipV1Yellow;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 
@@ -21,10 +23,10 @@ public class RenderAirshipYellow extends Render<EntityAirshipV1Yellow> {
 	{
 		new ResourceLocation(Reference.MOD_ID, "textures/models/v1/airship_v1_yellow.png")//,
 	};
-	
+
 	/** instance of ModelTest for rendering */
-	protected ModelBase modelTest = new ModelAirship();
-	
+	protected ModelBase modelAirshipOn = new ModelAirshipV1On();
+	protected ModelBase modelAirshipOff = new ModelAirshipV1Off();
 	
     public RenderAirshipYellow(RenderManager renderManagerIn)
     {
@@ -41,22 +43,30 @@ public class RenderAirshipYellow extends Render<EntityAirshipV1Yellow> {
         this.setupTranslation(x, y, z);
         this.setupRotation(entity, entityYaw, partialTicks);
         this.bindEntityTexture(entity);
-
+        
         if (this.renderOutlines)
         {
             GlStateManager.enableColorMaterial();
             GlStateManager.enableOutlineMode(this.getTeamColor(entity));
         }
-
-        this.modelTest.render(entity, partialTicks, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
-        //this.modelTest1.render(entity, partialTicks, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
-
+        
+        if(EntityAirshipV1Core.isAirshipBurning(entity))
+        {
+        	this.modelAirshipOn.render(entity, partialTicks, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
+            
+        }
+        else
+        {
+        	this.modelAirshipOff.render(entity, partialTicks, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
+            
+        }
+        
         if (this.renderOutlines)
         {
             GlStateManager.disableOutlineMode();
             GlStateManager.disableColorMaterial();
         }
-
+        
         GlStateManager.popMatrix();
         super.doRender(entity, x, y, z, entityYaw, partialTicks);
     }

@@ -13,22 +13,22 @@ import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.client.entity.model.ModelAirshipV2Off;
 import com.viesis.viescraft.client.entity.model.ModelAirshipV2On;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV2Core;
-import com.viesis.viescraft.common.entity.airshipcolors.v2.EntityAirshipV2Blue;
+import com.viesis.viescraft.common.entity.airshipcolors.v2.EntityAirshipV2Admin;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 
 @SideOnly(Side.CLIENT)
-public class RenderAirshipV2Blue extends Render<EntityAirshipV2Blue> {
+public class RenderAirshipV2Admin extends Render<EntityAirshipV2Admin> {
 	
 	private static final ResourceLocation[] ENTITY_TEXTURE = new ResourceLocation[] 
 	{
-		new ResourceLocation(Reference.MOD_ID, "textures/models/v2/airship_v2_blue.png")//, 
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v2/airship_v2_admin.png")//,
 	};
 	
 	/** instance of ModelTest for rendering */
 	protected ModelBase modelAirshipOn = new ModelAirshipV2On();
 	protected ModelBase modelAirshipOff = new ModelAirshipV2Off();
 	
-    public RenderAirshipV2Blue(RenderManager renderManagerIn)
+    public RenderAirshipV2Admin(RenderManager renderManagerIn)
     {
         super(renderManagerIn);
         this.shadowSize = 1.0F;
@@ -37,7 +37,7 @@ public class RenderAirshipV2Blue extends Render<EntityAirshipV2Blue> {
     /**
      * Renders the desired {@code T} type Entity.
      */
-    public void doRender(EntityAirshipV2Blue entity, double x, double y, double z, float entityYaw, float partialTicks)
+    public void doRender(EntityAirshipV2Admin entity, double x, double y, double z, float entityYaw, float partialTicks)
     {
         GlStateManager.pushMatrix();
         this.setupTranslation(x, y, z);
@@ -71,7 +71,7 @@ public class RenderAirshipV2Blue extends Render<EntityAirshipV2Blue> {
         super.doRender(entity, x, y, z, entityYaw, partialTicks);
     }
 
-    public void setupRotation(EntityAirshipV2Blue entity, float p_188311_2_, float p_188311_3_)
+    public void setupRotation(EntityAirshipV2Admin entity, float p_188311_2_, float p_188311_3_)
     {
         GlStateManager.rotate(180.0F - p_188311_2_, 0.0F, 1.0F, 0.0F);
         float f = (float)entity.getTimeSinceHit() - p_188311_3_;
@@ -130,7 +130,7 @@ public class RenderAirshipV2Blue extends Render<EntityAirshipV2Blue> {
     /**
      * Returns the location of an entity's texture. Doesn't seem to be called unless you call Render.bindEntityTexture.
      */
-    protected ResourceLocation getEntityTexture(EntityAirshipV2Blue entity)
+    protected ResourceLocation getEntityTexture(EntityAirshipV2Admin entity)
     {
         return ENTITY_TEXTURE[entity.getBoatType().ordinal()];
     }

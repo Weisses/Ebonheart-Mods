@@ -4,6 +4,7 @@ import net.minecraft.entity.Entity;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 import com.viesis.viescraft.ViesCraft;
+import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipV1Admin;
 import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipV1Black;
 import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipV1Blue;
 import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipV1Brown;
@@ -21,6 +22,7 @@ import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipV1Purple
 import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipV1Red;
 import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipV1White;
 import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipV1Yellow;
+import com.viesis.viescraft.common.entity.airshipcolors.v2.EntityAirshipV2Admin;
 import com.viesis.viescraft.common.entity.airshipcolors.v2.EntityAirshipV2Black;
 import com.viesis.viescraft.common.entity.airshipcolors.v2.EntityAirshipV2Blue;
 import com.viesis.viescraft.common.entity.airshipcolors.v2.EntityAirshipV2Brown;
@@ -38,6 +40,7 @@ import com.viesis.viescraft.common.entity.airshipcolors.v2.EntityAirshipV2Purple
 import com.viesis.viescraft.common.entity.airshipcolors.v2.EntityAirshipV2Red;
 import com.viesis.viescraft.common.entity.airshipcolors.v2.EntityAirshipV2White;
 import com.viesis.viescraft.common.entity.airshipcolors.v2.EntityAirshipV2Yellow;
+import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipV1Admin;
 import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipV1Black;
 import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipV1Blue;
 import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipV1Brown;
@@ -55,6 +58,7 @@ import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipV1Pur
 import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipV1Red;
 import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipV1White;
 import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipV1Yellow;
+import com.viesis.viescraft.common.entity.airshipitems.v2.EntityItemAirshipV2Admin;
 import com.viesis.viescraft.common.entity.airshipitems.v2.EntityItemAirshipV2Black;
 import com.viesis.viescraft.common.entity.airshipitems.v2.EntityItemAirshipV2Blue;
 import com.viesis.viescraft.common.entity.airshipitems.v2.EntityItemAirshipV2Brown;
@@ -96,6 +100,7 @@ public class InitEntityVC {
 		register(EntityItemAirshipV1Red.class, "item.airship.red", 64, 20, true);
 		register(EntityItemAirshipV1White.class, "item.airship.white", 64, 20, true);
 		register(EntityItemAirshipV1Yellow.class, "item.airship.yellow", 64, 20, true);
+		register(EntityItemAirshipV1Admin.class, "item.airship.admin", 64, 20, true);
 		
 		register(EntityItemAirshipV2Normal.class, "item.airship.v2.normal", 64, 20, true);
 		register(EntityItemAirshipV2Black.class, "item.airship.v2.black", 64, 20, true);
@@ -114,6 +119,7 @@ public class InitEntityVC {
 		register(EntityItemAirshipV2Red.class, "item.airship.v2.red", 64, 20, true);
 		register(EntityItemAirshipV2White.class, "item.airship.v2.white", 64, 20, true);
 		register(EntityItemAirshipV2Yellow.class, "item.airship.v2.yellow", 64, 20, true);
+		register(EntityItemAirshipV2Admin.class, "item.airship.v2.admin", 64, 20, true);
 		
 		//===========================================
 		
@@ -134,6 +140,7 @@ public class InitEntityVC {
 		register(EntityAirshipV1Red.class, "airship.red", 64, 1, true);
 		register(EntityAirshipV1White.class, "airship.white", 64, 1, true);
 		register(EntityAirshipV1Yellow.class, "airship.yellow", 64, 1, true);
+		register(EntityAirshipV1Admin.class, "airship.v1.admin", 64, 1, true);
 		
 		register(EntityAirshipV2Normal.class, "airship.v2.normal", 64, 1, true);
 		register(EntityAirshipV2Black.class, "airship.v2.black", 64, 1, true);
@@ -152,6 +159,7 @@ public class InitEntityVC {
 		register(EntityAirshipV2Red.class, "airship.v2.red", 64, 1, true);
 		register(EntityAirshipV2White.class, "airship.v2.white", 64, 1, true);
 		register(EntityAirshipV2Yellow.class, "airship.v2.yellow", 64, 1, true);
+		register(EntityAirshipV2Admin.class, "airship.v2.admin", 64, 1, true);
 		
 	}
 	

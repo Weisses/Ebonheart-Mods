@@ -10,7 +10,9 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.viesis.viescraft.api.Reference;
-import com.viesis.viescraft.client.entity.model.ModelAirshipV2;
+import com.viesis.viescraft.client.entity.model.ModelAirshipV2Off;
+import com.viesis.viescraft.client.entity.model.ModelAirshipV2On;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV2Core;
 import com.viesis.viescraft.common.entity.airshipcolors.v2.EntityAirshipV2Normal;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 
@@ -39,7 +41,8 @@ public class RenderAirshipV2Normal extends Render<EntityAirshipV2Normal> {
 	};
 	
 	/** instance of ModelTest for rendering */
-	protected ModelBase modelTest = new ModelAirshipV2();
+	protected ModelBase modelAirshipOn = new ModelAirshipV2On();
+	protected ModelBase modelAirshipOff = new ModelAirshipV2Off();
 	
     public RenderAirshipV2Normal(RenderManager renderManagerIn)
     {
@@ -62,8 +65,17 @@ public class RenderAirshipV2Normal extends Render<EntityAirshipV2Normal> {
             GlStateManager.enableColorMaterial();
             GlStateManager.enableOutlineMode(this.getTeamColor(entity));
         }
-
-        this.modelTest.render(entity, partialTicks, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
+        
+        if(EntityAirshipV2Core.isAirshipBurning(entity))
+        {
+        	this.modelAirshipOn.render(entity, partialTicks, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
+            
+        }
+        else
+        {
+        	this.modelAirshipOff.render(entity, partialTicks, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
+            
+        }
         
         if (this.renderOutlines)
         {

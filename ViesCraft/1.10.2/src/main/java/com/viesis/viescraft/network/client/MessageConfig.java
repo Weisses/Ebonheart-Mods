@@ -13,6 +13,7 @@ import com.viesis.viescraft.network.packet.MessageBase;
 
 public class MessageConfig extends MessageBase<MessageConfig> {
 	
+	
 	@Override
 	public void fromBytes(ByteBuf buf) 
 	{
@@ -21,6 +22,9 @@ public class MessageConfig extends MessageBase<MessageConfig> {
 		
 		ViesCraftConfig.v2FuelBurnTime = buf.readInt();
 		ViesCraftConfig.v2AirshipSpeed = buf.readInt();
+		
+		//EntityAirshipV1Core.
+		//test = buf.readBoolean();
 	}
 	
 	@Override
@@ -30,6 +34,9 @@ public class MessageConfig extends MessageBase<MessageConfig> {
 		buf.writeInt(ViesCraftConfig.v1AirshipSpeed);
 		buf.writeInt(ViesCraftConfig.v2FuelBurnTime);
 		buf.writeInt(ViesCraftConfig.v2AirshipSpeed);
+		
+		//buf.writeBoolean(test);
+		
 	}
 	
 	@Override

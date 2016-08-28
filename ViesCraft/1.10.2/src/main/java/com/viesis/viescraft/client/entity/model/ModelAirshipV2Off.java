@@ -4,7 +4,7 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
-public class ModelAirshipV2 extends ModelBase
+public class ModelAirshipV2Off extends ModelBase
 {
 
 	private float bladespin;
@@ -80,7 +80,7 @@ public class ModelAirshipV2 extends ModelBase
     ModelRenderer Pipe_R1a;
     ModelRenderer Pipe_R1b;
   
-  public ModelAirshipV2()
+  public ModelAirshipV2Off()
   {
     textureWidth = 256;
     textureHeight = 128;
@@ -580,26 +580,26 @@ public class ModelAirshipV2 extends ModelBase
   {
     super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
     
-    long now = System.nanoTime();
-	int elapsed = (int) ((now - lastframe) / (1000000));
+    ////long now = System.nanoTime();
+	////int elapsed = (int) ((now - lastframe) / (1000000));
 	// 1000000 nanoseconds = .001 seconds
-	bladespin = (float) elapsed / 300.0f;
+	////bladespin = (float) elapsed / 300.0f;
 	// 0.001 seconds / 300 = 3.3333 repeating.
-	lastframe = now;
+	////lastframe = now;
 	
-	this.Propeller_R1a.rotateAngleZ += (bladespin * 2);
-	this.Propeller_R1b.rotateAngleZ += (bladespin * 2);
-	this.Propeller_R1c.rotateAngleZ += (bladespin * 2);
-	this.Propeller_L1a.rotateAngleZ += (bladespin * 2);
-	this.Propeller_L1b.rotateAngleZ += (bladespin * 2);
-	this.Propeller_L1c.rotateAngleZ += (bladespin * 2);
+	////this.Propeller_R1a.rotateAngleZ += (bladespin * 2);
+	////this.Propeller_R1b.rotateAngleZ += (bladespin * 2);
+	////this.Propeller_R1c.rotateAngleZ += (bladespin * 2);
+	////this.Propeller_L1a.rotateAngleZ += (bladespin * 2);
+	////this.Propeller_L1b.rotateAngleZ += (bladespin * 2);
+	////this.Propeller_L1c.rotateAngleZ += (bladespin * 2);
 	
-	//this.Propeller_FR1a.rotateAngleY += (bladespin * 2);
-	//this.Propeller_FR1b.rotateAngleY += (bladespin * 2);
-	//this.Propeller_FR1c.rotateAngleY += (bladespin * 2);
-	//this.Propeller_FL1a.rotateAngleY += (bladespin * 2);
-	//this.Propeller_FL1b.rotateAngleY += (bladespin * 2);
-	//this.Propeller_FL1c.rotateAngleY += (bladespin * 2);
+	////this.Propeller_FR1a.rotateAngleY += (bladespin * 2);
+	////this.Propeller_FR1b.rotateAngleY += (bladespin * 2);
+	////this.Propeller_FR1c.rotateAngleY += (bladespin * 2);
+	////this.Propeller_FL1a.rotateAngleY += (bladespin * 2);
+	////this.Propeller_FL1b.rotateAngleY += (bladespin * 2);
+	////this.Propeller_FL1c.rotateAngleY += (bladespin * 2);
     
   }
 
