@@ -12,6 +12,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.api.creative.VCTabAirships;
+import com.viesis.viescraft.api.creative.VCTabBlocks;
 import com.viesis.viescraft.api.creative.VCTabItems;
 import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.configs.ViesCraftConfig;
@@ -23,7 +24,7 @@ public class ViesCraft {
     @SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.SERVER_PROXY_CLASS)
 	public static CommonProxy proxy;
     
-	//public static final VCTabBlocks tabViesCraftBlocks = new VCTabBlocks("tabViesCraftBlocks");
+	public static final VCTabBlocks tabViesCraftBlocks = new VCTabBlocks("tabViesCraftBlocks");
 	public static final VCTabItems tabViesCraftItems = new VCTabItems("tabViesCraftItems");
 	public static final VCTabAirships tabViesCraftAirships = new VCTabAirships("tabViesCraftAirships");
 	

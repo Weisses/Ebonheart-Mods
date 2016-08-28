@@ -10,8 +10,9 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.viesis.viescraft.api.Reference;
-import com.viesis.viescraft.client.entity.model.ModelAirship;
-import com.viesis.viescraft.client.entity.model.ModelAirshipV2;
+import com.viesis.viescraft.client.entity.model.ModelAirshipV2Off;
+import com.viesis.viescraft.client.entity.model.ModelAirshipV2On;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV2Core;
 import com.viesis.viescraft.common.entity.airshipcolors.v2.EntityAirshipV2Black;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 
@@ -20,12 +21,12 @@ public class RenderAirshipV2Black extends Render<EntityAirshipV2Black> {
 	
 	private static final ResourceLocation[] ENTITY_TEXTURE = new ResourceLocation[] 
 	{
-		new ResourceLocation(Reference.MOD_ID, "textures/models/airship_v2_black.png")//, 
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v2/airship_v2_black.png")//, 
 	};
 	
 	/** instance of ModelTest for rendering */
-	protected ModelBase modelTest = new ModelAirshipV2();
-	
+	protected ModelBase modelAirshipOn = new ModelAirshipV2On();
+	protected ModelBase modelAirshipOff = new ModelAirshipV2Off();
 	
     public RenderAirshipV2Black(RenderManager renderManagerIn)
     {
@@ -48,10 +49,18 @@ public class RenderAirshipV2Black extends Render<EntityAirshipV2Black> {
             GlStateManager.enableColorMaterial();
             GlStateManager.enableOutlineMode(this.getTeamColor(entity));
         }
-
-        this.modelTest.render(entity, partialTicks, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
-        //this.modelTest1.render(entity, partialTicks, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
-
+        
+        if(EntityAirshipV2Core.isAirshipBurning(entity))
+        {
+        	this.modelAirshipOn.render(entity, partialTicks, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
+            
+        }
+        else
+        {
+        	this.modelAirshipOff.render(entity, partialTicks, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
+            
+        }
+        
         if (this.renderOutlines)
         {
             GlStateManager.disableOutlineMode();

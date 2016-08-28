@@ -10,21 +10,23 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.viesis.viescraft.api.Reference;
-import com.viesis.viescraft.client.entity.model.ModelAirship;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipGreen;
+import com.viesis.viescraft.client.entity.model.ModelAirshipV1Off;
+import com.viesis.viescraft.client.entity.model.ModelAirshipV1On;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
+import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipV1Green;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 
 @SideOnly(Side.CLIENT)
-public class RenderAirshipGreen extends Render<EntityAirshipGreen> {
+public class RenderAirshipGreen extends Render<EntityAirshipV1Green> {
 	
 	private static final ResourceLocation[] ENTITY_TEXTURE = new ResourceLocation[] 
 	{
-		new ResourceLocation(Reference.MOD_ID, "textures/models/airship_base_green.png")//, 
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v1/airship_v1_green.png")//, 
 	};
-	
+
 	/** instance of ModelTest for rendering */
-	protected ModelBase modelTest = new ModelAirship();
-	
+	protected ModelBase modelAirshipOn = new ModelAirshipV1On();
+	protected ModelBase modelAirshipOff = new ModelAirshipV1Off();
 	
     public RenderAirshipGreen(RenderManager renderManagerIn)
     {
@@ -35,7 +37,7 @@ public class RenderAirshipGreen extends Render<EntityAirshipGreen> {
     /**
      * Renders the desired {@code T} type Entity.
      */
-    public void doRender(EntityAirshipGreen entity, double x, double y, double z, float entityYaw, float partialTicks)
+    public void doRender(EntityAirshipV1Green entity, double x, double y, double z, float entityYaw, float partialTicks)
     {
         GlStateManager.pushMatrix();
         this.setupTranslation(x, y, z);
@@ -48,9 +50,17 @@ public class RenderAirshipGreen extends Render<EntityAirshipGreen> {
             GlStateManager.enableOutlineMode(this.getTeamColor(entity));
         }
 
-        this.modelTest.render(entity, partialTicks, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
-        //this.modelTest1.render(entity, partialTicks, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
-
+        if(EntityAirshipV1Core.isAirshipBurning(entity))
+        {
+        	this.modelAirshipOn.render(entity, partialTicks, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
+            
+        }
+        else
+        {
+        	this.modelAirshipOff.render(entity, partialTicks, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
+            
+        }
+        
         if (this.renderOutlines)
         {
             GlStateManager.disableOutlineMode();
@@ -61,7 +71,7 @@ public class RenderAirshipGreen extends Render<EntityAirshipGreen> {
         super.doRender(entity, x, y, z, entityYaw, partialTicks);
     }
 
-    public void setupRotation(EntityAirshipGreen entity, float p_188311_2_, float p_188311_3_)
+    public void setupRotation(EntityAirshipV1Green entity, float p_188311_2_, float p_188311_3_)
     {
         GlStateManager.rotate(180.0F - p_188311_2_, 0.0F, 1.0F, 0.0F);
         float f = (float)entity.getTimeSinceHit() - p_188311_3_;
@@ -120,7 +130,7 @@ public class RenderAirshipGreen extends Render<EntityAirshipGreen> {
     /**
      * Returns the location of an entity's texture. Doesn't seem to be called unless you call Render.bindEntityTexture.
      */
-    protected ResourceLocation getEntityTexture(EntityAirshipGreen entity)
+    protected ResourceLocation getEntityTexture(EntityAirshipV1Green entity)
     {
         return ENTITY_TEXTURE[entity.getBoatType().ordinal()];
     }

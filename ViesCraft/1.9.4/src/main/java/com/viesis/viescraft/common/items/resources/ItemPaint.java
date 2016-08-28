@@ -10,14 +10,14 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipCore;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
 import com.viesis.viescraft.common.items.ItemHelper;
 
 public class ItemPaint extends Item {
 	
-	private final EntityAirshipCore.Type type;
+	private final EntityAirshipV1Core.Type type;
 	
-	public ItemPaint(EntityAirshipCore.Type typeIn) 
+	public ItemPaint(EntityAirshipV1Core.Type typeIn) 
 	{
 		this.type = typeIn;
 		ItemHelper.setItemName(this, "item_paint_" + typeIn.getName());

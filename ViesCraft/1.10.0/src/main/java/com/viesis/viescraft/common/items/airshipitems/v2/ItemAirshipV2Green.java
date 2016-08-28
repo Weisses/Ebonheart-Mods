@@ -8,12 +8,14 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 
 import com.viesis.viescraft.ViesCraft;
 import com.viesis.viescraft.common.entity.airshipitems.v2.EntityItemAirshipV2Green;
 import com.viesis.viescraft.common.items.ItemHelper;
 import com.viesis.viescraft.common.items.airshipitems.ItemAirshipCore;
+import com.viesis.viescraft.configs.ViesCraftConfig;
 
 public class ItemAirshipV2Green extends ItemAirshipCore {
 	
@@ -46,5 +48,11 @@ public class ItemAirshipV2Green extends ItemAirshipCore {
 			return new ActionResult(EnumActionResult.SUCCESS, itemStackIn);
 		}
 		return new ActionResult(EnumActionResult.SUCCESS, itemStackIn);
+    }
+	
+	@Override
+	public String getItemStackDisplayName(ItemStack stack)
+    {
+        return ("" + I18n.translateToLocal("Green " + ViesCraftConfig.v2AirshipName)).trim();
     }
 }

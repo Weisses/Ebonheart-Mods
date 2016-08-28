@@ -3,24 +3,30 @@ package com.viesis.viescraft.proxy;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.entity.Entity;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 import com.viesis.viescraft.api.util.Keybinds;
+import com.viesis.viescraft.client.InitBlocksVCRender;
 import com.viesis.viescraft.client.InitEntityVCRender;
 import com.viesis.viescraft.client.InitItemsVCRender;
-import com.viesis.viescraft.client.gui.v1.GuiEntityAirshipHUD;
+import com.viesis.viescraft.client.InitTileEntityVCRender;
+import com.viesis.viescraft.client.gui.StatusBarRenderer;
 import com.viesis.viescraft.client.particle.EntitySmokeFX;
+import com.viesis.viescraft.init.InitTileEntitiesVC;
 
 public class ClientProxy extends CommonProxy {
+	
+	private static StatusBarRenderer statusBarRenderer;
 	
 	@Override
 	public void preInit(FMLPreInitializationEvent event) 
 	{
 		super.preInit(event);
 		Keybinds.init();
+		
+		
 		
 		//---------------------------
 		//InitTileEntitiesEA.registerRenders();
@@ -32,13 +38,15 @@ public class ClientProxy extends CommonProxy {
 		super.init(event);
 		
 		InitItemsVCRender.registerRenders();
-		//InitBlocksEARender.registerRenders();
+		InitBlocksVCRender.registerRenders();
+		InitTileEntityVCRender.registerRenders();
 		InitEntityVCRender.registerRenders();
 		
+		
+		
+		//MinecraftForge.EVENT_BUS.register(new EventHandlerHUD(statusBarRenderer));
 		//MinecraftForge.EVENT_BUS.register(new GuiEntityAirshipHUD(Minecraft.getMinecraft()));
 		
-		//---------------------------
-		//InitBlocksEARender.registerSpecialRenders();
 	}
 	
 	@Override

@@ -3,10 +3,11 @@ package com.viesis.viescraft.common.entity.airshipcolors.v2;
 import net.minecraft.item.Item;
 import net.minecraft.world.World;
 
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipCore;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV2Core;
+import com.viesis.viescraft.configs.ViesCraftConfig;
 import com.viesis.viescraft.init.InitItemsVC;
 
-public class EntityAirshipV2Purple extends EntityAirshipCore {
+public class EntityAirshipV2Purple extends EntityAirshipV2Core {
 	
 	public EntityAirshipV2Purple(World worldIn)
     {
@@ -32,8 +33,17 @@ public class EntityAirshipV2Purple extends EntityAirshipCore {
 	/**
      * Main entity item drop.
      */
+    @Override
 	public Item getItemBoat()
     {
 		return InitItemsVC.item_airship_v2_purple;
     }
+    
+    /**
+     * Custom name for Waila.
+     */
+	@Override
+	public String getName() {
+		return this.hasCustomName() ? this.customName : "Purple " + ViesCraftConfig.v2AirshipName;
+	}
 }

@@ -23,8 +23,8 @@ public class ItemEngine extends Item {
 	@SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List toolTip, boolean advanced) 
 	{
-		toolTip.add(TextFormatting.DARK_AQUA + "A Steampunk Engine that is said to");
-		toolTip.add(TextFormatting.DARK_AQUA + "deliver 200% fuel efficiency!");
+		toolTip.add(TextFormatting.GOLD + "A Steampunk Engine that is said to");
+		toolTip.add(TextFormatting.GOLD + "deliver 200% fuel efficiency!");
 	}
 	
 	public EnumRarity getRarity(ItemStack stack)

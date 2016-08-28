@@ -1,15 +1,29 @@
 package com.viesis.viescraft.init;
 
+import java.util.HashSet;
+import java.util.Set;
+import java.util.function.Function;
+
+import javax.annotation.Nullable;
+
+import net.minecraft.block.Block;
+import net.minecraft.item.ItemBlock;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+
 import com.viesis.viescraft.api.BlocksVC;
+import com.viesis.viescraft.common.blocks.BlockAirshipWorkbench;
 
 public class InitBlocksVC extends BlocksVC {
 	
-	//public static final Set<Block> blocks = new HashSet<>();
+	public static final Set<Block> blocks = new HashSet<>();
 	
 	public static void preInit()
 	{
 		
-		/**
+		airship_workbench = registerBlock(new BlockAirshipWorkbench("airship_workbench"));
+		
+		//GameRegistry.registerBlock(airship_workbench = new BlockAirshipWorkbench("airship_workbench"));
+		
 	}
 	
 	protected static <V extends Block> V registerBlock(V block)
@@ -25,7 +39,8 @@ public class InitBlocksVC extends BlocksVC {
 	 * @param itemFactory A function that creates the ItemBlock instance, or null if no ItemBlock should be created
 	 * @return The Block instance
 	 */
-		/**	protected static <BLOCK extends Block> BLOCK registerBlock(BLOCK block, @Nullable Function<BLOCK, ItemBlock> itemFactory) {
+	protected static <BLOCK extends Block> BLOCK registerBlock(BLOCK block, @Nullable Function<BLOCK, ItemBlock> itemFactory) 
+	{
 		GameRegistry.register(block);
 
 		if (itemFactory != null) {
@@ -36,6 +51,6 @@ public class InitBlocksVC extends BlocksVC {
 		blocks.add(block);
 		return block;
 	}
-	*/
-	}
+
+
 }

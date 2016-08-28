@@ -14,11 +14,11 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.viesis.viescraft.api.Reference;
-import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipRed;
+import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipV1Red;
 import com.viesis.viescraft.init.InitItemsVC;
 
 @SideOnly(Side.CLIENT)
-public class RenderItemAirshipRed extends Render<EntityItemAirshipRed> {
+public class RenderItemAirshipRed extends Render<EntityItemAirshipV1Red> {
 	
 	public static final ResourceLocation ENTITY_TEXTURE = new ResourceLocation(Reference.MOD_ID, "textures/items/gems/enchanted_ebonheart.png");
     private float scale;
@@ -39,7 +39,7 @@ public class RenderItemAirshipRed extends Render<EntityItemAirshipRed> {
      * (Render<T extends Entity>) and this method has signature public void func_76986_a(T entity, double d, double d1,
      * double d2, float f, float f1). But JAD is pre 1.5 so doe
      */
-    public void doRender(EntityItemAirshipRed entity, double x, double y, double z, float entityYaw, float partialTicks)
+    public void doRender(EntityItemAirshipV1Red entity, double x, double y, double z, float entityYaw, float partialTicks)
     {
         GlStateManager.pushMatrix();
         this.bindEntityTexture(entity);
@@ -74,7 +74,7 @@ public class RenderItemAirshipRed extends Render<EntityItemAirshipRed> {
      * Returns the location of an entity's texture. Doesn't seem to be called unless you call Render.bindEntityTexture.
      */
     @Override
-    protected ResourceLocation getEntityTexture(EntityItemAirshipRed entity)
+    protected ResourceLocation getEntityTexture(EntityItemAirshipV1Red entity)
     {
         return //ENTITY_TEXTURE;
         		TextureMap.LOCATION_BLOCKS_TEXTURE;

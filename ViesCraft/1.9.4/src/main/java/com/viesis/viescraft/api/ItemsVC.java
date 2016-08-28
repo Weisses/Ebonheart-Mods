@@ -25,6 +25,7 @@ public class ItemsVC {
 	public static Item item_airship_red;
 	public static Item item_airship_white;
 	public static Item item_airship_yellow;
+	public static Item item_airship_v1_admin;
 	
 	public static Item item_airship_v2_normal;
 	public static Item item_airship_v2_black;
@@ -43,6 +44,7 @@ public class ItemsVC {
 	public static Item item_airship_v2_red;
 	public static Item item_airship_v2_white;
 	public static Item item_airship_v2_yellow;
+	public static Item item_airship_v2_admin;
 	
 	public static Item item_paint_black;
 	public static Item item_paint_blue;
