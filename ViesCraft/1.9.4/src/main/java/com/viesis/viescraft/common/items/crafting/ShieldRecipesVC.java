@@ -110,7 +110,7 @@ public class ShieldRecipesVC
                 }
                 else
                 {
-                    nbttagcompound = new NBTTagCompound();
+                    //nbttagcompound = new NBTTagCompound();
                     enumdyecolor = EnumDyeColor.byDyeDamage(itemstack.getItemDamage());
                 }
 

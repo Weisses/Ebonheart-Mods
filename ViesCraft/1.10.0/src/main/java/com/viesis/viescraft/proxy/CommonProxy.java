@@ -9,6 +9,7 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import com.viesis.viescraft.api.Reference;
+import com.viesis.viescraft.api.compat.jei.ViesCraftPlugin;
 import com.viesis.viescraft.common.AchievementTriggersVC;
 import com.viesis.viescraft.common.tileentity.TileEntityAirshipWorkbench;
 import com.viesis.viescraft.common.utils.events.EventHandlerAchievement;
@@ -63,7 +64,7 @@ public class CommonProxy {
 	
 	public void postInit(FMLPostInitializationEvent event) 
 	{
-		
+		ViesCraftPlugin.removeRecipe();
 	}
 	
 	public void generateSmokeParticles(Entity entity) { }

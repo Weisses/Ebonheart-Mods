@@ -23,6 +23,7 @@ public class MessageConfig extends MessageBase<MessageConfig> {
 		ViesCraftConfig.v2FuelBurnTime = buf.readInt();
 		ViesCraftConfig.v2AirshipSpeed = buf.readInt();
 		
+		//EntityAirshipV1Core.airshipOn = buf.readInt();
 		//EntityAirshipV1Core.
 		//test = buf.readBoolean();
 	}
@@ -35,6 +36,8 @@ public class MessageConfig extends MessageBase<MessageConfig> {
 		buf.writeInt(ViesCraftConfig.v2FuelBurnTime);
 		buf.writeInt(ViesCraftConfig.v2AirshipSpeed);
 		
+		
+		//buf.writeInt(EntityAirshipV1Core.airshipOn);
 		//buf.writeBoolean(test);
 		
 	}

@@ -1769,5 +1769,343 @@ draconium_ore = registerBlock(new BlockOreDraconium(2, 0.4f, 10f));
 
 	*/
 	
+//KeyBinds.java
+
+	/**
+	 * 
+	 * 
 	
+	//private EntityAirshipV1Core airship;
+	
+	//private EntityPlayer player;
+	//private int test;
+	
+	
+	//private Entity entity;
+	
+	
+	//private World worldIn; // = Minecraft.getMinecraft().thePlayer;
+	
+	//this.player = player;
+		
+		//this.airship.getDataManager().getDirty().get(airship.airshipOn);//.get(airship.airshipOn).getDataWatcher().addObject(ExtendedPlayer.angelHealthiD,
+			   // 0.0F);
+		//this.mc = mc;
+		
+		
+	
+	
+	
+	/**
+	private final Minecraft mc = Minecraft.getMinecraft();
+	private static FontRenderer fontRenderer;
+	//private final ResourceLocation overlayBar = new ResourceLocation(Reference.MOD_ID, "/textures/gui/mbe40_hud_overlay.png");
+	private EntityAirshipV1Core airship;
+	
+	/* These two variables describe the size of the bar */
+	//private final static int BAR_WIDTH = 81;
+	//private final static int BAR_HEIGHT = 9;
+	//private final static int BAR_SPACING_ABOVE_EXP_BAR = 3;   //pixels between the BAR and the Experience Bar below it
+	/**
+	private final int hudWidth;
+	private final int hudHeight;
+	
+	private final int fieldWidth;
+	
+	private final int ledWidth;
+    private final int ledHeight;
+    
+	private final int colorDimBlue;
+	
+	private boolean airshipOn;
+	
+	
+	
+	public GuiHUD(
+		//IInventory playerInv, EntityAirshipV1Core airship
+			) 
+	{
+		super();
+		
+		hudWidth = 182;
+        hudHeight = 39;
+        
+        ledWidth = 11;
+        ledHeight = 5;
+        
+        colorDimBlue = 0xcc000088;
+        
+        airshipOn = false;
+        
+        fontRenderer = mc.fontRendererObj;
+        fieldWidth = fontRenderer.getStringWidth("000.0") / 2;
+	}
+	
+	
+	
+	
+	 * @return 
+	*/
+	/**
+	public boolean getCurrentAltitude(
+			//BlockPos entityPos
+			) 
+	{
+		
+		
+        //if (airship.isAirshipBurning(airship))
+        //{
+        //	LogHelper.info(airship.getBoatType());
+        //}
+		//if (mc.theWorld.provider.isSurfaceWorld()) {
+        //    BlockPos blockPos = new BlockPos(entityPos.getX(), entityPos.getY(), entityPos.getZ());
+        //    while (mc.theWorld.isAirBlock(blockPos.down())) {
+        //        blockPos = blockPos.down();
+        //    }
+            // calculate the entity's current altitude above the ground
+        //    return entityPos.getY() - blockPos.getY();
+        //}
+		return airshipOn;
+        
+		//return 1000.0 * mc.theWorld.rand.nextGaussian();
+    }
+	
+	
+	//@SideOnly(Side.CLIENT)
+	@SubscribeEvent//(priority = EventPriority.LOWEST)
+	public void onRender(RenderGameOverlayEvent.Post event) 
+	{
+		event.hasResult();
+		if (Minecraft.getMinecraft().thePlayer == null)
+		{
+			return;  // just in case
+		}
+		
+		if(Minecraft.getMinecraft().thePlayer.getRidingEntity() instanceof EntityAirshipV1Core)
+	    {
+			
+			airshipOn = getCurrentAltitude();
+			
+			ScaledResolution sr = new ScaledResolution(mc);
+            int hudX = sr.getScaledWidth() / 2 - (hudWidth / 2); // left edge of GUI
+            int hudY = 2; // top edge of GUI
+            int textX = hudX + 30; // xcoord for text
+            int textY = hudY + 22; // ycoord for text
+            int ledX = 1;
+			
+            GlStateManager.enableRescaleNormal();
+            GlStateManager.enableBlend();
+            GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA,
+                                                 GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+            //RenderHelper.enableGUIStandardItemLighting();
+            Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":" + "textures/gui/viescraft_hud.png"));
+    		
+            // Params: int screenX, int screenY, int textureX, int textureY, int width, int height
+            drawTexturedModalRect(hudX, hudY, 0, 0, hudWidth, hudHeight); // draw the main hud
+
+            //if(airship.isClientAirshipBurning())
+            //{
+            //	
+            //}
+            
+            
+            //return;	
+	    }
+		
+		return;
+		
+		
+		
+		/**
+		if (event.isCancelable() || mc.gameSettings.showDebugInfo || mc.thePlayer.onGround) {
+            return;
+        }
+
+        if (mc.inGameHasFocus && event.getType() == RenderGameOverlayEvent.ElementType.ALL) 
+        {
+            ScaledResolution sr = new ScaledResolution(mc);
+            int hudX = sr.getScaledWidth() / 2 - (hudWidth / 2); // left edge of GUI
+            int hudY = 2; // top edge of GUI
+            int textX = hudX + 30; // xcoord for text
+            int textY = hudY + 22; // ycoord for text
+            int ledX = 1;
+
+            if(Minecraft.getMinecraft().thePlayer.getRidingEntity() instanceof EntityAirshipV1Core)
+    	    {
+            //if (ParachuteCommonProxy.onParachute(mc.thePlayer)) 
+            //{
+                //mc.getTextureManager().bindTexture(hudTexture);
+
+                GlStateManager.enableRescaleNormal();
+                GlStateManager.enableBlend();
+                GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA,
+                                                     GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+                RenderHelper.enableGUIStandardItemLighting();
+                Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":" + "textures/gui/viescraft_hud.png"));
+        		
+                //BlockPos entityPos = new BlockPos(mc.thePlayer.posX, mc.thePlayer.getEntityBoundingBox().minY, mc.thePlayer.posZ);
+                //altitude = getCurrentAltitude(entityPos);
+                //double homeDir = getHomeDirection();
+                //double distance = getHomeDistance();
+                double heading = (((mc.thePlayer.rotationYaw + 180.0) % 360) + 360) % 360;
+
+                // Params: int screenX, int screenY, int textureX, int textureY, int width, int height
+                drawTexturedModalRect(hudX, hudY, 0, 0, hudWidth, hudHeight); // draw the main hud
+
+                // determine which LED to light, homeDir is in range -180 to 180
+                // for any value under -80 or over 80 the LED is fixed to the
+                // left or right end of the slider respectively.
+                ////if (homeDir < -80) {
+                ////    ledX = 1;
+                ////} else if ((homeDir - 80) * (homeDir - -80) < 0) {
+                ////    ledX = (int) Math.floor((homeDir + 80.0) + 4);
+                ////} else if (homeDir > 80) {
+                ////    ledX = 170;
+                ////}
+                
+                
+                // AAD status
+                //int aadIconX;
+                //int aadIconY = 8;
+                //if (ConfigHandler.getIsAADActive()) {
+                //    aadIconX = 199;
+                //} else {
+                //    aadIconX = 182;
+                //}
+                ////drawTexturedModalRect(hudX + hudWidth + 2, hudY + 8, aadIconX, aadIconY, aadWidth, aadHeight); // draw the AAD indicator
+/**
+                // manual dismount indicator
+                if (ConfigHandler.isAutoDismount()) { // auto dismount is engaged
+                    drawTexturedModalRect(hudX - 18, hudY + yOffset, dark, lightY, 16, 16);
+                } else { // auto dismount is disabled
+                    if (altitude > 10) {
+                        drawTexturedModalRect(hudX - 18, hudY + yOffset, green, lightY, 16, 16);
+                    } else if (altitude <= 10 && altitude > 3) {
+                        drawTexturedModalRect(hudX - 18, hudY + yOffset, red, lightY, 16, 16);
+                    } else if (altitude <= 3) { // make this blink
+                        if ((blink % blinkTime) == 0) {
+                            blinkX = blinkX == red ? darkRed : red;
+                        }
+                        drawTexturedModalRect(hudX - 18, hudY + yOffset, blinkX, lightY, 16, 16);
+                        blink++;
+                    }
+                }
+
+                if (wayPointEnabled) {
+                    double waypointDirection = getWaypointDirection(wayPointX, wayPointZ);
+                    // draw the waypoint heading
+                    if (waypointDirection < -80) {
+                        ledX = 1;
+                    } else if ((waypointDirection - 80) * (waypointDirection - -80) < 0) {
+                        ledX = (int) Math.floor((waypointDirection + 80.0) + 4);
+                    } else if (waypointDirection > 80) {
+                        ledX = 170;
+                    }
+                    // draw the waypoint bar background
+                    drawTexturedModalRect(hudX, hudY + hudHeight, 0, 0, hudWidth, ledHeight);
+                    // draw the lit LED
+                    drawTexturedModalRect(hudX + ledX, hudY + hudHeight, ledX, ledY, ledWidth, ledHeight);
+                }
+x
+                // draw the altitude text
+                fontRenderer.drawStringWithShadow(I18n.format("gui.hud.altitude"), hudX + 18, hudY + 12, colorDimBlue);
+                ////fontRenderer.drawStringWithShadow(format(altitude), (textX + 5) - fieldWidth, textY, colorAltitude());
+                // draw the compass heading text
+                ////fontRenderer.drawStringWithShadow(I18n.format("gui.hud.compass"), hudX + 123, hudY + 12, colorDimBlue);
+                ////fontRenderer.drawStringWithShadow(format(heading), (textX + 118) - fieldWidth, textY, colorCompass(heading));
+                // draw the distance to the home point text
+                ////fontRenderer.drawStringWithShadow(format(distance), (textX + 65) - fieldWidth, textY, colorDimGreen);
+            }
+            RenderHelper.disableStandardItemLighting();
+            GlStateManager.disableRescaleNormal();
+            GlStateManager.disableBlend();
+        }
+        
+        
+    }
+		
+	
+	
+	
+	
+	/**
+	public static void test()
+	{
+		ScaledResolution res = new ScaledResolution(Minecraft.getMinecraft());//, Minecraft.getMinecraft().displayWidth, Minecraft.getMinecraft().displayHeight);
+		FontRenderer fontRender = Minecraft.getMinecraft().fontRendererObj;
+		int width = res.getScaledWidth();
+		int height = res.getScaledHeight();
+		GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
+		Minecraft.getMinecraft().getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":" + "textures/gui/container_airship.png"));
+		//this.mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":" + "textures/gui/container_airship.png"));
+		Minecraft.getMinecraft().draw(
+				height/2, width/2, //200, 5, //posX, posY
+				0, 10, //texU, texV // where the uv texture is in the png
+				400, 100, //width, height
+				250, 250, 250, //red, green, blue
+				0);  //alpha
+		
+		
+		
+		
+		//this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
+		
+		//int i = (this.width - this.xSize) / 2;
+        //int j = (this.height - this.ySize) / 2;
+        
+		//if (EntityAirshipV1Core.isAirshipBurning(airship))
+        //{
+			//int x = airship.getFuelScaled(10);
+        //    int k = this.getBurnLeftScaled(47);
+        //    this.drawTexturedModalRect(
+        //    		this.guiLeft + 156, this.guiTop + 19, //i + 56, j + 36 + 12 - k, 
+        //    		176,  50, //176, 12 - k, 
+        //    		8, 1 + k); //8, 48 + k);//14, k + 1);
+        //    this.drawTexturedModalRect(
+        //    		this.guiLeft + 129, this.guiTop + 48,//i + 79, j + 34, 
+        //    		176, 14, 
+        //    		26, 16);
+        //}
+	}
+	
+/**
+	private int getBurnLeftScaled(int pixels)
+    {
+        int i = this.airship.getField(1);
+
+        if (i == 0)
+        {
+        	i = (ViesCraftConfig.v1FuelBurnTime * 20);//i = 1200;
+        }
+
+        return this.airship.getField(0) * pixels / i;
+    }
+	*/
+	/**
+	public static void renderTextToHud() 
+	{
+		
+		ScaledResolution res = new ScaledResolution(Minecraft.getMinecraft());//, Minecraft.getMinecraft().displayWidth, Minecraft.getMinecraft().displayHeight);
+		FontRenderer fontRender = Minecraft.getMinecraft().fontRendererObj;
+		int width = res.getScaledWidth();
+		int height = res.getScaledHeight();
+
+		String test = "Simple Test";
+		int x = width / 2;
+		int y = height / 2;
+		int color = 0xffffff;
+		Minecraft.getMinecraft().fontRendererObj.drawStringWithShadow(test, x, y, color);
+		
+	}
+	
+	
+	
+}
+
+		
+		
+		
+	
+	
+*/	
 }

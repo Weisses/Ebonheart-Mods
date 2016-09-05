@@ -6,14 +6,12 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import com.viesis.viescraft.api.Reference;
+import com.viesis.viescraft.client.gui.v1.GuiHUD;
 import com.viesis.viescraft.common.AchievementTriggersVC;
-import com.viesis.viescraft.common.tileentity.TileEntityAirshipWorkbench;
 import com.viesis.viescraft.common.utils.events.EventHandlerAchievement;
 import com.viesis.viescraft.common.utils.events.EventHandlerConfig;
-import com.viesis.viescraft.common.utils.events.ItemHUDactivator;
 import com.viesis.viescraft.init.InitAchievementsVC;
 import com.viesis.viescraft.init.InitBlocksVC;
 import com.viesis.viescraft.init.InitEntityVC;
@@ -55,7 +53,15 @@ public class CommonProxy {
 		MinecraftForge.EVENT_BUS.register(new EventHandlerAchievement());
 		MinecraftForge.EVENT_BUS.register(new EventHandlerConfig());
 		
+		
+		//MinecraftForge.EVENT_BUS.register(new EventHandlerHUD());
+		
 		NetworkRegistry.INSTANCE.registerGuiHandler(Reference.MOD_ID, new GuiHandler());
+		
+		
+		
+		
+		
 		
 		//GameRegistry.registerWorldGenerator(new WorldGeneratorEA(), 0);
 		//NetworkRegistry.INSTANCE.registerGuiHandler(ViesCraft.instance, new GuiHandler());
@@ -63,6 +69,9 @@ public class CommonProxy {
 	
 	public void postInit(FMLPostInitializationEvent event) 
 	{
+		//RecipeRemoverVC.removeRecipe();
+		
+		
 		
 	}
 	

@@ -3,6 +3,7 @@ package com.viesis.viescraft.proxy;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.entity.Entity;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -13,7 +14,9 @@ import com.viesis.viescraft.client.InitEntityVCRender;
 import com.viesis.viescraft.client.InitItemsVCRender;
 import com.viesis.viescraft.client.InitTileEntityVCRender;
 import com.viesis.viescraft.client.gui.StatusBarRenderer;
+import com.viesis.viescraft.client.gui.v1.GuiHUD;
 import com.viesis.viescraft.client.particle.EntitySmokeFX;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
 import com.viesis.viescraft.init.InitTileEntitiesVC;
 
 public class ClientProxy extends CommonProxy {
@@ -42,7 +45,7 @@ public class ClientProxy extends CommonProxy {
 		InitTileEntityVCRender.registerRenders();
 		InitEntityVCRender.registerRenders();
 		
-		
+		MinecraftForge.EVENT_BUS.register(new GuiHUD());
 		
 		//MinecraftForge.EVENT_BUS.register(new EventHandlerHUD(statusBarRenderer));
 		//MinecraftForge.EVENT_BUS.register(new GuiEntityAirshipHUD(Minecraft.getMinecraft()));
