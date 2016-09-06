@@ -10,6 +10,86 @@ import com.viesis.viescraft.network.GuiHandler;
 
 public class Ark {
 
+//GuiEntityAirshipV1Core
+	/**
+	 * 
+	 
+	 
+		//int i = (this.width - this.xSize) / 2;
+        //int j = (this.height - this.ySize) / 2;
+        //int x = airship.getFuelScaled(10);
+            
+        //int l = this.getCookProgressScaled(24);
+      //Light bulbs that are lite up.
+        //this.drawTexturedModalRect(
+        //		this.guiLeft + 129, this.guiTop + 48,//i + 79, j + 34, 
+        //		176, 14, 
+        //		16 + 1, 16);
+	 
+    //private int getCookProgressScaled(int pixels)
+    //{
+    //    int i = this.airship.getField(2);
+    //    int j = this.airship.getField(3);
+    //    return j != 0 && i != 0 ? i * pixels / j : 0;
+    //}
+
+
+////this.fontRendererObj.drawString(s, 8, 6, 4210752);
+		// This sets the Airship name in the top center.
+		//this.fontRendererObj.drawString(s, 88 - this.fontRendererObj.getStringWidth(s) / 2, 6, 4210752);
+		
+		
+		
+		
+		/**
+		if (EntityAirshipCore.isBurning(this.airship))
+        {
+			int x = airship.getFuelScaled(10);
+            //int k = this.getBurnLeftScaled(13);
+            //LogHelper.info("Test!");
+            this.drawTexturedModalRect(this.guiLeft + 156, this.guiTop + 19, 
+            		176,  50,//12 - k, 
+            		8, 48 - x);
+        }
+		int l = this.getCookProgressScaled(24);
+		//Light bulbs that are lite up.
+        this.drawTexturedModalRect(this.guiLeft + 129, this.guiTop + 48, 
+        176, 14, 
+        l + 1, 16);
+	}
+	
+	private int getCookProgressScaled(int pixels)
+    {
+        int i = this.airship.getField(2);
+        //int j = this.airship.getField(3);
+        return i != 0 && i != 0 ? i * pixels / i : 0;
+    }
+	
+    private int getBurnLeftScaled(int pixels)
+    {
+        int i = this.airship.getField(2);
+
+        if (i == 0)
+        {
+            i = 200;
+        }
+        
+        return this.airship.getField(0) * pixels / i;
+    }
+    
+    
+    
+    
+    
+    
+    
+}
+
+	 
+	 * 
+	 */
+	
+	
 //EntityAirshipCore.java
 
 	/**

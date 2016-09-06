@@ -13,20 +13,18 @@ import com.viesis.viescraft.client.tileentity.model.ModelAirshipWorkbench;
 import com.viesis.viescraft.common.tileentity.TileEntityAirshipWorkbench;
 
 public class RenderAirshipWorkbench extends TileEntitySpecialRenderer<TileEntityAirshipWorkbench> {
-
+	
 	ResourceLocation texture = new ResourceLocation(Reference.MOD_ID + ":" + "textures/models/airship_workbench.png");
 	private ModelAirshipWorkbench model;
 	
-	public RenderAirshipWorkbench() {
+	public RenderAirshipWorkbench() 
+	{
 		this.model = new ModelAirshipWorkbench();
 	}
 	
 	@Override
-	public void renderTileEntityAt(TileEntityAirshipWorkbench te, double x, double y, double z, float partialTicks, int destroyStage) {
-		
-		//GlStateManager.rotate(2 * (180F / (float)Math.PI), 0.0F, 1.0F, 0.0F);
-        //GlStateManager.rotate(80.0F, 0.0F, 0.0F, 1.0F);
-        
+	public void renderTileEntityAt(TileEntityAirshipWorkbench te, double x, double y, double z, float partialTicks, int destroyStage) 
+	{
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float)x + 0.5f, (float)y + 1.5f, (float)z + 0.5f);
 		GL11.glRotatef(180, 0f, 0f, 1f);

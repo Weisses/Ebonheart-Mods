@@ -8,7 +8,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 import com.viesis.viescraft.api.Reference;
-import com.viesis.viescraft.client.gui.v1.GuiHUD;
+import com.viesis.viescraft.client.gui.v1.GuiV1HUD;
 import com.viesis.viescraft.common.AchievementTriggersVC;
 import com.viesis.viescraft.common.utils.events.EventHandlerAchievement;
 import com.viesis.viescraft.common.utils.events.EventHandlerConfig;
@@ -23,8 +23,6 @@ import com.viesis.viescraft.network.NetworkHandler;
 
 public class CommonProxy {
 	
-	//public static ItemHUDactivator itemHUDactivator;
-	
 	public void preInit(FMLPreInitializationEvent event) 
 	{
 		//SoundEventsEA.registerSounds();
@@ -34,12 +32,6 @@ public class CommonProxy {
 		InitEntityVC.preInit();
 		
 		NetworkHandler.preInit();
-		
-		
-		
-		//itemHUDactivator = (ItemHUDactivator)(new ItemHUDactivator().setUnlocalizedName("mbe40_hud_overlay_item"));
-	    //GameRegistry.registerItem(itemHUDactivator, "mbe40_hud_overlay_item");
-		
 	}
 	
 	public void init(FMLInitializationEvent event) 
@@ -48,31 +40,16 @@ public class CommonProxy {
 		InitRecipesVC.initShapelessRecipe();
 		InitAchievementsVC.init();
 		
-		
 		MinecraftForge.EVENT_BUS.register(new AchievementTriggersVC());
 		MinecraftForge.EVENT_BUS.register(new EventHandlerAchievement());
 		MinecraftForge.EVENT_BUS.register(new EventHandlerConfig());
 		
-		
-		//MinecraftForge.EVENT_BUS.register(new EventHandlerHUD());
-		
 		NetworkRegistry.INSTANCE.registerGuiHandler(Reference.MOD_ID, new GuiHandler());
-		
-		
-		
-		
-		
-		
-		//GameRegistry.registerWorldGenerator(new WorldGeneratorEA(), 0);
-		//NetworkRegistry.INSTANCE.registerGuiHandler(ViesCraft.instance, new GuiHandler());
 	}
 	
 	public void postInit(FMLPostInitializationEvent event) 
 	{
 		//RecipeRemoverVC.removeRecipe();
-		
-		
-		
 	}
 	
 	public void generateSmokeParticles(Entity entity) { }

@@ -13,26 +13,18 @@ import com.viesis.viescraft.client.InitBlocksVCRender;
 import com.viesis.viescraft.client.InitEntityVCRender;
 import com.viesis.viescraft.client.InitItemsVCRender;
 import com.viesis.viescraft.client.InitTileEntityVCRender;
-import com.viesis.viescraft.client.gui.StatusBarRenderer;
-import com.viesis.viescraft.client.gui.v1.GuiHUD;
+import com.viesis.viescraft.client.gui.v1.GuiV1HUD;
+import com.viesis.viescraft.client.gui.v2.GuiV2HUD;
 import com.viesis.viescraft.client.particle.EntitySmokeFX;
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
-import com.viesis.viescraft.init.InitTileEntitiesVC;
 
 public class ClientProxy extends CommonProxy {
-	
-	private static StatusBarRenderer statusBarRenderer;
 	
 	@Override
 	public void preInit(FMLPreInitializationEvent event) 
 	{
 		super.preInit(event);
+		
 		Keybinds.init();
-		
-		
-		
-		//---------------------------
-		//InitTileEntitiesEA.registerRenders();
 	}
 	
 	@Override
@@ -45,11 +37,8 @@ public class ClientProxy extends CommonProxy {
 		InitTileEntityVCRender.registerRenders();
 		InitEntityVCRender.registerRenders();
 		
-		MinecraftForge.EVENT_BUS.register(new GuiHUD());
-		
-		//MinecraftForge.EVENT_BUS.register(new EventHandlerHUD(statusBarRenderer));
-		//MinecraftForge.EVENT_BUS.register(new GuiEntityAirshipHUD(Minecraft.getMinecraft()));
-		
+		MinecraftForge.EVENT_BUS.register(new GuiV1HUD());
+		MinecraftForge.EVENT_BUS.register(new GuiV2HUD());
 	}
 	
 	@Override

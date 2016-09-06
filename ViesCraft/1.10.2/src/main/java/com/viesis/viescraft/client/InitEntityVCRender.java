@@ -154,90 +154,87 @@ import com.viesis.viescraft.common.entity.airshipitems.v2.EntityItemAirshipV2Yel
 
 public final class InitEntityVCRender extends ItemsVC {
 	
-	public static RenderManager EARender = Minecraft.getMinecraft().getRenderManager(); 
+	public static RenderManager VCRender = Minecraft.getMinecraft().getRenderManager(); 
 	
 	public static void registerRenders()
 	{
-		registerRender(EntityItemAirshipV1Normal.class,  new RenderItemAirshipNormal(EARender));
-		registerRender(EntityItemAirshipV1Black.class,  new RenderItemAirshipBlack(EARender));
-		registerRender(EntityItemAirshipV1Blue.class,  new RenderItemAirshipBlue(EARender));
-		registerRender(EntityItemAirshipV1Brown.class,  new RenderItemAirshipBrown(EARender));
-		registerRender(EntityItemAirshipV1Cyan.class,  new RenderItemAirshipCyan(EARender));
-		registerRender(EntityItemAirshipV1Gray.class,  new RenderItemAirshipGray(EARender));
-		registerRender(EntityItemAirshipV1Green.class,  new RenderItemAirshipGreen(EARender));
-		registerRender(EntityItemAirshipV1LightBlue.class,  new RenderItemAirshipLightBlue(EARender));
-		registerRender(EntityItemAirshipV1LightGray.class,  new RenderItemAirshipLightGray(EARender));
-		registerRender(EntityItemAirshipV1Lime.class,  new RenderItemAirshipLime(EARender));
-		registerRender(EntityItemAirshipV1Magenta.class,  new RenderItemAirshipMagenta(EARender));
-		registerRender(EntityItemAirshipV1Orange.class,  new RenderItemAirshipOrange(EARender));
-		registerRender(EntityItemAirshipV1Pink.class,  new RenderItemAirshipPink(EARender));
-		registerRender(EntityItemAirshipV1Purple.class,  new RenderItemAirshipPurple(EARender));
-		registerRender(EntityItemAirshipV1Red.class,  new RenderItemAirshipRed(EARender));
-		registerRender(EntityItemAirshipV1White.class,  new RenderItemAirshipWhite(EARender));
-		registerRender(EntityItemAirshipV1Yellow.class,  new RenderItemAirshipYellow(EARender));
-		registerRender(EntityItemAirshipV1Admin.class,  new RenderItemAirshipAdmin(EARender));
+		registerRender(EntityItemAirshipV1Normal.class,  new RenderItemAirshipNormal(VCRender));
+		registerRender(EntityItemAirshipV1Black.class,  new RenderItemAirshipBlack(VCRender));
+		registerRender(EntityItemAirshipV1Blue.class,  new RenderItemAirshipBlue(VCRender));
+		registerRender(EntityItemAirshipV1Brown.class,  new RenderItemAirshipBrown(VCRender));
+		registerRender(EntityItemAirshipV1Cyan.class,  new RenderItemAirshipCyan(VCRender));
+		registerRender(EntityItemAirshipV1Gray.class,  new RenderItemAirshipGray(VCRender));
+		registerRender(EntityItemAirshipV1Green.class,  new RenderItemAirshipGreen(VCRender));
+		registerRender(EntityItemAirshipV1LightBlue.class,  new RenderItemAirshipLightBlue(VCRender));
+		registerRender(EntityItemAirshipV1LightGray.class,  new RenderItemAirshipLightGray(VCRender));
+		registerRender(EntityItemAirshipV1Lime.class,  new RenderItemAirshipLime(VCRender));
+		registerRender(EntityItemAirshipV1Magenta.class,  new RenderItemAirshipMagenta(VCRender));
+		registerRender(EntityItemAirshipV1Orange.class,  new RenderItemAirshipOrange(VCRender));
+		registerRender(EntityItemAirshipV1Pink.class,  new RenderItemAirshipPink(VCRender));
+		registerRender(EntityItemAirshipV1Purple.class,  new RenderItemAirshipPurple(VCRender));
+		registerRender(EntityItemAirshipV1Red.class,  new RenderItemAirshipRed(VCRender));
+		registerRender(EntityItemAirshipV1White.class,  new RenderItemAirshipWhite(VCRender));
+		registerRender(EntityItemAirshipV1Yellow.class,  new RenderItemAirshipYellow(VCRender));
+		registerRender(EntityItemAirshipV1Admin.class,  new RenderItemAirshipAdmin(VCRender));
 		
-		
-		registerRender(EntityItemAirshipV2Normal.class,  new RenderItemAirshipV2Normal(EARender));
-		registerRender(EntityItemAirshipV2Black.class,  new RenderItemAirshipV2Black(EARender));
-		registerRender(EntityItemAirshipV2Blue.class,  new RenderItemAirshipV2Blue(EARender));
-		registerRender(EntityItemAirshipV2Brown.class,  new RenderItemAirshipV2Brown(EARender));
-		registerRender(EntityItemAirshipV2Cyan.class,  new RenderItemAirshipV2Cyan(EARender));
-		registerRender(EntityItemAirshipV2Gray.class,  new RenderItemAirshipV2Gray(EARender));
-		registerRender(EntityItemAirshipV2Green.class,  new RenderItemAirshipV2Green(EARender));
-		registerRender(EntityItemAirshipV2LightBlue.class,  new RenderItemAirshipV2LightBlue(EARender));
-		registerRender(EntityItemAirshipV2LightGray.class,  new RenderItemAirshipV2LightGray(EARender));
-		registerRender(EntityItemAirshipV2Lime.class,  new RenderItemAirshipV2Lime(EARender));
-		registerRender(EntityItemAirshipV2Magenta.class,  new RenderItemAirshipV2Magenta(EARender));
-		registerRender(EntityItemAirshipV2Orange.class,  new RenderItemAirshipV2Orange(EARender));
-		registerRender(EntityItemAirshipV2Pink.class,  new RenderItemAirshipV2Pink(EARender));
-		registerRender(EntityItemAirshipV2Purple.class,  new RenderItemAirshipV2Purple(EARender));
-		registerRender(EntityItemAirshipV2Red.class,  new RenderItemAirshipV2Red(EARender));
-		registerRender(EntityItemAirshipV2White.class,  new RenderItemAirshipV2White(EARender));
-		registerRender(EntityItemAirshipV2Yellow.class,  new RenderItemAirshipV2Yellow(EARender));
-		registerRender(EntityItemAirshipV2Admin.class,  new RenderItemAirshipV2Admin(EARender));
+		registerRender(EntityItemAirshipV2Normal.class,  new RenderItemAirshipV2Normal(VCRender));
+		registerRender(EntityItemAirshipV2Black.class,  new RenderItemAirshipV2Black(VCRender));
+		registerRender(EntityItemAirshipV2Blue.class,  new RenderItemAirshipV2Blue(VCRender));
+		registerRender(EntityItemAirshipV2Brown.class,  new RenderItemAirshipV2Brown(VCRender));
+		registerRender(EntityItemAirshipV2Cyan.class,  new RenderItemAirshipV2Cyan(VCRender));
+		registerRender(EntityItemAirshipV2Gray.class,  new RenderItemAirshipV2Gray(VCRender));
+		registerRender(EntityItemAirshipV2Green.class,  new RenderItemAirshipV2Green(VCRender));
+		registerRender(EntityItemAirshipV2LightBlue.class,  new RenderItemAirshipV2LightBlue(VCRender));
+		registerRender(EntityItemAirshipV2LightGray.class,  new RenderItemAirshipV2LightGray(VCRender));
+		registerRender(EntityItemAirshipV2Lime.class,  new RenderItemAirshipV2Lime(VCRender));
+		registerRender(EntityItemAirshipV2Magenta.class,  new RenderItemAirshipV2Magenta(VCRender));
+		registerRender(EntityItemAirshipV2Orange.class,  new RenderItemAirshipV2Orange(VCRender));
+		registerRender(EntityItemAirshipV2Pink.class,  new RenderItemAirshipV2Pink(VCRender));
+		registerRender(EntityItemAirshipV2Purple.class,  new RenderItemAirshipV2Purple(VCRender));
+		registerRender(EntityItemAirshipV2Red.class,  new RenderItemAirshipV2Red(VCRender));
+		registerRender(EntityItemAirshipV2White.class,  new RenderItemAirshipV2White(VCRender));
+		registerRender(EntityItemAirshipV2Yellow.class,  new RenderItemAirshipV2Yellow(VCRender));
+		registerRender(EntityItemAirshipV2Admin.class,  new RenderItemAirshipV2Admin(VCRender));
 		
 		//===========================================================================
 		
-		registerRender(EntityAirshipV1Normal.class,  new RenderAirshipNormal(EARender));
-		registerRender(EntityAirshipV1Black.class,  new RenderAirshipBlack(EARender));
-		registerRender(EntityAirshipV1Blue.class,  new RenderAirshipBlue(EARender));
-		registerRender(EntityAirshipV1Brown.class,  new RenderAirshipBrown(EARender));
-		registerRender(EntityAirshipV1Cyan.class,  new RenderAirshipCyan(EARender));
-		registerRender(EntityAirshipV1Gray.class,  new RenderAirshipGray(EARender));
-		registerRender(EntityAirshipV1Green.class,  new RenderAirshipGreen(EARender));
-		registerRender(EntityAirshipV1LightBlue.class,  new RenderAirshipLightBlue(EARender));
-		registerRender(EntityAirshipV1LightGray.class,  new RenderAirshipLightGray(EARender));
-		registerRender(EntityAirshipV1Lime.class,  new RenderAirshipLime(EARender));
-		registerRender(EntityAirshipV1Magenta.class,  new RenderAirshipMagenta(EARender));
-		registerRender(EntityAirshipV1Orange.class,  new RenderAirshipOrange(EARender));
-		registerRender(EntityAirshipV1Pink.class,  new RenderAirshipPink(EARender));
-		registerRender(EntityAirshipV1Purple.class,  new RenderAirshipPurple(EARender));
-		registerRender(EntityAirshipV1Red.class,  new RenderAirshipRed(EARender));
-		registerRender(EntityAirshipV1White.class,  new RenderAirshipWhite(EARender));
-		registerRender(EntityAirshipV1Yellow.class,  new RenderAirshipYellow(EARender));
-		registerRender(EntityAirshipV1Admin.class,  new RenderAirshipAdmin(EARender));
+		registerRender(EntityAirshipV1Normal.class,  new RenderAirshipNormal(VCRender));
+		registerRender(EntityAirshipV1Black.class,  new RenderAirshipBlack(VCRender));
+		registerRender(EntityAirshipV1Blue.class,  new RenderAirshipBlue(VCRender));
+		registerRender(EntityAirshipV1Brown.class,  new RenderAirshipBrown(VCRender));
+		registerRender(EntityAirshipV1Cyan.class,  new RenderAirshipCyan(VCRender));
+		registerRender(EntityAirshipV1Gray.class,  new RenderAirshipGray(VCRender));
+		registerRender(EntityAirshipV1Green.class,  new RenderAirshipGreen(VCRender));
+		registerRender(EntityAirshipV1LightBlue.class,  new RenderAirshipLightBlue(VCRender));
+		registerRender(EntityAirshipV1LightGray.class,  new RenderAirshipLightGray(VCRender));
+		registerRender(EntityAirshipV1Lime.class,  new RenderAirshipLime(VCRender));
+		registerRender(EntityAirshipV1Magenta.class,  new RenderAirshipMagenta(VCRender));
+		registerRender(EntityAirshipV1Orange.class,  new RenderAirshipOrange(VCRender));
+		registerRender(EntityAirshipV1Pink.class,  new RenderAirshipPink(VCRender));
+		registerRender(EntityAirshipV1Purple.class,  new RenderAirshipPurple(VCRender));
+		registerRender(EntityAirshipV1Red.class,  new RenderAirshipRed(VCRender));
+		registerRender(EntityAirshipV1White.class,  new RenderAirshipWhite(VCRender));
+		registerRender(EntityAirshipV1Yellow.class,  new RenderAirshipYellow(VCRender));
+		registerRender(EntityAirshipV1Admin.class,  new RenderAirshipAdmin(VCRender));
 		
-		
-		registerRender(EntityAirshipV2Normal.class,  new RenderAirshipV2Normal(EARender));
-		registerRender(EntityAirshipV2Black.class,  new RenderAirshipV2Black(EARender));
-		registerRender(EntityAirshipV2Blue.class,  new RenderAirshipV2Blue(EARender));
-		registerRender(EntityAirshipV2Brown.class,  new RenderAirshipV2Brown(EARender));
-		registerRender(EntityAirshipV2Cyan.class,  new RenderAirshipV2Cyan(EARender));
-		registerRender(EntityAirshipV2Gray.class,  new RenderAirshipV2Gray(EARender));
-		registerRender(EntityAirshipV2Green.class,  new RenderAirshipV2Green(EARender));
-		registerRender(EntityAirshipV2LightBlue.class,  new RenderAirshipV2LightBlue(EARender));
-		registerRender(EntityAirshipV2LightGray.class,  new RenderAirshipV2LightGray(EARender));
-		registerRender(EntityAirshipV2Lime.class,  new RenderAirshipV2Lime(EARender));
-		registerRender(EntityAirshipV2Magenta.class,  new RenderAirshipV2Magenta(EARender));
-		registerRender(EntityAirshipV2Orange.class,  new RenderAirshipV2Orange(EARender));
-		registerRender(EntityAirshipV2Pink.class,  new RenderAirshipV2Pink(EARender));
-		registerRender(EntityAirshipV2Purple.class,  new RenderAirshipV2Purple(EARender));
-		registerRender(EntityAirshipV2Red.class,  new RenderAirshipV2Red(EARender));
-		registerRender(EntityAirshipV2White.class,  new RenderAirshipV2White(EARender));
-		registerRender(EntityAirshipV2Yellow.class,  new RenderAirshipV2Yellow(EARender));
-		registerRender(EntityAirshipV2Admin.class,  new RenderAirshipV2Admin(EARender));
-		
+		registerRender(EntityAirshipV2Normal.class,  new RenderAirshipV2Normal(VCRender));
+		registerRender(EntityAirshipV2Black.class,  new RenderAirshipV2Black(VCRender));
+		registerRender(EntityAirshipV2Blue.class,  new RenderAirshipV2Blue(VCRender));
+		registerRender(EntityAirshipV2Brown.class,  new RenderAirshipV2Brown(VCRender));
+		registerRender(EntityAirshipV2Cyan.class,  new RenderAirshipV2Cyan(VCRender));
+		registerRender(EntityAirshipV2Gray.class,  new RenderAirshipV2Gray(VCRender));
+		registerRender(EntityAirshipV2Green.class,  new RenderAirshipV2Green(VCRender));
+		registerRender(EntityAirshipV2LightBlue.class,  new RenderAirshipV2LightBlue(VCRender));
+		registerRender(EntityAirshipV2LightGray.class,  new RenderAirshipV2LightGray(VCRender));
+		registerRender(EntityAirshipV2Lime.class,  new RenderAirshipV2Lime(VCRender));
+		registerRender(EntityAirshipV2Magenta.class,  new RenderAirshipV2Magenta(VCRender));
+		registerRender(EntityAirshipV2Orange.class,  new RenderAirshipV2Orange(VCRender));
+		registerRender(EntityAirshipV2Pink.class,  new RenderAirshipV2Pink(VCRender));
+		registerRender(EntityAirshipV2Purple.class,  new RenderAirshipV2Purple(VCRender));
+		registerRender(EntityAirshipV2Red.class,  new RenderAirshipV2Red(VCRender));
+		registerRender(EntityAirshipV2White.class,  new RenderAirshipV2White(VCRender));
+		registerRender(EntityAirshipV2Yellow.class,  new RenderAirshipV2Yellow(VCRender));
+		registerRender(EntityAirshipV2Admin.class,  new RenderAirshipV2Admin(VCRender));
 	}
 	
 	public static void registerRender(Class<? extends Entity> classIn, Render<? extends Entity> renderItem)

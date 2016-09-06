@@ -1,17 +1,7 @@
 package com.viesis.viescraft.common.utils.events;
 
-import java.util.Map;
-import java.util.UUID;
-
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.EntityPlayerSP;
-import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiChat;
-import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.BossInfoLerping;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
@@ -19,13 +9,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import org.lwjgl.opengl.GL11;
 
-import com.google.common.collect.Maps;
-import com.viesis.viescraft.api.Reference;
-import com.viesis.viescraft.api.util.LogHelper;
-import com.viesis.viescraft.client.gui.StatusBarRenderer;
-import com.viesis.viescraft.client.gui.v1.GuiHUD;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
-import com.viesis.viescraft.proxy.CommonProxy;
 
 public class EventHandlerHUD {
 	

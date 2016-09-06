@@ -63,7 +63,7 @@ public class EntityAirshipV2Core extends EntityVC implements IInventory//, ITick
 	private ItemStack[] inventory = new ItemStack[10];
 	public String customName;
 	
-	private int airshipBurnTime;
+	public int airshipBurnTime;
     private int currentItemBurnTime;
     private int fuelTime;
     private int totalFuelTime;

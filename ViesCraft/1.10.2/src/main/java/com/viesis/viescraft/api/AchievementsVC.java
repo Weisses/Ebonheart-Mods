@@ -22,5 +22,4 @@ public class AchievementsVC {
 	public static final String AIRSHIP_AIRBORN = "achievement.airship_airborn";
 	public static final String AIRSHIP_WATER = "achievement.airship_water";
 	public static final String AIRSHIP_LAVA = "achievement.airship_lava";
-	
 }

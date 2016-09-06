@@ -1,29 +1,33 @@
-package com.viesis.viescraft.client.gui.v1;
+package com.viesis.viescraft.client.gui.v2;
 
 import java.io.IOException;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.ResourceLocation;
 
 import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.api.util.Keybinds;
+import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.common.entity.airshipcolors.ContainerAirshipV1Core;
+import com.viesis.viescraft.common.entity.airshipcolors.ContainerAirshipV2Core;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV2Core;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 
-public class GuiEntityAirshipV1Core extends GuiContainer {
+public class GuiEntityAirshipV2Core extends GuiContainer {
 	
 	private IInventory playerInv;
-	private EntityAirshipV1Core airshipV1;
+	private EntityAirshipV2Core airshipV2;
 	
-	public GuiEntityAirshipV1Core(IInventory playerInv, EntityAirshipV1Core airshipV1)
+	public GuiEntityAirshipV2Core(IInventory playerInv, EntityAirshipV2Core airshipV2)
 	{
-		super(new ContainerAirshipV1Core(playerInv, airshipV1));
+		super(new ContainerAirshipV2Core(playerInv, airshipV2));
 		
 		this.playerInv = playerInv;
-		this.airshipV1 = airshipV1;
+		this.airshipV2 = airshipV2;
 		this.xSize = 176;
 		this.ySize = 166;
 	}
@@ -35,9 +39,9 @@ public class GuiEntityAirshipV1Core extends GuiContainer {
 		this.mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":" + "textures/gui/container_airship.png"));
 		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
 		
-		if (EntityAirshipV1Core.isAirshipBurning(this.airshipV1))
+		if (EntityAirshipV2Core.isAirshipBurning(this.airshipV2))
         {
-			int k = this.getBurnLeftScaled(47);
+            int k = this.getBurnLeftScaled(47);
             this.drawTexturedModalRect(this.guiLeft + 156, this.guiTop + 19, 176, 50, 8, 1 + k);
             this.drawTexturedModalRect(this.guiLeft + 129, this.guiTop + 48, 176, 14, 26, 16);
         }
@@ -45,20 +49,20 @@ public class GuiEntityAirshipV1Core extends GuiContainer {
 	
     private int getBurnLeftScaled(int pixels)
     {
-        int i = this.airshipV1.getField(1);
+        int i = this.airshipV2.getField(1);
         
         if (i == 0)
         {
-        	i = (ViesCraftConfig.v1FuelBurnTime * 20);//i = 1200;
+        	i = (ViesCraftConfig.v2FuelBurnTime * 20);
         }
         
-        return this.airshipV1.getField(0) * pixels / i;
+        return this.airshipV2.getField(0) * pixels / i;
     }
 	
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
 	{
-		String s = this.airshipV1.getDisplayName().getUnformattedText();
+		String s = this.airshipV2.getDisplayName().getUnformattedText();
 		this.fontRendererObj.drawString("Fuel", 150, 6, 4210752);
 		this.fontRendererObj.drawString(this.playerInv.getDisplayName().getUnformattedText(), 8, 72, 4210752);
 	}
@@ -74,4 +78,3 @@ public class GuiEntityAirshipV1Core extends GuiContainer {
         }
     }
 }
-	

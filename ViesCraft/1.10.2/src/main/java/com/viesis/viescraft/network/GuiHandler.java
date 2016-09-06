@@ -5,9 +5,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 
+import com.viesis.viescraft.client.gui.GuiTileEntityAirshipWorkbench;
 import com.viesis.viescraft.client.gui.v1.GuiEntityAirshipV1Core;
-import com.viesis.viescraft.client.gui.v1.GuiEntityAirshipV2Core;
-import com.viesis.viescraft.client.gui.v1.GuiTileEntityAirshipWorkbench;
+import com.viesis.viescraft.client.gui.v2.GuiEntityAirshipV2Core;
 import com.viesis.viescraft.common.entity.airshipcolors.ContainerAirshipV1Core;
 import com.viesis.viescraft.common.entity.airshipcolors.ContainerAirshipV2Core;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
