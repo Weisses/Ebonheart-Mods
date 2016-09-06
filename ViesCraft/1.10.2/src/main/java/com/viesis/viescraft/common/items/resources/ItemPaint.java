@@ -34,10 +34,4 @@ public class ItemPaint extends Item {
     {
         return EnumRarity.UNCOMMON;
     }
-
-	//@SideOnly(Side.CLIENT)
-    //public boolean hasEffect(ItemStack stack)
-    //{
-    //    return true;
-    //}
 }

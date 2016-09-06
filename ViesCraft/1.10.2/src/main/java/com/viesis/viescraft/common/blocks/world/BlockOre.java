@@ -13,12 +13,12 @@ import net.minecraft.world.World;
 
 import com.viesis.viescraft.common.blocks.BlockHelper;
 
-public class BlockOreArcanite extends Block {
+public class BlockOre extends Block {
 	
-	public BlockOreArcanite(int harvestlevel, float hardness) 
+	public BlockOre(int harvestlevel, float hardness) 
 	{
 		super(Material.ROCK);
-		BlockHelper.setBlockName(this, "ore/arcanite_ore");
+		BlockHelper.setBlockName(this, "ore/test_ore");
 		
 		this.setHarvestLevel("pickaxe", harvestlevel); //("pickaxe", 2) is iron
 		this.setHardness(hardness);

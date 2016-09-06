@@ -1,9 +1,6 @@
 package com.viesis.viescraft.client.tileentity.render;
 
-import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityEnchantmentTable;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
@@ -33,14 +30,7 @@ public class RenderAirshipWorkbench extends TileEntitySpecialRenderer<TileEntity
 		
 		this.model.renderModel(0.0625f);
 		
-		
 		GL11.glPopMatrix();
 		GL11.glPopMatrix();
-		
-		
-		
 	}
-	
-	
-	
 }

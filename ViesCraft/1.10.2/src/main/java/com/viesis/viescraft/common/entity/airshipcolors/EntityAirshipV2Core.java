@@ -48,8 +48,6 @@ import com.viesis.viescraft.api.util.Keybinds;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 import com.viesis.viescraft.init.InitItemsVC;
 import com.viesis.viescraft.network.NetworkHandler;
-import com.viesis.viescraft.network.client.MessageConfig;
-import com.viesis.viescraft.network.server.MessageGuiOpenV1;
 import com.viesis.viescraft.network.server.MessageGuiOpenV2;
 
 public class EntityAirshipV2Core extends EntityVC implements IInventory//, ITickable 

@@ -45,11 +45,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.google.common.collect.Lists;
 import com.viesis.viescraft.api.util.Keybinds;
-import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 import com.viesis.viescraft.init.InitItemsVC;
 import com.viesis.viescraft.network.NetworkHandler;
-import com.viesis.viescraft.network.client.MessageConfig;
 import com.viesis.viescraft.network.server.MessageGuiOpenV1;
 
 public class EntityAirshipV1Core extends EntityVC implements IInventory//, ITickable 
