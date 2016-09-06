@@ -8,25 +8,12 @@ import java.util.Map;
 import javax.annotation.Nullable;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockPlanks;
-import net.minecraft.block.BlockStone;
-import net.minecraft.block.BlockStoneSlab;
-import net.minecraft.block.BlockStoneSlabNew;
-import net.minecraft.block.BlockWall;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.InventoryCrafting;
-import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.item.crafting.RecipeBookCloning;
-import net.minecraft.item.crafting.RecipeFireworks;
-import net.minecraft.item.crafting.RecipeRepairItem;
-import net.minecraft.item.crafting.RecipeTippedArrow;
-import net.minecraft.item.crafting.RecipesArmorDyes;
-import net.minecraft.item.crafting.RecipesMapCloning;
-import net.minecraft.item.crafting.RecipesMapExtending;
 import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraft.item.crafting.ShapelessRecipes;
 import net.minecraft.world.World;
@@ -35,13 +22,12 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.viesis.viescraft.init.InitItemsVC;
 
-
-public class CraftingManagerVC
-{
+public class CraftingManagerVC {
+	
     /** The static instance of this class */
     private static final CraftingManagerVC INSTANCE = new CraftingManagerVC();
     private final List<IRecipe> recipes = Lists.<IRecipe>newArrayList();
-
+    
     /**
      * Returns the static instance of this class
      */
@@ -50,10 +36,9 @@ public class CraftingManagerVC
         /** The static instance of this class */
         return INSTANCE;
     }
-
+    
     private CraftingManagerVC()
     {
-    	
     	/**
     	//Vanilla crafting recipes
     	(new RecipesToolsVC()).addRecipes(this);
@@ -218,11 +203,8 @@ public class CraftingManagerVC
         this.addRecipe(new ItemStack(Blocks.field_189880_di, 1), new Object[] {"XXX", "XXX", "XXX", 'X', new ItemStack(Items.DYE, 1, EnumDyeColor.WHITE.getDyeDamage())});
         */
         
-        
         //=================================================
         
-        
-    	
     	//Airship parts
     	this.addRecipe(new ItemStack(InitItemsVC.airship_balloon, 1), new Object[]{"RLR", "L#L", "RLR", 'L', Items.LEATHER, 'R', Items.RABBIT_HIDE, '#', Items.STRING});
     	this.addRecipe(new ItemStack(InitItemsVC.airship_engine, 1), new Object[]{"IBI", "P#P", "IBI", 'P', Blocks.PISTON, 'I', Items.IRON_INGOT, 'B', Blocks.IRON_BARS, '#', Blocks.REDSTONE_BLOCK});
@@ -267,11 +249,7 @@ public class CraftingManagerVC
 		this.addRecipe(new ItemStack(InitItemsVC.item_paint_orange, 1), new Object[]{"DDD", "D#D", "DBD", '#', new ItemStack(Items.COAL, 1, 1), 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 14)});
 		this.addRecipe(new ItemStack(InitItemsVC.item_paint_white, 1), new Object[]{"DDD", "D#D", "DBD", '#', new ItemStack(Items.COAL, 1, 1), 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 15)});
 		
-    	
-		
     	//=================================================
-		
-		
 		
 		//Airship v1 colors
 		//Recipes that dye the basic airship into any color
@@ -312,7 +290,7 @@ public class CraftingManagerVC
 		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_normal), new ItemStack(InitItemsVC.item_airship_orange));
 		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_normal), new ItemStack(InitItemsVC.item_airship_white));
 		
-		
+    	//=================================================
 		
 		//Airship v2 colors
 		//Recipes that dye the basic airship into any color
@@ -353,12 +331,8 @@ public class CraftingManagerVC
 		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_normal), new ItemStack(InitItemsVC.item_airship_v2_orange));
 		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_normal), new ItemStack(InitItemsVC.item_airship_v2_white));
 		
-		
-		
 		//================================================
 		
-		
-    	
         Collections.sort(this.recipes, new Comparator<IRecipe>()
         {
             public int compare(IRecipe p_compare_1_, IRecipe p_compare_2_)
@@ -367,7 +341,7 @@ public class CraftingManagerVC
             }
         });
     }
-
+    
     /**
      * Adds a shaped recipe to the games recipe list.
      */
@@ -377,11 +351,11 @@ public class CraftingManagerVC
         int i = 0;
         int j = 0;
         int k = 0;
-
+        
         if (recipeComponents[i] instanceof String[])
         {
             String[] astring = (String[])((String[])recipeComponents[i++]);
-
+            
             for (String s2 : astring)
             {
                 ++k;
@@ -399,14 +373,14 @@ public class CraftingManagerVC
                 s = s + s1;
             }
         }
-
+        
         Map<Character, ItemStack> map;
-
+        
         for (map = Maps.<Character, ItemStack>newHashMap(); i < recipeComponents.length; i += 2)
         {
             Character character = (Character)recipeComponents[i];
             ItemStack itemstack = null;
-
+            
             if (recipeComponents[i + 1] instanceof Item)
             {
                 itemstack = new ItemStack((Item)recipeComponents[i + 1]);
@@ -419,16 +393,16 @@ public class CraftingManagerVC
             {
                 itemstack = (ItemStack)recipeComponents[i + 1];
             }
-
+            
             map.put(character, itemstack);
         }
-
+        
         ItemStack[] aitemstack = new ItemStack[j * k];
-
+        
         for (int l = 0; l < j * k; ++l)
         {
             char c0 = s.charAt(l);
-
+            
             if (map.containsKey(Character.valueOf(c0)))
             {
                 aitemstack[l] = ((ItemStack)map.get(Character.valueOf(c0))).copy();
@@ -438,19 +412,19 @@ public class CraftingManagerVC
                 aitemstack[l] = null;
             }
         }
-
+        
         ShapedRecipes shapedrecipes = new ShapedRecipes(j, k, aitemstack, stack);
         this.recipes.add(shapedrecipes);
         return shapedrecipes;
     }
-
+    
     /**
      * Adds a shapeless crafting recipe to the the game.
      */
     public void addShapelessRecipe(ItemStack stack, Object... recipeComponents)
     {
         List<ItemStack> list = Lists.<ItemStack>newArrayList();
-
+        
         for (Object object : recipeComponents)
         {
             if (object instanceof ItemStack)
@@ -467,14 +441,14 @@ public class CraftingManagerVC
                 {
                     throw new IllegalArgumentException("Invalid shapeless recipe: unknown type " + object.getClass().getName() + "!");
                 }
-
+                
                 list.add(new ItemStack((Block)object));
             }
         }
-
+        
         this.recipes.add(new ShapelessRecipes(stack, list));
     }
-
+    
     /**
      * Adds an IRecipe to the list of crafting recipes.
      */
@@ -482,7 +456,7 @@ public class CraftingManagerVC
     {
         this.recipes.add(recipe);
     }
-
+    
     /**
      * Retrieves an ItemStack that has multiple recipes for it.
      */
@@ -496,10 +470,10 @@ public class CraftingManagerVC
                 return irecipe.getCraftingResult(craftMatrix);
             }
         }
-
+        
         return null;
     }
-
+    
     public ItemStack[] getRemainingItems(InventoryCrafting craftMatrix, World worldIn)
     {
         for (IRecipe irecipe : this.recipes)
@@ -509,17 +483,17 @@ public class CraftingManagerVC
                 return irecipe.getRemainingItems(craftMatrix);
             }
         }
-
+        
         ItemStack[] aitemstack = new ItemStack[craftMatrix.getSizeInventory()];
-
+        
         for (int i = 0; i < aitemstack.length; ++i)
         {
             aitemstack[i] = craftMatrix.getStackInSlot(i);
         }
-
+        
         return aitemstack;
     }
-
+    
     public List<IRecipe> getRecipeList()
     {
         return this.recipes;

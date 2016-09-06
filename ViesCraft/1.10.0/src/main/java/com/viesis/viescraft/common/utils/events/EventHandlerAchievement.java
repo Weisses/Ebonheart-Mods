@@ -4,22 +4,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipV1Black;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipV1Blue;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipV1Brown;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipV1Cyan;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipV1Gray;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipV1Green;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipV1LightBlue;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipV1LightGray;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipV1Lime;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipV1Magenta;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipV1Orange;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipV1Pink;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipV1Purple;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipV1Red;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipV1White;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipV1Yellow;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV2Core;
 import com.viesis.viescraft.init.InitAchievementsVC;
 
 public class EventHandlerAchievement {
@@ -35,7 +20,12 @@ public class EventHandlerAchievement {
     	
 		if(event.player.getRidingEntity() instanceof EntityAirshipV1Core)
         {
-    		isRiding = true;
+			isRiding = true;
+        }
+		
+		if(event.player.getRidingEntity() instanceof EntityAirshipV2Core)
+        {
+			isRiding = true;
         }
 		
 		//===================================================================

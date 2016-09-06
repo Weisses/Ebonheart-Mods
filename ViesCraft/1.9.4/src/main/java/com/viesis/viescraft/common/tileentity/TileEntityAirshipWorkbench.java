@@ -16,60 +16,70 @@ public class TileEntityAirshipWorkbench extends TileEntity implements IInventory
 	private ItemStack[] inventory = new ItemStack[9];
 	private String customName;
 	
-	public TileEntityAirshipWorkbench() {
+	public TileEntityAirshipWorkbench() 
+	{
 		this.inventory = new ItemStack[this.getSizeInventory()];
 	}
 	
-	public String getCustomName() {
+	public String getCustomName() 
+	{
 		return this.customName;
 	}
 	
-	public void setCustomName(String customName) {
+	public void setCustomName(String customName) 
+	{
 		this.customName = customName;
 	}
 	
 	@Override
-	public String getName() {
+	public String getName() 
+	{
 		return this.hasCustomName() ? this.customName : "container.tile_entity_airship_workbench";
 	}
-
+	
 	@Override
-	public boolean hasCustomName() {
+	public boolean hasCustomName() 
+	{
 		return this.customName != null && !this.customName.equals("");
 	}
-
+	
 	@Override
-	public ITextComponent getDisplayName() {
+	public ITextComponent getDisplayName() 
+	{
 		return this.hasCustomName() ? new TextComponentString(this.getName()) : new TextComponentTranslation(this.getName());
 	}
-
+	
 	@Override
-	public int getSizeInventory() {
+	public int getSizeInventory() 
+	{
 		return inventory.length;
 	}
-
+	
 	@Override
-	public ItemStack getStackInSlot(int index) {
-		if(index < 0 || index >= this.getSizeInventory()) {
+	public ItemStack getStackInSlot(int index) 
+	{
+		if(index < 0 || index >= this.getSizeInventory()) 
+		{
 			return null;
 		}
 		return this.inventory[index];
 	}
-
+	
 	@Override
-	public ItemStack decrStackSize(int index, int count) {
+	public ItemStack decrStackSize(int index, int count) 
+	{
 		return ItemStackHelper.getAndSplit(this.inventory, index, count);
-		
 	}
-
+	
 	@Override
-	public ItemStack removeStackFromSlot(int index) {
+	public ItemStack removeStackFromSlot(int index) 
+	{
 		return ItemStackHelper.getAndRemove(this.inventory, index);
-		
 	}
-
+	
 	@Override
-	public void setInventorySlotContents(int index, ItemStack stack) {
+	public void setInventorySlotContents(int index, ItemStack stack) 
+	{
 		boolean flag = stack != null && stack.isItemEqual(this.inventory[index]) && ItemStack.areItemStackTagsEqual(stack, this.inventory[index]);
         this.inventory[index] = stack;
         
@@ -80,54 +90,61 @@ public class TileEntityAirshipWorkbench extends TileEntity implements IInventory
         
         if (index == 0 && !flag)
         {
-            //this.totalFuelTime = this.getFuelTime(stack);
-            //this.fuelTime = 0;
             this.markDirty();
         }
 	}
-
+	
 	@Override
-	public int getInventoryStackLimit() {
+	public int getInventoryStackLimit() 
+	{
 		return 64;
 	}
-
+	
 	@Override
-	public boolean isUseableByPlayer(EntityPlayer player) {
+	public boolean isUseableByPlayer(EntityPlayer player) 
+	{
 		return this.worldObj.getTileEntity(this.getPos()) == this && player.getDistanceSq(this.pos.add(0.5, 0.5, 0.5)) <= 64;
 	}
-
+	
 	@Override
-	public void openInventory(EntityPlayer player) {
+	public void openInventory(EntityPlayer player) 
+	{
 		
 	}
-
+	
 	@Override
-	public void closeInventory(EntityPlayer player) {
+	public void closeInventory(EntityPlayer player) 
+	{
 		
 	}
-
+	
 	@Override
-	public boolean isItemValidForSlot(int index, ItemStack stack) {
+	public boolean isItemValidForSlot(int index, ItemStack stack) 
+	{
 		return true;
 	}
-
+	
 	@Override
-	public int getField(int id) {
+	public int getField(int id) 
+	{
 		return 0;
 	}
-
+	
 	@Override
-	public void setField(int id, int value) {
+	public void setField(int id, int value) 
+	{
 		
 	}
-
+	
 	@Override
-	public int getFieldCount() {
+	public int getFieldCount() 
+	{
 		return 0;
 	}
-
+	
 	@Override
-	public void clear() {
+	public void clear() 
+	{
 		for (int i = 0; i < this.inventory.length; i++)
 		{
 			this.inventory[i] = null;
@@ -135,7 +152,8 @@ public class TileEntityAirshipWorkbench extends TileEntity implements IInventory
 	}
 	
 	@Override
-	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
+	public NBTTagCompound writeToNBT(NBTTagCompound compound) 
+	{
 		super.writeToNBT(compound);
 		
 		NBTTagList nbttaglist = new NBTTagList();
@@ -153,32 +171,11 @@ public class TileEntityAirshipWorkbench extends TileEntity implements IInventory
         
         compound.setTag("Items", nbttaglist);
 		return compound;
-		/**
-		NBTTagList list = new NBTTagList();
-		for (int i = 0; i < this.inventory.length; ++i)
-        {
-            if (this.inventory[i] != null)
-            {
-                NBTTagCompound nbttagcompound = new NBTTagCompound();
-                nbttagcompound.setByte("Slot", (byte)i);
-                this.inventory[i].writeToNBT(nbttagcompound);
-                list.appendTag(nbttagcompound);
-            }
-        }
-		
-		nbt.setTag("Items", list);
-		if(this.hasCustomName()) {
-				nbt.setString("CustomName", this.getCustomName());
-			}
-		//if(this.hasCustomName()) {
-		//	nbt.setString("CustomName", this.getCustomName());
-		//}
-		return nbt;
-		*/
 	}
 	
 	@Override
-	public void readFromNBT(NBTTagCompound compound) {
+	public void readFromNBT(NBTTagCompound compound) 
+	{
 		super.readFromNBT(compound);
 		
 		NBTTagList nbttaglist = compound.getTagList("Items", 10);
@@ -194,40 +191,5 @@ public class TileEntityAirshipWorkbench extends TileEntity implements IInventory
                 this.inventory[j] = ItemStack.loadItemStackFromNBT(nbttagcompound);
             }
         }
-        
-		/**
-		NBTTagList nbttaglist = nbt.getTagList("Items", 10);
-        this.inventory = new ItemStack[this.getSizeInventory()];
-        
-        for (int i = 0; i < nbttaglist.tagCount(); ++i)
-        {
-            NBTTagCompound nbttagcompound = nbttaglist.getCompoundTagAt(i);
-            int j = nbttagcompound.getByte("Slot");
-            
-            if (j >= 0 && j < this.inventory.length)
-            {
-                this.inventory[j] = ItemStack.loadItemStackFromNBT(nbttagcompound);
-            }
-        }
-        
-        if(nbt.hasKey("CustomName", 8)) 
-        {
-    			this.setCustomName(nbt.getString("CustomName"));
-    		}
-		/**
-		NBTTagList list = nbt.getTagList("Items", 10);
-		for(int i = 0; i < list.tagCount(); ++i) {
-			NBTTagCompound stackTag = list.getCompoundTagAt(i);
-			int slot = stackTag.getByte("Slot") & 255;
-			this.setInventorySlotContents(slot, ItemStack.loadItemStackFromNBT(stackTag));
-		}
-		
-		//if(nbt.hasKey("CustomName", 8)) {
-		//	this.setCustomName(nbt.getString("CustomName"));
-		//}
-		 * */
-		 
 	}
-
-	
 }

@@ -1,35 +1,21 @@
 package com.viesis.viescraft.api.compat.jei;
 
-import java.util.Iterator;
-import java.util.List;
 
-import javax.annotation.Nonnull;
+//@JEIPlugin
+public class ViesCraftPlugin //implements IModPlugin 
+{
 
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.CraftingManager;
-import net.minecraft.item.crafting.IRecipe;
+	//@Override
+	//public void register(@Nonnull IModRegistry registry) {
+	//	IJeiHelpers jeiHelpers = registry.getJeiHelpers();
 
-import com.viesis.viescraft.common.items.crafting.CraftingManagerVC;
-import com.viesis.viescraft.init.InitItemsVC;
-
-
-public class ViesCraftPlugin {
-	
-	public static void removeRecipe() 
-	{
 		
-		List<IRecipe> recipes = CraftingManager.getInstance().getRecipeList();
 		
-		Iterator<IRecipe> remover = recipes.iterator();
+	//	registry.addRecipes(CraftingManagerVC.getInstance().getRecipeList());
 		
-		while(remover.hasNext())
-		{
-			ItemStack itemstack = remover.next().getRecipeOutput();
-			if(itemstack != null && itemstack.getItem() == InitItemsVC.achievement_airship_airborn)
-				remover.remove();
-		}
-	}
-	
+	//}
+
+	//@Override
+	//public void onRuntimeAvailable(@Nonnull IJeiRuntime jeiRuntime) {}
+
 }
-

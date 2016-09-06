@@ -19,11 +19,7 @@ public class InitBlocksVC extends BlocksVC {
 	
 	public static void preInit()
 	{
-		
 		airship_workbench = registerBlock(new BlockAirshipWorkbench("airship_workbench"));
-		
-		//GameRegistry.registerBlock(airship_workbench = new BlockAirshipWorkbench("airship_workbench"));
-		
 	}
 	
 	protected static <V extends Block> V registerBlock(V block)
@@ -42,15 +38,13 @@ public class InitBlocksVC extends BlocksVC {
 	protected static <BLOCK extends Block> BLOCK registerBlock(BLOCK block, @Nullable Function<BLOCK, ItemBlock> itemFactory) 
 	{
 		GameRegistry.register(block);
-
+		
 		if (itemFactory != null) {
 			final ItemBlock itemBlock = itemFactory.apply(block);
-
+			
 			GameRegistry.register(itemBlock.setRegistryName(block.getRegistryName()));
 		}
 		blocks.add(block);
 		return block;
 	}
-
-
 }

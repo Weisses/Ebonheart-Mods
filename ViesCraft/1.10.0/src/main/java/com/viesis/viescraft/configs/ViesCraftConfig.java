@@ -6,9 +6,6 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.common.config.Configuration;
 
 import com.viesis.viescraft.api.util.LogHelper;
-import com.viesis.viescraft.network.NetworkHandler;
-import com.viesis.viescraft.network.client.MessageConfig;
-import com.viesis.viescraft.network.server.MessageGuiOpenV1;
 
 public class ViesCraftConfig {
 	
@@ -41,7 +38,6 @@ public class ViesCraftConfig {
 	public static final int V2AIRSHIPSPEED_DEFAULT = 100;
 	public static final String V2AIRSHIPSPEED_NAME = "Airship Speed - Viesigible";
 	public static final String V2AIRSHIPSPEED_COMMENT = "How fast do airships move based on %? ";
-	
 	
 	public static final boolean MODELTURNANGLE_DEFAULT = true;
 	public static final String MODELTURNANGLE_NAME = "Enable Airship Turning Tilt?";
@@ -77,13 +73,10 @@ public class ViesCraftConfig {
 		v1AirshipName = config.getString(TextFormatting.WHITE + V1AIRSHIPNAME_NAME, category1, V1AIRSHIPNAME_DEFAULT, V1AIRSHIPNAME_COMMENT);
 		v2AirshipName = config.getString(TextFormatting.WHITE + V2AIRSHIPNAME_NAME, category1, V2AIRSHIPNAME_DEFAULT, V2AIRSHIPNAME_COMMENT);
 		
-		
 		//Animation settings
 		final String category2 = CATEGORY_VC + config.CATEGORY_SPLITTER + TextFormatting.AQUA + "Animation";
 		config.addCustomCategoryComment(category2, "Client Side airship animations.");
 		modelTurnAngle = config.getBoolean(TextFormatting.WHITE + MODELTURNANGLE_NAME, category2, MODELTURNANGLE_DEFAULT, MODELTURNANGLE_COMMENT);
-		
-		
 		
 		//Save the config
 		config.save();

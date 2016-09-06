@@ -5,11 +5,11 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
 public class ModelAirshipWorkbench extends ModelBase {
-
+	
 	private float bladespin;
 	private long lastframe;
 	
-  //fields
+	//fields
     ModelRenderer Base1a;
     ModelRenderer Base1b;
     ModelRenderer Base1c;

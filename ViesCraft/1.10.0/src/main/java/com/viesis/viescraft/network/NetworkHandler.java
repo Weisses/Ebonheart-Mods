@@ -15,16 +15,14 @@ public class NetworkHandler {
 	
 	private static SimpleNetworkWrapper INSTANCE;
 	
-	public static void preInit(){
-		
+	public static void preInit()
+	{
 		INSTANCE =  NetworkRegistry.INSTANCE.newSimpleChannel (Reference.MOD_ID);
 		
 		//Registering the messages
 		INSTANCE.registerMessage(MessageGuiOpenV1.class, MessageGuiOpenV1.class, 0, Side.SERVER);
 		INSTANCE.registerMessage(MessageConfig.class, MessageConfig.class, 1, Side.SERVER);
 		INSTANCE.registerMessage(MessageGuiOpenV2.class, MessageGuiOpenV2.class, 2, Side.SERVER);
-		
-		//INSTANCE.registerMessage(MessageAirshipBurning.class, MessageAirshipBurning.class, 1, Side.CLIENT);
 		
 	}
 	

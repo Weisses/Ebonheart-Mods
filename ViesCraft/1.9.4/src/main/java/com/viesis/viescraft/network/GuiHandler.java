@@ -5,9 +5,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 
+import com.viesis.viescraft.client.gui.GuiTileEntityAirshipWorkbench;
 import com.viesis.viescraft.client.gui.v1.GuiEntityAirshipV1Core;
-import com.viesis.viescraft.client.gui.v1.GuiEntityAirshipV2Core;
-import com.viesis.viescraft.client.gui.v1.GuiTileEntityAirshipWorkbench;
+import com.viesis.viescraft.client.gui.v2.GuiEntityAirshipV2Core;
 import com.viesis.viescraft.common.entity.airshipcolors.ContainerAirshipV1Core;
 import com.viesis.viescraft.common.entity.airshipcolors.ContainerAirshipV2Core;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
@@ -21,7 +21,6 @@ public class GuiHandler implements IGuiHandler {
 	public static final int GUI_AIRSHIP_V1_INVENTORY = 0;
 	public static final int GUI_AIRSHIP_WORKBENCH = 1;
 	public static final int GUI_AIRSHIP_V2_INVENTORY = 2;
-	//EntityAirshipCore entity;
 	
 	public GuiHandler() 
 	{
@@ -41,14 +40,7 @@ public class GuiHandler implements IGuiHandler {
 		}
 		if (ID == GUI_AIRSHIP_WORKBENCH)
 		{
-			////return new ContainerAirshipWorkbench(player.inventory, (TileEntityAirshipWorkbench)world.getTileEntity(new BlockPos(x, y, z)));
-			
-			return new ContainerAirshipWorkbench(player.inventory, world, (TileEntityAirshipWorkbench)world.getTileEntity(new BlockPos(x, y, z))); //player.getPosition());
-			
-			//return new ContainerAirshipWorkbench(player.inventory, 
-			//		world,
-			//		new BlockPos(x, y, z)
-					//);
+			return new ContainerAirshipWorkbench(player.inventory, world, (TileEntityAirshipWorkbench)world.getTileEntity(new BlockPos(x, y, z)));
 		}
 		
 		return null;
@@ -68,9 +60,8 @@ public class GuiHandler implements IGuiHandler {
 		if (ID == GUI_AIRSHIP_WORKBENCH)
 		{
 			return new GuiTileEntityAirshipWorkbench(player.inventory, world, (TileEntityAirshipWorkbench)world.getTileEntity(new BlockPos(x, y, z)));
-					
-					//player.inventory, (TileEntityAirshipWorkbench)world.getTileEntity(new BlockPos(x, y, z)));
 		}
+		
 		return null;
 	}
 }

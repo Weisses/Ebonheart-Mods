@@ -48,7 +48,6 @@ import com.viesis.viescraft.api.util.Keybinds;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 import com.viesis.viescraft.init.InitItemsVC;
 import com.viesis.viescraft.network.NetworkHandler;
-import com.viesis.viescraft.network.client.MessageConfig;
 import com.viesis.viescraft.network.server.MessageGuiOpenV1;
 
 public class EntityAirshipV1Core extends EntityVC implements IInventory//, ITickable 
@@ -62,11 +61,14 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory//, ITick
 	private ItemStack[] inventory = new ItemStack[10];
 	public String customName;
 	
-	private int airshipBurnTime;
+	public int airshipBurnTime;
     private int currentItemBurnTime;
     private int fuelTime;
     private int totalFuelTime;
     private int airshipBeingDriven;
+    
+    
+    public static int airshipOn;
     
 	public EntityAirshipV1Core.Status status;
     public EntityAirshipV1Core.Status previousStatus;
@@ -244,6 +246,8 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory//, ITick
         	if (this.worldObj.isRemote)
             {
         		this.updateInputs();
+        		
+        		//LogHelper.info(airshipOn);
         		
         		this.controlAirshipGui();
             }
@@ -994,9 +998,13 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory//, ITick
     	boolean flag = this.isClientAirshipBurning();
         boolean flag1 = false;
         
+        //airshipOn = fuelTime;
+        
         if (this.isClientAirshipBurning())
         {
+        	
             --this.airshipBurnTime;
+            airshipOn = airshipBurnTime;
         }
         
         if (this.isClientAirshipBurning() || this.inventory[9] != null)
@@ -1004,8 +1012,9 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory//, ITick
             if (!this.isClientAirshipBurning())
             {
                 this.airshipBurnTime = getItemBurnTime(this.inventory[9]);
-                this.currentItemBurnTime = this.airshipBurnTime;
                 
+                this.currentItemBurnTime = this.airshipBurnTime;
+                airshipOn = airshipBurnTime;
                 if (this.isClientAirshipBurning())
                 {
                     flag1 = true;
@@ -1060,6 +1069,7 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory//, ITick
      */
     public boolean isClientAirshipBurning()
     {
+    	
         return this.airshipBurnTime > 0;
     }
     
@@ -1067,6 +1077,18 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory//, ITick
     public static boolean isAirshipBurning(IInventory inventory)
     {
         return inventory.getField(0) > 0;
+    }
+    
+    //@SideOnly(Side.CLIENT)
+    public static boolean isAirshipOn()
+    {
+    	
+        return airshipOn > 0;
+    }
+    
+    public static int getAirshipOn()
+    {
+    	return airshipOn;
     }
     
     public int getFuelTime(@Nullable ItemStack stack)
@@ -1114,6 +1136,8 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory//, ITick
     	return inventory.getField(5) == 5;
         //return inventory.getField(0) > 0;
     }
+    
+    
     
     
     //==================================//
@@ -1413,6 +1437,7 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory//, ITick
     	compound.setInteger("BurnTime", this.airshipBurnTime);
         compound.setInteger("FuelTime", this.fuelTime);
         compound.setInteger("FuelTimeTotal", this.totalFuelTime);
+        compound.setInteger("AirshipOn", this.airshipOn);
         
         NBTTagList nbttaglist = new NBTTagList();
         
@@ -1461,6 +1486,8 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory//, ITick
         {
     			this.setCustomName(compound.getString("CustomName"));
     	}
+        
+        this.airshipOn = compound.getInteger("AirshipOn");
         
         this.airshipBurnTime = compound.getInteger("BurnTime");
         this.fuelTime = compound.getInteger("FuelTime");
