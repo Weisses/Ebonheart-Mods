@@ -9,7 +9,7 @@ public class ModelAirshipV2Off extends ModelBase {
 	private float bladespin;
 	private long lastframe;
 	
-  //fields
+	//fields
 	ModelRenderer Base_1a;
     ModelRenderer Base_Seat_1a;
     ModelRenderer Base_Seat_1b;
@@ -45,11 +45,11 @@ public class ModelAirshipV2Off extends ModelBase {
     ModelRenderer Engine_R1;
     ModelRenderer Engine_R1a;
     ModelRenderer Engine_R1b;
-    ModelRenderer Engine_R2b;
+    //ModelRenderer Engine_R2b;
     ModelRenderer Engine_L1;
     ModelRenderer Engine_L1a;
     ModelRenderer Engine_L1b;
-    ModelRenderer Engine_L2b;
+    //ModelRenderer Engine_L2b;
     ModelRenderer Propeller_R1a;
     ModelRenderer Propeller_R1b;
     ModelRenderer Propeller_R1c;
@@ -294,12 +294,12 @@ public class ModelAirshipV2Off extends ModelBase {
     Engine_R1b.setTextureSize(256, 128);
     Engine_R1b.mirror = true;
     setRotation(Engine_R1b, 0F, 0F, 0F);
-    Engine_R2b = new ModelRenderer(this, 1, 16);
-    Engine_R2b.addBox(0F, 0F, 0F, 2, 4, 2);
-    Engine_R2b.setRotationPoint(10F, -5F, 9F);
-    Engine_R2b.setTextureSize(256, 128);
-    Engine_R2b.mirror = true;
-    setRotation(Engine_R2b, 0F, 0F, 0F);
+    //Engine_R2b = new ModelRenderer(this, 1, 16);
+    //Engine_R2b.addBox(0F, 0F, 0F, 2, 4, 2);
+    //Engine_R2b.setRotationPoint(10F, -5F, 9F);
+    //Engine_R2b.setTextureSize(256, 128);
+    //Engine_R2b.mirror = true;
+    //setRotation(Engine_R2b, 0F, 0F, 0F);
     Engine_L1 = new ModelRenderer(this, 34, 64);
     Engine_L1.addBox(0F, 0F, 0F, 4, 6, 6);
     Engine_L1.setRotationPoint(9F, -1F, 6F);
@@ -318,12 +318,12 @@ public class ModelAirshipV2Off extends ModelBase {
     Engine_L1b.setTextureSize(256, 128);
     Engine_L1b.mirror = true;
     setRotation(Engine_L1b, 0F, 0F, 0F);
-    Engine_L2b = new ModelRenderer(this, 1, 16);
-    Engine_L2b.addBox(0F, 0F, 0F, 2, 4, 2);
-    Engine_L2b.setRotationPoint(-12F, -5F, 9F);
-    Engine_L2b.setTextureSize(256, 128);
-    Engine_L2b.mirror = true;
-    setRotation(Engine_L2b, 0F, 0F, 0F);
+    //Engine_L2b = new ModelRenderer(this, 1, 16);
+    //Engine_L2b.addBox(0F, 0F, 0F, 2, 4, 2);
+    //Engine_L2b.setRotationPoint(-12F, -5F, 9F);
+    //Engine_L2b.setTextureSize(256, 128);
+    //Engine_L2b.mirror = true;
+    //setRotation(Engine_L2b, 0F, 0F, 0F);
     Propeller_R1a = new ModelRenderer(this, 6, 76);
     Propeller_R1a.addBox(-1F, -1F, -2F, 2, 2, 4);
     Propeller_R1a.setRotationPoint(-17F, -2F, 15F);
@@ -533,11 +533,11 @@ public class ModelAirshipV2Off extends ModelBase {
     Engine_R1.render(f5);
     Engine_R1a.render(f5);
     Engine_R1b.render(f5);
-    Engine_R2b.render(f5);
+    //Engine_R2b.render(f5);
     Engine_L1.render(f5);
     Engine_L1a.render(f5);
     Engine_L1b.render(f5);
-    Engine_L2b.render(f5);
+    //Engine_L2b.render(f5);
     Propeller_R1a.render(f5);
     Propeller_R1b.render(f5);
     Propeller_R1c.render(f5);

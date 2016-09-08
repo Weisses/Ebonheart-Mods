@@ -40,6 +40,24 @@ import com.viesis.viescraft.common.entity.airshipcolors.v2.EntityAirshipV2Purple
 import com.viesis.viescraft.common.entity.airshipcolors.v2.EntityAirshipV2Red;
 import com.viesis.viescraft.common.entity.airshipcolors.v2.EntityAirshipV2White;
 import com.viesis.viescraft.common.entity.airshipcolors.v2.EntityAirshipV2Yellow;
+import com.viesis.viescraft.common.entity.airshipcolors.v3.EntityAirshipV3Admin;
+import com.viesis.viescraft.common.entity.airshipcolors.v3.EntityAirshipV3Black;
+import com.viesis.viescraft.common.entity.airshipcolors.v3.EntityAirshipV3Blue;
+import com.viesis.viescraft.common.entity.airshipcolors.v3.EntityAirshipV3Brown;
+import com.viesis.viescraft.common.entity.airshipcolors.v3.EntityAirshipV3Cyan;
+import com.viesis.viescraft.common.entity.airshipcolors.v3.EntityAirshipV3Gray;
+import com.viesis.viescraft.common.entity.airshipcolors.v3.EntityAirshipV3Green;
+import com.viesis.viescraft.common.entity.airshipcolors.v3.EntityAirshipV3LightBlue;
+import com.viesis.viescraft.common.entity.airshipcolors.v3.EntityAirshipV3LightGray;
+import com.viesis.viescraft.common.entity.airshipcolors.v3.EntityAirshipV3Lime;
+import com.viesis.viescraft.common.entity.airshipcolors.v3.EntityAirshipV3Magenta;
+import com.viesis.viescraft.common.entity.airshipcolors.v3.EntityAirshipV3Normal;
+import com.viesis.viescraft.common.entity.airshipcolors.v3.EntityAirshipV3Orange;
+import com.viesis.viescraft.common.entity.airshipcolors.v3.EntityAirshipV3Pink;
+import com.viesis.viescraft.common.entity.airshipcolors.v3.EntityAirshipV3Purple;
+import com.viesis.viescraft.common.entity.airshipcolors.v3.EntityAirshipV3Red;
+import com.viesis.viescraft.common.entity.airshipcolors.v3.EntityAirshipV3White;
+import com.viesis.viescraft.common.entity.airshipcolors.v3.EntityAirshipV3Yellow;
 import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipV1Admin;
 import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipV1Black;
 import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipV1Blue;
@@ -76,6 +94,24 @@ import com.viesis.viescraft.common.entity.airshipitems.v2.EntityItemAirshipV2Pur
 import com.viesis.viescraft.common.entity.airshipitems.v2.EntityItemAirshipV2Red;
 import com.viesis.viescraft.common.entity.airshipitems.v2.EntityItemAirshipV2White;
 import com.viesis.viescraft.common.entity.airshipitems.v2.EntityItemAirshipV2Yellow;
+import com.viesis.viescraft.common.entity.airshipitems.v3.EntityItemAirshipV3Admin;
+import com.viesis.viescraft.common.entity.airshipitems.v3.EntityItemAirshipV3Black;
+import com.viesis.viescraft.common.entity.airshipitems.v3.EntityItemAirshipV3Blue;
+import com.viesis.viescraft.common.entity.airshipitems.v3.EntityItemAirshipV3Brown;
+import com.viesis.viescraft.common.entity.airshipitems.v3.EntityItemAirshipV3Cyan;
+import com.viesis.viescraft.common.entity.airshipitems.v3.EntityItemAirshipV3Gray;
+import com.viesis.viescraft.common.entity.airshipitems.v3.EntityItemAirshipV3Green;
+import com.viesis.viescraft.common.entity.airshipitems.v3.EntityItemAirshipV3LightBlue;
+import com.viesis.viescraft.common.entity.airshipitems.v3.EntityItemAirshipV3LightGray;
+import com.viesis.viescraft.common.entity.airshipitems.v3.EntityItemAirshipV3Lime;
+import com.viesis.viescraft.common.entity.airshipitems.v3.EntityItemAirshipV3Magenta;
+import com.viesis.viescraft.common.entity.airshipitems.v3.EntityItemAirshipV3Normal;
+import com.viesis.viescraft.common.entity.airshipitems.v3.EntityItemAirshipV3Orange;
+import com.viesis.viescraft.common.entity.airshipitems.v3.EntityItemAirshipV3Pink;
+import com.viesis.viescraft.common.entity.airshipitems.v3.EntityItemAirshipV3Purple;
+import com.viesis.viescraft.common.entity.airshipitems.v3.EntityItemAirshipV3Red;
+import com.viesis.viescraft.common.entity.airshipitems.v3.EntityItemAirshipV3White;
+import com.viesis.viescraft.common.entity.airshipitems.v3.EntityItemAirshipV3Yellow;
 
 public class InitEntityVC {
 	
@@ -83,24 +119,24 @@ public class InitEntityVC {
 	
 	public static void preInit()
 	{
-		register(EntityItemAirshipV1Normal.class, "item.airship.normal", 64, 20, true);
-		register(EntityItemAirshipV1Black.class, "item.airship.black", 64, 20, true);
-		register(EntityItemAirshipV1Blue.class, "item.airship.blue", 64, 20, true);
-		register(EntityItemAirshipV1Brown.class, "item.airship.brown", 64, 20, true);
-		register(EntityItemAirshipV1Cyan.class, "item.airship.cyan", 64, 20, true);
-		register(EntityItemAirshipV1Gray.class, "item.airship.gray", 64, 20, true);
-		register(EntityItemAirshipV1Green.class, "item.airship.green", 64, 20, true);
-		register(EntityItemAirshipV1LightBlue.class, "item.airship.lightblue", 64, 20, true);
-		register(EntityItemAirshipV1LightGray.class, "item.airship.lightgray", 64, 20, true);
-		register(EntityItemAirshipV1Lime.class, "item.airship.lime", 64, 20, true);
-		register(EntityItemAirshipV1Magenta.class, "item.airship.magenta", 64, 20, true);
-		register(EntityItemAirshipV1Orange.class, "item.airship.orange", 64, 20, true);
-		register(EntityItemAirshipV1Pink.class, "item.airship.pink", 64, 20, true);
-		register(EntityItemAirshipV1Purple.class, "item.airship.purple", 64, 20, true);
-		register(EntityItemAirshipV1Red.class, "item.airship.red", 64, 20, true);
-		register(EntityItemAirshipV1White.class, "item.airship.white", 64, 20, true);
-		register(EntityItemAirshipV1Yellow.class, "item.airship.yellow", 64, 20, true);
-		register(EntityItemAirshipV1Admin.class, "item.airship.admin", 64, 20, true);
+		register(EntityItemAirshipV1Normal.class, "item.airship.v1.normal", 64, 20, true);
+		register(EntityItemAirshipV1Black.class, "item.airship.v1.black", 64, 20, true);
+		register(EntityItemAirshipV1Blue.class, "item.airship.v1.blue", 64, 20, true);
+		register(EntityItemAirshipV1Brown.class, "item.airship.v1.brown", 64, 20, true);
+		register(EntityItemAirshipV1Cyan.class, "item.airship.v1.cyan", 64, 20, true);
+		register(EntityItemAirshipV1Gray.class, "item.airship.v1.gray", 64, 20, true);
+		register(EntityItemAirshipV1Green.class, "item.airship.v1.green", 64, 20, true);
+		register(EntityItemAirshipV1LightBlue.class, "item.airship.v1.lightblue", 64, 20, true);
+		register(EntityItemAirshipV1LightGray.class, "item.airship.v1.lightgray", 64, 20, true);
+		register(EntityItemAirshipV1Lime.class, "item.airship.v1.lime", 64, 20, true);
+		register(EntityItemAirshipV1Magenta.class, "item.airship.v1.magenta", 64, 20, true);
+		register(EntityItemAirshipV1Orange.class, "item.airship.v1.orange", 64, 20, true);
+		register(EntityItemAirshipV1Pink.class, "item.airship.v1.pink", 64, 20, true);
+		register(EntityItemAirshipV1Purple.class, "item.airship.v1.purple", 64, 20, true);
+		register(EntityItemAirshipV1Red.class, "item.airship.v1.red", 64, 20, true);
+		register(EntityItemAirshipV1White.class, "item.airship.v1.white", 64, 20, true);
+		register(EntityItemAirshipV1Yellow.class, "item.airship.v1.yellow", 64, 20, true);
+		register(EntityItemAirshipV1Admin.class, "item.airship.v1.admin", 64, 20, true);
 		
 		register(EntityItemAirshipV2Normal.class, "item.airship.v2.normal", 64, 20, true);
 		register(EntityItemAirshipV2Black.class, "item.airship.v2.black", 64, 20, true);
@@ -120,6 +156,25 @@ public class InitEntityVC {
 		register(EntityItemAirshipV2White.class, "item.airship.v2.white", 64, 20, true);
 		register(EntityItemAirshipV2Yellow.class, "item.airship.v2.yellow", 64, 20, true);
 		register(EntityItemAirshipV2Admin.class, "item.airship.v2.admin", 64, 20, true);
+
+		register(EntityItemAirshipV3Normal.class, "item.airship.v3.normal", 64, 20, true);
+		register(EntityItemAirshipV3Black.class, "item.airship.v3.black", 64, 20, true);
+		register(EntityItemAirshipV3Blue.class, "item.airship.v3.blue", 64, 20, true);
+		register(EntityItemAirshipV3Brown.class, "item.airship.v3.brown", 64, 20, true);
+		register(EntityItemAirshipV3Cyan.class, "item.airship.v3.cyan", 64, 20, true);
+		register(EntityItemAirshipV3Gray.class, "item.airship.v3.gray", 64, 20, true);
+		register(EntityItemAirshipV3Green.class, "item.airship.v3.green", 64, 20, true);
+		register(EntityItemAirshipV3LightBlue.class, "item.airship.v3.lightblue", 64, 20, true);
+		register(EntityItemAirshipV3LightGray.class, "item.airship.v3.lightgray", 64, 20, true);
+		register(EntityItemAirshipV3Lime.class, "item.airship.v3.lime", 64, 20, true);
+		register(EntityItemAirshipV3Magenta.class, "item.airship.v3.magenta", 64, 20, true);
+		register(EntityItemAirshipV3Orange.class, "item.airship.v3.orange", 64, 20, true);
+		register(EntityItemAirshipV3Pink.class, "item.airship.v3.pink", 64, 20, true);
+		register(EntityItemAirshipV3Purple.class, "item.airship.v3.purple", 64, 20, true);
+		register(EntityItemAirshipV3Red.class, "item.airship.v3.red", 64, 20, true);
+		register(EntityItemAirshipV3White.class, "item.airship.v3.white", 64, 20, true);
+		register(EntityItemAirshipV3Yellow.class, "item.airship.v3.yellow", 64, 20, true);
+		register(EntityItemAirshipV3Admin.class, "item.airship.v3.admin", 64, 20, true);
 		
 		//===========================================
 		
@@ -160,6 +215,25 @@ public class InitEntityVC {
 		register(EntityAirshipV2White.class, "airship.v2.white", 64, 1, true);
 		register(EntityAirshipV2Yellow.class, "airship.v2.yellow", 64, 1, true);
 		register(EntityAirshipV2Admin.class, "airship.v2.admin", 64, 1, true);
+
+		register(EntityAirshipV3Normal.class, "airship.v3.normal", 64, 1, true);
+		register(EntityAirshipV3Black.class, "airship.v3.black", 64, 1, true);
+		register(EntityAirshipV3Blue.class, "airship.v3.blue", 64, 1, true);
+		register(EntityAirshipV3Brown.class, "airship.v3.brown", 64, 1, true);
+		register(EntityAirshipV3Cyan.class, "airship.v3.cyan", 64, 1, true);
+		register(EntityAirshipV3Gray.class, "airship.v3.gray", 64, 1, true);
+		register(EntityAirshipV3Green.class, "airship.v3.green", 64, 1, true);
+		register(EntityAirshipV3LightBlue.class, "airship.v3.lightblue", 64, 1, true);
+		register(EntityAirshipV3LightGray.class, "airship.v3.lightgray", 64, 1, true);
+		register(EntityAirshipV3Lime.class, "airship.v3.lime", 64, 1, true);
+		register(EntityAirshipV3Magenta.class, "airship.v3.magenta", 64, 1, true);
+		register(EntityAirshipV3Orange.class, "airship.v3.orange", 64, 1, true);
+		register(EntityAirshipV3Pink.class, "airship.v3.pink", 64, 1, true);
+		register(EntityAirshipV3Purple.class, "airship.v3.purple", 64, 1, true);
+		register(EntityAirshipV3Red.class, "airship.v3.red", 64, 1, true);
+		register(EntityAirshipV3White.class, "airship.v3.white", 64, 1, true);
+		register(EntityAirshipV3Yellow.class, "airship.v3.yellow", 64, 1, true);
+		register(EntityAirshipV3Admin.class, "airship.v3.admin", 64, 1, true);
 		
 	}
 	

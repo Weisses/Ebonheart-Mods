@@ -1,15 +1,21 @@
 package com.viesis.viescraft.client.entity.model;
 
+import java.util.Random;
+
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.math.MathHelper;
 
 public class ModelAirshipV2On extends ModelBase {
-
+	
+	public Random random = new Random();
+	
 	private float bladespin;
 	private long lastframe;
 	
-  //fields
+    //fields
 	ModelRenderer Base_1a;
     ModelRenderer Base_Seat_1a;
     ModelRenderer Base_Seat_1b;
@@ -45,11 +51,11 @@ public class ModelAirshipV2On extends ModelBase {
     ModelRenderer Engine_R1;
     ModelRenderer Engine_R1a;
     ModelRenderer Engine_R1b;
-    ModelRenderer Engine_R2b;
+    //ModelRenderer Engine_R2b;
     ModelRenderer Engine_L1;
     ModelRenderer Engine_L1a;
     ModelRenderer Engine_L1b;
-    ModelRenderer Engine_L2b;
+    //ModelRenderer Engine_L2b;
     ModelRenderer Propeller_R1a;
     ModelRenderer Propeller_R1b;
     ModelRenderer Propeller_R1c;
@@ -294,12 +300,12 @@ public class ModelAirshipV2On extends ModelBase {
     Engine_R1b.setTextureSize(256, 128);
     Engine_R1b.mirror = true;
     setRotation(Engine_R1b, 0F, 0F, 0F);
-    Engine_R2b = new ModelRenderer(this, 1, 16);
-    Engine_R2b.addBox(0F, 0F, 0F, 2, 4, 2);
-    Engine_R2b.setRotationPoint(10F, -5F, 9F);
-    Engine_R2b.setTextureSize(256, 128);
-    Engine_R2b.mirror = true;
-    setRotation(Engine_R2b, 0F, 0F, 0F);
+    //Engine_R2b = new ModelRenderer(this, 1, 16);
+    //Engine_R2b.addBox(0F, 0F, 0F, 2, 4, 2);
+    //Engine_R2b.setRotationPoint(10F, -5F, 9F);
+    //Engine_R2b.setTextureSize(256, 128);
+    //Engine_R2b.mirror = true;
+    //setRotation(Engine_R2b, 0F, 0F, 0F);
     Engine_L1 = new ModelRenderer(this, 34, 64);
     Engine_L1.addBox(0F, 0F, 0F, 4, 6, 6);
     Engine_L1.setRotationPoint(9F, -1F, 6F);
@@ -318,12 +324,12 @@ public class ModelAirshipV2On extends ModelBase {
     Engine_L1b.setTextureSize(256, 128);
     Engine_L1b.mirror = true;
     setRotation(Engine_L1b, 0F, 0F, 0F);
-    Engine_L2b = new ModelRenderer(this, 1, 16);
-    Engine_L2b.addBox(0F, 0F, 0F, 2, 4, 2);
-    Engine_L2b.setRotationPoint(-12F, -5F, 9F);
-    Engine_L2b.setTextureSize(256, 128);
-    Engine_L2b.mirror = true;
-    setRotation(Engine_L2b, 0F, 0F, 0F);
+    //Engine_L2b = new ModelRenderer(this, 1, 16);
+    //Engine_L2b.addBox(0F, 0F, 0F, 2, 4, 2);
+    //Engine_L2b.setRotationPoint(-12F, -5F, 9F);
+    //Engine_L2b.setTextureSize(256, 128);
+    //Engine_L2b.mirror = true;
+    //setRotation(Engine_L2b, 0F, 0F, 0F);
     Propeller_R1a = new ModelRenderer(this, 6, 76);
     Propeller_R1a.addBox(-1F, -1F, -2F, 2, 2, 4);
     Propeller_R1a.setRotationPoint(-17F, -2F, 15F);
@@ -533,11 +539,11 @@ public class ModelAirshipV2On extends ModelBase {
     Engine_R1.render(f5);
     Engine_R1a.render(f5);
     Engine_R1b.render(f5);
-    Engine_R2b.render(f5);
+    //Engine_R2b.render(f5);
     Engine_L1.render(f5);
     Engine_L1a.render(f5);
     Engine_L1b.render(f5);
-    Engine_L2b.render(f5);
+    //Engine_L2b.render(f5);
     Propeller_R1a.render(f5);
     Propeller_R1b.render(f5);
     Propeller_R1c.render(f5);
@@ -593,6 +599,19 @@ public class ModelAirshipV2On extends ModelBase {
 	this.Propeller_L1b.rotateAngleZ += (bladespin * 3);
 	this.Propeller_L1c.rotateAngleZ += (bladespin * 3);
 	
+
+	int randomTick = random.nextInt(100) + 1;
+	
+	if(randomTick < 20)
+	{
+		entity.worldObj.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, 
+			entity.posX - (double)(MathHelper.sin(-entity.rotationYaw * 0.017453292F) * 00.82F), 
+			entity.posY + 0.68D + (entity.worldObj.rand.nextFloat() * 0.025D), 
+			entity.posZ - (double)(MathHelper.cos(entity.rotationYaw * 0.017453292F) * 00.82F), 
+			0.0D, 0.0D, 0.0D, new int[0]);
+	}
+	
+	
 	//this.Propeller_FR1a.rotateAngleY += (bladespin * 2);
 	//this.Propeller_FR1b.rotateAngleY += (bladespin * 2);
 	//this.Propeller_FR1c.rotateAngleY += (bladespin * 2);
@@ -601,5 +620,4 @@ public class ModelAirshipV2On extends ModelBase {
 	//this.Propeller_FL1c.rotateAngleY += (bladespin * 2);
     
   }
-
 }

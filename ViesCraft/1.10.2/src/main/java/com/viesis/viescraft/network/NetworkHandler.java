@@ -10,6 +10,7 @@ import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.network.client.MessageConfig;
 import com.viesis.viescraft.network.server.MessageGuiOpenV1;
 import com.viesis.viescraft.network.server.MessageGuiOpenV2;
+import com.viesis.viescraft.network.server.MessageGuiOpenV3;
 
 public class NetworkHandler {
 	
@@ -20,9 +21,10 @@ public class NetworkHandler {
 		INSTANCE =  NetworkRegistry.INSTANCE.newSimpleChannel (Reference.MOD_ID);
 		
 		//Registering the messages
-		INSTANCE.registerMessage(MessageGuiOpenV1.class, MessageGuiOpenV1.class, 0, Side.SERVER);
-		INSTANCE.registerMessage(MessageConfig.class, MessageConfig.class, 1, Side.SERVER);
+		INSTANCE.registerMessage(MessageConfig.class, MessageConfig.class, 0, Side.SERVER);
+		INSTANCE.registerMessage(MessageGuiOpenV1.class, MessageGuiOpenV1.class, 1, Side.SERVER);
 		INSTANCE.registerMessage(MessageGuiOpenV2.class, MessageGuiOpenV2.class, 2, Side.SERVER);
+		INSTANCE.registerMessage(MessageGuiOpenV3.class, MessageGuiOpenV3.class, 3, Side.SERVER);
 		
 	}
 	

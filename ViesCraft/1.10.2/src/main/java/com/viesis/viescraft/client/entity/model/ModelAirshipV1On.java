@@ -1,13 +1,19 @@
 package com.viesis.viescraft.client.entity.model;
 
+import java.util.Random;
+
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
+import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.math.MathHelper;
 
 import com.viesis.viescraft.ViesCraft;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 
 public class ModelAirshipV1On extends ModelBase {
+	
+	public Random random = new Random();
 	
 	private float bladespin;
 	private long lastframe;
@@ -438,20 +444,28 @@ public class ModelAirshipV1On extends ModelBase {
 	public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity)
   	{
 		super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
-
-		//if(ViesCraftConfig.modelAnimation)
-		//{
-			long now = System.nanoTime();
-			int elapsed = (int) ((now - lastframe) / (1000000));
-			// 1000000 nanoseconds = .001 seconds
-			bladespin = (float) elapsed / 300.0f;
-			// 0.001 seconds / 300 = 3.3333 repeating.
-			lastframe = now;
-			
-			this.Propeller_1a.rotateAngleZ += (bladespin * 3);
-			this.Propeller_1b.rotateAngleZ += (bladespin * 3);
-			this.Propeller_1c.rotateAngleZ += (bladespin * 3);
-		//}
+		
+		long now = System.nanoTime();
+		int elapsed = (int) ((now - lastframe) / (1000000));
+		// 1000000 nanoseconds = .001 seconds
+		bladespin = (float) elapsed / 300.0f;
+		// 0.001 seconds / 300 = 3.3333 repeating.
+		lastframe = now;
+		
+		this.Propeller_1a.rotateAngleZ += (bladespin * 3);
+		this.Propeller_1b.rotateAngleZ += (bladespin * 3);
+		this.Propeller_1c.rotateAngleZ += (bladespin * 3);
+		
+		int randomTick = random.nextInt(100) + 1;
+		
+		if(randomTick < 20)
+		{
+			entity.worldObj.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, 
+				entity.posX - (double)(MathHelper.sin(-entity.rotationYaw * 0.017453292F) * 00.82F), 
+				entity.posY + 0.68D + (entity.worldObj.rand.nextFloat() * 0.025D), 
+				entity.posZ - (double)(MathHelper.cos(entity.rotationYaw * 0.017453292F) * 00.82F), 
+				0.0D, 0.0D, 0.0D, new int[0]);
+		}
 		
 		//ViesCraft.proxy.generateSmokeParticles(entity);
 	}

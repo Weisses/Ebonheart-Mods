@@ -18,10 +18,14 @@ public class ViesCraftConfig {
 	public static int v2FuelBurnTime;
 	public static int v2AirshipSpeed;
 	
+	public static int v3FuelBurnTime;
+	public static int v3AirshipSpeed;
+	
 	public static boolean modelTurnAngle;
 	
 	public static String v1AirshipName;
 	public static String v2AirshipName;
+	public static String v3AirshipName;
 	
 	public static final int V1FUELBURNTIME_DEFAULT = 60;
 	public static final String V1FUELBURNTIME_NAME = "Fuel Burn Time - Viesdenburg";
@@ -39,6 +43,14 @@ public class ViesCraftConfig {
 	public static final String V2AIRSHIPSPEED_NAME = "Airship Speed - Viesigible";
 	public static final String V2AIRSHIPSPEED_COMMENT = "How fast do airships move based on %? ";
 	
+	public static final int V3FUELBURNTIME_DEFAULT = 60;
+	public static final String V3FUELBURNTIME_NAME = "Fuel Burn Time - Viespelin";
+	public static final String V3FUELBURNTIME_COMMENT = "How long does each piece of fuel last in seconds?";
+	
+	public static final int V3AIRSHIPSPEED_DEFAULT = 100;
+	public static final String V3AIRSHIPSPEED_NAME = "Airship Speed - Viespelin";
+	public static final String V3AIRSHIPSPEED_COMMENT = "How fast do airships move based on %? ";
+	
 	public static final boolean MODELTURNANGLE_DEFAULT = true;
 	public static final String MODELTURNANGLE_NAME = "Enable Airship Turning Tilt?";
 	public static final String MODELTURNANGLE_COMMENT = "Should the airship tilt while players turn?";
@@ -50,6 +62,14 @@ public class ViesCraftConfig {
 	public static final String V2AIRSHIPNAME_DEFAULT = "Viesigible";
 	public static final String V2AIRSHIPNAME_NAME = "Airship Name - Viesigible";
 	public static final String V2AIRSHIPNAME_COMMENT = "Change the name of Viesigible Airships?";
+	
+	public static final String V3AIRSHIPNAME_DEFAULT = "Viespelin";
+	public static final String V3AIRSHIPNAME_NAME = "Airship Name - Viespelin";
+	public static final String V3AIRSHIPNAME_COMMENT = "Change the name of Viespelin Airships?";
+	
+	//public static final String V4AIRSHIPNAME_DEFAULT = "Viesakron";
+	//public static final String V4AIRSHIPNAME_NAME = "Airship Name - Viesakron";
+	//public static final String V4AIRSHIPNAME_COMMENT = "Change the name of Viesakron Airships?";
 	
 	public static void init(File file)
 	{
@@ -70,8 +90,12 @@ public class ViesCraftConfig {
 		v2FuelBurnTime = config.getInt(TextFormatting.WHITE + V2FUELBURNTIME_NAME, category1, V2FUELBURNTIME_DEFAULT, 1, 600, V2FUELBURNTIME_COMMENT);
 		v2AirshipSpeed = config.getInt(TextFormatting.WHITE + V2AIRSHIPSPEED_NAME, category1, V2AIRSHIPSPEED_DEFAULT, 100, 400, V2AIRSHIPSPEED_COMMENT);
 		
+		v3FuelBurnTime = config.getInt(TextFormatting.WHITE + V3FUELBURNTIME_NAME, category1, V3FUELBURNTIME_DEFAULT, 1, 600, V3FUELBURNTIME_COMMENT);
+		v3AirshipSpeed = config.getInt(TextFormatting.WHITE + V3AIRSHIPSPEED_NAME, category1, V3AIRSHIPSPEED_DEFAULT, 100, 400, V3AIRSHIPSPEED_COMMENT);
+		
 		v1AirshipName = config.getString(TextFormatting.WHITE + V1AIRSHIPNAME_NAME, category1, V1AIRSHIPNAME_DEFAULT, V1AIRSHIPNAME_COMMENT);
 		v2AirshipName = config.getString(TextFormatting.WHITE + V2AIRSHIPNAME_NAME, category1, V2AIRSHIPNAME_DEFAULT, V2AIRSHIPNAME_COMMENT);
+		v3AirshipName = config.getString(TextFormatting.WHITE + V3AIRSHIPNAME_NAME, category1, V3AIRSHIPNAME_DEFAULT, V3AIRSHIPNAME_COMMENT);
 		
 		//Animation settings
 		final String category2 = CATEGORY_VC + config.CATEGORY_SPLITTER + TextFormatting.AQUA + "Animation";
