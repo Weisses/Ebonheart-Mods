@@ -10,6 +10,10 @@ public final class InitItemsVCRender extends ItemsVC {
 	
 	public static void registerRenders()
 	{
+		registerRender(guidebook_main);
+		registerRender(guidebook_controls);
+		registerRender(guidebook_paint);
+		
 		registerRender(airship_balloon);
 		registerRender(airship_engine);
 		registerRender(airship_ignition);

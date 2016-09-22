@@ -44,11 +44,11 @@ public class ViesCraftConfig {
 	public static final String V2AIRSHIPSPEED_COMMENT = "How fast do airships move based on %? ";
 	
 	public static final int V3FUELBURNTIME_DEFAULT = 60;
-	public static final String V3FUELBURNTIME_NAME = "Fuel Burn Time - Viespelin";
+	public static final String V3FUELBURNTIME_NAME = "Fuel Burn Time - Viesepelin";
 	public static final String V3FUELBURNTIME_COMMENT = "How long does each piece of fuel last in seconds?";
 	
 	public static final int V3AIRSHIPSPEED_DEFAULT = 100;
-	public static final String V3AIRSHIPSPEED_NAME = "Airship Speed - Viespelin";
+	public static final String V3AIRSHIPSPEED_NAME = "Airship Speed - Viesepelin";
 	public static final String V3AIRSHIPSPEED_COMMENT = "How fast do airships move based on %? ";
 	
 	public static final boolean MODELTURNANGLE_DEFAULT = true;
@@ -63,8 +63,8 @@ public class ViesCraftConfig {
 	public static final String V2AIRSHIPNAME_NAME = "Airship Name - Viesigible";
 	public static final String V2AIRSHIPNAME_COMMENT = "Change the name of Viesigible Airships?";
 	
-	public static final String V3AIRSHIPNAME_DEFAULT = "Viespelin";
-	public static final String V3AIRSHIPNAME_NAME = "Airship Name - Viespelin";
+	public static final String V3AIRSHIPNAME_DEFAULT = "Viesepelin";
+	public static final String V3AIRSHIPNAME_NAME = "Airship Name - Viesepelin";
 	public static final String V3AIRSHIPNAME_COMMENT = "Change the name of Viespelin Airships?";
 	
 	//public static final String V4AIRSHIPNAME_DEFAULT = "Viesakron";

@@ -6,6 +6,10 @@ itemGroup.tabViesCraftItems=ViesCraft Items
 itemGroup.tabViesCraftAirships=ViesCraft Airships
 
 //-----Items-----
+item.vc:guidebook_main.name=The 'Vies' Craft, vol.1
+item.vc:guidebook_controls.name=Taking Control, vol.2
+item.vc:guidebook_paint.name=Flaming Paint?!, vol.3
+
 item.vc:airship_balloon.name=Airship Balloon
 item.vc:airship_engine.name=Airship Engine
 item.vc:airship_ignition.name=Airship Ignition

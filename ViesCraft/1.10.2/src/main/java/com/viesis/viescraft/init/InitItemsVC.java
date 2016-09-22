@@ -8,6 +8,9 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import com.viesis.viescraft.api.ItemsVC;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
+import com.viesis.viescraft.common.items.ItemGuidebookControls;
+import com.viesis.viescraft.common.items.ItemGuidebookMain;
+import com.viesis.viescraft.common.items.ItemGuidebookPaint;
 import com.viesis.viescraft.common.items.achievements.ItemAchievementAirborn;
 import com.viesis.viescraft.common.items.achievements.ItemAchievementCreate;
 import com.viesis.viescraft.common.items.achievements.ItemAchievementCreateColor;
@@ -80,6 +83,10 @@ public class InitItemsVC extends ItemsVC {
 	
 	public static void preInit()
 	{
+		guidebook_main = registerItem(new ItemGuidebookMain());
+		guidebook_controls = registerItem(new ItemGuidebookControls());
+		guidebook_paint = registerItem(new ItemGuidebookPaint());
+		
 		airship_balloon = registerItem(new ItemBalloon());
 		airship_engine = registerItem(new ItemEngine());
 		airship_ignition = registerItem(new ItemIgnition());

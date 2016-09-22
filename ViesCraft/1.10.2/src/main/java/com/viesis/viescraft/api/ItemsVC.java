@@ -4,6 +4,10 @@ import net.minecraft.item.Item;
 
 public class ItemsVC {
 	
+	public static Item guidebook_main;
+	public static Item guidebook_controls;
+	public static Item guidebook_paint;
+	
 	public static Item airship_balloon;
 	public static Item airship_ignition;
 	public static Item airship_engine;

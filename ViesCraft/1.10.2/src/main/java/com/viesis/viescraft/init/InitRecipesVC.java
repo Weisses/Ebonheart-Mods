@@ -9,10 +9,17 @@ public class InitRecipesVC {
 	
 	public static void initShapedRecipe()
 	{
+		GameRegistry.addShapedRecipe(new ItemStack(InitItemsVC.guidebook_main, 1), new Object[]{" F ", "FBF", " F ", 'B', Items.BOOK, 'F', Items.FEATHER});
+		GameRegistry.addShapelessRecipe(new ItemStack(InitItemsVC.guidebook_controls), new ItemStack(InitItemsVC.guidebook_main), new ItemStack(Items.FEATHER));
+		GameRegistry.addShapelessRecipe(new ItemStack(InitItemsVC.guidebook_paint), new ItemStack(InitItemsVC.guidebook_main), new ItemStack(Items.DYE, 1, 0));
+		
+		GameRegistry.addShapelessRecipe(new ItemStack(InitItemsVC.guidebook_main), new ItemStack(InitItemsVC.guidebook_controls));
+		GameRegistry.addShapelessRecipe(new ItemStack(InitItemsVC.guidebook_main), new ItemStack(InitItemsVC.guidebook_paint));
+		
 		GameRegistry.addShapedRecipe(new ItemStack(InitBlocksVC.airship_workbench, 1), new Object[]{"ICI", "GFG", "#L#", 'C', Blocks.CRAFTING_TABLE, 'I', Items.IRON_INGOT, 'G', Items.GOLD_INGOT, 'F', Items.FIRE_CHARGE, '#', Blocks.IRON_BLOCK, 'L', Blocks.LAPIS_BLOCK});
 		
 		//=================================================
-        
+        /**
     	//Airship parts
     	GameRegistry.addRecipe(new ItemStack(InitItemsVC.airship_balloon, 1), new Object[]{"RLR", "L#L", "RLR", 'L', Items.LEATHER, 'R', Items.RABBIT_HIDE, '#', Items.STRING});
     	GameRegistry.addRecipe(new ItemStack(InitItemsVC.airship_engine, 1), new Object[]{"IBI", "P#P", "IBI", 'P', Blocks.PISTON, 'I', Items.IRON_INGOT, 'B', Blocks.IRON_BARS, '#', Blocks.REDSTONE_BLOCK});
@@ -140,7 +147,7 @@ public class InitRecipesVC {
 		GameRegistry.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_normal), new ItemStack(InitItemsVC.item_airship_v2_white));
 		
 		//================================================
-		
+		*/
 		/**
 		
 		if(!EbonArtsConfiguration.toolRecipe)

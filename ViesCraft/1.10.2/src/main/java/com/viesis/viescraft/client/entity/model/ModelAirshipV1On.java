@@ -545,7 +545,6 @@ public class ModelAirshipV1On extends ModelBase {
 	}
 }
 
-	
 	/**
 	private float bladespin;
 	private long lastframe;
