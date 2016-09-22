@@ -17,3 +17,20 @@ public class EntitySmokeFX extends ParticleFlame {
     }
     
 }
+
+/**
+ * 
+ Radiates green flames from a central point.
+@SideOnly(Side.CLIENT)
+public class EntitySmokeFX extends ParticleFlame {
+    
+	public EntitySmokeFX(World parWorld,
+            double parX, double parY, double parZ,
+            double parMotionX, double parMotionY, double parMotionZ) 
+    {
+        super(parWorld, parX, parY, parZ, parMotionX, parMotionY, parMotionZ);
+        setRBGColorF(0, 15, 25);
+    }
+    
+}
+*/

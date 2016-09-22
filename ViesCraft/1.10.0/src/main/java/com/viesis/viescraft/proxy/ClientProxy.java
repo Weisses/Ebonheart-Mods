@@ -3,6 +3,7 @@ package com.viesis.viescraft.proxy;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.entity.Entity;
+import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -15,6 +16,7 @@ import com.viesis.viescraft.client.InitItemsVCRender;
 import com.viesis.viescraft.client.InitTileEntityVCRender;
 import com.viesis.viescraft.client.gui.v1.GuiV1HUD;
 import com.viesis.viescraft.client.gui.v2.GuiV2HUD;
+import com.viesis.viescraft.client.gui.v3.GuiV3HUD;
 import com.viesis.viescraft.client.particle.EntitySmokeFX;
 
 public class ClientProxy extends CommonProxy {
@@ -39,6 +41,7 @@ public class ClientProxy extends CommonProxy {
 		
 		MinecraftForge.EVENT_BUS.register(new GuiV1HUD());
 		MinecraftForge.EVENT_BUS.register(new GuiV2HUD());
+		MinecraftForge.EVENT_BUS.register(new GuiV3HUD());
 	}
 	
 	@Override
@@ -67,17 +70,17 @@ public class ClientProxy extends CommonProxy {
 	    Particle particleSprint = new EntitySmokeFX(
 	    	theEntity.worldObj, 
 	    	
-	    	theEntity.posX  
-	    	//(double)(MathHelper.sin(-theEntity.rotationYaw * 0.017453292F) * 0.005F)//+ theEntity.worldObj.rand.nextFloat() * theEntity.width * 2.0F - theEntity.width
+	    	theEntity.posX - //theEntity.rotationYaw
+	    	(double)(MathHelper.sin(-theEntity.rotationYaw * 0.017453292F) * 01.005F)//+ theEntity.worldObj.rand.nextFloat() * theEntity.width * 2.0F - theEntity.width
 	    	
 	    	, 
 	        
-	    	theEntity.posY //+ 0.5D + theEntity.worldObj.rand.nextFloat() * theEntity.height
+	    	theEntity.posY + 0.5D //+ 0.5D + theEntity.worldObj.rand.nextFloat() * theEntity.height
 	        
 	        , 
 	        
-	        theEntity.posZ  
-	    	//(double)(MathHelper.cos(theEntity.rotationYaw * 0.017453292F) * 0.005F) //+ theEntity.worldObj.rand.nextFloat() * theEntity.width * 2.0F - theEntity.width
+	        theEntity.posZ  -
+	    	(double)(MathHelper.cos(theEntity.rotationYaw * 0.017453292F) * 01.005F) //+ theEntity.worldObj.rand.nextFloat() * theEntity.width * 2.0F - theEntity.width
 	        
 	        , 
 	        

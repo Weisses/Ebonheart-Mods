@@ -17,6 +17,9 @@ public class MessageConfig extends MessageBase<MessageConfig> {
 		ViesCraftConfig.v2FuelBurnTime = buf.readInt();
 		ViesCraftConfig.v2AirshipSpeed = buf.readInt();
 		
+		ViesCraftConfig.v3FuelBurnTime = buf.readInt();
+		ViesCraftConfig.v3AirshipSpeed = buf.readInt();
+		
 	}
 	
 	@Override
@@ -26,6 +29,8 @@ public class MessageConfig extends MessageBase<MessageConfig> {
 		buf.writeInt(ViesCraftConfig.v1AirshipSpeed);
 		buf.writeInt(ViesCraftConfig.v2FuelBurnTime);
 		buf.writeInt(ViesCraftConfig.v2AirshipSpeed);
+		buf.writeInt(ViesCraftConfig.v3FuelBurnTime);
+		buf.writeInt(ViesCraftConfig.v3AirshipSpeed);
 		
 	}
 	

@@ -8,10 +8,13 @@ import net.minecraftforge.fml.common.network.IGuiHandler;
 import com.viesis.viescraft.client.gui.GuiTileEntityAirshipWorkbench;
 import com.viesis.viescraft.client.gui.v1.GuiEntityAirshipV1Core;
 import com.viesis.viescraft.client.gui.v2.GuiEntityAirshipV2Core;
+import com.viesis.viescraft.client.gui.v3.GuiEntityAirshipV3Core;
 import com.viesis.viescraft.common.entity.airshipcolors.ContainerAirshipV1Core;
 import com.viesis.viescraft.common.entity.airshipcolors.ContainerAirshipV2Core;
+import com.viesis.viescraft.common.entity.airshipcolors.ContainerAirshipV3Core;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV2Core;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV3Core;
 import com.viesis.viescraft.common.tileentity.ContainerAirshipWorkbench;
 import com.viesis.viescraft.common.tileentity.TileEntityAirshipWorkbench;
 
@@ -21,6 +24,7 @@ public class GuiHandler implements IGuiHandler {
 	public static final int GUI_AIRSHIP_V1_INVENTORY = 0;
 	public static final int GUI_AIRSHIP_WORKBENCH = 1;
 	public static final int GUI_AIRSHIP_V2_INVENTORY = 2;
+	public static final int GUI_AIRSHIP_V3_INVENTORY = 3;
 	
 	public GuiHandler() 
 	{
@@ -37,6 +41,10 @@ public class GuiHandler implements IGuiHandler {
 		if (ID == GUI_AIRSHIP_V2_INVENTORY)
 		{
 			return new ContainerAirshipV2Core(player.inventory, (EntityAirshipV2Core)player.getRidingEntity());
+		}
+		if (ID == GUI_AIRSHIP_V3_INVENTORY)
+		{
+			return new ContainerAirshipV3Core(player.inventory, (EntityAirshipV3Core)player.getRidingEntity());
 		}
 		if (ID == GUI_AIRSHIP_WORKBENCH)
 		{
@@ -56,6 +64,10 @@ public class GuiHandler implements IGuiHandler {
 		if (ID == GUI_AIRSHIP_V2_INVENTORY)
 		{
 			return new GuiEntityAirshipV2Core(player.inventory, (EntityAirshipV2Core)player.getRidingEntity());
+		}
+		if (ID == GUI_AIRSHIP_V3_INVENTORY)
+		{
+			return new GuiEntityAirshipV3Core(player.inventory, (EntityAirshipV3Core)player.getRidingEntity());
 		}
 		if (ID == GUI_AIRSHIP_WORKBENCH)
 		{

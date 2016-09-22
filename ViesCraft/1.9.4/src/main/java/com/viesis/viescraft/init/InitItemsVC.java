@@ -8,6 +8,9 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import com.viesis.viescraft.api.ItemsVC;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
+import com.viesis.viescraft.common.items.ItemGuidebookControls;
+import com.viesis.viescraft.common.items.ItemGuidebookMain;
+import com.viesis.viescraft.common.items.ItemGuidebookPaint;
 import com.viesis.viescraft.common.items.achievements.ItemAchievementAirborn;
 import com.viesis.viescraft.common.items.achievements.ItemAchievementCreate;
 import com.viesis.viescraft.common.items.achievements.ItemAchievementCreateColor;
@@ -51,6 +54,24 @@ import com.viesis.viescraft.common.items.airshipitems.v2.ItemAirshipV2Purple;
 import com.viesis.viescraft.common.items.airshipitems.v2.ItemAirshipV2Red;
 import com.viesis.viescraft.common.items.airshipitems.v2.ItemAirshipV2White;
 import com.viesis.viescraft.common.items.airshipitems.v2.ItemAirshipV2Yellow;
+import com.viesis.viescraft.common.items.airshipitems.v3.ItemAirshipV3Admin;
+import com.viesis.viescraft.common.items.airshipitems.v3.ItemAirshipV3Black;
+import com.viesis.viescraft.common.items.airshipitems.v3.ItemAirshipV3Blue;
+import com.viesis.viescraft.common.items.airshipitems.v3.ItemAirshipV3Brown;
+import com.viesis.viescraft.common.items.airshipitems.v3.ItemAirshipV3Cyan;
+import com.viesis.viescraft.common.items.airshipitems.v3.ItemAirshipV3Gray;
+import com.viesis.viescraft.common.items.airshipitems.v3.ItemAirshipV3Green;
+import com.viesis.viescraft.common.items.airshipitems.v3.ItemAirshipV3LightBlue;
+import com.viesis.viescraft.common.items.airshipitems.v3.ItemAirshipV3LightGray;
+import com.viesis.viescraft.common.items.airshipitems.v3.ItemAirshipV3Lime;
+import com.viesis.viescraft.common.items.airshipitems.v3.ItemAirshipV3Magenta;
+import com.viesis.viescraft.common.items.airshipitems.v3.ItemAirshipV3Normal;
+import com.viesis.viescraft.common.items.airshipitems.v3.ItemAirshipV3Orange;
+import com.viesis.viescraft.common.items.airshipitems.v3.ItemAirshipV3Pink;
+import com.viesis.viescraft.common.items.airshipitems.v3.ItemAirshipV3Purple;
+import com.viesis.viescraft.common.items.airshipitems.v3.ItemAirshipV3Red;
+import com.viesis.viescraft.common.items.airshipitems.v3.ItemAirshipV3White;
+import com.viesis.viescraft.common.items.airshipitems.v3.ItemAirshipV3Yellow;
 import com.viesis.viescraft.common.items.resources.ItemBalloon;
 import com.viesis.viescraft.common.items.resources.ItemEngine;
 import com.viesis.viescraft.common.items.resources.ItemIgnition;
@@ -62,6 +83,10 @@ public class InitItemsVC extends ItemsVC {
 	
 	public static void preInit()
 	{
+		guidebook_main = registerItem(new ItemGuidebookMain());
+		guidebook_controls = registerItem(new ItemGuidebookControls());
+		guidebook_paint = registerItem(new ItemGuidebookPaint());
+		
 		airship_balloon = registerItem(new ItemBalloon());
 		airship_engine = registerItem(new ItemEngine());
 		airship_ignition = registerItem(new ItemIgnition());
@@ -103,6 +128,25 @@ public class InitItemsVC extends ItemsVC {
 		item_airship_v2_white = registerItem(new ItemAirshipV2White());
 		item_airship_v2_yellow = registerItem(new ItemAirshipV2Yellow());
 		item_airship_v2_admin = registerItem(new ItemAirshipV2Admin());
+		
+		item_airship_v3_normal = registerItem(new ItemAirshipV3Normal());
+		item_airship_v3_black = registerItem(new ItemAirshipV3Black());
+		item_airship_v3_blue = registerItem(new ItemAirshipV3Blue());
+		item_airship_v3_brown = registerItem(new ItemAirshipV3Brown());
+		item_airship_v3_cyan = registerItem(new ItemAirshipV3Cyan());
+		item_airship_v3_gray = registerItem(new ItemAirshipV3Gray());
+		item_airship_v3_green = registerItem(new ItemAirshipV3Green());
+		item_airship_v3_lightblue = registerItem(new ItemAirshipV3LightBlue());
+		item_airship_v3_lightgray = registerItem(new ItemAirshipV3LightGray());
+		item_airship_v3_lime = registerItem(new ItemAirshipV3Lime());
+		item_airship_v3_magenta = registerItem(new ItemAirshipV3Magenta());
+		item_airship_v3_orange = registerItem(new ItemAirshipV3Orange());
+		item_airship_v3_pink = registerItem(new ItemAirshipV3Pink());
+		item_airship_v3_purple = registerItem(new ItemAirshipV3Purple());
+		item_airship_v3_red = registerItem(new ItemAirshipV3Red());
+		item_airship_v3_white = registerItem(new ItemAirshipV3White());
+		item_airship_v3_yellow = registerItem(new ItemAirshipV3Yellow());
+		item_airship_v3_admin = registerItem(new ItemAirshipV3Admin());
 		
 		item_paint_black = registerItem(new ItemPaint(EntityAirshipV1Core.Type.BLACK));
 		item_paint_blue = registerItem(new ItemPaint(EntityAirshipV1Core.Type.BLUE));

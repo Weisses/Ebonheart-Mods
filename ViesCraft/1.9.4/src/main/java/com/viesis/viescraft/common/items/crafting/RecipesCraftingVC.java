@@ -60,7 +60,7 @@ public class RecipesCraftingVC
         manager.addRecipe(new ItemStack(Blocks.PURPUR_STAIRS, 4, 0), new Object[] {"#  ", "## ", "###", '#', Blocks.PURPUR_BLOCK});
         manager.addRecipe(new ItemStack(Blocks.PURPUR_PILLAR, 1, 0), new Object[] {"#", "#", '#', Blocks.PURPUR_SLAB});
         manager.addRecipe(new ItemStack(Blocks.END_BRICKS, 4, 0), new Object[] {"##", "##", '#', Blocks.END_STONE});
-       // manager.addRecipe(new ItemStack(Blocks.field_189877_df, 1, 0), new Object[] {"##", "##", '#', Items.MAGMA_CREAM});
-       // manager.addRecipe(new ItemStack(Blocks.field_189878_dg, 1, 0), new Object[] {"###", "###", "###", '#', Items.NETHER_WART});
+        //manager.addRecipe(new ItemStack(Blocks.field_189877_df, 1, 0), new Object[] {"##", "##", '#', Items.MAGMA_CREAM});
+        //manager.addRecipe(new ItemStack(Blocks.field_189878_dg, 1, 0), new Object[] {"###", "###", "###", '#', Items.NETHER_WART});
     }
 }

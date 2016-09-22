@@ -10,6 +10,10 @@ public final class InitItemsVCRender extends ItemsVC {
 	
 	public static void registerRenders()
 	{
+		registerRender(guidebook_main);
+		registerRender(guidebook_controls);
+		registerRender(guidebook_paint);
+		
 		registerRender(airship_balloon);
 		registerRender(airship_engine);
 		registerRender(airship_ignition);
@@ -51,6 +55,25 @@ public final class InitItemsVCRender extends ItemsVC {
 		registerRender(item_airship_v2_white);
 		registerRender(item_airship_v2_yellow);
 		registerRender(item_airship_v2_admin);
+		
+		registerRender(item_airship_v3_normal);
+		registerRender(item_airship_v3_black);
+		registerRender(item_airship_v3_blue);
+		registerRender(item_airship_v3_brown);
+		registerRender(item_airship_v3_cyan);
+		registerRender(item_airship_v3_gray);
+		registerRender(item_airship_v3_green);
+		registerRender(item_airship_v3_lightblue);
+		registerRender(item_airship_v3_lightgray);
+		registerRender(item_airship_v3_lime);
+		registerRender(item_airship_v3_magenta);
+		registerRender(item_airship_v3_orange);
+		registerRender(item_airship_v3_pink);
+		registerRender(item_airship_v3_purple);
+		registerRender(item_airship_v3_red);
+		registerRender(item_airship_v3_white);
+		registerRender(item_airship_v3_yellow);
+		registerRender(item_airship_v3_admin);
 		
 		registerRender(item_paint_black);
 		registerRender(item_paint_blue);
