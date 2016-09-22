@@ -52,9 +52,9 @@ public class GuiGuidebookPaint extends GuiScreen {
         
         //Title
         stringPageText[0] = "\n\n\n\n\n\n\n"
-        		+ "    " + "§l§nFlaming Paint?!§r"
+        		+ "    " + "\u00A7l\u00A7nFlaming Paint?!\u00A7r"
         		+ "\n\n" 
-        		+ "         " + "§oby Viesis§r"
+        		+ "         " + "\u00A7oby Viesis\u00A7r"
         		+ "\n\n\n\n" 
         		+ "          " + Reference.MOD_VERSION.substring(0, 7);
         
@@ -74,131 +74,131 @@ public class GuiGuidebookPaint extends GuiScreen {
         
         stringPageText[2] = "Paint Recipes:"
         		+ "\n\n"
-        		+ "§l§nBlack Paint§r"
+        		+ "\u00A7l\u00A7nBlack Paint\u00A7r"
         		+ "\n\n\n\n\n\n\n\n\n"
-        		+ "§oIngredient:§r"
+        		+ "\u00A7oIngredient:\u00A7r"
         		+ "\n"
-        		+ "§o§lInk Sac§r";
+        		+ "\u00A7o\u00A7lInk Sac\u00A7r";
         
         stringPageText[3] = "Paint Recipes:"
         		+ "\n\n"
-        		+ "§l§nBlue Paint§r"
+        		+ "\u00A7l\u00A7nBlue Paint\u00A7r"
         		+ "\n\n\n\n\n\n\n\n\n"
-        		+ "§oIngredient:§r"
+        		+ "\u00A7oIngredient:\u00A7r"
         		+ "\n"
-        		+ "§o§lLapis Lazuli§r";
+        		+ "\u00A7o\u00A7lLapis Lazuli\u00A7r";
         
         stringPageText[4] = "Paint Recipes:"
         		+ "\n\n"
-        		+ "§l§nBrown Paint§r"
+        		+ "\u00A7l\u00A7nBrown Paint\u00A7r"
         		+ "\n\n\n\n\n\n\n\n\n"
-        		+ "§oIngredient:§r"
+        		+ "\u00A7oIngredient:\u00A7r"
         		+ "\n"
-        		+ "§o§lCocoa Beans§r";
+        		+ "\u00A7o\u00A7lCocoa Beans\u00A7r";
         
         stringPageText[5] = "Paint Recipes:"
         		+ "\n\n"
-        		+ "§l§nCyan Paint§r"
+        		+ "\u00A7l\u00A7nCyan Paint\u00A7r"
         		+ "\n\n\n\n\n\n\n\n\n"
-        		+ "§oIngredient:§r"
+        		+ "\u00A7oIngredient:\u00A7r"
         		+ "\n"
-        		+ "§o§lCyan Dye§r";
+        		+ "\u00A7o\u00A7lCyan Dye\u00A7r";
         
         stringPageText[6] = "Paint Recipes:"
         		+ "\n\n"
-        		+ "§l§nGray Paint§r"
+        		+ "\u00A7l\u00A7nGray Paint\u00A7r"
         		+ "\n\n\n\n\n\n\n\n\n"
-        		+ "§oIngredient:§r"
+        		+ "\u00A7oIngredient:\u00A7r"
         		+ "\n"
-        		+ "§o§lGray Dye§r";
+        		+ "\u00A7o\u00A7lGray Dye\u00A7r";
         
         stringPageText[7] = "Paint Recipes:"
         		+ "\n\n"
-        		+ "§l§nGreen Paint§r"
+        		+ "\u00A7l\u00A7nGreen Paint\u00A7r"
         		+ "\n\n\n\n\n\n\n\n\n"
-        		+ "§oIngredient:§r"
+        		+ "\u00A7oIngredient:\u00A7r"
         		+ "\n"
-        		+ "§o§lCactus Green§r";
+        		+ "\u00A7o\u00A7lCactus Green\u00A7r";
         
         stringPageText[8] = "Paint Recipes:"
         		+ "\n\n"
-        		+ "§l§nLight Blue Paint§r"
+        		+ "\u00A7l\u00A7nLight Blue Paint\u00A7r"
         		+ "\n\n\n\n\n\n\n\n\n"
-        		+ "§oIngredient:§r"
+        		+ "\u00A7oIngredient:\u00A7r"
         		+ "\n"
-        		+ "§o§lLight Blue Dye§r";
+        		+ "\u00A7o\u00A7lLight Blue Dye\u00A7r";
     	
         stringPageText[9] = "Paint Recipes:"
         		+ "\n\n"
-        		+ "§l§nLight Gray Paint§r"
+        		+ "\u00A7l\u00A7nLight Gray Paint\u00A7r"
         		+ "\n\n\n\n\n\n\n\n\n"
-        		+ "§oIngredient:§r"
+        		+ "\u00A7oIngredient:\u00A7r"
         		+ "\n"
-        		+ "§o§lLight Gray Dye§r";
+        		+ "\u00A7o\u00A7lLight Gray Dye\u00A7r";
         
         stringPageText[10] = "Paint Recipes:"
         		+ "\n\n"
-        		+ "§l§nLime Paint§r"
+        		+ "\u00A7l\u00A7nLime Paint\u00A7r"
         		+ "\n\n\n\n\n\n\n\n\n"
-        		+ "§oIngredient:§r"
+        		+ "\u00A7oIngredient:\u00A7r"
         		+ "\n"
-        		+ "§o§lLime Dye§r";
+        		+ "\u00A7o\u00A7lLime Dye\u00A7r";
     		
         stringPageText[11] = "Paint Recipes:"
         		+ "\n\n"
-        		+ "§l§nMagenta Paint§r"
+        		+ "\u00A7l\u00A7nMagenta Paint\u00A7r"
         		+ "\n\n\n\n\n\n\n\n\n"
-        		+ "§oIngredient:§r"
+        		+ "\u00A7oIngredient:\u00A7r"
         		+ "\n"
-        		+ "§o§lMagenta Dye§r";
+        		+ "\u00A7o\u00A7lMagenta Dye\u00A7r";
         
         stringPageText[12] = "Paint Recipes:"
         		+ "\n\n"
-        		+ "§l§nOrange Paint§r"
+        		+ "\u00A7l\u00A7nOrange Paint\u00A7r"
         		+ "\n\n\n\n\n\n\n\n\n"
-        		+ "§oIngredient:§r"
+        		+ "\u00A7oIngredient:\u00A7r"
         		+ "\n"
-        		+ "§o§lOrange Dye§r";
+        		+ "\u00A7o\u00A7lOrange Dye\u00A7r";
         
         stringPageText[13] = "Paint Recipes:"
         		+ "\n\n"
-        		+ "§l§nPink Paint§r"
+        		+ "\u00A7l\u00A7nPink Paint\u00A7r"
         		+ "\n\n\n\n\n\n\n\n\n"
-        		+ "§oIngredient:§r"
+        		+ "\u00A7oIngredient:\u00A7r"
         		+ "\n"
-        		+ "§o§lPink Dye§r";
+        		+ "\u00A7o\u00A7lPink Dye\u00A7r";
         
         stringPageText[14] = "Paint Recipes:"
         		+ "\n\n"
-        		+ "§l§nPurple Paint§r"
+        		+ "\u00A7l\u00A7nPurple Paint\u00A7r"
         		+ "\n\n\n\n\n\n\n\n\n"
-        		+ "§oIngredient:§r"
+        		+ "\u00A7oIngredient:\u00A7r"
         		+ "\n"
-        		+ "§o§lPurple Dye§r";
+        		+ "\u00A7o\u00A7lPurple Dye\u00A7r";
         
         stringPageText[15] = "Paint Recipes:"
         		+ "\n\n"
-        		+ "§l§nRed Paint§r"
+        		+ "\u00A7l\u00A7nRed Paint\u00A7r"
         		+ "\n\n\n\n\n\n\n\n\n"
-        		+ "§oIngredient:§r"
+        		+ "\u00A7oIngredient:\u00A7r"
         		+ "\n"
-        		+ "§o§lRose Red§r";
+        		+ "\u00A7o\u00A7lRose Red\u00A7r";
         
         stringPageText[16] = "Paint Recipes:"
         		+ "\n\n"
-        		+ "§l§nWhite Paint§r"
+        		+ "\u00A7l\u00A7nWhite Paint\u00A7r"
         		+ "\n\n\n\n\n\n\n\n\n"
-        		+ "§oIngredient:§r"
+        		+ "\u00A7oIngredient:\u00A7r"
         		+ "\n"
-        		+ "§o§lBone Meal§r";
+        		+ "\u00A7o\u00A7lBone Meal\u00A7r";
         
         stringPageText[17] = "Paint Recipes:"
         		+ "\n\n"
-        		+ "§l§nYellow Paint§r"
+        		+ "\u00A7l\u00A7nYellow Paint\u00A7r"
         		+ "\n\n\n\n\n\n\n\n\n"
-        		+ "§oIngredient:§r"
+        		+ "\u00A7oIngredient:\u00A7r"
         		+ "\n"
-        		+ "§o§lDandelion Yellow§r";
+        		+ "\u00A7o\u00A7lDandelion Yellow\u00A7r";
  }
 
     /**

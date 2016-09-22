@@ -49,9 +49,9 @@ public class GuiGuidebookControls extends GuiScreen {
         //Title
         
         stringPageText[0] = "\n\n\n\n\n\n\n"
-        		+ "    " + "§l§nTaking Control§r"
+        		+ "    " + "\u00A7l\u00A7nTaking Control\u00A7r"
         		+ "\n\n" 
-        		+ "         " + "§oby Viesis§r"
+        		+ "         " + "\u00A7oby Viesis\u00A7r"
         		+ "\n\n\n\n" 
         		+ "          " + Reference.MOD_VERSION.substring(0, 7);
         
@@ -65,8 +65,8 @@ public class GuiGuidebookControls extends GuiScreen {
         
         stringPageText[2] = "\n"
         		+ "   With an airship in "
-        		+ "hand, hold §5[Shift] §0+ "
-        		+ "§5[Right Click] §0to throw it. "
+        		+ "hand, hold \u00A75[Shift] \u00A70+ "
+        		+ "\u00A75[Right Click] \u00A70to throw it. "
         		+ "Upon impact, it will "
         		+ "explode and spawn "
         		+ "your airship."
@@ -83,19 +83,19 @@ public class GuiGuidebookControls extends GuiScreen {
         
         stringPageText[4] = "\n"
         		+ "   Once your airship is "
-        		+ "out, §5[Right Click] §0on it "
+        		+ "out, \u00A75[Right Click] \u00A70on it "
         		+ "to begin riding. While in "
         		+ "the airship, press the "
-        		+ "§5["
+        		+ "\u00A75["
         		+ Keybinds.vcInventory.getDisplayName()
-        		+ " Key] §0to open the "
+        		+ " Key] \u00A70to open the "
         		+ "airship's GUI."
         		+ "\n\n\n\n\n"
         		+ "Only the driver can use the GUI.";
         
         stringPageText[5] = "   While in the GUI, you "
         		+ "can use the airship's "
-        		+ "§69 slot inventory §0to "
+        		+ "\u00A769 slot inventory \u00A70to "
         		+ "store items or place "
         		+ "fuel in the fuel slot to "
         		+ "power the airship.";
@@ -111,19 +111,19 @@ public class GuiGuidebookControls extends GuiScreen {
         stringPageText[7] = "Each piece of fuel will "
         		+ "burn for: "
         		+ "\n\n"
-        		+ "§0" + ViesCraftConfig.v1AirshipName + "-§6"
+        		+ "\u00A70" + ViesCraftConfig.v1AirshipName + "-\u00A76"
         		+ ViesCraftConfig.v1FuelBurnTime + " secs \n"
-        		+ "§0" + ViesCraftConfig.v2AirshipName + "-§6"
+        		+ "\u00A70" + ViesCraftConfig.v2AirshipName + "-\u00A76"
         		+ ViesCraftConfig.v2FuelBurnTime + " secs \n"
-        		+ "§0" + ViesCraftConfig.v3AirshipName + "-§6"
+        		+ "\u00A70" + ViesCraftConfig.v3AirshipName + "-\u00A76"
         		+ ViesCraftConfig.v3FuelBurnTime + " secs \n"
-        		+ "§0\n\n\n\n\n"
+        		+ "\u00A70\n\n\n\n\n"
         		+ "These times reflect the current config.";
         
         stringPageText[8] = "\n\n\n\n\n"
         		+ "   All of my airship "
-        		+ "designs have a §69 slot "
-        		+ "inventory §0for storing "
+        		+ "designs have a \u00A769 slot "
+        		+ "inventory \u00A70for storing "
         		+ "items. If any airship is "
         		+ "destroyed in any way, "
         		+ "the contents of the "
@@ -134,12 +134,12 @@ public class GuiGuidebookControls extends GuiScreen {
         		+ "Use the following keys "
         		+ "to pilot airships: "
         		+ "\n\n"
-        		+ "§5[" + Keybinds.vcForward.getDisplayName() + "] §0= Forward \n"
-        		+ "§5[" + Keybinds.vcBack.getDisplayName() + "] §0= Back \n"
-        		+ "§5[" + Keybinds.vcLeft.getDisplayName() + "] §0= Left \n"
-        		+ "§5[" + Keybinds.vcRight.getDisplayName() + "] §0= Right \n"
-        		+ "§5[" + Keybinds.vcUp.getDisplayName() + "] §0= Ascend \n"
-        		+ "§5[" + Keybinds.vcDown.getDisplayName() + "] §0= Descend "
+        		+ "\u00A75[" + Keybinds.vcForward.getDisplayName() + "] \u00A70= Forward \n"
+        		+ "\u00A75[" + Keybinds.vcBack.getDisplayName() + "] \u00A70= Back \n"
+        		+ "\u00A75[" + Keybinds.vcLeft.getDisplayName() + "] \u00A70= Left \n"
+        		+ "\u00A75[" + Keybinds.vcRight.getDisplayName() + "] \u00A70= Right \n"
+        		+ "\u00A75[" + Keybinds.vcUp.getDisplayName() + "] \u00A70= Ascend \n"
+        		+ "\u00A75[" + Keybinds.vcDown.getDisplayName() + "] \u00A70= Descend "
         		
         		;
         

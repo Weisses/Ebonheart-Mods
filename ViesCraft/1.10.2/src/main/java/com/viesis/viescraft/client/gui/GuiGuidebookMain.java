@@ -47,20 +47,20 @@ public class GuiGuidebookMain extends GuiScreen {
         
         //Title
         stringPageText[0] = "\n\n\n\n\n\n\n"
-        		+ "   " + "§l§nThe \'Vies\' Craft"
-        		+ "§r\n\n" 
-        		+ "         " + "§oby Viesis"
-        		+ "§r\n\n\n\n" 
+        		+ "   " + "\u00A7l\u00A7nThe \'Vies\' Craft\u00A7r"
+        		+ "\n\n" 
+        		+ "         " + "\u00A7oby Viesis\u00A7r"
+        		+ "\n\n\n\n" 
         		+ "          " + Reference.MOD_VERSION.substring(0, 7);
         
         stringPageText[1] = "   Nem said it couldn't "
         		+ "be done! Players can "
         		+ "only fly via the power "
-        		+ "of \"§ocreative§r\" he said. "
+        		+ "of \"\u00A7ocreative\u00A7r\" he said. "
         		+ "Well today I prove him "
         		+ "wrong! "
         		+ "\n\n\n"
-        		+ "   These \"§oairships§r\" will "
+        		+ "   These \"\u00A7oairships\u00A7r\" will "
         		+ "forever change how "
         		+ "we explore our world. "
         		+ "I now share my wisdom "
@@ -68,45 +68,45 @@ public class GuiGuidebookMain extends GuiScreen {
         
         stringPageText[2] = "Block Recipes:"
         		+ "\n\n"
-        		+ "§l§nAirship Workbench§r§0"
+        		+ "\u00A7l\u00A7nAirship Workbench\u00A7r\u00A70"
         		+ "\n\n\n\n\n\n\n\n\n"
-        		+ "§oA§r §l§nmust§r §ohave! Used in §r"
-        		+ "§omaking all recipes.§r";
+        		+ "\u00A7oA\u00A7r \u00A7l\u00A7nmust\u00A7r \u00A7ohave! Used in \u00A7r"
+        		+ "\u00A7omaking all recipes.\u00A7r";
         
         stringPageText[3] = "Part Recipes:"
         		+ "\n\n"
-        		+ "§l§nAirship Balloon§0§r§0"
+        		+ "\u00A7l\u00A7nAirship Balloon\u00A70\u00A7r\u00A70"
         		+ "\n\n\n\n\n\n\n\n\n"
-        		+ "§oMade out of leather and hide, built to last.§r";
+        		+ "\u00A7oMade out of leather and hide, built to last.\u00A7r";
         
         stringPageText[4] = "Part Recipes:"
         		+ "\n\n"
-        		+ "§l§nAirship Engine§0§r§0"
+        		+ "\u00A7l\u00A7nAirship Engine\u00A70\u00A7r\u00A70"
         		+ "\n\n\n\n\n\n\n\n\n"
-        		+ "§oGenerates power so you don't have to.§r";
+        		+ "\u00A7oGenerates power so you don't have to.\u00A7r";
         
         stringPageText[5] = "Part Recipes:"
         		+ "\n\n"
-        		+ "§l§nAirship Ignition§0§r§0"
+        		+ "\u00A7l\u00A7nAirship Ignition\u00A70\u00A7r\u00A70"
         		+ "\n\n\n\n\n\n\n\n\n"
-        		+ "§oThe \"heart\" of the airship.§r";
+        		+ "\u00A7oThe \"heart\" of the airship.\u00A7r";
         
         stringPageText[6] = "   Now that you have "
         		+ "the parts, let's get "
-        		+ "§obuilding§r! There are §l3§r "
+        		+ "\u00A7obuilding\u00A7r! There are \u00A7l3\u00A7r "
         		+ "airship styles: "
         		+ "\n\n"
-        		+ "The §5§l§o"
+        		+ "The \u00A75\u00A7l\u00A7o"
         		+ ViesCraftConfig.v1AirshipName
-        		+ "§r§0. "
+        		+ "\u00A7r\u00A70. "
         		+ "\n"
-        		+ "The §5§l§o"
+        		+ "The \u00A75\u00A7l\u00A7o"
         		+ ViesCraftConfig.v2AirshipName
-        		+ "§r§0. "
+        		+ "\u00A7r\u00A70. "
         		+ "\n"
-        		+ "The §5§l§o"
+        		+ "The \u00A75\u00A7l\u00A7o"
         		+ ViesCraftConfig.v3AirshipName
-        		+ "§r§0. "
+        		+ "\u00A7r\u00A70. "
         		+ "\n\n"
         		+ "\n\n"
         		+ "Names can be changed via the config. "
@@ -114,41 +114,41 @@ public class GuiGuidebookMain extends GuiScreen {
         
         stringPageText[7] = "Airship Recipes:"
         		+ "\n\n"
-        		+ "§l§n"
+        		+ "\u00A7l\u00A7n"
         		+ ViesCraftConfig.v1AirshipName
-        		+ "§r§0"
+        		+ "\u00A7r\u00A70"
         		+ "\n\n\n\n\n\n\n\n\n"
-        		+ "§oClassic airship. Some things can't be beat.§r";
+        		+ "\u00A7oClassic airship. Some things can't be beat.\u00A7r";
         
         stringPageText[8] = "Airship Recipes:"
         		+ "\n\n"
-        		+ "§l§n"
+        		+ "\u00A7l\u00A7n"
         		+ ViesCraftConfig.v2AirshipName
-        		+ "§r§0"
+        		+ "\u00A7r\u00A70"
         		+ "\n\n\n\n\n\n\n\n\n"
-        		+ "§oA unique twist on the airship design.§r";
+        		+ "\u00A7oA unique twist on the airship design.\u00A7r";
     	
         stringPageText[9] = "Airship Recipes:"
         		+ "\n\n"
-        		+ "§l§n"
+        		+ "\u00A7l\u00A7n"
         		+ ViesCraftConfig.v3AirshipName
-        		+ "§r§0"
+        		+ "\u00A7r\u00A70"
         		+ "\n\n\n\n\n\n\n\n\n"
-        		+ "§oAn airship built for the tech enthusiast.§r";
+        		+ "\u00A7oAn airship built for the tech enthusiast.\u00A7r";
         
         stringPageText[10] = "Further Reading:"
         		+ "\n\n"
-        		+ "§l§nTaking Control§r§0"
-        		+ "\n               §l§nvol.2§r"
+        		+ "\u00A7l\u00A7nTaking Control\u00A7r\u00A70"
+        		+ "\n               \u00A7l\u00A7nvol.2\u00A7r"
         		+ "\n\n\n\n\n\n\n\n"
-        		+ "§oPiloting airships like a pro.§r";
+        		+ "\u00A7oPiloting airships like a pro.\u00A7r";
     		
         stringPageText[11] = "Further Reading:"
         		+ "\n\n"
-        		+ "§l§nFlaming Paint?!§r§0"
-        		+ "\n               §l§nvol.3§r"
+        		+ "\u00A7l\u00A7nFlaming Paint?!\u00A7r\u00A70"
+        		+ "\n               \u00A7l\u00A7nvol.3\u00A7r"
         		+ "\n\n\n\n\n\n\n\n"
-        		+ "§oIns and outs of airship-safe paint.§r";
+        		+ "\u00A7oIns and outs of airship-safe paint.\u00A7r";
  }
 
     /**
