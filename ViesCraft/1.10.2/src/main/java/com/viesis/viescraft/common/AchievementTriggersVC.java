@@ -40,7 +40,9 @@ public class AchievementTriggersVC extends InitAchievementsVC {
 			event.player.addStat(airship_create_ignition);
 		}
 		
-		if(event.crafting.getItem() == InitItemsVC.item_airship_normal) 
+		if(event.crafting.getItem() == InitItemsVC.item_airship_normal
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_normal
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_normal) 
 		{
 			event.player.addStat(airship_create);
 		}
@@ -60,7 +62,41 @@ public class AchievementTriggersVC extends InitAchievementsVC {
 		|| event.crafting.getItem() == InitItemsVC.item_airship_purple
 		|| event.crafting.getItem() == InitItemsVC.item_airship_red
 		|| event.crafting.getItem() == InitItemsVC.item_airship_white
-		|| event.crafting.getItem() == InitItemsVC.item_airship_yellow) 
+		|| event.crafting.getItem() == InitItemsVC.item_airship_yellow
+		
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_black
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_blue
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_brown
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_cyan
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_gray
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_green
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_lightblue
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_lightgray
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_lime
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_magenta
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_orange
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_pink
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_purple
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_red
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_white
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_yellow
+		
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_black
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_blue
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_brown
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_cyan
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_gray
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_green
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_lightblue
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_lightgray
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_lime
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_magenta
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_orange
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_pink
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_purple
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_red
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_white
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_yellow) 
 		{
 			event.player.addStat(airship_create_color);
 		}
