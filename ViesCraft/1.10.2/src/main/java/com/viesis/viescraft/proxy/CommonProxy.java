@@ -12,6 +12,7 @@ import com.viesis.viescraft.client.gui.v1.GuiV1HUD;
 import com.viesis.viescraft.common.AchievementTriggersVC;
 import com.viesis.viescraft.common.utils.events.EventHandlerAchievement;
 import com.viesis.viescraft.common.utils.events.EventHandlerConfig;
+import com.viesis.viescraft.common.utils.events.EventHandlerCreativeNoFuel;
 import com.viesis.viescraft.init.InitAchievementsVC;
 import com.viesis.viescraft.init.InitBlocksVC;
 import com.viesis.viescraft.init.InitEntityVC;
@@ -43,6 +44,7 @@ public class CommonProxy {
 		MinecraftForge.EVENT_BUS.register(new AchievementTriggersVC());
 		MinecraftForge.EVENT_BUS.register(new EventHandlerAchievement());
 		MinecraftForge.EVENT_BUS.register(new EventHandlerConfig());
+		MinecraftForge.EVENT_BUS.register(new EventHandlerCreativeNoFuel());
 		
 		NetworkRegistry.INSTANCE.registerGuiHandler(Reference.MOD_ID, new GuiHandler());
 	}

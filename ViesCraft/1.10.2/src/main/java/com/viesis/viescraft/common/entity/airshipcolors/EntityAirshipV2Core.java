@@ -45,6 +45,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.google.common.collect.Lists;
 import com.viesis.viescraft.api.util.Keybinds;
+import com.viesis.viescraft.common.utils.events.EventHandlerCreativeNoFuel;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 import com.viesis.viescraft.init.InitItemsVC;
 import com.viesis.viescraft.network.NetworkHandler;
@@ -232,18 +233,16 @@ public class EntityAirshipV2Core extends EntityVC implements IInventory//, ITick
         super.onUpdate();
         this.tickFall();
         
-        //this.airshipSpeed();
         this.fuelFlight();
-        //NetworkHandler.sendToServer(new MessageConfig());
         
         if (this.canPassengerSteer())
         {
         	this.updateMotion();
         	this.controlAirship();
+        	
         	if (this.worldObj.isRemote)
             {
         		this.updateInputs();
-        		
         		this.controlAirshipGui();
             }
         	
@@ -308,15 +307,6 @@ public class EntityAirshipV2Core extends EntityVC implements IInventory//, ITick
     //==================================//
     // TODO    Speed and Motion         //
 	//==================================//
-    
-    //public void airshipSpeed()
-    //{
-    //	AirshipSpeedTurn = 0.18F * (ViesCraftConfig.airshipSpeed / 100);
-    //    AirshipSpeedForward = 0.0125F * (ViesCraftConfig.airshipSpeed / 100);
-    //    AirshipSpeedUp = 0.0035F * (ViesCraftConfig.airshipSpeed / 100);
-    //    AirshipSpeedDown = 0.0035F * (ViesCraftConfig.airshipSpeed / 100);
-    //    
-    //}
     
     /**
      * Update the boat's speed, based on momentum.
@@ -392,17 +382,19 @@ public class EntityAirshipV2Core extends EntityVC implements IInventory//, ITick
             this.motionZ *= (double)this.momentum;
             this.deltaRotation *= this.momentum;
             
-            if(this.getControllingPassenger() == null
-            		|| !isClientAirshipBurning())
-        	{
-            	this.motionY += d5;
-        	}
             
+            if(this.getControllingPassenger() == null)
+            {
+            	this.motionY += d5;
+            }
+            else if(isClientAirshipBurning())
+        	{
+            	this.motionY *= (double)this.momentum;
+        	}
             else
             {
-            	this.motionY *= (double)this.momentum;//+= d1;
+            	this.motionY += d5;
             }
-            
         }
     }
     
@@ -442,7 +434,6 @@ public class EntityAirshipV2Core extends EntityVC implements IInventory//, ITick
             if (this.rightInputDown != this.leftInputDown && !this.forwardInputDown && !this.backInputDown)
             {
                 f += 0.005F;
-                
             }
 
             this.rotationYaw += this.deltaRotation;
@@ -471,10 +462,12 @@ public class EntityAirshipV2Core extends EntityVC implements IInventory//, ITick
             	}
             }
             
-            if (this.upInputDown 
-            	&& isClientAirshipBurning())
+            if (this.upInputDown)
             {
-            	f1 += AirshipSpeedUp;
+            	if(isClientAirshipBurning())
+            	{
+            		f1 += AirshipSpeedUp;
+            	}
             }
             
             if (this.downInputDown)
@@ -988,14 +981,37 @@ public class EntityAirshipV2Core extends EntityVC implements IInventory//, ITick
 	// TODO     Fuel Consumption        //
 	//==================================//
     
-    public void fuelFlight()
+	public void fuelFlight()
     {
     	boolean flag = this.isClientAirshipBurning();
         boolean flag1 = false;
         
         if (this.isClientAirshipBurning())
         {
-            --this.airshipBurnTime;
+        	if(this.getControllingPassenger() == null)
+        	{
+        		--this.airshipBurnTime;
+        	}
+        	else if(EventHandlerCreativeNoFuel.creativeBurn)
+        	{
+        		
+        	}
+        	else
+        	{
+        		--this.airshipBurnTime;
+        	}
+        }
+        
+        if (!this.isClientAirshipBurning())
+        {
+        	if(this.getControllingPassenger() == null)
+        	{
+        		this.airshipBurnTime = 0;
+        	}
+        	else if(EventHandlerCreativeNoFuel.creativeBurn)
+        	{
+        		this.airshipBurnTime = 1;
+        	}
         }
         
         if (this.isClientAirshipBurning() || this.inventory[9] != null)
@@ -1020,28 +1036,8 @@ public class EntityAirshipV2Core extends EntityVC implements IInventory//, ITick
                     }
                 }
             }
-            
-            if (this.isClientAirshipBurning())
-            {
-                ++this.fuelTime;
-                
-                if (this.fuelTime == this.totalFuelTime)
-                {
-                    this.fuelTime = 0;
-                    this.totalFuelTime = this.getFuelTime(this.inventory[9]);
-                    //this.smeltItem();
-                    flag1 = true;
-                }
-            }
-            else
-            {
-                this.fuelTime = 0;
-            }
         }
-        else if (!this.isClientAirshipBurning() && this.fuelTime > 0)
-        {
-            this.fuelTime = MathHelper.clamp_int(this.fuelTime - 2, 0, this.totalFuelTime);
-        }
+        
         
         if (flag != this.isClientAirshipBurning())
         {
@@ -1111,8 +1107,8 @@ public class EntityAirshipV2Core extends EntityVC implements IInventory//, ITick
     public static boolean isAirshipBeingDriven(IInventory inventory)
     {
     	return inventory.getField(5) == 5;
-        //return inventory.getField(0) > 0;
     }
+    
     
     
     //==================================//
