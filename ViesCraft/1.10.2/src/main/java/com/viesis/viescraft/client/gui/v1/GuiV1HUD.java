@@ -13,6 +13,7 @@ import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import com.viesis.viescraft.api.Reference;
+import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 
@@ -25,11 +26,11 @@ public class GuiV1HUD extends Gui {
 	private final int hudWidth;
 	private final int hudHeight;
 	private final int fieldWidth;
-	private int itemFuelStack;
+	//private int itemFuelStack;
 	private boolean isAirshipV1;
 	
 	private EntityAirshipV1Core airshipV1;
-	private ItemStack itemFuel;
+	//private ItemStack itemFuel;
 	
 	public GuiV1HUD()
 	{
@@ -45,26 +46,26 @@ public class GuiV1HUD extends Gui {
 	@SubscribeEvent(priority=EventPriority.NORMAL)
 	public void onRenderExperienceBar(RenderGameOverlayEvent.Post event) 
 	{
-		isAirshipV1 = mc.thePlayer.getRidingEntity() instanceof EntityAirshipV1Core;
+		this.isAirshipV1 = mc.thePlayer.getRidingEntity() instanceof EntityAirshipV1Core;
 		
-		if (event.getType() != ElementType.EXPERIENCE) 
-		{
-			return;
-		}
+		//if (event.getType() != ElementType.EXPERIENCE) 
+		//{
+		//	return;
+		//}
 		
-		if(isAirshipV1)
+		if(this.isAirshipV1)
 	    {
-			airshipV1 = (EntityAirshipV1Core) Minecraft.getMinecraft().thePlayer.getRidingEntity();
-			itemFuel = this.airshipV1.getStackInSlot(9);
+			this.airshipV1 = (EntityAirshipV1Core) Minecraft.getMinecraft().thePlayer.getRidingEntity();
+			//itemFuel = this.airshipV1.getStackInSlot(0);
 			
-			if(itemFuel != null)
-			{
-				this.itemFuelStack = itemFuel.stackSize * (ViesCraftConfig.v1FuelBurnTime);
-			}
-			else
-			{
-				this.itemFuelStack = 0;
-			}
+			//if(itemFuel != null)
+			//{
+			//	this.itemFuelStack = itemFuel.stackSize * (ViesCraftConfig.v1FuelBurnTime);
+			//}
+			//else
+			//{
+			//	this.itemFuelStack = 0;
+			//}
 			
 			GlStateManager.enableRescaleNormal();
             GlStateManager.enableBlend();
@@ -101,17 +102,20 @@ public class GuiV1HUD extends Gui {
 			
 			//BIG % BAR
 			// You can keep drawing without changing anything
-			int fuelbarwidth2 = (int)(((float) (this.itemFuelStack * 20) / ((ViesCraftConfig.v1FuelBurnTime * 20) * 64)) * 178);
+			int fuelbarwidth2 = (int)(((float) 
+					//(this.itemFuelStack * 20)
+					(this.airshipV1.getItemFuelStackPowered() * 20)
+					/ ((ViesCraftConfig.v1FuelBurnTime * 20) * 64)) * 178);
 			drawTexturedModalRect(hudX + 2, hudY + 14, 2, 69, fuelbarwidth2, 6);
 			
 			//Airship lights on
-			if(airshipV1.airshipBurnTime >= 1)
+			if(this.airshipV1.airshipBurnTime >= 1)
 			{
 				drawTexturedModalRect(hudX + 16, hudY, 16, 44, 150, 7);
 			}
 			
 			//Calculation from ticks to seconds.
-            int timer = (((airshipV1.airshipBurnTime + 18) ) / 20) + itemFuelStack ;
+            int timer = (((this.airshipV1.airshipBurnTime + 18) ) / 20) + this.airshipV1.getItemFuelStackPowered() ;
 			int remainder = (timer % 3600);
 			int minutes = remainder / 60;
 			int seconds = remainder % 60;

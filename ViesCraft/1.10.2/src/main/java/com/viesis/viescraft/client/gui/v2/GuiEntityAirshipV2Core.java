@@ -11,10 +11,10 @@ import net.minecraft.util.ResourceLocation;
 import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.api.util.Keybinds;
 import com.viesis.viescraft.api.util.LogHelper;
-import com.viesis.viescraft.common.entity.airshipcolors.ContainerAirshipV1Core;
 import com.viesis.viescraft.common.entity.airshipcolors.ContainerAirshipV2Core;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV2Core;
+import com.viesis.viescraft.common.entity.airshipcolors.containers.ContainerAirshipV1Default;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 
 public class GuiEntityAirshipV2Core extends GuiContainer {

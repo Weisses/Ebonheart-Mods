@@ -12,6 +12,11 @@ public class ItemsVC {
 	public static Item airship_ignition;
 	public static Item airship_engine;
 	
+	public static Item module_inventory_small;
+	public static Item module_inventory_large;
+	public static Item module_fuel_efficiency;
+	public static Item module_fuel_infinite;
+	
 	public static Item item_airship_normal;
 	public static Item item_airship_black;
 	public static Item item_airship_blue;

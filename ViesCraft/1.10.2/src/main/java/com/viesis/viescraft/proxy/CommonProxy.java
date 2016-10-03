@@ -8,7 +8,6 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 import com.viesis.viescraft.api.Reference;
-import com.viesis.viescraft.client.gui.v1.GuiV1HUD;
 import com.viesis.viescraft.common.AchievementTriggersVC;
 import com.viesis.viescraft.common.utils.events.EventHandlerAchievement;
 import com.viesis.viescraft.common.utils.events.EventHandlerConfig;

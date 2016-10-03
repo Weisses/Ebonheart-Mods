@@ -6,7 +6,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedOutEvent;
 
-import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.network.NetworkHandler;
 import com.viesis.viescraft.network.client.MessageConfig;
 
@@ -23,6 +22,8 @@ public class EventHandlerConfig {
 		if(!event.player.worldObj.isRemote)
 		{
 			NetworkHandler.sendToClient(new MessageConfig(), (EntityPlayerMP)event.player);
+			
+			//NetworkHandler.sendToClient(new MessageTest(), (EntityPlayerMP)event.player);
 			
 			//LogHelper.info("Sent config to '" + event.player.getDisplayName() + ".'");
 		}

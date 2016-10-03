@@ -18,6 +18,11 @@ public final class InitItemsVCRender extends ItemsVC {
 		registerRender(airship_engine);
 		registerRender(airship_ignition);
 		
+		registerRender(module_inventory_small);
+		registerRender(module_inventory_large);
+		registerRender(module_fuel_efficiency);
+		registerRender(module_fuel_infinite);
+		
 		registerRender(item_airship_normal);
 		registerRender(item_airship_black);
 		registerRender(item_airship_blue);

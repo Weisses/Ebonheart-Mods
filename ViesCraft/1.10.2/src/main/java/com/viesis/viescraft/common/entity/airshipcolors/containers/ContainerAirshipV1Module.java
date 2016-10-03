@@ -1,5 +1,6 @@
-package com.viesis.viescraft.common.entity.airshipcolors;
+package com.viesis.viescraft.common.entity.airshipcolors.containers;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IContainerListener;
@@ -9,14 +10,24 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ContainerAirshipV1Core extends Container {
+import com.viesis.viescraft.api.util.LogHelper;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
+import com.viesis.viescraft.common.entity.airshipcolors.slots.FuelSlotVC;
+import com.viesis.viescraft.common.entity.airshipcolors.slots.InventorySlotVC;
+import com.viesis.viescraft.common.entity.airshipcolors.slots.ModuleSlotVC;
+import com.viesis.viescraft.network.NetworkHandler;
+import com.viesis.viescraft.network.server.MessageGuiV1Default;
+
+public class ContainerAirshipV1Module extends Container {
 
 	private EntityAirshipV1Core airship;
 	
-	private int fuelTime;
-    private int totalFuelTime;
-    private int airshipBurnTime;
-    private int currentItemBurnTime;
+	//private int fuelTime;
+    //private int totalFuelTime;
+    //private int airshipBurnTime;
+    //private int currentItemBurnTime;
+    
+    //private int isModuleInventorySmall;
 	
 	/*
 	 * SLOTS:
@@ -25,18 +36,42 @@ public class ContainerAirshipV1Core extends Container {
 	 * Player Inventory 9-35 .. 9  - 35
 	 * Player Inventory 0-8 ... 36 - 44
 	 */
-	public ContainerAirshipV1Core(IInventory playerInv, EntityAirshipV1Core airship) 
+	public ContainerAirshipV1Module(IInventory playerInv, EntityAirshipV1Core airship) 
 	{
 		this.airship = airship;
+
+		// Fuel Slot, Slot 0, Slot ID 0
+		//for (int y = 0; y < 1; ++y) 
+		//{
+		//	for (int x = 0; x < 1; ++x) 
+		//	{
+		//		this.addSlotToContainer(new FuelSlotVC(airship, 0, 152, 27));
+		//	}
+		//}
 		
-		// Airship Inventory, Slot 0-8, Slot IDs 0-8
-		for (int y = 0; y < 3; ++y) 
+		// Expansion Module, Slot 1, Slot ID 1
+		for (int y = 0; y < 1; ++y) 
 		{
-			for (int x = 0; x < 3; ++x) 
+			for (int x = 0; x < 1; ++x) 
 			{
-				this.addSlotToContainer(new Slot(airship, x + y * 3, 26 + x * 18, 17 + y * 18));
+				this.addSlotToContainer(new ModuleSlotVC(airship, 1, 80, 30));
 			}
 		}
+		
+		
+		// Airship Inventory, Slot 0-8, Slot IDs 0-8
+		//if (EntityAirshipV1Core.isInventorySmallModuleInstalled(this.airship))
+        //{
+			
+		//	for (int y = 0; y < 3; ++y) 
+		//	{
+		//		for (int x = 0; x < 3; ++x) 
+		//		{
+		//			this.addSlotToContainer(new InventorySlotVC(airship, (x + y * 3) + 2, 26 + x * 18, 17 + y * 18));
+		//		}
+		//	}
+		
+        //}
 		
 		// Player Inventory, Slot 9-35, Slot IDs 9-35
 		for (int y = 0; y < 3; ++y) 
@@ -53,14 +88,9 @@ public class ContainerAirshipV1Core extends Container {
 			this.addSlotToContainer(new Slot(playerInv, x, 8 + x * 18, 142));
 		}
 		
-		// Fuel Slot, Slot 0, Slot ID 45
-		for (int y = 0; y < 1; ++y) 
-		{
-			for (int x = 0; x < 1; ++x) 
-			{
-				this.addSlotToContainer(new Slot(airship, 9, 134, 35));
-			}
-		}
+		LogHelper.info("Module " + this.getSlot(0).getStack());
+		
+		
 	}
 	
 	public void addListener(IContainerListener listener)
@@ -80,6 +110,7 @@ public class ContainerAirshipV1Core extends Container {
         {
             IContainerListener icontainerlistener = (IContainerListener)this.listeners.get(i);
             
+            /**
             if (this.fuelTime != this.airship.getField(2))
             {
                 icontainerlistener.sendProgressBarUpdate(this, 2, this.airship.getField(2));
@@ -99,19 +130,29 @@ public class ContainerAirshipV1Core extends Container {
             {
                 icontainerlistener.sendProgressBarUpdate(this, 3, this.airship.getField(3));
             }
+            
+            if (this.isModuleInventorySmall != this.airship.getField(5))
+            {
+                icontainerlistener.sendProgressBarUpdate(this, 5, this.airship.getField(5));
+                
+                
+            	
+            }
+            */
         }
         
-        this.fuelTime = this.airship.getField(2);
-        this.airshipBurnTime = this.airship.getField(0);
-        this.currentItemBurnTime = this.airship.getField(1);
-        this.totalFuelTime = this.airship.getField(3);
+        //this.fuelTime = this.airship.getField(2);
+        //this.airshipBurnTime = this.airship.getField(0);
+        //this.currentItemBurnTime = this.airship.getField(1);
+        //this.totalFuelTime = this.airship.getField(3);
+        //this.isModuleInventorySmall = this.airship.getField(5);
     }
 	
-	@SideOnly(Side.CLIENT)
-    public void updateProgressBar(int id, int data)
-    {
-        this.airship.setField(id, data);
-    }
+	//@SideOnly(Side.CLIENT)
+    //public void updateProgressBar(int id, int data)
+    //{
+    //    this.airship.setField(id, data);
+    //}
 	
     public boolean canInteractWith(EntityPlayer playerIn)
     {
@@ -129,18 +170,31 @@ public class ContainerAirshipV1Core extends Container {
 			ItemStack current = slot.getStack();
 			previous = current.copy();
 			
-			if (fromSlot < 9) 
+			// From Airship Inventory to Player Inventory
+			if (fromSlot == 0)
+            {
+                if (!this.mergeItemStack(current, 1, 37, true))
+                {
+                    return null;
+                }
+
+                slot.onSlotChange(current, previous);
+            }
+			/**
+			if (fromSlot < 2) 
 			{
 				// From TE Inventory to Player Inventory
-				if (!this.mergeItemStack(current, 9, 45, true))
+				if (!this.mergeItemStack(current, 2, 38, true))
 				{
 					return null;
 				}
 			} 
+			*/
+			
 			else 
 			{
 				// From Player Inventory to TE Inventory
-				if (!this.mergeItemStack(current, 0, 9, false))
+				if (!this.mergeItemStack(current, 0, 2, false))
 				{
 					return null;
 				}
