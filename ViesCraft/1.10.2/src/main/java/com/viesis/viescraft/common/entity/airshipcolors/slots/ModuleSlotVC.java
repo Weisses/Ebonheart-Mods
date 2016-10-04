@@ -36,10 +36,15 @@ public class ModuleSlotVC extends Slot {
         	return true;
         }
         
-        if (item == InitItemsVC.module_fuel_efficiency)
+        if (item == InitItemsVC.module_speed_increase_minor)
         {
         	return true;
         }
+        
+        //if (item == InitItemsVC.module_fuel_efficiency)
+        //{
+        //	return true;
+        //}
         
         if (item == InitItemsVC.module_fuel_infinite)
         {

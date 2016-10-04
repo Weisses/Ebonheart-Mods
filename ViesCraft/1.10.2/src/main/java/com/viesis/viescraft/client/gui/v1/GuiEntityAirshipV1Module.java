@@ -5,19 +5,15 @@ import java.io.IOException;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.inventory.ClickType;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.Slot;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.input.Keyboard;
 
 import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.api.util.Keybinds;
-import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
 import com.viesis.viescraft.common.entity.airshipcolors.containers.ContainerAirshipV1Module;
-import com.viesis.viescraft.configs.ViesCraftConfig;
 import com.viesis.viescraft.network.NetworkHandler;
 import com.viesis.viescraft.network.server.MessageGuiV1Default;
 import com.viesis.viescraft.network.server.MessageGuiV1ModuleInventoryLarge;
@@ -26,7 +22,6 @@ import com.viesis.viescraft.network.server.MessageGuiV1ModuleInventorySmall;
 public class GuiEntityAirshipV1Module extends GuiContainer {
 	
 	private GuiButton buttonModule;
-	
 	private IInventory playerInv;
 	private EntityAirshipV1Core airshipV1;
 	
@@ -63,26 +58,18 @@ public class GuiEntityAirshipV1Module extends GuiContainer {
     {
 		if (parButton.id == 1)
 	    {
-			
 			if(this.airshipV1.getModuleInventorySmall())
 			{
-				//LogHelper.info("BACK Module Button Pressed!");
 				NetworkHandler.sendToServer(new MessageGuiV1ModuleInventorySmall());
 			}
 			else if(this.airshipV1.getModuleInventoryLarge())
 			{
-				//LogHelper.info("BACK Module Button Pressed!");
-				//NetworkHandler.sendToServer(new MessageGuiV1Default());
 				NetworkHandler.sendToServer(new MessageGuiV1ModuleInventoryLarge());
 			}
 			else
 			{
-				//LogHelper.info("BACK Module Button Pressed!");
 				NetworkHandler.sendToServer(new MessageGuiV1Default());
 			}
-			
-			
-			
 	    }
 		
         this.buttonList.clear();
@@ -98,14 +85,15 @@ public class GuiEntityAirshipV1Module extends GuiContainer {
 		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
 		
 		//If any Module installed
-		if(this.airshipV1.moduleInventorySmall
-		|| this.airshipV1.getModuleInventoryLarge()
-		|| this.airshipV1.getModuleFuelEfficiency()
-		|| this.airshipV1.getModuleFuelInfinite())
-		{
-			this.drawTexturedModalRect(this.guiLeft + 64, this.guiTop + 14, 176, 0, 48, 48);
+		//if(this.airshipV1.moduleInventorySmall
+		//|| this.airshipV1.getModuleInventoryLarge()
+		//|| this.airshipV1.getModuleFuelEfficiency()
+		//|| this.airshipV1.getModuleFuelInfinite())
+		//{
+		    //Draws the box overlay around module slot
+			//this.drawTexturedModalRect(this.guiLeft + 64, this.guiTop + 14, 176, 0, 48, 48);
 			//LogHelper.info("true!");
-		}
+		//}
     }
 	
 	@Override

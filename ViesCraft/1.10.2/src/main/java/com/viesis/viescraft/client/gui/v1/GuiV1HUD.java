@@ -5,15 +5,12 @@ import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
-import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import com.viesis.viescraft.api.Reference;
-import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 
@@ -28,7 +25,6 @@ public class GuiV1HUD extends Gui {
 	private final int fieldWidth;
 	
 	private boolean isAirshipV1;
-	
 	private EntityAirshipV1Core airshipV1;
 	
 	public GuiV1HUD()
@@ -53,15 +49,14 @@ public class GuiV1HUD extends Gui {
 			
 			GlStateManager.enableRescaleNormal();
             GlStateManager.enableBlend();
-            GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA,
-                                                 GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+            GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
             
-            // Add this block of code before you draw the section of your texture containing transparency
+            //Add this block of code before you draw the section of your texture containing transparency
  			GlStateManager.pushAttrib();
  			GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
  			GlStateManager.disableLighting();
  			
- 			// alpha test and blend needed due to vanilla or Forge rendering bug
+ 			//Alpha test and blend needed due to vanilla or Forge rendering bug
  			GlStateManager.enableAlpha();
  			GlStateManager.enableBlend();
          	
@@ -80,25 +75,25 @@ public class GuiV1HUD extends Gui {
 			drawTexturedModalRect(hudX, hudY, 0, 0, hudWidth, hudHeight + 2);
 			
 			//SMALL % BAR
+			// I can keep drawing without changing anything
 			if(this.airshipV1.getModuleFuelInfinite())
 			{
 				drawTexturedModalRect(hudX + 36, hudY + 33, 36, 77, 110, 6);
 			}
 			else
 			{
-				// I can keep drawing without changing anything
 				int fuelbarwidth1 = (int)((((float) (this.airshipV1.getPowered()) / (ViesCraftConfig.v1FuelBurnTime * 20))) * 110);
 				drawTexturedModalRect(hudX + 36, hudY + 33, 36, 53, fuelbarwidth1, 6);
 			}
 			
+			//BIG % BAR
+			// I can keep drawing without changing anything
 			if(this.airshipV1.getModuleFuelInfinite())
 			{
 				drawTexturedModalRect(hudX + 2, hudY + 14, 2, 93, 178, 6);
 			}
 			else
 			{
-				//BIG % BAR
-				// I can keep drawing without changing anything
 				int fuelbarwidth2 = (int)(((float) (this.airshipV1.getItemFuelStackPowered() * 20) / ((ViesCraftConfig.v1FuelBurnTime * 20) * 64)) * 178);
 				drawTexturedModalRect(hudX + 2, hudY + 14, 2, 69, fuelbarwidth2, 6);
 			}
@@ -109,7 +104,23 @@ public class GuiV1HUD extends Gui {
 				drawTexturedModalRect(hudX + 16, hudY, 16, 44, 150, 7);
 			}
 			
-			
+			//Draw current module icons in HUD
+			if(this.airshipV1.getModuleInventorySmall())
+			{
+				drawTexturedModalRect(hudX + 83, hudY, 0, 240, 16, 16);
+			}
+			if(this.airshipV1.getModuleInventoryLarge())
+			{
+				drawTexturedModalRect(hudX + 83, hudY, 16, 240, 16, 16);
+			}
+			if(this.airshipV1.getModuleSpeedMinor())
+			{
+				drawTexturedModalRect(hudX + 83, hudY, 32, 240, 16, 16);
+			}
+			if(this.airshipV1.getModuleFuelInfinite())
+			{
+				drawTexturedModalRect(hudX + 83, hudY, 48, 240, 16, 16);
+			}
 			
 			int timer;
 			int remainder;
@@ -117,7 +128,8 @@ public class GuiV1HUD extends Gui {
 			int seconds;
 			int hours;
 			
-			if(this.airshipV1.getModuleInventoryLarge())
+			if(this.airshipV1.getModuleInventoryLarge()
+			|| this.airshipV1.getModuleSpeedMinor())
 			{
 				//Calculation from ticks to seconds.
 	            timer = ((((this.airshipV1.getPowered() + 18) ) / 20) + this.airshipV1.getItemFuelStackPowered()) / 2;

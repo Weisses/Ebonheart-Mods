@@ -72,6 +72,7 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory//, ITick
 	private static final DataParameter<Boolean> MODULE_INVENTORY_LARGE = EntityDataManager.<Boolean>createKey(EntityAirshipV1Core.class, DataSerializers.BOOLEAN);
 	private static final DataParameter<Boolean> MODULE_FUEL_EFFICIENCY = EntityDataManager.<Boolean>createKey(EntityAirshipV1Core.class, DataSerializers.BOOLEAN);
 	private static final DataParameter<Boolean> MODULE_FUEL_INFINITE = EntityDataManager.<Boolean>createKey(EntityAirshipV1Core.class, DataSerializers.BOOLEAN);
+	private static final DataParameter<Boolean> MODULE_SPEED_MINOR = EntityDataManager.<Boolean>createKey(EntityAirshipV1Core.class, DataSerializers.BOOLEAN);
     
 	
 	//0 is fuel slot, 1 is expansion slot 2-20(9x2 slots) is inventory.
@@ -88,6 +89,7 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory//, ITick
     public static boolean moduleInventoryLarge;
     public static boolean moduleFuelEfficiency;
     public static boolean moduleFuelInfinite;
+    public static boolean moduleSpeedMinor;
     
 	public EntityAirshipV1Core.Status status;
     public EntityAirshipV1Core.Status previousStatus;
@@ -140,6 +142,7 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory//, ITick
         this.dataManager.register(MODULE_INVENTORY_LARGE, Boolean.valueOf(this.moduleInventoryLarge));
         this.dataManager.register(MODULE_FUEL_EFFICIENCY, Boolean.valueOf(this.moduleFuelEfficiency));
         this.dataManager.register(MODULE_FUEL_INFINITE, Boolean.valueOf(this.moduleFuelInfinite));
+        this.dataManager.register(MODULE_SPEED_MINOR, Boolean.valueOf(this.moduleSpeedMinor));
         
         this.dataManager.register(BOAT_TYPE, Integer.valueOf(EntityAirshipV1Core.Type.NORMAL.ordinal()));
 	}
@@ -495,6 +498,11 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory//, ITick
             	{
             		f += AirshipSpeedForward - (AirshipSpeedForward * 0.5F);
             	}
+            	else if(isClientAirshipBurning()
+            	&& this.getModuleSpeedMinor())
+            	{
+            		f += AirshipSpeedForward + (AirshipSpeedForward * 0.3F);
+            	}
             	else if(isClientAirshipBurning())
             	{
             		f += AirshipSpeedForward;
@@ -522,6 +530,11 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory//, ITick
             	{
             		f -= (AirshipSpeedForward * 0.5) - ((AirshipSpeedForward * 0.5)* 0.5);
             	}
+            	else if(isClientAirshipBurning()
+            	&& this.getModuleSpeedMinor())
+            	{
+            		f -= (AirshipSpeedForward * 0.5) + ((AirshipSpeedForward * 0.5)* 0.3);
+            	}
             	else if(isClientAirshipBurning())
             	{
             		f -= AirshipSpeedForward * 0.5;
@@ -548,6 +561,11 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory//, ITick
             	&& this.getModuleFuelInfinite())
             	{
             		f1 += AirshipSpeedUp - (AirshipSpeedUp * 0.5);
+            	}
+            	else if(isClientAirshipBurning()
+            	&& this.getModuleSpeedMinor())
+            	{
+            		f1 += AirshipSpeedUp + (AirshipSpeedUp * 0.3);
             	}
             	else if(isClientAirshipBurning())
             	{
@@ -1158,18 +1176,6 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory//, ITick
         		
         	}
         	
-        	else if(this.getModuleInventoryLarge())
-        	{
-        		--this.airshipBurnTime;
-        		--this.airshipBurnTime;
-        	}
-        	
-        	else if(this.getControllingPassenger() == null)
-        	{
-        		--this.airshipBurnTime;
-        	}
-        	
-        	
         	
         	else if(EventHandlerCreativeNoFuel.creativeBurn)
         	{
@@ -1198,6 +1204,19 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory//, ITick
         		
         	}
         	
+
+        	else if(this.getModuleInventoryLarge()
+        	|| this.getModuleSpeedMinor())
+        	{
+        		--this.airshipBurnTime;
+        		--this.airshipBurnTime;
+        	}
+        	
+
+        	else if(this.getControllingPassenger() == null)
+        	{
+        		--this.airshipBurnTime;
+        	}
         	
         	
         	
@@ -1501,6 +1520,7 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory//, ITick
 	    		this.moduleInventoryLarge = this.getModuleInventoryLarge();
 	    		this.moduleFuelEfficiency = this.getModuleFuelEfficiency();
 	    		this.moduleFuelInfinite = this.getModuleFuelInfinite();
+	    		this.moduleSpeedMinor = this.getModuleSpeedMinor();
 			}
     		
     		
@@ -1511,6 +1531,7 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory//, ITick
 				this.moduleInventoryLarge = false;
 				this.moduleFuelEfficiency = false;
 				this.moduleFuelInfinite = false;
+				this.moduleSpeedMinor = false;
 				
 			}
 			else if(moduleNumber == 2)
@@ -1519,6 +1540,7 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory//, ITick
 				this.moduleInventoryLarge = true;
 				this.moduleFuelEfficiency = false;
 				this.moduleFuelInfinite = false;
+				this.moduleSpeedMinor = false;
 				
 			}
 			else if(moduleNumber == 3)
@@ -1527,6 +1549,7 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory//, ITick
 				this.moduleInventoryLarge = false;
 				this.moduleFuelEfficiency = true;
 				this.moduleFuelInfinite = false;
+				this.moduleSpeedMinor = false;
 				
 			}
 			else if(moduleNumber == 4)
@@ -1535,6 +1558,16 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory//, ITick
 				this.moduleInventoryLarge = false;
 				this.moduleFuelEfficiency = false;
 				this.moduleFuelInfinite = true;
+				this.moduleSpeedMinor = false;
+				
+			}
+			else if(moduleNumber == 5)
+			{
+				this.moduleInventorySmall = false;
+				this.moduleInventoryLarge = false;
+				this.moduleFuelEfficiency = false;
+				this.moduleFuelInfinite = false;
+				this.moduleSpeedMinor = true;
 				
 			}
 			else if(moduleNumber == 0)
@@ -1626,6 +1659,7 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory//, ITick
     		this.setModuleInventoryLarge(this.moduleInventoryLarge);
     		this.setModuleFuelEfficiency(this.moduleFuelEfficiency);
     		this.setModuleFuelInfinite(this.moduleFuelInfinite);
+    		this.setModuleSpeedMinor(this.moduleSpeedMinor);
     	}
     	
     }
@@ -1647,7 +1681,9 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory//, ITick
             
             if (item == InitItemsVC.module_inventory_large) return true;
             
-            if (item == InitItemsVC.module_fuel_efficiency) return true;
+            if (item == InitItemsVC.module_speed_increase_minor) return true;
+            
+            //if (item == InitItemsVC.module_fuel_efficiency) return true;
             
             if (item == InitItemsVC.module_fuel_infinite) return true;
             
@@ -1676,13 +1712,19 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory//, ITick
             {
             	return 2;
             }
-            else if (item == InitItemsVC.module_fuel_efficiency)
-            {
-            	return 3;
-            }
+            
+            //else if (item == InitItemsVC.module_fuel_efficiency)
+            //{
+            //	return 3;
+            //}
+            
             else if (item == InitItemsVC.module_fuel_infinite)
             {
             	return 4;
+            }
+            else if (item == InitItemsVC.module_speed_increase_minor)
+            {
+            	return 5;
             }
             else
             {
@@ -1808,6 +1850,22 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory//, ITick
     public void setModuleFuelInfinite(boolean moduleInvLarge1)
     {
         this.dataManager.set(MODULE_FUEL_INFINITE, Boolean.valueOf(moduleInvLarge1));
+    }
+	
+    /**
+     * Gets the airshipBurnTime to pass from server to client.
+     */
+    public boolean getModuleSpeedMinor()
+    {
+        return ((Boolean)this.dataManager.get(MODULE_SPEED_MINOR)).booleanValue();
+    }
+    
+    /**
+     * Sets if Minor Speed Increase mod is installed to pass from server to client.
+     */
+    public void setModuleSpeedMinor(boolean moduleInvLarge1)
+    {
+        this.dataManager.set(MODULE_SPEED_MINOR, Boolean.valueOf(moduleInvLarge1));
     }
 	
     /**

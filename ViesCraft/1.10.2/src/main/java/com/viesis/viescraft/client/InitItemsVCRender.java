@@ -20,7 +20,8 @@ public final class InitItemsVCRender extends ItemsVC {
 		
 		registerRender(module_inventory_small);
 		registerRender(module_inventory_large);
-		registerRender(module_fuel_efficiency);
+		registerRender(module_speed_increase_minor);
+		//registerRender(module_fuel_efficiency);
 		registerRender(module_fuel_infinite);
 		
 		registerRender(item_airship_normal);

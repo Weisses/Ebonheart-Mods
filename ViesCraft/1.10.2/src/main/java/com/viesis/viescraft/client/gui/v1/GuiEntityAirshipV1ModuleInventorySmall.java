@@ -12,9 +12,7 @@ import org.lwjgl.input.Keyboard;
 
 import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.api.util.Keybinds;
-import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
-import com.viesis.viescraft.common.entity.airshipcolors.containers.ContainerAirshipV1Default;
 import com.viesis.viescraft.common.entity.airshipcolors.containers.ContainerAirshipV1ModuleInvSmall;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 import com.viesis.viescraft.network.NetworkHandler;
@@ -23,7 +21,6 @@ import com.viesis.viescraft.network.server.MessageGuiV1Module;
 public class GuiEntityAirshipV1ModuleInventorySmall extends GuiContainer {
 	
 	private GuiButton buttonModule;
-	
 	private IInventory playerInv;
 	private EntityAirshipV1Core airshipV1;
 	
@@ -60,7 +57,6 @@ public class GuiEntityAirshipV1ModuleInventorySmall extends GuiContainer {
     {
 		if (parButton.id == 1)
 	    {
-			//LogHelper.info("Module Button Pressed!");
 			NetworkHandler.sendToServer(new MessageGuiV1Module());
 	    }
 		

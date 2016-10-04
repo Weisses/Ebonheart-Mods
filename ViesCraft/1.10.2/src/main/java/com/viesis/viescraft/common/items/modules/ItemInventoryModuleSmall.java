@@ -23,11 +23,10 @@ public class ItemInventoryModuleSmall extends Item {
 	@SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List toolTip, boolean advanced) 
 	{
-		toolTip.add(TextFormatting.DARK_AQUA + "1Turn an airship into a mobile 12 slot");
-		toolTip.add(TextFormatting.DARK_AQUA + "chest.");
-		
-		//toolTip.add(TextFormatting.DARK_AQUA + "The heart of the airship! Travel to");
-		//toolTip.add(TextFormatting.DARK_AQUA + "different chunks in mere minutes!");
+		toolTip.add(TextFormatting.GOLD + "Effects while socketed:");
+		toolTip.add(TextFormatting.GREEN + "Pro - 9 slot inventory.");
+		toolTip.add(TextFormatting.RED + "Con - Speed reduced to 80%.");
+		toolTip.add(" ");
 	}
 	
 	public EnumRarity getRarity(ItemStack stack)

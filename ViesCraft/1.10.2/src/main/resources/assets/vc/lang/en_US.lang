@@ -31,6 +31,11 @@ item.vc:item_paint_red.name=Red Airship Paint
 item.vc:item_paint_white.name=White Airship Paint
 item.vc:item_paint_yellow.name=Yellow Airship Paint
 
+item.vc:module_inventory_small.name=Small Inventory Module
+item.vc:module_inventory_large.name=Large Inventory Module
+item.vc:module_speed_increase_minor.name=Minor Speed Boost Module
+item.vc:module_fuel_infinite.name=Infinite Fuel Module
+
 //-----Entity-----
 entity.vc.test.normal.name=Placeholder1
 container.vc.test.normal.name=Placeholder2

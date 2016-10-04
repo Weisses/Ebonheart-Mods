@@ -12,11 +12,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.viesis.viescraft.common.items.ItemHelper;
 
-public class ItemFuelModuleInfinite extends Item {
+public class ItemSpeedModuleMinor extends Item {
 	
-	public ItemFuelModuleInfinite() 
+	public ItemSpeedModuleMinor() 
 	{
-		ItemHelper.setItemName(this, "module_fuel_infinite");
+		ItemHelper.setItemName(this, "module_speed_increase_minor");
 		this.setMaxStackSize(1);
 	}
 	
@@ -24,8 +24,8 @@ public class ItemFuelModuleInfinite extends Item {
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List toolTip, boolean advanced) 
 	{
 		toolTip.add(TextFormatting.GOLD + "Effects while socketed:");
-		toolTip.add(TextFormatting.GREEN + "Pro - Fly without fuel.");
-		toolTip.add(TextFormatting.RED + "Con - Speed reduced to 50%.");
+		toolTip.add(TextFormatting.GREEN + "Pro - Speed increased to 130%.");
+		toolTip.add(TextFormatting.RED + "Con - Fuel burns x 2 faster.");
 		toolTip.add(" ");
 	}
 	

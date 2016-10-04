@@ -21,7 +21,6 @@ import com.viesis.viescraft.network.server.MessageGuiV1Module;
 public class GuiEntityAirshipV1ModuleInventoryLarge extends GuiContainer {
 	
 	private GuiButton buttonModule;
-	
 	private IInventory playerInv;
 	private EntityAirshipV1Core airshipV1;
 	
@@ -58,7 +57,6 @@ public class GuiEntityAirshipV1ModuleInventoryLarge extends GuiContainer {
     {
 		if (parButton.id == 1)
 	    {
-			//LogHelper.info("Module Button Pressed!");
 			NetworkHandler.sendToServer(new MessageGuiV1Module());
 	    }
 		
