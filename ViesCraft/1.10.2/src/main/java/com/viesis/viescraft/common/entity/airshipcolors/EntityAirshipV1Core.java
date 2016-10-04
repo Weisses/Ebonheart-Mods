@@ -101,7 +101,7 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory//, ITick
     //public int itemFuel;
     //public int test;
     
-    public int current;
+    private int dropNumber;
     
 	public EntityAirshipV1Core(World worldIn)
     {
@@ -480,7 +480,22 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory//, ITick
 
             if (this.forwardInputDown)
             {
-            	if(isClientAirshipBurning())
+            	if(isClientAirshipBurning()
+                && this.getModuleInventorySmall())
+                {
+            		f += AirshipSpeedForward - (AirshipSpeedForward * 0.2F);
+                }
+            	else if(isClientAirshipBurning()
+            	&& this.getModuleInventoryLarge())
+            	{
+            		f += AirshipSpeedForward - (AirshipSpeedForward * 0.3F);
+            	}
+            	else if(isClientAirshipBurning()
+            	&& this.getModuleFuelInfinite())
+            	{
+            		f += AirshipSpeedForward - (AirshipSpeedForward * 0.5F);
+            	}
+            	else if(isClientAirshipBurning())
             	{
             		f += AirshipSpeedForward;
             	}
@@ -492,7 +507,22 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory//, ITick
 
             if (this.backInputDown)
             {
-            	if(isClientAirshipBurning())
+            	if(isClientAirshipBurning()
+            	&& this.getModuleInventorySmall())
+            	{
+            		f -= (AirshipSpeedForward * 0.5) - ((AirshipSpeedForward * 0.5)* 0.2);
+            	} 
+            	else if(isClientAirshipBurning()
+            	&& this.getModuleInventoryLarge())
+            	{
+            		f -= (AirshipSpeedForward * 0.5) - ((AirshipSpeedForward * 0.5)* 0.3);
+            	}
+            	else if(isClientAirshipBurning()
+            	&& this.getModuleFuelInfinite())
+            	{
+            		f -= (AirshipSpeedForward * 0.5) - ((AirshipSpeedForward * 0.5)* 0.5);
+            	}
+            	else if(isClientAirshipBurning())
             	{
             		f -= AirshipSpeedForward * 0.5;
             	}
@@ -504,7 +534,22 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory//, ITick
             
             if (this.upInputDown)
             {
-            	if(isClientAirshipBurning())
+            	if(isClientAirshipBurning()
+            	&& this.getModuleInventorySmall())
+            	{
+            		f1 += AirshipSpeedUp - (AirshipSpeedUp * 0.2);
+            	}
+            	else if(isClientAirshipBurning()
+            	&& this.getModuleInventoryLarge())
+            	{
+            		f1 += AirshipSpeedUp - (AirshipSpeedUp * 0.3);
+            	}
+            	else if(isClientAirshipBurning()
+            	&& this.getModuleFuelInfinite())
+            	{
+            		f1 += AirshipSpeedUp - (AirshipSpeedUp * 0.5);
+            	}
+            	else if(isClientAirshipBurning())
             	{
             		f1 += AirshipSpeedUp;
             	}
@@ -545,7 +590,7 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory//, ITick
             	else if(this.getModuleInventoryLarge())
             	{
             		//LogHelper.info("2");
-            		NetworkHandler.sendToServer(new MessageGuiV1Default());
+            		NetworkHandler.sendToServer(new MessageGuiV1ModuleInventoryLarge());
                 	Minecraft.getMinecraft().setIngameFocus();
             	}
             	else if(this.getModuleFuelEfficiency())
@@ -1092,7 +1137,7 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory//, ITick
 	// TODO     Fuel Consumption        //
 	//==================================//
     
-	public void fuelFlight()
+	private void fuelFlight()
     {
     	boolean flag = this.isClientAirshipBurning();
         boolean flag1 = false;
@@ -1103,34 +1148,168 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory//, ITick
         	this.airshipBurnTime = this.getPowered();
         }
         
+        
+        
         //Handles how burn time in is handled
         if (this.isClientAirshipBurning())
         {
-        	if(this.getControllingPassenger() == null)
-        	{
-        		--this.airshipBurnTime;
-        	}
-        	else if(EventHandlerCreativeNoFuel.creativeBurn)
+        	if(this.getModuleFuelInfinite())
         	{
         		
         	}
+        	
+        	else if(this.getModuleInventoryLarge())
+        	{
+        		--this.airshipBurnTime;
+        		--this.airshipBurnTime;
+        	}
+        	
+        	else if(this.getControllingPassenger() == null)
+        	{
+        		--this.airshipBurnTime;
+        	}
+        	
+        	
+        	
+        	else if(EventHandlerCreativeNoFuel.creativeBurn)
+        	{
+        		
+        		if(this.getEntityId() == EventHandlerCreativeNoFuel.test)
+        		{
+        			
+	        		if(this.getControllingPassenger() == null)
+	            	{
+	            		--this.airshipBurnTime;
+	            	}
+	        		else
+	        		{
+	        			
+	        		}
+        		
+        		
+        		
+        			
+        		}
+        		else
+        		{
+        			--this.airshipBurnTime;
+        		}
+        		
+        		
+        	}
+        	
+        	
+        	
+        	
+        	/**
+        	else if(EventHandlerCreativeNoFuel.creativeBurn)
+        	{
+        		
+        		
+        		if(this.getEntityId() == EventHandlerCreativeNoFuel.test)
+        		{
+        			
+        			if(this.getControllingPassenger() == null)
+                	{
+        				LogHelper.info("g1");
+                		--this.airshipBurnTime;
+                	}
+            		
+        			
+        		}
+        		else
+        		{
+        			LogHelper.info("t");
+        			--this.airshipBurnTime;
+        		}
+        		
+        		
+        	}
+        	*/
+        	
+        	//else if (this.getEntityId() == EventHandlerCreativeNoFuel.test
+        	//&& this.getControllingPassenger() != null)
+        	//{
+        	//	
+        	//}
+        	
+        	//else if(this.getControllingPassenger() == null)
+        	//{
+        	//	--this.airshipBurnTime;
+        	//}
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
         	else
         	{
         		--this.airshipBurnTime;
         	}
+        	
+        	
+        	
         }
         
         //Handles when a creative player is mounted
         if (!this.isClientAirshipBurning())
         {
-        	if(this.getControllingPassenger() == null)
-        	{
-        		this.airshipBurnTime = 0;
-        	}
-        	else if(EventHandlerCreativeNoFuel.creativeBurn)
+        	if(this.getModuleFuelInfinite())
         	{
         		this.airshipBurnTime = 1;
         	}
+        	
+        	else if(this.getControllingPassenger() == null)
+        	{
+        		this.airshipBurnTime = 0;
+        	}
+        	
+        	else if(EventHandlerCreativeNoFuel.creativeBurn)
+        	{
+        		
+        		
+            	if (this.getEntityId() == EventHandlerCreativeNoFuel.test)
+            	{
+            		this.airshipBurnTime = 1;
+            		
+            		//LogHelper.info("Player Creative! = " + this.getUniqueID());
+            	}
+        		
+        	}
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	//if(this.getControllingPassenger() == null)
+        	//{
+        	//	this.airshipBurnTime = 0;
+        	//}
+        	//if(this.getModuleFuelInfinite())
+        	//{
+        	//	this.airshipBurnTime = 1;
+        	//}
+        	//
+        	//else if(EventHandlerCreativeNoFuel.creativeBurn)
+        	//{
+        	//	this.airshipBurnTime = 1;
+        	//}
+        	else 
+        	{
+        		this.airshipBurnTime = 0;
+        	}
+        	
         }
         
         if (this.isClientAirshipBurning() || this.inventory[0] != null)
@@ -1295,8 +1474,8 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory//, ITick
     
     public void currentModule()
     {
-    	if(this.getControllingPassenger() != null)
-        {
+    	//if(this.getControllingPassenger() != null)
+        //{
     		ItemStack itemModule = this.getStackInSlot(1);
     		int moduleNumber = this.getModuleID(itemModule);
     		
@@ -1371,102 +1550,73 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory//, ITick
     		
     		
     		
-    		
+    		//If there is no module in slot
     		if(this.getStackInSlot(1) == null)
     		{
-    			if(current == 1)
+    			//If small inv mod is removed and slot is empty
+    			if(dropNumber == 1)
     			{
-    				current = 0;
-    				if(!this.worldObj.isRemote)
-    	    		{
-    					for (int x = 2; x < 11; ++x) 
-    					{
-    						if(this.getStackInSlot(x) != null)
-    						{
-    							InventoryHelper.spawnItemStack(this.worldObj, this.posX, this.posY, this.posZ, this.getStackInSlot(x));
-    							this.inventory[x] = null;
-    						}
-    					}
-    	    		}
-    				else
-    				{
-    					for (int x = 2; x < 11; ++x) 
-    					{
-    						if(this.getStackInSlot(x) != null)
-    						{
-    							this.inventory[x] = null;
-    						}
-    					}
-    				}
+    				dropNumber = 0;
+    				this.dropLargeModInv();
+    				LogHelper.info("Inv dropped");
+    				//this.dropSmallModInv();
+    			}
+    			
+    			//If large inv mod is removed and slot is empty
+    			if(dropNumber == 2)
+    			{
+    				dropNumber = 0;
+    				this.dropLargeModInv();
+    				LogHelper.info("Inv dropped");
+    				//this.dropLargeModInv();
     			}
     		}
+    		//If a module is still in the slot
     		else
     		{
-    			if(this.getStackInSlot(1).getItem() == InitItemsVC.module_inventory_small)
+    			//If the module in the slot is small inv mod
+    			if(this.getStackInSlot(1).getItem() == InitItemsVC.module_inventory_small
+    			&& dropNumber == 0)
     			{
-    				current = 1;
+    				dropNumber = 1;
+    				LogHelper.info("Small mod in.");
     			}
+    			
+    			//If the module in the slot is large inv mod
+    			else if(this.getStackInSlot(1).getItem() == InitItemsVC.module_inventory_large
+    			&& dropNumber == 0)
+    			{
+    				dropNumber = 2;
+    				LogHelper.info("Large mod in.");
+    				//LogHelper.info(" v2 upgraded form small to large");
+    			}
+    			
+    			
+    			
+    			//If the module in the slot is not small inv mod but had it in previously
     			else if(this.getStackInSlot(1).getItem() != InitItemsVC.module_inventory_small
-    					&& current == 1)
+    					&& dropNumber == 1)
     			{
-    				current = 0;
-    				if(this.worldObj.isRemote)
-    	    		{
-    					for (int x = 2; x < 11; ++x) 
-    					{
-    						if(this.getStackInSlot(x) != null)
-    						{
-    							this.inventory[x] = null;
-    						}
-    					}
-    	    		}
-    				else
-    				{
-    					for (int x = 2; x < 11; ++x) 
-    					{
-    						if(this.getStackInSlot(x) != null)
-    						{
-    							InventoryHelper.spawnItemStack(this.worldObj, this.posX, this.posY, this.posZ, this.getStackInSlot(x));
-    							this.inventory[x] = null;
-    						}
-    					}
-    				}
+    				dropNumber = 0;
+    				this.dropLargeModInv();
+    				LogHelper.info("Inv dropped");
+    				//this.dropSmallModInv();
     			}
     			
     			
-    			
-    			if(this.getStackInSlot(1).getItem() == InitItemsVC.module_inventory_large)
-    			{
-    				current = 2;
-    			}
+    			//If the module in the slot is not large inv mod but had it in previously
     			else if(this.getStackInSlot(1).getItem() != InitItemsVC.module_inventory_large
-    					&& current == 2)
+    					&& dropNumber == 2)
     			{
-    				current = 0;
-    				if(this.worldObj.isRemote)
-    	    		{
-    					for (int x = 2; x < 20; ++x) 
-    					{
-    						if(this.getStackInSlot(x) != null)
-    						{
-    							this.inventory[x] = null;
-    						}
-    					}
-    	    		}
-    				else
-    				{
-    					for (int x = 2; x < 11; ++x) 
-    					{
-    						if(this.getStackInSlot(x) != null)
-    						{
-    							InventoryHelper.spawnItemStack(this.worldObj, this.posX, this.posY, this.posZ, this.getStackInSlot(x));
-    							this.inventory[x] = null;
-    						}
-    					}
-    				}
+    				dropNumber = 0;
+    				this.dropLargeModInv();
+    				LogHelper.info("Inv dropped");
     			}
+    			
+    			
+    			
     		}
-        }
+        //}
     	
     	
     	
@@ -1480,7 +1630,10 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory//, ITick
     	
     }
     
-    public static boolean getItemModule(ItemStack stack)
+    /**
+     * Checks if a module is in the module slot.
+     */
+    private static boolean getItemModule(ItemStack stack)
     {
         if (stack == null)
         {
@@ -1502,7 +1655,10 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory//, ITick
         }
     }
     
-    public static int getModuleID(ItemStack stack)
+    /**
+     * Set module ID for module in slot.
+     */
+    private static int getModuleID(ItemStack stack)
     {
         if (stack == null)
         {
@@ -1532,12 +1688,10 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory//, ITick
             {
             	return 0;
             }
-            
-            //return 0;//net.minecraftforge.fml.common.registry.GameRegistry.getFuelValue(stack);
         }
     }
     
-    public static boolean isItemModule(ItemStack stack)
+    private static boolean isItemModule(ItemStack stack)
     {
         /**
          * Returns the number of ticks that the supplied fuel item will keep the furnace burning, or 0 if the item isn't
@@ -1545,20 +1699,60 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory//, ITick
          */
         return getItemModule(stack);
     }
-    
-    //@SideOnly(Side.CLIENT)
-    //public static boolean isInventorySmallModuleInstalled(IInventory inventory)
-    //{
-    //    return inventory.getField(5) > 0;
-    //}
-    
-    //@SideOnly(Side.CLIENT)
-    //public static boolean isInventoryLargeModuleInstalled(IInventory inventory)
-    //{
-    //    return inventory.getField(6) > 0;
-    //}
-    
-    
+    /**
+     * Drops small inventory contents from airship
+     */
+    private void dropSmallModInv()
+    {
+    	if(!this.worldObj.isRemote)
+		{
+			for (int x = 2; x < 11; ++x) 
+			{
+				if(this.getStackInSlot(x) != null)
+				{
+					InventoryHelper.spawnItemStack(this.worldObj, this.posX, this.posY, this.posZ, this.getStackInSlot(x));
+					this.inventory[x] = null;
+				}
+			}
+		}
+		else
+		{
+			for (int x = 2; x < 11; ++x) 
+			{
+				if(this.getStackInSlot(x) != null)
+				{
+					this.inventory[x] = null;
+				}
+			}
+		}
+    }
+    /**
+     * Drops large inventory contents from airship
+     */
+    private void dropLargeModInv()
+    {
+    	if(this.worldObj.isRemote)
+		{
+			for (int x = 2; x < 20; ++x) 
+			{
+				if(this.getStackInSlot(x) != null)
+				{
+					this.inventory[x] = null;
+				}
+			}
+		}
+		else
+		{
+			for (int x = 2; x < 20; ++x) 
+			{
+				if(this.getStackInSlot(x) != null)
+				{
+					InventoryHelper.spawnItemStack(this.worldObj, this.posX, this.posY, this.posZ, this.getStackInSlot(x));
+					this.inventory[x] = null;
+				}
+			}
+		}
+    }
     
     /**
      * Sets the airshipBurnTime to pass from server to client.
@@ -1623,11 +1817,6 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory//, ITick
     {
         return ((Boolean)this.dataManager.get(MODULE_FUEL_INFINITE)).booleanValue();
     }
-    
-    
-    
-    
-    
     
     
     

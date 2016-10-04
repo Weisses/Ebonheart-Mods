@@ -8,6 +8,7 @@ import net.minecraftforge.fml.common.network.IGuiHandler;
 import com.viesis.viescraft.client.gui.GuiTileEntityAirshipWorkbench;
 import com.viesis.viescraft.client.gui.v1.GuiEntityAirshipV1Default;
 import com.viesis.viescraft.client.gui.v1.GuiEntityAirshipV1Module;
+import com.viesis.viescraft.client.gui.v1.GuiEntityAirshipV1ModuleInventoryLarge;
 import com.viesis.viescraft.client.gui.v1.GuiEntityAirshipV1ModuleInventorySmall;
 import com.viesis.viescraft.client.gui.v2.GuiEntityAirshipV2Core;
 import com.viesis.viescraft.client.gui.v3.GuiEntityAirshipV3Core;
@@ -18,6 +19,7 @@ import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV2Core;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV3Core;
 import com.viesis.viescraft.common.entity.airshipcolors.containers.ContainerAirshipV1Default;
 import com.viesis.viescraft.common.entity.airshipcolors.containers.ContainerAirshipV1Module;
+import com.viesis.viescraft.common.entity.airshipcolors.containers.ContainerAirshipV1ModuleInvLarge;
 import com.viesis.viescraft.common.entity.airshipcolors.containers.ContainerAirshipV1ModuleInvSmall;
 import com.viesis.viescraft.common.tileentity.ContainerAirshipWorkbench;
 import com.viesis.viescraft.common.tileentity.TileEntityAirshipWorkbench;
@@ -109,6 +111,12 @@ public class GuiHandler implements IGuiHandler {
 			return new ContainerAirshipV3Core(player.inventory, (EntityAirshipV3Core)player.getRidingEntity());
 		}
 		
+		//Airship Large Inventory Container
+		if (ID == GUI_V1_MODULE_INVENTORY_LARGE)
+		{
+			return new ContainerAirshipV1ModuleInvLarge(player.inventory, (EntityAirshipV1Core)player.getRidingEntity());
+		}
+		
 		return null;
 	}
 	
@@ -163,6 +171,11 @@ public class GuiHandler implements IGuiHandler {
 			return new GuiEntityAirshipV3Core(player.inventory, (EntityAirshipV3Core)player.getRidingEntity());
 		}
 		
+		//Airship GUI with Large Inventory Module
+		if (ID == GUI_V1_MODULE_INVENTORY_LARGE)
+		{
+			return new GuiEntityAirshipV1ModuleInventoryLarge(player.inventory, (EntityAirshipV1Core)player.getRidingEntity());
+		}
 		
 		return null;
 	}

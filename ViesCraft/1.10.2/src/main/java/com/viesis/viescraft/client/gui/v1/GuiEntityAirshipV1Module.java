@@ -72,8 +72,8 @@ public class GuiEntityAirshipV1Module extends GuiContainer {
 			else if(this.airshipV1.getModuleInventoryLarge())
 			{
 				//LogHelper.info("BACK Module Button Pressed!");
-				NetworkHandler.sendToServer(new MessageGuiV1Default());
-				//NetworkHandler.sendToServer(new MessageGuiV1ModuleInventoryLarge());
+				//NetworkHandler.sendToServer(new MessageGuiV1Default());
+				NetworkHandler.sendToServer(new MessageGuiV1ModuleInventoryLarge());
 			}
 			else
 			{
@@ -97,21 +97,15 @@ public class GuiEntityAirshipV1Module extends GuiContainer {
 		this.mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":" + "textures/gui/container_airship_module.png"));
 		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
 		
-		//Small Inventory Module installed
-		//if (EntityAirshipV1Core.isInventorySmallModuleInstalled(this.airshipV1))
-        //{
-		//	this.mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":" + "textures/gui/container_airship_widget.png"));
-			
-		//	this.drawTexturedModalRect(this.guiLeft + 117, this.guiTop + 48, 176, 14, 26, 16);
-			
-        ///}
-		
-		//Large Inventory Module installed
-		//if (EntityAirshipV1Core.isInventoryLargeModuleInstalled(this.airshipV1))
-        //{
-		//	this.drawTexturedModalRect(this.guiLeft + 107, this.guiTop + 48, 176, 14, 26, 16);
-			
-        //}
+		//If any Module installed
+		if(this.airshipV1.moduleInventorySmall
+		|| this.airshipV1.getModuleInventoryLarge()
+		|| this.airshipV1.getModuleFuelEfficiency()
+		|| this.airshipV1.getModuleFuelInfinite())
+		{
+			this.drawTexturedModalRect(this.guiLeft + 64, this.guiTop + 14, 176, 0, 48, 48);
+			//LogHelper.info("true!");
+		}
     }
 	
 	@Override

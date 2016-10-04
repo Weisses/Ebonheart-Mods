@@ -26,11 +26,10 @@ public class GuiV1HUD extends Gui {
 	private final int hudWidth;
 	private final int hudHeight;
 	private final int fieldWidth;
-	//private int itemFuelStack;
+	
 	private boolean isAirshipV1;
 	
 	private EntityAirshipV1Core airshipV1;
-	//private ItemStack itemFuel;
 	
 	public GuiV1HUD()
 	{
@@ -48,24 +47,9 @@ public class GuiV1HUD extends Gui {
 	{
 		this.isAirshipV1 = mc.thePlayer.getRidingEntity() instanceof EntityAirshipV1Core;
 		
-		//if (event.getType() != ElementType.EXPERIENCE) 
-		//{
-		//	return;
-		//}
-		
 		if(this.isAirshipV1)
 	    {
 			this.airshipV1 = (EntityAirshipV1Core) Minecraft.getMinecraft().thePlayer.getRidingEntity();
-			//itemFuel = this.airshipV1.getStackInSlot(0);
-			
-			//if(itemFuel != null)
-			//{
-			//	this.itemFuelStack = itemFuel.stackSize * (ViesCraftConfig.v1FuelBurnTime);
-			//}
-			//else
-			//{
-			//	this.itemFuelStack = 0;
-			//}
 			
 			GlStateManager.enableRescaleNormal();
             GlStateManager.enableBlend();
@@ -96,30 +80,61 @@ public class GuiV1HUD extends Gui {
 			drawTexturedModalRect(hudX, hudY, 0, 0, hudWidth, hudHeight + 2);
 			
 			//SMALL % BAR
-			// You can keep drawing without changing anything
-			int fuelbarwidth1 = (int)((((float) (this.airshipV1.airshipBurnTime) / (ViesCraftConfig.v1FuelBurnTime * 20))) * 110);
-			drawTexturedModalRect(hudX + 36, hudY + 33, 36, 53, fuelbarwidth1, 6);
+			if(this.airshipV1.getModuleFuelInfinite())
+			{
+				drawTexturedModalRect(hudX + 36, hudY + 33, 36, 77, 110, 6);
+			}
+			else
+			{
+				// I can keep drawing without changing anything
+				int fuelbarwidth1 = (int)((((float) (this.airshipV1.getPowered()) / (ViesCraftConfig.v1FuelBurnTime * 20))) * 110);
+				drawTexturedModalRect(hudX + 36, hudY + 33, 36, 53, fuelbarwidth1, 6);
+			}
 			
-			//BIG % BAR
-			// You can keep drawing without changing anything
-			int fuelbarwidth2 = (int)(((float) 
-					//(this.itemFuelStack * 20)
-					(this.airshipV1.getItemFuelStackPowered() * 20)
-					/ ((ViesCraftConfig.v1FuelBurnTime * 20) * 64)) * 178);
-			drawTexturedModalRect(hudX + 2, hudY + 14, 2, 69, fuelbarwidth2, 6);
+			if(this.airshipV1.getModuleFuelInfinite())
+			{
+				drawTexturedModalRect(hudX + 2, hudY + 14, 2, 93, 178, 6);
+			}
+			else
+			{
+				//BIG % BAR
+				// I can keep drawing without changing anything
+				int fuelbarwidth2 = (int)(((float) (this.airshipV1.getItemFuelStackPowered() * 20) / ((ViesCraftConfig.v1FuelBurnTime * 20) * 64)) * 178);
+				drawTexturedModalRect(hudX + 2, hudY + 14, 2, 69, fuelbarwidth2, 6);
+			}
 			
 			//Airship lights on
-			if(this.airshipV1.airshipBurnTime >= 1)
+			if(this.airshipV1.getPowered() >= 1)
 			{
 				drawTexturedModalRect(hudX + 16, hudY, 16, 44, 150, 7);
 			}
 			
-			//Calculation from ticks to seconds.
-            int timer = (((this.airshipV1.airshipBurnTime + 18) ) / 20) + this.airshipV1.getItemFuelStackPowered() ;
-			int remainder = (timer % 3600);
-			int minutes = remainder / 60;
-			int seconds = remainder % 60;
-			int hours = timer / 3600;
+			
+			
+			int timer;
+			int remainder;
+			int minutes;
+			int seconds;
+			int hours;
+			
+			if(this.airshipV1.getModuleInventoryLarge())
+			{
+				//Calculation from ticks to seconds.
+	            timer = ((((this.airshipV1.getPowered() + 18) ) / 20) + this.airshipV1.getItemFuelStackPowered()) / 2;
+				remainder = (timer % 3600);
+				minutes = remainder / 60;
+				seconds = remainder % 60;
+				hours = timer / 3600;
+			}
+			else
+			{
+				//Calculation from ticks to seconds.
+	            timer = (((this.airshipV1.getPowered() + 18) ) / 20) + this.airshipV1.getItemFuelStackPowered() ;
+				remainder = (timer % 3600);
+				minutes = remainder / 60;
+				seconds = remainder % 60;
+				hours = timer / 3600;
+			}
 			
 			String hrs = (hours < 10 ? "0" : "") + hours;
 			String mins = (minutes < 10 ? "0" : "") + minutes;
@@ -128,39 +143,48 @@ public class GuiV1HUD extends Gui {
 			//Time in seconds to display
 			String s = hrs + ":" + mins + ":" + secs;
 			
-			//Aqua timer
-			if(hours > 0)
+			
+			if(this.airshipV1.getModuleFuelInfinite())
 			{
-				Minecraft.getMinecraft().fontRendererObj.drawString(s, (int) (hudX + 71.5), (hudY + 23), 60155);
+				String s1 = "\u221e" + ":" + "\u221e" + ":" + "\u221e";
+				Minecraft.getMinecraft().fontRendererObj.drawString(s1, (int) (hudX + 77), (hudY + 23), 982784);
 			}
-			else if(minutes >= 15 && seconds >= 0)
+			else
 			{
-				Minecraft.getMinecraft().fontRendererObj.drawString(s, (int) (hudX + 71.5), (hudY + 23), 60155);
-			}
-			//Green timer
-			else if(minutes >= 5 && seconds >= 0)
-			{
-				Minecraft.getMinecraft().fontRendererObj.drawString(s, (int) (hudX + 71.5), (hudY + 23), 1571584);
-			}
-			//Yellow timer
-			else if(minutes >= 2 && seconds >= 0)
-			{
-				Minecraft.getMinecraft().fontRendererObj.drawString(s, (int) (hudX + 71.5), (hudY + 23), 15596288);
-			}
-			//Orange timer
-			else if(minutes >= 1 && seconds >= 0)
-			{
-				Minecraft.getMinecraft().fontRendererObj.drawString(s, (int) (hudX + 71.5), (hudY + 23), 16493312);
-			}
-			//Red timer
-			else if(seconds >= 1)
-			{
-				Minecraft.getMinecraft().fontRendererObj.drawString(s, (int) (hudX + 71.5), (hudY + 23), 16449536);
-			}
-			//Black timer (Off)
-			else if(seconds >= 0)
-			{
-				Minecraft.getMinecraft().fontRendererObj.drawString(s, (int) (hudX + 71.5), (hudY + 23), 0);
+				//Aqua timer
+				if(hours > 0)
+				{
+					Minecraft.getMinecraft().fontRendererObj.drawString(s, (int) (hudX + 71.5), (hudY + 23), 60155);
+				}
+				else if(minutes >= 15 && seconds >= 0)
+				{
+					Minecraft.getMinecraft().fontRendererObj.drawString(s, (int) (hudX + 71.5), (hudY + 23), 60155);
+				}
+				//Green timer
+				else if(minutes >= 5 && seconds >= 0)
+				{
+					Minecraft.getMinecraft().fontRendererObj.drawString(s, (int) (hudX + 71.5), (hudY + 23), 1571584);
+				}
+				//Yellow timer
+				else if(minutes >= 2 && seconds >= 0)
+				{
+					Minecraft.getMinecraft().fontRendererObj.drawString(s, (int) (hudX + 71.5), (hudY + 23), 15596288);
+				}
+				//Orange timer
+				else if(minutes >= 1 && seconds >= 0)
+				{
+					Minecraft.getMinecraft().fontRendererObj.drawString(s, (int) (hudX + 71.5), (hudY + 23), 16493312);
+				}
+				//Red timer
+				else if(seconds >= 1)
+				{
+					Minecraft.getMinecraft().fontRendererObj.drawString(s, (int) (hudX + 71.5), (hudY + 23), 16449536);
+				}
+				//Black timer (Off)
+				else if(seconds >= 0)
+				{
+					Minecraft.getMinecraft().fontRendererObj.drawString(s, (int) (hudX + 71.5), (hudY + 23), 0);
+				}
 			}
 			
 			GlStateManager.popAttrib();

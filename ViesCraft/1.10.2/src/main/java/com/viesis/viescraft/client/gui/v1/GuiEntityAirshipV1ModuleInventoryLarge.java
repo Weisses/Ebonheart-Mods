@@ -12,23 +12,22 @@ import org.lwjgl.input.Keyboard;
 
 import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.api.util.Keybinds;
-import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
-import com.viesis.viescraft.common.entity.airshipcolors.containers.ContainerAirshipV1Default;
+import com.viesis.viescraft.common.entity.airshipcolors.containers.ContainerAirshipV1ModuleInvLarge;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 import com.viesis.viescraft.network.NetworkHandler;
 import com.viesis.viescraft.network.server.MessageGuiV1Module;
 
-public class GuiEntityAirshipV1Default extends GuiContainer {
+public class GuiEntityAirshipV1ModuleInventoryLarge extends GuiContainer {
 	
 	private GuiButton buttonModule;
 	
 	private IInventory playerInv;
 	private EntityAirshipV1Core airshipV1;
 	
-	public GuiEntityAirshipV1Default(IInventory playerInv, EntityAirshipV1Core airshipV1)
+	public GuiEntityAirshipV1ModuleInventoryLarge(IInventory playerInv, EntityAirshipV1Core airshipV1)
 	{
-		super(new ContainerAirshipV1Default(playerInv, airshipV1));
+		super(new ContainerAirshipV1ModuleInvLarge(playerInv, airshipV1));
 		
 		this.playerInv = playerInv;
 		this.airshipV1 = airshipV1;
@@ -72,7 +71,7 @@ public class GuiEntityAirshipV1Default extends GuiContainer {
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) 
 	{
 		GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
-		this.mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":" + "textures/gui/container_airship_default.png"));
+		this.mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":" + "textures/gui/container_airship_module2.png"));
 		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
 		
 		if (this.airshipV1.getPowered() > 0)
@@ -81,26 +80,6 @@ public class GuiEntityAirshipV1Default extends GuiContainer {
             this.drawTexturedModalRect(this.guiLeft + 138, this.guiTop + 4, 176, 50, 8, 1 + k);
             this.drawTexturedModalRect(this.guiLeft + 147, this.guiTop + 30, 176, 14, 26, 16);
         }
-		
-		if(this.airshipV1.getModuleInventorySmall()
-		|| this.airshipV1.getModuleInventoryLarge())
-		{
-			this.drawTexturedModalRect(this.guiLeft + 124, this.guiTop + 61, 176, 100, 8, 8);
-		}
-		if(this.airshipV1.getModuleFuelEfficiency()
-		|| this.airshipV1.getModuleFuelInfinite())
-		{
-			this.drawTexturedModalRect(this.guiLeft + 124, this.guiTop + 61, 176, 100, 8, 8);
-		}
-		if(this.airshipV1.getModuleFuelInfinite())
-		{
-			//int k = this.getBurnLeftScaled(47);
-			this.drawTexturedModalRect(this.guiLeft + 138, this.guiTop + 4, 184, 50, 8, 1 + 
-					47
-					//k
-					);
-			this.drawTexturedModalRect(this.guiLeft + 152, this.guiTop + 17, 176, 119, 16, 16);
-		}
     }
 	
     private int getBurnLeftScaled(int pixels)
