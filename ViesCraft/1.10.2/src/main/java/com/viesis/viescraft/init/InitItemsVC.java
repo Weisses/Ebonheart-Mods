@@ -77,6 +77,7 @@ import com.viesis.viescraft.common.items.airshipitems.v3.ItemAirshipV3Yellow;
 import com.viesis.viescraft.common.items.modules.ItemFuelModuleInfinite;
 import com.viesis.viescraft.common.items.modules.ItemInventoryModuleLarge;
 import com.viesis.viescraft.common.items.modules.ItemInventoryModuleSmall;
+import com.viesis.viescraft.common.items.modules.ItemModuleChip;
 import com.viesis.viescraft.common.items.modules.ItemSpeedModuleMinor;
 import com.viesis.viescraft.common.items.resources.ItemBalloon;
 import com.viesis.viescraft.common.items.resources.ItemEngine;
@@ -98,6 +99,7 @@ public class InitItemsVC extends ItemsVC {
 		airship_engine = registerItem(new ItemEngine());
 		airship_ignition = registerItem(new ItemIgnition());
 		
+		module_chip = registerItem(new ItemModuleChip());
 		module_inventory_small = registerItem(new ItemInventoryModuleSmall());
 		module_inventory_large = registerItem(new ItemInventoryModuleLarge());
 		//module_fuel_efficiency = registerItem(new ItemFuelModuleEfficiency());

@@ -32,6 +32,7 @@ item.vc:item_paint_red.name=Red Airship Paint
 item.vc:item_paint_white.name=White Airship Paint
 item.vc:item_paint_yellow.name=Yellow Airship Paint
 
+item.vc:module_chip.name=Module Chip
 item.vc:module_inventory_small.name=Small Inventory Module
 item.vc:module_inventory_large.name=Large Inventory Module
 item.vc:module_speed_increase_minor.name=Minor Speed Boost Module
@@ -63,8 +64,8 @@ achievement.vc:airship_create.desc=Craft an airship.
 achievement.vc:airship_create_color=Flying with style!
 achievement.vc:airship_create_color.desc=Craft a colored airship.
 
-achievement.vc:airship_create_color=Time for an upgrade!
-achievement.vc:airship_create_color.desc=Craft an expansion module.
+achievement.vc:airship_create_module=Time for an upgrade!
+achievement.vc:airship_create_module.desc=Craft an expansion module.
 
 achievement.vc:airship_airborn=Breaking the Sound Barrier!
 achievement.vc:airship_airborn.desc=Pilot an airship.

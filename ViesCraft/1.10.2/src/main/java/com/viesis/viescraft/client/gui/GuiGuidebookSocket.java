@@ -22,7 +22,7 @@ public class GuiGuidebookSocket extends GuiScreen {
     private final int bookImageHeight = 192;
     private final int bookImageWidth = 192;
     private int currPage = 0;
-    private static final int bookTotalPages = 7;
+    private static final int bookTotalPages = 8;
     private static ResourceLocation[] bookPageTextures = new ResourceLocation[bookTotalPages];
     private static String[] stringPageText = new String[bookTotalPages];
     
@@ -39,6 +39,7 @@ public class GuiGuidebookSocket extends GuiScreen {
         bookPageTextures[4] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/socket/page_4.png");
         bookPageTextures[5] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/socket/page_5.png");
         bookPageTextures[6] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/socket/page_6.png");
+        bookPageTextures[7] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/socket/page_7.png");
         
         
         //Title
@@ -74,26 +75,33 @@ public class GuiGuidebookSocket extends GuiScreen {
         
         stringPageText[3] = "Module Recipe:"
         		+ "\n\n"
+        		+ "\u00A7l\u00A7nModule Chip\u00A70\u00A7r\u00A70"
+        		+ "\n\n\n\n\n\n\n\n\n"
+        		+ "\u00A7oBasic chip used to"
+        		+ "\nmake modules.\u00A7r";
+        
+        stringPageText[4] = "Module Recipe:"
+        		+ "\n\n"
         		+ "\u00A7l\u00A7nSmall Inventory\nModule\u00A70\u00A7r\u00A70"
         		+ "\n\n\n\n\n\n\n\n"
         		+ "\u00A7o9 slot inventory."
         		+ "\n80% speed.\u00A7r";
         
-        stringPageText[4] = "Module Recipe:"
+        stringPageText[5] = "Module Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nLarge Inventory\nModule\u00A70\u00A7r\u00A70"
         		+ "\n\n\n\n\n\n\n\n"
         		+ "\u00A7o18 slot inventory."
         		+ "\n70% speed & fuel x2.\u00A7r";
         
-        stringPageText[5] = "Module Recipe:"
+        stringPageText[6] = "Module Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nMinor Speed\nModule\u00A70\u00A7r\u00A70"
         		+ "\n\n\n\n\n\n\n\n"
         		+ "\u00A7o130% Speed."
         		+ "\nFuel x2.\u00A7r";
         
-        stringPageText[6] = "Module Recipe:"
+        stringPageText[7] = "Module Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nInfinite Fuel\nModule\u00A70\u00A7r\u00A70"
         		+ "\n\n\n\n\n\n\n\n"
@@ -171,7 +179,10 @@ public class GuiGuidebookSocket extends GuiScreen {
         {
         	mc.getTextureManager().bindTexture(bookPageTextures[6]);
         }
-        
+        if (currPage == 7)
+        {
+        	mc.getTextureManager().bindTexture(bookPageTextures[7]);
+        }
         
         //else
         //{
