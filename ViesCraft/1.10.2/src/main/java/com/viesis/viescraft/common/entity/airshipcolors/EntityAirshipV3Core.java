@@ -49,33 +49,48 @@ import com.viesis.viescraft.common.utils.events.EventHandlerCreativeNoFuel;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 import com.viesis.viescraft.init.InitItemsVC;
 import com.viesis.viescraft.network.NetworkHandler;
-import com.viesis.viescraft.network.server.MessageGuiOpenV3;
+import com.viesis.viescraft.network.server.v3.MessageGuiV3Default;
+import com.viesis.viescraft.network.server.v3.MessageGuiV3ModuleInventoryLarge;
+import com.viesis.viescraft.network.server.v3.MessageGuiV3ModuleInventorySmall;
 
-public class EntityAirshipV3Core extends EntityVC implements IInventory//, ITickable 
-{
+public class EntityAirshipV3Core extends EntityVC implements IInventory {
+	
 	private static final DataParameter<Integer> TIME_SINCE_HIT = EntityDataManager.<Integer>createKey(EntityAirshipV3Core.class, DataSerializers.VARINT);
 	private static final DataParameter<Integer> FORWARD_DIRECTION = EntityDataManager.<Integer>createKey(EntityAirshipV3Core.class, DataSerializers.VARINT);
 	private static final DataParameter<Float> DAMAGE_TAKEN = EntityDataManager.<Float>createKey(EntityAirshipV3Core.class, DataSerializers.FLOAT);
 	private static final DataParameter<Integer> BOAT_TYPE = EntityDataManager.<Integer>createKey(EntityAirshipV3Core.class, DataSerializers.VARINT);
-    //private static final DataParameter<Boolean> POWERED = EntityDataManager.<Boolean>createKey(EntityAirshipCore.class, DataSerializers.BOOLEAN);
     
-	private ItemStack[] inventory = new ItemStack[10];
+	private static final DataParameter<Integer> POWERED = EntityDataManager.<Integer>createKey(EntityAirshipV3Core.class, DataSerializers.VARINT);
+	private static final DataParameter<Integer> ITEMFUELSTACKPOWERED = EntityDataManager.<Integer>createKey(EntityAirshipV3Core.class, DataSerializers.VARINT);
+    
+	private static final DataParameter<Boolean> MODULE_INVENTORY_SMALL = EntityDataManager.<Boolean>createKey(EntityAirshipV3Core.class, DataSerializers.BOOLEAN);
+	private static final DataParameter<Boolean> MODULE_INVENTORY_LARGE = EntityDataManager.<Boolean>createKey(EntityAirshipV3Core.class, DataSerializers.BOOLEAN);
+	//private static final DataParameter<Boolean> MODULE_FUEL_EFFICIENCY = EntityDataManager.<Boolean>createKey(EntityAirshipV3Core.class, DataSerializers.BOOLEAN);
+	private static final DataParameter<Boolean> MODULE_FUEL_INFINITE = EntityDataManager.<Boolean>createKey(EntityAirshipV3Core.class, DataSerializers.BOOLEAN);
+	private static final DataParameter<Boolean> MODULE_SPEED_MINOR = EntityDataManager.<Boolean>createKey(EntityAirshipV3Core.class, DataSerializers.BOOLEAN);
+    
+	//0 is fuel slot, 1 is expansion slot 2-20(9x2 slots) is inventory.
+	private ItemStack[] inventory = new ItemStack[20];
 	public String customName;
 	
 	public int airshipBurnTime;
-    private int currentItemBurnTime;
-    private int fuelTime;
-    private int totalFuelTime;
-    private int airshipBeingDriven;
+	public int itemFuelStack;
+	
+	private int dropNumber;
+    public static boolean moduleInventorySmall;
+    public static boolean moduleInventoryLarge;
+    //public static boolean moduleFuelEfficiency;
+    public static boolean moduleFuelInfinite;
+    public static boolean moduleSpeedMinor;
     
 	public EntityAirshipV3Core.Status status;
     public EntityAirshipV3Core.Status previousStatus;
     
-    public float AirshipSpeedTurn = 0.18F * (ViesCraftConfig.v3AirshipSpeed / 100);
-    public float AirshipSpeedForward = 0.0125F * (ViesCraftConfig.v3AirshipSpeed / 100);
-    public float AirshipSpeedUp = 0.0035F * (ViesCraftConfig.v3AirshipSpeed / 100);
-    public float AirshipSpeedDown = 0.0035F * (ViesCraftConfig.v3AirshipSpeed / 100);
-    
+    public float AirshipSpeedTurn = 0.18F * (ViesCraftConfig.v1AirshipSpeed / 100);
+    public float AirshipSpeedForward = 0.0125F * (ViesCraftConfig.v1AirshipSpeed / 100);
+    public float AirshipSpeedUp = 0.0035F * (ViesCraftConfig.v1AirshipSpeed / 100);
+    public float AirshipSpeedDown = 0.0035F * (ViesCraftConfig.v1AirshipSpeed / 100);
+	
 	public EntityAirshipV3Core(World worldIn)
     {
         super(worldIn);
@@ -105,9 +120,16 @@ public class EntityAirshipV3Core extends EntityVC implements IInventory//, ITick
 		this.dataManager.register(TIME_SINCE_HIT, Integer.valueOf(0));
         this.dataManager.register(FORWARD_DIRECTION, Integer.valueOf(1));
         this.dataManager.register(DAMAGE_TAKEN, Float.valueOf(0.0F));
-        //this.dataManager.register(POWERED, Boolean.valueOf(false));
-        
         this.dataManager.register(BOAT_TYPE, Integer.valueOf(EntityAirshipV3Core.Type.NORMAL.ordinal()));
+        
+        this.dataManager.register(POWERED, Integer.valueOf(this.airshipBurnTime));
+        this.dataManager.register(ITEMFUELSTACKPOWERED, Integer.valueOf(this.itemFuelStack));
+        
+        this.dataManager.register(MODULE_INVENTORY_SMALL, Boolean.valueOf(this.moduleInventorySmall));
+        this.dataManager.register(MODULE_INVENTORY_LARGE, Boolean.valueOf(this.moduleInventoryLarge));
+        //this.dataManager.register(MODULE_FUEL_EFFICIENCY, Boolean.valueOf(this.moduleFuelEfficiency));
+        this.dataManager.register(MODULE_FUEL_INFINITE, Boolean.valueOf(this.moduleFuelInfinite));
+        this.dataManager.register(MODULE_SPEED_MINOR, Boolean.valueOf(this.moduleSpeedMinor));
 	}
 	
 	
@@ -234,6 +256,8 @@ public class EntityAirshipV3Core extends EntityVC implements IInventory//, ITick
         this.tickFall();
         
         this.fuelFlight();
+        this.getTotalFuelSlotBurnTime();
+        this.currentModule();
         
         if (this.canPassengerSteer())
         {
@@ -298,7 +322,6 @@ public class EntityAirshipV3Core extends EntityVC implements IInventory//, ITick
         //	Minecraft.getMinecraft().setIngameFocus();	
         //}
         
-
         return true;
     }
     
@@ -376,12 +399,10 @@ public class EntityAirshipV3Core extends EntityVC implements IInventory//, ITick
             {
             	this.momentum = 0.9F;
             }
-            
             	
             this.motionX *= (double)this.momentum;
             this.motionZ *= (double)this.momentum;
             this.deltaRotation *= this.momentum;
-            
             
             if(this.getControllingPassenger() == null)
             {
@@ -405,6 +426,7 @@ public class EntityAirshipV3Core extends EntityVC implements IInventory//, ITick
             float f = 0.0F;
             float f1 = 0.0F;
             
+            //Turning Left
             if (this.leftInputDown)
             {
             	if(isClientAirshipBurning())
@@ -418,7 +440,8 @@ public class EntityAirshipV3Core extends EntityVC implements IInventory//, ITick
                     this.alphaRotation -= AirshipSpeedTurn * 0.5F;
             	}
             }
-
+            
+            //Turning Right
             if (this.rightInputDown)
             {
             	if(isClientAirshipBurning())
@@ -430,46 +453,127 @@ public class EntityAirshipV3Core extends EntityVC implements IInventory//, ITick
             		this.deltaRotation += AirshipSpeedTurn * 0.5F;
             	}
             }
-
+            
             if (this.rightInputDown != this.leftInputDown && !this.forwardInputDown && !this.backInputDown)
             {
                 f += 0.005F;
             }
-
+            
             this.rotationYaw += this.deltaRotation;
-
+            
+            //Moving Forward
             if (this.forwardInputDown)
             {
-            	if(isClientAirshipBurning())
+            	//If airship is on & small inv module installed
+            	if(isClientAirshipBurning()
+                && this.getModuleInventorySmall())
+                {
+            		f += AirshipSpeedForward - (AirshipSpeedForward * 0.2F);
+                }
+            	//If airship is on & large inv module installed
+            	else if(isClientAirshipBurning()
+            	&& this.getModuleInventoryLarge())
+            	{
+            		f += AirshipSpeedForward - (AirshipSpeedForward * 0.3F);
+            	}
+            	//If airship is on & infinite fuel module installed
+            	else if(isClientAirshipBurning()
+            	&& this.getModuleFuelInfinite())
+            	{
+            		f += AirshipSpeedForward - (AirshipSpeedForward * 0.5F);
+            	}
+            	//If airship is on & minor speed module installed
+            	else if(isClientAirshipBurning()
+            	&& this.getModuleSpeedMinor())
+            	{
+            		f += AirshipSpeedForward + (AirshipSpeedForward * 0.3F);
+            	}
+            	//If airship is on
+            	else if(isClientAirshipBurning())
             	{
             		f += AirshipSpeedForward;
             	}
+            	//If airship is off
             	else
             	{
             		f += 0.0030F;
             	}
             }
-
+            
+            //Moving Backwards
             if (this.backInputDown)
             {
-            	if(isClientAirshipBurning())
+            	//If airship is on & small inv module installed
+            	if(isClientAirshipBurning()
+            	&& this.getModuleInventorySmall())
+            	{
+            		f -= (AirshipSpeedForward * 0.5) - ((AirshipSpeedForward * 0.5)* 0.2);
+            	} 
+            	//If airship is on & large inv module installed
+            	else if(isClientAirshipBurning()
+            	&& this.getModuleInventoryLarge())
+            	{
+            		f -= (AirshipSpeedForward * 0.5) - ((AirshipSpeedForward * 0.5)* 0.3);
+            	}
+            	//If airship is on & infinite fuel module installed
+            	else if(isClientAirshipBurning()
+            	&& this.getModuleFuelInfinite())
+            	{
+            		f -= (AirshipSpeedForward * 0.5) - ((AirshipSpeedForward * 0.5)* 0.5);
+            	}
+            	//If airship is on & minor speed module installed
+            	else if(isClientAirshipBurning()
+            	&& this.getModuleSpeedMinor())
+            	{
+            		f -= (AirshipSpeedForward * 0.5) + ((AirshipSpeedForward * 0.5)* 0.3);
+            	}
+            	//If airship is on
+            	else if(isClientAirshipBurning())
             	{
             		f -= AirshipSpeedForward * 0.5;
             	}
+            	//If airship is off
             	else
             	{
             		f -= 0.0030F * 0.5;
             	}
             }
             
+            //Moving Up
             if (this.upInputDown)
             {
-            	if(isClientAirshipBurning())
+            	//If airship is on & small inv module installed
+            	if(isClientAirshipBurning()
+            	&& this.getModuleInventorySmall())
+            	{
+            		f1 += AirshipSpeedUp - (AirshipSpeedUp * 0.2);
+            	}
+            	//If airship is on & large inv module installed
+            	else if(isClientAirshipBurning()
+            	&& this.getModuleInventoryLarge())
+            	{
+            		f1 += AirshipSpeedUp - (AirshipSpeedUp * 0.3);
+            	}
+            	//If airship is on & infinite fuel module installed
+            	else if(isClientAirshipBurning()
+            	&& this.getModuleFuelInfinite())
+            	{
+            		f1 += AirshipSpeedUp - (AirshipSpeedUp * 0.5);
+            	}
+            	//If airship is on & minor speed module installed
+            	else if(isClientAirshipBurning()
+            	&& this.getModuleSpeedMinor())
+            	{
+            		f1 += AirshipSpeedUp + (AirshipSpeedUp * 0.3);
+            	}
+            	//If airship is on
+            	else if(isClientAirshipBurning())
             	{
             		f1 += AirshipSpeedUp;
             	}
             }
             
+            //Moving down
             if (this.downInputDown)
             {
                 f1 -= AirshipSpeedDown;
@@ -485,19 +589,34 @@ public class EntityAirshipV3Core extends EntityVC implements IInventory//, ITick
     
     
     
-    
     //==================================//
     // TODO          GUI                //
 	//==================================//
 	
     protected void controlAirshipGui()
     {
-    	if (this.isBeingRidden())
+    	if(this.getControllingPassenger() != null)
         {
-    		if (this.openInputDown)	
+    		if(this.openInputDown)	
             {
-            	NetworkHandler.sendToServer(new MessageGuiOpenV3());
-            	Minecraft.getMinecraft().setIngameFocus();		
+    			//If airship has small inv module installed
+            	if(this.getModuleInventorySmall())
+            	{
+            		NetworkHandler.sendToServer(new MessageGuiV3ModuleInventorySmall());
+                	Minecraft.getMinecraft().setIngameFocus();
+            	}
+            	//If airship has large inv module installed
+            	else if(this.getModuleInventoryLarge())
+            	{
+            		NetworkHandler.sendToServer(new MessageGuiV3ModuleInventoryLarge());
+                	Minecraft.getMinecraft().setIngameFocus();
+            	}
+            	//Default for airship gui
+            	else
+            	{
+            		NetworkHandler.sendToServer(new MessageGuiV3Default());
+                	Minecraft.getMinecraft().setIngameFocus();
+            	}
             }
         }
     }
@@ -804,7 +923,7 @@ public class EntityAirshipV3Core extends EntityVC implements IInventory//, ITick
     //==================================//
     // TODO       Inventory             //
 	//==================================//
-
+    
     public String getCustomName() {
 		return this.customName;
 	}
@@ -815,7 +934,7 @@ public class EntityAirshipV3Core extends EntityVC implements IInventory//, ITick
 	
 	@Override
 	public String getName() {
-		return this.hasCustomName() ? this.customName : ViesCraftConfig.v3AirshipName;
+		return this.hasCustomName() ? this.customName : ViesCraftConfig.v1AirshipName;
 	}
 
 	@Override
@@ -870,8 +989,6 @@ public class EntityAirshipV3Core extends EntityVC implements IInventory//, ITick
         
         if (index == 0 && !flag)
         {
-            this.totalFuelTime = this.getFuelTime(stack);
-            this.fuelTime = 0;
             this.markDirty();
         }
 	}
@@ -911,14 +1028,19 @@ public class EntityAirshipV3Core extends EntityVC implements IInventory//, ITick
      */
     public boolean isItemValidForSlot(int index, ItemStack stack)
     {
-        if (index != 9)
+        if (index == 0)
         {
-            return true;
+        	ItemStack itemstack = this.inventory[0];
+            return isItemFuel(stack) || SlotFurnaceFuel.isBucket(stack) && (itemstack == null || itemstack.getItem() != Items.BUCKET);
+        }
+        else if(index == 1)
+        {
+            ItemStack itemstack = this.inventory[1];
+            return isItemModule(stack);
         }
         else
         {
-            ItemStack itemstack = this.inventory[9];
-            return isItemFuel(stack) || SlotFurnaceFuel.isBucket(stack) && (itemstack == null || itemstack.getItem() != Items.BUCKET);
+        	return true;
         }
     }
 	
@@ -929,13 +1051,17 @@ public class EntityAirshipV3Core extends EntityVC implements IInventory//, ITick
             case 0:
                 return this.airshipBurnTime;
             case 1:
-                return this.currentItemBurnTime;
+                return 0;//this.currentItemBurnTime;
             case 2:
-                return this.fuelTime;
+                return 0;//this.fuelTime;
             case 3:
-                return this.totalFuelTime;
+                return 0;//this.totalFuelTime;
             case 4:
-                return this.airshipBeingDriven;
+                return 0;//this.airshipBeingDriven;
+            case 5:
+                return 0;//this.moduleInventorySmall;
+            case 6:
+                return 0;//this.moduleInventoryLarge;
             default:
                 return 0;
         }
@@ -945,25 +1071,34 @@ public class EntityAirshipV3Core extends EntityVC implements IInventory//, ITick
     {
         switch (id)
         {
+        	//Current Airship Burn Time
             case 0:
                 this.airshipBurnTime = value;
                 break;
             case 1:
-                this.currentItemBurnTime = value;
+                //this.currentItemBurnTime = value;
                 break;
             case 2:
-                this.fuelTime = value;
+                //this.fuelTime = value;
                 break;
             case 3:
-                this.totalFuelTime = value;
+                //this.totalFuelTime = value;
+            	break;
             case 4:
-                this.airshipBeingDriven = value;
+                //this.airshipBeingDriven = value;
+            	break;
+            case 5:
+                //this.moduleInventorySmall = value;
+                break;
+            case 6:
+                //this.moduleInventoryLarge = value;
+                break;
         }
     }
     
     public int getFieldCount()
     {
-        return 5;
+        return 6;
     }
     
 	@Override
@@ -986,58 +1121,108 @@ public class EntityAirshipV3Core extends EntityVC implements IInventory//, ITick
     	boolean flag = this.isClientAirshipBurning();
         boolean flag1 = false;
         
+        //Syncs the server info to the client
+        if(this.worldObj.isRemote)
+        {
+        	this.airshipBurnTime = this.getPowered();
+        }
+        
+        //Handles how burn time in is handled
         if (this.isClientAirshipBurning())
         {
-        	if(this.getControllingPassenger() == null)
-        	{
-        		--this.airshipBurnTime;
-        	}
-        	else if(EventHandlerCreativeNoFuel.creativeBurn)
+        	//Airship has Infinite Fuel Module installed
+        	if(this.getModuleFuelInfinite())
         	{
         		
         	}
+        	//The player in the airship is in Creative Mode
+        	else if(EventHandlerCreativeNoFuel.creativeBurn)
+        	{
+        		if(this.getEntityId() == EventHandlerCreativeNoFuel.test)
+        		{
+	        		if(this.getControllingPassenger() == null)
+	            	{
+	            		--this.airshipBurnTime;
+	            	}
+	        		else
+	        		{
+	        			
+	        		}
+        		}
+        		else
+        		{
+        			--this.airshipBurnTime;
+        		}
+        	}
+        	//Airship has either Large Inventory or Minor Speed Module installed
+        	else if(this.getModuleInventoryLarge()
+        	|| this.getModuleSpeedMinor())
+        	{
+        		--this.airshipBurnTime;
+        		--this.airshipBurnTime;
+        	}
+        	//Airship has no controlling passenger
+        	else if(this.getControllingPassenger() == null)
+        	{
+        		--this.airshipBurnTime;
+        	}
+        	//Anything else
         	else
         	{
         		--this.airshipBurnTime;
         	}
         }
         
+        //Handles when the airship is off
         if (!this.isClientAirshipBurning())
         {
-        	if(this.getControllingPassenger() == null)
-        	{
-        		this.airshipBurnTime = 0;
-        	}
-        	else if(EventHandlerCreativeNoFuel.creativeBurn)
+        	//Airship has Infinite Fuel Module installed
+        	if(this.getModuleFuelInfinite())
         	{
         		this.airshipBurnTime = 1;
         	}
+        	//Airship has no controlling passenger
+        	else if(this.getControllingPassenger() == null)
+        	{
+        		this.airshipBurnTime = 0;
+        	}
+        	//The player in the airship is in Creative Mode
+        	else if(EventHandlerCreativeNoFuel.creativeBurn)
+        	{
+        		if (this.getEntityId() == EventHandlerCreativeNoFuel.test)
+            	{
+            		this.airshipBurnTime = 1;
+            	}
+        	}
+        	else 
+        	{
+        		this.airshipBurnTime = 0;
+        	}
         }
         
-        if (this.isClientAirshipBurning() || this.inventory[9] != null)
+        //Core fuel slot logic
+        if (this.isClientAirshipBurning() || this.inventory[0] != null)
         {
             if (!this.isClientAirshipBurning())
             {
-                this.airshipBurnTime = getItemBurnTime(this.inventory[9]);
-                this.currentItemBurnTime = this.airshipBurnTime;
+                this.airshipBurnTime = getItemBurnTime(this.inventory[0]);
                 
                 if (this.isClientAirshipBurning())
                 {
                     flag1 = true;
                     
-                    if (this.inventory[9] != null)
+                    if (this.inventory[0] != null)
                     {
-                        --this.inventory[9].stackSize;
+                        --this.inventory[0].stackSize;
                         
-                        if (this.inventory[9].stackSize == 0)
+                        if (this.inventory[0].stackSize == 0)
                         {
-                            this.inventory[9] = inventory[9].getItem().getContainerItem(inventory[9]);
+                            this.inventory[0] = inventory[0].getItem().getContainerItem(inventory[0]);
                         }
                     }
                 }
             }
         }
-        
         
         if (flag != this.isClientAirshipBurning())
         {
@@ -1048,6 +1233,11 @@ public class EntityAirshipV3Core extends EntityVC implements IInventory//, ITick
         {
             this.markDirty();
         }
+        
+        if(!this.worldObj.isRemote)
+        {
+        	this.setPowered(this.airshipBurnTime);
+        }
     }
     
     /**
@@ -1055,9 +1245,12 @@ public class EntityAirshipV3Core extends EntityVC implements IInventory//, ITick
      */
     public boolean isClientAirshipBurning()
     {
-        return this.airshipBurnTime > 0;
+    	return this.airshipBurnTime > 0;
     }
     
+    /**
+     * Passed to Render Airship.
+     */
     @SideOnly(Side.CLIENT)
     public static boolean isAirshipBurning(IInventory inventory)
     {
@@ -1066,7 +1259,7 @@ public class EntityAirshipV3Core extends EntityVC implements IInventory//, ITick
     
     public int getFuelTime(@Nullable ItemStack stack)
     {
-        return (ViesCraftConfig.v3FuelBurnTime * 20);//1200;
+        return (ViesCraftConfig.v1FuelBurnTime * 20);//1200;
     }
     
     /**
@@ -1083,7 +1276,7 @@ public class EntityAirshipV3Core extends EntityVC implements IInventory//, ITick
         {
             Item item = stack.getItem();
             
-            if (item == Items.COAL) return (ViesCraftConfig.v3FuelBurnTime * 20);//1200;//1600
+            if (item == Items.COAL) return (ViesCraftConfig.v1FuelBurnTime * 20);//1200;//1600
             
             return net.minecraftforge.fml.common.registry.GameRegistry.getFuelValue(stack);
         }
@@ -1098,15 +1291,386 @@ public class EntityAirshipV3Core extends EntityVC implements IInventory//, ITick
         return getItemBurnTime(stack) > 0;
     }
     
-    public boolean isAirshipBeingDriven()
+    /**
+     * Calculates total fuel burn time by stack size for GUI
+     */
+    public void getTotalFuelSlotBurnTime()
     {
-        return this.airshipBeingDriven > 0;//this.getRidingEntity() instanceof EntityPlayer;
+    	//Passes itemFuelStack to client for gui
+    	if(this.worldObj.isRemote)
+		{
+			this.itemFuelStack = this.getItemFuelStackPowered();
+		}
+    	
+    	if(this.getControllingPassenger() != null)
+    	{
+    		if (this.isClientAirshipBurning())
+            {
+    			ItemStack itemFuel = this.getStackInSlot(0);
+    			
+    			if(itemFuel != null)
+    			{
+    				this.itemFuelStack = this.inventory[0].stackSize * (ViesCraftConfig.v1FuelBurnTime);
+    			}
+    			else
+    			{
+    				this.itemFuelStack = 0;
+    			}
+            }
+    		else
+    		{
+    			this.itemFuelStack = 0;
+    		}
+    	}
+    	
+    	if(!this.worldObj.isRemote)
+		{
+			this.setItemFuelStackPowered(this.itemFuelStack);
+		}
     }
     
-    @SideOnly(Side.CLIENT)
-    public static boolean isAirshipBeingDriven(IInventory inventory)
+	/**
+     * Sets the airshipBurnTime to pass from server to client.
+     */
+    public void setPowered(int airshipBurnTime1)
     {
-    	return inventory.getField(5) == 5;
+        this.dataManager.set(POWERED, Integer.valueOf(airshipBurnTime1));
+    }
+	
+    /**
+     * Gets the airshipBurnTime to pass from server to client.
+     */
+    public int getPowered()
+    {
+        return ((Integer)this.dataManager.get(POWERED)).intValue();
+    }
+    
+	/**
+     * Sets the itemFuelStack to pass from server to client.
+     */
+    public void setItemFuelStackPowered(int itemFuelStack1)
+    {
+        this.dataManager.set(ITEMFUELSTACKPOWERED, Integer.valueOf(itemFuelStack1));
+    }
+	
+    /**
+     * Gets the itemFuelStack to pass from server to client.
+     */
+    public int getItemFuelStackPowered()
+    {
+        return ((Integer)this.dataManager.get(ITEMFUELSTACKPOWERED)).intValue();
+    }
+    
+    
+    
+    //==================================//
+  	// TODO     Airship Modules         //
+  	//==================================//
+    
+    public void currentModule()
+    {
+    	ItemStack itemModule = this.getStackInSlot(1);
+		int moduleNumber = this.getModuleID(itemModule);
+		
+		
+		
+		/**
+		if(this.worldObj.isRemote)
+		{
+			if(this.moduleInventorySmall)
+				LogHelper.info("1");
+			if(this.moduleInventoryLarge)
+				LogHelper.info("2");
+			if(this.moduleSpeedMinor)
+				LogHelper.info("3");
+			if(this.moduleFuelInfinite)
+				LogHelper.info("4");
+		}
+		*/
+		
+		
+		
+		if(this.worldObj.isRemote)
+		{
+    		this.moduleInventorySmall = this.getModuleInventorySmall();
+    		this.moduleInventoryLarge = this.getModuleInventoryLarge();
+    		this.moduleSpeedMinor = this.getModuleSpeedMinor();
+    		this.moduleFuelInfinite = this.getModuleFuelInfinite();
+		}
+		
+		if(moduleNumber == 1)
+		{
+			this.moduleInventorySmall = true;
+			this.moduleInventoryLarge = false;
+			this.moduleSpeedMinor = false;
+			this.moduleFuelInfinite = false;
+		}
+		else if(moduleNumber == 2)
+		{
+			this.moduleInventorySmall = false;
+			this.moduleInventoryLarge = true;
+			this.moduleSpeedMinor = false;
+			this.moduleFuelInfinite = false;
+		}
+		else if(moduleNumber == 3)
+		{
+			this.moduleInventorySmall = false;
+			this.moduleInventoryLarge = false;
+			this.moduleSpeedMinor = true;
+			this.moduleFuelInfinite = false;
+		}
+		else if(moduleNumber == 4)
+		{
+			this.moduleInventorySmall = false;
+			this.moduleInventoryLarge = false;
+			this.moduleSpeedMinor = false;
+			this.moduleFuelInfinite = true;
+		}
+		else// if(moduleNumber == 0)
+		{
+			this.moduleInventorySmall = false;
+			this.moduleInventoryLarge = false;
+			this.moduleSpeedMinor = false;
+			this.moduleFuelInfinite = false;
+		}
+		
+		//If there is no module in slot
+		if(this.getStackInSlot(1) == null)
+		{
+			//If small inv mod is removed and slot is empty
+			if(dropNumber == 1)
+			{
+				dropNumber = 0;
+				this.dropLargeModInv();
+			}
+			
+			//If large inv mod is removed and slot is empty
+			if(dropNumber == 2)
+			{
+				dropNumber = 0;
+				this.dropLargeModInv();
+			}
+		}
+		//If a module is still in the slot
+		else
+		{
+			//If the module in the slot is small inv mod
+			if(this.getStackInSlot(1).getItem() == InitItemsVC.module_inventory_small
+			&& dropNumber == 0)
+			{
+				dropNumber = 1;
+			}
+			
+			//If the module in the slot is large inv mod
+			else if(this.getStackInSlot(1).getItem() == InitItemsVC.module_inventory_large
+			&& dropNumber == 0)
+			{
+				dropNumber = 2;
+			}
+			
+			//If the module in the slot is not small inv mod but had it in previously
+			else if(this.getStackInSlot(1).getItem() != InitItemsVC.module_inventory_small
+					&& dropNumber == 1)
+			{
+				dropNumber = 0;
+				this.dropLargeModInv();
+			}
+			
+			//If the module in the slot is not large inv mod but had it in previously
+			else if(this.getStackInSlot(1).getItem() != InitItemsVC.module_inventory_large
+					&& dropNumber == 2)
+			{
+				dropNumber = 0;
+				this.dropLargeModInv();
+			}
+		}
+		
+    	if(!this.worldObj.isRemote)
+		{
+			this.setModuleInventorySmall(this.moduleInventorySmall);
+    		this.setModuleInventoryLarge(this.moduleInventoryLarge);
+    		this.setModuleSpeedMinor(this.moduleSpeedMinor);
+    		this.setModuleFuelInfinite(this.moduleFuelInfinite);
+    	}
+    }
+    
+    /**
+     * Checks if a module is in the module slot.
+     */
+    public static boolean getItemModule(ItemStack stack)
+    {
+        if (stack == null)
+        {
+            return false;
+        }
+        else
+        {
+            Item item = stack.getItem();
+            
+            if (item == InitItemsVC.module_inventory_small) return true;
+            
+            if (item == InitItemsVC.module_inventory_large) return true;
+            
+            if (item == InitItemsVC.module_speed_increase_minor) return true;
+            
+            if (item == InitItemsVC.module_fuel_infinite) return true;
+            
+            return false;
+        }
+    }
+    
+    /**
+     * Set module ID for module in slot.
+     */
+    public static int getModuleID(ItemStack stack)
+    {
+        if (stack == null)
+        {
+            return 0;
+        }
+        else
+        {
+            Item item = stack.getItem();
+            
+            if (item == InitItemsVC.module_inventory_small)
+            {
+            	return 1;
+            }
+            else if (item == InitItemsVC.module_inventory_large)
+            {
+            	return 2;
+            }
+            
+            else if (item == InitItemsVC.module_speed_increase_minor)
+            {
+            	return 3;
+            }
+            else if (item == InitItemsVC.module_fuel_infinite)
+            {
+            	return 4;
+            }
+            else
+            {
+            	return 0;
+            }
+        }
+    }
+    
+    public static boolean isItemModule(ItemStack stack)
+    {
+        /**
+         * Returns the number of ticks that the supplied fuel item will keep the furnace burning, or 0 if the item isn't
+         * fuel
+         */
+        return getItemModule(stack);
+    }
+    
+    /**
+     * Drops large inventory contents from airship
+     */
+    public void dropLargeModInv()
+    {
+    	if(this.worldObj.isRemote)
+		{
+			for (int x = 2; x < 20; ++x) 
+			{
+				if(this.getStackInSlot(x) != null)
+				{
+					this.inventory[x] = null;
+				}
+			}
+		}
+		else
+		{
+			for (int x = 2; x < 20; ++x) 
+			{
+				if(this.getStackInSlot(x) != null)
+				{
+					InventoryHelper.spawnItemStack(this.worldObj, this.posX, this.posY, this.posZ, this.getStackInSlot(x));
+					this.inventory[x] = null;
+				}
+			}
+		}
+    }
+    
+    /**
+     * Sets the Small Inventory boolean to pass from server to client.
+     */
+    public void setModuleInventorySmall(boolean moduleInvSmall1)
+    {
+        this.dataManager.set(MODULE_INVENTORY_SMALL, Boolean.valueOf(moduleInvSmall1));
+    }
+	
+    /**
+     * Gets the Small Inventory boolean to pass from server to client.
+     */
+    public boolean getModuleInventorySmall()
+    {
+        return ((Boolean)this.dataManager.get(MODULE_INVENTORY_SMALL)).booleanValue();
+    }
+    
+    /**
+     * Sets the Large Inventory boolean to pass from server to client.
+     */
+    public void setModuleInventoryLarge(boolean moduleInvLarge1)
+    {
+        this.dataManager.set(MODULE_INVENTORY_LARGE, Boolean.valueOf(moduleInvLarge1));
+    }
+	
+    /**
+     * Gets the Large Inventory boolean to pass from server to client.
+     */
+    public boolean getModuleInventoryLarge()
+    {
+        return ((Boolean)this.dataManager.get(MODULE_INVENTORY_LARGE)).booleanValue();
+    }
+    
+    /**
+     * Sets the ---- boolean to pass from server to client.
+     */
+    //public void setModuleFuelEfficiency(boolean moduleFuelEff1)
+    //{
+    //    this.dataManager.set(MODULE_FUEL_EFFICIENCY, Boolean.valueOf(moduleFuelEff1));
+    //}
+	
+    /**
+     * Gets the ---- boolean to pass from server to client.
+     */
+    //public boolean getModuleFuelEfficiency()
+    //{
+    //    return ((Boolean)this.dataManager.get(MODULE_FUEL_EFFICIENCY)).booleanValue();
+    //}
+    
+    /**
+     * Sets the Infinite Fuel boolean to pass from server to client.
+     */
+    public void setModuleFuelInfinite(boolean moduleInvLarge1)
+    {
+        this.dataManager.set(MODULE_FUEL_INFINITE, Boolean.valueOf(moduleInvLarge1));
+    }
+	
+    /**
+     * Gets the Infinite Fuel boolean to pass from server to client.
+     */
+    public boolean getModuleFuelInfinite()
+    {
+        return ((Boolean)this.dataManager.get(MODULE_FUEL_INFINITE)).booleanValue();
+    }
+    
+    /**
+     * Gets the Minor Speed boolean to pass from server to client.
+     */
+    public boolean getModuleSpeedMinor()
+    {
+        return ((Boolean)this.dataManager.get(MODULE_SPEED_MINOR)).booleanValue();
+    }
+    
+    /**
+     * Sets if Minor Speed Increase mod is installed to pass from server to client.
+     */
+    public void setModuleSpeedMinor(boolean moduleInvLarge1)
+    {
+        this.dataManager.set(MODULE_SPEED_MINOR, Boolean.valueOf(moduleInvLarge1));
     }
     
     
@@ -1406,9 +1970,13 @@ public class EntityAirshipV3Core extends EntityVC implements IInventory//, ITick
     	super.writeEntityToNBT(compound);
     	
     	compound.setInteger("BurnTime", this.airshipBurnTime);
-        compound.setInteger("FuelTime", this.fuelTime);
-        compound.setInteger("FuelTimeTotal", this.totalFuelTime);
-        
+    	compound.setInteger("FuelStackTime", this.itemFuelStack);
+    	
+    	compound.setBoolean("ModuleInvSmall", this.getModuleInventorySmall());
+    	compound.setBoolean("ModuleInvLarge", this.getModuleInventoryLarge());
+    	compound.setBoolean("ModuleSpeedMinor", this.getModuleSpeedMinor());
+    	compound.setBoolean("ModuleFuelInf", this.getModuleFuelInfinite());
+    	
         NBTTagList nbttaglist = new NBTTagList();
         
         for (int i = 0; i < this.inventory.length; ++i)
@@ -1421,7 +1989,7 @@ public class EntityAirshipV3Core extends EntityVC implements IInventory//, ITick
                 nbttaglist.appendTag(nbttagcompound);
             }
         }
-
+        
         if(this.hasCustomName()) 
         {
 			compound.setString("CustomName", this.getCustomName());
@@ -1451,16 +2019,19 @@ public class EntityAirshipV3Core extends EntityVC implements IInventory//, ITick
                 this.inventory[j] = ItemStack.loadItemStackFromNBT(nbttagcompound);
             }
         }
-
+        
         if(compound.hasKey("CustomName", 8)) 
         {
     			this.setCustomName(compound.getString("CustomName"));
     	}
         
         this.airshipBurnTime = compound.getInteger("BurnTime");
-        this.fuelTime = compound.getInteger("FuelTime");
-        this.totalFuelTime = compound.getInteger("FuelTimeTotal");
-        this.currentItemBurnTime = getItemBurnTime(this.inventory[9]);
+        this.itemFuelStack = compound.getInteger("FuelStackTime");
+        
+        this.moduleInventorySmall = compound.getBoolean("ModuleInvSmall");
+        this.moduleInventoryLarge = compound.getBoolean("ModuleInvLarge");
+        this.moduleSpeedMinor = compound.getBoolean("ModuleSpeedMinor");
+        this.moduleFuelInfinite = compound.getBoolean("ModuleFuelInf");
     }
     
     /**
@@ -1487,17 +2058,5 @@ public class EntityAirshipV3Core extends EntityVC implements IInventory//, ITick
     //protected float getSoundVolume()
     //{
     //    return 5.0F;
-    //}
-    
-    
-    
-    //protected boolean isMinecartPowered()
-    //{
-    //    return ((Boolean)this.dataManager.get(POWERED)).booleanValue();
-    //}
-
-    //protected void setMinecartPowered(boolean p_94107_1_)
-    //{
-    //    this.dataManager.set(POWERED, Boolean.valueOf(p_94107_1_));
     //}
 }

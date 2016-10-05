@@ -5,10 +5,8 @@ import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
-import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
@@ -25,11 +23,9 @@ public class GuiV3HUD extends Gui {
 	private final int hudWidth;
 	private final int hudHeight;
 	private final int fieldWidth;
-	private int itemFuelStack;
-	private boolean isAirshipV3;
 	
+	private boolean isAirshipV3;
 	private EntityAirshipV3Core airshipV3;
-	private ItemStack itemFuel;
 	
 	public GuiV3HUD()
 	{
@@ -45,44 +41,28 @@ public class GuiV3HUD extends Gui {
 	@SubscribeEvent(priority=EventPriority.NORMAL)
 	public void onRenderExperienceBar(RenderGameOverlayEvent.Post event) 
 	{
-		isAirshipV3 = mc.thePlayer.getRidingEntity() instanceof EntityAirshipV3Core;
+		this.isAirshipV3 = mc.thePlayer.getRidingEntity() instanceof EntityAirshipV3Core;
 		
-		if (event.getType() != ElementType.EXPERIENCE) 
-		{
-			return;
-		}
-		
-		if(isAirshipV3)
+		if(this.isAirshipV3)
 	    {
-			airshipV3 = (EntityAirshipV3Core) Minecraft.getMinecraft().thePlayer.getRidingEntity();
-			itemFuel = this.airshipV3.getStackInSlot(9);
-			
-			if(itemFuel != null)
-			{
-				this.itemFuelStack = itemFuel.stackSize * (ViesCraftConfig.v3FuelBurnTime);
-			}
-			else
-			{
-				this.itemFuelStack = 0;
-			}
+			this.airshipV3 = (EntityAirshipV3Core) Minecraft.getMinecraft().thePlayer.getRidingEntity();
 			
 			GlStateManager.enableRescaleNormal();
             GlStateManager.enableBlend();
-            GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA,
-                                                 GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+            GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
             
-            // Add this block of code before you draw the section of your texture containing transparency
+            //Add this block of code before you draw the section of your texture containing transparency
  			GlStateManager.pushAttrib();
  			GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
  			GlStateManager.disableLighting();
  			
- 			// alpha test and blend needed due to vanilla or Forge rendering bug
+ 			//Alpha test and blend needed due to vanilla or Forge rendering bug
  			GlStateManager.enableAlpha();
  			GlStateManager.enableBlend();
          	
             Minecraft.getMinecraft().getTextureManager().bindTexture(texture);
 			
-			//Screen resolution
+            //Screen resolution
 			ScaledResolution sr = new ScaledResolution(mc);
             int hudX = sr.getScaledWidth() / 2 - (hudWidth / 2); // left edge of GUI
             int hudY = 2; // top edge of GUI
@@ -95,27 +75,78 @@ public class GuiV3HUD extends Gui {
 			drawTexturedModalRect(hudX, hudY, 0, 0, hudWidth, hudHeight + 2);
 			
 			//SMALL % BAR
-			// You can keep drawing without changing anything
-			int fuelbarwidth1 = (int)((((float) (this.airshipV3.airshipBurnTime) / (ViesCraftConfig.v3FuelBurnTime * 20))) * 110);
-			drawTexturedModalRect(hudX + 36, hudY + 33, 36, 53, fuelbarwidth1, 6);
+			// I can keep drawing without changing anything
+			if(this.airshipV3.getModuleFuelInfinite())
+			{
+				drawTexturedModalRect(hudX + 36, hudY + 33, 36, 77, 110, 6);
+			}
+			else
+			{
+				int fuelbarwidth1 = (int)((((float) (this.airshipV3.getPowered()) / (ViesCraftConfig.v1FuelBurnTime * 20))) * 110);
+				drawTexturedModalRect(hudX + 36, hudY + 33, 36, 53, fuelbarwidth1, 6);
+			}
 			
 			//BIG % BAR
-			// You can keep drawing without changing anything
-			int fuelbarwidth2 = (int)(((float) (this.itemFuelStack * 20) / ((ViesCraftConfig.v3FuelBurnTime * 20) * 64)) * 178);
-			drawTexturedModalRect(hudX + 2, hudY + 14, 2, 69, fuelbarwidth2, 6);
+			// I can keep drawing without changing anything
+			if(this.airshipV3.getModuleFuelInfinite())
+			{
+				drawTexturedModalRect(hudX + 2, hudY + 14, 2, 93, 178, 6);
+			}
+			else
+			{
+				int fuelbarwidth2 = (int)(((float) (this.airshipV3.getItemFuelStackPowered() * 20) / ((ViesCraftConfig.v1FuelBurnTime * 20) * 64)) * 178);
+				drawTexturedModalRect(hudX + 2, hudY + 14, 2, 69, fuelbarwidth2, 6);
+			}
 			
 			//Airship lights on
-			if(airshipV3.airshipBurnTime >= 1)
+			if(this.airshipV3.getPowered() >= 1)
 			{
 				drawTexturedModalRect(hudX + 16, hudY, 16, 44, 150, 7);
 			}
 			
-            //Calculation from ticks to seconds.
-            int timer = (((airshipV3.airshipBurnTime + 18) ) / 20) + itemFuelStack ;
-			int remainder = (timer % 3600);
-			int minutes = remainder / 60;
-			int seconds = remainder % 60;
-			int hours = timer / 3600;
+			//Draw current module icons in HUD
+			if(this.airshipV3.getModuleInventorySmall())
+			{
+				drawTexturedModalRect(hudX + 83, hudY, 0, 240, 16, 16);
+			}
+			if(this.airshipV3.getModuleInventoryLarge())
+			{
+				drawTexturedModalRect(hudX + 83, hudY, 16, 240, 16, 16);
+			}
+			if(this.airshipV3.getModuleSpeedMinor())
+			{
+				drawTexturedModalRect(hudX + 83, hudY, 32, 240, 16, 16);
+			}
+			if(this.airshipV3.getModuleFuelInfinite())
+			{
+				drawTexturedModalRect(hudX + 83, hudY, 48, 240, 16, 16);
+			}
+			
+			int timer;
+			int remainder;
+			int minutes;
+			int seconds;
+			int hours;
+			
+			if(this.airshipV3.getModuleInventoryLarge()
+			|| this.airshipV3.getModuleSpeedMinor())
+			{
+				//Calculation from ticks to seconds.
+	            timer = ((((this.airshipV3.getPowered() + 18) ) / 20) + this.airshipV3.getItemFuelStackPowered()) / 2;
+				remainder = (timer % 3600);
+				minutes = remainder / 60;
+				seconds = remainder % 60;
+				hours = timer / 3600;
+			}
+			else
+			{
+				//Calculation from ticks to seconds.
+	            timer = (((this.airshipV3.getPowered() + 18) ) / 20) + this.airshipV3.getItemFuelStackPowered() ;
+				remainder = (timer % 3600);
+				minutes = remainder / 60;
+				seconds = remainder % 60;
+				hours = timer / 3600;
+			}
 			
 			String hrs = (hours < 10 ? "0" : "") + hours;
 			String mins = (minutes < 10 ? "0" : "") + minutes;
@@ -124,39 +155,48 @@ public class GuiV3HUD extends Gui {
 			//Time in seconds to display
 			String s = hrs + ":" + mins + ":" + secs;
 			
-			//Aqua timer
-			if(hours > 0)
+			
+			if(this.airshipV3.getModuleFuelInfinite())
 			{
-				Minecraft.getMinecraft().fontRendererObj.drawString(s, (int) (hudX + 71.5), (hudY + 23), 60155);
+				String s1 = "\u221e" + ":" + "\u221e" + ":" + "\u221e";
+				Minecraft.getMinecraft().fontRendererObj.drawString(s1, (int) (hudX + 77), (hudY + 23), 982784);
 			}
-			else if(minutes >= 15 && seconds >= 0)
+			else
 			{
-				Minecraft.getMinecraft().fontRendererObj.drawString(s, (int) (hudX + 71.5), (hudY + 23), 60155);
-			}
-			//Green timer
-			else if(minutes >= 5 && seconds >= 0)
-			{
-				Minecraft.getMinecraft().fontRendererObj.drawString(s, (int) (hudX + 71.5), (hudY + 23), 1571584);
-			}
-			//Yellow timer
-			else if(minutes >= 2 && seconds >= 0)
-			{
-				Minecraft.getMinecraft().fontRendererObj.drawString(s, (int) (hudX + 71.5), (hudY + 23), 15596288);
-			}
-			//Orange timer
-			else if(minutes >= 1 && seconds >= 0)
-			{
-				Minecraft.getMinecraft().fontRendererObj.drawString(s, (int) (hudX + 71.5), (hudY + 23), 16493312);
-			}
-			//Red timer
-			else if(seconds >= 1)
-			{
-				Minecraft.getMinecraft().fontRendererObj.drawString(s, (int) (hudX + 71.5), (hudY + 23), 16449536);
-			}
-			//Black timer (Off)
-			else if(seconds >= 0)
-			{
-				Minecraft.getMinecraft().fontRendererObj.drawString(s, (int) (hudX + 71.5), (hudY + 23), 0);
+				//Aqua timer
+				if(hours > 0)
+				{
+					Minecraft.getMinecraft().fontRendererObj.drawString(s, (int) (hudX + 71.5), (hudY + 23), 60155);
+				}
+				else if(minutes >= 15 && seconds >= 0)
+				{
+					Minecraft.getMinecraft().fontRendererObj.drawString(s, (int) (hudX + 71.5), (hudY + 23), 60155);
+				}
+				//Green timer
+				else if(minutes >= 5 && seconds >= 0)
+				{
+					Minecraft.getMinecraft().fontRendererObj.drawString(s, (int) (hudX + 71.5), (hudY + 23), 1571584);
+				}
+				//Yellow timer
+				else if(minutes >= 2 && seconds >= 0)
+				{
+					Minecraft.getMinecraft().fontRendererObj.drawString(s, (int) (hudX + 71.5), (hudY + 23), 15596288);
+				}
+				//Orange timer
+				else if(minutes >= 1 && seconds >= 0)
+				{
+					Minecraft.getMinecraft().fontRendererObj.drawString(s, (int) (hudX + 71.5), (hudY + 23), 16493312);
+				}
+				//Red timer
+				else if(seconds >= 1)
+				{
+					Minecraft.getMinecraft().fontRendererObj.drawString(s, (int) (hudX + 71.5), (hudY + 23), 16449536);
+				}
+				//Black timer (Off)
+				else if(seconds >= 0)
+				{
+					Minecraft.getMinecraft().fontRendererObj.drawString(s, (int) (hudX + 71.5), (hudY + 23), 0);
+				}
 			}
 			
 			GlStateManager.popAttrib();
