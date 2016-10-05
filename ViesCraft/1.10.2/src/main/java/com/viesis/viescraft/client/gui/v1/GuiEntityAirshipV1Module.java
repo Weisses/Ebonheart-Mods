@@ -13,11 +13,11 @@ import org.lwjgl.input.Keyboard;
 import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.api.util.Keybinds;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
-import com.viesis.viescraft.common.entity.airshipcolors.containers.ContainerAirshipV1Module;
+import com.viesis.viescraft.common.entity.airshipcolors.containers.v1.ContainerAirshipV1Module;
 import com.viesis.viescraft.network.NetworkHandler;
-import com.viesis.viescraft.network.server.MessageGuiV1Default;
-import com.viesis.viescraft.network.server.MessageGuiV1ModuleInventoryLarge;
-import com.viesis.viescraft.network.server.MessageGuiV1ModuleInventorySmall;
+import com.viesis.viescraft.network.server.v1.MessageGuiV1Default;
+import com.viesis.viescraft.network.server.v1.MessageGuiV1ModuleInventoryLarge;
+import com.viesis.viescraft.network.server.v1.MessageGuiV1ModuleInventorySmall;
 
 public class GuiEntityAirshipV1Module extends GuiContainer {
 	

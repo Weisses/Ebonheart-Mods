@@ -7,6 +7,7 @@ public class ItemsVC {
 	public static Item guidebook_main;
 	public static Item guidebook_controls;
 	public static Item guidebook_paint;
+	public static Item guidebook_socket;
 	
 	public static Item airship_balloon;
 	public static Item airship_ignition;
@@ -134,6 +135,7 @@ public class ItemsVC {
 	public static Item achievement_airship_create_ignition;
 	public static Item achievement_airship_create;
 	public static Item achievement_airship_create_color;
+	public static Item achievement_airship_create_module;
 	public static Item achievement_airship_airborn;
 	public static Item achievement_airship_water;
 	public static Item achievement_airship_lava;

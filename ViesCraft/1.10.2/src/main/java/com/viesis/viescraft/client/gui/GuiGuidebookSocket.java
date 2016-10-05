@@ -17,12 +17,12 @@ import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 import com.viesis.viescraft.init.InitBlocksVC;
 
-public class GuiGuidebookMain extends GuiScreen {
+public class GuiGuidebookSocket extends GuiScreen {
 	
     private final int bookImageHeight = 192;
     private final int bookImageWidth = 192;
     private int currPage = 0;
-    private static final int bookTotalPages = 13;
+    private static final int bookTotalPages = 7;
     private static ResourceLocation[] bookPageTextures = new ResourceLocation[bookTotalPages];
     private static String[] stringPageText = new String[bookTotalPages];
     
@@ -30,133 +30,77 @@ public class GuiGuidebookMain extends GuiScreen {
     private NextPageButton buttonNextPage;
     private NextPageButton buttonPreviousPage;
     
-    public GuiGuidebookMain()
+    public GuiGuidebookSocket()
     {
-    	bookPageTextures[0] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/main/page_0.png");
-        bookPageTextures[1] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/main/page_1.png");
-        bookPageTextures[2] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/main/page_2.png");
-        bookPageTextures[3] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/main/page_3.png");
-        bookPageTextures[4] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/main/page_4.png");
-        bookPageTextures[5] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/main/page_5.png");
-        bookPageTextures[6] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/main/page_6.png");
-        bookPageTextures[7] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/main/page_7.png");
-        bookPageTextures[8] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/main/page_8.png");
-        bookPageTextures[9] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/main/page_9.png");
-        bookPageTextures[10] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/main/page_10.png");
-        bookPageTextures[11] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/main/page_11.png");
-        bookPageTextures[12] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/main/page_12.png");
+    	bookPageTextures[0] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/socket/page_0.png");
+        bookPageTextures[1] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/socket/page_1.png");
+        bookPageTextures[2] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/socket/page_2.png");
+        bookPageTextures[3] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/socket/page_3.png");
+        bookPageTextures[4] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/socket/page_4.png");
+        bookPageTextures[5] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/socket/page_5.png");
+        bookPageTextures[6] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/socket/page_6.png");
+        
         
         //Title
         stringPageText[0] = "\n\n\n\n\n\n\n"
-        		+ "   " + "\u00A7l\u00A7nThe \'Vies\' Craft\u00A7r"
+        		+ "    " + "\u00A7l\u00A7nModules & You\u00A7r"
         		+ "\n\n" 
         		+ "         " + "\u00A7oby Viesis\u00A7r"
         		+ "\n\n\n\n" 
         		+ "          " + Reference.MOD_VERSION.substring(0, 7);
         
-        stringPageText[1] = "   Nem said it couldn't "
-        		+ "be done! Players can "
-        		+ "only fly via the power "
-        		+ "of \"\u00A7ocreative\u00A7r\" he said. "
-        		+ "Well today I prove him "
-        		+ "wrong! "
+        stringPageText[1] = "   The sky is within our "
+        		+ "reach, but what if you "
+        		+ "had a way to get more "
+        		+ "out of your airships? "
+        		+ "A way to do more..."
         		+ "\n\n\n"
-        		+ "   These \"\u00A7oairships\u00A7r\" will "
-        		+ "forever change how "
-        		+ "we explore our world. "
-        		+ "I now share my wisdom "
-        		+ "with you... ";
-        
-        stringPageText[2] = "Block Recipe:"
-        		+ "\n\n"
-        		+ "\u00A7l\u00A7nAirship Workbench\u00A7r\u00A70"
-        		+ "\n\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oA\u00A7r \u00A7l\u00A7nmust\u00A7r \u00A7ohave! Used in \u00A7r"
-        		+ "\u00A7omaking all recipes.\u00A7r";
-        
-        stringPageText[3] = "Part Recipe:"
-        		+ "\n\n"
-        		+ "\u00A7l\u00A7nAirship Balloon\u00A70\u00A7r\u00A70"
-        		+ "\n\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oMade out of leather and hide, built to last.\u00A7r";
-        
-        stringPageText[4] = "Part Recipe:"
-        		+ "\n\n"
-        		+ "\u00A7l\u00A7nAirship Engine\u00A70\u00A7r\u00A70"
-        		+ "\n\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oGenerates power so you don't have to.\u00A7r";
-        
-        stringPageText[5] = "Part Recipe:"
-        		+ "\n\n"
-        		+ "\u00A7l\u00A7nAirship Ignition\u00A70\u00A7r\u00A70"
-        		+ "\n\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oThe \"heart\" of the airship.\u00A7r";
-        
-        stringPageText[6] = "   Now that you have "
-        		+ "the parts, let's get "
-        		+ "\u00A7obuilding\u00A7r! There are \u00A7l3\u00A7r "
-        		+ "airship styles: "
-        		+ "\n\n"
-        		+ "The \u00A75\u00A7l\u00A7o"
-        		+ ViesCraftConfig.v1AirshipName
-        		+ "\u00A7r\u00A70. "
-        		+ "\n"
-        		+ "The \u00A75\u00A7l\u00A7o"
-        		+ ViesCraftConfig.v2AirshipName
-        		+ "\u00A7r\u00A70. "
-        		+ "\n"
-        		+ "The \u00A75\u00A7l\u00A7o"
-        		+ ViesCraftConfig.v3AirshipName
-        		+ "\u00A7r\u00A70. "
-        		+ "\n\n"
-        		+ "\n\n"
-        		+ "Names can be changed via the config. "
+        		+ "   I have developed a "
+        		+ "new system that will "
+        		+ "allow you to enhance "
+        		+ "your airships. This is "
+        		+ "called the module "
+        		+ "system. "
+        		
         		;
         
-        stringPageText[7] = "Airship Recipe:"
+        stringPageText[2] = "\n\n\n\n\n\n"
+        		+ "   To navigate to your "
+        		+ "airship module slot, open the gui and "
+        		+ "click on the module button. "
         		+ "\n\n"
-        		+ "\u00A7l\u00A7n"
-        		+ ViesCraftConfig.v1AirshipName
-        		+ "\u00A7r\u00A70"
-        		+ "\n\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oClassic airship. Some things can't be beat.\u00A7r";
+        		+ "Only 1 module can be used at a time."
+        		;
         
-        stringPageText[8] = "Airship Recipe:"
+        stringPageText[3] = "Module Recipe:"
         		+ "\n\n"
-        		+ "\u00A7l\u00A7n"
-        		+ ViesCraftConfig.v2AirshipName
-        		+ "\u00A7r\u00A70"
-        		+ "\n\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oA unique twist on the airship design.\u00A7r";
-    	
-        stringPageText[9] = "Airship Recipe:"
-        		+ "\n\n"
-        		+ "\u00A7l\u00A7n"
-        		+ ViesCraftConfig.v3AirshipName
-        		+ "\u00A7r\u00A70"
-        		+ "\n\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oAn airship built for the tech enthusiast.\u00A7r";
+        		+ "\u00A7l\u00A7nSmall Inventory\nModule\u00A70\u00A7r\u00A70"
+        		+ "\n\n\n\n\n\n\n\n"
+        		+ "\u00A7o9 slot inventory."
+        		+ "\n80% speed.\u00A7r";
         
-        stringPageText[10] = "Further Reading:"
+        stringPageText[4] = "Module Recipe:"
         		+ "\n\n"
-        		+ "\u00A7l\u00A7nTaking Control\u00A7r\u00A70"
-        		+ "\n               \u00A7l\u00A7nvol.2\u00A7r"
+        		+ "\u00A7l\u00A7nLarge Inventory\nModule\u00A70\u00A7r\u00A70"
         		+ "\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oPiloting airships like a pro.\u00A7r";
-    		
-        stringPageText[11] = "Further Reading:"
-        		+ "\n\n"
-        		+ "\u00A7l\u00A7nFlaming Paint?!\u00A7r\u00A70"
-        		+ "\n               \u00A7l\u00A7nvol.3\u00A7r"
-        		+ "\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oIns and outs of airship-safe paint.\u00A7r";
+        		+ "\u00A7o18 slot inventory."
+        		+ "\n70% speed & fuel x2.\u00A7r";
         
-        stringPageText[12] = "Further Reading:"
+        stringPageText[5] = "Module Recipe:"
         		+ "\n\n"
-        		+ "\u00A7l\u00A7nModules & You\u00A7r\u00A70"
-        		+ "\n               \u00A7l\u00A7nvol.4\u00A7r"
+        		+ "\u00A7l\u00A7nMinor Speed\nModule\u00A70\u00A7r\u00A70"
         		+ "\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oAirship expansion system made easy.\u00A7r";
+        		+ "\u00A7o130% Speed."
+        		+ "\nFuel x2.\u00A7r";
+        
+        stringPageText[6] = "Module Recipe:"
+        		+ "\n\n"
+        		+ "\u00A7l\u00A7nInfinite Fuel\nModule\u00A70\u00A7r\u00A70"
+        		+ "\n\n\n\n\n\n\n\n"
+        		+ "\u00A7oNo fuel needed."
+        		+ "\n50% speed.\u00A7r";
+        
+        
  }
 
     /**
@@ -227,30 +171,7 @@ public class GuiGuidebookMain extends GuiScreen {
         {
         	mc.getTextureManager().bindTexture(bookPageTextures[6]);
         }
-        if (currPage == 7)
-        {
-        	mc.getTextureManager().bindTexture(bookPageTextures[7]);
-        }
-        if (currPage == 8)
-        {
-        	mc.getTextureManager().bindTexture(bookPageTextures[8]);
-        }
-        if (currPage == 9)
-        {
-        	mc.getTextureManager().bindTexture(bookPageTextures[9]);
-        }
-        if (currPage == 10)
-        {
-        	mc.getTextureManager().bindTexture(bookPageTextures[10]);
-        }
-        if (currPage == 11)
-        {
-        	mc.getTextureManager().bindTexture(bookPageTextures[11]);
-        }
-        if (currPage == 12)
-        {
-        	mc.getTextureManager().bindTexture(bookPageTextures[12]);
-        }
+        
         
         //else
         //{

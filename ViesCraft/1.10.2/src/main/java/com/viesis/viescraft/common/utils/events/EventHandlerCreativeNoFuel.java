@@ -18,7 +18,6 @@ public class EventHandlerCreativeNoFuel {
 	
 	public static int test;
 	
-	private final Minecraft mc = Minecraft.getMinecraft();
 	private EntityAirshipV1Core airshipV1;
 	
     @SubscribeEvent

@@ -72,7 +72,7 @@ public class GuiGuidebookPaint extends GuiScreen {
         		+ "liking!  "
         		;
         
-        stringPageText[2] = "Paint Recipes:"
+        stringPageText[2] = "Paint Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nBlack Paint\u00A7r"
         		+ "\n\n\n\n\n\n\n\n\n"
@@ -80,7 +80,7 @@ public class GuiGuidebookPaint extends GuiScreen {
         		+ "\n"
         		+ "\u00A7o\u00A7lInk Sac\u00A7r";
         
-        stringPageText[3] = "Paint Recipes:"
+        stringPageText[3] = "Paint Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nBlue Paint\u00A7r"
         		+ "\n\n\n\n\n\n\n\n\n"
@@ -88,7 +88,7 @@ public class GuiGuidebookPaint extends GuiScreen {
         		+ "\n"
         		+ "\u00A7o\u00A7lLapis Lazuli\u00A7r";
         
-        stringPageText[4] = "Paint Recipes:"
+        stringPageText[4] = "Paint Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nBrown Paint\u00A7r"
         		+ "\n\n\n\n\n\n\n\n\n"
@@ -96,7 +96,7 @@ public class GuiGuidebookPaint extends GuiScreen {
         		+ "\n"
         		+ "\u00A7o\u00A7lCocoa Beans\u00A7r";
         
-        stringPageText[5] = "Paint Recipes:"
+        stringPageText[5] = "Paint Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nCyan Paint\u00A7r"
         		+ "\n\n\n\n\n\n\n\n\n"
@@ -104,7 +104,7 @@ public class GuiGuidebookPaint extends GuiScreen {
         		+ "\n"
         		+ "\u00A7o\u00A7lCyan Dye\u00A7r";
         
-        stringPageText[6] = "Paint Recipes:"
+        stringPageText[6] = "Paint Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nGray Paint\u00A7r"
         		+ "\n\n\n\n\n\n\n\n\n"
@@ -112,7 +112,7 @@ public class GuiGuidebookPaint extends GuiScreen {
         		+ "\n"
         		+ "\u00A7o\u00A7lGray Dye\u00A7r";
         
-        stringPageText[7] = "Paint Recipes:"
+        stringPageText[7] = "Paint Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nGreen Paint\u00A7r"
         		+ "\n\n\n\n\n\n\n\n\n"
@@ -120,7 +120,7 @@ public class GuiGuidebookPaint extends GuiScreen {
         		+ "\n"
         		+ "\u00A7o\u00A7lCactus Green\u00A7r";
         
-        stringPageText[8] = "Paint Recipes:"
+        stringPageText[8] = "Paint Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nLight Blue Paint\u00A7r"
         		+ "\n\n\n\n\n\n\n\n\n"
@@ -128,7 +128,7 @@ public class GuiGuidebookPaint extends GuiScreen {
         		+ "\n"
         		+ "\u00A7o\u00A7lLight Blue Dye\u00A7r";
     	
-        stringPageText[9] = "Paint Recipes:"
+        stringPageText[9] = "Paint Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nLight Gray Paint\u00A7r"
         		+ "\n\n\n\n\n\n\n\n\n"
@@ -136,7 +136,7 @@ public class GuiGuidebookPaint extends GuiScreen {
         		+ "\n"
         		+ "\u00A7o\u00A7lLight Gray Dye\u00A7r";
         
-        stringPageText[10] = "Paint Recipes:"
+        stringPageText[10] = "Paint Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nLime Paint\u00A7r"
         		+ "\n\n\n\n\n\n\n\n\n"
@@ -144,7 +144,7 @@ public class GuiGuidebookPaint extends GuiScreen {
         		+ "\n"
         		+ "\u00A7o\u00A7lLime Dye\u00A7r";
     		
-        stringPageText[11] = "Paint Recipes:"
+        stringPageText[11] = "Paint Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nMagenta Paint\u00A7r"
         		+ "\n\n\n\n\n\n\n\n\n"
@@ -152,7 +152,7 @@ public class GuiGuidebookPaint extends GuiScreen {
         		+ "\n"
         		+ "\u00A7o\u00A7lMagenta Dye\u00A7r";
         
-        stringPageText[12] = "Paint Recipes:"
+        stringPageText[12] = "Paint Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nOrange Paint\u00A7r"
         		+ "\n\n\n\n\n\n\n\n\n"
@@ -160,7 +160,7 @@ public class GuiGuidebookPaint extends GuiScreen {
         		+ "\n"
         		+ "\u00A7o\u00A7lOrange Dye\u00A7r";
         
-        stringPageText[13] = "Paint Recipes:"
+        stringPageText[13] = "Paint Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nPink Paint\u00A7r"
         		+ "\n\n\n\n\n\n\n\n\n"
@@ -168,7 +168,7 @@ public class GuiGuidebookPaint extends GuiScreen {
         		+ "\n"
         		+ "\u00A7o\u00A7lPink Dye\u00A7r";
         
-        stringPageText[14] = "Paint Recipes:"
+        stringPageText[14] = "Paint Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nPurple Paint\u00A7r"
         		+ "\n\n\n\n\n\n\n\n\n"
@@ -176,7 +176,7 @@ public class GuiGuidebookPaint extends GuiScreen {
         		+ "\n"
         		+ "\u00A7o\u00A7lPurple Dye\u00A7r";
         
-        stringPageText[15] = "Paint Recipes:"
+        stringPageText[15] = "Paint Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nRed Paint\u00A7r"
         		+ "\n\n\n\n\n\n\n\n\n"
@@ -184,7 +184,7 @@ public class GuiGuidebookPaint extends GuiScreen {
         		+ "\n"
         		+ "\u00A7o\u00A7lRose Red\u00A7r";
         
-        stringPageText[16] = "Paint Recipes:"
+        stringPageText[16] = "Paint Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nWhite Paint\u00A7r"
         		+ "\n\n\n\n\n\n\n\n\n"
@@ -192,7 +192,7 @@ public class GuiGuidebookPaint extends GuiScreen {
         		+ "\n"
         		+ "\u00A7o\u00A7lBone Meal\u00A7r";
         
-        stringPageText[17] = "Paint Recipes:"
+        stringPageText[17] = "Paint Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nYellow Paint\u00A7r"
         		+ "\n\n\n\n\n\n\n\n\n"
@@ -327,7 +327,7 @@ public class GuiGuidebookPaint extends GuiScreen {
         widthOfString = fontRendererObj.getStringWidth(stringPageIndicator);
         fontRendererObj.drawString(stringPageIndicator, 
               offsetFromScreenLeft - widthOfString + bookImageWidth - 44, 
-              18, 0);
+              18, 1);
         fontRendererObj.drawSplitString(stringPageText[currPage], 
               offsetFromScreenLeft + 36, 34, 116, 0);
         super.drawScreen(parWidth, parHeight, p_73863_3_);

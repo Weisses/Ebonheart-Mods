@@ -13,6 +13,7 @@ public final class InitItemsVCRender extends ItemsVC {
 		registerRender(guidebook_main);
 		registerRender(guidebook_controls);
 		registerRender(guidebook_paint);
+		registerRender(guidebook_socket);
 		
 		registerRender(airship_balloon);
 		registerRender(airship_engine);
@@ -102,6 +103,7 @@ public final class InitItemsVCRender extends ItemsVC {
 		registerRender(achievement_airship_create_ignition);
 		registerRender(achievement_airship_create);
 		registerRender(achievement_airship_create_color);
+		registerRender(achievement_airship_create_module);
 		
 		registerRender(achievement_airship_airborn);
 		registerRender(achievement_airship_water);

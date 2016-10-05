@@ -23,9 +23,11 @@ public class ItemInventoryModuleSmall extends Item {
 	@SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List toolTip, boolean advanced) 
 	{
+		
+		toolTip.add(" ");
 		toolTip.add(TextFormatting.GOLD + "Effects while socketed:");
 		toolTip.add(TextFormatting.GREEN + "Pro - 9 slot inventory.");
-		toolTip.add(TextFormatting.RED + "Con - Speed reduced to 80%.");
+		toolTip.add(TextFormatting.RED + "Con - Speed reduced to 80%");
 		toolTip.add(" ");
 	}
 	

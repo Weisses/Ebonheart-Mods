@@ -23,6 +23,7 @@ public class ItemFuelModuleEfficiency extends Item {
 	@SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List toolTip, boolean advanced) 
 	{
+		toolTip.add(" ");
 		toolTip.add(TextFormatting.DARK_AQUA + "3Turn an airship into a mobile 12 slot");
 		toolTip.add(TextFormatting.DARK_AQUA + "chest.");
 		

@@ -14,7 +14,7 @@ import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.common.entity.airshipcolors.ContainerAirshipV3Core;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV3Core;
-import com.viesis.viescraft.common.entity.airshipcolors.containers.ContainerAirshipV1Default;
+import com.viesis.viescraft.common.entity.airshipcolors.containers.v1.ContainerAirshipV1Default;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 
 public class GuiEntityAirshipV3Core extends GuiContainer {

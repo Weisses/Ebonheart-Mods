@@ -10,10 +10,10 @@ import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.network.client.MessageConfig;
 import com.viesis.viescraft.network.server.MessageGuiOpenV2;
 import com.viesis.viescraft.network.server.MessageGuiOpenV3;
-import com.viesis.viescraft.network.server.MessageGuiV1Default;
-import com.viesis.viescraft.network.server.MessageGuiV1Module;
-import com.viesis.viescraft.network.server.MessageGuiV1ModuleInventoryLarge;
-import com.viesis.viescraft.network.server.MessageGuiV1ModuleInventorySmall;
+import com.viesis.viescraft.network.server.v1.MessageGuiV1Default;
+import com.viesis.viescraft.network.server.v1.MessageGuiV1Module;
+import com.viesis.viescraft.network.server.v1.MessageGuiV1ModuleInventoryLarge;
+import com.viesis.viescraft.network.server.v1.MessageGuiV1ModuleInventorySmall;
 
 public class NetworkHandler {
 	

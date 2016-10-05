@@ -1,4 +1,4 @@
-package com.viesis.viescraft.network.server;
+package com.viesis.viescraft.network.server.v1;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayer;

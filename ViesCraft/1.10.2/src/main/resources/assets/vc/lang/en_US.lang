@@ -9,6 +9,7 @@ itemGroup.tabViesCraftAirships=ViesCraft Airships
 item.vc:guidebook_main.name=The 'Vies' Craft, vol.1
 item.vc:guidebook_controls.name=Taking Control, vol.2
 item.vc:guidebook_paint.name=Flaming Paint?!, vol.3
+item.vc:guidebook_socket.name=Modules & You, vol.4
 
 item.vc:airship_balloon.name=Airship Balloon
 item.vc:airship_engine.name=Airship Engine
@@ -61,6 +62,9 @@ achievement.vc:airship_create.desc=Craft an airship.
 
 achievement.vc:airship_create_color=Flying with style!
 achievement.vc:airship_create_color.desc=Craft a colored airship.
+
+achievement.vc:airship_create_color=Time for an upgrade!
+achievement.vc:airship_create_color.desc=Craft an expansion module.
 
 achievement.vc:airship_airborn=Breaking the Sound Barrier!
 achievement.vc:airship_airborn.desc=Pilot an airship.

@@ -17,10 +17,10 @@ import com.viesis.viescraft.common.entity.airshipcolors.ContainerAirshipV3Core;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV2Core;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV3Core;
-import com.viesis.viescraft.common.entity.airshipcolors.containers.ContainerAirshipV1Default;
-import com.viesis.viescraft.common.entity.airshipcolors.containers.ContainerAirshipV1Module;
-import com.viesis.viescraft.common.entity.airshipcolors.containers.ContainerAirshipV1ModuleInvLarge;
-import com.viesis.viescraft.common.entity.airshipcolors.containers.ContainerAirshipV1ModuleInvSmall;
+import com.viesis.viescraft.common.entity.airshipcolors.containers.v1.ContainerAirshipV1Default;
+import com.viesis.viescraft.common.entity.airshipcolors.containers.v1.ContainerAirshipV1Module;
+import com.viesis.viescraft.common.entity.airshipcolors.containers.v1.ContainerAirshipV1ModuleInvLarge;
+import com.viesis.viescraft.common.entity.airshipcolors.containers.v1.ContainerAirshipV1ModuleInvSmall;
 import com.viesis.viescraft.common.tileentity.ContainerAirshipWorkbench;
 import com.viesis.viescraft.common.tileentity.TileEntityAirshipWorkbench;
 

@@ -23,9 +23,10 @@ public class ItemSpeedModuleMinor extends Item {
 	@SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List toolTip, boolean advanced) 
 	{
+		toolTip.add(" ");
 		toolTip.add(TextFormatting.GOLD + "Effects while socketed:");
-		toolTip.add(TextFormatting.GREEN + "Pro - Speed increased to 130%.");
-		toolTip.add(TextFormatting.RED + "Con - Fuel burns x 2 faster.");
+		toolTip.add(TextFormatting.GREEN + "Pro - Speed increased to 130%");
+		toolTip.add(TextFormatting.RED + "Con - Fuel burns x2 faster.");
 		toolTip.add(" ");
 	}
 	

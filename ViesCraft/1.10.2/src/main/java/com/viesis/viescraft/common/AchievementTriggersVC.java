@@ -101,6 +101,13 @@ public class AchievementTriggersVC extends InitAchievementsVC {
 			event.player.addStat(airship_create_color);
 		}
 		
+		if(event.crafting.getItem() == InitItemsVC.module_inventory_small
+		|| event.crafting.getItem() == InitItemsVC.module_inventory_large
+		|| event.crafting.getItem() == InitItemsVC.module_speed_increase_minor
+		|| event.crafting.getItem() == InitItemsVC.module_fuel_infinite) 
+		{
+			event.player.addStat(airship_create_module);
+		}
 		//if(event.crafting.getItem() == InitItemsEA.obsidian_shards) 
 		//{
 		//	event.player.addStat(nether_bound);//.triggerAchievement(InitAchievementsEA.nether_bound);
