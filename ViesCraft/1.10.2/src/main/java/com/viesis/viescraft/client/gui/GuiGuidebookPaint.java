@@ -208,7 +208,7 @@ public class GuiGuidebookPaint extends GuiScreen {
     public void initGui() 
     {
      // DEBUG
-     System.out.println("GuiMysteriousStranger initGUI()");
+     //System.out.println("GuiMysteriousStranger initGUI()");
         buttonList.clear();
         Keyboard.enableRepeatEvents(true);
 

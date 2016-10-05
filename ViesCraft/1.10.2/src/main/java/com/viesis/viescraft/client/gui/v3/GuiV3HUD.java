@@ -152,17 +152,17 @@ public class GuiV3HUD extends Gui {
 			String mins = (minutes < 10 ? "0" : "") + minutes;
 			String secs = (seconds < 10 ? "0" : "") + seconds;
 			
-			//Time in seconds to display
-			String s = hrs + ":" + mins + ":" + secs;
-			
-			
 			if(this.airshipV3.getModuleFuelInfinite())
 			{
+				//Time "infinite" to display
 				String s1 = "\u221e" + ":" + "\u221e" + ":" + "\u221e";
-				Minecraft.getMinecraft().fontRendererObj.drawString(s1, (int) (hudX + 77), (hudY + 23), 982784);
+				Minecraft.getMinecraft().fontRendererObj.drawString(s1, (hudX + 76), (hudY + 23), 982784);
 			}
 			else
 			{
+				//Time in seconds to display
+				String s = hrs + ":" + mins + ":" + secs;
+				
 				//Aqua timer
 				if(hours > 0)
 				{
