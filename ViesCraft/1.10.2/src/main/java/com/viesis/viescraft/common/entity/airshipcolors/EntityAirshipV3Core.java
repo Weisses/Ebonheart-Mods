@@ -77,6 +77,7 @@ public class EntityAirshipV3Core extends EntityVC implements IInventory {
 	public int itemFuelStack;
 	
 	private int dropNumber;
+	
     public static boolean moduleInventorySmall;
     public static boolean moduleInventoryLarge;
     //public static boolean moduleFuelEfficiency;
@@ -149,13 +150,13 @@ public class EntityAirshipV3Core extends EntityVC implements IInventory {
     /**
      * Called when the entity is attacked.
      */
-    public boolean attackEntityFrom(DamageSource source, float amount)
+	public boolean attackEntityFrom(DamageSource source, float amount)
     {
-        if (this.isEntityInvulnerable(source))
+		if (this.isEntityInvulnerable(source))
         {
             return false;
         }
-        else if (!this.isDead)
+        else if (!this.worldObj.isRemote && !this.isDead)
         {
             if (source instanceof EntityDamageSourceIndirect && source.getEntity() != null && this.isPassenger(source.getEntity()))
             {
@@ -168,15 +169,17 @@ public class EntityAirshipV3Core extends EntityVC implements IInventory {
                 this.setDamageTaken(this.getDamageTaken() + amount * 10.0F);
                 this.setBeenAttacked();
                 boolean flag = source.getEntity() instanceof EntityPlayer && ((EntityPlayer)source.getEntity()).capabilities.isCreativeMode;
-                
+
                 if (flag || this.getDamageTaken() > 40.0F)
                 {
-                    if (!this.worldObj.isRemote && !flag && this.worldObj.getGameRules().getBoolean("doEntityDrops"))
+                    if (!flag && this.worldObj.getGameRules().getBoolean("doEntityDrops"))
                     {
                         this.dropItemWithOffset(this.getItemBoat(), 1, 0.0F);
                     }
+                    
                     this.setDeadVC();
                 }
+
                 return true;
             }
         }
@@ -185,7 +188,7 @@ public class EntityAirshipV3Core extends EntityVC implements IInventory {
             return true;
         }
     }
-    
+	
     /**
      * Setups the entity to do the hurt animation. Only used by packets in multiplayer.
      */
@@ -209,6 +212,85 @@ public class EntityAirshipV3Core extends EntityVC implements IInventory {
         this.boatYaw = (double)yaw;
         this.lerpXRot = (double)pitch;
         this.lerpSteps = 10;
+    }
+    
+    
+    
+    //==================================//
+    // TODO       Read/Write            //
+	//==================================//
+    
+    /**
+     * (abstract) Protected helper method to read subclass entity data from NBT.
+     */
+    @Override
+    public void readEntityFromNBT(NBTTagCompound compound)
+    {
+    	super.readEntityFromNBT(compound);
+    	
+    	NBTTagList nbttaglist = compound.getTagList("Items", 10);
+        this.inventory = new ItemStack[this.getSizeInventory()];
+        
+        for (int i = 0; i < nbttaglist.tagCount(); ++i)
+        {
+            NBTTagCompound nbttagcompound = nbttaglist.getCompoundTagAt(i);
+            int j = nbttagcompound.getByte("Slot");
+            
+            if (j >= 0 && j < this.inventory.length)
+            {
+                this.inventory[j] = ItemStack.loadItemStackFromNBT(nbttagcompound);
+            }
+        }
+        
+        if(compound.hasKey("CustomName", 8)) 
+        {
+    			this.setCustomName(compound.getString("CustomName"));
+    	}
+        
+        this.airshipBurnTime = compound.getInteger("BurnTime");
+        this.itemFuelStack = compound.getInteger("FuelStackTime");
+        
+        this.moduleInventorySmall = compound.getBoolean("ModuleInvSmall");
+        this.moduleInventoryLarge = compound.getBoolean("ModuleInvLarge");
+        this.moduleSpeedMinor = compound.getBoolean("ModuleSpeedMinor");
+        this.moduleFuelInfinite = compound.getBoolean("ModuleFuelInf");
+    }
+    
+	/**
+     * (abstract) Protected helper method to write subclass entity data to NBT.
+     */
+    @Override
+    public void writeEntityToNBT(NBTTagCompound compound)
+    {
+    	super.writeEntityToNBT(compound);
+    	
+    	compound.setInteger("BurnTime", this.airshipBurnTime);
+    	compound.setInteger("FuelStackTime", this.itemFuelStack);
+    	
+    	compound.setBoolean("ModuleInvSmall", this.getModuleInventorySmall());
+    	compound.setBoolean("ModuleInvLarge", this.getModuleInventoryLarge());
+    	compound.setBoolean("ModuleSpeedMinor", this.getModuleSpeedMinor());
+    	compound.setBoolean("ModuleFuelInf", this.getModuleFuelInfinite());
+    	
+        NBTTagList nbttaglist = new NBTTagList();
+        
+        for (int i = 0; i < this.inventory.length; ++i)
+        {
+            if (this.inventory[i] != null)
+            {
+                NBTTagCompound nbttagcompound = new NBTTagCompound();
+                nbttagcompound.setByte("Slot", (byte)i);
+                this.inventory[i].writeToNBT(nbttagcompound);
+                nbttaglist.appendTag(nbttagcompound);
+            }
+        }
+        
+        if(this.hasCustomName()) 
+        {
+			compound.setString("CustomName", this.getCustomName());
+		}
+        
+        compound.setTag("Items", nbttaglist);
     }
     
     
@@ -392,6 +474,7 @@ public class EntityAirshipV3Core extends EntityVC implements IInventory {
             	    	this.dropItemWithOffset(InitItemsVC.airship_ignition, 1, 0.0F);
                 	}
             	}
+            	
             	this.setDeadVC();
             }
             else if (this.status == EntityAirshipV3Core.Status.IN_AIR
@@ -867,19 +950,19 @@ public class EntityAirshipV3Core extends EntityVC implements IInventory {
     {
     	if (!this.worldObj.isRemote)
     	{
-    		this.setAirshipDead();
-    		this.playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 0.5F, 0.4F / .5F * 0.4F + 0.8F);
+    		InventoryHelper.dropInventoryItems(this.worldObj, this.getPosition(), this);
+    		this.playSound(SoundEvents.ENTITY_ENDEREYE_LAUNCH, 0.5F, 0.4F / .5F * 0.4F + 0.8F);
+    		this.playSound(SoundEvents.ENTITY_SHEEP_SHEAR, 0.5F, 0.4F / .5F * 0.4F + 0.8F);
     		
     		this.isDead = true;
-        
     	}
     	else
     	{
         	this.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, 
-					this.posX + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
-					this.posY + 0.5D,
-					this.posZ + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
-					0.0D, 0.0D, 0.0D, new int[0]);
+    				this.posX + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
+    				this.posY + 0.5D,
+    				this.posZ + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
+    				0.0D, 0.0D, 0.0D, new int[0]);
         	
         	for (int ii = 0; ii < 10; ++ii)
         	{
@@ -911,11 +994,6 @@ public class EntityAirshipV3Core extends EntityVC implements IInventory {
         		}
         	}
     	}
-    }
-    
-    public void setAirshipDead()
-    {
-		InventoryHelper.dropInventoryItems(this.worldObj, this.getPosition(), this);
     }
     
     
@@ -1441,14 +1519,14 @@ public class EntityAirshipV3Core extends EntityVC implements IInventory {
 			if(dropNumber == 1)
 			{
 				dropNumber = 0;
-				this.dropLargeModInv();
+				this.dropInv();
 			}
 			
 			//If large inv mod is removed and slot is empty
 			if(dropNumber == 2)
 			{
 				dropNumber = 0;
-				this.dropLargeModInv();
+				this.dropInv();
 			}
 		}
 		//If a module is still in the slot
@@ -1473,7 +1551,7 @@ public class EntityAirshipV3Core extends EntityVC implements IInventory {
 					&& dropNumber == 1)
 			{
 				dropNumber = 0;
-				this.dropLargeModInv();
+				this.dropInv();
 			}
 			
 			//If the module in the slot is not large inv mod but had it in previously
@@ -1481,7 +1559,7 @@ public class EntityAirshipV3Core extends EntityVC implements IInventory {
 					&& dropNumber == 2)
 			{
 				dropNumber = 0;
-				this.dropLargeModInv();
+				this.dropInv();
 			}
 		}
 		
@@ -1566,9 +1644,9 @@ public class EntityAirshipV3Core extends EntityVC implements IInventory {
     }
     
     /**
-     * Drops large inventory contents from airship
+     * Drops inventory contents only from airship (not fuel/module)
      */
-    public void dropLargeModInv()
+    public void dropInv()
     {
     	if(this.worldObj.isRemote)
 		{
@@ -1958,81 +2036,8 @@ public class EntityAirshipV3Core extends EntityVC implements IInventory {
     
     
     //==================================//
-    // TODO       Read/Write            //
-	//==================================//
-    
-	/**
-     * (abstract) Protected helper method to write subclass entity data to NBT.
-     */
-    @Override
-    public void writeEntityToNBT(NBTTagCompound compound)
-    {
-    	super.writeEntityToNBT(compound);
-    	
-    	compound.setInteger("BurnTime", this.airshipBurnTime);
-    	compound.setInteger("FuelStackTime", this.itemFuelStack);
-    	
-    	compound.setBoolean("ModuleInvSmall", this.getModuleInventorySmall());
-    	compound.setBoolean("ModuleInvLarge", this.getModuleInventoryLarge());
-    	compound.setBoolean("ModuleSpeedMinor", this.getModuleSpeedMinor());
-    	compound.setBoolean("ModuleFuelInf", this.getModuleFuelInfinite());
-    	
-        NBTTagList nbttaglist = new NBTTagList();
-        
-        for (int i = 0; i < this.inventory.length; ++i)
-        {
-            if (this.inventory[i] != null)
-            {
-                NBTTagCompound nbttagcompound = new NBTTagCompound();
-                nbttagcompound.setByte("Slot", (byte)i);
-                this.inventory[i].writeToNBT(nbttagcompound);
-                nbttaglist.appendTag(nbttagcompound);
-            }
-        }
-        
-        if(this.hasCustomName()) 
-        {
-			compound.setString("CustomName", this.getCustomName());
-		}
-        
-        compound.setTag("Items", nbttaglist);
-    }
-    
-    /**
-     * (abstract) Protected helper method to read subclass entity data from NBT.
-     */
-    @Override
-    public void readEntityFromNBT(NBTTagCompound compound)
-    {
-    	super.readEntityFromNBT(compound);
-    	
-    	NBTTagList nbttaglist = compound.getTagList("Items", 10);
-        this.inventory = new ItemStack[this.getSizeInventory()];
-        
-        for (int i = 0; i < nbttaglist.tagCount(); ++i)
-        {
-            NBTTagCompound nbttagcompound = nbttaglist.getCompoundTagAt(i);
-            int j = nbttagcompound.getByte("Slot");
-            
-            if (j >= 0 && j < this.inventory.length)
-            {
-                this.inventory[j] = ItemStack.loadItemStackFromNBT(nbttagcompound);
-            }
-        }
-        
-        if(compound.hasKey("CustomName", 8)) 
-        {
-    			this.setCustomName(compound.getString("CustomName"));
-    	}
-        
-        this.airshipBurnTime = compound.getInteger("BurnTime");
-        this.itemFuelStack = compound.getInteger("FuelStackTime");
-        
-        this.moduleInventorySmall = compound.getBoolean("ModuleInvSmall");
-        this.moduleInventoryLarge = compound.getBoolean("ModuleInvLarge");
-        this.moduleSpeedMinor = compound.getBoolean("ModuleSpeedMinor");
-        this.moduleFuelInfinite = compound.getBoolean("ModuleFuelInf");
-    }
+  	// TODO     Sound Events            //
+  	//==================================//
     
     /**
      * Sounds! - Unused ATM.

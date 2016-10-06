@@ -49,25 +49,25 @@ import com.viesis.viescraft.common.utils.events.EventHandlerCreativeNoFuel;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 import com.viesis.viescraft.init.InitItemsVC;
 import com.viesis.viescraft.network.NetworkHandler;
-import com.viesis.viescraft.network.server.v1.MessageGuiV1Default;
-import com.viesis.viescraft.network.server.v1.MessageGuiV1ModuleInventoryLarge;
-import com.viesis.viescraft.network.server.v1.MessageGuiV1ModuleInventorySmall;
+import com.viesis.viescraft.network.server.v3.MessageGuiV3Default;
+import com.viesis.viescraft.network.server.v3.MessageGuiV3ModuleInventoryLarge;
+import com.viesis.viescraft.network.server.v3.MessageGuiV3ModuleInventorySmall;
 
-public class EntityAirshipV1Core extends EntityVC implements IInventory {
+public class EntityAirshipV3Core extends EntityVC implements IInventory {
 	
-	private static final DataParameter<Integer> TIME_SINCE_HIT = EntityDataManager.<Integer>createKey(EntityAirshipV1Core.class, DataSerializers.VARINT);
-	private static final DataParameter<Integer> FORWARD_DIRECTION = EntityDataManager.<Integer>createKey(EntityAirshipV1Core.class, DataSerializers.VARINT);
-	private static final DataParameter<Float> DAMAGE_TAKEN = EntityDataManager.<Float>createKey(EntityAirshipV1Core.class, DataSerializers.FLOAT);
-	private static final DataParameter<Integer> BOAT_TYPE = EntityDataManager.<Integer>createKey(EntityAirshipV1Core.class, DataSerializers.VARINT);
+	private static final DataParameter<Integer> TIME_SINCE_HIT = EntityDataManager.<Integer>createKey(EntityAirshipV3Core.class, DataSerializers.VARINT);
+	private static final DataParameter<Integer> FORWARD_DIRECTION = EntityDataManager.<Integer>createKey(EntityAirshipV3Core.class, DataSerializers.VARINT);
+	private static final DataParameter<Float> DAMAGE_TAKEN = EntityDataManager.<Float>createKey(EntityAirshipV3Core.class, DataSerializers.FLOAT);
+	private static final DataParameter<Integer> BOAT_TYPE = EntityDataManager.<Integer>createKey(EntityAirshipV3Core.class, DataSerializers.VARINT);
     
-	private static final DataParameter<Integer> POWERED = EntityDataManager.<Integer>createKey(EntityAirshipV1Core.class, DataSerializers.VARINT);
-	private static final DataParameter<Integer> ITEMFUELSTACKPOWERED = EntityDataManager.<Integer>createKey(EntityAirshipV1Core.class, DataSerializers.VARINT);
+	private static final DataParameter<Integer> POWERED = EntityDataManager.<Integer>createKey(EntityAirshipV3Core.class, DataSerializers.VARINT);
+	private static final DataParameter<Integer> ITEMFUELSTACKPOWERED = EntityDataManager.<Integer>createKey(EntityAirshipV3Core.class, DataSerializers.VARINT);
     
-	private static final DataParameter<Boolean> MODULE_INVENTORY_SMALL = EntityDataManager.<Boolean>createKey(EntityAirshipV1Core.class, DataSerializers.BOOLEAN);
-	private static final DataParameter<Boolean> MODULE_INVENTORY_LARGE = EntityDataManager.<Boolean>createKey(EntityAirshipV1Core.class, DataSerializers.BOOLEAN);
-	//private static final DataParameter<Boolean> MODULE_FUEL_EFFICIENCY = EntityDataManager.<Boolean>createKey(EntityAirshipV1Core.class, DataSerializers.BOOLEAN);
-	private static final DataParameter<Boolean> MODULE_FUEL_INFINITE = EntityDataManager.<Boolean>createKey(EntityAirshipV1Core.class, DataSerializers.BOOLEAN);
-	private static final DataParameter<Boolean> MODULE_SPEED_MINOR = EntityDataManager.<Boolean>createKey(EntityAirshipV1Core.class, DataSerializers.BOOLEAN);
+	private static final DataParameter<Boolean> MODULE_INVENTORY_SMALL = EntityDataManager.<Boolean>createKey(EntityAirshipV3Core.class, DataSerializers.BOOLEAN);
+	private static final DataParameter<Boolean> MODULE_INVENTORY_LARGE = EntityDataManager.<Boolean>createKey(EntityAirshipV3Core.class, DataSerializers.BOOLEAN);
+	//private static final DataParameter<Boolean> MODULE_FUEL_EFFICIENCY = EntityDataManager.<Boolean>createKey(EntityAirshipV3Core.class, DataSerializers.BOOLEAN);
+	private static final DataParameter<Boolean> MODULE_FUEL_INFINITE = EntityDataManager.<Boolean>createKey(EntityAirshipV3Core.class, DataSerializers.BOOLEAN);
+	private static final DataParameter<Boolean> MODULE_SPEED_MINOR = EntityDataManager.<Boolean>createKey(EntityAirshipV3Core.class, DataSerializers.BOOLEAN);
     
 	//0 is fuel slot, 1 is expansion slot 2-20(9x2 slots) is inventory.
 	private ItemStack[] inventory = new ItemStack[20];
@@ -77,22 +77,21 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
 	public int itemFuelStack;
 	
 	private int dropNumber;
-	
     public static boolean moduleInventorySmall;
     public static boolean moduleInventoryLarge;
     //public static boolean moduleFuelEfficiency;
     public static boolean moduleFuelInfinite;
     public static boolean moduleSpeedMinor;
     
-	public EntityAirshipV1Core.Status status;
-    public EntityAirshipV1Core.Status previousStatus;
+	public EntityAirshipV3Core.Status status;
+    public EntityAirshipV3Core.Status previousStatus;
     
     public float AirshipSpeedTurn = 0.18F * (ViesCraftConfig.v1AirshipSpeed / 100);
     public float AirshipSpeedForward = 0.0125F * (ViesCraftConfig.v1AirshipSpeed / 100);
     public float AirshipSpeedUp = 0.0035F * (ViesCraftConfig.v1AirshipSpeed / 100);
     public float AirshipSpeedDown = 0.0035F * (ViesCraftConfig.v1AirshipSpeed / 100);
 	
-	public EntityAirshipV1Core(World worldIn)
+	public EntityAirshipV3Core(World worldIn)
     {
         super(worldIn);
         
@@ -102,7 +101,7 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
         this.inventory = new ItemStack[this.getSizeInventory()];
     }
 	
-    public EntityAirshipV1Core(World worldIn, double x, double y, double z)
+    public EntityAirshipV3Core(World worldIn, double x, double y, double z)
     {
         this(worldIn);
         this.setPosition(x, y, z);
@@ -121,7 +120,7 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
 		this.dataManager.register(TIME_SINCE_HIT, Integer.valueOf(0));
         this.dataManager.register(FORWARD_DIRECTION, Integer.valueOf(1));
         this.dataManager.register(DAMAGE_TAKEN, Float.valueOf(0.0F));
-        this.dataManager.register(BOAT_TYPE, Integer.valueOf(EntityAirshipV1Core.Type.NORMAL.ordinal()));
+        this.dataManager.register(BOAT_TYPE, Integer.valueOf(EntityAirshipV3Core.Type.NORMAL.ordinal()));
         
         this.dataManager.register(POWERED, Integer.valueOf(this.airshipBurnTime));
         this.dataManager.register(ITEMFUELSTACKPOWERED, Integer.valueOf(this.itemFuelStack));
@@ -150,13 +149,13 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
     /**
      * Called when the entity is attacked.
      */
-	public boolean attackEntityFrom(DamageSource source, float amount)
+    public boolean attackEntityFrom(DamageSource source, float amount)
     {
-		if (this.isEntityInvulnerable(source))
+        if (this.isEntityInvulnerable(source))
         {
             return false;
         }
-        else if (!this.worldObj.isRemote && !this.isDead)
+        else if (!this.isDead)
         {
             if (source instanceof EntityDamageSourceIndirect && source.getEntity() != null && this.isPassenger(source.getEntity()))
             {
@@ -169,17 +168,15 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
                 this.setDamageTaken(this.getDamageTaken() + amount * 10.0F);
                 this.setBeenAttacked();
                 boolean flag = source.getEntity() instanceof EntityPlayer && ((EntityPlayer)source.getEntity()).capabilities.isCreativeMode;
-
+                
                 if (flag || this.getDamageTaken() > 40.0F)
                 {
-                    if (!flag && this.worldObj.getGameRules().getBoolean("doEntityDrops"))
+                    if (!this.worldObj.isRemote && !flag && this.worldObj.getGameRules().getBoolean("doEntityDrops"))
                     {
                         this.dropItemWithOffset(this.getItemBoat(), 1, 0.0F);
                     }
-                    
                     this.setDeadVC();
                 }
-
                 return true;
             }
         }
@@ -188,7 +185,7 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
             return true;
         }
     }
-	
+    
     /**
      * Setups the entity to do the hurt animation. Only used by packets in multiplayer.
      */
@@ -217,85 +214,6 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
     
     
     //==================================//
-    // TODO       Read/Write            //
-	//==================================//
-    
-    /**
-     * (abstract) Protected helper method to read subclass entity data from NBT.
-     */
-    @Override
-    public void readEntityFromNBT(NBTTagCompound compound)
-    {
-    	super.readEntityFromNBT(compound);
-    	
-    	NBTTagList nbttaglist = compound.getTagList("Items", 10);
-        this.inventory = new ItemStack[this.getSizeInventory()];
-        
-        for (int i = 0; i < nbttaglist.tagCount(); ++i)
-        {
-            NBTTagCompound nbttagcompound = nbttaglist.getCompoundTagAt(i);
-            int j = nbttagcompound.getByte("Slot");
-            
-            if (j >= 0 && j < this.inventory.length)
-            {
-                this.inventory[j] = ItemStack.loadItemStackFromNBT(nbttagcompound);
-            }
-        }
-        
-        if(compound.hasKey("CustomName", 8)) 
-        {
-    			this.setCustomName(compound.getString("CustomName"));
-    	}
-        
-        this.airshipBurnTime = compound.getInteger("BurnTime");
-        this.itemFuelStack = compound.getInteger("FuelStackTime");
-        
-        this.moduleInventorySmall = compound.getBoolean("ModuleInvSmall");
-        this.moduleInventoryLarge = compound.getBoolean("ModuleInvLarge");
-        this.moduleSpeedMinor = compound.getBoolean("ModuleSpeedMinor");
-        this.moduleFuelInfinite = compound.getBoolean("ModuleFuelInf");
-    }
-    
-	/**
-     * (abstract) Protected helper method to write subclass entity data to NBT.
-     */
-    @Override
-    public void writeEntityToNBT(NBTTagCompound compound)
-    {
-    	super.writeEntityToNBT(compound);
-    	
-    	compound.setInteger("BurnTime", this.airshipBurnTime);
-    	compound.setInteger("FuelStackTime", this.itemFuelStack);
-    	
-    	compound.setBoolean("ModuleInvSmall", this.getModuleInventorySmall());
-    	compound.setBoolean("ModuleInvLarge", this.getModuleInventoryLarge());
-    	compound.setBoolean("ModuleSpeedMinor", this.getModuleSpeedMinor());
-    	compound.setBoolean("ModuleFuelInf", this.getModuleFuelInfinite());
-    	
-        NBTTagList nbttaglist = new NBTTagList();
-        
-        for (int i = 0; i < this.inventory.length; ++i)
-        {
-            if (this.inventory[i] != null)
-            {
-                NBTTagCompound nbttagcompound = new NBTTagCompound();
-                nbttagcompound.setByte("Slot", (byte)i);
-                this.inventory[i].writeToNBT(nbttagcompound);
-                nbttaglist.appendTag(nbttagcompound);
-            }
-        }
-        
-        if(this.hasCustomName()) 
-        {
-			compound.setString("CustomName", this.getCustomName());
-		}
-        
-        compound.setTag("Items", nbttaglist);
-    }
-    
-    
-    
-    //==================================//
     // TODO       On Update             //
 	//==================================//
     
@@ -307,7 +225,7 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
         this.previousStatus = this.status;
         this.status = this.getAirshipStatus();
         
-        if (this.status != EntityAirshipV1Core.Status.UNDER_WATER && this.status != EntityAirshipV1Core.Status.UNDER_FLOWING_WATER)
+        if (this.status != EntityAirshipV3Core.Status.UNDER_WATER && this.status != EntityAirshipV3Core.Status.UNDER_FLOWING_WATER)
         {
             this.outOfControlTicks = 0.0F;
         }
@@ -422,22 +340,22 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
         double d5 = -0.001D;
         this.momentum = 0.05F;
         
-        if (this.previousStatus == EntityAirshipV1Core.Status.IN_AIR && this.status != EntityAirshipV1Core.Status.IN_AIR && this.status != EntityAirshipV1Core.Status.ON_LAND)
+        if (this.previousStatus == EntityAirshipV3Core.Status.IN_AIR && this.status != EntityAirshipV3Core.Status.IN_AIR && this.status != EntityAirshipV3Core.Status.ON_LAND)
         {
             this.waterLevel = this.getEntityBoundingBox().minY + (double)this.height;
             this.setPosition(this.posX, (double)(this.getWaterLevelAbove() - this.height) + 0.101D, this.posZ);
             this.motionY = 0.0D;
             this.lastYd = 0.0D;
-            this.status = EntityAirshipV1Core.Status.IN_WATER;
+            this.status = EntityAirshipV3Core.Status.IN_WATER;
         }
         else
         {
-            if (this.status == EntityAirshipV1Core.Status.IN_WATER)
+            if (this.status == EntityAirshipV3Core.Status.IN_WATER)
             {
             	this.momentum = 0.45F;
             }
-            else if (this.status == EntityAirshipV1Core.Status.UNDER_FLOWING_WATER 
-        	  || this.status == EntityAirshipV1Core.Status.UNDER_WATER)
+            else if (this.status == EntityAirshipV3Core.Status.UNDER_FLOWING_WATER 
+        	  || this.status == EntityAirshipV3Core.Status.UNDER_WATER)
             {
             	if (!this.worldObj.isRemote)
             	{
@@ -474,11 +392,10 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
             	    	this.dropItemWithOffset(InitItemsVC.airship_ignition, 1, 0.0F);
                 	}
             	}
-            	
             	this.setDeadVC();
             }
-            else if (this.status == EntityAirshipV1Core.Status.IN_AIR
-            	  || this.status == EntityAirshipV1Core.Status.ON_LAND)
+            else if (this.status == EntityAirshipV3Core.Status.IN_AIR
+            	  || this.status == EntityAirshipV3Core.Status.ON_LAND)
             {
             	this.momentum = 0.9F;
             }
@@ -685,19 +602,19 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
     			//If airship has small inv module installed
             	if(this.getModuleInventorySmall())
             	{
-            		NetworkHandler.sendToServer(new MessageGuiV1ModuleInventorySmall());
+            		NetworkHandler.sendToServer(new MessageGuiV3ModuleInventorySmall());
                 	Minecraft.getMinecraft().setIngameFocus();
             	}
             	//If airship has large inv module installed
             	else if(this.getModuleInventoryLarge())
             	{
-            		NetworkHandler.sendToServer(new MessageGuiV1ModuleInventoryLarge());
+            		NetworkHandler.sendToServer(new MessageGuiV3ModuleInventoryLarge());
                 	Minecraft.getMinecraft().setIngameFocus();
             	}
             	//Default for airship gui
             	else
             	{
-            		NetworkHandler.sendToServer(new MessageGuiV1Default());
+            		NetworkHandler.sendToServer(new MessageGuiV3Default());
                 	Minecraft.getMinecraft().setIngameFocus();
             	}
             }
@@ -826,14 +743,14 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
         return ((Integer)this.dataManager.get(FORWARD_DIRECTION)).intValue();
     }
     
-    public void setBoatType(EntityAirshipV1Core.Type boatType)
+    public void setBoatType(EntityAirshipV3Core.Type boatType)
     {
         this.dataManager.set(BOAT_TYPE, Integer.valueOf(boatType.ordinal()));
     }
     
-    public EntityAirshipV1Core.Type getBoatType()
+    public EntityAirshipV3Core.Type getBoatType()
     {
-        return EntityAirshipV1Core.Type.byId(((Integer)this.dataManager.get(BOAT_TYPE)).intValue());
+        return EntityAirshipV3Core.Type.byId(((Integer)this.dataManager.get(BOAT_TYPE)).intValue());
     }
     
     /**
@@ -918,7 +835,7 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
         /**
          * Get a boat type by it's enum ordinal
          */
-        public static EntityAirshipV1Core.Type byId(int id)
+        public static EntityAirshipV3Core.Type byId(int id)
         {
             if (id < 0 || id >= values().length)
             {
@@ -928,7 +845,7 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
             return values()[id];
         }
         
-        public static EntityAirshipV1Core.Type getTypeFromString(String nameIn)
+        public static EntityAirshipV3Core.Type getTypeFromString(String nameIn)
         {
             for (int i = 0; i < values().length; ++i)
             {
@@ -950,19 +867,19 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
     {
     	if (!this.worldObj.isRemote)
     	{
-    		InventoryHelper.dropInventoryItems(this.worldObj, this.getPosition(), this);
-    		this.playSound(SoundEvents.ENTITY_ENDEREYE_LAUNCH, 0.5F, 0.4F / .5F * 0.4F + 0.8F);
-    		this.playSound(SoundEvents.ENTITY_SHEEP_SHEAR, 0.5F, 0.4F / .5F * 0.4F + 0.8F);
+    		this.setAirshipDead();
+    		this.playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 0.5F, 0.4F / .5F * 0.4F + 0.8F);
     		
     		this.isDead = true;
+        
     	}
     	else
     	{
         	this.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, 
-    				this.posX + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
-    				this.posY + 0.5D,
-    				this.posZ + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
-    				0.0D, 0.0D, 0.0D, new int[0]);
+					this.posX + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
+					this.posY + 0.5D,
+					this.posZ + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
+					0.0D, 0.0D, 0.0D, new int[0]);
         	
         	for (int ii = 0; ii < 10; ++ii)
         	{
@@ -994,6 +911,11 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
         		}
         	}
     	}
+    }
+    
+    public void setAirshipDead()
+    {
+		InventoryHelper.dropInventoryItems(this.worldObj, this.getPosition(), this);
     }
     
     
@@ -1519,14 +1441,14 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
 			if(dropNumber == 1)
 			{
 				dropNumber = 0;
-				this.dropInv();
+				this.dropLargeModInv();
 			}
 			
 			//If large inv mod is removed and slot is empty
 			if(dropNumber == 2)
 			{
 				dropNumber = 0;
-				this.dropInv();
+				this.dropLargeModInv();
 			}
 		}
 		//If a module is still in the slot
@@ -1551,7 +1473,7 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
 					&& dropNumber == 1)
 			{
 				dropNumber = 0;
-				this.dropInv();
+				this.dropLargeModInv();
 			}
 			
 			//If the module in the slot is not large inv mod but had it in previously
@@ -1559,7 +1481,7 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
 					&& dropNumber == 2)
 			{
 				dropNumber = 0;
-				this.dropInv();
+				this.dropLargeModInv();
 			}
 		}
 		
@@ -1644,9 +1566,9 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
     }
     
     /**
-     * Drops inventory contents only from airship (not fuel/module)
+     * Drops large inventory contents from airship
      */
-    public void dropInv()
+    public void dropLargeModInv()
     {
     	if(this.worldObj.isRemote)
 		{
@@ -1779,9 +1701,9 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
     /**
      * Determines whether the boat is in water, gliding on land, or in air
      */
-    public EntityAirshipV1Core.Status getAirshipStatus()
+    public EntityAirshipV3Core.Status getAirshipStatus()
     {
-        EntityAirshipV1Core.Status EntityAirshipEA$status = this.getUnderwaterStatus();
+        EntityAirshipV3Core.Status EntityAirshipEA$status = this.getUnderwaterStatus();
         
         if (EntityAirshipEA$status != null)
         {
@@ -1790,7 +1712,7 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
         }
         else if (this.checkInWater())
         {
-            return EntityAirshipV1Core.Status.IN_WATER;
+            return EntityAirshipV3Core.Status.IN_WATER;
         }
         else
         {
@@ -1799,11 +1721,11 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
             if (f > 0.0F)
             {
                 this.boatGlide = f;
-                return EntityAirshipV1Core.Status.ON_LAND;
+                return EntityAirshipV3Core.Status.ON_LAND;
             }
             else
             {
-                return EntityAirshipV1Core.Status.IN_AIR;
+                return EntityAirshipV3Core.Status.IN_AIR;
             }
         }
     }
@@ -1976,7 +1898,7 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
      * Decides whether the boat is currently underwater.
      */
     @Nullable
-    private EntityAirshipV1Core.Status getUnderwaterStatus()
+    private EntityAirshipV3Core.Status getUnderwaterStatus()
     {
         AxisAlignedBB axisalignedbb = this.getEntityBoundingBox();
         double d0 = axisalignedbb.maxY + 0.001D;
@@ -2004,7 +1926,7 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
                         {
                             if (((Integer)iblockstate.getValue(BlockLiquid.LEVEL)).intValue() != 0)
                             {
-                                EntityAirshipV1Core.Status EntityAirshipEA$status = EntityAirshipV1Core.Status.UNDER_FLOWING_WATER;
+                                EntityAirshipV3Core.Status EntityAirshipEA$status = EntityAirshipV3Core.Status.UNDER_FLOWING_WATER;
                                 return EntityAirshipEA$status;
                             }
 
@@ -2019,7 +1941,7 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
             blockpos$pooledmutableblockpos.release();
         }
 
-        return flag ? EntityAirshipV1Core.Status.UNDER_WATER : null;
+        return flag ? EntityAirshipV3Core.Status.UNDER_WATER : null;
     }
 
     public static float getBlockLiquidHeight(IBlockState p_184456_0_, IBlockAccess p_184456_1_, BlockPos p_184456_2_)
@@ -2036,8 +1958,81 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
     
     
     //==================================//
-  	// TODO     Sound Events            //
-  	//==================================//
+    // TODO       Read/Write            //
+	//==================================//
+    
+	/**
+     * (abstract) Protected helper method to write subclass entity data to NBT.
+     */
+    @Override
+    public void writeEntityToNBT(NBTTagCompound compound)
+    {
+    	super.writeEntityToNBT(compound);
+    	
+    	compound.setInteger("BurnTime", this.airshipBurnTime);
+    	compound.setInteger("FuelStackTime", this.itemFuelStack);
+    	
+    	compound.setBoolean("ModuleInvSmall", this.getModuleInventorySmall());
+    	compound.setBoolean("ModuleInvLarge", this.getModuleInventoryLarge());
+    	compound.setBoolean("ModuleSpeedMinor", this.getModuleSpeedMinor());
+    	compound.setBoolean("ModuleFuelInf", this.getModuleFuelInfinite());
+    	
+        NBTTagList nbttaglist = new NBTTagList();
+        
+        for (int i = 0; i < this.inventory.length; ++i)
+        {
+            if (this.inventory[i] != null)
+            {
+                NBTTagCompound nbttagcompound = new NBTTagCompound();
+                nbttagcompound.setByte("Slot", (byte)i);
+                this.inventory[i].writeToNBT(nbttagcompound);
+                nbttaglist.appendTag(nbttagcompound);
+            }
+        }
+        
+        if(this.hasCustomName()) 
+        {
+			compound.setString("CustomName", this.getCustomName());
+		}
+        
+        compound.setTag("Items", nbttaglist);
+    }
+    
+    /**
+     * (abstract) Protected helper method to read subclass entity data from NBT.
+     */
+    @Override
+    public void readEntityFromNBT(NBTTagCompound compound)
+    {
+    	super.readEntityFromNBT(compound);
+    	
+    	NBTTagList nbttaglist = compound.getTagList("Items", 10);
+        this.inventory = new ItemStack[this.getSizeInventory()];
+        
+        for (int i = 0; i < nbttaglist.tagCount(); ++i)
+        {
+            NBTTagCompound nbttagcompound = nbttaglist.getCompoundTagAt(i);
+            int j = nbttagcompound.getByte("Slot");
+            
+            if (j >= 0 && j < this.inventory.length)
+            {
+                this.inventory[j] = ItemStack.loadItemStackFromNBT(nbttagcompound);
+            }
+        }
+        
+        if(compound.hasKey("CustomName", 8)) 
+        {
+    			this.setCustomName(compound.getString("CustomName"));
+    	}
+        
+        this.airshipBurnTime = compound.getInteger("BurnTime");
+        this.itemFuelStack = compound.getInteger("FuelStackTime");
+        
+        this.moduleInventorySmall = compound.getBoolean("ModuleInvSmall");
+        this.moduleInventoryLarge = compound.getBoolean("ModuleInvLarge");
+        this.moduleSpeedMinor = compound.getBoolean("ModuleSpeedMinor");
+        this.moduleFuelInfinite = compound.getBoolean("ModuleFuelInf");
+    }
     
     /**
      * Sounds! - Unused ATM.
