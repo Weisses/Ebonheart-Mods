@@ -82,7 +82,7 @@ public class GuiV2HUD extends Gui {
 			}
 			else
 			{
-				int fuelbarwidth1 = (int)((((float) (this.airshipV2.getPowered()) / (ViesCraftConfig.v1FuelBurnTime * 20))) * 110);
+				int fuelbarwidth1 = (int)((((float) (this.airshipV2.getPowered()) / (ViesCraftConfig.v2FuelBurnTime * 20))) * 110);
 				drawTexturedModalRect(hudX + 36, hudY + 33, 36, 53, fuelbarwidth1, 6);
 			}
 			
@@ -94,7 +94,7 @@ public class GuiV2HUD extends Gui {
 			}
 			else
 			{
-				int fuelbarwidth2 = (int)(((float) (this.airshipV2.getItemFuelStackPowered() * 20) / ((ViesCraftConfig.v1FuelBurnTime * 20) * 64)) * 178);
+				int fuelbarwidth2 = (int)(((float) (this.airshipV2.getItemFuelStackPowered() * 20) / ((ViesCraftConfig.v2FuelBurnTime * 20) * 64)) * 178);
 				drawTexturedModalRect(hudX + 2, hudY + 14, 2, 69, fuelbarwidth2, 6);
 			}
 			

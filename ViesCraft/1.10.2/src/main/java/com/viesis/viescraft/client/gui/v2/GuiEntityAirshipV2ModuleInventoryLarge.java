@@ -86,7 +86,7 @@ public class GuiEntityAirshipV2ModuleInventoryLarge extends GuiContainer {
         
         if (i == 0)
         {
-        	i = (ViesCraftConfig.v1FuelBurnTime * 20);//i = 1200;
+        	i = (ViesCraftConfig.v2FuelBurnTime * 20);//i = 1200;
         }
         
         return this.airshipV2.getField(0) * pixels / i;
