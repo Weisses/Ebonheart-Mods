@@ -87,10 +87,10 @@ public class EntityAirshipV3Core extends EntityVC implements IInventory {
 	public EntityAirshipV3Core.Status status;
     public EntityAirshipV3Core.Status previousStatus;
     
-    public float AirshipSpeedTurn = 0.18F * (ViesCraftConfig.v1AirshipSpeed / 100);
-    public float AirshipSpeedForward = 0.0125F * (ViesCraftConfig.v1AirshipSpeed / 100);
-    public float AirshipSpeedUp = 0.0035F * (ViesCraftConfig.v1AirshipSpeed / 100);
-    public float AirshipSpeedDown = 0.0035F * (ViesCraftConfig.v1AirshipSpeed / 100);
+    public float AirshipSpeedTurn = 0.18F * (ViesCraftConfig.v3AirshipSpeed / 100);
+    public float AirshipSpeedForward = 0.0125F * (ViesCraftConfig.v3AirshipSpeed / 100);
+    public float AirshipSpeedUp = 0.0035F * (ViesCraftConfig.v3AirshipSpeed / 100);
+    public float AirshipSpeedDown = 0.0035F * (ViesCraftConfig.v3AirshipSpeed / 100);
 	
 	public EntityAirshipV3Core(World worldIn)
     {
@@ -1012,7 +1012,7 @@ public class EntityAirshipV3Core extends EntityVC implements IInventory {
 	
 	@Override
 	public String getName() {
-		return this.hasCustomName() ? this.customName : ViesCraftConfig.v1AirshipName;
+		return this.hasCustomName() ? this.customName : ViesCraftConfig.v3AirshipName;
 	}
 
 	@Override
@@ -1337,7 +1337,7 @@ public class EntityAirshipV3Core extends EntityVC implements IInventory {
     
     public int getFuelTime(@Nullable ItemStack stack)
     {
-        return (ViesCraftConfig.v1FuelBurnTime * 20);//1200;
+        return (ViesCraftConfig.v3FuelBurnTime * 20);//1200;
     }
     
     /**
@@ -1354,7 +1354,7 @@ public class EntityAirshipV3Core extends EntityVC implements IInventory {
         {
             Item item = stack.getItem();
             
-            if (item == Items.COAL) return (ViesCraftConfig.v1FuelBurnTime * 20);//1200;//1600
+            if (item == Items.COAL) return (ViesCraftConfig.v3FuelBurnTime * 20);//1200;//1600
             
             return net.minecraftforge.fml.common.registry.GameRegistry.getFuelValue(stack);
         }
@@ -1388,7 +1388,7 @@ public class EntityAirshipV3Core extends EntityVC implements IInventory {
     			
     			if(itemFuel != null)
     			{
-    				this.itemFuelStack = this.inventory[0].stackSize * (ViesCraftConfig.v1FuelBurnTime);
+    				this.itemFuelStack = this.inventory[0].stackSize * (ViesCraftConfig.v3FuelBurnTime);
     			}
     			else
     			{
