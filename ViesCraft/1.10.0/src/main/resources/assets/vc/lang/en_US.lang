@@ -9,6 +9,7 @@ itemGroup.tabViesCraftAirships=ViesCraft Airships
 item.vc:guidebook_main.name=The 'Vies' Craft, vol.1
 item.vc:guidebook_controls.name=Taking Control, vol.2
 item.vc:guidebook_paint.name=Flaming Paint?!, vol.3
+item.vc:guidebook_socket.name=Modules & You, vol.4
 
 item.vc:airship_balloon.name=Airship Balloon
 item.vc:airship_engine.name=Airship Engine
@@ -30,6 +31,12 @@ item.vc:item_paint_purple.name=Purple Airship Paint
 item.vc:item_paint_red.name=Red Airship Paint
 item.vc:item_paint_white.name=White Airship Paint
 item.vc:item_paint_yellow.name=Yellow Airship Paint
+
+item.vc:module_chip.name=Module Chip
+item.vc:module_inventory_small.name=Small Inventory Module
+item.vc:module_inventory_large.name=Large Inventory Module
+item.vc:module_speed_increase_minor.name=Minor Speed Boost Module
+item.vc:module_fuel_infinite.name=Infinite Fuel Module
 
 //-----Entity-----
 entity.vc.test.normal.name=Placeholder1
@@ -56,6 +63,9 @@ achievement.vc:airship_create.desc=Craft an airship.
 
 achievement.vc:airship_create_color=Flying with style!
 achievement.vc:airship_create_color.desc=Craft a colored airship.
+
+achievement.vc:airship_create_module=Time for an upgrade!
+achievement.vc:airship_create_module.desc=Craft an expansion module.
 
 achievement.vc:airship_airborn=Breaking the Sound Barrier!
 achievement.vc:airship_airborn.desc=Pilot an airship.

@@ -8,9 +8,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.MathHelper;
 
-import com.viesis.viescraft.ViesCraft;
-import com.viesis.viescraft.configs.ViesCraftConfig;
-
 public class ModelAirshipV3On extends ModelBase {
 	
 	public Random random = new Random();

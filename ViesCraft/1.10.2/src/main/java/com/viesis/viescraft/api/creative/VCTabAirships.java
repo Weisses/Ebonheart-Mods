@@ -16,6 +16,6 @@ public class VCTabAirships extends CreativeTabs {
 	@Override
 	public Item getTabIconItem() 
 	{
-		return InitItemsVC.item_airship_black;
+		return InitItemsVC.achievement_airship_airborn;
 	}
 }

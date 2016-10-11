@@ -11,9 +11,11 @@ import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
 import com.viesis.viescraft.common.items.ItemGuidebookControls;
 import com.viesis.viescraft.common.items.ItemGuidebookMain;
 import com.viesis.viescraft.common.items.ItemGuidebookPaint;
+import com.viesis.viescraft.common.items.ItemGuidebookSocket;
 import com.viesis.viescraft.common.items.achievements.ItemAchievementAirborn;
 import com.viesis.viescraft.common.items.achievements.ItemAchievementCreate;
 import com.viesis.viescraft.common.items.achievements.ItemAchievementCreateColor;
+import com.viesis.viescraft.common.items.achievements.ItemAchievementCreateModule;
 import com.viesis.viescraft.common.items.achievements.ItemAchievementEngine;
 import com.viesis.viescraft.common.items.achievements.ItemAchievementIgnition;
 import com.viesis.viescraft.common.items.achievements.ItemAchievementLava;
@@ -72,6 +74,11 @@ import com.viesis.viescraft.common.items.airshipitems.v3.ItemAirshipV3Purple;
 import com.viesis.viescraft.common.items.airshipitems.v3.ItemAirshipV3Red;
 import com.viesis.viescraft.common.items.airshipitems.v3.ItemAirshipV3White;
 import com.viesis.viescraft.common.items.airshipitems.v3.ItemAirshipV3Yellow;
+import com.viesis.viescraft.common.items.modules.ItemFuelModuleInfinite;
+import com.viesis.viescraft.common.items.modules.ItemInventoryModuleLarge;
+import com.viesis.viescraft.common.items.modules.ItemInventoryModuleSmall;
+import com.viesis.viescraft.common.items.modules.ItemModuleChip;
+import com.viesis.viescraft.common.items.modules.ItemSpeedModuleMinor;
 import com.viesis.viescraft.common.items.resources.ItemBalloon;
 import com.viesis.viescraft.common.items.resources.ItemEngine;
 import com.viesis.viescraft.common.items.resources.ItemIgnition;
@@ -86,10 +93,18 @@ public class InitItemsVC extends ItemsVC {
 		guidebook_main = registerItem(new ItemGuidebookMain());
 		guidebook_controls = registerItem(new ItemGuidebookControls());
 		guidebook_paint = registerItem(new ItemGuidebookPaint());
+		guidebook_socket = registerItem(new ItemGuidebookSocket());
 		
 		airship_balloon = registerItem(new ItemBalloon());
 		airship_engine = registerItem(new ItemEngine());
 		airship_ignition = registerItem(new ItemIgnition());
+		
+		module_chip = registerItem(new ItemModuleChip());
+		module_inventory_small = registerItem(new ItemInventoryModuleSmall());
+		module_inventory_large = registerItem(new ItemInventoryModuleLarge());
+		//module_fuel_efficiency = registerItem(new ItemFuelModuleEfficiency());
+		module_fuel_infinite = registerItem(new ItemFuelModuleInfinite());
+		module_speed_increase_minor = registerItem(new ItemSpeedModuleMinor());
 		
 		item_airship_normal = registerItem(new ItemAirshipV1Normal());
 		item_airship_black = registerItem(new ItemAirshipV1Black());
@@ -169,6 +184,7 @@ public class InitItemsVC extends ItemsVC {
 		achievement_airship_create_ignition = registerItem(new ItemAchievementIgnition());
 		achievement_airship_create = registerItem(new ItemAchievementCreate());
 		achievement_airship_create_color = registerItem(new ItemAchievementCreateColor());
+		achievement_airship_create_module = registerItem(new ItemAchievementCreateModule());
 		
 		achievement_airship_airborn = registerItem(new ItemAchievementAirborn());
 		achievement_airship_water = registerItem(new ItemAchievementWater());

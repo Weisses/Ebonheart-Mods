@@ -63,30 +63,13 @@ public class ClientProxy extends CommonProxy {
 	    double motionY = theEntity.worldObj.rand.nextGaussian() * 0.02D;
 	    double motionZ = theEntity.worldObj.rand.nextGaussian() * 0.02D;
 	    
-	    double test1 = theEntity.rotationPitch;
-	    //double test2 = theEntity.getLookVec().yCoord;
-	    //double test3 = theEntity.getLookVec().zCoord;
-	    
 	    Particle particleSprint = new EntitySmokeFX(
 	    	theEntity.worldObj, 
-	    	
-	    	theEntity.posX - //theEntity.rotationYaw
-	    	(double)(MathHelper.sin(-theEntity.rotationYaw * 0.017453292F) * 01.005F)//+ theEntity.worldObj.rand.nextFloat() * theEntity.width * 2.0F - theEntity.width
-	    	
-	    	, 
-	        
-	    	theEntity.posY + 0.5D //+ 0.5D + theEntity.worldObj.rand.nextFloat() * theEntity.height
-	        
-	        , 
-	        
-	        theEntity.posZ  -
-	    	(double)(MathHelper.cos(theEntity.rotationYaw * 0.017453292F) * 01.005F) //+ theEntity.worldObj.rand.nextFloat() * theEntity.width * 2.0F - theEntity.width
-	        
-	        , 
-	        
-	        motionX, 
-	        motionY, 
-	        motionZ);
+	    	theEntity.posX - (double)(MathHelper.sin(-theEntity.rotationYaw * 0.017453292F) * 01.005F), 
+	    	theEntity.posY + 0.5D, 
+	        theEntity.posZ - (double)(MathHelper.cos(theEntity.rotationYaw * 0.017453292F) * 01.005F), 
+	        motionX, motionY, motionZ);
+	    
 	    Minecraft.getMinecraft().effectRenderer.addEffect(particleSprint);        
 	}
 	

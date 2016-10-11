@@ -28,6 +28,8 @@ public class RenderAirshipYellow extends Render<EntityAirshipV1Yellow> {
 	protected ModelBase modelAirshipOn = new ModelAirshipV1On();
 	protected ModelBase modelAirshipOff = new ModelAirshipV1Off();
 	
+	private EntityAirshipV1Core airship;
+	
     public RenderAirshipYellow(RenderManager renderManagerIn)
     {
         super(renderManagerIn);
@@ -44,21 +46,21 @@ public class RenderAirshipYellow extends Render<EntityAirshipV1Yellow> {
         this.setupRotation(entity, entityYaw, partialTicks);
         this.bindEntityTexture(entity);
         
+        this.airship = entity;
+        
         if (this.renderOutlines)
         {
             GlStateManager.enableColorMaterial();
             GlStateManager.enableOutlineMode(this.getTeamColor(entity));
         }
         
-        if(EntityAirshipV1Core.isAirshipBurning(entity))
+        if(entity.getPowered() > 0)
         {
         	this.modelAirshipOn.render(entity, partialTicks, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
-            
         }
         else
         {
         	this.modelAirshipOff.render(entity, partialTicks, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
-            
         }
         
         if (this.renderOutlines)
@@ -134,5 +136,4 @@ public class RenderAirshipYellow extends Render<EntityAirshipV1Yellow> {
     {
         return ENTITY_TEXTURE[entity.getBoatType().ordinal()];
     }
-
 }

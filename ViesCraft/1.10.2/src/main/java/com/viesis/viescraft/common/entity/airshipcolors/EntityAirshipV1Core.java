@@ -1329,11 +1329,11 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
     /**
      * Passed to Render Airship.
      */
-    @SideOnly(Side.CLIENT)
-    public static boolean isAirshipBurning(IInventory inventory)
-    {
-        return inventory.getField(0) > 0;
-    }
+    //@SideOnly(Side.CLIENT)
+    //public static boolean isAirshipBurning(IInventory inventory)
+    //{
+    //    return inventory.getField(0) > 0;
+    //}
     
     public int getFuelTime(@Nullable ItemStack stack)
     {

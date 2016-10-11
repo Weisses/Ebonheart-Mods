@@ -272,7 +272,7 @@ public class GuiGuidebookControls extends GuiScreen {
         fontRendererObj.drawString(
         		stringPageIndicator, 
               offsetFromScreenLeft - widthOfString + bookImageWidth - 44, 
-              18, 0);
+              18, 1);
         
         
         //The actual text on the pages

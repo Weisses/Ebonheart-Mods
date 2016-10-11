@@ -22,7 +22,7 @@ public class GuiGuidebookMain extends GuiScreen {
     private final int bookImageHeight = 192;
     private final int bookImageWidth = 192;
     private int currPage = 0;
-    private static final int bookTotalPages = 12;
+    private static final int bookTotalPages = 13;
     private static ResourceLocation[] bookPageTextures = new ResourceLocation[bookTotalPages];
     private static String[] stringPageText = new String[bookTotalPages];
     
@@ -44,6 +44,7 @@ public class GuiGuidebookMain extends GuiScreen {
         bookPageTextures[9] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/main/page_9.png");
         bookPageTextures[10] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/main/page_10.png");
         bookPageTextures[11] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/main/page_11.png");
+        bookPageTextures[12] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/main/page_12.png");
         
         //Title
         stringPageText[0] = "\n\n\n\n\n\n\n"
@@ -66,26 +67,26 @@ public class GuiGuidebookMain extends GuiScreen {
         		+ "I now share my wisdom "
         		+ "with you... ";
         
-        stringPageText[2] = "Block Recipes:"
+        stringPageText[2] = "Block Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nAirship Workbench\u00A7r\u00A70"
         		+ "\n\n\n\n\n\n\n\n\n"
         		+ "\u00A7oA\u00A7r \u00A7l\u00A7nmust\u00A7r \u00A7ohave! Used in \u00A7r"
         		+ "\u00A7omaking all recipes.\u00A7r";
         
-        stringPageText[3] = "Part Recipes:"
+        stringPageText[3] = "Part Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nAirship Balloon\u00A70\u00A7r\u00A70"
         		+ "\n\n\n\n\n\n\n\n\n"
         		+ "\u00A7oMade out of leather and hide, built to last.\u00A7r";
         
-        stringPageText[4] = "Part Recipes:"
+        stringPageText[4] = "Part Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nAirship Engine\u00A70\u00A7r\u00A70"
         		+ "\n\n\n\n\n\n\n\n\n"
         		+ "\u00A7oGenerates power so you don't have to.\u00A7r";
         
-        stringPageText[5] = "Part Recipes:"
+        stringPageText[5] = "Part Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nAirship Ignition\u00A70\u00A7r\u00A70"
         		+ "\n\n\n\n\n\n\n\n\n"
@@ -112,7 +113,7 @@ public class GuiGuidebookMain extends GuiScreen {
         		+ "Names can be changed via the config. "
         		;
         
-        stringPageText[7] = "Airship Recipes:"
+        stringPageText[7] = "Airship Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7n"
         		+ ViesCraftConfig.v1AirshipName
@@ -120,7 +121,7 @@ public class GuiGuidebookMain extends GuiScreen {
         		+ "\n\n\n\n\n\n\n\n\n"
         		+ "\u00A7oClassic airship. Some things can't be beat.\u00A7r";
         
-        stringPageText[8] = "Airship Recipes:"
+        stringPageText[8] = "Airship Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7n"
         		+ ViesCraftConfig.v2AirshipName
@@ -128,7 +129,7 @@ public class GuiGuidebookMain extends GuiScreen {
         		+ "\n\n\n\n\n\n\n\n\n"
         		+ "\u00A7oA unique twist on the airship design.\u00A7r";
     	
-        stringPageText[9] = "Airship Recipes:"
+        stringPageText[9] = "Airship Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7n"
         		+ ViesCraftConfig.v3AirshipName
@@ -149,6 +150,13 @@ public class GuiGuidebookMain extends GuiScreen {
         		+ "\n               \u00A7l\u00A7nvol.3\u00A7r"
         		+ "\n\n\n\n\n\n\n\n"
         		+ "\u00A7oIns and outs of airship-safe paint.\u00A7r";
+        
+        stringPageText[12] = "Further Reading:"
+        		+ "\n\n"
+        		+ "\u00A7l\u00A7nModules & You\u00A7r\u00A70"
+        		+ "\n               \u00A7l\u00A7nvol.4\u00A7r"
+        		+ "\n\n\n\n\n\n\n\n"
+        		+ "\u00A7oAirship expansion system made easy.\u00A7r";
  }
 
     /**
@@ -239,6 +247,10 @@ public class GuiGuidebookMain extends GuiScreen {
         {
         	mc.getTextureManager().bindTexture(bookPageTextures[11]);
         }
+        if (currPage == 12)
+        {
+        	mc.getTextureManager().bindTexture(bookPageTextures[12]);
+        }
         
         //else
         //{
@@ -253,7 +265,7 @@ public class GuiGuidebookMain extends GuiScreen {
         widthOfString = fontRendererObj.getStringWidth(stringPageIndicator);
         fontRendererObj.drawString(stringPageIndicator, 
               offsetFromScreenLeft - widthOfString + bookImageWidth - 44, 
-              18, 0);
+              18, 1);
         fontRendererObj.drawSplitString(stringPageText[currPage], 
               offsetFromScreenLeft + 36, 34, 116, 0);
         super.drawScreen(parWidth, parHeight, p_73863_3_);

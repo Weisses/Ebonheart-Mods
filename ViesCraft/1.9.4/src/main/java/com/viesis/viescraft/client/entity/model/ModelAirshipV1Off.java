@@ -4,9 +4,6 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
-import com.viesis.viescraft.ViesCraft;
-import com.viesis.viescraft.configs.ViesCraftConfig;
-
 public class ModelAirshipV1Off extends ModelBase {
 	
 	private float bladespin;
