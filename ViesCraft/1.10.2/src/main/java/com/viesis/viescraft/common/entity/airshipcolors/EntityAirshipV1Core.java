@@ -395,7 +395,7 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
     {
         if (!this.worldObj.isRemote && !player.isSneaking() && this.outOfControlTicks < 60.0F)
         {
-            player.startRiding(this);
+        	player.startRiding(this);
         }
         
         //if(!this.worldObj.isRemote && player.isSneaking())
@@ -678,29 +678,27 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
 	
     protected void controlAirshipGui()
     {
-    	if(this.getControllingPassenger() != null)
-        {
-    		if(this.openInputDown)	
-            {
-    			//If airship has small inv module installed
-            	if(this.getModuleInventorySmall())
-            	{
-            		NetworkHandler.sendToServer(new MessageGuiV1ModuleInventorySmall());
-                	Minecraft.getMinecraft().setIngameFocus();
-            	}
-            	//If airship has large inv module installed
-            	else if(this.getModuleInventoryLarge())
-            	{
-            		NetworkHandler.sendToServer(new MessageGuiV1ModuleInventoryLarge());
-                	Minecraft.getMinecraft().setIngameFocus();
-            	}
-            	//Default for airship gui
-            	else
-            	{
-            		NetworkHandler.sendToServer(new MessageGuiV1Default());
-                	Minecraft.getMinecraft().setIngameFocus();
-            	}
-            }
+    	if(this.openInputDown 
+    	&& this.getControllingPassenger() != null)
+		{
+			//If airship has small inv module installed
+        	if(this.getModuleInventorySmall())
+        	{
+        		NetworkHandler.sendToServer(new MessageGuiV1ModuleInventorySmall());
+            	Minecraft.getMinecraft().setIngameFocus();
+        	}
+        	//If airship has large inv module installed
+        	else if(this.getModuleInventoryLarge())
+        	{
+        		NetworkHandler.sendToServer(new MessageGuiV1ModuleInventoryLarge());
+            	Minecraft.getMinecraft().setIngameFocus();
+        	}
+        	//Default for airship gui
+        	else
+        	{
+        		NetworkHandler.sendToServer(new MessageGuiV1Default());
+            	Minecraft.getMinecraft().setIngameFocus();
+        	}	
         }
     }
     
@@ -850,6 +848,7 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
         this.upInputDown = Keybinds.vcUp.isKeyDown();//Minecraft.getMinecraft().gameSettings.keyBindJump.isKeyDown();
         this.downInputDown = Keybinds.vcDown.isKeyDown();//Minecraft.getMinecraft().gameSettings.keyBindPlayerList.isKeyDown();
         this.openInputDown = Keybinds.vcInventory.isPressed();
+        this.moduleInputDown = Keybinds.vcModule.isKeyDown();
     }
     
     /**

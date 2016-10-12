@@ -33,7 +33,8 @@ public class EntityVC extends Entity {
     public boolean backInputDown;
     public boolean upInputDown;
     public boolean downInputDown;
-    public static boolean openInputDown;
+    public boolean openInputDown;
+    public boolean moduleInputDown;
 	
     public Random random = new Random();
     

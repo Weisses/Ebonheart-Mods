@@ -85,3 +85,4 @@ vc.key.moveRight=Turn Right
 vc.key.moveUp=Ascend
 vc.key.moveDown=Descend
 vc.key.openInventory=Open Airship Gui
+vc.key.useModule=Use Module Ability
