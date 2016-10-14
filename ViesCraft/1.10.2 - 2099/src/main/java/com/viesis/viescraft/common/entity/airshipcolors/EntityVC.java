@@ -106,6 +106,7 @@ public class EntityVC extends Entity {
     /**
      * Returns the Y offset from the entity's position for any entity riding this one.
      */
+    @Override
     public double getMountedYOffset()
     {
         return -0.1D;

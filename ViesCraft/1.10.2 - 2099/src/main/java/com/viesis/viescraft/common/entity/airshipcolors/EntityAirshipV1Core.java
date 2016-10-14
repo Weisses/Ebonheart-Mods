@@ -78,7 +78,12 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
     
 	//Cooldown Timer
 	private static final DataParameter<Integer> MODULE_CD = EntityDataManager.<Integer>createKey(EntityAirshipV1Core.class, DataSerializers.VARINT);
-    
+	
+	//Ability is On
+	private static final DataParameter<Integer> MODULE_ABILITY_ON = EntityDataManager.<Integer>createKey(EntityAirshipV1Core.class, DataSerializers.VARINT);
+	//private static final DataParameter<Integer> MODULE_ON_DASH = EntityDataManager.<Integer>createKey(EntityAirshipV1Core.class, DataSerializers.VARINT);
+	
+	
 	//0 is fuel slot, 1 is expansion slot 2-20(9x2 slots) is inventory.
 	private ItemStack[] inventory = new ItemStack[20];
 	public String customName;
@@ -96,12 +101,14 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
     
     //Active
     public static boolean moduleActivate;
-    public static boolean moduleAbility;
+    //public static boolean moduleAbility;
     public static boolean moduleStealth;
     public static boolean moduleDash;
     
+    
     //Cooldown Timer
     public int moduleCD;
+    public static int moduleAbilityOn;
     
 	public EntityAirshipV1Core.Status status;
     public EntityAirshipV1Core.Status previousStatus;
@@ -124,7 +131,9 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
     public EntityAirshipV1Core(World worldIn, double x, double y, double z)
     {
         this(worldIn);
-        this.setPosition(x, y, z);
+        this.setSize(1.0F, 0.35F);
+        this.setPosition(x, y + 0.5D, z);
+        //this.setLocationAndAngles(x, y + 1, z, 0, 0);
         this.motionX = 0.0D;
         this.motionY = 0.0D;
         this.motionZ = 0.0D;
@@ -154,6 +163,10 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
         this.dataManager.register(MODULE_DASH, Boolean.valueOf(this.moduleDash));
         
         this.dataManager.register(MODULE_CD, Integer.valueOf(0));
+        
+        this.dataManager.register(MODULE_ABILITY_ON, Integer.valueOf(0));
+        //this.dataManager.register(MODULE_ON_DASH, Integer.valueOf(0));
+        //this.dataManager.register(MODULE_ACTIVATE, Boolean.valueOf(this.moduleActivate));
 	}
 	
 	
@@ -273,14 +286,15 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
         this.airshipBurnTime = compound.getInteger("BurnTime");
         this.itemFuelStack = compound.getInteger("FuelStackTime");
         this.moduleCD = compound.getInteger("ModuleCooldown");
+        this.moduleAbilityOn = compound.getInteger("ModuleActive");
         
         //this.moduleInventorySmall = compound.getBoolean("ModuleInvSmall");
         //this.moduleInventoryLarge = compound.getBoolean("ModuleInvLarge");
         //this.moduleSpeedMinor = compound.getBoolean("ModuleSpeedMinor");
         //this.moduleFuelInfinite = compound.getBoolean("ModuleFuelInf");
         
-        this.moduleStealth = compound.getBoolean("ModuleStealth");
-        this.moduleDash = compound.getBoolean("ModuleDash");
+        //this.moduleStealth = compound.getBoolean("ModuleStealth");
+        //this.moduleDash = compound.getBoolean("ModuleDash");
     }
     
 	/**
@@ -294,14 +308,15 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
     	compound.setInteger("BurnTime", this.airshipBurnTime);
     	compound.setInteger("FuelStackTime", this.itemFuelStack);
     	compound.setInteger("ModuleCooldown", this.moduleCD);
+    	compound.setInteger("ModuleActive", this.moduleAbilityOn);
     	
     	//compound.setBoolean("ModuleInvSmall", this.getModuleInventorySmall());
     	//compound.setBoolean("ModuleInvLarge", this.getModuleInventoryLarge());
     	//compound.setBoolean("ModuleSpeedMinor", this.getModuleSpeedMinor());
     	//compound.setBoolean("ModuleFuelInf", this.getModuleFuelInfinite());
     	
-    	compound.setBoolean("ModuleStealth", this.getModuleStealth());
-    	compound.setBoolean("ModuleDash", this.getModuleDash());
+    	//compound.setBoolean("ModuleStealth", this.moduleStealth);
+    	//compound.setBoolean("ModuleDash", this.getModuleDash());
     	
         NBTTagList nbttaglist = new NBTTagList();
         
@@ -372,15 +387,16 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
         this.getTotalFuelSlotBurnTime();
         
         this.currentModule();
-        
-        
+        this.moduleActivateAbility();
+        this.moduleAbilityOn();
+        this.moduleCooldown();
         
         
         
         if (this.canPassengerSteer())
         {
-        	this.moduleCooldown();
-        	this.moduleActiveAbility();
+        	
+        	
         	
         	
         	
@@ -391,9 +407,21 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
             {
         		this.updateInputs();
         		this.controlAirshipGui();
+        		this.controlAirshipAbility();
         		
-        		LogHelper.info("CD Timer = " + this.moduleCD);
+        		if(this.moduleCD > 0)
+        		{
+        			LogHelper.info("CD Timer = " + this.moduleCD);
+        		}
+        		
+        		if(this.moduleAbilityOn > 0)
+        		{
+        			LogHelper.info("Ability Active Timer = " + this.moduleAbilityOn);
+        		}
+        		
             }
+        	
+        	
         	
             this.moveEntity(this.motionX, this.motionY, this.motionZ);
         }
@@ -743,18 +771,19 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
             	Minecraft.getMinecraft().setIngameFocus();
         	}	
         }
-    	
-    	if(this.moduleInputDown 
+    }
+    
+    protected void controlAirshipAbility()
+    {
+    	if(this.moduleInputDown
     	&& this.getControllingPassenger() != null)
-		{
-    		LogHelper.info("C button pressed.");
+    	{
     		this.moduleActivate = true;
 		}
-    	else
-    	{
-    		this.moduleActivate = false;
-    	}
-    	
+		else
+		{
+			this.moduleActivate = false;
+		}
     }
     
     
@@ -1509,17 +1538,17 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
 		/**
 		if(this.worldObj.isRemote)
 		{
-			if(this.moduleInventorySmall)
+			if(this.getModuleInventorySmall())
 				LogHelper.info("1");
-			if(this.moduleInventoryLarge)
+			if(this.getModuleInventoryLarge())
 				LogHelper.info("2");
-			if(this.moduleSpeedMinor)
+			if(this.getModuleSpeedMinor())
 				LogHelper.info("3");
-			if(this.moduleFuelInfinite)
+			if(this.getModuleFuelInfinite())
 				LogHelper.info("4");
-			if(this.moduleStealth)
+			if(this.getModuleStealth())
 				LogHelper.info("5");
-			if(this.moduleDash)
+			if(this.getModuleDash())
 				LogHelper.info("6");
 		}
 		*/
@@ -1543,59 +1572,53 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
 			this.moduleInventoryLarge = false;
 			this.moduleSpeedMinor = false;
 			this.moduleFuelInfinite = false;
-			
 			this.moduleStealth = false;
 			this.moduleDash = false;
 		}
 		else if(moduleNumber == 2)
 		{
-			this.moduleInventorySmall = false;
 			this.moduleInventoryLarge = true;
+			this.moduleInventorySmall = false;
 			this.moduleSpeedMinor = false;
 			this.moduleFuelInfinite = false;
-			
 			this.moduleStealth = false;
 			this.moduleDash = false;
 		}
 		else if(moduleNumber == 3)
 		{
+			this.moduleSpeedMinor = true;
 			this.moduleInventorySmall = false;
 			this.moduleInventoryLarge = false;
-			this.moduleSpeedMinor = true;
 			this.moduleFuelInfinite = false;
-			
 			this.moduleStealth = false;
 			this.moduleDash = false;
 		}
 		else if(moduleNumber == 4)
 		{
+			this.moduleFuelInfinite = true;
 			this.moduleInventorySmall = false;
 			this.moduleInventoryLarge = false;
 			this.moduleSpeedMinor = false;
-			this.moduleFuelInfinite = true;
-			
 			this.moduleStealth = false;
 			this.moduleDash = false;
 		}
 		else if(moduleNumber == 5)
 		{
+			this.moduleStealth = true;
 			this.moduleInventorySmall = false;
 			this.moduleInventoryLarge = false;
 			this.moduleSpeedMinor = false;
 			this.moduleFuelInfinite = false;
-			
-			this.moduleStealth = true;
 			this.moduleDash = false;
 		}
 		else if(moduleNumber == 6)
 		{
+			this.moduleDash = true;
 			this.moduleInventorySmall = false;
 			this.moduleInventoryLarge = false;
 			this.moduleSpeedMinor = false;
 			this.moduleFuelInfinite = false;
-			
 			this.moduleStealth = false;
-			this.moduleDash = true;
 		}
 		else// if(moduleNumber == 0)
 		{
@@ -1603,15 +1626,14 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
 			this.moduleInventoryLarge = false;
 			this.moduleSpeedMinor = false;
 			this.moduleFuelInfinite = false;
-			
 			this.moduleStealth = false;
 			this.moduleDash = false;
 		}
 		
 		
 		
-		
-		//If there is no module in slot
+		//Used to drop inventory if inv modules are removed/switched
+		// If there is no module in slot
 		if(this.getStackInSlot(1) == null)
 		{
 			//If small inv mod is removed and slot is empty
@@ -1717,31 +1739,28 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
             {
             	return 1;
             }
-            else if (item == InitItemsVC.module_inventory_large)
+            if (item == InitItemsVC.module_inventory_large)
             {
             	return 2;
             }
-            
-            else if (item == InitItemsVC.module_speed_increase_minor)
+            if (item == InitItemsVC.module_speed_increase_minor)
             {
             	return 3;
             }
-            else if (item == InitItemsVC.module_fuel_infinite)
+            if (item == InitItemsVC.module_fuel_infinite)
             {
             	return 4;
             }
-            else if (item == InitItemsVC.module_stealth)
+            if (item == InitItemsVC.module_stealth)
             {
             	return 5;
             }
-            else if (item == InitItemsVC.module_dash)
+            if (item == InitItemsVC.module_dash)
             {
             	return 6;
             }
-            else
-            {
-            	return 0;
-            }
+            
+            return 0;
         }
     }
     
@@ -1831,6 +1850,14 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
     }
     
     /**
+     * Sets if Minor Speed Increase mod is installed to pass from server to client.
+     */
+    public void setModuleSpeedMinor(boolean moduleSpeed1)
+    {
+        this.dataManager.set(MODULE_SPEED_MINOR, Boolean.valueOf(moduleSpeed1));
+    }
+    
+    /**
      * Gets the Minor Speed boolean to pass from server to client.
      */
     public boolean getModuleSpeedMinor()
@@ -1839,19 +1866,11 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
     }
     
     /**
-     * Sets if Minor Speed Increase mod is installed to pass from server to client.
-     */
-    public void setModuleSpeedMinor(boolean moduleInvLarge1)
-    {
-        this.dataManager.set(MODULE_SPEED_MINOR, Boolean.valueOf(moduleInvLarge1));
-    }
-    
-    /**
      * Sets the Small Inventory boolean to pass from server to client.
      */
-    public void setModuleStealth(boolean moduleStealth)
+    public void setModuleStealth(boolean moduleStealth1)
     {
-        this.dataManager.set(MODULE_STEALTH, Boolean.valueOf(moduleStealth));
+        this.dataManager.set(MODULE_STEALTH, Boolean.valueOf(moduleStealth1));
     }
 	
     /**
@@ -1865,9 +1884,9 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
     /**
      * Sets the Small Inventory boolean to pass from server to client.
      */
-    public void setModuleDash(boolean moduleDash)
+    public void setModuleDash(boolean moduleDash1)
     {
-        this.dataManager.set(MODULE_DASH, Boolean.valueOf(moduleDash));
+        this.dataManager.set(MODULE_DASH, Boolean.valueOf(moduleDash1));
     }
 	
     /**
@@ -1891,23 +1910,17 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
         boolean flag1 = false;
     	
         
-        
     	//Syncs the server info to the client
         if(this.worldObj.isRemote)
         {
         	this.moduleCD = this.getModuleCD();
         }
     	
+        //Ticks down the CD int
     	if(this.isModuleOnCD())
     	{
-    		//Anything else
-        	//else
-        	//{
-        		--this.moduleCD;
-        	//}
-    		
+        	--this.moduleCD;
     	}
-    	
     	
     	//Core fuel slot logic
         if (this.isModuleOnCD() || this.inventory[1] != null)
@@ -1915,34 +1928,20 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
             if (!this.isModuleOnCD())
             {
             	if(this.moduleActivate
-    	    	//&& !this.isModuleOnCD()
-            			)
+            	&& this.getEntityId() == EventHandlerCreativeNoFuel.test)
     			{
-    	    		LogHelper.info("CD timer started.");
-    	    		this.moduleAbility = true;
+    	    		//LogHelper.info("---===CD timer started. Entity - " + this.getEntityId());
+    	    		//this.moduleAbility = true;
     	        	this.moduleCD = getModuleCDTime(this.inventory[1]);
     			}
                 
                 if (this.isModuleOnCD())
                 {
                     flag1 = true;
-                    
-                    //if (this.inventory[0] != null)
-                    //{
-                    //    --this.inventory[0].stackSize;
-                    //    
-                    //    if (this.inventory[0].stackSize == 0)
-                    //    {
-                    //        this.inventory[0] = inventory[0].getItem().getContainerItem(inventory[0]);
-                    //    }
-                    //}
                 }
-                
-                
             }
         }
     	
-
         if (flag != this.isModuleOnCD())
         {
             flag1 = true;
@@ -1953,17 +1952,75 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
             this.markDirty();
         }
         
+        //Saves the CD to the server side
     	if(!this.worldObj.isRemote)
         {
         	this.setModuleCD(this.moduleCD);
         }
     }
     
-    
-    public void moduleActiveAbility()
+    private void moduleAbilityOn()
     {
-    	if(this.moduleAbility
-    	&& this.moduleActivate
+    	boolean flag = this.isModuleAbilityOn();
+        boolean flag1 = false;
+    	
+        
+    	//Syncs the server info to the client
+        if(this.worldObj.isRemote)
+        {
+        	this.moduleAbilityOn = this.getModuleAbilityON();
+        }
+    	
+        //Ticks down the CD int
+    	if(this.isModuleAbilityOn())
+    	{
+        	--this.moduleAbilityOn;
+    	}
+    	
+    	//Core fuel slot logic
+        if (this.isModuleAbilityOn() || this.inventory[1] != null)
+        {
+            if (!this.isModuleAbilityOn())
+            {
+            	if(this.moduleActivate
+            	&& this.getEntityId() == EventHandlerCreativeNoFuel.test
+            	&& this.moduleCD == 0)
+    			{
+    	    		//LogHelper.info("---===CD timer started. Entity - " + this.getEntityId());
+    	    		//this.moduleAbility = true;
+    	        	this.moduleAbilityOn = getModuleActiveTime(this.inventory[1]);
+    			}
+                
+                if (this.isModuleAbilityOn())
+                {
+                    flag1 = true;
+                }
+            }
+        }
+    	
+        if (flag != this.isModuleAbilityOn())
+        {
+            flag1 = true;
+        }
+        
+        if (flag1)
+        {
+            this.markDirty();
+        }
+        
+        //Saves the CD to the server side
+    	if(!this.worldObj.isRemote)
+        {
+        	this.setModuleAbilityON(this.moduleAbilityOn);
+        }
+    }
+    
+    
+    public void moduleActivateAbility()
+    {
+    	if(this.moduleActivate
+    	&& this.getEntityId() == EventHandlerCreativeNoFuel.test
+    	&& this.moduleCD == 0
     	)
     	{
     		//ItemStack itemModule = this.getStackInSlot(1);
@@ -1971,8 +2028,8 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
     		
     		if(this.getModuleStealth())
     		{
-    			if(!this.worldObj.isRemote)
-    			LogHelper.info("Stealth!");
+    			//if(!this.worldObj.isRemote)
+    			this.isStealth();
     			//int isSteath;
     			//for (int x = 0; x < 100; ++x) 
     			//{
@@ -1982,10 +2039,16 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
     		
     		else if(this.getModuleDash())
     		{
-    			if(!this.worldObj.isRemote)
+    			//if(!this.worldObj.isRemote)
     			LogHelper.info("Dash!");
     		}
     	}
+    }
+    
+    private void isStealth()
+    {
+    	LogHelper.info("Stealth!");
+    	this.isInvisible();
     }
     
     
@@ -2012,6 +2075,28 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
     }
     
     /**
+     * Returns the number of ticks that the module will need to get 
+     * off of CD, or 0 if the item isn't a module
+     */
+    public static int getModuleActiveTime(ItemStack stack)
+    {
+        if (stack == null)
+        {
+            return 0;
+        }
+        else
+        {
+            Item item = stack.getItem();
+            
+            if (item == InitItemsVC.module_stealth) return 400;//2 minutes
+            
+            if (item == InitItemsVC.module_dash) return 200;//1 minute
+            
+            return 0;
+        }
+    }
+    
+    /**
      * Is the Module on CD
      */
     public boolean isModuleOnCD()
@@ -2020,11 +2105,19 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
     }
     
     /**
+     * Is the Module on CD
+     */
+    public boolean isModuleAbilityOn()
+    {
+    	return this.moduleAbilityOn > 0;
+    }
+    
+    /**
      * Sets the Invisibility Module CD to pass from server to client.
      */
-    public void setModuleCD(int moduleCD)
+    public void setModuleCD(int moduleCD1)
     {
-        this.dataManager.set(MODULE_CD, Integer.valueOf(moduleCD));
+        this.dataManager.set(MODULE_CD, Integer.valueOf(moduleCD1));
     }
 	
     /**
@@ -2034,6 +2127,23 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
     {
         return ((Integer)this.dataManager.get(MODULE_CD)).intValue();
     }
+    
+    /**
+     * Sets the Invisibility Module CD to pass from server to client.
+     */
+    public void setModuleAbilityON(int moduleAbilityOn1)
+    {
+        this.dataManager.set(MODULE_ABILITY_ON, Integer.valueOf(moduleAbilityOn1));
+    }
+	
+    /**
+     * Gets the Invisibility Module CD to pass from server to client.
+     */
+    public int getModuleAbilityON()
+    {
+        return ((Integer)this.dataManager.get(MODULE_ABILITY_ON)).intValue();
+    }
+    
     
     
     
