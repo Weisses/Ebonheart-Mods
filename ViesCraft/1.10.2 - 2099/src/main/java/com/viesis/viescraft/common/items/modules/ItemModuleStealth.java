@@ -24,9 +24,9 @@ public class ItemModuleStealth extends Item {
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List toolTip, boolean advanced) 
 	{
 		toolTip.add(" ");
-		toolTip.add(TextFormatting.GOLD + "Effects while socketed:");
-		toolTip.add(TextFormatting.GREEN + "Pro - Fly without fuel.");
-		toolTip.add(TextFormatting.RED + "Con - Speed reduced to 50%");
+		toolTip.add(TextFormatting.GOLD + "Effects when activated:");
+		toolTip.add(TextFormatting.GREEN + "Pro - Vanish for 18 seconds.");
+		toolTip.add(TextFormatting.RED + "Con - 2 Minute Cooldown.");
 		toolTip.add(" ");
 	}
 	

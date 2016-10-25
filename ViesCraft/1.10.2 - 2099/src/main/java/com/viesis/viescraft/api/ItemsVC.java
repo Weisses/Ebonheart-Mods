@@ -23,8 +23,8 @@ public class ItemsVC {
 	public static Item module_fuel_infinite;
 	
 	//Active
-	public static Item module_stealth;
-	public static Item module_dash;
+	//public static Item module_stealth;
+	//public static Item module_dash;
 	
 	public static Item item_airship_normal;
 	public static Item item_airship_black;

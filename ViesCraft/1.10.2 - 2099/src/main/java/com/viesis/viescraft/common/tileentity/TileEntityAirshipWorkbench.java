@@ -16,9 +16,12 @@ public class TileEntityAirshipWorkbench extends TileEntity implements IInventory
 	private ItemStack[] inventory = new ItemStack[9];
 	private String customName;
 	
+	public ItemStack[] craftMatrixInventory;
+	
 	public TileEntityAirshipWorkbench() 
 	{
 		this.inventory = new ItemStack[this.getSizeInventory()];
+		craftMatrixInventory = new ItemStack[9];
 	}
 	
 	public String getCustomName() 
@@ -58,11 +61,11 @@ public class TileEntityAirshipWorkbench extends TileEntity implements IInventory
 	@Override
 	public ItemStack getStackInSlot(int index) 
 	{
-		if(index < 0 || index >= this.getSizeInventory()) 
+		if(index < 0 || index >= 9) 
 		{
 			return null;
 		}
-		return this.inventory[index];
+		return this.craftMatrixInventory[index];
 	}
 	
 	@Override
@@ -170,6 +173,25 @@ public class TileEntityAirshipWorkbench extends TileEntity implements IInventory
         }
         
         compound.setTag("Items", nbttaglist);
+        
+        
+        
+     // Write Crafting Matrix to NBT
+        NBTTagList craftingTag = new NBTTagList();
+        for (int currentIndex = 0; currentIndex < craftMatrixInventory.length; ++currentIndex) {
+            if (craftMatrixInventory[currentIndex] != null) {
+                NBTTagCompound tagCompound = new NBTTagCompound();
+                tagCompound.setByte("Slot", (byte) currentIndex);
+                craftMatrixInventory[currentIndex].writeToNBT(tagCompound);
+                craftingTag.appendTag(tagCompound);
+            }
+        }
+        compound.setTag("CraftingMatrix", craftingTag);
+        
+        // Write craftingResult to NBT
+        //if (craftResult.getStackInSlot(0) != null)
+        //    compound.setTag("CraftingResult", craftResult.getStackInSlot(0).writeToNBT(new NBTTagCompound()));
+        
 		return compound;
 	}
 	
@@ -191,5 +213,21 @@ public class TileEntityAirshipWorkbench extends TileEntity implements IInventory
                 this.inventory[j] = ItemStack.loadItemStackFromNBT(nbttagcompound);
             }
         }
+        
+     // Read in the Crafting Matrix from NBT
+        NBTTagList craftingTag = compound.getTagList("CraftingMatrix", 10);
+        craftMatrixInventory = new ItemStack[9]; //TODO: magic number
+        for (int i = 0; i < craftingTag.tagCount(); ++i) 
+        {
+            NBTTagCompound tagCompound = (NBTTagCompound) craftingTag.getCompoundTagAt(i);
+            byte slot = tagCompound.getByte("Slot");
+            if (slot >= 0 && slot < craftMatrixInventory.length) 
+            {
+                craftMatrixInventory[slot] = ItemStack.loadItemStackFromNBT(tagCompound);
+            }
+        }
+        
+        
+        
 	}
 }

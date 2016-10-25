@@ -25,8 +25,8 @@ public final class InitItemsVCRender extends ItemsVC {
 		registerRender(module_speed_increase_minor);
 		registerRender(module_fuel_infinite);
 		
-		registerRender(module_stealth);
-		registerRender(module_dash);
+		//registerRender(module_stealth);
+		//registerRender(module_dash);
 		
 		registerRender(item_airship_normal);
 		registerRender(item_airship_black);

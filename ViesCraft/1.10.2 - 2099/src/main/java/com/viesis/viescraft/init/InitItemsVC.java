@@ -107,8 +107,8 @@ public class InitItemsVC extends ItemsVC {
 		module_speed_increase_minor = registerItem(new ItemSpeedModuleMinor());
 		module_fuel_infinite = registerItem(new ItemFuelModuleInfinite());
 		
-		module_stealth = registerItem(new ItemModuleStealth());
-		module_dash = registerItem(new ItemModuleDash());
+		//module_stealth = registerItem(new ItemModuleStealth());
+		//module_dash = registerItem(new ItemModuleDash());
 		
 		item_airship_normal = registerItem(new ItemAirshipV1Normal());
 		item_airship_black = registerItem(new ItemAirshipV1Black());

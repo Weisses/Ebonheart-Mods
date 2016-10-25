@@ -10,6 +10,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import com.viesis.viescraft.ViesCraft;
 import com.viesis.viescraft.common.items.ItemHelper;
 
 public class ItemModuleDash extends Item {
@@ -24,9 +25,9 @@ public class ItemModuleDash extends Item {
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List toolTip, boolean advanced) 
 	{
 		toolTip.add(" ");
-		toolTip.add(TextFormatting.GOLD + "Effects while socketed:");
-		toolTip.add(TextFormatting.GREEN + "Pro - Fly without fuel.");
-		toolTip.add(TextFormatting.RED + "Con - Speed reduced to 50%");
+		toolTip.add(TextFormatting.GOLD + "Effects when activated:");
+		toolTip.add(TextFormatting.GREEN + "Pro - 400% speed for 5 seconds.");
+		toolTip.add(TextFormatting.RED + "Con - 1 Minute Cooldown.");
 		toolTip.add(" ");
 	}
 	

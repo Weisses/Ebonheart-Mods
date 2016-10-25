@@ -100,7 +100,7 @@ public class EntityVC extends Entity {
      */
     public boolean canBePushed()
     {
-        return true;
+        return false;
     }
     
     /**

@@ -1214,9 +1214,9 @@ public class EntityAirshipV2Core extends EntityVC implements IInventory {
         		
         	}
         	//The player in the airship is in Creative Mode
-        	else if(EventHandlerCreativeNoFuel.creativeBurn)
+        	else if(EventHandlerCreativeNoFuel.creativeBurn2)
         	{
-        		if(this.getEntityId() == EventHandlerCreativeNoFuel.test)
+        		if(this.getEntityId() == EventHandlerCreativeNoFuel.test2)
         		{
 	        		if(this.getControllingPassenger() == null)
 	            	{
@@ -1265,9 +1265,9 @@ public class EntityAirshipV2Core extends EntityVC implements IInventory {
         		this.airshipBurnTime = 0;
         	}
         	//The player in the airship is in Creative Mode
-        	else if(EventHandlerCreativeNoFuel.creativeBurn)
+        	else if(EventHandlerCreativeNoFuel.creativeBurn2)
         	{
-        		if (this.getEntityId() == EventHandlerCreativeNoFuel.test)
+        		if (this.getEntityId() == EventHandlerCreativeNoFuel.test2)
             	{
             		this.airshipBurnTime = 1;
             	}

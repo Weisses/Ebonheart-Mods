@@ -12,6 +12,7 @@ import com.viesis.viescraft.network.server.v1.MessageGuiV1Default;
 import com.viesis.viescraft.network.server.v1.MessageGuiV1Module;
 import com.viesis.viescraft.network.server.v1.MessageGuiV1ModuleInventoryLarge;
 import com.viesis.viescraft.network.server.v1.MessageGuiV1ModuleInventorySmall;
+import com.viesis.viescraft.network.server.v1.MessageV1ModuleKeyPressed;
 import com.viesis.viescraft.network.server.v2.MessageGuiV2Default;
 import com.viesis.viescraft.network.server.v2.MessageGuiV2Module;
 import com.viesis.viescraft.network.server.v2.MessageGuiV2ModuleInventoryLarge;
@@ -47,6 +48,8 @@ public class NetworkHandler {
 		INSTANCE.registerMessage(MessageGuiV1ModuleInventoryLarge.class, MessageGuiV1ModuleInventoryLarge.class, 10, Side.SERVER);
 		INSTANCE.registerMessage(MessageGuiV2ModuleInventoryLarge.class, MessageGuiV2ModuleInventoryLarge.class, 11, Side.SERVER);
 		INSTANCE.registerMessage(MessageGuiV3ModuleInventoryLarge.class, MessageGuiV3ModuleInventoryLarge.class, 12, Side.SERVER);
+		
+		INSTANCE.registerMessage(MessageV1ModuleKeyPressed.class, MessageV1ModuleKeyPressed.class, 13, Side.SERVER);
 		
 	}
 	
