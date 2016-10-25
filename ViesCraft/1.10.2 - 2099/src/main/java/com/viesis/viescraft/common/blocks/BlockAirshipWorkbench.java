@@ -38,6 +38,7 @@ public class BlockAirshipWorkbench extends BlockEA implements ITileEntityProvide
 	{
 		super(unlocalizedName);
 		
+		
 		this.setCreativeTab(ViesCraft.tabViesCraftBlocks);
 		this.isBlockContainer = true;
 	}

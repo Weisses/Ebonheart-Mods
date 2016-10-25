@@ -44,15 +44,15 @@ public class ModuleSlotVC extends Slot {
         	return true;
         }
         
-        if (item == InitItemsVC.module_stealth)
-        {
-        	return true;
-        }
+        //if (item == InitItemsVC.module_stealth)
+        //{
+        //	return true;
+        //}
         
-        if (item == InitItemsVC.module_dash)
-        {
-        	return true;
-        }
+        //if (item == InitItemsVC.module_dash)
+        //{
+        //	return true;
+        //}
 		
         return false;
     }
