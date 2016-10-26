@@ -519,7 +519,14 @@ public class EntityAirshipV2Core extends EntityVC implements IInventory {
             
             if(this.getControllingPassenger() == null)
             {
-            	this.motionY += d5;
+            	if(this.isCollidedVertically)
+                {
+                	this.motionY = 0;
+                }
+            	else
+            	{
+            		this.motionY += d5;
+            	}
             }
             else if(isClientAirshipBurning())
         	{
