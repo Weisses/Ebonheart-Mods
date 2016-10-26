@@ -33,7 +33,8 @@ public class EntityVC extends Entity {
     public boolean backInputDown;
     public boolean upInputDown;
     public boolean downInputDown;
-    public static boolean openInputDown;
+    public boolean openInputDown;
+    public boolean moduleInputDown;
 	
     public Random random = new Random();
     
@@ -99,12 +100,13 @@ public class EntityVC extends Entity {
      */
     public boolean canBePushed()
     {
-        return true;
+        return false;
     }
     
     /**
      * Returns the Y offset from the entity's position for any entity riding this one.
      */
+    @Override
     public double getMountedYOffset()
     {
         return -0.1D;

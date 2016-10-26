@@ -81,7 +81,9 @@ public class GuiEntityAirshipV2Default extends GuiContainer {
 		
 		//On button is green in gui
 		if(this.airshipV2.getModuleSpeedMinor()
-		|| this.airshipV2.getModuleFuelInfinite())
+		|| this.airshipV2.getModuleFuelInfinite()
+		|| this.airshipV2.getModuleStealth()
+		|| this.airshipV2.getModuleDash())
 		{
 			this.drawTexturedModalRect(this.guiLeft + 124, this.guiTop + 61, 176, 100, 8, 8);
 		}

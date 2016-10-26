@@ -39,7 +39,7 @@ public class CraftingManagerVC {
         return INSTANCE;
     }
     
-    private CraftingManagerVC()
+    public CraftingManagerVC()
     {
     	
     	this.addRecipe(new ItemStack(InitItemsVC.guidebook_main, 1), new Object[]{" F ", "FBF", " F ", 'B', Items.BOOK, 'F', Items.FEATHER});

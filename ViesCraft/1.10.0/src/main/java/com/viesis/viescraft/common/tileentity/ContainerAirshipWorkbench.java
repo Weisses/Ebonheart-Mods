@@ -39,7 +39,7 @@ public class ContainerAirshipWorkbench extends Container {
     {
         this.worldObj = worldIn;
         this.airship = airship;
-        
+        updateCraftingMatrix();
         // Index 0
         this.addSlotToContainer(new SlotCraftingVC(playerInventory.player, this.craftMatrix, this.craftResult, 0, 124, 35));
         
@@ -70,6 +70,14 @@ public class ContainerAirshipWorkbench extends Container {
         this.onCraftMatrixChanged(this.craftMatrix);
     }
     
+    private void updateCraftingMatrix() 
+    {
+    	for (int i = 0; i < craftMatrix.getSizeInventory(); i++) 
+    	{
+    		craftMatrix.setInventorySlotContents(i, airship.craftMatrixInventory[i]);
+    	}
+    }
+    
     /**
      * Callback for when the crafting matrix is changed.
      */
@@ -85,18 +93,16 @@ public class ContainerAirshipWorkbench extends Container {
     {
         super.onContainerClosed(playerIn);
         
-        if (!this.worldObj.isRemote)
-        {
-            for (int i = 0; i < 9; ++i)
-            {
-                ItemStack itemstack = this.craftMatrix.removeStackFromSlot(i);
-                
-                if (itemstack != null)
-                {
-                    playerIn.dropItem(itemstack, false);
-                }
-            }
-        }
+        saveCraftingMatrix();
+        
+    }
+    
+    private void saveCraftingMatrix() 
+    {
+    	for (int i = 0; i < craftMatrix.getSizeInventory(); i++) 
+    	{
+    		airship.craftMatrixInventory[i] = craftMatrix.getStackInSlot(i);
+    	}
     }
     
     public boolean canInteractWith(EntityPlayer playerIn)

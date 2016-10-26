@@ -20,7 +20,15 @@ plugins {
     id "net.minecraftforge.gradle.forge" version "2.0.2"
 }
 */
-version = "2.5.0c-mc1.9.4"
+
+repositories {
+  maven {
+    // location of the maven that hosts JEI files
+    url 'http://dvs1.progwml6.com/files/maven'
+  }
+}
+
+version = "2.7.2a-mc1.9.4"
 group= "com.viesis.ViesCraft" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "ViesCraft"
 
@@ -41,6 +49,11 @@ minecraft {
 }
 
 dependencies {
+    // compile against the JEI API
+    deobfCompile 'mezz.jei:jei_1.9.4:3.6.8.225'
+    // at runtime, use the full JEI jar
+    runtime 'mezz.jei:jei_1.9.4:3.6.8.225'
+
     // you may put jars on which you depend on in ./libs
     // or you may define them like so..
     //compile "some.group:artifact:version:classifier"

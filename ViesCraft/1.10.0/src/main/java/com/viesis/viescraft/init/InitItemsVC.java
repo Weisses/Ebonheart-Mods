@@ -78,6 +78,8 @@ import com.viesis.viescraft.common.items.modules.ItemFuelModuleInfinite;
 import com.viesis.viescraft.common.items.modules.ItemInventoryModuleLarge;
 import com.viesis.viescraft.common.items.modules.ItemInventoryModuleSmall;
 import com.viesis.viescraft.common.items.modules.ItemModuleChip;
+import com.viesis.viescraft.common.items.modules.ItemModuleDash;
+import com.viesis.viescraft.common.items.modules.ItemModuleStealth;
 import com.viesis.viescraft.common.items.modules.ItemSpeedModuleMinor;
 import com.viesis.viescraft.common.items.resources.ItemBalloon;
 import com.viesis.viescraft.common.items.resources.ItemEngine;
@@ -102,9 +104,11 @@ public class InitItemsVC extends ItemsVC {
 		module_chip = registerItem(new ItemModuleChip());
 		module_inventory_small = registerItem(new ItemInventoryModuleSmall());
 		module_inventory_large = registerItem(new ItemInventoryModuleLarge());
-		//module_fuel_efficiency = registerItem(new ItemFuelModuleEfficiency());
-		module_fuel_infinite = registerItem(new ItemFuelModuleInfinite());
 		module_speed_increase_minor = registerItem(new ItemSpeedModuleMinor());
+		module_fuel_infinite = registerItem(new ItemFuelModuleInfinite());
+		
+		//module_stealth = registerItem(new ItemModuleStealth());
+		//module_dash = registerItem(new ItemModuleDash());
 		
 		item_airship_normal = registerItem(new ItemAirshipV1Normal());
 		item_airship_black = registerItem(new ItemAirshipV1Black());

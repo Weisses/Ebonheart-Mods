@@ -538,6 +538,5 @@ public class ModelAirshipV1On extends ModelBase {
 				entity.posZ - (double)(MathHelper.cos(entity.rotationYaw * 0.017453292F) * 00.82F), 
 				0.0D, 0.0D, 0.0D, new int[0]);
 		}
-		
 	}
 }

@@ -10,13 +10,14 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import com.viesis.viescraft.ViesCraft;
 import com.viesis.viescraft.common.items.ItemHelper;
 
-public class ItemFuelModuleEfficiency extends Item {
+public class ItemModuleDash extends Item {
 	
-	public ItemFuelModuleEfficiency() 
+	public ItemModuleDash() 
 	{
-		ItemHelper.setItemName(this, "module_fuel_efficiency");
+		ItemHelper.setItemName(this, "module_dash");
 		this.setMaxStackSize(1);
 	}
 	
@@ -24,11 +25,10 @@ public class ItemFuelModuleEfficiency extends Item {
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List toolTip, boolean advanced) 
 	{
 		toolTip.add(" ");
-		toolTip.add(TextFormatting.DARK_AQUA + "3Turn an airship into a mobile 12 slot");
-		toolTip.add(TextFormatting.DARK_AQUA + "chest.");
-		
-		//toolTip.add(TextFormatting.DARK_AQUA + "The heart of the airship! Travel to");
-		//toolTip.add(TextFormatting.DARK_AQUA + "different chunks in mere minutes!");
+		toolTip.add(TextFormatting.GOLD + "Effects when activated:");
+		toolTip.add(TextFormatting.GREEN + "Pro - 400% speed for 5 seconds.");
+		toolTip.add(TextFormatting.RED + "Con - 1 Minute Cooldown.");
+		toolTip.add(" ");
 	}
 	
 	public EnumRarity getRarity(ItemStack stack)

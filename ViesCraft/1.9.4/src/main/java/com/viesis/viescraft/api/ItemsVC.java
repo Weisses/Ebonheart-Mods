@@ -14,12 +14,17 @@ public class ItemsVC {
 	public static Item airship_engine;
 	
 	public static Item module_chip;
+	
+	//Passive
 	public static Item module_inventory_small;
 	public static Item module_inventory_large;
 	public static Item module_speed_increase_minor;
 	//public static Item module_fuel_efficiency;
 	public static Item module_fuel_infinite;
-	public static Item module_invisibility;
+	
+	//Active
+	//public static Item module_stealth;
+	//public static Item module_dash;
 	
 	public static Item item_airship_normal;
 	public static Item item_airship_black;

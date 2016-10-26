@@ -54,7 +54,12 @@ public class RenderAirshipAdmin extends Render<EntityAirshipV1Admin> {
             GlStateManager.enableOutlineMode(this.getTeamColor(entity));
         }
         
-        if(entity.getPowered() > 0)
+        if(entity.getModuleStealth()
+        && entity.getModuleAbilityON() > 0)
+        {
+        	
+        }
+        else if(entity.getPowered() > 0)
         {
         	this.modelAirshipOn.render(entity, partialTicks, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
         }
@@ -78,7 +83,6 @@ public class RenderAirshipAdmin extends Render<EntityAirshipV1Admin> {
         GlStateManager.rotate(180.0F - p_188311_2_, 0.0F, 1.0F, 0.0F);
         float f = (float)entity.getTimeSinceHit() - p_188311_3_;
         float f1 = entity.getDamageTaken() - p_188311_3_;
-
         
         float g = (float)entity.getTimeSinceHit() - p_188311_3_;
         float g1 = entity.getDamageTaken() - p_188311_3_;

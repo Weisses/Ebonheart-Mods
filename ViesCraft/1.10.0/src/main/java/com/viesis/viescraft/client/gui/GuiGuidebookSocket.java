@@ -4,8 +4,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.resources.I18n;
-import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -14,15 +12,13 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
 import com.viesis.viescraft.api.Reference;
-import com.viesis.viescraft.configs.ViesCraftConfig;
-import com.viesis.viescraft.init.InitBlocksVC;
 
 public class GuiGuidebookSocket extends GuiScreen {
 	
     private final int bookImageHeight = 192;
     private final int bookImageWidth = 192;
     private int currPage = 0;
-    private static final int bookTotalPages = 8;
+    private static final int bookTotalPages = 10;
     private static ResourceLocation[] bookPageTextures = new ResourceLocation[bookTotalPages];
     private static String[] stringPageText = new String[bookTotalPages];
     
@@ -40,6 +36,8 @@ public class GuiGuidebookSocket extends GuiScreen {
         bookPageTextures[5] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/socket/page_5.png");
         bookPageTextures[6] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/socket/page_6.png");
         bookPageTextures[7] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/socket/page_7.png");
+        bookPageTextures[8] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/socket/page_8.png");
+        bookPageTextures[9] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/socket/page_9.png");
         
         
         //Title
@@ -108,8 +106,21 @@ public class GuiGuidebookSocket extends GuiScreen {
         		+ "\u00A7oNo fuel needed."
         		+ "\n50% speed.\u00A7r";
         
+        stringPageText[8] = "Module Recipe:"
+        		+ "\n\n"
+        		+ "\u00A7l\u00A7nStealth Module\u00A70\u00A7r\u00A70"
+        		+ "\n\n\n\n\n\n\n\n"
+        		+ "\u00A7oVanish for 18s."
+        		+ "\nCooldown = 2m.\u00A7r";
         
- }
+        stringPageText[9] = "Module Recipe:"
+        		+ "\n\n"
+        		+ "\u00A7l\u00A7nDash Module\u00A70\u00A7r\u00A70"
+        		+ "\n\n\n\n\n\n\n\n"
+        		+ "\u00A7o400% speed for 5s."
+        		+ "\nCooldown = 1m.\u00A7r";
+        
+    }
 
     /**
      * Adds the buttons (and other controls) to the screen in question.
@@ -182,6 +193,14 @@ public class GuiGuidebookSocket extends GuiScreen {
         if (currPage == 7)
         {
         	mc.getTextureManager().bindTexture(bookPageTextures[7]);
+        }
+        if (currPage == 8)
+        {
+        	mc.getTextureManager().bindTexture(bookPageTextures[8]);
+        }
+        if (currPage == 9)
+        {
+        	mc.getTextureManager().bindTexture(bookPageTextures[9]);
         }
         
         //else

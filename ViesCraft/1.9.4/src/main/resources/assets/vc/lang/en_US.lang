@@ -37,6 +37,8 @@ item.vc:module_inventory_small.name=Small Inventory Module
 item.vc:module_inventory_large.name=Large Inventory Module
 item.vc:module_speed_increase_minor.name=Minor Speed Boost Module
 item.vc:module_fuel_infinite.name=Infinite Fuel Module
+item.vc:module_stealth.name=Stealth Module
+item.vc:module_dash.name=Dash Module
 
 //-----Entity-----
 entity.vc.test.normal.name=Placeholder1
@@ -85,3 +87,4 @@ vc.key.moveRight=Turn Right
 vc.key.moveUp=Ascend
 vc.key.moveDown=Descend
 vc.key.openInventory=Open Airship Gui
+vc.key.useModule=Use Module Ability
