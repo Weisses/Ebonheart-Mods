@@ -18,9 +18,14 @@ import com.viesis.viescraft.client.gui.v3.GuiEntityAirshipV3Default;
 import com.viesis.viescraft.client.gui.v3.GuiEntityAirshipV3Module;
 import com.viesis.viescraft.client.gui.v3.GuiEntityAirshipV3ModuleInventoryLarge;
 import com.viesis.viescraft.client.gui.v3.GuiEntityAirshipV3ModuleInventorySmall;
+import com.viesis.viescraft.client.gui.v4.GuiEntityAirshipV4Default;
+import com.viesis.viescraft.client.gui.v4.GuiEntityAirshipV4Module;
+import com.viesis.viescraft.client.gui.v4.GuiEntityAirshipV4ModuleInventoryLarge;
+import com.viesis.viescraft.client.gui.v4.GuiEntityAirshipV4ModuleInventorySmall;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV2Core;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV3Core;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV4Core;
 import com.viesis.viescraft.common.entity.airshipcolors.containers.v1.ContainerAirshipV1Default;
 import com.viesis.viescraft.common.entity.airshipcolors.containers.v1.ContainerAirshipV1Module;
 import com.viesis.viescraft.common.entity.airshipcolors.containers.v1.ContainerAirshipV1ModuleInvLarge;
@@ -33,6 +38,10 @@ import com.viesis.viescraft.common.entity.airshipcolors.containers.v3.ContainerA
 import com.viesis.viescraft.common.entity.airshipcolors.containers.v3.ContainerAirshipV3Module;
 import com.viesis.viescraft.common.entity.airshipcolors.containers.v3.ContainerAirshipV3ModuleInvLarge;
 import com.viesis.viescraft.common.entity.airshipcolors.containers.v3.ContainerAirshipV3ModuleInvSmall;
+import com.viesis.viescraft.common.entity.airshipcolors.containers.v4.ContainerAirshipV4Default;
+import com.viesis.viescraft.common.entity.airshipcolors.containers.v4.ContainerAirshipV4Module;
+import com.viesis.viescraft.common.entity.airshipcolors.containers.v4.ContainerAirshipV4ModuleInvLarge;
+import com.viesis.viescraft.common.entity.airshipcolors.containers.v4.ContainerAirshipV4ModuleInvSmall;
 import com.viesis.viescraft.common.tileentity.ContainerAirshipWorkbench;
 import com.viesis.viescraft.common.tileentity.TileEntityAirshipWorkbench;
 
@@ -45,18 +54,22 @@ public class GuiHandler implements IGuiHandler {
 	public static final int GUI_V1_DEFAULT = 1;
 	public static final int GUI_V2_DEFAULT = 2;
 	public static final int GUI_V3_DEFAULT = 3;
+	public static final int GUI_V4_DEFAULT = 4;
 	
-	public static final int GUI_V1_MODULE = 4;
-	public static final int GUI_V2_MODULE = 5;
-	public static final int GUI_V3_MODULE = 6;
+	public static final int GUI_V1_MODULE = 5;
+	public static final int GUI_V2_MODULE = 6;
+	public static final int GUI_V3_MODULE = 7;
+	public static final int GUI_V4_MODULE = 8;
 	
-	public static final int GUI_V1_MODULE_INVENTORY_SMALL = 7;
-	public static final int GUI_V2_MODULE_INVENTORY_SMALL = 8;
-	public static final int GUI_V3_MODULE_INVENTORY_SMALL = 9;
+	public static final int GUI_V1_MODULE_INVENTORY_SMALL = 9;
+	public static final int GUI_V2_MODULE_INVENTORY_SMALL = 10;
+	public static final int GUI_V3_MODULE_INVENTORY_SMALL = 11;
+	public static final int GUI_V4_MODULE_INVENTORY_SMALL = 12;
 	
-	public static final int GUI_V1_MODULE_INVENTORY_LARGE = 10;
-	public static final int GUI_V2_MODULE_INVENTORY_LARGE = 11;
-	public static final int GUI_V3_MODULE_INVENTORY_LARGE = 12;
+	public static final int GUI_V1_MODULE_INVENTORY_LARGE = 13;
+	public static final int GUI_V2_MODULE_INVENTORY_LARGE = 14;
+	public static final int GUI_V3_MODULE_INVENTORY_LARGE = 15;
+	public static final int GUI_V4_MODULE_INVENTORY_LARGE = 16;
 	
 	public GuiHandler() 
 	{
@@ -85,6 +98,10 @@ public class GuiHandler implements IGuiHandler {
 		{
 			return new ContainerAirshipV3Default(player.inventory, (EntityAirshipV3Core)player.getRidingEntity());
 		}
+		if (ID == GUI_V4_DEFAULT)
+		{
+			return new ContainerAirshipV4Default(player.inventory, (EntityAirshipV4Core)player.getRidingEntity());
+		}
 		
 		//Airship Module Container
 		if (ID == GUI_V1_MODULE)
@@ -98,6 +115,10 @@ public class GuiHandler implements IGuiHandler {
 		if (ID == GUI_V3_MODULE)
 		{
 			return new ContainerAirshipV3Module(player.inventory, (EntityAirshipV3Core)player.getRidingEntity());
+		}
+		if (ID == GUI_V4_MODULE)
+		{
+			return new ContainerAirshipV4Module(player.inventory, (EntityAirshipV4Core)player.getRidingEntity());
 		}
 		
 		//Airship Small Inventory Container
@@ -113,6 +134,10 @@ public class GuiHandler implements IGuiHandler {
 		{
 			return new ContainerAirshipV3ModuleInvSmall(player.inventory, (EntityAirshipV3Core)player.getRidingEntity());
 		}
+		if (ID == GUI_V4_MODULE_INVENTORY_SMALL)
+		{
+			return new ContainerAirshipV4ModuleInvSmall(player.inventory, (EntityAirshipV4Core)player.getRidingEntity());
+		}
 		
 		//Airship Large Inventory Container
 		if (ID == GUI_V1_MODULE_INVENTORY_LARGE)
@@ -126,6 +151,10 @@ public class GuiHandler implements IGuiHandler {
 		if (ID == GUI_V3_MODULE_INVENTORY_LARGE)
 		{
 			return new ContainerAirshipV3ModuleInvLarge(player.inventory, (EntityAirshipV3Core)player.getRidingEntity());
+		}
+		if (ID == GUI_V4_MODULE_INVENTORY_LARGE)
+		{
+			return new ContainerAirshipV4ModuleInvLarge(player.inventory, (EntityAirshipV4Core)player.getRidingEntity());
 		}
 		
 		return null;
@@ -153,6 +182,10 @@ public class GuiHandler implements IGuiHandler {
 		{
 			return new GuiEntityAirshipV3Default(player.inventory, (EntityAirshipV3Core)player.getRidingEntity());
 		}
+		if (ID == GUI_V4_DEFAULT)
+		{
+			return new GuiEntityAirshipV4Default(player.inventory, (EntityAirshipV4Core)player.getRidingEntity());
+		}
 		
 		//Airship Module GUI
 		if (ID == GUI_V1_MODULE)
@@ -166,6 +199,10 @@ public class GuiHandler implements IGuiHandler {
 		if (ID == GUI_V3_MODULE)
 		{
 			return new GuiEntityAirshipV3Module(player.inventory, (EntityAirshipV3Core)player.getRidingEntity());
+		}
+		if (ID == GUI_V4_MODULE)
+		{
+			return new GuiEntityAirshipV4Module(player.inventory, (EntityAirshipV4Core)player.getRidingEntity());
 		}
 		
 		//Airship GUI with Small Inventory Module
@@ -181,6 +218,10 @@ public class GuiHandler implements IGuiHandler {
 		{
 			return new GuiEntityAirshipV3ModuleInventorySmall(player.inventory, (EntityAirshipV3Core)player.getRidingEntity());
 		}
+		if (ID == GUI_V4_MODULE_INVENTORY_SMALL)
+		{
+			return new GuiEntityAirshipV4ModuleInventorySmall(player.inventory, (EntityAirshipV4Core)player.getRidingEntity());
+		}
 		
 		//Airship GUI with Large Inventory Module
 		if (ID == GUI_V1_MODULE_INVENTORY_LARGE)
@@ -194,6 +235,10 @@ public class GuiHandler implements IGuiHandler {
 		if (ID == GUI_V3_MODULE_INVENTORY_LARGE)
 		{
 			return new GuiEntityAirshipV3ModuleInventoryLarge(player.inventory, (EntityAirshipV3Core)player.getRidingEntity());
+		}
+		if (ID == GUI_V4_MODULE_INVENTORY_LARGE)
+		{
+			return new GuiEntityAirshipV4ModuleInventoryLarge(player.inventory, (EntityAirshipV4Core)player.getRidingEntity());
 		}
 		
 		return null;

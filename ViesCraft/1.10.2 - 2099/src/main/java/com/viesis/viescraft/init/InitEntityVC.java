@@ -58,6 +58,24 @@ import com.viesis.viescraft.common.entity.airshipcolors.v3.EntityAirshipV3Purple
 import com.viesis.viescraft.common.entity.airshipcolors.v3.EntityAirshipV3Red;
 import com.viesis.viescraft.common.entity.airshipcolors.v3.EntityAirshipV3White;
 import com.viesis.viescraft.common.entity.airshipcolors.v3.EntityAirshipV3Yellow;
+import com.viesis.viescraft.common.entity.airshipcolors.v4.EntityAirshipV4Admin;
+import com.viesis.viescraft.common.entity.airshipcolors.v4.EntityAirshipV4Black;
+import com.viesis.viescraft.common.entity.airshipcolors.v4.EntityAirshipV4Blue;
+import com.viesis.viescraft.common.entity.airshipcolors.v4.EntityAirshipV4Brown;
+import com.viesis.viescraft.common.entity.airshipcolors.v4.EntityAirshipV4Cyan;
+import com.viesis.viescraft.common.entity.airshipcolors.v4.EntityAirshipV4Gray;
+import com.viesis.viescraft.common.entity.airshipcolors.v4.EntityAirshipV4Green;
+import com.viesis.viescraft.common.entity.airshipcolors.v4.EntityAirshipV4LightBlue;
+import com.viesis.viescraft.common.entity.airshipcolors.v4.EntityAirshipV4LightGray;
+import com.viesis.viescraft.common.entity.airshipcolors.v4.EntityAirshipV4Lime;
+import com.viesis.viescraft.common.entity.airshipcolors.v4.EntityAirshipV4Magenta;
+import com.viesis.viescraft.common.entity.airshipcolors.v4.EntityAirshipV4Normal;
+import com.viesis.viescraft.common.entity.airshipcolors.v4.EntityAirshipV4Orange;
+import com.viesis.viescraft.common.entity.airshipcolors.v4.EntityAirshipV4Pink;
+import com.viesis.viescraft.common.entity.airshipcolors.v4.EntityAirshipV4Purple;
+import com.viesis.viescraft.common.entity.airshipcolors.v4.EntityAirshipV4Red;
+import com.viesis.viescraft.common.entity.airshipcolors.v4.EntityAirshipV4White;
+import com.viesis.viescraft.common.entity.airshipcolors.v4.EntityAirshipV4Yellow;
 import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipV1Admin;
 import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipV1Black;
 import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipV1Blue;
@@ -112,6 +130,24 @@ import com.viesis.viescraft.common.entity.airshipitems.v3.EntityItemAirshipV3Pur
 import com.viesis.viescraft.common.entity.airshipitems.v3.EntityItemAirshipV3Red;
 import com.viesis.viescraft.common.entity.airshipitems.v3.EntityItemAirshipV3White;
 import com.viesis.viescraft.common.entity.airshipitems.v3.EntityItemAirshipV3Yellow;
+import com.viesis.viescraft.common.entity.airshipitems.v4.EntityItemAirshipV4Admin;
+import com.viesis.viescraft.common.entity.airshipitems.v4.EntityItemAirshipV4Black;
+import com.viesis.viescraft.common.entity.airshipitems.v4.EntityItemAirshipV4Blue;
+import com.viesis.viescraft.common.entity.airshipitems.v4.EntityItemAirshipV4Brown;
+import com.viesis.viescraft.common.entity.airshipitems.v4.EntityItemAirshipV4Cyan;
+import com.viesis.viescraft.common.entity.airshipitems.v4.EntityItemAirshipV4Gray;
+import com.viesis.viescraft.common.entity.airshipitems.v4.EntityItemAirshipV4Green;
+import com.viesis.viescraft.common.entity.airshipitems.v4.EntityItemAirshipV4LightBlue;
+import com.viesis.viescraft.common.entity.airshipitems.v4.EntityItemAirshipV4LightGray;
+import com.viesis.viescraft.common.entity.airshipitems.v4.EntityItemAirshipV4Lime;
+import com.viesis.viescraft.common.entity.airshipitems.v4.EntityItemAirshipV4Magenta;
+import com.viesis.viescraft.common.entity.airshipitems.v4.EntityItemAirshipV4Normal;
+import com.viesis.viescraft.common.entity.airshipitems.v4.EntityItemAirshipV4Orange;
+import com.viesis.viescraft.common.entity.airshipitems.v4.EntityItemAirshipV4Pink;
+import com.viesis.viescraft.common.entity.airshipitems.v4.EntityItemAirshipV4Purple;
+import com.viesis.viescraft.common.entity.airshipitems.v4.EntityItemAirshipV4Red;
+import com.viesis.viescraft.common.entity.airshipitems.v4.EntityItemAirshipV4White;
+import com.viesis.viescraft.common.entity.airshipitems.v4.EntityItemAirshipV4Yellow;
 
 public class InitEntityVC {
 	
@@ -176,6 +212,25 @@ public class InitEntityVC {
 		register(EntityItemAirshipV3Yellow.class, "item.airship.v3.yellow", 64, 20, true);
 		register(EntityItemAirshipV3Admin.class, "item.airship.v3.admin", 64, 20, true);
 		
+		register(EntityItemAirshipV4Normal.class, "item.airship.v4.normal", 64, 20, true);
+		register(EntityItemAirshipV4Black.class, "item.airship.v4.black", 64, 20, true);
+		register(EntityItemAirshipV4Blue.class, "item.airship.v4.blue", 64, 20, true);
+		register(EntityItemAirshipV4Brown.class, "item.airship.v4.brown", 64, 20, true);
+		register(EntityItemAirshipV4Cyan.class, "item.airship.v4.cyan", 64, 20, true);
+		register(EntityItemAirshipV4Gray.class, "item.airship.v4.gray", 64, 20, true);
+		register(EntityItemAirshipV4Green.class, "item.airship.v4.green", 64, 20, true);
+		register(EntityItemAirshipV4LightBlue.class, "item.airship.v4.lightblue", 64, 20, true);
+		register(EntityItemAirshipV4LightGray.class, "item.airship.v4.lightgray", 64, 20, true);
+		register(EntityItemAirshipV4Lime.class, "item.airship.v4.lime", 64, 20, true);
+		register(EntityItemAirshipV4Magenta.class, "item.airship.v4.magenta", 64, 20, true);
+		register(EntityItemAirshipV4Orange.class, "item.airship.v4.orange", 64, 20, true);
+		register(EntityItemAirshipV4Pink.class, "item.airship.v4.pink", 64, 20, true);
+		register(EntityItemAirshipV4Purple.class, "item.airship.v4.purple", 64, 20, true);
+		register(EntityItemAirshipV4Red.class, "item.airship.v4.red", 64, 20, true);
+		register(EntityItemAirshipV4White.class, "item.airship.v4.white", 64, 20, true);
+		register(EntityItemAirshipV4Yellow.class, "item.airship.v4.yellow", 64, 20, true);
+		register(EntityItemAirshipV4Admin.class, "item.airship.v4.admin", 64, 20, true);
+		
 		//===========================================
 		
 		register(EntityAirshipV1Normal.class, "airship.normal", 64, 1, true);
@@ -235,15 +290,29 @@ public class InitEntityVC {
 		register(EntityAirshipV3Yellow.class, "airship.v3.yellow", 64, 1, true);
 		register(EntityAirshipV3Admin.class, "airship.v3.admin", 64, 1, true);
 		
+		register(EntityAirshipV4Normal.class, "airship.v4.normal", 64, 1, true);
+		register(EntityAirshipV4Black.class, "airship.v4.black", 64, 1, true);
+		register(EntityAirshipV4Blue.class, "airship.v4.blue", 64, 1, true);
+		register(EntityAirshipV4Brown.class, "airship.v4.brown", 64, 1, true);
+		register(EntityAirshipV4Cyan.class, "airship.v4.cyan", 64, 1, true);
+		register(EntityAirshipV4Gray.class, "airship.v4.gray", 64, 1, true);
+		register(EntityAirshipV4Green.class, "airship.v4.green", 64, 1, true);
+		register(EntityAirshipV4LightBlue.class, "airship.v4.lightblue", 64, 1, true);
+		register(EntityAirshipV4LightGray.class, "airship.v4.lightgray", 64, 1, true);
+		register(EntityAirshipV4Lime.class, "airship.v4.lime", 64, 1, true);
+		register(EntityAirshipV4Magenta.class, "airship.v4.magenta", 64, 1, true);
+		register(EntityAirshipV4Orange.class, "airship.v4.orange", 64, 1, true);
+		register(EntityAirshipV4Pink.class, "airship.v4.pink", 64, 1, true);
+		register(EntityAirshipV4Purple.class, "airship.v4.purple", 64, 1, true);
+		register(EntityAirshipV4Red.class, "airship.v4.red", 64, 1, true);
+		register(EntityAirshipV4White.class, "airship.v4.white", 64, 1, true);
+		register(EntityAirshipV4Yellow.class, "airship.v4.yellow", 64, 1, true);
+		register(EntityAirshipV4Admin.class, "airship.v4.admin", 64, 1, true);
+		
 	}
 	
 	public static void register(Class<? extends Entity> entityClass, String entityName, int trackingRange, int updateFrequency, boolean sendsVelocityUpdates)
 	{
 		EntityRegistry.registerModEntity(entityClass, entityName, entityID++, ViesCraft.instance, trackingRange, updateFrequency, sendsVelocityUpdates);
-	}
-	
-	public static void register1(Class<? extends Entity> class1, String entityName, int trackingRange, int updateFrequency, boolean sendsVelocityUpdates)
-	{
-		EntityRegistry.registerModEntity(class1, entityName, entityID++, ViesCraft.instance, trackingRange, updateFrequency, sendsVelocityUpdates);
 	}
 }

@@ -6,6 +6,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV2Core;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV3Core;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV4Core;
 import com.viesis.viescraft.init.InitAchievementsVC;
 
 public class EventHandlerAchievement {
@@ -30,6 +31,11 @@ public class EventHandlerAchievement {
         }
 		
 		if(event.player.getRidingEntity() instanceof EntityAirshipV3Core)
+        {
+			isRiding = true;
+        }
+		
+		if(event.player.getRidingEntity() instanceof EntityAirshipV4Core)
         {
 			isRiding = true;
         }
