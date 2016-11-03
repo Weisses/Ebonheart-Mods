@@ -20,22 +20,10 @@ public class EventHandlerAchievement {
     	boolean isInLava = false;
     	boolean isAnimalPassenger = false;
     	
-		if(event.player.getRidingEntity() instanceof EntityAirshipV1Core)
-        {
-			isRiding = true;
-        }
-		
-		if(event.player.getRidingEntity() instanceof EntityAirshipV2Core)
-        {
-			isRiding = true;
-        }
-		
-		if(event.player.getRidingEntity() instanceof EntityAirshipV3Core)
-        {
-			isRiding = true;
-        }
-		
-		if(event.player.getRidingEntity() instanceof EntityAirshipV4Core)
+		if(event.player.getRidingEntity() instanceof EntityAirshipV1Core
+        || event.player.getRidingEntity() instanceof EntityAirshipV2Core
+        || event.player.getRidingEntity() instanceof EntityAirshipV3Core
+        || event.player.getRidingEntity() instanceof EntityAirshipV4Core)
         {
 			isRiding = true;
         }
@@ -44,7 +32,6 @@ public class EventHandlerAchievement {
     	
 		if(isRiding) 
     	{
-			
 			if(event.player.getRidingEntity().isInWater()) 
     		{
     			isInWater = true;
@@ -60,8 +47,6 @@ public class EventHandlerAchievement {
 				isInAir = true;
 			}
     	}
-		
-		
 		
 		if(isInAir) 
     	{
