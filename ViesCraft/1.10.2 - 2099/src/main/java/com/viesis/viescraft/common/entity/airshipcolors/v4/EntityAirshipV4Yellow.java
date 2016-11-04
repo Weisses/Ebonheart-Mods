@@ -36,7 +36,7 @@ public class EntityAirshipV4Yellow extends EntityAirshipV4Core {
     @Override
 	public Item getItemBoat()
     {
-		return InitItemsVC.item_airship_yellow;
+		return InitItemsVC.item_airship_v4_yellow;
     }
     
     /**

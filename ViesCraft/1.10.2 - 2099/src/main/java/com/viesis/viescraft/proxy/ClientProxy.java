@@ -17,6 +17,7 @@ import com.viesis.viescraft.client.InitTileEntityVCRender;
 import com.viesis.viescraft.client.gui.v1.GuiV1HUD;
 import com.viesis.viescraft.client.gui.v2.GuiV2HUD;
 import com.viesis.viescraft.client.gui.v3.GuiV3HUD;
+import com.viesis.viescraft.client.gui.v4.GuiV4HUD;
 import com.viesis.viescraft.client.particle.EntitySmokeFX;
 
 public class ClientProxy extends CommonProxy {
@@ -42,6 +43,7 @@ public class ClientProxy extends CommonProxy {
 		MinecraftForge.EVENT_BUS.register(new GuiV1HUD());
 		MinecraftForge.EVENT_BUS.register(new GuiV2HUD());
 		MinecraftForge.EVENT_BUS.register(new GuiV3HUD());
+		MinecraftForge.EVENT_BUS.register(new GuiV4HUD());
 	}
 	
 	@Override

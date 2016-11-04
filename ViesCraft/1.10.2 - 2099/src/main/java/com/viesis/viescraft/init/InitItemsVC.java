@@ -3,11 +3,14 @@ package com.viesis.viescraft.init;
 import java.util.HashSet;
 import java.util.Set;
 
+import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
+import net.minecraft.item.Item.ToolMaterial;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import com.viesis.viescraft.api.ItemsVC;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
+import com.viesis.viescraft.common.items.ItemAirshipDismounter;
 import com.viesis.viescraft.common.items.ItemGuidebookControls;
 import com.viesis.viescraft.common.items.ItemGuidebookMain;
 import com.viesis.viescraft.common.items.ItemGuidebookPaint;
@@ -116,6 +119,8 @@ public class InitItemsVC extends ItemsVC {
 		airship_balloon = registerItem(new ItemBalloon());
 		airship_engine = registerItem(new ItemEngine());
 		airship_ignition = registerItem(new ItemIgnition());
+		
+		airship_dismounter = registerItem(new ItemAirshipDismounter());
 		
 		module_chip = registerItem(new ItemModuleChip());
 		module_inventory_small = registerItem(new ItemInventoryModuleSmall());
