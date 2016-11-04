@@ -6,6 +6,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV2Core;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV3Core;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV4Core;
 import com.viesis.viescraft.init.InitAchievementsVC;
 
 public class EventHandlerAchievement {
@@ -19,17 +20,10 @@ public class EventHandlerAchievement {
     	boolean isInLava = false;
     	boolean isAnimalPassenger = false;
     	
-		if(event.player.getRidingEntity() instanceof EntityAirshipV1Core)
-        {
-			isRiding = true;
-        }
-		
-		if(event.player.getRidingEntity() instanceof EntityAirshipV2Core)
-        {
-			isRiding = true;
-        }
-		
-		if(event.player.getRidingEntity() instanceof EntityAirshipV3Core)
+		if(event.player.getRidingEntity() instanceof EntityAirshipV1Core
+        || event.player.getRidingEntity() instanceof EntityAirshipV2Core
+        || event.player.getRidingEntity() instanceof EntityAirshipV3Core
+        || event.player.getRidingEntity() instanceof EntityAirshipV4Core)
         {
 			isRiding = true;
         }
@@ -38,7 +32,6 @@ public class EventHandlerAchievement {
     	
 		if(isRiding) 
     	{
-			
 			if(event.player.getRidingEntity().isInWater()) 
     		{
     			isInWater = true;
@@ -54,8 +47,6 @@ public class EventHandlerAchievement {
 				isInAir = true;
 			}
     	}
-		
-		
 		
 		if(isInAir) 
     	{

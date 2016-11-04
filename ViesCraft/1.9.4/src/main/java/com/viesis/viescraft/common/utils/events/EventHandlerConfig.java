@@ -23,8 +23,6 @@ public class EventHandlerConfig {
 		{
 			NetworkHandler.sendToClient(new MessageConfig(), (EntityPlayerMP)event.player);
 			
-			//NetworkHandler.sendToClient(new MessageTest(), (EntityPlayerMP)event.player);
-			
 			//LogHelper.info("Sent config to '" + event.player.getDisplayName() + ".'");
 		}
 	}

@@ -22,7 +22,7 @@ public class GuiGuidebookMain extends GuiScreen {
     private final int bookImageHeight = 192;
     private final int bookImageWidth = 192;
     private int currPage = 0;
-    private static final int bookTotalPages = 13;
+    private static final int bookTotalPages = 14;
     private static ResourceLocation[] bookPageTextures = new ResourceLocation[bookTotalPages];
     private static String[] stringPageText = new String[bookTotalPages];
     
@@ -45,6 +45,7 @@ public class GuiGuidebookMain extends GuiScreen {
         bookPageTextures[10] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/main/page_10.png");
         bookPageTextures[11] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/main/page_11.png");
         bookPageTextures[12] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/main/page_12.png");
+        bookPageTextures[13] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/main/page_13.png");
         
         //Title
         stringPageText[0] = "\n\n\n\n\n\n\n"
@@ -94,7 +95,7 @@ public class GuiGuidebookMain extends GuiScreen {
         
         stringPageText[6] = "   Now that you have "
         		+ "the parts, let's get "
-        		+ "\u00A7obuilding\u00A7r! There are \u00A7l3\u00A7r "
+        		+ "\u00A7obuilding\u00A7r! There are \u00A7l4\u00A7r "
         		+ "airship styles: "
         		+ "\n\n"
         		+ "The \u00A75\u00A7l\u00A7o"
@@ -108,7 +109,11 @@ public class GuiGuidebookMain extends GuiScreen {
         		+ "The \u00A75\u00A7l\u00A7o"
         		+ ViesCraftConfig.v3AirshipName
         		+ "\u00A7r\u00A70. "
-        		+ "\n\n"
+        		+ "\n"
+        		+ "The \u00A75\u00A7l\u00A7o"
+        		+ ViesCraftConfig.v4AirshipName
+        		+ "\u00A7r\u00A70. "
+        		+ "\n"
         		+ "\n\n"
         		+ "Names can be changed via the config. "
         		;
@@ -137,21 +142,29 @@ public class GuiGuidebookMain extends GuiScreen {
         		+ "\n\n\n\n\n\n\n\n\n"
         		+ "\u00A7oAn airship built for the tech enthusiast.\u00A7r";
         
-        stringPageText[10] = "Further Reading:"
+        stringPageText[10] = "Airship Recipe:"
+        		+ "\n\n"
+        		+ "\u00A7l\u00A7n"
+        		+ ViesCraftConfig.v4AirshipName
+        		+ "\u00A7r\u00A70"
+        		+ "\n\n\n\n\n\n\n\n\n"
+        		+ "\u00A7oSteampunk airship ingenuity at its finest.\u00A7r";
+        
+        stringPageText[11] = "Further Reading:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nTaking Control\u00A7r\u00A70"
         		+ "\n               \u00A7l\u00A7nvol.2\u00A7r"
         		+ "\n\n\n\n\n\n\n\n"
         		+ "\u00A7oPiloting airships like a pro.\u00A7r";
     		
-        stringPageText[11] = "Further Reading:"
+        stringPageText[12] = "Further Reading:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nFlaming Paint?!\u00A7r\u00A70"
         		+ "\n               \u00A7l\u00A7nvol.3\u00A7r"
         		+ "\n\n\n\n\n\n\n\n"
         		+ "\u00A7oIns and outs of airship-safe paint.\u00A7r";
         
-        stringPageText[12] = "Further Reading:"
+        stringPageText[13] = "Further Reading:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nModules & You\u00A7r\u00A70"
         		+ "\n               \u00A7l\u00A7nvol.4\u00A7r"
@@ -250,6 +263,10 @@ public class GuiGuidebookMain extends GuiScreen {
         if (currPage == 12)
         {
         	mc.getTextureManager().bindTexture(bookPageTextures[12]);
+        }
+        if (currPage == 13)
+        {
+        	mc.getTextureManager().bindTexture(bookPageTextures[13]);
         }
         
         //else

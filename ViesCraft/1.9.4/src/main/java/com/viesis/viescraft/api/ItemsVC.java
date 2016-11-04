@@ -13,6 +13,8 @@ public class ItemsVC {
 	public static Item airship_ignition;
 	public static Item airship_engine;
 	
+	public static Item airship_dismounter;
+	
 	public static Item module_chip;
 	
 	//Passive
