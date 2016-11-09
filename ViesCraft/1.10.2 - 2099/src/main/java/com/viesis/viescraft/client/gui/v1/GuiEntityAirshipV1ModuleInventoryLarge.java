@@ -14,6 +14,7 @@ import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.api.util.Keybinds;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
 import com.viesis.viescraft.common.entity.airshipcolors.containers.v1.ContainerAirshipV1ModuleInvLarge;
+import com.viesis.viescraft.common.utils.events.EventHandlerAirship;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 import com.viesis.viescraft.network.NetworkHandler;
 import com.viesis.viescraft.network.server.v1.MessageGuiV1Module;
@@ -74,19 +75,35 @@ public class GuiEntityAirshipV1ModuleInventoryLarge extends GuiContainer {
 		
 		if (this.airshipV1.getPowered() > 0)
         {
+			if(EventHandlerAirship.creativeBurnV1)
+			{
+				this.drawTexturedModalRect(this.guiLeft + 138, this.guiTop + 4, 184, 50, 8, 1 + 47);
+				this.drawTexturedModalRect(this.guiLeft + 152, this.guiTop + 17, 176, 119, 16, 16);
+				this.drawTexturedModalRect(this.guiLeft + 147, this.guiTop + 30, 176, 14, 26, 16);
+			}
+			else
+			{
 			int k = this.getBurnLeftScaled(47);
             this.drawTexturedModalRect(this.guiLeft + 138, this.guiTop + 4, 176, 50, 8, 1 + k);
             this.drawTexturedModalRect(this.guiLeft + 147, this.guiTop + 30, 176, 14, 26, 16);
-        }
+			}
+		}
+		
+		//Draw a green fuel bar and magma in the coal slot
+		if(EventHandlerAirship.creativeBurnV1
+		|| this.airshipV1.getModuleFuelInfinite())
+		{
+			this.drawTexturedModalRect(this.guiLeft + 138, this.guiTop + 4, 184, 50, 8, 1 + 47);
+			this.drawTexturedModalRect(this.guiLeft + 152, this.guiTop + 17, 176, 119, 16, 16);
+		}
     }
 	
-    private int getBurnLeftScaled(int pixels)
+	private int getBurnLeftScaled(int pixels)
     {
         int i = this.airshipV1.getField(1);
-        
         if (i == 0)
         {
-        	i = (ViesCraftConfig.v1FuelBurnTime * 20);//i = 1200;
+        	i = this.airshipV1.itemFuelStack + 1;
         }
         
         return this.airshipV1.getField(0) * pixels / i;
