@@ -12,7 +12,7 @@ public class ViesCraftConfig {
 	public static Configuration config;
 	public static final String CATEGORY_VC = "ViesCraft Config";
 	
-	public static int v1FuelBurnTime;
+	//public static int v1FuelBurnTime;
 	public static int v1AirshipSpeed;
 	
 	public static int v2FuelBurnTime;
@@ -96,7 +96,7 @@ public class ViesCraftConfig {
 		final String category1 = CATEGORY_VC + config.CATEGORY_SPLITTER + TextFormatting.GREEN + "General";
 		config.addCustomCategoryComment(category1, "General airship options.");
 		
-		v1FuelBurnTime = config.getInt(TextFormatting.WHITE + V1FUELBURNTIME_NAME, category1, V1FUELBURNTIME_DEFAULT, 1, 600, V1FUELBURNTIME_COMMENT);
+		//v1FuelBurnTime = config.getInt(TextFormatting.WHITE + V1FUELBURNTIME_NAME, category1, V1FUELBURNTIME_DEFAULT, 1, 600, V1FUELBURNTIME_COMMENT);
 		v1AirshipSpeed = config.getInt(TextFormatting.WHITE + V1AIRSHIPSPEED_NAME, category1, V1AIRSHIPSPEED_DEFAULT, 100, 400, V1AIRSHIPSPEED_COMMENT);
 		
 		v2FuelBurnTime = config.getInt(TextFormatting.WHITE + V2FUELBURNTIME_NAME, category1, V2FUELBURNTIME_DEFAULT, 1, 600, V2FUELBURNTIME_COMMENT);

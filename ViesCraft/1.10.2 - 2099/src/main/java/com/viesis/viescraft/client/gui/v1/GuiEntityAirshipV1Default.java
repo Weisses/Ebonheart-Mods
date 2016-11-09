@@ -99,12 +99,23 @@ public class GuiEntityAirshipV1Default extends GuiContainer {
     private int getBurnLeftScaled(int pixels)
     {
         int i = this.airshipV1.getField(1);
-        
-        if (i == 0)
-        {
-        	i = (ViesCraftConfig.v1FuelBurnTime * 20);//i = 1200;
-        }
-        
+        //if(this.airshipV1.getStackInSlot(0) != null)
+        //{
+	        if (i == 0)
+	        {
+	        	i = //this.airshipV1.getField(1) 
+	        		//	+ 
+	        			this.airshipV1.itemFuelStack + 1;
+	        	//i = (  this.airshipV1.airshipBurnTime
+	        			//this.airshipV1.getItemBurnTime(this.airshipV1.getStackInSlot(0))
+	        			//ViesCraftConfig.v1FuelBurnTime * 20
+	        	//		);//i = 1200;
+	        }
+        //}
+        //else
+        //{
+        //	i = 1;
+        //}
         return this.airshipV1.getField(0) * pixels / i;
     }
 	

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -13,6 +14,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityWaterMob;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.IInventory;
@@ -20,6 +22,7 @@ import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.inventory.SlotFurnaceFuel;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -44,6 +47,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.google.common.collect.Lists;
+import com.viesis.viescraft.api.FuelVC;
 import com.viesis.viescraft.api.util.Keybinds;
 import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.common.utils.events.EventHandlerAirship;
@@ -605,7 +609,7 @@ public class EntityAirshipV4Core extends EntityVC implements IInventory {
             	else if(isClientAirshipBurning()
             	&& this.getModuleFuelInfinite())
             	{
-            		f += AirshipSpeedForward - (AirshipSpeedForward * 0.5F);
+            		f += AirshipSpeedForward - (AirshipSpeedForward * 0.4F);
             	}
             	//If airship is on & minor speed module installed
             	else if(isClientAirshipBurning()
@@ -649,7 +653,7 @@ public class EntityAirshipV4Core extends EntityVC implements IInventory {
             	else if(isClientAirshipBurning()
             	&& this.getModuleFuelInfinite())
             	{
-            		f -= (AirshipSpeedForward * 0.5) - ((AirshipSpeedForward * 0.5)* 0.5);
+            		f -= (AirshipSpeedForward * 0.5) - ((AirshipSpeedForward * 0.4)* 0.5);
             	}
             	//If airship is on & minor speed module installed
             	else if(isClientAirshipBurning()
@@ -693,7 +697,7 @@ public class EntityAirshipV4Core extends EntityVC implements IInventory {
             	else if(isClientAirshipBurning()
             	&& this.getModuleFuelInfinite())
             	{
-            		f1 += AirshipSpeedUp - (AirshipSpeedUp * 0.5);
+            		f1 += AirshipSpeedUp - (AirshipSpeedUp * 0.4);
             	}
             	//If airship is on & minor speed module installed
             	else if(isClientAirshipBurning()
@@ -1430,7 +1434,30 @@ public class EntityAirshipV4Core extends EntityVC implements IInventory {
         {
             Item item = stack.getItem();
             
-            if (item == Items.COAL) return (ViesCraftConfig.v4FuelBurnTime * 20); //Default is 1200
+            if (item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.AIR)
+            {
+                Block block = Block.getBlockFromItem(item);
+                
+                if (block == Blocks.WOODEN_SLAB)
+                {
+                    return FuelVC.wooden_slab;
+                }
+                
+                if (block.getDefaultState().getMaterial() == Material.WOOD)
+                {
+                    return FuelVC.wood_block_material;
+                }
+                
+                if (block == Blocks.COAL_BLOCK)
+                {
+                    return FuelVC.coal_block;
+                }
+            }
+            
+            if (item == Items.STICK) return FuelVC.stick;
+            if (item == Item.getItemFromBlock(Blocks.SAPLING)) return FuelVC.sapling;
+            if (item == Items.COAL) return FuelVC.coal;
+            if (item == Items.BLAZE_ROD) return FuelVC.blaze_rod;
             
             return net.minecraftforge.fml.common.registry.GameRegistry.getFuelValue(stack);
         }
