@@ -92,7 +92,6 @@ public class GuiEntityAirshipV1Module extends GuiContainer {
 		{
 		    //Draws the box overlay around module slot
 			this.drawTexturedModalRect(this.guiLeft + 64, this.guiTop + 14, 176, 0, 48, 48);
-			//LogHelper.info("true!");
 		}
     }
 	

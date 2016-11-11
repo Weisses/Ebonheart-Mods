@@ -15,7 +15,6 @@ import com.viesis.viescraft.api.util.Keybinds;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
 import com.viesis.viescraft.common.entity.airshipcolors.containers.v1.ContainerAirshipV1ModuleInvLarge;
 import com.viesis.viescraft.common.utils.events.EventHandlerAirship;
-import com.viesis.viescraft.configs.ViesCraftConfig;
 import com.viesis.viescraft.network.NetworkHandler;
 import com.viesis.viescraft.network.server.v1.MessageGuiV1Module;
 
@@ -83,9 +82,9 @@ public class GuiEntityAirshipV1ModuleInventoryLarge extends GuiContainer {
 			}
 			else
 			{
-			int k = this.getBurnLeftScaled(47);
-            this.drawTexturedModalRect(this.guiLeft + 138, this.guiTop + 4, 176, 50, 8, 1 + k);
-            this.drawTexturedModalRect(this.guiLeft + 147, this.guiTop + 30, 176, 14, 26, 16);
+				int k = this.getBurnLeftScaled(47);
+	            this.drawTexturedModalRect(this.guiLeft + 138, this.guiTop + 4, 176, 50, 8, 1 + k);
+	            this.drawTexturedModalRect(this.guiLeft + 147, this.guiTop + 30, 176, 14, 26, 16);
 			}
 		}
 		

@@ -9,5 +9,4 @@ public class Reference {
 	public static final String CONFIG_GUI = "com.viesis.viescraft.api.gui.VCGuiFactory";
 	public static final String CLIENT_PROXY_CLASS = "com.viesis.viescraft.proxy.ClientProxy";
 	public static final String SERVER_PROXY_CLASS = "com.viesis.viescraft.proxy.ServerProxy";
-	
 }

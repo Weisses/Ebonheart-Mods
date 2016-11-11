@@ -18,7 +18,7 @@ public class GuiGuidebookSocket extends GuiScreen {
     private final int bookImageHeight = 192;
     private final int bookImageWidth = 192;
     private int currPage = 0;
-    private static final int bookTotalPages = 10;
+    private static final int bookTotalPages = 8;
     private static ResourceLocation[] bookPageTextures = new ResourceLocation[bookTotalPages];
     private static String[] stringPageText = new String[bookTotalPages];
     
@@ -36,8 +36,8 @@ public class GuiGuidebookSocket extends GuiScreen {
         bookPageTextures[5] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/socket/page_5.png");
         bookPageTextures[6] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/socket/page_6.png");
         bookPageTextures[7] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/socket/page_7.png");
-        bookPageTextures[8] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/socket/page_8.png");
-        bookPageTextures[9] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/socket/page_9.png");
+        ////bookPageTextures[8] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/socket/page_8.png");
+        ////bookPageTextures[9] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/socket/page_9.png");
         
         
         //Title
@@ -68,7 +68,7 @@ public class GuiGuidebookSocket extends GuiScreen {
         		+ "airship module slot, open the gui and "
         		+ "click on the module button. "
         		+ "\n\n"
-        		+ "Only 1 module can be used at a time."
+        		+ "*Only 1 module can be used at a time."
         		;
         
         stringPageText[3] = "Module Recipe:"
@@ -104,8 +104,8 @@ public class GuiGuidebookSocket extends GuiScreen {
         		+ "\u00A7l\u00A7nInfinite Fuel\nModule\u00A70\u00A7r\u00A70"
         		+ "\n\n\n\n\n\n\n\n"
         		+ "\u00A7oNo fuel needed."
-        		+ "\n50% speed.\u00A7r";
-        
+        		+ "\n60% speed.\u00A7r";
+        /**
         stringPageText[8] = "Module Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nStealth Module\u00A70\u00A7r\u00A70"
@@ -119,7 +119,7 @@ public class GuiGuidebookSocket extends GuiScreen {
         		+ "\n\n\n\n\n\n\n\n"
         		+ "\u00A7o400% speed for 5s."
         		+ "\nCooldown = 1m.\u00A7r";
-        
+        */
     }
 
     /**
@@ -194,6 +194,7 @@ public class GuiGuidebookSocket extends GuiScreen {
         {
         	mc.getTextureManager().bindTexture(bookPageTextures[7]);
         }
+        /**
         if (currPage == 8)
         {
         	mc.getTextureManager().bindTexture(bookPageTextures[8]);
@@ -202,7 +203,7 @@ public class GuiGuidebookSocket extends GuiScreen {
         {
         	mc.getTextureManager().bindTexture(bookPageTextures[9]);
         }
-        
+        */
         //else
         //{
         // mc.getTextureManager().bindTexture(bookPageTextures[2]);

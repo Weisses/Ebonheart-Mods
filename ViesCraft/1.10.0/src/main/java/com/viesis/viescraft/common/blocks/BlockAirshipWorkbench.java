@@ -6,12 +6,9 @@ import java.util.Random;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.stats.StatList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
@@ -25,7 +22,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.viesis.viescraft.ViesCraft;
 import com.viesis.viescraft.api.Reference;
-import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.common.blocks.basic.BlockEA;
 import com.viesis.viescraft.common.tileentity.TileEntityAirshipWorkbench;
 import com.viesis.viescraft.network.GuiHandler;
@@ -37,7 +33,6 @@ public class BlockAirshipWorkbench extends BlockEA implements ITileEntityProvide
 	public BlockAirshipWorkbench(String unlocalizedName) 
 	{
 		super(unlocalizedName);
-		
 		
 		this.setCreativeTab(ViesCraft.tabViesCraftBlocks);
 		this.isBlockContainer = true;

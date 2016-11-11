@@ -11,10 +11,8 @@ import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import com.viesis.viescraft.api.Reference;
-import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
 import com.viesis.viescraft.common.utils.events.EventHandlerAirship;
-import com.viesis.viescraft.configs.ViesCraftConfig;
 
 public class GuiV1HUD extends Gui {
 	
@@ -76,9 +74,6 @@ public class GuiV1HUD extends Gui {
 			// Params: int screenX, int screenY, int textureX, int textureY, int width, int height
 			drawTexturedModalRect(hudX, hudY, 0, 0, hudWidth, hudHeight + 2);
 			
-			
-			
-			
 			//SMALL % BAR
 			// I can keep drawing without changing anything
 			if(EventHandlerAirship.creativeBurnV1)
@@ -95,13 +90,7 @@ public class GuiV1HUD extends Gui {
 				}
 				else
 				{
-					int fuelbarwidth1 = (int)((((float) 
-							(this.airshipV1.getPowered())
-							/ 
-							(this.airshipV1.getPowered() + 
-							(this.airshipV1.getTotalPowered())
-							))) * 220
-							);
+					int fuelbarwidth1 = (int)(((float) (this.airshipV1.getPowered()) / (this.airshipV1.getPowered() + this.airshipV1.getTotalPowered())) * 220);
 					drawTexturedModalRect(hudX + 36, hudY + 33, 36, 53, fuelbarwidth1, 6);
 				}
 			}
@@ -122,19 +111,10 @@ public class GuiV1HUD extends Gui {
 				}
 				else
 				{
-					int fuelbarwidth2 = (int)(((float) (
-							
-							this.airshipV1.getItemFuelStackSizePowered()
-							//* 20
-							) 
-							/ 
-							  64
-							) * 178);
+					int fuelbarwidth2 = (int)(((float) this.airshipV1.getItemFuelStackSizePowered() / 64) * 178);
 					drawTexturedModalRect(hudX + 2, hudY + 14, 2, 69, fuelbarwidth2, 6);
 				}
 			}
-			
-			
 			
 			//Airship lights on
 			if(this.airshipV1.getPowered() >= 1)
@@ -198,7 +178,6 @@ public class GuiV1HUD extends Gui {
 			{
 				//Calculation from ticks to seconds.
 	            timer = (((this.airshipV1.getPowered() + 18) + this.airshipV1.getItemFuelStackPowered()) / 20);
-	            
 				remainder = (timer % 3600);
 				minutes = remainder / 60;
 				seconds = remainder % 60;

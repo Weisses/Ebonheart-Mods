@@ -57,8 +57,6 @@ import com.viesis.viescraft.network.NetworkHandler;
 import com.viesis.viescraft.network.server.v1.MessageGuiV1Default;
 import com.viesis.viescraft.network.server.v1.MessageGuiV1ModuleInventoryLarge;
 import com.viesis.viescraft.network.server.v1.MessageGuiV1ModuleInventorySmall;
-import com.viesis.viescraft.network.server.v1.MessageV1ModuleKeyPressed;
-import com.viesis.viescraft.network.server.v3.MessageGuiV3ModuleInventorySmall;
 
 public class EntityAirshipV1Core extends EntityVC implements IInventory {
 	
@@ -771,18 +769,18 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
         }
     }
     
-    protected void controlAirshipAbility()
-    {
-    	if(this.moduleInputDown
-    	&& this.getControllingPassenger() != null)
-    	{
-    		NetworkHandler.sendToServer(new MessageV1ModuleKeyPressed());
-		}
-		else
-		{
-			this.moduleKeyPressed = false;
-		}
-    }
+    //protected void controlAirshipAbility()
+    //{
+    //	if(this.moduleInputDown
+    //	&& this.getControllingPassenger() != null)
+    //	{
+    //		NetworkHandler.sendToServer(new MessageV1ModuleKeyPressed());
+	//	}
+	//	else
+	//	{
+	//		this.moduleKeyPressed = false;
+	//	}
+    //}
     
     /**
      * Sets the Module Key boolean to pass from server to client.
@@ -1430,11 +1428,6 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
     {
     	return this.airshipBurnTime > 0;
     }
-    
-    //public int getFuelTime(@Nullable ItemStack stack)
-    //{
-    //    return (ViesCraftConfig.v1FuelBurnTime * 20); //Default is 1200
-    //}
     
     /**
      * Returns the number of ticks that the supplied fuel item will keep the furnace burning, or 0 if the item isn't
@@ -2199,14 +2192,9 @@ public class EntityAirshipV1Core extends EntityVC implements IInventory {
     				this.stealthParticles();
     			}
     		}
-	    	
-	    	
     	}
     	else if(this.isModuleAbilityOn()
-    	&& this.getEntityId() == EventHandlerAirship.playerRidingEntityV1
-    	//&& locked
-    	
-    	)
+    	&& this.getEntityId() == EventHandlerAirship.playerRidingEntityV1)
     	{
     		if(this.moduleStealth)
     		{

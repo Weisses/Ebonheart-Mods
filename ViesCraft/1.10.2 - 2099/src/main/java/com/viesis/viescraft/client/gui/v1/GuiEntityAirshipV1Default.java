@@ -15,7 +15,6 @@ import com.viesis.viescraft.api.util.Keybinds;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
 import com.viesis.viescraft.common.entity.airshipcolors.containers.v1.ContainerAirshipV1Default;
 import com.viesis.viescraft.common.utils.events.EventHandlerAirship;
-import com.viesis.viescraft.configs.ViesCraftConfig;
 import com.viesis.viescraft.network.NetworkHandler;
 import com.viesis.viescraft.network.server.v1.MessageGuiV1Module;
 
