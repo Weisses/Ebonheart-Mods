@@ -14,7 +14,7 @@ import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.api.util.Keybinds;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV2Core;
 import com.viesis.viescraft.common.entity.airshipcolors.containers.v2.ContainerAirshipV2Default;
-import com.viesis.viescraft.configs.ViesCraftConfig;
+import com.viesis.viescraft.common.utils.events.EventHandlerAirship;
 import com.viesis.viescraft.network.NetworkHandler;
 import com.viesis.viescraft.network.server.v2.MessageGuiV2Module;
 
@@ -74,10 +74,19 @@ public class GuiEntityAirshipV2Default extends GuiContainer {
 		
 		if (this.airshipV2.getPowered() > 0)
         {
+			if(EventHandlerAirship.creativeBurnV2)
+			{
+				this.drawTexturedModalRect(this.guiLeft + 138, this.guiTop + 4, 184, 50, 8, 1 + 47);
+				this.drawTexturedModalRect(this.guiLeft + 152, this.guiTop + 17, 176, 119, 16, 16);
+				this.drawTexturedModalRect(this.guiLeft + 147, this.guiTop + 30, 176, 14, 26, 16);
+			}
+			else
+			{
 			int k = this.getBurnLeftScaled(47);
             this.drawTexturedModalRect(this.guiLeft + 138, this.guiTop + 4, 176, 50, 8, 1 + k);
             this.drawTexturedModalRect(this.guiLeft + 147, this.guiTop + 30, 176, 14, 26, 16);
-        }
+			}
+		}
 		
 		//On button is green in gui
 		if(this.airshipV2.getModuleSpeedMinor()
@@ -89,7 +98,8 @@ public class GuiEntityAirshipV2Default extends GuiContainer {
 		}
 		
 		//Draw a green fuel bar and magma in the coal slot
-		if(this.airshipV2.getModuleFuelInfinite())
+		if(EventHandlerAirship.creativeBurnV2
+		|| this.airshipV2.getModuleFuelInfinite())
 		{
 			this.drawTexturedModalRect(this.guiLeft + 138, this.guiTop + 4, 184, 50, 8, 1 + 47);
 			this.drawTexturedModalRect(this.guiLeft + 152, this.guiTop + 17, 176, 119, 16, 16);
@@ -99,10 +109,9 @@ public class GuiEntityAirshipV2Default extends GuiContainer {
     private int getBurnLeftScaled(int pixels)
     {
         int i = this.airshipV2.getField(1);
-        
         if (i == 0)
         {
-        	i = (ViesCraftConfig.v2FuelBurnTime * 20);//i = 1200;
+        	i = this.airshipV2.itemFuelStack + 1;
         }
         
         return this.airshipV2.getField(0) * pixels / i;

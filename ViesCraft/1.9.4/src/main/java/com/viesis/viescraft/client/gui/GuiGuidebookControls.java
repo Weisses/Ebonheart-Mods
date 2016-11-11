@@ -71,14 +71,14 @@ public class GuiGuidebookControls extends GuiScreen {
         		+ "explode and spawn "
         		+ "your airship."
         		+ "\n\n\n\n\n"
-        		+ "Don't worry, these explosions are safe.";
+        		+ "*Don't worry, these explosions are safe.";
         
         stringPageText[3] = "   To turn an airship "
         		+ "back into an item, just "
         		+ "hit it a few times. No "
         		+ "need for any tools."
         		+ "\n\n\n\n\n\n\n\n"
-        		+ "One good shot with an "
+        		+ "*One good shot with an "
         		+ "arrow works well.";
         
         stringPageText[4] = "\n"
@@ -91,43 +91,38 @@ public class GuiGuidebookControls extends GuiScreen {
         		+ " Key] \u00A70to open the "
         		+ "airship's GUI."
         		+ "\n\n\n\n\n"
-        		+ "Only the driver can use the GUI.";
+        		+ "*Only the driver can use the GUI.";
         
         stringPageText[5] = "   While in the GUI, you "
-        		+ "can use the airship's "
-        		+ "\u00A769 slot inventory \u00A70to "
-        		+ "store items or place "
-        		+ "fuel in the fuel slot to "
-        		+ "power the airship.";
+        		+ "can add modules and "
+        		+ "fuel. For more info on the module system, please refer to the Module Guidebook.";
         
-        stringPageText[6] = "\n\n\n\n\n\n\n"
+        stringPageText[6] = "\n\n\n\n\n\n\n\n"
         		+ "   All airships need "
-        		+ "fuel to fly. Once the "
-        		+ "proper fuel is placed "
-        		+ "in the airships fuel "
+        		+ "fuel to fly. Once fuel is placed "
+        		+ "in the fuel "
         		+ "slot, it will start using "
         		+ "it right away.";
         
-        stringPageText[7] = "Each piece of fuel will "
-        		+ "burn for: "
+        stringPageText[7] = "Here is a list of fuel items: "
         		+ "\n\n"
-        		+ "\u00A70" + ViesCraftConfig.v1AirshipName + "-\u00A76"
-        		+ ViesCraftConfig.v1FuelBurnTime + " secs \n"
-        		+ "\u00A70" + ViesCraftConfig.v2AirshipName + "-\u00A76"
-        		+ ViesCraftConfig.v2FuelBurnTime + " secs \n"
-        		+ "\u00A70" + ViesCraftConfig.v3AirshipName + "-\u00A76"
-        		+ ViesCraftConfig.v3FuelBurnTime + " secs \n"
-        		+ "\u00A70\n\n\n\n\n"
-        		+ "These times reflect the current config.";
+        		+ "Sticks / Saplings"
+        		+ "\nCoal / Charcoal"
+        		+ "\nCoal Blocks"
+        		+ "\nBlaze Rods"
+        		+ "\nWood material blocks"
+        		+ "\n\n\n\n"
+        		+ "*Items burn for their vanilla times."
+        		;
         
         stringPageText[8] = "\n\n\n\n\n"
-        		+ "   All of my airship "
-        		+ "designs have a \u00A769 slot "
-        		+ "inventory \u00A70for storing "
-        		+ "items. If any airship is "
-        		+ "destroyed in any way, "
-        		+ "the contents of the "
-        		+ "inventory will be dropped."
+        		+ "   With the right module "
+        		+ "installed, airships "
+        		+ "can have a \u00A769 \u00A70or \u00A7618 "
+        		+ "slot inventory\u00A70."
+        		+ "\n\n"
+        		+ ""
+        		+ "   Stored items will fall out if broken or the module is removed."
         		;
     	
         stringPageText[9] = "\n"
@@ -140,6 +135,8 @@ public class GuiGuidebookControls extends GuiScreen {
         		+ "\u00A75[" + Keybinds.vcRight.getDisplayName() + "] \u00A70= Right \n"
         		+ "\u00A75[" + Keybinds.vcUp.getDisplayName() + "] \u00A70= Ascend \n"
         		+ "\u00A75[" + Keybinds.vcDown.getDisplayName() + "] \u00A70= Descend "
+        				+ "\n\n"
+        				+ "*Based on current key bindings."
         		
         		;
         
@@ -154,7 +151,7 @@ public class GuiGuidebookControls extends GuiScreen {
         		+ "the water in time, it will "
         		+ "explode. "
         		+ "\n\n\n"
-        		+ "Warning! This will hurt..."
+        		+ "*Warning! It will hurt..."
         		;
     		
         stringPageText[11] = "   If an airship is destroyed by water, you may be able to recover parts, if you are lucky. "

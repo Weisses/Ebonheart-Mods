@@ -85,15 +85,14 @@ public class GuiEntityAirshipV3Module extends GuiContainer {
 		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
 		
 		//If any Module installed
-		//if(this.airshipV3.moduleInventorySmall
-		//|| this.airshipV3.getModuleInventoryLarge()
-		//|| this.airshipV3.getModuleFuelEfficiency()
-		//|| this.airshipV3.getModuleFuelInfinite())
-		//{
+		if(this.airshipV3.getModuleInventorySmall()
+		|| this.airshipV3.getModuleInventoryLarge()
+		|| this.airshipV3.getModuleSpeedMinor()
+		|| this.airshipV3.getModuleFuelInfinite())
+		{
 		    //Draws the box overlay around module slot
-			//this.drawTexturedModalRect(this.guiLeft + 64, this.guiTop + 14, 176, 0, 48, 48);
-			//LogHelper.info("true!");
-		//}
+			this.drawTexturedModalRect(this.guiLeft + 64, this.guiTop + 14, 176, 0, 48, 48);
+		}
     }
 	
 	@Override

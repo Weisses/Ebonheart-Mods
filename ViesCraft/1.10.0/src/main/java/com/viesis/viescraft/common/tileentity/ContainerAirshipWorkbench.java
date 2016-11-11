@@ -16,7 +16,7 @@ import com.viesis.viescraft.common.items.crafting.CraftingManagerVC;
 import com.viesis.viescraft.common.items.crafting.SlotCraftingVC;
 
 public class ContainerAirshipWorkbench extends Container {
-	
+
 	/** The crafting matrix inventory (3x3). */
     public InventoryCrafting craftMatrix = new InventoryCrafting(this, 3, 3);
     public IInventory craftResult = new InventoryCraftResult();

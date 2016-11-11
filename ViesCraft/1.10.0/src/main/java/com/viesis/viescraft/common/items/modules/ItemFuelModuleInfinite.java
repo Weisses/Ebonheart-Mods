@@ -26,7 +26,7 @@ public class ItemFuelModuleInfinite extends Item {
 		toolTip.add(" ");
 		toolTip.add(TextFormatting.GOLD + "Effects while socketed:");
 		toolTip.add(TextFormatting.GREEN + "Pro - Fly without fuel.");
-		toolTip.add(TextFormatting.RED + "Con - Speed reduced to 50%");
+		toolTip.add(TextFormatting.RED + "Con - Speed reduced to 60%");
 		toolTip.add(" ");
 	}
 	

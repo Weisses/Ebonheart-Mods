@@ -1,6 +1,5 @@
 package com.viesis.viescraft.api;
 
-import net.minecraft.util.SoundEvent;
 
 public class SoundsVC {
 	

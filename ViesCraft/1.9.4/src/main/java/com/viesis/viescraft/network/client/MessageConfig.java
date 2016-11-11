@@ -11,7 +11,7 @@ public class MessageConfig extends MessageBase<MessageConfig> {
 	@Override
 	public void fromBytes(ByteBuf buf) 
 	{
-		ViesCraftConfig.v1FuelBurnTime = buf.readInt();
+		//ViesCraftConfig.v1FuelBurnTime = buf.readInt();
 		ViesCraftConfig.v1AirshipSpeed = buf.readInt();
 		
 		ViesCraftConfig.v2FuelBurnTime = buf.readInt();
@@ -28,7 +28,7 @@ public class MessageConfig extends MessageBase<MessageConfig> {
 	@Override
 	public void toBytes(ByteBuf buf) 
 	{
-		buf.writeInt(ViesCraftConfig.v1FuelBurnTime);
+		//buf.writeInt(ViesCraftConfig.v1FuelBurnTime);
 		buf.writeInt(ViesCraftConfig.v1AirshipSpeed);
 		
 		buf.writeInt(ViesCraftConfig.v2FuelBurnTime);

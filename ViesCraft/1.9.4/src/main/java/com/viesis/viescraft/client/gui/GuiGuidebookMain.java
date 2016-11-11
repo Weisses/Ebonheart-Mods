@@ -22,7 +22,7 @@ public class GuiGuidebookMain extends GuiScreen {
     private final int bookImageHeight = 192;
     private final int bookImageWidth = 192;
     private int currPage = 0;
-    private static final int bookTotalPages = 14;
+    private static final int bookTotalPages = 15;
     private static ResourceLocation[] bookPageTextures = new ResourceLocation[bookTotalPages];
     private static String[] stringPageText = new String[bookTotalPages];
     
@@ -46,6 +46,7 @@ public class GuiGuidebookMain extends GuiScreen {
         bookPageTextures[11] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/main/page_11.png");
         bookPageTextures[12] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/main/page_12.png");
         bookPageTextures[13] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/main/page_13.png");
+        bookPageTextures[14] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/main/page_14.png");
         
         //Title
         stringPageText[0] = "\n\n\n\n\n\n\n"
@@ -150,21 +151,27 @@ public class GuiGuidebookMain extends GuiScreen {
         		+ "\n\n\n\n\n\n\n\n\n"
         		+ "\u00A7oSteampunk airship ingenuity at its finest.\u00A7r";
         
-        stringPageText[11] = "Further Reading:"
+        stringPageText[11] = "Extra Tools:"
+        		+ "\n\n"
+        		+ "\u00A7l\u00A7nDismounter\u00A70\u00A7r\u00A70"
+        		+ "\n\n\n\n\n\n\n\n\n"
+        		+ "\u00A7oEject mobs from what they are riding in.\u00A7r";
+    		
+        stringPageText[12] = "Further Reading:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nTaking Control\u00A7r\u00A70"
         		+ "\n               \u00A7l\u00A7nvol.2\u00A7r"
         		+ "\n\n\n\n\n\n\n\n"
         		+ "\u00A7oPiloting airships like a pro.\u00A7r";
     		
-        stringPageText[12] = "Further Reading:"
+        stringPageText[13] = "Further Reading:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nFlaming Paint?!\u00A7r\u00A70"
         		+ "\n               \u00A7l\u00A7nvol.3\u00A7r"
         		+ "\n\n\n\n\n\n\n\n"
         		+ "\u00A7oIns and outs of airship-safe paint.\u00A7r";
         
-        stringPageText[13] = "Further Reading:"
+        stringPageText[14] = "Further Reading:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nModules & You\u00A7r\u00A70"
         		+ "\n               \u00A7l\u00A7nvol.4\u00A7r"
@@ -267,6 +274,10 @@ public class GuiGuidebookMain extends GuiScreen {
         if (currPage == 13)
         {
         	mc.getTextureManager().bindTexture(bookPageTextures[13]);
+        }
+        if (currPage == 14)
+        {
+        	mc.getTextureManager().bindTexture(bookPageTextures[14]);
         }
         
         //else
