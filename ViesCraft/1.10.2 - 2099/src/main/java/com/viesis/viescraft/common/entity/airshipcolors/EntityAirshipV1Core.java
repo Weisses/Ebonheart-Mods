@@ -49,7 +49,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import com.google.common.collect.Lists;
 import com.viesis.viescraft.api.FuelVC;
 import com.viesis.viescraft.api.util.Keybinds;
-import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.common.utils.events.EventHandlerAirship;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 import com.viesis.viescraft.init.InitItemsVC;
