@@ -12,6 +12,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV2Core;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV2Core;
 import com.viesis.viescraft.common.utils.events.EventHandlerAirship;
 
 public class GuiV2HUD extends Gui {
@@ -139,23 +140,27 @@ public class GuiV2HUD extends Gui {
 			{
 				drawTexturedModalRect(hudX + 83, hudY, 48, 240, 16, 16);
 			}
-			if(this.airshipV2.getModuleStealth())
-			{
-				drawTexturedModalRect(hudX + 83, hudY, 64, 240, 16, 16);
+			//if(this.airshipV2.getModuleStealth())
+			//{
+			//	drawTexturedModalRect(hudX + 83, hudY, 64, 240, 16, 16);
 				
-				if(this.airshipV2.getModuleCD() == 0)
-				{
-					drawTexturedModalRect(hudX + 83, hudY, 0, 224, 16, 16);
-				}
-			}
-			if(this.airshipV2.getModuleDash())
-			{
-				drawTexturedModalRect(hudX + 83, hudY, 80, 240, 16, 16);
+			//	if(this.airshipV2.getModuleCD() == 0)
+			//	{
+			//		drawTexturedModalRect(hudX + 83, hudY, 0, 224, 16, 16);
+			//	}
+			//}
+			//if(this.airshipV2.getModuleDash())
+			//{
+			//	drawTexturedModalRect(hudX + 83, hudY, 80, 240, 16, 16);
 				
-				if(this.airshipV2.getModuleCD() == 0)
-				{
-					drawTexturedModalRect(hudX + 83, hudY, 0, 224, 16, 16);
-				}
+			//	if(this.airshipV2.getModuleCD() == 0)
+			//	{
+			//		drawTexturedModalRect(hudX + 83, hudY, 0, 224, 16, 16);
+			//	}
+			//}
+			if(this.airshipV2.getModuleSpeedMajor())
+			{
+				drawTexturedModalRect(hudX + 83, hudY, 96, 240, 16, 16);
 			}
 			
 			int timer;
@@ -165,7 +170,7 @@ public class GuiV2HUD extends Gui {
 			int hours;
 			
 			if(this.airshipV2.getModuleInventoryLarge()
-			|| this.airshipV2.getModuleSpeedMinor())
+			|| this.airshipV2.getModuleSpeedMajor())
 			{
 				//Calculation from ticks to seconds.
 	            timer = (((this.airshipV2.getPowered() + 18) + this.airshipV2.getItemFuelStackPowered()) / 20) / 2;

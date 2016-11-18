@@ -21,6 +21,7 @@ public class ItemsVC {
 	public static Item module_inventory_small;
 	public static Item module_inventory_large;
 	public static Item module_speed_increase_minor;
+	public static Item module_speed_increase_major;
 	//public static Item module_fuel_efficiency;
 	public static Item module_fuel_infinite;
 	

@@ -12,11 +12,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.viesis.viescraft.common.items.ItemHelper;
 
-public class ItemSpeedModuleMinor extends Item {
+public class ItemSpeedModuleMajor extends Item {
 	
-	public ItemSpeedModuleMinor() 
+	public ItemSpeedModuleMajor() 
 	{
-		ItemHelper.setItemName(this, "module_speed_increase_minor");
+		ItemHelper.setItemName(this, "module_speed_increase_major");
 		this.setMaxStackSize(1);
 	}
 	
@@ -25,8 +25,8 @@ public class ItemSpeedModuleMinor extends Item {
 	{
 		toolTip.add(" ");
 		toolTip.add(TextFormatting.GOLD + "Effects while socketed:");
-		toolTip.add(TextFormatting.GREEN + "Pro - Speed increased to 125%");
-		toolTip.add(TextFormatting.RED + "Con - None.");
+		toolTip.add(TextFormatting.GREEN + "Pro - Speed increased to 150%");
+		toolTip.add(TextFormatting.RED + "Con - Fuel burns x2 faster.");
 		toolTip.add(" ");
 	}
 	

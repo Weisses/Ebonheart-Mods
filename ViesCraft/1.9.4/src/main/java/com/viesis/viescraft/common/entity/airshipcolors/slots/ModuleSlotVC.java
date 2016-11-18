@@ -39,6 +39,11 @@ public class ModuleSlotVC extends Slot {
         	return true;
         }
         
+        if (item == InitItemsVC.module_speed_increase_major)
+        {
+        	return true;
+        }
+        
         if (item == InitItemsVC.module_fuel_infinite)
         {
         	return true;
