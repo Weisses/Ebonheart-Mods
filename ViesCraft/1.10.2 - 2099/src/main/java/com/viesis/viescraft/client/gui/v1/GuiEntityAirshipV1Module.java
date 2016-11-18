@@ -88,6 +88,7 @@ public class GuiEntityAirshipV1Module extends GuiContainer {
 		if(this.airshipV1.getModuleInventorySmall()
 		|| this.airshipV1.getModuleInventoryLarge()
 		|| this.airshipV1.getModuleSpeedMinor()
+		|| this.airshipV1.getModuleSpeedMajor()
 		|| this.airshipV1.getModuleFuelInfinite())
 		{
 		    //Draws the box overlay around module slot

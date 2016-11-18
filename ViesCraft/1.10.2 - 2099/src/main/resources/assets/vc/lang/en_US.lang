@@ -38,6 +38,7 @@ item.vc:module_chip.name=Module Chip
 item.vc:module_inventory_small.name=Small Inventory Module
 item.vc:module_inventory_large.name=Large Inventory Module
 item.vc:module_speed_increase_minor.name=Minor Speed Boost Module
+item.vc:module_speed_increase_major.name=Major Speed Boost Module
 item.vc:module_fuel_infinite.name=Infinite Fuel Module
 item.vc:module_stealth.name=Stealth Module
 item.vc:module_dash.name=Dash Module
