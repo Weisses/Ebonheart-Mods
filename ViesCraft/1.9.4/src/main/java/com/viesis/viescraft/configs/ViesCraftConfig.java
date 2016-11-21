@@ -35,7 +35,7 @@ public class ViesCraftConfig {
 	//public static final String V1FUELBURNTIME_NAME = "Fuel Burn Time - Viesdenburg";
 	//public static final String V1FUELBURNTIME_COMMENT = "How long does each piece of fuel last in seconds?";
 	
-	public static final int V1AIRSHIPSPEED_DEFAULT = 200;
+	public static final int V1AIRSHIPSPEED_DEFAULT = 175;
 	public static final String V1AIRSHIPSPEED_NAME = "Airship Speed - Viesdenburg";
 	public static final String V1AIRSHIPSPEED_COMMENT = "How fast do airships move based on %? ";
 	
@@ -43,7 +43,7 @@ public class ViesCraftConfig {
 	//public static final String V2FUELBURNTIME_NAME = "Fuel Burn Time - Viesigible";
 	//public static final String V2FUELBURNTIME_COMMENT = "How long does each piece of fuel last in seconds?";
 	
-	public static final int V2AIRSHIPSPEED_DEFAULT = 200;
+	public static final int V2AIRSHIPSPEED_DEFAULT = 175;
 	public static final String V2AIRSHIPSPEED_NAME = "Airship Speed - Viesigible";
 	public static final String V2AIRSHIPSPEED_COMMENT = "How fast do airships move based on %? ";
 	
@@ -51,7 +51,7 @@ public class ViesCraftConfig {
 	//public static final String V3FUELBURNTIME_NAME = "Fuel Burn Time - Viesepelin";
 	//public static final String V3FUELBURNTIME_COMMENT = "How long does each piece of fuel last in seconds?";
 	
-	public static final int V3AIRSHIPSPEED_DEFAULT = 200;
+	public static final int V3AIRSHIPSPEED_DEFAULT = 175;
 	public static final String V3AIRSHIPSPEED_NAME = "Airship Speed - Viesepelin";
 	public static final String V3AIRSHIPSPEED_COMMENT = "How fast do airships move based on %? ";
 	
@@ -59,7 +59,7 @@ public class ViesCraftConfig {
 	//public static final String V4FUELBURNTIME_NAME = "Fuel Burn Time - Viesakron";
 	//public static final String V4FUELBURNTIME_COMMENT = "How long does each piece of fuel last in seconds?";
 	
-	public static final int V4AIRSHIPSPEED_DEFAULT = 200;
+	public static final int V4AIRSHIPSPEED_DEFAULT = 175;
 	public static final String V4AIRSHIPSPEED_NAME = "Airship Speed - Viesakron";
 	public static final String V4AIRSHIPSPEED_COMMENT = "How fast do airships move based on %? ";
 	
