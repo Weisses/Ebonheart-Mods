@@ -42,7 +42,8 @@ public class AchievementTriggersVC extends InitAchievementsVC {
 		
 		if(event.crafting.getItem() == InitItemsVC.item_airship_v1_normal
 		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_normal
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_normal) 
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_normal
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_normal) 
 		{
 			event.player.addStat(airship_create);
 		}
@@ -96,7 +97,24 @@ public class AchievementTriggersVC extends InitAchievementsVC {
 		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_purple
 		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_red
 		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_white
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_yellow) 
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_yellow
+		
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_black
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_blue
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_brown
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_cyan
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_gray
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_green
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_lightblue
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_lightgray
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_lime
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_magenta
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_orange
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_pink
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_purple
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_red
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_white
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_yellow) 
 		{
 			event.player.addStat(airship_create_color);
 		}
@@ -104,15 +122,11 @@ public class AchievementTriggersVC extends InitAchievementsVC {
 		if(event.crafting.getItem() == InitItemsVC.module_inventory_small
 		|| event.crafting.getItem() == InitItemsVC.module_inventory_large
 		|| event.crafting.getItem() == InitItemsVC.module_speed_increase_minor
+		|| event.crafting.getItem() == InitItemsVC.module_speed_increase_major
 		|| event.crafting.getItem() == InitItemsVC.module_fuel_infinite) 
 		{
 			event.player.addStat(airship_create_module);
 		}
-		//if(event.crafting.getItem() == InitItemsEA.obsidian_shards) 
-		//{
-		//	event.player.addStat(nether_bound);//.triggerAchievement(InitAchievementsEA.nether_bound);
-		//}
-		
 	}
 	
 	//Smelt an item achievement

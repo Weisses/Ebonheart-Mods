@@ -22,8 +22,6 @@ public class EventHandlerConfig {
 		if(!event.player.worldObj.isRemote)
 		{
 			NetworkHandler.sendToClient(new MessageConfig(), (EntityPlayerMP)event.player);
-			
-			//LogHelper.info("Sent config to '" + event.player.getDisplayName() + ".'");
 		}
 	}
 	

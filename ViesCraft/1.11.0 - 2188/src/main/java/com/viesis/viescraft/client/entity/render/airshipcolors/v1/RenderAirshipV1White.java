@@ -1,4 +1,4 @@
-package com.viesis.viescraft.client.entity.render.airshipcolors.v4;
+package com.viesis.viescraft.client.entity.render.airshipcolors.v1;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.GlStateManager;
@@ -10,43 +10,27 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.viesis.viescraft.api.Reference;
-import com.viesis.viescraft.client.entity.model.ModelAirshipV4Off;
-import com.viesis.viescraft.client.entity.model.ModelAirshipV4On;
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV4Core;
-import com.viesis.viescraft.common.entity.airshipcolors.v4.EntityAirshipV4Normal;
+import com.viesis.viescraft.client.entity.model.ModelAirshipV1Off;
+import com.viesis.viescraft.client.entity.model.ModelAirshipV1On;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
+import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipV1White;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 
 @SideOnly(Side.CLIENT)
-public class RenderAirshipV4Normal extends Render<EntityAirshipV4Normal> {
+public class RenderAirshipV1White extends Render<EntityAirshipV1White> {
 	
 	private static final ResourceLocation[] ENTITY_TEXTURE = new ResourceLocation[] 
 	{
-		//new ResourceLocation(Reference.MOD_ID, "textures/models/v4/airship_v4_black.png"),
-		//new ResourceLocation(Reference.MOD_ID, "textures/models/v4/airship_v4_red.png"),
-		//new ResourceLocation(Reference.MOD_ID, "textures/models/v4/airship_v4_green.png"),
-		//new ResourceLocation(Reference.MOD_ID, "textures/models/v4/airship_v4_brown.png"),
-		//new ResourceLocation(Reference.MOD_ID, "textures/models/v4/airship_v4_blue.png"),
-		//new ResourceLocation(Reference.MOD_ID, "textures/models/v4/airship_v4_purple.png"),
-		//new ResourceLocation(Reference.MOD_ID, "textures/models/v4/airship_v4_cyan.png"),
-		//new ResourceLocation(Reference.MOD_ID, "textures/models/v4/airship_v4_lightgray.png"),
-		//new ResourceLocation(Reference.MOD_ID, "textures/models/v4/airship_v4_gray.png"),
-		//new ResourceLocation(Reference.MOD_ID, "textures/models/v4/airship_v4_pink.png"),
-		//new ResourceLocation(Reference.MOD_ID, "textures/models/v4/airship_v4_lime.png"),
-		//new ResourceLocation(Reference.MOD_ID, "textures/models/v4/airship_v4_yellow.png"),
-		//new ResourceLocation(Reference.MOD_ID, "textures/models/v4/airship_v4_lightblue.png"),
-		//new ResourceLocation(Reference.MOD_ID, "textures/models/v4/airship_v4_magenta.png"),
-		//new ResourceLocation(Reference.MOD_ID, "textures/models/v4/airship_v4_orange.png"),
-		//new ResourceLocation(Reference.MOD_ID, "textures/models/v4/airship_v4_white.png"),
-		new ResourceLocation(Reference.MOD_ID, "textures/models/v4/airship_v4_normal.png")
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v1/airship_v1_white.png")//, 
 	};
 
 	/** instance of ModelTest for rendering */
-	protected ModelBase modelAirshipOn = new ModelAirshipV4On();
-	protected ModelBase modelAirshipOff = new ModelAirshipV4Off();
+	protected ModelBase modelAirshipOn = new ModelAirshipV1On();
+	protected ModelBase modelAirshipOff = new ModelAirshipV1Off();
 	
-	private EntityAirshipV4Core airship;
+	private EntityAirshipV1Core airship;
 	
-    public RenderAirshipV4Normal(RenderManager renderManagerIn)
+    public RenderAirshipV1White(RenderManager renderManagerIn)
     {
         super(renderManagerIn);
         this.shadowSize = 1.0F;
@@ -55,7 +39,7 @@ public class RenderAirshipV4Normal extends Render<EntityAirshipV4Normal> {
     /**
      * Renders the desired {@code T} type Entity.
      */
-    public void doRender(EntityAirshipV4Normal entity, double x, double y, double z, float entityYaw, float partialTicks)
+    public void doRender(EntityAirshipV1White entity, double x, double y, double z, float entityYaw, float partialTicks)
     {
         GlStateManager.pushMatrix();
         this.setupTranslation(x, y, z);
@@ -89,7 +73,7 @@ public class RenderAirshipV4Normal extends Render<EntityAirshipV4Normal> {
         super.doRender(entity, x, y, z, entityYaw, partialTicks);
     }
 
-    public void setupRotation(EntityAirshipV4Normal entity, float p_188311_2_, float p_188311_3_)
+    public void setupRotation(EntityAirshipV1White entity, float p_188311_2_, float p_188311_3_)
     {
         GlStateManager.rotate(180.0F - p_188311_2_, 0.0F, 1.0F, 0.0F);
         float f = (float)entity.getTimeSinceHit() - p_188311_3_;
@@ -147,7 +131,7 @@ public class RenderAirshipV4Normal extends Render<EntityAirshipV4Normal> {
     /**
      * Returns the location of an entity's texture. Doesn't seem to be called unless you call Render.bindEntityTexture.
      */
-    protected ResourceLocation getEntityTexture(EntityAirshipV4Normal entity)
+    protected ResourceLocation getEntityTexture(EntityAirshipV1White entity)
     {
         return ENTITY_TEXTURE[entity.getBoatType().ordinal()];
     }

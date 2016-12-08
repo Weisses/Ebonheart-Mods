@@ -7,11 +7,13 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryCraftResult;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.inventory.Slot;
+import net.minecraft.inventory.SlotCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 
+import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.common.items.crafting.CraftingManagerVC;
 import com.viesis.viescraft.common.items.crafting.SlotCraftingVC;
 import com.viesis.viescraft.init.InitBlocksVC;
@@ -33,17 +35,21 @@ public class ContainerAirshipWorkbench extends Container {
         this.worldObj = worldIn;
         this.airship = tileEntityAirshipWorkbench;
         
-        //updateCraftingMatrix();
+        loadCraftingMatrix();
         
         //CraftResult Slot, Slot 0, Slot ID 0
-        this.addSlotToContainer(new SlotCraftingVC(playerInventory.player, this.craftMatrix, this.airship.inventory, 0, 124, 35));
+        //this.addSlotToContainer(new SlotCraftingVC(playerInventory.player, this.airship, (IItemHandler) this.craftResult, 0, 124, 35));
         
+        this.addSlotToContainer(new SlotCrafting(playerInventory.player, this.craftMatrix, this.craftResult, 0, 124, 35));
+
         //Craft Matrix, Slot 1-9, Slot ID 0
         for (int i = 0; i < 3; ++i)
         {
             for (int j = 0; j < 3; ++j)
             {
-            	this.addSlotToContainer(new SlotItemHandler(this.airship.inventory, j + i * 3, 26 + j * 18, 17 + i * 18));
+            	
+            	//this.addSlotToContainer(new SlotItemHandler(this.airship.inventory, j + i * 3, 26 + j * 18, 17 + i * 18));
+            	this.addSlotToContainer(new Slot(this.craftMatrix, j + i * 3, 26 + j * 18, 17 + i * 18));
             }
         }
         
@@ -65,24 +71,12 @@ public class ContainerAirshipWorkbench extends Container {
         this.onCraftMatrixChanged(this.craftMatrix);
     }
     
-    //private void updateCraftingMatrix() 
-    //{
-    //	NBTTagCompound compound = new NBTTagCompound();
-    	
-    //	this.airship.inventory.deserializeNBT(compound.getCompoundTag("Slots"));
-    //}
-    //	for (int i = 0; i < craftMatrix.getSizeInventory(); i++) 
-    //	{
-    		//if(airship.itemStackHandler.getStackInSlot(i) != null)
-    //		craftMatrix.setInventorySlotContents(i, this.airship.inventory.getStackInSlot(i));//
-    		//.craftMatrixInventory[i]);
-    //	}
-    //}
+    
     
     /**
      * Callback for when the crafting matrix is changed.
      */
-    public void onCraftMatrixChanged(IItemHandler inventoryIn)
+    public void onCraftMatrixChanged(IInventory inventoryIn)
     {
         this.craftResult.setInventorySlotContents(0, CraftingManagerVC.getInstance().findMatchingRecipe(this.craftMatrix, this.worldObj));
     }
@@ -94,36 +88,38 @@ public class ContainerAirshipWorkbench extends Container {
     {
         super.onContainerClosed(playerIn);
 
-        //saveCraftingMatrix();
+        saveCraftingMatrix();
         
-        //if (!this.worldObj.isRemote)
-        //{
-        //    for (int i = 0; i < 9; ++i)
-        //    {
-        //        ItemStack itemstack = this.craftMatrix.removeStackFromSlot(i);
-
-        //        if (!itemstack.func_190926_b())
-        //        {
-        //            playerIn.dropItem(itemstack, false);
-        //        }
-        //    }
-        //}
     }
     
-    //private void saveCraftingMatrix() 
-    //{
-    	
-    	//this.airship.inventory.serializeNBT();
-    	//for (int i = 0; i < craftMatrix.getSizeInventory(); i++) 
-    	//{
-    	//	ItemStack test = airship.itemStackHandler.getStackInSlot(i);
-    				
-    	//	test = craftMatrix.getStackInSlot(i);
+    
+    
+    private void loadCraftingMatrix() 
+    {
+    	for (int i = 0; i < craftMatrix.getSizeInventory(); i++) 
+    	{
+    		//LogHelper.info("Crafting Matrix Loaded!");
+    		craftMatrix.setInventorySlotContents(i, new ItemStack(airship.inventory.getStackInSlot(i).getItem()));
+    	}
+    }
+    private void saveCraftingMatrix() 
+    {
+    	for (int i = 0; i < craftMatrix.getSizeInventory(); i++) 
+    	{
+    		LogHelper.info("Crafting Matrix - " + craftMatrix.getStackInSlot(i));
+    		LogHelper.info("Airship - " + this.airship.inventory.getStackInSlot(i));
     		
-    		//airship.craftMatrixInventory[i] = craftMatrix.getStackInSlot(i);
     		
-    	//}
-    //}
+    		ItemStack airship = this.airship.inventory.getStackInSlot(i);
+    		//Object airshipSet = 
+    		this.airship.inventory.setStackInSlot(i, craftMatrix.getStackInSlot(i));
+    		ItemStack matrix = craftMatrix.getStackInSlot(i);
+    		//test = craftMatrix.getStackInSlot(i);
+    		//airship = matrix;
+    		//help = test;
+    	}
+    }
+    
 
     /**
      * Determines whether supplied player can use this container

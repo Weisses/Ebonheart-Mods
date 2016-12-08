@@ -21,10 +21,9 @@ public class EventHandlerAchievement {
     	boolean isAnimalPassenger = false;
     	
 		if(event.player.getRidingEntity() instanceof EntityAirshipV1Core
-        //|| event.player.getRidingEntity() instanceof EntityAirshipV2Core
-        //|| event.player.getRidingEntity() instanceof EntityAirshipV3Core
-        //|| event.player.getRidingEntity() instanceof EntityAirshipV4Core
-				)
+        || event.player.getRidingEntity() instanceof EntityAirshipV2Core
+        || event.player.getRidingEntity() instanceof EntityAirshipV3Core
+        || event.player.getRidingEntity() instanceof EntityAirshipV4Core)
         {
 			isRiding = true;
         }

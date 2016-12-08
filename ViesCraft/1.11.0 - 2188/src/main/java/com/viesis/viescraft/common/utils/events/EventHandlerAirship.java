@@ -1,14 +1,8 @@
 package com.viesis.viescraft.common.utils.events;
 
-import net.minecraft.entity.EntityTracker;
-import net.minecraft.entity.EntityTrackerEntry;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
-import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV2Core;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV3Core;
@@ -46,7 +40,7 @@ public class EventHandlerAirship {
 			isRidingV3 = false;
 			isRidingV4 = false;
 		}
-		/**
+		
 		else if(event.player.getRidingEntity() instanceof EntityAirshipV2Core)
 		{
 			isRidingV1 = false;
@@ -68,7 +62,6 @@ public class EventHandlerAirship {
 			isRidingV3 = false;
 			isRidingV4 = true;
         }
-        */
 		else
 		{
 			isRidingV1 = false;
@@ -92,32 +85,9 @@ public class EventHandlerAirship {
 			{
 				creativeBurnV1 = false;
 			}
-			/**
-			if(airshipV1.stealthActive)
-			{
-				if(!event.player.isInvisible())
-				{
-					event.player.addPotionEffect(new PotionEffect(Potion.getPotionById(14), 1, 1));
-					event.player.setInvisible(true);
-				}
-			}
-			else 
-			{
-				if(event.player.isInvisible())
-				{
-					event.player.setInvisible(false);
-				}
-			}
-			*/
 		}
-		//else 
-		//{
-		//	if(event.player.isInvisible())
-		//	{
-		//		event.player.setInvisible(false);
-		//	}
-		//}
-		/**
+		
+		
 		if(isRidingV2) 
     	{
 			playerRidingEntityV2 = event.player.getRidingEntity().getEntityId();
@@ -162,6 +132,5 @@ public class EventHandlerAirship {
 				creativeBurnV4 = false;
 			}
 		}
-		*/
     }
 }
