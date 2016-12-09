@@ -92,7 +92,7 @@ public class ContainerAirshipWorkbench extends Container {
     {
     	for (int i = 0; i < craftMatrix.getSizeInventory(); i++) 
     	{
-    		craftMatrix.setInventorySlotContents(i, new ItemStack(airship.inventory.getStackInSlot(i).getItem()));
+    		craftMatrix.setInventorySlotContents(i, airship.inventory.getStackInSlot(i));
     	}
     }
     
@@ -104,6 +104,7 @@ public class ContainerAirshipWorkbench extends Container {
     	for (int i = 0; i < craftMatrix.getSizeInventory(); i++) 
     	{
     		this.airship.inventory.setStackInSlot(i, craftMatrix.getStackInSlot(i));
+    		this.airship.inventory.serializeNBT();
     	}
     }
     
