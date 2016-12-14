@@ -135,31 +135,13 @@ public class GuiV3HUD extends Gui {
 			{
 				drawTexturedModalRect(hudX + 83, hudY, 32, 240, 16, 16);
 			}
-			if(this.airshipV3.getModuleFuelInfinite())
-			{
-				drawTexturedModalRect(hudX + 83, hudY, 48, 240, 16, 16);
-			}
-			//if(this.airshipV3.getModuleStealth())
-			//{
-			//	drawTexturedModalRect(hudX + 83, hudY, 64, 240, 16, 16);
-				
-			//	if(this.airshipV3.getModuleCD() == 0)
-			//	{
-			//		drawTexturedModalRect(hudX + 83, hudY, 0, 224, 16, 16);
-			//	}
-			//}
-			//if(this.airshipV3.getModuleDash())
-			//{
-			//	drawTexturedModalRect(hudX + 83, hudY, 80, 240, 16, 16);
-				
-			//	if(this.airshipV3.getModuleCD() == 0)
-			//	{
-			//		drawTexturedModalRect(hudX + 83, hudY, 0, 224, 16, 16);
-			//	}
-			//}
 			if(this.airshipV3.getModuleSpeedMajor())
 			{
 				drawTexturedModalRect(hudX + 83, hudY, 96, 240, 16, 16);
+			}
+			if(this.airshipV3.getModuleFuelInfinite())
+			{
+				drawTexturedModalRect(hudX + 83, hudY, 48, 240, 16, 16);
 			}
 			
 			int timer;

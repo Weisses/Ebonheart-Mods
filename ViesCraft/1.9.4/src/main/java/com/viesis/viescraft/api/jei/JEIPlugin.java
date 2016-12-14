@@ -24,18 +24,6 @@ public class JEIPlugin implements IModPlugin {
 		registry.addRecipeCategoryCraftingItem(new ItemStack(InitBlocksVC.airship_workbench), VanillaRecipeCategoryUid.CRAFTING);
 	}
 	
-	//@Override
-	//public void registerItemSubtypes(ISubtypeRegistry subtypeRegistry) 
-	//{
-	//	
-	//}
-	
-	//@Override
-	//public void registerIngredients(IModIngredientRegistration registry) 
-	//{
-	//	
-	//}
-	
 	@Override
 	public void onRuntimeAvailable(IJeiRuntime jeiRuntime) 
 	{

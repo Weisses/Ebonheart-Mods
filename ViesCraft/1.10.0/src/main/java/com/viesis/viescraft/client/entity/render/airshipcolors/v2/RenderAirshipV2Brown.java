@@ -54,12 +54,7 @@ public class RenderAirshipV2Brown extends Render<EntityAirshipV2Brown> {
             GlStateManager.enableOutlineMode(this.getTeamColor(entity));
         }
         
-        if(entity.getModuleStealth()
-        && entity.getModuleAbilityON() > 0)
-        {
-        	
-        }
-        else if(entity.getPowered() > 0)
+        if(entity.getPowered() > 0)
         {
         	this.modelAirshipOn.render(entity, partialTicks, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
         }

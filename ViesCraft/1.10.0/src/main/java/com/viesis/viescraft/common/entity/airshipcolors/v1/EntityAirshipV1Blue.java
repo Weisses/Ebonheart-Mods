@@ -36,7 +36,7 @@ public class EntityAirshipV1Blue extends EntityAirshipV1Core {
     @Override
 	public Item getItemBoat()
     {
-		return InitItemsVC.item_airship_blue;
+		return InitItemsVC.item_airship_v1_blue;
     }
     
     /**

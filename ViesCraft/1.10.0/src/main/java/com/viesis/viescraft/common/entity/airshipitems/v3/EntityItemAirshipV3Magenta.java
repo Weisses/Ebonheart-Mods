@@ -2,7 +2,6 @@ package com.viesis.viescraft.common.entity.airshipitems.v3;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
@@ -38,41 +37,7 @@ public class EntityItemAirshipV3Magenta extends EntityItemAirshipCore {
         }
         else
     	{
-    		for (int ii = 0; ii < 10; ++ii)
-        	{
-    			int d = random.nextInt(100) + 1;
-				
-    			this.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, 
-    					this.posX + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
-    					this.posY + 0.5D,
-    					this.posZ + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
-    					0.0D, 0.0D, 0.0D, new int[0]);
-            	
-				if (d <= 2)
-				{
-					this.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, 
-						this.posX + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
-						this.posY + 0.5D,
-						this.posZ + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
-						0.0D, 0.0D, 0.0D, new int[0]);
-				}
-				if (d <= 15)
-				{
-					this.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_NORMAL, 
-						this.posX + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
-						this.posY + 0.5D,
-						this.posZ + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
-						0.0D, 0.25D, 0.0D, new int[0]);
-				}
-				if (d <= 25)
-				{
-					this.worldObj.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, 
-						this.posX + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
-						this.posY + 0.5D,
-						this.posZ + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
-						0.0D, 0.0D, 0.0D, new int[0]);
-				}
-			}
+        	this.explosionAnimation();
     	}
     }
 }

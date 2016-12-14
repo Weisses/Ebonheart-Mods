@@ -2,7 +2,6 @@ package com.viesis.viescraft.common.entity.airshipcolors.containers.v2;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
-import net.minecraft.inventory.IContainerListener;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
@@ -13,7 +12,6 @@ import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV2Core;
 import com.viesis.viescraft.common.entity.airshipcolors.slots.FuelSlotVC;
 import com.viesis.viescraft.common.entity.airshipcolors.slots.InventorySlotVC;
 
-//Small Inventory Module
 public class ContainerAirshipV2ModuleInvSmall extends Container {
 	
 	private EntityAirshipV2Core airship;
@@ -36,7 +34,7 @@ public class ContainerAirshipV2ModuleInvSmall extends Container {
 		{
 			for (int x = 0; x < 1; ++x) 
 			{
-				this.addSlotToContainer(new FuelSlotVC(airship, 0, 152, 17));
+				this.addSlotToContainer(new FuelSlotVC(this.airship.inventory, 0, 152, 17));
 			}
 		}
 		
@@ -45,7 +43,7 @@ public class ContainerAirshipV2ModuleInvSmall extends Container {
 		{
 			for (int x = 0; x < 3; ++x) 
 			{
-				this.addSlotToContainer(new InventorySlotVC(airship, (x + y * 3) + 2, 35 + x * 18, 17 + y * 18));
+				this.addSlotToContainer(new InventorySlotVC(this.airship.inventory, (x + y * 3) + 2, 35 + x * 18, 17 + y * 18));
 			}
 		}
 		
@@ -65,33 +63,6 @@ public class ContainerAirshipV2ModuleInvSmall extends Container {
 		}
 	}
 	
-	public void addListener(IContainerListener listener)
-    {
-        super.addListener(listener);
-        listener.sendAllWindowProperties(this, this.airship);
-    }
-	
-    /**
-     * Looks for changes made in the container, sends them to every listener.
-     */
-	@Override
-    public void detectAndSendChanges()
-    {
-        super.detectAndSendChanges();
-        
-        for (int i = 0; i < this.listeners.size(); ++i)
-        {
-            IContainerListener icontainerlistener = (IContainerListener)this.listeners.get(i);
-            
-            if (this.airshipBurnTime != this.airship.getField(0))
-            {
-                icontainerlistener.sendProgressBarUpdate(this, 0, this.airship.getField(0));
-            }
-        }
-        
-        this.airshipBurnTime = this.airship.getField(0);
-    }
-	
 	@SideOnly(Side.CLIENT)
     public void updateProgressBar(int id, int data)
     {
@@ -100,40 +71,40 @@ public class ContainerAirshipV2ModuleInvSmall extends Container {
 	
     public boolean canInteractWith(EntityPlayer playerIn)
     {
-        return this.airship.isUseableByPlayer(playerIn);
+        return true;
     }
 	
-	@Override
-	public ItemStack transferStackInSlot(EntityPlayer playerIn, int fromSlot) 
-	{
-		ItemStack previous = null;
-		Slot slot = (Slot) this.inventorySlots.get(fromSlot);
-		
-		if (slot != null && slot.getHasStack()) 
-		{
-			ItemStack current = slot.getStack();
-			previous = current.copy();
-			
-			// From Airship Inventory to Player Inventory
-			if (fromSlot == 0)
+    /**
+     * Take a stack from the specified inventory slot.
+     */
+    public ItemStack transferStackInSlot(EntityPlayer playerIn, int index)
+    {
+        ItemStack itemstack = null;
+        Slot slot = (Slot)this.inventorySlots.get(index);
+        
+        if (slot != null && slot.getHasStack())
+        {
+            ItemStack itemstack1 = slot.getStack();
+            itemstack = itemstack1.copy();
+            
+            if (index == 0)
             {
-                if (!this.mergeItemStack(current, 1, 46, true))
+            	if (!this.mergeItemStack(itemstack1, 1, 37, true))
                 {
                     return null;
                 }
-
-                slot.onSlotChange(current, previous);
+            	
+            	slot.onSlotChange(itemstack1, itemstack);
             }
-			else 
-			{
-				// From Player Inventory to TE Inventory
-				if (!this.mergeItemStack(current, 0, 1, true))
+            else
+            {
+            	if (!this.mergeItemStack(itemstack1, 0, 1, false))
 				{
 					return null;
 				}
-			}
-			
-			if (current.stackSize == 0)
+            }
+            
+            if (itemstack1.stackSize == 0)
 			{
 				slot.putStack((ItemStack) null);
 			}
@@ -142,14 +113,14 @@ public class ContainerAirshipV2ModuleInvSmall extends Container {
 				slot.onSlotChanged();
 			}
 			
-			if (current.stackSize == previous.stackSize)
+			if (itemstack1.stackSize == itemstack.stackSize)
 			{
 				return null;
 			}
-			
-			slot.onPickupFromSlot(playerIn, current);
-		}
-		
-		return previous;
-	}
+            
+			slot.onPickupFromSlot(playerIn, itemstack1);
+        }
+        
+        return itemstack;
+    }
 }

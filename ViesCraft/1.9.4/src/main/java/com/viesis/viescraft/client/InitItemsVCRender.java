@@ -28,26 +28,23 @@ public final class InitItemsVCRender extends ItemsVC {
 		registerRender(module_speed_increase_major);
 		registerRender(module_fuel_infinite);
 		
-		//registerRender(module_stealth);
-		//registerRender(module_dash);
-		
-		registerRender(item_airship_normal);
-		registerRender(item_airship_black);
-		registerRender(item_airship_blue);
-		registerRender(item_airship_brown);
-		registerRender(item_airship_cyan);
-		registerRender(item_airship_gray);
-		registerRender(item_airship_green);
-		registerRender(item_airship_lightblue);
-		registerRender(item_airship_lightgray);
-		registerRender(item_airship_lime);
-		registerRender(item_airship_magenta);
-		registerRender(item_airship_orange);
-		registerRender(item_airship_pink);
-		registerRender(item_airship_purple);
-		registerRender(item_airship_red);
-		registerRender(item_airship_white);
-		registerRender(item_airship_yellow);
+		registerRender(item_airship_v1_normal);
+		registerRender(item_airship_v1_black);
+		registerRender(item_airship_v1_blue);
+		registerRender(item_airship_v1_brown);
+		registerRender(item_airship_v1_cyan);
+		registerRender(item_airship_v1_gray);
+		registerRender(item_airship_v1_green);
+		registerRender(item_airship_v1_lightblue);
+		registerRender(item_airship_v1_lightgray);
+		registerRender(item_airship_v1_lime);
+		registerRender(item_airship_v1_magenta);
+		registerRender(item_airship_v1_orange);
+		registerRender(item_airship_v1_pink);
+		registerRender(item_airship_v1_purple);
+		registerRender(item_airship_v1_red);
+		registerRender(item_airship_v1_white);
+		registerRender(item_airship_v1_yellow);
 		registerRender(item_airship_v1_admin);
 		
 		registerRender(item_airship_v2_normal);

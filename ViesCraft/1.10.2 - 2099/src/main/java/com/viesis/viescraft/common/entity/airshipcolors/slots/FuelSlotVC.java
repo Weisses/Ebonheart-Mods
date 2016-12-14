@@ -13,10 +13,12 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.SlotItemHandler;
 
-public class FuelSlotVC extends Slot {
+public class FuelSlotVC extends SlotItemHandler {
 	
-	public FuelSlotVC(IInventory inventoryIn, int index, int xPosition, int yPosition) 
+	public FuelSlotVC(IItemHandler inventoryIn, int index, int xPosition, int yPosition) 
 	{
 		super(inventoryIn, index, xPosition, yPosition);
 	}
@@ -56,4 +58,5 @@ public class FuelSlotVC extends Slot {
 		
         return false;
     }
+    
 }

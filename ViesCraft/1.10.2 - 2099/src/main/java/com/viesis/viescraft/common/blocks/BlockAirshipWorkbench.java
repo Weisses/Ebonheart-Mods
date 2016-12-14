@@ -3,6 +3,8 @@ package com.viesis.viescraft.common.blocks;
 import java.util.List;
 import java.util.Random;
 
+import javax.annotation.Nullable;
+
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
@@ -39,16 +41,19 @@ public class BlockAirshipWorkbench extends BlockEA implements ITileEntityProvide
 	}
 	
 	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) 
+	public boolean onBlockActivated(
+			World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ
+			//World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing heldItem, float side, float hitX, float hitY
+			) 
 	{
-		if (world.isRemote)
+		if (worldIn.isRemote)
         {
             return true;
         }
         else
         {
-        	player.openGui(Reference.MOD_ID, GuiHandler.GUI_AIRSHIP_WORKBENCH, world, pos.getX(), pos.getY(), pos.getZ());
-            player.addStat(StatList.CRAFTING_TABLE_INTERACTION);
+        	playerIn.openGui(Reference.MOD_ID, GuiHandler.GUI_AIRSHIP_WORKBENCH, worldIn, pos.getX(), pos.getY(), pos.getZ());
+            playerIn.addStat(StatList.CRAFTING_TABLE_INTERACTION);
             return true;
         }
 	}
@@ -68,31 +73,20 @@ public class BlockAirshipWorkbench extends BlockEA implements ITileEntityProvide
 	@Override
 	public void breakBlock(World world, BlockPos pos, IBlockState state) 
 	{
-		
-		//dropInventory(worldIn, pos.getX(), pos.getY(), pos.getZ());
-		
-		
 		TileEntityAirshipWorkbench te = (TileEntityAirshipWorkbench)world.getTileEntity(pos);
 		
-		
-		//for (int x = 0; x < 8; ++x) 
-		//{
-			//if(te.getStackInSlot(x) != null)
-			//{
-				//InventoryHelper.spawnItemStack(world, te.getPos().getX(), te.getPos().getY(), te.getPos().getZ(), te.getStackInSlot(x));
-				//te.craftMatrixInventory[x] = null;
-				
-			//}
-		//}
-		
-		InventoryHelper.dropInventoryItems(world, pos, te);
-		
-		
-		
-		//dropInventory(world, pos.getX(), pos.getY(), pos.getZ());
+		//TODO Check this!
+		for (int x = 0; x < 8; ++x) 
+		{
+			if(te.inventory.getStackInSlot(x) != null)
+			{
+				ItemStack test = te.inventory.getStackInSlot(x);
+				InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), te.inventory.getStackInSlot(x));
+				test = null;
+			}
+		}
 		
 		super.breakBlock(world, pos, state);
-		
 	}
 	
 	@Override
@@ -100,12 +94,13 @@ public class BlockAirshipWorkbench extends BlockEA implements ITileEntityProvide
 	{
 		if(stack.hasDisplayName()) 
 		{
-			((TileEntityAirshipWorkbench)world.getTileEntity(pos)).setCustomName(stack.getDisplayName());
+			((TileEntityAirshipWorkbench)world.getTileEntity(pos)).getDisplayName();
 		}
 	}
 	
 	@Override
-	public TileEntity createNewTileEntity(World worldIn, int meta) {
+	public TileEntity createNewTileEntity(World worldIn, int meta) 
+	{
 		return new TileEntityAirshipWorkbench();
 	}
 	
@@ -115,6 +110,4 @@ public class BlockAirshipWorkbench extends BlockEA implements ITileEntityProvide
 		toolTip.add(TextFormatting.GREEN + "Used to craft and dye all");
 		toolTip.add(TextFormatting.GREEN + "parts, airships and modules.");
 	}
-	
-	
 }

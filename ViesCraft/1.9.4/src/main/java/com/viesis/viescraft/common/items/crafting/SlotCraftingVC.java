@@ -5,17 +5,17 @@ import javax.annotation.Nullable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryCrafting;
-import net.minecraft.inventory.Slot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.stats.AchievementList;
+import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.SlotItemHandler;
 
-public class SlotCraftingVC extends Slot {
+public class SlotCraftingVC extends SlotItemHandler {
 	
     /** The craft matrix inventory linked to this result slot. */
     private final InventoryCrafting craftMatrix;
@@ -24,9 +24,10 @@ public class SlotCraftingVC extends Slot {
     /** The number of items that have been crafted so far. Gets passed to ItemStack.onCrafting before being reset. */
     private int amountCrafted;
     
-    public SlotCraftingVC(EntityPlayer player, InventoryCrafting craftingInventory, IInventory inventoryIn, int slotIndex, int xPosition, int yPosition)
+    public SlotCraftingVC(EntityPlayer player, InventoryCrafting craftingInventory, IItemHandler inventoryIn, int slotIndex, int xPosition, int yPosition)
     {
         super(inventoryIn, slotIndex, xPosition, yPosition);
+        
         this.thePlayer = player;
         this.craftMatrix = craftingInventory;
     }

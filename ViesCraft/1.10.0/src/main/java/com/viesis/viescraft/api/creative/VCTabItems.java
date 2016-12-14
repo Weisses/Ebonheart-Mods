@@ -2,6 +2,7 @@ package com.viesis.viescraft.api.creative;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 
 import com.viesis.viescraft.init.InitItemsVC;
 

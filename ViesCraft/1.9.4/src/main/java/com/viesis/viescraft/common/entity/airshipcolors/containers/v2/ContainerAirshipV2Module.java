@@ -2,7 +2,6 @@ package com.viesis.viescraft.common.entity.airshipcolors.containers.v2;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
-import net.minecraft.inventory.IContainerListener;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
@@ -11,7 +10,7 @@ import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV2Core;
 import com.viesis.viescraft.common.entity.airshipcolors.slots.ModuleSlotVC;
 
 public class ContainerAirshipV2Module extends Container {
-
+	
 	private EntityAirshipV2Core airship;
 	
 	/*
@@ -30,7 +29,7 @@ public class ContainerAirshipV2Module extends Container {
 		{
 			for (int x = 0; x < 1; ++x) 
 			{
-				this.addSlotToContainer(new ModuleSlotVC(airship, 1, 80, 30));
+				this.addSlotToContainer(new ModuleSlotVC(this.airship.inventory, 1, 80, 30));
 			}
 		}
 		
@@ -50,61 +49,42 @@ public class ContainerAirshipV2Module extends Container {
 		}
 	}
 	
-	public void addListener(IContainerListener listener)
+    public boolean canInteractWith(EntityPlayer playerIn)
     {
-        super.addListener(listener);
-        listener.sendAllWindowProperties(this, this.airship);
+        return true;
     }
 	
     /**
-     * Looks for changes made in the container, sends them to every listener.
+     * Take a stack from the specified inventory slot.
      */
-    public void detectAndSendChanges()
+    public ItemStack transferStackInSlot(EntityPlayer playerIn, int index)
     {
-        super.detectAndSendChanges();
+        ItemStack itemstack = null;
+        Slot slot = (Slot)this.inventorySlots.get(index);
         
-        for (int i = 0; i < this.listeners.size(); ++i)
+        if (slot != null && slot.getHasStack())
         {
-            IContainerListener icontainerlistener = (IContainerListener)this.listeners.get(i);
-        }
-    }
-	
-    public boolean canInteractWith(EntityPlayer playerIn)
-    {
-        return this.airship.isUseableByPlayer(playerIn);
-    }
-	
-	@Override
-	public ItemStack transferStackInSlot(EntityPlayer playerIn, int fromSlot) 
-	{
-		ItemStack previous = null;
-		Slot slot = (Slot) this.inventorySlots.get(fromSlot);
-		
-		if (slot != null && slot.getHasStack()) 
-		{
-			ItemStack current = slot.getStack();
-			previous = current.copy();
-			
-			// From Airship Inventory to Player Inventory
-			if (fromSlot == 0)
+            ItemStack itemstack1 = slot.getStack();
+            itemstack = itemstack1.copy();
+            
+            if (index == 0)
             {
-                if (!this.mergeItemStack(current, 1, 37, true))
+            	if (!this.mergeItemStack(itemstack1, 1, 37, true))
                 {
                     return null;
                 }
-
-                slot.onSlotChange(current, previous);
+            	
+            	slot.onSlotChange(itemstack1, itemstack);
             }
-			else 
-			{
-				// From Player Inventory to TE Inventory
-				if (!this.mergeItemStack(current, 0, 2, false))
+            else
+            {
+            	if (!this.mergeItemStack(itemstack1, 0, 1, false))
 				{
 					return null;
 				}
-			}
-			
-			if (current.stackSize == 0)
+            }
+            
+            if (itemstack1.stackSize == 0)
 			{
 				slot.putStack((ItemStack) null);
 			}
@@ -113,14 +93,14 @@ public class ContainerAirshipV2Module extends Container {
 				slot.onSlotChanged();
 			}
 			
-			if (current.stackSize == previous.stackSize)
+			if (itemstack1.stackSize == itemstack.stackSize)
 			{
 				return null;
 			}
-			
-			slot.onPickupFromSlot(playerIn, current);
-		}
-		
-		return previous;
-	}
+            
+			slot.onPickupFromSlot(playerIn, itemstack1);
+        }
+        
+        return itemstack;
+    }
 }

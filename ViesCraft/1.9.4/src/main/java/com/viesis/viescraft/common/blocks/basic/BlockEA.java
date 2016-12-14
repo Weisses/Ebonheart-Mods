@@ -17,7 +17,6 @@ public class BlockEA extends Block {
 		super(Material.CLOTH);
 		BlockHelper.setBlockName(this, unlocalizedName);
 		
-		//this.setHarvestLevel("pickaxe", 2);
 		this.setHardness(1.0F);
 		this.setSoundType(SoundType.STONE);
 		this.useNeighborBrightness=true;

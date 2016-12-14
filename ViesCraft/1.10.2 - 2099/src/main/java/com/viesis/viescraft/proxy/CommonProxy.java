@@ -8,12 +8,10 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 import com.viesis.viescraft.api.Reference;
-import com.viesis.viescraft.api.jei.JEIPlugin;
 import com.viesis.viescraft.common.AchievementTriggersVC;
-import com.viesis.viescraft.common.items.crafting.CraftingManagerVC;
 import com.viesis.viescraft.common.utils.events.EventHandlerAchievement;
-import com.viesis.viescraft.common.utils.events.EventHandlerConfig;
 import com.viesis.viescraft.common.utils.events.EventHandlerAirship;
+import com.viesis.viescraft.common.utils.events.EventHandlerConfig;
 import com.viesis.viescraft.init.InitAchievementsVC;
 import com.viesis.viescraft.init.InitBlocksVC;
 import com.viesis.viescraft.init.InitEntityVC;
@@ -39,7 +37,6 @@ public class CommonProxy {
 	public void init(FMLInitializationEvent event) 
 	{
 		InitRecipesVC.initShapedRecipe();
-		InitRecipesVC.initShapelessRecipe();
 		InitAchievementsVC.init();
 		
 		MinecraftForge.EVENT_BUS.register(new AchievementTriggersVC());

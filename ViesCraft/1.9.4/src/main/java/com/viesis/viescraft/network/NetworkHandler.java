@@ -55,9 +55,6 @@ public class NetworkHandler {
 		INSTANCE.registerMessage(MessageGuiV2ModuleInventoryLarge.class, MessageGuiV2ModuleInventoryLarge.class, 14, Side.SERVER);
 		INSTANCE.registerMessage(MessageGuiV3ModuleInventoryLarge.class, MessageGuiV3ModuleInventoryLarge.class, 15, Side.SERVER);
 		INSTANCE.registerMessage(MessageGuiV4ModuleInventoryLarge.class, MessageGuiV4ModuleInventoryLarge.class, 16, Side.SERVER);
-		
-		//INSTANCE.registerMessage(MessageV1ModuleKeyPressed.class, MessageV1ModuleKeyPressed.class, 13, Side.SERVER);
-		
 	}
 	
 	public static void sendToServer(IMessage message)

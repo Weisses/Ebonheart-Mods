@@ -13,12 +13,9 @@ import org.lwjgl.input.Keyboard;
 import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.api.util.Keybinds;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV2Core;
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV2Core;
-import com.viesis.viescraft.common.entity.airshipcolors.containers.v2.ContainerAirshipV2Default;
 import com.viesis.viescraft.common.entity.airshipcolors.containers.v2.ContainerAirshipV2Default;
 import com.viesis.viescraft.common.utils.events.EventHandlerAirship;
 import com.viesis.viescraft.network.NetworkHandler;
-import com.viesis.viescraft.network.server.v2.MessageGuiV2Module;
 import com.viesis.viescraft.network.server.v2.MessageGuiV2Module;
 
 public class GuiEntityAirshipV2Default extends GuiContainer {
@@ -94,9 +91,7 @@ public class GuiEntityAirshipV2Default extends GuiContainer {
 		//On button is green in gui
 		if(this.airshipV2.getModuleSpeedMinor()
 		|| this.airshipV2.getModuleSpeedMajor()
-		|| this.airshipV2.getModuleFuelInfinite()
-		|| this.airshipV2.getModuleStealth()
-		|| this.airshipV2.getModuleDash())
+		|| this.airshipV2.getModuleFuelInfinite())
 		{
 			this.drawTexturedModalRect(this.guiLeft + 124, this.guiTop + 61, 176, 100, 8, 8);
 		}

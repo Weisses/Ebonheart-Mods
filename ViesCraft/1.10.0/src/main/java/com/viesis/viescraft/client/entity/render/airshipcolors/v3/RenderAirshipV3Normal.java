@@ -70,12 +70,7 @@ public class RenderAirshipV3Normal extends Render<EntityAirshipV3Normal> {
             GlStateManager.enableOutlineMode(this.getTeamColor(entity));
         }
         
-        if(entity.getModuleStealth()
-        && entity.getModuleAbilityON() > 0)
-        {
-        	
-        }
-        else if(entity.getPowered() > 0)
+        if(entity.getPowered() > 0)
         {
         	this.modelAirshipOn.render(entity, partialTicks, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
         }
@@ -152,8 +147,7 @@ public class RenderAirshipV3Normal extends Render<EntityAirshipV3Normal> {
     /**
      * Returns the location of an entity's texture. Doesn't seem to be called unless you call Render.bindEntityTexture.
      */
-    protected ResourceLocation getEntityTexture(EntityAirshipV3Normal
-    		entity)
+    protected ResourceLocation getEntityTexture(EntityAirshipV3Normal entity)
     {
         return ENTITY_TEXTURE[entity.getBoatType().ordinal()];
     }

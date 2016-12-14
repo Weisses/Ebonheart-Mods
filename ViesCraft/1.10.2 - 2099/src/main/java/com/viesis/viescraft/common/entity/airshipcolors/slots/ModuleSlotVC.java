@@ -6,12 +6,14 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.SlotItemHandler;
 
 import com.viesis.viescraft.init.InitItemsVC;
 
-public class ModuleSlotVC extends Slot {
+public class ModuleSlotVC extends SlotItemHandler {
 	
-	public ModuleSlotVC(IInventory inventoryIn, int index, int xPosition, int yPosition) 
+	public ModuleSlotVC(IItemHandler inventoryIn, int index, int xPosition, int yPosition) 
 	{
 		super(inventoryIn, index, xPosition, yPosition);
 	}

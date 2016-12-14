@@ -11,6 +11,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import com.viesis.viescraft.client.gui.GuiGuidebookMain;
 import com.viesis.viescraft.client.gui.GuiGuidebookSocket;
 
 public class ItemGuidebookSocket extends Item {
@@ -25,6 +26,8 @@ public class ItemGuidebookSocket extends Item {
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand)
     {
+        //ItemStack itemStackIn = playerIn.getHeldItem(handIn);
+        
 		if(worldIn.isRemote)
 		{
 			Minecraft.getMinecraft().displayGuiScreen(new GuiGuidebookSocket());

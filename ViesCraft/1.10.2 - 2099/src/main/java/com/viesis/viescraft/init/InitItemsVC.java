@@ -3,9 +3,7 @@ package com.viesis.viescraft.init;
 import java.util.HashSet;
 import java.util.Set;
 
-import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
-import net.minecraft.item.Item.ToolMaterial;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import com.viesis.viescraft.api.ItemsVC;
@@ -133,23 +131,23 @@ public class InitItemsVC extends ItemsVC {
 		//module_stealth = registerItem(new ItemModuleStealth());
 		//module_dash = registerItem(new ItemModuleDash());
 		
-		item_airship_normal = registerItem(new ItemAirshipV1Normal());
-		item_airship_black = registerItem(new ItemAirshipV1Black());
-		item_airship_blue = registerItem(new ItemAirshipV1Blue());
-		item_airship_brown = registerItem(new ItemAirshipV1Brown());
-		item_airship_cyan = registerItem(new ItemAirshipV1Cyan());
-		item_airship_gray = registerItem(new ItemAirshipV1Gray());
-		item_airship_green = registerItem(new ItemAirshipV1Green());
-		item_airship_lightblue = registerItem(new ItemAirshipV1LightBlue());
-		item_airship_lightgray = registerItem(new ItemAirshipV1LightGray());
-		item_airship_lime = registerItem(new ItemAirshipV1Lime());
-		item_airship_magenta = registerItem(new ItemAirshipV1Magenta());
-		item_airship_orange = registerItem(new ItemAirshipV1Orange());
-		item_airship_pink = registerItem(new ItemAirshipV1Pink());
-		item_airship_purple = registerItem(new ItemAirshipV1Purple());
-		item_airship_red = registerItem(new ItemAirshipV1Red());
-		item_airship_white = registerItem(new ItemAirshipV1White());
-		item_airship_yellow = registerItem(new ItemAirshipV1Yellow());
+		item_airship_v1_normal = registerItem(new ItemAirshipV1Normal());
+		item_airship_v1_black = registerItem(new ItemAirshipV1Black());
+		item_airship_v1_blue = registerItem(new ItemAirshipV1Blue());
+		item_airship_v1_brown = registerItem(new ItemAirshipV1Brown());
+		item_airship_v1_cyan = registerItem(new ItemAirshipV1Cyan());
+		item_airship_v1_gray = registerItem(new ItemAirshipV1Gray());
+		item_airship_v1_green = registerItem(new ItemAirshipV1Green());
+		item_airship_v1_lightblue = registerItem(new ItemAirshipV1LightBlue());
+		item_airship_v1_lightgray = registerItem(new ItemAirshipV1LightGray());
+		item_airship_v1_lime = registerItem(new ItemAirshipV1Lime());
+		item_airship_v1_magenta = registerItem(new ItemAirshipV1Magenta());
+		item_airship_v1_orange = registerItem(new ItemAirshipV1Orange());
+		item_airship_v1_pink = registerItem(new ItemAirshipV1Pink());
+		item_airship_v1_purple = registerItem(new ItemAirshipV1Purple());
+		item_airship_v1_red = registerItem(new ItemAirshipV1Red());
+		item_airship_v1_white = registerItem(new ItemAirshipV1White());
+		item_airship_v1_yellow = registerItem(new ItemAirshipV1Yellow());
 		item_airship_v1_admin = registerItem(new ItemAirshipV1Admin());
 		
 		item_airship_v2_normal = registerItem(new ItemAirshipV2Normal());

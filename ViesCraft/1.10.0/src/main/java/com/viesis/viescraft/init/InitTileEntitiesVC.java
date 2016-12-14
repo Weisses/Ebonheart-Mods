@@ -13,8 +13,6 @@ public final class InitTileEntitiesVC {
 	
 	public static void register()
 	{
-		//////GameRegistry.registerTileEntity(TileEntityAirshipWorkbench.class, "tile_entity_airship_workbench");
 		
-		//GameRegistry.registerTileEntity(TestTileEntity.class, "tile_entity");
 	}
 }
