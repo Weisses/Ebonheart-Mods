@@ -1,0 +1,6 @@
+{
+    "parent": "item/handheld",
+    "textures": {
+        "layer0": "vd:items/item_player_dismounter"
+    }
+}

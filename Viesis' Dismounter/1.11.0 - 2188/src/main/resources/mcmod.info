@@ -1,0 +1,16 @@
+[
+{
+  "modid": "vd",
+  "name": "Viesis' Dismounter",
+  "description": "Take back control of your minecarts!",
+  "version": "v1.1a",
+  "mcversion": "1.11.0",
+  "url": "N/A",
+  "updateUrl": "",
+  "authorList": ["Viesis"],
+  "credits": "Viesis' Dismounter is a trademark of Viesis!",
+  "logoFile": "assets/vd/textures/logo.png",
+  "screenshots": [],
+  "dependencies": []
+}
+]

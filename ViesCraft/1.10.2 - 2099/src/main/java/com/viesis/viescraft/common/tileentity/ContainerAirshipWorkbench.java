@@ -1,5 +1,7 @@
 package com.viesis.viescraft.common.tileentity;
 
+import javax.annotation.Nullable;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -38,7 +40,7 @@ public class ContainerAirshipWorkbench extends Container {
         loadCraftingMatrix();
         
         //CraftResult Slot, Slot 0, Slot ID 0
-        this.addSlotToContainer(new SlotCrafting(playerInventory.player, this.craftMatrix, this.craftResult, 0, 124, 35));
+        this.addSlotToContainer(new SlotCraftingVC(playerInventory.player, this.craftMatrix, this.craftResult, 0, 124, 35));
         
         //Craft Matrix, Slot 1-9, Slot ID 0
         for (int i = 0; i < 3; ++i)
@@ -119,28 +121,45 @@ public class ContainerAirshipWorkbench extends Container {
     /**
      * Take a stack from the specified inventory slot.
      */
+    @Nullable
     public ItemStack transferStackInSlot(EntityPlayer playerIn, int index)
     {
         ItemStack itemstack = null;
         Slot slot = (Slot)this.inventorySlots.get(index);
-        
+
         if (slot != null && slot.getHasStack())
         {
             ItemStack itemstack1 = slot.getStack();
             itemstack = itemstack1.copy();
-            
-            if (index < 3 * 9)
+
+            if (index == 0)
             {
-                if (!this.mergeItemStack(itemstack1, 3 * 9, this.inventorySlots.size(), true))
+                if (!this.mergeItemStack(itemstack1, 10, 46, true))
+                {
+                    return null;
+                }
+
+                slot.onSlotChange(itemstack1, itemstack);
+            }
+            else if (index >= 10 && index < 37)
+            {
+                if (!this.mergeItemStack(itemstack1, 37, 46, false))
                 {
                     return null;
                 }
             }
-            else if (!this.mergeItemStack(itemstack1, 0, 3 * 9, false))
+            else if (index >= 37 && index < 46)
+            {
+                if (!this.mergeItemStack(itemstack1, 10, 37, false))
+                {
+                    return null;
+                }
+            }
+            else if (!this.mergeItemStack(itemstack1, 10, 46, false))
             {
                 return null;
             }
-            
+
             if (itemstack1.stackSize == 0)
             {
                 slot.putStack((ItemStack)null);
@@ -149,11 +168,18 @@ public class ContainerAirshipWorkbench extends Container {
             {
                 slot.onSlotChanged();
             }
+
+            if (itemstack1.stackSize == itemstack.stackSize)
+            {
+                return null;
+            }
+
+            slot.onPickupFromSlot(playerIn, itemstack1);
         }
-        
+
         return itemstack;
     }
-    
+
     /**
      * Called to determine if the current slot is valid for the stack merging (double-click) code. The stack passed in
      * is null for the initial slot that was double-clicked.

@@ -1,0 +1,76 @@
+package com.viesis.dismounter.common.items;
+
+import java.util.List;
+
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+public class ItemPlayerDismounter extends Item {
+	
+	public ItemPlayerDismounter() 
+	{
+		this.setMaxStackSize(1);
+		this.setMaxDamage(25);
+		ItemHelper.setItemName(this, "item_player_dismounter");
+	}
+	
+	@SideOnly(Side.CLIENT)
+    public boolean isFull3D()
+    {
+        return true;
+    }
+	
+	@Override
+	public boolean onBlockDestroyed(ItemStack stack, World worldIn, IBlockState state, BlockPos pos, EntityLivingBase entityLiving)
+    {
+        stack.damageItem(1, entityLiving);
+        return true;
+    }
+	
+	@Override
+    public boolean itemInteractionForEntity(ItemStack itemstack, net.minecraft.entity.player.EntityPlayer player, EntityLivingBase entity, net.minecraft.util.EnumHand hand)
+    {
+        if (entity.worldObj.isRemote)
+        {
+            return false;
+        }
+        
+        if (!(entity instanceof EntityPlayer)
+        && (entity.getRidingEntity() != null))
+        {
+        	itemstack.damageItem(1, entity);
+        	
+        	entity.dismountRidingEntity();
+        	
+            return true;
+        }
+        
+        if (entity instanceof EntityPlayer
+        && (entity.getRidingEntity() != null))
+        {
+        	itemstack.damageItem(1, entity);
+        	
+        	entity.dismountRidingEntity();
+        	
+            return true;
+        }
+        
+        return false;
+    }
+	
+	@SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack stack, EntityPlayer playerIn, List toolTip, boolean advanced) 
+	{
+		toolTip.add(TextFormatting.GREEN + "Right Click a mounted entity");
+		toolTip.add(TextFormatting.GREEN + "to safely dismount it!");
+		toolTip.add(TextFormatting.GREEN + "(Works on players.)");
+	}
+}
