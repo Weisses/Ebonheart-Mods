@@ -329,11 +329,6 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
                     	}
                 	}
             	    
-            	    if (drop4 < 35)
-                	{
-            	    	this.dropItemWithOffset(Items.MINECART, 1, 0.0F);
-                	}
-            	    
             	    if (drop5 < 15)
                 	{
             	    	this.dropItemWithOffset(InitItemsVC.airship_ignition, 1, 0.0F);
@@ -444,13 +439,13 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
             	else if(isClientAirshipBurning()
             	&& this.getModuleSpeedMinor())
             	{
-            		f += AirshipSpeedForward + (AirshipSpeedForward * 0.25F);
+            		f += AirshipSpeedForward + 0.008F;
             	}
             	//If airship is on & major speed module installed
             	else if(isClientAirshipBurning()
             	&& this.getModuleSpeedMajor())
             	{
-            		f += AirshipSpeedForward + (AirshipSpeedForward * 0.5F);
+            		f += AirshipSpeedForward + 0.016F;
             	}
             	//If airship is on
             	else if(isClientAirshipBurning())
@@ -489,13 +484,13 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
             	else if(isClientAirshipBurning()
             	&& this.getModuleSpeedMinor())
             	{
-            		f -= (AirshipSpeedForward * 0.5) + ((AirshipSpeedForward * 0.5)* 0.25);
+            		f -= (AirshipSpeedForward * 0.5) + 0.004F;
             	}
             	//If airship is on & major speed module installed
             	else if(isClientAirshipBurning()
             	&& this.getModuleSpeedMajor())
             	{
-            		f -= (AirshipSpeedForward * 0.5) + ((AirshipSpeedForward * 0.5)* 0.5);
+            		f -= (AirshipSpeedForward * 0.5) + 0.008F;
             	}
             	//If airship is on
             	else if(isClientAirshipBurning())
@@ -534,13 +529,13 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
             	else if(isClientAirshipBurning()
             	&& this.getModuleSpeedMinor())
             	{
-            		f1 += AirshipSpeedUp + (AirshipSpeedUp * 0.25);
+            		f1 += AirshipSpeedUp;
             	}
             	//If airship is on & major speed module installed
             	else if(isClientAirshipBurning()
             	&& this.getModuleSpeedMajor())
             	{
-            		f1 += AirshipSpeedUp + (AirshipSpeedUp * 0.5);
+            		f1 += AirshipSpeedUp;
             	}
             	//If airship is on
             	else if(isClientAirshipBurning())

@@ -11,8 +11,7 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 
-import com.viesis.viescraft.ViesCraft;
-import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipV1Black;
+import com.viesis.viescraft.common.entity.airshipitems.v1.wood0.EntityItemAirshipV1Wood0Black;
 import com.viesis.viescraft.common.items.ItemHelper;
 import com.viesis.viescraft.common.items.airshipitems.ItemAirshipCore;
 import com.viesis.viescraft.configs.ViesCraftConfig;
@@ -41,7 +40,7 @@ public class ItemAirshipV1Black extends ItemAirshipCore {
 			
 			if (!worldIn.isRemote)
 			{
-				EntityItemAirshipV1Black entityairship = new EntityItemAirshipV1Black(worldIn, playerIn);
+				EntityItemAirshipV1Wood0Black entityairship = new EntityItemAirshipV1Wood0Black(worldIn, playerIn);
 				entityairship.setHeadingFromThrower(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, -20.0F, 0.7F, 1.0F);
 				worldIn.spawnEntityInWorld(entityairship);
 			}
