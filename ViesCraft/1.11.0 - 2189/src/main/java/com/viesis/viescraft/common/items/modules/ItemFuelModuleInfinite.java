@@ -10,6 +10,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import com.viesis.viescraft.ViesCraft;
 import com.viesis.viescraft.common.items.ItemHelper;
 
 public class ItemFuelModuleInfinite extends Item {
@@ -18,6 +19,7 @@ public class ItemFuelModuleInfinite extends Item {
 	{
 		ItemHelper.setItemName(this, "module_fuel_infinite");
 		this.setMaxStackSize(1);
+		this.setCreativeTab(ViesCraft.tabViesCraftItems);
 	}
 	
 	@SideOnly(Side.CLIENT)

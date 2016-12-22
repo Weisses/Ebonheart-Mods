@@ -1,0 +1,6 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "vc:items/v1/redstone/item_airship_v1_redstone_admin"
+    }
+}

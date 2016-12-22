@@ -13,6 +13,19 @@ public class ItemsVC {
 	public static Item airship_ignition;
 	public static Item airship_engine;
 	
+	public static Item airship_frame_wood0;//Oak
+	public static Item airship_frame_wood1;//Spruce
+	public static Item airship_frame_wood2;//Birch
+	public static Item airship_frame_wood3;//Jungle
+	public static Item airship_frame_wood4;//Acacia
+	public static Item airship_frame_wood5;//Dark Oak
+	public static Item airship_frame_iron;
+	public static Item airship_frame_redstone;
+	public static Item airship_frame_gold;
+	public static Item airship_frame_lapislazuli;
+	public static Item airship_frame_diamond;
+	public static Item airship_frame_emerald;
+	
 	public static Item airship_dismounter;
 	
 	public static Item module_chip;
@@ -22,12 +35,153 @@ public class ItemsVC {
 	public static Item module_inventory_large;
 	public static Item module_speed_increase_minor;
 	public static Item module_speed_increase_major;
-	//public static Item module_fuel_efficiency;
 	public static Item module_fuel_infinite;
 	
 	//Active
 	//public static Item module_stealth;
 	//public static Item module_dash;
+	
+	//Wood - Oak V1 Airships
+	public static Item item_airship_v1_wood0_normal;
+	public static Item item_airship_v1_wood0_black;
+	public static Item item_airship_v1_wood0_blue;
+	public static Item item_airship_v1_wood0_brown;
+	public static Item item_airship_v1_wood0_cyan;
+	public static Item item_airship_v1_wood0_gray;
+	public static Item item_airship_v1_wood0_green;
+	public static Item item_airship_v1_wood0_lightblue;
+	public static Item item_airship_v1_wood0_lightgray;
+	public static Item item_airship_v1_wood0_lime;
+	public static Item item_airship_v1_wood0_magenta;
+	public static Item item_airship_v1_wood0_orange;
+	public static Item item_airship_v1_wood0_pink;
+	public static Item item_airship_v1_wood0_purple;
+	public static Item item_airship_v1_wood0_red;
+	public static Item item_airship_v1_wood0_white;
+	public static Item item_airship_v1_wood0_yellow;
+	public static Item item_airship_v1_wood0_admin;
+	
+	//Iron V1 Airships
+	public static Item item_airship_v1_iron_normal;
+	public static Item item_airship_v1_iron_black;
+	public static Item item_airship_v1_iron_blue;
+	public static Item item_airship_v1_iron_brown;
+	public static Item item_airship_v1_iron_cyan;
+	public static Item item_airship_v1_iron_gray;
+	public static Item item_airship_v1_iron_green;
+	public static Item item_airship_v1_iron_lightblue;
+	public static Item item_airship_v1_iron_lightgray;
+	public static Item item_airship_v1_iron_lime;
+	public static Item item_airship_v1_iron_magenta;
+	public static Item item_airship_v1_iron_orange;
+	public static Item item_airship_v1_iron_pink;
+	public static Item item_airship_v1_iron_purple;
+	public static Item item_airship_v1_iron_red;
+	public static Item item_airship_v1_iron_white;
+	public static Item item_airship_v1_iron_yellow;
+	public static Item item_airship_v1_iron_admin;
+	
+	//Redstone V1 Airships
+	public static Item item_airship_v1_redstone_normal;
+	public static Item item_airship_v1_redstone_black;
+	public static Item item_airship_v1_redstone_blue;
+	public static Item item_airship_v1_redstone_brown;
+	public static Item item_airship_v1_redstone_cyan;
+	public static Item item_airship_v1_redstone_gray;
+	public static Item item_airship_v1_redstone_green;
+	public static Item item_airship_v1_redstone_lightblue;
+	public static Item item_airship_v1_redstone_lightgray;
+	public static Item item_airship_v1_redstone_lime;
+	public static Item item_airship_v1_redstone_magenta;
+	public static Item item_airship_v1_redstone_orange;
+	public static Item item_airship_v1_redstone_pink;
+	public static Item item_airship_v1_redstone_purple;
+	public static Item item_airship_v1_redstone_red;
+	public static Item item_airship_v1_redstone_white;
+	public static Item item_airship_v1_redstone_yellow;
+	public static Item item_airship_v1_redstone_admin;
+	
+	//Gold V1 Airships
+	public static Item item_airship_v1_gold_normal;
+	public static Item item_airship_v1_gold_black;
+	public static Item item_airship_v1_gold_blue;
+	public static Item item_airship_v1_gold_brown;
+	public static Item item_airship_v1_gold_cyan;
+	public static Item item_airship_v1_gold_gray;
+	public static Item item_airship_v1_gold_green;
+	public static Item item_airship_v1_gold_lightblue;
+	public static Item item_airship_v1_gold_lightgray;
+	public static Item item_airship_v1_gold_lime;
+	public static Item item_airship_v1_gold_magenta;
+	public static Item item_airship_v1_gold_orange;
+	public static Item item_airship_v1_gold_pink;
+	public static Item item_airship_v1_gold_purple;
+	public static Item item_airship_v1_gold_red;
+	public static Item item_airship_v1_gold_white;
+	public static Item item_airship_v1_gold_yellow;
+	public static Item item_airship_v1_gold_admin;
+	
+	//Lapis Lazuli V1 Airships
+	public static Item item_airship_v1_lapislazuli_normal;
+	public static Item item_airship_v1_lapislazuli_black;
+	public static Item item_airship_v1_lapislazuli_blue;
+	public static Item item_airship_v1_lapislazuli_brown;
+	public static Item item_airship_v1_lapislazuli_cyan;
+	public static Item item_airship_v1_lapislazuli_gray;
+	public static Item item_airship_v1_lapislazuli_green;
+	public static Item item_airship_v1_lapislazuli_lightblue;
+	public static Item item_airship_v1_lapislazuli_lightgray;
+	public static Item item_airship_v1_lapislazuli_lime;
+	public static Item item_airship_v1_lapislazuli_magenta;
+	public static Item item_airship_v1_lapislazuli_orange;
+	public static Item item_airship_v1_lapislazuli_pink;
+	public static Item item_airship_v1_lapislazuli_purple;
+	public static Item item_airship_v1_lapislazuli_red;
+	public static Item item_airship_v1_lapislazuli_white;
+	public static Item item_airship_v1_lapislazuli_yellow;
+	public static Item item_airship_v1_lapislazuli_admin;
+	
+	//Diamond V1 Airships
+	public static Item item_airship_v1_diamond_normal;
+	public static Item item_airship_v1_diamond_black;
+	public static Item item_airship_v1_diamond_blue;
+	public static Item item_airship_v1_diamond_brown;
+	public static Item item_airship_v1_diamond_cyan;
+	public static Item item_airship_v1_diamond_gray;
+	public static Item item_airship_v1_diamond_green;
+	public static Item item_airship_v1_diamond_lightblue;
+	public static Item item_airship_v1_diamond_lightgray;
+	public static Item item_airship_v1_diamond_lime;
+	public static Item item_airship_v1_diamond_magenta;
+	public static Item item_airship_v1_diamond_orange;
+	public static Item item_airship_v1_diamond_pink;
+	public static Item item_airship_v1_diamond_purple;
+	public static Item item_airship_v1_diamond_red;
+	public static Item item_airship_v1_diamond_white;
+	public static Item item_airship_v1_diamond_yellow;
+	public static Item item_airship_v1_diamond_admin;
+	
+	//Emerald V1 Airships
+	public static Item item_airship_v1_emerald_normal;
+	public static Item item_airship_v1_emerald_black;
+	public static Item item_airship_v1_emerald_blue;
+	public static Item item_airship_v1_emerald_brown;
+	public static Item item_airship_v1_emerald_cyan;
+	public static Item item_airship_v1_emerald_gray;
+	public static Item item_airship_v1_emerald_green;
+	public static Item item_airship_v1_emerald_lightblue;
+	public static Item item_airship_v1_emerald_lightgray;
+	public static Item item_airship_v1_emerald_lime;
+	public static Item item_airship_v1_emerald_magenta;
+	public static Item item_airship_v1_emerald_orange;
+	public static Item item_airship_v1_emerald_pink;
+	public static Item item_airship_v1_emerald_purple;
+	public static Item item_airship_v1_emerald_red;
+	public static Item item_airship_v1_emerald_white;
+	public static Item item_airship_v1_emerald_yellow;
+	public static Item item_airship_v1_emerald_admin;
+	
+	
 	
 	public static Item item_airship_v1_normal;
 	public static Item item_airship_v1_black;

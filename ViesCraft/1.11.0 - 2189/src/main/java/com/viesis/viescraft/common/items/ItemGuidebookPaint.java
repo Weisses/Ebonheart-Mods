@@ -1,5 +1,6 @@
 package com.viesis.viescraft.common.items;
 
+import com.viesis.viescraft.ViesCraft;
 import com.viesis.viescraft.client.gui.GuiGuidebookMain;
 import com.viesis.viescraft.client.gui.GuiGuidebookPaint;
 import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipV1Admin;
@@ -24,6 +25,7 @@ public class ItemGuidebookPaint extends Item {
 	{
 		ItemHelper.setItemName(this, "guidebook_paint");
 		this.setMaxStackSize(64);
+		this.setCreativeTab(ViesCraft.tabViesCraftItems);
 	}
 	
 	@SideOnly(Side.CLIENT)

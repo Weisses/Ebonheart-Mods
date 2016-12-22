@@ -75,6 +75,32 @@ public class EntityAirshipBaseVC extends Entity {
     public float AirshipSpeedUp;
     public float AirshipSpeedDown;
 	
+    protected String Wood0 = "Oak ";
+    protected String Iron = "Iron ";
+    protected String Redstone = "Redstone ";
+    protected String Gold = "Gold ";
+    protected String LapisLazuli = "Lapis Lazuli ";
+    protected String Diamond = "Diamond ";
+    protected String Emerald = "Emerald ";
+    
+    protected String Black = "Black ";
+    protected String Blue = "Blue ";
+    protected String Brown = "Brown ";
+    protected String Cyan = "Cyan ";
+    protected String Gray = "Gray ";
+    protected String Green = "Green ";
+    protected String LightBlue = "Light Blue ";
+    protected String LightGray = "Light Gray ";
+    protected String Lime = "Lime ";
+    protected String Magenta = "Magenta ";
+    protected String Orange = "Orange ";
+    protected String Pink = "Pink ";
+    protected String Purple = "Purple ";
+    protected String Red = "Red ";
+    protected String White = "White ";
+    protected String Yellow = "Yellow ";
+    protected String Admin = "Admin ";
+    
     public EntityAirshipBaseVC(World worldIn)
     {
         super(worldIn);

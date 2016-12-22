@@ -12,6 +12,10 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.api.creative.VCTabAirships;
+import com.viesis.viescraft.api.creative.VCTabAirshipsV1;
+import com.viesis.viescraft.api.creative.VCTabAirshipsV2;
+import com.viesis.viescraft.api.creative.VCTabAirshipsV3;
+import com.viesis.viescraft.api.creative.VCTabAirshipsV4;
 import com.viesis.viescraft.api.creative.VCTabBlocks;
 import com.viesis.viescraft.api.creative.VCTabItems;
 import com.viesis.viescraft.api.util.LogHelper;
@@ -26,7 +30,12 @@ public class ViesCraft {
     
 	public static final VCTabBlocks tabViesCraftBlocks = new VCTabBlocks("tabViesCraftBlocks");
 	public static final VCTabItems tabViesCraftItems = new VCTabItems("tabViesCraftItems");
-	public static final VCTabAirships tabViesCraftAirships = new VCTabAirships("tabViesCraftAirships");
+	//public static final VCTabAirships tabViesCraftAirships = new VCTabAirships("tabViesCraftAirships");
+	
+	public static final VCTabAirshipsV1 tabViesCraftAirshipsV1 = new VCTabAirshipsV1("tabViesCraftAirshipsV1");
+	public static final VCTabAirshipsV2 tabViesCraftAirshipsV2 = new VCTabAirshipsV2("tabViesCraftAirshipsV2");
+	public static final VCTabAirshipsV3 tabViesCraftAirshipsV3 = new VCTabAirshipsV3("tabViesCraftAirshipsV3");
+	public static final VCTabAirshipsV4 tabViesCraftAirshipsV4 = new VCTabAirshipsV4("tabViesCraftAirshipsV4");
 	
 	private static File configDir;
 	

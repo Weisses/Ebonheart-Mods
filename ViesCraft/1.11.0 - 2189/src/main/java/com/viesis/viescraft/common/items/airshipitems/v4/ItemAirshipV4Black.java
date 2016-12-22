@@ -22,7 +22,7 @@ public class ItemAirshipV4Black extends ItemAirshipCore {
 	public ItemAirshipV4Black() 
 	{
 		ItemHelper.setItemName(this, "item_airship_v4_black");
-		this.setCreativeTab(ViesCraft.tabViesCraftAirships);
+		//this.setCreativeTab(ViesCraft.tabViesCraftAirships);
 	}
 	
 	@Override

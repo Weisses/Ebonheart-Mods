@@ -11,6 +11,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import com.viesis.viescraft.ViesCraft;
 import com.viesis.viescraft.client.gui.GuiGuidebookMain;
 import com.viesis.viescraft.client.gui.GuiGuidebookSocket;
 
@@ -20,6 +21,7 @@ public class ItemGuidebookSocket extends Item {
 	{
 		ItemHelper.setItemName(this, "guidebook_socket");
 		this.setMaxStackSize(64);
+		this.setCreativeTab(ViesCraft.tabViesCraftItems);
 	}
 	
 	@SideOnly(Side.CLIENT)

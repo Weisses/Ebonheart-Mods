@@ -15,6 +15,6 @@ public class ItemHelper extends Item {
 	{
 		item.setRegistryName(itemName);
 		item.setUnlocalizedName(item.getRegistryName().toString());
-		item.setCreativeTab(ViesCraft.tabViesCraftItems);
+		//item.setCreativeTab(ViesCraft.tabViesCraftItems);
 	}
 }

@@ -14,6 +14,7 @@ import com.viesis.viescraft.common.utils.events.EventHandlerAirship;
 import com.viesis.viescraft.common.utils.events.EventHandlerConfig;
 import com.viesis.viescraft.init.InitAchievementsVC;
 import com.viesis.viescraft.init.InitBlocksVC;
+import com.viesis.viescraft.init.InitEntityV1VC;
 import com.viesis.viescraft.init.InitEntityVC;
 import com.viesis.viescraft.init.InitItemsVC;
 import com.viesis.viescraft.init.InitRecipesVC;
@@ -29,7 +30,9 @@ public class CommonProxy {
 		InitItemsVC.preInit();
 		InitBlocksVC.preInit();
 		InitTileEntitiesVC.preInit();
-		InitEntityVC.preInit();
+		//InitEntityVC.preInit();
+		
+		InitEntityV1VC.preInit();
 		
 		NetworkHandler.preInit();
 	}

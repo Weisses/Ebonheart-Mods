@@ -22,7 +22,7 @@ public class ItemAirshipV3Admin extends ItemAirshipCore {
 	public ItemAirshipV3Admin() 
 	{
 		ItemHelper.setItemName(this, "item_airship_v3_admin");
-		this.setCreativeTab(ViesCraft.tabViesCraftAirships);
+		//this.setCreativeTab(ViesCraft.tabViesCraftAirships);
 	}
 	
 	@Override
