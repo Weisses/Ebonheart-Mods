@@ -39,7 +39,7 @@ public class ClientProxy extends CommonProxy {
 		InitItemsVCRender.registerRenders();
 		InitBlocksVCRender.registerRenders();
 		InitTileEntityVCRender.registerRenders();
-		//InitEntityVCRender.registerRenders();
+		InitEntityVCRender.registerRenders();
 		
 		InitEntityV1VCRender.registerRenders();
 		

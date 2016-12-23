@@ -23,6 +23,7 @@ public class ItemsVC {
 	public static Item airship_frame_redstone;
 	public static Item airship_frame_gold;
 	public static Item airship_frame_lapislazuli;
+	public static Item airship_frame_obsidian;
 	public static Item airship_frame_diamond;
 	public static Item airship_frame_emerald;
 	
@@ -141,6 +142,26 @@ public class ItemsVC {
 	public static Item item_airship_v1_lapislazuli_yellow;
 	public static Item item_airship_v1_lapislazuli_admin;
 	
+	//Obsidian V1 Airships
+	public static Item item_airship_v1_obsidian_normal;
+	public static Item item_airship_v1_obsidian_black;
+	public static Item item_airship_v1_obsidian_blue;
+	public static Item item_airship_v1_obsidian_brown;
+	public static Item item_airship_v1_obsidian_cyan;
+	public static Item item_airship_v1_obsidian_gray;
+	public static Item item_airship_v1_obsidian_green;
+	public static Item item_airship_v1_obsidian_lightblue;
+	public static Item item_airship_v1_obsidian_lightgray;
+	public static Item item_airship_v1_obsidian_lime;
+	public static Item item_airship_v1_obsidian_magenta;
+	public static Item item_airship_v1_obsidian_orange;
+	public static Item item_airship_v1_obsidian_pink;
+	public static Item item_airship_v1_obsidian_purple;
+	public static Item item_airship_v1_obsidian_red;
+	public static Item item_airship_v1_obsidian_white;
+	public static Item item_airship_v1_obsidian_yellow;
+	public static Item item_airship_v1_obsidian_admin;
+		
 	//Diamond V1 Airships
 	public static Item item_airship_v1_diamond_normal;
 	public static Item item_airship_v1_diamond_black;

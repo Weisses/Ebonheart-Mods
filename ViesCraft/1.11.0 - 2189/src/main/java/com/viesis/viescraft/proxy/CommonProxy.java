@@ -30,7 +30,7 @@ public class CommonProxy {
 		InitItemsVC.preInit();
 		InitBlocksVC.preInit();
 		InitTileEntitiesVC.preInit();
-		//InitEntityVC.preInit();
+		InitEntityVC.preInit();
 		
 		InitEntityV1VC.preInit();
 		

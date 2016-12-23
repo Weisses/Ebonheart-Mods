@@ -152,10 +152,11 @@ import com.viesis.viescraft.common.entity.airshipitems.v4.EntityItemAirshipV4Yel
 
 public class InitEntityVC {
 	
-	private static int entityID = 1;
+	private static int entityID = 1000;
 	
 	public static void preInit()
 	{
+		/**
 		register("item_airship_v1_normal", EntityItemAirshipV1Normal.class, "item.airship.v1.normal", 64, 20, true);
 		register("item_airship_v1_black", EntityItemAirshipV1Black.class, "item.airship.v1.black", 64, 20, true);
 		register("item_airship_v1_blue", EntityItemAirshipV1Blue.class, "item.airship.v1.blue", 64, 20, true);
@@ -174,7 +175,7 @@ public class InitEntityVC {
 		register("item_airship_v1_white", EntityItemAirshipV1White.class, "item.airship.v1.white", 64, 20, true);
 		register("item_airship_v1_yellow", EntityItemAirshipV1Yellow.class, "item.airship.v1.yellow", 64, 20, true);
 		register("item_airship_v1_admin", EntityItemAirshipV1Admin.class, "item.airship.v1.admin", 64, 20, true);
-		
+		*/
 		register("item_airship_v2_normal", EntityItemAirshipV2Normal.class, "item.airship.v2.normal", 64, 20, true);
 		register("item_airship_v2_black", EntityItemAirshipV2Black.class, "item.airship.v2.black", 64, 20, true);
 		register("item_airship_v2_blue", EntityItemAirshipV2Blue.class, "item.airship.v2.blue", 64, 20, true);

@@ -80,6 +80,7 @@ public class EntityAirshipBaseVC extends Entity {
     protected String Redstone = "Redstone ";
     protected String Gold = "Gold ";
     protected String LapisLazuli = "Lapis Lazuli ";
+    protected String Obsidian = "Obsidian ";
     protected String Diamond = "Diamond ";
     protected String Emerald = "Emerald ";
     

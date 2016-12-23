@@ -1,6 +1,7 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "vc:items/v1/redstone/item_airship_v1_redstone_purple"
+        "layer0": "vc:items/v1/item_airship_v1_color_purple",
+        "layer1": "vc:items/v1/item_airship_v1_frame_redstone"
     }
 }

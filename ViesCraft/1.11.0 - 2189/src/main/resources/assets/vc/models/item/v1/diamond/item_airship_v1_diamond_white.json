@@ -1,6 +1,7 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "vc:items/v1/diamond/item_airship_v1_diamond_white"
+        "layer0": "vc:items/v1/item_airship_v1_color_white",
+        "layer1": "vc:items/v1/item_airship_v1_frame_diamond"
     }
 }

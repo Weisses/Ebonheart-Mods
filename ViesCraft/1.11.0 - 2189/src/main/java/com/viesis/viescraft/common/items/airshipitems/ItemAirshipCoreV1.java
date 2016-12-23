@@ -19,6 +19,7 @@ public class ItemAirshipCoreV1 extends Item {
     protected String Redstone = "Redstone ";
     protected String Gold = "Gold ";
     protected String LapisLazuli = "Lapis Lazuli ";
+    protected String Obsidian = "Obsidian ";
     protected String Diamond = "Diamond ";
     protected String Emerald = "Emerald ";
     

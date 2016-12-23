@@ -23,7 +23,7 @@ public class RenderAirshipV1DiamondAdmin extends Render<EntityAirshipV1DiamondAd
 	private static final ResourceLocation[] ENTITY_TEXTURE = new ResourceLocation[] 
 	{
 		new ResourceLocation(Reference.MOD_ID, "textures/models/v1/airship_v1_color_admin.png"),
-		new ResourceLocation(Reference.MOD_ID, "textures/models/v1/airship_v1_frame_admin.png")
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v1/airship_v1_frame_admin_diamond.png")
 	};
 	
 	/** Instance of Color Model for rendering. */
