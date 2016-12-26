@@ -3,6 +3,7 @@ package com.viesis.viescraft.common.entity.airshipcolors.v1;
 import net.minecraft.item.Item;
 import net.minecraft.world.World;
 
+import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 
@@ -46,7 +47,7 @@ public class EntityV1Gold extends EntityAirshipV1Core {
 	@Override
 	public String getName() 
 	{
-		return this.hasCustomName() ? this.customName : "Gold " + this.getBoatType().getName() + " " + ViesCraftConfig.v1AirshipName;
+		return this.hasCustomName() ? this.customName : Reference.GOLD + this.getBoatType().getName() + " " + ViesCraftConfig.v1AirshipName;
 	}
 	
 	@Override

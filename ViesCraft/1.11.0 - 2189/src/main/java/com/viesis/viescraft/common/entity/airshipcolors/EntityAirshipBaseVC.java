@@ -101,15 +101,6 @@ public class EntityAirshipBaseVC extends Entity {
     public float AirshipSpeedUp;
     public float AirshipSpeedDown;
 	
-    protected String Wood0 = "Oak ";
-    protected String Iron = "Iron ";
-    protected String Redstone = "Redstone ";
-    protected String Gold = "Gold ";
-    protected String LapisLazuli = "Lapis Lazuli ";
-    protected String Obsidian = "Obsidian ";
-    protected String Diamond = "Diamond ";
-    protected String Emerald = "Emerald ";
-    
     public EntityAirshipBaseVC(World worldIn)
     {
         super(worldIn);
@@ -822,7 +813,7 @@ public class EntityAirshipBaseVC extends Entity {
     public static enum Type
     {
         
-    	NORMAL(0, ""),
+    	NORMAL(0, "Plain"),
     	BLACK(1, "Black"),
         BLUE(2, "Blue"),
         BROWN(3, "Brown"),

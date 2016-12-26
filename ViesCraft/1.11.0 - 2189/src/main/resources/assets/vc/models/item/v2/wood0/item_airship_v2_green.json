@@ -1,0 +1,7 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "vc:items/v2/item_airship_v2_color_green",
+        "layer1": "vc:items/v2/item_airship_v2_frame_wood0"
+    }
+}

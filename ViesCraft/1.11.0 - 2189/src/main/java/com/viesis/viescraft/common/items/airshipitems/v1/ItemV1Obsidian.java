@@ -12,6 +12,7 @@ import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 
 import com.viesis.viescraft.ViesCraft;
+import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemV1Obsidian;
 import com.viesis.viescraft.common.items.ItemHelper;
 import com.viesis.viescraft.common.items.airshipitems.ItemAirshipCore;
@@ -58,6 +59,6 @@ public class ItemV1Obsidian extends ItemAirshipCore {
 	@Override
 	public String getItemStackDisplayName(ItemStack stack)
     {
-        return ("Obsidian " + ITEM_COLOR[this.typeAirshipitem] + " " + I18n.translateToLocal(ViesCraftConfig.v1AirshipName)).trim();
+        return (Reference.OBSIDIAN + ITEM_COLOR[this.typeAirshipitem] + " " + I18n.translateToLocal(ViesCraftConfig.v1AirshipName)).trim();
     }
 }

@@ -36,13 +36,6 @@ public final class InitItemsVCRender extends ItemsVC {
 		registerRender(module_speed_increase_major);
 		registerRender(module_fuel_infinite);
 		
-		
-		
-		
-		//registerRender(item_airship_v1);
-		
-		
-		
 		//==============================================
 		
 		//V1
@@ -198,18 +191,9 @@ public final class InitItemsVCRender extends ItemsVC {
 		registerRender(item_airship_v1_emerald_yellow);
 		registerRender(item_airship_v1_emerald_admin);
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		//==============================================
-		/**
-		//V1
+		
+		//V2
 		registerRender(item_airship_v2_wood0_normal);
 		registerRender(item_airship_v2_wood0_black);
 		registerRender(item_airship_v2_wood0_blue);
@@ -364,7 +348,7 @@ public final class InitItemsVCRender extends ItemsVC {
 		
 		//==============================================
 		
-		//V1
+		//V3
 		registerRender(item_airship_v3_wood0_normal);
 		registerRender(item_airship_v3_wood0_black);
 		registerRender(item_airship_v3_wood0_blue);
@@ -519,7 +503,7 @@ public final class InitItemsVCRender extends ItemsVC {
 		
 		//==============================================
 		
-		//V1
+		//V4
 		registerRender(item_airship_v4_wood0_normal);
 		registerRender(item_airship_v4_wood0_black);
 		registerRender(item_airship_v4_wood0_blue);
@@ -671,10 +655,10 @@ public final class InitItemsVCRender extends ItemsVC {
 		registerRender(item_airship_v4_emerald_white);
 		registerRender(item_airship_v4_emerald_yellow);
 		registerRender(item_airship_v4_emerald_admin);
-		*/
+		
 		//==============================================
 		
-		//registerRender(item_airship_v1_normal);
+		registerRender(item_airship_v1_normal);
 		registerRender(item_airship_v1_black);
 		registerRender(item_airship_v1_blue);
 		registerRender(item_airship_v1_brown);

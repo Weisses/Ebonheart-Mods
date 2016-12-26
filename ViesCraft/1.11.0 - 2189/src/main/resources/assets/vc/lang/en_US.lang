@@ -104,3 +104,14 @@ vc.key.moveUp=Ascend
 vc.key.moveDown=Descend
 vc.key.openInventory=Open Airship Gui
 vc.key.useModule=Use Module Ability
+
+//-----Misc-----
+item.vc:achievements/achievement_airship_create_engine.name=Icon-Engine
+item.vc:achievements/achievement_airship_create_ignition.name=Icon-Ignition
+item.vc:achievements/achievement_airship_create.name=Icon-Create
+item.vc:achievements/achievement_airship_create_color.name=Icon-Color
+item.vc:achievements/achievement_airship_create_module.name=Icon-Module
+item.vc:achievements/achievement_airship_airborn.name=Icon-Airborn
+item.vc:achievements/achievement_airship_water.name=Icon-Water
+item.vc:achievements/achievement_airship_lava.name=Icon-Lave
+item.vc:achievements/achievement_airship_portal.name=Icon-Portal
