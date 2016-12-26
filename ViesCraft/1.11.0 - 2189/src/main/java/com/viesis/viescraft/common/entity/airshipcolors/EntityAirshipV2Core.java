@@ -42,17 +42,17 @@ import com.viesis.viescraft.network.server.v2.MessageGuiV2ModuleInventorySmall;
 public class EntityAirshipV2Core extends EntityAirshipBaseVC {
 	
 	/** Fuel */
-	private static final DataParameter<Integer> POWERED = EntityDataManager.<Integer>createKey(EntityAirshipV2Core.class, DataSerializers.VARINT);
-	private static final DataParameter<Integer> TOTALPOWERED = EntityDataManager.<Integer>createKey(EntityAirshipV2Core.class, DataSerializers.VARINT);
-	private static final DataParameter<Integer> ITEMFUELSTACKPOWERED = EntityDataManager.<Integer>createKey(EntityAirshipV2Core.class, DataSerializers.VARINT);
-    private static final DataParameter<Integer> ITEMFUELSTACKSIZEPOWERED = EntityDataManager.<Integer>createKey(EntityAirshipV2Core.class, DataSerializers.VARINT);
+	protected static final DataParameter<Integer> POWERED = EntityDataManager.<Integer>createKey(EntityAirshipV2Core.class, DataSerializers.VARINT);
+	protected static final DataParameter<Integer> TOTALPOWERED = EntityDataManager.<Integer>createKey(EntityAirshipV2Core.class, DataSerializers.VARINT);
+	protected static final DataParameter<Integer> ITEMFUELSTACKPOWERED = EntityDataManager.<Integer>createKey(EntityAirshipV2Core.class, DataSerializers.VARINT);
+	protected static final DataParameter<Integer> ITEMFUELSTACKSIZEPOWERED = EntityDataManager.<Integer>createKey(EntityAirshipV2Core.class, DataSerializers.VARINT);
     
     /** Passive Modules */
-	private static final DataParameter<Boolean> MODULE_INVENTORY_SMALL = EntityDataManager.<Boolean>createKey(EntityAirshipV2Core.class, DataSerializers.BOOLEAN);
-	private static final DataParameter<Boolean> MODULE_INVENTORY_LARGE = EntityDataManager.<Boolean>createKey(EntityAirshipV2Core.class, DataSerializers.BOOLEAN);
-	private static final DataParameter<Boolean> MODULE_FUEL_INFINITE = EntityDataManager.<Boolean>createKey(EntityAirshipV2Core.class, DataSerializers.BOOLEAN);
-	private static final DataParameter<Boolean> MODULE_SPEED_MINOR = EntityDataManager.<Boolean>createKey(EntityAirshipV2Core.class, DataSerializers.BOOLEAN);
-	private static final DataParameter<Boolean> MODULE_SPEED_MAJOR = EntityDataManager.<Boolean>createKey(EntityAirshipV2Core.class, DataSerializers.BOOLEAN);
+	protected static final DataParameter<Boolean> MODULE_INVENTORY_SMALL = EntityDataManager.<Boolean>createKey(EntityAirshipV2Core.class, DataSerializers.BOOLEAN);
+	protected static final DataParameter<Boolean> MODULE_INVENTORY_LARGE = EntityDataManager.<Boolean>createKey(EntityAirshipV2Core.class, DataSerializers.BOOLEAN);
+	protected static final DataParameter<Boolean> MODULE_FUEL_INFINITE = EntityDataManager.<Boolean>createKey(EntityAirshipV2Core.class, DataSerializers.BOOLEAN);
+	protected static final DataParameter<Boolean> MODULE_SPEED_MINOR = EntityDataManager.<Boolean>createKey(EntityAirshipV2Core.class, DataSerializers.BOOLEAN);
+	protected static final DataParameter<Boolean> MODULE_SPEED_MAJOR = EntityDataManager.<Boolean>createKey(EntityAirshipV2Core.class, DataSerializers.BOOLEAN);
 	
 	public String customName;
 	private int dropNumber;
@@ -90,7 +90,7 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
         this.inventory = new ItemStackHandler(size);
     }
 	
-    public EntityAirshipV2Core(World worldIn, double x, double y, double z)
+    public EntityAirshipV2Core(World worldIn, double x, double y, double z, int typeIn)
     {
         this(worldIn);
         this.setPosition(x, y + 0.5D, z);
@@ -110,7 +110,7 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
 		this.dataManager.register(TIME_SINCE_HIT, Integer.valueOf(0));
         this.dataManager.register(FORWARD_DIRECTION, Integer.valueOf(1));
         this.dataManager.register(DAMAGE_TAKEN, Float.valueOf(0.0F));
-        this.dataManager.register(BOAT_TYPE, Integer.valueOf(EntityAirshipBaseVC.Type.NORMAL.ordinal()));
+        this.dataManager.register(BOAT_TYPE, Integer.valueOf(this.metaColor));
         
 		this.dataManager.register(POWERED, Integer.valueOf(this.airshipBurnTime));
         this.dataManager.register(TOTALPOWERED, Integer.valueOf(this.airshipTotalBurnTime));
@@ -155,6 +155,8 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
     {
     	super.writeToNBT(compound);
     	
+    	compound.setInteger("Type", this.getBoatType().getMetadata());
+    	
     	compound.setTag("Slots", inventory.serializeNBT());
     	
     	compound.setInteger("BurnTime", this.airshipBurnTime);
@@ -170,6 +172,12 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
     {
     	super.readFromNBT(compound);
     	
+    	//if (compound.hasKey("Type", 8))
+        //{
+        //    this.setBoatType(EntityAirshipBaseVC.Type.getTypeFromString(compound.getString("Type")));
+        //}
+    	
+    	this.metaColor = compound.getInteger("Type");
     	inventory.deserializeNBT(compound.getCompoundTag("Slots"));
     	
         this.airshipBurnTime = compound.getInteger("BurnTime");
@@ -215,6 +223,8 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
         {
             this.setDamageTaken(this.getDamageTaken() - 1.0F);
         }
+        
+        this.updateAirshipMeta();
         
         this.prevPosX = this.posX;
         this.prevPosY = this.posY;

@@ -1,0 +1,6 @@
+{
+    "variants": 
+    {
+        "normal": { "model": "vc:airship_disassembler" }
+    }
+}

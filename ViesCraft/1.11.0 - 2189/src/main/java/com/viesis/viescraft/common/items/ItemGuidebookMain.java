@@ -3,7 +3,7 @@ package com.viesis.viescraft.common.items;
 import com.viesis.viescraft.ViesCraft;
 import com.viesis.viescraft.client.gui.GuiGuidebookControls;
 import com.viesis.viescraft.client.gui.GuiGuidebookMain;
-import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipV1Admin;
+import com.viesis.viescraft.common.entity.airshipitems.v1.old.EntityItemAirshipV1Admin;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
