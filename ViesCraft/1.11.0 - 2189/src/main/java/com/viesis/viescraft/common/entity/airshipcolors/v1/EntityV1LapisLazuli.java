@@ -38,7 +38,7 @@ public class EntityV1LapisLazuli extends EntityAirshipV1Core {
     @Override
 	public Item getItemBoat()
     {
-		return ITEM_VARIANT[this.metaColor];
+		return ITEM_LAPISLAZULI[this.metaColor];
     }
     
     /**

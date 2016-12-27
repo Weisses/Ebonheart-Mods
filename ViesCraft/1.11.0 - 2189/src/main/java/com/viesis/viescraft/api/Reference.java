@@ -1,5 +1,9 @@
 package com.viesis.viescraft.api;
 
+import net.minecraft.item.Item;
+
+import com.viesis.viescraft.init.InitItemsVC;
+
 public class Reference {
 	
 	public static final String MOD_ID = "vc";
@@ -18,5 +22,5 @@ public class Reference {
 	public static final String OBSIDIAN = "Obsidian ";
 	public static final String DIAMOND = "Diamond ";
 	public static final String EMERALD = "Emerald ";
-    
+	
 }

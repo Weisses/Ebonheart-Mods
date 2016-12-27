@@ -38,7 +38,7 @@ public class EntityV3Redstone extends EntityAirshipV3Core {
     @Override
 	public Item getItemBoat()
     {
-		return ITEM_VARIANT[this.metaColor];
+		return ITEM_REDSTONE[this.metaColor];
     }
     
     /**

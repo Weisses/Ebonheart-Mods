@@ -38,7 +38,7 @@ public class EntityV1Gold extends EntityAirshipV1Core {
     @Override
 	public Item getItemBoat()
     {
-		return ITEM_VARIANT[this.metaColor];
+		return ITEM_GOLD[this.metaColor];
     }
     
     /**

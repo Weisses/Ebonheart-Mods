@@ -35,28 +35,6 @@ import com.viesis.viescraft.init.InitItemsVC;
 
 public class EntityAirshipBaseVC extends Entity {
 	
-	protected static final Item[] ITEM_VARIANT = new Item[] 
-	{
-		InitItemsVC.item_airship_v1_wood0_normal,
-		InitItemsVC.item_airship_v1_wood0_black,
-		InitItemsVC.item_airship_v1_wood0_blue,
-		InitItemsVC.item_airship_v1_wood0_brown,
-		InitItemsVC.item_airship_v1_wood0_cyan,
-		InitItemsVC.item_airship_v1_wood0_gray,
-		InitItemsVC.item_airship_v1_wood0_green,
-		InitItemsVC.item_airship_v1_wood0_lightblue,
-		InitItemsVC.item_airship_v1_wood0_lightgray,
-		InitItemsVC.item_airship_v1_wood0_lime,
-		InitItemsVC.item_airship_v1_wood0_magenta,
-		InitItemsVC.item_airship_v1_wood0_orange,
-		InitItemsVC.item_airship_v1_wood0_pink,
-		InitItemsVC.item_airship_v1_wood0_purple,
-		InitItemsVC.item_airship_v1_wood0_red,
-		InitItemsVC.item_airship_v1_wood0_white,
-		InitItemsVC.item_airship_v1_wood0_yellow,
-		InitItemsVC.item_airship_v1_wood0_admin
-	};
-	
 	protected int metaColor;
 	
 	public Random random = new Random();
@@ -938,4 +916,5 @@ public class EntityAirshipBaseVC extends Entity {
     //{
     //    return 5.0F;
     //}
+	
 }

@@ -1394,4 +1394,186 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
     {
         return ((Boolean)this.dataManager.get(MODULE_SPEED_MAJOR)).booleanValue();
     }
+    
+    
+    
+    //==================================//
+  	// TODO     Items to Return         //
+  	//==================================//
+    
+	protected static final Item[] ITEM_WOOD0 = new Item[] 
+	{
+		InitItemsVC.item_airship_v3_wood0_normal,
+		InitItemsVC.item_airship_v3_wood0_black,
+		InitItemsVC.item_airship_v3_wood0_blue,
+		InitItemsVC.item_airship_v3_wood0_brown,
+		InitItemsVC.item_airship_v3_wood0_cyan,
+		InitItemsVC.item_airship_v3_wood0_gray,
+		InitItemsVC.item_airship_v3_wood0_green,
+		InitItemsVC.item_airship_v3_wood0_lightblue,
+		InitItemsVC.item_airship_v3_wood0_lightgray,
+		InitItemsVC.item_airship_v3_wood0_lime,
+		InitItemsVC.item_airship_v3_wood0_magenta,
+		InitItemsVC.item_airship_v3_wood0_orange,
+		InitItemsVC.item_airship_v3_wood0_pink,
+		InitItemsVC.item_airship_v3_wood0_purple,
+		InitItemsVC.item_airship_v3_wood0_red,
+		InitItemsVC.item_airship_v3_wood0_white,
+		InitItemsVC.item_airship_v3_wood0_yellow,
+		InitItemsVC.item_airship_v3_wood0_admin
+	};
+	
+	protected static final Item[] ITEM_IRON = new Item[] 
+	{
+		InitItemsVC.item_airship_v3_iron_normal,
+		InitItemsVC.item_airship_v3_iron_black,
+		InitItemsVC.item_airship_v3_iron_blue,
+		InitItemsVC.item_airship_v3_iron_brown,
+		InitItemsVC.item_airship_v3_iron_cyan,
+		InitItemsVC.item_airship_v3_iron_gray,
+		InitItemsVC.item_airship_v3_iron_green,
+		InitItemsVC.item_airship_v3_iron_lightblue,
+		InitItemsVC.item_airship_v3_iron_lightgray,
+		InitItemsVC.item_airship_v3_iron_lime,
+		InitItemsVC.item_airship_v3_iron_magenta,
+		InitItemsVC.item_airship_v3_iron_orange,
+		InitItemsVC.item_airship_v3_iron_pink,
+		InitItemsVC.item_airship_v3_iron_purple,
+		InitItemsVC.item_airship_v3_iron_red,
+		InitItemsVC.item_airship_v3_iron_white,
+		InitItemsVC.item_airship_v3_iron_yellow,
+		InitItemsVC.item_airship_v3_iron_admin
+	};
+	
+	protected static final Item[] ITEM_REDSTONE = new Item[] 
+	{
+		InitItemsVC.item_airship_v3_redstone_normal,
+		InitItemsVC.item_airship_v3_redstone_black,
+		InitItemsVC.item_airship_v3_redstone_blue,
+		InitItemsVC.item_airship_v3_redstone_brown,
+		InitItemsVC.item_airship_v3_redstone_cyan,
+		InitItemsVC.item_airship_v3_redstone_gray,
+		InitItemsVC.item_airship_v3_redstone_green,
+		InitItemsVC.item_airship_v3_redstone_lightblue,
+		InitItemsVC.item_airship_v3_redstone_lightgray,
+		InitItemsVC.item_airship_v3_redstone_lime,
+		InitItemsVC.item_airship_v3_redstone_magenta,
+		InitItemsVC.item_airship_v3_redstone_orange,
+		InitItemsVC.item_airship_v3_redstone_pink,
+		InitItemsVC.item_airship_v3_redstone_purple,
+		InitItemsVC.item_airship_v3_redstone_red,
+		InitItemsVC.item_airship_v3_redstone_white,
+		InitItemsVC.item_airship_v3_redstone_yellow,
+		InitItemsVC.item_airship_v3_redstone_admin
+	};
+	
+	protected static final Item[] ITEM_GOLD = new Item[] 
+	{
+		InitItemsVC.item_airship_v3_gold_normal,
+		InitItemsVC.item_airship_v3_gold_black,
+		InitItemsVC.item_airship_v3_gold_blue,
+		InitItemsVC.item_airship_v3_gold_brown,
+		InitItemsVC.item_airship_v3_gold_cyan,
+		InitItemsVC.item_airship_v3_gold_gray,
+		InitItemsVC.item_airship_v3_gold_green,
+		InitItemsVC.item_airship_v3_gold_lightblue,
+		InitItemsVC.item_airship_v3_gold_lightgray,
+		InitItemsVC.item_airship_v3_gold_lime,
+		InitItemsVC.item_airship_v3_gold_magenta,
+		InitItemsVC.item_airship_v3_gold_orange,
+		InitItemsVC.item_airship_v3_gold_pink,
+		InitItemsVC.item_airship_v3_gold_purple,
+		InitItemsVC.item_airship_v3_gold_red,
+		InitItemsVC.item_airship_v3_gold_white,
+		InitItemsVC.item_airship_v3_gold_yellow,
+		InitItemsVC.item_airship_v3_gold_admin
+	};
+	
+	protected static final Item[] ITEM_LAPISLAZULI = new Item[] 
+	{
+		InitItemsVC.item_airship_v3_lapislazuli_normal,
+		InitItemsVC.item_airship_v3_lapislazuli_black,
+		InitItemsVC.item_airship_v3_lapislazuli_blue,
+		InitItemsVC.item_airship_v3_lapislazuli_brown,
+		InitItemsVC.item_airship_v3_lapislazuli_cyan,
+		InitItemsVC.item_airship_v3_lapislazuli_gray,
+		InitItemsVC.item_airship_v3_lapislazuli_green,
+		InitItemsVC.item_airship_v3_lapislazuli_lightblue,
+		InitItemsVC.item_airship_v3_lapislazuli_lightgray,
+		InitItemsVC.item_airship_v3_lapislazuli_lime,
+		InitItemsVC.item_airship_v3_lapislazuli_magenta,
+		InitItemsVC.item_airship_v3_lapislazuli_orange,
+		InitItemsVC.item_airship_v3_lapislazuli_pink,
+		InitItemsVC.item_airship_v3_lapislazuli_purple,
+		InitItemsVC.item_airship_v3_lapislazuli_red,
+		InitItemsVC.item_airship_v3_lapislazuli_white,
+		InitItemsVC.item_airship_v3_lapislazuli_yellow,
+		InitItemsVC.item_airship_v3_lapislazuli_admin
+	};
+	
+	protected static final Item[] ITEM_OBSIDIAN = new Item[] 
+	{
+		InitItemsVC.item_airship_v3_obsidian_normal,
+		InitItemsVC.item_airship_v3_obsidian_black,
+		InitItemsVC.item_airship_v3_obsidian_blue,
+		InitItemsVC.item_airship_v3_obsidian_brown,
+		InitItemsVC.item_airship_v3_obsidian_cyan,
+		InitItemsVC.item_airship_v3_obsidian_gray,
+		InitItemsVC.item_airship_v3_obsidian_green,
+		InitItemsVC.item_airship_v3_obsidian_lightblue,
+		InitItemsVC.item_airship_v3_obsidian_lightgray,
+		InitItemsVC.item_airship_v3_obsidian_lime,
+		InitItemsVC.item_airship_v3_obsidian_magenta,
+		InitItemsVC.item_airship_v3_obsidian_orange,
+		InitItemsVC.item_airship_v3_obsidian_pink,
+		InitItemsVC.item_airship_v3_obsidian_purple,
+		InitItemsVC.item_airship_v3_obsidian_red,
+		InitItemsVC.item_airship_v3_obsidian_white,
+		InitItemsVC.item_airship_v3_obsidian_yellow,
+		InitItemsVC.item_airship_v3_obsidian_admin
+	};
+	
+	protected static final Item[] ITEM_DIAMOND = new Item[] 
+	{
+		InitItemsVC.item_airship_v3_diamond_normal,
+		InitItemsVC.item_airship_v3_diamond_black,
+		InitItemsVC.item_airship_v3_diamond_blue,
+		InitItemsVC.item_airship_v3_diamond_brown,
+		InitItemsVC.item_airship_v3_diamond_cyan,
+		InitItemsVC.item_airship_v3_diamond_gray,
+		InitItemsVC.item_airship_v3_diamond_green,
+		InitItemsVC.item_airship_v3_diamond_lightblue,
+		InitItemsVC.item_airship_v3_diamond_lightgray,
+		InitItemsVC.item_airship_v3_diamond_lime,
+		InitItemsVC.item_airship_v3_diamond_magenta,
+		InitItemsVC.item_airship_v3_diamond_orange,
+		InitItemsVC.item_airship_v3_diamond_pink,
+		InitItemsVC.item_airship_v3_diamond_purple,
+		InitItemsVC.item_airship_v3_diamond_red,
+		InitItemsVC.item_airship_v3_diamond_white,
+		InitItemsVC.item_airship_v3_diamond_yellow,
+		InitItemsVC.item_airship_v3_diamond_admin
+	};
+    
+	protected static final Item[] ITEM_EMERALD = new Item[] 
+	{
+		InitItemsVC.item_airship_v3_emerald_normal,
+		InitItemsVC.item_airship_v3_emerald_black,
+		InitItemsVC.item_airship_v3_emerald_blue,
+		InitItemsVC.item_airship_v3_emerald_brown,
+		InitItemsVC.item_airship_v3_emerald_cyan,
+		InitItemsVC.item_airship_v3_emerald_gray,
+		InitItemsVC.item_airship_v3_emerald_green,
+		InitItemsVC.item_airship_v3_emerald_lightblue,
+		InitItemsVC.item_airship_v3_emerald_lightgray,
+		InitItemsVC.item_airship_v3_emerald_lime,
+		InitItemsVC.item_airship_v3_emerald_magenta,
+		InitItemsVC.item_airship_v3_emerald_orange,
+		InitItemsVC.item_airship_v3_emerald_pink,
+		InitItemsVC.item_airship_v3_emerald_purple,
+		InitItemsVC.item_airship_v3_emerald_red,
+		InitItemsVC.item_airship_v3_emerald_white,
+		InitItemsVC.item_airship_v3_emerald_yellow,
+		InitItemsVC.item_airship_v3_emerald_admin
+	};
 }

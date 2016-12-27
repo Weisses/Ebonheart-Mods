@@ -38,7 +38,7 @@ public class EntityV3Obsidian extends EntityAirshipV3Core {
     @Override
 	public Item getItemBoat()
     {
-		return ITEM_VARIANT[this.metaColor];
+		return ITEM_OBSIDIAN[this.metaColor];
     }
     
     /**

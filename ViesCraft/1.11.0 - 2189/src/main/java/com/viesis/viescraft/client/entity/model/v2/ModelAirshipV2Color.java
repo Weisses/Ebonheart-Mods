@@ -61,6 +61,7 @@ public class ModelAirshipV2Color extends ModelBase {
 	{
 		super.render(entity, f, f1, f2, f3, f4, f5);
 		setRotationAngles(f, f1, f2, f3, f4, f5, entity);
+		
 		BaseColorFloor.render(f5);
 		BaseColorChest.render(f5);
 		BalloonR1a.render(f5);
