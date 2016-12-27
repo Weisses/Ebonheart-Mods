@@ -68,19 +68,46 @@ public class CraftingManagerVC {
     	this.addRecipe(new ItemStack(InitItemsVC.airship_frame_diamond, 1), new Object[]{"###", "#M#", "###", '#', Items.DIAMOND, 'M', Items.MINECART});
     	this.addRecipe(new ItemStack(InitItemsVC.airship_frame_emerald, 1), new Object[]{"###", "#M#", "###", '#', Items.EMERALD, 'M', Items.MINECART});
     	
+    	//=================================================
+    	
+    	//Airships
     	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v1_wood0_normal, 1), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_wood0});
     	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v1_iron_normal, 1), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_iron});
     	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v1_redstone_normal, 1), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_redstone});
     	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v1_gold_normal, 1), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_gold});
     	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v1_lapislazuli_normal, 1), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_lapislazuli});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v1_obsidian_normal, 1), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_obsidian});
     	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v1_diamond_normal, 1), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_diamond});
     	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v1_emerald_normal, 1), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_emerald});
     	
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v2_wood0_normal, 1), new Object[]{"BLB", "L#L", "EIE", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_wood0});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v2_iron_normal, 1), new Object[]{"BLB", "L#L", "EIE", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_iron});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v2_redstone_normal, 1), new Object[]{"BLB", "L#L", "EIE", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_redstone});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v2_gold_normal, 1), new Object[]{"BLB", "L#L", "EIE", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_gold});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_normal, 1), new Object[]{"BLB", "L#L", "EIE", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_lapislazuli});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v2_obsidian_normal, 1), new Object[]{"BLB", "L#L", "EIE", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_obsidian});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v2_diamond_normal, 1), new Object[]{"BLB", "L#L", "EIE", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_diamond});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v2_emerald_normal, 1), new Object[]{"BLB", "L#L", "EIE", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_emerald});
     	
-    	//this.addRecipe(new ItemStack(InitItemsVC.item_airship_v1_normal, 1), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', Items.MINECART});
-    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v2_normal, 1), new Object[]{"BLB", "L#L", "EIE", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', Items.MINECART});
-    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v3_normal, 1), new Object[]{"ELE", "B#B", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', Items.MINECART});
-    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v4_normal, 1), new Object[]{"EBE", "L#L", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', Items.MINECART});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v3_wood0_normal, 1), new Object[]{"ELE", "B#B", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_wood0});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v3_iron_normal, 1), new Object[]{"ELE", "B#B", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_iron});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v3_redstone_normal, 1), new Object[]{"ELE", "B#B", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_redstone});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v3_gold_normal, 1), new Object[]{"ELE", "B#B", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_gold});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_normal, 1), new Object[]{"ELE", "B#B", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_lapislazuli});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v3_obsidian_normal, 1), new Object[]{"ELE", "B#B", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_obsidian});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v3_diamond_normal, 1), new Object[]{"ELE", "B#B", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_diamond});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v3_emerald_normal, 1), new Object[]{"ELE", "B#B", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_emerald});
+    	
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v4_wood0_normal, 1), new Object[]{"EBE", "L#L", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_wood0});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v4_iron_normal, 1), new Object[]{"EBE", "L#L", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_iron});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v4_redstone_normal, 1), new Object[]{"EBE", "L#L", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_redstone});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v4_gold_normal, 1), new Object[]{"EBE", "L#L", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_gold});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_normal, 1), new Object[]{"EBE", "L#L", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_lapislazuli});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v4_obsidian_normal, 1), new Object[]{"EBE", "L#L", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_obsidian});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v4_diamond_normal, 1), new Object[]{"EBE", "L#L", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_diamond});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v4_emerald_normal, 1), new Object[]{"EBE", "L#L", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_emerald});
+    	
+    	//=================================================
     	
     	//Airship modules
     	this.addRecipe(new ItemStack(InitItemsVC.module_chip, 1), new Object[]{"CRC", "GGG", 'C', Blocks.COBBLESTONE, 'R', Items.REDSTONE, 'G', Items.GOLD_NUGGET});
@@ -325,6 +352,45 @@ public class CraftingManagerVC {
 		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_lapislazuli_normal), new ItemStack(InitItemsVC.item_airship_v1_lapislazuli_orange));
 		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_lapislazuli_normal), new ItemStack(InitItemsVC.item_airship_v1_lapislazuli_white));
 		
+		//Airship v1 Obsidian colors
+		//Recipes that dye the basic Obsidian airship into any color
+		//Note: Also returns an empty bucket
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_obsidian_black), new ItemStack(InitItemsVC.item_airship_v1_obsidian_normal), new ItemStack(InitItemsVC.item_paint_black.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_obsidian_red), new ItemStack(InitItemsVC.item_airship_v1_obsidian_normal), new ItemStack(InitItemsVC.item_paint_red.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_obsidian_green), new ItemStack(InitItemsVC.item_airship_v1_obsidian_normal), new ItemStack(InitItemsVC.item_paint_green.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_obsidian_brown), new ItemStack(InitItemsVC.item_airship_v1_obsidian_normal), new ItemStack(InitItemsVC.item_paint_brown.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_obsidian_blue), new ItemStack(InitItemsVC.item_airship_v1_obsidian_normal), new ItemStack(InitItemsVC.item_paint_blue.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_obsidian_purple), new ItemStack(InitItemsVC.item_airship_v1_obsidian_normal), new ItemStack(InitItemsVC.item_paint_purple.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_obsidian_cyan), new ItemStack(InitItemsVC.item_airship_v1_obsidian_normal), new ItemStack(InitItemsVC.item_paint_cyan.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_obsidian_lightgray), new ItemStack(InitItemsVC.item_airship_v1_obsidian_normal), new ItemStack(InitItemsVC.item_paint_lightgray.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_obsidian_gray), new ItemStack(InitItemsVC.item_airship_v1_obsidian_normal), new ItemStack(InitItemsVC.item_paint_gray.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_obsidian_pink), new ItemStack(InitItemsVC.item_airship_v1_obsidian_normal), new ItemStack(InitItemsVC.item_paint_pink.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_obsidian_lime), new ItemStack(InitItemsVC.item_airship_v1_obsidian_normal), new ItemStack(InitItemsVC.item_paint_lime.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_obsidian_yellow), new ItemStack(InitItemsVC.item_airship_v1_obsidian_normal), new ItemStack(InitItemsVC.item_paint_yellow.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_obsidian_lightblue), new ItemStack(InitItemsVC.item_airship_v1_obsidian_normal), new ItemStack(InitItemsVC.item_paint_lightblue.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_obsidian_magenta), new ItemStack(InitItemsVC.item_airship_v1_obsidian_normal), new ItemStack(InitItemsVC.item_paint_magenta.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_obsidian_orange), new ItemStack(InitItemsVC.item_airship_v1_obsidian_normal), new ItemStack(InitItemsVC.item_paint_orange.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_obsidian_white), new ItemStack(InitItemsVC.item_airship_v1_obsidian_normal), new ItemStack(InitItemsVC.item_paint_white.setContainerItem(Items.BUCKET)));
+		
+		//Airship v1 Obsidian conversion back into normal.
+		//Recipes that strip the dye off of Obsidian airships
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v1_obsidian_black));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v1_obsidian_red));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v1_obsidian_green));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v1_obsidian_brown));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v1_obsidian_blue));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v1_obsidian_purple));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v1_obsidian_cyan));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v1_obsidian_lightgray));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v1_obsidian_gray));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v1_obsidian_pink));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v1_obsidian_lime));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v1_obsidian_yellow));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v1_obsidian_lightblue));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v1_obsidian_magenta));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v1_obsidian_orange));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v1_obsidian_white));
+		
 		//Airship v1 Diamond colors
 		//Recipes that dye the basic Diamond airship into any color
 		//Note: Also returns an empty bucket
@@ -403,175 +469,949 @@ public class CraftingManagerVC {
 		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_emerald_normal), new ItemStack(InitItemsVC.item_airship_v1_emerald_orange));
 		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_emerald_normal), new ItemStack(InitItemsVC.item_airship_v1_emerald_white));
 		
-		
-		
-		
-		
-		
-		
-		
-		/**
-		//Airship v1 colors
-		//Recipes that dye the basic airship into any color
-		//Note: Also returns an empty bucket
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_black), new ItemStack(InitItemsVC.item_airship_v1_normal), new ItemStack(InitItemsVC.item_paint_black.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_red), new ItemStack(InitItemsVC.item_airship_v1_normal), new ItemStack(InitItemsVC.item_paint_red.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_green), new ItemStack(InitItemsVC.item_airship_v1_normal), new ItemStack(InitItemsVC.item_paint_green.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_brown), new ItemStack(InitItemsVC.item_airship_v1_normal), new ItemStack(InitItemsVC.item_paint_brown.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_blue), new ItemStack(InitItemsVC.item_airship_v1_normal), new ItemStack(InitItemsVC.item_paint_blue.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_purple), new ItemStack(InitItemsVC.item_airship_v1_normal), new ItemStack(InitItemsVC.item_paint_purple.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_cyan), new ItemStack(InitItemsVC.item_airship_v1_normal), new ItemStack(InitItemsVC.item_paint_cyan.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_lightgray), new ItemStack(InitItemsVC.item_airship_v1_normal), new ItemStack(InitItemsVC.item_paint_lightgray.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_gray), new ItemStack(InitItemsVC.item_airship_v1_normal), new ItemStack(InitItemsVC.item_paint_gray.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_pink), new ItemStack(InitItemsVC.item_airship_v1_normal), new ItemStack(InitItemsVC.item_paint_pink.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_lime), new ItemStack(InitItemsVC.item_airship_v1_normal), new ItemStack(InitItemsVC.item_paint_lime.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_yellow), new ItemStack(InitItemsVC.item_airship_v1_normal), new ItemStack(InitItemsVC.item_paint_yellow.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_lightblue), new ItemStack(InitItemsVC.item_airship_v1_normal), new ItemStack(InitItemsVC.item_paint_lightblue.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_magenta), new ItemStack(InitItemsVC.item_airship_v1_normal), new ItemStack(InitItemsVC.item_paint_magenta.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_orange), new ItemStack(InitItemsVC.item_airship_v1_normal), new ItemStack(InitItemsVC.item_paint_orange.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_white), new ItemStack(InitItemsVC.item_airship_v1_normal), new ItemStack(InitItemsVC.item_paint_white.setContainerItem(Items.BUCKET)));
-		
-		//Airship v1 conversion back into normal.
-		//Recipes that strip the dye off of airships
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_normal), new ItemStack(InitItemsVC.item_airship_v1_black));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_normal), new ItemStack(InitItemsVC.item_airship_v1_red));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_normal), new ItemStack(InitItemsVC.item_airship_v1_green));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_normal), new ItemStack(InitItemsVC.item_airship_v1_brown));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_normal), new ItemStack(InitItemsVC.item_airship_v1_blue));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_normal), new ItemStack(InitItemsVC.item_airship_v1_purple));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_normal), new ItemStack(InitItemsVC.item_airship_v1_cyan));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_normal), new ItemStack(InitItemsVC.item_airship_v1_lightgray));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_normal), new ItemStack(InitItemsVC.item_airship_v1_gray));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_normal), new ItemStack(InitItemsVC.item_airship_v1_pink));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_normal), new ItemStack(InitItemsVC.item_airship_v1_lime));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_normal), new ItemStack(InitItemsVC.item_airship_v1_yellow));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_normal), new ItemStack(InitItemsVC.item_airship_v1_lightblue));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_normal), new ItemStack(InitItemsVC.item_airship_v1_magenta));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_normal), new ItemStack(InitItemsVC.item_airship_v1_orange));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v1_normal), new ItemStack(InitItemsVC.item_airship_v1_white));
-		*/
     	//=================================================
 		
-		//Airship v2 colors
-		//Recipes that dye the basic airship into any color
+		//Airship v2 Oak colors
+		//Recipes that dye the basic Oak airship into any color
 		//Note: Also returns an empty bucket
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_black), new ItemStack(InitItemsVC.item_airship_v2_normal), new ItemStack(InitItemsVC.item_paint_black.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_red), new ItemStack(InitItemsVC.item_airship_v2_normal), new ItemStack(InitItemsVC.item_paint_red.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_green), new ItemStack(InitItemsVC.item_airship_v2_normal), new ItemStack(InitItemsVC.item_paint_green.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_brown), new ItemStack(InitItemsVC.item_airship_v2_normal), new ItemStack(InitItemsVC.item_paint_brown.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_blue), new ItemStack(InitItemsVC.item_airship_v2_normal), new ItemStack(InitItemsVC.item_paint_blue.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_purple), new ItemStack(InitItemsVC.item_airship_v2_normal), new ItemStack(InitItemsVC.item_paint_purple.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_cyan), new ItemStack(InitItemsVC.item_airship_v2_normal), new ItemStack(InitItemsVC.item_paint_cyan.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_lightgray), new ItemStack(InitItemsVC.item_airship_v2_normal), new ItemStack(InitItemsVC.item_paint_lightgray.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_gray), new ItemStack(InitItemsVC.item_airship_v2_normal), new ItemStack(InitItemsVC.item_paint_gray.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_pink), new ItemStack(InitItemsVC.item_airship_v2_normal), new ItemStack(InitItemsVC.item_paint_pink.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_lime), new ItemStack(InitItemsVC.item_airship_v2_normal), new ItemStack(InitItemsVC.item_paint_lime.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_yellow), new ItemStack(InitItemsVC.item_airship_v2_normal), new ItemStack(InitItemsVC.item_paint_yellow.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_lightblue), new ItemStack(InitItemsVC.item_airship_v2_normal), new ItemStack(InitItemsVC.item_paint_lightblue.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_magenta), new ItemStack(InitItemsVC.item_airship_v2_normal), new ItemStack(InitItemsVC.item_paint_magenta.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_orange), new ItemStack(InitItemsVC.item_airship_v2_normal), new ItemStack(InitItemsVC.item_paint_orange.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_white), new ItemStack(InitItemsVC.item_airship_v2_normal), new ItemStack(InitItemsVC.item_paint_white.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_wood0_black), new ItemStack(InitItemsVC.item_airship_v2_wood0_normal), new ItemStack(InitItemsVC.item_paint_black.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_wood0_red), new ItemStack(InitItemsVC.item_airship_v2_wood0_normal), new ItemStack(InitItemsVC.item_paint_red.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_wood0_green), new ItemStack(InitItemsVC.item_airship_v2_wood0_normal), new ItemStack(InitItemsVC.item_paint_green.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_wood0_brown), new ItemStack(InitItemsVC.item_airship_v2_wood0_normal), new ItemStack(InitItemsVC.item_paint_brown.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_wood0_blue), new ItemStack(InitItemsVC.item_airship_v2_wood0_normal), new ItemStack(InitItemsVC.item_paint_blue.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_wood0_purple), new ItemStack(InitItemsVC.item_airship_v2_wood0_normal), new ItemStack(InitItemsVC.item_paint_purple.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_wood0_cyan), new ItemStack(InitItemsVC.item_airship_v2_wood0_normal), new ItemStack(InitItemsVC.item_paint_cyan.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_wood0_lightgray), new ItemStack(InitItemsVC.item_airship_v2_wood0_normal), new ItemStack(InitItemsVC.item_paint_lightgray.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_wood0_gray), new ItemStack(InitItemsVC.item_airship_v2_wood0_normal), new ItemStack(InitItemsVC.item_paint_gray.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_wood0_pink), new ItemStack(InitItemsVC.item_airship_v2_wood0_normal), new ItemStack(InitItemsVC.item_paint_pink.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_wood0_lime), new ItemStack(InitItemsVC.item_airship_v2_wood0_normal), new ItemStack(InitItemsVC.item_paint_lime.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_wood0_yellow), new ItemStack(InitItemsVC.item_airship_v2_wood0_normal), new ItemStack(InitItemsVC.item_paint_yellow.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_wood0_lightblue), new ItemStack(InitItemsVC.item_airship_v2_wood0_normal), new ItemStack(InitItemsVC.item_paint_lightblue.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_wood0_magenta), new ItemStack(InitItemsVC.item_airship_v2_wood0_normal), new ItemStack(InitItemsVC.item_paint_magenta.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_wood0_orange), new ItemStack(InitItemsVC.item_airship_v2_wood0_normal), new ItemStack(InitItemsVC.item_paint_orange.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_wood0_white), new ItemStack(InitItemsVC.item_airship_v2_wood0_normal), new ItemStack(InitItemsVC.item_paint_white.setContainerItem(Items.BUCKET)));
 		
-		//Airship v2 conversion back into normal.
-		//Recipes that strip the dye off of airships
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_normal), new ItemStack(InitItemsVC.item_airship_v2_black));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_normal), new ItemStack(InitItemsVC.item_airship_v2_red));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_normal), new ItemStack(InitItemsVC.item_airship_v2_green));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_normal), new ItemStack(InitItemsVC.item_airship_v2_brown));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_normal), new ItemStack(InitItemsVC.item_airship_v2_blue));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_normal), new ItemStack(InitItemsVC.item_airship_v2_purple));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_normal), new ItemStack(InitItemsVC.item_airship_v2_cyan));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_normal), new ItemStack(InitItemsVC.item_airship_v2_lightgray));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_normal), new ItemStack(InitItemsVC.item_airship_v2_gray));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_normal), new ItemStack(InitItemsVC.item_airship_v2_pink));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_normal), new ItemStack(InitItemsVC.item_airship_v2_lime));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_normal), new ItemStack(InitItemsVC.item_airship_v2_yellow));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_normal), new ItemStack(InitItemsVC.item_airship_v2_lightblue));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_normal), new ItemStack(InitItemsVC.item_airship_v2_magenta));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_normal), new ItemStack(InitItemsVC.item_airship_v2_orange));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_normal), new ItemStack(InitItemsVC.item_airship_v2_white));
+		//Airship v2 Oak conversion back into normal.
+		//Recipes that strip the dye off of Oak airships
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_wood0_normal), new ItemStack(InitItemsVC.item_airship_v2_wood0_black));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_wood0_normal), new ItemStack(InitItemsVC.item_airship_v2_wood0_red));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_wood0_normal), new ItemStack(InitItemsVC.item_airship_v2_wood0_green));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_wood0_normal), new ItemStack(InitItemsVC.item_airship_v2_wood0_brown));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_wood0_normal), new ItemStack(InitItemsVC.item_airship_v2_wood0_blue));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_wood0_normal), new ItemStack(InitItemsVC.item_airship_v2_wood0_purple));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_wood0_normal), new ItemStack(InitItemsVC.item_airship_v2_wood0_cyan));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_wood0_normal), new ItemStack(InitItemsVC.item_airship_v2_wood0_lightgray));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_wood0_normal), new ItemStack(InitItemsVC.item_airship_v2_wood0_gray));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_wood0_normal), new ItemStack(InitItemsVC.item_airship_v2_wood0_pink));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_wood0_normal), new ItemStack(InitItemsVC.item_airship_v2_wood0_lime));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_wood0_normal), new ItemStack(InitItemsVC.item_airship_v2_wood0_yellow));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_wood0_normal), new ItemStack(InitItemsVC.item_airship_v2_wood0_lightblue));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_wood0_normal), new ItemStack(InitItemsVC.item_airship_v2_wood0_magenta));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_wood0_normal), new ItemStack(InitItemsVC.item_airship_v2_wood0_orange));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_wood0_normal), new ItemStack(InitItemsVC.item_airship_v2_wood0_white));
 		
-		//================================================
-		
-		//Airship v3 colors
-		//Recipes that dye the basic airship into any color
+		//Airship v2 Iron colors
+		//Recipes that dye the basic Iron airship into any color
 		//Note: Also returns an empty bucket
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_black), new ItemStack(InitItemsVC.item_airship_v3_normal), new ItemStack(InitItemsVC.item_paint_black.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_red), new ItemStack(InitItemsVC.item_airship_v3_normal), new ItemStack(InitItemsVC.item_paint_red.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_green), new ItemStack(InitItemsVC.item_airship_v3_normal), new ItemStack(InitItemsVC.item_paint_green.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_brown), new ItemStack(InitItemsVC.item_airship_v3_normal), new ItemStack(InitItemsVC.item_paint_brown.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_blue), new ItemStack(InitItemsVC.item_airship_v3_normal), new ItemStack(InitItemsVC.item_paint_blue.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_purple), new ItemStack(InitItemsVC.item_airship_v3_normal), new ItemStack(InitItemsVC.item_paint_purple.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_cyan), new ItemStack(InitItemsVC.item_airship_v3_normal), new ItemStack(InitItemsVC.item_paint_cyan.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_lightgray), new ItemStack(InitItemsVC.item_airship_v3_normal), new ItemStack(InitItemsVC.item_paint_lightgray.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_gray), new ItemStack(InitItemsVC.item_airship_v3_normal), new ItemStack(InitItemsVC.item_paint_gray.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_pink), new ItemStack(InitItemsVC.item_airship_v3_normal), new ItemStack(InitItemsVC.item_paint_pink.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_lime), new ItemStack(InitItemsVC.item_airship_v3_normal), new ItemStack(InitItemsVC.item_paint_lime.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_yellow), new ItemStack(InitItemsVC.item_airship_v3_normal), new ItemStack(InitItemsVC.item_paint_yellow.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_lightblue), new ItemStack(InitItemsVC.item_airship_v3_normal), new ItemStack(InitItemsVC.item_paint_lightblue.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_magenta), new ItemStack(InitItemsVC.item_airship_v3_normal), new ItemStack(InitItemsVC.item_paint_magenta.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_orange), new ItemStack(InitItemsVC.item_airship_v3_normal), new ItemStack(InitItemsVC.item_paint_orange.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_white), new ItemStack(InitItemsVC.item_airship_v3_normal), new ItemStack(InitItemsVC.item_paint_white.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_iron_black), new ItemStack(InitItemsVC.item_airship_v2_iron_normal), new ItemStack(InitItemsVC.item_paint_black.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_iron_red), new ItemStack(InitItemsVC.item_airship_v2_iron_normal), new ItemStack(InitItemsVC.item_paint_red.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_iron_green), new ItemStack(InitItemsVC.item_airship_v2_iron_normal), new ItemStack(InitItemsVC.item_paint_green.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_iron_brown), new ItemStack(InitItemsVC.item_airship_v2_iron_normal), new ItemStack(InitItemsVC.item_paint_brown.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_iron_blue), new ItemStack(InitItemsVC.item_airship_v2_iron_normal), new ItemStack(InitItemsVC.item_paint_blue.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_iron_purple), new ItemStack(InitItemsVC.item_airship_v2_iron_normal), new ItemStack(InitItemsVC.item_paint_purple.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_iron_cyan), new ItemStack(InitItemsVC.item_airship_v2_iron_normal), new ItemStack(InitItemsVC.item_paint_cyan.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_iron_lightgray), new ItemStack(InitItemsVC.item_airship_v2_iron_normal), new ItemStack(InitItemsVC.item_paint_lightgray.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_iron_gray), new ItemStack(InitItemsVC.item_airship_v2_iron_normal), new ItemStack(InitItemsVC.item_paint_gray.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_iron_pink), new ItemStack(InitItemsVC.item_airship_v2_iron_normal), new ItemStack(InitItemsVC.item_paint_pink.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_iron_lime), new ItemStack(InitItemsVC.item_airship_v2_iron_normal), new ItemStack(InitItemsVC.item_paint_lime.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_iron_yellow), new ItemStack(InitItemsVC.item_airship_v2_iron_normal), new ItemStack(InitItemsVC.item_paint_yellow.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_iron_lightblue), new ItemStack(InitItemsVC.item_airship_v2_iron_normal), new ItemStack(InitItemsVC.item_paint_lightblue.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_iron_magenta), new ItemStack(InitItemsVC.item_airship_v2_iron_normal), new ItemStack(InitItemsVC.item_paint_magenta.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_iron_orange), new ItemStack(InitItemsVC.item_airship_v2_iron_normal), new ItemStack(InitItemsVC.item_paint_orange.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_iron_white), new ItemStack(InitItemsVC.item_airship_v2_iron_normal), new ItemStack(InitItemsVC.item_paint_white.setContainerItem(Items.BUCKET)));
 		
-		//Airship v3 conversion back into normal.
-		//Recipes that strip the dye off of airships
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_normal), new ItemStack(InitItemsVC.item_airship_v3_black));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_normal), new ItemStack(InitItemsVC.item_airship_v3_red));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_normal), new ItemStack(InitItemsVC.item_airship_v3_green));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_normal), new ItemStack(InitItemsVC.item_airship_v3_brown));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_normal), new ItemStack(InitItemsVC.item_airship_v3_blue));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_normal), new ItemStack(InitItemsVC.item_airship_v3_purple));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_normal), new ItemStack(InitItemsVC.item_airship_v3_cyan));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_normal), new ItemStack(InitItemsVC.item_airship_v3_lightgray));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_normal), new ItemStack(InitItemsVC.item_airship_v3_gray));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_normal), new ItemStack(InitItemsVC.item_airship_v3_pink));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_normal), new ItemStack(InitItemsVC.item_airship_v3_lime));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_normal), new ItemStack(InitItemsVC.item_airship_v3_yellow));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_normal), new ItemStack(InitItemsVC.item_airship_v3_lightblue));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_normal), new ItemStack(InitItemsVC.item_airship_v3_magenta));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_normal), new ItemStack(InitItemsVC.item_airship_v3_orange));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_normal), new ItemStack(InitItemsVC.item_airship_v3_white));
+		//Airship v2 Iron conversion back into normal.
+		//Recipes that strip the dye off of Iron airships
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_iron_normal), new ItemStack(InitItemsVC.item_airship_v2_iron_black));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_iron_normal), new ItemStack(InitItemsVC.item_airship_v2_iron_red));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_iron_normal), new ItemStack(InitItemsVC.item_airship_v2_iron_green));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_iron_normal), new ItemStack(InitItemsVC.item_airship_v2_iron_brown));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_iron_normal), new ItemStack(InitItemsVC.item_airship_v2_iron_blue));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_iron_normal), new ItemStack(InitItemsVC.item_airship_v2_iron_purple));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_iron_normal), new ItemStack(InitItemsVC.item_airship_v2_iron_cyan));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_iron_normal), new ItemStack(InitItemsVC.item_airship_v2_iron_lightgray));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_iron_normal), new ItemStack(InitItemsVC.item_airship_v2_iron_gray));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_iron_normal), new ItemStack(InitItemsVC.item_airship_v2_iron_pink));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_iron_normal), new ItemStack(InitItemsVC.item_airship_v2_iron_lime));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_iron_normal), new ItemStack(InitItemsVC.item_airship_v2_iron_yellow));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_iron_normal), new ItemStack(InitItemsVC.item_airship_v2_iron_lightblue));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_iron_normal), new ItemStack(InitItemsVC.item_airship_v2_iron_magenta));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_iron_normal), new ItemStack(InitItemsVC.item_airship_v2_iron_orange));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_iron_normal), new ItemStack(InitItemsVC.item_airship_v2_iron_white));
 		
-		//================================================
-		
-		//Airship v4 colors
-		//Recipes that dye the basic airship into any color
+		//Airship v2 Redstone colors
+		//Recipes that dye the basic Redstone airship into any color
 		//Note: Also returns an empty bucket
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_black), new ItemStack(InitItemsVC.item_airship_v4_normal), new ItemStack(InitItemsVC.item_paint_black.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_red), new ItemStack(InitItemsVC.item_airship_v4_normal), new ItemStack(InitItemsVC.item_paint_red.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_green), new ItemStack(InitItemsVC.item_airship_v4_normal), new ItemStack(InitItemsVC.item_paint_green.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_brown), new ItemStack(InitItemsVC.item_airship_v4_normal), new ItemStack(InitItemsVC.item_paint_brown.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_blue), new ItemStack(InitItemsVC.item_airship_v4_normal), new ItemStack(InitItemsVC.item_paint_blue.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_purple), new ItemStack(InitItemsVC.item_airship_v4_normal), new ItemStack(InitItemsVC.item_paint_purple.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_cyan), new ItemStack(InitItemsVC.item_airship_v4_normal), new ItemStack(InitItemsVC.item_paint_cyan.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_lightgray), new ItemStack(InitItemsVC.item_airship_v4_normal), new ItemStack(InitItemsVC.item_paint_lightgray.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_gray), new ItemStack(InitItemsVC.item_airship_v4_normal), new ItemStack(InitItemsVC.item_paint_gray.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_pink), new ItemStack(InitItemsVC.item_airship_v4_normal), new ItemStack(InitItemsVC.item_paint_pink.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_lime), new ItemStack(InitItemsVC.item_airship_v4_normal), new ItemStack(InitItemsVC.item_paint_lime.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_yellow), new ItemStack(InitItemsVC.item_airship_v4_normal), new ItemStack(InitItemsVC.item_paint_yellow.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_lightblue), new ItemStack(InitItemsVC.item_airship_v4_normal), new ItemStack(InitItemsVC.item_paint_lightblue.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_magenta), new ItemStack(InitItemsVC.item_airship_v4_normal), new ItemStack(InitItemsVC.item_paint_magenta.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_orange), new ItemStack(InitItemsVC.item_airship_v4_normal), new ItemStack(InitItemsVC.item_paint_orange.setContainerItem(Items.BUCKET)));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_white), new ItemStack(InitItemsVC.item_airship_v4_normal), new ItemStack(InitItemsVC.item_paint_white.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_redstone_black), new ItemStack(InitItemsVC.item_airship_v2_redstone_normal), new ItemStack(InitItemsVC.item_paint_black.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_redstone_red), new ItemStack(InitItemsVC.item_airship_v2_redstone_normal), new ItemStack(InitItemsVC.item_paint_red.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_redstone_green), new ItemStack(InitItemsVC.item_airship_v2_redstone_normal), new ItemStack(InitItemsVC.item_paint_green.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_redstone_brown), new ItemStack(InitItemsVC.item_airship_v2_redstone_normal), new ItemStack(InitItemsVC.item_paint_brown.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_redstone_blue), new ItemStack(InitItemsVC.item_airship_v2_redstone_normal), new ItemStack(InitItemsVC.item_paint_blue.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_redstone_purple), new ItemStack(InitItemsVC.item_airship_v2_redstone_normal), new ItemStack(InitItemsVC.item_paint_purple.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_redstone_cyan), new ItemStack(InitItemsVC.item_airship_v2_redstone_normal), new ItemStack(InitItemsVC.item_paint_cyan.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_redstone_lightgray), new ItemStack(InitItemsVC.item_airship_v2_redstone_normal), new ItemStack(InitItemsVC.item_paint_lightgray.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_redstone_gray), new ItemStack(InitItemsVC.item_airship_v2_redstone_normal), new ItemStack(InitItemsVC.item_paint_gray.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_redstone_pink), new ItemStack(InitItemsVC.item_airship_v2_redstone_normal), new ItemStack(InitItemsVC.item_paint_pink.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_redstone_lime), new ItemStack(InitItemsVC.item_airship_v2_redstone_normal), new ItemStack(InitItemsVC.item_paint_lime.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_redstone_yellow), new ItemStack(InitItemsVC.item_airship_v2_redstone_normal), new ItemStack(InitItemsVC.item_paint_yellow.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_redstone_lightblue), new ItemStack(InitItemsVC.item_airship_v2_redstone_normal), new ItemStack(InitItemsVC.item_paint_lightblue.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_redstone_magenta), new ItemStack(InitItemsVC.item_airship_v2_redstone_normal), new ItemStack(InitItemsVC.item_paint_magenta.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_redstone_orange), new ItemStack(InitItemsVC.item_airship_v2_redstone_normal), new ItemStack(InitItemsVC.item_paint_orange.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_redstone_white), new ItemStack(InitItemsVC.item_airship_v2_redstone_normal), new ItemStack(InitItemsVC.item_paint_white.setContainerItem(Items.BUCKET)));
 		
-		//Airship v4 conversion back into normal.
-		//Recipes that strip the dye off of airships
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_normal), new ItemStack(InitItemsVC.item_airship_v4_black));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_normal), new ItemStack(InitItemsVC.item_airship_v4_red));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_normal), new ItemStack(InitItemsVC.item_airship_v4_green));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_normal), new ItemStack(InitItemsVC.item_airship_v4_brown));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_normal), new ItemStack(InitItemsVC.item_airship_v4_blue));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_normal), new ItemStack(InitItemsVC.item_airship_v4_purple));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_normal), new ItemStack(InitItemsVC.item_airship_v4_cyan));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_normal), new ItemStack(InitItemsVC.item_airship_v4_lightgray));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_normal), new ItemStack(InitItemsVC.item_airship_v4_gray));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_normal), new ItemStack(InitItemsVC.item_airship_v4_pink));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_normal), new ItemStack(InitItemsVC.item_airship_v4_lime));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_normal), new ItemStack(InitItemsVC.item_airship_v4_yellow));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_normal), new ItemStack(InitItemsVC.item_airship_v4_lightblue));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_normal), new ItemStack(InitItemsVC.item_airship_v4_magenta));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_normal), new ItemStack(InitItemsVC.item_airship_v4_orange));
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_normal), new ItemStack(InitItemsVC.item_airship_v4_white));
+		//Airship v2 Redstone conversion back into normal.
+		//Recipes that strip the dye off of Redstone airships
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_redstone_normal), new ItemStack(InitItemsVC.item_airship_v2_redstone_black));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_redstone_normal), new ItemStack(InitItemsVC.item_airship_v2_redstone_red));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_redstone_normal), new ItemStack(InitItemsVC.item_airship_v2_redstone_green));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_redstone_normal), new ItemStack(InitItemsVC.item_airship_v2_redstone_brown));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_redstone_normal), new ItemStack(InitItemsVC.item_airship_v2_redstone_blue));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_redstone_normal), new ItemStack(InitItemsVC.item_airship_v2_redstone_purple));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_redstone_normal), new ItemStack(InitItemsVC.item_airship_v2_redstone_cyan));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_redstone_normal), new ItemStack(InitItemsVC.item_airship_v2_redstone_lightgray));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_redstone_normal), new ItemStack(InitItemsVC.item_airship_v2_redstone_gray));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_redstone_normal), new ItemStack(InitItemsVC.item_airship_v2_redstone_pink));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_redstone_normal), new ItemStack(InitItemsVC.item_airship_v2_redstone_lime));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_redstone_normal), new ItemStack(InitItemsVC.item_airship_v2_redstone_yellow));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_redstone_normal), new ItemStack(InitItemsVC.item_airship_v2_redstone_lightblue));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_redstone_normal), new ItemStack(InitItemsVC.item_airship_v2_redstone_magenta));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_redstone_normal), new ItemStack(InitItemsVC.item_airship_v2_redstone_orange));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_redstone_normal), new ItemStack(InitItemsVC.item_airship_v2_redstone_white));
+		
+		//Airship v2 Gold colors
+		//Recipes that dye the basic Gold airship into any color
+		//Note: Also returns an empty bucket
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_gold_black), new ItemStack(InitItemsVC.item_airship_v2_gold_normal), new ItemStack(InitItemsVC.item_paint_black.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_gold_red), new ItemStack(InitItemsVC.item_airship_v2_gold_normal), new ItemStack(InitItemsVC.item_paint_red.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_gold_green), new ItemStack(InitItemsVC.item_airship_v2_gold_normal), new ItemStack(InitItemsVC.item_paint_green.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_gold_brown), new ItemStack(InitItemsVC.item_airship_v2_gold_normal), new ItemStack(InitItemsVC.item_paint_brown.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_gold_blue), new ItemStack(InitItemsVC.item_airship_v2_gold_normal), new ItemStack(InitItemsVC.item_paint_blue.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_gold_purple), new ItemStack(InitItemsVC.item_airship_v2_gold_normal), new ItemStack(InitItemsVC.item_paint_purple.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_gold_cyan), new ItemStack(InitItemsVC.item_airship_v2_gold_normal), new ItemStack(InitItemsVC.item_paint_cyan.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_gold_lightgray), new ItemStack(InitItemsVC.item_airship_v2_gold_normal), new ItemStack(InitItemsVC.item_paint_lightgray.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_gold_gray), new ItemStack(InitItemsVC.item_airship_v2_gold_normal), new ItemStack(InitItemsVC.item_paint_gray.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_gold_pink), new ItemStack(InitItemsVC.item_airship_v2_gold_normal), new ItemStack(InitItemsVC.item_paint_pink.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_gold_lime), new ItemStack(InitItemsVC.item_airship_v2_gold_normal), new ItemStack(InitItemsVC.item_paint_lime.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_gold_yellow), new ItemStack(InitItemsVC.item_airship_v2_gold_normal), new ItemStack(InitItemsVC.item_paint_yellow.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_gold_lightblue), new ItemStack(InitItemsVC.item_airship_v2_gold_normal), new ItemStack(InitItemsVC.item_paint_lightblue.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_gold_magenta), new ItemStack(InitItemsVC.item_airship_v2_gold_normal), new ItemStack(InitItemsVC.item_paint_magenta.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_gold_orange), new ItemStack(InitItemsVC.item_airship_v2_gold_normal), new ItemStack(InitItemsVC.item_paint_orange.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_gold_white), new ItemStack(InitItemsVC.item_airship_v2_gold_normal), new ItemStack(InitItemsVC.item_paint_white.setContainerItem(Items.BUCKET)));
+		
+		//Airship v2 Gold conversion back into normal.
+		//Recipes that strip the dye off of Gold airships
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_gold_normal), new ItemStack(InitItemsVC.item_airship_v2_gold_black));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_gold_normal), new ItemStack(InitItemsVC.item_airship_v2_gold_red));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_gold_normal), new ItemStack(InitItemsVC.item_airship_v2_gold_green));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_gold_normal), new ItemStack(InitItemsVC.item_airship_v2_gold_brown));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_gold_normal), new ItemStack(InitItemsVC.item_airship_v2_gold_blue));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_gold_normal), new ItemStack(InitItemsVC.item_airship_v2_gold_purple));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_gold_normal), new ItemStack(InitItemsVC.item_airship_v2_gold_cyan));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_gold_normal), new ItemStack(InitItemsVC.item_airship_v2_gold_lightgray));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_gold_normal), new ItemStack(InitItemsVC.item_airship_v2_gold_gray));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_gold_normal), new ItemStack(InitItemsVC.item_airship_v2_gold_pink));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_gold_normal), new ItemStack(InitItemsVC.item_airship_v2_gold_lime));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_gold_normal), new ItemStack(InitItemsVC.item_airship_v2_gold_yellow));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_gold_normal), new ItemStack(InitItemsVC.item_airship_v2_gold_lightblue));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_gold_normal), new ItemStack(InitItemsVC.item_airship_v2_gold_magenta));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_gold_normal), new ItemStack(InitItemsVC.item_airship_v2_gold_orange));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_gold_normal), new ItemStack(InitItemsVC.item_airship_v2_gold_white));
+		
+		//Airship v2 Lapis Lazuli colors
+		//Recipes that dye the basic Lapis Lazuli airship into any color
+		//Note: Also returns an empty bucket
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_black), new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_normal), new ItemStack(InitItemsVC.item_paint_black.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_red), new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_normal), new ItemStack(InitItemsVC.item_paint_red.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_green), new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_normal), new ItemStack(InitItemsVC.item_paint_green.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_brown), new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_normal), new ItemStack(InitItemsVC.item_paint_brown.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_blue), new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_normal), new ItemStack(InitItemsVC.item_paint_blue.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_purple), new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_normal), new ItemStack(InitItemsVC.item_paint_purple.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_cyan), new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_normal), new ItemStack(InitItemsVC.item_paint_cyan.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_lightgray), new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_normal), new ItemStack(InitItemsVC.item_paint_lightgray.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_gray), new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_normal), new ItemStack(InitItemsVC.item_paint_gray.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_pink), new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_normal), new ItemStack(InitItemsVC.item_paint_pink.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_lime), new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_normal), new ItemStack(InitItemsVC.item_paint_lime.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_yellow), new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_normal), new ItemStack(InitItemsVC.item_paint_yellow.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_lightblue), new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_normal), new ItemStack(InitItemsVC.item_paint_lightblue.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_magenta), new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_normal), new ItemStack(InitItemsVC.item_paint_magenta.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_orange), new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_normal), new ItemStack(InitItemsVC.item_paint_orange.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_white), new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_normal), new ItemStack(InitItemsVC.item_paint_white.setContainerItem(Items.BUCKET)));
+		
+		//Airship v2 Lapis Lazuli conversion back into normal.
+		//Recipes that strip the dye off of Lapis Lazuli airships
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_normal), new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_black));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_normal), new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_red));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_normal), new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_green));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_normal), new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_brown));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_normal), new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_blue));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_normal), new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_purple));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_normal), new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_cyan));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_normal), new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_lightgray));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_normal), new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_gray));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_normal), new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_pink));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_normal), new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_lime));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_normal), new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_yellow));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_normal), new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_lightblue));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_normal), new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_magenta));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_normal), new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_orange));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_normal), new ItemStack(InitItemsVC.item_airship_v2_lapislazuli_white));
+		
+		//Airship v2 Obsidian colors
+		//Recipes that dye the basic Obsidian airship into any color
+		//Note: Also returns an empty bucket
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_obsidian_black), new ItemStack(InitItemsVC.item_airship_v2_obsidian_normal), new ItemStack(InitItemsVC.item_paint_black.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_obsidian_red), new ItemStack(InitItemsVC.item_airship_v2_obsidian_normal), new ItemStack(InitItemsVC.item_paint_red.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_obsidian_green), new ItemStack(InitItemsVC.item_airship_v2_obsidian_normal), new ItemStack(InitItemsVC.item_paint_green.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_obsidian_brown), new ItemStack(InitItemsVC.item_airship_v2_obsidian_normal), new ItemStack(InitItemsVC.item_paint_brown.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_obsidian_blue), new ItemStack(InitItemsVC.item_airship_v2_obsidian_normal), new ItemStack(InitItemsVC.item_paint_blue.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_obsidian_purple), new ItemStack(InitItemsVC.item_airship_v2_obsidian_normal), new ItemStack(InitItemsVC.item_paint_purple.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_obsidian_cyan), new ItemStack(InitItemsVC.item_airship_v2_obsidian_normal), new ItemStack(InitItemsVC.item_paint_cyan.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_obsidian_lightgray), new ItemStack(InitItemsVC.item_airship_v2_obsidian_normal), new ItemStack(InitItemsVC.item_paint_lightgray.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_obsidian_gray), new ItemStack(InitItemsVC.item_airship_v2_obsidian_normal), new ItemStack(InitItemsVC.item_paint_gray.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_obsidian_pink), new ItemStack(InitItemsVC.item_airship_v2_obsidian_normal), new ItemStack(InitItemsVC.item_paint_pink.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_obsidian_lime), new ItemStack(InitItemsVC.item_airship_v2_obsidian_normal), new ItemStack(InitItemsVC.item_paint_lime.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_obsidian_yellow), new ItemStack(InitItemsVC.item_airship_v2_obsidian_normal), new ItemStack(InitItemsVC.item_paint_yellow.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_obsidian_lightblue), new ItemStack(InitItemsVC.item_airship_v2_obsidian_normal), new ItemStack(InitItemsVC.item_paint_lightblue.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_obsidian_magenta), new ItemStack(InitItemsVC.item_airship_v2_obsidian_normal), new ItemStack(InitItemsVC.item_paint_magenta.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_obsidian_orange), new ItemStack(InitItemsVC.item_airship_v2_obsidian_normal), new ItemStack(InitItemsVC.item_paint_orange.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_obsidian_white), new ItemStack(InitItemsVC.item_airship_v2_obsidian_normal), new ItemStack(InitItemsVC.item_paint_white.setContainerItem(Items.BUCKET)));
+		
+		//Airship v2 Obsidian conversion back into normal.
+		//Recipes that strip the dye off of Obsidian airships
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v2_obsidian_black));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v2_obsidian_red));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v2_obsidian_green));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v2_obsidian_brown));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v2_obsidian_blue));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v2_obsidian_purple));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v2_obsidian_cyan));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v2_obsidian_lightgray));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v2_obsidian_gray));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v2_obsidian_pink));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v2_obsidian_lime));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v2_obsidian_yellow));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v2_obsidian_lightblue));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v2_obsidian_magenta));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v2_obsidian_orange));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v2_obsidian_white));
+		
+		//Airship v2 Diamond colors
+		//Recipes that dye the basic Diamond airship into any color
+		//Note: Also returns an empty bucket
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_diamond_black), new ItemStack(InitItemsVC.item_airship_v2_diamond_normal), new ItemStack(InitItemsVC.item_paint_black.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_diamond_red), new ItemStack(InitItemsVC.item_airship_v2_diamond_normal), new ItemStack(InitItemsVC.item_paint_red.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_diamond_green), new ItemStack(InitItemsVC.item_airship_v2_diamond_normal), new ItemStack(InitItemsVC.item_paint_green.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_diamond_brown), new ItemStack(InitItemsVC.item_airship_v2_diamond_normal), new ItemStack(InitItemsVC.item_paint_brown.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_diamond_blue), new ItemStack(InitItemsVC.item_airship_v2_diamond_normal), new ItemStack(InitItemsVC.item_paint_blue.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_diamond_purple), new ItemStack(InitItemsVC.item_airship_v2_diamond_normal), new ItemStack(InitItemsVC.item_paint_purple.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_diamond_cyan), new ItemStack(InitItemsVC.item_airship_v2_diamond_normal), new ItemStack(InitItemsVC.item_paint_cyan.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_diamond_lightgray), new ItemStack(InitItemsVC.item_airship_v2_diamond_normal), new ItemStack(InitItemsVC.item_paint_lightgray.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_diamond_gray), new ItemStack(InitItemsVC.item_airship_v2_diamond_normal), new ItemStack(InitItemsVC.item_paint_gray.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_diamond_pink), new ItemStack(InitItemsVC.item_airship_v2_diamond_normal), new ItemStack(InitItemsVC.item_paint_pink.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_diamond_lime), new ItemStack(InitItemsVC.item_airship_v2_diamond_normal), new ItemStack(InitItemsVC.item_paint_lime.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_diamond_yellow), new ItemStack(InitItemsVC.item_airship_v2_diamond_normal), new ItemStack(InitItemsVC.item_paint_yellow.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_diamond_lightblue), new ItemStack(InitItemsVC.item_airship_v2_diamond_normal), new ItemStack(InitItemsVC.item_paint_lightblue.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_diamond_magenta), new ItemStack(InitItemsVC.item_airship_v2_diamond_normal), new ItemStack(InitItemsVC.item_paint_magenta.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_diamond_orange), new ItemStack(InitItemsVC.item_airship_v2_diamond_normal), new ItemStack(InitItemsVC.item_paint_orange.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_diamond_white), new ItemStack(InitItemsVC.item_airship_v2_diamond_normal), new ItemStack(InitItemsVC.item_paint_white.setContainerItem(Items.BUCKET)));
+		
+		//Airship v2 Diamond conversion back into normal.
+		//Recipes that strip the dye off of Diamond airships
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_diamond_normal), new ItemStack(InitItemsVC.item_airship_v2_diamond_black));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_diamond_normal), new ItemStack(InitItemsVC.item_airship_v2_diamond_red));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_diamond_normal), new ItemStack(InitItemsVC.item_airship_v2_diamond_green));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_diamond_normal), new ItemStack(InitItemsVC.item_airship_v2_diamond_brown));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_diamond_normal), new ItemStack(InitItemsVC.item_airship_v2_diamond_blue));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_diamond_normal), new ItemStack(InitItemsVC.item_airship_v2_diamond_purple));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_diamond_normal), new ItemStack(InitItemsVC.item_airship_v2_diamond_cyan));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_diamond_normal), new ItemStack(InitItemsVC.item_airship_v2_diamond_lightgray));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_diamond_normal), new ItemStack(InitItemsVC.item_airship_v2_diamond_gray));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_diamond_normal), new ItemStack(InitItemsVC.item_airship_v2_diamond_pink));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_diamond_normal), new ItemStack(InitItemsVC.item_airship_v2_diamond_lime));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_diamond_normal), new ItemStack(InitItemsVC.item_airship_v2_diamond_yellow));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_diamond_normal), new ItemStack(InitItemsVC.item_airship_v2_diamond_lightblue));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_diamond_normal), new ItemStack(InitItemsVC.item_airship_v2_diamond_magenta));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_diamond_normal), new ItemStack(InitItemsVC.item_airship_v2_diamond_orange));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_diamond_normal), new ItemStack(InitItemsVC.item_airship_v2_diamond_white));
+		
+		//Airship v2 Emerald colors
+		//Recipes that dye the basic Emerald airship into any color
+		//Note: Also returns an empty bucket
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_emerald_black), new ItemStack(InitItemsVC.item_airship_v2_emerald_normal), new ItemStack(InitItemsVC.item_paint_black.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_emerald_red), new ItemStack(InitItemsVC.item_airship_v2_emerald_normal), new ItemStack(InitItemsVC.item_paint_red.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_emerald_green), new ItemStack(InitItemsVC.item_airship_v2_emerald_normal), new ItemStack(InitItemsVC.item_paint_green.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_emerald_brown), new ItemStack(InitItemsVC.item_airship_v2_emerald_normal), new ItemStack(InitItemsVC.item_paint_brown.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_emerald_blue), new ItemStack(InitItemsVC.item_airship_v2_emerald_normal), new ItemStack(InitItemsVC.item_paint_blue.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_emerald_purple), new ItemStack(InitItemsVC.item_airship_v2_emerald_normal), new ItemStack(InitItemsVC.item_paint_purple.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_emerald_cyan), new ItemStack(InitItemsVC.item_airship_v2_emerald_normal), new ItemStack(InitItemsVC.item_paint_cyan.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_emerald_lightgray), new ItemStack(InitItemsVC.item_airship_v2_emerald_normal), new ItemStack(InitItemsVC.item_paint_lightgray.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_emerald_gray), new ItemStack(InitItemsVC.item_airship_v2_emerald_normal), new ItemStack(InitItemsVC.item_paint_gray.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_emerald_pink), new ItemStack(InitItemsVC.item_airship_v2_emerald_normal), new ItemStack(InitItemsVC.item_paint_pink.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_emerald_lime), new ItemStack(InitItemsVC.item_airship_v2_emerald_normal), new ItemStack(InitItemsVC.item_paint_lime.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_emerald_yellow), new ItemStack(InitItemsVC.item_airship_v2_emerald_normal), new ItemStack(InitItemsVC.item_paint_yellow.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_emerald_lightblue), new ItemStack(InitItemsVC.item_airship_v2_emerald_normal), new ItemStack(InitItemsVC.item_paint_lightblue.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_emerald_magenta), new ItemStack(InitItemsVC.item_airship_v2_emerald_normal), new ItemStack(InitItemsVC.item_paint_magenta.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_emerald_orange), new ItemStack(InitItemsVC.item_airship_v2_emerald_normal), new ItemStack(InitItemsVC.item_paint_orange.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_emerald_white), new ItemStack(InitItemsVC.item_airship_v2_emerald_normal), new ItemStack(InitItemsVC.item_paint_white.setContainerItem(Items.BUCKET)));
+		
+		//Airship v2 Emerald conversion back into normal.
+		//Recipes that strip the dye off of Emerald airships
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_emerald_normal), new ItemStack(InitItemsVC.item_airship_v2_emerald_black));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_emerald_normal), new ItemStack(InitItemsVC.item_airship_v2_emerald_red));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_emerald_normal), new ItemStack(InitItemsVC.item_airship_v2_emerald_green));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_emerald_normal), new ItemStack(InitItemsVC.item_airship_v2_emerald_brown));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_emerald_normal), new ItemStack(InitItemsVC.item_airship_v2_emerald_blue));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_emerald_normal), new ItemStack(InitItemsVC.item_airship_v2_emerald_purple));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_emerald_normal), new ItemStack(InitItemsVC.item_airship_v2_emerald_cyan));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_emerald_normal), new ItemStack(InitItemsVC.item_airship_v2_emerald_lightgray));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_emerald_normal), new ItemStack(InitItemsVC.item_airship_v2_emerald_gray));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_emerald_normal), new ItemStack(InitItemsVC.item_airship_v2_emerald_pink));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_emerald_normal), new ItemStack(InitItemsVC.item_airship_v2_emerald_lime));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_emerald_normal), new ItemStack(InitItemsVC.item_airship_v2_emerald_yellow));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_emerald_normal), new ItemStack(InitItemsVC.item_airship_v2_emerald_lightblue));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_emerald_normal), new ItemStack(InitItemsVC.item_airship_v2_emerald_magenta));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_emerald_normal), new ItemStack(InitItemsVC.item_airship_v2_emerald_orange));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v2_emerald_normal), new ItemStack(InitItemsVC.item_airship_v2_emerald_white));
+		
+    	//=================================================
+		
+		//Airship v3 Oak colors
+		//Recipes that dye the basic Oak airship into any color
+		//Note: Also returns an empty bucket
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_wood0_black), new ItemStack(InitItemsVC.item_airship_v3_wood0_normal), new ItemStack(InitItemsVC.item_paint_black.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_wood0_red), new ItemStack(InitItemsVC.item_airship_v3_wood0_normal), new ItemStack(InitItemsVC.item_paint_red.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_wood0_green), new ItemStack(InitItemsVC.item_airship_v3_wood0_normal), new ItemStack(InitItemsVC.item_paint_green.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_wood0_brown), new ItemStack(InitItemsVC.item_airship_v3_wood0_normal), new ItemStack(InitItemsVC.item_paint_brown.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_wood0_blue), new ItemStack(InitItemsVC.item_airship_v3_wood0_normal), new ItemStack(InitItemsVC.item_paint_blue.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_wood0_purple), new ItemStack(InitItemsVC.item_airship_v3_wood0_normal), new ItemStack(InitItemsVC.item_paint_purple.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_wood0_cyan), new ItemStack(InitItemsVC.item_airship_v3_wood0_normal), new ItemStack(InitItemsVC.item_paint_cyan.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_wood0_lightgray), new ItemStack(InitItemsVC.item_airship_v3_wood0_normal), new ItemStack(InitItemsVC.item_paint_lightgray.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_wood0_gray), new ItemStack(InitItemsVC.item_airship_v3_wood0_normal), new ItemStack(InitItemsVC.item_paint_gray.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_wood0_pink), new ItemStack(InitItemsVC.item_airship_v3_wood0_normal), new ItemStack(InitItemsVC.item_paint_pink.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_wood0_lime), new ItemStack(InitItemsVC.item_airship_v3_wood0_normal), new ItemStack(InitItemsVC.item_paint_lime.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_wood0_yellow), new ItemStack(InitItemsVC.item_airship_v3_wood0_normal), new ItemStack(InitItemsVC.item_paint_yellow.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_wood0_lightblue), new ItemStack(InitItemsVC.item_airship_v3_wood0_normal), new ItemStack(InitItemsVC.item_paint_lightblue.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_wood0_magenta), new ItemStack(InitItemsVC.item_airship_v3_wood0_normal), new ItemStack(InitItemsVC.item_paint_magenta.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_wood0_orange), new ItemStack(InitItemsVC.item_airship_v3_wood0_normal), new ItemStack(InitItemsVC.item_paint_orange.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_wood0_white), new ItemStack(InitItemsVC.item_airship_v3_wood0_normal), new ItemStack(InitItemsVC.item_paint_white.setContainerItem(Items.BUCKET)));
+		
+		//Airship v3 Oak conversion back into normal.
+		//Recipes that strip the dye off of Oak airships
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_wood0_normal), new ItemStack(InitItemsVC.item_airship_v3_wood0_black));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_wood0_normal), new ItemStack(InitItemsVC.item_airship_v3_wood0_red));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_wood0_normal), new ItemStack(InitItemsVC.item_airship_v3_wood0_green));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_wood0_normal), new ItemStack(InitItemsVC.item_airship_v3_wood0_brown));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_wood0_normal), new ItemStack(InitItemsVC.item_airship_v3_wood0_blue));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_wood0_normal), new ItemStack(InitItemsVC.item_airship_v3_wood0_purple));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_wood0_normal), new ItemStack(InitItemsVC.item_airship_v3_wood0_cyan));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_wood0_normal), new ItemStack(InitItemsVC.item_airship_v3_wood0_lightgray));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_wood0_normal), new ItemStack(InitItemsVC.item_airship_v3_wood0_gray));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_wood0_normal), new ItemStack(InitItemsVC.item_airship_v3_wood0_pink));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_wood0_normal), new ItemStack(InitItemsVC.item_airship_v3_wood0_lime));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_wood0_normal), new ItemStack(InitItemsVC.item_airship_v3_wood0_yellow));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_wood0_normal), new ItemStack(InitItemsVC.item_airship_v3_wood0_lightblue));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_wood0_normal), new ItemStack(InitItemsVC.item_airship_v3_wood0_magenta));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_wood0_normal), new ItemStack(InitItemsVC.item_airship_v3_wood0_orange));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_wood0_normal), new ItemStack(InitItemsVC.item_airship_v3_wood0_white));
+		
+		//Airship v3 Iron colors
+		//Recipes that dye the basic Iron airship into any color
+		//Note: Also returns an empty bucket
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_iron_black), new ItemStack(InitItemsVC.item_airship_v3_iron_normal), new ItemStack(InitItemsVC.item_paint_black.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_iron_red), new ItemStack(InitItemsVC.item_airship_v3_iron_normal), new ItemStack(InitItemsVC.item_paint_red.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_iron_green), new ItemStack(InitItemsVC.item_airship_v3_iron_normal), new ItemStack(InitItemsVC.item_paint_green.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_iron_brown), new ItemStack(InitItemsVC.item_airship_v3_iron_normal), new ItemStack(InitItemsVC.item_paint_brown.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_iron_blue), new ItemStack(InitItemsVC.item_airship_v3_iron_normal), new ItemStack(InitItemsVC.item_paint_blue.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_iron_purple), new ItemStack(InitItemsVC.item_airship_v3_iron_normal), new ItemStack(InitItemsVC.item_paint_purple.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_iron_cyan), new ItemStack(InitItemsVC.item_airship_v3_iron_normal), new ItemStack(InitItemsVC.item_paint_cyan.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_iron_lightgray), new ItemStack(InitItemsVC.item_airship_v3_iron_normal), new ItemStack(InitItemsVC.item_paint_lightgray.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_iron_gray), new ItemStack(InitItemsVC.item_airship_v3_iron_normal), new ItemStack(InitItemsVC.item_paint_gray.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_iron_pink), new ItemStack(InitItemsVC.item_airship_v3_iron_normal), new ItemStack(InitItemsVC.item_paint_pink.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_iron_lime), new ItemStack(InitItemsVC.item_airship_v3_iron_normal), new ItemStack(InitItemsVC.item_paint_lime.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_iron_yellow), new ItemStack(InitItemsVC.item_airship_v3_iron_normal), new ItemStack(InitItemsVC.item_paint_yellow.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_iron_lightblue), new ItemStack(InitItemsVC.item_airship_v3_iron_normal), new ItemStack(InitItemsVC.item_paint_lightblue.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_iron_magenta), new ItemStack(InitItemsVC.item_airship_v3_iron_normal), new ItemStack(InitItemsVC.item_paint_magenta.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_iron_orange), new ItemStack(InitItemsVC.item_airship_v3_iron_normal), new ItemStack(InitItemsVC.item_paint_orange.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_iron_white), new ItemStack(InitItemsVC.item_airship_v3_iron_normal), new ItemStack(InitItemsVC.item_paint_white.setContainerItem(Items.BUCKET)));
+		
+		//Airship v3 Iron conversion back into normal.
+		//Recipes that strip the dye off of Iron airships
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_iron_normal), new ItemStack(InitItemsVC.item_airship_v3_iron_black));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_iron_normal), new ItemStack(InitItemsVC.item_airship_v3_iron_red));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_iron_normal), new ItemStack(InitItemsVC.item_airship_v3_iron_green));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_iron_normal), new ItemStack(InitItemsVC.item_airship_v3_iron_brown));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_iron_normal), new ItemStack(InitItemsVC.item_airship_v3_iron_blue));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_iron_normal), new ItemStack(InitItemsVC.item_airship_v3_iron_purple));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_iron_normal), new ItemStack(InitItemsVC.item_airship_v3_iron_cyan));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_iron_normal), new ItemStack(InitItemsVC.item_airship_v3_iron_lightgray));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_iron_normal), new ItemStack(InitItemsVC.item_airship_v3_iron_gray));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_iron_normal), new ItemStack(InitItemsVC.item_airship_v3_iron_pink));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_iron_normal), new ItemStack(InitItemsVC.item_airship_v3_iron_lime));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_iron_normal), new ItemStack(InitItemsVC.item_airship_v3_iron_yellow));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_iron_normal), new ItemStack(InitItemsVC.item_airship_v3_iron_lightblue));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_iron_normal), new ItemStack(InitItemsVC.item_airship_v3_iron_magenta));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_iron_normal), new ItemStack(InitItemsVC.item_airship_v3_iron_orange));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_iron_normal), new ItemStack(InitItemsVC.item_airship_v3_iron_white));
+		
+		//Airship v3 Redstone colors
+		//Recipes that dye the basic Redstone airship into any color
+		//Note: Also returns an empty bucket
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_redstone_black), new ItemStack(InitItemsVC.item_airship_v3_redstone_normal), new ItemStack(InitItemsVC.item_paint_black.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_redstone_red), new ItemStack(InitItemsVC.item_airship_v3_redstone_normal), new ItemStack(InitItemsVC.item_paint_red.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_redstone_green), new ItemStack(InitItemsVC.item_airship_v3_redstone_normal), new ItemStack(InitItemsVC.item_paint_green.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_redstone_brown), new ItemStack(InitItemsVC.item_airship_v3_redstone_normal), new ItemStack(InitItemsVC.item_paint_brown.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_redstone_blue), new ItemStack(InitItemsVC.item_airship_v3_redstone_normal), new ItemStack(InitItemsVC.item_paint_blue.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_redstone_purple), new ItemStack(InitItemsVC.item_airship_v3_redstone_normal), new ItemStack(InitItemsVC.item_paint_purple.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_redstone_cyan), new ItemStack(InitItemsVC.item_airship_v3_redstone_normal), new ItemStack(InitItemsVC.item_paint_cyan.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_redstone_lightgray), new ItemStack(InitItemsVC.item_airship_v3_redstone_normal), new ItemStack(InitItemsVC.item_paint_lightgray.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_redstone_gray), new ItemStack(InitItemsVC.item_airship_v3_redstone_normal), new ItemStack(InitItemsVC.item_paint_gray.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_redstone_pink), new ItemStack(InitItemsVC.item_airship_v3_redstone_normal), new ItemStack(InitItemsVC.item_paint_pink.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_redstone_lime), new ItemStack(InitItemsVC.item_airship_v3_redstone_normal), new ItemStack(InitItemsVC.item_paint_lime.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_redstone_yellow), new ItemStack(InitItemsVC.item_airship_v3_redstone_normal), new ItemStack(InitItemsVC.item_paint_yellow.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_redstone_lightblue), new ItemStack(InitItemsVC.item_airship_v3_redstone_normal), new ItemStack(InitItemsVC.item_paint_lightblue.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_redstone_magenta), new ItemStack(InitItemsVC.item_airship_v3_redstone_normal), new ItemStack(InitItemsVC.item_paint_magenta.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_redstone_orange), new ItemStack(InitItemsVC.item_airship_v3_redstone_normal), new ItemStack(InitItemsVC.item_paint_orange.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_redstone_white), new ItemStack(InitItemsVC.item_airship_v3_redstone_normal), new ItemStack(InitItemsVC.item_paint_white.setContainerItem(Items.BUCKET)));
+		
+		//Airship v3 Redstone conversion back into normal.
+		//Recipes that strip the dye off of Redstone airships
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_redstone_normal), new ItemStack(InitItemsVC.item_airship_v3_redstone_black));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_redstone_normal), new ItemStack(InitItemsVC.item_airship_v3_redstone_red));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_redstone_normal), new ItemStack(InitItemsVC.item_airship_v3_redstone_green));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_redstone_normal), new ItemStack(InitItemsVC.item_airship_v3_redstone_brown));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_redstone_normal), new ItemStack(InitItemsVC.item_airship_v3_redstone_blue));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_redstone_normal), new ItemStack(InitItemsVC.item_airship_v3_redstone_purple));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_redstone_normal), new ItemStack(InitItemsVC.item_airship_v3_redstone_cyan));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_redstone_normal), new ItemStack(InitItemsVC.item_airship_v3_redstone_lightgray));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_redstone_normal), new ItemStack(InitItemsVC.item_airship_v3_redstone_gray));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_redstone_normal), new ItemStack(InitItemsVC.item_airship_v3_redstone_pink));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_redstone_normal), new ItemStack(InitItemsVC.item_airship_v3_redstone_lime));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_redstone_normal), new ItemStack(InitItemsVC.item_airship_v3_redstone_yellow));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_redstone_normal), new ItemStack(InitItemsVC.item_airship_v3_redstone_lightblue));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_redstone_normal), new ItemStack(InitItemsVC.item_airship_v3_redstone_magenta));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_redstone_normal), new ItemStack(InitItemsVC.item_airship_v3_redstone_orange));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_redstone_normal), new ItemStack(InitItemsVC.item_airship_v3_redstone_white));
+		
+		//Airship v3 Gold colors
+		//Recipes that dye the basic Gold airship into any color
+		//Note: Also returns an empty bucket
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_gold_black), new ItemStack(InitItemsVC.item_airship_v3_gold_normal), new ItemStack(InitItemsVC.item_paint_black.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_gold_red), new ItemStack(InitItemsVC.item_airship_v3_gold_normal), new ItemStack(InitItemsVC.item_paint_red.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_gold_green), new ItemStack(InitItemsVC.item_airship_v3_gold_normal), new ItemStack(InitItemsVC.item_paint_green.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_gold_brown), new ItemStack(InitItemsVC.item_airship_v3_gold_normal), new ItemStack(InitItemsVC.item_paint_brown.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_gold_blue), new ItemStack(InitItemsVC.item_airship_v3_gold_normal), new ItemStack(InitItemsVC.item_paint_blue.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_gold_purple), new ItemStack(InitItemsVC.item_airship_v3_gold_normal), new ItemStack(InitItemsVC.item_paint_purple.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_gold_cyan), new ItemStack(InitItemsVC.item_airship_v3_gold_normal), new ItemStack(InitItemsVC.item_paint_cyan.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_gold_lightgray), new ItemStack(InitItemsVC.item_airship_v3_gold_normal), new ItemStack(InitItemsVC.item_paint_lightgray.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_gold_gray), new ItemStack(InitItemsVC.item_airship_v3_gold_normal), new ItemStack(InitItemsVC.item_paint_gray.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_gold_pink), new ItemStack(InitItemsVC.item_airship_v3_gold_normal), new ItemStack(InitItemsVC.item_paint_pink.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_gold_lime), new ItemStack(InitItemsVC.item_airship_v3_gold_normal), new ItemStack(InitItemsVC.item_paint_lime.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_gold_yellow), new ItemStack(InitItemsVC.item_airship_v3_gold_normal), new ItemStack(InitItemsVC.item_paint_yellow.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_gold_lightblue), new ItemStack(InitItemsVC.item_airship_v3_gold_normal), new ItemStack(InitItemsVC.item_paint_lightblue.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_gold_magenta), new ItemStack(InitItemsVC.item_airship_v3_gold_normal), new ItemStack(InitItemsVC.item_paint_magenta.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_gold_orange), new ItemStack(InitItemsVC.item_airship_v3_gold_normal), new ItemStack(InitItemsVC.item_paint_orange.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_gold_white), new ItemStack(InitItemsVC.item_airship_v3_gold_normal), new ItemStack(InitItemsVC.item_paint_white.setContainerItem(Items.BUCKET)));
+		
+		//Airship v3 Gold conversion back into normal.
+		//Recipes that strip the dye off of Gold airships
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_gold_normal), new ItemStack(InitItemsVC.item_airship_v3_gold_black));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_gold_normal), new ItemStack(InitItemsVC.item_airship_v3_gold_red));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_gold_normal), new ItemStack(InitItemsVC.item_airship_v3_gold_green));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_gold_normal), new ItemStack(InitItemsVC.item_airship_v3_gold_brown));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_gold_normal), new ItemStack(InitItemsVC.item_airship_v3_gold_blue));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_gold_normal), new ItemStack(InitItemsVC.item_airship_v3_gold_purple));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_gold_normal), new ItemStack(InitItemsVC.item_airship_v3_gold_cyan));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_gold_normal), new ItemStack(InitItemsVC.item_airship_v3_gold_lightgray));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_gold_normal), new ItemStack(InitItemsVC.item_airship_v3_gold_gray));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_gold_normal), new ItemStack(InitItemsVC.item_airship_v3_gold_pink));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_gold_normal), new ItemStack(InitItemsVC.item_airship_v3_gold_lime));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_gold_normal), new ItemStack(InitItemsVC.item_airship_v3_gold_yellow));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_gold_normal), new ItemStack(InitItemsVC.item_airship_v3_gold_lightblue));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_gold_normal), new ItemStack(InitItemsVC.item_airship_v3_gold_magenta));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_gold_normal), new ItemStack(InitItemsVC.item_airship_v3_gold_orange));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_gold_normal), new ItemStack(InitItemsVC.item_airship_v3_gold_white));
+		
+		//Airship v3 Lapis Lazuli colors
+		//Recipes that dye the basic Lapis Lazuli airship into any color
+		//Note: Also returns an empty bucket
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_black), new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_normal), new ItemStack(InitItemsVC.item_paint_black.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_red), new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_normal), new ItemStack(InitItemsVC.item_paint_red.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_green), new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_normal), new ItemStack(InitItemsVC.item_paint_green.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_brown), new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_normal), new ItemStack(InitItemsVC.item_paint_brown.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_blue), new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_normal), new ItemStack(InitItemsVC.item_paint_blue.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_purple), new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_normal), new ItemStack(InitItemsVC.item_paint_purple.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_cyan), new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_normal), new ItemStack(InitItemsVC.item_paint_cyan.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_lightgray), new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_normal), new ItemStack(InitItemsVC.item_paint_lightgray.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_gray), new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_normal), new ItemStack(InitItemsVC.item_paint_gray.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_pink), new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_normal), new ItemStack(InitItemsVC.item_paint_pink.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_lime), new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_normal), new ItemStack(InitItemsVC.item_paint_lime.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_yellow), new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_normal), new ItemStack(InitItemsVC.item_paint_yellow.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_lightblue), new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_normal), new ItemStack(InitItemsVC.item_paint_lightblue.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_magenta), new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_normal), new ItemStack(InitItemsVC.item_paint_magenta.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_orange), new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_normal), new ItemStack(InitItemsVC.item_paint_orange.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_white), new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_normal), new ItemStack(InitItemsVC.item_paint_white.setContainerItem(Items.BUCKET)));
+		
+		//Airship v3 Lapis Lazuli conversion back into normal.
+		//Recipes that strip the dye off of Lapis Lazuli airships
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_normal), new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_black));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_normal), new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_red));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_normal), new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_green));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_normal), new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_brown));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_normal), new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_blue));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_normal), new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_purple));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_normal), new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_cyan));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_normal), new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_lightgray));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_normal), new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_gray));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_normal), new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_pink));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_normal), new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_lime));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_normal), new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_yellow));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_normal), new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_lightblue));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_normal), new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_magenta));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_normal), new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_orange));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_normal), new ItemStack(InitItemsVC.item_airship_v3_lapislazuli_white));
+		
+		//Airship v3 Obsidian colors
+		//Recipes that dye the basic Obsidian airship into any color
+		//Note: Also returns an empty bucket
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_obsidian_black), new ItemStack(InitItemsVC.item_airship_v3_obsidian_normal), new ItemStack(InitItemsVC.item_paint_black.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_obsidian_red), new ItemStack(InitItemsVC.item_airship_v3_obsidian_normal), new ItemStack(InitItemsVC.item_paint_red.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_obsidian_green), new ItemStack(InitItemsVC.item_airship_v3_obsidian_normal), new ItemStack(InitItemsVC.item_paint_green.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_obsidian_brown), new ItemStack(InitItemsVC.item_airship_v3_obsidian_normal), new ItemStack(InitItemsVC.item_paint_brown.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_obsidian_blue), new ItemStack(InitItemsVC.item_airship_v3_obsidian_normal), new ItemStack(InitItemsVC.item_paint_blue.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_obsidian_purple), new ItemStack(InitItemsVC.item_airship_v3_obsidian_normal), new ItemStack(InitItemsVC.item_paint_purple.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_obsidian_cyan), new ItemStack(InitItemsVC.item_airship_v3_obsidian_normal), new ItemStack(InitItemsVC.item_paint_cyan.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_obsidian_lightgray), new ItemStack(InitItemsVC.item_airship_v3_obsidian_normal), new ItemStack(InitItemsVC.item_paint_lightgray.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_obsidian_gray), new ItemStack(InitItemsVC.item_airship_v3_obsidian_normal), new ItemStack(InitItemsVC.item_paint_gray.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_obsidian_pink), new ItemStack(InitItemsVC.item_airship_v3_obsidian_normal), new ItemStack(InitItemsVC.item_paint_pink.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_obsidian_lime), new ItemStack(InitItemsVC.item_airship_v3_obsidian_normal), new ItemStack(InitItemsVC.item_paint_lime.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_obsidian_yellow), new ItemStack(InitItemsVC.item_airship_v3_obsidian_normal), new ItemStack(InitItemsVC.item_paint_yellow.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_obsidian_lightblue), new ItemStack(InitItemsVC.item_airship_v3_obsidian_normal), new ItemStack(InitItemsVC.item_paint_lightblue.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_obsidian_magenta), new ItemStack(InitItemsVC.item_airship_v3_obsidian_normal), new ItemStack(InitItemsVC.item_paint_magenta.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_obsidian_orange), new ItemStack(InitItemsVC.item_airship_v3_obsidian_normal), new ItemStack(InitItemsVC.item_paint_orange.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_obsidian_white), new ItemStack(InitItemsVC.item_airship_v3_obsidian_normal), new ItemStack(InitItemsVC.item_paint_white.setContainerItem(Items.BUCKET)));
+		
+		//Airship v3 Obsidian conversion back into normal.
+		//Recipes that strip the dye off of Obsidian airships
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v3_obsidian_black));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v3_obsidian_red));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v3_obsidian_green));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v3_obsidian_brown));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v3_obsidian_blue));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v3_obsidian_purple));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v3_obsidian_cyan));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v3_obsidian_lightgray));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v3_obsidian_gray));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v3_obsidian_pink));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v3_obsidian_lime));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v3_obsidian_yellow));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v3_obsidian_lightblue));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v3_obsidian_magenta));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v3_obsidian_orange));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v3_obsidian_white));
+		
+		//Airship v3 Diamond colors
+		//Recipes that dye the basic Diamond airship into any color
+		//Note: Also returns an empty bucket
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_diamond_black), new ItemStack(InitItemsVC.item_airship_v3_diamond_normal), new ItemStack(InitItemsVC.item_paint_black.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_diamond_red), new ItemStack(InitItemsVC.item_airship_v3_diamond_normal), new ItemStack(InitItemsVC.item_paint_red.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_diamond_green), new ItemStack(InitItemsVC.item_airship_v3_diamond_normal), new ItemStack(InitItemsVC.item_paint_green.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_diamond_brown), new ItemStack(InitItemsVC.item_airship_v3_diamond_normal), new ItemStack(InitItemsVC.item_paint_brown.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_diamond_blue), new ItemStack(InitItemsVC.item_airship_v3_diamond_normal), new ItemStack(InitItemsVC.item_paint_blue.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_diamond_purple), new ItemStack(InitItemsVC.item_airship_v3_diamond_normal), new ItemStack(InitItemsVC.item_paint_purple.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_diamond_cyan), new ItemStack(InitItemsVC.item_airship_v3_diamond_normal), new ItemStack(InitItemsVC.item_paint_cyan.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_diamond_lightgray), new ItemStack(InitItemsVC.item_airship_v3_diamond_normal), new ItemStack(InitItemsVC.item_paint_lightgray.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_diamond_gray), new ItemStack(InitItemsVC.item_airship_v3_diamond_normal), new ItemStack(InitItemsVC.item_paint_gray.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_diamond_pink), new ItemStack(InitItemsVC.item_airship_v3_diamond_normal), new ItemStack(InitItemsVC.item_paint_pink.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_diamond_lime), new ItemStack(InitItemsVC.item_airship_v3_diamond_normal), new ItemStack(InitItemsVC.item_paint_lime.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_diamond_yellow), new ItemStack(InitItemsVC.item_airship_v3_diamond_normal), new ItemStack(InitItemsVC.item_paint_yellow.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_diamond_lightblue), new ItemStack(InitItemsVC.item_airship_v3_diamond_normal), new ItemStack(InitItemsVC.item_paint_lightblue.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_diamond_magenta), new ItemStack(InitItemsVC.item_airship_v3_diamond_normal), new ItemStack(InitItemsVC.item_paint_magenta.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_diamond_orange), new ItemStack(InitItemsVC.item_airship_v3_diamond_normal), new ItemStack(InitItemsVC.item_paint_orange.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_diamond_white), new ItemStack(InitItemsVC.item_airship_v3_diamond_normal), new ItemStack(InitItemsVC.item_paint_white.setContainerItem(Items.BUCKET)));
+		
+		//Airship v3 Diamond conversion back into normal.
+		//Recipes that strip the dye off of Diamond airships
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_diamond_normal), new ItemStack(InitItemsVC.item_airship_v3_diamond_black));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_diamond_normal), new ItemStack(InitItemsVC.item_airship_v3_diamond_red));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_diamond_normal), new ItemStack(InitItemsVC.item_airship_v3_diamond_green));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_diamond_normal), new ItemStack(InitItemsVC.item_airship_v3_diamond_brown));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_diamond_normal), new ItemStack(InitItemsVC.item_airship_v3_diamond_blue));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_diamond_normal), new ItemStack(InitItemsVC.item_airship_v3_diamond_purple));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_diamond_normal), new ItemStack(InitItemsVC.item_airship_v3_diamond_cyan));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_diamond_normal), new ItemStack(InitItemsVC.item_airship_v3_diamond_lightgray));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_diamond_normal), new ItemStack(InitItemsVC.item_airship_v3_diamond_gray));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_diamond_normal), new ItemStack(InitItemsVC.item_airship_v3_diamond_pink));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_diamond_normal), new ItemStack(InitItemsVC.item_airship_v3_diamond_lime));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_diamond_normal), new ItemStack(InitItemsVC.item_airship_v3_diamond_yellow));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_diamond_normal), new ItemStack(InitItemsVC.item_airship_v3_diamond_lightblue));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_diamond_normal), new ItemStack(InitItemsVC.item_airship_v3_diamond_magenta));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_diamond_normal), new ItemStack(InitItemsVC.item_airship_v3_diamond_orange));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_diamond_normal), new ItemStack(InitItemsVC.item_airship_v3_diamond_white));
+		
+		//Airship v3 Emerald colors
+		//Recipes that dye the basic Emerald airship into any color
+		//Note: Also returns an empty bucket
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_emerald_black), new ItemStack(InitItemsVC.item_airship_v3_emerald_normal), new ItemStack(InitItemsVC.item_paint_black.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_emerald_red), new ItemStack(InitItemsVC.item_airship_v3_emerald_normal), new ItemStack(InitItemsVC.item_paint_red.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_emerald_green), new ItemStack(InitItemsVC.item_airship_v3_emerald_normal), new ItemStack(InitItemsVC.item_paint_green.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_emerald_brown), new ItemStack(InitItemsVC.item_airship_v3_emerald_normal), new ItemStack(InitItemsVC.item_paint_brown.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_emerald_blue), new ItemStack(InitItemsVC.item_airship_v3_emerald_normal), new ItemStack(InitItemsVC.item_paint_blue.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_emerald_purple), new ItemStack(InitItemsVC.item_airship_v3_emerald_normal), new ItemStack(InitItemsVC.item_paint_purple.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_emerald_cyan), new ItemStack(InitItemsVC.item_airship_v3_emerald_normal), new ItemStack(InitItemsVC.item_paint_cyan.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_emerald_lightgray), new ItemStack(InitItemsVC.item_airship_v3_emerald_normal), new ItemStack(InitItemsVC.item_paint_lightgray.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_emerald_gray), new ItemStack(InitItemsVC.item_airship_v3_emerald_normal), new ItemStack(InitItemsVC.item_paint_gray.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_emerald_pink), new ItemStack(InitItemsVC.item_airship_v3_emerald_normal), new ItemStack(InitItemsVC.item_paint_pink.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_emerald_lime), new ItemStack(InitItemsVC.item_airship_v3_emerald_normal), new ItemStack(InitItemsVC.item_paint_lime.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_emerald_yellow), new ItemStack(InitItemsVC.item_airship_v3_emerald_normal), new ItemStack(InitItemsVC.item_paint_yellow.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_emerald_lightblue), new ItemStack(InitItemsVC.item_airship_v3_emerald_normal), new ItemStack(InitItemsVC.item_paint_lightblue.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_emerald_magenta), new ItemStack(InitItemsVC.item_airship_v3_emerald_normal), new ItemStack(InitItemsVC.item_paint_magenta.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_emerald_orange), new ItemStack(InitItemsVC.item_airship_v3_emerald_normal), new ItemStack(InitItemsVC.item_paint_orange.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_emerald_white), new ItemStack(InitItemsVC.item_airship_v3_emerald_normal), new ItemStack(InitItemsVC.item_paint_white.setContainerItem(Items.BUCKET)));
+		
+		//Airship v3 Emerald conversion back into normal.
+		//Recipes that strip the dye off of Emerald airships
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_emerald_normal), new ItemStack(InitItemsVC.item_airship_v3_emerald_black));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_emerald_normal), new ItemStack(InitItemsVC.item_airship_v3_emerald_red));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_emerald_normal), new ItemStack(InitItemsVC.item_airship_v3_emerald_green));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_emerald_normal), new ItemStack(InitItemsVC.item_airship_v3_emerald_brown));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_emerald_normal), new ItemStack(InitItemsVC.item_airship_v3_emerald_blue));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_emerald_normal), new ItemStack(InitItemsVC.item_airship_v3_emerald_purple));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_emerald_normal), new ItemStack(InitItemsVC.item_airship_v3_emerald_cyan));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_emerald_normal), new ItemStack(InitItemsVC.item_airship_v3_emerald_lightgray));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_emerald_normal), new ItemStack(InitItemsVC.item_airship_v3_emerald_gray));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_emerald_normal), new ItemStack(InitItemsVC.item_airship_v3_emerald_pink));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_emerald_normal), new ItemStack(InitItemsVC.item_airship_v3_emerald_lime));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_emerald_normal), new ItemStack(InitItemsVC.item_airship_v3_emerald_yellow));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_emerald_normal), new ItemStack(InitItemsVC.item_airship_v3_emerald_lightblue));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_emerald_normal), new ItemStack(InitItemsVC.item_airship_v3_emerald_magenta));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_emerald_normal), new ItemStack(InitItemsVC.item_airship_v3_emerald_orange));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v3_emerald_normal), new ItemStack(InitItemsVC.item_airship_v3_emerald_white));
+		
+    	//=================================================
+		
+		//Airship v4 Oak colors
+		//Recipes that dye the basic Oak airship into any color
+		//Note: Also returns an empty bucket
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_wood0_black), new ItemStack(InitItemsVC.item_airship_v4_wood0_normal), new ItemStack(InitItemsVC.item_paint_black.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_wood0_red), new ItemStack(InitItemsVC.item_airship_v4_wood0_normal), new ItemStack(InitItemsVC.item_paint_red.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_wood0_green), new ItemStack(InitItemsVC.item_airship_v4_wood0_normal), new ItemStack(InitItemsVC.item_paint_green.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_wood0_brown), new ItemStack(InitItemsVC.item_airship_v4_wood0_normal), new ItemStack(InitItemsVC.item_paint_brown.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_wood0_blue), new ItemStack(InitItemsVC.item_airship_v4_wood0_normal), new ItemStack(InitItemsVC.item_paint_blue.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_wood0_purple), new ItemStack(InitItemsVC.item_airship_v4_wood0_normal), new ItemStack(InitItemsVC.item_paint_purple.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_wood0_cyan), new ItemStack(InitItemsVC.item_airship_v4_wood0_normal), new ItemStack(InitItemsVC.item_paint_cyan.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_wood0_lightgray), new ItemStack(InitItemsVC.item_airship_v4_wood0_normal), new ItemStack(InitItemsVC.item_paint_lightgray.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_wood0_gray), new ItemStack(InitItemsVC.item_airship_v4_wood0_normal), new ItemStack(InitItemsVC.item_paint_gray.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_wood0_pink), new ItemStack(InitItemsVC.item_airship_v4_wood0_normal), new ItemStack(InitItemsVC.item_paint_pink.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_wood0_lime), new ItemStack(InitItemsVC.item_airship_v4_wood0_normal), new ItemStack(InitItemsVC.item_paint_lime.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_wood0_yellow), new ItemStack(InitItemsVC.item_airship_v4_wood0_normal), new ItemStack(InitItemsVC.item_paint_yellow.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_wood0_lightblue), new ItemStack(InitItemsVC.item_airship_v4_wood0_normal), new ItemStack(InitItemsVC.item_paint_lightblue.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_wood0_magenta), new ItemStack(InitItemsVC.item_airship_v4_wood0_normal), new ItemStack(InitItemsVC.item_paint_magenta.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_wood0_orange), new ItemStack(InitItemsVC.item_airship_v4_wood0_normal), new ItemStack(InitItemsVC.item_paint_orange.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_wood0_white), new ItemStack(InitItemsVC.item_airship_v4_wood0_normal), new ItemStack(InitItemsVC.item_paint_white.setContainerItem(Items.BUCKET)));
+		
+		//Airship v4 Oak conversion back into normal.
+		//Recipes that strip the dye off of Oak airships
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_wood0_normal), new ItemStack(InitItemsVC.item_airship_v4_wood0_black));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_wood0_normal), new ItemStack(InitItemsVC.item_airship_v4_wood0_red));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_wood0_normal), new ItemStack(InitItemsVC.item_airship_v4_wood0_green));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_wood0_normal), new ItemStack(InitItemsVC.item_airship_v4_wood0_brown));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_wood0_normal), new ItemStack(InitItemsVC.item_airship_v4_wood0_blue));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_wood0_normal), new ItemStack(InitItemsVC.item_airship_v4_wood0_purple));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_wood0_normal), new ItemStack(InitItemsVC.item_airship_v4_wood0_cyan));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_wood0_normal), new ItemStack(InitItemsVC.item_airship_v4_wood0_lightgray));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_wood0_normal), new ItemStack(InitItemsVC.item_airship_v4_wood0_gray));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_wood0_normal), new ItemStack(InitItemsVC.item_airship_v4_wood0_pink));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_wood0_normal), new ItemStack(InitItemsVC.item_airship_v4_wood0_lime));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_wood0_normal), new ItemStack(InitItemsVC.item_airship_v4_wood0_yellow));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_wood0_normal), new ItemStack(InitItemsVC.item_airship_v4_wood0_lightblue));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_wood0_normal), new ItemStack(InitItemsVC.item_airship_v4_wood0_magenta));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_wood0_normal), new ItemStack(InitItemsVC.item_airship_v4_wood0_orange));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_wood0_normal), new ItemStack(InitItemsVC.item_airship_v4_wood0_white));
+		
+		//Airship v4 Iron colors
+		//Recipes that dye the basic Iron airship into any color
+		//Note: Also returns an empty bucket
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_iron_black), new ItemStack(InitItemsVC.item_airship_v4_iron_normal), new ItemStack(InitItemsVC.item_paint_black.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_iron_red), new ItemStack(InitItemsVC.item_airship_v4_iron_normal), new ItemStack(InitItemsVC.item_paint_red.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_iron_green), new ItemStack(InitItemsVC.item_airship_v4_iron_normal), new ItemStack(InitItemsVC.item_paint_green.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_iron_brown), new ItemStack(InitItemsVC.item_airship_v4_iron_normal), new ItemStack(InitItemsVC.item_paint_brown.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_iron_blue), new ItemStack(InitItemsVC.item_airship_v4_iron_normal), new ItemStack(InitItemsVC.item_paint_blue.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_iron_purple), new ItemStack(InitItemsVC.item_airship_v4_iron_normal), new ItemStack(InitItemsVC.item_paint_purple.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_iron_cyan), new ItemStack(InitItemsVC.item_airship_v4_iron_normal), new ItemStack(InitItemsVC.item_paint_cyan.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_iron_lightgray), new ItemStack(InitItemsVC.item_airship_v4_iron_normal), new ItemStack(InitItemsVC.item_paint_lightgray.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_iron_gray), new ItemStack(InitItemsVC.item_airship_v4_iron_normal), new ItemStack(InitItemsVC.item_paint_gray.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_iron_pink), new ItemStack(InitItemsVC.item_airship_v4_iron_normal), new ItemStack(InitItemsVC.item_paint_pink.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_iron_lime), new ItemStack(InitItemsVC.item_airship_v4_iron_normal), new ItemStack(InitItemsVC.item_paint_lime.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_iron_yellow), new ItemStack(InitItemsVC.item_airship_v4_iron_normal), new ItemStack(InitItemsVC.item_paint_yellow.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_iron_lightblue), new ItemStack(InitItemsVC.item_airship_v4_iron_normal), new ItemStack(InitItemsVC.item_paint_lightblue.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_iron_magenta), new ItemStack(InitItemsVC.item_airship_v4_iron_normal), new ItemStack(InitItemsVC.item_paint_magenta.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_iron_orange), new ItemStack(InitItemsVC.item_airship_v4_iron_normal), new ItemStack(InitItemsVC.item_paint_orange.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_iron_white), new ItemStack(InitItemsVC.item_airship_v4_iron_normal), new ItemStack(InitItemsVC.item_paint_white.setContainerItem(Items.BUCKET)));
+		
+		//Airship v4 Iron conversion back into normal.
+		//Recipes that strip the dye off of Iron airships
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_iron_normal), new ItemStack(InitItemsVC.item_airship_v4_iron_black));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_iron_normal), new ItemStack(InitItemsVC.item_airship_v4_iron_red));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_iron_normal), new ItemStack(InitItemsVC.item_airship_v4_iron_green));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_iron_normal), new ItemStack(InitItemsVC.item_airship_v4_iron_brown));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_iron_normal), new ItemStack(InitItemsVC.item_airship_v4_iron_blue));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_iron_normal), new ItemStack(InitItemsVC.item_airship_v4_iron_purple));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_iron_normal), new ItemStack(InitItemsVC.item_airship_v4_iron_cyan));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_iron_normal), new ItemStack(InitItemsVC.item_airship_v4_iron_lightgray));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_iron_normal), new ItemStack(InitItemsVC.item_airship_v4_iron_gray));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_iron_normal), new ItemStack(InitItemsVC.item_airship_v4_iron_pink));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_iron_normal), new ItemStack(InitItemsVC.item_airship_v4_iron_lime));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_iron_normal), new ItemStack(InitItemsVC.item_airship_v4_iron_yellow));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_iron_normal), new ItemStack(InitItemsVC.item_airship_v4_iron_lightblue));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_iron_normal), new ItemStack(InitItemsVC.item_airship_v4_iron_magenta));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_iron_normal), new ItemStack(InitItemsVC.item_airship_v4_iron_orange));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_iron_normal), new ItemStack(InitItemsVC.item_airship_v4_iron_white));
+		
+		//Airship v4 Redstone colors
+		//Recipes that dye the basic Redstone airship into any color
+		//Note: Also returns an empty bucket
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_redstone_black), new ItemStack(InitItemsVC.item_airship_v4_redstone_normal), new ItemStack(InitItemsVC.item_paint_black.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_redstone_red), new ItemStack(InitItemsVC.item_airship_v4_redstone_normal), new ItemStack(InitItemsVC.item_paint_red.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_redstone_green), new ItemStack(InitItemsVC.item_airship_v4_redstone_normal), new ItemStack(InitItemsVC.item_paint_green.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_redstone_brown), new ItemStack(InitItemsVC.item_airship_v4_redstone_normal), new ItemStack(InitItemsVC.item_paint_brown.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_redstone_blue), new ItemStack(InitItemsVC.item_airship_v4_redstone_normal), new ItemStack(InitItemsVC.item_paint_blue.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_redstone_purple), new ItemStack(InitItemsVC.item_airship_v4_redstone_normal), new ItemStack(InitItemsVC.item_paint_purple.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_redstone_cyan), new ItemStack(InitItemsVC.item_airship_v4_redstone_normal), new ItemStack(InitItemsVC.item_paint_cyan.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_redstone_lightgray), new ItemStack(InitItemsVC.item_airship_v4_redstone_normal), new ItemStack(InitItemsVC.item_paint_lightgray.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_redstone_gray), new ItemStack(InitItemsVC.item_airship_v4_redstone_normal), new ItemStack(InitItemsVC.item_paint_gray.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_redstone_pink), new ItemStack(InitItemsVC.item_airship_v4_redstone_normal), new ItemStack(InitItemsVC.item_paint_pink.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_redstone_lime), new ItemStack(InitItemsVC.item_airship_v4_redstone_normal), new ItemStack(InitItemsVC.item_paint_lime.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_redstone_yellow), new ItemStack(InitItemsVC.item_airship_v4_redstone_normal), new ItemStack(InitItemsVC.item_paint_yellow.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_redstone_lightblue), new ItemStack(InitItemsVC.item_airship_v4_redstone_normal), new ItemStack(InitItemsVC.item_paint_lightblue.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_redstone_magenta), new ItemStack(InitItemsVC.item_airship_v4_redstone_normal), new ItemStack(InitItemsVC.item_paint_magenta.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_redstone_orange), new ItemStack(InitItemsVC.item_airship_v4_redstone_normal), new ItemStack(InitItemsVC.item_paint_orange.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_redstone_white), new ItemStack(InitItemsVC.item_airship_v4_redstone_normal), new ItemStack(InitItemsVC.item_paint_white.setContainerItem(Items.BUCKET)));
+		
+		//Airship v4 Redstone conversion back into normal.
+		//Recipes that strip the dye off of Redstone airships
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_redstone_normal), new ItemStack(InitItemsVC.item_airship_v4_redstone_black));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_redstone_normal), new ItemStack(InitItemsVC.item_airship_v4_redstone_red));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_redstone_normal), new ItemStack(InitItemsVC.item_airship_v4_redstone_green));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_redstone_normal), new ItemStack(InitItemsVC.item_airship_v4_redstone_brown));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_redstone_normal), new ItemStack(InitItemsVC.item_airship_v4_redstone_blue));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_redstone_normal), new ItemStack(InitItemsVC.item_airship_v4_redstone_purple));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_redstone_normal), new ItemStack(InitItemsVC.item_airship_v4_redstone_cyan));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_redstone_normal), new ItemStack(InitItemsVC.item_airship_v4_redstone_lightgray));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_redstone_normal), new ItemStack(InitItemsVC.item_airship_v4_redstone_gray));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_redstone_normal), new ItemStack(InitItemsVC.item_airship_v4_redstone_pink));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_redstone_normal), new ItemStack(InitItemsVC.item_airship_v4_redstone_lime));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_redstone_normal), new ItemStack(InitItemsVC.item_airship_v4_redstone_yellow));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_redstone_normal), new ItemStack(InitItemsVC.item_airship_v4_redstone_lightblue));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_redstone_normal), new ItemStack(InitItemsVC.item_airship_v4_redstone_magenta));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_redstone_normal), new ItemStack(InitItemsVC.item_airship_v4_redstone_orange));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_redstone_normal), new ItemStack(InitItemsVC.item_airship_v4_redstone_white));
+		
+		//Airship v4 Gold colors
+		//Recipes that dye the basic Gold airship into any color
+		//Note: Also returns an empty bucket
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_gold_black), new ItemStack(InitItemsVC.item_airship_v4_gold_normal), new ItemStack(InitItemsVC.item_paint_black.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_gold_red), new ItemStack(InitItemsVC.item_airship_v4_gold_normal), new ItemStack(InitItemsVC.item_paint_red.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_gold_green), new ItemStack(InitItemsVC.item_airship_v4_gold_normal), new ItemStack(InitItemsVC.item_paint_green.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_gold_brown), new ItemStack(InitItemsVC.item_airship_v4_gold_normal), new ItemStack(InitItemsVC.item_paint_brown.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_gold_blue), new ItemStack(InitItemsVC.item_airship_v4_gold_normal), new ItemStack(InitItemsVC.item_paint_blue.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_gold_purple), new ItemStack(InitItemsVC.item_airship_v4_gold_normal), new ItemStack(InitItemsVC.item_paint_purple.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_gold_cyan), new ItemStack(InitItemsVC.item_airship_v4_gold_normal), new ItemStack(InitItemsVC.item_paint_cyan.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_gold_lightgray), new ItemStack(InitItemsVC.item_airship_v4_gold_normal), new ItemStack(InitItemsVC.item_paint_lightgray.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_gold_gray), new ItemStack(InitItemsVC.item_airship_v4_gold_normal), new ItemStack(InitItemsVC.item_paint_gray.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_gold_pink), new ItemStack(InitItemsVC.item_airship_v4_gold_normal), new ItemStack(InitItemsVC.item_paint_pink.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_gold_lime), new ItemStack(InitItemsVC.item_airship_v4_gold_normal), new ItemStack(InitItemsVC.item_paint_lime.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_gold_yellow), new ItemStack(InitItemsVC.item_airship_v4_gold_normal), new ItemStack(InitItemsVC.item_paint_yellow.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_gold_lightblue), new ItemStack(InitItemsVC.item_airship_v4_gold_normal), new ItemStack(InitItemsVC.item_paint_lightblue.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_gold_magenta), new ItemStack(InitItemsVC.item_airship_v4_gold_normal), new ItemStack(InitItemsVC.item_paint_magenta.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_gold_orange), new ItemStack(InitItemsVC.item_airship_v4_gold_normal), new ItemStack(InitItemsVC.item_paint_orange.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_gold_white), new ItemStack(InitItemsVC.item_airship_v4_gold_normal), new ItemStack(InitItemsVC.item_paint_white.setContainerItem(Items.BUCKET)));
+		
+		//Airship v4 Gold conversion back into normal.
+		//Recipes that strip the dye off of Gold airships
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_gold_normal), new ItemStack(InitItemsVC.item_airship_v4_gold_black));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_gold_normal), new ItemStack(InitItemsVC.item_airship_v4_gold_red));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_gold_normal), new ItemStack(InitItemsVC.item_airship_v4_gold_green));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_gold_normal), new ItemStack(InitItemsVC.item_airship_v4_gold_brown));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_gold_normal), new ItemStack(InitItemsVC.item_airship_v4_gold_blue));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_gold_normal), new ItemStack(InitItemsVC.item_airship_v4_gold_purple));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_gold_normal), new ItemStack(InitItemsVC.item_airship_v4_gold_cyan));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_gold_normal), new ItemStack(InitItemsVC.item_airship_v4_gold_lightgray));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_gold_normal), new ItemStack(InitItemsVC.item_airship_v4_gold_gray));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_gold_normal), new ItemStack(InitItemsVC.item_airship_v4_gold_pink));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_gold_normal), new ItemStack(InitItemsVC.item_airship_v4_gold_lime));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_gold_normal), new ItemStack(InitItemsVC.item_airship_v4_gold_yellow));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_gold_normal), new ItemStack(InitItemsVC.item_airship_v4_gold_lightblue));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_gold_normal), new ItemStack(InitItemsVC.item_airship_v4_gold_magenta));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_gold_normal), new ItemStack(InitItemsVC.item_airship_v4_gold_orange));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_gold_normal), new ItemStack(InitItemsVC.item_airship_v4_gold_white));
+		
+		//Airship v4 Lapis Lazuli colors
+		//Recipes that dye the basic Lapis Lazuli airship into any color
+		//Note: Also returns an empty bucket
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_black), new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_normal), new ItemStack(InitItemsVC.item_paint_black.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_red), new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_normal), new ItemStack(InitItemsVC.item_paint_red.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_green), new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_normal), new ItemStack(InitItemsVC.item_paint_green.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_brown), new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_normal), new ItemStack(InitItemsVC.item_paint_brown.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_blue), new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_normal), new ItemStack(InitItemsVC.item_paint_blue.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_purple), new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_normal), new ItemStack(InitItemsVC.item_paint_purple.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_cyan), new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_normal), new ItemStack(InitItemsVC.item_paint_cyan.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_lightgray), new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_normal), new ItemStack(InitItemsVC.item_paint_lightgray.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_gray), new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_normal), new ItemStack(InitItemsVC.item_paint_gray.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_pink), new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_normal), new ItemStack(InitItemsVC.item_paint_pink.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_lime), new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_normal), new ItemStack(InitItemsVC.item_paint_lime.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_yellow), new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_normal), new ItemStack(InitItemsVC.item_paint_yellow.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_lightblue), new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_normal), new ItemStack(InitItemsVC.item_paint_lightblue.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_magenta), new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_normal), new ItemStack(InitItemsVC.item_paint_magenta.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_orange), new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_normal), new ItemStack(InitItemsVC.item_paint_orange.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_white), new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_normal), new ItemStack(InitItemsVC.item_paint_white.setContainerItem(Items.BUCKET)));
+		
+		//Airship v4 Lapis Lazuli conversion back into normal.
+		//Recipes that strip the dye off of Lapis Lazuli airships
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_normal), new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_black));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_normal), new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_red));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_normal), new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_green));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_normal), new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_brown));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_normal), new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_blue));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_normal), new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_purple));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_normal), new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_cyan));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_normal), new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_lightgray));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_normal), new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_gray));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_normal), new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_pink));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_normal), new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_lime));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_normal), new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_yellow));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_normal), new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_lightblue));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_normal), new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_magenta));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_normal), new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_orange));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_normal), new ItemStack(InitItemsVC.item_airship_v4_lapislazuli_white));
+		
+		//Airship v4 Obsidian colors
+		//Recipes that dye the basic Obsidian airship into any color
+		//Note: Also returns an empty bucket
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_obsidian_black), new ItemStack(InitItemsVC.item_airship_v4_obsidian_normal), new ItemStack(InitItemsVC.item_paint_black.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_obsidian_red), new ItemStack(InitItemsVC.item_airship_v4_obsidian_normal), new ItemStack(InitItemsVC.item_paint_red.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_obsidian_green), new ItemStack(InitItemsVC.item_airship_v4_obsidian_normal), new ItemStack(InitItemsVC.item_paint_green.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_obsidian_brown), new ItemStack(InitItemsVC.item_airship_v4_obsidian_normal), new ItemStack(InitItemsVC.item_paint_brown.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_obsidian_blue), new ItemStack(InitItemsVC.item_airship_v4_obsidian_normal), new ItemStack(InitItemsVC.item_paint_blue.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_obsidian_purple), new ItemStack(InitItemsVC.item_airship_v4_obsidian_normal), new ItemStack(InitItemsVC.item_paint_purple.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_obsidian_cyan), new ItemStack(InitItemsVC.item_airship_v4_obsidian_normal), new ItemStack(InitItemsVC.item_paint_cyan.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_obsidian_lightgray), new ItemStack(InitItemsVC.item_airship_v4_obsidian_normal), new ItemStack(InitItemsVC.item_paint_lightgray.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_obsidian_gray), new ItemStack(InitItemsVC.item_airship_v4_obsidian_normal), new ItemStack(InitItemsVC.item_paint_gray.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_obsidian_pink), new ItemStack(InitItemsVC.item_airship_v4_obsidian_normal), new ItemStack(InitItemsVC.item_paint_pink.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_obsidian_lime), new ItemStack(InitItemsVC.item_airship_v4_obsidian_normal), new ItemStack(InitItemsVC.item_paint_lime.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_obsidian_yellow), new ItemStack(InitItemsVC.item_airship_v4_obsidian_normal), new ItemStack(InitItemsVC.item_paint_yellow.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_obsidian_lightblue), new ItemStack(InitItemsVC.item_airship_v4_obsidian_normal), new ItemStack(InitItemsVC.item_paint_lightblue.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_obsidian_magenta), new ItemStack(InitItemsVC.item_airship_v4_obsidian_normal), new ItemStack(InitItemsVC.item_paint_magenta.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_obsidian_orange), new ItemStack(InitItemsVC.item_airship_v4_obsidian_normal), new ItemStack(InitItemsVC.item_paint_orange.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_obsidian_white), new ItemStack(InitItemsVC.item_airship_v4_obsidian_normal), new ItemStack(InitItemsVC.item_paint_white.setContainerItem(Items.BUCKET)));
+		
+		//Airship v4 Diamond conversion back into normal.
+		//Recipes that strip the dye off of Diamond airships
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v4_obsidian_black));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v4_obsidian_red));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v4_obsidian_green));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v4_obsidian_brown));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v4_obsidian_blue));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v4_obsidian_purple));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v4_obsidian_cyan));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v4_obsidian_lightgray));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v4_obsidian_gray));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v4_obsidian_pink));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v4_obsidian_lime));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v4_obsidian_yellow));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v4_obsidian_lightblue));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v4_obsidian_magenta));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v4_obsidian_orange));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_obsidian_normal), new ItemStack(InitItemsVC.item_airship_v4_obsidian_white));
+		
+		//Airship v4 Diamond colors
+		//Recipes that dye the basic Diamond airship into any color
+		//Note: Also returns an empty bucket
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_diamond_black), new ItemStack(InitItemsVC.item_airship_v4_diamond_normal), new ItemStack(InitItemsVC.item_paint_black.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_diamond_red), new ItemStack(InitItemsVC.item_airship_v4_diamond_normal), new ItemStack(InitItemsVC.item_paint_red.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_diamond_green), new ItemStack(InitItemsVC.item_airship_v4_diamond_normal), new ItemStack(InitItemsVC.item_paint_green.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_diamond_brown), new ItemStack(InitItemsVC.item_airship_v4_diamond_normal), new ItemStack(InitItemsVC.item_paint_brown.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_diamond_blue), new ItemStack(InitItemsVC.item_airship_v4_diamond_normal), new ItemStack(InitItemsVC.item_paint_blue.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_diamond_purple), new ItemStack(InitItemsVC.item_airship_v4_diamond_normal), new ItemStack(InitItemsVC.item_paint_purple.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_diamond_cyan), new ItemStack(InitItemsVC.item_airship_v4_diamond_normal), new ItemStack(InitItemsVC.item_paint_cyan.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_diamond_lightgray), new ItemStack(InitItemsVC.item_airship_v4_diamond_normal), new ItemStack(InitItemsVC.item_paint_lightgray.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_diamond_gray), new ItemStack(InitItemsVC.item_airship_v4_diamond_normal), new ItemStack(InitItemsVC.item_paint_gray.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_diamond_pink), new ItemStack(InitItemsVC.item_airship_v4_diamond_normal), new ItemStack(InitItemsVC.item_paint_pink.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_diamond_lime), new ItemStack(InitItemsVC.item_airship_v4_diamond_normal), new ItemStack(InitItemsVC.item_paint_lime.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_diamond_yellow), new ItemStack(InitItemsVC.item_airship_v4_diamond_normal), new ItemStack(InitItemsVC.item_paint_yellow.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_diamond_lightblue), new ItemStack(InitItemsVC.item_airship_v4_diamond_normal), new ItemStack(InitItemsVC.item_paint_lightblue.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_diamond_magenta), new ItemStack(InitItemsVC.item_airship_v4_diamond_normal), new ItemStack(InitItemsVC.item_paint_magenta.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_diamond_orange), new ItemStack(InitItemsVC.item_airship_v4_diamond_normal), new ItemStack(InitItemsVC.item_paint_orange.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_diamond_white), new ItemStack(InitItemsVC.item_airship_v4_diamond_normal), new ItemStack(InitItemsVC.item_paint_white.setContainerItem(Items.BUCKET)));
+		
+		//Airship v4 Diamond conversion back into normal.
+		//Recipes that strip the dye off of Diamond airships
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_diamond_normal), new ItemStack(InitItemsVC.item_airship_v4_diamond_black));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_diamond_normal), new ItemStack(InitItemsVC.item_airship_v4_diamond_red));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_diamond_normal), new ItemStack(InitItemsVC.item_airship_v4_diamond_green));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_diamond_normal), new ItemStack(InitItemsVC.item_airship_v4_diamond_brown));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_diamond_normal), new ItemStack(InitItemsVC.item_airship_v4_diamond_blue));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_diamond_normal), new ItemStack(InitItemsVC.item_airship_v4_diamond_purple));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_diamond_normal), new ItemStack(InitItemsVC.item_airship_v4_diamond_cyan));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_diamond_normal), new ItemStack(InitItemsVC.item_airship_v4_diamond_lightgray));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_diamond_normal), new ItemStack(InitItemsVC.item_airship_v4_diamond_gray));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_diamond_normal), new ItemStack(InitItemsVC.item_airship_v4_diamond_pink));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_diamond_normal), new ItemStack(InitItemsVC.item_airship_v4_diamond_lime));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_diamond_normal), new ItemStack(InitItemsVC.item_airship_v4_diamond_yellow));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_diamond_normal), new ItemStack(InitItemsVC.item_airship_v4_diamond_lightblue));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_diamond_normal), new ItemStack(InitItemsVC.item_airship_v4_diamond_magenta));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_diamond_normal), new ItemStack(InitItemsVC.item_airship_v4_diamond_orange));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_diamond_normal), new ItemStack(InitItemsVC.item_airship_v4_diamond_white));
+		
+		//Airship v4 Emerald colors
+		//Recipes that dye the basic Emerald airship into any color
+		//Note: Also returns an empty bucket
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_emerald_black), new ItemStack(InitItemsVC.item_airship_v4_emerald_normal), new ItemStack(InitItemsVC.item_paint_black.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_emerald_red), new ItemStack(InitItemsVC.item_airship_v4_emerald_normal), new ItemStack(InitItemsVC.item_paint_red.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_emerald_green), new ItemStack(InitItemsVC.item_airship_v4_emerald_normal), new ItemStack(InitItemsVC.item_paint_green.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_emerald_brown), new ItemStack(InitItemsVC.item_airship_v4_emerald_normal), new ItemStack(InitItemsVC.item_paint_brown.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_emerald_blue), new ItemStack(InitItemsVC.item_airship_v4_emerald_normal), new ItemStack(InitItemsVC.item_paint_blue.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_emerald_purple), new ItemStack(InitItemsVC.item_airship_v4_emerald_normal), new ItemStack(InitItemsVC.item_paint_purple.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_emerald_cyan), new ItemStack(InitItemsVC.item_airship_v4_emerald_normal), new ItemStack(InitItemsVC.item_paint_cyan.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_emerald_lightgray), new ItemStack(InitItemsVC.item_airship_v4_emerald_normal), new ItemStack(InitItemsVC.item_paint_lightgray.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_emerald_gray), new ItemStack(InitItemsVC.item_airship_v4_emerald_normal), new ItemStack(InitItemsVC.item_paint_gray.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_emerald_pink), new ItemStack(InitItemsVC.item_airship_v4_emerald_normal), new ItemStack(InitItemsVC.item_paint_pink.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_emerald_lime), new ItemStack(InitItemsVC.item_airship_v4_emerald_normal), new ItemStack(InitItemsVC.item_paint_lime.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_emerald_yellow), new ItemStack(InitItemsVC.item_airship_v4_emerald_normal), new ItemStack(InitItemsVC.item_paint_yellow.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_emerald_lightblue), new ItemStack(InitItemsVC.item_airship_v4_emerald_normal), new ItemStack(InitItemsVC.item_paint_lightblue.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_emerald_magenta), new ItemStack(InitItemsVC.item_airship_v4_emerald_normal), new ItemStack(InitItemsVC.item_paint_magenta.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_emerald_orange), new ItemStack(InitItemsVC.item_airship_v4_emerald_normal), new ItemStack(InitItemsVC.item_paint_orange.setContainerItem(Items.BUCKET)));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_emerald_white), new ItemStack(InitItemsVC.item_airship_v4_emerald_normal), new ItemStack(InitItemsVC.item_paint_white.setContainerItem(Items.BUCKET)));
+		
+		//Airship v4 Emerald conversion back into normal.
+		//Recipes that strip the dye off of Emerald airships
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_emerald_normal), new ItemStack(InitItemsVC.item_airship_v4_emerald_black));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_emerald_normal), new ItemStack(InitItemsVC.item_airship_v4_emerald_red));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_emerald_normal), new ItemStack(InitItemsVC.item_airship_v4_emerald_green));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_emerald_normal), new ItemStack(InitItemsVC.item_airship_v4_emerald_brown));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_emerald_normal), new ItemStack(InitItemsVC.item_airship_v4_emerald_blue));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_emerald_normal), new ItemStack(InitItemsVC.item_airship_v4_emerald_purple));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_emerald_normal), new ItemStack(InitItemsVC.item_airship_v4_emerald_cyan));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_emerald_normal), new ItemStack(InitItemsVC.item_airship_v4_emerald_lightgray));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_emerald_normal), new ItemStack(InitItemsVC.item_airship_v4_emerald_gray));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_emerald_normal), new ItemStack(InitItemsVC.item_airship_v4_emerald_pink));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_emerald_normal), new ItemStack(InitItemsVC.item_airship_v4_emerald_lime));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_emerald_normal), new ItemStack(InitItemsVC.item_airship_v4_emerald_yellow));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_emerald_normal), new ItemStack(InitItemsVC.item_airship_v4_emerald_lightblue));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_emerald_normal), new ItemStack(InitItemsVC.item_airship_v4_emerald_magenta));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_emerald_normal), new ItemStack(InitItemsVC.item_airship_v4_emerald_orange));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_emerald_normal), new ItemStack(InitItemsVC.item_airship_v4_emerald_white));
+		
+		//=================================================
 		
 		Collections.sort(this.recipes, new Comparator<IRecipe>()
         {
