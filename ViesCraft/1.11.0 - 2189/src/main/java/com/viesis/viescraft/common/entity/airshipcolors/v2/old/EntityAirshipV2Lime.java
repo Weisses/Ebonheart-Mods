@@ -36,7 +36,7 @@ public class EntityAirshipV2Lime extends EntityAirshipV2Core {
     @Override
 	public Item getItemBoat()
     {
-		return InitItemsVC.item_airship_v2_lime;
+    	return ITEM_WOOD0[this.metaColor];
     }
     
     /**

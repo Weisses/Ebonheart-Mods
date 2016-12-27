@@ -36,7 +36,7 @@ public class EntityAirshipV1Cyan extends EntityAirshipV1Core {
     @Override
 	public Item getItemBoat()
     {
-		return InitItemsVC.item_airship_v1_wood0_cyan;
+    	return ITEM_WOOD0[this.metaColor];
     }
     
     /**
