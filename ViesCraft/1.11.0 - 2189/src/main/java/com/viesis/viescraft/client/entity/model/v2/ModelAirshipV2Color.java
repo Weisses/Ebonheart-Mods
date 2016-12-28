@@ -32,7 +32,7 @@ public class ModelAirshipV2Color extends ModelBase {
 		BaseColorChest.mirror = true;
 		setRotation(BaseColorChest, 0F, 0F, 0F);
 		BalloonR1a = new ModelRenderer(this, 0, 0);
-		BalloonR1a.addBox(0F, 0F, 0F, 8, 8, 27);
+		BalloonR1a.addBox(0F, 0F, 0F, 8, 8, 26);
 		BalloonR1a.setRotationPoint(-21F, -6F, -13F);
 		BalloonR1a.setTextureSize(256, 128);
 		BalloonR1a.mirror = true;
@@ -44,7 +44,7 @@ public class ModelAirshipV2Color extends ModelBase {
 		BalloonR1b.mirror = true;
 		setRotation(BalloonR1b, 0F, 0F, 0F);
 		BalloonL1a = new ModelRenderer(this, 0, 35);
-		BalloonL1a.addBox(0F, 0F, 0F, 8, 8, 27);
+		BalloonL1a.addBox(0F, 0F, 0F, 8, 8, 26);
 		BalloonL1a.setRotationPoint(13F, -6F, -13F);
 		BalloonL1a.setTextureSize(256, 128);
 		BalloonL1a.mirror = true;

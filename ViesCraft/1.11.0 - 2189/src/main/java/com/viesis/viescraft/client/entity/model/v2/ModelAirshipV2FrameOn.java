@@ -97,6 +97,8 @@ public class ModelAirshipV2FrameOn extends ModelBase {
 	ModelRenderer AnchorLa;
 	ModelRenderer JointL1a;
 	ModelRenderer JointL1b;
+    ModelRenderer BackEngineL;
+    ModelRenderer BackEngineR;
 	
 	public ModelAirshipV2FrameOn()
 	{
@@ -589,6 +591,18 @@ public class ModelAirshipV2FrameOn extends ModelBase {
 		JointL1b.setTextureSize(256, 128);
 		JointL1b.mirror = true;
 		setRotation(JointL1b, 0.7853982F, 0.2792527F, 0.2617994F);
+		BackEngineL = new ModelRenderer(this, 92, 9);
+		BackEngineL.addBox(0F, 0F, 0F, 8, 8, 1);
+		BackEngineL.setRotationPoint(13F, -6F, 13F);
+		BackEngineL.setTextureSize(256, 128);
+		BackEngineL.mirror = true;
+		setRotation(BackEngineL, 0F, 0F, 0F);
+		BackEngineR = new ModelRenderer(this, 92, 0);
+		BackEngineR.addBox(0F, 0F, 0F, 8, 8, 1);
+		BackEngineR.setRotationPoint(-21F, -6F, 13F);
+		BackEngineR.setTextureSize(256, 128);
+		BackEngineR.mirror = true;
+		setRotation(BackEngineR, 0F, 0F, 0F);
 	}
 	
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
@@ -677,6 +691,8 @@ public class ModelAirshipV2FrameOn extends ModelBase {
 		AnchorLa.render(f5);
 		JointL1a.render(f5);
 		JointL1b.render(f5);
+	    BackEngineL.render(f5);
+	    BackEngineR.render(f5);
 	}
 	
 	private void setRotation(ModelRenderer model, float x, float y, float z)

@@ -222,6 +222,7 @@ public class GuiGuidebookMain extends GuiScreen {
         }
         if (currPage == 1)
         {
+        	
         	mc.getTextureManager().bindTexture(bookPageTextures[1]);
         }
         if (currPage == 2)

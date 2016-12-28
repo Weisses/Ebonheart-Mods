@@ -13,11 +13,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import com.viesis.viescraft.ViesCraft;
 import com.viesis.viescraft.common.items.ItemHelper;
 
-public class ItemFrameLapisLazuli extends Item {
+public class ItemFrameObsidian extends Item {
 	
-	public ItemFrameLapisLazuli() 
+	public ItemFrameObsidian() 
 	{
-		ItemHelper.setItemName(this, "airship_frame_lapislazuli");
+		ItemHelper.setItemName(this, "airship_frame_obsidian");
 		this.setMaxStackSize(16);
 		this.setCreativeTab(ViesCraft.tabViesCraftItems);
 	}
@@ -25,12 +25,12 @@ public class ItemFrameLapisLazuli extends Item {
 	@SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List toolTip, boolean advanced) 
 	{
-		toolTip.add(TextFormatting.GOLD + "Lapis Lazuli-plated Minecart used");
-		toolTip.add(TextFormatting.GOLD + "in airship creation.");
+		toolTip.add(TextFormatting.DARK_AQUA + "Obsidian-plated Minecart used");
+		toolTip.add(TextFormatting.DARK_AQUA + "in airship creation.");
 	}
 	
 	public EnumRarity getRarity(ItemStack stack)
     {
-        return EnumRarity.UNCOMMON;
+        return EnumRarity.RARE;
     }
 }

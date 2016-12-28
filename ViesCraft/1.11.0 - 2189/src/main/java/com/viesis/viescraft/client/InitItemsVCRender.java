@@ -24,6 +24,7 @@ public final class InitItemsVCRender extends ItemsVC {
 		registerRender(airship_frame_redstone);
 		registerRender(airship_frame_gold);
 		registerRender(airship_frame_lapislazuli);
+		registerRender(airship_frame_obsidian);
 		registerRender(airship_frame_diamond);
 		registerRender(airship_frame_emerald);
 		

@@ -24,6 +24,7 @@ item.vc:airship_frame_iron.name=Airship Iron Frame
 item.vc:airship_frame_redstone.name=Airship Redstone Frame
 item.vc:airship_frame_gold.name=Airship Gold Frame
 item.vc:airship_frame_lapislazuli.name=Airship Lapis Lazuli Frame
+item.vc:airship_frame_obsidian.name=Airship Obsidian Frame
 item.vc:airship_frame_diamond.name=Airship Diamond Frame
 item.vc:airship_frame_emerald.name=Airship Emerald Frame
 

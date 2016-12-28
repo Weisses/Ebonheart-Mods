@@ -139,6 +139,7 @@ import com.viesis.viescraft.common.items.parts.ItemFrameEmerald;
 import com.viesis.viescraft.common.items.parts.ItemFrameGold;
 import com.viesis.viescraft.common.items.parts.ItemFrameIron;
 import com.viesis.viescraft.common.items.parts.ItemFrameLapisLazuli;
+import com.viesis.viescraft.common.items.parts.ItemFrameObsidian;
 import com.viesis.viescraft.common.items.parts.ItemFrameRedstone;
 import com.viesis.viescraft.common.items.parts.ItemFrameWood0;
 import com.viesis.viescraft.common.items.parts.ItemIgnition;
@@ -164,6 +165,7 @@ public class InitItemsVC extends ItemsVC {
 		airship_frame_redstone = registerItem(new ItemFrameRedstone());
 		airship_frame_gold = registerItem(new ItemFrameGold());
 		airship_frame_lapislazuli = registerItem(new ItemFrameLapisLazuli());
+		airship_frame_obsidian = registerItem(new ItemFrameObsidian());
 		airship_frame_diamond = registerItem(new ItemFrameDiamond());
 		airship_frame_emerald = registerItem(new ItemFrameEmerald());
 		
