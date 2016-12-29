@@ -67,7 +67,7 @@ public class ItemsVC {
 	public static Item item_airship_v1_wood0_red;
 	public static Item item_airship_v1_wood0_white;
 	public static Item item_airship_v1_wood0_yellow;
-	public static Item item_airship_v1_wood0_admin;
+	public static Item item_airship_v1_wood0_rainbow;
 	
 	//Iron V1 Airships
 	public static Item item_airship_v1_iron_normal;
@@ -87,7 +87,7 @@ public class ItemsVC {
 	public static Item item_airship_v1_iron_red;
 	public static Item item_airship_v1_iron_white;
 	public static Item item_airship_v1_iron_yellow;
-	public static Item item_airship_v1_iron_admin;
+	public static Item item_airship_v1_iron_rainbow;
 	
 	//Redstone V1 Airships
 	public static Item item_airship_v1_redstone_normal;
@@ -107,7 +107,7 @@ public class ItemsVC {
 	public static Item item_airship_v1_redstone_red;
 	public static Item item_airship_v1_redstone_white;
 	public static Item item_airship_v1_redstone_yellow;
-	public static Item item_airship_v1_redstone_admin;
+	public static Item item_airship_v1_redstone_rainbow;
 	
 	//Gold V1 Airships
 	public static Item item_airship_v1_gold_normal;
@@ -127,7 +127,7 @@ public class ItemsVC {
 	public static Item item_airship_v1_gold_red;
 	public static Item item_airship_v1_gold_white;
 	public static Item item_airship_v1_gold_yellow;
-	public static Item item_airship_v1_gold_admin;
+	public static Item item_airship_v1_gold_rainbow;
 	
 	//Lapis Lazuli V1 Airships
 	public static Item item_airship_v1_lapislazuli_normal;
@@ -147,7 +147,7 @@ public class ItemsVC {
 	public static Item item_airship_v1_lapislazuli_red;
 	public static Item item_airship_v1_lapislazuli_white;
 	public static Item item_airship_v1_lapislazuli_yellow;
-	public static Item item_airship_v1_lapislazuli_admin;
+	public static Item item_airship_v1_lapislazuli_rainbow;
 	
 	//Obsidian V1 Airships
 	public static Item item_airship_v1_obsidian_normal;
@@ -167,7 +167,7 @@ public class ItemsVC {
 	public static Item item_airship_v1_obsidian_red;
 	public static Item item_airship_v1_obsidian_white;
 	public static Item item_airship_v1_obsidian_yellow;
-	public static Item item_airship_v1_obsidian_admin;
+	public static Item item_airship_v1_obsidian_rainbow;
 		
 	//Diamond V1 Airships
 	public static Item item_airship_v1_diamond_normal;
@@ -187,7 +187,7 @@ public class ItemsVC {
 	public static Item item_airship_v1_diamond_red;
 	public static Item item_airship_v1_diamond_white;
 	public static Item item_airship_v1_diamond_yellow;
-	public static Item item_airship_v1_diamond_admin;
+	public static Item item_airship_v1_diamond_rainbow;
 	
 	//Emerald V1 Airships
 	public static Item item_airship_v1_emerald_normal;
@@ -207,7 +207,7 @@ public class ItemsVC {
 	public static Item item_airship_v1_emerald_red;
 	public static Item item_airship_v1_emerald_white;
 	public static Item item_airship_v1_emerald_yellow;
-	public static Item item_airship_v1_emerald_admin;
+	public static Item item_airship_v1_emerald_rainbow;
 	
 	
 	
@@ -234,7 +234,7 @@ public class ItemsVC {
 	public static Item item_airship_v2_wood0_red;
 	public static Item item_airship_v2_wood0_white;
 	public static Item item_airship_v2_wood0_yellow;
-	public static Item item_airship_v2_wood0_admin;
+	public static Item item_airship_v2_wood0_rainbow;
 	
 	//Iron V2 Airships
 	public static Item item_airship_v2_iron_normal;
@@ -254,7 +254,7 @@ public class ItemsVC {
 	public static Item item_airship_v2_iron_red;
 	public static Item item_airship_v2_iron_white;
 	public static Item item_airship_v2_iron_yellow;
-	public static Item item_airship_v2_iron_admin;
+	public static Item item_airship_v2_iron_rainbow;
 	
 	//Redstone V2 Airships
 	public static Item item_airship_v2_redstone_normal;
@@ -274,7 +274,7 @@ public class ItemsVC {
 	public static Item item_airship_v2_redstone_red;
 	public static Item item_airship_v2_redstone_white;
 	public static Item item_airship_v2_redstone_yellow;
-	public static Item item_airship_v2_redstone_admin;
+	public static Item item_airship_v2_redstone_rainbow;
 	
 	//Gold V2 Airships
 	public static Item item_airship_v2_gold_normal;
@@ -294,7 +294,7 @@ public class ItemsVC {
 	public static Item item_airship_v2_gold_red;
 	public static Item item_airship_v2_gold_white;
 	public static Item item_airship_v2_gold_yellow;
-	public static Item item_airship_v2_gold_admin;
+	public static Item item_airship_v2_gold_rainbow;
 	
 	//Lapis Lazuli V2 Airships
 	public static Item item_airship_v2_lapislazuli_normal;
@@ -314,7 +314,7 @@ public class ItemsVC {
 	public static Item item_airship_v2_lapislazuli_red;
 	public static Item item_airship_v2_lapislazuli_white;
 	public static Item item_airship_v2_lapislazuli_yellow;
-	public static Item item_airship_v2_lapislazuli_admin;
+	public static Item item_airship_v2_lapislazuli_rainbow;
 	
 	//Obsidian V2 Airships
 	public static Item item_airship_v2_obsidian_normal;
@@ -334,7 +334,7 @@ public class ItemsVC {
 	public static Item item_airship_v2_obsidian_red;
 	public static Item item_airship_v2_obsidian_white;
 	public static Item item_airship_v2_obsidian_yellow;
-	public static Item item_airship_v2_obsidian_admin;
+	public static Item item_airship_v2_obsidian_rainbow;
 		
 	//Diamond V2 Airships
 	public static Item item_airship_v2_diamond_normal;
@@ -354,7 +354,7 @@ public class ItemsVC {
 	public static Item item_airship_v2_diamond_red;
 	public static Item item_airship_v2_diamond_white;
 	public static Item item_airship_v2_diamond_yellow;
-	public static Item item_airship_v2_diamond_admin;
+	public static Item item_airship_v2_diamond_rainbow;
 	
 	//Emerald V2 Airships
 	public static Item item_airship_v2_emerald_normal;
@@ -374,7 +374,7 @@ public class ItemsVC {
 	public static Item item_airship_v2_emerald_red;
 	public static Item item_airship_v2_emerald_white;
 	public static Item item_airship_v2_emerald_yellow;
-	public static Item item_airship_v2_emerald_admin;
+	public static Item item_airship_v2_emerald_rainbow;
 	
 	
 	
@@ -401,7 +401,7 @@ public class ItemsVC {
 	public static Item item_airship_v3_wood0_red;
 	public static Item item_airship_v3_wood0_white;
 	public static Item item_airship_v3_wood0_yellow;
-	public static Item item_airship_v3_wood0_admin;
+	public static Item item_airship_v3_wood0_rainbow;
 	
 	//Iron V3 Airships
 	public static Item item_airship_v3_iron_normal;
@@ -421,7 +421,7 @@ public class ItemsVC {
 	public static Item item_airship_v3_iron_red;
 	public static Item item_airship_v3_iron_white;
 	public static Item item_airship_v3_iron_yellow;
-	public static Item item_airship_v3_iron_admin;
+	public static Item item_airship_v3_iron_rainbow;
 	
 	//Redstone V3 Airships
 	public static Item item_airship_v3_redstone_normal;
@@ -441,7 +441,7 @@ public class ItemsVC {
 	public static Item item_airship_v3_redstone_red;
 	public static Item item_airship_v3_redstone_white;
 	public static Item item_airship_v3_redstone_yellow;
-	public static Item item_airship_v3_redstone_admin;
+	public static Item item_airship_v3_redstone_rainbow;
 	
 	//Gold V3 Airships
 	public static Item item_airship_v3_gold_normal;
@@ -461,7 +461,7 @@ public class ItemsVC {
 	public static Item item_airship_v3_gold_red;
 	public static Item item_airship_v3_gold_white;
 	public static Item item_airship_v3_gold_yellow;
-	public static Item item_airship_v3_gold_admin;
+	public static Item item_airship_v3_gold_rainbow;
 	
 	//Lapis Lazuli V3 Airships
 	public static Item item_airship_v3_lapislazuli_normal;
@@ -481,7 +481,7 @@ public class ItemsVC {
 	public static Item item_airship_v3_lapislazuli_red;
 	public static Item item_airship_v3_lapislazuli_white;
 	public static Item item_airship_v3_lapislazuli_yellow;
-	public static Item item_airship_v3_lapislazuli_admin;
+	public static Item item_airship_v3_lapislazuli_rainbow;
 	
 	//Obsidian V3 Airships
 	public static Item item_airship_v3_obsidian_normal;
@@ -501,7 +501,7 @@ public class ItemsVC {
 	public static Item item_airship_v3_obsidian_red;
 	public static Item item_airship_v3_obsidian_white;
 	public static Item item_airship_v3_obsidian_yellow;
-	public static Item item_airship_v3_obsidian_admin;
+	public static Item item_airship_v3_obsidian_rainbow;
 		
 	//Diamond V3 Airships
 	public static Item item_airship_v3_diamond_normal;
@@ -521,7 +521,7 @@ public class ItemsVC {
 	public static Item item_airship_v3_diamond_red;
 	public static Item item_airship_v3_diamond_white;
 	public static Item item_airship_v3_diamond_yellow;
-	public static Item item_airship_v3_diamond_admin;
+	public static Item item_airship_v3_diamond_rainbow;
 	
 	//Emerald V3 Airships
 	public static Item item_airship_v3_emerald_normal;
@@ -541,7 +541,7 @@ public class ItemsVC {
 	public static Item item_airship_v3_emerald_red;
 	public static Item item_airship_v3_emerald_white;
 	public static Item item_airship_v3_emerald_yellow;
-	public static Item item_airship_v3_emerald_admin;
+	public static Item item_airship_v3_emerald_rainbow;
 	
 	
 	//==================================================
@@ -566,7 +566,7 @@ public class ItemsVC {
 	public static Item item_airship_v4_wood0_red;
 	public static Item item_airship_v4_wood0_white;
 	public static Item item_airship_v4_wood0_yellow;
-	public static Item item_airship_v4_wood0_admin;
+	public static Item item_airship_v4_wood0_rainbow;
 	
 	//Iron V4 Airships
 	public static Item item_airship_v4_iron_normal;
@@ -586,7 +586,7 @@ public class ItemsVC {
 	public static Item item_airship_v4_iron_red;
 	public static Item item_airship_v4_iron_white;
 	public static Item item_airship_v4_iron_yellow;
-	public static Item item_airship_v4_iron_admin;
+	public static Item item_airship_v4_iron_rainbow;
 	
 	//Redstone V4 Airships
 	public static Item item_airship_v4_redstone_normal;
@@ -606,7 +606,7 @@ public class ItemsVC {
 	public static Item item_airship_v4_redstone_red;
 	public static Item item_airship_v4_redstone_white;
 	public static Item item_airship_v4_redstone_yellow;
-	public static Item item_airship_v4_redstone_admin;
+	public static Item item_airship_v4_redstone_rainbow;
 	
 	//Gold V4 Airships
 	public static Item item_airship_v4_gold_normal;
@@ -626,7 +626,7 @@ public class ItemsVC {
 	public static Item item_airship_v4_gold_red;
 	public static Item item_airship_v4_gold_white;
 	public static Item item_airship_v4_gold_yellow;
-	public static Item item_airship_v4_gold_admin;
+	public static Item item_airship_v4_gold_rainbow;
 	
 	//Lapis Lazuli V4 Airships
 	public static Item item_airship_v4_lapislazuli_normal;
@@ -646,7 +646,7 @@ public class ItemsVC {
 	public static Item item_airship_v4_lapislazuli_red;
 	public static Item item_airship_v4_lapislazuli_white;
 	public static Item item_airship_v4_lapislazuli_yellow;
-	public static Item item_airship_v4_lapislazuli_admin;
+	public static Item item_airship_v4_lapislazuli_rainbow;
 	
 	//Obsidian V4 Airships
 	public static Item item_airship_v4_obsidian_normal;
@@ -666,7 +666,7 @@ public class ItemsVC {
 	public static Item item_airship_v4_obsidian_red;
 	public static Item item_airship_v4_obsidian_white;
 	public static Item item_airship_v4_obsidian_yellow;
-	public static Item item_airship_v4_obsidian_admin;
+	public static Item item_airship_v4_obsidian_rainbow;
 		
 	//Diamond V4 Airships
 	public static Item item_airship_v4_diamond_normal;
@@ -686,7 +686,7 @@ public class ItemsVC {
 	public static Item item_airship_v4_diamond_red;
 	public static Item item_airship_v4_diamond_white;
 	public static Item item_airship_v4_diamond_yellow;
-	public static Item item_airship_v4_diamond_admin;
+	public static Item item_airship_v4_diamond_rainbow;
 	
 	//Emerald V4 Airships
 	public static Item item_airship_v4_emerald_normal;
@@ -706,7 +706,7 @@ public class ItemsVC {
 	public static Item item_airship_v4_emerald_red;
 	public static Item item_airship_v4_emerald_white;
 	public static Item item_airship_v4_emerald_yellow;
-	public static Item item_airship_v4_emerald_admin;
+	public static Item item_airship_v4_emerald_rainbow;
 	
 	
 	
@@ -731,7 +731,7 @@ public class ItemsVC {
 	public static Item item_airship_v1_red;
 	public static Item item_airship_v1_white;
 	public static Item item_airship_v1_yellow;
-	public static Item item_airship_v1_admin;
+	public static Item item_airship_v1_rainbow;
 	
 	public static Item item_airship_v2_normal;
 	public static Item item_airship_v2_black;
@@ -750,7 +750,7 @@ public class ItemsVC {
 	public static Item item_airship_v2_red;
 	public static Item item_airship_v2_white;
 	public static Item item_airship_v2_yellow;
-	public static Item item_airship_v2_admin;
+	public static Item item_airship_v2_rainbow;
 	
 	public static Item item_airship_v3_normal;
 	public static Item item_airship_v3_black;
@@ -769,7 +769,7 @@ public class ItemsVC {
 	public static Item item_airship_v3_red;
 	public static Item item_airship_v3_white;
 	public static Item item_airship_v3_yellow;
-	public static Item item_airship_v3_admin;
+	public static Item item_airship_v3_rainbow;
 	
 	public static Item item_airship_v4_normal;
 	public static Item item_airship_v4_black;
@@ -788,7 +788,7 @@ public class ItemsVC {
 	public static Item item_airship_v4_red;
 	public static Item item_airship_v4_white;
 	public static Item item_airship_v4_yellow;
-	public static Item item_airship_v4_admin;
+	public static Item item_airship_v4_rainbow;
 	
 	public static Item item_airship_v5_normal;
 	public static Item item_airship_v5_black;
@@ -807,8 +807,9 @@ public class ItemsVC {
 	public static Item item_airship_v5_red;
 	public static Item item_airship_v5_white;
 	public static Item item_airship_v5_yellow;
-	public static Item item_airship_v5_admin;
+	public static Item item_airship_v5_rainbow;
 	
+	public static Item item_paint_remover;
 	public static Item item_paint_black;
 	public static Item item_paint_blue;
 	public static Item item_paint_brown;
@@ -825,6 +826,7 @@ public class ItemsVC {
 	public static Item item_paint_red;
 	public static Item item_paint_white;
 	public static Item item_paint_yellow;
+	public static Item item_paint_rainbow;
 	
 	public static Item achievement_airship_create_engine;
 	public static Item achievement_airship_create_ignition;

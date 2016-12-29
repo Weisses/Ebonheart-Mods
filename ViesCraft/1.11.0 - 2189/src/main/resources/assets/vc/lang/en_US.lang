@@ -30,6 +30,7 @@ item.vc:airship_frame_emerald.name=Airship Emerald Frame
 
 item.vc:item_airship_dismounter.name=Dismounter
 
+item.vc:item_paint_remover.name=Airship Paint Remover
 item.vc:item_paint_black.name=Black Airship Paint
 item.vc:item_paint_blue.name=Blue Airship Paint
 item.vc:item_paint_brown.name=Brown Airship Paint
@@ -46,6 +47,7 @@ item.vc:item_paint_purple.name=Purple Airship Paint
 item.vc:item_paint_red.name=Red Airship Paint
 item.vc:item_paint_white.name=White Airship Paint
 item.vc:item_paint_yellow.name=Yellow Airship Paint
+item.vc:item_paint_rainbow.name=Rainbow Airship Paint
 
 item.vc:module_chip.name=Module Chip
 item.vc:module_inventory_small.name=Small Inventory Module

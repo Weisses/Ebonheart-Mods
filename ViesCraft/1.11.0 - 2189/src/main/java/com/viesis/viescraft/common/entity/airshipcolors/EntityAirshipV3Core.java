@@ -1420,7 +1420,7 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
 		InitItemsVC.item_airship_v3_wood0_red,
 		InitItemsVC.item_airship_v3_wood0_white,
 		InitItemsVC.item_airship_v3_wood0_yellow,
-		InitItemsVC.item_airship_v3_wood0_admin
+		InitItemsVC.item_airship_v3_wood0_rainbow
 	};
 	
 	protected static final Item[] ITEM_IRON = new Item[] 
@@ -1442,7 +1442,7 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
 		InitItemsVC.item_airship_v3_iron_red,
 		InitItemsVC.item_airship_v3_iron_white,
 		InitItemsVC.item_airship_v3_iron_yellow,
-		InitItemsVC.item_airship_v3_iron_admin
+		InitItemsVC.item_airship_v3_iron_rainbow
 	};
 	
 	protected static final Item[] ITEM_REDSTONE = new Item[] 
@@ -1464,7 +1464,7 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
 		InitItemsVC.item_airship_v3_redstone_red,
 		InitItemsVC.item_airship_v3_redstone_white,
 		InitItemsVC.item_airship_v3_redstone_yellow,
-		InitItemsVC.item_airship_v3_redstone_admin
+		InitItemsVC.item_airship_v3_redstone_rainbow
 	};
 	
 	protected static final Item[] ITEM_GOLD = new Item[] 
@@ -1486,7 +1486,7 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
 		InitItemsVC.item_airship_v3_gold_red,
 		InitItemsVC.item_airship_v3_gold_white,
 		InitItemsVC.item_airship_v3_gold_yellow,
-		InitItemsVC.item_airship_v3_gold_admin
+		InitItemsVC.item_airship_v3_gold_rainbow
 	};
 	
 	protected static final Item[] ITEM_LAPISLAZULI = new Item[] 
@@ -1508,7 +1508,7 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
 		InitItemsVC.item_airship_v3_lapislazuli_red,
 		InitItemsVC.item_airship_v3_lapislazuli_white,
 		InitItemsVC.item_airship_v3_lapislazuli_yellow,
-		InitItemsVC.item_airship_v3_lapislazuli_admin
+		InitItemsVC.item_airship_v3_lapislazuli_rainbow
 	};
 	
 	protected static final Item[] ITEM_OBSIDIAN = new Item[] 
@@ -1530,7 +1530,7 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
 		InitItemsVC.item_airship_v3_obsidian_red,
 		InitItemsVC.item_airship_v3_obsidian_white,
 		InitItemsVC.item_airship_v3_obsidian_yellow,
-		InitItemsVC.item_airship_v3_obsidian_admin
+		InitItemsVC.item_airship_v3_obsidian_rainbow
 	};
 	
 	protected static final Item[] ITEM_DIAMOND = new Item[] 
@@ -1552,7 +1552,7 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
 		InitItemsVC.item_airship_v3_diamond_red,
 		InitItemsVC.item_airship_v3_diamond_white,
 		InitItemsVC.item_airship_v3_diamond_yellow,
-		InitItemsVC.item_airship_v3_diamond_admin
+		InitItemsVC.item_airship_v3_diamond_rainbow
 	};
     
 	protected static final Item[] ITEM_EMERALD = new Item[] 
@@ -1574,6 +1574,6 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
 		InitItemsVC.item_airship_v3_emerald_red,
 		InitItemsVC.item_airship_v3_emerald_white,
 		InitItemsVC.item_airship_v3_emerald_yellow,
-		InitItemsVC.item_airship_v3_emerald_admin
+		InitItemsVC.item_airship_v3_emerald_rainbow
 	};
 }

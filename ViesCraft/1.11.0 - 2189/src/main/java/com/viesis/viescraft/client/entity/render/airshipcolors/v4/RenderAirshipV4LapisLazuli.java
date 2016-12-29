@@ -39,7 +39,7 @@ public class RenderAirshipV4LapisLazuli extends Render<EntityV4LapisLazuli> {
 		new ResourceLocation(Reference.MOD_ID, "textures/models/color/airship_color_red.png"),
 		new ResourceLocation(Reference.MOD_ID, "textures/models/color/airship_color_white.png"),
 		new ResourceLocation(Reference.MOD_ID, "textures/models/color/airship_color_yellow.png"),
-		new ResourceLocation(Reference.MOD_ID, "textures/models/color/airship_color_admin.png")
+		new ResourceLocation(Reference.MOD_ID, "textures/models/color/airship_color_rainbow.png")
 	};
 	
 	private static final ResourceLocation[] ENTITY_FRAME_TEXTURE = new ResourceLocation[] 

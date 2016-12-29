@@ -46,7 +46,7 @@ public class RenderItemAirshipV2Admin extends Render<EntityItemAirshipV2Admin> {
         GlStateManager.translate((float)x, (float)y, (float)z);
         GlStateManager.enableRescaleNormal();
         GlStateManager.scale(this.scale, this.scale, this.scale);
-        TextureAtlasSprite textureatlassprite = Minecraft.getMinecraft().getRenderItem().getItemModelMesher().getParticleIcon(InitItemsVC.item_airship_v2_admin);
+        TextureAtlasSprite textureatlassprite = Minecraft.getMinecraft().getRenderItem().getItemModelMesher().getParticleIcon(InitItemsVC.item_airship_v2_rainbow);
         Tessellator tessellator = Tessellator.getInstance();
         VertexBuffer vertexbuffer = tessellator.getBuffer();
         //WorldRenderer worldrenderer = tessellator.getWorldRenderer();

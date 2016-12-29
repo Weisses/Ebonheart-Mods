@@ -144,6 +144,7 @@ import com.viesis.viescraft.common.items.parts.ItemFrameRedstone;
 import com.viesis.viescraft.common.items.parts.ItemFrameWood0;
 import com.viesis.viescraft.common.items.parts.ItemIgnition;
 import com.viesis.viescraft.common.items.parts.ItemPaint;
+import com.viesis.viescraft.common.items.parts.ItemPaintRemover;
 
 public class InitItemsVC extends ItemsVC {
 	
@@ -160,6 +161,28 @@ public class InitItemsVC extends ItemsVC {
 		airship_engine = registerItem(new ItemEngine());
 		airship_ignition = registerItem(new ItemIgnition());
 		
+		airship_dismounter = registerItem(new ItemAirshipDismounter());
+		module_chip = registerItem(new ItemModuleChip());
+		
+		item_paint_remover = registerItem(new ItemPaintRemover());
+		item_paint_black = registerItem(new ItemPaint(EntityAirshipBaseVC.Type.BLACK));
+		item_paint_blue = registerItem(new ItemPaint(EntityAirshipBaseVC.Type.BLUE));
+		item_paint_brown = registerItem(new ItemPaint(EntityAirshipBaseVC.Type.BROWN));
+		item_paint_cyan = registerItem(new ItemPaint(EntityAirshipBaseVC.Type.CYAN));
+		item_paint_gray = registerItem(new ItemPaint(EntityAirshipBaseVC.Type.GRAY));
+		item_paint_green = registerItem(new ItemPaint(EntityAirshipBaseVC.Type.GREEN));
+		item_paint_lightblue = registerItem(new ItemPaint(EntityAirshipBaseVC.Type.LIGHTBLUE));
+		item_paint_lightgray = registerItem(new ItemPaint(EntityAirshipBaseVC.Type.LIGHTGRAY));
+		item_paint_lime = registerItem(new ItemPaint(EntityAirshipBaseVC.Type.LIME));
+		item_paint_magenta = registerItem(new ItemPaint(EntityAirshipBaseVC.Type.MAGENTA));
+		item_paint_orange = registerItem(new ItemPaint(EntityAirshipBaseVC.Type.ORANGE));
+		item_paint_pink = registerItem(new ItemPaint(EntityAirshipBaseVC.Type.PINK));
+		item_paint_purple = registerItem(new ItemPaint(EntityAirshipBaseVC.Type.PURPLE));
+		item_paint_red = registerItem(new ItemPaint(EntityAirshipBaseVC.Type.RED));
+		item_paint_white = registerItem(new ItemPaint(EntityAirshipBaseVC.Type.WHITE));
+		item_paint_yellow = registerItem(new ItemPaint(EntityAirshipBaseVC.Type.YELLOW));
+		item_paint_rainbow = registerItem(new ItemPaint(EntityAirshipBaseVC.Type.RAINBOW));
+		
 		airship_frame_wood0 = registerItem(new ItemFrameWood0());
 		airship_frame_iron = registerItem(new ItemFrameIron());
 		airship_frame_redstone = registerItem(new ItemFrameRedstone());
@@ -169,9 +192,6 @@ public class InitItemsVC extends ItemsVC {
 		airship_frame_diamond = registerItem(new ItemFrameDiamond());
 		airship_frame_emerald = registerItem(new ItemFrameEmerald());
 		
-		airship_dismounter = registerItem(new ItemAirshipDismounter());
-		
-		module_chip = registerItem(new ItemModuleChip());
 		module_inventory_small = registerItem(new ItemInventoryModuleSmall());
 		module_inventory_large = registerItem(new ItemInventoryModuleLarge());
 		module_speed_increase_minor = registerItem(new ItemSpeedModuleMinor());
@@ -201,7 +221,7 @@ public class InitItemsVC extends ItemsVC {
 		item_airship_v1_wood0_red = registerItem(new ItemV1Wood0("v1/wood0/item_airship_v1_red", EntityAirshipBaseVC.Type.RED.ordinal()));
 		item_airship_v1_wood0_white = registerItem(new ItemV1Wood0("v1/wood0/item_airship_v1_white", EntityAirshipBaseVC.Type.WHITE.ordinal()));
 		item_airship_v1_wood0_yellow = registerItem(new ItemV1Wood0("v1/wood0/item_airship_v1_yellow", EntityAirshipBaseVC.Type.YELLOW.ordinal()));
-		item_airship_v1_wood0_admin = registerItem(new ItemV1Wood0("v1/wood0/item_airship_v1_admin", EntityAirshipBaseVC.Type.ADMIN.ordinal()));
+		item_airship_v1_wood0_rainbow = registerItem(new ItemV1Wood0("v1/wood0/item_airship_v1_rainbow", EntityAirshipBaseVC.Type.RAINBOW.ordinal()));
 		
 		item_airship_v1_iron_normal = registerItem(new ItemV1Iron("v1/iron/item_airship_v1_normal", EntityAirshipBaseVC.Type.NORMAL.ordinal()));
 		item_airship_v1_iron_black = registerItem(new ItemV1Iron("v1/iron/item_airship_v1_black", EntityAirshipBaseVC.Type.BLACK.ordinal()));
@@ -220,7 +240,7 @@ public class InitItemsVC extends ItemsVC {
 		item_airship_v1_iron_red = registerItem(new ItemV1Iron("v1/iron/item_airship_v1_red", EntityAirshipBaseVC.Type.RED.ordinal()));
 		item_airship_v1_iron_white = registerItem(new ItemV1Iron("v1/iron/item_airship_v1_white", EntityAirshipBaseVC.Type.WHITE.ordinal()));
 		item_airship_v1_iron_yellow = registerItem(new ItemV1Iron("v1/iron/item_airship_v1_yellow", EntityAirshipBaseVC.Type.YELLOW.ordinal()));
-		item_airship_v1_iron_admin = registerItem(new ItemV1Iron("v1/iron/item_airship_v1_admin", EntityAirshipBaseVC.Type.ADMIN.ordinal()));
+		item_airship_v1_iron_rainbow = registerItem(new ItemV1Iron("v1/iron/item_airship_v1_rainbow", EntityAirshipBaseVC.Type.RAINBOW.ordinal()));
 		
 		item_airship_v1_redstone_normal = registerItem(new ItemV1Redstone("v1/redstone/item_airship_v1_normal", EntityAirshipBaseVC.Type.NORMAL.ordinal()));
 		item_airship_v1_redstone_black = registerItem(new ItemV1Redstone("v1/redstone/item_airship_v1_black", EntityAirshipBaseVC.Type.BLACK.ordinal()));
@@ -239,7 +259,7 @@ public class InitItemsVC extends ItemsVC {
 		item_airship_v1_redstone_red = registerItem(new ItemV1Redstone("v1/redstone/item_airship_v1_red", EntityAirshipBaseVC.Type.RED.ordinal()));
 		item_airship_v1_redstone_white = registerItem(new ItemV1Redstone("v1/redstone/item_airship_v1_white", EntityAirshipBaseVC.Type.WHITE.ordinal()));
 		item_airship_v1_redstone_yellow = registerItem(new ItemV1Redstone("v1/redstone/item_airship_v1_yellow", EntityAirshipBaseVC.Type.YELLOW.ordinal()));
-		item_airship_v1_redstone_admin = registerItem(new ItemV1Redstone("v1/redstone/item_airship_v1_admin", EntityAirshipBaseVC.Type.ADMIN.ordinal()));
+		item_airship_v1_redstone_rainbow = registerItem(new ItemV1Redstone("v1/redstone/item_airship_v1_rainbow", EntityAirshipBaseVC.Type.RAINBOW.ordinal()));
 		
 		item_airship_v1_gold_normal = registerItem(new ItemV1Gold("v1/gold/item_airship_v1_normal", EntityAirshipBaseVC.Type.NORMAL.ordinal()));
 		item_airship_v1_gold_black = registerItem(new ItemV1Gold("v1/gold/item_airship_v1_black", EntityAirshipBaseVC.Type.BLACK.ordinal()));
@@ -258,7 +278,7 @@ public class InitItemsVC extends ItemsVC {
 		item_airship_v1_gold_red = registerItem(new ItemV1Gold("v1/gold/item_airship_v1_red", EntityAirshipBaseVC.Type.RED.ordinal()));
 		item_airship_v1_gold_white = registerItem(new ItemV1Gold("v1/gold/item_airship_v1_white", EntityAirshipBaseVC.Type.WHITE.ordinal()));
 		item_airship_v1_gold_yellow = registerItem(new ItemV1Gold("v1/gold/item_airship_v1_yellow", EntityAirshipBaseVC.Type.YELLOW.ordinal()));
-		item_airship_v1_gold_admin = registerItem(new ItemV1Gold("v1/gold/item_airship_v1_admin", EntityAirshipBaseVC.Type.ADMIN.ordinal()));
+		item_airship_v1_gold_rainbow = registerItem(new ItemV1Gold("v1/gold/item_airship_v1_rainbow", EntityAirshipBaseVC.Type.RAINBOW.ordinal()));
 		
 		item_airship_v1_lapislazuli_normal = registerItem(new ItemV1LapisLazuli("v1/lapislazuli/item_airship_v1_normal", EntityAirshipBaseVC.Type.NORMAL.ordinal()));
 		item_airship_v1_lapislazuli_black = registerItem(new ItemV1LapisLazuli("v1/lapislazuli/item_airship_v1_black", EntityAirshipBaseVC.Type.BLACK.ordinal()));
@@ -277,7 +297,7 @@ public class InitItemsVC extends ItemsVC {
 		item_airship_v1_lapislazuli_red = registerItem(new ItemV1LapisLazuli("v1/lapislazuli/item_airship_v1_red", EntityAirshipBaseVC.Type.RED.ordinal()));
 		item_airship_v1_lapislazuli_white = registerItem(new ItemV1LapisLazuli("v1/lapislazuli/item_airship_v1_white", EntityAirshipBaseVC.Type.WHITE.ordinal()));
 		item_airship_v1_lapislazuli_yellow = registerItem(new ItemV1LapisLazuli("v1/lapislazuli/item_airship_v1_yellow", EntityAirshipBaseVC.Type.YELLOW.ordinal()));
-		item_airship_v1_lapislazuli_admin = registerItem(new ItemV1LapisLazuli("v1/lapislazuli/item_airship_v1_admin", EntityAirshipBaseVC.Type.ADMIN.ordinal()));
+		item_airship_v1_lapislazuli_rainbow = registerItem(new ItemV1LapisLazuli("v1/lapislazuli/item_airship_v1_rainbow", EntityAirshipBaseVC.Type.RAINBOW.ordinal()));
 		
 		item_airship_v1_obsidian_normal = registerItem(new ItemV1Obsidian("v1/obsidian/item_airship_v1_normal", EntityAirshipBaseVC.Type.NORMAL.ordinal()));
 		item_airship_v1_obsidian_black = registerItem(new ItemV1Obsidian("v1/obsidian/item_airship_v1_black", EntityAirshipBaseVC.Type.BLACK.ordinal()));
@@ -296,7 +316,7 @@ public class InitItemsVC extends ItemsVC {
 		item_airship_v1_obsidian_red = registerItem(new ItemV1Obsidian("v1/obsidian/item_airship_v1_red", EntityAirshipBaseVC.Type.RED.ordinal()));
 		item_airship_v1_obsidian_white = registerItem(new ItemV1Obsidian("v1/obsidian/item_airship_v1_white", EntityAirshipBaseVC.Type.WHITE.ordinal()));
 		item_airship_v1_obsidian_yellow = registerItem(new ItemV1Obsidian("v1/obsidian/item_airship_v1_yellow", EntityAirshipBaseVC.Type.YELLOW.ordinal()));
-		item_airship_v1_obsidian_admin = registerItem(new ItemV1Obsidian("v1/obsidian/item_airship_v1_admin", EntityAirshipBaseVC.Type.ADMIN.ordinal()));
+		item_airship_v1_obsidian_rainbow = registerItem(new ItemV1Obsidian("v1/obsidian/item_airship_v1_rainbow", EntityAirshipBaseVC.Type.RAINBOW.ordinal()));
 		
 		item_airship_v1_diamond_normal = registerItem(new ItemV1Diamond("v1/diamond/item_airship_v1_normal", EntityAirshipBaseVC.Type.NORMAL.ordinal()));
 		item_airship_v1_diamond_black = registerItem(new ItemV1Diamond("v1/diamond/item_airship_v1_black", EntityAirshipBaseVC.Type.BLACK.ordinal()));
@@ -315,7 +335,7 @@ public class InitItemsVC extends ItemsVC {
 		item_airship_v1_diamond_red = registerItem(new ItemV1Diamond("v1/diamond/item_airship_v1_red", EntityAirshipBaseVC.Type.RED.ordinal()));
 		item_airship_v1_diamond_white = registerItem(new ItemV1Diamond("v1/diamond/item_airship_v1_white", EntityAirshipBaseVC.Type.WHITE.ordinal()));
 		item_airship_v1_diamond_yellow = registerItem(new ItemV1Diamond("v1/diamond/item_airship_v1_yellow", EntityAirshipBaseVC.Type.YELLOW.ordinal()));
-		item_airship_v1_diamond_admin = registerItem(new ItemV1Diamond("v1/diamond/item_airship_v1_admin", EntityAirshipBaseVC.Type.ADMIN.ordinal()));
+		item_airship_v1_diamond_rainbow = registerItem(new ItemV1Diamond("v1/diamond/item_airship_v1_rainbow", EntityAirshipBaseVC.Type.RAINBOW.ordinal()));
 		
 		item_airship_v1_emerald_normal = registerItem(new ItemV1Emerald("v1/emerald/item_airship_v1_normal", EntityAirshipBaseVC.Type.NORMAL.ordinal()));
 		item_airship_v1_emerald_black = registerItem(new ItemV1Emerald("v1/emerald/item_airship_v1_black", EntityAirshipBaseVC.Type.BLACK.ordinal()));
@@ -334,7 +354,7 @@ public class InitItemsVC extends ItemsVC {
 		item_airship_v1_emerald_red = registerItem(new ItemV1Emerald("v1/emerald/item_airship_v1_red", EntityAirshipBaseVC.Type.RED.ordinal()));
 		item_airship_v1_emerald_white = registerItem(new ItemV1Emerald("v1/emerald/item_airship_v1_white", EntityAirshipBaseVC.Type.WHITE.ordinal()));
 		item_airship_v1_emerald_yellow = registerItem(new ItemV1Emerald("v1/emerald/item_airship_v1_yellow", EntityAirshipBaseVC.Type.YELLOW.ordinal()));
-		item_airship_v1_emerald_admin = registerItem(new ItemV1Emerald("v1/emerald/item_airship_v1_admin", EntityAirshipBaseVC.Type.ADMIN.ordinal()));
+		item_airship_v1_emerald_rainbow = registerItem(new ItemV1Emerald("v1/emerald/item_airship_v1_rainbow", EntityAirshipBaseVC.Type.RAINBOW.ordinal()));
 		
 		//==============================================
 		
@@ -356,7 +376,7 @@ public class InitItemsVC extends ItemsVC {
 		item_airship_v2_wood0_red = registerItem(new ItemV2Wood0("v2/wood0/item_airship_v2_red", EntityAirshipBaseVC.Type.RED.ordinal()));
 		item_airship_v2_wood0_white = registerItem(new ItemV2Wood0("v2/wood0/item_airship_v2_white", EntityAirshipBaseVC.Type.WHITE.ordinal()));
 		item_airship_v2_wood0_yellow = registerItem(new ItemV2Wood0("v2/wood0/item_airship_v2_yellow", EntityAirshipBaseVC.Type.YELLOW.ordinal()));
-		item_airship_v2_wood0_admin = registerItem(new ItemV2Wood0("v2/wood0/item_airship_v2_admin", EntityAirshipBaseVC.Type.ADMIN.ordinal()));
+		item_airship_v2_wood0_rainbow = registerItem(new ItemV2Wood0("v2/wood0/item_airship_v2_rainbow", EntityAirshipBaseVC.Type.RAINBOW.ordinal()));
 		
 		item_airship_v2_iron_normal = registerItem(new ItemV2Iron("v2/iron/item_airship_v2_normal", EntityAirshipBaseVC.Type.NORMAL.ordinal()));
 		item_airship_v2_iron_black = registerItem(new ItemV2Iron("v2/iron/item_airship_v2_black", EntityAirshipBaseVC.Type.BLACK.ordinal()));
@@ -375,7 +395,7 @@ public class InitItemsVC extends ItemsVC {
 		item_airship_v2_iron_red = registerItem(new ItemV2Iron("v2/iron/item_airship_v2_red", EntityAirshipBaseVC.Type.RED.ordinal()));
 		item_airship_v2_iron_white = registerItem(new ItemV2Iron("v2/iron/item_airship_v2_white", EntityAirshipBaseVC.Type.WHITE.ordinal()));
 		item_airship_v2_iron_yellow = registerItem(new ItemV2Iron("v2/iron/item_airship_v2_yellow", EntityAirshipBaseVC.Type.YELLOW.ordinal()));
-		item_airship_v2_iron_admin = registerItem(new ItemV2Iron("v2/iron/item_airship_v2_admin", EntityAirshipBaseVC.Type.ADMIN.ordinal()));
+		item_airship_v2_iron_rainbow = registerItem(new ItemV2Iron("v2/iron/item_airship_v2_rainbow", EntityAirshipBaseVC.Type.RAINBOW.ordinal()));
 		
 		item_airship_v2_redstone_normal = registerItem(new ItemV2Redstone("v2/redstone/item_airship_v2_normal", EntityAirshipBaseVC.Type.NORMAL.ordinal()));
 		item_airship_v2_redstone_black = registerItem(new ItemV2Redstone("v2/redstone/item_airship_v2_black", EntityAirshipBaseVC.Type.BLACK.ordinal()));
@@ -394,7 +414,7 @@ public class InitItemsVC extends ItemsVC {
 		item_airship_v2_redstone_red = registerItem(new ItemV2Redstone("v2/redstone/item_airship_v2_red", EntityAirshipBaseVC.Type.RED.ordinal()));
 		item_airship_v2_redstone_white = registerItem(new ItemV2Redstone("v2/redstone/item_airship_v2_white", EntityAirshipBaseVC.Type.WHITE.ordinal()));
 		item_airship_v2_redstone_yellow = registerItem(new ItemV2Redstone("v2/redstone/item_airship_v2_yellow", EntityAirshipBaseVC.Type.YELLOW.ordinal()));
-		item_airship_v2_redstone_admin = registerItem(new ItemV2Redstone("v2/redstone/item_airship_v2_admin", EntityAirshipBaseVC.Type.ADMIN.ordinal()));
+		item_airship_v2_redstone_rainbow = registerItem(new ItemV2Redstone("v2/redstone/item_airship_v2_rainbow", EntityAirshipBaseVC.Type.RAINBOW.ordinal()));
 		
 		item_airship_v2_gold_normal = registerItem(new ItemV2Gold("v2/gold/item_airship_v2_normal", EntityAirshipBaseVC.Type.NORMAL.ordinal()));
 		item_airship_v2_gold_black = registerItem(new ItemV2Gold("v2/gold/item_airship_v2_black", EntityAirshipBaseVC.Type.BLACK.ordinal()));
@@ -413,7 +433,7 @@ public class InitItemsVC extends ItemsVC {
 		item_airship_v2_gold_red = registerItem(new ItemV2Gold("v2/gold/item_airship_v2_red", EntityAirshipBaseVC.Type.RED.ordinal()));
 		item_airship_v2_gold_white = registerItem(new ItemV2Gold("v2/gold/item_airship_v2_white", EntityAirshipBaseVC.Type.WHITE.ordinal()));
 		item_airship_v2_gold_yellow = registerItem(new ItemV2Gold("v2/gold/item_airship_v2_yellow", EntityAirshipBaseVC.Type.YELLOW.ordinal()));
-		item_airship_v2_gold_admin = registerItem(new ItemV2Gold("v2/gold/item_airship_v2_admin", EntityAirshipBaseVC.Type.ADMIN.ordinal()));
+		item_airship_v2_gold_rainbow = registerItem(new ItemV2Gold("v2/gold/item_airship_v2_rainbow", EntityAirshipBaseVC.Type.RAINBOW.ordinal()));
 		
 		item_airship_v2_lapislazuli_normal = registerItem(new ItemV2LapisLazuli("v2/lapislazuli/item_airship_v2_normal", EntityAirshipBaseVC.Type.NORMAL.ordinal()));
 		item_airship_v2_lapislazuli_black = registerItem(new ItemV2LapisLazuli("v2/lapislazuli/item_airship_v2_black", EntityAirshipBaseVC.Type.BLACK.ordinal()));
@@ -432,7 +452,7 @@ public class InitItemsVC extends ItemsVC {
 		item_airship_v2_lapislazuli_red = registerItem(new ItemV2LapisLazuli("v2/lapislazuli/item_airship_v2_red", EntityAirshipBaseVC.Type.RED.ordinal()));
 		item_airship_v2_lapislazuli_white = registerItem(new ItemV2LapisLazuli("v2/lapislazuli/item_airship_v2_white", EntityAirshipBaseVC.Type.WHITE.ordinal()));
 		item_airship_v2_lapislazuli_yellow = registerItem(new ItemV2LapisLazuli("v2/lapislazuli/item_airship_v2_yellow", EntityAirshipBaseVC.Type.YELLOW.ordinal()));
-		item_airship_v2_lapislazuli_admin = registerItem(new ItemV2LapisLazuli("v2/lapislazuli/item_airship_v2_admin", EntityAirshipBaseVC.Type.ADMIN.ordinal()));
+		item_airship_v2_lapislazuli_rainbow = registerItem(new ItemV2LapisLazuli("v2/lapislazuli/item_airship_v2_rainbow", EntityAirshipBaseVC.Type.RAINBOW.ordinal()));
 		
 		item_airship_v2_obsidian_normal = registerItem(new ItemV2Obsidian("v2/obsidian/item_airship_v2_normal", EntityAirshipBaseVC.Type.NORMAL.ordinal()));
 		item_airship_v2_obsidian_black = registerItem(new ItemV2Obsidian("v2/obsidian/item_airship_v2_black", EntityAirshipBaseVC.Type.BLACK.ordinal()));
@@ -451,7 +471,7 @@ public class InitItemsVC extends ItemsVC {
 		item_airship_v2_obsidian_red = registerItem(new ItemV2Obsidian("v2/obsidian/item_airship_v2_red", EntityAirshipBaseVC.Type.RED.ordinal()));
 		item_airship_v2_obsidian_white = registerItem(new ItemV2Obsidian("v2/obsidian/item_airship_v2_white", EntityAirshipBaseVC.Type.WHITE.ordinal()));
 		item_airship_v2_obsidian_yellow = registerItem(new ItemV2Obsidian("v2/obsidian/item_airship_v2_yellow", EntityAirshipBaseVC.Type.YELLOW.ordinal()));
-		item_airship_v2_obsidian_admin = registerItem(new ItemV2Obsidian("v2/obsidian/item_airship_v2_admin", EntityAirshipBaseVC.Type.ADMIN.ordinal()));
+		item_airship_v2_obsidian_rainbow = registerItem(new ItemV2Obsidian("v2/obsidian/item_airship_v2_rainbow", EntityAirshipBaseVC.Type.RAINBOW.ordinal()));
 		
 		item_airship_v2_diamond_normal = registerItem(new ItemV2Diamond("v2/diamond/item_airship_v2_normal", EntityAirshipBaseVC.Type.NORMAL.ordinal()));
 		item_airship_v2_diamond_black = registerItem(new ItemV2Diamond("v2/diamond/item_airship_v2_black", EntityAirshipBaseVC.Type.BLACK.ordinal()));
@@ -470,7 +490,7 @@ public class InitItemsVC extends ItemsVC {
 		item_airship_v2_diamond_red = registerItem(new ItemV2Diamond("v2/diamond/item_airship_v2_red", EntityAirshipBaseVC.Type.RED.ordinal()));
 		item_airship_v2_diamond_white = registerItem(new ItemV2Diamond("v2/diamond/item_airship_v2_white", EntityAirshipBaseVC.Type.WHITE.ordinal()));
 		item_airship_v2_diamond_yellow = registerItem(new ItemV2Diamond("v2/diamond/item_airship_v2_yellow", EntityAirshipBaseVC.Type.YELLOW.ordinal()));
-		item_airship_v2_diamond_admin = registerItem(new ItemV2Diamond("v2/diamond/item_airship_v2_admin", EntityAirshipBaseVC.Type.ADMIN.ordinal()));
+		item_airship_v2_diamond_rainbow = registerItem(new ItemV2Diamond("v2/diamond/item_airship_v2_rainbow", EntityAirshipBaseVC.Type.RAINBOW.ordinal()));
 		
 		item_airship_v2_emerald_normal = registerItem(new ItemV2Emerald("v2/emerald/item_airship_v2_normal", EntityAirshipBaseVC.Type.NORMAL.ordinal()));
 		item_airship_v2_emerald_black = registerItem(new ItemV2Emerald("v2/emerald/item_airship_v2_black", EntityAirshipBaseVC.Type.BLACK.ordinal()));
@@ -489,7 +509,7 @@ public class InitItemsVC extends ItemsVC {
 		item_airship_v2_emerald_red = registerItem(new ItemV2Emerald("v2/emerald/item_airship_v2_red", EntityAirshipBaseVC.Type.RED.ordinal()));
 		item_airship_v2_emerald_white = registerItem(new ItemV2Emerald("v2/emerald/item_airship_v2_white", EntityAirshipBaseVC.Type.WHITE.ordinal()));
 		item_airship_v2_emerald_yellow = registerItem(new ItemV2Emerald("v2/emerald/item_airship_v2_yellow", EntityAirshipBaseVC.Type.YELLOW.ordinal()));
-		item_airship_v2_emerald_admin = registerItem(new ItemV2Emerald("v2/emerald/item_airship_v2_admin", EntityAirshipBaseVC.Type.ADMIN.ordinal()));
+		item_airship_v2_emerald_rainbow = registerItem(new ItemV2Emerald("v2/emerald/item_airship_v2_rainbow", EntityAirshipBaseVC.Type.RAINBOW.ordinal()));
 		
 		//==============================================
 		
@@ -511,7 +531,7 @@ public class InitItemsVC extends ItemsVC {
 		item_airship_v3_wood0_red = registerItem(new ItemV3Wood0("v3/wood0/item_airship_v3_red", EntityAirshipBaseVC.Type.RED.ordinal()));
 		item_airship_v3_wood0_white = registerItem(new ItemV3Wood0("v3/wood0/item_airship_v3_white", EntityAirshipBaseVC.Type.WHITE.ordinal()));
 		item_airship_v3_wood0_yellow = registerItem(new ItemV3Wood0("v3/wood0/item_airship_v3_yellow", EntityAirshipBaseVC.Type.YELLOW.ordinal()));
-		item_airship_v3_wood0_admin = registerItem(new ItemV3Wood0("v3/wood0/item_airship_v3_admin", EntityAirshipBaseVC.Type.ADMIN.ordinal()));
+		item_airship_v3_wood0_rainbow = registerItem(new ItemV3Wood0("v3/wood0/item_airship_v3_rainbow", EntityAirshipBaseVC.Type.RAINBOW.ordinal()));
 		
 		item_airship_v3_iron_normal = registerItem(new ItemV3Iron("v3/iron/item_airship_v3_normal", EntityAirshipBaseVC.Type.NORMAL.ordinal()));
 		item_airship_v3_iron_black = registerItem(new ItemV3Iron("v3/iron/item_airship_v3_black", EntityAirshipBaseVC.Type.BLACK.ordinal()));
@@ -530,7 +550,7 @@ public class InitItemsVC extends ItemsVC {
 		item_airship_v3_iron_red = registerItem(new ItemV3Iron("v3/iron/item_airship_v3_red", EntityAirshipBaseVC.Type.RED.ordinal()));
 		item_airship_v3_iron_white = registerItem(new ItemV3Iron("v3/iron/item_airship_v3_white", EntityAirshipBaseVC.Type.WHITE.ordinal()));
 		item_airship_v3_iron_yellow = registerItem(new ItemV3Iron("v3/iron/item_airship_v3_yellow", EntityAirshipBaseVC.Type.YELLOW.ordinal()));
-		item_airship_v3_iron_admin = registerItem(new ItemV3Iron("v3/iron/item_airship_v3_admin", EntityAirshipBaseVC.Type.ADMIN.ordinal()));
+		item_airship_v3_iron_rainbow = registerItem(new ItemV3Iron("v3/iron/item_airship_v3_rainbow", EntityAirshipBaseVC.Type.RAINBOW.ordinal()));
 		
 		item_airship_v3_redstone_normal = registerItem(new ItemV3Redstone("v3/redstone/item_airship_v3_normal", EntityAirshipBaseVC.Type.NORMAL.ordinal()));
 		item_airship_v3_redstone_black = registerItem(new ItemV3Redstone("v3/redstone/item_airship_v3_black", EntityAirshipBaseVC.Type.BLACK.ordinal()));
@@ -549,7 +569,7 @@ public class InitItemsVC extends ItemsVC {
 		item_airship_v3_redstone_red = registerItem(new ItemV3Redstone("v3/redstone/item_airship_v3_red", EntityAirshipBaseVC.Type.RED.ordinal()));
 		item_airship_v3_redstone_white = registerItem(new ItemV3Redstone("v3/redstone/item_airship_v3_white", EntityAirshipBaseVC.Type.WHITE.ordinal()));
 		item_airship_v3_redstone_yellow = registerItem(new ItemV3Redstone("v3/redstone/item_airship_v3_yellow", EntityAirshipBaseVC.Type.YELLOW.ordinal()));
-		item_airship_v3_redstone_admin = registerItem(new ItemV3Redstone("v3/redstone/item_airship_v3_admin", EntityAirshipBaseVC.Type.ADMIN.ordinal()));
+		item_airship_v3_redstone_rainbow = registerItem(new ItemV3Redstone("v3/redstone/item_airship_v3_rainbow", EntityAirshipBaseVC.Type.RAINBOW.ordinal()));
 		
 		item_airship_v3_gold_normal = registerItem(new ItemV3Gold("v3/gold/item_airship_v3_normal", EntityAirshipBaseVC.Type.NORMAL.ordinal()));
 		item_airship_v3_gold_black = registerItem(new ItemV3Gold("v3/gold/item_airship_v3_black", EntityAirshipBaseVC.Type.BLACK.ordinal()));
@@ -568,7 +588,7 @@ public class InitItemsVC extends ItemsVC {
 		item_airship_v3_gold_red = registerItem(new ItemV3Gold("v3/gold/item_airship_v3_red", EntityAirshipBaseVC.Type.RED.ordinal()));
 		item_airship_v3_gold_white = registerItem(new ItemV3Gold("v3/gold/item_airship_v3_white", EntityAirshipBaseVC.Type.WHITE.ordinal()));
 		item_airship_v3_gold_yellow = registerItem(new ItemV3Gold("v3/gold/item_airship_v3_yellow", EntityAirshipBaseVC.Type.YELLOW.ordinal()));
-		item_airship_v3_gold_admin = registerItem(new ItemV3Gold("v3/gold/item_airship_v3_admin", EntityAirshipBaseVC.Type.ADMIN.ordinal()));
+		item_airship_v3_gold_rainbow = registerItem(new ItemV3Gold("v3/gold/item_airship_v3_rainbow", EntityAirshipBaseVC.Type.RAINBOW.ordinal()));
 		
 		item_airship_v3_lapislazuli_normal = registerItem(new ItemV3LapisLazuli("v3/lapislazuli/item_airship_v3_normal", EntityAirshipBaseVC.Type.NORMAL.ordinal()));
 		item_airship_v3_lapislazuli_black = registerItem(new ItemV3LapisLazuli("v3/lapislazuli/item_airship_v3_black", EntityAirshipBaseVC.Type.BLACK.ordinal()));
@@ -587,7 +607,7 @@ public class InitItemsVC extends ItemsVC {
 		item_airship_v3_lapislazuli_red = registerItem(new ItemV3LapisLazuli("v3/lapislazuli/item_airship_v3_red", EntityAirshipBaseVC.Type.RED.ordinal()));
 		item_airship_v3_lapislazuli_white = registerItem(new ItemV3LapisLazuli("v3/lapislazuli/item_airship_v3_white", EntityAirshipBaseVC.Type.WHITE.ordinal()));
 		item_airship_v3_lapislazuli_yellow = registerItem(new ItemV3LapisLazuli("v3/lapislazuli/item_airship_v3_yellow", EntityAirshipBaseVC.Type.YELLOW.ordinal()));
-		item_airship_v3_lapislazuli_admin = registerItem(new ItemV3LapisLazuli("v3/lapislazuli/item_airship_v3_admin", EntityAirshipBaseVC.Type.ADMIN.ordinal()));
+		item_airship_v3_lapislazuli_rainbow = registerItem(new ItemV3LapisLazuli("v3/lapislazuli/item_airship_v3_rainbow", EntityAirshipBaseVC.Type.RAINBOW.ordinal()));
 		
 		item_airship_v3_obsidian_normal = registerItem(new ItemV3Obsidian("v3/obsidian/item_airship_v3_normal", EntityAirshipBaseVC.Type.NORMAL.ordinal()));
 		item_airship_v3_obsidian_black = registerItem(new ItemV3Obsidian("v3/obsidian/item_airship_v3_black", EntityAirshipBaseVC.Type.BLACK.ordinal()));
@@ -606,7 +626,7 @@ public class InitItemsVC extends ItemsVC {
 		item_airship_v3_obsidian_red = registerItem(new ItemV3Obsidian("v3/obsidian/item_airship_v3_red", EntityAirshipBaseVC.Type.RED.ordinal()));
 		item_airship_v3_obsidian_white = registerItem(new ItemV3Obsidian("v3/obsidian/item_airship_v3_white", EntityAirshipBaseVC.Type.WHITE.ordinal()));
 		item_airship_v3_obsidian_yellow = registerItem(new ItemV3Obsidian("v3/obsidian/item_airship_v3_yellow", EntityAirshipBaseVC.Type.YELLOW.ordinal()));
-		item_airship_v3_obsidian_admin = registerItem(new ItemV3Obsidian("v3/obsidian/item_airship_v3_admin", EntityAirshipBaseVC.Type.ADMIN.ordinal()));
+		item_airship_v3_obsidian_rainbow = registerItem(new ItemV3Obsidian("v3/obsidian/item_airship_v3_rainbow", EntityAirshipBaseVC.Type.RAINBOW.ordinal()));
 		
 		item_airship_v3_diamond_normal = registerItem(new ItemV3Diamond("v3/diamond/item_airship_v3_normal", EntityAirshipBaseVC.Type.NORMAL.ordinal()));
 		item_airship_v3_diamond_black = registerItem(new ItemV3Diamond("v3/diamond/item_airship_v3_black", EntityAirshipBaseVC.Type.BLACK.ordinal()));
@@ -625,7 +645,7 @@ public class InitItemsVC extends ItemsVC {
 		item_airship_v3_diamond_red = registerItem(new ItemV3Diamond("v3/diamond/item_airship_v3_red", EntityAirshipBaseVC.Type.RED.ordinal()));
 		item_airship_v3_diamond_white = registerItem(new ItemV3Diamond("v3/diamond/item_airship_v3_white", EntityAirshipBaseVC.Type.WHITE.ordinal()));
 		item_airship_v3_diamond_yellow = registerItem(new ItemV3Diamond("v3/diamond/item_airship_v3_yellow", EntityAirshipBaseVC.Type.YELLOW.ordinal()));
-		item_airship_v3_diamond_admin = registerItem(new ItemV3Diamond("v3/diamond/item_airship_v3_admin", EntityAirshipBaseVC.Type.ADMIN.ordinal()));
+		item_airship_v3_diamond_rainbow = registerItem(new ItemV3Diamond("v3/diamond/item_airship_v3_rainbow", EntityAirshipBaseVC.Type.RAINBOW.ordinal()));
 		
 		item_airship_v3_emerald_normal = registerItem(new ItemV3Emerald("v3/emerald/item_airship_v3_normal", EntityAirshipBaseVC.Type.NORMAL.ordinal()));
 		item_airship_v3_emerald_black = registerItem(new ItemV3Emerald("v3/emerald/item_airship_v3_black", EntityAirshipBaseVC.Type.BLACK.ordinal()));
@@ -644,7 +664,7 @@ public class InitItemsVC extends ItemsVC {
 		item_airship_v3_emerald_red = registerItem(new ItemV3Emerald("v3/emerald/item_airship_v3_red", EntityAirshipBaseVC.Type.RED.ordinal()));
 		item_airship_v3_emerald_white = registerItem(new ItemV3Emerald("v3/emerald/item_airship_v3_white", EntityAirshipBaseVC.Type.WHITE.ordinal()));
 		item_airship_v3_emerald_yellow = registerItem(new ItemV3Emerald("v3/emerald/item_airship_v3_yellow", EntityAirshipBaseVC.Type.YELLOW.ordinal()));
-		item_airship_v3_emerald_admin = registerItem(new ItemV3Emerald("v3/emerald/item_airship_v3_admin", EntityAirshipBaseVC.Type.ADMIN.ordinal()));
+		item_airship_v3_emerald_rainbow = registerItem(new ItemV3Emerald("v3/emerald/item_airship_v3_rainbow", EntityAirshipBaseVC.Type.RAINBOW.ordinal()));
 		
 		//==============================================
 		
@@ -666,7 +686,7 @@ public class InitItemsVC extends ItemsVC {
 		item_airship_v4_wood0_red = registerItem(new ItemV4Wood0("v4/wood0/item_airship_v4_red", EntityAirshipBaseVC.Type.RED.ordinal()));
 		item_airship_v4_wood0_white = registerItem(new ItemV4Wood0("v4/wood0/item_airship_v4_white", EntityAirshipBaseVC.Type.WHITE.ordinal()));
 		item_airship_v4_wood0_yellow = registerItem(new ItemV4Wood0("v4/wood0/item_airship_v4_yellow", EntityAirshipBaseVC.Type.YELLOW.ordinal()));
-		item_airship_v4_wood0_admin = registerItem(new ItemV4Wood0("v4/wood0/item_airship_v4_admin", EntityAirshipBaseVC.Type.ADMIN.ordinal()));
+		item_airship_v4_wood0_rainbow = registerItem(new ItemV4Wood0("v4/wood0/item_airship_v4_rainbow", EntityAirshipBaseVC.Type.RAINBOW.ordinal()));
 		
 		item_airship_v4_iron_normal = registerItem(new ItemV4Iron("v4/iron/item_airship_v4_normal", EntityAirshipBaseVC.Type.NORMAL.ordinal()));
 		item_airship_v4_iron_black = registerItem(new ItemV4Iron("v4/iron/item_airship_v4_black", EntityAirshipBaseVC.Type.BLACK.ordinal()));
@@ -685,7 +705,7 @@ public class InitItemsVC extends ItemsVC {
 		item_airship_v4_iron_red = registerItem(new ItemV4Iron("v4/iron/item_airship_v4_red", EntityAirshipBaseVC.Type.RED.ordinal()));
 		item_airship_v4_iron_white = registerItem(new ItemV4Iron("v4/iron/item_airship_v4_white", EntityAirshipBaseVC.Type.WHITE.ordinal()));
 		item_airship_v4_iron_yellow = registerItem(new ItemV4Iron("v4/iron/item_airship_v4_yellow", EntityAirshipBaseVC.Type.YELLOW.ordinal()));
-		item_airship_v4_iron_admin = registerItem(new ItemV4Iron("v4/iron/item_airship_v4_admin", EntityAirshipBaseVC.Type.ADMIN.ordinal()));
+		item_airship_v4_iron_rainbow = registerItem(new ItemV4Iron("v4/iron/item_airship_v4_rainbow", EntityAirshipBaseVC.Type.RAINBOW.ordinal()));
 		
 		item_airship_v4_redstone_normal = registerItem(new ItemV4Redstone("v4/redstone/item_airship_v4_normal", EntityAirshipBaseVC.Type.NORMAL.ordinal()));
 		item_airship_v4_redstone_black = registerItem(new ItemV4Redstone("v4/redstone/item_airship_v4_black", EntityAirshipBaseVC.Type.BLACK.ordinal()));
@@ -704,7 +724,7 @@ public class InitItemsVC extends ItemsVC {
 		item_airship_v4_redstone_red = registerItem(new ItemV4Redstone("v4/redstone/item_airship_v4_red", EntityAirshipBaseVC.Type.RED.ordinal()));
 		item_airship_v4_redstone_white = registerItem(new ItemV4Redstone("v4/redstone/item_airship_v4_white", EntityAirshipBaseVC.Type.WHITE.ordinal()));
 		item_airship_v4_redstone_yellow = registerItem(new ItemV4Redstone("v4/redstone/item_airship_v4_yellow", EntityAirshipBaseVC.Type.YELLOW.ordinal()));
-		item_airship_v4_redstone_admin = registerItem(new ItemV4Redstone("v4/redstone/item_airship_v4_admin", EntityAirshipBaseVC.Type.ADMIN.ordinal()));
+		item_airship_v4_redstone_rainbow = registerItem(new ItemV4Redstone("v4/redstone/item_airship_v4_rainbow", EntityAirshipBaseVC.Type.RAINBOW.ordinal()));
 		
 		item_airship_v4_gold_normal = registerItem(new ItemV4Gold("v4/gold/item_airship_v4_normal", EntityAirshipBaseVC.Type.NORMAL.ordinal()));
 		item_airship_v4_gold_black = registerItem(new ItemV4Gold("v4/gold/item_airship_v4_black", EntityAirshipBaseVC.Type.BLACK.ordinal()));
@@ -723,7 +743,7 @@ public class InitItemsVC extends ItemsVC {
 		item_airship_v4_gold_red = registerItem(new ItemV4Gold("v4/gold/item_airship_v4_red", EntityAirshipBaseVC.Type.RED.ordinal()));
 		item_airship_v4_gold_white = registerItem(new ItemV4Gold("v4/gold/item_airship_v4_white", EntityAirshipBaseVC.Type.WHITE.ordinal()));
 		item_airship_v4_gold_yellow = registerItem(new ItemV4Gold("v4/gold/item_airship_v4_yellow", EntityAirshipBaseVC.Type.YELLOW.ordinal()));
-		item_airship_v4_gold_admin = registerItem(new ItemV4Gold("v4/gold/item_airship_v4_admin", EntityAirshipBaseVC.Type.ADMIN.ordinal()));
+		item_airship_v4_gold_rainbow = registerItem(new ItemV4Gold("v4/gold/item_airship_v4_rainbow", EntityAirshipBaseVC.Type.RAINBOW.ordinal()));
 		
 		item_airship_v4_lapislazuli_normal = registerItem(new ItemV4LapisLazuli("v4/lapislazuli/item_airship_v4_normal", EntityAirshipBaseVC.Type.NORMAL.ordinal()));
 		item_airship_v4_lapislazuli_black = registerItem(new ItemV4LapisLazuli("v4/lapislazuli/item_airship_v4_black", EntityAirshipBaseVC.Type.BLACK.ordinal()));
@@ -742,7 +762,7 @@ public class InitItemsVC extends ItemsVC {
 		item_airship_v4_lapislazuli_red = registerItem(new ItemV4LapisLazuli("v4/lapislazuli/item_airship_v4_red", EntityAirshipBaseVC.Type.RED.ordinal()));
 		item_airship_v4_lapislazuli_white = registerItem(new ItemV4LapisLazuli("v4/lapislazuli/item_airship_v4_white", EntityAirshipBaseVC.Type.WHITE.ordinal()));
 		item_airship_v4_lapislazuli_yellow = registerItem(new ItemV4LapisLazuli("v4/lapislazuli/item_airship_v4_yellow", EntityAirshipBaseVC.Type.YELLOW.ordinal()));
-		item_airship_v4_lapislazuli_admin = registerItem(new ItemV4LapisLazuli("v4/lapislazuli/item_airship_v4_admin", EntityAirshipBaseVC.Type.ADMIN.ordinal()));
+		item_airship_v4_lapislazuli_rainbow = registerItem(new ItemV4LapisLazuli("v4/lapislazuli/item_airship_v4_rainbow", EntityAirshipBaseVC.Type.RAINBOW.ordinal()));
 		
 		item_airship_v4_obsidian_normal = registerItem(new ItemV4Obsidian("v4/obsidian/item_airship_v4_normal", EntityAirshipBaseVC.Type.NORMAL.ordinal()));
 		item_airship_v4_obsidian_black = registerItem(new ItemV4Obsidian("v4/obsidian/item_airship_v4_black", EntityAirshipBaseVC.Type.BLACK.ordinal()));
@@ -761,7 +781,7 @@ public class InitItemsVC extends ItemsVC {
 		item_airship_v4_obsidian_red = registerItem(new ItemV4Obsidian("v4/obsidian/item_airship_v4_red", EntityAirshipBaseVC.Type.RED.ordinal()));
 		item_airship_v4_obsidian_white = registerItem(new ItemV4Obsidian("v4/obsidian/item_airship_v4_white", EntityAirshipBaseVC.Type.WHITE.ordinal()));
 		item_airship_v4_obsidian_yellow = registerItem(new ItemV4Obsidian("v4/obsidian/item_airship_v4_yellow", EntityAirshipBaseVC.Type.YELLOW.ordinal()));
-		item_airship_v4_obsidian_admin = registerItem(new ItemV4Obsidian("v4/obsidian/item_airship_v4_admin", EntityAirshipBaseVC.Type.ADMIN.ordinal()));
+		item_airship_v4_obsidian_rainbow = registerItem(new ItemV4Obsidian("v4/obsidian/item_airship_v4_rainbow", EntityAirshipBaseVC.Type.RAINBOW.ordinal()));
 		
 		item_airship_v4_diamond_normal = registerItem(new ItemV4Diamond("v4/diamond/item_airship_v4_normal", EntityAirshipBaseVC.Type.NORMAL.ordinal()));
 		item_airship_v4_diamond_black = registerItem(new ItemV4Diamond("v4/diamond/item_airship_v4_black", EntityAirshipBaseVC.Type.BLACK.ordinal()));
@@ -780,7 +800,7 @@ public class InitItemsVC extends ItemsVC {
 		item_airship_v4_diamond_red = registerItem(new ItemV4Diamond("v4/diamond/item_airship_v4_red", EntityAirshipBaseVC.Type.RED.ordinal()));
 		item_airship_v4_diamond_white = registerItem(new ItemV4Diamond("v4/diamond/item_airship_v4_white", EntityAirshipBaseVC.Type.WHITE.ordinal()));
 		item_airship_v4_diamond_yellow = registerItem(new ItemV4Diamond("v4/diamond/item_airship_v4_yellow", EntityAirshipBaseVC.Type.YELLOW.ordinal()));
-		item_airship_v4_diamond_admin = registerItem(new ItemV4Diamond("v4/diamond/item_airship_v4_admin", EntityAirshipBaseVC.Type.ADMIN.ordinal()));
+		item_airship_v4_diamond_rainbow = registerItem(new ItemV4Diamond("v4/diamond/item_airship_v4_rainbow", EntityAirshipBaseVC.Type.RAINBOW.ordinal()));
 		
 		item_airship_v4_emerald_normal = registerItem(new ItemV4Emerald("v4/emerald/item_airship_v4_normal", EntityAirshipBaseVC.Type.NORMAL.ordinal()));
 		item_airship_v4_emerald_black = registerItem(new ItemV4Emerald("v4/emerald/item_airship_v4_black", EntityAirshipBaseVC.Type.BLACK.ordinal()));
@@ -799,7 +819,7 @@ public class InitItemsVC extends ItemsVC {
 		item_airship_v4_emerald_red = registerItem(new ItemV4Emerald("v4/emerald/item_airship_v4_red", EntityAirshipBaseVC.Type.RED.ordinal()));
 		item_airship_v4_emerald_white = registerItem(new ItemV4Emerald("v4/emerald/item_airship_v4_white", EntityAirshipBaseVC.Type.WHITE.ordinal()));
 		item_airship_v4_emerald_yellow = registerItem(new ItemV4Emerald("v4/emerald/item_airship_v4_yellow", EntityAirshipBaseVC.Type.YELLOW.ordinal()));
-		item_airship_v4_emerald_admin = registerItem(new ItemV4Emerald("v4/emerald/item_airship_v4_admin", EntityAirshipBaseVC.Type.ADMIN.ordinal()));
+		item_airship_v4_emerald_rainbow = registerItem(new ItemV4Emerald("v4/emerald/item_airship_v4_rainbow", EntityAirshipBaseVC.Type.RAINBOW.ordinal()));
 		
 		
 		
@@ -824,7 +844,7 @@ public class InitItemsVC extends ItemsVC {
 		item_airship_v1_red = registerItem(new ItemAirshipV1Red());
 		item_airship_v1_white = registerItem(new ItemAirshipV1White());
 		item_airship_v1_yellow = registerItem(new ItemAirshipV1Yellow());
-		item_airship_v1_admin = registerItem(new ItemAirshipV1Admin());
+		item_airship_v1_rainbow = registerItem(new ItemAirshipV1Admin());
 		
 		item_airship_v2_normal = registerItem(new ItemAirshipV2Normal());
 		item_airship_v2_black = registerItem(new ItemAirshipV2Black());
@@ -843,7 +863,7 @@ public class InitItemsVC extends ItemsVC {
 		item_airship_v2_red = registerItem(new ItemAirshipV2Red());
 		item_airship_v2_white = registerItem(new ItemAirshipV2White());
 		item_airship_v2_yellow = registerItem(new ItemAirshipV2Yellow());
-		item_airship_v2_admin = registerItem(new ItemAirshipV2Admin());
+		item_airship_v2_rainbow = registerItem(new ItemAirshipV2Admin());
 		
 		item_airship_v3_normal = registerItem(new ItemAirshipV3Normal());
 		item_airship_v3_black = registerItem(new ItemAirshipV3Black());
@@ -862,7 +882,7 @@ public class InitItemsVC extends ItemsVC {
 		item_airship_v3_red = registerItem(new ItemAirshipV3Red());
 		item_airship_v3_white = registerItem(new ItemAirshipV3White());
 		item_airship_v3_yellow = registerItem(new ItemAirshipV3Yellow());
-		item_airship_v3_admin = registerItem(new ItemAirshipV3Admin());
+		item_airship_v3_rainbow = registerItem(new ItemAirshipV3Admin());
 		
 		item_airship_v4_normal = registerItem(new ItemAirshipV4Normal());
 		item_airship_v4_black = registerItem(new ItemAirshipV4Black());
@@ -881,24 +901,7 @@ public class InitItemsVC extends ItemsVC {
 		item_airship_v4_red = registerItem(new ItemAirshipV4Red());
 		item_airship_v4_white = registerItem(new ItemAirshipV4White());
 		item_airship_v4_yellow = registerItem(new ItemAirshipV4Yellow());
-		item_airship_v4_admin = registerItem(new ItemAirshipV4Admin());
-		
-		item_paint_black = registerItem(new ItemPaint(EntityAirshipBaseVC.Type.BLACK));
-		item_paint_blue = registerItem(new ItemPaint(EntityAirshipBaseVC.Type.BLUE));
-		item_paint_brown = registerItem(new ItemPaint(EntityAirshipBaseVC.Type.BROWN));
-		item_paint_cyan = registerItem(new ItemPaint(EntityAirshipBaseVC.Type.CYAN));
-		item_paint_gray = registerItem(new ItemPaint(EntityAirshipBaseVC.Type.GRAY));
-		item_paint_green = registerItem(new ItemPaint(EntityAirshipBaseVC.Type.GREEN));
-		item_paint_lightblue = registerItem(new ItemPaint(EntityAirshipBaseVC.Type.LIGHTBLUE));
-		item_paint_lightgray = registerItem(new ItemPaint(EntityAirshipBaseVC.Type.LIGHTGRAY));
-		item_paint_lime = registerItem(new ItemPaint(EntityAirshipBaseVC.Type.LIME));
-		item_paint_magenta = registerItem(new ItemPaint(EntityAirshipBaseVC.Type.MAGENTA));
-		item_paint_orange = registerItem(new ItemPaint(EntityAirshipBaseVC.Type.ORANGE));
-		item_paint_pink = registerItem(new ItemPaint(EntityAirshipBaseVC.Type.PINK));
-		item_paint_purple = registerItem(new ItemPaint(EntityAirshipBaseVC.Type.PURPLE));
-		item_paint_red = registerItem(new ItemPaint(EntityAirshipBaseVC.Type.RED));
-		item_paint_white = registerItem(new ItemPaint(EntityAirshipBaseVC.Type.WHITE));
-		item_paint_yellow = registerItem(new ItemPaint(EntityAirshipBaseVC.Type.YELLOW));
+		item_airship_v4_rainbow = registerItem(new ItemAirshipV4Admin());
 		
 		achievement_airship_create_engine = registerItem(new ItemAchievementEngine());
 		achievement_airship_create_ignition = registerItem(new ItemAchievementIgnition());

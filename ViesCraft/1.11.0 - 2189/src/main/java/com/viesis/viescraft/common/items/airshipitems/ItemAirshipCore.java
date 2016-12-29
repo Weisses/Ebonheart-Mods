@@ -31,7 +31,7 @@ public class ItemAirshipCore extends Item {
 		"Red",
 		"White",
 		"Yellow",
-		"Admin"
+		"Rainbow"
 	};
 	
 	public ItemAirshipCore() 

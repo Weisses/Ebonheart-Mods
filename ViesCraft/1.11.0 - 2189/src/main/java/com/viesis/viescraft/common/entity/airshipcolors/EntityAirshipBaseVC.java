@@ -808,7 +808,7 @@ public class EntityAirshipBaseVC extends Entity {
         RED(14, "Red"),
         WHITE(15, "White"),
         YELLOW(16, "Yellow"),
-    	ADMIN(17, "Admin");
+    	RAINBOW(17, "Rainbow");
         
         private final String name;
         private final int metadata;
