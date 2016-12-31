@@ -65,6 +65,7 @@ public class CraftingManagerVC {
     	this.addRecipe(new ItemStack(InitItemsVC.airship_frame_redstone, 1), new Object[]{"###", "#M#", "###", '#', Items.REDSTONE, 'M', Items.MINECART});
     	this.addRecipe(new ItemStack(InitItemsVC.airship_frame_gold, 1), new Object[]{"###", "#M#", "###", '#', Items.GOLD_INGOT, 'M', Items.MINECART});
     	this.addRecipe(new ItemStack(InitItemsVC.airship_frame_lapislazuli, 1), new Object[]{"###", "#M#", "###", '#', new ItemStack(Items.DYE, 1, EnumDyeColor.BLUE.getDyeDamage()), 'M', Items.MINECART});
+    	this.addRecipe(new ItemStack(InitItemsVC.airship_frame_obsidian, 1), new Object[]{"###", "#M#", "###", '#', Blocks.OBSIDIAN, 'M', Items.MINECART});
     	this.addRecipe(new ItemStack(InitItemsVC.airship_frame_diamond, 1), new Object[]{"###", "#M#", "###", '#', Items.DIAMOND, 'M', Items.MINECART});
     	this.addRecipe(new ItemStack(InitItemsVC.airship_frame_emerald, 1), new Object[]{"###", "#M#", "###", '#', Items.EMERALD, 'M', Items.MINECART});
     	
