@@ -65,7 +65,6 @@ public class InitItemsVC extends ItemsVC {
 		airship_ignition = registerItem(new ItemIgnition());
 		
 		airship_dismounter = registerItem(new ItemAirshipDismounter());
-		module_chip = registerItem(new ItemModuleChip());
 		
 		item_paint_remover = registerItem(new ItemPaintRemover());
 		item_paint_black = registerItem(new ItemPaint(EntityAirshipBaseVC.Color.BLACK));
@@ -94,6 +93,8 @@ public class InitItemsVC extends ItemsVC {
 		airship_frame_obsidian = registerItem(new ItemFrameObsidian());
 		airship_frame_diamond = registerItem(new ItemFrameDiamond());
 		airship_frame_emerald = registerItem(new ItemFrameEmerald());
+		
+		module_chip = registerItem(new ItemModuleChip());
 		
 		module_inventory_small = registerItem(new ItemInventoryModuleSmall());
 		module_inventory_large = registerItem(new ItemInventoryModuleLarge());
