@@ -14,13 +14,37 @@ public class Reference {
 	public static final String CLIENT_PROXY_CLASS = "com.viesis.viescraft.proxy.ClientProxy";
 	public static final String SERVER_PROXY_CLASS = "com.viesis.viescraft.proxy.ServerProxy";
 	
-	public static final String WOOD0 = "Oak ";
-	public static final String IRON = "Iron ";
-	public static final String REDSTONE = "Redstone ";
-	public static final String GOLD = "Gold ";
-	public static final String LAPISLAZULI = "Lapis Lazuli ";
-	public static final String OBSIDIAN = "Obsidian ";
-	public static final String DIAMOND = "Diamond ";
-	public static final String EMERALD = "Emerald ";
+	public static final String[] AIRSHIP_COLOR = new String[] 
+	{
+		"Plain",
+		"Black",
+		"Blue",
+		"Brown",
+		"Cyan",
+		"Gray",
+		"Green",
+		"Light Blue",
+		"Light Gray",
+		"Lime",
+		"Magenta",
+		"Orange",
+		"Pink",
+		"Purple",
+		"Red",
+		"White",
+		"Yellow",
+		"Rainbow"
+	};
 	
+	public static final String[] AIRSHIP_FRAME = new String[] 
+	{
+		"Oak",
+		"Iron",
+		"Redstone",
+		"Gold",
+		"Lapis Lazuli",
+		"Obsidian",
+		"Diamond",
+		"Emerald"
+	};
 }

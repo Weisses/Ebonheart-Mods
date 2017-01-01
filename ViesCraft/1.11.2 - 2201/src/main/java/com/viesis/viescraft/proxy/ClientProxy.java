@@ -66,12 +66,12 @@ public class ClientProxy extends CommonProxy {
 	@Override
 	public void generateSmokeParticles(Entity theEntity)
 	{
-	    double motionX = theEntity.worldObj.rand.nextGaussian() * 0.02D;
-	    double motionY = theEntity.worldObj.rand.nextGaussian() * 0.02D;
-	    double motionZ = theEntity.worldObj.rand.nextGaussian() * 0.02D;
+	    double motionX = theEntity.world.rand.nextGaussian() * 0.02D;
+	    double motionY = theEntity.world.rand.nextGaussian() * 0.02D;
+	    double motionZ = theEntity.world.rand.nextGaussian() * 0.02D;
 	    
 	    Particle particleSprint = new EntitySmokeFX(
-	    	theEntity.worldObj, 
+	    	theEntity.world, 
 	    	theEntity.posX - (double)(MathHelper.sin(-theEntity.rotationYaw * 0.017453292F) * 01.005F), 
 	    	theEntity.posY + 0.5D, 
 	        theEntity.posZ - (double)(MathHelper.cos(theEntity.rotationYaw * 0.017453292F) * 01.005F), 

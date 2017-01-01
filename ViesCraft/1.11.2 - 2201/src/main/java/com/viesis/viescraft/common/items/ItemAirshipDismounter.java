@@ -35,7 +35,7 @@ public class ItemAirshipDismounter extends Item {
 	@Override
     public boolean itemInteractionForEntity(ItemStack itemstack, net.minecraft.entity.player.EntityPlayer player, EntityLivingBase entity, net.minecraft.util.EnumHand hand)
     {
-        if (entity.worldObj.isRemote)
+        if (entity.world.isRemote)
         {
             return false;
         }

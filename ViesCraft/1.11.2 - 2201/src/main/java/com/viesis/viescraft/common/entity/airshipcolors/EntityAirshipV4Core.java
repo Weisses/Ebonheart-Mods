@@ -90,7 +90,7 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
         this.inventory = new ItemStackHandler(size);
     }
 	
-    public EntityAirshipV4Core(World worldIn, double x, double y, double z, int typeIn)
+    public EntityAirshipV4Core(World worldIn, double x, double y, double z, int frameIn, int colorIn)
     {
         this(worldIn);
         this.setPosition(x, y + 0.5D, z);
@@ -110,7 +110,8 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
 		this.dataManager.register(TIME_SINCE_HIT, Integer.valueOf(0));
         this.dataManager.register(FORWARD_DIRECTION, Integer.valueOf(1));
         this.dataManager.register(DAMAGE_TAKEN, Float.valueOf(0.0F));
-        this.dataManager.register(BOAT_TYPE, Integer.valueOf(this.metaColor));
+        this.dataManager.register(BOAT_TYPE_FRAME, Integer.valueOf(this.metaFrame));
+        this.dataManager.register(BOAT_TYPE_COLOR, Integer.valueOf(this.metaColor));
         
 		this.dataManager.register(POWERED, Integer.valueOf(this.airshipBurnTime));
         this.dataManager.register(TOTALPOWERED, Integer.valueOf(this.airshipTotalBurnTime));
@@ -125,7 +126,7 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
 	}
 	
 	
-    
+	
     //================================================================================
 	
 	
@@ -155,7 +156,8 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
     {
     	super.writeToNBT(compound);
     	
-    	compound.setInteger("Type", this.getBoatType().getMetadata());
+    	compound.setInteger("Frame", this.getBoatFrame().getMetadata());
+    	compound.setInteger("Color", this.getBoatColor().getMetadata());
     	
     	compound.setTag("Slots", inventory.serializeNBT());
     	
@@ -172,12 +174,9 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
     {
     	super.readFromNBT(compound);
     	
-    	//if (compound.hasKey("Type", 8))
-        //{
-        //    this.setBoatType(EntityAirshipBaseVC.Type.getTypeFromString(compound.getString("Type")));
-        //}
+    	this.metaFrame = compound.getInteger("Frame");
+    	this.metaColor = compound.getInteger("Color");
     	
-    	this.metaColor = compound.getInteger("Type");
     	inventory.deserializeNBT(compound.getCompoundTag("Slots"));
     	
         this.airshipBurnTime = compound.getInteger("BurnTime");
@@ -209,7 +208,7 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
         }
         
         //Removes passenger if they do not get out of water in time to explode the airship.
-        if (!this.worldObj.isRemote && this.outOfControlTicks >= 60.0F)
+        if (!this.world.isRemote && this.outOfControlTicks >= 60.0F)
         {
             this.removePassengers();
         }
@@ -242,13 +241,13 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
         	this.updateMotion();
         	this.controlAirship();
         	
-        	if (this.worldObj.isRemote)
+        	if (this.world.isRemote)
             {
         		this.updateInputs();
         		this.controlAirshipGui();
             }
         	
-            this.moveEntity(MoverType.SELF, this.motionX, this.motionY, this.motionZ);
+            this.move(MoverType.SELF, this.motionX, this.motionY, this.motionZ);
         }
         else
         {
@@ -258,11 +257,11 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
         }
         
         this.doBlockCollisions();
-        List<Entity> list = this.worldObj.getEntitiesInAABBexcluding(this, this.getEntityBoundingBox().expand(0.20000000298023224D, -0.009999999776482582D, 0.20000000298023224D), EntitySelectors.<Entity>getTeamCollisionPredicate(this));
+        List<Entity> list = this.world.getEntitiesInAABBexcluding(this, this.getEntityBoundingBox().expand(0.20000000298023224D, -0.009999999776482582D, 0.20000000298023224D), EntitySelectors.<Entity>getTeamCollisionPredicate(this));
         
         if (!list.isEmpty())
         {
-            boolean flag = !this.worldObj.isRemote && !(this.getControllingPassenger() instanceof EntityPlayer);
+            boolean flag = !this.world.isRemote && !(this.getControllingPassenger() instanceof EntityPlayer);
             
             for (int j = 0; j < list.size(); ++j)
             {
@@ -314,9 +313,9 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
             else if (this.status == EntityAirshipBaseVC.Status.UNDER_FLOWING_WATER 
         	  || this.status == EntityAirshipBaseVC.Status.UNDER_WATER)
             {
-            	if (!this.worldObj.isRemote)
+            	if (!this.world.isRemote)
             	{
-            		this.worldObj.createExplosion(this, this.posX, this.posY + (double)(this.height / 16.0F), this.posZ, 2.0F, true);
+            		this.world.createExplosion(this, this.posX, this.posY + (double)(this.height / 16.0F), this.posZ, 2.0F, true);
             		
             		int drop1 = random.nextInt(100) + 1;
             		int drop2 = random.nextInt(100) + 1;
@@ -612,10 +611,10 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
     @Override
     public void setDeadVC()
     {
-    	if (!this.worldObj.isRemote)
+    	if (!this.world.isRemote)
     	{
     		this.dropInvDead();
-    		///InventoryHelper.dropInventoryItems(this.worldObj, this.getPosition(), this);
+    		
     		this.playSound(SoundEvents.ENTITY_ENDEREYE_LAUNCH, 0.5F, 0.4F / .5F * 0.4F + 0.8F);
     		this.playSound(SoundEvents.ENTITY_SHEEP_SHEAR, 0.5F, 0.4F / .5F * 0.4F + 0.8F);
     		
@@ -623,10 +622,10 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
     	}
     	else
     	{
-        	this.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, 
-    				this.posX + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
+        	this.world.spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, 
+    				this.posX + this.world.rand.nextFloat() * this.width * 2.0F - this.width,
     				this.posY + 0.5D,
-    				this.posZ + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
+    				this.posZ + this.world.rand.nextFloat() * this.width * 2.0F - this.width,
     				0.0D, 0.0D, 0.0D, new int[0]);
         	
         	for (int ii = 0; ii < 10; ++ii)
@@ -635,26 +634,26 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
         		
         		if (d <= 2)
         		{
-        			this.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, 
-        					this.posX + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
+        			this.world.spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, 
+        					this.posX + this.world.rand.nextFloat() * this.width * 2.0F - this.width,
         					this.posY + 0.5D,
-        					this.posZ + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
+        					this.posZ + this.world.rand.nextFloat() * this.width * 2.0F - this.width,
         					0.0D, 0.0D, 0.0D, new int[0]);
         		}
         		if (d <= 15)
         		{
-        			this.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_NORMAL, 
-        					this.posX + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
+        			this.world.spawnParticle(EnumParticleTypes.EXPLOSION_NORMAL, 
+        					this.posX + this.world.rand.nextFloat() * this.width * 2.0F - this.width,
         					this.posY + 0.5D,
-        					this.posZ + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
+        					this.posZ + this.world.rand.nextFloat() * this.width * 2.0F - this.width,
         					0.0D, 0.25D, 0.0D, new int[0]);
         		}
         		if (d <= 25)
         		{
-        			this.worldObj.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, 
-        					this.posX + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
+        			this.world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, 
+        					this.posX + this.world.rand.nextFloat() * this.width * 2.0F - this.width,
         					this.posY + 0.5D,
-        					this.posZ + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
+        					this.posZ + this.world.rand.nextFloat() * this.width * 2.0F - this.width,
         					0.0D, 0.0D, 0.0D, new int[0]);
         		}
         	}
@@ -675,16 +674,6 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
                 return this.airshipBurnTime;
             case 1:
                 return this.airshipTotalBurnTime;
-            case 2:
-                return 0;//this.fuelTime;
-            case 3:
-                return 0;//this.totalFuelTime;
-            case 4:
-                return 0;//this.airshipBeingDriven;
-            case 5:
-                return 0;//this.moduleInventorySmall;
-            case 6:
-                return 0;//this.moduleInventoryLarge;
             default:
                 return 0;
         }
@@ -701,27 +690,14 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
             case 1:
             	this.airshipTotalBurnTime = value;
                 break;
-            case 2:
-                //this.fuelTime = value;
-                break;
-            case 3:
-                //this.totalFuelTime = value;
+            default:
             	break;
-            case 4:
-                //this.airshipBeingDriven = value;
-            	break;
-            case 5:
-                //this.moduleInventorySmall = value;
-                break;
-            case 6:
-                //this.moduleInventoryLarge = value;
-                break;
         }
     }
     
     public int getFieldCount()
     {
-        return 6;
+        return 2;
     }
 	
 	
@@ -739,7 +715,7 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
         boolean flag1 = false;
         
         //Syncs the server info to the client
-        if(this.worldObj.isRemote)
+        if(this.world.isRemote)
         {
         	this.airshipBurnTime = this.getPowered();
         	this.airshipTotalBurnTime = this.getTotalPowered();
@@ -833,9 +809,9 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
                     //Consumes the fuel item
                     if (this.inventory.getStackInSlot(0) != null)
                     {
-                        this.inventory.getStackInSlot(0).func_190918_g(1);
+                        this.inventory.getStackInSlot(0).shrink(1);
                         
-                        if (this.inventory.getStackInSlot(0).func_190916_E() == 0)
+                        if (this.inventory.getStackInSlot(0).getCount() == 0)
                         {
                         	ItemStack test = this.inventory.getStackInSlot(0);
                             //this.inventory.getStackInSlot(0) 
@@ -852,7 +828,7 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
         }
         
         //Saves the fuel burntime server side
-        if(!this.worldObj.isRemote)
+        if(!this.world.isRemote)
         {
         	this.setPowered(this.airshipBurnTime);
         	this.setTotalPowered(this.airshipTotalBurnTime);
@@ -906,6 +882,8 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
             if (item == Items.COAL) return FuelVC.coal;
             if (item == Items.BLAZE_ROD) return FuelVC.blaze_rod;
             
+            if (item == InitItemsVC.viesoline_pellets) return (ViesCraftConfig.viesolineBurnTime * 20);
+            
             return net.minecraftforge.fml.common.registry.GameRegistry.getFuelValue(stack);
         }
     }
@@ -927,7 +905,7 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
     public void getTotalFuelSlotBurnTime()
     {
     	//Passes itemFuelStack to client for gui
-    	if(this.worldObj.isRemote)
+    	if(this.world.isRemote)
 		{
     		this.itemFuelStack = this.getItemFuelStackPowered();
 			this.itemFuelStackSize = this.getItemFuelStackSizePowered();
@@ -941,7 +919,7 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
     			
     			if(itemFuel != null)
     			{
-    				this.itemFuelStackSize = this.inventory.getStackInSlot(0).func_190916_E();
+    				this.itemFuelStackSize = this.inventory.getStackInSlot(0).getCount();
     					
     				this.itemFuelStack = this.itemFuelStackSize 
     						* this.getItemBurnTime(this.inventory.getStackInSlot(0));
@@ -959,7 +937,7 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
     		}
     	}
     	
-    	if(!this.worldObj.isRemote)
+    	if(!this.world.isRemote)
 		{
     		this.setItemFuelStackPowered(this.itemFuelStack);
 			this.setItemFuelStackSizePowered(this.itemFuelStackSize);
@@ -1042,7 +1020,7 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
 		int moduleNumber = this.getModuleID(itemModule);
 		
 		/**
-		if(this.worldObj.isRemote)
+		if(this.world.isRemote)
 		{
 			if(this.getModuleInventorySmall())
 				LogHelper.info("1");
@@ -1060,7 +1038,7 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
 		*/
 		
 		//Syncs the module boolean client side
-		if(this.worldObj.isRemote)
+		if(this.world.isRemote)
 		{
     		this.moduleInventorySmall = this.getModuleInventorySmall();
     		this.moduleInventoryLarge = this.getModuleInventoryLarge();
@@ -1171,7 +1149,7 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
 		}
 		
 		//Saves the module boolean to server side
-    	if(!this.worldObj.isRemote)
+    	if(!this.world.isRemote)
 		{
 			this.setModuleInventorySmall(this.moduleInventorySmall);
     		this.setModuleInventoryLarge(this.moduleInventoryLarge);
@@ -1260,7 +1238,7 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
      */
     public void dropInv()
     {
-    	if(this.worldObj.isRemote)
+    	if(this.world.isRemote)
 		{
 			for (int x = 2; x < 20; ++x) 
 			{
@@ -1278,7 +1256,7 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
 				if(this.inventory.getStackInSlot(x) != null)
 				{
 					ItemStack test = this.inventory.getStackInSlot(x);
-					InventoryHelper.spawnItemStack(this.worldObj, this.posX, this.posY, this.posZ, this.inventory.getStackInSlot(x));
+					InventoryHelper.spawnItemStack(this.world, this.posX, this.posY, this.posZ, this.inventory.getStackInSlot(x));
 					test = null;
 				}
 			}
@@ -1290,7 +1268,7 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
      */
     public void dropInvDead()
     {
-    	if(this.worldObj.isRemote)
+    	if(this.world.isRemote)
 		{
 			for (int x = 0; x < 20; ++x) 
 			{
@@ -1308,7 +1286,7 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
 				if(this.inventory.getStackInSlot(x) != null)
 				{
 					ItemStack test = this.inventory.getStackInSlot(x);
-					InventoryHelper.spawnItemStack(this.worldObj, this.posX, this.posY, this.posZ, this.inventory.getStackInSlot(x));
+					InventoryHelper.spawnItemStack(this.world, this.posX, this.posY, this.posZ, this.inventory.getStackInSlot(x));
 					test = null;
 				}
 			}
@@ -1394,186 +1372,4 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
     {
         return ((Boolean)this.dataManager.get(MODULE_SPEED_MAJOR)).booleanValue();
     }
-    
-    
-    
-    //==================================//
-  	// TODO     Items to Return         //
-  	//==================================//
-    
-	protected static final Item[] ITEM_WOOD0 = new Item[] 
-	{
-		InitItemsVC.item_airship_v4_wood0_normal,
-		InitItemsVC.item_airship_v4_wood0_black,
-		InitItemsVC.item_airship_v4_wood0_blue,
-		InitItemsVC.item_airship_v4_wood0_brown,
-		InitItemsVC.item_airship_v4_wood0_cyan,
-		InitItemsVC.item_airship_v4_wood0_gray,
-		InitItemsVC.item_airship_v4_wood0_green,
-		InitItemsVC.item_airship_v4_wood0_lightblue,
-		InitItemsVC.item_airship_v4_wood0_lightgray,
-		InitItemsVC.item_airship_v4_wood0_lime,
-		InitItemsVC.item_airship_v4_wood0_magenta,
-		InitItemsVC.item_airship_v4_wood0_orange,
-		InitItemsVC.item_airship_v4_wood0_pink,
-		InitItemsVC.item_airship_v4_wood0_purple,
-		InitItemsVC.item_airship_v4_wood0_red,
-		InitItemsVC.item_airship_v4_wood0_white,
-		InitItemsVC.item_airship_v4_wood0_yellow,
-		InitItemsVC.item_airship_v4_wood0_rainbow
-	};
-	
-	protected static final Item[] ITEM_IRON = new Item[] 
-	{
-		InitItemsVC.item_airship_v4_iron_normal,
-		InitItemsVC.item_airship_v4_iron_black,
-		InitItemsVC.item_airship_v4_iron_blue,
-		InitItemsVC.item_airship_v4_iron_brown,
-		InitItemsVC.item_airship_v4_iron_cyan,
-		InitItemsVC.item_airship_v4_iron_gray,
-		InitItemsVC.item_airship_v4_iron_green,
-		InitItemsVC.item_airship_v4_iron_lightblue,
-		InitItemsVC.item_airship_v4_iron_lightgray,
-		InitItemsVC.item_airship_v4_iron_lime,
-		InitItemsVC.item_airship_v4_iron_magenta,
-		InitItemsVC.item_airship_v4_iron_orange,
-		InitItemsVC.item_airship_v4_iron_pink,
-		InitItemsVC.item_airship_v4_iron_purple,
-		InitItemsVC.item_airship_v4_iron_red,
-		InitItemsVC.item_airship_v4_iron_white,
-		InitItemsVC.item_airship_v4_iron_yellow,
-		InitItemsVC.item_airship_v4_iron_rainbow
-	};
-	
-	protected static final Item[] ITEM_REDSTONE = new Item[] 
-	{
-		InitItemsVC.item_airship_v4_redstone_normal,
-		InitItemsVC.item_airship_v4_redstone_black,
-		InitItemsVC.item_airship_v4_redstone_blue,
-		InitItemsVC.item_airship_v4_redstone_brown,
-		InitItemsVC.item_airship_v4_redstone_cyan,
-		InitItemsVC.item_airship_v4_redstone_gray,
-		InitItemsVC.item_airship_v4_redstone_green,
-		InitItemsVC.item_airship_v4_redstone_lightblue,
-		InitItemsVC.item_airship_v4_redstone_lightgray,
-		InitItemsVC.item_airship_v4_redstone_lime,
-		InitItemsVC.item_airship_v4_redstone_magenta,
-		InitItemsVC.item_airship_v4_redstone_orange,
-		InitItemsVC.item_airship_v4_redstone_pink,
-		InitItemsVC.item_airship_v4_redstone_purple,
-		InitItemsVC.item_airship_v4_redstone_red,
-		InitItemsVC.item_airship_v4_redstone_white,
-		InitItemsVC.item_airship_v4_redstone_yellow,
-		InitItemsVC.item_airship_v4_redstone_rainbow
-	};
-	
-	protected static final Item[] ITEM_GOLD = new Item[] 
-	{
-		InitItemsVC.item_airship_v4_gold_normal,
-		InitItemsVC.item_airship_v4_gold_black,
-		InitItemsVC.item_airship_v4_gold_blue,
-		InitItemsVC.item_airship_v4_gold_brown,
-		InitItemsVC.item_airship_v4_gold_cyan,
-		InitItemsVC.item_airship_v4_gold_gray,
-		InitItemsVC.item_airship_v4_gold_green,
-		InitItemsVC.item_airship_v4_gold_lightblue,
-		InitItemsVC.item_airship_v4_gold_lightgray,
-		InitItemsVC.item_airship_v4_gold_lime,
-		InitItemsVC.item_airship_v4_gold_magenta,
-		InitItemsVC.item_airship_v4_gold_orange,
-		InitItemsVC.item_airship_v4_gold_pink,
-		InitItemsVC.item_airship_v4_gold_purple,
-		InitItemsVC.item_airship_v4_gold_red,
-		InitItemsVC.item_airship_v4_gold_white,
-		InitItemsVC.item_airship_v4_gold_yellow,
-		InitItemsVC.item_airship_v4_gold_rainbow
-	};
-	
-	protected static final Item[] ITEM_LAPISLAZULI = new Item[] 
-	{
-		InitItemsVC.item_airship_v4_lapislazuli_normal,
-		InitItemsVC.item_airship_v4_lapislazuli_black,
-		InitItemsVC.item_airship_v4_lapislazuli_blue,
-		InitItemsVC.item_airship_v4_lapislazuli_brown,
-		InitItemsVC.item_airship_v4_lapislazuli_cyan,
-		InitItemsVC.item_airship_v4_lapislazuli_gray,
-		InitItemsVC.item_airship_v4_lapislazuli_green,
-		InitItemsVC.item_airship_v4_lapislazuli_lightblue,
-		InitItemsVC.item_airship_v4_lapislazuli_lightgray,
-		InitItemsVC.item_airship_v4_lapislazuli_lime,
-		InitItemsVC.item_airship_v4_lapislazuli_magenta,
-		InitItemsVC.item_airship_v4_lapislazuli_orange,
-		InitItemsVC.item_airship_v4_lapislazuli_pink,
-		InitItemsVC.item_airship_v4_lapislazuli_purple,
-		InitItemsVC.item_airship_v4_lapislazuli_red,
-		InitItemsVC.item_airship_v4_lapislazuli_white,
-		InitItemsVC.item_airship_v4_lapislazuli_yellow,
-		InitItemsVC.item_airship_v4_lapislazuli_rainbow
-	};
-	
-	protected static final Item[] ITEM_OBSIDIAN = new Item[] 
-	{
-		InitItemsVC.item_airship_v4_obsidian_normal,
-		InitItemsVC.item_airship_v4_obsidian_black,
-		InitItemsVC.item_airship_v4_obsidian_blue,
-		InitItemsVC.item_airship_v4_obsidian_brown,
-		InitItemsVC.item_airship_v4_obsidian_cyan,
-		InitItemsVC.item_airship_v4_obsidian_gray,
-		InitItemsVC.item_airship_v4_obsidian_green,
-		InitItemsVC.item_airship_v4_obsidian_lightblue,
-		InitItemsVC.item_airship_v4_obsidian_lightgray,
-		InitItemsVC.item_airship_v4_obsidian_lime,
-		InitItemsVC.item_airship_v4_obsidian_magenta,
-		InitItemsVC.item_airship_v4_obsidian_orange,
-		InitItemsVC.item_airship_v4_obsidian_pink,
-		InitItemsVC.item_airship_v4_obsidian_purple,
-		InitItemsVC.item_airship_v4_obsidian_red,
-		InitItemsVC.item_airship_v4_obsidian_white,
-		InitItemsVC.item_airship_v4_obsidian_yellow,
-		InitItemsVC.item_airship_v4_obsidian_rainbow
-	};
-	
-	protected static final Item[] ITEM_DIAMOND = new Item[] 
-	{
-		InitItemsVC.item_airship_v4_diamond_normal,
-		InitItemsVC.item_airship_v4_diamond_black,
-		InitItemsVC.item_airship_v4_diamond_blue,
-		InitItemsVC.item_airship_v4_diamond_brown,
-		InitItemsVC.item_airship_v4_diamond_cyan,
-		InitItemsVC.item_airship_v4_diamond_gray,
-		InitItemsVC.item_airship_v4_diamond_green,
-		InitItemsVC.item_airship_v4_diamond_lightblue,
-		InitItemsVC.item_airship_v4_diamond_lightgray,
-		InitItemsVC.item_airship_v4_diamond_lime,
-		InitItemsVC.item_airship_v4_diamond_magenta,
-		InitItemsVC.item_airship_v4_diamond_orange,
-		InitItemsVC.item_airship_v4_diamond_pink,
-		InitItemsVC.item_airship_v4_diamond_purple,
-		InitItemsVC.item_airship_v4_diamond_red,
-		InitItemsVC.item_airship_v4_diamond_white,
-		InitItemsVC.item_airship_v4_diamond_yellow,
-		InitItemsVC.item_airship_v4_diamond_rainbow
-	};
-    
-	protected static final Item[] ITEM_EMERALD = new Item[] 
-	{
-		InitItemsVC.item_airship_v4_emerald_normal,
-		InitItemsVC.item_airship_v4_emerald_black,
-		InitItemsVC.item_airship_v4_emerald_blue,
-		InitItemsVC.item_airship_v4_emerald_brown,
-		InitItemsVC.item_airship_v4_emerald_cyan,
-		InitItemsVC.item_airship_v4_emerald_gray,
-		InitItemsVC.item_airship_v4_emerald_green,
-		InitItemsVC.item_airship_v4_emerald_lightblue,
-		InitItemsVC.item_airship_v4_emerald_lightgray,
-		InitItemsVC.item_airship_v4_emerald_lime,
-		InitItemsVC.item_airship_v4_emerald_magenta,
-		InitItemsVC.item_airship_v4_emerald_orange,
-		InitItemsVC.item_airship_v4_emerald_pink,
-		InitItemsVC.item_airship_v4_emerald_purple,
-		InitItemsVC.item_airship_v4_emerald_red,
-		InitItemsVC.item_airship_v4_emerald_white,
-		InitItemsVC.item_airship_v4_emerald_yellow,
-		InitItemsVC.item_airship_v4_emerald_rainbow
-	};
 }

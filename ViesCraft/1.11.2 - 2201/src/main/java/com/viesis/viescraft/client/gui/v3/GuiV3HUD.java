@@ -41,11 +41,11 @@ public class GuiV3HUD extends Gui {
 	@SubscribeEvent(priority=EventPriority.NORMAL)
 	public void onRenderExperienceBar(RenderGameOverlayEvent.Post event) 
 	{
-		this.isAirshipV3 = mc.thePlayer.getRidingEntity() instanceof EntityAirshipV3Core;
+		this.isAirshipV3 = mc.player.getRidingEntity() instanceof EntityAirshipV3Core;
 		
 		if(this.isAirshipV3)
 	    {
-			this.airshipV3 = (EntityAirshipV3Core) Minecraft.getMinecraft().thePlayer.getRidingEntity();
+			this.airshipV3 = (EntityAirshipV3Core) Minecraft.getMinecraft().player.getRidingEntity();
 			
 			GlStateManager.enableRescaleNormal();
             GlStateManager.enableBlend();

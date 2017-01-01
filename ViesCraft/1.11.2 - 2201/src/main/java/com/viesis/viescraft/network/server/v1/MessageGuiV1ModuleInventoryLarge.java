@@ -30,6 +30,6 @@ public class MessageGuiV1ModuleInventoryLarge extends MessageBase<MessageGuiV1Mo
 	@Override
 	public void handleServerSide(MessageGuiV1ModuleInventoryLarge message, EntityPlayer player) 
 	{
-		player.openGui(ViesCraft.instance, GuiHandler.GUI_V1_MODULE_INVENTORY_LARGE, player.worldObj, player.getPosition().getX(), player.getPosition().getY(), player.getPosition().getZ());
+		player.openGui(ViesCraft.instance, GuiHandler.GUI_V1_MODULE_INVENTORY_LARGE, player.world, player.getPosition().getX(), player.getPosition().getY(), player.getPosition().getZ());
 	}
 }

@@ -3,6 +3,8 @@ package com.viesis.viescraft.common.entity.airshipcolors.slots;
 import javax.annotation.Nullable;
 
 import com.viesis.viescraft.api.FuelVC;
+import com.viesis.viescraft.configs.ViesCraftConfig;
+import com.viesis.viescraft.init.InitItemsVC;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -31,31 +33,36 @@ public class FuelSlotVC extends SlotItemHandler {
     {
 		Item item = stack.getItem();
         
-		if (item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.AIR)
-        {
-            Block block = Block.getBlockFromItem(item);
-            
-            if (block == Blocks.WOODEN_SLAB)
-            {
-                return true;
-            }
-            
-            if (block.getDefaultState().getMaterial() == Material.WOOD)
-            {
-                return true;
-            }
-            
-            if (block == Blocks.COAL_BLOCK)
-            {
-                return true;
-            }
-        }
+		if(ViesCraftConfig.vanillaFuel)
+		{
+			if (item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.AIR)
+	        {
+	            Block block = Block.getBlockFromItem(item);
+	            
+	            if (block == Blocks.WOODEN_SLAB)
+	            {
+	                return true;
+	            }
+	            
+	            if (block.getDefaultState().getMaterial() == Material.WOOD)
+	            {
+	                return true;
+	            }
+	            
+	            if (block == Blocks.COAL_BLOCK)
+	            {
+	                return true;
+	            }
+	        }
+	        
+	        if (item == Items.STICK) return true;
+	        if (item == Item.getItemFromBlock(Blocks.SAPLING)) return true;
+	        if (item == Items.COAL) return true;
+	        if (item == Items.BLAZE_ROD) return true;
+    	}
         
-        if (item == Items.STICK) return true;
-        if (item == Item.getItemFromBlock(Blocks.SAPLING)) return true;
-        if (item == Items.COAL) return true;
-        if (item == Items.BLAZE_ROD) return true;
-		
+		if (item == InitItemsVC.viesoline_pellets) return true;
+        
         return false;
     }
     

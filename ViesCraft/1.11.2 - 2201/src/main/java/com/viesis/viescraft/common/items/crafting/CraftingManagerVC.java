@@ -55,6 +55,9 @@ public class CraftingManagerVC {
 		
     	//=================================================
         
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.viesoline_pellets), new ItemStack(Items.COAL), new ItemStack(Items.REDSTONE));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.viesoline_pellets), new ItemStack(Items.COAL, 1, 1), new ItemStack(Items.REDSTONE));
+		
     	//Airship parts
     	this.addRecipe(new ItemStack(InitItemsVC.airship_balloon, 1), new Object[]{"LLL", "L#L", "LLL", 'L', Items.LEATHER, '#', Items.STRING});
     	this.addRecipe(new ItemStack(InitItemsVC.airship_engine, 1), new Object[]{"IBI", "P#P", "IBI", 'P', Blocks.PISTON, 'I', Items.IRON_INGOT, 'B', Blocks.IRON_BARS, '#', Blocks.REDSTONE_BLOCK});
@@ -1528,7 +1531,7 @@ public class CraftingManagerVC {
         for (map = Maps.<Character, ItemStack>newHashMap(); i < recipeComponents.length; i += 2)
         {
             Character character = (Character)recipeComponents[i];
-            ItemStack itemstack = ItemStack.field_190927_a;
+            ItemStack itemstack = ItemStack.EMPTY;
 
             if (recipeComponents[i + 1] instanceof Item)
             {
@@ -1558,7 +1561,7 @@ public class CraftingManagerVC {
             }
             else
             {
-                aitemstack[l] = ItemStack.field_190927_a;
+                aitemstack[l] = ItemStack.EMPTY;
             }
         }
 
@@ -1619,7 +1622,7 @@ public class CraftingManagerVC {
             }
         }
 
-        return ItemStack.field_190927_a;
+        return ItemStack.EMPTY;
     }
 
     public NonNullList<ItemStack> getRemainingItems(InventoryCrafting craftMatrix, World worldIn)
@@ -1632,7 +1635,7 @@ public class CraftingManagerVC {
             }
         }
 
-        NonNullList<ItemStack> nonnulllist = NonNullList.<ItemStack>func_191197_a(craftMatrix.getSizeInventory(), ItemStack.field_190927_a);
+        NonNullList<ItemStack> nonnulllist = NonNullList.<ItemStack>withSize(craftMatrix.getSizeInventory(), ItemStack.EMPTY);
 
         for (int i = 0; i < nonnulllist.size(); ++i)
         {

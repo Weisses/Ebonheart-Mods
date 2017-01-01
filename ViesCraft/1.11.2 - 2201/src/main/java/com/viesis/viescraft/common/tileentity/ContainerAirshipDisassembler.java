@@ -11,8 +11,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 import com.viesis.viescraft.api.UncraftRecipesVC;
-import com.viesis.viescraft.common.items.decrafting.InventoryUncraftResult;
-import com.viesis.viescraft.common.items.decrafting.SlotDecraftingVC;
 import com.viesis.viescraft.init.InitBlocksVC;
 
 public class ContainerAirshipDisassembler extends Container {
@@ -22,14 +20,14 @@ public class ContainerAirshipDisassembler extends Container {
     
     public IInventory craftResult = new InventoryCraftResult();
     
-    private final World worldObj;
+    private final World world;
     
     /** Position of the disassembler */
     private final TileEntityAirshipDisassembler airship;
     
     public ContainerAirshipDisassembler(InventoryPlayer playerInventory, World worldIn, TileEntityAirshipDisassembler tileEntityAirshipDisassembler)
     {
-        this.worldObj = worldIn;
+        this.world = worldIn;
         this.airship = tileEntityAirshipDisassembler;
         
         loadCraftingMatrix();
@@ -44,7 +42,7 @@ public class ContainerAirshipDisassembler extends Container {
         {
             for (int j = 0; j < 3; ++j)
             {
-            	this.addSlotToContainer(new SlotDecraftingVC(playerInventory.player, this.craftMatrix, this.craftResult, 1 + (j + i * 3), 98 + j * 18, 17 + i * 18));
+            	//this.addSlotToContainer(new SlotDecraftingVC(playerInventory.player, this.craftMatrix, this.craftResult, 1 + (j + i * 3), 98 + j * 18, 17 + i * 18));
             	//////this.addSlotToContainer(new Slot(this.craftMatrix, 1 + (j + i * 3), 98 + j * 18, 17 + i * 18));
                 
             	
@@ -96,14 +94,14 @@ public class ContainerAirshipDisassembler extends Container {
     	this.craftResult.setInventorySlotContents(8, aitemstack[8]);
     	//this.craftResult.setInventorySlotContents(9, aitemstack[9]);
     	
-    			//CraftingManagerVC.getInstance().findMatchingRecipe(craftMatrix, worldIn).func_180303_b(this.craftMatrix, this.worldObj);
+    			//CraftingManagerVC.getInstance().findMatchingRecipe(craftMatrix, worldIn).func_180303_b(this.craftMatrix, this.world);
     	
-    	//ItemStack[] aitemstack = CraftingManagerVC.getInstance().func_180303_b(this.craftMatrix, playerIn.worldObj);
+    	//ItemStack[] aitemstack = CraftingManagerVC.getInstance().func_180303_b(this.craftMatrix, playerIn.world);
     	//for (int i = 0; i < this.craftMatrix.getSizeInventory(); i++) 
     	//{//
     		//this.craftResult.setInventorySlotContents(1, 
     		//		aitemstack[1]
-    				//DeCraftingManagerVC.getInstance().findMatchingRecipe(this.craftMatrix, this.worldObj)
+    				//DeCraftingManagerVC.getInstance().findMatchingRecipe(this.craftMatrix, this.world)
     		//		);
     	//}
     	
@@ -151,7 +149,7 @@ public class ContainerAirshipDisassembler extends Container {
      */
     public boolean canInteractWith(EntityPlayer playerIn)
     {
-        return this.worldObj.getBlockState(this.airship.getPos()).getBlock() != InitBlocksVC.airship_disassembler ? false : playerIn.getDistanceSq((double)this.airship.getPos().getX() + 0.5D, (double)this.airship.getPos().getY() + 0.5D, (double)this.airship.getPos().getZ() + 0.5D) <= 64.0D;
+        return this.world.getBlockState(this.airship.getPos()).getBlock() != InitBlocksVC.airship_disassembler ? false : playerIn.getDistanceSq((double)this.airship.getPos().getX() + 0.5D, (double)this.airship.getPos().getY() + 0.5D, (double)this.airship.getPos().getZ() + 0.5D) <= 64.0D;
     }
     
     /**
@@ -159,7 +157,7 @@ public class ContainerAirshipDisassembler extends Container {
      */
     public ItemStack transferStackInSlot(EntityPlayer playerIn, int index)
     {
-        ItemStack itemstack = ItemStack.field_190927_a;
+        ItemStack itemstack = ItemStack.EMPTY;
         Slot slot = (Slot)this.inventorySlots.get(index);
 
         if (slot != null && slot.getHasStack())
@@ -169,11 +167,11 @@ public class ContainerAirshipDisassembler extends Container {
 
             if (index == 0)
             {
-                itemstack1.getItem().onCreated(itemstack1, this.worldObj, playerIn);
+                itemstack1.getItem().onCreated(itemstack1, this.world, playerIn);
 
                 if (!this.mergeItemStack(itemstack1, 10, 46, true))
                 {
-                    return ItemStack.field_190927_a;
+                    return ItemStack.EMPTY;
                 }
 
                 slot.onSlotChange(itemstack1, itemstack);
@@ -182,36 +180,36 @@ public class ContainerAirshipDisassembler extends Container {
             {
                 if (!this.mergeItemStack(itemstack1, 37, 46, false))
                 {
-                    return ItemStack.field_190927_a;
+                    return ItemStack.EMPTY;
                 }
             }
             else if (index >= 37 && index < 46)
             {
                 if (!this.mergeItemStack(itemstack1, 10, 37, false))
                 {
-                    return ItemStack.field_190927_a;
+                    return ItemStack.EMPTY;
                 }
             }
             else if (!this.mergeItemStack(itemstack1, 10, 46, false))
             {
-                return ItemStack.field_190927_a;
+                return ItemStack.EMPTY;
             }
 
-            if (itemstack1.func_190926_b())
+            if (itemstack1.isEmpty())
             {
-                slot.putStack(ItemStack.field_190927_a);
+                slot.putStack(ItemStack.EMPTY);
             }
             else
             {
                 slot.onSlotChanged();
             }
 
-            if (itemstack1.func_190916_E() == itemstack.func_190916_E())
+            if (itemstack1.getCount() == itemstack.getCount())
             {
-                return ItemStack.field_190927_a;
+                return ItemStack.EMPTY;
             }
 
-            ItemStack itemstack2 = slot.func_190901_a(playerIn, itemstack1);
+            ItemStack itemstack2 = slot.onTake(playerIn, itemstack1);
 
             if (index == 0)
             {

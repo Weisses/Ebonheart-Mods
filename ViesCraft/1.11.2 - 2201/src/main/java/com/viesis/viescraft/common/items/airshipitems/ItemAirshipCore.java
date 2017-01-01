@@ -12,28 +12,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemAirshipCore extends Item {
 	
-	protected static final String[] ITEM_COLOR = new String[] 
-	{
-		"Plain",
-		"Black",
-		"Blue",
-		"Brown",
-		"Cyan",
-		"Gray",
-		"Green",
-		"Lightblue",
-		"Lightgray",
-		"Lime",
-		"Magenta",
-		"Orange",
-		"Pink",
-		"Purple",
-		"Red",
-		"White",
-		"Yellow",
-		"Rainbow"
-	};
-	
 	public ItemAirshipCore() 
 	{
 		this.setMaxStackSize(1);

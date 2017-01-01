@@ -19,7 +19,7 @@ public class EventHandlerConfig {
 	@SubscribeEvent
 	public void onPlayerLoginEvent(PlayerLoggedInEvent event)
 	{
-		if(!event.player.worldObj.isRemote)
+		if(!event.player.world.isRemote)
 		{
 			NetworkHandler.sendToClient(new MessageConfig(), (EntityPlayerMP)event.player);
 		}

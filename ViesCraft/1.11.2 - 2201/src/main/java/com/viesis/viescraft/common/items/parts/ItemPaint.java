@@ -16,9 +16,9 @@ import com.viesis.viescraft.common.items.ItemHelper;
 
 public class ItemPaint extends Item {
 	
-	private final EntityAirshipV1Core.Type type;
+	private final EntityAirshipV1Core.Color type;
 	
-	public ItemPaint(EntityAirshipV1Core.Type typeIn) 
+	public ItemPaint(EntityAirshipV1Core.Color typeIn) 
 	{
 		this.type = typeIn;
 		ItemHelper.setItemName(this, "item_paint_" + typeIn.getName());

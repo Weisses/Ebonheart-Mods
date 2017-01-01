@@ -59,7 +59,7 @@ public class GuiTileEntityAirshipDisassembler extends GuiContainer {
         ||	keyCode == Keybinds.vcInventory.getKeyCode()
         || this.mc.gameSettings.keyBindInventory.isActiveAndMatches(keyCode))
         {
-            this.mc.thePlayer.closeScreen();
+            this.mc.player.closeScreen();
         }
     }
 }		

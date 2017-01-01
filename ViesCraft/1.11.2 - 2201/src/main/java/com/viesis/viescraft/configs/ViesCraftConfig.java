@@ -24,7 +24,10 @@ public class ViesCraftConfig {
 	//public static int v4FuelBurnTime;
 	public static int v4AirshipSpeed;
 	
-	public static boolean modelTurnAngle;
+	//public static boolean modelTurnAngle;
+	
+	public static boolean vanillaFuel;
+	public static int viesolineBurnTime;
 	
 	public static String v1AirshipName;
 	public static String v2AirshipName;
@@ -47,10 +50,6 @@ public class ViesCraftConfig {
 	public static final String V4AIRSHIPSPEED_NAME = "Airship Speed - Viesakron";
 	public static final String V4AIRSHIPSPEED_COMMENT = "How fast do airships move based on %? ";
 	
-	public static final boolean MODELTURNANGLE_DEFAULT = true;
-	public static final String MODELTURNANGLE_NAME = "Enable Airship Turning Tilt?";
-	public static final String MODELTURNANGLE_COMMENT = "Should the airship tilt while players turn?";
-	
 	public static final String V1AIRSHIPNAME_DEFAULT = "Viesdenburg";
 	public static final String V1AIRSHIPNAME_NAME = "Airship Name - Viesdenburg";
 	public static final String V1AIRSHIPNAME_COMMENT = "Change the name of Viesdenburg Airships?";
@@ -66,6 +65,14 @@ public class ViesCraftConfig {
 	public static final String V4AIRSHIPNAME_DEFAULT = "Viesakron";
 	public static final String V4AIRSHIPNAME_NAME = "Airship Name - Viesakron";
 	public static final String V4AIRSHIPNAME_COMMENT = "Change the name of Viesakron Airships?";
+	
+	public static final boolean VANILLAFUEL_DEFAULT = true;
+	public static final String VANILLAFUEL_NAME = "Enable using vanilla fuel?";
+	public static final String VANILLAFUEL_COMMENT = "Should airships be able to use vanilla fuel?";
+	
+	public static final int VIESOLINEBURNTIME_DEFAULT = 60;
+	public static final String VIESOLINEBURNTIME_NAME = "Viesoline Burn Time?";
+	public static final String VIESOLINEBURNTIME_COMMENT = "How long does Viesoline burn for in seconds? ";
 	
 	public static void init(File file)
 	{
@@ -98,9 +105,16 @@ public class ViesCraftConfig {
 		v4AirshipName = config.getString(TextFormatting.WHITE + V4AIRSHIPNAME_NAME, category1, V4AIRSHIPNAME_DEFAULT, V4AIRSHIPNAME_COMMENT);
 		
 		//Animation settings
-		final String category2 = CATEGORY_VC + config.CATEGORY_SPLITTER + TextFormatting.AQUA + "Animation";
-		config.addCustomCategoryComment(category2, "Client Side airship animations.");
-		modelTurnAngle = config.getBoolean(TextFormatting.WHITE + MODELTURNANGLE_NAME, category2, MODELTURNANGLE_DEFAULT, MODELTURNANGLE_COMMENT);
+		//final String category2 = CATEGORY_VC + config.CATEGORY_SPLITTER + TextFormatting.AQUA + "Animation";
+		//config.addCustomCategoryComment(category2, "Client Side airship animations.");
+		//modelTurnAngle = config.getBoolean(TextFormatting.WHITE + MODELTURNANGLE_NAME, category2, MODELTURNANGLE_DEFAULT, MODELTURNANGLE_COMMENT);
+		
+		//Animation settings
+		final String category2 = CATEGORY_VC + config.CATEGORY_SPLITTER + TextFormatting.AQUA + "Fuel";
+		config.addCustomCategoryComment(category2, "Airship fuel options.");
+		
+		vanillaFuel = config.getBoolean(TextFormatting.WHITE + VANILLAFUEL_NAME, category2, VANILLAFUEL_DEFAULT, VANILLAFUEL_COMMENT);
+		viesolineBurnTime = config.getInt(TextFormatting.WHITE + VIESOLINEBURNTIME_NAME, category2, VIESOLINEBURNTIME_DEFAULT, 1, 500, VIESOLINEBURNTIME_COMMENT);
 		
 		//Save the config
 		config.save();
