@@ -809,14 +809,13 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
                     //Consumes the fuel item
                     if (this.inventory.getStackInSlot(0) != null)
                     {
-                        this.inventory.getStackInSlot(0).shrink(1);
-                        
                         if (this.inventory.getStackInSlot(0).getCount() == 0)
                         {
                         	ItemStack test = this.inventory.getStackInSlot(0);
-                            //this.inventory.getStackInSlot(0) 
-                        			test = inventory.getStackInSlot(0).getItem().getContainerItem(inventory.getStackInSlot(0));
+                            test = inventory.getStackInSlot(0).getItem().getContainerItem(inventory.getStackInSlot(0));
                         }
+                        
+                        this.inventory.extractItem(0, 1, false);
                     }
                 }
             }

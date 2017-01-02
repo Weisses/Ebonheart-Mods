@@ -30,7 +30,6 @@ public class ViesCraft {
     
 	public static final VCTabBlocks tabViesCraftBlocks = new VCTabBlocks("tabViesCraftBlocks");
 	public static final VCTabItems tabViesCraftItems = new VCTabItems("tabViesCraftItems");
-	//public static final VCTabAirships tabViesCraftAirships = new VCTabAirships("tabViesCraftAirships");
 	
 	public static final VCTabAirshipsV1 tabViesCraftAirshipsV1 = new VCTabAirshipsV1("tabViesCraftAirshipsV1");
 	public static final VCTabAirshipsV2 tabViesCraftAirshipsV2 = new VCTabAirshipsV2("tabViesCraftAirshipsV2");
