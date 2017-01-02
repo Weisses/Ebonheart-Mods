@@ -35,8 +35,8 @@ import com.viesis.viescraft.init.InitItemsVC;
 
 public class EntityAirshipBaseVC extends Entity {
 	
-	protected int metaFrame;
-	protected int metaColor;
+	public int metaFrame;
+	public int metaColor;
 	
 	public Random random = new Random();
 	
