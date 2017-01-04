@@ -31,8 +31,10 @@ public class ItemPaintRemover extends Item {
 	@SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List toolTip, boolean advanced) 
 	{
-		toolTip.add(TextFormatting.GOLD + "Used to remove paint");
-		toolTip.add(TextFormatting.GOLD + "from any airship.");
+		toolTip.add(TextFormatting.WHITE + "[Shift + Left-Click]" + TextFormatting.GOLD + " on an");
+		toolTip.add(TextFormatting.GOLD + "airship to remove paint.");
+		toolTip.add("");
+		toolTip.add(TextFormatting.GOLD + "Returns an empty bucket!");
 	}
 	
 	public EnumRarity getRarity(ItemStack stack)

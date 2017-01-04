@@ -25,11 +25,10 @@ public class ItemSpeedModuleMajor extends Item {
 	@SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List toolTip, boolean advanced) 
 	{
-		toolTip.add(" ");
 		toolTip.add(TextFormatting.GOLD + "Effects while socketed:");
+		toolTip.add(" ");
 		toolTip.add(TextFormatting.GREEN + "Pro - Speed increased to 150%");
 		toolTip.add(TextFormatting.RED + "Con - Fuel burns x2 faster.");
-		toolTip.add(" ");
 	}
 	
 	public EnumRarity getRarity(ItemStack stack)

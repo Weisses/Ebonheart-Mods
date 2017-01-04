@@ -102,7 +102,7 @@ public class BlockAirshipWorkbench extends BlockEA implements ITileEntityProvide
 	@SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List toolTip, boolean advanced) 
 	{
-		toolTip.add(TextFormatting.GREEN + "Used to craft and dye all");
-		toolTip.add(TextFormatting.GREEN + "parts, airships and modules.");
+		toolTip.add(TextFormatting.GREEN + "Used to craft all parts,");
+		toolTip.add(TextFormatting.GREEN + "airships, and modules.");
 	}
 }

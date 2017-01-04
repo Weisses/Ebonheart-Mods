@@ -35,8 +35,10 @@ public class ItemPaint extends Item {
 	@SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List toolTip, boolean advanced) 
 	{
-		toolTip.add(TextFormatting.GOLD + "Airship paint isn't flammable,");
-		toolTip.add(TextFormatting.GOLD + "is it?!?");
+		toolTip.add(TextFormatting.WHITE + "[Shift + Left-Click]" + TextFormatting.GOLD + " on an");
+		toolTip.add(TextFormatting.GOLD + "airship to paint it.");
+		toolTip.add("");
+		toolTip.add(TextFormatting.GOLD + "Returns an empty bucket!");
 	}
 	
 	public EnumRarity getRarity(ItemStack stack)

@@ -54,7 +54,7 @@ public class ItemAirshipDismounter extends Item {
 	@SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List toolTip, boolean advanced) 
 	{
-		toolTip.add(TextFormatting.GREEN + "Right Click a mounted entity");
-		toolTip.add(TextFormatting.GREEN + "to safely dismount it!");
+		toolTip.add(TextFormatting.WHITE + "[Right-Click]" + TextFormatting.GREEN + " a mounted entity");
+		toolTip.add(TextFormatting.GREEN + "to safely dismount it.");
 	}
 }
