@@ -3,7 +3,6 @@ package com.viesis.viescraft.common.entity.airshipcolors.v1;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 import com.viesis.viescraft.init.InitItemsVC;
@@ -66,7 +65,7 @@ public class EntityAirshipV1 extends EntityAirshipV1Core {
 	@Override
 	public String getName() 
 	{
-		return this.hasCustomName() ? this.customName : Reference.AIRSHIP_FRAME[this.metaFrame] + " " + Reference.AIRSHIP_COLOR[this.metaColor] + " " + ViesCraftConfig.v1AirshipName;
+		return this.hasCustomName() ? this.customName : Frame.byId(this.metaFrame).getName() + " " + Color.byId(this.metaColor).getName() + " " + ViesCraftConfig.v1AirshipName;
 	}
 	
 	@Override
