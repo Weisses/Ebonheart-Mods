@@ -63,7 +63,7 @@ public class ItemAirshipV4Obsidian extends ItemAirshipCore {
 	@Override
 	public String getItemStackDisplayName(ItemStack stack)
     {
-        return (Reference.AIRSHIP_FRAME[EntityAirshipBaseVC.Frame.OBSIDIAN.ordinal()] + " " 
+        return (EntityAirshipBaseVC.Frame.OBSIDIAN.getName() + " " 
         		+ EntityAirshipBaseVC.Color.byId(this.getMetadata(stack)).getName() + " " 
         		+ ViesCraftConfig.v4AirshipName);
     }

@@ -31,11 +31,6 @@ public class CommonProxy {
 		InitTileEntitiesVC.preInit();
 		InitEntityVC.preInit();
 		
-		//InitEntityV1VC.preInit();
-		//InitEntityV2VC.preInit();
-		//InitEntityV3VC.preInit();
-		//InitEntityV4VC.preInit();
-		
 		NetworkHandler.preInit();
 	}
 	

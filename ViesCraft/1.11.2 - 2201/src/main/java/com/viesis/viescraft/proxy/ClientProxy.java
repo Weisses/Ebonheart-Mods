@@ -40,11 +40,6 @@ public class ClientProxy extends CommonProxy {
 		InitTileEntityVCRender.registerRenders();
 		InitEntityVCRender.registerRenders();
 		
-		//InitEntityV1VCRender.registerRenders();
-		//InitEntityV2VCRender.registerRenders();
-		//InitEntityV3VCRender.registerRenders();
-		//InitEntityV4VCRender.registerRenders();
-		
 		MinecraftForge.EVENT_BUS.register(new GuiV1HUD());
 		MinecraftForge.EVENT_BUS.register(new GuiV2HUD());
 		MinecraftForge.EVENT_BUS.register(new GuiV3HUD());

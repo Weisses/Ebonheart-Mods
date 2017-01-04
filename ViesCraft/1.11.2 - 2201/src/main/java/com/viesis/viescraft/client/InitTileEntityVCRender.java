@@ -4,9 +4,7 @@ import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 
-import com.viesis.viescraft.client.tileentity.render.RenderAirshipDisassembler;
 import com.viesis.viescraft.client.tileentity.render.RenderAirshipWorkbench;
-import com.viesis.viescraft.common.tileentity.TileEntityAirshipDisassembler;
 import com.viesis.viescraft.common.tileentity.TileEntityAirshipWorkbench;
 
 

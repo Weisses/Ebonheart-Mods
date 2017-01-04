@@ -43,44 +43,16 @@ public final class InitItemsVCRender extends ItemsVC {
 		
 		//==============================================
 		
-		//V1
+		//V4
 		for (EntityAirshipBaseVC.Color meta : EntityAirshipBaseVC.Color.values()) 
 		{
 			registerRender(item_airship_v1_wood0, meta.getMetadata());
-		}
-		
-		for (EntityAirshipBaseVC.Color meta : EntityAirshipBaseVC.Color.values()) 
-		{
 			registerRender(item_airship_v1_iron, meta.getMetadata());
-		}
-		
-		for (EntityAirshipBaseVC.Color meta : EntityAirshipBaseVC.Color.values()) 
-		{
 			registerRender(item_airship_v1_redstone, meta.getMetadata());
-		}
-		
-		for (EntityAirshipBaseVC.Color meta : EntityAirshipBaseVC.Color.values()) 
-		{
 			registerRender(item_airship_v1_gold, meta.getMetadata());
-		}
-		
-		for (EntityAirshipBaseVC.Color meta : EntityAirshipBaseVC.Color.values()) 
-		{
 			registerRender(item_airship_v1_lapislazuli, meta.getMetadata());
-		}
-		
-		for (EntityAirshipBaseVC.Color meta : EntityAirshipBaseVC.Color.values()) 
-		{
 			registerRender(item_airship_v1_obsidian, meta.getMetadata());
-		}
-		
-		for (EntityAirshipBaseVC.Color meta : EntityAirshipBaseVC.Color.values()) 
-		{
 			registerRender(item_airship_v1_diamond, meta.getMetadata());
-		}
-		
-		for (EntityAirshipBaseVC.Color meta : EntityAirshipBaseVC.Color.values()) 
-		{
 			registerRender(item_airship_v1_emerald, meta.getMetadata());
 		}
 		
@@ -90,40 +62,12 @@ public final class InitItemsVCRender extends ItemsVC {
 		for (EntityAirshipBaseVC.Color meta : EntityAirshipBaseVC.Color.values()) 
 		{
 			registerRender(item_airship_v2_wood0, meta.getMetadata());
-		}
-		
-		for (EntityAirshipBaseVC.Color meta : EntityAirshipBaseVC.Color.values()) 
-		{
 			registerRender(item_airship_v2_iron, meta.getMetadata());
-		}
-		
-		for (EntityAirshipBaseVC.Color meta : EntityAirshipBaseVC.Color.values()) 
-		{
 			registerRender(item_airship_v2_redstone, meta.getMetadata());
-		}
-		
-		for (EntityAirshipBaseVC.Color meta : EntityAirshipBaseVC.Color.values()) 
-		{
 			registerRender(item_airship_v2_gold, meta.getMetadata());
-		}
-		
-		for (EntityAirshipBaseVC.Color meta : EntityAirshipBaseVC.Color.values()) 
-		{
 			registerRender(item_airship_v2_lapislazuli, meta.getMetadata());
-		}
-		
-		for (EntityAirshipBaseVC.Color meta : EntityAirshipBaseVC.Color.values()) 
-		{
 			registerRender(item_airship_v2_obsidian, meta.getMetadata());
-		}
-		
-		for (EntityAirshipBaseVC.Color meta : EntityAirshipBaseVC.Color.values()) 
-		{
 			registerRender(item_airship_v2_diamond, meta.getMetadata());
-		}
-		
-		for (EntityAirshipBaseVC.Color meta : EntityAirshipBaseVC.Color.values()) 
-		{
 			registerRender(item_airship_v2_emerald, meta.getMetadata());
 		}
 		
@@ -133,40 +77,12 @@ public final class InitItemsVCRender extends ItemsVC {
 		for (EntityAirshipBaseVC.Color meta : EntityAirshipBaseVC.Color.values()) 
 		{
 			registerRender(item_airship_v3_wood0, meta.getMetadata());
-		}
-		
-		for (EntityAirshipBaseVC.Color meta : EntityAirshipBaseVC.Color.values()) 
-		{
 			registerRender(item_airship_v3_iron, meta.getMetadata());
-		}
-		
-		for (EntityAirshipBaseVC.Color meta : EntityAirshipBaseVC.Color.values()) 
-		{
 			registerRender(item_airship_v3_redstone, meta.getMetadata());
-		}
-		
-		for (EntityAirshipBaseVC.Color meta : EntityAirshipBaseVC.Color.values()) 
-		{
 			registerRender(item_airship_v3_gold, meta.getMetadata());
-		}
-		
-		for (EntityAirshipBaseVC.Color meta : EntityAirshipBaseVC.Color.values()) 
-		{
 			registerRender(item_airship_v3_lapislazuli, meta.getMetadata());
-		}
-		
-		for (EntityAirshipBaseVC.Color meta : EntityAirshipBaseVC.Color.values()) 
-		{
 			registerRender(item_airship_v3_obsidian, meta.getMetadata());
-		}
-		
-		for (EntityAirshipBaseVC.Color meta : EntityAirshipBaseVC.Color.values()) 
-		{
 			registerRender(item_airship_v3_diamond, meta.getMetadata());
-		}
-		
-		for (EntityAirshipBaseVC.Color meta : EntityAirshipBaseVC.Color.values()) 
-		{
 			registerRender(item_airship_v3_emerald, meta.getMetadata());
 		}
 		
@@ -176,40 +92,12 @@ public final class InitItemsVCRender extends ItemsVC {
 		for (EntityAirshipBaseVC.Color meta : EntityAirshipBaseVC.Color.values()) 
 		{
 			registerRender(item_airship_v4_wood0, meta.getMetadata());
-		}
-		
-		for (EntityAirshipBaseVC.Color meta : EntityAirshipBaseVC.Color.values()) 
-		{
 			registerRender(item_airship_v4_iron, meta.getMetadata());
-		}
-		
-		for (EntityAirshipBaseVC.Color meta : EntityAirshipBaseVC.Color.values()) 
-		{
 			registerRender(item_airship_v4_redstone, meta.getMetadata());
-		}
-		
-		for (EntityAirshipBaseVC.Color meta : EntityAirshipBaseVC.Color.values()) 
-		{
 			registerRender(item_airship_v4_gold, meta.getMetadata());
-		}
-		
-		for (EntityAirshipBaseVC.Color meta : EntityAirshipBaseVC.Color.values()) 
-		{
 			registerRender(item_airship_v4_lapislazuli, meta.getMetadata());
-		}
-		
-		for (EntityAirshipBaseVC.Color meta : EntityAirshipBaseVC.Color.values()) 
-		{
 			registerRender(item_airship_v4_obsidian, meta.getMetadata());
-		}
-		
-		for (EntityAirshipBaseVC.Color meta : EntityAirshipBaseVC.Color.values()) 
-		{
 			registerRender(item_airship_v4_diamond, meta.getMetadata());
-		}
-		
-		for (EntityAirshipBaseVC.Color meta : EntityAirshipBaseVC.Color.values()) 
-		{
 			registerRender(item_airship_v4_emerald, meta.getMetadata());
 		}
 		

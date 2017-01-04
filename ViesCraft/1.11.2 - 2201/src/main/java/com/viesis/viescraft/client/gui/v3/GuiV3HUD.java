@@ -76,7 +76,7 @@ public class GuiV3HUD extends Gui {
 			
 			//SMALL % BAR
 			// I can keep drawing without changing anything
-			if(EventHandlerAirship.creativeBurnV3)
+			if(EventHandlerAirship.creativeBurn)
         	{
 				//Same as the infinite fuel module
 				drawTexturedModalRect(hudX + 36, hudY + 33, 36, 77, 110, 6);
@@ -97,7 +97,7 @@ public class GuiV3HUD extends Gui {
 			
 			//BIG % BAR
 			// I can keep drawing without changing anything
-			if(EventHandlerAirship.creativeBurnV3)
+			if(EventHandlerAirship.creativeBurn)
         	{
 				//Same as the infinite fuel module
 				drawTexturedModalRect(hudX + 2, hudY + 14, 2, 93, 178, 6);
@@ -173,7 +173,7 @@ public class GuiV3HUD extends Gui {
 			String hrs = (hours < 10 ? "0" : "") + hours;
 			String mins = (minutes < 10 ? "0" : "") + minutes;
 			String secs = (seconds < 10 ? "0" : "") + seconds;
-			if(EventHandlerAirship.creativeBurnV3)
+			if(EventHandlerAirship.creativeBurn)
         	{
 				//Time "infinite" to display
 				String s1 = "\u221e" + ":" + "\u221e" + ":" + "\u221e";

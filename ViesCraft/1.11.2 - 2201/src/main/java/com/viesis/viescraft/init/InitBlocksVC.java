@@ -11,7 +11,6 @@ import net.minecraft.item.ItemBlock;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import com.viesis.viescraft.api.BlocksVC;
-import com.viesis.viescraft.common.blocks.BlockAirshipDisassembler;
 import com.viesis.viescraft.common.blocks.BlockAirshipWorkbench;
 
 public class InitBlocksVC extends BlocksVC {
@@ -21,7 +20,6 @@ public class InitBlocksVC extends BlocksVC {
 	public static void preInit()
 	{
 		airship_workbench = registerBlock(new BlockAirshipWorkbench("airship_workbench"));
-		//airship_disassembler = registerBlock(new BlockAirshipDisassembler("airship_disassembler"));
 	}
 	
 	protected static <V extends Block> V registerBlock(V block)

@@ -63,7 +63,7 @@ public class ItemAirshipV1Wood0 extends ItemAirshipCore {
 	@Override
 	public String getItemStackDisplayName(ItemStack stack)
     {
-        return (Reference.AIRSHIP_FRAME[EntityAirshipBaseVC.Frame.WOOD0.ordinal()] + " " 
+        return (EntityAirshipBaseVC.Frame.WOOD0.getName() + " " 
         		+ EntityAirshipBaseVC.Color.byId(this.getMetadata(stack)).getName() + " " 
         		+ ViesCraftConfig.v1AirshipName);
     }

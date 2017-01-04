@@ -63,7 +63,7 @@ public class ItemAirshipV3LapisLazuli extends ItemAirshipCore {
 	@Override
 	public String getItemStackDisplayName(ItemStack stack)
     {
-        return (Reference.AIRSHIP_FRAME[EntityAirshipBaseVC.Frame.LAPISLAZULI.ordinal()] + " " 
+        return (EntityAirshipBaseVC.Frame.LAPISLAZULI.getName() + " " 
         		+ EntityAirshipBaseVC.Color.byId(this.getMetadata(stack)).getName() + " " 
         		+ ViesCraftConfig.v3AirshipName);
     }

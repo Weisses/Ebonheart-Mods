@@ -63,7 +63,7 @@ public class ItemAirshipV2Gold extends ItemAirshipCore {
 	@Override
 	public String getItemStackDisplayName(ItemStack stack)
     {
-        return (Reference.AIRSHIP_FRAME[EntityAirshipBaseVC.Frame.GOLD.ordinal()] + " " 
+        return (EntityAirshipBaseVC.Frame.GOLD.getName() + " " 
         		+ EntityAirshipBaseVC.Color.byId(this.getMetadata(stack)).getName() + " " 
         		+ ViesCraftConfig.v2AirshipName);
     }

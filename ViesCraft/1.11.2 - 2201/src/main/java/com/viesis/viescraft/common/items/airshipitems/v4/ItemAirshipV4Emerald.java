@@ -63,7 +63,7 @@ public class ItemAirshipV4Emerald extends ItemAirshipCore {
 	@Override
 	public String getItemStackDisplayName(ItemStack stack)
     {
-        return (Reference.AIRSHIP_FRAME[EntityAirshipBaseVC.Frame.EMERALD.ordinal()] + " " 
+        return (EntityAirshipBaseVC.Frame.EMERALD.getName() + " " 
         		+ EntityAirshipBaseVC.Color.byId(this.getMetadata(stack)).getName() + " " 
         		+ ViesCraftConfig.v4AirshipName);
     }

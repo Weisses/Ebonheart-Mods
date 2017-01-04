@@ -63,7 +63,7 @@ public class ItemAirshipV4Redstone extends ItemAirshipCore {
 	@Override
 	public String getItemStackDisplayName(ItemStack stack)
     {
-        return (Reference.AIRSHIP_FRAME[EntityAirshipBaseVC.Frame.REDSTONE.ordinal()] + " " 
+        return (EntityAirshipBaseVC.Frame.REDSTONE.getName() + " " 
         		+ EntityAirshipBaseVC.Color.byId(this.getMetadata(stack)).getName() + " " 
         		+ ViesCraftConfig.v4AirshipName);
     }

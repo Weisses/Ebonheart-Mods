@@ -74,7 +74,7 @@ public class GuiEntityAirshipV4Default extends GuiContainer {
 		
 		if (this.airshipV4.getPowered() > 0)
         {
-			if(EventHandlerAirship.creativeBurnV4)
+			if(EventHandlerAirship.creativeBurn)
 			{
 				this.drawTexturedModalRect(this.guiLeft + 138, this.guiTop + 4, 184, 50, 8, 1 + 47);
 				this.drawTexturedModalRect(this.guiLeft + 152, this.guiTop + 17, 176, 119, 16, 16);
@@ -97,7 +97,7 @@ public class GuiEntityAirshipV4Default extends GuiContainer {
 		}
 		
 		//Draw a green fuel bar and magma in the coal slot
-		if(EventHandlerAirship.creativeBurnV4
+		if(EventHandlerAirship.creativeBurn
 		|| this.airshipV4.getModuleFuelInfinite())
 		{
 			this.drawTexturedModalRect(this.guiLeft + 138, this.guiTop + 4, 184, 50, 8, 1 + 47);

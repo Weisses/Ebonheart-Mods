@@ -139,6 +139,7 @@ public class InitItemsVC extends ItemsVC {
 		
 		//==============================================
 		
+		//V1
 		item_airship_v1_wood0 = registerItem(new ItemAirshipV1Wood0("v1/wood0/item_airship_v1"));
 		item_airship_v1_iron = registerItem(new ItemAirshipV1Iron("v1/iron/item_airship_v1"));
 		item_airship_v1_redstone = registerItem(new ItemAirshipV1Redstone("v1/redstone/item_airship_v1"));
@@ -148,6 +149,7 @@ public class InitItemsVC extends ItemsVC {
 		item_airship_v1_diamond = registerItem(new ItemAirshipV1Diamond("v1/diamond/item_airship_v1"));
 		item_airship_v1_emerald = registerItem(new ItemAirshipV1Emerald("v1/emerald/item_airship_v1"));
 		
+		//V2
 		item_airship_v2_wood0 = registerItem(new ItemAirshipV2Wood0("v2/wood0/item_airship_v2"));
 		item_airship_v2_iron = registerItem(new ItemAirshipV2Iron("v2/iron/item_airship_v2"));
 		item_airship_v2_redstone = registerItem(new ItemAirshipV2Redstone("v2/redstone/item_airship_v2"));
@@ -157,6 +159,7 @@ public class InitItemsVC extends ItemsVC {
 		item_airship_v2_diamond = registerItem(new ItemAirshipV2Diamond("v2/diamond/item_airship_v2"));
 		item_airship_v2_emerald = registerItem(new ItemAirshipV2Emerald("v2/emerald/item_airship_v2"));
 		
+		//V3
 		item_airship_v3_wood0 = registerItem(new ItemAirshipV3Wood0("v3/wood0/item_airship_v3"));
 		item_airship_v3_iron = registerItem(new ItemAirshipV3Iron("v3/iron/item_airship_v3"));
 		item_airship_v3_redstone = registerItem(new ItemAirshipV3Redstone("v3/redstone/item_airship_v3"));
@@ -166,6 +169,7 @@ public class InitItemsVC extends ItemsVC {
 		item_airship_v3_diamond = registerItem(new ItemAirshipV3Diamond("v3/diamond/item_airship_v3"));
 		item_airship_v3_emerald = registerItem(new ItemAirshipV3Emerald("v3/emerald/item_airship_v3"));
 		
+		//V4
 		item_airship_v4_wood0 = registerItem(new ItemAirshipV4Wood0("v4/wood0/item_airship_v4"));
 		item_airship_v4_iron = registerItem(new ItemAirshipV4Iron("v4/iron/item_airship_v4"));
 		item_airship_v4_redstone = registerItem(new ItemAirshipV4Redstone("v4/redstone/item_airship_v4"));
@@ -174,6 +178,7 @@ public class InitItemsVC extends ItemsVC {
 		item_airship_v4_obsidian = registerItem(new ItemAirshipV4Obsidian("v4/obsidian/item_airship_v4"));
 		item_airship_v4_diamond = registerItem(new ItemAirshipV4Diamond("v4/diamond/item_airship_v4"));
 		item_airship_v4_emerald = registerItem(new ItemAirshipV4Emerald("v4/emerald/item_airship_v4"));
+		
 		
 		
 		//========================
@@ -819,19 +824,5 @@ public class InitItemsVC extends ItemsVC {
 		items.add(item);
 		
 		return item;
-	}
-	
-	public static ItemAirshipV1Wood0 itemVariants;
-	
-	private static void registerItemMeta() 
-	{
-		
-		//item_airship_v1_wood0 = (ItemAirshipV1Wood0)(new ItemAirshipV1Wood0().setUnlocalizedName("v1/item_airship_v1"));
-		//item_airship_v1_wood0.setRegistryName("v1/item_airship_v1");
-	    //GameRegistry.register(item_airship_v1_wood0);
-		
-		//itemVariants = (ItemAirshipV1Wood0)(new ItemAirshipV1Wood0().setUnlocalizedName("mbe11_item_variants_unlocalised_name"));
-	    //itemVariants.setRegistryName("mbe11_item_variants_registry_name");
-	    //GameRegistry.register(itemVariants);
 	}
 }

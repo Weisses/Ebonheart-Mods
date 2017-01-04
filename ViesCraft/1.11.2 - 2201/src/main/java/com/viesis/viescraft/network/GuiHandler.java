@@ -5,7 +5,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
 
-import com.viesis.viescraft.client.gui.GuiTileEntityAirshipDisassembler;
 import com.viesis.viescraft.client.gui.GuiTileEntityAirshipWorkbench;
 import com.viesis.viescraft.client.gui.v1.GuiEntityAirshipV1Default;
 import com.viesis.viescraft.client.gui.v1.GuiEntityAirshipV1Module;
@@ -43,9 +42,7 @@ import com.viesis.viescraft.common.entity.airshipcolors.containers.v4.ContainerA
 import com.viesis.viescraft.common.entity.airshipcolors.containers.v4.ContainerAirshipV4Module;
 import com.viesis.viescraft.common.entity.airshipcolors.containers.v4.ContainerAirshipV4ModuleInvLarge;
 import com.viesis.viescraft.common.entity.airshipcolors.containers.v4.ContainerAirshipV4ModuleInvSmall;
-import com.viesis.viescraft.common.tileentity.ContainerAirshipDisassembler;
 import com.viesis.viescraft.common.tileentity.ContainerAirshipWorkbench;
-import com.viesis.viescraft.common.tileentity.TileEntityAirshipDisassembler;
 import com.viesis.viescraft.common.tileentity.TileEntityAirshipWorkbench;
 
 public class GuiHandler implements IGuiHandler {
@@ -53,7 +50,7 @@ public class GuiHandler implements IGuiHandler {
 	public static GuiHandler instance;
 	
 	public static final int GUI_AIRSHIP_WORKBENCH = 50;
-	public static final int GUI_AIRSHIP_DISASSEMBLER = 51;
+	//public static final int GUI_AIRSHIP_DISASSEMBLER = 51;
 	
 	public static final int GUI_V1_DEFAULT = 1;
 	public static final int GUI_V2_DEFAULT = 2;
@@ -89,10 +86,10 @@ public class GuiHandler implements IGuiHandler {
 			return new ContainerAirshipWorkbench(player.inventory, world, (TileEntityAirshipWorkbench)world.getTileEntity(new BlockPos(x, y, z)));
 		}
 		//Airship Disassembler Container
-		if (ID == GUI_AIRSHIP_DISASSEMBLER)
-		{
-			return new ContainerAirshipDisassembler(player.inventory, world, (TileEntityAirshipDisassembler)world.getTileEntity(new BlockPos(x, y, z)));
-		}
+		//if (ID == GUI_AIRSHIP_DISASSEMBLER)
+		//{
+		//	return new ContainerAirshipDisassembler(player.inventory, world, (TileEntityAirshipDisassembler)world.getTileEntity(new BlockPos(x, y, z)));
+		//}
 		
 		//Airship Container with no module
 		if (ID == GUI_V1_DEFAULT)
@@ -178,10 +175,10 @@ public class GuiHandler implements IGuiHandler {
 			return new GuiTileEntityAirshipWorkbench(player.inventory, world, (TileEntityAirshipWorkbench)world.getTileEntity(new BlockPos(x, y, z)));
 		}
 		//Airship Disassembler GUI
-		if (ID == GUI_AIRSHIP_DISASSEMBLER)
-		{
-			return new GuiTileEntityAirshipDisassembler(player.inventory, world, (TileEntityAirshipDisassembler)world.getTileEntity(new BlockPos(x, y, z)));
-		}
+		//if (ID == GUI_AIRSHIP_DISASSEMBLER)
+		//{
+		//	return new GuiTileEntityAirshipDisassembler(player.inventory, world, (TileEntityAirshipDisassembler)world.getTileEntity(new BlockPos(x, y, z)));
+		//}
 		
 		//Airship GUI with no module
 		if (ID == GUI_V1_DEFAULT)

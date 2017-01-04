@@ -11,7 +11,6 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 import com.viesis.viescraft.api.Reference;
-import com.viesis.viescraft.api.creative.VCTabAirships;
 import com.viesis.viescraft.api.creative.VCTabAirshipsV1;
 import com.viesis.viescraft.api.creative.VCTabAirshipsV2;
 import com.viesis.viescraft.api.creative.VCTabAirshipsV3;
@@ -51,20 +50,21 @@ public class ViesCraft {
 		ViesCraftConfig.init(new File(configDir.getPath(), Reference.MOD_ID + ".cfg"));
 		
 		this.proxy.preInit(event);
-		LogHelper.info("Pre Initialization Complete.");
+		LogHelper.info("Pre Init Complete.");
 	}
 	
 	@EventHandler
 	public void init(FMLInitializationEvent event)
 	{
 		this.proxy.init(event);
-		LogHelper.info("Initialization Complete.");
+		LogHelper.info("Init Complete.");
 	}
 	
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event)
 	{
 		this.proxy.postInit(event);
-		LogHelper.info("Post Initialization Complete.");
+		//LogHelper.info("Post Init Complete.");
+		LogHelper.info("Initiating Brannigan's Law.");
 	}
 }

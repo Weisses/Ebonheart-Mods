@@ -15,12 +15,10 @@ public class AchievementTriggersVC extends InitAchievementsVC {
 	@SubscribeEvent
 	public void onPickup(PlayerEvent.ItemPickupEvent event) 
 	{
-		
 		//if(event.pickedUp.getEntityItem().isItemEqual(new ItemStack(InitItemsEA.draconium_dust)))
 		//{
 		//	event.player.addStat(mine_draconium_ore);//.triggerAchievement(InitAchievementsEA.mine_draconium_ore);
 		//}
-		
 	}
 	
 	/**
@@ -62,9 +60,7 @@ public class AchievementTriggersVC extends InitAchievementsVC {
 	//@SubscribeEvent
 	//public void onSmelt(PlayerEvent.ItemSmeltedEvent event) {
 	//	if(event.smelting.getItem() == EbonArtsItems.purified_mystic_dust) {
-
 	//		event.player.triggerAchievement(EbonArtsAchievements.smeltMysticDust);
-		
 	//	}
 	//}
 }

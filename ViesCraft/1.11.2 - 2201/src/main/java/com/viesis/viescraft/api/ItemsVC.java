@@ -44,8 +44,6 @@ public class ItemsVC {
 	//public static Item module_stealth;
 	//public static Item module_dash;
 	
-	
-	
 	//==================================================
 	
 	public static Item item_airship_v1_wood0;
@@ -83,6 +81,12 @@ public class ItemsVC {
 	public static Item item_airship_v4_obsidian;
 	public static Item item_airship_v4_diamond;
 	public static Item item_airship_v4_emerald;
+	
+	
+	
+	//========================
+	//    To be deleted
+	//========================
 	
 	//Airship V1
 	//Wood - Oak V1 Airships

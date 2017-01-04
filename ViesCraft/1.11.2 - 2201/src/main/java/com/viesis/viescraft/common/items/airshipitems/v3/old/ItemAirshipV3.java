@@ -60,6 +60,7 @@ public class ItemAirshipV3 extends ItemAirshipCore {
 	@Override
 	public String getItemStackDisplayName(ItemStack stack)
     {
-        return (Reference.AIRSHIP_FRAME[this.metaFrameitem] + " " + Reference.AIRSHIP_COLOR[this.metaColoritem] + " " + ViesCraftConfig.v3AirshipName).trim();
+        return (//Reference.AIRSHIP_FRAME[this.metaFrameitem] + " " + Reference.AIRSHIP_COLOR[this.metaColoritem] + " " + 
+        		ViesCraftConfig.v3AirshipName).trim();
     }
 }
