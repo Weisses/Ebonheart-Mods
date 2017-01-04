@@ -52,8 +52,11 @@ public class ItemPaintRemover extends Item {
 				if(airship.metaColor != 0)
 				{
 					airship.metaColor = 0;
-					player.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.BUCKET));
 					
+					if (!player.capabilities.isCreativeMode)
+                    {
+						player.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.BUCKET));
+                    }
 					return true;
 				}
 				return true;

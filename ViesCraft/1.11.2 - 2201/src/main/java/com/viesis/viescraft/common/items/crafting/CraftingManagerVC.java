@@ -73,7 +73,7 @@ public class CraftingManagerVC {
     	this.addRecipe(new ItemStack(InitItemsVC.airship_frame_emerald, 1), new Object[]{"###", "#M#", "###", '#', Items.EMERALD, 'M', Items.MINECART});
     	
     	//=================================================
-    	
+    	/**
     	//Airships
     	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v1_wood0_normal, 1), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_wood0});
     	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v1_iron_normal, 1), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_iron});
@@ -1482,7 +1482,7 @@ public class CraftingManagerVC {
 		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_emerald_normal), new ItemStack(InitItemsVC.item_airship_v4_emerald_orange), new ItemStack(InitItemsVC.item_paint_remover.setContainerItem(Items.BUCKET)));
 		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_emerald_normal), new ItemStack(InitItemsVC.item_airship_v4_emerald_white), new ItemStack(InitItemsVC.item_paint_remover.setContainerItem(Items.BUCKET)));
 		this.addShapelessRecipe(new ItemStack(InitItemsVC.item_airship_v4_emerald_normal), new ItemStack(InitItemsVC.item_airship_v4_emerald_rainbow), new ItemStack(InitItemsVC.item_paint_remover.setContainerItem(Items.BUCKET)));
-		
+		*/
     	//=================================================
 		
 		Collections.sort(this.recipes, new Comparator<IRecipe>()

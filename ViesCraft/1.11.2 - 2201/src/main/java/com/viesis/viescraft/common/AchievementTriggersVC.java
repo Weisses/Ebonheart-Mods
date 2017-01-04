@@ -40,83 +40,12 @@ public class AchievementTriggersVC extends InitAchievementsVC {
 			event.player.addStat(airship_create_ignition);
 		}
 		
-		if(event.crafting.getItem() == InitItemsVC.item_airship_v1_wood0_normal
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_wood0_normal
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_wood0_normal
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_wood0_normal) 
+		if(event.crafting.getItem() == InitItemsVC.item_airship_v1_wood0
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_wood0
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_wood0
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_wood0) 
 		{
 			event.player.addStat(airship_create);
-		}
-		
-		if(event.crafting.getItem() == InitItemsVC.item_airship_v1_wood0_black
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v1_wood0_blue
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v1_wood0_brown
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v1_wood0_cyan
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v1_wood0_gray
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v1_wood0_green
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v1_wood0_lightblue
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v1_wood0_lightgray
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v1_wood0_lime
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v1_wood0_magenta
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v1_wood0_orange
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v1_wood0_pink
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v1_wood0_purple
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v1_wood0_red
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v1_wood0_white
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v1_wood0_yellow
-		
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_wood0_black
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_wood0_blue
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_wood0_brown
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_wood0_cyan
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_wood0_gray
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_wood0_green
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_wood0_lightblue
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_wood0_lightgray
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_wood0_lime
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_wood0_magenta
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_wood0_orange
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_wood0_pink
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_wood0_purple
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_wood0_red
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_wood0_white
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_wood0_yellow
-		
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_wood0_black
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_wood0_blue
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_wood0_brown
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_wood0_cyan
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_wood0_gray
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_wood0_green
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_wood0_lightblue
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_wood0_lightgray
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_wood0_lime
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_wood0_magenta
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_wood0_orange
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_wood0_pink
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_wood0_purple
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_wood0_red
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_wood0_white
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_wood0_yellow
-		
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_wood0_black
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_wood0_blue
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_wood0_brown
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_wood0_cyan
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_wood0_gray
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_wood0_green
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_wood0_lightblue
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_wood0_lightgray
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_wood0_lime
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_wood0_magenta
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_wood0_orange
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_wood0_pink
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_wood0_purple
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_wood0_red
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_wood0_white
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_wood0_yellow) 
-		{
-			event.player.addStat(airship_create_color);
 		}
 		
 		if(event.crafting.getItem() == InitItemsVC.module_inventory_small

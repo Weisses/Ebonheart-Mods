@@ -9,14 +9,17 @@ import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.stats.StatList;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.viesis.viescraft.ViesCraft;
+import com.viesis.viescraft.common.AchievementTriggersVC;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
 import com.viesis.viescraft.common.items.ItemHelper;
+import com.viesis.viescraft.init.InitAchievementsVC;
 
 public class ItemPaint extends Item {
 	
@@ -25,7 +28,7 @@ public class ItemPaint extends Item {
 	public ItemPaint(EntityAirshipV1Core.Color typeIn) 
 	{
 		this.type = typeIn;
-		ItemHelper.setItemName(this, "item_paint_" + typeIn.getName());
+		ItemHelper.setItemName(this, "item_paint_" + typeIn.getName().toString().toLowerCase().replaceAll("\\s+",""));
 		this.setCreativeTab(ViesCraft.tabViesCraftItems);
 	}
 	
@@ -53,8 +56,14 @@ public class ItemPaint extends Item {
 				if(airship.metaColor == 0)
 				{
 					airship.metaColor = type.ordinal();
-					player.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.BUCKET));
 					
+					player.addStat(InitAchievementsVC.airship_create_color);
+					
+					if (!player.capabilities.isCreativeMode)
+                    {
+						player.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.BUCKET));
+						
+                    }
 					return true;
 				}
 				return true;
