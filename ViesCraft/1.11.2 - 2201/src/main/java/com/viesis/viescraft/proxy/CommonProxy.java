@@ -34,7 +34,7 @@ public class CommonProxy {
 		
 		NetworkHandler.preInit();
 		
-		//InitItemsVC.preInitTEMP();
+		InitItemsVC.preInitTEMP();
 	}
 	
 	public void init(FMLInitializationEvent event) 

@@ -33,7 +33,7 @@ public class ClientProxy extends CommonProxy {
 		
 		Keybinds.init();
 		
-		//InitItemsVCRender.registerRendersTEMP();
+		InitItemsVCRender.registerRendersTEMP();
 	}
 	
 	@Override
