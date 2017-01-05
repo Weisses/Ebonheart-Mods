@@ -22,10 +22,43 @@ import com.viesis.viescraft.common.items.achievements.ItemAchievementIgnition;
 import com.viesis.viescraft.common.items.achievements.ItemAchievementLava;
 import com.viesis.viescraft.common.items.achievements.ItemAchievementPortal;
 import com.viesis.viescraft.common.items.achievements.ItemAchievementWater;
-import com.viesis.viescraft.common.items.airshipitems.v1.ItemAirshipV1;
-import com.viesis.viescraft.common.items.airshipitems.v2.ItemAirshipV2;
-import com.viesis.viescraft.common.items.airshipitems.v3.ItemAirshipV3;
-import com.viesis.viescraft.common.items.airshipitems.v4.ItemAirshipV4;
+import com.viesis.viescraft.common.items.airshipitems.ItemAirshipV1NEW;
+import com.viesis.viescraft.common.items.airshipitems.v1.ItemAirshipV1Diamond;
+import com.viesis.viescraft.common.items.airshipitems.v1.ItemAirshipV1Emerald;
+import com.viesis.viescraft.common.items.airshipitems.v1.ItemAirshipV1Gold;
+import com.viesis.viescraft.common.items.airshipitems.v1.ItemAirshipV1Iron;
+import com.viesis.viescraft.common.items.airshipitems.v1.ItemAirshipV1LapisLazuli;
+import com.viesis.viescraft.common.items.airshipitems.v1.ItemAirshipV1Obsidian;
+import com.viesis.viescraft.common.items.airshipitems.v1.ItemAirshipV1Redstone;
+import com.viesis.viescraft.common.items.airshipitems.v1.ItemAirshipV1Wood0;
+import com.viesis.viescraft.common.items.airshipitems.v1.old.ItemAirshipV1;
+import com.viesis.viescraft.common.items.airshipitems.v2.ItemAirshipV2Diamond;
+import com.viesis.viescraft.common.items.airshipitems.v2.ItemAirshipV2Emerald;
+import com.viesis.viescraft.common.items.airshipitems.v2.ItemAirshipV2Gold;
+import com.viesis.viescraft.common.items.airshipitems.v2.ItemAirshipV2Iron;
+import com.viesis.viescraft.common.items.airshipitems.v2.ItemAirshipV2LapisLazuli;
+import com.viesis.viescraft.common.items.airshipitems.v2.ItemAirshipV2Obsidian;
+import com.viesis.viescraft.common.items.airshipitems.v2.ItemAirshipV2Redstone;
+import com.viesis.viescraft.common.items.airshipitems.v2.ItemAirshipV2Wood0;
+import com.viesis.viescraft.common.items.airshipitems.v2.old.ItemAirshipV2;
+import com.viesis.viescraft.common.items.airshipitems.v3.ItemAirshipV3Diamond;
+import com.viesis.viescraft.common.items.airshipitems.v3.ItemAirshipV3Emerald;
+import com.viesis.viescraft.common.items.airshipitems.v3.ItemAirshipV3Gold;
+import com.viesis.viescraft.common.items.airshipitems.v3.ItemAirshipV3Iron;
+import com.viesis.viescraft.common.items.airshipitems.v3.ItemAirshipV3LapisLazuli;
+import com.viesis.viescraft.common.items.airshipitems.v3.ItemAirshipV3Obsidian;
+import com.viesis.viescraft.common.items.airshipitems.v3.ItemAirshipV3Redstone;
+import com.viesis.viescraft.common.items.airshipitems.v3.ItemAirshipV3Wood0;
+import com.viesis.viescraft.common.items.airshipitems.v3.old.ItemAirshipV3;
+import com.viesis.viescraft.common.items.airshipitems.v4.ItemAirshipV4Diamond;
+import com.viesis.viescraft.common.items.airshipitems.v4.ItemAirshipV4Emerald;
+import com.viesis.viescraft.common.items.airshipitems.v4.ItemAirshipV4Gold;
+import com.viesis.viescraft.common.items.airshipitems.v4.ItemAirshipV4Iron;
+import com.viesis.viescraft.common.items.airshipitems.v4.ItemAirshipV4LapisLazuli;
+import com.viesis.viescraft.common.items.airshipitems.v4.ItemAirshipV4Obsidian;
+import com.viesis.viescraft.common.items.airshipitems.v4.ItemAirshipV4Redstone;
+import com.viesis.viescraft.common.items.airshipitems.v4.ItemAirshipV4Wood0;
+import com.viesis.viescraft.common.items.airshipitems.v4.old.ItemAirshipV4;
 import com.viesis.viescraft.common.items.modules.ItemFuelModuleInfinite;
 import com.viesis.viescraft.common.items.modules.ItemInventoryModuleLarge;
 import com.viesis.viescraft.common.items.modules.ItemInventoryModuleSmall;
@@ -102,10 +135,71 @@ public class InitItemsVC extends ItemsVC {
 		module_speed_increase_major = registerItem(new ItemSpeedModuleMajor());
 		module_fuel_infinite = registerItem(new ItemFuelModuleInfinite());
 		
-		//module_stealth = registerItem(new ItemModuleStealth());
-		//module_dash = registerItem(new ItemModuleDash());
+		//==============================================
+		
+		//item_airship_v1 = registerItem(new ItemAirshipV1NEW("v1/item_airship_v1"));
+		
+		//V1
+		item_airship_v1_wood0 = registerItem(new ItemAirshipV1Wood0("v1/wood0/item_airship_v1"));
+		item_airship_v1_iron = registerItem(new ItemAirshipV1Iron("v1/iron/item_airship_v1"));
+		item_airship_v1_redstone = registerItem(new ItemAirshipV1Redstone("v1/redstone/item_airship_v1"));
+		item_airship_v1_gold = registerItem(new ItemAirshipV1Gold("v1/gold/item_airship_v1"));
+		item_airship_v1_lapislazuli = registerItem(new ItemAirshipV1LapisLazuli("v1/lapislazuli/item_airship_v1"));
+		item_airship_v1_obsidian = registerItem(new ItemAirshipV1Obsidian("v1/obsidian/item_airship_v1"));
+		item_airship_v1_diamond = registerItem(new ItemAirshipV1Diamond("v1/diamond/item_airship_v1"));
+		item_airship_v1_emerald = registerItem(new ItemAirshipV1Emerald("v1/emerald/item_airship_v1"));
+		
+		//V2
+		item_airship_v2_wood0 = registerItem(new ItemAirshipV2Wood0("v2/wood0/item_airship_v2"));
+		item_airship_v2_iron = registerItem(new ItemAirshipV2Iron("v2/iron/item_airship_v2"));
+		item_airship_v2_redstone = registerItem(new ItemAirshipV2Redstone("v2/redstone/item_airship_v2"));
+		item_airship_v2_gold = registerItem(new ItemAirshipV2Gold("v2/gold/item_airship_v2"));
+		item_airship_v2_lapislazuli = registerItem(new ItemAirshipV2LapisLazuli("v2/lapislazuli/item_airship_v2"));
+		item_airship_v2_obsidian = registerItem(new ItemAirshipV2Obsidian("v2/obsidian/item_airship_v2"));
+		item_airship_v2_diamond = registerItem(new ItemAirshipV2Diamond("v2/diamond/item_airship_v2"));
+		item_airship_v2_emerald = registerItem(new ItemAirshipV2Emerald("v2/emerald/item_airship_v2"));
+		
+		//V3
+		item_airship_v3_wood0 = registerItem(new ItemAirshipV3Wood0("v3/wood0/item_airship_v3"));
+		item_airship_v3_iron = registerItem(new ItemAirshipV3Iron("v3/iron/item_airship_v3"));
+		item_airship_v3_redstone = registerItem(new ItemAirshipV3Redstone("v3/redstone/item_airship_v3"));
+		item_airship_v3_gold = registerItem(new ItemAirshipV3Gold("v3/gold/item_airship_v3"));
+		item_airship_v3_lapislazuli = registerItem(new ItemAirshipV3LapisLazuli("v3/lapislazuli/item_airship_v3"));
+		item_airship_v3_obsidian = registerItem(new ItemAirshipV3Obsidian("v3/obsidian/item_airship_v3"));
+		item_airship_v3_diamond = registerItem(new ItemAirshipV3Diamond("v3/diamond/item_airship_v3"));
+		item_airship_v3_emerald = registerItem(new ItemAirshipV3Emerald("v3/emerald/item_airship_v3"));
+		
+		//V4
+		item_airship_v4_wood0 = registerItem(new ItemAirshipV4Wood0("v4/wood0/item_airship_v4"));
+		item_airship_v4_iron = registerItem(new ItemAirshipV4Iron("v4/iron/item_airship_v4"));
+		item_airship_v4_redstone = registerItem(new ItemAirshipV4Redstone("v4/redstone/item_airship_v4"));
+		item_airship_v4_gold = registerItem(new ItemAirshipV4Gold("v4/gold/item_airship_v4"));
+		item_airship_v4_lapislazuli = registerItem(new ItemAirshipV4LapisLazuli("v4/lapislazuli/item_airship_v4"));
+		item_airship_v4_obsidian = registerItem(new ItemAirshipV4Obsidian("v4/obsidian/item_airship_v4"));
+		item_airship_v4_diamond = registerItem(new ItemAirshipV4Diamond("v4/diamond/item_airship_v4"));
+		item_airship_v4_emerald = registerItem(new ItemAirshipV4Emerald("v4/emerald/item_airship_v4"));
 		
 		//==============================================
+		
+		achievement_airship_create_engine = registerItem(new ItemAchievementEngine());
+		achievement_airship_create_ignition = registerItem(new ItemAchievementIgnition());
+		achievement_airship_create = registerItem(new ItemAchievementCreate());
+		achievement_airship_create_color = registerItem(new ItemAchievementCreateColor());
+		achievement_airship_create_module = registerItem(new ItemAchievementCreateModule());
+		
+		achievement_airship_airborn = registerItem(new ItemAchievementAirborn());
+		achievement_airship_water = registerItem(new ItemAchievementWater());
+		achievement_airship_lava = registerItem(new ItemAchievementLava());
+		
+		achievement_airship_portal = registerItem(new ItemAchievementPortal());
+	}
+	
+	public static void preInitTEMP()
+	{
+
+		//========================
+		//    To be deleted
+		//========================
 		
 		//V1
 		item_airship_v1_wood0_normal = registerItem(new ItemAirshipV1("v1/wood0/item_airship_v1_normal", EntityAirshipBaseVC.Frame.WOOD0.ordinal(), EntityAirshipBaseVC.Color.NORMAL.ordinal()));
@@ -725,19 +819,6 @@ public class InitItemsVC extends ItemsVC {
 		item_airship_v4_emerald_yellow = registerItem(new ItemAirshipV4("v4/emerald/item_airship_v4_yellow", EntityAirshipBaseVC.Frame.EMERALD.ordinal(), EntityAirshipBaseVC.Color.YELLOW.ordinal()));
 		item_airship_v4_emerald_rainbow = registerItem(new ItemAirshipV4("v4/emerald/item_airship_v4_rainbow", EntityAirshipBaseVC.Frame.EMERALD.ordinal(), EntityAirshipBaseVC.Color.RAINBOW.ordinal()));
 		
-		//==============================================
-		
-		achievement_airship_create_engine = registerItem(new ItemAchievementEngine());
-		achievement_airship_create_ignition = registerItem(new ItemAchievementIgnition());
-		achievement_airship_create = registerItem(new ItemAchievementCreate());
-		achievement_airship_create_color = registerItem(new ItemAchievementCreateColor());
-		achievement_airship_create_module = registerItem(new ItemAchievementCreateModule());
-		
-		achievement_airship_airborn = registerItem(new ItemAchievementAirborn());
-		achievement_airship_water = registerItem(new ItemAchievementWater());
-		achievement_airship_lava = registerItem(new ItemAchievementLava());
-		
-		achievement_airship_portal = registerItem(new ItemAchievementPortal());
 	}
 	
 	private static <V extends Item> V registerItem(V item) 

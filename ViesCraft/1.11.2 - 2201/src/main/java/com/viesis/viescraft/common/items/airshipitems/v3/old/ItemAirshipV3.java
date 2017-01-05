@@ -1,14 +1,19 @@
 package com.viesis.viescraft.common.items.airshipitems.v3.old;
 
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.StatList;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.viesis.viescraft.ViesCraft;
 import com.viesis.viescraft.api.Reference;
@@ -62,5 +67,12 @@ public class ItemAirshipV3 extends ItemAirshipCore {
     {
         return (//Reference.AIRSHIP_FRAME[this.metaFrameitem] + " " + Reference.AIRSHIP_COLOR[this.metaColoritem] + " " + 
         		"OLD " + ViesCraftConfig.v3AirshipName).trim();
+    }
+	
+	@SideOnly(Side.CLIENT)
+	@Override
+    public void getSubItems(Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems)
+    {
+    	
     }
 }

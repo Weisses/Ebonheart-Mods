@@ -67,15 +67,4 @@ public class ItemAirshipV2LapisLazuli extends ItemAirshipCore {
         		+ EntityAirshipBaseVC.Color.byId(this.getMetadata(stack)).getName() + " " 
         		+ ViesCraftConfig.v2AirshipName);
     }
-	
-	@SideOnly(Side.CLIENT)
-    public void getSubItems(Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems)
-    {
-    	for (EntityAirshipBaseVC.Color contents : EntityAirshipBaseVC.Color.values()) 
-    	{
-			int meta = contents.getMetadata();
-			ItemStack subItemStack = new ItemStack(itemIn, 1, meta);
-			subItems.add(subItemStack);
-    	}
-    }
 }

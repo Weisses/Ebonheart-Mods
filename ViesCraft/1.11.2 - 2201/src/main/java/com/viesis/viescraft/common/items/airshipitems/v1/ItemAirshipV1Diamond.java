@@ -1,22 +1,16 @@
 package com.viesis.viescraft.common.items.airshipitems.v1;
 
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.StatList;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.NonNullList;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.viesis.viescraft.ViesCraft;
-import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
 import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipV1;
 import com.viesis.viescraft.common.items.ItemHelper;
@@ -66,16 +60,5 @@ public class ItemAirshipV1Diamond extends ItemAirshipCore {
         return (EntityAirshipBaseVC.Frame.DIAMOND.getName() + " " 
         		+ EntityAirshipBaseVC.Color.byId(this.getMetadata(stack)).getName() + " " 
         		+ ViesCraftConfig.v1AirshipName);
-    }
-	
-	@SideOnly(Side.CLIENT)
-    public void getSubItems(Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems)
-    {
-    	for (EntityAirshipBaseVC.Color contents : EntityAirshipBaseVC.Color.values()) 
-    	{
-			int meta = contents.getMetadata();
-			ItemStack subItemStack = new ItemStack(itemIn, 1, meta);
-			subItems.add(subItemStack);
-    	}
     }
 }

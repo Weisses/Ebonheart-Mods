@@ -18,17 +18,17 @@ public class EntityItemAirshipV4 extends EntityItemAirshipCore {
         super(worldIn);
     }
     
-    public EntityItemAirshipV4(World worldIn, EntityLivingBase entity, int frameIn, int colorIn)
+    public EntityItemAirshipV4(World worldObjIn, EntityLivingBase entity, int frameIn, int colorIn)
     {
-        super(worldIn, entity);
+        super(worldObjIn, entity);
         
         this.metaFrameItem = frameIn;
         this.metaColorItem = colorIn;
     }
     
-    public EntityItemAirshipV4(World worldIn, double x, double y, double z)
+    public EntityItemAirshipV4(World worldObjIn, double x, double y, double z)
     {
-        super(worldIn, x, y, z);
+        super(worldObjIn, x, y, z);
     }
     
     @Override

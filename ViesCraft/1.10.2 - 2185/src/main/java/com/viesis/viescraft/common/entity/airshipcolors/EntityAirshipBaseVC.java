@@ -11,7 +11,6 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
@@ -32,12 +31,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.google.common.collect.Lists;
 import com.viesis.viescraft.api.util.Keybinds;
-import com.viesis.viescraft.init.InitItemsVC;
 
 public class EntityAirshipBaseVC extends Entity {
 	
-	protected int metaFrame;
-	protected int metaColor;
+	public int metaFrame;
+	public int metaColor;
 	
 	public Random random = new Random();
 	
@@ -186,7 +184,7 @@ public class EntityAirshipBaseVC extends Entity {
                 {
                     if (!flag && this.worldObj.getGameRules().getBoolean("doEntityDrops"))
                     {
-                        this.dropItemWithOffset(this.getItemBoat(), 1, 0.0F);
+                        this.entityDropItem(this.getItemBoat(), 0.0F);
                     }
                     
                     this.setDeadVC();
@@ -222,7 +220,7 @@ public class EntityAirshipBaseVC extends Entity {
     /**
      * Main entity item drop.
      */
-    public Item getItemBoat()
+    public ItemStack getItemBoat()
     {
 		return null;
     }
@@ -384,7 +382,7 @@ public class EntityAirshipBaseVC extends Entity {
 
                         if (iblockstate.getMaterial() == Material.WATER)
                         {
-                        	f = Math.max(f, getBlockLiquidHeight(iblockstate, this.worldObj, blockpos$pooledmutableblockpos));
+                            f = Math.max(f, getBlockLiquidHeight(iblockstate, this.worldObj, blockpos$pooledmutableblockpos));
                         }
 
                         if (f >= 1.0F)
@@ -651,6 +649,7 @@ public class EntityAirshipBaseVC extends Entity {
     /**
      * The initial interaction when Airship is right-clicked.
      */
+    @Override
     public boolean processInitialInteract(EntityPlayer player, @Nullable ItemStack stack, EnumHand hand)
     {
         if (player.isSneaking())
@@ -859,6 +858,7 @@ public class EntityAirshipBaseVC extends Entity {
 		
 	}
     
+	
     
     public static enum Color
     {
@@ -870,8 +870,8 @@ public class EntityAirshipBaseVC extends Entity {
         CYAN(4, "Cyan"),
         GRAY(5, "Gray"),
         GREEN(6, "Green"),
-        LIGHTBLUE(7, "Lightblue"),
-        LIGHTGRAY(8, "Lightgray"),
+        LIGHTBLUE(7, "Light Blue"),
+        LIGHTGRAY(8, "Light Gray"),
         LIME(9, "Lime"),
         MAGENTA(10, "Magenta"),
         ORANGE(11, "Orange"),

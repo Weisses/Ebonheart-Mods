@@ -15,16 +15,16 @@ import com.viesis.viescraft.common.tileentity.TileEntityAirshipWorkbench;
 
 public class GuiTileEntityAirshipWorkbench extends GuiContainer {
 	
-	private InventoryPlayer playerInventory;
+	private InventoryPlayer thePlayerInventory;
 	private TileEntityAirshipWorkbench airship;
 	private final World worldObj;
     
-	public GuiTileEntityAirshipWorkbench(InventoryPlayer playerInventory, World worldIn, TileEntityAirshipWorkbench airship)
+	public GuiTileEntityAirshipWorkbench(InventoryPlayer thePlayerInventory, World worldIn, TileEntityAirshipWorkbench airship)
 	{
-		super(new ContainerAirshipWorkbench(playerInventory, worldIn, airship));
+		super(new ContainerAirshipWorkbench(thePlayerInventory, worldIn, airship));
 		
 		this.worldObj = worldIn;
-        this.playerInventory = playerInventory;
+        this.thePlayerInventory = thePlayerInventory;
 		this.airship = airship;
 		this.xSize = 176;
 		this.ySize = 166;
@@ -49,7 +49,7 @@ public class GuiTileEntityAirshipWorkbench extends GuiContainer {
 		//////////////////////this.fontRendererObj.drawString("Input", 32, 6, 4210752);
 		// This sets the Airship name in the top center.
 		//this.fontRendererObj.drawString(s, 88 - this.fontRendererObj.getStringWidth(s) / 2, 6, 4210752);
-		//this.fontRendererObj.drawString(this.playerInv.getDisplayName().getUnformattedText(), 8, 72, 4210752);
+		//this.fontRendererObj.drawString(this.thePlayerInv.getDisplayName().getUnformattedText(), 8, 72, 4210752);
 	}
 	
 	@Override

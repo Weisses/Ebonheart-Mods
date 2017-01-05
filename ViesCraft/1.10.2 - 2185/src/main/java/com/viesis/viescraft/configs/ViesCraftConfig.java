@@ -24,8 +24,6 @@ public class ViesCraftConfig {
 	//public static int v4FuelBurnTime;
 	public static int v4AirshipSpeed;
 	
-	//public static boolean modelTurnAngle;
-	
 	public static boolean vanillaFuel;
 	public static int viesolineBurnTime;
 	
@@ -104,12 +102,7 @@ public class ViesCraftConfig {
 		v3AirshipName = config.getString(TextFormatting.WHITE + V3AIRSHIPNAME_NAME, category1, V3AIRSHIPNAME_DEFAULT, V3AIRSHIPNAME_COMMENT);
 		v4AirshipName = config.getString(TextFormatting.WHITE + V4AIRSHIPNAME_NAME, category1, V4AIRSHIPNAME_DEFAULT, V4AIRSHIPNAME_COMMENT);
 		
-		//Animation settings
-		//final String category2 = CATEGORY_VC + config.CATEGORY_SPLITTER + TextFormatting.AQUA + "Animation";
-		//config.addCustomCategoryComment(category2, "Client Side airship animations.");
-		//modelTurnAngle = config.getBoolean(TextFormatting.WHITE + MODELTURNANGLE_NAME, category2, MODELTURNANGLE_DEFAULT, MODELTURNANGLE_COMMENT);
-		
-		//Animation settings
+		//Fuel settings
 		final String category2 = CATEGORY_VC + config.CATEGORY_SPLITTER + TextFormatting.AQUA + "Fuel";
 		config.addCustomCategoryComment(category2, "Airship fuel options.");
 		

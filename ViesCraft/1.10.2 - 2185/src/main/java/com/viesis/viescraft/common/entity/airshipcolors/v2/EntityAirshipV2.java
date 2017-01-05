@@ -1,12 +1,11 @@
 package com.viesis.viescraft.common.entity.airshipcolors.v2;
 
-import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-import com.viesis.viescraft.api.Reference;
-import com.viesis.viescraft.api.ReturnItemHelperVC;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV2Core;
 import com.viesis.viescraft.configs.ViesCraftConfig;
+import com.viesis.viescraft.init.InitItemsVC;
 
 public class EntityAirshipV2 extends EntityAirshipV2Core {
 	
@@ -34,32 +33,29 @@ public class EntityAirshipV2 extends EntityAirshipV2Core {
         this.prevPosZ = z;
     }
     
-	/**
-     * Main entity item drop.
-     */
-    @Override
-	public Item getItemBoat()
+	@Override
+	public ItemStack getItemBoat()
     {
     	switch (this.getBoatFrame().ordinal())
         {
             case 0:
-            	return ReturnItemHelperVC.V2_ITEM_WOOD0[this.metaColor];
+            	return new ItemStack(InitItemsVC.item_airship_v2_wood0, 1, this.metaColor);
             case 1:
-            	return ReturnItemHelperVC.V2_ITEM_IRON[this.metaColor];
+            	return new ItemStack(InitItemsVC.item_airship_v2_iron, 1, this.metaColor);
             case 2:
-            	return ReturnItemHelperVC.V2_ITEM_REDSTONE[this.metaColor];
+            	return new ItemStack(InitItemsVC.item_airship_v2_redstone, 1, this.metaColor);
             case 3:
-            	return ReturnItemHelperVC.V2_ITEM_GOLD[this.metaColor];
+            	return new ItemStack(InitItemsVC.item_airship_v2_gold, 1, this.metaColor);
             case 4:
-            	return ReturnItemHelperVC.V2_ITEM_LAPISLAZULI[this.metaColor];
+            	return new ItemStack(InitItemsVC.item_airship_v2_lapislazuli, 1, this.metaColor);
             case 5:
-            	return ReturnItemHelperVC.V2_ITEM_OBSIDIAN[this.metaColor];
+            	return new ItemStack(InitItemsVC.item_airship_v2_obsidian, 1, this.metaColor);
             case 6:
-            	return ReturnItemHelperVC.V2_ITEM_DIAMOND[this.metaColor];
+            	return new ItemStack(InitItemsVC.item_airship_v2_diamond, 1, this.metaColor);
             case 7:
-            	return ReturnItemHelperVC.V2_ITEM_EMERALD[this.metaColor];
+            	return new ItemStack(InitItemsVC.item_airship_v2_emerald, 1, this.metaColor);
             default:
-            	return null;
+            	return new ItemStack(InitItemsVC.item_airship_v2_wood0, 1, this.metaColor);
         }
     }
     
@@ -69,7 +65,7 @@ public class EntityAirshipV2 extends EntityAirshipV2Core {
 	@Override
 	public String getName() 
 	{
-		return this.hasCustomName() ? this.customName : Reference.AIRSHIP_FRAME[this.metaFrame] + " " + Reference.AIRSHIP_COLOR[this.metaColor] + " " + ViesCraftConfig.v2AirshipName;
+		return this.hasCustomName() ? this.customName : Frame.byId(this.metaFrame).getName() + " " + Color.byId(this.metaColor).getName() + " " + ViesCraftConfig.v2AirshipName;
 	}
 	
 	@Override

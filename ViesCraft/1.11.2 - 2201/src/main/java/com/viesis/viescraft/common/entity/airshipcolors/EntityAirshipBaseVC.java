@@ -637,6 +637,7 @@ public class EntityAirshipBaseVC extends Entity {
     /**
      * The initial interaction when Airship is right-clicked.
      */
+    @Override
     public boolean processInitialInteract(EntityPlayer player, EnumHand stack)
     {
         if (player.isSneaking())

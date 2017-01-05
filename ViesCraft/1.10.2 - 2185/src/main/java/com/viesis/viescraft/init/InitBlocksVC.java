@@ -20,7 +20,6 @@ public class InitBlocksVC extends BlocksVC {
 	public static void preInit()
 	{
 		airship_workbench = registerBlock(new BlockAirshipWorkbench("airship_workbench"));
-		//airship_disassembler = registerBlock(new BlockAirshipDisassembler("airship_disassembler"));
 	}
 	
 	protected static <V extends Block> V registerBlock(V block)

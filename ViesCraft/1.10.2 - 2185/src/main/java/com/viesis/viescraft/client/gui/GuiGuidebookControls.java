@@ -102,12 +102,13 @@ public class GuiGuidebookControls extends GuiScreen {
         
         stringPageText[7] = "Here is a list of fuel items: "
         		+ "\n\n"
-        		+ "Sticks / Saplings"
+        		+ "Viesoline Pellets"
+        		+ "\nSticks / Saplings"
         		+ "\nCoal / Charcoal"
         		+ "\nCoal Blocks"
         		+ "\nBlaze Rods"
         		+ "\nWood material blocks"
-        		+ "\n\n\n\n"
+        		+ "\n\n\n"
         		+ "*Items burn for their vanilla times."
         		;
         

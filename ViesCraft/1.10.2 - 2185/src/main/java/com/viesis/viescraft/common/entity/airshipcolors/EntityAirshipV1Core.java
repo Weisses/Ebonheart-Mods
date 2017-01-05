@@ -78,9 +78,9 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
     public float AirshipSpeedUp = 0.0035F * (ViesCraftConfig.v1AirshipSpeed / 100);
     public float AirshipSpeedDown = 0.0035F * (ViesCraftConfig.v1AirshipSpeed / 100);
 	
-	public EntityAirshipV1Core(World worldObjIn)
+	public EntityAirshipV1Core(World worldIn)
     {
-        super(worldObjIn);
+        super(worldIn);
         
         this.ignoreFrustumCheck = true;
         this.preventEntitySpawning = true;
@@ -89,9 +89,9 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
         this.inventory = new ItemStackHandler(size);
     }
 	
-    public EntityAirshipV1Core(World worldObjIn, double x, double y, double z, int frameIn, int colorIn)
+    public EntityAirshipV1Core(World worldIn, double x, double y, double z, int frameIn, int colorIn)
     {
-        this(worldObjIn);
+        this(worldIn);
         this.setPosition(x, y + 0.5D, z);
         this.motionX = 0.0D;
         this.motionY = 0.0D;
@@ -246,7 +246,7 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
         		this.controlAirshipGui();
             }
         	
-        	this.moveEntity(this.motionX, this.motionY, this.motionZ);
+            this.moveEntity(this.motionX, this.motionY, this.motionZ);
         }
         else
         {
@@ -729,9 +729,9 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
         		
         	}
         	//The player in the airship is in Creative Mode
-        	else if(EventHandlerAirship.creativeBurnV1)
+        	else if(EventHandlerAirship.creativeBurn)
         	{
-        		if(this.getEntityId() == EventHandlerAirship.playerRidingEntityV1)
+        		if(this.getEntityId() == EventHandlerAirship.playerRidingEntity)
         		{
 	        		if(this.getControllingPassenger() == null)
 	            	{
@@ -780,9 +780,9 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
         		this.airshipBurnTime = 0;
         	}
         	//The player in the airship is in Creative Mode
-        	else if(EventHandlerAirship.creativeBurnV1)
+        	else if(EventHandlerAirship.creativeBurn)
         	{
-        		if (this.getEntityId() == EventHandlerAirship.playerRidingEntityV1)
+        		if (this.getEntityId() == EventHandlerAirship.playerRidingEntity)
             	{
             		this.airshipBurnTime = 1;
             	}
@@ -796,7 +796,8 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
         //Core fuel slot logic
         if (this.isClientAirshipBurning() || this.inventory.getStackInSlot(0) != null)
         {
-            if (!this.isClientAirshipBurning())
+            if (!this.isClientAirshipBurning()
+            && this.getControllingPassenger() != null)
             {
                 this.airshipBurnTime = getItemBurnTime(this.inventory.getStackInSlot(0));
                 this.airshipTotalBurnTime = getItemBurnTime(this.inventory.getStackInSlot(0));

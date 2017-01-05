@@ -1,16 +1,16 @@
 [
-    {
-      "modid": "vc",
-      "name": "ViesCraft",
-      "description": "Airships through the eyes of Viesis!",
-      "version": "v4.5.5a",
-      "mcversion": "1.10.2",
-      "url": " TBD ",
-      "updateUrl": "",
-      "authorList": ["Viesis"],
-      "credits": "ViesCraft is a trademark of Viesis!",
-      "logoFile": "assets/vc/textures/logo.png",
-      "screenshots": [],
-      "dependencies": []
-    }
+{
+  "modid": "vc",
+  "name": "ViesCraft",
+  "description": "Airships through the eyes of Viesis!",
+  "version": "v4.7.2a",
+  "mcversion": "1.10.X",
+  "url": " TBD ",
+  "updateUrl": "",
+  "authorList": ["Viesis"],
+  "credits": "ViesCraft is a trademark of Viesis!",
+  "logoFile": "assets/vc/textures/logo.png",
+  "screenshots": [],
+  "dependencies": []
+}
 ]

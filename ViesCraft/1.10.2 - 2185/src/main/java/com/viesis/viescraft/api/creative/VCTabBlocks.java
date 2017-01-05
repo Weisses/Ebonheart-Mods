@@ -4,6 +4,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
+import com.viesis.viescraft.init.InitBlocksVC;
 import com.viesis.viescraft.init.InitItemsVC;
 
 public class VCTabBlocks extends CreativeTabs {
@@ -17,6 +18,6 @@ public class VCTabBlocks extends CreativeTabs {
 	@Override
 	public Item getTabIconItem() 
 	{
-		return InitItemsVC.achievement_airship_create_ignition;
+		return Item.getItemFromBlock(InitBlocksVC.airship_workbench);
 	}
 }

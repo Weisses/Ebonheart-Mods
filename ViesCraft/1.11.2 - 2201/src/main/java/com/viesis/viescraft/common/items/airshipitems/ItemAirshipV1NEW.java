@@ -67,16 +67,5 @@ public class ItemAirshipV1NEW extends ItemAirshipCore {
         		+ ViesCraftConfig.v1AirshipName);
     }
 	
-	@SideOnly(Side.CLIENT)
-    public void getSubItems(Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems)
-    {
-    	for (EntityAirshipBaseVC.Color contents : EntityAirshipBaseVC.Color.values()) 
-    	{
-			int meta = contents.getMetadata();
-			ItemStack subItemStack = new ItemStack(itemIn, 1, meta);
-			subItems.add(subItemStack);
-    	}
-    }
-	
 	
 }

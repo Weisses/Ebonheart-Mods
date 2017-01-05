@@ -65,4 +65,5 @@ public class FuelSlotVC extends SlotItemHandler {
         
         return false;
     }
+    
 }
