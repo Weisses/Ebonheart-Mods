@@ -6,6 +6,7 @@ import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.GuiIngameForge;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -45,6 +46,7 @@ public class GuiV1HUD extends Gui {
 		
 		if(this.isAirshipV1)
 	    {
+			GuiIngameForge.renderFood = false;
 			this.airshipV1 = (EntityAirshipV1Core) Minecraft.getMinecraft().thePlayer.getRidingEntity();
 			
 			GlStateManager.enableRescaleNormal();
