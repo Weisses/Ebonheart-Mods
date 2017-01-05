@@ -25,6 +25,7 @@ public class ItemPaintRemover extends Item {
 	public ItemPaintRemover() 
 	{
 		ItemHelper.setItemName(this, "item_paint_remover");
+		this.setMaxStackSize(1);
 		this.setCreativeTab(ViesCraft.tabViesCraftItems);
 	}
 	

@@ -29,6 +29,7 @@ public class ItemPaint extends Item {
 	{
 		this.type = typeIn;
 		ItemHelper.setItemName(this, "item_paint_" + typeIn.getName().toString().toLowerCase().replaceAll("\\s+",""));
+		this.setMaxStackSize(1);
 		this.setCreativeTab(ViesCraft.tabViesCraftItems);
 	}
 	
