@@ -1,6 +1,5 @@
 package com.viesis.viescraft.client;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
@@ -43,9 +42,11 @@ public final class InitItemsVCRender extends ItemsVC {
 		
 		//==============================================
 		
-		//V4
+		
+		//V1
 		for (EntityAirshipBaseVC.Color meta : EntityAirshipBaseVC.Color.values()) 
 		{
+			//registerRender(item_airship_v1, meta.getMetadata());
 			registerRender(item_airship_v1_wood0, meta.getMetadata());
 			registerRender(item_airship_v1_iron, meta.getMetadata());
 			registerRender(item_airship_v1_redstone, meta.getMetadata());
@@ -101,8 +102,41 @@ public final class InitItemsVCRender extends ItemsVC {
 			registerRender(item_airship_v4_emerald, meta.getMetadata());
 		}
 		
+		//==============================================
 		
+		registerRender(item_paint_remover);
+		registerRender(item_paint_black);
+		registerRender(item_paint_blue);
+		registerRender(item_paint_brown);
+		registerRender(item_paint_cyan);
+		registerRender(item_paint_gray);
+		registerRender(item_paint_green);
+		registerRender(item_paint_lightblue);
+		registerRender(item_paint_lightgray);
+		registerRender(item_paint_lime);
+		registerRender(item_paint_magenta);
+		registerRender(item_paint_orange);
+		registerRender(item_paint_pink);
+		registerRender(item_paint_purple);
+		registerRender(item_paint_red);
+		registerRender(item_paint_white);
+		registerRender(item_paint_yellow);
+		registerRender(item_paint_rainbow);
 		
+		registerRender(achievement_airship_create_engine);
+		registerRender(achievement_airship_create_ignition);
+		registerRender(achievement_airship_create);
+		registerRender(achievement_airship_create_color);
+		registerRender(achievement_airship_create_module);
+		
+		registerRender(achievement_airship_airborn);
+		registerRender(achievement_airship_water);
+		registerRender(achievement_airship_lava);
+		registerRender(achievement_airship_portal);
+	}
+	
+	public static void registerRendersTEMP()
+	{
 		//========================
 		//    To be deleted
 		//========================
@@ -724,45 +758,11 @@ public final class InitItemsVCRender extends ItemsVC {
 		registerRender(item_airship_v4_emerald_white);
 		registerRender(item_airship_v4_emerald_yellow);
 		registerRender(item_airship_v4_emerald_rainbow);
-		
-		//==============================================
-		
-		registerRender(item_paint_remover);
-		registerRender(item_paint_black);
-		registerRender(item_paint_blue);
-		registerRender(item_paint_brown);
-		registerRender(item_paint_cyan);
-		registerRender(item_paint_gray);
-		registerRender(item_paint_green);
-		registerRender(item_paint_lightblue);
-		registerRender(item_paint_lightgray);
-		registerRender(item_paint_lime);
-		registerRender(item_paint_magenta);
-		registerRender(item_paint_orange);
-		registerRender(item_paint_pink);
-		registerRender(item_paint_purple);
-		registerRender(item_paint_red);
-		registerRender(item_paint_white);
-		registerRender(item_paint_yellow);
-		registerRender(item_paint_rainbow);
-		
-		registerRender(achievement_airship_create_engine);
-		registerRender(achievement_airship_create_ignition);
-		registerRender(achievement_airship_create);
-		registerRender(achievement_airship_create_color);
-		registerRender(achievement_airship_create_module);
-		
-		registerRender(achievement_airship_airborn);
-		registerRender(achievement_airship_water);
-		registerRender(achievement_airship_lava);
-		
-		registerRender(achievement_airship_portal);
-		
 	}
 	
 	public static void registerRender(Item item)
 	{
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, 0, new ModelResourceLocation(item.getRegistryName().toString(), "inventory"));
+		ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(item.getRegistryName().toString(), "inventory"));
 	}
 	
 	public static void registerRender(Item item, int meta)
@@ -770,7 +770,5 @@ public final class InitItemsVCRender extends ItemsVC {
 		String itemName = item.getRegistryName().toString() + "_" + EntityAirshipBaseVC.Color.byId(meta).getName().toString().toLowerCase().replaceAll("\\s+","");
 		
 		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(itemName, "inventory"));
-		
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, meta, new ModelResourceLocation(itemName, "inventory"));
 	}
 }

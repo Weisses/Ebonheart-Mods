@@ -26,12 +26,15 @@ public class CommonProxy {
 	public void preInit(FMLPreInitializationEvent event) 
 	{
 		//SoundEventsEA.registerSounds();
+		
 		InitItemsVC.preInit();
 		InitBlocksVC.preInit();
 		InitTileEntitiesVC.preInit();
 		InitEntityVC.preInit();
 		
 		NetworkHandler.preInit();
+		
+		//InitItemsVC.preInitTEMP();
 	}
 	
 	public void init(FMLInitializationEvent event) 

@@ -62,6 +62,6 @@ public class ItemAirshipV4 extends ItemAirshipCore {
     {
         return (//Reference.AIRSHIP_FRAME[this.metaFrameitem] + 
         		//" " + Reference.AIRSHIP_COLOR[this.metaColoritem] + " " + 
-        		ViesCraftConfig.v4AirshipName).trim();
+        		"OLD " + ViesCraftConfig.v4AirshipName).trim();
     }
 }

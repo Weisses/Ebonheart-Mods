@@ -22,6 +22,7 @@ import com.viesis.viescraft.common.items.achievements.ItemAchievementIgnition;
 import com.viesis.viescraft.common.items.achievements.ItemAchievementLava;
 import com.viesis.viescraft.common.items.achievements.ItemAchievementPortal;
 import com.viesis.viescraft.common.items.achievements.ItemAchievementWater;
+import com.viesis.viescraft.common.items.airshipitems.ItemAirshipV1NEW;
 import com.viesis.viescraft.common.items.airshipitems.v1.ItemAirshipV1Diamond;
 import com.viesis.viescraft.common.items.airshipitems.v1.ItemAirshipV1Emerald;
 import com.viesis.viescraft.common.items.airshipitems.v1.ItemAirshipV1Gold;
@@ -134,10 +135,9 @@ public class InitItemsVC extends ItemsVC {
 		module_speed_increase_major = registerItem(new ItemSpeedModuleMajor());
 		module_fuel_infinite = registerItem(new ItemFuelModuleInfinite());
 		
-		//module_stealth = registerItem(new ItemModuleStealth());
-		//module_dash = registerItem(new ItemModuleDash());
-		
 		//==============================================
+		
+		//item_airship_v1 = registerItem(new ItemAirshipV1NEW("v1/item_airship_v1"));
 		
 		//V1
 		item_airship_v1_wood0 = registerItem(new ItemAirshipV1Wood0("v1/wood0/item_airship_v1"));
@@ -179,8 +179,24 @@ public class InitItemsVC extends ItemsVC {
 		item_airship_v4_diamond = registerItem(new ItemAirshipV4Diamond("v4/diamond/item_airship_v4"));
 		item_airship_v4_emerald = registerItem(new ItemAirshipV4Emerald("v4/emerald/item_airship_v4"));
 		
+		//==============================================
 		
+		achievement_airship_create_engine = registerItem(new ItemAchievementEngine());
+		achievement_airship_create_ignition = registerItem(new ItemAchievementIgnition());
+		achievement_airship_create = registerItem(new ItemAchievementCreate());
+		achievement_airship_create_color = registerItem(new ItemAchievementCreateColor());
+		achievement_airship_create_module = registerItem(new ItemAchievementCreateModule());
 		
+		achievement_airship_airborn = registerItem(new ItemAchievementAirborn());
+		achievement_airship_water = registerItem(new ItemAchievementWater());
+		achievement_airship_lava = registerItem(new ItemAchievementLava());
+		
+		achievement_airship_portal = registerItem(new ItemAchievementPortal());
+	}
+	
+	public static void preInitTEMP()
+	{
+
 		//========================
 		//    To be deleted
 		//========================
@@ -803,19 +819,6 @@ public class InitItemsVC extends ItemsVC {
 		item_airship_v4_emerald_yellow = registerItem(new ItemAirshipV4("v4/emerald/item_airship_v4_yellow", EntityAirshipBaseVC.Frame.EMERALD.ordinal(), EntityAirshipBaseVC.Color.YELLOW.ordinal()));
 		item_airship_v4_emerald_rainbow = registerItem(new ItemAirshipV4("v4/emerald/item_airship_v4_rainbow", EntityAirshipBaseVC.Frame.EMERALD.ordinal(), EntityAirshipBaseVC.Color.RAINBOW.ordinal()));
 		
-		//==============================================
-		
-		achievement_airship_create_engine = registerItem(new ItemAchievementEngine());
-		achievement_airship_create_ignition = registerItem(new ItemAchievementIgnition());
-		achievement_airship_create = registerItem(new ItemAchievementCreate());
-		achievement_airship_create_color = registerItem(new ItemAchievementCreateColor());
-		achievement_airship_create_module = registerItem(new ItemAchievementCreateModule());
-		
-		achievement_airship_airborn = registerItem(new ItemAchievementAirborn());
-		achievement_airship_water = registerItem(new ItemAchievementWater());
-		achievement_airship_lava = registerItem(new ItemAchievementLava());
-		
-		achievement_airship_portal = registerItem(new ItemAchievementPortal());
 	}
 	
 	private static <V extends Item> V registerItem(V item) 

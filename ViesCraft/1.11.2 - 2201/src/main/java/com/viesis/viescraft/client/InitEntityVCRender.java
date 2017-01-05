@@ -1,8 +1,5 @@
 package com.viesis.viescraft.client;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.entity.Render;
-import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
@@ -26,10 +23,23 @@ import com.viesis.viescraft.common.entity.airshipitems.v4.EntityItemAirshipV4;
 
 public final class InitEntityVCRender extends ItemsVC {
 	
-	public static RenderManager VCRender = Minecraft.getMinecraft().getRenderManager(); 
+	//public static RenderManager VCRender = Minecraft.getMinecraft().getRenderManager(); 
 	
 	public static void registerRenders()
 	{
+		RenderingRegistry.registerEntityRenderingHandler(EntityItemAirshipV1.class, renderManager -> new RenderItemAirshipV1(renderManager));
+		RenderingRegistry.registerEntityRenderingHandler(EntityItemAirshipV2.class, renderManager -> new RenderItemAirshipV2(renderManager));
+		RenderingRegistry.registerEntityRenderingHandler(EntityItemAirshipV3.class, renderManager -> new RenderItemAirshipV3(renderManager));
+		RenderingRegistry.registerEntityRenderingHandler(EntityItemAirshipV4.class, renderManager -> new RenderItemAirshipV4(renderManager));
+		
+		RenderingRegistry.registerEntityRenderingHandler(EntityAirshipV1.class, renderManager -> new RenderAirshipV1(renderManager));
+		RenderingRegistry.registerEntityRenderingHandler(EntityAirshipV2.class, renderManager -> new RenderAirshipV2(renderManager));
+		RenderingRegistry.registerEntityRenderingHandler(EntityAirshipV3.class, renderManager -> new RenderAirshipV3(renderManager));
+		RenderingRegistry.registerEntityRenderingHandler(EntityAirshipV4.class, renderManager -> new RenderAirshipV4(renderManager));
+		
+		
+		
+		/**
 		registerRender(EntityItemAirshipV1.class,  new RenderItemAirshipV1(VCRender));
 		registerRender(EntityItemAirshipV2.class,  new RenderItemAirshipV2(VCRender));
 		registerRender(EntityItemAirshipV3.class,  new RenderItemAirshipV3(VCRender));
@@ -37,14 +47,15 @@ public final class InitEntityVCRender extends ItemsVC {
 		
 		//===========================================================================
 		
-		registerRender(EntityAirshipV1.class,  new RenderAirshipV1(VCRender));
+		registerRender1(EntityAirshipV1.class,  renderManager -> new RenderAirshipV1(renderManager));
 		registerRender(EntityAirshipV2.class,  new RenderAirshipV2(VCRender));
 		registerRender(EntityAirshipV3.class,  new RenderAirshipV3(VCRender));
 		registerRender(EntityAirshipV4.class,  new RenderAirshipV4(VCRender));
+		*/
 	}
 	
-	public static void registerRender(Class<? extends Entity> classIn, Render<? extends Entity> renderItem)
+	public static void registerRender1(Class<? extends Entity> classIn, Object renderItem)
 	{
-		RenderingRegistry.registerEntityRenderingHandler(classIn, renderItem);
+		//RenderingRegistry.registerEntityRenderingHandler(classIn, renderItem);
 	}
 }

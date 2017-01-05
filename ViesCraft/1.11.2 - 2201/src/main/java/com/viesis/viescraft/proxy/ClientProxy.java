@@ -27,7 +27,13 @@ public class ClientProxy extends CommonProxy {
 	{
 		super.preInit(event);
 		
+		InitItemsVCRender.registerRenders();
+		InitBlocksVCRender.registerRenders();
+		InitEntityVCRender.registerRenders();
+		
 		Keybinds.init();
+		
+		//InitItemsVCRender.registerRendersTEMP();
 	}
 	
 	@Override
@@ -35,10 +41,7 @@ public class ClientProxy extends CommonProxy {
 	{
 		super.init(event);
 		
-		InitItemsVCRender.registerRenders();
-		InitBlocksVCRender.registerRenders();
 		InitTileEntityVCRender.registerRenders();
-		InitEntityVCRender.registerRenders();
 		
 		MinecraftForge.EVENT_BUS.register(new GuiV1HUD());
 		MinecraftForge.EVENT_BUS.register(new GuiV2HUD());

@@ -36,7 +36,7 @@ public class EntityAirshipV1 extends EntityAirshipV1Core {
 	@Override
 	public ItemStack getItemBoat()
     {
-    	switch (this.getBoatFrame().ordinal())
+		switch (this.getBoatFrame().ordinal())
         {
             case 0:
             	return new ItemStack(InitItemsVC.item_airship_v1_wood0, 1, this.metaColor);

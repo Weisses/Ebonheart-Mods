@@ -61,6 +61,6 @@ public class ItemAirshipV1 extends ItemAirshipCore {
 	public String getItemStackDisplayName(ItemStack stack)
     {
         return (//Reference.AIRSHIP_FRAME[this.metaFrameitem] + " " + Reference.AIRSHIP_COLOR[this.metaColoritem] + " " + 
-        		ViesCraftConfig.v1AirshipName).trim();
+        		"OLD " + ViesCraftConfig.v1AirshipName).trim();
     }
 }

@@ -46,6 +46,8 @@ public class ItemsVC {
 	
 	//==================================================
 	
+	//public static Item item_airship_v1;
+	
 	public static Item item_airship_v1_wood0;
 	public static Item item_airship_v1_iron;
 	public static Item item_airship_v1_redstone;
