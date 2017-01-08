@@ -10,7 +10,6 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.common.items.crafting.CraftingManagerVC;
 import com.viesis.viescraft.common.items.crafting.SlotCraftingVC;
 import com.viesis.viescraft.init.InitBlocksVC;

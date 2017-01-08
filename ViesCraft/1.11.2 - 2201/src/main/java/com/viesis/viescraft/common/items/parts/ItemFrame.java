@@ -34,7 +34,7 @@ public class ItemFrame extends Item {
 	@SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List toolTip, boolean advanced) 
 	{
-		TextFormatting stringColor = null;
+		TextFormatting stringColor = TextFormatting.GRAY;
 		
 		if(this.getMetadata(stack) == 0
 		|| this.getMetadata(stack) == 1)
@@ -58,7 +58,6 @@ public class ItemFrame extends Item {
 		{
 			stringColor = TextFormatting.DARK_PURPLE;
 		}
-		
 		
 		toolTip.add(TextFormatting.WHITE + "[Shift + Left-Click]" + stringColor + " on an");
 		toolTip.add(stringColor + "airship to change the frame.");
@@ -122,7 +121,6 @@ public class ItemFrame extends Item {
         return false;
     }
 	
-
 	@Override
 	public String getItemStackDisplayName(ItemStack stack)
     {

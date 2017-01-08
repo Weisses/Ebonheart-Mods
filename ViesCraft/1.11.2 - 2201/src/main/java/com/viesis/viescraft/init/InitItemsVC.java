@@ -14,15 +14,6 @@ import com.viesis.viescraft.common.items.ItemGuidebookMain;
 import com.viesis.viescraft.common.items.ItemGuidebookPaint;
 import com.viesis.viescraft.common.items.ItemGuidebookSocket;
 import com.viesis.viescraft.common.items.achievements.ItemAchievement;
-import com.viesis.viescraft.common.items.achievements.ItemAchievementAirborn;
-import com.viesis.viescraft.common.items.achievements.ItemAchievementCreate;
-import com.viesis.viescraft.common.items.achievements.ItemAchievementCreateColor;
-import com.viesis.viescraft.common.items.achievements.ItemAchievementCreateModule;
-import com.viesis.viescraft.common.items.achievements.ItemAchievementEngine;
-import com.viesis.viescraft.common.items.achievements.ItemAchievementIgnition;
-import com.viesis.viescraft.common.items.achievements.ItemAchievementLava;
-import com.viesis.viescraft.common.items.achievements.ItemAchievementPortal;
-import com.viesis.viescraft.common.items.achievements.ItemAchievementWater;
 import com.viesis.viescraft.common.items.airshipitems.v1.ItemAirshipV1;
 import com.viesis.viescraft.common.items.airshipitems.v2.ItemAirshipV2;
 import com.viesis.viescraft.common.items.airshipitems.v3.ItemAirshipV3;
@@ -137,9 +128,6 @@ public class InitItemsVC extends ItemsVC {
 		//==============================================
 		
 		achievement_airship = registerItem(new ItemAchievement());
-		
-		
-		//achievement_airship_portal = registerItem(new ItemAchievementPortal());
 	}
 	
 	public static void registerItemTEMP()

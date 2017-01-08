@@ -90,7 +90,6 @@ public class ItemPaint extends Item {
 						if (!player.capabilities.isCreativeMode)
 	                    {
 							player.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.BUCKET));
-							
 	                    }
 						return true;
 					}

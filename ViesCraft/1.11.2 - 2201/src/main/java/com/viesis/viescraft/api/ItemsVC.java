@@ -12,12 +12,13 @@ public class ItemsVC {
 	public static Item viesoline_pellets;
 	
 	public static Item airship_balloon;
-	public static Item airship_ignition;
 	public static Item airship_engine;
-	
+	public static Item airship_ignition;
 	public static Item airship_frame;
 	
 	public static Item airship_dismounter;
+
+	public static Item item_paint;
 	
 	public static Item module_chip;
 	
@@ -77,8 +78,6 @@ public class ItemsVC {
 	public static Item item_airship_v4_purpur;
 	
 	//=================================================
-	
-	public static Item item_paint;
 	
 	public static Item achievement_airship;
 }

@@ -1,6 +1,5 @@
 package com.viesis.viescraft.client;
 
-import net.minecraft.entity.Entity;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
 import com.viesis.viescraft.api.ItemsVC;
@@ -24,8 +23,6 @@ import com.viesis.viescraft.configs.ViesCraftConfig;
 
 public final class InitEntityVCRender extends ItemsVC {
 	
-	//public static RenderManager VCRender = Minecraft.getMinecraft().getRenderManager(); 
-	
 	public static void registerEntityRender()
 	{
 		//V1
@@ -39,13 +36,13 @@ public final class InitEntityVCRender extends ItemsVC {
 		{
 			RenderingRegistry.registerEntityRenderingHandler(EntityItemAirshipV2.class, renderManager -> new RenderItemAirshipV2(renderManager));
 		}
-				
+		
 		//V3
 		if(ViesCraftConfig.v3AirshipEnabled)
 		{
 			RenderingRegistry.registerEntityRenderingHandler(EntityItemAirshipV3.class, renderManager -> new RenderItemAirshipV3(renderManager));
 		}
-				
+		
 		//V4
 		if(ViesCraftConfig.v4AirshipEnabled)
 		{
