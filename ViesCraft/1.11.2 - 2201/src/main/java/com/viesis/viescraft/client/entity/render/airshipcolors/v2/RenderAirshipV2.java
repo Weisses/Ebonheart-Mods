@@ -10,6 +10,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.viesis.viescraft.api.Reference;
+import com.viesis.viescraft.client.entity.model.ModelAirshipPanel;
 import com.viesis.viescraft.client.entity.model.v2.ModelAirshipV2Color;
 import com.viesis.viescraft.client.entity.model.v2.ModelAirshipV2FrameOff;
 import com.viesis.viescraft.client.entity.model.v2.ModelAirshipV2FrameOn;
@@ -50,7 +51,19 @@ public class RenderAirshipV2 extends Render<EntityAirshipV2> {
 		new ResourceLocation(Reference.MOD_ID, "textures/models/v2/airship_v2_frame_lapislazuli.png"),
 		new ResourceLocation(Reference.MOD_ID, "textures/models/v2/airship_v2_frame_obsidian.png"),
 		new ResourceLocation(Reference.MOD_ID, "textures/models/v2/airship_v2_frame_diamond.png"),
-		new ResourceLocation(Reference.MOD_ID, "textures/models/v2/airship_v2_frame_emerald.png")
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v2/airship_v2_frame_emerald.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v2/airship_v2_frame_netherbrick.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v2/airship_v2_frame_purpur.png")
+	};
+	
+	private static final ResourceLocation[] ENTITY_SCREEN_TEXTURE = new ResourceLocation[] 
+	{
+		new ResourceLocation(Reference.MOD_ID, "textures/models/screens/no_module.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/screens/module_inv_small.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/screens/module_inv_large.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/screens/module_speed_minor.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/screens/module_speed_major.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/screens/module_fuel_infinite.png")
 	};
 	
 	/** Instance of Color Model for rendering. */
@@ -59,8 +72,11 @@ public class RenderAirshipV2 extends Render<EntityAirshipV2> {
 	protected ModelBase modelAirshipV2FrameOn = new ModelAirshipV2FrameOn();
 	/** Instance of V2-Off Model for rendering. */
 	protected ModelBase modelAirshipV2FrameOff = new ModelAirshipV2FrameOff();
+	/** Instance of the Control panel screen Model for rendering. */
+	protected ModelBase modelAirshipPanel = new ModelAirshipPanel();
 	
 	private EntityAirshipV2Core airship;
+	private int moduleNumber;
 	
     public RenderAirshipV2(RenderManager renderManagerIn)
     {
@@ -81,6 +97,32 @@ public class RenderAirshipV2 extends Render<EntityAirshipV2> {
         
         this.airship = entity;
         
+        //Draw current module icons in screen
+		if(this.airship.getModuleInventorySmall())
+		{
+        	this.moduleNumber = 1;
+		}
+        else if(this.airship.getModuleInventoryLarge())
+		{
+			this.moduleNumber = 2;
+		}
+        else if(this.airship.getModuleSpeedMinor())
+		{
+			this.moduleNumber = 3;
+		}
+        else if(this.airship.getModuleSpeedMajor())
+		{
+			this.moduleNumber = 4;
+		}
+        else if(this.airship.getModuleFuelInfinite())
+		{
+			this.moduleNumber = 5;
+		}
+        else
+        {
+        	this.moduleNumber = 0;
+        }
+        
         if (this.renderOutlines)
         {
             GlStateManager.enableColorMaterial();
@@ -93,6 +135,8 @@ public class RenderAirshipV2 extends Render<EntityAirshipV2> {
         	this.modelAirshipV2Color.render(entity, partialTicks, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
         	this.bindTexture(ENTITY_FRAME_TEXTURE[entity.getBoatFrame().ordinal()]);
         	this.modelAirshipV2FrameOn.render(entity, partialTicks, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
+        	this.bindTexture(ENTITY_SCREEN_TEXTURE[this.moduleNumber]);
+        	this.modelAirshipPanel.render(entity, partialTicks, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
         }
         else
         {
@@ -100,6 +144,8 @@ public class RenderAirshipV2 extends Render<EntityAirshipV2> {
         	this.modelAirshipV2Color.render(entity, partialTicks, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
         	this.bindTexture(ENTITY_FRAME_TEXTURE[entity.getBoatFrame().ordinal()]);
         	this.modelAirshipV2FrameOff.render(entity, partialTicks, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
+        	this.bindTexture(ENTITY_SCREEN_TEXTURE[this.moduleNumber]);
+        	this.modelAirshipPanel.render(entity, partialTicks, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
         }
         
         if (this.renderOutlines)

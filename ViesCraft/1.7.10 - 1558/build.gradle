@@ -34,11 +34,6 @@ minecraft {
 }
 
 dependencies {
-    // compile against the NEI API
-    deobfCompile 'mezz.jei:jei_1.10.2:3.12.8.323:api'
-    // at runtime, use the full NEI jar
-    runtime 'mezz.jei:jei_1.10.2:3.12.8.323'
-    
     // you may put jars on which you depend on in ./libs
     // or you may define them like so..
     //compile "some.group:artifact:version:classifier"

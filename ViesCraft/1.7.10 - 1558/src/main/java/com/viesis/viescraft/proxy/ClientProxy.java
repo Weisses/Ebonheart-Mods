@@ -1,14 +1,11 @@
 package com.viesis.viescraft.proxy;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.particle.Particle;
 import net.minecraft.entity.Entity;
-import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.MathHelper;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
+import com.sun.xml.internal.bind.v2.schemagen.xmlschema.Particle;
 import com.viesis.viescraft.api.util.Keybinds;
 import com.viesis.viescraft.client.InitBlocksVCRender;
 import com.viesis.viescraft.client.InitEntityVCRender;
@@ -19,6 +16,10 @@ import com.viesis.viescraft.client.gui.v2.GuiV2HUD;
 import com.viesis.viescraft.client.gui.v3.GuiV3HUD;
 import com.viesis.viescraft.client.gui.v4.GuiV4HUD;
 import com.viesis.viescraft.client.particle.EntitySmokeFX;
+
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
 public class ClientProxy extends CommonProxy {
 	

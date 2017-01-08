@@ -10,6 +10,7 @@ import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -20,7 +21,7 @@ import com.viesis.viescraft.init.InitItemsVC;
 @SideOnly(Side.CLIENT)
 public class RenderItemAirshipV2 extends Render<EntityItemAirshipV2> {
 	
-	private Item itemModel = InitItemsVC.achievement_airship_portal;
+	private Item itemModel = new ItemStack(InitItemsVC.achievement_airship, 1, 8).getItem();
 	private float scale;
     
     public RenderItemAirshipV2(RenderManager renderManagerIn)

@@ -27,21 +27,23 @@ public class ClientProxy extends CommonProxy {
 	{
 		super.preInit(event);
 		
-		InitItemsVCRender.registerRenders();
-		InitBlocksVCRender.registerRenders();
-		InitEntityVCRender.registerRenders();
+		InitItemsVCRender.registerItemRender();
+		InitBlocksVCRender.registerBlockRender();
+		InitEntityVCRender.registerEntityRender();
+		InitTileEntityVCRender.registerTileEntityRender();
 		
 		Keybinds.init();
 		
-		InitItemsVCRender.registerRendersTEMP();
+		//InitItemsVCRender.registerItemRenderTEMP();
+		//InitBlocksVCRender.registerBlockRenderTEMP();
+		//InitEntityVCRender.registerEntityRenderTEMP();
+		//InitTileEntityVCRender.registerTileEntityRenderTEMP();
 	}
 	
 	@Override
 	public void init(FMLInitializationEvent event) 
 	{
 		super.init(event);
-		
-		InitTileEntityVCRender.registerRenders();
 		
 		MinecraftForge.EVENT_BUS.register(new GuiV1HUD());
 		MinecraftForge.EVENT_BUS.register(new GuiV2HUD());

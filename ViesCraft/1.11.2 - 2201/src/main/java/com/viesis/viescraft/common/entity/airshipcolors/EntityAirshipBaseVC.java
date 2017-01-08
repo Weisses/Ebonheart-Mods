@@ -923,15 +923,16 @@ public class EntityAirshipBaseVC extends Entity {
     
     public static enum Frame
     {
-        
-    	WOOD0(0, "Oak"),
+        WOOD0(0, "Oak"),
     	IRON(1, "Iron"),
         REDSTONE(2, "Redstone"),
         GOLD(3, "Gold"),
         LAPISLAZULI(4, "Lapis Lazuli"),
         OBSIDIAN(5, "Obsidian"),
         DIAMOND(6, "Diamond"),
-        EMERALD(7, "Emerald");
+        EMERALD(7, "Emerald"),
+        NETHERBRICK(8, "Nether Brick"),
+        PURPUR(9, "Purpur");
         
         private final String name;
         private final int metadata;

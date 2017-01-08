@@ -54,6 +54,10 @@ public class EntityAirshipV3 extends EntityAirshipV3Core {
             	return new ItemStack(InitItemsVC.item_airship_v3_diamond, 1, this.metaColor);
             case 7:
             	return new ItemStack(InitItemsVC.item_airship_v3_emerald, 1, this.metaColor);
+            case 8:
+            	return new ItemStack(InitItemsVC.item_airship_v3_netherbrick, 1, this.metaColor);
+            case 9:
+            	return new ItemStack(InitItemsVC.item_airship_v3_purpur, 1, this.metaColor);
             default:
             	return new ItemStack(InitItemsVC.item_airship_v3_wood0, 1, this.metaColor);
         }

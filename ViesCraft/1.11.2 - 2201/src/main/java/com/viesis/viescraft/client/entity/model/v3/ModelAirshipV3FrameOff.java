@@ -94,6 +94,8 @@ public class ModelAirshipV3FrameOff extends ModelBase {
 	ModelRenderer BalloonFrameTRM1f;
 	ModelRenderer BalloonFrameTLM1b;
 	ModelRenderer BalloonFrameTRM1b;
+    ModelRenderer ControlPanel;
+    ModelRenderer ControlBrace;
 	
 	public ModelAirshipV3FrameOff()
 	{
@@ -622,6 +624,18 @@ public class ModelAirshipV3FrameOff extends ModelBase {
 		BalloonFrameTRM1b.setTextureSize(256, 128);
 		BalloonFrameTRM1b.mirror = true;
 		setRotation(BalloonFrameTRM1b, 0F, 0F, 0F);
+		ControlPanel = new ModelRenderer(this, 0, 122);
+		ControlPanel.addBox(0F, 0F, 0F, 7, 5, 1);
+		ControlPanel.setRotationPoint(-3.5F, -1F, -16F);
+		ControlPanel.setTextureSize(256, 128);
+		ControlPanel.mirror = true;
+		setRotation(ControlPanel, 0.7853982F, 0F, 0F);
+		ControlBrace = new ModelRenderer(this, 0, 117);
+		ControlBrace.addBox(0F, 0F, 0F, 5, 4, 1);
+		ControlBrace.setRotationPoint(-2.5F, -0.5F, -15.5F);
+		ControlBrace.setTextureSize(256, 128);
+		ControlBrace.mirror = true;
+		setRotation(ControlBrace, 0F, 0F, 0F);
 	}
 	
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
@@ -716,6 +730,8 @@ public class ModelAirshipV3FrameOff extends ModelBase {
 		BalloonFrameTRM1f.render(f5);
 		BalloonFrameTLM1b.render(f5);
 		BalloonFrameTRM1b.render(f5);
+	    ControlPanel.render(f5);
+	    ControlBrace.render(f5);
 	}
 	
 	private void setRotation(ModelRenderer model, float x, float y, float z)

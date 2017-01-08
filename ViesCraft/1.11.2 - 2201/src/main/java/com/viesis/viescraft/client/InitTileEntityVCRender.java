@@ -10,10 +10,14 @@ import com.viesis.viescraft.common.tileentity.TileEntityAirshipWorkbench;
 
 public final class InitTileEntityVCRender {
 	
-	public static void registerRenders()
+	public static void registerTileEntityRender()
 	{
 		registerRender(TileEntityAirshipWorkbench.class, new RenderAirshipWorkbench());
-		//registerRender(TileEntityAirshipDisassembler.class, new RenderAirshipDisassembler());
+	}
+	
+	public static void registerTileEntityRenderTEMP()
+	{
+		
 	}
 	
 	public static <T extends TileEntity> void registerRender(Class<T> classIn, TileEntitySpecialRenderer<? super T> renderItem)

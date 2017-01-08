@@ -17,9 +17,14 @@ public class InitBlocksVC extends BlocksVC {
 	
 	public static final Set<Block> blocks = new HashSet<>();
 	
-	public static void preInit()
+	public static void registerBlock()
 	{
 		airship_workbench = registerBlock(new BlockAirshipWorkbench("airship_workbench"));
+	}
+	
+	public static void registerBlockTEMP()
+	{
+		
 	}
 	
 	protected static <V extends Block> V registerBlock(V block)
