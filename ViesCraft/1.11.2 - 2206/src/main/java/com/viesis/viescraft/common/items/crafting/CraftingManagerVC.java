@@ -185,7 +185,7 @@ public class CraftingManagerVC {
             }
         });
     }
-
+    
     /**
      * Adds a shaped recipe to the games recipe list.
      */
