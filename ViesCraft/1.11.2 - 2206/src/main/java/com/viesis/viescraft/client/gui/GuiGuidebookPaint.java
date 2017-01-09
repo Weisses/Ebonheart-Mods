@@ -56,7 +56,7 @@ public class GuiGuidebookPaint extends GuiScreen {
         		+ "\n\n" 
         		+ "         " + "\u00A7oby Viesis\u00A7r"
         		+ "\n\n\n\n" 
-        		+ "          " + Reference.MOD_VERSION.substring(0, 7);
+        		+ "           " + Reference.MOD_VERSION;
         
         stringPageText[1] = "   Now that you built "
         		+ "your airship and can "
