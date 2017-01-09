@@ -1,0 +1,121 @@
+package com.viesis.viescraft.common.items.parts;
+
+import java.util.List;
+
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityPlayerSP;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.EnumRarity;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import com.viesis.viescraft.ViesCraft;
+import com.viesis.viescraft.api.util.LogHelper;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
+import com.viesis.viescraft.common.items.ItemHelper;
+
+public class ItemPaint extends Item {
+	
+	private final EntityAirshipV1Core.Color type;
+	
+	public ItemPaint(EntityAirshipV1Core.Color typeIn) 
+	{
+		this.type = typeIn;
+		ItemHelper.setItemName(this, "item_paint_" + typeIn.getName());
+		this.setCreativeTab(ViesCraft.tabViesCraftItems);
+	}
+	
+	@SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack stack, EntityPlayer playerIn, List toolTip, boolean advanced) 
+	{
+		toolTip.add(TextFormatting.GOLD + "Airship paint isn't flammable,");
+		toolTip.add(TextFormatting.GOLD + "is it?!?");
+	}
+	
+	public EnumRarity getRarity(ItemStack stack)
+    {
+        return EnumRarity.UNCOMMON;
+    }
+	
+	public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity)
+    {
+		
+		if (entity instanceof EntityAirshipBaseVC)
+        {
+			if(player.isSneaking())
+			{
+				
+				LogHelper.info("Airship = " + entity);
+					
+				
+				
+				return true;
+			}
+			
+			return true;
+        }
+		
+        return false;
+    }
+	
+    
+	/**
+     * Returns true if the item can be used on the given entity, e.g. shears on sheep.
+     */
+    //@Override
+    public boolean itemInteractionForAirship(net.minecraft.entity.player.EntityPlayer player,
+    		Entity  entityIn
+    		)
+    {
+    	
+    	LogHelper.info("2 = " +  entityIn);
+    	
+    	if (entityIn instanceof EntityAirshipBaseVC)
+        {
+	    	LogHelper.info("Is an Airship");
+	    	
+	    	
+	    	
+	    	
+	    	/**
+	        if (entity instanceof EntityAirshipBaseVC)
+	        {
+	            
+	        	LogHelper.info("Is an Airship!!!!!!!!!!!!!!!!!!!");
+	        	
+	        	net.minecraftforge.common.IShearable target = (net.minecraftforge.common.IShearable)entity;
+	            BlockPos pos = new BlockPos(entity.posX, entity.posY, entity.posZ);
+	            if (target.isShearable(itemstack, entity.world, pos))
+	            {
+	                java.util.List<ItemStack> drops = target.onSheared(itemstack, entity.world, pos,
+	                        net.minecraft.enchantment.EnchantmentHelper.getEnchantmentLevel(net.minecraft.init.Enchantments.FORTUNE, itemstack));
+	
+	                java.util.Random rand = new java.util.Random();
+	                for(ItemStack stack : drops)
+	                {
+	                    net.minecraft.entity.item.EntityItem ent = entity.entityDropItem(stack, 1.0F);
+	                    ent.motionY += rand.nextFloat() * 0.05F;
+	                    ent.motionX += (rand.nextFloat() - rand.nextFloat()) * 0.1F;
+	                    ent.motionZ += (rand.nextFloat() - rand.nextFloat()) * 0.1F;
+	                }
+	                itemstack.damageItem(1, entity);
+	            }
+	            
+	            
+	            
+	            return true;
+	        }
+	        return false;*/
+        }
+        return false;
+    }
+}

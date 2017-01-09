@@ -1,0 +1,282 @@
+package com.viesis.viescraft.common.items.airshipitems.v1;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import net.minecraft.client.Minecraft;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
+import net.minecraft.item.EnumDyeColor;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.stats.StatList;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.NonNullList;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.text.TextFormatting;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import com.viesis.viescraft.ViesCraft;
+import com.viesis.viescraft.api.Reference;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC.Frame;
+import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipV1;
+import com.viesis.viescraft.common.items.ItemHelper;
+import com.viesis.viescraft.common.items.airshipitems.ItemAirshipCore;
+import com.viesis.viescraft.configs.ViesCraftConfig;
+
+public class ItemAirshipV1Wood0 extends ItemAirshipCore {
+	
+	List<ItemStack> subItems = new ArrayList<>();
+	
+	//public EntityAirshipBaseVC.Frame metaFrameitem;
+	//public EntityAirshipBaseVC.Color metaColoritem;
+	//public int metaColoritem;
+	
+	
+	public ItemAirshipV1Wood0(String unlocalizedName, Frame wood0) 
+	{
+		//this.metaFrameitem = wood0;
+		
+		this.setHasSubtypes(true);
+        this.setMaxDamage(0);
+        
+		ItemHelper.setItemName(this, 
+				"v1/wood0/item_airship_v1" 
+				)
+				;
+		this.setCreativeTab(ViesCraft.tabViesCraftAirshipsV1);
+	}
+	
+	@Override
+	public int getMetadata(int damage) 
+	{
+	    return damage;
+	}
+	
+	@Override
+	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn)
+    {
+        ItemStack itemstack = playerIn.getHeldItem(handIn);
+        if(playerIn.isSneaking())
+		{
+        	if (!playerIn.capabilities.isCreativeMode)
+        	{
+        		itemstack.shrink(1);
+        	}
+        	
+			worldIn.playSound((EntityPlayer)null, playerIn.posX, playerIn.posY, playerIn.posZ, SoundEvents.ENTITY_EXPERIENCE_BOTTLE_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
+			
+			if (!worldIn.isRemote)
+			{
+				//int stack = stack.getMetadata();
+				
+				//EntityItemAirshipV1 entityairship = new EntityItemAirshipV1(worldIn, playerIn, this.metaFrameitem.ordinal(), this.getMetadata(itemstack)); //this.getMetadata(stack)
+				//entityairship.setHeadingFromThrower(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, -20.0F, 0.7F, 1.0F);
+				//worldIn.spawnEntity(entityairship);
+			}
+			
+			playerIn.addStat(StatList.getObjectUseStats(this));
+			return new ActionResult(EnumActionResult.SUCCESS, itemstack);
+		}
+		return new ActionResult(EnumActionResult.SUCCESS, itemstack);
+    }
+	
+	//@Override
+	//public String getItemStackDisplayName(ItemStack stack)
+    //{
+    //    return (Reference.AIRSHIP_FRAME[this.metaFrameitem] + " " + Reference.AIRSHIP_COLOR[this.metaColoritem] + " " + ViesCraftConfig.v1AirshipName).trim();
+    //}
+	
+	
+	
+	
+	/**
+     * returns a list of items with the same ID, but different meta (eg: dye returns 16 items)
+     */
+    @SideOnly(Side.CLIENT)
+    public void getSubItems(Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems)
+    {
+    	for (Color contents : Color.values()) {
+    	      int contentBits = contents.getMetadata();
+    	      int fullnessBits = Frame.WOOD0.getMetadata();
+    	      int metadata = contentBits | (fullnessBits << 2);
+    	      ItemStack subItemStack = new ItemStack(itemIn, 1, metadata);
+    	      subItems.add(subItemStack);
+    	    }
+    	
+    	
+    	//for (int i = 0; i < 18; ++i)
+        //{
+        //    subItems.add(new ItemStack(itemIn, 1, i));
+        //}
+    }
+    
+
+    
+    /**
+     * Returns the unlocalized name of this item. This version accepts an ItemStack so different stacks can have
+     * different names based on their damage or NBT.
+     */
+    public String getUnlocalizedName(ItemStack stack)
+    {
+        int i = stack.getMetadata();
+        return "v1/wood0/item_airship_v1" 
+        		//super.getUnlocalizedName() 
+        		+ "_" + 
+        		//EnumDyeColor.byDyeDamage(i).getUnlocalizedName()
+        		ItemAirshipV1Wood0.Color.byId(i).getName().toLowerCase()
+        		
+        		//stack.getRegistryName().toString() + 
+        		//"_" + ItemAirshipV1Wood0.Color.byId(meta)
+        		//.getName().toLowerCase()
+        		;
+    }
+    
+    public static enum Frame
+    {
+        
+    	WOOD0(0, "Oak"),
+    	IRON(1, "Iron");
+        
+        private final String name;
+        private final int metadata;
+        
+        private Frame(int metadataIn, String nameIn)
+        {
+            this.name = nameIn;
+            this.metadata = metadataIn;
+        }
+        
+        public String getName()
+        {
+            return this.name;
+        }
+        
+        public int getMetadata()
+        {
+            return this.metadata;
+        }
+        
+        public String toString()
+        {
+            return this.name;
+        }
+        
+        /**
+         * Get a boat type by it's enum ordinal
+         */
+        public static ItemAirshipV1Wood0.Frame byId(int id)
+        {
+            if (id < 0 || id >= values().length)
+            {
+                id = 0;
+            }
+            
+            return values()[id];
+        }
+        
+        public static ItemAirshipV1Wood0.Frame getTypeFromString(String nameIn)
+        {
+            for (int i = 0; i < values().length; ++i)
+            {
+                if (values()[i].getName().equals(nameIn))
+                {
+                    return values()[i];
+                }
+            }
+            
+            return values()[0];
+        }
+    }
+    
+    public static enum Color
+    {
+        
+    	NORMAL(0, "Plain"),
+    	BLACK(1, "Black"),
+        BLUE(2, "Blue"),
+        BROWN(3, "Brown"),
+        CYAN(4, "Cyan"),
+        GRAY(5, "Gray"),
+        GREEN(6, "Green"),
+        LIGHTBLUE(7, "Lightblue"),
+        LIGHTGRAY(8, "Lightgray"),
+        LIME(9, "Lime"),
+        MAGENTA(10, "Magenta"),
+        ORANGE(11, "Orange"),
+        PINK(12, "Pink"),
+        PURPLE(13, "Purple"),
+        RED(14, "Red"),
+        WHITE(15, "White"),
+        YELLOW(16, "Yellow"),
+    	RAINBOW(17, "Rainbow");
+        
+        private final String name;
+        private final int metadata;
+        
+        private Color(int metadataIn, String nameIn)
+        {
+            this.name = nameIn;
+            this.metadata = metadataIn;
+        }
+        
+        public String getName()
+        {
+            return this.name;
+        }
+        
+        public int getMetadata()
+        {
+            return this.metadata;
+        }
+        
+        public String toString()
+        {
+            return this.name;
+        }
+        
+        /**
+         * Get a boat type by it's enum ordinal
+         */
+        public static ItemAirshipV1Wood0.Color byId(int id)
+        {
+            if (id < 0 || id >= values().length)
+            {
+                id = 0;
+            }
+            
+            return values()[id];
+        }
+        
+        public static ItemAirshipV1Wood0.Color getTypeFromString(String nameIn)
+        {
+            for (int i = 0; i < values().length; ++i)
+            {
+                if (values()[i].getName().equals(nameIn))
+                {
+                    return values()[i];
+                }
+            }
+            
+            return values()[0];
+        }
+    }
+    
+    @SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack stack, EntityPlayer playerIn, List toolTip, boolean advanced) 
+	{
+		toolTip.add(TextFormatting.DARK_PURPLE + "Hold " + TextFormatting.WHITE + "[Shift + Right-Click]" + TextFormatting.DARK_PURPLE + " to throw this");
+		toolTip.add(TextFormatting.DARK_PURPLE + "item and unleash the airship within.");
+		toolTip.add(TextFormatting.DARK_PURPLE + "No assembly required!");
+		toolTip.add(TextFormatting.WHITE + this.getRegistryName().toString()// + "_" + ItemAirshipV1Wood0.Color.byId(0).getName().toLowerCase()
+				);
+	}
+    
+}

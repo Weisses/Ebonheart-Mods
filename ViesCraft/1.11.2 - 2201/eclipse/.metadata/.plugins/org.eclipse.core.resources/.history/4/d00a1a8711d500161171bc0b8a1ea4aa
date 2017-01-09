@@ -1,0 +1,123 @@
+package com.viesis.viescraft.api;
+
+import net.minecraft.item.Item;
+
+public class ItemsVC {
+	
+	public static Item guidebook_main;
+	public static Item guidebook_controls;
+	public static Item guidebook_paint;
+	public static Item guidebook_socket;
+	
+	public static Item viesoline_pellets;
+	
+	public static Item airship_balloon;
+	public static Item airship_ignition;
+	public static Item airship_engine;
+	
+	public static Item airship_frame_wood0;//Oak
+	public static Item airship_frame_wood1;//Spruce
+	public static Item airship_frame_wood2;//Birch
+	public static Item airship_frame_wood3;//Jungle
+	public static Item airship_frame_wood4;//Acacia
+	public static Item airship_frame_wood5;//Dark Oak
+	public static Item airship_frame_iron;
+	public static Item airship_frame_redstone;
+	public static Item airship_frame_gold;
+	public static Item airship_frame_lapislazuli;
+	public static Item airship_frame_obsidian;
+	public static Item airship_frame_diamond;
+	public static Item airship_frame_emerald;
+	public static Item airship_frame_quartz;
+	public static Item airship_frame_purpur;
+	
+	public static Item airship_dismounter;
+	
+	public static Item module_chip;
+	
+	//Passive
+	public static Item module_inventory_small;
+	public static Item module_inventory_large;
+	public static Item module_speed_increase_minor;
+	public static Item module_speed_increase_major;
+	public static Item module_fuel_infinite;
+	
+	//==================================================
+	
+	public static Item item_airship_v1;
+	
+	public static Item item_airship_v1_wood0;
+	public static Item item_airship_v1_iron;
+	public static Item item_airship_v1_redstone;
+	public static Item item_airship_v1_gold;
+	public static Item item_airship_v1_lapislazuli;
+	public static Item item_airship_v1_obsidian;
+	public static Item item_airship_v1_diamond;
+	public static Item item_airship_v1_emerald;
+	public static Item item_airship_v1_quartz;
+	public static Item item_airship_v1_purpur;
+	
+	public static Item item_airship_v2_wood0;
+	public static Item item_airship_v2_iron;
+	public static Item item_airship_v2_redstone;
+	public static Item item_airship_v2_gold;
+	public static Item item_airship_v2_lapislazuli;
+	public static Item item_airship_v2_obsidian;
+	public static Item item_airship_v2_diamond;
+	public static Item item_airship_v2_emerald;
+	public static Item item_airship_v2_quartz;
+	public static Item item_airship_v2_purpur;
+	
+	public static Item item_airship_v3_wood0;
+	public static Item item_airship_v3_iron;
+	public static Item item_airship_v3_redstone;
+	public static Item item_airship_v3_gold;
+	public static Item item_airship_v3_lapislazuli;
+	public static Item item_airship_v3_obsidian;
+	public static Item item_airship_v3_diamond;
+	public static Item item_airship_v3_emerald;
+	public static Item item_airship_v3_quartz;
+	public static Item item_airship_v3_purpur;
+	
+	public static Item item_airship_v4_wood0;
+	public static Item item_airship_v4_iron;
+	public static Item item_airship_v4_redstone;
+	public static Item item_airship_v4_gold;
+	public static Item item_airship_v4_lapislazuli;
+	public static Item item_airship_v4_obsidian;
+	public static Item item_airship_v4_diamond;
+	public static Item item_airship_v4_emerald;
+	public static Item item_airship_v4_quartz;
+	public static Item item_airship_v4_purpur;
+	
+	//=================================================
+	
+	public static Item item_paint_remover;
+	public static Item item_paint_black;
+	public static Item item_paint_blue;
+	public static Item item_paint_brown;
+	public static Item item_paint_cyan;
+	public static Item item_paint_gray;
+	public static Item item_paint_green;
+	public static Item item_paint_lightblue;
+	public static Item item_paint_lightgray;
+	public static Item item_paint_lime;
+	public static Item item_paint_magenta;
+	public static Item item_paint_orange;
+	public static Item item_paint_pink;
+	public static Item item_paint_purple;
+	public static Item item_paint_red;
+	public static Item item_paint_white;
+	public static Item item_paint_yellow;
+	public static Item item_paint_rainbow;
+	
+	public static Item achievement_airship_create_engine;
+	public static Item achievement_airship_create_ignition;
+	public static Item achievement_airship_create;
+	public static Item achievement_airship_create_color;
+	public static Item achievement_airship_create_module;
+	public static Item achievement_airship_airborn;
+	public static Item achievement_airship_water;
+	public static Item achievement_airship_lava;
+	public static Item achievement_airship_portal;
+}
