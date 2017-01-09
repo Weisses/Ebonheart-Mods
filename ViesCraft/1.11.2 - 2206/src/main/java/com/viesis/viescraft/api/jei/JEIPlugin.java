@@ -31,7 +31,6 @@ public class JEIPlugin implements IModPlugin {
 		IIngredientBlacklist itemBlacklist = registry.getJeiHelpers().getIngredientBlacklist();
 		
 		//Items to be blacklisted.
-		
 		for (int ii = 1; ii < 18; ++ii)
     	{
 			itemBlacklist.addIngredientToBlacklist(new ItemStack(InitItemsVC.item_airship_v1_wood0, 1, ii));

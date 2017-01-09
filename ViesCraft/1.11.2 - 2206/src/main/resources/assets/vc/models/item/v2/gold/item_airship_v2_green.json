@@ -2,6 +2,7 @@
     "parent": "item/generated",
     "textures": {
         "layer0": "vc:items/airships/colors/color_green",
-        "layer1": "vc:items/airships/frames/frame_gold"
+        "layer1": "vc:items/airships/frames/frame_gold",
+        "layer2": "vc:items/airships/types/type_v2"
     }
 }
