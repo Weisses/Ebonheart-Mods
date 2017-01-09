@@ -9,9 +9,14 @@ import com.viesis.viescraft.api.BlocksVC;
 
 public final class InitBlocksVCRender extends BlocksVC {
 	
-	public static void registerRenders()
+	public static void registerBlockRender()
 	{
 		registerRender(airship_workbench);
+	}
+	
+	public static void registerBlockRenderTEMP()
+	{
+		
 	}
 	
 	public static void registerRender(Block block)

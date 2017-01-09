@@ -7,22 +7,21 @@ import java.util.Map;
 
 import javax.annotation.Nullable;
 
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.viesis.viescraft.init.InitBlocksVC;
+import com.viesis.viescraft.init.InitItemsVC;
+
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.InventoryCrafting;
-import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraft.item.crafting.ShapelessRecipes;
 import net.minecraft.world.World;
-
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.viesis.viescraft.init.InitBlocksVC;
-import com.viesis.viescraft.init.InitItemsVC;
 
 public class CraftingManagerVC {
 	
@@ -65,53 +64,64 @@ public class CraftingManagerVC {
     	this.addRecipe(new ItemStack(InitItemsVC.airship_engine, 1), new Object[]{"IBI", "P#P", "IBI", 'P', Blocks.PISTON, 'I', Items.IRON_INGOT, 'B', Blocks.IRON_BARS, '#', Blocks.REDSTONE_BLOCK});
     	this.addRecipe(new ItemStack(InitItemsVC.airship_ignition, 1), new Object[]{"IBI", "D#D", "IGI", 'I', Items.IRON_INGOT, 'G', Items.GOLD_INGOT, 'D', Items.DIAMOND, 'B', Blocks.IRON_BARS, '#', Blocks.MAGMA});
     	
-    	this.addRecipe(new ItemStack(InitItemsVC.airship_frame_wood0, 1), new Object[]{"###", "#M#", "###", '#', Blocks.PLANKS, 'M', Items.MINECART});
-    	this.addRecipe(new ItemStack(InitItemsVC.airship_frame_iron, 1), new Object[]{"###", "#M#", "###", '#', Items.IRON_INGOT, 'M', Items.MINECART});
-    	this.addRecipe(new ItemStack(InitItemsVC.airship_frame_redstone, 1), new Object[]{"###", "#M#", "###", '#', Items.REDSTONE, 'M', Items.MINECART});
-    	this.addRecipe(new ItemStack(InitItemsVC.airship_frame_gold, 1), new Object[]{"###", "#M#", "###", '#', Items.GOLD_INGOT, 'M', Items.MINECART});
-    	this.addRecipe(new ItemStack(InitItemsVC.airship_frame_lapislazuli, 1), new Object[]{"###", "#M#", "###", '#', new ItemStack(Items.DYE, 1, EnumDyeColor.BLUE.getDyeDamage()), 'M', Items.MINECART});
-    	this.addRecipe(new ItemStack(InitItemsVC.airship_frame_obsidian, 1), new Object[]{"###", "#M#", "###", '#', Blocks.OBSIDIAN, 'M', Items.MINECART});
-    	this.addRecipe(new ItemStack(InitItemsVC.airship_frame_diamond, 1), new Object[]{"###", "#M#", "###", '#', Items.DIAMOND, 'M', Items.MINECART});
-    	this.addRecipe(new ItemStack(InitItemsVC.airship_frame_emerald, 1), new Object[]{"###", "#M#", "###", '#', Items.EMERALD, 'M', Items.MINECART});
+    	//Airship Frames
+    	this.addRecipe(new ItemStack(InitItemsVC.airship_frame, 1, 0), new Object[]{"###", "#M#", "###", '#', Blocks.PLANKS, 'M', Items.MINECART});
+    	this.addRecipe(new ItemStack(InitItemsVC.airship_frame, 1, 1), new Object[]{"###", "#M#", "###", '#', Items.IRON_INGOT, 'M', Items.MINECART});
+    	this.addRecipe(new ItemStack(InitItemsVC.airship_frame, 1, 2), new Object[]{"###", "#M#", "###", '#', Blocks.REDSTONE_BLOCK, 'M', Items.MINECART});
+    	this.addRecipe(new ItemStack(InitItemsVC.airship_frame, 1, 3), new Object[]{"###", "#M#", "###", '#', Items.GOLD_INGOT, 'M', Items.MINECART});
+    	this.addRecipe(new ItemStack(InitItemsVC.airship_frame, 1, 4), new Object[]{"###", "#M#", "###", '#', Blocks.LAPIS_BLOCK, 'M', Items.MINECART});
+    	this.addRecipe(new ItemStack(InitItemsVC.airship_frame, 1, 5), new Object[]{"###", "#M#", "###", '#', Blocks.OBSIDIAN, 'M', Items.MINECART});
+    	this.addRecipe(new ItemStack(InitItemsVC.airship_frame, 1, 6), new Object[]{"###", "#M#", "###", '#', Items.DIAMOND, 'M', Items.MINECART});
+    	this.addRecipe(new ItemStack(InitItemsVC.airship_frame, 1, 7), new Object[]{"###", "#M#", "###", '#', Items.EMERALD, 'M', Items.MINECART});
+    	this.addRecipe(new ItemStack(InitItemsVC.airship_frame, 1, 8), new Object[]{"###", "#M#", "###", '#', Blocks.NETHER_BRICK, 'M', Items.MINECART});
+    	this.addRecipe(new ItemStack(InitItemsVC.airship_frame, 1, 9), new Object[]{"###", "#M#", "###", '#', Blocks.PURPUR_BLOCK, 'M', Items.MINECART});
     	
     	//=================================================
     	
     	//Airships
-    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v1_wood0, 1, 0), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_wood0});
-    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v1_iron, 1, 0), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_iron});
-    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v1_redstone, 1, 0), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_redstone});
-    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v1_gold, 1, 0), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_gold});
-    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v1_lapislazuli, 1, 0), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_lapislazuli});
-    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v1_obsidian, 1, 0), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_obsidian});
-    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v1_diamond, 1, 0), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_diamond});
-    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v1_emerald, 1, 0), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_emerald});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v1_wood0, 1, 0), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', new ItemStack(InitItemsVC.airship_frame, 1, 0)});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v1_iron, 1, 0), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', new ItemStack(InitItemsVC.airship_frame, 1, 1)});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v1_redstone, 1, 0), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', new ItemStack(InitItemsVC.airship_frame, 1, 2)});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v1_gold, 1, 0), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', new ItemStack(InitItemsVC.airship_frame, 1, 3)});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v1_lapislazuli, 1, 0), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', new ItemStack(InitItemsVC.airship_frame, 1, 4)});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v1_obsidian, 1, 0), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', new ItemStack(InitItemsVC.airship_frame, 1, 5)});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v1_diamond, 1, 0), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', new ItemStack(InitItemsVC.airship_frame, 1, 6)});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v1_emerald, 1, 0), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', new ItemStack(InitItemsVC.airship_frame, 1, 7)});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v1_netherbrick, 1, 0), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', new ItemStack(InitItemsVC.airship_frame, 1, 8)});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v1_purpur, 1, 0), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', new ItemStack(InitItemsVC.airship_frame, 1, 9)});
     	
-    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v2_wood0, 1, 0), new Object[]{"BLB", "L#L", "EIE", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_wood0});
-    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v2_iron, 1, 0), new Object[]{"BLB", "L#L", "EIE", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_iron});
-    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v2_redstone, 1, 0), new Object[]{"BLB", "L#L", "EIE", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_redstone});
-    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v2_gold, 1, 0), new Object[]{"BLB", "L#L", "EIE", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_gold});
-    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v2_lapislazuli, 1, 0), new Object[]{"BLB", "L#L", "EIE", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_lapislazuli});
-    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v2_obsidian, 1, 0), new Object[]{"BLB", "L#L", "EIE", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_obsidian});
-    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v2_diamond, 1, 0), new Object[]{"BLB", "L#L", "EIE", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_diamond});
-    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v2_emerald, 1, 0), new Object[]{"BLB", "L#L", "EIE", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_emerald});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v2_wood0, 1, 0), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', new ItemStack(InitItemsVC.airship_frame, 1, 0)});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v2_iron, 1, 0), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', new ItemStack(InitItemsVC.airship_frame, 1, 1)});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v2_redstone, 1, 0), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', new ItemStack(InitItemsVC.airship_frame, 1, 2)});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v2_gold, 1, 0), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', new ItemStack(InitItemsVC.airship_frame, 1, 3)});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v2_lapislazuli, 1, 0), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', new ItemStack(InitItemsVC.airship_frame, 1, 4)});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v2_obsidian, 1, 0), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', new ItemStack(InitItemsVC.airship_frame, 1, 5)});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v2_diamond, 1, 0), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', new ItemStack(InitItemsVC.airship_frame, 1, 6)});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v2_emerald, 1, 0), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', new ItemStack(InitItemsVC.airship_frame, 1, 7)});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v2_netherbrick, 1, 0), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', new ItemStack(InitItemsVC.airship_frame, 1, 8)});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v2_purpur, 1, 0), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', new ItemStack(InitItemsVC.airship_frame, 1, 9)});
     	
-    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v3_wood0, 1, 0), new Object[]{"ELE", "B#B", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_wood0});
-    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v3_iron, 1, 0), new Object[]{"ELE", "B#B", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_iron});
-    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v3_redstone, 1, 0), new Object[]{"ELE", "B#B", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_redstone});
-    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v3_gold, 1, 0), new Object[]{"ELE", "B#B", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_gold});
-    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v3_lapislazuli, 1, 0), new Object[]{"ELE", "B#B", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_lapislazuli});
-    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v3_obsidian, 1, 0), new Object[]{"ELE", "B#B", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_obsidian});
-    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v3_diamond, 1, 0), new Object[]{"ELE", "B#B", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_diamond});
-    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v3_emerald, 1, 0), new Object[]{"ELE", "B#B", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_emerald});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v3_wood0, 1, 0), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', new ItemStack(InitItemsVC.airship_frame, 1, 0)});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v3_iron, 1, 0), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', new ItemStack(InitItemsVC.airship_frame, 1, 1)});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v3_redstone, 1, 0), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', new ItemStack(InitItemsVC.airship_frame, 1, 2)});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v3_gold, 1, 0), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', new ItemStack(InitItemsVC.airship_frame, 1, 3)});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v3_lapislazuli, 1, 0), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', new ItemStack(InitItemsVC.airship_frame, 1, 4)});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v3_obsidian, 1, 0), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', new ItemStack(InitItemsVC.airship_frame, 1, 5)});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v3_diamond, 1, 0), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', new ItemStack(InitItemsVC.airship_frame, 1, 6)});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v3_emerald, 1, 0), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', new ItemStack(InitItemsVC.airship_frame, 1, 7)});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v3_netherbrick, 1, 0), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', new ItemStack(InitItemsVC.airship_frame, 1, 8)});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v3_purpur, 1, 0), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', new ItemStack(InitItemsVC.airship_frame, 1, 9)});
     	
-    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v4_wood0, 1, 0), new Object[]{"EBE", "L#L", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_wood0});
-    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v4_iron, 1, 0), new Object[]{"EBE", "L#L", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_iron});
-    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v4_redstone, 1, 0), new Object[]{"EBE", "L#L", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_redstone});
-    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v4_gold, 1, 0), new Object[]{"EBE", "L#L", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_gold});
-    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v4_lapislazuli, 1, 0), new Object[]{"EBE", "L#L", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_lapislazuli});
-    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v4_obsidian, 1, 0), new Object[]{"EBE", "L#L", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_obsidian});
-    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v4_diamond, 1, 0), new Object[]{"EBE", "L#L", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_diamond});
-    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v4_emerald, 1, 0), new Object[]{"EBE", "L#L", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', InitItemsVC.airship_frame_emerald});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v4_wood0, 1, 0), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', new ItemStack(InitItemsVC.airship_frame, 1, 0)});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v4_iron, 1, 0), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', new ItemStack(InitItemsVC.airship_frame, 1, 1)});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v4_redstone, 1, 0), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', new ItemStack(InitItemsVC.airship_frame, 1, 2)});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v4_gold, 1, 0), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', new ItemStack(InitItemsVC.airship_frame, 1, 3)});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v4_lapislazuli, 1, 0), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', new ItemStack(InitItemsVC.airship_frame, 1, 4)});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v4_obsidian, 1, 0), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', new ItemStack(InitItemsVC.airship_frame, 1, 5)});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v4_diamond, 1, 0), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', new ItemStack(InitItemsVC.airship_frame, 1, 6)});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v4_emerald, 1, 0), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', new ItemStack(InitItemsVC.airship_frame, 1, 7)});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v4_netherbrick, 1, 0), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', new ItemStack(InitItemsVC.airship_frame, 1, 8)});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_airship_v4_purpur, 1, 0), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', new ItemStack(InitItemsVC.airship_frame, 1, 9)});
     	
     	//=================================================
     	
@@ -126,46 +136,46 @@ public class CraftingManagerVC {
     	//=================================================
 		
 		//Paints using coal
-    	this.addRecipe(new ItemStack(InitItemsVC.item_paint_remover, 1), new Object[]{"###", "###", "#B#", '#', Items.COAL, 'B', Items.BUCKET});
-		this.addRecipe(new ItemStack(InitItemsVC.item_paint_black, 1), new Object[]{"DDD", "D#D", "DBD", '#', Items.COAL, 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 0)});
-		this.addRecipe(new ItemStack(InitItemsVC.item_paint_red, 1), new Object[]{"DDD", "D#D", "DBD", '#', Items.COAL, 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 1)});
-		this.addRecipe(new ItemStack(InitItemsVC.item_paint_green, 1), new Object[]{"DDD", "D#D", "DBD", '#', Items.COAL, 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 2)});
-		this.addRecipe(new ItemStack(InitItemsVC.item_paint_brown, 1), new Object[]{"DDD", "D#D", "DBD", '#', Items.COAL, 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 3)});
-		this.addRecipe(new ItemStack(InitItemsVC.item_paint_blue, 1), new Object[]{"DDD", "D#D", "DBD", '#', Items.COAL, 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 4)});
-		this.addRecipe(new ItemStack(InitItemsVC.item_paint_purple, 1), new Object[]{"DDD", "D#D", "DBD", '#', Items.COAL, 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 5)});
-		this.addRecipe(new ItemStack(InitItemsVC.item_paint_cyan, 1), new Object[]{"DDD", "D#D", "DBD", '#', Items.COAL, 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 6)});
-		this.addRecipe(new ItemStack(InitItemsVC.item_paint_lightgray, 1), new Object[]{"DDD", "D#D", "DBD", '#', Items.COAL, 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 7)});
-		this.addRecipe(new ItemStack(InitItemsVC.item_paint_gray, 1), new Object[]{"DDD", "D#D", "DBD", '#', Items.COAL, 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 8)});
-		this.addRecipe(new ItemStack(InitItemsVC.item_paint_pink, 1), new Object[]{"DDD", "D#D", "DBD", '#', Items.COAL, 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 9)});
-		this.addRecipe(new ItemStack(InitItemsVC.item_paint_lime, 1), new Object[]{"DDD", "D#D", "DBD", '#', Items.COAL, 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 10)});
-		this.addRecipe(new ItemStack(InitItemsVC.item_paint_yellow, 1), new Object[]{"DDD", "D#D", "DBD", '#', Items.COAL, 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 11)});
-		this.addRecipe(new ItemStack(InitItemsVC.item_paint_lightblue, 1), new Object[]{"DDD", "D#D", "DBD", '#', Items.COAL, 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 12)});
-		this.addRecipe(new ItemStack(InitItemsVC.item_paint_magenta, 1), new Object[]{"DDD", "D#D", "DBD", '#', Items.COAL, 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 13)});
-		this.addRecipe(new ItemStack(InitItemsVC.item_paint_orange, 1), new Object[]{"DDD", "D#D", "DBD", '#', Items.COAL, 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 14)});
-		this.addRecipe(new ItemStack(InitItemsVC.item_paint_white, 1), new Object[]{"DDD", "D#D", "DBD", '#', Items.COAL, 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 15)});
-		this.addRecipe(new ItemStack(InitItemsVC.item_paint_rainbow, 1), new Object[]{"RWR", "W#W", "RBR", '#', Items.COAL, 'B', Items.BUCKET, 'W', new ItemStack(Items.DYE, 1, 15), 'R', Items.REDSTONE});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_paint, 1, 0), new Object[]{"###", "###", "#B#", '#', Items.COAL, 'B', Items.BUCKET});
+		this.addRecipe(new ItemStack(InitItemsVC.item_paint, 1, 1), new Object[]{"DDD", "D#D", "DBD", '#', Items.COAL, 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 0)});
+		this.addRecipe(new ItemStack(InitItemsVC.item_paint, 1, 14), new Object[]{"DDD", "D#D", "DBD", '#', Items.COAL, 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 1)});
+		this.addRecipe(new ItemStack(InitItemsVC.item_paint, 1, 6), new Object[]{"DDD", "D#D", "DBD", '#', Items.COAL, 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 2)});
+		this.addRecipe(new ItemStack(InitItemsVC.item_paint, 1, 3), new Object[]{"DDD", "D#D", "DBD", '#', Items.COAL, 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 3)});
+		this.addRecipe(new ItemStack(InitItemsVC.item_paint, 1, 2), new Object[]{"DDD", "D#D", "DBD", '#', Items.COAL, 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 4)});
+		this.addRecipe(new ItemStack(InitItemsVC.item_paint, 1, 13), new Object[]{"DDD", "D#D", "DBD", '#', Items.COAL, 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 5)});
+		this.addRecipe(new ItemStack(InitItemsVC.item_paint, 1, 4), new Object[]{"DDD", "D#D", "DBD", '#', Items.COAL, 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 6)});
+		this.addRecipe(new ItemStack(InitItemsVC.item_paint, 1, 8), new Object[]{"DDD", "D#D", "DBD", '#', Items.COAL, 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 7)});
+		this.addRecipe(new ItemStack(InitItemsVC.item_paint, 1, 5), new Object[]{"DDD", "D#D", "DBD", '#', Items.COAL, 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 8)});
+		this.addRecipe(new ItemStack(InitItemsVC.item_paint, 1, 12), new Object[]{"DDD", "D#D", "DBD", '#', Items.COAL, 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 9)});
+		this.addRecipe(new ItemStack(InitItemsVC.item_paint, 1, 9), new Object[]{"DDD", "D#D", "DBD", '#', Items.COAL, 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 10)});
+		this.addRecipe(new ItemStack(InitItemsVC.item_paint, 1, 16), new Object[]{"DDD", "D#D", "DBD", '#', Items.COAL, 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 11)});
+		this.addRecipe(new ItemStack(InitItemsVC.item_paint, 1, 7), new Object[]{"DDD", "D#D", "DBD", '#', Items.COAL, 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 12)});
+		this.addRecipe(new ItemStack(InitItemsVC.item_paint, 1, 10), new Object[]{"DDD", "D#D", "DBD", '#', Items.COAL, 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 13)});
+		this.addRecipe(new ItemStack(InitItemsVC.item_paint, 1, 11), new Object[]{"DDD", "D#D", "DBD", '#', Items.COAL, 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 14)});
+		this.addRecipe(new ItemStack(InitItemsVC.item_paint, 1, 15), new Object[]{"DDD", "D#D", "DBD", '#', Items.COAL, 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 15)});
+		this.addRecipe(new ItemStack(InitItemsVC.item_paint, 1, 17), new Object[]{"RWR", "W#W", "RBR", '#', Items.COAL, 'B', Items.BUCKET, 'W', new ItemStack(Items.DYE, 1, 15), 'R', Items.REDSTONE});
 		
 		//Paints using charcoal
-		this.addRecipe(new ItemStack(InitItemsVC.item_paint_remover, 1), new Object[]{"###", "###", "#B#", '#', new ItemStack(Items.COAL, 1, 1), 'B', Items.BUCKET});
-		this.addRecipe(new ItemStack(InitItemsVC.item_paint_black, 1), new Object[]{"DDD", "D#D", "DBD", '#', new ItemStack(Items.COAL, 1, 1), 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 0)});
-		this.addRecipe(new ItemStack(InitItemsVC.item_paint_red, 1), new Object[]{"DDD", "D#D", "DBD", '#', new ItemStack(Items.COAL, 1, 1), 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 1)});
-		this.addRecipe(new ItemStack(InitItemsVC.item_paint_green, 1), new Object[]{"DDD", "D#D", "DBD", '#', new ItemStack(Items.COAL, 1, 1), 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 2)});
-		this.addRecipe(new ItemStack(InitItemsVC.item_paint_brown, 1), new Object[]{"DDD", "D#D", "DBD", '#', new ItemStack(Items.COAL, 1, 1), 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 3)});
-		this.addRecipe(new ItemStack(InitItemsVC.item_paint_blue, 1), new Object[]{"DDD", "D#D", "DBD", '#', new ItemStack(Items.COAL, 1, 1), 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 4)});
-		this.addRecipe(new ItemStack(InitItemsVC.item_paint_purple, 1), new Object[]{"DDD", "D#D", "DBD", '#', new ItemStack(Items.COAL, 1, 1), 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 5)});
-		this.addRecipe(new ItemStack(InitItemsVC.item_paint_cyan, 1), new Object[]{"DDD", "D#D", "DBD", '#', new ItemStack(Items.COAL, 1, 1), 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 6)});
-		this.addRecipe(new ItemStack(InitItemsVC.item_paint_lightgray, 1), new Object[]{"DDD", "D#D", "DBD", '#', new ItemStack(Items.COAL, 1, 1), 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 7)});
-		this.addRecipe(new ItemStack(InitItemsVC.item_paint_gray, 1), new Object[]{"DDD", "D#D", "DBD", '#', new ItemStack(Items.COAL, 1, 1), 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 8)});
-		this.addRecipe(new ItemStack(InitItemsVC.item_paint_pink, 1), new Object[]{"DDD", "D#D", "DBD", '#', new ItemStack(Items.COAL, 1, 1), 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 9)});
-		this.addRecipe(new ItemStack(InitItemsVC.item_paint_lime, 1), new Object[]{"DDD", "D#D", "DBD", '#', new ItemStack(Items.COAL, 1, 1), 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 10)});
-		this.addRecipe(new ItemStack(InitItemsVC.item_paint_yellow, 1), new Object[]{"DDD", "D#D", "DBD", '#', new ItemStack(Items.COAL, 1, 1), 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 11)});
-		this.addRecipe(new ItemStack(InitItemsVC.item_paint_lightblue, 1), new Object[]{"DDD", "D#D", "DBD", '#', new ItemStack(Items.COAL, 1, 1), 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 12)});
-		this.addRecipe(new ItemStack(InitItemsVC.item_paint_magenta, 1), new Object[]{"DDD", "D#D", "DBD", '#', new ItemStack(Items.COAL, 1, 1), 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 13)});
-		this.addRecipe(new ItemStack(InitItemsVC.item_paint_orange, 1), new Object[]{"DDD", "D#D", "DBD", '#', new ItemStack(Items.COAL, 1, 1), 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 14)});
-		this.addRecipe(new ItemStack(InitItemsVC.item_paint_white, 1), new Object[]{"DDD", "D#D", "DBD", '#', new ItemStack(Items.COAL, 1, 1), 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 15)});
-		this.addRecipe(new ItemStack(InitItemsVC.item_paint_rainbow, 1), new Object[]{"RWR", "W#W", "RBR", '#', new ItemStack(Items.COAL, 1, 1), 'B', Items.BUCKET, 'W', new ItemStack(Items.DYE, 1, 15), 'R', Items.REDSTONE});
+		this.addRecipe(new ItemStack(InitItemsVC.item_paint, 1, 0), new Object[]{"###", "###", "#B#", '#', new ItemStack(Items.COAL, 1, 1), 'B', Items.BUCKET});
+		this.addRecipe(new ItemStack(InitItemsVC.item_paint, 1, 1), new Object[]{"DDD", "D#D", "DBD", '#', new ItemStack(Items.COAL, 1, 1), 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 0)});
+		this.addRecipe(new ItemStack(InitItemsVC.item_paint, 1, 14), new Object[]{"DDD", "D#D", "DBD", '#', new ItemStack(Items.COAL, 1, 1), 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 1)});
+		this.addRecipe(new ItemStack(InitItemsVC.item_paint, 1, 6), new Object[]{"DDD", "D#D", "DBD", '#', new ItemStack(Items.COAL, 1, 1), 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 2)});
+		this.addRecipe(new ItemStack(InitItemsVC.item_paint, 1, 3), new Object[]{"DDD", "D#D", "DBD", '#', new ItemStack(Items.COAL, 1, 1), 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 3)});
+		this.addRecipe(new ItemStack(InitItemsVC.item_paint, 1, 2), new Object[]{"DDD", "D#D", "DBD", '#', new ItemStack(Items.COAL, 1, 1), 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 4)});
+		this.addRecipe(new ItemStack(InitItemsVC.item_paint, 1, 13), new Object[]{"DDD", "D#D", "DBD", '#', new ItemStack(Items.COAL, 1, 1), 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 5)});
+		this.addRecipe(new ItemStack(InitItemsVC.item_paint, 1, 4), new Object[]{"DDD", "D#D", "DBD", '#', new ItemStack(Items.COAL, 1, 1), 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 6)});
+		this.addRecipe(new ItemStack(InitItemsVC.item_paint, 1, 8), new Object[]{"DDD", "D#D", "DBD", '#', new ItemStack(Items.COAL, 1, 1), 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 7)});
+		this.addRecipe(new ItemStack(InitItemsVC.item_paint, 1, 5), new Object[]{"DDD", "D#D", "DBD", '#', new ItemStack(Items.COAL, 1, 1), 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 8)});
+		this.addRecipe(new ItemStack(InitItemsVC.item_paint, 1, 12), new Object[]{"DDD", "D#D", "DBD", '#', new ItemStack(Items.COAL, 1, 1), 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 9)});
+		this.addRecipe(new ItemStack(InitItemsVC.item_paint, 1, 9), new Object[]{"DDD", "D#D", "DBD", '#', new ItemStack(Items.COAL, 1, 1), 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 10)});
+		this.addRecipe(new ItemStack(InitItemsVC.item_paint, 1, 16), new Object[]{"DDD", "D#D", "DBD", '#', new ItemStack(Items.COAL, 1, 1), 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 11)});
+		this.addRecipe(new ItemStack(InitItemsVC.item_paint, 1, 7), new Object[]{"DDD", "D#D", "DBD", '#', new ItemStack(Items.COAL, 1, 1), 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 12)});
+		this.addRecipe(new ItemStack(InitItemsVC.item_paint, 1, 10), new Object[]{"DDD", "D#D", "DBD", '#', new ItemStack(Items.COAL, 1, 1), 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 13)});
+		this.addRecipe(new ItemStack(InitItemsVC.item_paint, 1, 11), new Object[]{"DDD", "D#D", "DBD", '#', new ItemStack(Items.COAL, 1, 1), 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 14)});
+		this.addRecipe(new ItemStack(InitItemsVC.item_paint, 1, 15), new Object[]{"DDD", "D#D", "DBD", '#', new ItemStack(Items.COAL, 1, 1), 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 15)});
+		this.addRecipe(new ItemStack(InitItemsVC.item_paint, 1, 17), new Object[]{"RWR", "W#W", "RBR", '#', new ItemStack(Items.COAL, 1, 1), 'B', Items.BUCKET, 'W', new ItemStack(Items.DYE, 1, 15), 'R', Items.REDSTONE});
 		
-		//=================================================
+//=================================================
 		
         Collections.sort(this.recipes, new Comparator<IRecipe>()
         {

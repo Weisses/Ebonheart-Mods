@@ -21,14 +21,14 @@ public class ContainerAirshipWorkbench extends Container {
     
     public IInventory craftResult = new InventoryCraftResult();
     
-    private final World worldObj;
+    private final World world;
     
     /** Position of the workbench */
     private final TileEntityAirshipWorkbench airship;
     
     public ContainerAirshipWorkbench(InventoryPlayer playerInventory, World worldIn, TileEntityAirshipWorkbench tileEntityAirshipWorkbench)
     {
-        this.worldObj = worldIn;
+        this.world = worldIn;
         this.airship = tileEntityAirshipWorkbench;
         
         loadCraftingMatrix();
@@ -61,6 +61,7 @@ public class ContainerAirshipWorkbench extends Container {
         }
         
         this.onCraftMatrixChanged(this.craftMatrix);
+        
     }
     
     /**
@@ -68,7 +69,7 @@ public class ContainerAirshipWorkbench extends Container {
      */
     public void onCraftMatrixChanged(IInventory inventoryIn)
     {
-    	this.craftResult.setInventorySlotContents(0, CraftingManagerVC.getInstance().findMatchingRecipe(this.craftMatrix, this.worldObj));
+    	this.craftResult.setInventorySlotContents(0, CraftingManagerVC.getInstance().findMatchingRecipe(this.craftMatrix, this.world));
     }
     
     /**
@@ -108,7 +109,7 @@ public class ContainerAirshipWorkbench extends Container {
      */
     public boolean canInteractWith(EntityPlayer playerIn)
     {
-        return this.worldObj.getBlockState(this.airship.getPos()).getBlock() != InitBlocksVC.airship_workbench ? false : playerIn.getDistanceSq((double)this.airship.getPos().getX() + 0.5D, (double)this.airship.getPos().getY() + 0.5D, (double)this.airship.getPos().getZ() + 0.5D) <= 64.0D;
+        return this.world.getBlockState(this.airship.getPos()).getBlock() != InitBlocksVC.airship_workbench ? false : playerIn.getDistanceSq((double)this.airship.getPos().getX() + 0.5D, (double)this.airship.getPos().getY() + 0.5D, (double)this.airship.getPos().getZ() + 0.5D) <= 64.0D;
     }
     
     /**
@@ -126,7 +127,7 @@ public class ContainerAirshipWorkbench extends Container {
 
             if (index == 0)
             {
-                itemstack1.getItem().onCreated(itemstack1, this.worldObj, playerIn);
+                itemstack1.getItem().onCreated(itemstack1, this.world, playerIn);
 
                 if (!this.mergeItemStack(itemstack1, 10, 46, true))
                 {
@@ -192,5 +193,7 @@ public class ContainerAirshipWorkbench extends Container {
     public void detectAndSendChanges()
     {
         super.detectAndSendChanges();
+        
+        saveCraftingMatrix();
     }
 }

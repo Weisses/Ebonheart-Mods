@@ -26,17 +26,18 @@ public class CommonProxy {
 	public void preInit(FMLPreInitializationEvent event) 
 	{
 		//SoundEventsEA.registerSounds();
-		InitItemsVC.preInit();
-		InitBlocksVC.preInit();
-		InitTileEntitiesVC.preInit();
-		InitEntityVC.preInit();
 		
-		//InitEntityV1VC.preInit();
-		//InitEntityV2VC.preInit();
-		//InitEntityV3VC.preInit();
-		//InitEntityV4VC.preInit();
+		InitItemsVC.registerItem();
+		InitBlocksVC.registerBlock();
+		InitTileEntitiesVC.registerTileEntity();
+		InitEntityVC.registerEntity();
 		
 		NetworkHandler.preInit();
+		
+		//InitItemsVC.registerItemTEMP();
+		//InitBlocksVC.registerBlockTEMP();
+		//InitTileEntitiesVC.registerTileEntityTEMP();
+		//InitEntityVC.registerEntityTEMP();
 	}
 	
 	public void init(FMLInitializationEvent event) 

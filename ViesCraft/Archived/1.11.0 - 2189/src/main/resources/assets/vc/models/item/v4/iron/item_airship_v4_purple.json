@@ -1,7 +1,8 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "vc:items/v4/item_airship_v4_color_purple",
-        "layer1": "vc:items/v4/item_airship_v4_frame_iron"
+        "layer0": "vc:items/airships/colors/color_purple",
+        "layer1": "vc:items/airships/frames/frame_iron",
+        "layer2": "vc:items/airships/types/type_v4"
     }
 }

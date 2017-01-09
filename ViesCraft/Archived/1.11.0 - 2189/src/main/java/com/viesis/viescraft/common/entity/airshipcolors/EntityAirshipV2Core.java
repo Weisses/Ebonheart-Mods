@@ -2,6 +2,15 @@ package com.viesis.viescraft.common.entity.airshipcolors;
 
 import java.util.List;
 
+import com.viesis.viescraft.api.FuelVC;
+import com.viesis.viescraft.common.utils.events.EventHandlerAirship;
+import com.viesis.viescraft.configs.ViesCraftConfig;
+import com.viesis.viescraft.init.InitItemsVC;
+import com.viesis.viescraft.network.NetworkHandler;
+import com.viesis.viescraft.network.server.v2.MessageGuiV2Default;
+import com.viesis.viescraft.network.server.v2.MessageGuiV2ModuleInventoryLarge;
+import com.viesis.viescraft.network.server.v2.MessageGuiV2ModuleInventorySmall;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
@@ -29,15 +38,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
-
-import com.viesis.viescraft.api.FuelVC;
-import com.viesis.viescraft.common.utils.events.EventHandlerAirship;
-import com.viesis.viescraft.configs.ViesCraftConfig;
-import com.viesis.viescraft.init.InitItemsVC;
-import com.viesis.viescraft.network.NetworkHandler;
-import com.viesis.viescraft.network.server.v2.MessageGuiV2Default;
-import com.viesis.viescraft.network.server.v2.MessageGuiV2ModuleInventoryLarge;
-import com.viesis.viescraft.network.server.v2.MessageGuiV2ModuleInventorySmall;
 
 public class EntityAirshipV2Core extends EntityAirshipBaseVC {
 	
@@ -90,7 +90,7 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
         this.inventory = new ItemStackHandler(size);
     }
 	
-    public EntityAirshipV2Core(World worldIn, double x, double y, double z, int typeIn)
+    public EntityAirshipV2Core(World worldIn, double x, double y, double z, int frameIn, int colorIn)
     {
         this(worldIn);
         this.setPosition(x, y + 0.5D, z);
@@ -110,7 +110,8 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
 		this.dataManager.register(TIME_SINCE_HIT, Integer.valueOf(0));
         this.dataManager.register(FORWARD_DIRECTION, Integer.valueOf(1));
         this.dataManager.register(DAMAGE_TAKEN, Float.valueOf(0.0F));
-        this.dataManager.register(BOAT_TYPE, Integer.valueOf(this.metaColor));
+        this.dataManager.register(BOAT_TYPE_FRAME, Integer.valueOf(this.metaFrame));
+        this.dataManager.register(BOAT_TYPE_COLOR, Integer.valueOf(this.metaColor));
         
 		this.dataManager.register(POWERED, Integer.valueOf(this.airshipBurnTime));
         this.dataManager.register(TOTALPOWERED, Integer.valueOf(this.airshipTotalBurnTime));
@@ -125,7 +126,7 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
 	}
 	
 	
-    
+	
     //================================================================================
 	
 	
@@ -155,7 +156,8 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
     {
     	super.writeToNBT(compound);
     	
-    	compound.setInteger("Type", this.getBoatType().getMetadata());
+    	compound.setInteger("Frame", this.getBoatFrame().getMetadata());
+    	compound.setInteger("Color", this.getBoatColor().getMetadata());
     	
     	compound.setTag("Slots", inventory.serializeNBT());
     	
@@ -172,12 +174,9 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
     {
     	super.readFromNBT(compound);
     	
-    	//if (compound.hasKey("Type", 8))
-        //{
-        //    this.setBoatType(EntityAirshipBaseVC.Type.getTypeFromString(compound.getString("Type")));
-        //}
+    	this.metaFrame = compound.getInteger("Frame");
+    	this.metaColor = compound.getInteger("Color");
     	
-    	this.metaColor = compound.getInteger("Type");
     	inventory.deserializeNBT(compound.getCompoundTag("Slots"));
     	
         this.airshipBurnTime = compound.getInteger("BurnTime");
@@ -615,7 +614,7 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
     	if (!this.worldObj.isRemote)
     	{
     		this.dropInvDead();
-    		///InventoryHelper.dropInventoryItems(this.worldObj, this.getPosition(), this);
+    		
     		this.playSound(SoundEvents.ENTITY_ENDEREYE_LAUNCH, 0.5F, 0.4F / .5F * 0.4F + 0.8F);
     		this.playSound(SoundEvents.ENTITY_SHEEP_SHEAR, 0.5F, 0.4F / .5F * 0.4F + 0.8F);
     		
@@ -675,16 +674,6 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
                 return this.airshipBurnTime;
             case 1:
                 return this.airshipTotalBurnTime;
-            case 2:
-                return 0;//this.fuelTime;
-            case 3:
-                return 0;//this.totalFuelTime;
-            case 4:
-                return 0;//this.airshipBeingDriven;
-            case 5:
-                return 0;//this.moduleInventorySmall;
-            case 6:
-                return 0;//this.moduleInventoryLarge;
             default:
                 return 0;
         }
@@ -701,27 +690,14 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
             case 1:
             	this.airshipTotalBurnTime = value;
                 break;
-            case 2:
-                //this.fuelTime = value;
-                break;
-            case 3:
-                //this.totalFuelTime = value;
+            default:
             	break;
-            case 4:
-                //this.airshipBeingDriven = value;
-            	break;
-            case 5:
-                //this.moduleInventorySmall = value;
-                break;
-            case 6:
-                //this.moduleInventoryLarge = value;
-                break;
         }
     }
     
     public int getFieldCount()
     {
-        return 6;
+        return 2;
     }
 	
 	
@@ -754,9 +730,9 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
         		
         	}
         	//The player in the airship is in Creative Mode
-        	else if(EventHandlerAirship.creativeBurnV2)
+        	else if(EventHandlerAirship.creativeBurn)
         	{
-        		if(this.getEntityId() == EventHandlerAirship.playerRidingEntityV2)
+        		if(this.getEntityId() == EventHandlerAirship.playerRidingEntity)
         		{
 	        		if(this.getControllingPassenger() == null)
 	            	{
@@ -805,9 +781,9 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
         		this.airshipBurnTime = 0;
         	}
         	//The player in the airship is in Creative Mode
-        	else if(EventHandlerAirship.creativeBurnV2)
+        	else if(EventHandlerAirship.creativeBurn)
         	{
-        		if (this.getEntityId() == EventHandlerAirship.playerRidingEntityV2)
+        		if (this.getEntityId() == EventHandlerAirship.playerRidingEntity)
             	{
             		this.airshipBurnTime = 1;
             	}
@@ -821,7 +797,8 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
         //Core fuel slot logic
         if (this.isClientAirshipBurning() || this.inventory.getStackInSlot(0) != null)
         {
-            if (!this.isClientAirshipBurning())
+            if (!this.isClientAirshipBurning()
+            && this.getControllingPassenger() != null)
             {
                 this.airshipBurnTime = getItemBurnTime(this.inventory.getStackInSlot(0));
                 this.airshipTotalBurnTime = getItemBurnTime(this.inventory.getStackInSlot(0));
@@ -833,14 +810,13 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
                     //Consumes the fuel item
                     if (this.inventory.getStackInSlot(0) != null)
                     {
-                        this.inventory.getStackInSlot(0).func_190918_g(1);
-                        
                         if (this.inventory.getStackInSlot(0).func_190916_E() == 0)
                         {
                         	ItemStack test = this.inventory.getStackInSlot(0);
-                            //this.inventory.getStackInSlot(0) 
-                        			test = inventory.getStackInSlot(0).getItem().getContainerItem(inventory.getStackInSlot(0));
+                            test = inventory.getStackInSlot(0).getItem().getContainerItem(inventory.getStackInSlot(0));
                         }
+                        
+                        this.inventory.extractItem(0, 1, false);
                     }
                 }
             }
@@ -905,6 +881,8 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
             if (item == Item.getItemFromBlock(Blocks.SAPLING)) return FuelVC.sapling;
             if (item == Items.COAL) return FuelVC.coal;
             if (item == Items.BLAZE_ROD) return FuelVC.blaze_rod;
+            
+            if (item == InitItemsVC.viesoline_pellets) return (ViesCraftConfig.viesolineBurnTime * 20);
             
             return net.minecraftforge.fml.common.registry.GameRegistry.getFuelValue(stack);
         }
@@ -1394,186 +1372,4 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
     {
         return ((Boolean)this.dataManager.get(MODULE_SPEED_MAJOR)).booleanValue();
     }
-    
-    
-    
-    //==================================//
-  	// TODO     Items to Return         //
-  	//==================================//
-    
-	protected static final Item[] ITEM_WOOD0 = new Item[] 
-	{
-		InitItemsVC.item_airship_v2_wood0_normal,
-		InitItemsVC.item_airship_v2_wood0_black,
-		InitItemsVC.item_airship_v2_wood0_blue,
-		InitItemsVC.item_airship_v2_wood0_brown,
-		InitItemsVC.item_airship_v2_wood0_cyan,
-		InitItemsVC.item_airship_v2_wood0_gray,
-		InitItemsVC.item_airship_v2_wood0_green,
-		InitItemsVC.item_airship_v2_wood0_lightblue,
-		InitItemsVC.item_airship_v2_wood0_lightgray,
-		InitItemsVC.item_airship_v2_wood0_lime,
-		InitItemsVC.item_airship_v2_wood0_magenta,
-		InitItemsVC.item_airship_v2_wood0_orange,
-		InitItemsVC.item_airship_v2_wood0_pink,
-		InitItemsVC.item_airship_v2_wood0_purple,
-		InitItemsVC.item_airship_v2_wood0_red,
-		InitItemsVC.item_airship_v2_wood0_white,
-		InitItemsVC.item_airship_v2_wood0_yellow,
-		InitItemsVC.item_airship_v2_wood0_rainbow
-	};
-	
-	protected static final Item[] ITEM_IRON = new Item[] 
-	{
-		InitItemsVC.item_airship_v2_iron_normal,
-		InitItemsVC.item_airship_v2_iron_black,
-		InitItemsVC.item_airship_v2_iron_blue,
-		InitItemsVC.item_airship_v2_iron_brown,
-		InitItemsVC.item_airship_v2_iron_cyan,
-		InitItemsVC.item_airship_v2_iron_gray,
-		InitItemsVC.item_airship_v2_iron_green,
-		InitItemsVC.item_airship_v2_iron_lightblue,
-		InitItemsVC.item_airship_v2_iron_lightgray,
-		InitItemsVC.item_airship_v2_iron_lime,
-		InitItemsVC.item_airship_v2_iron_magenta,
-		InitItemsVC.item_airship_v2_iron_orange,
-		InitItemsVC.item_airship_v2_iron_pink,
-		InitItemsVC.item_airship_v2_iron_purple,
-		InitItemsVC.item_airship_v2_iron_red,
-		InitItemsVC.item_airship_v2_iron_white,
-		InitItemsVC.item_airship_v2_iron_yellow,
-		InitItemsVC.item_airship_v2_iron_rainbow
-	};
-	
-	protected static final Item[] ITEM_REDSTONE = new Item[] 
-	{
-		InitItemsVC.item_airship_v2_redstone_normal,
-		InitItemsVC.item_airship_v2_redstone_black,
-		InitItemsVC.item_airship_v2_redstone_blue,
-		InitItemsVC.item_airship_v2_redstone_brown,
-		InitItemsVC.item_airship_v2_redstone_cyan,
-		InitItemsVC.item_airship_v2_redstone_gray,
-		InitItemsVC.item_airship_v2_redstone_green,
-		InitItemsVC.item_airship_v2_redstone_lightblue,
-		InitItemsVC.item_airship_v2_redstone_lightgray,
-		InitItemsVC.item_airship_v2_redstone_lime,
-		InitItemsVC.item_airship_v2_redstone_magenta,
-		InitItemsVC.item_airship_v2_redstone_orange,
-		InitItemsVC.item_airship_v2_redstone_pink,
-		InitItemsVC.item_airship_v2_redstone_purple,
-		InitItemsVC.item_airship_v2_redstone_red,
-		InitItemsVC.item_airship_v2_redstone_white,
-		InitItemsVC.item_airship_v2_redstone_yellow,
-		InitItemsVC.item_airship_v2_redstone_rainbow
-	};
-	
-	protected static final Item[] ITEM_GOLD = new Item[] 
-	{
-		InitItemsVC.item_airship_v2_gold_normal,
-		InitItemsVC.item_airship_v2_gold_black,
-		InitItemsVC.item_airship_v2_gold_blue,
-		InitItemsVC.item_airship_v2_gold_brown,
-		InitItemsVC.item_airship_v2_gold_cyan,
-		InitItemsVC.item_airship_v2_gold_gray,
-		InitItemsVC.item_airship_v2_gold_green,
-		InitItemsVC.item_airship_v2_gold_lightblue,
-		InitItemsVC.item_airship_v2_gold_lightgray,
-		InitItemsVC.item_airship_v2_gold_lime,
-		InitItemsVC.item_airship_v2_gold_magenta,
-		InitItemsVC.item_airship_v2_gold_orange,
-		InitItemsVC.item_airship_v2_gold_pink,
-		InitItemsVC.item_airship_v2_gold_purple,
-		InitItemsVC.item_airship_v2_gold_red,
-		InitItemsVC.item_airship_v2_gold_white,
-		InitItemsVC.item_airship_v2_gold_yellow,
-		InitItemsVC.item_airship_v2_gold_rainbow
-	};
-	
-	protected static final Item[] ITEM_LAPISLAZULI = new Item[] 
-	{
-		InitItemsVC.item_airship_v2_lapislazuli_normal,
-		InitItemsVC.item_airship_v2_lapislazuli_black,
-		InitItemsVC.item_airship_v2_lapislazuli_blue,
-		InitItemsVC.item_airship_v2_lapislazuli_brown,
-		InitItemsVC.item_airship_v2_lapislazuli_cyan,
-		InitItemsVC.item_airship_v2_lapislazuli_gray,
-		InitItemsVC.item_airship_v2_lapislazuli_green,
-		InitItemsVC.item_airship_v2_lapislazuli_lightblue,
-		InitItemsVC.item_airship_v2_lapislazuli_lightgray,
-		InitItemsVC.item_airship_v2_lapislazuli_lime,
-		InitItemsVC.item_airship_v2_lapislazuli_magenta,
-		InitItemsVC.item_airship_v2_lapislazuli_orange,
-		InitItemsVC.item_airship_v2_lapislazuli_pink,
-		InitItemsVC.item_airship_v2_lapislazuli_purple,
-		InitItemsVC.item_airship_v2_lapislazuli_red,
-		InitItemsVC.item_airship_v2_lapislazuli_white,
-		InitItemsVC.item_airship_v2_lapislazuli_yellow,
-		InitItemsVC.item_airship_v2_lapislazuli_rainbow
-	};
-	
-	protected static final Item[] ITEM_OBSIDIAN = new Item[] 
-	{
-		InitItemsVC.item_airship_v2_obsidian_normal,
-		InitItemsVC.item_airship_v2_obsidian_black,
-		InitItemsVC.item_airship_v2_obsidian_blue,
-		InitItemsVC.item_airship_v2_obsidian_brown,
-		InitItemsVC.item_airship_v2_obsidian_cyan,
-		InitItemsVC.item_airship_v2_obsidian_gray,
-		InitItemsVC.item_airship_v2_obsidian_green,
-		InitItemsVC.item_airship_v2_obsidian_lightblue,
-		InitItemsVC.item_airship_v2_obsidian_lightgray,
-		InitItemsVC.item_airship_v2_obsidian_lime,
-		InitItemsVC.item_airship_v2_obsidian_magenta,
-		InitItemsVC.item_airship_v2_obsidian_orange,
-		InitItemsVC.item_airship_v2_obsidian_pink,
-		InitItemsVC.item_airship_v2_obsidian_purple,
-		InitItemsVC.item_airship_v2_obsidian_red,
-		InitItemsVC.item_airship_v2_obsidian_white,
-		InitItemsVC.item_airship_v2_obsidian_yellow,
-		InitItemsVC.item_airship_v2_obsidian_rainbow
-	};
-	
-	protected static final Item[] ITEM_DIAMOND = new Item[] 
-	{
-		InitItemsVC.item_airship_v2_diamond_normal,
-		InitItemsVC.item_airship_v2_diamond_black,
-		InitItemsVC.item_airship_v2_diamond_blue,
-		InitItemsVC.item_airship_v2_diamond_brown,
-		InitItemsVC.item_airship_v2_diamond_cyan,
-		InitItemsVC.item_airship_v2_diamond_gray,
-		InitItemsVC.item_airship_v2_diamond_green,
-		InitItemsVC.item_airship_v2_diamond_lightblue,
-		InitItemsVC.item_airship_v2_diamond_lightgray,
-		InitItemsVC.item_airship_v2_diamond_lime,
-		InitItemsVC.item_airship_v2_diamond_magenta,
-		InitItemsVC.item_airship_v2_diamond_orange,
-		InitItemsVC.item_airship_v2_diamond_pink,
-		InitItemsVC.item_airship_v2_diamond_purple,
-		InitItemsVC.item_airship_v2_diamond_red,
-		InitItemsVC.item_airship_v2_diamond_white,
-		InitItemsVC.item_airship_v2_diamond_yellow,
-		InitItemsVC.item_airship_v2_diamond_rainbow
-	};
-    
-	protected static final Item[] ITEM_EMERALD = new Item[] 
-	{
-		InitItemsVC.item_airship_v2_emerald_normal,
-		InitItemsVC.item_airship_v2_emerald_black,
-		InitItemsVC.item_airship_v2_emerald_blue,
-		InitItemsVC.item_airship_v2_emerald_brown,
-		InitItemsVC.item_airship_v2_emerald_cyan,
-		InitItemsVC.item_airship_v2_emerald_gray,
-		InitItemsVC.item_airship_v2_emerald_green,
-		InitItemsVC.item_airship_v2_emerald_lightblue,
-		InitItemsVC.item_airship_v2_emerald_lightgray,
-		InitItemsVC.item_airship_v2_emerald_lime,
-		InitItemsVC.item_airship_v2_emerald_magenta,
-		InitItemsVC.item_airship_v2_emerald_orange,
-		InitItemsVC.item_airship_v2_emerald_pink,
-		InitItemsVC.item_airship_v2_emerald_purple,
-		InitItemsVC.item_airship_v2_emerald_red,
-		InitItemsVC.item_airship_v2_emerald_white,
-		InitItemsVC.item_airship_v2_emerald_yellow,
-		InitItemsVC.item_airship_v2_emerald_rainbow
-	};
 }

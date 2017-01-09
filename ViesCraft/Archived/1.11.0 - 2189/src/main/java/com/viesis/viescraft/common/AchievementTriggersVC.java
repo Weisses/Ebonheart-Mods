@@ -15,12 +15,10 @@ public class AchievementTriggersVC extends InitAchievementsVC {
 	@SubscribeEvent
 	public void onPickup(PlayerEvent.ItemPickupEvent event) 
 	{
-		
 		//if(event.pickedUp.getEntityItem().isItemEqual(new ItemStack(InitItemsEA.draconium_dust)))
 		//{
 		//	event.player.addStat(mine_draconium_ore);//.triggerAchievement(InitAchievementsEA.mine_draconium_ore);
 		//}
-		
 	}
 	
 	/**
@@ -40,83 +38,12 @@ public class AchievementTriggersVC extends InitAchievementsVC {
 			event.player.addStat(airship_create_ignition);
 		}
 		
-		if(event.crafting.getItem() == InitItemsVC.item_airship_v1_normal
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_normal
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_normal
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_normal) 
+		if(event.crafting.getItem() == InitItemsVC.item_airship_v1_wood0
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_wood0
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_wood0
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_wood0) 
 		{
 			event.player.addStat(airship_create);
-		}
-		
-		if(event.crafting.getItem() == InitItemsVC.item_airship_v1_black
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v1_blue
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v1_brown
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v1_cyan
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v1_gray
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v1_green
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v1_lightblue
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v1_lightgray
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v1_lime
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v1_magenta
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v1_orange
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v1_pink
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v1_purple
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v1_red
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v1_white
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v1_yellow
-		
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_black
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_blue
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_brown
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_cyan
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_gray
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_green
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_lightblue
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_lightgray
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_lime
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_magenta
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_orange
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_pink
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_purple
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_red
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_white
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_yellow
-		
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_black
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_blue
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_brown
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_cyan
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_gray
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_green
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_lightblue
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_lightgray
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_lime
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_magenta
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_orange
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_pink
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_purple
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_red
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_white
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_yellow
-		
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_black
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_blue
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_brown
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_cyan
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_gray
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_green
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_lightblue
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_lightgray
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_lime
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_magenta
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_orange
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_pink
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_purple
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_red
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_white
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_yellow) 
-		{
-			event.player.addStat(airship_create_color);
 		}
 		
 		if(event.crafting.getItem() == InitItemsVC.module_inventory_small
@@ -133,9 +60,7 @@ public class AchievementTriggersVC extends InitAchievementsVC {
 	//@SubscribeEvent
 	//public void onSmelt(PlayerEvent.ItemSmeltedEvent event) {
 	//	if(event.smelting.getItem() == EbonArtsItems.purified_mystic_dust) {
-
 	//		event.player.triggerAchievement(EbonArtsAchievements.smeltMysticDust);
-		
 	//	}
 	//}
 }

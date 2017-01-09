@@ -11,7 +11,6 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
@@ -31,18 +30,19 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.google.common.collect.Lists;
 import com.viesis.viescraft.api.util.Keybinds;
-import com.viesis.viescraft.init.InitItemsVC;
 
 public class EntityAirshipBaseVC extends Entity {
 	
-	protected int metaColor;
+	public int metaFrame;
+	public int metaColor;
 	
 	public Random random = new Random();
 	
     public static final DataParameter<Integer> TIME_SINCE_HIT = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
     protected static final DataParameter<Integer> FORWARD_DIRECTION = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
     protected static final DataParameter<Float> DAMAGE_TAKEN = EntityDataManager.<Float>createKey(EntityAirshipBaseVC.class, DataSerializers.FLOAT);
-    protected static final DataParameter<Integer> BOAT_TYPE = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+    protected static final DataParameter<Integer> BOAT_TYPE_FRAME = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+    protected static final DataParameter<Integer> BOAT_TYPE_COLOR = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
     
     /** How much of current speed to retain. Value zero to one. */
     protected float momentum;
@@ -87,12 +87,13 @@ public class EntityAirshipBaseVC extends Entity {
         this.setSize(1.375F, 0.5625F);
     }
     
-    public EntityAirshipBaseVC(World worldIn, double x, double y, double z, int typeIn)
+    public EntityAirshipBaseVC(World worldIn, double x, double y, double z, int frameIn, int colorIn)
     {
         this(worldIn);
         this.setPosition(x, y, z);
         
-        this.metaColor = typeIn;
+        this.metaColor = colorIn;
+        this.metaFrame = frameIn;
         
         this.motionX = 0.0D;
         this.motionY = 0.0D;
@@ -116,7 +117,8 @@ public class EntityAirshipBaseVC extends Entity {
         this.dataManager.register(TIME_SINCE_HIT, Integer.valueOf(0));
         this.dataManager.register(FORWARD_DIRECTION, Integer.valueOf(1));
         this.dataManager.register(DAMAGE_TAKEN, Float.valueOf(0.0F));
-        this.dataManager.register(BOAT_TYPE, Integer.valueOf(this.metaColor));
+        this.dataManager.register(BOAT_TYPE_FRAME, Integer.valueOf(this.metaFrame));
+        this.dataManager.register(BOAT_TYPE_COLOR, Integer.valueOf(this.metaColor));
     }
     
     /**
@@ -181,7 +183,7 @@ public class EntityAirshipBaseVC extends Entity {
                 {
                     if (!flag && this.worldObj.getGameRules().getBoolean("doEntityDrops"))
                     {
-                        this.dropItemWithOffset(this.getItemBoat(), 1, 0.0F);
+                        this.entityDropItem(this.getItemBoat(), 0.0F);
                     }
                     
                     this.setDeadVC();
@@ -217,7 +219,7 @@ public class EntityAirshipBaseVC extends Entity {
     /**
      * Main entity item drop.
      */
-    public Item getItemBoat()
+    public ItemStack getItemBoat()
     {
 		return null;
     }
@@ -349,16 +351,16 @@ public class EntityAirshipBaseVC extends Entity {
         int i1 = MathHelper.floor_double(axisalignedbb.minZ);
         int j1 = MathHelper.ceiling_double_int(axisalignedbb.maxZ);
         BlockPos.PooledMutableBlockPos blockpos$pooledmutableblockpos = BlockPos.PooledMutableBlockPos.retain();
-        
+
         try
         {
             label78:
-            
+
             for (int k1 = k; k1 < l; ++k1)
             {
                 float f = 0.0F;
                 int l1 = i;
-                
+
                 while (true)
                 {
                     if (l1 >= j)
@@ -368,30 +370,30 @@ public class EntityAirshipBaseVC extends Entity {
                             float f2 = (float)blockpos$pooledmutableblockpos.getY() + f;
                             return f2;
                         }
-                        
+
                         break;
                     }
-                    
+
                     for (int i2 = i1; i2 < j1; ++i2)
                     {
                         blockpos$pooledmutableblockpos.setPos(l1, k1, i2);
                         IBlockState iblockstate = this.worldObj.getBlockState(blockpos$pooledmutableblockpos);
-                        
+
                         if (iblockstate.getMaterial() == Material.WATER)
                         {
                             f = Math.max(f, BlockLiquid.func_190973_f(iblockstate, this.worldObj, blockpos$pooledmutableblockpos));
                         }
-                        
+
                         if (f >= 1.0F)
                         {
                             continue label78;
                         }
                     }
-                    
+
                     ++l1;
                 }
             }
-        	
+
             float f1 = (float)(l + 1);
             return f1;
         }
@@ -418,7 +420,7 @@ public class EntityAirshipBaseVC extends Entity {
         float f = 0.0F;
         int k1 = 0;
         BlockPos.PooledMutableBlockPos blockpos$pooledmutableblockpos = BlockPos.PooledMutableBlockPos.retain();
-        
+
         try
         {
             for (int l1 = i; l1 < j; ++l1)
@@ -426,7 +428,7 @@ public class EntityAirshipBaseVC extends Entity {
                 for (int i2 = i1; i2 < j1; ++i2)
                 {
                     int j2 = (l1 != i && l1 != j - 1 ? 0 : 1) + (i2 != i1 && i2 != j1 - 1 ? 0 : 1);
-                    
+
                     if (j2 != 2)
                     {
                         for (int k2 = k; k2 < l; ++k2)
@@ -436,13 +438,13 @@ public class EntityAirshipBaseVC extends Entity {
                                 blockpos$pooledmutableblockpos.setPos(l1, k2, i2);
                                 IBlockState iblockstate = this.worldObj.getBlockState(blockpos$pooledmutableblockpos);
                                 iblockstate.addCollisionBoxToList(this.worldObj, blockpos$pooledmutableblockpos, axisalignedbb1, list, this);
-                                
+
                                 if (!list.isEmpty())
                                 {
                                     f += iblockstate.getBlock().slipperiness;
                                     ++k1;
                                 }
-                                
+
                                 list.clear();
                             }
                         }
@@ -454,7 +456,7 @@ public class EntityAirshipBaseVC extends Entity {
         {
             blockpos$pooledmutableblockpos.release();
         }
-        
+
         return f / (float)k1;
     }
     
@@ -470,7 +472,7 @@ public class EntityAirshipBaseVC extends Entity {
         boolean flag = false;
         this.waterLevel = Double.MIN_VALUE;
         BlockPos.PooledMutableBlockPos blockpos$pooledmutableblockpos = BlockPos.PooledMutableBlockPos.retain();
-        
+
         try
         {
             for (int k1 = i; k1 < j; ++k1)
@@ -481,7 +483,7 @@ public class EntityAirshipBaseVC extends Entity {
                     {
                         blockpos$pooledmutableblockpos.setPos(k1, l1, i2);
                         IBlockState iblockstate = this.worldObj.getBlockState(blockpos$pooledmutableblockpos);
-                        
+
                         if (iblockstate.getMaterial() == Material.WATER)
                         {
                             float f = BlockLiquid.func_190972_g(iblockstate, this.worldObj, blockpos$pooledmutableblockpos);
@@ -496,7 +498,7 @@ public class EntityAirshipBaseVC extends Entity {
         {
             blockpos$pooledmutableblockpos.release();
         }
-        
+
         return flag;
     }
     
@@ -516,7 +518,7 @@ public class EntityAirshipBaseVC extends Entity {
         int j1 = MathHelper.ceiling_double_int(axisalignedbb.maxZ);
         boolean flag = false;
         BlockPos.PooledMutableBlockPos blockpos$pooledmutableblockpos = BlockPos.PooledMutableBlockPos.retain();
-        
+
         try
         {
             for (int k1 = i; k1 < j; ++k1)
@@ -527,15 +529,15 @@ public class EntityAirshipBaseVC extends Entity {
                     {
                         blockpos$pooledmutableblockpos.setPos(k1, l1, i2);
                         IBlockState iblockstate = this.worldObj.getBlockState(blockpos$pooledmutableblockpos);
-                        
+
                         if (iblockstate.getMaterial() == Material.WATER && d0 < (double)BlockLiquid.func_190972_g(iblockstate, this.worldObj, blockpos$pooledmutableblockpos))
                         {
                             if (((Integer)iblockstate.getValue(BlockLiquid.LEVEL)).intValue() != 0)
                             {
-                                EntityAirshipBaseVC.Status NEWEntityBaseVC$status = EntityAirshipBaseVC.Status.UNDER_FLOWING_WATER;
-                                return NEWEntityBaseVC$status;
+                                EntityAirshipBaseVC.Status EntityAirshipBaseVC$status = EntityAirshipBaseVC.Status.UNDER_FLOWING_WATER;
+                                return EntityAirshipBaseVC$status;
                             }
-                            
+
                             flag = true;
                         }
                     }
@@ -546,7 +548,7 @@ public class EntityAirshipBaseVC extends Entity {
         {
             blockpos$pooledmutableblockpos.release();
         }
-        
+
         return flag ? EntityAirshipBaseVC.Status.UNDER_WATER : null;
     }
     
@@ -621,7 +623,7 @@ public class EntityAirshipBaseVC extends Entity {
      */
     protected void writeEntityToNBT(NBTTagCompound compound)
     {
-        compound.setString("Type", this.getBoatType().getName());
+        
     }
     
     /**
@@ -629,15 +631,13 @@ public class EntityAirshipBaseVC extends Entity {
      */
     protected void readEntityFromNBT(NBTTagCompound compound)
     {
-        if (compound.hasKey("Type", 8))
-        {
-            this.setBoatType(EntityAirshipBaseVC.Type.getTypeFromString(compound.getString("Type")));
-        }
+        
     }
     
     /**
      * The initial interaction when Airship is right-clicked.
      */
+    @Override
     public boolean processInitialInteract(EntityPlayer player, EnumHand stack)
     {
         if (player.isSneaking())
@@ -712,38 +712,71 @@ public class EntityAirshipBaseVC extends Entity {
     }
     
     /**
-     * Sets the boat type (only used in item_paint_*).
-     * @param boatType
+     * Sets the Airship color (only used in item_paint_*).
+     * @param boatColor
      */
-    public void setBoatType(EntityAirshipBaseVC.Type boatType)
+    public void setBoatColor(EntityAirshipBaseVC.Color boatColor)
     {
-        this.dataManager.set(BOAT_TYPE, Integer.valueOf(boatType.ordinal()));
+        this.dataManager.set(BOAT_TYPE_COLOR, Integer.valueOf(boatColor.ordinal()));
     }
     
     /**
-     * Gets the boat type.
+     * Gets the Airship color.
      * @return
      */
-    public EntityAirshipBaseVC.Type getBoatType()
+    public EntityAirshipBaseVC.Color getBoatColor()
     {
-        return EntityAirshipBaseVC.Type.byId(((Integer)this.dataManager.get(BOAT_TYPE)).intValue());
+        return EntityAirshipBaseVC.Color.byId(((Integer)this.dataManager.get(BOAT_TYPE_COLOR)).intValue());
     }
     
-
+    /**
+     * Sets the Airship color (only used in item_paint_*).
+     * @param boatColor
+     */
+    public void setBoatFrame(EntityAirshipBaseVC.Color boatColor)
+    {
+        this.dataManager.set(BOAT_TYPE_FRAME, Integer.valueOf(boatColor.ordinal()));
+    }
+    
+    /**
+     * Gets the Airship color.
+     * @return
+     */
+    public EntityAirshipBaseVC.Color getBoatFrame()
+    {
+        return EntityAirshipBaseVC.Color.byId(((Integer)this.dataManager.get(BOAT_TYPE_FRAME)).intValue());
+    }
+    
     /**
      * Sets the airshipTotalBurnTime to pass from server to client.
      */
-    public void setAirshipMeta(int airshipMeta)
+    public void setAirshipMetaColor(int airshipMeta)
     {
-        this.dataManager.set(BOAT_TYPE, Integer.valueOf(airshipMeta));
+        this.dataManager.set(BOAT_TYPE_COLOR, Integer.valueOf(airshipMeta));
     }
 	
     /**
      * Gets the airshipTotalBurnTime to pass from server to client.
      */
-    public int getAirshipMeta()
+    public int getAirshipMetaColor()
     {
-        return ((Integer)this.dataManager.get(BOAT_TYPE)).intValue();
+        return ((Integer)this.dataManager.get(BOAT_TYPE_COLOR)).intValue();
+    }
+    
+    /**
+     * Sets the airshipTotalBurnTime to pass from server to client.
+     */
+    public void setAirshipMetaFrame(int airshipMeta)
+    {
+        this.dataManager.set(BOAT_TYPE_FRAME, Integer.valueOf(airshipMeta));
+    }
+	
+    /**
+     * Gets the airshipTotalBurnTime to pass from server to client.
+     */
+    public int getAirshipMetaFrame()
+    {
+        return ((Integer)this.dataManager.get(BOAT_TYPE_FRAME)).intValue();
     }
     
     /**
@@ -753,13 +786,14 @@ public class EntityAirshipBaseVC extends Entity {
     {
         if (this.worldObj.isRemote)
         {
-        	this.metaColor = this.getAirshipMeta();
+        	this.metaColor = this.getAirshipMetaColor();
+        	this.metaFrame = this.getAirshipMetaFrame();
         }
     	
         if(!this.worldObj.isRemote)
 		{
-    		this.setAirshipMeta(this.metaColor);
-			
+        	this.setAirshipMetaColor(this.metaColor);
+        	this.setAirshipMetaFrame(this.metaFrame);
 		}
     }
     
@@ -787,80 +821,7 @@ public class EntityAirshipBaseVC extends Entity {
         ON_LAND,
         IN_AIR;
     }
-    
-    public static enum Type
-    {
-        
-    	NORMAL(0, "Plain"),
-    	BLACK(1, "Black"),
-        BLUE(2, "Blue"),
-        BROWN(3, "Brown"),
-        CYAN(4, "Cyan"),
-        GRAY(5, "Gray"),
-        GREEN(6, "Green"),
-        LIGHTBLUE(7, "Lightblue"),
-        LIGHTGRAY(8, "Lightgray"),
-        LIME(9, "Lime"),
-        MAGENTA(10, "Magenta"),
-        ORANGE(11, "Orange"),
-        PINK(12, "Pink"),
-        PURPLE(13, "Purple"),
-        RED(14, "Red"),
-        WHITE(15, "White"),
-        YELLOW(16, "Yellow"),
-    	RAINBOW(17, "Rainbow");
-        
-        private final String name;
-        private final int metadata;
-        
-        private Type(int metadataIn, String nameIn)
-        {
-            this.name = nameIn;
-            this.metadata = metadataIn;
-        }
-        
-        public String getName()
-        {
-            return this.name;
-        }
-        
-        public int getMetadata()
-        {
-            return this.metadata;
-        }
-        
-        public String toString()
-        {
-            return this.name;
-        }
-        
-        /**
-         * Get a boat type by it's enum ordinal
-         */
-        public static EntityAirshipBaseVC.Type byId(int id)
-        {
-            if (id < 0 || id >= values().length)
-            {
-                id = 0;
-            }
-            
-            return values()[id];
-        }
-        
-        public static EntityAirshipBaseVC.Type getTypeFromString(String nameIn)
-        {
-            for (int i = 0; i < values().length; ++i)
-            {
-                if (values()[i].getName().equals(nameIn))
-                {
-                    return values()[i];
-                }
-            }
-            
-            return values()[0];
-        }
-    }
-    
+
     /**
      * For vehicles, the first passenger is generally considered the controller and "drives" the vehicle. For example,
      * Pigs, Horses, and Boats are generally "steered" by the controlling passenger.
@@ -885,7 +846,144 @@ public class EntityAirshipBaseVC extends Entity {
 		
 	}
     
+	
     
+    public static enum Color
+    {
+        
+    	NORMAL(0, "Plain"),
+    	BLACK(1, "Black"),
+        BLUE(2, "Blue"),
+        BROWN(3, "Brown"),
+        CYAN(4, "Cyan"),
+        GRAY(5, "Gray"),
+        GREEN(6, "Green"),
+        LIGHTBLUE(7, "Light Blue"),
+        LIGHTGRAY(8, "Light Gray"),
+        LIME(9, "Lime"),
+        MAGENTA(10, "Magenta"),
+        ORANGE(11, "Orange"),
+        PINK(12, "Pink"),
+        PURPLE(13, "Purple"),
+        RED(14, "Red"),
+        WHITE(15, "White"),
+        YELLOW(16, "Yellow"),
+    	RAINBOW(17, "Rainbow");
+        
+        private final String name;
+        private final int metadata;
+        
+        private Color(int metadataIn, String nameIn)
+        {
+            this.name = nameIn;
+            this.metadata = metadataIn;
+        }
+        
+        public String getName()
+        {
+            return this.name;
+        }
+        
+        public int getMetadata()
+        {
+            return this.metadata;
+        }
+        
+        public String toString()
+        {
+            return this.name;
+        }
+        
+        /**
+         * Get a boat type by it's enum ordinal
+         */
+        public static EntityAirshipBaseVC.Color byId(int id)
+        {
+            if (id < 0 || id >= values().length)
+            {
+                id = 0;
+            }
+            
+            return values()[id];
+        }
+        
+        public static EntityAirshipBaseVC.Color getTypeFromString(String nameIn)
+        {
+            for (int i = 0; i < values().length; ++i)
+            {
+                if (values()[i].getName().equals(nameIn))
+                {
+                    return values()[i];
+                }
+            }
+            
+            return values()[0];
+        }
+    }
+    
+    public static enum Frame
+    {
+        WOOD0(0, "Oak"),
+    	IRON(1, "Iron"),
+        REDSTONE(2, "Redstone"),
+        GOLD(3, "Gold"),
+        LAPISLAZULI(4, "Lapis Lazuli"),
+        OBSIDIAN(5, "Obsidian"),
+        DIAMOND(6, "Diamond"),
+        EMERALD(7, "Emerald"),
+        NETHERBRICK(8, "Nether Brick"),
+        PURPUR(9, "Purpur");
+        
+        private final String name;
+        private final int metadata;
+        
+        private Frame(int metadataIn, String nameIn)
+        {
+            this.name = nameIn;
+            this.metadata = metadataIn;
+        }
+        
+        public String getName()
+        {
+            return this.name;
+        }
+        
+        public int getMetadata()
+        {
+            return this.metadata;
+        }
+        
+        public String toString()
+        {
+            return this.name;
+        }
+        
+        /**
+         * Get a boat type by it's enum ordinal
+         */
+        public static EntityAirshipBaseVC.Frame byId(int id)
+        {
+            if (id < 0 || id >= values().length)
+            {
+                id = 0;
+            }
+            
+            return values()[id];
+        }
+        
+        public static EntityAirshipBaseVC.Frame getTypeFromString(String nameIn)
+        {
+            for (int i = 0; i < values().length; ++i)
+            {
+                if (values()[i].getName().equals(nameIn))
+                {
+                    return values()[i];
+                }
+            }
+            
+            return values()[0];
+        }
+    }
     
 	//==================================//
   	// TODO     Sound Events            //

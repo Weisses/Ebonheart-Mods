@@ -49,7 +49,7 @@ public class GuiGuidebookControls extends GuiScreen {
         		+ "\n\n" 
         		+ "         " + "\u00A7oby Viesis\u00A7r"
         		+ "\n\n\n\n" 
-        		+ "          " + Reference.MOD_VERSION.substring(0, 7);
+        		+ "           " + Reference.MOD_VERSION;
         
         stringPageText[1] = "\n\n\n\n\n\n\n"
         		+ "   Before you decide "
@@ -102,12 +102,13 @@ public class GuiGuidebookControls extends GuiScreen {
         
         stringPageText[7] = "Here is a list of fuel items: "
         		+ "\n\n"
-        		+ "Sticks / Saplings"
+        		+ "Viesoline Pellets"
+        		+ "\nSticks / Saplings"
         		+ "\nCoal / Charcoal"
         		+ "\nCoal Blocks"
         		+ "\nBlaze Rods"
         		+ "\nWood material blocks"
-        		+ "\n\n\n\n"
+        		+ "\n\n\n"
         		+ "*Items burn for their vanilla times."
         		;
         

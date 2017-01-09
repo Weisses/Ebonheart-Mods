@@ -1,7 +1,8 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "vc:items/v3/item_airship_v3_color_rainbow",
-        "layer1": "vc:items/v3/item_airship_v3_frame_wood0"
+        "layer0": "vc:items/airships/colors/color_rainbow",
+        "layer1": "vc:items/airships/frames/frame_wood0",
+        "layer2": "vc:items/airships/types/type_v3"
     }
 }

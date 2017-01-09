@@ -64,7 +64,9 @@ public class ItemViesoline extends Item {
 		
 		toolTip.add(TextFormatting.GOLD + "Fuel designed for all");
 		toolTip.add(TextFormatting.GOLD + "airship types.");
-		toolTip.add("" + this.inventory.getEnergyStored());
+		toolTip.add("" 
+		//+ this.inventory.getEnergyStored()
+				);
 		toolTip.add(TextFormatting.GREEN + "Time per piece: " + s);
 	}
 	

@@ -6,9 +6,14 @@ import com.viesis.viescraft.common.tileentity.TileEntityAirshipWorkbench;
 
 public final class InitTileEntitiesVC {
 	
-	public static void preInit() 
+	public static void registerTileEntity() 
 	{
 		GameRegistry.registerTileEntity(TileEntityAirshipWorkbench.class, "tile_entity_airship_workbench");
+	}
+	
+	public static void registerTileEntityTEMP()
+	{
+		
 	}
 	
 	public static void register()

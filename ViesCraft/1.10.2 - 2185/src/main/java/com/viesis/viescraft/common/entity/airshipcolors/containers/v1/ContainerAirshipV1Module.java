@@ -1,18 +1,13 @@
 package com.viesis.viescraft.common.entity.airshipcolors.containers.v1;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.Container;
-import net.minecraft.inventory.IContainerListener;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.FurnaceRecipes;
-import net.minecraft.tileentity.TileEntityFurnace;
 
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
+import com.viesis.viescraft.common.entity.airshipcolors.containers.ContainerVC;
 import com.viesis.viescraft.common.entity.airshipcolors.slots.ModuleSlotVC;
 
-public class ContainerAirshipV1Module extends Container {
+public class ContainerAirshipV1Module extends ContainerVC {
 	
 	private EntityAirshipV1Core airship;
 	
@@ -51,59 +46,4 @@ public class ContainerAirshipV1Module extends Container {
 			this.addSlotToContainer(new Slot(playerInv, x, 8 + x * 18, 142));
 		}
 	}
-	
-    public boolean canInteractWith(EntityPlayer playerIn)
-    {
-        return true;
-    }
-	
-    /**
-     * Take a stack from the specified inventory slot.
-     */
-    public ItemStack transferStackInSlot(EntityPlayer playerIn, int index)
-    {
-        ItemStack itemstack = null;
-        Slot slot = (Slot)this.inventorySlots.get(index);
-        
-        if (slot != null && slot.getHasStack())
-        {
-            ItemStack itemstack1 = slot.getStack();
-            itemstack = itemstack1.copy();
-            
-            if (index == 0)
-            {
-            	if (!this.mergeItemStack(itemstack1, 1, 37, true))
-                {
-                    return null;
-                }
-            	
-            	slot.onSlotChange(itemstack1, itemstack);
-            }
-            else
-            {
-            	if (!this.mergeItemStack(itemstack1, 0, 1, false))
-				{
-					return null;
-				}
-            }
-            
-            if (itemstack1.stackSize == 0)
-			{
-				slot.putStack((ItemStack) null);
-			}
-			else
-			{
-				slot.onSlotChanged();
-			}
-			
-			if (itemstack1.stackSize == itemstack.stackSize)
-			{
-				return null;
-			}
-            
-			slot.onPickupFromSlot(playerIn, itemstack1);
-        }
-        
-        return itemstack;
-    }
 }

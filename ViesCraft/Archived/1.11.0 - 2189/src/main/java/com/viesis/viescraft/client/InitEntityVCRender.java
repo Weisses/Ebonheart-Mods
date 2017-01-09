@@ -1,557 +1,93 @@
 package com.viesis.viescraft.client;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.entity.Render;
-import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.entity.Entity;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
 import com.viesis.viescraft.api.ItemsVC;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v1.RenderAirshipV1Diamond;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v1.RenderAirshipV1Emerald;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v1.RenderAirshipV1Gold;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v1.RenderAirshipV1Iron;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v1.RenderAirshipV1LapisLazuli;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v1.RenderAirshipV1Obsidian;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v1.RenderAirshipV1Redstone;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v1.RenderAirshipV1Wood0;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v1.old.RenderAirshipV1Admin;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v1.old.RenderAirshipV1Black;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v1.old.RenderAirshipV1Blue;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v1.old.RenderAirshipV1Brown;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v1.old.RenderAirshipV1Cyan;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v1.old.RenderAirshipV1Gray;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v1.old.RenderAirshipV1Green;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v1.old.RenderAirshipV1LightBlue;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v1.old.RenderAirshipV1LightGray;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v1.old.RenderAirshipV1Lime;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v1.old.RenderAirshipV1Magenta;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v1.old.RenderAirshipV1Normal;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v1.old.RenderAirshipV1Orange;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v1.old.RenderAirshipV1Pink;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v1.old.RenderAirshipV1Purple;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v1.old.RenderAirshipV1Red;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v1.old.RenderAirshipV1White;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v1.old.RenderAirshipV1Yellow;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v2.RenderAirshipV2Diamond;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v2.RenderAirshipV2Emerald;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v2.RenderAirshipV2Gold;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v2.RenderAirshipV2Iron;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v2.RenderAirshipV2LapisLazuli;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v2.RenderAirshipV2Obsidian;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v2.RenderAirshipV2Redstone;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v2.RenderAirshipV2Wood0;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v2.old.RenderAirshipV2Admin;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v2.old.RenderAirshipV2Black;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v2.old.RenderAirshipV2Blue;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v2.old.RenderAirshipV2Brown;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v2.old.RenderAirshipV2Cyan;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v2.old.RenderAirshipV2Gray;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v2.old.RenderAirshipV2Green;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v2.old.RenderAirshipV2LightBlue;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v2.old.RenderAirshipV2LightGray;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v2.old.RenderAirshipV2Lime;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v2.old.RenderAirshipV2Magenta;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v2.old.RenderAirshipV2Normal;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v2.old.RenderAirshipV2Orange;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v2.old.RenderAirshipV2Pink;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v2.old.RenderAirshipV2Purple;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v2.old.RenderAirshipV2Red;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v2.old.RenderAirshipV2White;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v2.old.RenderAirshipV2Yellow;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v3.RenderAirshipV3Diamond;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v3.RenderAirshipV3Emerald;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v3.RenderAirshipV3Gold;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v3.RenderAirshipV3Iron;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v3.RenderAirshipV3LapisLazuli;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v3.RenderAirshipV3Obsidian;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v3.RenderAirshipV3Redstone;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v3.RenderAirshipV3Wood0;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v3.old.RenderAirshipV3Admin;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v3.old.RenderAirshipV3Black;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v3.old.RenderAirshipV3Blue;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v3.old.RenderAirshipV3Brown;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v3.old.RenderAirshipV3Cyan;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v3.old.RenderAirshipV3Gray;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v3.old.RenderAirshipV3Green;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v3.old.RenderAirshipV3LightBlue;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v3.old.RenderAirshipV3LightGray;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v3.old.RenderAirshipV3Lime;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v3.old.RenderAirshipV3Magenta;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v3.old.RenderAirshipV3Normal;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v3.old.RenderAirshipV3Orange;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v3.old.RenderAirshipV3Pink;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v3.old.RenderAirshipV3Purple;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v3.old.RenderAirshipV3Red;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v3.old.RenderAirshipV3White;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v3.old.RenderAirshipV3Yellow;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v4.RenderAirshipV4Diamond;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v4.RenderAirshipV4Emerald;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v4.RenderAirshipV4Gold;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v4.RenderAirshipV4Iron;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v4.RenderAirshipV4LapisLazuli;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v4.RenderAirshipV4Obsidian;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v4.RenderAirshipV4Redstone;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v4.RenderAirshipV4Wood0;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v4.old.RenderAirshipV4Admin;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v4.old.RenderAirshipV4Black;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v4.old.RenderAirshipV4Blue;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v4.old.RenderAirshipV4Brown;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v4.old.RenderAirshipV4Cyan;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v4.old.RenderAirshipV4Gray;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v4.old.RenderAirshipV4Green;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v4.old.RenderAirshipV4LightBlue;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v4.old.RenderAirshipV4LightGray;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v4.old.RenderAirshipV4Lime;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v4.old.RenderAirshipV4Magenta;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v4.old.RenderAirshipV4Normal;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v4.old.RenderAirshipV4Orange;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v4.old.RenderAirshipV4Pink;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v4.old.RenderAirshipV4Purple;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v4.old.RenderAirshipV4Red;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v4.old.RenderAirshipV4White;
-import com.viesis.viescraft.client.entity.render.airshipcolors.v4.old.RenderAirshipV4Yellow;
-import com.viesis.viescraft.client.entity.render.projectile.v1.RenderItemAirshipV1Diamond;
-import com.viesis.viescraft.client.entity.render.projectile.v1.RenderItemAirshipV1Emerald;
-import com.viesis.viescraft.client.entity.render.projectile.v1.RenderItemAirshipV1Gold;
-import com.viesis.viescraft.client.entity.render.projectile.v1.RenderItemAirshipV1Iron;
-import com.viesis.viescraft.client.entity.render.projectile.v1.RenderItemAirshipV1LapisLazuli;
-import com.viesis.viescraft.client.entity.render.projectile.v1.RenderItemAirshipV1Obsidian;
-import com.viesis.viescraft.client.entity.render.projectile.v1.RenderItemAirshipV1Redstone;
-import com.viesis.viescraft.client.entity.render.projectile.v1.RenderItemAirshipV1Wood0;
-import com.viesis.viescraft.client.entity.render.projectile.v2.RenderItemAirshipV2Diamond;
-import com.viesis.viescraft.client.entity.render.projectile.v2.RenderItemAirshipV2Emerald;
-import com.viesis.viescraft.client.entity.render.projectile.v2.RenderItemAirshipV2Gold;
-import com.viesis.viescraft.client.entity.render.projectile.v2.RenderItemAirshipV2Iron;
-import com.viesis.viescraft.client.entity.render.projectile.v2.RenderItemAirshipV2LapisLazuli;
-import com.viesis.viescraft.client.entity.render.projectile.v2.RenderItemAirshipV2Obsidian;
-import com.viesis.viescraft.client.entity.render.projectile.v2.RenderItemAirshipV2Redstone;
-import com.viesis.viescraft.client.entity.render.projectile.v2.RenderItemAirshipV2Wood0;
-import com.viesis.viescraft.client.entity.render.projectile.v2.old.RenderItemAirshipV2Admin;
-import com.viesis.viescraft.client.entity.render.projectile.v2.old.RenderItemAirshipV2Black;
-import com.viesis.viescraft.client.entity.render.projectile.v2.old.RenderItemAirshipV2Blue;
-import com.viesis.viescraft.client.entity.render.projectile.v2.old.RenderItemAirshipV2Brown;
-import com.viesis.viescraft.client.entity.render.projectile.v2.old.RenderItemAirshipV2Cyan;
-import com.viesis.viescraft.client.entity.render.projectile.v2.old.RenderItemAirshipV2Gray;
-import com.viesis.viescraft.client.entity.render.projectile.v2.old.RenderItemAirshipV2Green;
-import com.viesis.viescraft.client.entity.render.projectile.v2.old.RenderItemAirshipV2LightBlue;
-import com.viesis.viescraft.client.entity.render.projectile.v2.old.RenderItemAirshipV2LightGray;
-import com.viesis.viescraft.client.entity.render.projectile.v2.old.RenderItemAirshipV2Lime;
-import com.viesis.viescraft.client.entity.render.projectile.v2.old.RenderItemAirshipV2Magenta;
-import com.viesis.viescraft.client.entity.render.projectile.v2.old.RenderItemAirshipV2Normal;
-import com.viesis.viescraft.client.entity.render.projectile.v2.old.RenderItemAirshipV2Orange;
-import com.viesis.viescraft.client.entity.render.projectile.v2.old.RenderItemAirshipV2Pink;
-import com.viesis.viescraft.client.entity.render.projectile.v2.old.RenderItemAirshipV2Purple;
-import com.viesis.viescraft.client.entity.render.projectile.v2.old.RenderItemAirshipV2Red;
-import com.viesis.viescraft.client.entity.render.projectile.v2.old.RenderItemAirshipV2White;
-import com.viesis.viescraft.client.entity.render.projectile.v2.old.RenderItemAirshipV2Yellow;
-import com.viesis.viescraft.client.entity.render.projectile.v3.RenderItemAirshipV3Diamond;
-import com.viesis.viescraft.client.entity.render.projectile.v3.RenderItemAirshipV3Emerald;
-import com.viesis.viescraft.client.entity.render.projectile.v3.RenderItemAirshipV3Gold;
-import com.viesis.viescraft.client.entity.render.projectile.v3.RenderItemAirshipV3Iron;
-import com.viesis.viescraft.client.entity.render.projectile.v3.RenderItemAirshipV3LapisLazuli;
-import com.viesis.viescraft.client.entity.render.projectile.v3.RenderItemAirshipV3Obsidian;
-import com.viesis.viescraft.client.entity.render.projectile.v3.RenderItemAirshipV3Redstone;
-import com.viesis.viescraft.client.entity.render.projectile.v3.RenderItemAirshipV3Wood0;
-import com.viesis.viescraft.client.entity.render.projectile.v3.old.RenderItemAirshipV3Admin;
-import com.viesis.viescraft.client.entity.render.projectile.v3.old.RenderItemAirshipV3Black;
-import com.viesis.viescraft.client.entity.render.projectile.v3.old.RenderItemAirshipV3Blue;
-import com.viesis.viescraft.client.entity.render.projectile.v3.old.RenderItemAirshipV3Brown;
-import com.viesis.viescraft.client.entity.render.projectile.v3.old.RenderItemAirshipV3Cyan;
-import com.viesis.viescraft.client.entity.render.projectile.v3.old.RenderItemAirshipV3Gray;
-import com.viesis.viescraft.client.entity.render.projectile.v3.old.RenderItemAirshipV3Green;
-import com.viesis.viescraft.client.entity.render.projectile.v3.old.RenderItemAirshipV3LightBlue;
-import com.viesis.viescraft.client.entity.render.projectile.v3.old.RenderItemAirshipV3LightGray;
-import com.viesis.viescraft.client.entity.render.projectile.v3.old.RenderItemAirshipV3Lime;
-import com.viesis.viescraft.client.entity.render.projectile.v3.old.RenderItemAirshipV3Magenta;
-import com.viesis.viescraft.client.entity.render.projectile.v3.old.RenderItemAirshipV3Normal;
-import com.viesis.viescraft.client.entity.render.projectile.v3.old.RenderItemAirshipV3Orange;
-import com.viesis.viescraft.client.entity.render.projectile.v3.old.RenderItemAirshipV3Pink;
-import com.viesis.viescraft.client.entity.render.projectile.v3.old.RenderItemAirshipV3Purple;
-import com.viesis.viescraft.client.entity.render.projectile.v3.old.RenderItemAirshipV3Red;
-import com.viesis.viescraft.client.entity.render.projectile.v3.old.RenderItemAirshipV3White;
-import com.viesis.viescraft.client.entity.render.projectile.v3.old.RenderItemAirshipV3Yellow;
-import com.viesis.viescraft.client.entity.render.projectile.v4.RenderItemAirshipV4Diamond;
-import com.viesis.viescraft.client.entity.render.projectile.v4.RenderItemAirshipV4Emerald;
-import com.viesis.viescraft.client.entity.render.projectile.v4.RenderItemAirshipV4Gold;
-import com.viesis.viescraft.client.entity.render.projectile.v4.RenderItemAirshipV4Iron;
-import com.viesis.viescraft.client.entity.render.projectile.v4.RenderItemAirshipV4LapisLazuli;
-import com.viesis.viescraft.client.entity.render.projectile.v4.RenderItemAirshipV4Obsidian;
-import com.viesis.viescraft.client.entity.render.projectile.v4.RenderItemAirshipV4Redstone;
-import com.viesis.viescraft.client.entity.render.projectile.v4.RenderItemAirshipV4Wood0;
-import com.viesis.viescraft.client.entity.render.projectile.v4.old.RenderItemAirshipV4Admin;
-import com.viesis.viescraft.client.entity.render.projectile.v4.old.RenderItemAirshipV4Black;
-import com.viesis.viescraft.client.entity.render.projectile.v4.old.RenderItemAirshipV4Blue;
-import com.viesis.viescraft.client.entity.render.projectile.v4.old.RenderItemAirshipV4Brown;
-import com.viesis.viescraft.client.entity.render.projectile.v4.old.RenderItemAirshipV4Cyan;
-import com.viesis.viescraft.client.entity.render.projectile.v4.old.RenderItemAirshipV4Gray;
-import com.viesis.viescraft.client.entity.render.projectile.v4.old.RenderItemAirshipV4Green;
-import com.viesis.viescraft.client.entity.render.projectile.v4.old.RenderItemAirshipV4LightBlue;
-import com.viesis.viescraft.client.entity.render.projectile.v4.old.RenderItemAirshipV4LightGray;
-import com.viesis.viescraft.client.entity.render.projectile.v4.old.RenderItemAirshipV4Lime;
-import com.viesis.viescraft.client.entity.render.projectile.v4.old.RenderItemAirshipV4Magenta;
-import com.viesis.viescraft.client.entity.render.projectile.v4.old.RenderItemAirshipV4Normal;
-import com.viesis.viescraft.client.entity.render.projectile.v4.old.RenderItemAirshipV4Orange;
-import com.viesis.viescraft.client.entity.render.projectile.v4.old.RenderItemAirshipV4Pink;
-import com.viesis.viescraft.client.entity.render.projectile.v4.old.RenderItemAirshipV4Purple;
-import com.viesis.viescraft.client.entity.render.projectile.v4.old.RenderItemAirshipV4Red;
-import com.viesis.viescraft.client.entity.render.projectile.v4.old.RenderItemAirshipV4White;
-import com.viesis.viescraft.client.entity.render.projectile.v4.old.RenderItemAirshipV4Yellow;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityV1Diamond;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityV1Emerald;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityV1Gold;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityV1Iron;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityV1LapisLazuli;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityV1Obsidian;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityV1Redstone;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityV1Wood0;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.old.EntityAirshipV1Admin;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.old.EntityAirshipV1Black;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.old.EntityAirshipV1Blue;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.old.EntityAirshipV1Brown;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.old.EntityAirshipV1Cyan;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.old.EntityAirshipV1Gray;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.old.EntityAirshipV1Green;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.old.EntityAirshipV1LightBlue;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.old.EntityAirshipV1LightGray;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.old.EntityAirshipV1Lime;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.old.EntityAirshipV1Magenta;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.old.EntityAirshipV1Normal;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.old.EntityAirshipV1Orange;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.old.EntityAirshipV1Pink;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.old.EntityAirshipV1Purple;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.old.EntityAirshipV1Red;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.old.EntityAirshipV1White;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.old.EntityAirshipV1Yellow;
-import com.viesis.viescraft.common.entity.airshipcolors.v2.EntityV2Diamond;
-import com.viesis.viescraft.common.entity.airshipcolors.v2.EntityV2Emerald;
-import com.viesis.viescraft.common.entity.airshipcolors.v2.EntityV2Gold;
-import com.viesis.viescraft.common.entity.airshipcolors.v2.EntityV2Iron;
-import com.viesis.viescraft.common.entity.airshipcolors.v2.EntityV2LapisLazuli;
-import com.viesis.viescraft.common.entity.airshipcolors.v2.EntityV2Obsidian;
-import com.viesis.viescraft.common.entity.airshipcolors.v2.EntityV2Redstone;
-import com.viesis.viescraft.common.entity.airshipcolors.v2.EntityV2Wood0;
-import com.viesis.viescraft.common.entity.airshipcolors.v2.old.EntityAirshipV2Admin;
-import com.viesis.viescraft.common.entity.airshipcolors.v2.old.EntityAirshipV2Black;
-import com.viesis.viescraft.common.entity.airshipcolors.v2.old.EntityAirshipV2Blue;
-import com.viesis.viescraft.common.entity.airshipcolors.v2.old.EntityAirshipV2Brown;
-import com.viesis.viescraft.common.entity.airshipcolors.v2.old.EntityAirshipV2Cyan;
-import com.viesis.viescraft.common.entity.airshipcolors.v2.old.EntityAirshipV2Gray;
-import com.viesis.viescraft.common.entity.airshipcolors.v2.old.EntityAirshipV2Green;
-import com.viesis.viescraft.common.entity.airshipcolors.v2.old.EntityAirshipV2LightBlue;
-import com.viesis.viescraft.common.entity.airshipcolors.v2.old.EntityAirshipV2LightGray;
-import com.viesis.viescraft.common.entity.airshipcolors.v2.old.EntityAirshipV2Lime;
-import com.viesis.viescraft.common.entity.airshipcolors.v2.old.EntityAirshipV2Magenta;
-import com.viesis.viescraft.common.entity.airshipcolors.v2.old.EntityAirshipV2Normal;
-import com.viesis.viescraft.common.entity.airshipcolors.v2.old.EntityAirshipV2Orange;
-import com.viesis.viescraft.common.entity.airshipcolors.v2.old.EntityAirshipV2Pink;
-import com.viesis.viescraft.common.entity.airshipcolors.v2.old.EntityAirshipV2Purple;
-import com.viesis.viescraft.common.entity.airshipcolors.v2.old.EntityAirshipV2Red;
-import com.viesis.viescraft.common.entity.airshipcolors.v2.old.EntityAirshipV2White;
-import com.viesis.viescraft.common.entity.airshipcolors.v2.old.EntityAirshipV2Yellow;
-import com.viesis.viescraft.common.entity.airshipcolors.v3.EntityV3Diamond;
-import com.viesis.viescraft.common.entity.airshipcolors.v3.EntityV3Emerald;
-import com.viesis.viescraft.common.entity.airshipcolors.v3.EntityV3Gold;
-import com.viesis.viescraft.common.entity.airshipcolors.v3.EntityV3Iron;
-import com.viesis.viescraft.common.entity.airshipcolors.v3.EntityV3LapisLazuli;
-import com.viesis.viescraft.common.entity.airshipcolors.v3.EntityV3Obsidian;
-import com.viesis.viescraft.common.entity.airshipcolors.v3.EntityV3Redstone;
-import com.viesis.viescraft.common.entity.airshipcolors.v3.EntityV3Wood0;
-import com.viesis.viescraft.common.entity.airshipcolors.v3.old.EntityAirshipV3Admin;
-import com.viesis.viescraft.common.entity.airshipcolors.v3.old.EntityAirshipV3Black;
-import com.viesis.viescraft.common.entity.airshipcolors.v3.old.EntityAirshipV3Blue;
-import com.viesis.viescraft.common.entity.airshipcolors.v3.old.EntityAirshipV3Brown;
-import com.viesis.viescraft.common.entity.airshipcolors.v3.old.EntityAirshipV3Cyan;
-import com.viesis.viescraft.common.entity.airshipcolors.v3.old.EntityAirshipV3Gray;
-import com.viesis.viescraft.common.entity.airshipcolors.v3.old.EntityAirshipV3Green;
-import com.viesis.viescraft.common.entity.airshipcolors.v3.old.EntityAirshipV3LightBlue;
-import com.viesis.viescraft.common.entity.airshipcolors.v3.old.EntityAirshipV3LightGray;
-import com.viesis.viescraft.common.entity.airshipcolors.v3.old.EntityAirshipV3Lime;
-import com.viesis.viescraft.common.entity.airshipcolors.v3.old.EntityAirshipV3Magenta;
-import com.viesis.viescraft.common.entity.airshipcolors.v3.old.EntityAirshipV3Normal;
-import com.viesis.viescraft.common.entity.airshipcolors.v3.old.EntityAirshipV3Orange;
-import com.viesis.viescraft.common.entity.airshipcolors.v3.old.EntityAirshipV3Pink;
-import com.viesis.viescraft.common.entity.airshipcolors.v3.old.EntityAirshipV3Purple;
-import com.viesis.viescraft.common.entity.airshipcolors.v3.old.EntityAirshipV3Red;
-import com.viesis.viescraft.common.entity.airshipcolors.v3.old.EntityAirshipV3White;
-import com.viesis.viescraft.common.entity.airshipcolors.v3.old.EntityAirshipV3Yellow;
-import com.viesis.viescraft.common.entity.airshipcolors.v4.EntityV4Diamond;
-import com.viesis.viescraft.common.entity.airshipcolors.v4.EntityV4Emerald;
-import com.viesis.viescraft.common.entity.airshipcolors.v4.EntityV4Gold;
-import com.viesis.viescraft.common.entity.airshipcolors.v4.EntityV4Iron;
-import com.viesis.viescraft.common.entity.airshipcolors.v4.EntityV4LapisLazuli;
-import com.viesis.viescraft.common.entity.airshipcolors.v4.EntityV4Obsidian;
-import com.viesis.viescraft.common.entity.airshipcolors.v4.EntityV4Redstone;
-import com.viesis.viescraft.common.entity.airshipcolors.v4.EntityV4Wood0;
-import com.viesis.viescraft.common.entity.airshipcolors.v4.old.EntityAirshipV4Admin;
-import com.viesis.viescraft.common.entity.airshipcolors.v4.old.EntityAirshipV4Black;
-import com.viesis.viescraft.common.entity.airshipcolors.v4.old.EntityAirshipV4Blue;
-import com.viesis.viescraft.common.entity.airshipcolors.v4.old.EntityAirshipV4Brown;
-import com.viesis.viescraft.common.entity.airshipcolors.v4.old.EntityAirshipV4Cyan;
-import com.viesis.viescraft.common.entity.airshipcolors.v4.old.EntityAirshipV4Gray;
-import com.viesis.viescraft.common.entity.airshipcolors.v4.old.EntityAirshipV4Green;
-import com.viesis.viescraft.common.entity.airshipcolors.v4.old.EntityAirshipV4LightBlue;
-import com.viesis.viescraft.common.entity.airshipcolors.v4.old.EntityAirshipV4LightGray;
-import com.viesis.viescraft.common.entity.airshipcolors.v4.old.EntityAirshipV4Lime;
-import com.viesis.viescraft.common.entity.airshipcolors.v4.old.EntityAirshipV4Magenta;
-import com.viesis.viescraft.common.entity.airshipcolors.v4.old.EntityAirshipV4Normal;
-import com.viesis.viescraft.common.entity.airshipcolors.v4.old.EntityAirshipV4Orange;
-import com.viesis.viescraft.common.entity.airshipcolors.v4.old.EntityAirshipV4Pink;
-import com.viesis.viescraft.common.entity.airshipcolors.v4.old.EntityAirshipV4Purple;
-import com.viesis.viescraft.common.entity.airshipcolors.v4.old.EntityAirshipV4Red;
-import com.viesis.viescraft.common.entity.airshipcolors.v4.old.EntityAirshipV4White;
-import com.viesis.viescraft.common.entity.airshipcolors.v4.old.EntityAirshipV4Yellow;
-import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemV1Diamond;
-import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemV1Emerald;
-import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemV1Gold;
-import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemV1Iron;
-import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemV1LapisLazuli;
-import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemV1Obsidian;
-import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemV1Redstone;
-import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemV1Wood0;
-import com.viesis.viescraft.common.entity.airshipitems.v2.EntityItemV2Diamond;
-import com.viesis.viescraft.common.entity.airshipitems.v2.EntityItemV2Emerald;
-import com.viesis.viescraft.common.entity.airshipitems.v2.EntityItemV2Gold;
-import com.viesis.viescraft.common.entity.airshipitems.v2.EntityItemV2Iron;
-import com.viesis.viescraft.common.entity.airshipitems.v2.EntityItemV2LapisLazuli;
-import com.viesis.viescraft.common.entity.airshipitems.v2.EntityItemV2Obsidian;
-import com.viesis.viescraft.common.entity.airshipitems.v2.EntityItemV2Redstone;
-import com.viesis.viescraft.common.entity.airshipitems.v2.EntityItemV2Wood0;
-import com.viesis.viescraft.common.entity.airshipitems.v2.old.EntityItemAirshipV2Admin;
-import com.viesis.viescraft.common.entity.airshipitems.v2.old.EntityItemAirshipV2Black;
-import com.viesis.viescraft.common.entity.airshipitems.v2.old.EntityItemAirshipV2Blue;
-import com.viesis.viescraft.common.entity.airshipitems.v2.old.EntityItemAirshipV2Brown;
-import com.viesis.viescraft.common.entity.airshipitems.v2.old.EntityItemAirshipV2Cyan;
-import com.viesis.viescraft.common.entity.airshipitems.v2.old.EntityItemAirshipV2Gray;
-import com.viesis.viescraft.common.entity.airshipitems.v2.old.EntityItemAirshipV2Green;
-import com.viesis.viescraft.common.entity.airshipitems.v2.old.EntityItemAirshipV2LightBlue;
-import com.viesis.viescraft.common.entity.airshipitems.v2.old.EntityItemAirshipV2LightGray;
-import com.viesis.viescraft.common.entity.airshipitems.v2.old.EntityItemAirshipV2Lime;
-import com.viesis.viescraft.common.entity.airshipitems.v2.old.EntityItemAirshipV2Magenta;
-import com.viesis.viescraft.common.entity.airshipitems.v2.old.EntityItemAirshipV2Normal;
-import com.viesis.viescraft.common.entity.airshipitems.v2.old.EntityItemAirshipV2Orange;
-import com.viesis.viescraft.common.entity.airshipitems.v2.old.EntityItemAirshipV2Pink;
-import com.viesis.viescraft.common.entity.airshipitems.v2.old.EntityItemAirshipV2Purple;
-import com.viesis.viescraft.common.entity.airshipitems.v2.old.EntityItemAirshipV2Red;
-import com.viesis.viescraft.common.entity.airshipitems.v2.old.EntityItemAirshipV2White;
-import com.viesis.viescraft.common.entity.airshipitems.v2.old.EntityItemAirshipV2Yellow;
-import com.viesis.viescraft.common.entity.airshipitems.v3.EntityItemV3Diamond;
-import com.viesis.viescraft.common.entity.airshipitems.v3.EntityItemV3Emerald;
-import com.viesis.viescraft.common.entity.airshipitems.v3.EntityItemV3Gold;
-import com.viesis.viescraft.common.entity.airshipitems.v3.EntityItemV3Iron;
-import com.viesis.viescraft.common.entity.airshipitems.v3.EntityItemV3LapisLazuli;
-import com.viesis.viescraft.common.entity.airshipitems.v3.EntityItemV3Obsidian;
-import com.viesis.viescraft.common.entity.airshipitems.v3.EntityItemV3Redstone;
-import com.viesis.viescraft.common.entity.airshipitems.v3.EntityItemV3Wood0;
-import com.viesis.viescraft.common.entity.airshipitems.v3.old.EntityItemAirshipV3Admin;
-import com.viesis.viescraft.common.entity.airshipitems.v3.old.EntityItemAirshipV3Black;
-import com.viesis.viescraft.common.entity.airshipitems.v3.old.EntityItemAirshipV3Blue;
-import com.viesis.viescraft.common.entity.airshipitems.v3.old.EntityItemAirshipV3Brown;
-import com.viesis.viescraft.common.entity.airshipitems.v3.old.EntityItemAirshipV3Cyan;
-import com.viesis.viescraft.common.entity.airshipitems.v3.old.EntityItemAirshipV3Gray;
-import com.viesis.viescraft.common.entity.airshipitems.v3.old.EntityItemAirshipV3Green;
-import com.viesis.viescraft.common.entity.airshipitems.v3.old.EntityItemAirshipV3LightBlue;
-import com.viesis.viescraft.common.entity.airshipitems.v3.old.EntityItemAirshipV3LightGray;
-import com.viesis.viescraft.common.entity.airshipitems.v3.old.EntityItemAirshipV3Lime;
-import com.viesis.viescraft.common.entity.airshipitems.v3.old.EntityItemAirshipV3Magenta;
-import com.viesis.viescraft.common.entity.airshipitems.v3.old.EntityItemAirshipV3Normal;
-import com.viesis.viescraft.common.entity.airshipitems.v3.old.EntityItemAirshipV3Orange;
-import com.viesis.viescraft.common.entity.airshipitems.v3.old.EntityItemAirshipV3Pink;
-import com.viesis.viescraft.common.entity.airshipitems.v3.old.EntityItemAirshipV3Purple;
-import com.viesis.viescraft.common.entity.airshipitems.v3.old.EntityItemAirshipV3Red;
-import com.viesis.viescraft.common.entity.airshipitems.v3.old.EntityItemAirshipV3White;
-import com.viesis.viescraft.common.entity.airshipitems.v3.old.EntityItemAirshipV3Yellow;
-import com.viesis.viescraft.common.entity.airshipitems.v4.EntityItemV4Diamond;
-import com.viesis.viescraft.common.entity.airshipitems.v4.EntityItemV4Emerald;
-import com.viesis.viescraft.common.entity.airshipitems.v4.EntityItemV4Gold;
-import com.viesis.viescraft.common.entity.airshipitems.v4.EntityItemV4Iron;
-import com.viesis.viescraft.common.entity.airshipitems.v4.EntityItemV4LapisLazuli;
-import com.viesis.viescraft.common.entity.airshipitems.v4.EntityItemV4Obsidian;
-import com.viesis.viescraft.common.entity.airshipitems.v4.EntityItemV4Redstone;
-import com.viesis.viescraft.common.entity.airshipitems.v4.EntityItemV4Wood0;
-import com.viesis.viescraft.common.entity.airshipitems.v4.old.EntityItemAirshipV4Admin;
-import com.viesis.viescraft.common.entity.airshipitems.v4.old.EntityItemAirshipV4Black;
-import com.viesis.viescraft.common.entity.airshipitems.v4.old.EntityItemAirshipV4Blue;
-import com.viesis.viescraft.common.entity.airshipitems.v4.old.EntityItemAirshipV4Brown;
-import com.viesis.viescraft.common.entity.airshipitems.v4.old.EntityItemAirshipV4Cyan;
-import com.viesis.viescraft.common.entity.airshipitems.v4.old.EntityItemAirshipV4Gray;
-import com.viesis.viescraft.common.entity.airshipitems.v4.old.EntityItemAirshipV4Green;
-import com.viesis.viescraft.common.entity.airshipitems.v4.old.EntityItemAirshipV4LightBlue;
-import com.viesis.viescraft.common.entity.airshipitems.v4.old.EntityItemAirshipV4LightGray;
-import com.viesis.viescraft.common.entity.airshipitems.v4.old.EntityItemAirshipV4Lime;
-import com.viesis.viescraft.common.entity.airshipitems.v4.old.EntityItemAirshipV4Magenta;
-import com.viesis.viescraft.common.entity.airshipitems.v4.old.EntityItemAirshipV4Normal;
-import com.viesis.viescraft.common.entity.airshipitems.v4.old.EntityItemAirshipV4Orange;
-import com.viesis.viescraft.common.entity.airshipitems.v4.old.EntityItemAirshipV4Pink;
-import com.viesis.viescraft.common.entity.airshipitems.v4.old.EntityItemAirshipV4Purple;
-import com.viesis.viescraft.common.entity.airshipitems.v4.old.EntityItemAirshipV4Red;
-import com.viesis.viescraft.common.entity.airshipitems.v4.old.EntityItemAirshipV4White;
-import com.viesis.viescraft.common.entity.airshipitems.v4.old.EntityItemAirshipV4Yellow;
+import com.viesis.viescraft.client.entity.render.airshipcolors.v1.RenderAirshipV1;
+import com.viesis.viescraft.client.entity.render.airshipcolors.v2.RenderAirshipV2;
+import com.viesis.viescraft.client.entity.render.airshipcolors.v3.RenderAirshipV3;
+import com.viesis.viescraft.client.entity.render.airshipcolors.v4.RenderAirshipV4;
+import com.viesis.viescraft.client.entity.render.projectile.v1.RenderItemAirshipV1;
+import com.viesis.viescraft.client.entity.render.projectile.v2.RenderItemAirshipV2;
+import com.viesis.viescraft.client.entity.render.projectile.v3.RenderItemAirshipV3;
+import com.viesis.viescraft.client.entity.render.projectile.v4.RenderItemAirshipV4;
+import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipV1;
+import com.viesis.viescraft.common.entity.airshipcolors.v2.EntityAirshipV2;
+import com.viesis.viescraft.common.entity.airshipcolors.v3.EntityAirshipV3;
+import com.viesis.viescraft.common.entity.airshipcolors.v4.EntityAirshipV4;
+import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipV1;
+import com.viesis.viescraft.common.entity.airshipitems.v2.EntityItemAirshipV2;
+import com.viesis.viescraft.common.entity.airshipitems.v3.EntityItemAirshipV3;
+import com.viesis.viescraft.common.entity.airshipitems.v4.EntityItemAirshipV4;
+import com.viesis.viescraft.configs.ViesCraftConfig;
 
 public final class InitEntityVCRender extends ItemsVC {
 	
-	public static RenderManager VCRender = Minecraft.getMinecraft().getRenderManager(); 
-	
-	public static void registerRenders()
+	public static void registerEntityRender()
 	{
+		//V1
+		if(ViesCraftConfig.v1AirshipEnabled)
+		{
+			RenderingRegistry.registerEntityRenderingHandler(EntityItemAirshipV1.class, renderManager -> new RenderItemAirshipV1(renderManager));
+		}
 		
-		registerRender(EntityItemV1Wood0.class,  new RenderItemAirshipV1Wood0(VCRender));
-		registerRender(EntityItemV1Iron.class,  new RenderItemAirshipV1Iron(VCRender));
-		registerRender(EntityItemV1Redstone.class,  new RenderItemAirshipV1Redstone(VCRender));
-		registerRender(EntityItemV1Gold.class,  new RenderItemAirshipV1Gold(VCRender));
-		registerRender(EntityItemV1LapisLazuli.class,  new RenderItemAirshipV1LapisLazuli(VCRender));
-		registerRender(EntityItemV1Obsidian.class,  new RenderItemAirshipV1Obsidian(VCRender));
-		registerRender(EntityItemV1Diamond.class,  new RenderItemAirshipV1Diamond(VCRender));
-		registerRender(EntityItemV1Emerald.class,  new RenderItemAirshipV1Emerald(VCRender));
+		//V2
+		if(ViesCraftConfig.v2AirshipEnabled)
+		{
+			RenderingRegistry.registerEntityRenderingHandler(EntityItemAirshipV2.class, renderManager -> new RenderItemAirshipV2(renderManager));
+		}
 		
-		registerRender(EntityItemV2Wood0.class,  new RenderItemAirshipV2Wood0(VCRender));
-		registerRender(EntityItemV2Iron.class,  new RenderItemAirshipV2Iron(VCRender));
-		registerRender(EntityItemV2Redstone.class,  new RenderItemAirshipV2Redstone(VCRender));
-		registerRender(EntityItemV2Gold.class,  new RenderItemAirshipV2Gold(VCRender));
-		registerRender(EntityItemV2LapisLazuli.class,  new RenderItemAirshipV2LapisLazuli(VCRender));
-		registerRender(EntityItemV2Obsidian.class,  new RenderItemAirshipV2Obsidian(VCRender));
-		registerRender(EntityItemV2Diamond.class,  new RenderItemAirshipV2Diamond(VCRender));
-		registerRender(EntityItemV2Emerald.class,  new RenderItemAirshipV2Emerald(VCRender));
+		//V3
+		if(ViesCraftConfig.v3AirshipEnabled)
+		{
+			RenderingRegistry.registerEntityRenderingHandler(EntityItemAirshipV3.class, renderManager -> new RenderItemAirshipV3(renderManager));
+		}
 		
-		registerRender(EntityItemV3Wood0.class,  new RenderItemAirshipV3Wood0(VCRender));
-		registerRender(EntityItemV3Iron.class,  new RenderItemAirshipV3Iron(VCRender));
-		registerRender(EntityItemV3Redstone.class,  new RenderItemAirshipV3Redstone(VCRender));
-		registerRender(EntityItemV3Gold.class,  new RenderItemAirshipV3Gold(VCRender));
-		registerRender(EntityItemV3LapisLazuli.class,  new RenderItemAirshipV3LapisLazuli(VCRender));
-		registerRender(EntityItemV3Obsidian.class,  new RenderItemAirshipV3Obsidian(VCRender));
-		registerRender(EntityItemV3Diamond.class,  new RenderItemAirshipV3Diamond(VCRender));
-		registerRender(EntityItemV3Emerald.class,  new RenderItemAirshipV3Emerald(VCRender));
+		//V4
+		if(ViesCraftConfig.v4AirshipEnabled)
+		{
+			RenderingRegistry.registerEntityRenderingHandler(EntityItemAirshipV4.class, renderManager -> new RenderItemAirshipV4(renderManager));
+		}
 		
-		registerRender(EntityItemV4Wood0.class,  new RenderItemAirshipV4Wood0(VCRender));
-		registerRender(EntityItemV4Iron.class,  new RenderItemAirshipV4Iron(VCRender));
-		registerRender(EntityItemV4Redstone.class,  new RenderItemAirshipV4Redstone(VCRender));
-		registerRender(EntityItemV4Gold.class,  new RenderItemAirshipV4Gold(VCRender));
-		registerRender(EntityItemV4LapisLazuli.class,  new RenderItemAirshipV4LapisLazuli(VCRender));
-		registerRender(EntityItemV4Obsidian.class,  new RenderItemAirshipV4Obsidian(VCRender));
-		registerRender(EntityItemV4Diamond.class,  new RenderItemAirshipV4Diamond(VCRender));
-		registerRender(EntityItemV4Emerald.class,  new RenderItemAirshipV4Emerald(VCRender));
+		//===========================================
 		
-		//===========================================================================
+		//V1
+		if(ViesCraftConfig.v1AirshipEnabled)
+		{
+			RenderingRegistry.registerEntityRenderingHandler(EntityAirshipV1.class, renderManager -> new RenderAirshipV1(renderManager));
+		}
 		
-		registerRender(EntityV1Wood0.class,  new RenderAirshipV1Wood0(VCRender));
-		registerRender(EntityV1Iron.class,  new RenderAirshipV1Iron(VCRender));
-		registerRender(EntityV1Redstone.class,  new RenderAirshipV1Redstone(VCRender));
-		registerRender(EntityV1Gold.class,  new RenderAirshipV1Gold(VCRender));
-		registerRender(EntityV1LapisLazuli.class,  new RenderAirshipV1LapisLazuli(VCRender));
-		registerRender(EntityV1Obsidian.class,  new RenderAirshipV1Obsidian(VCRender));
-		registerRender(EntityV1Diamond.class,  new RenderAirshipV1Diamond(VCRender));
-		registerRender(EntityV1Emerald.class,  new RenderAirshipV1Emerald(VCRender));
+		//V2
+		if(ViesCraftConfig.v2AirshipEnabled)
+		{
+			RenderingRegistry.registerEntityRenderingHandler(EntityAirshipV2.class, renderManager -> new RenderAirshipV2(renderManager));
+		}
 		
-		registerRender(EntityV2Wood0.class,  new RenderAirshipV2Wood0(VCRender));
-		registerRender(EntityV2Iron.class,  new RenderAirshipV2Iron(VCRender));
-		registerRender(EntityV2Redstone.class,  new RenderAirshipV2Redstone(VCRender));
-		registerRender(EntityV2Gold.class,  new RenderAirshipV2Gold(VCRender));
-		registerRender(EntityV2LapisLazuli.class,  new RenderAirshipV2LapisLazuli(VCRender));
-		registerRender(EntityV2Obsidian.class,  new RenderAirshipV2Obsidian(VCRender));
-		registerRender(EntityV2Diamond.class,  new RenderAirshipV2Diamond(VCRender));
-		registerRender(EntityV2Emerald.class,  new RenderAirshipV2Emerald(VCRender));
+		//V3
+		if(ViesCraftConfig.v3AirshipEnabled)
+		{
+			RenderingRegistry.registerEntityRenderingHandler(EntityAirshipV3.class, renderManager -> new RenderAirshipV3(renderManager));
+		}
 		
-		registerRender(EntityV3Wood0.class,  new RenderAirshipV3Wood0(VCRender));
-		registerRender(EntityV3Iron.class,  new RenderAirshipV3Iron(VCRender));
-		registerRender(EntityV3Redstone.class,  new RenderAirshipV3Redstone(VCRender));
-		registerRender(EntityV3Gold.class,  new RenderAirshipV3Gold(VCRender));
-		registerRender(EntityV3LapisLazuli.class,  new RenderAirshipV3LapisLazuli(VCRender));
-		registerRender(EntityV3Obsidian.class,  new RenderAirshipV3Obsidian(VCRender));
-		registerRender(EntityV3Diamond.class,  new RenderAirshipV3Diamond(VCRender));
-		registerRender(EntityV3Emerald.class,  new RenderAirshipV3Emerald(VCRender));
+		//V4
+		if(ViesCraftConfig.v4AirshipEnabled)
+		{
+			RenderingRegistry.registerEntityRenderingHandler(EntityAirshipV4.class, renderManager -> new RenderAirshipV4(renderManager));
+		}
 		
-		registerRender(EntityV4Wood0.class,  new RenderAirshipV4Wood0(VCRender));
-		registerRender(EntityV4Iron.class,  new RenderAirshipV4Iron(VCRender));
-		registerRender(EntityV4Redstone.class,  new RenderAirshipV4Redstone(VCRender));
-		registerRender(EntityV4Gold.class,  new RenderAirshipV4Gold(VCRender));
-		registerRender(EntityV4LapisLazuli.class,  new RenderAirshipV4LapisLazuli(VCRender));
-		registerRender(EntityV4Obsidian.class,  new RenderAirshipV4Obsidian(VCRender));
-		registerRender(EntityV4Diamond.class,  new RenderAirshipV4Diamond(VCRender));
-		registerRender(EntityV4Emerald.class,  new RenderAirshipV4Emerald(VCRender));
-		
-		//===========================================================================
-		//           OLD - To be Deleted
-		//===========================================================================
-		
-		registerRender(EntityAirshipV1Normal.class,  new RenderAirshipV1Normal(VCRender));
-		registerRender(EntityAirshipV1Black.class,  new RenderAirshipV1Black(VCRender));
-		registerRender(EntityAirshipV1Blue.class,  new RenderAirshipV1Blue(VCRender));
-		registerRender(EntityAirshipV1Brown.class,  new RenderAirshipV1Brown(VCRender));
-		registerRender(EntityAirshipV1Cyan.class,  new RenderAirshipV1Cyan(VCRender));
-		registerRender(EntityAirshipV1Gray.class,  new RenderAirshipV1Gray(VCRender));
-		registerRender(EntityAirshipV1Green.class,  new RenderAirshipV1Green(VCRender));
-		registerRender(EntityAirshipV1LightBlue.class,  new RenderAirshipV1LightBlue(VCRender));
-		registerRender(EntityAirshipV1LightGray.class,  new RenderAirshipV1LightGray(VCRender));
-		registerRender(EntityAirshipV1Lime.class,  new RenderAirshipV1Lime(VCRender));
-		registerRender(EntityAirshipV1Magenta.class,  new RenderAirshipV1Magenta(VCRender));
-		registerRender(EntityAirshipV1Orange.class,  new RenderAirshipV1Orange(VCRender));
-		registerRender(EntityAirshipV1Pink.class,  new RenderAirshipV1Pink(VCRender));
-		registerRender(EntityAirshipV1Purple.class,  new RenderAirshipV1Purple(VCRender));
-		registerRender(EntityAirshipV1Red.class,  new RenderAirshipV1Red(VCRender));
-		registerRender(EntityAirshipV1White.class,  new RenderAirshipV1White(VCRender));
-		registerRender(EntityAirshipV1Yellow.class,  new RenderAirshipV1Yellow(VCRender));
-		registerRender(EntityAirshipV1Admin.class,  new RenderAirshipV1Admin(VCRender));
-		
-		registerRender(EntityAirshipV2Normal.class,  new RenderAirshipV2Normal(VCRender));
-		registerRender(EntityAirshipV2Black.class,  new RenderAirshipV2Black(VCRender));
-		registerRender(EntityAirshipV2Blue.class,  new RenderAirshipV2Blue(VCRender));
-		registerRender(EntityAirshipV2Brown.class,  new RenderAirshipV2Brown(VCRender));
-		registerRender(EntityAirshipV2Cyan.class,  new RenderAirshipV2Cyan(VCRender));
-		registerRender(EntityAirshipV2Gray.class,  new RenderAirshipV2Gray(VCRender));
-		registerRender(EntityAirshipV2Green.class,  new RenderAirshipV2Green(VCRender));
-		registerRender(EntityAirshipV2LightBlue.class,  new RenderAirshipV2LightBlue(VCRender));
-		registerRender(EntityAirshipV2LightGray.class,  new RenderAirshipV2LightGray(VCRender));
-		registerRender(EntityAirshipV2Lime.class,  new RenderAirshipV2Lime(VCRender));
-		registerRender(EntityAirshipV2Magenta.class,  new RenderAirshipV2Magenta(VCRender));
-		registerRender(EntityAirshipV2Orange.class,  new RenderAirshipV2Orange(VCRender));
-		registerRender(EntityAirshipV2Pink.class,  new RenderAirshipV2Pink(VCRender));
-		registerRender(EntityAirshipV2Purple.class,  new RenderAirshipV2Purple(VCRender));
-		registerRender(EntityAirshipV2Red.class,  new RenderAirshipV2Red(VCRender));
-		registerRender(EntityAirshipV2White.class,  new RenderAirshipV2White(VCRender));
-		registerRender(EntityAirshipV2Yellow.class,  new RenderAirshipV2Yellow(VCRender));
-		registerRender(EntityAirshipV2Admin.class,  new RenderAirshipV2Admin(VCRender));
-		
-		registerRender(EntityAirshipV3Normal.class,  new RenderAirshipV3Normal(VCRender));
-		registerRender(EntityAirshipV3Black.class,  new RenderAirshipV3Black(VCRender));
-		registerRender(EntityAirshipV3Blue.class,  new RenderAirshipV3Blue(VCRender));
-		registerRender(EntityAirshipV3Brown.class,  new RenderAirshipV3Brown(VCRender));
-		registerRender(EntityAirshipV3Cyan.class,  new RenderAirshipV3Cyan(VCRender));
-		registerRender(EntityAirshipV3Gray.class,  new RenderAirshipV3Gray(VCRender));
-		registerRender(EntityAirshipV3Green.class,  new RenderAirshipV3Green(VCRender));
-		registerRender(EntityAirshipV3LightBlue.class,  new RenderAirshipV3LightBlue(VCRender));
-		registerRender(EntityAirshipV3LightGray.class,  new RenderAirshipV3LightGray(VCRender));
-		registerRender(EntityAirshipV3Lime.class,  new RenderAirshipV3Lime(VCRender));
-		registerRender(EntityAirshipV3Magenta.class,  new RenderAirshipV3Magenta(VCRender));
-		registerRender(EntityAirshipV3Orange.class,  new RenderAirshipV3Orange(VCRender));
-		registerRender(EntityAirshipV3Pink.class,  new RenderAirshipV3Pink(VCRender));
-		registerRender(EntityAirshipV3Purple.class,  new RenderAirshipV3Purple(VCRender));
-		registerRender(EntityAirshipV3Red.class,  new RenderAirshipV3Red(VCRender));
-		registerRender(EntityAirshipV3White.class,  new RenderAirshipV3White(VCRender));
-		registerRender(EntityAirshipV3Yellow.class,  new RenderAirshipV3Yellow(VCRender));
-		registerRender(EntityAirshipV3Admin.class,  new RenderAirshipV3Admin(VCRender));
-		
-		registerRender(EntityAirshipV4Normal.class,  new RenderAirshipV4Normal(VCRender));
-		registerRender(EntityAirshipV4Black.class,  new RenderAirshipV4Black(VCRender));
-		registerRender(EntityAirshipV4Blue.class,  new RenderAirshipV4Blue(VCRender));
-		registerRender(EntityAirshipV4Brown.class,  new RenderAirshipV4Brown(VCRender));
-		registerRender(EntityAirshipV4Cyan.class,  new RenderAirshipV4Cyan(VCRender));
-		registerRender(EntityAirshipV4Gray.class,  new RenderAirshipV4Gray(VCRender));
-		registerRender(EntityAirshipV4Green.class,  new RenderAirshipV4Green(VCRender));
-		registerRender(EntityAirshipV4LightBlue.class,  new RenderAirshipV4LightBlue(VCRender));
-		registerRender(EntityAirshipV4LightGray.class,  new RenderAirshipV4LightGray(VCRender));
-		registerRender(EntityAirshipV4Lime.class,  new RenderAirshipV4Lime(VCRender));
-		registerRender(EntityAirshipV4Magenta.class,  new RenderAirshipV4Magenta(VCRender));
-		registerRender(EntityAirshipV4Orange.class,  new RenderAirshipV4Orange(VCRender));
-		registerRender(EntityAirshipV4Pink.class,  new RenderAirshipV4Pink(VCRender));
-		registerRender(EntityAirshipV4Purple.class,  new RenderAirshipV4Purple(VCRender));
-		registerRender(EntityAirshipV4Red.class,  new RenderAirshipV4Red(VCRender));
-		registerRender(EntityAirshipV4White.class,  new RenderAirshipV4White(VCRender));
-		registerRender(EntityAirshipV4Yellow.class,  new RenderAirshipV4Yellow(VCRender));
-		registerRender(EntityAirshipV4Admin.class,  new RenderAirshipV4Admin(VCRender));
+		/**
+		registerRender1(EntityAirshipV1.class,  renderManager -> new RenderAirshipV1(renderManager));
+		registerRender(EntityAirshipV2.class,  new RenderAirshipV2(VCRender));
+		*/
 	}
 	
-	public static void registerRender(Class<? extends Entity> classIn, Render<? extends Entity> renderItem)
+	public static void registerEntityRenderTEMP()
 	{
-		RenderingRegistry.registerEntityRenderingHandler(classIn, renderItem);
+		
 	}
+	
+	//public static void registerRender1(Class<? extends Entity> classIn, Object renderItem)
+	//{
+	//	RenderingRegistry.registerEntityRenderingHandler(classIn, renderItem);
+	//}
 }

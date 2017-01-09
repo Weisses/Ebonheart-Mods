@@ -11,17 +11,20 @@ import net.minecraft.item.ItemBlock;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import com.viesis.viescraft.api.BlocksVC;
-import com.viesis.viescraft.common.blocks.BlockAirshipDisassembler;
 import com.viesis.viescraft.common.blocks.BlockAirshipWorkbench;
 
 public class InitBlocksVC extends BlocksVC {
 	
 	public static final Set<Block> blocks = new HashSet<>();
 	
-	public static void preInit()
+	public static void registerBlock()
 	{
 		airship_workbench = registerBlock(new BlockAirshipWorkbench("airship_workbench"));
-		//airship_disassembler = registerBlock(new BlockAirshipDisassembler("airship_disassembler"));
+	}
+	
+	public static void registerBlockTEMP()
+	{
+		
 	}
 	
 	protected static <V extends Block> V registerBlock(V block)

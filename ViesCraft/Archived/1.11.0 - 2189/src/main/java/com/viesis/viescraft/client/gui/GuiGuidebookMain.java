@@ -3,6 +3,7 @@ package com.viesis.viescraft.client.gui;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
@@ -61,12 +62,10 @@ public class GuiGuidebookMain extends GuiScreen {
         		+ "\n\n" 
         		+ "         " + "\u00A7oby Viesis\u00A7r"
         		+ "\n\n\n\n" 
-        		+ "          " + Reference.MOD_VERSION.substring(0, 7);
+        		+ "           " + Reference.MOD_VERSION;
         
-        stringPageText[1] = "   Nem said it couldn't "
-        		+ "be done! Players can "
-        		+ "only fly via the power "
-        		+ "of \"\u00A7ocreative\u00A7r\" he said. "
+        stringPageText[1] = "   Nem said it wasn't possible! He always said players can only fly via the power "
+        		+ "of \"\u00A7ocreative\u00A7r\". "
         		+ "Well today I prove him "
         		+ "wrong! "
         		+ "\n\n"
@@ -95,7 +94,7 @@ public class GuiGuidebookMain extends GuiScreen {
         		+ "\n\n"
         		+ "\u00A7l\u00A7nAirship Balloon\u00A70\u00A7r\u00A70"
         		+ "\n\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oMade out of leather and hide, built to last.\u00A7r";
+        		+ "\u00A7oMade out of leather and built to last.\u00A7r";
         
         stringPageText[5] = "Part Recipe:"
         		+ "\n\n"
@@ -120,7 +119,7 @@ public class GuiGuidebookMain extends GuiScreen {
         		+ "and can't be changed "
         		+ "like colors. Choose wisely! "
         		+ "\n\n\n\n"
-        		+ "Note: The frames don't affect speed! ";
+        		+ "Note: Frames don't affect speed! ";
         
         stringPageText[8] = "Part Recipe:"
         		+ "\n\n"
@@ -439,7 +438,27 @@ public class GuiGuidebookMain extends GuiScreen {
         fontRendererObj.drawSplitString(stringPageText[currPage], 
               offsetFromScreenLeft + 36, 34, 116, 0);
         super.drawScreen(parWidth, parHeight, p_73863_3_);
-
+        
+        /**            ON TO SOMETHING FOR RESIZING
+        int offsetFromScreenLeft = (width - bookImageWidth ) / 2;
+        drawTexturedModalRect(offsetFromScreenLeft, 2, 0, 0, bookImageWidth, 
+              bookImageHeight);
+        int widthOfString;
+        String stringPageIndicator = I18n.format("book.pageIndicator", 
+              new Object[] {Integer.valueOf(currPage + 1), bookTotalPages});
+        widthOfString = fontRendererObj.getStringWidth(stringPageIndicator);
+        fontRendererObj.drawString(stringPageIndicator, 
+              offsetFromScreenLeft - widthOfString + bookImageWidth - 44, 
+              18, 1);
+        GlStateManager.scale(0.75, 0.75, 0.75);
+        fontRendererObj.drawSplitString(stringPageText[currPage], 
+              offsetFromScreenLeft + 36 + 66, //x
+              34 + 20, //y
+              widthOfString  + 60, //wordwrap
+              0); //text color
+        GlStateManager.scale(1.25, 1.25, 1.25);
+        super.drawScreen(parWidth, parHeight, p_73863_3_);
+        */
     }
 
     /**
