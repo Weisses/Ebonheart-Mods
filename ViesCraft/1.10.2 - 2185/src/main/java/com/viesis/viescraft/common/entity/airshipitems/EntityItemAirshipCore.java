@@ -5,7 +5,6 @@ import java.util.Random;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.datafix.DataFixer;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
@@ -13,19 +12,19 @@ public class EntityItemAirshipCore extends EntityThrowable {
 	
 	public static Random random = new Random();
 	
-    public EntityItemAirshipCore(World worldIn)
+    public EntityItemAirshipCore(World worldObjIn)
     {
-        super(worldIn);
+        super(worldObjIn);
     }
     
-    public EntityItemAirshipCore(World worldIn, EntityLivingBase entity)
+    public EntityItemAirshipCore(World worldObjIn, EntityLivingBase entity)
     {
-        super(worldIn, entity);
+        super(worldObjIn, entity);
     }
     
-    public EntityItemAirshipCore(World worldIn, double x, double y, double z)
+    public EntityItemAirshipCore(World worldObjIn, double x, double y, double z)
     {
-        super(worldIn, x, y, z);
+        super(worldObjIn, x, y, z);
     }
     
     protected float getGravityVelocity()

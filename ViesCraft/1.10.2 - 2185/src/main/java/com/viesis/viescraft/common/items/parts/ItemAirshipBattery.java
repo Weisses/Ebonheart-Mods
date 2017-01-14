@@ -30,7 +30,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ItemAirshipBattery extends Item {
 	
 	//public DualEnergyStorageVC energy;
-	
+	/**
 	private int capacity;
 	private int maxReceive;
 	private int maxExtract;
@@ -101,8 +101,8 @@ public class ItemAirshipBattery extends Item {
 		        this.energy.deserializeNBT(nbt);
 		    }
 		};
-		*/
-		return null;//new CapabilityProviderVC(new DualEnergyStorageVC(1000, 100, 100));
+		
+		return new CapabilityProviderVC(new DualEnergyStorageVC(1000, 100, 100));
     }
 	
 	
@@ -124,7 +124,7 @@ public class ItemAirshipBattery extends Item {
 		
 	//}
     
-	/**
+	
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn)
     {
@@ -179,8 +179,8 @@ public class ItemAirshipBattery extends Item {
 		toolTip.add(TextFormatting.DARK_PURPLE + "Max energy = " + cap.getMaxEnergyStored());
 	}
 
+	
+	
 	*/
-	
-	
 	
 }

@@ -1,7 +1,5 @@
 package com.viesis.viescraft.client;
 
-import net.minecraftforge.fml.client.registry.RenderingRegistry;
-
 import com.viesis.viescraft.api.ItemsVC;
 import com.viesis.viescraft.client.entity.render.airshipcolors.v1.RenderAirshipV1;
 import com.viesis.viescraft.client.entity.render.airshipcolors.v2.RenderAirshipV2;
@@ -11,15 +9,17 @@ import com.viesis.viescraft.client.entity.render.projectile.v1.RenderItemAirship
 import com.viesis.viescraft.client.entity.render.projectile.v2.RenderItemAirshipV2;
 import com.viesis.viescraft.client.entity.render.projectile.v3.RenderItemAirshipV3;
 import com.viesis.viescraft.client.entity.render.projectile.v4.RenderItemAirshipV4;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipV1;
-import com.viesis.viescraft.common.entity.airshipcolors.v2.EntityAirshipV2;
-import com.viesis.viescraft.common.entity.airshipcolors.v3.EntityAirshipV3;
-import com.viesis.viescraft.common.entity.airshipcolors.v4.EntityAirshipV4;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV2Core;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV3Core;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV4Core;
 import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipV1;
 import com.viesis.viescraft.common.entity.airshipitems.v2.EntityItemAirshipV2;
 import com.viesis.viescraft.common.entity.airshipitems.v3.EntityItemAirshipV3;
 import com.viesis.viescraft.common.entity.airshipitems.v4.EntityItemAirshipV4;
 import com.viesis.viescraft.configs.ViesCraftConfig;
+
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
 public final class InitEntityVCRender extends ItemsVC {
 	
@@ -54,25 +54,25 @@ public final class InitEntityVCRender extends ItemsVC {
 		//V1
 		if(ViesCraftConfig.v1AirshipEnabled)
 		{
-			RenderingRegistry.registerEntityRenderingHandler(EntityAirshipV1.class, renderManager -> new RenderAirshipV1(renderManager));
+			RenderingRegistry.registerEntityRenderingHandler(EntityAirshipV1Core.class, renderManager -> new RenderAirshipV1(renderManager));
 		}
 		
 		//V2
 		if(ViesCraftConfig.v2AirshipEnabled)
 		{
-			RenderingRegistry.registerEntityRenderingHandler(EntityAirshipV2.class, renderManager -> new RenderAirshipV2(renderManager));
+			RenderingRegistry.registerEntityRenderingHandler(EntityAirshipV2Core.class, renderManager -> new RenderAirshipV2(renderManager));
 		}
 		
 		//V3
 		if(ViesCraftConfig.v3AirshipEnabled)
 		{
-			RenderingRegistry.registerEntityRenderingHandler(EntityAirshipV3.class, renderManager -> new RenderAirshipV3(renderManager));
+			RenderingRegistry.registerEntityRenderingHandler(EntityAirshipV3Core.class, renderManager -> new RenderAirshipV3(renderManager));
 		}
 		
 		//V4
 		if(ViesCraftConfig.v4AirshipEnabled)
 		{
-			RenderingRegistry.registerEntityRenderingHandler(EntityAirshipV4.class, renderManager -> new RenderAirshipV4(renderManager));
+			RenderingRegistry.registerEntityRenderingHandler(EntityAirshipV4Core.class, renderManager -> new RenderAirshipV4(renderManager));
 		}
 		
 		/**

@@ -113,8 +113,8 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
 		this.dataManager.register(TIME_SINCE_HIT_VC, Integer.valueOf(0));
         this.dataManager.register(FORWARD_DIRECTION_VC, Integer.valueOf(1));
         this.dataManager.register(DAMAGE_TAKEN_VC, Float.valueOf(0.0F));
-        this.dataManager.register(AIRSHIP_TYPE_FRAME_VC, Integer.valueOf(0));
-        this.dataManager.register(AIRSHIP_TYPE_COLOR_VC, Integer.valueOf(0));
+        this.dataManager.register(AIRSHIP_TYPE_FRAME_VC, Integer.valueOf(this.metaFrame));
+        this.dataManager.register(AIRSHIP_TYPE_COLOR_VC, Integer.valueOf(this.metaColor));
         
 		this.dataManager.register(POWERED, Integer.valueOf(this.airshipBurnTime));
         this.dataManager.register(TOTALPOWERED, Integer.valueOf(this.airshipTotalBurnTime));

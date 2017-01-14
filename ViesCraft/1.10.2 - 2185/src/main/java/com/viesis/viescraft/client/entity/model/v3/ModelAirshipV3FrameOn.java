@@ -822,7 +822,7 @@ public class ModelAirshipV3FrameOn extends ModelBase {
     	{
     		entity.worldObj.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, 
 			entity.posX - (double)(MathHelper.sin(-entity.rotationYaw * 0.017453292F) * 00.82F), 
-			entity.posY + 0.68D + (entity.worldObj.rand.nextFloat() * 0.025D), 
+			entity.posY + 0.95D + (entity.worldObj.rand.nextFloat() * 0.025D), 
 			entity.posZ - (double)(MathHelper.cos(entity.rotationYaw * 0.017453292F) * 00.82F), 
 			0.0D, 0.0D, 0.0D, new int[0]);
     	}

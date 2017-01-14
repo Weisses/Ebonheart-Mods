@@ -6,7 +6,6 @@ import com.viesis.viescraft.client.entity.model.v1.ModelAirshipV1Color;
 import com.viesis.viescraft.client.entity.model.v1.ModelAirshipV1FrameOff;
 import com.viesis.viescraft.client.entity.model.v1.ModelAirshipV1FrameOn;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipV1;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.GlStateManager;
@@ -18,7 +17,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class RenderAirshipV1 extends Render<EntityAirshipV1> {
+public class RenderAirshipV1 extends Render<EntityAirshipV1Core> {
 	
 	private static final ResourceLocation[] ENTITY_COLOR_TEXTURE = new ResourceLocation[] 
 	{
@@ -88,7 +87,7 @@ public class RenderAirshipV1 extends Render<EntityAirshipV1> {
      * Renders the desired {@code T} type Entity.
      */
     @Override
-    public void doRender(EntityAirshipV1 entity, double x, double y, double z, float entityYaw, float partialTicks)
+    public void doRender(EntityAirshipV1Core entity, double x, double y, double z, float entityYaw, float partialTicks)
     {
         GlStateManager.pushMatrix();
         this.setupTranslation(x, y, z);
@@ -158,7 +157,7 @@ public class RenderAirshipV1 extends Render<EntityAirshipV1> {
         super.doRender(entity, x, y, z, entityYaw, partialTicks);
     }
     
-    public void setupRotation(EntityAirshipV1 entity, float p_188311_2_, float p_188311_3_)
+    public void setupRotation(EntityAirshipV1Core entity, float p_188311_2_, float p_188311_3_)
     {
     	GlStateManager.translate(0F, 0.25F, 0F);
         
@@ -216,7 +215,7 @@ public class RenderAirshipV1 extends Render<EntityAirshipV1> {
      * Returns the location of an entity's texture. Doesn't seem to be called unless you call Render.bindEntityTexture.
      */
     @Override
-    protected ResourceLocation getEntityTexture(EntityAirshipV1 entity)
+    protected ResourceLocation getEntityTexture(EntityAirshipV1Core entity)
     {
         return null;
     }

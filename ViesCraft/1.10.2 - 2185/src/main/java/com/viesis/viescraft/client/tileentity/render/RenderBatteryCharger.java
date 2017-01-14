@@ -9,9 +9,8 @@ import com.viesis.viescraft.common.tileentity.TileEntityBatteryCharger;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.util.ResourceLocation;
 
-public class RenderBatteryCharger {
-//extends TileEntitySpecialRenderer<TileEntityBatteryCharger> {
-	/**
+public class RenderBatteryCharger extends TileEntitySpecialRenderer<TileEntityBatteryCharger> {
+	
 	ResourceLocation texture = new ResourceLocation(Reference.MOD_ID + ":" + "textures/models/airship_workbench.png");
 	private ModelBatteryCharger model;
 	
@@ -33,5 +32,5 @@ public class RenderBatteryCharger {
 		
 		GL11.glPopMatrix();
 		GL11.glPopMatrix();
-	}*/
+	}
 }

@@ -84,6 +84,7 @@ public class JEIPlugin implements IModPlugin {
     	}
 		
 		itemBlacklist.addItemToBlacklist(new ItemStack(InitItemsVC.item_entity_airship));
+		
 	}
 	
 	@Override

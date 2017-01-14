@@ -6,7 +6,9 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.util.INBTSerializable;
 
-public class CapabilityProviderVC {//implements INBTSerializable<NBTTagCompound>, ICapabilityProvider {
+public class CapabilityProviderVC{}
+/**
+public class CapabilityProviderVC implements INBTSerializable<NBTTagCompound>, ICapabilityProvider {
 
 	private DualEnergyStorageVC energy;
 	
@@ -14,7 +16,7 @@ public class CapabilityProviderVC {//implements INBTSerializable<NBTTagCompound>
 	{
 		this.energy = energyIn;
 	}
-/**
+
 	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
 		if(//capability == CapabilityEnergy.ENERGY || 
@@ -41,5 +43,6 @@ public class CapabilityProviderVC {//implements INBTSerializable<NBTTagCompound>
     public void deserializeNBT (NBTTagCompound nbt) {
         
         this.energy.deserializeNBT(nbt);
-    }*/
+    }
 }
+*/

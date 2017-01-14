@@ -55,19 +55,19 @@ public class ViesCraftConfig {
 	
 	public static final int V1AIRSHIPSPEED_DEFAULT = 100;
 	public static final String V1AIRSHIPSPEED_NAME = "Airship Speed - Viesdenburg";
-	public static final String V1AIRSHIPSPEED_COMMENT = "How fast do airships move based on %? ";
+	public static final String V1AIRSHIPSPEED_COMMENT = "How fast do airships move based on walkspeed %? ";
 	
 	public static final int V2AIRSHIPSPEED_DEFAULT = 100;
 	public static final String V2AIRSHIPSPEED_NAME = "Airship Speed - Viesigible";
-	public static final String V2AIRSHIPSPEED_COMMENT = "How fast do airships move based on %? ";
+	public static final String V2AIRSHIPSPEED_COMMENT = "How fast do airships move based on walkspeed %? ";
 	
 	public static final int V3AIRSHIPSPEED_DEFAULT = 100;
 	public static final String V3AIRSHIPSPEED_NAME = "Airship Speed - Viesepelin";
-	public static final String V3AIRSHIPSPEED_COMMENT = "How fast do airships move based on %? ";
+	public static final String V3AIRSHIPSPEED_COMMENT = "How fast do airships move based on walkspeed %? ";
 	
 	public static final int V4AIRSHIPSPEED_DEFAULT = 100;
 	public static final String V4AIRSHIPSPEED_NAME = "Airship Speed - Viesakron";
-	public static final String V4AIRSHIPSPEED_COMMENT = "How fast do airships move based on %? ";
+	public static final String V4AIRSHIPSPEED_COMMENT = "How fast do airships move based on walkspeed %? ";
 	
 	public static final String V1AIRSHIPNAME_DEFAULT = "Viesdenburg";
 	public static final String V1AIRSHIPNAME_NAME = "Airship Name - Viesdenburg";

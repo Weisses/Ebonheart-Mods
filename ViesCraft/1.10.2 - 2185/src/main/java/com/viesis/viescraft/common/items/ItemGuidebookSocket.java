@@ -2,6 +2,9 @@ package com.viesis.viescraft.common.items;
 
 import java.util.List;
 
+import com.viesis.viescraft.ViesCraft;
+import com.viesis.viescraft.client.gui.GuiGuidebookSocket;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -13,10 +16,6 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import com.viesis.viescraft.ViesCraft;
-import com.viesis.viescraft.client.gui.GuiGuidebookMain;
-import com.viesis.viescraft.client.gui.GuiGuidebookSocket;
 
 public class ItemGuidebookSocket extends Item {
 	

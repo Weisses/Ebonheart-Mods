@@ -1,19 +1,18 @@
 package com.viesis.viescraft.init;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.common.registry.EntityRegistry;
-
 import com.viesis.viescraft.ViesCraft;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipV1;
-import com.viesis.viescraft.common.entity.airshipcolors.v2.EntityAirshipV2;
-import com.viesis.viescraft.common.entity.airshipcolors.v3.EntityAirshipV3;
-import com.viesis.viescraft.common.entity.airshipcolors.v4.EntityAirshipV4;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV2Core;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV3Core;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV4Core;
 import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipV1;
 import com.viesis.viescraft.common.entity.airshipitems.v2.EntityItemAirshipV2;
 import com.viesis.viescraft.common.entity.airshipitems.v3.EntityItemAirshipV3;
 import com.viesis.viescraft.common.entity.airshipitems.v4.EntityItemAirshipV4;
 import com.viesis.viescraft.configs.ViesCraftConfig;
+
+import net.minecraft.entity.Entity;
+import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 public class InitEntityVC {
 	
@@ -50,25 +49,25 @@ public class InitEntityVC {
 		//V1
 		if(ViesCraftConfig.v1AirshipEnabled)
 		{
-			register("airship_v1", EntityAirshipV1.class, "airship.v1", 64, 1, true);
+			register("airship_v1", EntityAirshipV1Core.class, "airship.v1", 64, 1, true);
 		}
 		
 		//V2
 		if(ViesCraftConfig.v2AirshipEnabled)
 		{
-			register("airship_v2", EntityAirshipV2.class, "airship.v2", 64, 1, true);
+			register("airship_v2", EntityAirshipV2Core.class, "airship.v2", 64, 1, true);
 		}
 		
 		//V3
 		if(ViesCraftConfig.v3AirshipEnabled)
 		{
-			register("airship_v3", EntityAirshipV3.class, "airship.v3", 64, 1, true);
+			register("airship_v3", EntityAirshipV3Core.class, "airship.v3", 64, 1, true);
 		}
 		
 		//V4
 		if(ViesCraftConfig.v4AirshipEnabled)
 		{
-			register("airship_v4", EntityAirshipV4.class, "airship.v4", 64, 1, true);
+			register("airship_v4", EntityAirshipV4Core.class, "airship.v4", 64, 1, true);
 		}
 	}
 	

@@ -1,5 +1,6 @@
 package com.viesis.viescraft.common.blocks;
 
+import java.util.List;
 import java.util.Random;
 
 import javax.annotation.Nullable;
@@ -7,31 +8,37 @@ import javax.annotation.Nullable;
 import com.viesis.viescraft.ViesCraft;
 import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.common.blocks.basic.BlockEA;
+import com.viesis.viescraft.common.tileentity.TileEntityBatteryCharger;
 import com.viesis.viescraft.network.GuiHandler;
 
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockBatteryCharger {
-//extends BlockEA implements ITileEntityProvider {
+public class BlockBatteryCharger extends BlockEA implements ITileEntityProvider {
 	
 	private Random rand = new Random();
 	
 	public BlockBatteryCharger(String unlocalizedName) 
 	{
-		//super(unlocalizedName);
+		super(unlocalizedName);
 		
-		//this.setCreativeTab(ViesCraft.tabViesCraftBlocks);
-		//this.isBlockContainer = true;
+		this.setCreativeTab(ViesCraft.tabViesCraftBlocks);
+		this.isBlockContainer = true;
 	}
-	/**
+	
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) 
 	{
@@ -58,7 +65,7 @@ public class BlockBatteryCharger {
 	{
 		return EnumBlockRenderType.INVISIBLE;
 	}
-	/**
+	
 	@Override
 	public void breakBlock(World world, BlockPos pos, IBlockState state) 
 	{
@@ -97,5 +104,5 @@ public class BlockBatteryCharger {
 	{
 		toolTip.add(TextFormatting.GREEN + "Used to charge up all");
 		toolTip.add(TextFormatting.GREEN + "airship batteries.");
-	}*/
+	}
 }
