@@ -1,12 +1,12 @@
 package com.viesis.viescraft.common.entity.airshipitems.v2;
 
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV2Core;
+import com.viesis.viescraft.common.entity.airshipitems.EntityItemAirshipCore;
+
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
-
-import com.viesis.viescraft.common.entity.airshipcolors.v2.EntityAirshipV2;
-import com.viesis.viescraft.common.entity.airshipitems.EntityItemAirshipCore;
 
 public class EntityItemAirshipV2 extends EntityItemAirshipCore {
 	
@@ -37,7 +37,7 @@ public class EntityItemAirshipV2 extends EntityItemAirshipCore {
         if (!this.world.isRemote)
         {
         	this.playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 0.5F, 0.4F / .5F * 0.4F + 0.8F);
-        	this.world.spawnEntity(new EntityAirshipV2(this.world, this.posX, this.posY + 0.5F, this.posZ, this.metaFrameItem, this.metaColorItem));
+        	this.world.spawnEntity(new EntityAirshipV2Core(this.world, this.posX, this.posY + 0.5F, this.posZ, this.metaFrameItem, this.metaColorItem));
             
         	this.setDead();
         }
