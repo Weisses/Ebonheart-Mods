@@ -163,7 +163,6 @@ public class RenderAirshipV1 extends Render<EntityAirshipV1> {
     	GlStateManager.translate(0F, 0.25F, 0F);
         
         GlStateManager.rotate(180.0F - p_188311_2_, 0.0F, 1.0F, 0.0F);
-        
         float f = (float)entity.getTimeSinceHit() - p_188311_3_;
         float f1 = entity.getDamageTaken() - p_188311_3_;
         

@@ -19,7 +19,7 @@ public final class InitItemsVCRender extends ItemsVC {
 		registerRender(guidebook_socket);
 		
 		registerRender(viesoline_pellets);
-		registerRender(airship_battery);
+		//registerRender(airship_battery);
 		
 		registerRender(airship_balloon);
 		registerRender(airship_engine);

@@ -53,19 +53,19 @@ public class ViesCraftConfig {
 	public static final String V4AIRSHIPENABLED_NAME = "Enable V4 Viesakron Airships?";
 	public static final String V4AIRSHIPENABLED_COMMENT = "Should Viesakron airships be globally enabled?";
 	
-	public static final int V1AIRSHIPSPEED_DEFAULT = 175;
+	public static final int V1AIRSHIPSPEED_DEFAULT = 100;
 	public static final String V1AIRSHIPSPEED_NAME = "Airship Speed - Viesdenburg";
 	public static final String V1AIRSHIPSPEED_COMMENT = "How fast do airships move based on %? ";
 	
-	public static final int V2AIRSHIPSPEED_DEFAULT = 175;
+	public static final int V2AIRSHIPSPEED_DEFAULT = 100;
 	public static final String V2AIRSHIPSPEED_NAME = "Airship Speed - Viesigible";
 	public static final String V2AIRSHIPSPEED_COMMENT = "How fast do airships move based on %? ";
 	
-	public static final int V3AIRSHIPSPEED_DEFAULT = 175;
+	public static final int V3AIRSHIPSPEED_DEFAULT = 100;
 	public static final String V3AIRSHIPSPEED_NAME = "Airship Speed - Viesepelin";
 	public static final String V3AIRSHIPSPEED_COMMENT = "How fast do airships move based on %? ";
 	
-	public static final int V4AIRSHIPSPEED_DEFAULT = 175;
+	public static final int V4AIRSHIPSPEED_DEFAULT = 100;
 	public static final String V4AIRSHIPSPEED_NAME = "Airship Speed - Viesakron";
 	public static final String V4AIRSHIPSPEED_COMMENT = "How fast do airships move based on %? ";
 	
@@ -89,7 +89,7 @@ public class ViesCraftConfig {
 	public static final String VANILLAFUEL_NAME = "Enable using vanilla fuel?";
 	public static final String VANILLAFUEL_COMMENT = "Should airships be able to use vanilla fuel?";
 	
-	public static final int VIESOLINEBURNTIME_DEFAULT = 60;
+	public static final int VIESOLINEBURNTIME_DEFAULT = 90;
 	public static final String VIESOLINEBURNTIME_NAME = "Viesoline Burn Time?";
 	public static final String VIESOLINEBURNTIME_COMMENT = "How long does Viesoline burn for in seconds? ";
 	

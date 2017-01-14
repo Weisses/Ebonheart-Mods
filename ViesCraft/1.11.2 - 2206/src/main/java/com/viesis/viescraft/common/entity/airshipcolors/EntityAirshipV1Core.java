@@ -3,7 +3,6 @@ package com.viesis.viescraft.common.entity.airshipcolors;
 import java.util.List;
 
 import com.viesis.viescraft.api.FuelVC;
-import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.common.utils.events.EventHandlerAirship;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 import com.viesis.viescraft.init.InitItemsVC;
@@ -77,17 +76,11 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
     
     public float AirshipSpeedTurn = 0.18F * (ViesCraftConfig.v1AirshipSpeed / 100);
     
-    public float AirshipSpeedForward = 
-    		0.016F 
-    		* (ViesCraftConfig.v1AirshipSpeed / 100);
+    public float AirshipSpeedForward = 0.016F * (ViesCraftConfig.v1AirshipSpeed / 100);
     
-    public float AirshipSpeedUp = 
-    		0.004F
-    		* (ViesCraftConfig.v1AirshipSpeed / 100);
+    public float AirshipSpeedUp = 0.004F * (ViesCraftConfig.v1AirshipSpeed / 100);
     
-    public float AirshipSpeedDown = 
-    		0.004F
-    		* (ViesCraftConfig.v1AirshipSpeed / 100);
+    public float AirshipSpeedDown = 0.004F * (ViesCraftConfig.v1AirshipSpeed / 100);
 	
 	public EntityAirshipV1Core(World worldIn)
     {
@@ -165,9 +158,6 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
     	compound.setInteger("Frame", this.getAirshipMetaFrame());
     	compound.setInteger("Color", this.getAirshipMetaColor());
     	
-    	//compound.setInteger("FrameBackup", this.getBoatFrame().getMetadata());
-    	//compound.setString("ColorBackup", this.getBoatColor().getName());
-    	
     	compound.setTag("Slots", inventory.serializeNBT());
     	
     	compound.setInteger("BurnTime", this.airshipBurnTime);
@@ -185,17 +175,6 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
     	
     	this.metaFrame = compound.getInteger("Frame");
     	this.metaColor = compound.getInteger("Color");
-    	
-    	//this.setBoatFrame(EntityAirshipBaseVC.Frame.byId(compound.getInteger("FrameBackup")));
-    	
-    	//if (compound.hasKey("FrameBackup", 8))
-        //{
-        //    this.setBoatFrame(EntityAirshipBaseVC.Frame.byId(compound.getInteger("FrameBackup")));
-        //}
-    	//if (compound.hasKey("ColorBackup", 8))
-        //{
-        //    this.setBoatColor(EntityAirshipBaseVC.Color.getTypeFromString(compound.getString("ColorBackup")));
-        //}
     	
     	inventory.deserializeNBT(compound.getCompoundTag("Slots"));
     	
@@ -255,8 +234,7 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
         this.getTotalFuelSlotBurnTime();
         
         this.currentModule();
-        LogHelper.info("Frame = " + this.metaFrame);
-        LogHelper.info("Color = " + this.metaColor);
+        
         if (this.canPassengerSteer())
         {
         	this.updateMotion();

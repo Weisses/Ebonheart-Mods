@@ -75,17 +75,16 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
     private int size = 20;
     
     public float AirshipSpeedTurn = 0.18F * (ViesCraftConfig.v2AirshipSpeed / 100);
-    public float AirshipSpeedForward = 0.0125F * (ViesCraftConfig.v2AirshipSpeed / 100);
-    public float AirshipSpeedUp = 0.0035F * (ViesCraftConfig.v2AirshipSpeed / 100);
-    public float AirshipSpeedDown = 0.0035F * (ViesCraftConfig.v2AirshipSpeed / 100);
+    
+    public float AirshipSpeedForward = 0.016F * (ViesCraftConfig.v2AirshipSpeed / 100);
+    
+    public float AirshipSpeedUp = 0.004F * (ViesCraftConfig.v2AirshipSpeed / 100);
+    
+    public float AirshipSpeedDown = 0.004F * (ViesCraftConfig.v2AirshipSpeed / 100);
 	
 	public EntityAirshipV2Core(World worldIn)
     {
         super(worldIn);
-        
-        this.ignoreFrustumCheck = true;
-        this.preventEntitySpawning = true;
-        this.setSize(1.0F, 0.35F);
         
         this.inventory = new ItemStackHandler(size);
     }
@@ -159,9 +158,6 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
     	compound.setInteger("Frame", this.getAirshipMetaFrame());
     	compound.setInteger("Color", this.getAirshipMetaColor());
     	
-    	//compound.setInteger("FrameBackup", this.getBoatFrame().getMetadata());
-    	//compound.setString("ColorBackup", this.getBoatColor().getName());
-    	
     	compound.setTag("Slots", inventory.serializeNBT());
     	
     	compound.setInteger("BurnTime", this.airshipBurnTime);
@@ -179,17 +175,6 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
     	
     	this.metaFrame = compound.getInteger("Frame");
     	this.metaColor = compound.getInteger("Color");
-    	
-    	//this.setBoatFrame(EntityAirshipBaseVC.Frame.byId(compound.getInteger("FrameBackup")));
-    	
-    	//if (compound.hasKey("FrameBackup", 8))
-        //{
-        //    this.setBoatFrame(EntityAirshipBaseVC.Frame.byId(compound.getInteger("FrameBackup")));
-        //}
-    	//if (compound.hasKey("ColorBackup", 8))
-        //{
-        //    this.setBoatColor(EntityAirshipBaseVC.Color.getTypeFromString(compound.getString("ColorBackup")));
-        //}
     	
     	inventory.deserializeNBT(compound.getCompoundTag("Slots"));
     	

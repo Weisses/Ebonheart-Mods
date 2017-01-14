@@ -15,7 +15,7 @@ public final class InitTileEntityVCRender {
 	public static void registerTileEntityRender()
 	{
 		registerRender(TileEntityAirshipWorkbench.class, new RenderAirshipWorkbench());
-		registerRender(TileEntityBatteryCharger.class, new RenderBatteryCharger());
+		//registerRender(TileEntityBatteryCharger.class, new RenderBatteryCharger());
 	}
 	
 	public static void registerTileEntityRenderTEMP()
