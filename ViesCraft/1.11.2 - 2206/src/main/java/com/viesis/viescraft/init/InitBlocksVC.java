@@ -21,7 +21,7 @@ public class InitBlocksVC extends BlocksVC {
 	public static void registerBlock()
 	{
 		airship_workbench = registerBlock(new BlockAirshipWorkbench("airship_workbench"));
-		battery_charger = registerBlock(new BlockBatteryCharger("battery_charger"));
+		//battery_charger = registerBlock(new BlockBatteryCharger("battery_charger"));
 	}
 	
 	public static void registerBlockTEMP()

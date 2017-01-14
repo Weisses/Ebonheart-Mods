@@ -10,7 +10,7 @@ public final class InitTileEntitiesVC {
 	public static void registerTileEntity() 
 	{
 		GameRegistry.registerTileEntity(TileEntityAirshipWorkbench.class, "tile_entity_airship_workbench");
-		GameRegistry.registerTileEntity(TileEntityBatteryCharger.class, "tile_entity_battery_charger");
+		//GameRegistry.registerTileEntity(TileEntityBatteryCharger.class, "tile_entity_battery_charger");
 	}
 	
 	public static void registerTileEntityTEMP()

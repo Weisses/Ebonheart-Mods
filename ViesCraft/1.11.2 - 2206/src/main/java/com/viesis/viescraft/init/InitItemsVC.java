@@ -46,7 +46,7 @@ public class InitItemsVC extends ItemsVC {
 		guidebook_socket = registerItem(new ItemGuidebookSocket());
 		
 		viesoline_pellets = registerItem(new ItemViesoline());
-		airship_battery = registerItem(new ItemAirshipBattery(1000, 1, 1));
+		//airship_battery = registerItem(new ItemAirshipBattery(1000, 1, 1));
 		
 		airship_balloon = registerItem(new ItemBalloon());
 		airship_engine = registerItem(new ItemEngine());
