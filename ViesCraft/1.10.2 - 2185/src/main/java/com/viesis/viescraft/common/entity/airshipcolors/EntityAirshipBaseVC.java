@@ -5,6 +5,9 @@ import java.util.Random;
 
 import javax.annotation.Nullable;
 
+import com.google.common.collect.Lists;
+import com.viesis.viescraft.api.util.Keybinds;
+
 import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -28,9 +31,6 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import com.google.common.collect.Lists;
-import com.viesis.viescraft.api.util.Keybinds;
 
 public class EntityAirshipBaseVC extends Entity {
 	
@@ -80,17 +80,19 @@ public class EntityAirshipBaseVC extends Entity {
     public float AirshipSpeedUp;
     public float AirshipSpeedDown;
 	
-    public EntityAirshipBaseVC(World worldIn)
+    public EntityAirshipBaseVC(World worldObjIn)
     {
-        super(worldIn);
+        super(worldObjIn);
         
+        this.ignoreFrustumCheck = true;
         this.preventEntitySpawning = true;
-        this.setSize(1.375F, 0.5625F);
+        
+        this.setSize(1.0F, 0.5F);
     }
     
-    public EntityAirshipBaseVC(World worldIn, double x, double y, double z, int frameIn, int colorIn)
+    public EntityAirshipBaseVC(World worldObjIn, double x, double y, double z, int frameIn, int colorIn)
     {
-        this(worldIn);
+        this(worldObjIn);
         this.setPosition(x, y, z);
         
         this.metaColor = colorIn;
@@ -154,7 +156,7 @@ public class EntityAirshipBaseVC extends Entity {
      */
     public double getMountedYOffset()
     {
-        return -0.1D;
+        return 0.15D;
     }
     
     /**
@@ -403,7 +405,7 @@ public class EntityAirshipBaseVC extends Entity {
             blockpos$pooledmutableblockpos.release();
         }
     }
-    
+
     public static float getBlockLiquidHeight(IBlockState p_184456_0_, IBlockAccess p_184456_1_, BlockPos p_184456_2_)
     {
         int i = ((Integer)p_184456_0_.getValue(BlockLiquid.LEVEL)).intValue();
@@ -508,7 +510,7 @@ public class EntityAirshipBaseVC extends Entity {
 
         return flag;
     }
-    
+
     public static float getLiquidHeight(IBlockState p_184452_0_, IBlockAccess p_184452_1_, BlockPos p_184452_2_)
     {
         return (float)p_184452_2_.getY() + getBlockLiquidHeight(p_184452_0_, p_184452_1_, p_184452_2_);
@@ -727,37 +729,37 @@ public class EntityAirshipBaseVC extends Entity {
      * Sets the Airship color (only used in item_paint_*).
      * @param boatColor
      */
-    public void setBoatColor(EntityAirshipBaseVC.Color boatColor)
-    {
-        this.dataManager.set(BOAT_TYPE_COLOR, Integer.valueOf(boatColor.ordinal()));
-    }
+    //public void setBoatColor(EntityAirshipBaseVC.Color boatColor)
+    //{
+    //    this.dataManager.set(BOAT_TYPE_COLOR, Integer.valueOf(boatColor.ordinal()));
+    //}
     
     /**
      * Gets the Airship color.
      * @return
      */
-    public EntityAirshipBaseVC.Color getBoatColor()
-    {
-        return EntityAirshipBaseVC.Color.byId(((Integer)this.dataManager.get(BOAT_TYPE_COLOR)).intValue());
-    }
+    //public EntityAirshipBaseVC.Color getBoatColor()
+    //{
+    //    return EntityAirshipBaseVC.Color.byId(((Integer)this.dataManager.get(BOAT_TYPE_COLOR)).intValue());
+    //}
     
     /**
      * Sets the Airship color (only used in item_paint_*).
      * @param boatColor
      */
-    public void setBoatFrame(EntityAirshipBaseVC.Color boatColor)
-    {
-        this.dataManager.set(BOAT_TYPE_FRAME, Integer.valueOf(boatColor.ordinal()));
-    }
+    //public void setBoatFrame(EntityAirshipBaseVC.Frame boatColor)
+    //{
+    //    this.dataManager.set(BOAT_TYPE_FRAME, Integer.valueOf(boatColor.ordinal()));
+    //}
     
     /**
      * Gets the Airship color.
      * @return
      */
-    public EntityAirshipBaseVC.Color getBoatFrame()
-    {
-        return EntityAirshipBaseVC.Color.byId(((Integer)this.dataManager.get(BOAT_TYPE_FRAME)).intValue());
-    }
+    //public EntityAirshipBaseVC.Color getBoatFrame()
+    //{
+    //    return EntityAirshipBaseVC.Color.byId(((Integer)this.dataManager.get(BOAT_TYPE_FRAME)).intValue());
+    //}
     
     /**
      * Sets the airshipTotalBurnTime to pass from server to client.

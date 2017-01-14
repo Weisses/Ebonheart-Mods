@@ -1,11 +1,11 @@
 package com.viesis.viescraft.common.entity.airshipcolors.containers.v1;
 
-import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.Slot;
-
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
 import com.viesis.viescraft.common.entity.airshipcolors.containers.ContainerVC;
 import com.viesis.viescraft.common.entity.airshipcolors.slots.ModuleSlotVC;
+
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.Slot;
 
 public class ContainerAirshipV1Module extends ContainerVC {
 	

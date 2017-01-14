@@ -110,7 +110,7 @@ public class ItemFrame extends Item {
 					
 					if (!player.capabilities.isCreativeMode)
                     {
-						stack.func_190918_g(1);
+						stack.shrink(1);
                     }
 					return true;
 				}

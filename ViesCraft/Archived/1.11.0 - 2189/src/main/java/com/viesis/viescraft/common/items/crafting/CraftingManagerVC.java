@@ -20,6 +20,7 @@ import net.minecraft.world.World;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
 import com.viesis.viescraft.init.InitBlocksVC;
 import com.viesis.viescraft.init.InitItemsVC;
 
@@ -175,7 +176,7 @@ public class CraftingManagerVC {
 		this.addRecipe(new ItemStack(InitItemsVC.item_paint, 1, 15), new Object[]{"DDD", "D#D", "DBD", '#', new ItemStack(Items.COAL, 1, 1), 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 15)});
 		this.addRecipe(new ItemStack(InitItemsVC.item_paint, 1, 17), new Object[]{"RWR", "W#W", "RBR", '#', new ItemStack(Items.COAL, 1, 1), 'B', Items.BUCKET, 'W', new ItemStack(Items.DYE, 1, 15), 'R', Items.REDSTONE});
 		
-		//=================================================
+    	//=================================================
 		
 		Collections.sort(this.recipes, new Comparator<IRecipe>()
         {
@@ -185,7 +186,7 @@ public class CraftingManagerVC {
             }
         });
     }
-
+    
     /**
      * Adds a shaped recipe to the games recipe list.
      */
@@ -223,7 +224,7 @@ public class CraftingManagerVC {
         for (map = Maps.<Character, ItemStack>newHashMap(); i < recipeComponents.length; i += 2)
         {
             Character character = (Character)recipeComponents[i];
-            ItemStack itemstack = ItemStack.field_190927_a;
+            ItemStack itemstack = ItemStack.EMPTY;
 
             if (recipeComponents[i + 1] instanceof Item)
             {
@@ -253,7 +254,7 @@ public class CraftingManagerVC {
             }
             else
             {
-                aitemstack[l] = ItemStack.field_190927_a;
+                aitemstack[l] = ItemStack.EMPTY;
             }
         }
 
@@ -314,7 +315,7 @@ public class CraftingManagerVC {
             }
         }
 
-        return ItemStack.field_190927_a;
+        return ItemStack.EMPTY;
     }
 
     public NonNullList<ItemStack> getRemainingItems(InventoryCrafting craftMatrix, World worldIn)
@@ -327,7 +328,7 @@ public class CraftingManagerVC {
             }
         }
 
-        NonNullList<ItemStack> nonnulllist = NonNullList.<ItemStack>func_191197_a(craftMatrix.getSizeInventory(), ItemStack.field_190927_a);
+        NonNullList<ItemStack> nonnulllist = NonNullList.<ItemStack>withSize(craftMatrix.getSizeInventory(), ItemStack.EMPTY);
 
         for (int i = 0; i < nonnulllist.size(); ++i)
         {

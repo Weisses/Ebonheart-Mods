@@ -34,10 +34,10 @@ public class EntityItemAirshipV3 extends EntityItemAirshipCore {
     @Override
     protected void onImpact(RayTraceResult result)
     {
-        if (!this.worldObj.isRemote)
+        if (!this.world.isRemote)
         {
         	this.playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 0.5F, 0.4F / .5F * 0.4F + 0.8F);
-        	this.worldObj.spawnEntityInWorld(new EntityAirshipV3(this.worldObj, this.posX, this.posY + 0.5F, this.posZ, this.metaFrameItem, this.metaColorItem));
+        	this.world.spawnEntity(new EntityAirshipV3(this.world, this.posX, this.posY + 0.5F, this.posZ, this.metaFrameItem, this.metaColorItem));
             
         	this.setDead();
         }

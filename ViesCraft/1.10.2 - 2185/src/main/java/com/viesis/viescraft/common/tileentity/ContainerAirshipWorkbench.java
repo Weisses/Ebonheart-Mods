@@ -1,5 +1,11 @@
 package com.viesis.viescraft.common.tileentity;
 
+import javax.annotation.Nullable;
+
+import com.viesis.viescraft.common.items.crafting.CraftingManagerVC;
+import com.viesis.viescraft.common.items.crafting.SlotCraftingVC;
+import com.viesis.viescraft.init.InitBlocksVC;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -9,12 +15,6 @@ import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-
-import javax.annotation.Nullable;
-
-import com.viesis.viescraft.common.items.crafting.CraftingManagerVC;
-import com.viesis.viescraft.common.items.crafting.SlotCraftingVC;
-import com.viesis.viescraft.init.InitBlocksVC;
 
 public class ContainerAirshipWorkbench extends Container {
 	

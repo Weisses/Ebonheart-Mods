@@ -2,8 +2,14 @@ package com.viesis.viescraft.common.entity.airshipcolors.containers;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
+import com.viesis.viescraft.common.entity.airshipcolors.slots.FuelSlotVC;
 
 public class ContainerVC extends Container {
 
@@ -18,7 +24,7 @@ public class ContainerVC extends Container {
     	return true;
     }
 	
-    /**
+	/**
      * Take a stack from the specified inventory slot.
      */
 	@Override

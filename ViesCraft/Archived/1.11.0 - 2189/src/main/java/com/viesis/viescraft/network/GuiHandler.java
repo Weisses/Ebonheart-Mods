@@ -1,11 +1,7 @@
 package com.viesis.viescraft.network;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import net.minecraftforge.fml.common.network.IGuiHandler;
-
 import com.viesis.viescraft.client.gui.GuiTileEntityAirshipWorkbench;
+import com.viesis.viescraft.client.gui.GuiTileEntityBatteryCharger;
 import com.viesis.viescraft.client.gui.v1.GuiEntityAirshipV1Default;
 import com.viesis.viescraft.client.gui.v1.GuiEntityAirshipV1Module;
 import com.viesis.viescraft.client.gui.v1.GuiEntityAirshipV1ModuleInventoryLarge;
@@ -43,13 +39,21 @@ import com.viesis.viescraft.common.entity.airshipcolors.containers.v4.ContainerA
 import com.viesis.viescraft.common.entity.airshipcolors.containers.v4.ContainerAirshipV4ModuleInvLarge;
 import com.viesis.viescraft.common.entity.airshipcolors.containers.v4.ContainerAirshipV4ModuleInvSmall;
 import com.viesis.viescraft.common.tileentity.ContainerAirshipWorkbench;
+import com.viesis.viescraft.common.tileentity.ContainerBatteryCharger;
 import com.viesis.viescraft.common.tileentity.TileEntityAirshipWorkbench;
+import com.viesis.viescraft.common.tileentity.TileEntityBatteryCharger;
+
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
+import net.minecraftforge.fml.common.network.IGuiHandler;
 
 public class GuiHandler implements IGuiHandler {
 	
 	public static GuiHandler instance;
 	
 	public static final int GUI_AIRSHIP_WORKBENCH = 50;
+	public static final int GUI_BATTERY_CHARGER = 51;
 	//public static final int GUI_AIRSHIP_DISASSEMBLER = 51;
 	
 	public static final int GUI_V1_DEFAULT = 1;
@@ -85,6 +89,13 @@ public class GuiHandler implements IGuiHandler {
 		{
 			return new ContainerAirshipWorkbench(player.inventory, world, (TileEntityAirshipWorkbench)world.getTileEntity(new BlockPos(x, y, z)));
 		}
+		
+		//Airship Workbench Container
+		if (ID == GUI_BATTERY_CHARGER)
+		{
+			return new ContainerBatteryCharger(player.inventory, world, (TileEntityBatteryCharger)world.getTileEntity(new BlockPos(x, y, z)));
+		}
+		
 		//Airship Disassembler Container
 		//if (ID == GUI_AIRSHIP_DISASSEMBLER)
 		//{
@@ -174,6 +185,13 @@ public class GuiHandler implements IGuiHandler {
 		{
 			return new GuiTileEntityAirshipWorkbench(player.inventory, world, (TileEntityAirshipWorkbench)world.getTileEntity(new BlockPos(x, y, z)));
 		}
+		
+		//Airship Workbench GUI
+		if (ID == GUI_BATTERY_CHARGER)
+		{
+			return new GuiTileEntityBatteryCharger(player.inventory, world, (TileEntityBatteryCharger)world.getTileEntity(new BlockPos(x, y, z)));
+		}
+		
 		//Airship Disassembler GUI
 		//if (ID == GUI_AIRSHIP_DISASSEMBLER)
 		//{

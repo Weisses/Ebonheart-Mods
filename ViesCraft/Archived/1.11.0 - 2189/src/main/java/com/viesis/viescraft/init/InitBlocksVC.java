@@ -12,6 +12,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import com.viesis.viescraft.api.BlocksVC;
 import com.viesis.viescraft.common.blocks.BlockAirshipWorkbench;
+import com.viesis.viescraft.common.blocks.BlockBatteryCharger;
 
 public class InitBlocksVC extends BlocksVC {
 	
@@ -20,6 +21,7 @@ public class InitBlocksVC extends BlocksVC {
 	public static void registerBlock()
 	{
 		airship_workbench = registerBlock(new BlockAirshipWorkbench("airship_workbench"));
+		//battery_charger = registerBlock(new BlockBatteryCharger("battery_charger"));
 	}
 	
 	public static void registerBlockTEMP()

@@ -83,8 +83,10 @@ public class EntityAirshipBaseVC extends Entity {
     {
         super(worldIn);
         
+        this.ignoreFrustumCheck = true;
         this.preventEntitySpawning = true;
-        this.setSize(1.375F, 0.5625F);
+        
+        this.setSize(1.0F, 0.5F);
     }
     
     public EntityAirshipBaseVC(World worldIn, double x, double y, double z, int frameIn, int colorIn)
@@ -153,7 +155,7 @@ public class EntityAirshipBaseVC extends Entity {
      */
     public double getMountedYOffset()
     {
-        return -0.1D;
+        return 0.15D;
     }
     
     /**
@@ -165,7 +167,7 @@ public class EntityAirshipBaseVC extends Entity {
         {
             return false;
         }
-        else if (!this.worldObj.isRemote && !this.isDead)
+        else if (!this.world.isRemote && !this.isDead)
         {
             if (source instanceof EntityDamageSourceIndirect && source.getEntity() != null && this.isPassenger(source.getEntity()))
             {
@@ -181,7 +183,7 @@ public class EntityAirshipBaseVC extends Entity {
                 
                 if (flag || this.getDamageTaken() > 40.0F)
                 {
-                    if (!flag && this.worldObj.getGameRules().getBoolean("doEntityDrops"))
+                    if (!flag && this.world.getGameRules().getBoolean("doEntityDrops"))
                     {
                         this.entityDropItem(this.getItemBoat(), 0.0F);
                     }
@@ -344,12 +346,12 @@ public class EntityAirshipBaseVC extends Entity {
     public float getWaterLevelAbove()
     {
         AxisAlignedBB axisalignedbb = this.getEntityBoundingBox();
-        int i = MathHelper.floor_double(axisalignedbb.minX);
-        int j = MathHelper.ceiling_double_int(axisalignedbb.maxX);
-        int k = MathHelper.floor_double(axisalignedbb.maxY);
-        int l = MathHelper.ceiling_double_int(axisalignedbb.maxY - this.lastYd);
-        int i1 = MathHelper.floor_double(axisalignedbb.minZ);
-        int j1 = MathHelper.ceiling_double_int(axisalignedbb.maxZ);
+        int i = MathHelper.floor(axisalignedbb.minX);
+        int j = MathHelper.ceil(axisalignedbb.maxX);
+        int k = MathHelper.floor(axisalignedbb.maxY);
+        int l = MathHelper.ceil(axisalignedbb.maxY - this.lastYd);
+        int i1 = MathHelper.floor(axisalignedbb.minZ);
+        int j1 = MathHelper.ceil(axisalignedbb.maxZ);
         BlockPos.PooledMutableBlockPos blockpos$pooledmutableblockpos = BlockPos.PooledMutableBlockPos.retain();
 
         try
@@ -377,11 +379,11 @@ public class EntityAirshipBaseVC extends Entity {
                     for (int i2 = i1; i2 < j1; ++i2)
                     {
                         blockpos$pooledmutableblockpos.setPos(l1, k1, i2);
-                        IBlockState iblockstate = this.worldObj.getBlockState(blockpos$pooledmutableblockpos);
+                        IBlockState iblockstate = this.world.getBlockState(blockpos$pooledmutableblockpos);
 
                         if (iblockstate.getMaterial() == Material.WATER)
                         {
-                            f = Math.max(f, BlockLiquid.func_190973_f(iblockstate, this.worldObj, blockpos$pooledmutableblockpos));
+                            f = Math.max(f, BlockLiquid.getBlockLiquidHeight(iblockstate, this.world, blockpos$pooledmutableblockpos));
                         }
 
                         if (f >= 1.0F)
@@ -410,12 +412,12 @@ public class EntityAirshipBaseVC extends Entity {
     {
         AxisAlignedBB axisalignedbb = this.getEntityBoundingBox();
         AxisAlignedBB axisalignedbb1 = new AxisAlignedBB(axisalignedbb.minX, axisalignedbb.minY - 0.001D, axisalignedbb.minZ, axisalignedbb.maxX, axisalignedbb.minY, axisalignedbb.maxZ);
-        int i = MathHelper.floor_double(axisalignedbb1.minX) - 1;
-        int j = MathHelper.ceiling_double_int(axisalignedbb1.maxX) + 1;
-        int k = MathHelper.floor_double(axisalignedbb1.minY) - 1;
-        int l = MathHelper.ceiling_double_int(axisalignedbb1.maxY) + 1;
-        int i1 = MathHelper.floor_double(axisalignedbb1.minZ) - 1;
-        int j1 = MathHelper.ceiling_double_int(axisalignedbb1.maxZ) + 1;
+        int i = MathHelper.floor(axisalignedbb1.minX) - 1;
+        int j = MathHelper.ceil(axisalignedbb1.maxX) + 1;
+        int k = MathHelper.floor(axisalignedbb1.minY) - 1;
+        int l = MathHelper.ceil(axisalignedbb1.maxY) + 1;
+        int i1 = MathHelper.floor(axisalignedbb1.minZ) - 1;
+        int j1 = MathHelper.ceil(axisalignedbb1.maxZ) + 1;
         List<AxisAlignedBB> list = Lists.<AxisAlignedBB>newArrayList();
         float f = 0.0F;
         int k1 = 0;
@@ -436,8 +438,8 @@ public class EntityAirshipBaseVC extends Entity {
                             if (j2 <= 0 || k2 != k && k2 != l - 1)
                             {
                                 blockpos$pooledmutableblockpos.setPos(l1, k2, i2);
-                                IBlockState iblockstate = this.worldObj.getBlockState(blockpos$pooledmutableblockpos);
-                                iblockstate.addCollisionBoxToList(this.worldObj, blockpos$pooledmutableblockpos, axisalignedbb1, list, this);
+                                IBlockState iblockstate = this.world.getBlockState(blockpos$pooledmutableblockpos);
+                                iblockstate.addCollisionBoxToList(this.world, blockpos$pooledmutableblockpos, axisalignedbb1, list, this, false);
 
                                 if (!list.isEmpty())
                                 {
@@ -463,12 +465,12 @@ public class EntityAirshipBaseVC extends Entity {
     private boolean checkInWater()
     {
         AxisAlignedBB axisalignedbb = this.getEntityBoundingBox();
-        int i = MathHelper.floor_double(axisalignedbb.minX);
-        int j = MathHelper.ceiling_double_int(axisalignedbb.maxX);
-        int k = MathHelper.floor_double(axisalignedbb.minY);
-        int l = MathHelper.ceiling_double_int(axisalignedbb.minY + 0.001D);
-        int i1 = MathHelper.floor_double(axisalignedbb.minZ);
-        int j1 = MathHelper.ceiling_double_int(axisalignedbb.maxZ);
+        int i = MathHelper.floor(axisalignedbb.minX);
+        int j = MathHelper.ceil(axisalignedbb.maxX);
+        int k = MathHelper.floor(axisalignedbb.minY);
+        int l = MathHelper.ceil(axisalignedbb.minY + 0.001D);
+        int i1 = MathHelper.floor(axisalignedbb.minZ);
+        int j1 = MathHelper.ceil(axisalignedbb.maxZ);
         boolean flag = false;
         this.waterLevel = Double.MIN_VALUE;
         BlockPos.PooledMutableBlockPos blockpos$pooledmutableblockpos = BlockPos.PooledMutableBlockPos.retain();
@@ -482,11 +484,11 @@ public class EntityAirshipBaseVC extends Entity {
                     for (int i2 = i1; i2 < j1; ++i2)
                     {
                         blockpos$pooledmutableblockpos.setPos(k1, l1, i2);
-                        IBlockState iblockstate = this.worldObj.getBlockState(blockpos$pooledmutableblockpos);
+                        IBlockState iblockstate = this.world.getBlockState(blockpos$pooledmutableblockpos);
 
                         if (iblockstate.getMaterial() == Material.WATER)
                         {
-                            float f = BlockLiquid.func_190972_g(iblockstate, this.worldObj, blockpos$pooledmutableblockpos);
+                            float f = BlockLiquid.getLiquidHeight(iblockstate, this.world, blockpos$pooledmutableblockpos);
                             this.waterLevel = Math.max((double)f, this.waterLevel);
                             flag |= axisalignedbb.minY < (double)f;
                         }
@@ -510,12 +512,12 @@ public class EntityAirshipBaseVC extends Entity {
     {
         AxisAlignedBB axisalignedbb = this.getEntityBoundingBox();
         double d0 = axisalignedbb.maxY + 0.001D;
-        int i = MathHelper.floor_double(axisalignedbb.minX);
-        int j = MathHelper.ceiling_double_int(axisalignedbb.maxX);
-        int k = MathHelper.floor_double(axisalignedbb.maxY);
-        int l = MathHelper.ceiling_double_int(d0);
-        int i1 = MathHelper.floor_double(axisalignedbb.minZ);
-        int j1 = MathHelper.ceiling_double_int(axisalignedbb.maxZ);
+        int i = MathHelper.floor(axisalignedbb.minX);
+        int j = MathHelper.ceil(axisalignedbb.maxX);
+        int k = MathHelper.floor(axisalignedbb.maxY);
+        int l = MathHelper.ceil(d0);
+        int i1 = MathHelper.floor(axisalignedbb.minZ);
+        int j1 = MathHelper.ceil(axisalignedbb.maxZ);
         boolean flag = false;
         BlockPos.PooledMutableBlockPos blockpos$pooledmutableblockpos = BlockPos.PooledMutableBlockPos.retain();
 
@@ -528,9 +530,9 @@ public class EntityAirshipBaseVC extends Entity {
                     for (int i2 = i1; i2 < j1; ++i2)
                     {
                         blockpos$pooledmutableblockpos.setPos(k1, l1, i2);
-                        IBlockState iblockstate = this.worldObj.getBlockState(blockpos$pooledmutableblockpos);
+                        IBlockState iblockstate = this.world.getBlockState(blockpos$pooledmutableblockpos);
 
-                        if (iblockstate.getMaterial() == Material.WATER && d0 < (double)BlockLiquid.func_190972_g(iblockstate, this.worldObj, blockpos$pooledmutableblockpos))
+                        if (iblockstate.getMaterial() == Material.WATER && d0 < (double)BlockLiquid.getLiquidHeight(iblockstate, this.world, blockpos$pooledmutableblockpos))
                         {
                             if (((Integer)iblockstate.getValue(BlockLiquid.LEVEL)).intValue() != 0)
                             {
@@ -603,7 +605,7 @@ public class EntityAirshipBaseVC extends Entity {
     {
         entityToUpdate.setRenderYawOffset(this.rotationYaw);
         float f = MathHelper.wrapDegrees(entityToUpdate.rotationYaw - this.rotationYaw);
-        float f1 = MathHelper.clamp_float(f, -105.0F, 105.0F);
+        float f1 = MathHelper.clamp(f, -105.0F, 105.0F);
         entityToUpdate.prevRotationYaw += f1 - f;
         entityToUpdate.rotationYaw += f1 - f;
         entityToUpdate.setRotationYawHead(entityToUpdate.rotationYaw);
@@ -646,7 +648,7 @@ public class EntityAirshipBaseVC extends Entity {
         }
         else
         {
-            if (!this.worldObj.isRemote && this.outOfControlTicks < 60.0F)
+            if (!this.world.isRemote && this.outOfControlTicks < 60.0F)
             {
                 player.startRiding(this);
             }
@@ -715,37 +717,37 @@ public class EntityAirshipBaseVC extends Entity {
      * Sets the Airship color (only used in item_paint_*).
      * @param boatColor
      */
-    public void setBoatColor(EntityAirshipBaseVC.Color boatColor)
-    {
-        this.dataManager.set(BOAT_TYPE_COLOR, Integer.valueOf(boatColor.ordinal()));
-    }
+    //public void setBoatColor(EntityAirshipBaseVC.Color boatColor)
+    //{
+    //    this.dataManager.set(BOAT_TYPE_COLOR, Integer.valueOf(boatColor.ordinal()));
+    //}
     
     /**
      * Gets the Airship color.
      * @return
      */
-    public EntityAirshipBaseVC.Color getBoatColor()
-    {
-        return EntityAirshipBaseVC.Color.byId(((Integer)this.dataManager.get(BOAT_TYPE_COLOR)).intValue());
-    }
+    //public EntityAirshipBaseVC.Color getBoatColor()
+    //{
+    //    return EntityAirshipBaseVC.Color.byId(((Integer)this.dataManager.get(BOAT_TYPE_COLOR)).intValue());
+    //}
     
     /**
      * Sets the Airship color (only used in item_paint_*).
      * @param boatColor
      */
-    public void setBoatFrame(EntityAirshipBaseVC.Color boatColor)
-    {
-        this.dataManager.set(BOAT_TYPE_FRAME, Integer.valueOf(boatColor.ordinal()));
-    }
+    //public void setBoatFrame(EntityAirshipBaseVC.Frame boatColor)
+    //{
+    //    this.dataManager.set(BOAT_TYPE_FRAME, Integer.valueOf(boatColor.ordinal()));
+    //}
     
     /**
      * Gets the Airship color.
      * @return
      */
-    public EntityAirshipBaseVC.Color getBoatFrame()
-    {
-        return EntityAirshipBaseVC.Color.byId(((Integer)this.dataManager.get(BOAT_TYPE_FRAME)).intValue());
-    }
+    //public EntityAirshipBaseVC.Color getBoatFrame()
+    //{
+    //    return EntityAirshipBaseVC.Color.byId(((Integer)this.dataManager.get(BOAT_TYPE_FRAME)).intValue());
+    //}
     
     /**
      * Sets the airshipTotalBurnTime to pass from server to client.
@@ -784,13 +786,13 @@ public class EntityAirshipBaseVC extends Entity {
      */
     public void updateAirshipMeta()
     {
-        if (this.worldObj.isRemote)
+        if (this.world.isRemote)
         {
         	this.metaColor = this.getAirshipMetaColor();
         	this.metaFrame = this.getAirshipMetaFrame();
         }
     	
-        if(!this.worldObj.isRemote)
+        if(!this.world.isRemote)
 		{
         	this.setAirshipMetaColor(this.metaColor);
         	this.setAirshipMetaFrame(this.metaFrame);

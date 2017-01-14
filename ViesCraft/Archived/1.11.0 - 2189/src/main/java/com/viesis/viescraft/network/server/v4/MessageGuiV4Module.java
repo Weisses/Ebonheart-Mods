@@ -30,6 +30,6 @@ public class MessageGuiV4Module extends MessageBase<MessageGuiV4Module> {
 	@Override
 	public void handleServerSide(MessageGuiV4Module message, EntityPlayer player) 
 	{
-		player.openGui(ViesCraft.instance, GuiHandler.GUI_V4_MODULE, player.worldObj, player.getPosition().getX(), player.getPosition().getY(), player.getPosition().getZ());
+		player.openGui(ViesCraft.instance, GuiHandler.GUI_V4_MODULE, player.world, player.getPosition().getX(), player.getPosition().getY(), player.getPosition().getZ());
 	}
 }

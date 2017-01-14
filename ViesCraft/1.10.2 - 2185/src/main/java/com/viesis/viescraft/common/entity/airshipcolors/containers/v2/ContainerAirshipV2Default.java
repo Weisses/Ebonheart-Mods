@@ -1,13 +1,13 @@
 package com.viesis.viescraft.common.entity.airshipcolors.containers.v2;
 
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV2Core;
+import com.viesis.viescraft.common.entity.airshipcolors.containers.ContainerVC;
+import com.viesis.viescraft.common.entity.airshipcolors.slots.FuelSlotVC;
+
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV2Core;
-import com.viesis.viescraft.common.entity.airshipcolors.containers.ContainerVC;
-import com.viesis.viescraft.common.entity.airshipcolors.slots.FuelSlotVC;
 
 public class ContainerAirshipV2Default extends ContainerVC {
 

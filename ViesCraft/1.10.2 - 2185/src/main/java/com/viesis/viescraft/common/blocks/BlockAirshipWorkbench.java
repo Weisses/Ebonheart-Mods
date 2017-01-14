@@ -25,6 +25,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import com.viesis.viescraft.ViesCraft;
 import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.common.blocks.basic.BlockEA;
+import com.viesis.viescraft.common.caps.DualEnergyStorageVC;
 import com.viesis.viescraft.common.tileentity.TileEntityAirshipWorkbench;
 import com.viesis.viescraft.network.GuiHandler;
 

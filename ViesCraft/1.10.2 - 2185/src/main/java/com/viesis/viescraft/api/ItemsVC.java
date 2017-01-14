@@ -10,6 +10,7 @@ public class ItemsVC {
 	public static Item guidebook_socket;
 	
 	public static Item viesoline_pellets;
+	public static Item airship_battery;
 	
 	public static Item airship_balloon;
 	public static Item airship_engine;

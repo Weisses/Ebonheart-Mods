@@ -75,17 +75,16 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
     private int size = 20;
     
     public float AirshipSpeedTurn = 0.18F * (ViesCraftConfig.v1AirshipSpeed / 100);
-    public float AirshipSpeedForward = 0.0125F * (ViesCraftConfig.v1AirshipSpeed / 100);
-    public float AirshipSpeedUp = 0.0035F * (ViesCraftConfig.v1AirshipSpeed / 100);
-    public float AirshipSpeedDown = 0.0035F * (ViesCraftConfig.v1AirshipSpeed / 100);
+    
+    public float AirshipSpeedForward = 0.016F * (ViesCraftConfig.v1AirshipSpeed / 100);
+    
+    public float AirshipSpeedUp = 0.004F * (ViesCraftConfig.v1AirshipSpeed / 100);
+    
+    public float AirshipSpeedDown = 0.004F * (ViesCraftConfig.v1AirshipSpeed / 100);
 	
 	public EntityAirshipV1Core(World worldIn)
     {
         super(worldIn);
-        
-        this.ignoreFrustumCheck = true;
-        this.preventEntitySpawning = true;
-        this.setSize(1.0F, 0.35F);
         
         this.inventory = new ItemStackHandler(size);
     }
@@ -156,8 +155,8 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
     {
     	super.writeToNBT(compound);
     	
-    	compound.setInteger("Frame", this.getBoatFrame().getMetadata());
-    	compound.setInteger("Color", this.getBoatColor().getMetadata());
+    	compound.setInteger("Frame", this.getAirshipMetaFrame());
+    	compound.setInteger("Color", this.getAirshipMetaColor());
     	
     	compound.setTag("Slots", inventory.serializeNBT());
     	
@@ -208,7 +207,7 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
         }
         
         //Removes passenger if they do not get out of water in time to explode the airship.
-        if (!this.worldObj.isRemote && this.outOfControlTicks >= 60.0F)
+        if (!this.world.isRemote && this.outOfControlTicks >= 60.0F)
         {
             this.removePassengers();
         }
@@ -241,13 +240,13 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
         	this.updateMotion();
         	this.controlAirship();
         	
-        	if (this.worldObj.isRemote)
+        	if (this.world.isRemote)
             {
         		this.updateInputs();
         		this.controlAirshipGui();
             }
         	
-            this.moveEntity(MoverType.SELF, this.motionX, this.motionY, this.motionZ);
+            this.move(MoverType.SELF, this.motionX, this.motionY, this.motionZ);
         }
         else
         {
@@ -257,11 +256,11 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
         }
         
         this.doBlockCollisions();
-        List<Entity> list = this.worldObj.getEntitiesInAABBexcluding(this, this.getEntityBoundingBox().expand(0.20000000298023224D, -0.009999999776482582D, 0.20000000298023224D), EntitySelectors.<Entity>getTeamCollisionPredicate(this));
+        List<Entity> list = this.world.getEntitiesInAABBexcluding(this, this.getEntityBoundingBox().expand(0.20000000298023224D, -0.009999999776482582D, 0.20000000298023224D), EntitySelectors.<Entity>getTeamCollisionPredicate(this));
         
         if (!list.isEmpty())
         {
-            boolean flag = !this.worldObj.isRemote && !(this.getControllingPassenger() instanceof EntityPlayer);
+            boolean flag = !this.world.isRemote && !(this.getControllingPassenger() instanceof EntityPlayer);
             
             for (int j = 0; j < list.size(); ++j)
             {
@@ -313,9 +312,9 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
             else if (this.status == EntityAirshipBaseVC.Status.UNDER_FLOWING_WATER 
         	  || this.status == EntityAirshipBaseVC.Status.UNDER_WATER)
             {
-            	if (!this.worldObj.isRemote)
+            	if (!this.world.isRemote)
             	{
-            		this.worldObj.createExplosion(this, this.posX, this.posY + (double)(this.height / 16.0F), this.posZ, 2.0F, true);
+            		this.world.createExplosion(this, this.posX, this.posY + (double)(this.height / 16.0F), this.posZ, 2.0F, true);
             		
             		int drop1 = random.nextInt(100) + 1;
             		int drop2 = random.nextInt(100) + 1;
@@ -611,7 +610,7 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
     @Override
     public void setDeadVC()
     {
-    	if (!this.worldObj.isRemote)
+    	if (!this.world.isRemote)
     	{
     		this.dropInvDead();
     		
@@ -622,10 +621,10 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
     	}
     	else
     	{
-        	this.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, 
-    				this.posX + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
+        	this.world.spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, 
+    				this.posX + this.world.rand.nextFloat() * this.width * 2.0F - this.width,
     				this.posY + 0.5D,
-    				this.posZ + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
+    				this.posZ + this.world.rand.nextFloat() * this.width * 2.0F - this.width,
     				0.0D, 0.0D, 0.0D, new int[0]);
         	
         	for (int ii = 0; ii < 10; ++ii)
@@ -634,26 +633,26 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
         		
         		if (d <= 2)
         		{
-        			this.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, 
-        					this.posX + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
+        			this.world.spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, 
+        					this.posX + this.world.rand.nextFloat() * this.width * 2.0F - this.width,
         					this.posY + 0.5D,
-        					this.posZ + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
+        					this.posZ + this.world.rand.nextFloat() * this.width * 2.0F - this.width,
         					0.0D, 0.0D, 0.0D, new int[0]);
         		}
         		if (d <= 15)
         		{
-        			this.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_NORMAL, 
-        					this.posX + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
+        			this.world.spawnParticle(EnumParticleTypes.EXPLOSION_NORMAL, 
+        					this.posX + this.world.rand.nextFloat() * this.width * 2.0F - this.width,
         					this.posY + 0.5D,
-        					this.posZ + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
+        					this.posZ + this.world.rand.nextFloat() * this.width * 2.0F - this.width,
         					0.0D, 0.25D, 0.0D, new int[0]);
         		}
         		if (d <= 25)
         		{
-        			this.worldObj.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, 
-        					this.posX + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
+        			this.world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, 
+        					this.posX + this.world.rand.nextFloat() * this.width * 2.0F - this.width,
         					this.posY + 0.5D,
-        					this.posZ + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
+        					this.posZ + this.world.rand.nextFloat() * this.width * 2.0F - this.width,
         					0.0D, 0.0D, 0.0D, new int[0]);
         		}
         	}
@@ -715,7 +714,7 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
         boolean flag1 = false;
         
         //Syncs the server info to the client
-        if(this.worldObj.isRemote)
+        if(this.world.isRemote)
         {
         	this.airshipBurnTime = this.getPowered();
         	this.airshipTotalBurnTime = this.getTotalPowered();
@@ -810,7 +809,7 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
                     //Consumes the fuel item
                     if (this.inventory.getStackInSlot(0) != null)
                     {
-                        if (this.inventory.getStackInSlot(0).func_190916_E() == 0)
+                        if (this.inventory.getStackInSlot(0).getCount() == 0)
                         {
                         	ItemStack test = this.inventory.getStackInSlot(0);
                             test = inventory.getStackInSlot(0).getItem().getContainerItem(inventory.getStackInSlot(0));
@@ -828,7 +827,7 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
         }
         
         //Saves the fuel burntime server side
-        if(!this.worldObj.isRemote)
+        if(!this.world.isRemote)
         {
         	this.setPowered(this.airshipBurnTime);
         	this.setTotalPowered(this.airshipTotalBurnTime);
@@ -857,30 +856,35 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
         {
             Item item = stack.getItem();
             
-            if (item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.AIR)
-            {
-                Block block = Block.getBlockFromItem(item);
-                
-                if (block == Blocks.WOODEN_SLAB)
-                {
-                    return FuelVC.wooden_slab;
-                }
-                
-                if (block.getDefaultState().getMaterial() == Material.WOOD)
-                {
-                    return FuelVC.wood_block_material;
-                }
-                
-                if (block == Blocks.COAL_BLOCK)
-                {
-                    return FuelVC.coal_block;
-                }
-            }
-            
-            if (item == Items.STICK) return FuelVC.stick;
-            if (item == Item.getItemFromBlock(Blocks.SAPLING)) return FuelVC.sapling;
-            if (item == Items.COAL) return FuelVC.coal;
-            if (item == Items.BLAZE_ROD) return FuelVC.blaze_rod;
+            if(ViesCraftConfig.vanillaFuel)
+    		{
+	            if (item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.AIR)
+	            {
+	                Block block = Block.getBlockFromItem(item);
+	                
+	                if (block == Blocks.WOODEN_SLAB)
+	                {
+	                    return FuelVC.wooden_slab;
+	                }
+	                
+	                if (block.getDefaultState().getMaterial() == Material.WOOD)
+	                {
+	                    return FuelVC.wood_block_material;
+	                }
+	                
+	                if (block == Blocks.COAL_BLOCK)
+	                {
+	                    return FuelVC.coal_block;
+	                }
+	            }
+	            
+	            if (item == Items.STICK) return FuelVC.stick;
+	            if (item == Item.getItemFromBlock(Blocks.SAPLING)) return FuelVC.sapling;
+	            if (item == Items.COAL) return FuelVC.coal;
+	            if (item == Items.BLAZE_ROD) return FuelVC.blaze_rod;
+	
+	            if (item == Items.LAVA_BUCKET) return 20000;
+    		}
             
             if (item == InitItemsVC.viesoline_pellets) return (ViesCraftConfig.viesolineBurnTime * 20);
             
@@ -905,7 +909,7 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
     public void getTotalFuelSlotBurnTime()
     {
     	//Passes itemFuelStack to client for gui
-    	if(this.worldObj.isRemote)
+    	if(this.world.isRemote)
 		{
     		this.itemFuelStack = this.getItemFuelStackPowered();
 			this.itemFuelStackSize = this.getItemFuelStackSizePowered();
@@ -919,7 +923,7 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
     			
     			if(itemFuel != null)
     			{
-    				this.itemFuelStackSize = this.inventory.getStackInSlot(0).func_190916_E();
+    				this.itemFuelStackSize = this.inventory.getStackInSlot(0).getCount();
     					
     				this.itemFuelStack = this.itemFuelStackSize 
     						* this.getItemBurnTime(this.inventory.getStackInSlot(0));
@@ -937,7 +941,7 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
     		}
     	}
     	
-    	if(!this.worldObj.isRemote)
+    	if(!this.world.isRemote)
 		{
     		this.setItemFuelStackPowered(this.itemFuelStack);
 			this.setItemFuelStackSizePowered(this.itemFuelStackSize);
@@ -1020,7 +1024,7 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
 		int moduleNumber = this.getModuleID(itemModule);
 		
 		/**
-		if(this.worldObj.isRemote)
+		if(this.world.isRemote)
 		{
 			if(this.getModuleInventorySmall())
 				LogHelper.info("1");
@@ -1038,7 +1042,7 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
 		*/
 		
 		//Syncs the module boolean client side
-		if(this.worldObj.isRemote)
+		if(this.world.isRemote)
 		{
     		this.moduleInventorySmall = this.getModuleInventorySmall();
     		this.moduleInventoryLarge = this.getModuleInventoryLarge();
@@ -1149,7 +1153,7 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
 		}
 		
 		//Saves the module boolean to server side
-    	if(!this.worldObj.isRemote)
+    	if(!this.world.isRemote)
 		{
 			this.setModuleInventorySmall(this.moduleInventorySmall);
     		this.setModuleInventoryLarge(this.moduleInventoryLarge);
@@ -1238,7 +1242,7 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
      */
     public void dropInv()
     {
-    	if(this.worldObj.isRemote)
+    	if(this.world.isRemote)
 		{
 			for (int x = 2; x < 20; ++x) 
 			{
@@ -1256,7 +1260,7 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
 				if(this.inventory.getStackInSlot(x) != null)
 				{
 					ItemStack test = this.inventory.getStackInSlot(x);
-					InventoryHelper.spawnItemStack(this.worldObj, this.posX, this.posY, this.posZ, this.inventory.getStackInSlot(x));
+					InventoryHelper.spawnItemStack(this.world, this.posX, this.posY, this.posZ, this.inventory.getStackInSlot(x));
 					test = null;
 				}
 			}
@@ -1268,7 +1272,7 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
      */
     public void dropInvDead()
     {
-    	if(this.worldObj.isRemote)
+    	if(this.world.isRemote)
 		{
 			for (int x = 0; x < 20; ++x) 
 			{
@@ -1286,7 +1290,7 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
 				if(this.inventory.getStackInSlot(x) != null)
 				{
 					ItemStack test = this.inventory.getStackInSlot(x);
-					InventoryHelper.spawnItemStack(this.worldObj, this.posX, this.posY, this.posZ, this.inventory.getStackInSlot(x));
+					InventoryHelper.spawnItemStack(this.world, this.posX, this.posY, this.posZ, this.inventory.getStackInSlot(x));
 					test = null;
 				}
 			}

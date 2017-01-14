@@ -1,5 +1,13 @@
 package com.viesis.viescraft.client.entity.render.airshipcolors.v1;
 
+import com.viesis.viescraft.api.Reference;
+import com.viesis.viescraft.client.entity.model.ModelAirshipPanel;
+import com.viesis.viescraft.client.entity.model.v1.ModelAirshipV1Color;
+import com.viesis.viescraft.client.entity.model.v1.ModelAirshipV1FrameOff;
+import com.viesis.viescraft.client.entity.model.v1.ModelAirshipV1FrameOn;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
+import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipV1;
+
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.Render;
@@ -8,14 +16,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import com.viesis.viescraft.api.Reference;
-import com.viesis.viescraft.client.entity.model.ModelAirshipPanel;
-import com.viesis.viescraft.client.entity.model.v1.ModelAirshipV1Color;
-import com.viesis.viescraft.client.entity.model.v1.ModelAirshipV1FrameOff;
-import com.viesis.viescraft.client.entity.model.v1.ModelAirshipV1FrameOn;
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
-import com.viesis.viescraft.common.entity.airshipcolors.v1.EntityAirshipV1;
 
 @SideOnly(Side.CLIENT)
 public class RenderAirshipV1 extends Render<EntityAirshipV1> {
@@ -131,21 +131,21 @@ public class RenderAirshipV1 extends Render<EntityAirshipV1> {
         
         if(entity.getPowered() > 0)
         {
-        	this.bindTexture(ENTITY_COLOR_TEXTURE[entity.getBoatColor().ordinal()]);
-        	this.modelAirshipV1Color.render(entity, partialTicks, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
-        	this.bindTexture(ENTITY_FRAME_TEXTURE[entity.getBoatFrame().ordinal()]);
-        	this.modelAirshipV1FrameOn.render(entity, partialTicks, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
+        	this.bindTexture(ENTITY_COLOR_TEXTURE[entity.getAirshipMetaColor()]);
+        	this.modelAirshipV1Color.render(entity, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
+        	this.bindTexture(ENTITY_FRAME_TEXTURE[entity.getAirshipMetaFrame()]);
+        	this.modelAirshipV1FrameOn.render(entity, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
         	this.bindTexture(ENTITY_SCREEN_TEXTURE[this.moduleNumber]);
-        	this.modelAirshipPanel.render(entity, partialTicks, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
+        	this.modelAirshipPanel.render(entity, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
         }
         else
         {
-        	this.bindTexture(ENTITY_COLOR_TEXTURE[entity.getBoatColor().ordinal()]);
-        	this.modelAirshipV1Color.render(entity, partialTicks, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
-        	this.bindTexture(ENTITY_FRAME_TEXTURE[entity.getBoatFrame().ordinal()]);
-        	this.modelAirshipV1FrameOff.render(entity, partialTicks, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
+        	this.bindTexture(ENTITY_COLOR_TEXTURE[entity.getAirshipMetaColor()]);
+        	this.modelAirshipV1Color.render(entity, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
+        	this.bindTexture(ENTITY_FRAME_TEXTURE[entity.getAirshipMetaFrame()]);
+        	this.modelAirshipV1FrameOff.render(entity, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
         	this.bindTexture(ENTITY_SCREEN_TEXTURE[this.moduleNumber]);
-        	this.modelAirshipPanel.render(entity, partialTicks, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
+        	this.modelAirshipPanel.render(entity, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
         }
         
         if (this.renderOutlines)
@@ -160,6 +160,8 @@ public class RenderAirshipV1 extends Render<EntityAirshipV1> {
     
     public void setupRotation(EntityAirshipV1 entity, float p_188311_2_, float p_188311_3_)
     {
+    	GlStateManager.translate(0F, 0.25F, 0F);
+        
         GlStateManager.rotate(180.0F - p_188311_2_, 0.0F, 1.0F, 0.0F);
         float f = (float)entity.getTimeSinceHit() - p_188311_3_;
         float f1 = entity.getDamageTaken() - p_188311_3_;

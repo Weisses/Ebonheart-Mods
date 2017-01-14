@@ -1,5 +1,9 @@
 package com.viesis.viescraft.common.tileentity;
 
+import com.viesis.viescraft.common.items.crafting.CraftingManagerVC;
+import com.viesis.viescraft.common.items.crafting.SlotCraftingVC;
+import com.viesis.viescraft.init.InitBlocksVC;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -9,10 +13,6 @@ import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-
-import com.viesis.viescraft.common.items.crafting.CraftingManagerVC;
-import com.viesis.viescraft.common.items.crafting.SlotCraftingVC;
-import com.viesis.viescraft.init.InitBlocksVC;
 
 public class ContainerAirshipWorkbench extends Container {
 	
@@ -117,7 +117,7 @@ public class ContainerAirshipWorkbench extends Container {
      */
     public ItemStack transferStackInSlot(EntityPlayer playerIn, int index)
     {
-        ItemStack itemstack = ItemStack.field_190927_a;
+        ItemStack itemstack = ItemStack.EMPTY;
         Slot slot = (Slot)this.inventorySlots.get(index);
 
         if (slot != null && slot.getHasStack())
@@ -131,7 +131,7 @@ public class ContainerAirshipWorkbench extends Container {
 
                 if (!this.mergeItemStack(itemstack1, 10, 46, true))
                 {
-                    return ItemStack.field_190927_a;
+                    return ItemStack.EMPTY;
                 }
 
                 slot.onSlotChange(itemstack1, itemstack);
@@ -140,36 +140,36 @@ public class ContainerAirshipWorkbench extends Container {
             {
                 if (!this.mergeItemStack(itemstack1, 37, 46, false))
                 {
-                    return ItemStack.field_190927_a;
+                    return ItemStack.EMPTY;
                 }
             }
             else if (index >= 37 && index < 46)
             {
                 if (!this.mergeItemStack(itemstack1, 10, 37, false))
                 {
-                    return ItemStack.field_190927_a;
+                    return ItemStack.EMPTY;
                 }
             }
             else if (!this.mergeItemStack(itemstack1, 10, 46, false))
             {
-                return ItemStack.field_190927_a;
+                return ItemStack.EMPTY;
             }
 
-            if (itemstack1.func_190926_b())
+            if (itemstack1.isEmpty())
             {
-                slot.putStack(ItemStack.field_190927_a);
+                slot.putStack(ItemStack.EMPTY);
             }
             else
             {
                 slot.onSlotChanged();
             }
 
-            if (itemstack1.func_190916_E() == itemstack.func_190916_E())
+            if (itemstack1.getCount() == itemstack.getCount())
             {
-                return ItemStack.field_190927_a;
+                return ItemStack.EMPTY;
             }
 
-            ItemStack itemstack2 = slot.func_190901_a(playerIn, itemstack1);
+            ItemStack itemstack2 = slot.onTake(playerIn, itemstack1);
 
             if (index == 0)
             {

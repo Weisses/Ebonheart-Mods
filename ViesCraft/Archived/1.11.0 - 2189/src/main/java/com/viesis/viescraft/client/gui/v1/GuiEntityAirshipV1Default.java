@@ -21,14 +21,14 @@ import com.viesis.viescraft.network.server.v1.MessageGuiV1Module;
 public class GuiEntityAirshipV1Default extends GuiContainer {
 	
 	private GuiButton buttonModule;
-	private IInventory thePlayerInv;
+	private IInventory playerInv;
 	private EntityAirshipV1Core airshipV1;
 	
-	public GuiEntityAirshipV1Default(IInventory thePlayerInv, EntityAirshipV1Core airshipV1)
+	public GuiEntityAirshipV1Default(IInventory playerInv, EntityAirshipV1Core airshipV1)
 	{
-		super(new ContainerAirshipV1Default(thePlayerInv, airshipV1));
+		super(new ContainerAirshipV1Default(playerInv, airshipV1));
 		
-		this.thePlayerInv = thePlayerInv;
+		this.playerInv = playerInv;
 		this.airshipV1 = airshipV1;
 		this.xSize = 176;
 		this.ySize = 166;
@@ -121,7 +121,7 @@ public class GuiEntityAirshipV1Default extends GuiContainer {
 	{
 		String s = this.airshipV1.getDisplayName().getUnformattedText();
 		//this.fontRendererObj.drawString("Fuel", 150, 6, 4210752);
-		this.fontRendererObj.drawString(this.thePlayerInv.getDisplayName().getUnformattedText(), 8, 72, 4210752);
+		this.fontRendererObj.drawString(this.playerInv.getDisplayName().getUnformattedText(), 8, 72, 4210752);
 	}
 	
 	@Override
@@ -131,7 +131,7 @@ public class GuiEntityAirshipV1Default extends GuiContainer {
         ||	keyCode == Keybinds.vcInventory.getKeyCode()
         || this.mc.gameSettings.keyBindInventory.isActiveAndMatches(keyCode))
         {
-            this.mc.thePlayer.closeScreen();
+            this.mc.player.closeScreen();
         }
     }
 }

@@ -47,11 +47,11 @@ public class GuiV4HUD extends Gui {
 		{
 			GuiIngameForge.renderFood = true;
 			
-			this.isAirshipV4 = mc.thePlayer.getRidingEntity() instanceof EntityAirshipV4Core;
+			this.isAirshipV4 = mc.player.getRidingEntity() instanceof EntityAirshipV4Core;
 			
 			if(this.isAirshipV4)
 		    {
-				this.airshipV4 = (EntityAirshipV4Core) Minecraft.getMinecraft().thePlayer.getRidingEntity();
+				this.airshipV4 = (EntityAirshipV4Core) Minecraft.getMinecraft().player.getRidingEntity();
 				
 				GlStateManager.enableRescaleNormal();
 	            GlStateManager.enableBlend();

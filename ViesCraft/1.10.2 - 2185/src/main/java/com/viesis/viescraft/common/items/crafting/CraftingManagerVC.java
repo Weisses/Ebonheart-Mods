@@ -175,8 +175,8 @@ public class CraftingManagerVC {
 		this.addRecipe(new ItemStack(InitItemsVC.item_paint, 1, 15), new Object[]{"DDD", "D#D", "DBD", '#', new ItemStack(Items.COAL, 1, 1), 'B', Items.BUCKET, 'D', new ItemStack(Items.DYE, 1, 15)});
 		this.addRecipe(new ItemStack(InitItemsVC.item_paint, 1, 17), new Object[]{"RWR", "W#W", "RBR", '#', new ItemStack(Items.COAL, 1, 1), 'B', Items.BUCKET, 'W', new ItemStack(Items.DYE, 1, 15), 'R', Items.REDSTONE});
 		
-//=================================================
-		
+    	//=================================================
+
         Collections.sort(this.recipes, new Comparator<IRecipe>()
         {
             public int compare(IRecipe p_compare_1_, IRecipe p_compare_2_)

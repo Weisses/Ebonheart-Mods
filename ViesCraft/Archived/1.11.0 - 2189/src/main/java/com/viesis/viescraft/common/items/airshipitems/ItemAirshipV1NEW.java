@@ -61,7 +61,7 @@ public class ItemAirshipV1NEW extends ItemAirshipCore {
 		{
         	if (!playerIn.capabilities.isCreativeMode)
         	{
-        		itemstack.func_190918_g(1);
+        		itemstack.shrink(1);
         	}
         	
 			worldIn.playSound((EntityPlayer)null, playerIn.posX, playerIn.posY, playerIn.posZ, SoundEvents.ENTITY_EXPERIENCE_BOTTLE_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
@@ -70,7 +70,7 @@ public class ItemAirshipV1NEW extends ItemAirshipCore {
 			{
 				EntityItemAirshipV1 entityairship = new EntityItemAirshipV1(worldIn, playerIn, EntityAirshipBaseVC.Frame.WOOD0.ordinal(), this.getMetadata(itemstack));
 				entityairship.setHeadingFromThrower(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, -20.0F, 0.7F, 1.0F);
-				worldIn.spawnEntityInWorld(entityairship);
+				worldIn.spawnEntity(entityairship);
 			}
 			
 			playerIn.addStat(StatList.getObjectUseStats(this));

@@ -12,6 +12,7 @@ public final class InitBlocksVCRender extends BlocksVC {
 	public static void registerBlockRender()
 	{
 		registerRender(airship_workbench);
+		//registerRender(battery_charger);
 	}
 	
 	public static void registerBlockRenderTEMP()

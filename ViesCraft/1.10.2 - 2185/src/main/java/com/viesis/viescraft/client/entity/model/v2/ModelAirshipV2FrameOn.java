@@ -101,6 +101,12 @@ public class ModelAirshipV2FrameOn extends ModelBase {
     ModelRenderer BackEngineR;
     ModelRenderer ControlPanel;
     ModelRenderer ControlBrace;
+    ModelRenderer SkidR1;
+    ModelRenderer SkidR2;
+    ModelRenderer SkidR3;
+    ModelRenderer SkidL1;
+    ModelRenderer SkidL2;
+    ModelRenderer SkidL3;
 	
 	public ModelAirshipV2FrameOn()
 	{
@@ -617,6 +623,42 @@ public class ModelAirshipV2FrameOn extends ModelBase {
 		ControlBrace.setTextureSize(256, 128);
 		ControlBrace.mirror = true;
 		setRotation(ControlBrace, 0F, 0F, 0F);
+	      SkidR1 = new ModelRenderer(this, 248, 26);
+	      SkidR1.addBox(-1F, 0F, -1F, 2, 3, 2);
+	      SkidR1.setRotationPoint(-6F, 6F, -6F);
+	      SkidR1.setTextureSize(256, 128);
+	      SkidR1.mirror = true;
+	      setRotation(SkidR1, 0F, 0.7853982F, 0F);
+	      SkidR2 = new ModelRenderer(this, 248, 26);
+	      SkidR2.addBox(-1F, 0F, -1F, 2, 3, 2);
+	      SkidR2.setRotationPoint(-6F, 6F, 6F);
+	      SkidR2.setTextureSize(256, 128);
+	      SkidR2.mirror = true;
+	      setRotation(SkidR2, 0F, 0.7853982F, 0F);
+	      SkidR3 = new ModelRenderer(this, 202, 26);
+	      SkidR3.addBox(-1.5F, 0F, 0F, 3, 1, 24);
+	      SkidR3.setRotationPoint(-6F, 9F, -12F);
+	      SkidR3.setTextureSize(256, 128);
+	      SkidR3.mirror = true;
+	      setRotation(SkidR3, 0F, 0F, 0F);
+	      SkidL1 = new ModelRenderer(this, 248, 26);
+	      SkidL1.addBox(-1F, 0F, -1F, 2, 3, 2);
+	      SkidL1.setRotationPoint(6F, 6F, -6F);
+	      SkidL1.setTextureSize(256, 128);
+	      SkidL1.mirror = true;
+	      setRotation(SkidL1, 0F, 0.7853982F, 0F);
+	      SkidL2 = new ModelRenderer(this, 248, 26);
+	      SkidL2.addBox(-1F, 0F, -1F, 2, 3, 2);
+	      SkidL2.setRotationPoint(6F, 6F, 6F);
+	      SkidL2.setTextureSize(256, 128);
+	      SkidL2.mirror = true;
+	      setRotation(SkidL2, 0F, 0.7853982F, 0F);
+	      SkidL3 = new ModelRenderer(this, 202, 26);
+	      SkidL3.addBox(-1.5F, 0F, 0F, 3, 1, 24);
+	      SkidL3.setRotationPoint(6F, 9F, -12F);
+	      SkidL3.setTextureSize(256, 128);
+	      SkidL3.mirror = true;
+	      setRotation(SkidL3, 0F, 0F, 0F);
 	}
 	
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
@@ -709,6 +751,12 @@ public class ModelAirshipV2FrameOn extends ModelBase {
 	    BackEngineR.render(f5);
 	    ControlPanel.render(f5);
 	    ControlBrace.render(f5);
+	    SkidR1.render(f5);
+	    SkidR2.render(f5);
+	    SkidR3.render(f5);
+	    SkidL1.render(f5);
+	    SkidL2.render(f5);
+	    SkidL3.render(f5);
 	}
 	
 	private void setRotation(ModelRenderer model, float x, float y, float z)

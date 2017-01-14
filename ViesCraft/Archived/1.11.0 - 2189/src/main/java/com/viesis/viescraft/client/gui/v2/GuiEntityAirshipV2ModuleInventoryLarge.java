@@ -21,14 +21,14 @@ import com.viesis.viescraft.network.server.v2.MessageGuiV2Module;
 public class GuiEntityAirshipV2ModuleInventoryLarge extends GuiContainer {
 	
 	private GuiButton buttonModule;
-	private IInventory thePlayerInv;
+	private IInventory playerInv;
 	private EntityAirshipV2Core airshipV2;
 	
-	public GuiEntityAirshipV2ModuleInventoryLarge(IInventory thePlayerInv, EntityAirshipV2Core airshipV2)
+	public GuiEntityAirshipV2ModuleInventoryLarge(IInventory playerInv, EntityAirshipV2Core airshipV2)
 	{
-		super(new ContainerAirshipV2ModuleInvLarge(thePlayerInv, airshipV2));
+		super(new ContainerAirshipV2ModuleInvLarge(playerInv, airshipV2));
 		
-		this.thePlayerInv = thePlayerInv;
+		this.playerInv = playerInv;
 		this.airshipV2 = airshipV2;
 		this.xSize = 176;
 		this.ySize = 166;
@@ -113,7 +113,7 @@ public class GuiEntityAirshipV2ModuleInventoryLarge extends GuiContainer {
 	{
 		String s = this.airshipV2.getDisplayName().getUnformattedText();
 		//this.fontRendererObj.drawString("Fuel", 150, 6, 4210752);
-		this.fontRendererObj.drawString(this.thePlayerInv.getDisplayName().getUnformattedText(), 8, 72, 4210752);
+		this.fontRendererObj.drawString(this.playerInv.getDisplayName().getUnformattedText(), 8, 72, 4210752);
 	}
 	
 	@Override
@@ -123,7 +123,7 @@ public class GuiEntityAirshipV2ModuleInventoryLarge extends GuiContainer {
         ||	keyCode == Keybinds.vcInventory.getKeyCode()
         || this.mc.gameSettings.keyBindInventory.isActiveAndMatches(keyCode))
         {
-            this.mc.thePlayer.closeScreen();
+            this.mc.player.closeScreen();
         }
     }
 }

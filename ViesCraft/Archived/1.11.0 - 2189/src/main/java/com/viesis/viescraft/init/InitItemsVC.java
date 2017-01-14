@@ -3,9 +3,6 @@ package com.viesis.viescraft.init;
 import java.util.HashSet;
 import java.util.Set;
 
-import net.minecraft.item.Item;
-import net.minecraftforge.fml.common.registry.GameRegistry;
-
 import com.viesis.viescraft.api.ItemsVC;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
 import com.viesis.viescraft.common.items.ItemAirshipDismounter;
@@ -25,6 +22,7 @@ import com.viesis.viescraft.common.items.modules.ItemInventoryModuleSmall;
 import com.viesis.viescraft.common.items.modules.ItemModuleChip;
 import com.viesis.viescraft.common.items.modules.ItemSpeedModuleMajor;
 import com.viesis.viescraft.common.items.modules.ItemSpeedModuleMinor;
+import com.viesis.viescraft.common.items.parts.ItemAirshipBattery;
 import com.viesis.viescraft.common.items.parts.ItemBalloon;
 import com.viesis.viescraft.common.items.parts.ItemEngine;
 import com.viesis.viescraft.common.items.parts.ItemFrame;
@@ -32,6 +30,9 @@ import com.viesis.viescraft.common.items.parts.ItemIgnition;
 import com.viesis.viescraft.common.items.parts.ItemPaint;
 import com.viesis.viescraft.common.items.parts.ItemViesoline;
 import com.viesis.viescraft.configs.ViesCraftConfig;
+
+import net.minecraft.item.Item;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class InitItemsVC extends ItemsVC {
 	
@@ -45,6 +46,7 @@ public class InitItemsVC extends ItemsVC {
 		guidebook_socket = registerItem(new ItemGuidebookSocket());
 		
 		viesoline_pellets = registerItem(new ItemViesoline());
+		//airship_battery = registerItem(new ItemAirshipBattery(1000, 1, 1));
 		
 		airship_balloon = registerItem(new ItemBalloon());
 		airship_engine = registerItem(new ItemEngine());

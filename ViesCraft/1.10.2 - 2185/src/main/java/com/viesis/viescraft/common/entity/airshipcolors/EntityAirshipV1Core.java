@@ -74,24 +74,23 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
     private int size = 20;
     
     public float AirshipSpeedTurn = 0.18F * (ViesCraftConfig.v1AirshipSpeed / 100);
-    public float AirshipSpeedForward = 0.0125F * (ViesCraftConfig.v1AirshipSpeed / 100);
-    public float AirshipSpeedUp = 0.0035F * (ViesCraftConfig.v1AirshipSpeed / 100);
-    public float AirshipSpeedDown = 0.0035F * (ViesCraftConfig.v1AirshipSpeed / 100);
+    
+    public float AirshipSpeedForward = 0.016F * (ViesCraftConfig.v1AirshipSpeed / 100);
+    
+    public float AirshipSpeedUp = 0.004F * (ViesCraftConfig.v1AirshipSpeed / 100);
+    
+    public float AirshipSpeedDown = 0.004F * (ViesCraftConfig.v1AirshipSpeed / 100);
 	
-	public EntityAirshipV1Core(World worldIn)
+	public EntityAirshipV1Core(World worldObjIn)
     {
-        super(worldIn);
-        
-        this.ignoreFrustumCheck = true;
-        this.preventEntitySpawning = true;
-        this.setSize(1.0F, 0.35F);
+        super(worldObjIn);
         
         this.inventory = new ItemStackHandler(size);
     }
 	
-    public EntityAirshipV1Core(World worldIn, double x, double y, double z, int frameIn, int colorIn)
+    public EntityAirshipV1Core(World worldObjIn, double x, double y, double z, int frameIn, int colorIn)
     {
-        this(worldIn);
+        this(worldObjIn);
         this.setPosition(x, y + 0.5D, z);
         this.motionX = 0.0D;
         this.motionY = 0.0D;
@@ -155,8 +154,8 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
     {
     	super.writeToNBT(compound);
     	
-    	compound.setInteger("Frame", this.getBoatFrame().getMetadata());
-    	compound.setInteger("Color", this.getBoatColor().getMetadata());
+    	compound.setInteger("Frame", this.getAirshipMetaFrame());
+    	compound.setInteger("Color", this.getAirshipMetaColor());
     	
     	compound.setTag("Slots", inventory.serializeNBT());
     	
@@ -246,7 +245,7 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
         		this.controlAirshipGui();
             }
         	
-            this.moveEntity(this.motionX, this.motionY, this.motionZ);
+        	this.moveEntity(this.motionX, this.motionY, this.motionZ);
         }
         else
         {
@@ -856,30 +855,35 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
         {
             Item item = stack.getItem();
             
-            if (item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.AIR)
-            {
-                Block block = Block.getBlockFromItem(item);
-                
-                if (block == Blocks.WOODEN_SLAB)
-                {
-                    return FuelVC.wooden_slab;
-                }
-                
-                if (block.getDefaultState().getMaterial() == Material.WOOD)
-                {
-                    return FuelVC.wood_block_material;
-                }
-                
-                if (block == Blocks.COAL_BLOCK)
-                {
-                    return FuelVC.coal_block;
-                }
-            }
-            
-            if (item == Items.STICK) return FuelVC.stick;
-            if (item == Item.getItemFromBlock(Blocks.SAPLING)) return FuelVC.sapling;
-            if (item == Items.COAL) return FuelVC.coal;
-            if (item == Items.BLAZE_ROD) return FuelVC.blaze_rod;
+            if(ViesCraftConfig.vanillaFuel)
+    		{
+	            if (item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.AIR)
+	            {
+	                Block block = Block.getBlockFromItem(item);
+	                
+	                if (block == Blocks.WOODEN_SLAB)
+	                {
+	                    return FuelVC.wooden_slab;
+	                }
+	                
+	                if (block.getDefaultState().getMaterial() == Material.WOOD)
+	                {
+	                    return FuelVC.wood_block_material;
+	                }
+	                
+	                if (block == Blocks.COAL_BLOCK)
+	                {
+	                    return FuelVC.coal_block;
+	                }
+	            }
+	            
+	            if (item == Items.STICK) return FuelVC.stick;
+	            if (item == Item.getItemFromBlock(Blocks.SAPLING)) return FuelVC.sapling;
+	            if (item == Items.COAL) return FuelVC.coal;
+	            if (item == Items.BLAZE_ROD) return FuelVC.blaze_rod;
+	
+	            if (item == Items.LAVA_BUCKET) return 20000;
+    		}
             
             if (item == InitItemsVC.viesoline_pellets) return (ViesCraftConfig.viesolineBurnTime * 20);
             
