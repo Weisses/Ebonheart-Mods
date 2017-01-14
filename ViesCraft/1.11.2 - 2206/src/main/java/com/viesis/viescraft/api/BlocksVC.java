@@ -17,6 +17,6 @@ public class BlocksVC {
 	*/
 	
 	public static Block airship_workbench;
-	public static Block airship_disassembler;
+	public static Block battery_charger;
 	
 }

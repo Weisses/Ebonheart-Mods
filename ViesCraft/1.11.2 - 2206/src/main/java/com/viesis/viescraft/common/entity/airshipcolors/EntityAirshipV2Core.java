@@ -2,6 +2,15 @@ package com.viesis.viescraft.common.entity.airshipcolors;
 
 import java.util.List;
 
+import com.viesis.viescraft.api.FuelVC;
+import com.viesis.viescraft.common.utils.events.EventHandlerAirship;
+import com.viesis.viescraft.configs.ViesCraftConfig;
+import com.viesis.viescraft.init.InitItemsVC;
+import com.viesis.viescraft.network.NetworkHandler;
+import com.viesis.viescraft.network.server.v2.MessageGuiV2Default;
+import com.viesis.viescraft.network.server.v2.MessageGuiV2ModuleInventoryLarge;
+import com.viesis.viescraft.network.server.v2.MessageGuiV2ModuleInventorySmall;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
@@ -29,15 +38,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
-
-import com.viesis.viescraft.api.FuelVC;
-import com.viesis.viescraft.common.utils.events.EventHandlerAirship;
-import com.viesis.viescraft.configs.ViesCraftConfig;
-import com.viesis.viescraft.init.InitItemsVC;
-import com.viesis.viescraft.network.NetworkHandler;
-import com.viesis.viescraft.network.server.v2.MessageGuiV2Default;
-import com.viesis.viescraft.network.server.v2.MessageGuiV2ModuleInventoryLarge;
-import com.viesis.viescraft.network.server.v2.MessageGuiV2ModuleInventorySmall;
 
 public class EntityAirshipV2Core extends EntityAirshipBaseVC {
 	
@@ -156,8 +156,11 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
     {
     	super.writeToNBT(compound);
     	
-    	compound.setInteger("Frame", this.getBoatFrame().getMetadata());
-    	compound.setInteger("Color", this.getBoatColor().getMetadata());
+    	compound.setInteger("Frame", this.getAirshipMetaFrame());
+    	compound.setInteger("Color", this.getAirshipMetaColor());
+    	
+    	//compound.setInteger("FrameBackup", this.getBoatFrame().getMetadata());
+    	//compound.setString("ColorBackup", this.getBoatColor().getName());
     	
     	compound.setTag("Slots", inventory.serializeNBT());
     	
@@ -176,6 +179,17 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
     	
     	this.metaFrame = compound.getInteger("Frame");
     	this.metaColor = compound.getInteger("Color");
+    	
+    	//this.setBoatFrame(EntityAirshipBaseVC.Frame.byId(compound.getInteger("FrameBackup")));
+    	
+    	//if (compound.hasKey("FrameBackup", 8))
+        //{
+        //    this.setBoatFrame(EntityAirshipBaseVC.Frame.byId(compound.getInteger("FrameBackup")));
+        //}
+    	//if (compound.hasKey("ColorBackup", 8))
+        //{
+        //    this.setBoatColor(EntityAirshipBaseVC.Color.getTypeFromString(compound.getString("ColorBackup")));
+        //}
     	
     	inventory.deserializeNBT(compound.getCompoundTag("Slots"));
     	
@@ -857,30 +871,35 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
         {
             Item item = stack.getItem();
             
-            if (item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.AIR)
-            {
-                Block block = Block.getBlockFromItem(item);
-                
-                if (block == Blocks.WOODEN_SLAB)
-                {
-                    return FuelVC.wooden_slab;
-                }
-                
-                if (block.getDefaultState().getMaterial() == Material.WOOD)
-                {
-                    return FuelVC.wood_block_material;
-                }
-                
-                if (block == Blocks.COAL_BLOCK)
-                {
-                    return FuelVC.coal_block;
-                }
-            }
-            
-            if (item == Items.STICK) return FuelVC.stick;
-            if (item == Item.getItemFromBlock(Blocks.SAPLING)) return FuelVC.sapling;
-            if (item == Items.COAL) return FuelVC.coal;
-            if (item == Items.BLAZE_ROD) return FuelVC.blaze_rod;
+            if(ViesCraftConfig.vanillaFuel)
+    		{
+	            if (item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.AIR)
+	            {
+	                Block block = Block.getBlockFromItem(item);
+	                
+	                if (block == Blocks.WOODEN_SLAB)
+	                {
+	                    return FuelVC.wooden_slab;
+	                }
+	                
+	                if (block.getDefaultState().getMaterial() == Material.WOOD)
+	                {
+	                    return FuelVC.wood_block_material;
+	                }
+	                
+	                if (block == Blocks.COAL_BLOCK)
+	                {
+	                    return FuelVC.coal_block;
+	                }
+	            }
+	            
+	            if (item == Items.STICK) return FuelVC.stick;
+	            if (item == Item.getItemFromBlock(Blocks.SAPLING)) return FuelVC.sapling;
+	            if (item == Items.COAL) return FuelVC.coal;
+	            if (item == Items.BLAZE_ROD) return FuelVC.blaze_rod;
+	
+	            if (item == Items.LAVA_BUCKET) return 20000;
+    		}
             
             if (item == InitItemsVC.viesoline_pellets) return (ViesCraftConfig.viesolineBurnTime * 20);
             

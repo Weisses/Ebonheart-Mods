@@ -1,19 +1,11 @@
 package com.viesis.viescraft.common.entity.airshipcolors.slots;
 
-import javax.annotation.Nullable;
-
-import com.viesis.viescraft.api.FuelVC;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 import com.viesis.viescraft.init.InitItemsVC;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.Slot;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
@@ -25,9 +17,29 @@ public class FuelSlotVC extends SlotItemHandler {
 		super(inventoryIn, index, xPosition, yPosition);
 	}
 	
+	@Override
+	public boolean isItemValid(ItemStack stack)
+    {
+		Item item = stack.getItem();
+        
+		if (item == InitItemsVC.viesoline_pellets) return true;
+        
+		return EntityAirshipV1Core.isItemFuel(stack) || isBucket(stack);
+    }
+	
+	public int getItemStackLimit(ItemStack stack)
+    {
+        return isBucket(stack) ? 1 : super.getItemStackLimit(stack);
+    }
+
+    public static boolean isBucket(ItemStack stack)
+    {
+        return stack.getItem() == Items.BUCKET;
+    }
+    
 	/**
      * Check if the stack is a valid item for this slot. Always true beside for the armor slots.
-     */
+     
 	@Override
     public boolean isItemValid(@Nullable ItemStack stack)
     {
@@ -65,5 +77,6 @@ public class FuelSlotVC extends SlotItemHandler {
         
         return false;
     }
+    */
     
 }

@@ -83,8 +83,10 @@ public class EntityAirshipBaseVC extends Entity {
     {
         super(worldIn);
         
+        this.ignoreFrustumCheck = true;
         this.preventEntitySpawning = true;
-        this.setSize(1.375F, 0.5625F);
+        
+        this.setSize(1.0F, 0.5F);
     }
     
     public EntityAirshipBaseVC(World worldIn, double x, double y, double z, int frameIn, int colorIn)
@@ -153,7 +155,7 @@ public class EntityAirshipBaseVC extends Entity {
      */
     public double getMountedYOffset()
     {
-        return -0.1D;
+        return 0.15D;
     }
     
     /**
@@ -715,37 +717,37 @@ public class EntityAirshipBaseVC extends Entity {
      * Sets the Airship color (only used in item_paint_*).
      * @param boatColor
      */
-    public void setBoatColor(EntityAirshipBaseVC.Color boatColor)
-    {
-        this.dataManager.set(BOAT_TYPE_COLOR, Integer.valueOf(boatColor.ordinal()));
-    }
+    //public void setBoatColor(EntityAirshipBaseVC.Color boatColor)
+    //{
+    //    this.dataManager.set(BOAT_TYPE_COLOR, Integer.valueOf(boatColor.ordinal()));
+    //}
     
     /**
      * Gets the Airship color.
      * @return
      */
-    public EntityAirshipBaseVC.Color getBoatColor()
-    {
-        return EntityAirshipBaseVC.Color.byId(((Integer)this.dataManager.get(BOAT_TYPE_COLOR)).intValue());
-    }
+    //public EntityAirshipBaseVC.Color getBoatColor()
+    //{
+    //    return EntityAirshipBaseVC.Color.byId(((Integer)this.dataManager.get(BOAT_TYPE_COLOR)).intValue());
+    //}
     
     /**
      * Sets the Airship color (only used in item_paint_*).
      * @param boatColor
      */
-    public void setBoatFrame(EntityAirshipBaseVC.Color boatColor)
-    {
-        this.dataManager.set(BOAT_TYPE_FRAME, Integer.valueOf(boatColor.ordinal()));
-    }
+    //public void setBoatFrame(EntityAirshipBaseVC.Frame boatColor)
+    //{
+    //    this.dataManager.set(BOAT_TYPE_FRAME, Integer.valueOf(boatColor.ordinal()));
+    //}
     
     /**
      * Gets the Airship color.
      * @return
      */
-    public EntityAirshipBaseVC.Color getBoatFrame()
-    {
-        return EntityAirshipBaseVC.Color.byId(((Integer)this.dataManager.get(BOAT_TYPE_FRAME)).intValue());
-    }
+    //public EntityAirshipBaseVC.Color getBoatFrame()
+    //{
+    //    return EntityAirshipBaseVC.Color.byId(((Integer)this.dataManager.get(BOAT_TYPE_FRAME)).intValue());
+    //}
     
     /**
      * Sets the airshipTotalBurnTime to pass from server to client.

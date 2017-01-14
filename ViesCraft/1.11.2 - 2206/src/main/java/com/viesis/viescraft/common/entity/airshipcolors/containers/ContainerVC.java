@@ -55,11 +55,6 @@ public class ContainerVC extends Container {
 				}
             }
             
-            if (!this.mergeItemStack(itemstack1, 3, 39, false))
-            {
-                return ItemStack.EMPTY;
-            }
-            
             if (itemstack1.isEmpty())
             {
                 slot.putStack(ItemStack.EMPTY);

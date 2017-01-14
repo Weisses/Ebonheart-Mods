@@ -12,10 +12,6 @@ public class EntityAirshipV2 extends EntityAirshipV2Core {
 	public EntityAirshipV2(World worldIn)
     {
         super(worldIn);
-        
-        this.ignoreFrustumCheck = true;
-        this.preventEntitySpawning = true;
-        this.setSize(1.0F, 0.35F);
     }
 	
     public EntityAirshipV2(World worldIn, double x, double y, double z, int frameIn, int colorIn)
@@ -36,7 +32,7 @@ public class EntityAirshipV2 extends EntityAirshipV2Core {
 	@Override
 	public ItemStack getItemBoat()
     {
-    	switch (this.getBoatFrame().ordinal())
+    	switch (this.getAirshipMetaFrame())
         {
             case 0:
             	return new ItemStack(InitItemsVC.item_airship_v2_wood0, 1, this.metaColor);
