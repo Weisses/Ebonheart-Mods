@@ -1,30 +1,26 @@
 package com.viesis.viescraft.client.particle;
 
-import java.util.Random;
+import com.viesis.viescraft.api.Reference;
 
-import net.minecraft.client.particle.ParticleFlame;
+import net.minecraft.client.particle.ParticleEnchantmentTable;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class EntityEnchEbonFX extends ParticleFlame {
+public class EntityRunicFX extends ParticleEnchantmentTable {
 	
-	Random random = new Random();
-
-    public EntityEnchEbonFX(World parWorld,
+    public EntityRunicFX(World parWorld,
             double parX, double parY, double parZ,
             double parMotionX, double parMotionY, double parMotionZ) 
     {
         super(parWorld, parX, parY, parZ, parMotionX, parMotionY, parMotionZ);
         
-        int d1 = random.nextInt(250) + 1;
-        int d2 = random.nextInt(250) + 1;
-        int d3 = random.nextInt(250) + 1;
+        int d1 = Reference.random.nextInt(150) + 1;
+        int d2 = Reference.random.nextInt(150) + 1;
+        int d3 = Reference.random.nextInt(150) + 1;
         
-        particleScale = 0.7F;
+        particleScale = 0.5F;
         setRBGColorF(d1, d2, d3);
-        
     }
-    
 }

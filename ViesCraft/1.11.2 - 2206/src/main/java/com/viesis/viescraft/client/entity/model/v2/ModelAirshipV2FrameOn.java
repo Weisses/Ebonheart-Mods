@@ -1,16 +1,13 @@
 package com.viesis.viescraft.client.entity.model.v2;
 
-import java.util.Random;
+import com.viesis.viescraft.api.Reference;
+import com.viesis.viescraft.client.InitParticlesVCRender;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
-import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.math.MathHelper;
 
 public class ModelAirshipV2FrameOn extends ModelBase {
-	
-	public Random random = new Random();
 	
 	private float bladespin;
 	private long lastframe;
@@ -784,15 +781,11 @@ public class ModelAirshipV2FrameOn extends ModelBase {
     	this.Propeller_L1b.rotateAngleZ += (bladespin * 3);
     	this.Propeller_L1c.rotateAngleZ += (bladespin * 3);
     	
-    	int randomTick = random.nextInt(100) + 1;
+    	int randomTick = Reference.random.nextInt(100) + 1;
     	
-    	if(randomTick < 20)
-    	{
-    		entity.world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, 
-			entity.posX - (double)(MathHelper.sin(-entity.rotationYaw * 0.017453292F) * 00.82F), 
-			entity.posY + 0.95D + (entity.world.rand.nextFloat() * 0.025D), 
-			entity.posZ - (double)(MathHelper.cos(entity.rotationYaw * 0.017453292F) * 00.82F), 
-			0.0D, 0.0D, 0.0D, new int[0]);
-    	}
+		if(randomTick < 20)
+		{
+			InitParticlesVCRender.generateSmokeParticles(entity);
+		}
 	}
 }

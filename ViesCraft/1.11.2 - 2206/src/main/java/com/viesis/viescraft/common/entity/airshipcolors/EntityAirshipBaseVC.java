@@ -812,8 +812,79 @@ public class EntityAirshipBaseVC extends Entity {
 		
 	}
     
+    public static enum Tint
+    {
+        
+    	NORMAL(0, "Plain"),
+    	BLACK(1, "Black"),
+        BLUE(2, "Blue"),
+        BROWN(3, "Brown"),
+        CYAN(4, "Cyan"),
+        GRAY(5, "Gray"),
+        GREEN(6, "Green"),
+        LIGHTBLUE(7, "Light Blue"),
+        LIGHTGRAY(8, "Light Gray"),
+        LIME(9, "Lime"),
+        MAGENTA(10, "Magenta"),
+        ORANGE(11, "Orange"),
+        PINK(12, "Pink"),
+        PURPLE(13, "Purple"),
+        RED(14, "Red"),
+        WHITE(15, "White"),
+        YELLOW(16, "Yellow"),
+    	RAINBOW(17, "Rainbow");
+        
+        private final String name;
+        private final int metadata;
+        
+        private Tint(int metadataIn, String nameIn)
+        {
+            this.name = nameIn;
+            this.metadata = metadataIn;
+        }
+        
+        public String getName()
+        {
+            return this.name;
+        }
+        
+        public int getMetadata()
+        {
+            return this.metadata;
+        }
+        
+        public String toString()
+        {
+            return this.name;
+        }
+        
+        /**
+         * Get a boat type by it's enum ordinal
+         */
+        public static EntityAirshipBaseVC.Tint byId(int id)
+        {
+            if (id < 0 || id >= values().length)
+            {
+                id = 0;
+            }
+            
+            return values()[id];
+        }
+        
+        public static EntityAirshipBaseVC.Tint getTypeFromString(String nameIn)
+        {
+            for (int i = 0; i < values().length; ++i)
+            {
+                if (values()[i].getName().equals(nameIn))
+                {
+                    return values()[i];
+                }
+            }
+            
+            return values()[0];
+        }
+    }
     
-	
     public static enum Frame
     {
         WOOD0(0, "Oak"),
@@ -825,8 +896,16 @@ public class EntityAirshipBaseVC extends Entity {
         DIAMOND(6, "Diamond"),
         EMERALD(7, "Emerald"),
         NETHERBRICK(8, "Nether Brick"),
-        PURPUR(9, "Purpur");
-        
+        PURPUR(9, "Purpur"),
+        ICE(10, "Ice"),
+    	SANDSTONE(11, "Sandstone");
+    	//BRICK(12, "Brick")
+        //GLOWSTONE(13, "Glowstone")
+        //QUARTZ(14, "Quartz")
+    	//PRISMARINE(15, "Prismarine")
+    	//SOULSAND(16, "SoulSand")
+    	//GHOST(17, "Ghost")  // This is a special one that uses nether stars.
+    	
         private final String name;
         private final int metadata;
         

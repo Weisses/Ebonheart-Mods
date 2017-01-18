@@ -3,6 +3,9 @@ package com.viesis.viescraft.common.entity.airshipcolors;
 import java.util.List;
 
 import com.viesis.viescraft.api.FuelVC;
+import com.viesis.viescraft.api.util.LogHelper;
+import com.viesis.viescraft.client.InitParticlesVCRender;
+import com.viesis.viescraft.common.caps.DualEnergyStorageVC;
 import com.viesis.viescraft.common.utils.events.EventHandlerAirship;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 import com.viesis.viescraft.init.InitItemsVC;
@@ -32,7 +35,6 @@ import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.EntitySelectors;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
@@ -219,6 +221,22 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
             	return new ItemStack(InitItemsVC.item_airship_v1_netherbrick, 1, this.metaColor);
             case 9:
             	return new ItemStack(InitItemsVC.item_airship_v1_purpur, 1, this.metaColor);
+            case 10:
+            	return new ItemStack(InitItemsVC.item_airship_v1_ice, 1, this.metaColor);
+            case 11:
+            	return new ItemStack(InitItemsVC.item_airship_v1_sandstone, 1, this.metaColor);
+            //case 12:
+            //	return new ItemStack(InitItemsVC.item_airship_v1_brick, 1, this.metaColor);
+            //case 13:
+            //	return new ItemStack(InitItemsVC.item_airship_v1_glowstone, 1, this.metaColor);
+            //case 14:
+            //	return new ItemStack(InitItemsVC.item_airship_v1_quartz, 1, this.metaColor);
+            //case 15:
+            //	return new ItemStack(InitItemsVC.item_airship_v1_prismarine, 1, this.metaColor);
+            //case 16:
+            //	return new ItemStack(InitItemsVC.item_airship_v1_soulsand, 1, this.metaColor);
+            //case 17:
+            //	return new ItemStack(InitItemsVC.item_airship_v1_ghost, 1, this.metaColor);
             default:
             	return new ItemStack(InitItemsVC.item_airship_v1_wood0, 1, this.metaColor);
         }
@@ -283,6 +301,8 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
         this.getTotalFuelSlotBurnTime();
         
         this.currentModule();
+        
+        LogHelper.info("Y = " + this.motionY);
         
         if (this.canPassengerSteer())
         {
@@ -412,7 +432,15 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
                 }
             	else
             	{
-            		this.motionY += d5;
+            		if(this.motionY >= -0.039D)
+            		{
+            			this.motionY += d5;
+            		}
+            		else
+            		{
+            			this.motionY = -0.04D;
+            		}
+            			
             	}
             }
             else if(isClientAirshipBurning())
@@ -670,41 +698,7 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
     	}
     	else
     	{
-        	this.world.spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, 
-    				this.posX + this.world.rand.nextFloat() * this.width * 2.0F - this.width,
-    				this.posY + 0.5D,
-    				this.posZ + this.world.rand.nextFloat() * this.width * 2.0F - this.width,
-    				0.0D, 0.0D, 0.0D, new int[0]);
-        	
-        	for (int ii = 0; ii < 10; ++ii)
-        	{
-        		int d = random.nextInt(100) + 1;
-        		
-        		if (d <= 2)
-        		{
-        			this.world.spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, 
-        					this.posX + this.world.rand.nextFloat() * this.width * 2.0F - this.width,
-        					this.posY + 0.5D,
-        					this.posZ + this.world.rand.nextFloat() * this.width * 2.0F - this.width,
-        					0.0D, 0.0D, 0.0D, new int[0]);
-        		}
-        		if (d <= 15)
-        		{
-        			this.world.spawnParticle(EnumParticleTypes.EXPLOSION_NORMAL, 
-        					this.posX + this.world.rand.nextFloat() * this.width * 2.0F - this.width,
-        					this.posY + 0.5D,
-        					this.posZ + this.world.rand.nextFloat() * this.width * 2.0F - this.width,
-        					0.0D, 0.25D, 0.0D, new int[0]);
-        		}
-        		if (d <= 25)
-        		{
-        			this.world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, 
-        					this.posX + this.world.rand.nextFloat() * this.width * 2.0F - this.width,
-        					this.posY + 0.5D,
-        					this.posZ + this.world.rand.nextFloat() * this.width * 2.0F - this.width,
-        					0.0D, 0.0D, 0.0D, new int[0]);
-        		}
-        	}
+        	InitParticlesVCRender.generateExplosions(this);
     	}
     }
     
@@ -904,7 +898,7 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
         else
         {
             Item item = stack.getItem();
-            
+            DualEnergyStorageVC cap = (DualEnergyStorageVC) stack.getCapability(DualEnergyStorageVC.CAPABILITY_HOLDER , null);
             if(ViesCraftConfig.vanillaFuel)
     		{
 	            if (item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.AIR)
@@ -931,11 +925,12 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
 	            if (item == Item.getItemFromBlock(Blocks.SAPLING)) return FuelVC.sapling;
 	            if (item == Items.COAL) return FuelVC.coal;
 	            if (item == Items.BLAZE_ROD) return FuelVC.blaze_rod;
-	
+	            
 	            if (item == Items.LAVA_BUCKET) return 20000;
     		}
             
             if (item == InitItemsVC.viesoline_pellets) return (ViesCraftConfig.viesolineBurnTime * 20);
+            //if (item == InitItemsVC.airship_battery) return cap.getEnergyStored();
             
             return net.minecraftforge.fml.common.registry.GameRegistry.getFuelValue(stack);
         }

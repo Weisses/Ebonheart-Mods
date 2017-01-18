@@ -29,8 +29,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemAirshipBattery extends Item {
 	
-	//public DualEnergyStorageVC energy;
-	
 	private int capacity;
 	private int maxReceive;
 	private int maxExtract;
@@ -43,69 +41,29 @@ public class ItemAirshipBattery extends Item {
 		this.maxReceive = maxReceiveIn;
 		this.maxExtract = maxExtractIn;
 		
+		this.setMaxDamage(capacity);
 		this.setMaxStackSize(1);
 		this.setCreativeTab(ViesCraft.tabViesCraftItems);
-		
-		//this.energy = new DualEnergyStorageVC(capacity, maxReceive, maxExtract);
-		
 		
 	}
 	
 	public EnumRarity getRarity(ItemStack stack)
     {
-        return EnumRarity.UNCOMMON;
+		return EnumRarity.UNCOMMON;
     }
 	
-	//@Override
-    //public void addInformation (ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced) {
-        
-    //    CapabilityProviderVC.createTooltip(stack, tooltip);
-    //}
-	
+	public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected)
+    {
+		DualEnergyStorageVC cap = (DualEnergyStorageVC) stack.getCapability(DualEnergyStorageVC.CAPABILITY_HOLDER , null);
+		
+		this.setDamage(stack, (cap.getMaxEnergyStored() + 1) - cap.getEnergyStored());
+    }
 	
 	@Override
     public ICapabilityProvider initCapabilities (ItemStack stack, NBTTagCompound nbt) 
 	{
-		/**
-		return new ICapabilityProvider()
-		{
-			public DualEnergyStorageVC energy = new DualEnergyStorageVC(1000, 1000, 2000);
-			//public DualEnergyStorage energy = new DualEnergyStorage(ConfigValues.MAX_TESLA, ConfigValues.TESLA_PER_TICK * 2, ConfigValues.TESLA_PER_TICK);
-
-			@Override
-			public boolean hasCapability(Capability<?> capability, EnumFacing facing)
-			{
-				return capability==CapabilityEnergy.ENERGY || capability == DualEnergyStorageVC.CAPABILITY_HOLDER;
-			}
-			
-			@Override
-			public <T> T getCapability(Capability<T> capability, EnumFacing facing)
-			{
-				if(capability==CapabilityEnergy.ENERGY || capability == DualEnergyStorageVC.CAPABILITY_HOLDER)
-					return (T) energy;
-				//if(capability==CapabilityEnergy.ENERGY)
-				//	return (T)shaders;
-				return null;
-			}
-			
-
-			@Override
-		    public NBTTagCompound serializeNBT () {
-		        
-		        return this.energy.serializeNBT();
-		    }
-		    
-		    @Override
-		    public void deserializeNBT (NBTTagCompound nbt) {
-		        
-		        this.energy.deserializeNBT(nbt);
-		    }
-		};
-		*/
-		return new CapabilityProviderVC(new DualEnergyStorageVC(1000, 100, 100));
+		return new CapabilityProviderVC(new DualEnergyStorageVC(capacity, maxReceive, maxExtract));
     }
-	
-	
 	
 	@Override
 	public String getItemStackDisplayName(ItemStack stack)
@@ -113,34 +71,17 @@ public class ItemAirshipBattery extends Item {
         return ("Airship Battery");
     }
 	
-
-    //public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected)
-    //{
-    	//DualEnergyStorageVC cap = (DualEnergyStorageVC) stack.getCapability(CapabilityEnergy.ENERGY, null);
-		
-    	
-    	//LogHelper.info("Tesla energy = " + cap.getCapacity());
-    
-		
-	//}
-    
-	
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn)
     {
 		ItemStack itemstack = playerIn.getHeldItem(handIn);
-		DualEnergyStorageVC
-		//IEnergyStorage 
-		cap = (DualEnergyStorageVC) itemstack.getCapability(
-				DualEnergyStorageVC.CAPABILITY_HOLDER
-				//CapabilityEnergy.ENERGY
-				, null);
+		DualEnergyStorageVC cap = (DualEnergyStorageVC) itemstack.getCapability(DualEnergyStorageVC.CAPABILITY_HOLDER, null);
 		
 		if(playerIn.isSneaking())
 		{
 		//	if (!worldIn.isRemote)
 		//	{
-				cap.receiveEnergy(10, false);
+				cap.receiveEnergy(100, false);
 				
 				LogHelper.info("+Stored energy: " + cap.getEnergyStored());
 				LogHelper.info("+Max energy = " + cap.getMaxEnergyStored());
@@ -150,28 +91,22 @@ public class ItemAirshipBattery extends Item {
 		{
 		//if (!worldIn.isRemote)
 		//	{
-				cap.extractEnergy(1, false);
+				cap.extractEnergy(10, false);
 				
 				LogHelper.info("-Stored energy: " + cap.getEnergyStored());
 				LogHelper.info("-Max energy = " + cap.getMaxEnergyStored());
 		//	}
 		}
+		
+		
         return new ActionResult(EnumActionResult.PASS, playerIn.getHeldItem(handIn));
     }
-	
 	
 	@SideOnly(Side.CLIENT)
 	@Override
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List toolTip, boolean advanced) 
 	{
-		//IEnergyStorage cap = stack.getCapability(CapabilityEnergy.ENERGY, null);
-		
-		DualEnergyStorageVC
-		//IEnergyStorage 
-		cap = (DualEnergyStorageVC) stack.getCapability(
-				DualEnergyStorageVC.CAPABILITY_HOLDER
-				//CapabilityEnergy.ENERGY
-				, null);
+		DualEnergyStorageVC cap = (DualEnergyStorageVC) stack.getCapability(DualEnergyStorageVC.CAPABILITY_HOLDER, null);
 		
 		toolTip.add(TextFormatting.DARK_PURPLE + "Forge Stored energy: " + cap.getEnergyStored());
 		toolTip.add(TextFormatting.DARK_PURPLE + "Tesla Stored energy: " + cap.getStoredPower());
