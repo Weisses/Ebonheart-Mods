@@ -1,5 +1,12 @@
 package com.viesis.viescraft.common.items.airshipitems.v1;
 
+import com.viesis.viescraft.ViesCraft;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
+import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipV1;
+import com.viesis.viescraft.common.items.ItemHelper;
+import com.viesis.viescraft.common.items.airshipitems.ItemAirshipCore;
+import com.viesis.viescraft.configs.ViesCraftConfig;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
@@ -10,25 +17,14 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 
-import com.viesis.viescraft.ViesCraft;
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
-import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipV1;
-import com.viesis.viescraft.common.items.ItemHelper;
-import com.viesis.viescraft.common.items.airshipitems.ItemAirshipCore;
-import com.viesis.viescraft.configs.ViesCraftConfig;
-
 public class ItemAirshipV1 extends ItemAirshipCore {
 	
-	private int metaFrameItem;
-	
-	public ItemAirshipV1(String unlocalizedName, int frameIn) 
+	public ItemAirshipV1(String unlocalizedName) 
 	{
-		this.metaFrameItem = frameIn;
-        
 		this.setHasSubtypes(true);
         this.setMaxDamage(0);
         
-        ItemHelper.setItemName(this, unlocalizedName);
+        ItemHelper.setItemName(this, "v1/item_airship_v1");
 		this.setCreativeTab(ViesCraft.tabViesCraftAirshipsV1);
 	}
 	
@@ -36,8 +32,24 @@ public class ItemAirshipV1 extends ItemAirshipCore {
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn)
     {
         ItemStack itemstack = playerIn.getHeldItem(handIn);
+        
+        float colorRed = 210;
+		float colorGreen = 180;
+		float colorBlue = 140;
+    	
         if(playerIn.isSneaking())
 		{
+        	if(itemstack.hasTagCompound())
+	        {
+        		colorRed = itemstack.getTagCompound().getFloat("ColorRed"); 
+				colorGreen = itemstack.getTagCompound().getFloat("ColorGreen"); 
+				colorBlue = itemstack.getTagCompound().getFloat("ColorBlue");
+	        }
+        	else
+        	{
+        		
+        	}
+        	
         	if (!playerIn.capabilities.isCreativeMode)
         	{
         		itemstack.shrink(1);
@@ -47,7 +59,8 @@ public class ItemAirshipV1 extends ItemAirshipCore {
 			
 			if (!worldIn.isRemote)
 			{
-				EntityItemAirshipV1 entityairship = new EntityItemAirshipV1(worldIn, playerIn, this.metaFrameItem, this.getMetadata(itemstack));
+				EntityItemAirshipV1 entityairship = new EntityItemAirshipV1(worldIn, playerIn, this.getMetadata(itemstack), colorRed, colorGreen, colorBlue);
+				
 				entityairship.setHeadingFromThrower(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, -20.0F, 0.7F, 1.0F);
 				worldIn.spawnEntity(entityairship);
 			}
@@ -55,14 +68,16 @@ public class ItemAirshipV1 extends ItemAirshipCore {
 			playerIn.addStat(StatList.getObjectUseStats(this));
 			return new ActionResult(EnumActionResult.SUCCESS, itemstack);
 		}
+        
 		return new ActionResult(EnumActionResult.SUCCESS, itemstack);
     }
 	
 	@Override
 	public String getItemStackDisplayName(ItemStack stack)
     {
-        return (EntityAirshipBaseVC.Frame.byId(this.metaFrameItem).getName() + " " 
-        		+ EntityAirshipBaseVC.Color.byId(this.getMetadata(stack)).getName() + " " 
-        		+ ViesCraftConfig.v1AirshipName);
+        return (EntityAirshipBaseVC.Frame.byId(this.getMetadata(stack)).getName() 
+            		+ " " 
+            		+ ViesCraftConfig.v1AirshipName);
+        
     }
 }

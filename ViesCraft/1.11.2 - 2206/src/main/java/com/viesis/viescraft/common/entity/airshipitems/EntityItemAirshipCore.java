@@ -1,17 +1,14 @@
 package com.viesis.viescraft.common.entity.airshipitems;
 
-import java.util.Random;
+import com.viesis.viescraft.api.Reference;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.datafix.DataFixer;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
 public class EntityItemAirshipCore extends EntityThrowable {
-	
-	public static Random random = new Random();
 	
     public EntityItemAirshipCore(World worldIn)
     {
@@ -51,7 +48,7 @@ public class EntityItemAirshipCore extends EntityThrowable {
     {
     	for (int ii = 0; ii < 10; ++ii)
     	{
-			int d = random.nextInt(100) + 1;
+			int d = Reference.random.nextInt(100) + 1;
 			
 			this.world.spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, 
 					this.posX + this.world.rand.nextFloat() * this.width * 2.0F - this.width,

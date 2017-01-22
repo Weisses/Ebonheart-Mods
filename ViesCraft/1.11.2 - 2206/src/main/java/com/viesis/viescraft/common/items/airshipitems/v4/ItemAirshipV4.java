@@ -14,10 +14,10 @@ import com.viesis.viescraft.ViesCraft;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
 import com.viesis.viescraft.common.entity.airshipitems.v4.EntityItemAirshipV4;
 import com.viesis.viescraft.common.items.ItemHelper;
-import com.viesis.viescraft.common.items.airshipitems.ItemAirshipCore;
+import com.viesis.viescraft.common.items.airshipitems.v1.old.ItemAirshipCoreOLD;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 
-public class ItemAirshipV4 extends ItemAirshipCore {
+public class ItemAirshipV4 extends ItemAirshipCoreOLD {
 	
 	private int metaFrameItem;
 	

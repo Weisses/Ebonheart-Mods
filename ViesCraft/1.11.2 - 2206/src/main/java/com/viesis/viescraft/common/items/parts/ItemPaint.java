@@ -66,25 +66,29 @@ public class ItemPaint extends Item {
         {
 			if(player.isSneaking())
 			{
+				airship.metaColorRed = 100;
+				airship.metaColorGreen = 0;
+				airship.metaColorBlue = 100;
+				
 				if(this.getMetadata(stack) == 0)
 				{
-					if(airship.metaColor != 0)
-					{
-						airship.metaColor = 0;
+					//if(airship.metaColor != 0)
+					//{
+					//	airship.metaColor = 0;
 						
 						if (!player.capabilities.isCreativeMode)
 	                    {
 							player.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.BUCKET));
 	                    }
 						return true;
-					}
-					return true;
+					//}
+					//return true;
 				}
 				else
 				{
-					if(airship.metaColor == 0)
-					{
-						airship.metaColor = this.getMetadata(stack);
+					//if(airship.metaColor == 0)
+					//{
+					//	airship.metaColor = this.getMetadata(stack);
 						player.addStat(InitAchievementsVC.airship_create_color);
 						
 						if (!player.capabilities.isCreativeMode)
@@ -92,8 +96,8 @@ public class ItemPaint extends Item {
 							player.setItemStackToSlot(EntityEquipmentSlot.MAINHAND, new ItemStack(Items.BUCKET));
 	                    }
 						return true;
-					}
-					return true;
+					//}
+					//return true;
 				}
 			}
 			return true;

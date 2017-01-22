@@ -3,6 +3,7 @@ package com.viesis.viescraft.client.entity.render.airshipcolors.v1;
 import org.lwjgl.opengl.GL11;
 
 import com.viesis.viescraft.api.Reference;
+import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.client.InitParticlesVCRender;
 import com.viesis.viescraft.client.entity.model.ModelAirshipPanel;
 import com.viesis.viescraft.client.entity.model.v1.ModelAirshipV1Color;
@@ -24,24 +25,8 @@ public class RenderAirshipV1 extends Render<EntityAirshipV1Core> {
 	
 	private static final ResourceLocation[] ENTITY_COLOR_TEXTURE = new ResourceLocation[] 
 	{
-		new ResourceLocation(Reference.MOD_ID, "textures/models/color/airship_color_normal.png"),
-		new ResourceLocation(Reference.MOD_ID, "textures/models/color/airship_color_black.png"),
-		new ResourceLocation(Reference.MOD_ID, "textures/models/color/airship_color_blue.png"),
-		new ResourceLocation(Reference.MOD_ID, "textures/models/color/airship_color_brown.png"),
-		new ResourceLocation(Reference.MOD_ID, "textures/models/color/airship_color_cyan.png"),
-		new ResourceLocation(Reference.MOD_ID, "textures/models/color/airship_color_gray.png"),
-		new ResourceLocation(Reference.MOD_ID, "textures/models/color/airship_color_green.png"),
-		new ResourceLocation(Reference.MOD_ID, "textures/models/color/airship_color_lightblue.png"),
-		new ResourceLocation(Reference.MOD_ID, "textures/models/color/airship_color_lightgray.png"),
-		new ResourceLocation(Reference.MOD_ID, "textures/models/color/airship_color_lime.png"),
-		new ResourceLocation(Reference.MOD_ID, "textures/models/color/airship_color_magenta.png"),
-		new ResourceLocation(Reference.MOD_ID, "textures/models/color/airship_color_orange.png"),
-		new ResourceLocation(Reference.MOD_ID, "textures/models/color/airship_color_pink.png"),
-		new ResourceLocation(Reference.MOD_ID, "textures/models/color/airship_color_purple.png"),
-		new ResourceLocation(Reference.MOD_ID, "textures/models/color/airship_color_red.png"),
-		new ResourceLocation(Reference.MOD_ID, "textures/models/color/airship_color_white.png"),
-		new ResourceLocation(Reference.MOD_ID, "textures/models/color/airship_color_yellow.png"),
-		new ResourceLocation(Reference.MOD_ID, "textures/models/color/airship_color_rainbow.png")
+		
+		new ResourceLocation(Reference.MOD_ID, "textures/models/color/airship_color.png")
 	};
 	
 	private static final ResourceLocation[] ENTITY_FRAME_TEXTURE = new ResourceLocation[] 
@@ -67,14 +52,6 @@ public class RenderAirshipV1 extends Render<EntityAirshipV1Core> {
 		new ResourceLocation(Reference.MOD_ID, "textures/models/screens/module_speed_major.png"),
 		new ResourceLocation(Reference.MOD_ID, "textures/models/screens/module_fuel_infinite.png")
 	};
-	
-	private static final int[][] multi = new int[][]{
-		  { 0, 100, 0},
-		  { 0, 100, 0},
-		  { 0, 0, 100},
-		  { 0, 0, 0},
-		  { 0, 0, 0}
-		};
 	
 	/** Instance of Color Model for rendering. */
 	protected ModelBase modelAirshipV1Color = new ModelAirshipV1Color();
@@ -147,35 +124,31 @@ public class RenderAirshipV1 extends Render<EntityAirshipV1Core> {
         	this.moduleNumber = 0;
         }
 		
+        float red = entity.metaColorRed / 255.0f;
+        float green = entity.metaColorGreen / 255.0f;
+        float blue = entity.metaColorBlue / 255.0f;
+        
         if(entity.getPowered() > 0)
         {
-        	
-        	this.bindTexture(ENTITY_COLOR_TEXTURE[entity.getAirshipMetaColor()]);
-        	this.modelAirshipV1Color.render(entity, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
-        	
-        	this.bindTexture(ENTITY_FRAME_TEXTURE[entity.getAirshipMetaFrame()]);
+        	this.bindTexture(ENTITY_FRAME_TEXTURE[entity.metaFrame]);
         	this.modelAirshipV1FrameOn.render(entity, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
-        	this.bindTexture(ENTITY_SCREEN_TEXTURE[this.moduleNumber]);
-        	this.modelAirshipPanel.render(entity, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
         }
         else
         {
-        	
-        	
-        	this.bindTexture(ENTITY_COLOR_TEXTURE[entity.getAirshipMetaColor()]);
-        	this.modelAirshipV1Color.render(entity, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
-        	
-        	//GlStateManager.color(multi[0][0], multi[0][1], multi[0][2], 1F);
-        	
-        	this.bindTexture(ENTITY_FRAME_TEXTURE[entity.getAirshipMetaFrame()]);
+        	this.bindTexture(ENTITY_FRAME_TEXTURE[entity.metaFrame]);
         	this.modelAirshipV1FrameOff.render(entity, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
-        	
-        	//GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-        	
-        	
-        	this.bindTexture(ENTITY_SCREEN_TEXTURE[this.moduleNumber]);
-        	this.modelAirshipPanel.render(entity, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
         }
+        
+
+    	this.bindTexture(ENTITY_SCREEN_TEXTURE[this.moduleNumber]);
+    	this.modelAirshipPanel.render(entity, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
+
+    	GlStateManager.color(red, green, blue, 1F);
+    	this.bindTexture(ENTITY_COLOR_TEXTURE[0]);
+    	this.modelAirshipV1Color.render(entity, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
+    	GlStateManager.color(1F, 1F, 1F, 1F);
+    	
+    	
         
         if (this.renderOutlines)
         {
@@ -205,9 +178,6 @@ public class RenderAirshipV1 extends Render<EntityAirshipV1Core> {
         //This actually rotates things!!!!
     	//long angle = (System.currentTimeMillis() / 40) % 360;
         
-		
-		
-		
         if(entity.leftInputDown)
         {
         	

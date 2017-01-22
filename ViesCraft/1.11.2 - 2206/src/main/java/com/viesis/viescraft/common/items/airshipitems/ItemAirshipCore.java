@@ -12,6 +12,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import com.viesis.viescraft.api.ColorHelperVC;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
 
 public class ItemAirshipCore extends Item {
@@ -25,6 +26,18 @@ public class ItemAirshipCore extends Item {
 	@Override
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List toolTip, boolean advanced) 
 	{
+		if(stack.hasTagCompound())
+        {
+			toolTip.add(TextFormatting.GREEN + "Color : " + TextFormatting.GREEN + ColorHelperVC.getColorNameFromRgb(
+					stack.getTagCompound().getInteger("ColorRed"), 
+					stack.getTagCompound().getInteger("ColorGreen"), 
+					stack.getTagCompound().getInteger("ColorBlue")));
+        }
+        else
+        {
+        	toolTip.add(TextFormatting.GREEN + "Color : None");
+        }
+		toolTip.add("");
 		toolTip.add(TextFormatting.DARK_PURPLE + "Hold " + TextFormatting.WHITE + "[Shift + Right-Click]" + TextFormatting.DARK_PURPLE + " to throw this");
 		toolTip.add(TextFormatting.DARK_PURPLE + "item and unleash the airship within.");
 		toolTip.add("");
@@ -41,7 +54,7 @@ public class ItemAirshipCore extends Item {
 	@Override
     public void getSubItems(Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems)
     {
-    	for (EntityAirshipBaseVC.Color contents : EntityAirshipBaseVC.Color.values()) 
+    	for (EntityAirshipBaseVC.Frame contents : EntityAirshipBaseVC.Frame.values()) 
     	{
 			int meta = contents.getMetadata();
 			ItemStack subItemStack = new ItemStack(itemIn, 1, meta);

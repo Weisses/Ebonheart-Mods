@@ -1,13 +1,8 @@
 package com.viesis.viescraft.network;
 
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraftforge.fml.common.network.NetworkRegistry;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
-import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
-import net.minecraftforge.fml.relauncher.Side;
-
 import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.network.client.MessageConfig;
+import com.viesis.viescraft.network.server.MessageGuiColorizerBalloon;
 import com.viesis.viescraft.network.server.v1.MessageGuiV1Default;
 import com.viesis.viescraft.network.server.v1.MessageGuiV1Module;
 import com.viesis.viescraft.network.server.v1.MessageGuiV1ModuleInventoryLarge;
@@ -24,6 +19,12 @@ import com.viesis.viescraft.network.server.v4.MessageGuiV4Default;
 import com.viesis.viescraft.network.server.v4.MessageGuiV4Module;
 import com.viesis.viescraft.network.server.v4.MessageGuiV4ModuleInventoryLarge;
 import com.viesis.viescraft.network.server.v4.MessageGuiV4ModuleInventorySmall;
+
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
+import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import net.minecraftforge.fml.relauncher.Side;
 
 public class NetworkHandler {
 	
@@ -55,6 +56,10 @@ public class NetworkHandler {
 		INSTANCE.registerMessage(MessageGuiV2ModuleInventoryLarge.class, MessageGuiV2ModuleInventoryLarge.class, 14, Side.SERVER);
 		INSTANCE.registerMessage(MessageGuiV3ModuleInventoryLarge.class, MessageGuiV3ModuleInventoryLarge.class, 15, Side.SERVER);
 		INSTANCE.registerMessage(MessageGuiV4ModuleInventoryLarge.class, MessageGuiV4ModuleInventoryLarge.class, 16, Side.SERVER);
+		
+		INSTANCE.registerMessage(MessageGuiColorizerBalloon.class, MessageGuiColorizerBalloon.class, 60, Side.SERVER);
+		//INSTANCE.registerMessage(MessageColorizerRed.class, MessageColorizerRed.class, 1, Side.SERVER);
+		
 	}
 	
 	public static void sendToServer(IMessage message)

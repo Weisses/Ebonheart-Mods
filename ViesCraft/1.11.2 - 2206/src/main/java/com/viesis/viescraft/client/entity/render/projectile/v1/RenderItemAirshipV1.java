@@ -1,5 +1,8 @@
 package com.viesis.viescraft.client.entity.render.projectile.v1;
 
+import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipV1;
+import com.viesis.viescraft.init.InitItemsVC;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
@@ -10,13 +13,9 @@ import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipV1;
-import com.viesis.viescraft.init.InitItemsVC;
 
 @SideOnly(Side.CLIENT)
 public class RenderItemAirshipV1 extends Render<EntityItemAirshipV1> {

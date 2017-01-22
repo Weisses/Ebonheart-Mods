@@ -33,8 +33,12 @@ import com.viesis.viescraft.api.util.Keybinds;
 
 public class EntityAirshipBaseVC extends Entity {
 	
+	
 	public int metaFrame;
-	public int metaColor;
+	
+	public float metaColorRed;
+	public float metaColorGreen;
+	public float metaColorBlue;
 	
 	public Random random = new Random();
 	
@@ -42,7 +46,9 @@ public class EntityAirshipBaseVC extends Entity {
     protected static final DataParameter<Integer> FORWARD_DIRECTION_VC = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
     protected static final DataParameter<Float> DAMAGE_TAKEN_VC = EntityDataManager.<Float>createKey(EntityAirshipBaseVC.class, DataSerializers.FLOAT);
     protected static final DataParameter<Integer> AIRSHIP_TYPE_FRAME_VC = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
-    protected static final DataParameter<Integer> AIRSHIP_TYPE_COLOR_VC = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+    protected static final DataParameter<Float> AIRSHIP_TYPE_COLOR_RED_VC = EntityDataManager.<Float>createKey(EntityAirshipBaseVC.class, DataSerializers.FLOAT);
+    protected static final DataParameter<Float> AIRSHIP_TYPE_COLOR_GREEN_VC = EntityDataManager.<Float>createKey(EntityAirshipBaseVC.class, DataSerializers.FLOAT);
+    protected static final DataParameter<Float> AIRSHIP_TYPE_COLOR_BLUE_VC = EntityDataManager.<Float>createKey(EntityAirshipBaseVC.class, DataSerializers.FLOAT);
     
     /** How much of current speed to retain. Value zero to one. */
     protected float momentum;
@@ -89,12 +95,14 @@ public class EntityAirshipBaseVC extends Entity {
         this.setSize(1.0F, 0.5F);
     }
     
-    public EntityAirshipBaseVC(World worldIn, double x, double y, double z, int frameIn, int colorIn)
+    public EntityAirshipBaseVC(World worldIn, double x, double y, double z, int frameIn, int colorRedIn, int colorGreenIn, int colorBlueIn)
     {
         this(worldIn);
         this.setPosition(x, y, z);
         
-        this.metaColor = colorIn;
+        this.metaColorRed = colorRedIn;
+        this.metaColorGreen = colorGreenIn;
+        this.metaColorBlue = colorBlueIn;
         this.metaFrame = frameIn;
         
         this.motionX = 0.0D;
@@ -120,7 +128,9 @@ public class EntityAirshipBaseVC extends Entity {
         this.dataManager.register(FORWARD_DIRECTION_VC, Integer.valueOf(1));
         this.dataManager.register(DAMAGE_TAKEN_VC, Float.valueOf(0.0F));
         this.dataManager.register(AIRSHIP_TYPE_FRAME_VC, Integer.valueOf(this.metaFrame));
-        this.dataManager.register(AIRSHIP_TYPE_COLOR_VC, Integer.valueOf(this.metaColor));
+        this.dataManager.register(AIRSHIP_TYPE_COLOR_RED_VC, Float.valueOf(this.metaColorRed));
+        this.dataManager.register(AIRSHIP_TYPE_COLOR_GREEN_VC, Float.valueOf(this.metaColorGreen));
+        this.dataManager.register(AIRSHIP_TYPE_COLOR_BLUE_VC, Float.valueOf(this.metaColorBlue));
     }
     
     /**
@@ -714,7 +724,7 @@ public class EntityAirshipBaseVC extends Entity {
     }
 
     /**
-     * Sets the airshipTotalBurnTime to pass from server to client.
+     * Sets the Frame.
      */
     public void setAirshipMetaFrame(int airshipMeta)
     {
@@ -722,7 +732,7 @@ public class EntityAirshipBaseVC extends Entity {
     }
 	
     /**
-     * Gets the airshipTotalBurnTime to pass from server to client.
+     * Gets the Frame.
      */
     public int getAirshipMetaFrame()
     {
@@ -730,19 +740,51 @@ public class EntityAirshipBaseVC extends Entity {
     }
     
     /**
-     * Sets the airshipTotalBurnTime to pass from server to client.
+     * Sets the Color Red.
      */
-    public void setAirshipMetaColor(int airshipMeta)
+    public void setAirshipMetaColorRed(float airshipMeta)
     {
-        this.dataManager.set(AIRSHIP_TYPE_COLOR_VC, Integer.valueOf(airshipMeta));
+        this.dataManager.set(AIRSHIP_TYPE_COLOR_RED_VC, Float.valueOf(airshipMeta));
     }
 	
     /**
-     * Gets the airshipTotalBurnTime to pass from server to client.
+     * Gets the Color Red.
      */
-    public int getAirshipMetaColor()
+    public float getAirshipMetaColorRed()
     {
-        return ((Integer)this.dataManager.get(AIRSHIP_TYPE_COLOR_VC)).intValue();
+        return ((Float)this.dataManager.get(AIRSHIP_TYPE_COLOR_RED_VC)).floatValue();
+    }
+    
+    /**
+     * Sets the Color Green.
+     */
+    public void setAirshipMetaColorGreen(float airshipMeta)
+    {
+        this.dataManager.set(AIRSHIP_TYPE_COLOR_GREEN_VC, Float.valueOf(airshipMeta));
+    }
+	
+    /**
+     * Gets the Color Green.
+     */
+    public float getAirshipMetaColorGreen()
+    {
+        return ((Float)this.dataManager.get(AIRSHIP_TYPE_COLOR_GREEN_VC)).floatValue();
+    }
+    
+    /**
+     * Sets the Color Blue.
+     */
+    public void setAirshipMetaColorBlue(float airshipMeta)
+    {
+        this.dataManager.set(AIRSHIP_TYPE_COLOR_BLUE_VC, Float.valueOf(airshipMeta));
+    }
+	
+    /**
+     * Gets the Color Blue.
+     */
+    public float getAirshipMetaColorBlue()
+    {
+        return ((Float)this.dataManager.get(AIRSHIP_TYPE_COLOR_BLUE_VC)).floatValue();
     }
     
     /**
@@ -752,14 +794,19 @@ public class EntityAirshipBaseVC extends Entity {
     {
         if (this.world.isRemote)
         {
-        	this.metaColor = this.getAirshipMetaColor();
         	this.metaFrame = this.getAirshipMetaFrame();
+        	this.metaColorRed = this.getAirshipMetaColorRed();
+        	this.metaColorGreen = this.getAirshipMetaColorGreen();
+        	this.metaColorBlue = this.getAirshipMetaColorBlue();
+        	
         }
     	
         if(!this.world.isRemote)
 		{
-        	this.setAirshipMetaColor(this.metaColor);
         	this.setAirshipMetaFrame(this.metaFrame);
+        	this.setAirshipMetaColorRed(this.metaColorRed);
+        	this.setAirshipMetaColorGreen(this.metaColorGreen);
+        	this.setAirshipMetaColorBlue(this.metaColorBlue);
 		}
     }
     
@@ -812,79 +859,9 @@ public class EntityAirshipBaseVC extends Entity {
 		
 	}
     
-    public static enum Tint
-    {
-        
-    	NORMAL(0, "Plain"),
-    	BLACK(1, "Black"),
-        BLUE(2, "Blue"),
-        BROWN(3, "Brown"),
-        CYAN(4, "Cyan"),
-        GRAY(5, "Gray"),
-        GREEN(6, "Green"),
-        LIGHTBLUE(7, "Light Blue"),
-        LIGHTGRAY(8, "Light Gray"),
-        LIME(9, "Lime"),
-        MAGENTA(10, "Magenta"),
-        ORANGE(11, "Orange"),
-        PINK(12, "Pink"),
-        PURPLE(13, "Purple"),
-        RED(14, "Red"),
-        WHITE(15, "White"),
-        YELLOW(16, "Yellow"),
-    	RAINBOW(17, "Rainbow");
-        
-        private final String name;
-        private final int metadata;
-        
-        private Tint(int metadataIn, String nameIn)
-        {
-            this.name = nameIn;
-            this.metadata = metadataIn;
-        }
-        
-        public String getName()
-        {
-            return this.name;
-        }
-        
-        public int getMetadata()
-        {
-            return this.metadata;
-        }
-        
-        public String toString()
-        {
-            return this.name;
-        }
-        
-        /**
-         * Get a boat type by it's enum ordinal
-         */
-        public static EntityAirshipBaseVC.Tint byId(int id)
-        {
-            if (id < 0 || id >= values().length)
-            {
-                id = 0;
-            }
-            
-            return values()[id];
-        }
-        
-        public static EntityAirshipBaseVC.Tint getTypeFromString(String nameIn)
-        {
-            for (int i = 0; i < values().length; ++i)
-            {
-                if (values()[i].getName().equals(nameIn))
-                {
-                    return values()[i];
-                }
-            }
-            
-            return values()[0];
-        }
-    }
-    
+	/**
+	 * Frame enum - Represents various frame types.
+	 */
     public static enum Frame
     {
         WOOD0(0, "Oak"),

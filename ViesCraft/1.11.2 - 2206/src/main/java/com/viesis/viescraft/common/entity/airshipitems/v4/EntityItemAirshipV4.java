@@ -1,14 +1,14 @@
 package com.viesis.viescraft.common.entity.airshipitems.v4;
 
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV4Core;
-import com.viesis.viescraft.common.entity.airshipitems.EntityItemAirshipCore;
+import com.viesis.viescraft.common.entity.airshipitems.v1.old.EntityItemAirshipCoreOLD;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
-public class EntityItemAirshipV4 extends EntityItemAirshipCore {
+public class EntityItemAirshipV4 extends EntityItemAirshipCoreOLD {
 	
 	private int metaFrameItem;
 	private int metaColorItem;

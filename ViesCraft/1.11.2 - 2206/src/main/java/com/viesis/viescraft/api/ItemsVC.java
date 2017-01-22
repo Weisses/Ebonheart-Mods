@@ -10,7 +10,7 @@ public class ItemsVC {
 	public static Item guidebook_socket;
 	
 	public static Item viesoline_pellets;
-	public static Item airship_battery;
+	//public static Item airship_battery;
 	
 	public static Item airship_balloon;
 	public static Item airship_engine;
@@ -18,7 +18,9 @@ public class ItemsVC {
 	public static Item airship_frame;
 	
 	public static Item airship_dismounter;
-
+	
+	public static Item item_balloon_colorizer;
+	
 	public static Item item_paint;
 	
 	public static Item module_chip;
@@ -38,7 +40,86 @@ public class ItemsVC {
 	
 	//==================================================
 	
-	//public static Item item_airship_v1;
+	public static Item item_airship_v1;
+	
+	public static Item item_v1_airship_oak;
+	public static Item item_v1_airship_iron;
+	public static Item item_v1_airship_redstone;
+	public static Item item_v1_airship_gold;
+	public static Item item_v1_airship_lapislazuli;
+	public static Item item_v1_airship_obsidian;
+	public static Item item_v1_airship_diamond;
+	public static Item item_v1_airship_emerald;
+	public static Item item_v1_airship_netherbrick;
+	public static Item item_v1_airship_purpur;
+	public static Item item_v1_airship_ice;
+	public static Item item_v1_airship_sandstone;
+	public static Item item_v1_airship_brick;
+	public static Item item_v1_airship_glowstone;
+	public static Item item_v1_airship_quartz;
+	public static Item item_v1_airship_prismarine;
+	public static Item item_v1_airship_soulsand;
+	public static Item item_v1_airship_ghost;
+	
+	public static Item item_v2_airship_oak;
+	public static Item item_v2_airship_iron;
+	public static Item item_v2_airship_redstone;
+	public static Item item_v2_airship_gold;
+	public static Item item_v2_airship_lapislazuli;
+	public static Item item_v2_airship_obsidian;
+	public static Item item_v2_airship_diamond;
+	public static Item item_v2_airship_emerald;
+	public static Item item_v2_airship_netherbrick;
+	public static Item item_v2_airship_purpur;
+	public static Item item_v2_airship_ice;
+	public static Item item_v2_airship_sandstone;
+	public static Item item_v2_airship_brick;
+	public static Item item_v2_airship_glowstone;
+	public static Item item_v2_airship_quartz;
+	public static Item item_v2_airship_prismarine;
+	public static Item item_v2_airship_soulsand;
+	public static Item item_v2_airship_ghost;
+	
+	public static Item item_v3_airship_oak;
+	public static Item item_v3_airship_iron;
+	public static Item item_v3_airship_redstone;
+	public static Item item_v3_airship_gold;
+	public static Item item_v3_airship_lapislazuli;
+	public static Item item_v3_airship_obsidian;
+	public static Item item_v3_airship_diamond;
+	public static Item item_v3_airship_emerald;
+	public static Item item_v3_airship_netherbrick;
+	public static Item item_v3_airship_purpur;
+	public static Item item_v3_airship_ice;
+	public static Item item_v3_airship_sandstone;
+	public static Item item_v3_airship_brick;
+	public static Item item_v3_airship_glowstone;
+	public static Item item_v3_airship_quartz;
+	public static Item item_v3_airship_prismarine;
+	public static Item item_v3_airship_soulsand;
+	public static Item item_v3_airship_ghost;
+	
+	public static Item item_v4_airship_oak;
+	public static Item item_v4_airship_iron;
+	public static Item item_v4_airship_redstone;
+	public static Item item_v4_airship_gold;
+	public static Item item_v4_airship_lapislazuli;
+	public static Item item_v4_airship_obsidian;
+	public static Item item_v4_airship_diamond;
+	public static Item item_v4_airship_emerald;
+	public static Item item_v4_airship_netherbrick;
+	public static Item item_v4_airship_purpur;
+	public static Item item_v4_airship_ice;
+	public static Item item_v4_airship_sandstone;
+	public static Item item_v4_airship_brick;
+	public static Item item_v4_airship_glowstone;
+	public static Item item_v4_airship_quartz;
+	public static Item item_v4_airship_prismarine;
+	public static Item item_v4_airship_soulsand;
+	public static Item item_v4_airship_ghost;
+	
+	
+	
 	
 	public static Item item_airship_v1_wood0;
 	public static Item item_airship_v1_iron;
