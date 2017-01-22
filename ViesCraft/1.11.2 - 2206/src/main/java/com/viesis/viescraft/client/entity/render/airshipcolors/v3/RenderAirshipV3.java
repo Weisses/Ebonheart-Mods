@@ -21,7 +21,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderAirshipV3 extends Render<EntityAirshipV3Core> {
 	
-	private static final ResourceLocation[] ENTITY_PATTERN_TEXTURE = new ResourceLocation[] 
+	private static final ResourceLocation[] ENTITY_BALLOON_TEXTURE = new ResourceLocation[] 
 	{
 		new ResourceLocation(Reference.MOD_ID, "textures/models/patterns/airship_pattern_plain.png")
 	};
@@ -148,7 +148,7 @@ public class RenderAirshipV3 extends Render<EntityAirshipV3Core> {
     	this.modelAirshipPanel.render(entity, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
     	
     	GlStateManager.color(red, green, blue, 1F);
-    	this.bindTexture(ENTITY_PATTERN_TEXTURE[0]);
+    	this.bindTexture(ENTITY_BALLOON_TEXTURE[entity.metaBalloon]);
     	this.modelAirshipV3Color.render(entity, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
     	GlStateManager.color(1F, 1F, 1F, 1F);
     	

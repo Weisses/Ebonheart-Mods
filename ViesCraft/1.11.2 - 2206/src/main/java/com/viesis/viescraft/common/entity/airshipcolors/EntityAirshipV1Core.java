@@ -89,12 +89,13 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
         this.inventory = new ItemStackHandler(size);
     }
 	
-    public EntityAirshipV1Core(World worldIn, double x, double y, double z, int frameIn, float metaColorRedItem, float metaColorGreenItem, float metaColorBlueItem)
+    public EntityAirshipV1Core(World worldIn, double x, double y, double z, int frameIn, int balloonIn, float metaColorRedItem, float metaColorGreenItem, float metaColorBlueItem)
     {
         this(worldIn);
         this.setPosition(x, y + 0.5D, z);
         
         this.metaFrame = frameIn;
+        this.metaBalloon = balloonIn;
         this.metaColorRed = metaColorRedItem;
         this.metaColorGreen = metaColorGreenItem;
         this.metaColorBlue = metaColorBlueItem;
@@ -116,6 +117,7 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
         this.dataManager.register(FORWARD_DIRECTION_VC, Integer.valueOf(1));
         this.dataManager.register(DAMAGE_TAKEN_VC, Float.valueOf(0.0F));
         this.dataManager.register(AIRSHIP_TYPE_FRAME_VC, Integer.valueOf(this.metaFrame));
+        this.dataManager.register(AIRSHIP_TYPE_BALLOON_VC, Integer.valueOf(this.metaBalloon));
         this.dataManager.register(BALLOON_COLOR_RED_VC, Float.valueOf(this.metaColorRed));
         this.dataManager.register(BALLOON_COLOR_GREEN_VC, Float.valueOf(this.metaColorGreen));
         this.dataManager.register(BALLOON_COLOR_BLUE_VC, Float.valueOf(this.metaColorBlue));
@@ -164,6 +166,7 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
     	super.writeToNBT(compound);
     	
     	compound.setInteger("Frame", this.metaFrame);
+    	compound.setInteger("Balloon", this.metaBalloon);
     	compound.setFloat("ColorRed", this.metaColorRed);
     	compound.setFloat("ColorGreen", this.metaColorGreen);
     	compound.setFloat("ColorBlue", this.metaColorBlue);
@@ -184,6 +187,7 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
     	super.readFromNBT(compound);
     	
     	this.metaFrame = compound.getInteger("Frame");
+    	this.metaBalloon = compound.getInteger("Balloon");
     	this.metaColorRed = compound.getFloat("ColorRed");
     	this.metaColorGreen = compound.getFloat("ColorGreen");
     	this.metaColorBlue = compound.getFloat("ColorBlue");
@@ -208,6 +212,7 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
     	ItemStack stack = new ItemStack(InitItemsVC.item_airship_v1, 1, this.metaFrame);
     	stack.setTagCompound(new NBTTagCompound());
     	
+    	stack.getTagCompound().setInteger("Balloon", this.metaBalloon);
     	stack.getTagCompound().setFloat("ColorRed", this.metaColorRed);
     	stack.getTagCompound().setFloat("ColorGreen", this.metaColorGreen);
     	stack.getTagCompound().setFloat("ColorBlue", this.metaColorBlue);

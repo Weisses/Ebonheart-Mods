@@ -11,6 +11,7 @@ import net.minecraft.world.World;
 public class EntityItemAirshipV2 extends EntityItemAirshipCore {
 	
 	private int metaFrameItem;
+	private int metaBalloonItem;
 	
 	private float metaColorRedItem;
 	private float metaColorGreenItem;
@@ -21,11 +22,12 @@ public class EntityItemAirshipV2 extends EntityItemAirshipCore {
         super(worldIn);
     }
     
-    public EntityItemAirshipV2(World worldIn, EntityLivingBase entity, int frameIn, float colorRed, float colorGreen, float colorBlue)
+    public EntityItemAirshipV2(World worldIn, EntityLivingBase entity, int frameIn, int balloonIn, float colorRed, float colorGreen, float colorBlue)
     {
         super(worldIn, entity);
         
         this.metaFrameItem = frameIn;
+        this.metaBalloonItem = balloonIn;
         this.metaColorRedItem = colorRed;
         this.metaColorGreenItem = colorGreen;
         this.metaColorBlueItem = colorBlue;
@@ -42,7 +44,7 @@ public class EntityItemAirshipV2 extends EntityItemAirshipCore {
         if (!this.world.isRemote)
         {
         	this.playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 0.5F, 0.4F / .5F * 0.4F + 0.8F);
-        	this.world.spawnEntity(new EntityAirshipV2Core(this.world, this.posX, this.posY + 0.5F, this.posZ, this.metaFrameItem, this.metaColorRedItem, this.metaColorGreenItem, this.metaColorBlueItem));
+        	this.world.spawnEntity(new EntityAirshipV2Core(this.world, this.posX, this.posY + 0.5F, this.posZ, this.metaFrameItem, this.metaBalloonItem, this.metaColorRedItem, this.metaColorGreenItem, this.metaColorBlueItem));
             
         	this.setDead();
         }

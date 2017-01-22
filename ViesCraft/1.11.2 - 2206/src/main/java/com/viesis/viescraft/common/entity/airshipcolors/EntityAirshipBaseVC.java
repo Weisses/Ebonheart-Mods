@@ -33,6 +33,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class EntityAirshipBaseVC extends Entity {
 	
 	public int metaFrame;
+	public int metaBalloon;
 	
 	public float metaColorRed;
 	public float metaColorGreen;
@@ -42,6 +43,7 @@ public class EntityAirshipBaseVC extends Entity {
     protected static final DataParameter<Integer> FORWARD_DIRECTION_VC = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
     protected static final DataParameter<Float> DAMAGE_TAKEN_VC = EntityDataManager.<Float>createKey(EntityAirshipBaseVC.class, DataSerializers.FLOAT);
     protected static final DataParameter<Integer> AIRSHIP_TYPE_FRAME_VC = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+    protected static final DataParameter<Integer> AIRSHIP_TYPE_BALLOON_VC = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
     protected static final DataParameter<Float> BALLOON_COLOR_RED_VC = EntityDataManager.<Float>createKey(EntityAirshipBaseVC.class, DataSerializers.FLOAT);
     protected static final DataParameter<Float> BALLOON_COLOR_GREEN_VC = EntityDataManager.<Float>createKey(EntityAirshipBaseVC.class, DataSerializers.FLOAT);
     protected static final DataParameter<Float> BALLOON_COLOR_BLUE_VC = EntityDataManager.<Float>createKey(EntityAirshipBaseVC.class, DataSerializers.FLOAT);
@@ -126,6 +128,7 @@ public class EntityAirshipBaseVC extends Entity {
         this.dataManager.register(FORWARD_DIRECTION_VC, Integer.valueOf(1));
         this.dataManager.register(DAMAGE_TAKEN_VC, Float.valueOf(0.0F));
         this.dataManager.register(AIRSHIP_TYPE_FRAME_VC, Integer.valueOf(this.metaFrame));
+        this.dataManager.register(AIRSHIP_TYPE_BALLOON_VC, Integer.valueOf(this.metaBalloon));
         this.dataManager.register(BALLOON_COLOR_RED_VC, Float.valueOf(this.metaColorRed));
         this.dataManager.register(BALLOON_COLOR_GREEN_VC, Float.valueOf(this.metaColorGreen));
         this.dataManager.register(BALLOON_COLOR_BLUE_VC, Float.valueOf(this.metaColorBlue));
@@ -754,6 +757,22 @@ public class EntityAirshipBaseVC extends Entity {
     }
     
     /**
+     * Sets the Balloon pattern.
+     */
+    public void setAirshipMetaBalloon(int airshipMeta)
+    {
+        this.dataManager.set(AIRSHIP_TYPE_BALLOON_VC, Integer.valueOf(airshipMeta));
+    }
+	
+    /**
+     * Gets the Balloon pattern.
+     */
+    public int getAirshipMetaBalloon()
+    {
+        return ((Integer)this.dataManager.get(AIRSHIP_TYPE_BALLOON_VC)).intValue();
+    }
+    
+    /**
      * Sets the Color Red.
      */
     public void setAirshipMetaColorRed(float airshipMeta)
@@ -809,6 +828,7 @@ public class EntityAirshipBaseVC extends Entity {
         if (this.world.isRemote)
         {
         	this.metaFrame = this.getAirshipMetaFrame();
+        	this.metaBalloon = this.getAirshipMetaBalloon();
         	this.metaColorRed = this.getAirshipMetaColorRed();
         	this.metaColorGreen = this.getAirshipMetaColorGreen();
         	this.metaColorBlue = this.getAirshipMetaColorBlue();
@@ -818,6 +838,7 @@ public class EntityAirshipBaseVC extends Entity {
         if(!this.world.isRemote)
 		{
         	this.setAirshipMetaFrame(this.metaFrame);
+        	this.setAirshipMetaBalloon(this.metaBalloon);
         	this.setAirshipMetaColorRed(this.metaColorRed);
         	this.setAirshipMetaColorGreen(this.metaColorGreen);
         	this.setAirshipMetaColorBlue(this.metaColorBlue);
