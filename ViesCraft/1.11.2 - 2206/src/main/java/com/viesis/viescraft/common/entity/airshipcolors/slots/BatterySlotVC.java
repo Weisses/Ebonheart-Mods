@@ -22,7 +22,7 @@ public class BatterySlotVC extends SlotItemHandler {
     {
 		Item item = stack.getItem();
         
-		if (item == InitItemsVC.airship_battery) return true;
+		//if (item == InitItemsVC.airship_battery) return true;
         
         return false;
     }

@@ -8,7 +8,8 @@ public class ColorHelperVC {
 	/**
      * Initialize the color list that we have.
      */
-    public static ArrayList<ColorName> initColorList() {
+    public static ArrayList<ColorName> initColorList() 
+    {
         ArrayList<ColorName> colorList = new ArrayList<ColorName>();
         colorList.add(new ColorName("Alice Blue", 0xF0, 0xF8, 0xFF));
         colorList.add(new ColorName("Antique White", 0xFA, 0xEB, 0xD7));
@@ -155,96 +156,93 @@ public class ColorHelperVC {
     
     /**
      * Get the closest color name from our list
-     * 
-     * @param r
-     * @param g
-     * @param b
-     * @return
      */
-    public static String getColorNameFromRgb(float r, float g, float b) {
+    public static String getColorNameFromRgb(float r, float g, float b) 
+    {
         ArrayList<ColorName> colorList = initColorList();
         ColorName closestMatch = null;
         int minMSE = Integer.MAX_VALUE;
         int mse;
-        for (ColorName c : colorList) {
+        for (ColorName c : colorList) 
+        {
             mse = c.computeMSE(r, g, b);
-            if (mse < minMSE) {
+            if (mse < minMSE) 
+            {
                 minMSE = mse;
                 closestMatch = c;
             }
         }
-
-        if (closestMatch != null) {
+        
+        if (closestMatch != null) 
+        {
             return closestMatch.getName();
-        } else {
+        } 
+        else 
+        {
             return "No matched color name.";
         }
     }
-
+    
     /**
      * Convert hexColor to rgb, then call getColorNameFromRgb(r, g, b)
-     * 
-     * @param hexColor
-     * @return
      */
-    public String getColorNameFromHex(int hexColor) {
+    public String getColorNameFromHex(int hexColor) 
+    {
         int r = (hexColor & 0xFF0000) >> 16;
         int g = (hexColor & 0xFF00) >> 8;
         int b = (hexColor & 0xFF);
         return getColorNameFromRgb(r, g, b);
     }
-
-    public int colorToHex(Color c) {
-        return Integer.decode("0x"
-                + Integer.toHexString(c.getRGB()).substring(2));
+    
+    public int colorToHex(Color c) 
+    {
+        return Integer.decode("0x" + Integer.toHexString(c.getRGB()).substring(2));
     }
-
-    public String getColorNameFromColor(Color color) {
-        return getColorNameFromRgb(color.getRed(), color.getGreen(),
-                color.getBlue());
+    
+    public String getColorNameFromColor(Color color) 
+    {
+        return getColorNameFromRgb(color.getRed(), color.getGreen(), color.getBlue());
     }
-
+    
     /**
      * SubClass of ColorUtils. In order to lookup color name
-     * 
-     * @author Xiaoxiao Li
-     * 
      */
-    public static class ColorName {
+    public static class ColorName 
+    {
         public int r, g, b;
         public String name;
-
-        public ColorName(String name, int r, int g, int b) {
+        
+        public ColorName(String name, int r, int g, int b) 
+        {
             this.r = r;
             this.g = g;
             this.b = b;
             this.name = name;
         }
-
-        public int computeMSE(float r2, float g2, float b2) {
-            return (int) (((r2 - r) * (r2 - r) + (g2 - g) * (g2 - g) + (b2 - b)
-                    * (b2 - b)) / 3);
+        
+        public int computeMSE(float r2, float g2, float b2) 
+        {
+            return (int) (((r2 - r) * (r2 - r) + (g2 - g) * (g2 - g) + (b2 - b) * (b2 - b)) / 3);
         }
-
-        public int getR() {
+        
+        public int getR() 
+        {
             return r;
         }
-
-        public int getG() {
+        
+        public int getG() 
+        {
             return g;
         }
-
-        public int getB() {
+        
+        public int getB() 
+        {
             return b;
         }
-
-        public String getName() {
+        
+        public String getName() 
+        {
             return name;
         }
     }
-    
-    
-    
-    
-    
 }

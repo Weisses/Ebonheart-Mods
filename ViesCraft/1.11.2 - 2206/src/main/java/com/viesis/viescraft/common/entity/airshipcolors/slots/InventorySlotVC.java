@@ -2,8 +2,6 @@ package com.viesis.viescraft.common.entity.airshipcolors.slots;
 
 import javax.annotation.Nullable;
 
-import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;

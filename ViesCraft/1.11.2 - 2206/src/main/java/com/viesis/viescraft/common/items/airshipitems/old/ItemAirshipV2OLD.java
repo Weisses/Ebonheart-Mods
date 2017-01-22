@@ -1,10 +1,4 @@
-package com.viesis.viescraft.common.items.airshipitems.v1.old;
-
-import com.viesis.viescraft.ViesCraft;
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
-import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipV1;
-import com.viesis.viescraft.common.items.ItemHelper;
-import com.viesis.viescraft.configs.ViesCraftConfig;
+package com.viesis.viescraft.common.items.airshipitems.old;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -16,11 +10,17 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.world.World;
 
-public class ItemAirshipV1OLD extends ItemAirshipCoreOLD {
+import com.viesis.viescraft.ViesCraft;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
+import com.viesis.viescraft.common.entity.airshipitems.v2.EntityItemAirshipV2;
+import com.viesis.viescraft.common.items.ItemHelper;
+import com.viesis.viescraft.configs.ViesCraftConfig;
+
+public class ItemAirshipV2OLD extends ItemAirshipCoreOLD {
 	
 	private int metaFrameItem;
 	
-	public ItemAirshipV1OLD(String unlocalizedName, int frameIn) 
+	public ItemAirshipV2OLD(String unlocalizedName, int frameIn) 
 	{
 		this.metaFrameItem = frameIn;
         
@@ -28,7 +28,7 @@ public class ItemAirshipV1OLD extends ItemAirshipCoreOLD {
         this.setMaxDamage(0);
         
         ItemHelper.setItemName(this, unlocalizedName);
-		this.setCreativeTab(ViesCraft.tabViesCraftAirshipsV1);
+		this.setCreativeTab(ViesCraft.tabViesCraftAirshipsV2);
 	}
 	
 	@Override
@@ -46,7 +46,7 @@ public class ItemAirshipV1OLD extends ItemAirshipCoreOLD {
 			
 			if (!worldIn.isRemote)
 			{
-				EntityItemAirshipV1 entityairship = new EntityItemAirshipV1(worldIn, playerIn, this.metaFrameItem, this.getMetadata(itemstack), metaFrameItem, metaFrameItem);
+				EntityItemAirshipV2 entityairship = new EntityItemAirshipV2(worldIn, playerIn, this.metaFrameItem, 210, 180, 140);
 				entityairship.setHeadingFromThrower(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, -20.0F, 0.7F, 1.0F);
 				worldIn.spawnEntity(entityairship);
 			}
@@ -62,6 +62,6 @@ public class ItemAirshipV1OLD extends ItemAirshipCoreOLD {
     {
         return (EntityAirshipBaseVC.Frame.byId(this.metaFrameItem).getName() + " " 
         		+ EntityAirshipBaseVC.Color.byId(this.getMetadata(stack)).getName() + " " 
-        		+ ViesCraftConfig.v1AirshipName);
+        		+ ViesCraftConfig.v2AirshipName);
     }
 }

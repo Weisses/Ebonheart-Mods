@@ -4,35 +4,21 @@ import java.io.IOException;
 
 import org.lwjgl.input.Keyboard;
 
-import com.google.common.collect.Lists;
-import com.google.gson.JsonParseException;
 import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.api.util.Keybinds;
-import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.network.NetworkHandler;
 import com.viesis.viescraft.network.server.MessageGuiColorizerBalloon;
-import com.viesis.viescraft.network.server.v1.MessageGuiV1ModuleInventorySmall;
 
-import io.netty.buffer.Unpooled;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.GuiTextField;
-import net.minecraft.client.gui.GuiUtilRenderComponents;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemWrittenBook;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTTagString;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.network.play.client.CPacketCustomPayload;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TextComponentString;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -79,7 +65,6 @@ public class GuiItemBalloonColorizer extends GuiScreen {
             this.textRedNumber = nbttagcompound.getInteger("ColorRed");
             this.textGreenNumber = nbttagcompound.getInteger("ColorGreen");
             this.textBlueNumber = nbttagcompound.getInteger("ColorBlue");
-            
         }
 		else
 		{
@@ -98,7 +83,6 @@ public class GuiItemBalloonColorizer extends GuiScreen {
         }
 	}
 	
-	
 	@Override
 	public void initGui()
     {
@@ -108,7 +92,6 @@ public class GuiItemBalloonColorizer extends GuiScreen {
         this.guiTop = (this.height - this.ySize) / 2;
         
         //=============================================
-        
         
         this.textRed = new GuiTextField(1, this.fontRendererObj, this.guiLeft + 76, this.guiTop + 36, 28, 20);
         textRed.setMaxStringLength(3);
@@ -124,7 +107,7 @@ public class GuiItemBalloonColorizer extends GuiScreen {
         textBlue.setMaxStringLength(3);
         textBlue.setText(String.valueOf(this.textBlueNumber));
     	this.textBlue.setFocused(false);
-
+    	
         //=============================================
         
     	buttonRed = new GuiButton( 1, this.guiLeft + 26, this.guiTop + 36, 37, 20, "Save");
@@ -138,7 +121,6 @@ public class GuiItemBalloonColorizer extends GuiScreen {
 		
     	buttonAccept = new GuiButton( 4, this.guiLeft + 42, this.guiTop + 156, 96, 20, "Done");
 		this.buttonList.add(buttonAccept);
-		
     }
 	
 	/**
@@ -149,8 +131,6 @@ public class GuiItemBalloonColorizer extends GuiScreen {
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         
         this.mc.getTextureManager().bindTexture(ITEM_GUI_TEXTURES);
-        int i = (this.width - 192) / 2;
-        int j = 2;
         this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, 176, 192);
         
         float red = this.textRedNumber / 255.0f;
@@ -186,7 +166,8 @@ public class GuiItemBalloonColorizer extends GuiScreen {
     }
 	
 	@Override
-	protected void mouseClicked(int x, int y, int btn) throws IOException {
+	protected void mouseClicked(int x, int y, int btn) throws IOException 
+	{
         super.mouseClicked(x, y, btn);
         
         this.textRed.mouseClicked(x, y, btn);
@@ -216,6 +197,11 @@ public class GuiItemBalloonColorizer extends GuiScreen {
 				} catch(NumberFormatException ex) {
 					textRedNumber = 0;
 				}
+				
+				if(textRedNumber > 255)
+				{
+					textRedNumber = 255;
+				}
 			}
 			
 			if(textGreen.getText() != null)
@@ -225,6 +211,11 @@ public class GuiItemBalloonColorizer extends GuiScreen {
 				} catch(NumberFormatException ex) {
 					textGreenNumber = 0;
 				}
+				
+				if(textGreenNumber > 255)
+				{
+					textGreenNumber = 255;
+				}
 			}
 			
 			if(textBlue.getText() != null)
@@ -233,6 +224,11 @@ public class GuiItemBalloonColorizer extends GuiScreen {
 					textBlueNumber = Integer.parseInt(textBlue.getText());
 				} catch(NumberFormatException ex) {
 					textBlueNumber = 0;
+				}
+				
+				if(textBlueNumber > 255)
+				{
+					textBlueNumber = 255;
 				}
 			}
 			
@@ -248,6 +244,11 @@ public class GuiItemBalloonColorizer extends GuiScreen {
 				} catch(NumberFormatException ex) {
 					textRedNumber = 0;
 				}
+				
+				if(textRedNumber > 255)
+				{
+					textRedNumber = 255;
+				}
 			}
 			
 			if(textGreen.getText() != null)
@@ -257,6 +258,11 @@ public class GuiItemBalloonColorizer extends GuiScreen {
 				} catch(NumberFormatException ex) {
 					textGreenNumber = 0;
 				}
+				
+				if(textGreenNumber > 255)
+				{
+					textGreenNumber = 255;
+				}
 			}
 			
 			if(textBlue.getText() != null)
@@ -265,6 +271,11 @@ public class GuiItemBalloonColorizer extends GuiScreen {
 					textBlueNumber = Integer.parseInt(textBlue.getText());
 				} catch(NumberFormatException ex) {
 					textBlueNumber = 0;
+				}
+				
+				if(textBlueNumber > 255)
+				{
+					textBlueNumber = 255;
 				}
 			}
 			
@@ -280,6 +291,11 @@ public class GuiItemBalloonColorizer extends GuiScreen {
 				} catch(NumberFormatException ex) {
 					textRedNumber = 0;
 				}
+				
+				if(textRedNumber > 255)
+				{
+					textRedNumber = 255;
+				}
 			}
 			
 			if(textGreen.getText() != null)
@@ -288,6 +304,11 @@ public class GuiItemBalloonColorizer extends GuiScreen {
 					textGreenNumber = Integer.parseInt(textGreen.getText());
 				} catch(NumberFormatException ex) {
 					textGreenNumber = 0;
+				}
+				
+				if(textGreenNumber > 255)
+				{
+					textGreenNumber = 255;
 				}
 			}
 			
@@ -298,6 +319,11 @@ public class GuiItemBalloonColorizer extends GuiScreen {
 				} catch(NumberFormatException ex) {
 					textBlueNumber = 0;
 				}
+				
+				if(textBlueNumber > 255)
+				{
+					textBlueNumber = 255;
+				}
 			}
 			
 			this.sendTagToServer(3);
@@ -305,18 +331,58 @@ public class GuiItemBalloonColorizer extends GuiScreen {
 		
 		if (parButton.id == 4)
 	    {
+			if(textRed.getText() != null)
+			{
+				try {
+					textRedNumber = Integer.parseInt(textRed.getText());
+				} catch(NumberFormatException ex) {
+					textRedNumber = 0;
+				}
+				
+				if(textRedNumber > 255)
+				{
+					textRedNumber = 255;
+				}
+			}
+			
+			if(textGreen.getText() != null)
+			{
+				try {
+					textGreenNumber = Integer.parseInt(textGreen.getText());
+				} catch(NumberFormatException ex) {
+					textGreenNumber = 0;
+				}
+				
+				if(textGreenNumber > 255)
+				{
+					textGreenNumber = 255;
+				}
+			}
+			
+			if(textBlue.getText() != null)
+			{
+				try {
+					textBlueNumber = Integer.parseInt(textBlue.getText());
+				} catch(NumberFormatException ex) {
+					textBlueNumber = 0;
+				}
+				
+				if(textBlueNumber > 255)
+				{
+					textBlueNumber = 255;
+				}
+			}
+			
 			this.sendTagToServer(4);
 			
 			this.mc.displayGuiScreen((GuiScreen)null);
-			//this.mc.player.closeScreen();
 	    }
-		
-		
 		
         this.buttonList.clear();
         this.initGui();
         this.updateScreen();
     }
+	
 	@Override
 	protected void keyTyped(char typedChar, int keyCode) throws IOException
     {
@@ -340,94 +406,21 @@ public class GuiItemBalloonColorizer extends GuiScreen {
         Keyboard.enableRepeatEvents(false);
     }
 	
-	private void sendTagToServer(int publish)// throws IOException
+	private void sendTagToServer(int publish)
     {
-		
 		NBTTagCompound nbttagcompound = this.itemObj.getTagCompound();
-        /**
-		//if (publish == 1)
-        //{
-			if (this.itemObj.hasTagCompound())
-	        {
-				nbttagcompound.setInteger("ColorRed", this.textRedNumber);//this.textRedNumber);
-	        }
-			else
-	        {
-	        	this.itemObj.setTagInfo("Author", this.tagColor);
-	        	
-	        	nbttagcompound.setInteger("ColorRed", this.textRedNumber);
-	        }
-        //}
-		
-		//if (publish == 2)
-        //{
-			if (this.itemObj.hasTagCompound())
-	        {
-				nbttagcompound.setInteger("ColorGreen", this.textGreenNumber);//this.textGreenNumber);
-	        }
-			else
-	        {
-	        	this.itemObj.setTagInfo("Author", this.tagColor);
-	        	
-	        	nbttagcompound.setInteger("ColorGreen", this.textGreenNumber);
-	        }
-        //}
-		
-		//if (publish == 3)
-        //{
-			if (this.itemObj.hasTagCompound())
-	        {
-				nbttagcompound.setInteger("ColorBlue", this.textBlueNumber);//this.textBlueNumber);
-	        }
-			else
-	        {
-	        	this.itemObj.setTagInfo("Author", this.tagColor);
-	        	
-	        	nbttagcompound.setInteger("ColorBlue", this.textBlueNumber);
-	        }
-        //}
-		*/
-		
-		
-		
+        
 		if (this.itemObj.hasTagCompound())
         {
-        	//NBTTagCompound nbttagcompound = this.itemObj.getTagCompound();
-            
-            nbttagcompound.setInteger("ColorRed", this.textRedNumber);//this.textRedNumber);
-            nbttagcompound.setInteger("ColorGreen", this.textGreenNumber);//this.textGreenNumber);
-            nbttagcompound.setInteger("ColorBlue", this.textBlueNumber);//this.textBlueNumber);
-            
+        	nbttagcompound.setInteger("ColorRed", this.textRedNumber);
+            nbttagcompound.setInteger("ColorGreen", this.textGreenNumber);
+            nbttagcompound.setInteger("ColorBlue", this.textBlueNumber);
         }
         else
         {
-        	
         	this.itemObj.setTagInfo("Author", this.tagColor);
-        	
-        	//NBTTagCompound nbttagcompound = this.itemObj.getTagCompound();
-        	
-        	//nbttagcompound.setInteger("ColorRed", this.textRedNumber);
-        	//nbttagcompound.setInteger("ColorGreen", this.textGreenNumber);
-            //nbttagcompound.setInteger("ColorBlue", this.textBlueNumber);
         }
-
-        String s1 = "VC|Edit";
-
-        //if (publish == 4)
-        //{
-        //    //s1 = "VC|Bsign";
-        //    this.itemObj.setTagInfo("Author", new NBTTagString(this.editingPlayer.getName()));
-        //    //this.itemObj.setTagInfo("title", new NBTTagString(this.textRed.getText()));
-        //}
-        
-        NetworkHandler.sendToServer(new MessageGuiColorizerBalloon());
-        
-        //PacketBuffer packetbuffer = new PacketBuffer(Unpooled.buffer());
-        //packetbuffer.writeItemStack(this.itemObj);
-        //this.mc.getConnection().sendPacket(new CPacketCustomPayload(s1, packetbuffer));
+		
+		NetworkHandler.sendToServer(new MessageGuiColorizerBalloon());
     }
-	
-	
-	
-	
 }		

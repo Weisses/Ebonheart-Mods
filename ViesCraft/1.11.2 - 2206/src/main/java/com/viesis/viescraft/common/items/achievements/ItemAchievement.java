@@ -1,13 +1,13 @@
 package com.viesis.viescraft.common.items.achievements;
 
+import com.viesis.viescraft.common.items.ItemHelper;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import com.viesis.viescraft.common.items.ItemHelper;
 
 public class ItemAchievement extends Item {
 	

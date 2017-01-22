@@ -43,7 +43,6 @@ public class GuiGuidebookControls extends GuiScreen {
         bookPageTextures[11] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/controls/page_11.png");
         
         //Title
-        
         stringPageText[0] = "\n\n\n\n\n\n\n"
         		+ "    " + "\u00A7l\u00A7nTaking Control\u00A7r"
         		+ "\n\n" 

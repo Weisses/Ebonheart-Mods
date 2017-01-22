@@ -3,8 +3,6 @@ package com.viesis.viescraft.client.entity.render.airshipcolors.v1;
 import org.lwjgl.opengl.GL11;
 
 import com.viesis.viescraft.api.Reference;
-import com.viesis.viescraft.api.util.LogHelper;
-import com.viesis.viescraft.client.InitParticlesVCRender;
 import com.viesis.viescraft.client.entity.model.ModelAirshipPanel;
 import com.viesis.viescraft.client.entity.model.v1.ModelAirshipV1Color;
 import com.viesis.viescraft.client.entity.model.v1.ModelAirshipV1FrameOff;
@@ -23,10 +21,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderAirshipV1 extends Render<EntityAirshipV1Core> {
 	
-	private static final ResourceLocation[] ENTITY_COLOR_TEXTURE = new ResourceLocation[] 
+	private static final ResourceLocation[] ENTITY_PATTERN_TEXTURE = new ResourceLocation[] 
 	{
-		
-		new ResourceLocation(Reference.MOD_ID, "textures/models/color/airship_color.png")
+		new ResourceLocation(Reference.MOD_ID, "textures/models/patterns/airship_pattern_plain.png")
 	};
 	
 	private static final ResourceLocation[] ENTITY_FRAME_TEXTURE = new ResourceLocation[] 
@@ -40,7 +37,15 @@ public class RenderAirshipV1 extends Render<EntityAirshipV1Core> {
 		new ResourceLocation(Reference.MOD_ID, "textures/models/v1/airship_v1_frame_diamond.png"),
 		new ResourceLocation(Reference.MOD_ID, "textures/models/v1/airship_v1_frame_emerald.png"),
 		new ResourceLocation(Reference.MOD_ID, "textures/models/v1/airship_v1_frame_netherbrick.png"),
-		new ResourceLocation(Reference.MOD_ID, "textures/models/v1/airship_v1_frame_purpur.png")
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v1/airship_v1_frame_purpur.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v1/airship_v1_frame_ice.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v1/airship_v1_frame_sandstone.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v1/airship_v1_frame_brick.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v1/airship_v1_frame_glowstone.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v1/airship_v1_frame_quartz.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v1/airship_v1_frame_prismarine.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v1/airship_v1_frame_soulsand.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v1/airship_v1_frame_ghost.png")
 	};
 	
 	private static final ResourceLocation[] ENTITY_SCREEN_TEXTURE = new ResourceLocation[] 
@@ -100,20 +105,20 @@ public class RenderAirshipV1 extends Render<EntityAirshipV1Core> {
 		{
 			this.moduleNumber = 3;
 			
-			if(randomTick < 30)
-			{
+			//if(randomTick < 30)
+			//{
 				//InitParticlesVCRender.generateRunicParticles(entity);
-				InitParticlesVCRender.generateColorFlameParticles(entity);
-			}
+			//	InitParticlesVCRender.generateColorFlameParticles(entity);
+			//}
 		}
         else if(entity.getModuleSpeedMajor())
 		{
 			this.moduleNumber = 4;
 			
-			if(randomTick < 25)
-			{
-				InitParticlesVCRender.generateFlameParticles(entity);
-			}
+			//if(randomTick < 25)
+			//{
+			//	InitParticlesVCRender.generateFlameParticles(entity);
+			//}
 		}
         else if(entity.getModuleFuelInfinite())
 		{
@@ -139,17 +144,14 @@ public class RenderAirshipV1 extends Render<EntityAirshipV1Core> {
         	this.modelAirshipV1FrameOff.render(entity, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
         }
         
-
     	this.bindTexture(ENTITY_SCREEN_TEXTURE[this.moduleNumber]);
     	this.modelAirshipPanel.render(entity, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
-
+    	
     	GlStateManager.color(red, green, blue, 1F);
-    	this.bindTexture(ENTITY_COLOR_TEXTURE[0]);
+    	this.bindTexture(ENTITY_PATTERN_TEXTURE[0]);
     	this.modelAirshipV1Color.render(entity, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
     	GlStateManager.color(1F, 1F, 1F, 1F);
     	
-    	
-        
         if (this.renderOutlines)
         {
             GlStateManager.enableColorMaterial();

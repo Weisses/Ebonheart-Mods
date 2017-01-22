@@ -4,10 +4,9 @@ import java.util.List;
 
 import com.viesis.viescraft.api.ColorHelperVC;
 import com.viesis.viescraft.api.FuelVC;
-import com.viesis.viescraft.api.util.LogHelper;
+import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.client.InitParticlesVCRender;
 import com.viesis.viescraft.common.caps.DualEnergyStorageVC;
-import com.viesis.viescraft.common.items.airshipitems.v1.ItemAirshipV1;
 import com.viesis.viescraft.common.utils.events.EventHandlerAirship;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 import com.viesis.viescraft.init.InitItemsVC;
@@ -38,7 +37,6 @@ import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.EntitySelectors;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -80,11 +78,8 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
     private int size = 20;
     
     public float AirshipSpeedTurn = 0.18F * (ViesCraftConfig.v1AirshipSpeed / 100);
-    
     public float AirshipSpeedForward = 0.016F * (ViesCraftConfig.v1AirshipSpeed / 100);
-    
     public float AirshipSpeedUp = 0.004F * (ViesCraftConfig.v1AirshipSpeed / 100);
-    
     public float AirshipSpeedDown = 0.004F * (ViesCraftConfig.v1AirshipSpeed / 100);
 	
 	public EntityAirshipV1Core(World worldIn)
@@ -121,9 +116,9 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
         this.dataManager.register(FORWARD_DIRECTION_VC, Integer.valueOf(1));
         this.dataManager.register(DAMAGE_TAKEN_VC, Float.valueOf(0.0F));
         this.dataManager.register(AIRSHIP_TYPE_FRAME_VC, Integer.valueOf(this.metaFrame));
-        this.dataManager.register(AIRSHIP_TYPE_COLOR_RED_VC, Float.valueOf(this.metaColorRed));
-        this.dataManager.register(AIRSHIP_TYPE_COLOR_GREEN_VC, Float.valueOf(this.metaColorGreen));
-        this.dataManager.register(AIRSHIP_TYPE_COLOR_BLUE_VC, Float.valueOf(this.metaColorBlue));
+        this.dataManager.register(BALLOON_COLOR_RED_VC, Float.valueOf(this.metaColorRed));
+        this.dataManager.register(BALLOON_COLOR_GREEN_VC, Float.valueOf(this.metaColorGreen));
+        this.dataManager.register(BALLOON_COLOR_BLUE_VC, Float.valueOf(this.metaColorBlue));
         
 		this.dataManager.register(POWERED, Integer.valueOf(this.airshipBurnTime));
         this.dataManager.register(TOTALPOWERED, Integer.valueOf(this.airshipTotalBurnTime));
@@ -218,7 +213,6 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
     	stack.getTagCompound().setFloat("ColorBlue", this.metaColorBlue);
     	
     	return stack;
-    	
     }
     
     /**
@@ -229,8 +223,6 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
 	{
 		return this.hasCustomName() ? this.customName : Frame.byId(this.metaFrame).getName() + " " 
 	+ ColorHelperVC.getColorNameFromRgb(this.metaColorRed, this.metaColorGreen, this.metaColorBlue)		
-	
-	//Color.byId(this.metaColor).getName() 
 	+ " " + ViesCraftConfig.v1AirshipName;
 	}
 	
@@ -282,10 +274,6 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
         
         this.fuelFlight();
         this.getTotalFuelSlotBurnTime();
-        
-        //LogHelper.info("Red = " + this.metaColorRed);
-        //LogHelper.info("Green = " + this.metaColorGreen);
-        //LogHelper.info("Blue = " + this.metaColorBlue);
         
         this.currentModule();
         
@@ -370,11 +358,10 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
             	{
             		this.world.createExplosion(this, this.posX, this.posY + (double)(this.height / 16.0F), this.posZ, 2.0F, true);
             		
-            		int drop1 = random.nextInt(100) + 1;
-            		int drop2 = random.nextInt(100) + 1;
-            		int drop3 = random.nextInt(100) + 1;
-            		int drop4 = random.nextInt(100) + 1;
-            		int drop5 = random.nextInt(100) + 1;
+            		int drop1 = Reference.random.nextInt(100) + 1;
+            		int drop2 = Reference.random.nextInt(100) + 1;
+            		int drop3 = Reference.random.nextInt(100) + 1;
+            		int drop4 = Reference.random.nextInt(100) + 1;
             		
             	    if (drop1 < 75)
                 	{
@@ -391,7 +378,7 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
                     	}
                 	}
             	    
-            	    if (drop5 < 15)
+            	    if (drop4 < 15)
                 	{
             	    	this.dropItemWithOffset(InitItemsVC.airship_ignition, 1, 0.0F);
                 	}
@@ -710,8 +697,7 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
     {
         switch (id)
         {
-        	//Current Airship Burn Time
-            case 0:
+        	case 0:
                 this.airshipBurnTime = value;
                 break;
             case 1:

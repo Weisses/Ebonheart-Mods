@@ -3,6 +3,12 @@ package com.viesis.viescraft.common.blocks;
 import java.util.List;
 import java.util.Random;
 
+import com.viesis.viescraft.ViesCraft;
+import com.viesis.viescraft.api.Reference;
+import com.viesis.viescraft.common.blocks.basic.BlockEA;
+import com.viesis.viescraft.common.tileentity.TileEntityAirshipWorkbench;
+import com.viesis.viescraft.network.GuiHandler;
+
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
@@ -19,13 +25,6 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import com.viesis.viescraft.ViesCraft;
-import com.viesis.viescraft.api.Reference;
-import com.viesis.viescraft.common.blocks.basic.BlockEA;
-import com.viesis.viescraft.common.caps.DualEnergyStorageVC;
-import com.viesis.viescraft.common.tileentity.TileEntityAirshipWorkbench;
-import com.viesis.viescraft.network.GuiHandler;
 
 public class BlockAirshipWorkbench extends BlockEA implements ITileEntityProvider {
 	

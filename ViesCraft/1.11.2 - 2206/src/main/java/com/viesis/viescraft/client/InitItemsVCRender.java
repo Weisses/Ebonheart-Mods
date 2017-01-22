@@ -1,13 +1,13 @@
 package com.viesis.viescraft.client;
 
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
-import net.minecraft.item.Item;
-import net.minecraftforge.client.model.ModelLoader;
-
 import com.viesis.viescraft.api.ItemsVC;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
 import com.viesis.viescraft.common.items.achievements.ItemAchievement;
 import com.viesis.viescraft.configs.ViesCraftConfig;
+
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.item.Item;
+import net.minecraftforge.client.model.ModelLoader;
 
 public final class InitItemsVCRender extends ItemsVC {
 	
@@ -45,53 +45,36 @@ public final class InitItemsVCRender extends ItemsVC {
 		//==============================================
 		
 		//V1
-		if(ViesCraftConfig.v1AirshipEnabled)
+		for (EntityAirshipBaseVC.Frame meta : EntityAirshipBaseVC.Frame.values()) 
 		{
-			for (EntityAirshipBaseVC.Frame meta : EntityAirshipBaseVC.Frame.values()) 
-			{
-				registerRenderFrame(item_airship_v1, meta.getMetadata());
-			}
+			registerRenderFrame(item_airship_v1, meta.getMetadata());
 		}
 		
 		//==============================================
-		/**
+		
 		//V2
-		if(ViesCraftConfig.v2AirshipEnabled)
+		for (EntityAirshipBaseVC.Frame meta : EntityAirshipBaseVC.Frame.values()) 
 		{
-			for (EntityAirshipBaseVC.Frame meta : EntityAirshipBaseVC.Frame.values()) 
-			{
-				registerRenderFrame(item_airship_v2, meta.getMetadata());
-			}
+			registerRenderFrame(item_airship_v2, meta.getMetadata());
 		}
 		
 		//==============================================
 		
 		//V3
-		if(ViesCraftConfig.v3AirshipEnabled)
+		for (EntityAirshipBaseVC.Frame meta : EntityAirshipBaseVC.Frame.values()) 
 		{
-			for (EntityAirshipBaseVC.Frame meta : EntityAirshipBaseVC.Frame.values()) 
-			{
-				registerRenderFrame(item_airship_v3, meta.getMetadata());
-			}
+			registerRenderFrame(item_airship_v3, meta.getMetadata());
 		}
 		
 		//==============================================
 		
 		//V4
-		if(ViesCraftConfig.v4AirshipEnabled)
+		for (EntityAirshipBaseVC.Frame meta : EntityAirshipBaseVC.Frame.values()) 
 		{
-			for (EntityAirshipBaseVC.Frame meta : EntityAirshipBaseVC.Frame.values()) 
-			{
-				registerRenderFrame(item_airship_v4, meta.getMetadata());
-			}
+			registerRenderFrame(item_airship_v4, meta.getMetadata());
 		}
-		*/
-		//==============================================
 		
-		for (EntityAirshipBaseVC.Color meta : EntityAirshipBaseVC.Color.values()) 
-		{
-			registerRenderColor(item_paint, meta.getMetadata());
-		}
+		//==============================================
 		
 		for (ItemAchievement.Achievement meta : ItemAchievement.Achievement.values()) 
 		{
@@ -112,24 +95,6 @@ public final class InitItemsVCRender extends ItemsVC {
 				if(ViesCraftConfig.v1AirshipEnabled)
 				{
 					
-					/**registerRender(item_v1_airship_oak);
-					registerRender(item_v1_airship_iron);
-					registerRender(item_v1_airship_redstone);
-					registerRender(item_v1_airship_gold);
-					registerRender(item_v1_airship_lapislazuli);
-					registerRender(item_v1_airship_obsidian);
-					registerRender(item_v1_airship_diamond);
-					registerRender(item_v1_airship_emerald);
-					registerRender(item_v1_airship_netherbrick);
-					registerRender(item_v1_airship_purpur);
-					registerRender(item_v1_airship_ice);
-					registerRender(item_v1_airship_sandstone);*/
-					//registerRender(item_v1_airship_brick);
-					//registerRender(item_v1_airship_glowstone);
-					//registerRender(item_v1_airship_quartz);
-					//registerRender(item_v1_airship_prismarine);
-					//registerRender(item_v1_airship_soulsand);
-					//registerRender(item_v1_airship_ghost);
 					
 					for (EntityAirshipBaseVC.Color meta : EntityAirshipBaseVC.Color.values()) 
 					{
@@ -151,24 +116,6 @@ public final class InitItemsVCRender extends ItemsVC {
 				//V2
 				if(ViesCraftConfig.v2AirshipEnabled)
 				{
-					registerRender(item_v2_airship_oak);
-					registerRender(item_v2_airship_iron);
-					registerRender(item_v2_airship_redstone);
-					registerRender(item_v2_airship_gold);
-					registerRender(item_v2_airship_lapislazuli);
-					registerRender(item_v2_airship_obsidian);
-					registerRender(item_v2_airship_diamond);
-					registerRender(item_v2_airship_emerald);
-					registerRender(item_v2_airship_netherbrick);
-					registerRender(item_v2_airship_purpur);
-					registerRender(item_v2_airship_ice);
-					registerRender(item_v2_airship_sandstone);
-					//registerRender(item_v2_airship_brick);
-					//registerRender(item_v2_airship_glowstone);
-					//registerRender(item_v2_airship_quartz);
-					//registerRender(item_v2_airship_prismarine);
-					//registerRender(item_v2_airship_soulsand);
-					//registerRender(item_v2_airship_ghost);
 					
 					for (EntityAirshipBaseVC.Color meta : EntityAirshipBaseVC.Color.values()) 
 					{
@@ -190,24 +137,6 @@ public final class InitItemsVCRender extends ItemsVC {
 				//V3
 				if(ViesCraftConfig.v3AirshipEnabled)
 				{
-					registerRender(item_v3_airship_oak);
-					registerRender(item_v3_airship_iron);
-					registerRender(item_v3_airship_redstone);
-					registerRender(item_v3_airship_gold);
-					registerRender(item_v3_airship_lapislazuli);
-					registerRender(item_v3_airship_obsidian);
-					registerRender(item_v3_airship_diamond);
-					registerRender(item_v3_airship_emerald);
-					registerRender(item_v3_airship_netherbrick);
-					registerRender(item_v3_airship_purpur);
-					registerRender(item_v3_airship_ice);
-					registerRender(item_v3_airship_sandstone);
-					//registerRender(item_v3_airship_brick);
-					//registerRender(item_v3_airship_glowstone);
-					//registerRender(item_v3_airship_quartz);
-					//registerRender(item_v3_airship_prismarine);
-					//registerRender(item_v3_airship_soulsand);
-					//registerRender(item_v3_airship_ghost);
 					
 					for (EntityAirshipBaseVC.Color meta : EntityAirshipBaseVC.Color.values()) 
 					{
@@ -229,24 +158,6 @@ public final class InitItemsVCRender extends ItemsVC {
 				//V4
 				if(ViesCraftConfig.v4AirshipEnabled)
 				{
-					registerRender(item_v4_airship_oak);
-					registerRender(item_v4_airship_iron);
-					registerRender(item_v4_airship_redstone);
-					registerRender(item_v4_airship_gold);
-					registerRender(item_v4_airship_lapislazuli);
-					registerRender(item_v4_airship_obsidian);
-					registerRender(item_v4_airship_diamond);
-					registerRender(item_v4_airship_emerald);
-					registerRender(item_v4_airship_netherbrick);
-					registerRender(item_v4_airship_purpur);
-					registerRender(item_v4_airship_ice);
-					registerRender(item_v4_airship_sandstone);
-					//registerRender(item_v4_airship_brick);
-					//registerRender(item_v4_airship_glowstone);
-					//registerRender(item_v4_airship_quartz);
-					//registerRender(item_v4_airship_prismarine);
-					//registerRender(item_v4_airship_soulsand);
-					//registerRender(item_v4_airship_ghost);
 					
 					for (EntityAirshipBaseVC.Color meta : EntityAirshipBaseVC.Color.values()) 
 					{

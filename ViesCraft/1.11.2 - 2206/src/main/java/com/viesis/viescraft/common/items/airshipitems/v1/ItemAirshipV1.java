@@ -24,7 +24,7 @@ public class ItemAirshipV1 extends ItemAirshipCore {
 		this.setHasSubtypes(true);
         this.setMaxDamage(0);
         
-        ItemHelper.setItemName(this, "v1/item_airship_v1");
+        ItemHelper.setItemName(this, unlocalizedName);
 		this.setCreativeTab(ViesCraft.tabViesCraftAirshipsV1);
 	}
 	
@@ -78,6 +78,5 @@ public class ItemAirshipV1 extends ItemAirshipCore {
         return (EntityAirshipBaseVC.Frame.byId(this.getMetadata(stack)).getName() 
             		+ " " 
             		+ ViesCraftConfig.v1AirshipName);
-        
     }
 }

@@ -11,6 +11,7 @@ import net.minecraft.world.World;
 public class EntityItemAirshipV1 extends EntityItemAirshipCore {
 	
 	private int metaFrameItem;
+	
 	private float metaColorRedItem;
 	private float metaColorGreenItem;
 	private float metaColorBlueItem;

@@ -1,4 +1,4 @@
-package com.viesis.viescraft.common.items.airshipitems.v1.old;
+package com.viesis.viescraft.common.items.airshipitems.old;
 
 import java.util.List;
 

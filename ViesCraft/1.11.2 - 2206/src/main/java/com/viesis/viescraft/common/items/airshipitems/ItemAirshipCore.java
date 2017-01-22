@@ -2,6 +2,9 @@ package com.viesis.viescraft.common.items.airshipitems;
 
 import java.util.List;
 
+import com.viesis.viescraft.api.ColorHelperVC;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
@@ -11,9 +14,6 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import com.viesis.viescraft.api.ColorHelperVC;
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
 
 public class ItemAirshipCore extends Item {
 	
@@ -35,7 +35,7 @@ public class ItemAirshipCore extends Item {
         }
         else
         {
-        	toolTip.add(TextFormatting.GREEN + "Color : None");
+        	toolTip.add(TextFormatting.GREEN + "Color : Tan");
         }
 		toolTip.add("");
 		toolTip.add(TextFormatting.DARK_PURPLE + "Hold " + TextFormatting.WHITE + "[Shift + Right-Click]" + TextFormatting.DARK_PURPLE + " to throw this");

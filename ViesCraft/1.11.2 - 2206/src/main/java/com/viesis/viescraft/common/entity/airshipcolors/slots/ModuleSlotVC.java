@@ -2,14 +2,12 @@ package com.viesis.viescraft.common.entity.airshipcolors.slots;
 
 import javax.annotation.Nullable;
 
-import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.Slot;
+import com.viesis.viescraft.init.InitItemsVC;
+
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
-
-import com.viesis.viescraft.init.InitItemsVC;
 
 public class ModuleSlotVC extends SlotItemHandler {
 	
@@ -26,41 +24,15 @@ public class ModuleSlotVC extends SlotItemHandler {
     {
 		Item item = stack.getItem();
         
-        if (item == InitItemsVC.module_inventory_small)
+        if (item == InitItemsVC.module_inventory_small
+         || item == InitItemsVC.module_inventory_large
+		 || item == InitItemsVC.module_speed_increase_minor
+		 || item == InitItemsVC.module_speed_increase_major
+		 || item == InitItemsVC.module_fuel_infinite)
         {
         	return true;
         }
         
-        if (item == InitItemsVC.module_inventory_large)
-        {
-        	return true;
-        }
-        
-        if (item == InitItemsVC.module_speed_increase_minor)
-        {
-        	return true;
-        }
-        
-        if (item == InitItemsVC.module_speed_increase_major)
-        {
-        	return true;
-        }
-        
-        if (item == InitItemsVC.module_fuel_infinite)
-        {
-        	return true;
-        }
-        
-        //if (item == InitItemsVC.module_stealth)
-        //{
-        //	return true;
-        //}
-        
-        //if (item == InitItemsVC.module_dash)
-        //{
-        //	return true;
-        //}
-		
         return false;
     }
 }

@@ -33,10 +33,10 @@ public class CommonProxy {
 		
 		NetworkHandler.preInit();
 		
-		//InitItemsVC.registerItemTEMP();
-		//InitBlocksVC.registerBlockTEMP();
-		//InitTileEntitiesVC.registerTileEntityTEMP();
-		//InitEntityVC.registerEntityTEMP();
+		InitItemsVC.registerItemTEMP();
+		InitBlocksVC.registerBlockTEMP();
+		InitTileEntitiesVC.registerTileEntityTEMP();
+		InitEntityVC.registerEntityTEMP();
 	}
 	
 	public void init(FMLInitializationEvent event) 

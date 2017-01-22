@@ -1,29 +1,34 @@
 package com.viesis.viescraft.common.entity.airshipitems.v4;
 
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV4Core;
-import com.viesis.viescraft.common.entity.airshipitems.v1.old.EntityItemAirshipCoreOLD;
+import com.viesis.viescraft.common.entity.airshipitems.EntityItemAirshipCore;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
-public class EntityItemAirshipV4 extends EntityItemAirshipCoreOLD {
+public class EntityItemAirshipV4 extends EntityItemAirshipCore {
 	
 	private int metaFrameItem;
-	private int metaColorItem;
+	
+	private float metaColorRedItem;
+	private float metaColorGreenItem;
+	private float metaColorBlueItem;
 	
     public EntityItemAirshipV4(World worldIn)
     {
         super(worldIn);
     }
     
-    public EntityItemAirshipV4(World worldIn, EntityLivingBase entity, int frameIn, int colorIn)
+    public EntityItemAirshipV4(World worldIn, EntityLivingBase entity, int frameIn, float colorRed, float colorGreen, float colorBlue)
     {
         super(worldIn, entity);
         
         this.metaFrameItem = frameIn;
-        this.metaColorItem = colorIn;
+        this.metaColorRedItem = colorRed;
+        this.metaColorGreenItem = colorGreen;
+        this.metaColorBlueItem = colorBlue;
     }
     
     public EntityItemAirshipV4(World worldIn, double x, double y, double z)
@@ -37,7 +42,7 @@ public class EntityItemAirshipV4 extends EntityItemAirshipCoreOLD {
         if (!this.world.isRemote)
         {
         	this.playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 0.5F, 0.4F / .5F * 0.4F + 0.8F);
-        	this.world.spawnEntity(new EntityAirshipV4Core(this.world, this.posX, this.posY + 0.5F, this.posZ, this.metaFrameItem, this.metaColorItem));
+        	this.world.spawnEntity(new EntityAirshipV4Core(this.world, this.posX, this.posY + 0.5F, this.posZ, this.metaFrameItem, this.metaColorRedItem, this.metaColorGreenItem, this.metaColorBlueItem));
             
         	this.setDead();
         }

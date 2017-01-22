@@ -91,10 +91,11 @@ public class ItemColorizerBalloon extends Item {
         }
 		
 		toolTip.add("");
-		toolTip.add(TextFormatting.WHITE + "[Shift + Left-Click]" + TextFormatting.GOLD + " on an");
-		toolTip.add(TextFormatting.GOLD + "airship to paint it.");
+		toolTip.add(TextFormatting.WHITE + "[Shift + Right-Click]" + TextFormatting.GOLD + " to set");
+		toolTip.add(TextFormatting.GOLD + "the color you want to use.");
 		toolTip.add("");
-		toolTip.add(TextFormatting.GOLD + "Returns an empty bucket!");
+		toolTip.add(TextFormatting.WHITE + "[Shift + Left-Click]" + TextFormatting.GOLD + " on an");
+		toolTip.add(TextFormatting.GOLD + "airship to apply the color.");
 		
 	}
 	

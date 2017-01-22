@@ -34,19 +34,19 @@ public final class InitEntityVCRender extends ItemsVC {
 		//V2
 		if(ViesCraftConfig.v2AirshipEnabled)
 		{
-			//RenderingRegistry.registerEntityRenderingHandler(EntityItemAirshipV2.class, renderManager -> new RenderItemAirshipV2(renderManager));
+			RenderingRegistry.registerEntityRenderingHandler(EntityItemAirshipV2.class, renderManager -> new RenderItemAirshipV2(renderManager));
 		}
 		
 		//V3
 		if(ViesCraftConfig.v3AirshipEnabled)
 		{
-			//RenderingRegistry.registerEntityRenderingHandler(EntityItemAirshipV3.class, renderManager -> new RenderItemAirshipV3(renderManager));
+			RenderingRegistry.registerEntityRenderingHandler(EntityItemAirshipV3.class, renderManager -> new RenderItemAirshipV3(renderManager));
 		}
 		
 		//V4
 		if(ViesCraftConfig.v4AirshipEnabled)
 		{
-			//RenderingRegistry.registerEntityRenderingHandler(EntityItemAirshipV4.class, renderManager -> new RenderItemAirshipV4(renderManager));
+			RenderingRegistry.registerEntityRenderingHandler(EntityItemAirshipV4.class, renderManager -> new RenderItemAirshipV4(renderManager));
 		}
 		
 		//===========================================
