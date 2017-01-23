@@ -3,7 +3,6 @@ package com.viesis.viescraft.common.items.airshipitems.v4;
 import com.viesis.viescraft.ViesCraft;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
 import com.viesis.viescraft.common.entity.airshipitems.v4.EntityItemAirshipV4;
-import com.viesis.viescraft.common.entity.airshipitems.v4.EntityItemAirshipV4;
 import com.viesis.viescraft.common.items.ItemHelper;
 import com.viesis.viescraft.common.items.airshipitems.ItemAirshipCore;
 import com.viesis.viescraft.configs.ViesCraftConfig;
@@ -35,18 +34,18 @@ public class ItemAirshipV4 extends ItemAirshipCore {
         ItemStack itemstack = playerIn.getHeldItem(handIn);
         
         int balloon = 0;
-        float colorRed = 210;
-		float colorGreen = 180;
-		float colorBlue = 140;
+        int colorRed = 210;
+		int colorGreen = 180;
+		int colorBlue = 140;
     	
         if(playerIn.isSneaking())
 		{
         	if(itemstack.hasTagCompound())
 	        {
         		balloon = itemstack.getTagCompound().getInteger("Balloon"); 
-        		colorRed = itemstack.getTagCompound().getFloat("ColorRed"); 
-				colorGreen = itemstack.getTagCompound().getFloat("ColorGreen"); 
-				colorBlue = itemstack.getTagCompound().getFloat("ColorBlue");
+        		colorRed = itemstack.getTagCompound().getInteger("ColorRed"); 
+				colorGreen = itemstack.getTagCompound().getInteger("ColorGreen"); 
+				colorBlue = itemstack.getTagCompound().getInteger("ColorBlue");
 	        }
         	else
         	{

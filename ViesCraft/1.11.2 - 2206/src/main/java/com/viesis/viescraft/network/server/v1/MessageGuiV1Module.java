@@ -1,11 +1,11 @@
 package com.viesis.viescraft.network.server.v1;
 
-import io.netty.buffer.ByteBuf;
-import net.minecraft.entity.player.EntityPlayer;
-
 import com.viesis.viescraft.ViesCraft;
 import com.viesis.viescraft.network.GuiHandler;
 import com.viesis.viescraft.network.packet.MessageBase;
+
+import io.netty.buffer.ByteBuf;
+import net.minecraft.entity.player.EntityPlayer;
 
 public class MessageGuiV1Module extends MessageBase<MessageGuiV1Module> {
 	

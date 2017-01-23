@@ -35,18 +35,18 @@ public class EntityAirshipBaseVC extends Entity {
 	public int metaFrame;
 	public int metaBalloon;
 	
-	public float metaColorRed;
-	public float metaColorGreen;
-	public float metaColorBlue;
+	public int metaColorRed;
+	public int metaColorGreen;
+	public int metaColorBlue;
 	
     public static final DataParameter<Integer> TIME_SINCE_HIT_VC = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
     protected static final DataParameter<Integer> FORWARD_DIRECTION_VC = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
     protected static final DataParameter<Float> DAMAGE_TAKEN_VC = EntityDataManager.<Float>createKey(EntityAirshipBaseVC.class, DataSerializers.FLOAT);
     protected static final DataParameter<Integer> AIRSHIP_TYPE_FRAME_VC = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
     protected static final DataParameter<Integer> AIRSHIP_TYPE_BALLOON_VC = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
-    protected static final DataParameter<Float> BALLOON_COLOR_RED_VC = EntityDataManager.<Float>createKey(EntityAirshipBaseVC.class, DataSerializers.FLOAT);
-    protected static final DataParameter<Float> BALLOON_COLOR_GREEN_VC = EntityDataManager.<Float>createKey(EntityAirshipBaseVC.class, DataSerializers.FLOAT);
-    protected static final DataParameter<Float> BALLOON_COLOR_BLUE_VC = EntityDataManager.<Float>createKey(EntityAirshipBaseVC.class, DataSerializers.FLOAT);
+    protected static final DataParameter<Integer> BALLOON_COLOR_RED_VC = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+    protected static final DataParameter<Integer> BALLOON_COLOR_GREEN_VC = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+    protected static final DataParameter<Integer> BALLOON_COLOR_BLUE_VC = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
     
     /** How much of current speed to retain. Value zero to one. */
     protected float momentum;
@@ -129,9 +129,9 @@ public class EntityAirshipBaseVC extends Entity {
         this.dataManager.register(DAMAGE_TAKEN_VC, Float.valueOf(0.0F));
         this.dataManager.register(AIRSHIP_TYPE_FRAME_VC, Integer.valueOf(this.metaFrame));
         this.dataManager.register(AIRSHIP_TYPE_BALLOON_VC, Integer.valueOf(this.metaBalloon));
-        this.dataManager.register(BALLOON_COLOR_RED_VC, Float.valueOf(this.metaColorRed));
-        this.dataManager.register(BALLOON_COLOR_GREEN_VC, Float.valueOf(this.metaColorGreen));
-        this.dataManager.register(BALLOON_COLOR_BLUE_VC, Float.valueOf(this.metaColorBlue));
+        this.dataManager.register(BALLOON_COLOR_RED_VC, Integer.valueOf(this.metaColorRed));
+        this.dataManager.register(BALLOON_COLOR_GREEN_VC, Integer.valueOf(this.metaColorGreen));
+        this.dataManager.register(BALLOON_COLOR_BLUE_VC, Integer.valueOf(this.metaColorBlue));
     }
     
     /**
@@ -775,49 +775,49 @@ public class EntityAirshipBaseVC extends Entity {
     /**
      * Sets the Color Red.
      */
-    public void setAirshipMetaColorRed(float airshipMeta)
+    public void setAirshipMetaColorRed(int airshipMeta)
     {
-        this.dataManager.set(BALLOON_COLOR_RED_VC, Float.valueOf(airshipMeta));
+        this.dataManager.set(BALLOON_COLOR_RED_VC, Integer.valueOf(airshipMeta));
     }
 	
     /**
      * Gets the Color Red.
      */
-    public float getAirshipMetaColorRed()
+    public int getAirshipMetaColorRed()
     {
-        return ((Float)this.dataManager.get(BALLOON_COLOR_RED_VC)).floatValue();
+        return ((Integer)this.dataManager.get(BALLOON_COLOR_RED_VC)).intValue();
     }
     
     /**
      * Sets the Color Green.
      */
-    public void setAirshipMetaColorGreen(float airshipMeta)
+    public void setAirshipMetaColorGreen(int airshipMeta)
     {
-        this.dataManager.set(BALLOON_COLOR_GREEN_VC, Float.valueOf(airshipMeta));
+        this.dataManager.set(BALLOON_COLOR_GREEN_VC, Integer.valueOf(airshipMeta));
     }
 	
     /**
      * Gets the Color Green.
      */
-    public float getAirshipMetaColorGreen()
+    public int getAirshipMetaColorGreen()
     {
-        return ((Float)this.dataManager.get(BALLOON_COLOR_GREEN_VC)).floatValue();
+        return ((Integer)this.dataManager.get(BALLOON_COLOR_GREEN_VC)).intValue();
     }
     
     /**
      * Sets the Color Blue.
      */
-    public void setAirshipMetaColorBlue(float airshipMeta)
+    public void setAirshipMetaColorBlue(int airshipMeta)
     {
-        this.dataManager.set(BALLOON_COLOR_BLUE_VC, Float.valueOf(airshipMeta));
+        this.dataManager.set(BALLOON_COLOR_BLUE_VC, Integer.valueOf(airshipMeta));
     }
 	
     /**
      * Gets the Color Blue.
      */
-    public float getAirshipMetaColorBlue()
+    public int getAirshipMetaColorBlue()
     {
-        return ((Float)this.dataManager.get(BALLOON_COLOR_BLUE_VC)).floatValue();
+        return ((Integer)this.dataManager.get(BALLOON_COLOR_BLUE_VC)).intValue();
     }
     
     /**

@@ -54,9 +54,6 @@ public class GuiHandler implements IGuiHandler {
 	
 	public static final int GUI_AIRSHIP_WORKBENCH = 50;
 	public static final int GUI_BATTERY_CHARGER = 51;
-	//public static final int GUI_AIRSHIP_DISASSEMBLER = 51;
-	
-	//public static final int GUI_COLORIZER_BALLOON = 60;
 	
 	public static final int GUI_V1_DEFAULT = 1;
 	public static final int GUI_V2_DEFAULT = 2;

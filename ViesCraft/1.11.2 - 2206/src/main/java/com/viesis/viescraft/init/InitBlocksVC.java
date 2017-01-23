@@ -6,13 +6,12 @@ import java.util.function.Function;
 
 import javax.annotation.Nullable;
 
+import com.viesis.viescraft.api.BlocksVC;
+import com.viesis.viescraft.common.blocks.BlockAirshipWorkbench;
+
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-
-import com.viesis.viescraft.api.BlocksVC;
-import com.viesis.viescraft.common.blocks.BlockAirshipWorkbench;
-import com.viesis.viescraft.common.blocks.BlockBatteryCharger;
 
 public class InitBlocksVC extends BlocksVC {
 	

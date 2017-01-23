@@ -2,6 +2,8 @@ package com.viesis.viescraft.common.items;
 
 import java.util.List;
 
+import com.viesis.viescraft.ViesCraft;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,8 +14,6 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import com.viesis.viescraft.ViesCraft;
 
 public class ItemAirshipDismounter extends Item {
 	

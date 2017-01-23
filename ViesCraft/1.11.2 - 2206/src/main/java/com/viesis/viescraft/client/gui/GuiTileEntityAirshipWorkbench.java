@@ -2,16 +2,16 @@ package com.viesis.viescraft.client.gui;
 
 import java.io.IOException;
 
+import com.viesis.viescraft.api.Reference;
+import com.viesis.viescraft.api.util.Keybinds;
+import com.viesis.viescraft.common.tileentity.ContainerAirshipWorkbench;
+import com.viesis.viescraft.common.tileentity.TileEntityAirshipWorkbench;
+
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
-
-import com.viesis.viescraft.api.Reference;
-import com.viesis.viescraft.api.util.Keybinds;
-import com.viesis.viescraft.common.tileentity.ContainerAirshipWorkbench;
-import com.viesis.viescraft.common.tileentity.TileEntityAirshipWorkbench;
 
 public class GuiTileEntityAirshipWorkbench extends GuiContainer {
 	

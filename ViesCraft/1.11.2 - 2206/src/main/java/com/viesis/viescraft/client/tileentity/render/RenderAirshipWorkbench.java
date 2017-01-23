@@ -1,13 +1,13 @@
 package com.viesis.viescraft.client.tileentity.render;
 
-import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.opengl.GL11;
 
 import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.client.tileentity.model.ModelAirshipWorkbench;
 import com.viesis.viescraft.common.tileentity.TileEntityAirshipWorkbench;
+
+import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.util.ResourceLocation;
 
 public class RenderAirshipWorkbench extends TileEntitySpecialRenderer<TileEntityAirshipWorkbench> {
 	

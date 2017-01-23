@@ -1,7 +1,6 @@
 package com.viesis.viescraft.init;
 
 import com.viesis.viescraft.common.tileentity.TileEntityAirshipWorkbench;
-import com.viesis.viescraft.common.tileentity.TileEntityBatteryCharger;
 
 import net.minecraftforge.fml.common.registry.GameRegistry;
 

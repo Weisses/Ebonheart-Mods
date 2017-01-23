@@ -1,13 +1,13 @@
 package com.viesis.viescraft.common.utils.events;
 
+import com.viesis.viescraft.network.NetworkHandler;
+import com.viesis.viescraft.network.client.MessageConfig;
+
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedOutEvent;
-
-import com.viesis.viescraft.network.NetworkHandler;
-import com.viesis.viescraft.network.client.MessageConfig;
 
 public class EventHandlerConfig {
 	

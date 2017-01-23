@@ -89,7 +89,7 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
         this.inventory = new ItemStackHandler(size);
     }
 	
-    public EntityAirshipV2Core(World worldIn, double x, double y, double z, int frameIn, int balloonIn, float metaColorRedItem, float metaColorGreenItem, float metaColorBlueItem)
+    public EntityAirshipV2Core(World worldIn, double x, double y, double z, int frameIn, int balloonIn, int metaColorRedItem, int metaColorGreenItem, int metaColorBlueItem)
     {
         this(worldIn);
         this.setPosition(x, y + 0.5D, z);
@@ -118,9 +118,9 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
         this.dataManager.register(DAMAGE_TAKEN_VC, Float.valueOf(0.0F));
         this.dataManager.register(AIRSHIP_TYPE_FRAME_VC, Integer.valueOf(this.metaFrame));
         this.dataManager.register(AIRSHIP_TYPE_BALLOON_VC, Integer.valueOf(this.metaBalloon));
-        this.dataManager.register(BALLOON_COLOR_RED_VC, Float.valueOf(this.metaColorRed));
-        this.dataManager.register(BALLOON_COLOR_GREEN_VC, Float.valueOf(this.metaColorGreen));
-        this.dataManager.register(BALLOON_COLOR_BLUE_VC, Float.valueOf(this.metaColorBlue));
+        this.dataManager.register(BALLOON_COLOR_RED_VC, Integer.valueOf(this.metaColorRed));
+        this.dataManager.register(BALLOON_COLOR_GREEN_VC, Integer.valueOf(this.metaColorGreen));
+        this.dataManager.register(BALLOON_COLOR_BLUE_VC, Integer.valueOf(this.metaColorBlue));
         
 		this.dataManager.register(POWERED, Integer.valueOf(this.airshipBurnTime));
         this.dataManager.register(TOTALPOWERED, Integer.valueOf(this.airshipTotalBurnTime));
@@ -167,9 +167,9 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
     	
     	compound.setInteger("Frame", this.metaFrame);
     	compound.setInteger("Balloon", this.metaBalloon);
-    	compound.setFloat("ColorRed", this.metaColorRed);
-    	compound.setFloat("ColorGreen", this.metaColorGreen);
-    	compound.setFloat("ColorBlue", this.metaColorBlue);
+    	compound.setInteger("ColorRed", this.metaColorRed);
+    	compound.setInteger("ColorGreen", this.metaColorGreen);
+    	compound.setInteger("ColorBlue", this.metaColorBlue);
     	
     	compound.setTag("Slots", inventory.serializeNBT());
     	
@@ -188,9 +188,9 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
     	
     	this.metaFrame = compound.getInteger("Frame");
     	this.metaBalloon = compound.getInteger("Balloon");
-    	this.metaColorRed = compound.getFloat("ColorRed");
-    	this.metaColorGreen = compound.getFloat("ColorGreen");
-    	this.metaColorBlue = compound.getFloat("ColorBlue");
+    	this.metaColorRed = compound.getInteger("ColorRed");
+    	this.metaColorGreen = compound.getInteger("ColorGreen");
+    	this.metaColorBlue = compound.getInteger("ColorBlue");
     	
     	inventory.deserializeNBT(compound.getCompoundTag("Slots"));
     	
@@ -213,9 +213,9 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
     	stack.setTagCompound(new NBTTagCompound());
     	
     	stack.getTagCompound().setInteger("Balloon", this.metaBalloon);
-    	stack.getTagCompound().setFloat("ColorRed", this.metaColorRed);
-    	stack.getTagCompound().setFloat("ColorGreen", this.metaColorGreen);
-    	stack.getTagCompound().setFloat("ColorBlue", this.metaColorBlue);
+    	stack.getTagCompound().setInteger("ColorRed", this.metaColorRed);
+    	stack.getTagCompound().setInteger("ColorGreen", this.metaColorGreen);
+    	stack.getTagCompound().setInteger("ColorBlue", this.metaColorBlue);
     	
     	return stack;
     }

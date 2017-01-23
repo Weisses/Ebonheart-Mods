@@ -1,9 +1,7 @@
 package com.viesis.viescraft.client;
 
 import com.viesis.viescraft.client.tileentity.render.RenderAirshipWorkbench;
-import com.viesis.viescraft.client.tileentity.render.RenderBatteryCharger;
 import com.viesis.viescraft.common.tileentity.TileEntityAirshipWorkbench;
-import com.viesis.viescraft.common.tileentity.TileEntityBatteryCharger;
 
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;

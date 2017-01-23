@@ -58,7 +58,6 @@ public class NetworkHandler {
 		INSTANCE.registerMessage(MessageGuiV4ModuleInventoryLarge.class, MessageGuiV4ModuleInventoryLarge.class, 16, Side.SERVER);
 		
 		INSTANCE.registerMessage(MessageGuiColorizerBalloon.class, MessageGuiColorizerBalloon.class, 60, Side.SERVER);
-		//INSTANCE.registerMessage(MessageColorizerRed.class, MessageColorizerRed.class, 1, Side.SERVER);
 		
 	}
 	

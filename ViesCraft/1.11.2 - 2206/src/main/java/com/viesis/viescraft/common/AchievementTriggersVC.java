@@ -1,10 +1,10 @@
 package com.viesis.viescraft.common;
 
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.PlayerEvent;
-
 import com.viesis.viescraft.init.InitAchievementsVC;
 import com.viesis.viescraft.init.InitItemsVC;
+
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 
 public class AchievementTriggersVC extends InitAchievementsVC {
 	

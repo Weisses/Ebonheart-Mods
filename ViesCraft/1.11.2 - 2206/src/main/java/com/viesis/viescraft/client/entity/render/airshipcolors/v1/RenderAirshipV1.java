@@ -170,8 +170,9 @@ public class RenderAirshipV1 extends Render<EntityAirshipV1Core> {
     
     public void setupRotation(EntityAirshipV1Core entity, float p_188311_2_, float p_188311_3_)
     {
-    GlStateManager.rotate(180.0F - p_188311_2_, 0.0F, 1.0F, 0.0F);
-        float f = (float)entity.getTimeSinceHit() - p_188311_3_;
+    	GlStateManager.rotate(180.0F - p_188311_2_, 0.0F, 1.0F, 0.0F);
+        
+    	float f = (float)entity.getTimeSinceHit() - p_188311_3_;
         float f1 = entity.getDamageTaken() - p_188311_3_;
         
         float g = (float)entity.getTimeSinceHit() - p_188311_3_;
@@ -182,7 +183,6 @@ public class RenderAirshipV1 extends Render<EntityAirshipV1Core> {
         
         if(entity.leftInputDown)
         {
-        	
         	GlStateManager.rotate(5, 0.0F, 0.0F, 0.1F);
         }
         

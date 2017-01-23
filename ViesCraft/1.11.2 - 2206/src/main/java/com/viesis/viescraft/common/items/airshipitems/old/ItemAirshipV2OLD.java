@@ -46,7 +46,7 @@ public class ItemAirshipV2OLD extends ItemAirshipCoreOLD {
 			
 			if (!worldIn.isRemote)
 			{
-				EntityItemAirshipV2 entityairship = new EntityItemAirshipV2(worldIn, playerIn, this.metaFrameItem, 210, 180, 140);
+				EntityItemAirshipV2 entityairship = new EntityItemAirshipV2(worldIn, playerIn, this.metaFrameItem, 0, 210, 180, 140);
 				entityairship.setHeadingFromThrower(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, -20.0F, 0.7F, 1.0F);
 				worldIn.spawnEntity(entityairship);
 			}

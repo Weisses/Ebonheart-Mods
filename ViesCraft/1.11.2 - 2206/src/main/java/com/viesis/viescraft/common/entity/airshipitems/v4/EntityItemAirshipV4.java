@@ -13,16 +13,16 @@ public class EntityItemAirshipV4 extends EntityItemAirshipCore {
 	private int metaFrameItem;
 	private int metaBalloonItem;
 	
-	private float metaColorRedItem;
-	private float metaColorGreenItem;
-	private float metaColorBlueItem;
+	private int metaColorRedItem;
+	private int metaColorGreenItem;
+	private int metaColorBlueItem;
 	
     public EntityItemAirshipV4(World worldIn)
     {
         super(worldIn);
     }
     
-    public EntityItemAirshipV4(World worldIn, EntityLivingBase entity, int frameIn, int balloonIn, float colorRed, float colorGreen, float colorBlue)
+    public EntityItemAirshipV4(World worldIn, EntityLivingBase entity, int frameIn, int balloonIn, int colorRed, int colorGreen, int colorBlue)
     {
         super(worldIn, entity);
         
