@@ -57,7 +57,7 @@ public class NetworkHandler {
 		INSTANCE.registerMessage(MessageGuiV3ModuleInventoryLarge.class, MessageGuiV3ModuleInventoryLarge.class, 15, Side.SERVER);
 		INSTANCE.registerMessage(MessageGuiV4ModuleInventoryLarge.class, MessageGuiV4ModuleInventoryLarge.class, 16, Side.SERVER);
 		
-		INSTANCE.registerMessage(MessageGuiColorizerBalloon.class, MessageGuiColorizerBalloon.class, 60, Side.SERVER);
+		INSTANCE.registerMessage(MessageGuiColorizerBalloon.class, MessageGuiColorizerBalloon.class, 61, Side.SERVER);
 		
 	}
 	

@@ -4,31 +4,22 @@ import java.util.List;
 
 import com.viesis.viescraft.ViesCraft;
 import com.viesis.viescraft.api.ColorHelperVC;
-import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.client.gui.GuiItemBalloonColorizer;
-import com.viesis.viescraft.common.caps.CapabilityProviderVC;
-import com.viesis.viescraft.common.caps.DualEnergyStorageVC;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
 import com.viesis.viescraft.common.items.ItemHelper;
 import com.viesis.viescraft.init.InitAchievementsVC;
-import com.viesis.viescraft.network.NetworkHandler;
-import com.viesis.viescraft.network.server.MessageGuiColorizerBalloon;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
-import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
-import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 

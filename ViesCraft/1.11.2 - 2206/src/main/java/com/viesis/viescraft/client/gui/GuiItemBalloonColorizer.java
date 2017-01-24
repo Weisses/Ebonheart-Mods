@@ -19,10 +19,8 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTTagString;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
-@SideOnly(Side.CLIENT)
+//@SideOnly(Side.CLIENT)
 public class GuiItemBalloonColorizer extends GuiScreen {
 	
 	private static final ResourceLocation ITEM_GUI_TEXTURES = new ResourceLocation(Reference.MOD_ID + ":" + "textures/gui/container_balloon_colorizer.png");
@@ -74,6 +72,12 @@ public class GuiItemBalloonColorizer extends GuiScreen {
             this.textRedNumber = 0;
             this.textGreenNumber = 0;
             this.textBlueNumber = 0;
+            
+            this.tagColor.appendTag(new NBTTagString("ColorRed"));
+            this.tagColor.appendTag(new NBTTagString("ColorGreen"));
+            this.tagColor.appendTag(new NBTTagString("ColorBlue"));
+            
+            
 		}
 		
 		if (this.tagColor == null)
@@ -375,7 +379,8 @@ public class GuiItemBalloonColorizer extends GuiScreen {
 			
 			this.sendTagToServer(4);
 			
-			this.mc.displayGuiScreen((GuiScreen)null);
+			this.mc.player.closeScreen();
+			//this.mc.displayGuiScreen((GuiScreen)null);
 	    }
 		
         this.buttonList.clear();
@@ -401,6 +406,12 @@ public class GuiItemBalloonColorizer extends GuiScreen {
     }
 	
 	@Override
+	public boolean doesGuiPauseGame()
+    {
+        return false;
+    }
+	
+	@Override
 	public void onGuiClosed()
     {
         Keyboard.enableRepeatEvents(false);
@@ -421,6 +432,6 @@ public class GuiItemBalloonColorizer extends GuiScreen {
         	this.itemObj.setTagInfo("Author", this.tagColor);
         }
 		
-		NetworkHandler.sendToServer(new MessageGuiColorizerBalloon());
+        NetworkHandler.sendToServer(new MessageGuiColorizerBalloon());
     }
 }		

@@ -75,7 +75,8 @@ public class CraftingManagerVC {
     	this.addRecipe(new ItemStack(InitItemsVC.airship_frame, 1, 7), new Object[]{"###", "#M#", "###", '#', Items.EMERALD, 'M', Items.MINECART});
     	this.addRecipe(new ItemStack(InitItemsVC.airship_frame, 1, 8), new Object[]{"###", "#M#", "###", '#', Blocks.NETHER_BRICK, 'M', Items.MINECART});
     	this.addRecipe(new ItemStack(InitItemsVC.airship_frame, 1, 9), new Object[]{"###", "#M#", "###", '#', Blocks.PURPUR_BLOCK, 'M', Items.MINECART});
-    	
+    	this.addRecipe(new ItemStack(InitItemsVC.airship_frame, 1, 10), new Object[]{"###", "#M#", "###", '#', Blocks.ICE, 'M', Items.MINECART});
+    	this.addRecipe(new ItemStack(InitItemsVC.airship_frame, 1, 11), new Object[]{"###", "#M#", "###", '#', Blocks.SANDSTONE, 'M', Items.MINECART});
     	//=================================================
     	
     	//Airships
