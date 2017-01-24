@@ -38,12 +38,13 @@ public class ItemColorizerBalloon extends Item {
 	@Override
 	public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity)
     {
-		EntityAirshipBaseVC airship = (EntityAirshipBaseVC) entity;
 		
 		if (entity instanceof EntityAirshipBaseVC)
         {
 			if(player.isSneaking())
 			{
+				EntityAirshipBaseVC airship = (EntityAirshipBaseVC) entity;
+				
 				if(stack.hasTagCompound())
 				{
 					airship.metaColorRed = stack.getTagCompound().getInteger("ColorRed");
