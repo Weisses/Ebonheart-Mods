@@ -389,7 +389,8 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
                 	}
             	}
             	
-            	this.setDeadVC();
+            	this.dropInvDead();
+            	this.setDead();
             }
             else if (this.status == EntityAirshipBaseVC.Status.IN_AIR
             	  || this.status == EntityAirshipBaseVC.Status.ON_LAND)

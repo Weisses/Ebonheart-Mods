@@ -19,7 +19,7 @@ public class GuiGuidebookMain extends GuiScreen {
     private final int bookImageHeight = 192;
     private final int bookImageWidth = 192;
     private int currPage = 0;
-    private static final int bookTotalPages = 25;
+    private static final int bookTotalPages = 29;
     private static ResourceLocation[] bookPageTextures = new ResourceLocation[bookTotalPages];
     private static String[] stringPageText = new String[bookTotalPages];
     
@@ -54,6 +54,10 @@ public class GuiGuidebookMain extends GuiScreen {
         bookPageTextures[22] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/main/page_22.png");
         bookPageTextures[23] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/main/page_23.png");
         bookPageTextures[24] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/main/page_24.png");
+        bookPageTextures[25] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/main/page_25.png");
+        bookPageTextures[26] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/main/page_26.png");
+        bookPageTextures[27] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/main/page_27.png");
+        bookPageTextures[28] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/main/page_28.png");
         
         //Title
         stringPageText[0] = "\n\n\n\n\n\n\n"
@@ -115,8 +119,8 @@ public class GuiGuidebookMain extends GuiScreen {
         		+ ""
         		+ "This item dictates what "
         		+ "your frame looks like "
-        		+ "and can't be changed "
-        		+ "like colors. Choose wisely! "
+        		+ "and can be changed "
+        		+ "using any frame, any time. "
         		+ "\n\n\n\n"
         		+ "Note: Frames don't affect speed! ";
         
@@ -192,7 +196,43 @@ public class GuiGuidebookMain extends GuiScreen {
         		+ "\n"
         		+ "\u00A7o\u00A7lEmerald\u00A7r";
         
-        stringPageText[16] = "   Now that you have "
+        stringPageText[16] = "Part Recipe:"
+        		+ "\n\n"
+        		+ "\u00A7l\u00A7nNether Brick"
+        		+ "\nAirship Frame\u00A7r"
+        		+ "\n\n\n\n\n\n\n\n"
+        		+ "\u00A7oIngredient:\u00A7r"
+        		+ "\n"
+        		+ "\u00A7o\u00A7lNether Brick\u00A7r";
+        
+        stringPageText[17] = "Part Recipe:"
+        		+ "\n\n"
+        		+ "\u00A7l\u00A7nPurpur"
+        		+ "\nAirship Frame\u00A7r"
+        		+ "\n\n\n\n\n\n\n\n"
+        		+ "\u00A7oIngredient:\u00A7r"
+        		+ "\n"
+        		+ "\u00A7o\u00A7lPurpur\u00A7r";
+        
+        stringPageText[18] = "Part Recipe:"
+        		+ "\n\n"
+        		+ "\u00A7l\u00A7nIce"
+        		+ "\nAirship Frame\u00A7r"
+        		+ "\n\n\n\n\n\n\n\n"
+        		+ "\u00A7oIngredient:\u00A7r"
+        		+ "\n"
+        		+ "\u00A7o\u00A7lIce\u00A7r";
+        
+        stringPageText[19] = "Part Recipe:"
+        		+ "\n\n"
+        		+ "\u00A7l\u00A7nSandstone"
+        		+ "\nAirship Frame\u00A7r"
+        		+ "\n\n\n\n\n\n\n\n"
+        		+ "\u00A7oIngredient:\u00A7r"
+        		+ "\n"
+        		+ "\u00A7o\u00A7lSandstone\u00A7r";
+        
+        stringPageText[20] = "   Now that you have "
         		+ "the parts, let's get "
         		+ "\u00A7obuilding\u00A7r! There are \u00A7l4\u00A7r "
         		+ "airship styles: "
@@ -217,7 +257,7 @@ public class GuiGuidebookMain extends GuiScreen {
         		+ "Names can be changed via the config. "
         		;
         
-        stringPageText[17] = "Airship Recipe:"
+        stringPageText[21] = "Airship Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7n"
         		+ ViesCraftConfig.v1AirshipName
@@ -225,7 +265,7 @@ public class GuiGuidebookMain extends GuiScreen {
         		+ "\n\n\n\n\n\n\n\n\n"
         		+ "\u00A7oClassic airship. Some things can't be beat.\u00A7r";
         
-        stringPageText[18] = "Airship Recipe:"
+        stringPageText[22] = "Airship Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7n"
         		+ ViesCraftConfig.v2AirshipName
@@ -233,7 +273,7 @@ public class GuiGuidebookMain extends GuiScreen {
         		+ "\n\n\n\n\n\n\n\n\n"
         		+ "\u00A7oA unique twist on the airship design.\u00A7r";
     	
-        stringPageText[19] = "Airship Recipe:"
+        stringPageText[23] = "Airship Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7n"
         		+ ViesCraftConfig.v3AirshipName
@@ -241,7 +281,7 @@ public class GuiGuidebookMain extends GuiScreen {
         		+ "\n\n\n\n\n\n\n\n\n"
         		+ "\u00A7oAn airship built for the tech enthusiast.\u00A7r";
         
-        stringPageText[20] = "Airship Recipe:"
+        stringPageText[24] = "Airship Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7n"
         		+ ViesCraftConfig.v4AirshipName
@@ -249,27 +289,27 @@ public class GuiGuidebookMain extends GuiScreen {
         		+ "\n\n\n\n\n\n\n\n\n"
         		+ "\u00A7oSteampunk airship ingenuity at its finest.\u00A7r";
         
-        stringPageText[21] = "Extra Tools:"
+        stringPageText[25] = "Extra Tools:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nDismounter\u00A70\u00A7r\u00A70"
         		+ "\n\n\n\n\n\n\n\n\n"
         		+ "\u00A7oEject mobs from what they are riding in.\u00A7r";
     		
-        stringPageText[22] = "Further Reading:"
+        stringPageText[26] = "Further Reading:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nTaking Control\u00A7r\u00A70"
         		+ "\n               \u00A7l\u00A7nvol.2\u00A7r"
         		+ "\n\n\n\n\n\n\n\n"
         		+ "\u00A7oPiloting airships like a pro.\u00A7r";
     		
-        stringPageText[23] = "Further Reading:"
+        stringPageText[27] = "Further Reading:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nFlaming Paint?!\u00A7r\u00A70"
         		+ "\n               \u00A7l\u00A7nvol.3\u00A7r"
         		+ "\n\n\n\n\n\n\n\n"
         		+ "\u00A7oIns and outs of airship-safe paint.\u00A7r";
         
-        stringPageText[24] = "Further Reading:"
+        stringPageText[28] = "Further Reading:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nModules & You\u00A7r\u00A70"
         		+ "\n               \u00A7l\u00A7nvol.4\u00A7r"
@@ -418,7 +458,22 @@ public class GuiGuidebookMain extends GuiScreen {
         {
         	mc.getTextureManager().bindTexture(bookPageTextures[24]);
         }
-        
+        if (currPage == 25)
+        {
+        	mc.getTextureManager().bindTexture(bookPageTextures[25]);
+        }
+        if (currPage == 26)
+        {
+        	mc.getTextureManager().bindTexture(bookPageTextures[26]);
+        }
+        if (currPage == 27)
+        {
+        	mc.getTextureManager().bindTexture(bookPageTextures[27]);
+        }
+        if (currPage == 28)
+        {
+        	mc.getTextureManager().bindTexture(bookPageTextures[28]);
+        }
         
         //else
         //{
