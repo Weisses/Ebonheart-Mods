@@ -2,7 +2,10 @@ package com.viesis.viescraft.common.entity.airshipcolors;
 
 import java.util.List;
 
+import com.viesis.viescraft.api.ColorHelperVC;
 import com.viesis.viescraft.api.FuelVC;
+import com.viesis.viescraft.api.Reference;
+import com.viesis.viescraft.client.InitParticlesVCRender;
 import com.viesis.viescraft.common.utils.events.EventHandlerAirship;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 import com.viesis.viescraft.init.InitItemsVC;
@@ -31,7 +34,6 @@ import net.minecraft.network.datasync.DataSerializers;
 import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.EntitySelectors;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
@@ -74,11 +76,8 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
     private int size = 20;
     
     public float AirshipSpeedTurn = 0.18F * (ViesCraftConfig.v4AirshipSpeed / 100);
-    
     public float AirshipSpeedForward = 0.016F * (ViesCraftConfig.v4AirshipSpeed / 100);
-    
     public float AirshipSpeedUp = 0.004F * (ViesCraftConfig.v4AirshipSpeed / 100);
-    
     public float AirshipSpeedDown = 0.004F * (ViesCraftConfig.v4AirshipSpeed / 100);
 	
 	public EntityAirshipV4Core(World worldObjIn)
@@ -88,13 +87,16 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
         this.inventory = new ItemStackHandler(size);
     }
 	
-    public EntityAirshipV4Core(World worldObjIn, double x, double y, double z, int frameIn, int colorIn)
+    public EntityAirshipV4Core(World worldObjIn, double x, double y, double z, int frameIn, int balloonIn, int metaColorRedItem, int metaColorGreenItem, int metaColorBlueItem)
     {
         this(worldObjIn);
         this.setPosition(x, y + 0.5D, z);
         
         this.metaFrame = frameIn;
-        this.metaColor = colorIn;
+        this.metaBalloon = balloonIn;
+        this.metaColorRed = metaColorRedItem;
+        this.metaColorGreen = metaColorGreenItem;
+        this.metaColorBlue = metaColorBlueItem;
         
         this.motionX = 0.0D;
         this.motionY = 0.0D;
@@ -113,7 +115,10 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
         this.dataManager.register(FORWARD_DIRECTION_VC, Integer.valueOf(1));
         this.dataManager.register(DAMAGE_TAKEN_VC, Float.valueOf(0.0F));
         this.dataManager.register(AIRSHIP_TYPE_FRAME_VC, Integer.valueOf(this.metaFrame));
-        this.dataManager.register(AIRSHIP_TYPE_COLOR_VC, Integer.valueOf(this.metaColor));
+        this.dataManager.register(AIRSHIP_TYPE_BALLOON_VC, Integer.valueOf(this.metaBalloon));
+        this.dataManager.register(BALLOON_COLOR_RED_VC, Integer.valueOf(this.metaColorRed));
+        this.dataManager.register(BALLOON_COLOR_GREEN_VC, Integer.valueOf(this.metaColorGreen));
+        this.dataManager.register(BALLOON_COLOR_BLUE_VC, Integer.valueOf(this.metaColorBlue));
         
 		this.dataManager.register(POWERED, Integer.valueOf(this.airshipBurnTime));
         this.dataManager.register(TOTALPOWERED, Integer.valueOf(this.airshipTotalBurnTime));
@@ -159,7 +164,10 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
     	super.writeToNBT(compound);
     	
     	compound.setInteger("Frame", this.metaFrame);
-    	compound.setInteger("Color", this.metaColor);
+    	compound.setInteger("Balloon", this.metaBalloon);
+    	compound.setInteger("ColorRed", this.metaColorRed);
+    	compound.setInteger("ColorGreen", this.metaColorGreen);
+    	compound.setInteger("ColorBlue", this.metaColorBlue);
     	
     	compound.setTag("Slots", inventory.serializeNBT());
     	
@@ -177,7 +185,10 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
     	super.readFromNBT(compound);
     	
     	this.metaFrame = compound.getInteger("Frame");
-    	this.metaColor = compound.getInteger("Color");
+    	this.metaBalloon = compound.getInteger("Balloon");
+    	this.metaColorRed = compound.getInteger("ColorRed");
+    	this.metaColorGreen = compound.getInteger("ColorGreen");
+    	this.metaColorBlue = compound.getInteger("ColorBlue");
     	
     	inventory.deserializeNBT(compound.getCompoundTag("Slots"));
     	
@@ -196,31 +207,15 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
     @Override
 	public ItemStack getItemBoat()
     {
-		switch (this.getAirshipMetaFrame())
-        {
-            case 0:
-            	return new ItemStack(InitItemsVC.item_airship_v4_wood0, 1, this.metaColor);
-            case 1:
-            	return new ItemStack(InitItemsVC.item_airship_v4_iron, 1, this.metaColor);
-            case 2:
-            	return new ItemStack(InitItemsVC.item_airship_v4_redstone, 1, this.metaColor);
-            case 3:
-            	return new ItemStack(InitItemsVC.item_airship_v4_gold, 1, this.metaColor);
-            case 4:
-            	return new ItemStack(InitItemsVC.item_airship_v4_lapislazuli, 1, this.metaColor);
-            case 5:
-            	return new ItemStack(InitItemsVC.item_airship_v4_obsidian, 1, this.metaColor);
-            case 6:
-            	return new ItemStack(InitItemsVC.item_airship_v4_diamond, 1, this.metaColor);
-            case 7:
-            	return new ItemStack(InitItemsVC.item_airship_v4_emerald, 1, this.metaColor);
-            case 8:
-            	return new ItemStack(InitItemsVC.item_airship_v4_netherbrick, 1, this.metaColor);
-            case 9:
-            	return new ItemStack(InitItemsVC.item_airship_v4_purpur, 1, this.metaColor);
-            default:
-            	return new ItemStack(InitItemsVC.item_airship_v4_wood0, 1, this.metaColor);
-        }
+    	ItemStack stack = new ItemStack(InitItemsVC.item_airship_v4, 1, this.metaFrame);
+    	stack.setTagCompound(new NBTTagCompound());
+    	
+    	stack.getTagCompound().setInteger("Balloon", this.metaBalloon);
+    	stack.getTagCompound().setInteger("ColorRed", this.metaColorRed);
+    	stack.getTagCompound().setInteger("ColorGreen", this.metaColorGreen);
+    	stack.getTagCompound().setInteger("ColorBlue", this.metaColorBlue);
+    	
+    	return stack;
     }
     
     /**
@@ -229,7 +224,9 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
 	@Override
 	public String getName() 
 	{
-		return this.hasCustomName() ? this.customName : Frame.byId(this.metaFrame).getName() + " " + Color.byId(this.metaColor).getName() + " " + ViesCraftConfig.v4AirshipName;
+		return this.hasCustomName() ? this.customName : Frame.byId(this.metaFrame).getName() + " " 
+	+ ColorHelperVC.getColorNameFromRgb(this.metaColorRed, this.metaColorGreen, this.metaColorBlue)		
+	+ " " + ViesCraftConfig.v4AirshipName;
 	}
 	
 	
@@ -294,7 +291,7 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
         		this.controlAirshipGui();
             }
         	
-        	this.moveEntity(this.motionX, this.motionY, this.motionZ);
+            this.moveEntity(this.motionX, this.motionY, this.motionZ);
         }
         else
         {
@@ -364,11 +361,10 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
             	{
             		this.worldObj.createExplosion(this, this.posX, this.posY + (double)(this.height / 16.0F), this.posZ, 2.0F, true);
             		
-            		int drop1 = random.nextInt(100) + 1;
-            		int drop2 = random.nextInt(100) + 1;
-            		int drop3 = random.nextInt(100) + 1;
-            		int drop4 = random.nextInt(100) + 1;
-            		int drop5 = random.nextInt(100) + 1;
+            		int drop1 = Reference.random.nextInt(100) + 1;
+            		int drop2 = Reference.random.nextInt(100) + 1;
+            		int drop3 = Reference.random.nextInt(100) + 1;
+            		int drop4 = Reference.random.nextInt(100) + 1;
             		
             	    if (drop1 < 75)
                 	{
@@ -385,13 +381,14 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
                     	}
                 	}
             	    
-            	    if (drop5 < 15)
+            	    if (drop4 < 15)
                 	{
             	    	this.dropItemWithOffset(InitItemsVC.airship_ignition, 1, 0.0F);
                 	}
             	}
             	
-            	this.setDeadVC();
+            	this.dropInvDead();
+            	this.setDead();
             }
             else if (this.status == EntityAirshipBaseVC.Status.IN_AIR
             	  || this.status == EntityAirshipBaseVC.Status.ON_LAND)
@@ -411,7 +408,15 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
                 }
             	else
             	{
-            		this.motionY += d5;
+            		if(this.motionY >= -0.039D)
+            		{
+            			this.motionY += d5;
+            		}
+            		else
+            		{
+            			this.motionY = -0.04D;
+            		}
+            			
             	}
             }
             else if(isClientAirshipBurning())
@@ -669,41 +674,7 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
     	}
     	else
     	{
-        	this.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, 
-    				this.posX + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
-    				this.posY + 0.5D,
-    				this.posZ + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
-    				0.0D, 0.0D, 0.0D, new int[0]);
-        	
-        	for (int ii = 0; ii < 10; ++ii)
-        	{
-        		int d = random.nextInt(100) + 1;
-        		
-        		if (d <= 2)
-        		{
-        			this.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, 
-        					this.posX + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
-        					this.posY + 0.5D,
-        					this.posZ + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
-        					0.0D, 0.0D, 0.0D, new int[0]);
-        		}
-        		if (d <= 15)
-        		{
-        			this.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_NORMAL, 
-        					this.posX + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
-        					this.posY + 0.5D,
-        					this.posZ + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
-        					0.0D, 0.25D, 0.0D, new int[0]);
-        		}
-        		if (d <= 25)
-        		{
-        			this.worldObj.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, 
-        					this.posX + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
-        					this.posY + 0.5D,
-        					this.posZ + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,
-        					0.0D, 0.0D, 0.0D, new int[0]);
-        		}
-        	}
+        	InitParticlesVCRender.generateExplosions(this);
     	}
     }
     
@@ -730,8 +701,7 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
     {
         switch (id)
         {
-        	//Current Airship Burn Time
-            case 0:
+        	case 0:
                 this.airshipBurnTime = value;
                 break;
             case 1:
@@ -903,7 +873,7 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
         else
         {
             Item item = stack.getItem();
-            
+            //DualEnergyStorageVC cap = (DualEnergyStorageVC) stack.getCapability(DualEnergyStorageVC.CAPABILITY_HOLDER , null);
             if(ViesCraftConfig.vanillaFuel)
     		{
 	            if (item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.AIR)
@@ -930,11 +900,12 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
 	            if (item == Item.getItemFromBlock(Blocks.SAPLING)) return FuelVC.sapling;
 	            if (item == Items.COAL) return FuelVC.coal;
 	            if (item == Items.BLAZE_ROD) return FuelVC.blaze_rod;
-	
+	            
 	            if (item == Items.LAVA_BUCKET) return 20000;
     		}
             
             if (item == InitItemsVC.viesoline_pellets) return (ViesCraftConfig.viesolineBurnTime * 20);
+            //if (item == InitItemsVC.airship_battery) return cap.getEnergyStored();
             
             return net.minecraftforge.fml.common.registry.GameRegistry.getFuelValue(stack);
         }

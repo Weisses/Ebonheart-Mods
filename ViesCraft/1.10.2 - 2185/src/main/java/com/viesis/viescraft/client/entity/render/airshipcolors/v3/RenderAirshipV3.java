@@ -1,5 +1,7 @@
 package com.viesis.viescraft.client.entity.render.airshipcolors.v3;
 
+import org.lwjgl.opengl.GL11;
+
 import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.client.entity.model.ModelAirshipPanel;
 import com.viesis.viescraft.client.entity.model.v3.ModelAirshipV3Color;
@@ -19,26 +21,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderAirshipV3 extends Render<EntityAirshipV3Core> {
 	
-	private static final ResourceLocation[] ENTITY_COLOR_TEXTURE = new ResourceLocation[] 
+	private static final ResourceLocation[] ENTITY_BALLOON_TEXTURE = new ResourceLocation[] 
 	{
-		new ResourceLocation(Reference.MOD_ID, "textures/models/color/airship_color_normal.png"),
-		new ResourceLocation(Reference.MOD_ID, "textures/models/color/airship_color_black.png"),
-		new ResourceLocation(Reference.MOD_ID, "textures/models/color/airship_color_blue.png"),
-		new ResourceLocation(Reference.MOD_ID, "textures/models/color/airship_color_brown.png"),
-		new ResourceLocation(Reference.MOD_ID, "textures/models/color/airship_color_cyan.png"),
-		new ResourceLocation(Reference.MOD_ID, "textures/models/color/airship_color_gray.png"),
-		new ResourceLocation(Reference.MOD_ID, "textures/models/color/airship_color_green.png"),
-		new ResourceLocation(Reference.MOD_ID, "textures/models/color/airship_color_lightblue.png"),
-		new ResourceLocation(Reference.MOD_ID, "textures/models/color/airship_color_lightgray.png"),
-		new ResourceLocation(Reference.MOD_ID, "textures/models/color/airship_color_lime.png"),
-		new ResourceLocation(Reference.MOD_ID, "textures/models/color/airship_color_magenta.png"),
-		new ResourceLocation(Reference.MOD_ID, "textures/models/color/airship_color_orange.png"),
-		new ResourceLocation(Reference.MOD_ID, "textures/models/color/airship_color_pink.png"),
-		new ResourceLocation(Reference.MOD_ID, "textures/models/color/airship_color_purple.png"),
-		new ResourceLocation(Reference.MOD_ID, "textures/models/color/airship_color_red.png"),
-		new ResourceLocation(Reference.MOD_ID, "textures/models/color/airship_color_white.png"),
-		new ResourceLocation(Reference.MOD_ID, "textures/models/color/airship_color_yellow.png"),
-		new ResourceLocation(Reference.MOD_ID, "textures/models/color/airship_color_rainbow.png")
+		new ResourceLocation(Reference.MOD_ID, "textures/models/patterns/airship_pattern_plain.png")
 	};
 	
 	private static final ResourceLocation[] ENTITY_FRAME_TEXTURE = new ResourceLocation[] 
@@ -52,7 +37,15 @@ public class RenderAirshipV3 extends Render<EntityAirshipV3Core> {
 		new ResourceLocation(Reference.MOD_ID, "textures/models/v3/airship_v3_frame_diamond.png"),
 		new ResourceLocation(Reference.MOD_ID, "textures/models/v3/airship_v3_frame_emerald.png"),
 		new ResourceLocation(Reference.MOD_ID, "textures/models/v3/airship_v3_frame_netherbrick.png"),
-		new ResourceLocation(Reference.MOD_ID, "textures/models/v3/airship_v3_frame_purpur.png")
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v3/airship_v3_frame_purpur.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v3/airship_v3_frame_ice.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v3/airship_v3_frame_sandstone.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v3/airship_v3_frame_brick.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v3/airship_v3_frame_glowstone.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v3/airship_v3_frame_quartz.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v3/airship_v3_frame_prismarine.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v3/airship_v3_frame_soulsand.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v3/airship_v3_frame_ghost.png")
 	};
 	
 	private static final ResourceLocation[] ENTITY_SCREEN_TEXTURE = new ResourceLocation[] 
@@ -74,7 +67,6 @@ public class RenderAirshipV3 extends Render<EntityAirshipV3Core> {
 	/** Instance of the Control panel screen Model for rendering. */
 	protected ModelBase modelAirshipPanel = new ModelAirshipPanel();
 	
-	private EntityAirshipV3Core airship;
 	private int moduleNumber;
 	
     public RenderAirshipV3(RenderManager renderManagerIn)
@@ -90,30 +82,45 @@ public class RenderAirshipV3 extends Render<EntityAirshipV3Core> {
     public void doRender(EntityAirshipV3Core entity, double x, double y, double z, float entityYaw, float partialTicks)
     {
         GlStateManager.pushMatrix();
+        
+        GlStateManager.enableBlend();
+		GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+		
         this.setupTranslation(x, y, z);
         this.setupRotation(entity, entityYaw, partialTicks);
         this.bindEntityTexture(entity);
-        
-        this.airship = entity;
-        
+		
+        int randomTick = Reference.random.nextInt(100) + 1;
+		
         //Draw current module icons in screen
-		if(this.airship.getModuleInventorySmall())
+		if(entity.getModuleInventorySmall())
 		{
         	this.moduleNumber = 1;
 		}
-        else if(this.airship.getModuleInventoryLarge())
+        else if(entity.getModuleInventoryLarge())
 		{
 			this.moduleNumber = 2;
 		}
-        else if(this.airship.getModuleSpeedMinor())
+        else if(entity.getModuleSpeedMinor())
 		{
 			this.moduleNumber = 3;
+			
+			//if(randomTick < 30)
+			//{
+				//InitParticlesVCRender.generateRunicParticles(entity);
+			//	InitParticlesVCRender.generateColorFlameParticles(entity);
+			//}
 		}
-        else if(this.airship.getModuleSpeedMajor())
+        else if(entity.getModuleSpeedMajor())
 		{
 			this.moduleNumber = 4;
+			
+			//if(randomTick < 25)
+			//{
+			//	InitParticlesVCRender.generateFlameParticles(entity);
+			//}
 		}
-        else if(this.airship.getModuleFuelInfinite())
+        else if(entity.getModuleFuelInfinite())
 		{
 			this.moduleNumber = 5;
 		}
@@ -122,29 +129,33 @@ public class RenderAirshipV3 extends Render<EntityAirshipV3Core> {
         	this.moduleNumber = 0;
         }
 		
+        float red = entity.metaColorRed / 255.0f;
+        float green = entity.metaColorGreen / 255.0f;
+        float blue = entity.metaColorBlue / 255.0f;
+        
+        if(entity.getPowered() > 0)
+        {
+        	this.bindTexture(ENTITY_FRAME_TEXTURE[entity.metaFrame]);
+        	this.modelAirshipV3FrameOn.render(entity, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
+        }
+        else
+        {
+        	this.bindTexture(ENTITY_FRAME_TEXTURE[entity.metaFrame]);
+        	this.modelAirshipV3FrameOff.render(entity, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
+        }
+        
+    	this.bindTexture(ENTITY_SCREEN_TEXTURE[this.moduleNumber]);
+    	this.modelAirshipPanel.render(entity, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
+    	
+    	GlStateManager.color(red, green, blue, 1F);
+    	this.bindTexture(ENTITY_BALLOON_TEXTURE[entity.metaBalloon]);
+    	this.modelAirshipV3Color.render(entity, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
+    	GlStateManager.color(1F, 1F, 1F, 1F);
+    	
         if (this.renderOutlines)
         {
             GlStateManager.enableColorMaterial();
             GlStateManager.enableOutlineMode(this.getTeamColor(entity));
-        }
-        
-        if(entity.getPowered() > 0)
-        {
-        	this.bindTexture(ENTITY_COLOR_TEXTURE[entity.getAirshipMetaColor()]);
-        	this.modelAirshipV3Color.render(entity, partialTicks, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
-        	this.bindTexture(ENTITY_FRAME_TEXTURE[entity.getAirshipMetaFrame()]);
-        	this.modelAirshipV3FrameOn.render(entity, partialTicks, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
-        	this.bindTexture(ENTITY_SCREEN_TEXTURE[this.moduleNumber]);
-        	this.modelAirshipPanel.render(entity, partialTicks, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
-        }
-        else
-        {
-        	this.bindTexture(ENTITY_COLOR_TEXTURE[entity.getAirshipMetaColor()]);
-        	this.modelAirshipV3Color.render(entity, partialTicks, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
-        	this.bindTexture(ENTITY_FRAME_TEXTURE[entity.getAirshipMetaFrame()]);
-        	this.modelAirshipV3FrameOff.render(entity, partialTicks, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
-        	this.bindTexture(ENTITY_SCREEN_TEXTURE[this.moduleNumber]);
-        	this.modelAirshipPanel.render(entity, partialTicks, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
         }
         
         if (this.renderOutlines)
@@ -159,10 +170,9 @@ public class RenderAirshipV3 extends Render<EntityAirshipV3Core> {
     
     public void setupRotation(EntityAirshipV3Core entity, float p_188311_2_, float p_188311_3_)
     {
-    	GlStateManager.translate(0F, 0.25F, 0F);
+    	GlStateManager.rotate(180.0F - p_188311_2_, 0.0F, 1.0F, 0.0F);
         
-        GlStateManager.rotate(180.0F - p_188311_2_, 0.0F, 1.0F, 0.0F);
-        float f = (float)entity.getTimeSinceHit() - p_188311_3_;
+    	float f = (float)entity.getTimeSinceHit() - p_188311_3_;
         float f1 = entity.getDamageTaken() - p_188311_3_;
         
         float g = (float)entity.getTimeSinceHit() - p_188311_3_;
@@ -208,7 +218,7 @@ public class RenderAirshipV3 extends Render<EntityAirshipV3Core> {
     
     public void setupTranslation(double p_188309_1_, double p_188309_3_, double p_188309_5_)
     {
-        GlStateManager.translate((float)p_188309_1_, (float)p_188309_3_ + 0.375F, (float)p_188309_5_);
+        GlStateManager.translate((float)p_188309_1_, (float)p_188309_3_ + 0.375F + 0.25F, (float)p_188309_5_);
     }
     
     /**

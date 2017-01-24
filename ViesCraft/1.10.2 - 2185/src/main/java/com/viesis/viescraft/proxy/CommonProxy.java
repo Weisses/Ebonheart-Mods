@@ -1,12 +1,5 @@
 package com.viesis.viescraft.proxy;
 
-import net.minecraft.entity.Entity;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.network.NetworkRegistry;
-
 import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.common.AchievementTriggersVC;
 import com.viesis.viescraft.common.utils.events.EventHandlerAchievement;
@@ -21,6 +14,12 @@ import com.viesis.viescraft.init.InitTileEntitiesVC;
 import com.viesis.viescraft.network.GuiHandler;
 import com.viesis.viescraft.network.NetworkHandler;
 
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
+
 public class CommonProxy {
 	
 	public void preInit(FMLPreInitializationEvent event) 
@@ -34,10 +33,10 @@ public class CommonProxy {
 		
 		NetworkHandler.preInit();
 		
-		//InitItemsVC.registerItemTEMP();
-		//InitBlocksVC.registerBlockTEMP();
-		//InitTileEntitiesVC.registerTileEntityTEMP();
-		//InitEntityVC.registerEntityTEMP();
+		InitItemsVC.registerItemTEMP();
+		InitBlocksVC.registerBlockTEMP();
+		InitTileEntitiesVC.registerTileEntityTEMP();
+		InitEntityVC.registerEntityTEMP();
 	}
 	
 	public void init(FMLInitializationEvent event) 
@@ -57,10 +56,4 @@ public class CommonProxy {
 	{
 		//RecipeRemoverVC.removeRecipe();
 	}
-	
-	public void generateSmokeParticles(Entity entity) { }
-	//public void generateSprintParticles(Entity entity) { }
-	//public void generateUnholyParticles(Entity entity) { }
-	//public void generateFlightParticles(Entity entity) { }
-	//public void generateEnchEbonParticles(Entity entity) { }
 }

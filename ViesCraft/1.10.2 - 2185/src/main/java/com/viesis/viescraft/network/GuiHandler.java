@@ -54,7 +54,6 @@ public class GuiHandler implements IGuiHandler {
 	
 	public static final int GUI_AIRSHIP_WORKBENCH = 50;
 	public static final int GUI_BATTERY_CHARGER = 51;
-	//public static final int GUI_AIRSHIP_DISASSEMBLER = 51;
 	
 	public static final int GUI_V1_DEFAULT = 1;
 	public static final int GUI_V2_DEFAULT = 2;
@@ -93,14 +92,10 @@ public class GuiHandler implements IGuiHandler {
 		//Airship Workbench Container
 		if (ID == GUI_BATTERY_CHARGER)
 		{
-			return new ContainerBatteryCharger(player.inventory, world, (TileEntityBatteryCharger)world.getTileEntity(new BlockPos(x, y, z)));
+			//return new ContainerBatteryCharger(player.inventory, world, (TileEntityBatteryCharger)world.getTileEntity(new BlockPos(x, y, z)));
 		}
 		
-		//Airship Disassembler Container
-		//if (ID == GUI_AIRSHIP_DISASSEMBLER)
-		//{
-		//	return new ContainerAirshipDisassembler(player.inventory, world, (TileEntityAirshipDisassembler)world.getTileEntity(new BlockPos(x, y, z)));
-		//}
+		
 		
 		//Airship Container with no module
 		if (ID == GUI_V1_DEFAULT)
@@ -189,14 +184,10 @@ public class GuiHandler implements IGuiHandler {
 		//Airship Workbench GUI
 		if (ID == GUI_BATTERY_CHARGER)
 		{
-			return new GuiTileEntityBatteryCharger(player.inventory, world, (TileEntityBatteryCharger)world.getTileEntity(new BlockPos(x, y, z)));
+			//return new GuiTileEntityBatteryCharger(player.inventory, world, (TileEntityBatteryCharger)world.getTileEntity(new BlockPos(x, y, z)));
 		}
 		
-		//Airship Disassembler GUI
-		//if (ID == GUI_AIRSHIP_DISASSEMBLER)
-		//{
-		//	return new GuiTileEntityAirshipDisassembler(player.inventory, world, (TileEntityAirshipDisassembler)world.getTileEntity(new BlockPos(x, y, z)));
-		//}
+		
 		
 		//Airship GUI with no module
 		if (ID == GUI_V1_DEFAULT)

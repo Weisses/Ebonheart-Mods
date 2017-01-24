@@ -1,21 +1,19 @@
 package com.viesis.viescraft.client.entity.model.v1;
 
-import java.util.Random;
+import com.viesis.viescraft.api.Reference;
+import com.viesis.viescraft.client.InitParticlesVCRender;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
-import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.math.MathHelper;
 
 public class ModelAirshipV1FrameOn extends ModelBase {
-	
-	public Random random = new Random();
 	
 	private float bladespin;
 	private long lastframe;
 	
 	//fields
+	ModelRenderer BaseWoodChest;
 	ModelRenderer Base_1a;
 	ModelRenderer Base_Seat_1b;
 	ModelRenderer Base_Side_1a;
@@ -114,7 +112,13 @@ public class ModelAirshipV1FrameOn extends ModelBase {
 		textureWidth = 256;
 		textureHeight = 128;
 		
-		Base_1a = new ModelRenderer(this, 0, 0);
+		BaseWoodChest = new ModelRenderer(this, 150, 43);
+	    BaseWoodChest.addBox(0F, 0F, 0F, 10, 2, 8);
+	    BaseWoodChest.setRotationPoint(-5F, 4F, 3F);
+	    BaseWoodChest.setTextureSize(256, 128);
+	    BaseWoodChest.mirror = true;
+	    setRotation(BaseWoodChest, 0F, 0F, 0F);
+	    Base_1a = new ModelRenderer(this, 0, 0);
 		Base_1a.addBox(0F, 0F, 0F, 14, 2, 24);
 		Base_1a.setRotationPoint(-7F, 5F, -12F);
 		Base_1a.setTextureSize(256, 128);
@@ -630,42 +634,42 @@ public class ModelAirshipV1FrameOn extends ModelBase {
 		ControlBrace.setTextureSize(256, 128);
 		ControlBrace.mirror = true;
 		setRotation(ControlBrace, 0F, 0F, 0F);
-	      SkidR1 = new ModelRenderer(this, 248, 26);
-	      SkidR1.addBox(-1F, 0F, -1F, 2, 3, 2);
-	      SkidR1.setRotationPoint(-6F, 6F, -6F);
-	      SkidR1.setTextureSize(256, 128);
-	      SkidR1.mirror = true;
-	      setRotation(SkidR1, 0F, 0.7853982F, 0F);
-	      SkidR2 = new ModelRenderer(this, 248, 26);
-	      SkidR2.addBox(-1F, 0F, -1F, 2, 3, 2);
-	      SkidR2.setRotationPoint(-6F, 6F, 6F);
-	      SkidR2.setTextureSize(256, 128);
-	      SkidR2.mirror = true;
-	      setRotation(SkidR2, 0F, 0.7853982F, 0F);
-	      SkidR3 = new ModelRenderer(this, 202, 26);
-	      SkidR3.addBox(-1.5F, 0F, 0F, 3, 1, 24);
-	      SkidR3.setRotationPoint(-6F, 9F, -12F);
-	      SkidR3.setTextureSize(256, 128);
-	      SkidR3.mirror = true;
-	      setRotation(SkidR3, 0F, 0F, 0F);
-	      SkidL1 = new ModelRenderer(this, 248, 26);
-	      SkidL1.addBox(-1F, 0F, -1F, 2, 3, 2);
-	      SkidL1.setRotationPoint(6F, 6F, -6F);
-	      SkidL1.setTextureSize(256, 128);
-	      SkidL1.mirror = true;
-	      setRotation(SkidL1, 0F, 0.7853982F, 0F);
-	      SkidL2 = new ModelRenderer(this, 248, 26);
-	      SkidL2.addBox(-1F, 0F, -1F, 2, 3, 2);
-	      SkidL2.setRotationPoint(6F, 6F, 6F);
-	      SkidL2.setTextureSize(256, 128);
-	      SkidL2.mirror = true;
-	      setRotation(SkidL2, 0F, 0.7853982F, 0F);
-	      SkidL3 = new ModelRenderer(this, 202, 26);
-	      SkidL3.addBox(-1.5F, 0F, 0F, 3, 1, 24);
-	      SkidL3.setRotationPoint(6F, 9F, -12F);
-	      SkidL3.setTextureSize(256, 128);
-	      SkidL3.mirror = true;
-	      setRotation(SkidL3, 0F, 0F, 0F);
+		SkidR1 = new ModelRenderer(this, 248, 26);
+		SkidR1.addBox(-1F, 0F, -1F, 2, 3, 2);
+		SkidR1.setRotationPoint(-6F, 6F, -6F);
+		SkidR1.setTextureSize(256, 128);
+		SkidR1.mirror = true;
+		setRotation(SkidR1, 0F, 0.7853982F, 0F);
+		SkidR2 = new ModelRenderer(this, 248, 26);
+		SkidR2.addBox(-1F, 0F, -1F, 2, 3, 2);
+		SkidR2.setRotationPoint(-6F, 6F, 6F);
+		SkidR2.setTextureSize(256, 128);
+		SkidR2.mirror = true;
+		setRotation(SkidR2, 0F, 0.7853982F, 0F);
+		SkidR3 = new ModelRenderer(this, 202, 26);
+		SkidR3.addBox(-1.5F, 0F, 0F, 3, 1, 24);
+		SkidR3.setRotationPoint(-6F, 9F, -12F);
+		SkidR3.setTextureSize(256, 128);
+		SkidR3.mirror = true;
+		setRotation(SkidR3, 0F, 0F, 0F);
+		SkidL1 = new ModelRenderer(this, 248, 26);
+		SkidL1.addBox(-1F, 0F, -1F, 2, 3, 2);
+		SkidL1.setRotationPoint(6F, 6F, -6F);
+		SkidL1.setTextureSize(256, 128);
+		SkidL1.mirror = true;
+		setRotation(SkidL1, 0F, 0.7853982F, 0F);
+		SkidL2 = new ModelRenderer(this, 248, 26);
+		SkidL2.addBox(-1F, 0F, -1F, 2, 3, 2);
+		SkidL2.setRotationPoint(6F, 6F, 6F);
+		SkidL2.setTextureSize(256, 128);
+		SkidL2.mirror = true;
+		setRotation(SkidL2, 0F, 0.7853982F, 0F);
+		SkidL3 = new ModelRenderer(this, 202, 26);
+		SkidL3.addBox(-1.5F, 0F, 0F, 3, 1, 24);
+		SkidL3.setRotationPoint(6F, 9F, -12F);
+		SkidL3.setTextureSize(256, 128);
+		SkidL3.mirror = true;
+		setRotation(SkidL3, 0F, 0F, 0F);
 	}
 	
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
@@ -673,6 +677,7 @@ public class ModelAirshipV1FrameOn extends ModelBase {
 		super.render(entity, f, f1, f2, f3, f4, f5);
 		setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 		
+	    BaseWoodChest.render(f5);
 		Base_1a.render(f5);
 		Base_Seat_1b.render(f5);
 		Base_Side_1a.render(f5);
@@ -793,15 +798,11 @@ public class ModelAirshipV1FrameOn extends ModelBase {
 		this.Propeller_L1b.rotateAngleZ += (bladespin * 3);
 		this.Propeller_L1c.rotateAngleZ += (bladespin * 3);
 		
-		int randomTick = random.nextInt(100) + 1;
+		int randomTick = Reference.random.nextInt(100) + 1;
 		
 		if(randomTick < 20)
 		{
-			entity.worldObj.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, 
-				entity.posX - (double)(MathHelper.sin(-entity.rotationYaw * 0.017453292F) * 00.82F), 
-				entity.posY + 0.95D + (entity.worldObj.rand.nextFloat() * 0.025D), 
-				entity.posZ - (double)(MathHelper.cos(entity.rotationYaw * 0.017453292F) * 00.82F), 
-				0.0D, 0.0D, 0.0D, new int[0]);
+			InitParticlesVCRender.generateSmokeParticles(entity);
 		}
 	}
 }

@@ -9,12 +9,7 @@ import com.viesis.viescraft.client.gui.v1.GuiV1HUD;
 import com.viesis.viescraft.client.gui.v2.GuiV2HUD;
 import com.viesis.viescraft.client.gui.v3.GuiV3HUD;
 import com.viesis.viescraft.client.gui.v4.GuiV4HUD;
-import com.viesis.viescraft.client.particle.EntitySmokeFX;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.particle.Particle;
-import net.minecraft.entity.Entity;
-import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -34,10 +29,10 @@ public class ClientProxy extends CommonProxy {
 		
 		Keybinds.init();
 		
-		//InitItemsVCRender.registerItemRenderTEMP();
-		//InitBlocksVCRender.registerBlockRenderTEMP();
-		//InitEntityVCRender.registerEntityRenderTEMP();
-		//InitTileEntityVCRender.registerTileEntityRenderTEMP();
+		InitItemsVCRender.registerItemRenderTEMP();
+		InitBlocksVCRender.registerBlockRenderTEMP();
+		InitEntityVCRender.registerEntityRenderTEMP();
+		InitTileEntityVCRender.registerTileEntityRenderTEMP();
 	}
 	
 	@Override
@@ -55,28 +50,5 @@ public class ClientProxy extends CommonProxy {
 	public void postInit(FMLPostInitializationEvent event) 
 	{
 		super.postInit(event);
-	}
-	
-	//=============================================================
-	
-	/**
-	 * Particles
-	 */
-	
-	@Override
-	public void generateSmokeParticles(Entity theEntity)
-	{
-	    double motionX = theEntity.worldObj.rand.nextGaussian() * 0.02D;
-	    double motionY = theEntity.worldObj.rand.nextGaussian() * 0.02D;
-	    double motionZ = theEntity.worldObj.rand.nextGaussian() * 0.02D;
-	    
-	    Particle particleSprint = new EntitySmokeFX(
-	    	theEntity.worldObj, 
-	    	theEntity.posX - (double)(MathHelper.sin(-theEntity.rotationYaw * 0.017453292F) * 01.005F), 
-	    	theEntity.posY + 0.5D, 
-	        theEntity.posZ - (double)(MathHelper.cos(theEntity.rotationYaw * 0.017453292F) * 01.005F), 
-	        motionX, motionY, motionZ);
-	    
-	    Minecraft.getMinecraft().effectRenderer.addEffect(particleSprint);        
 	}
 }

@@ -21,14 +21,14 @@ import com.viesis.viescraft.network.server.v3.MessageGuiV3Module;
 public class GuiEntityAirshipV3ModuleInventoryLarge extends GuiContainer {
 	
 	private GuiButton buttonModule;
-	private IInventory thePlayerInv;
+	private IInventory playerInv;
 	private EntityAirshipV3Core airshipV3;
 	
-	public GuiEntityAirshipV3ModuleInventoryLarge(IInventory thePlayerInv, EntityAirshipV3Core airshipV3)
+	public GuiEntityAirshipV3ModuleInventoryLarge(IInventory playerInv, EntityAirshipV3Core airshipV3)
 	{
-		super(new ContainerAirshipV3ModuleInvLarge(thePlayerInv, airshipV3));
+		super(new ContainerAirshipV3ModuleInvLarge(playerInv, airshipV3));
 		
-		this.thePlayerInv = thePlayerInv;
+		this.playerInv = playerInv;
 		this.airshipV3 = airshipV3;
 		this.xSize = 176;
 		this.ySize = 166;
@@ -113,7 +113,7 @@ public class GuiEntityAirshipV3ModuleInventoryLarge extends GuiContainer {
 	{
 		String s = this.airshipV3.getDisplayName().getUnformattedText();
 		//this.fontRendererObj.drawString("Fuel", 150, 6, 4210752);
-		this.fontRendererObj.drawString(this.thePlayerInv.getDisplayName().getUnformattedText(), 8, 72, 4210752);
+		this.fontRendererObj.drawString(this.playerInv.getDisplayName().getUnformattedText(), 8, 72, 4210752);
 	}
 	
 	@Override

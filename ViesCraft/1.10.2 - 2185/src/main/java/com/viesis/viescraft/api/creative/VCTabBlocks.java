@@ -17,6 +17,6 @@ public class VCTabBlocks extends CreativeTabs {
 	@Override
 	public Item getTabIconItem() 
 	{
-		return Item.getItemFromBlock(InitBlocksVC.airship_workbench);
+		return new ItemStack(Item.getItemFromBlock(InitBlocksVC.airship_workbench)).getItem();
 	}
 }

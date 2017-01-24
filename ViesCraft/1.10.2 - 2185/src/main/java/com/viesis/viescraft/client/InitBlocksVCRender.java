@@ -1,11 +1,11 @@
 package com.viesis.viescraft.client;
 
+import com.viesis.viescraft.api.BlocksVC;
+
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
-
-import com.viesis.viescraft.api.BlocksVC;
 
 public final class InitBlocksVCRender extends BlocksVC {
 	

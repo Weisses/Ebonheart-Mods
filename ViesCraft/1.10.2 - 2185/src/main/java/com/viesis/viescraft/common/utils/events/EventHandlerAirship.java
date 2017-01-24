@@ -1,9 +1,9 @@
 package com.viesis.viescraft.common.utils.events;
 
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
+
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
-
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
 
 public class EventHandlerAirship {
 	

@@ -1,5 +1,10 @@
 package com.viesis.viescraft.client.gui;
 
+import org.lwjgl.input.Keyboard;
+import org.lwjgl.opengl.GL11;
+
+import com.viesis.viescraft.api.Reference;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -8,17 +13,12 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import org.lwjgl.input.Keyboard;
-import org.lwjgl.opengl.GL11;
-
-import com.viesis.viescraft.api.Reference;
-
 public class GuiGuidebookPaint extends GuiScreen {
 	
     private final int bookImageHeight = 192;
     private final int bookImageWidth = 192;
     private int currPage = 0;
-    private static final int bookTotalPages = 21;
+    private static final int bookTotalPages = 4;//21;
     private static ResourceLocation[] bookPageTextures = new ResourceLocation[bookTotalPages];
     private static String[] stringPageText = new String[bookTotalPages];
     
@@ -32,7 +32,7 @@ public class GuiGuidebookPaint extends GuiScreen {
         bookPageTextures[1] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_1.png");
         bookPageTextures[2] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_2.png");
         bookPageTextures[3] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_3.png");
-        bookPageTextures[4] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_4.png");
+        /**        bookPageTextures[4] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_4.png");
         bookPageTextures[5] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_5.png");
         bookPageTextures[6] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_6.png");
         bookPageTextures[7] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_7.png");
@@ -49,7 +49,7 @@ public class GuiGuidebookPaint extends GuiScreen {
         bookPageTextures[18] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_18.png");
         bookPageTextures[19] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_19.png");
         bookPageTextures[20] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_20.png");
-        
+        */
         //Title
         stringPageText[0] = "\n\n\n\n\n\n\n"
         		+ "    " + "\u00A7l\u00A7nFlaming Paint?!\u00A7r"
@@ -64,28 +64,24 @@ public class GuiGuidebookPaint extends GuiScreen {
         		+ "move on to customizing "
         		+ "our airships... "
         		+ "\n\n"
-        		+ "   Using dye, coal or "
-        		+ "charcoal, and a bucket "
-        		+ "to hold it all in, you "
-        		+ "can color your "
-        		+ "airship to your liking! ";
+        		+ "   Using the new Balloon Colorizer, you can tint the balloon color to anything you want! "
+        		;
         
-        stringPageText[2] = "   To use any paint, "
-        		+ "\u00A75[Shift] \u00A70+ \u00A75[Left-Click] "
-        		+ "\u00A70any unpainted airship. "
-        		+ "The paint will be used "
-        		+ "and you will get an empty bucket back. Paint Remover works the same way. "
+        stringPageText[2] = "   To use a colorizer, "
+        		+ "\u00A75[Shift] \u00A70+ \u00A75[Right-Click] "
+        		+ "\u00A70to open the GUI, pick your Red, Green, and Blue values, then accept it. "
         		+ "\n\n"
-        		+ "Note: You must unpaint an airship before repainting it.";
+        		+ "   Once that is done, "
+        		+ "\u00A75[Shift] \u00A70+ \u00A75[Left-Click] "
+        		+ "\u00A70any airship to apply the color. "
+        		+ "The item will be used. ";
 
         stringPageText[3] = "Paint Recipe:"
         		+ "\n\n"
-        		+ "\u00A7l\u00A7nPaint Remover\u00A7r"
+        		+ "\u00A7l\u00A7nBalloon Colorizer\u00A7r"
         		+ "\n\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oUsed to remove "
-        		+ "paint from "
-        		+ "airships.\u00A7r";
-        
+        		+ "\u00A7oUsed to paint an Airship's Balloons.\u00A7r";
+        /**
         stringPageText[4] = "Paint Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nBlack Paint\u00A7r"
@@ -220,6 +216,7 @@ public class GuiGuidebookPaint extends GuiScreen {
         		+ "\u00A7oIngredient:\u00A7r"
         		+ "\n"
         		+ "\u00A7o\u00A7lBone Meal\u00A7r";
+        		*/
  }
 
     /**
@@ -278,7 +275,7 @@ public class GuiGuidebookPaint extends GuiScreen {
         {
         	mc.getTextureManager().bindTexture(bookPageTextures[3]);
         }
-        if (currPage == 4)
+        /**       if (currPage == 4)
         {
         	mc.getTextureManager().bindTexture(bookPageTextures[4]);
         }
@@ -346,7 +343,7 @@ public class GuiGuidebookPaint extends GuiScreen {
         {
         	mc.getTextureManager().bindTexture(bookPageTextures[20]);
         }
-        
+        */
         //else
         //{
         // mc.getTextureManager().bindTexture(bookPageTextures[2]);

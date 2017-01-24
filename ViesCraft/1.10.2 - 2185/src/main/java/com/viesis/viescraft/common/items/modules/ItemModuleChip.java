@@ -26,7 +26,7 @@ public class ItemModuleChip extends Item {
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List toolTip, boolean advanced) 
 	{
 		toolTip.add(TextFormatting.DARK_AQUA + "A basic chip used to make");
-		toolTip.add(TextFormatting.DARK_AQUA + "expansion modules.");
+		toolTip.add(TextFormatting.DARK_AQUA + "airship parts.");
 	}
 	
 	public EnumRarity getRarity(ItemStack stack)

@@ -2,10 +2,10 @@ package com.viesis.viescraft.configs;
 
 import java.io.File;
 
+import com.viesis.viescraft.api.util.LogHelper;
+
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.common.config.Configuration;
-
-import com.viesis.viescraft.api.util.LogHelper;
 
 public class ViesCraftConfig {
 	

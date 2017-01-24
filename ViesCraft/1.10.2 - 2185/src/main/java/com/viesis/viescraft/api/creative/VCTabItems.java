@@ -17,6 +17,6 @@ public class VCTabItems extends CreativeTabs {
 	@Override
 	public Item getTabIconItem() 
 	{
-		return InitItemsVC.guidebook_main;
+		return new ItemStack(InitItemsVC.guidebook_main).getItem();
 	}
 }

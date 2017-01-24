@@ -19,12 +19,8 @@ import net.minecraft.world.World;
 
 public class ItemAirshipV2 extends ItemAirshipCore {
 	
-	private int metaFrameItem;
-	
-	public ItemAirshipV2(String unlocalizedName, int frameIn) 
+	public ItemAirshipV2(String unlocalizedName) 
 	{
-		this.metaFrameItem = frameIn;
-        
 		this.setHasSubtypes(true);
         this.setMaxDamage(0);
         
@@ -35,9 +31,27 @@ public class ItemAirshipV2 extends ItemAirshipCore {
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand)
     {
-        //ItemStack itemstack = playerIn.getHeldItem(handIn);
+        ItemStack itemstack = playerIn.getHeldItemMainhand();
+        
+        int balloon = 0;
+        int colorRed = 210;
+		int colorGreen = 180;
+		int colorBlue = 140;
+    	
         if(playerIn.isSneaking())
 		{
+        	if(itemstack.hasTagCompound())
+	        {
+        		balloon = itemstack.getTagCompound().getInteger("Balloon"); 
+        		colorRed = itemstack.getTagCompound().getInteger("ColorRed"); 
+				colorGreen = itemstack.getTagCompound().getInteger("ColorGreen"); 
+				colorBlue = itemstack.getTagCompound().getInteger("ColorBlue");
+	        }
+        	else
+        	{
+        		
+        	}
+        	
         	if (!playerIn.capabilities.isCreativeMode)
         	{
         		--itemStackIn.stackSize;
@@ -47,22 +61,24 @@ public class ItemAirshipV2 extends ItemAirshipCore {
 			
 			if (!worldIn.isRemote)
 			{
-				EntityItemAirshipV2 entityairship = new EntityItemAirshipV2(worldIn, playerIn, this.metaFrameItem, this.getMetadata(itemStackIn));
+				EntityItemAirshipV2 entityairship = new EntityItemAirshipV2(worldIn, playerIn, this.getMetadata(itemstack), balloon, colorRed, colorGreen, colorBlue);
+				
 				entityairship.setHeadingFromThrower(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, -20.0F, 0.7F, 1.0F);
 				worldIn.spawnEntityInWorld(entityairship);
 			}
 			
 			playerIn.addStat(StatList.getObjectUseStats(this));
-			return new ActionResult(EnumActionResult.SUCCESS, itemStackIn);
+			return new ActionResult(EnumActionResult.SUCCESS, itemstack);
 		}
-		return new ActionResult(EnumActionResult.SUCCESS, itemStackIn);
+        
+		return new ActionResult(EnumActionResult.SUCCESS, itemstack);
     }
 	
 	@Override
 	public String getItemStackDisplayName(ItemStack stack)
     {
-        return (EntityAirshipBaseVC.Frame.byId(this.metaFrameItem).getName() + " " 
-        		+ EntityAirshipBaseVC.Color.byId(this.getMetadata(stack)).getName() + " " 
-        		+ ViesCraftConfig.v2AirshipName);
+        return (EntityAirshipBaseVC.Frame.byId(this.getMetadata(stack)).getName() 
+            		+ " " 
+            		+ ViesCraftConfig.v2AirshipName);
     }
 }

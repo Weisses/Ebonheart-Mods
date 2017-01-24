@@ -1,11 +1,11 @@
 package com.viesis.viescraft.init;
 
+import com.viesis.viescraft.api.AchievementsVC;
+import com.viesis.viescraft.api.Reference;
+
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.Achievement;
 import net.minecraftforge.common.AchievementPage;
-
-import com.viesis.viescraft.api.AchievementsVC;
-import com.viesis.viescraft.api.Reference;
 
 public class InitAchievementsVC extends AchievementsVC {
 	

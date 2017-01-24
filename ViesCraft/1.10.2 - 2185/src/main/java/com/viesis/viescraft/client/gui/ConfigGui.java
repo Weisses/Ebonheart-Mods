@@ -1,14 +1,14 @@
 package com.viesis.viescraft.client.gui;
 
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraftforge.common.config.ConfigElement;
-import net.minecraftforge.fml.client.config.GuiConfig;
-
 import org.lwjgl.input.Keyboard;
 
 import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.configs.ViesCraftConfig;
+
+import net.minecraft.client.gui.GuiScreen;
+import net.minecraftforge.common.config.ConfigElement;
+import net.minecraftforge.fml.client.config.GuiConfig;
 
 public class ConfigGui extends GuiConfig {
 	

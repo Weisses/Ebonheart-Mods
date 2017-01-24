@@ -1,9 +1,10 @@
 package com.viesis.viescraft.api.creative;
 
-import com.viesis.viescraft.init.InitItemsVC;
-
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+
+import com.viesis.viescraft.init.InitItemsVC;
 
 public class VCTabAirshipsV4 extends CreativeTabs {
 	
@@ -16,6 +17,6 @@ public class VCTabAirshipsV4 extends CreativeTabs {
 	@Override
 	public Item getTabIconItem() 
 	{
-		return InitItemsVC.item_airship_v4_wood0;
+		return new ItemStack(InitItemsVC.item_airship_v4, 1, 0).getItem();
 	}
 }

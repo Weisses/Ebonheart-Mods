@@ -1,25 +1,14 @@
 package com.viesis.viescraft.common.caps;
 
-//import net.darkhax.tesla.api.ITeslaConsumer;
-//import net.darkhax.tesla.api.ITeslaHolder;
-//import net.darkhax.tesla.api.ITeslaProducer;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.common.capabilities.CapabilityInject;
-import net.minecraftforge.common.util.INBTSerializable;
-import net.minecraftforge.energy.EnergyStorage;
-import net.minecraftforge.fml.common.Optional;
+//@Optional.InterfaceList({
+//	@Optional.Interface(iface = "net.darkhax.tesla.api.ITeslaHolder", modid = "tesla"),
+//	@Optional.Interface(iface = "net.darkhax.tesla.api.ITeslaConsumer", modid = "tesla"),
+//	@Optional.Interface(iface = "net.darkhax.tesla.api.ITeslaProducer", modid = "tesla")
+//})
 
-public class DualEnergyStorageVC{}
-/**
-@Optional.InterfaceList({
-	@Optional.Interface(iface = "net.darkhax.tesla.api.ITeslaHolder", modid = "tesla"),
-	@Optional.Interface(iface = "net.darkhax.tesla.api.ITeslaConsumer", modid = "tesla"),
-	@Optional.Interface(iface = "net.darkhax.tesla.api.ITeslaProducer", modid = "tesla")
-})
-
-public class DualEnergyStorageVC extends EnergyStorage implements ITeslaHolder, ITeslaConsumer, ITeslaProducer, INBTSerializable<NBTTagCompound> {
-	
+public class DualEnergyStorageVC //extends EnergyStorage implements ITeslaHolder, ITeslaConsumer, ITeslaProducer, INBTSerializable<NBTTagCompound> 
+{
+	/**
 	@CapabilityInject(ITeslaConsumer.class)
 	public static Capability<?> CAPABILITY_CONSUMER = null;
 	@CapabilityInject(ITeslaProducer.class)
@@ -79,6 +68,5 @@ public class DualEnergyStorageVC extends EnergyStorage implements ITeslaHolder, 
 		capacity = nbt.getInteger("capacity");
 		maxReceive = nbt.getInteger("maxReceive");
 		maxExtract = nbt.getInteger("maxExtract");
-	}
+	}*/
 }
-*/

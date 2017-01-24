@@ -2,6 +2,7 @@ package com.viesis.viescraft.common.items.airshipitems;
 
 import java.util.List;
 
+import com.viesis.viescraft.api.ColorHelperVC;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
 
 import net.minecraft.creativetab.CreativeTabs;
@@ -24,6 +25,18 @@ public class ItemAirshipCore extends Item {
 	@Override
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List toolTip, boolean advanced) 
 	{
+		if(stack.hasTagCompound())
+        {
+			toolTip.add(TextFormatting.GREEN + "Color : " + TextFormatting.GREEN + ColorHelperVC.getColorNameFromRgb(
+					stack.getTagCompound().getInteger("ColorRed"), 
+					stack.getTagCompound().getInteger("ColorGreen"), 
+					stack.getTagCompound().getInteger("ColorBlue")));
+        }
+        else
+        {
+        	toolTip.add(TextFormatting.GREEN + "Color : Tan");
+        }
+		toolTip.add("");
 		toolTip.add(TextFormatting.DARK_PURPLE + "Hold " + TextFormatting.WHITE + "[Shift + Right-Click]" + TextFormatting.DARK_PURPLE + " to throw this");
 		toolTip.add(TextFormatting.DARK_PURPLE + "item and unleash the airship within.");
 		toolTip.add("");
@@ -40,7 +53,7 @@ public class ItemAirshipCore extends Item {
 	@Override
     public void getSubItems(Item itemIn, CreativeTabs tab, List<ItemStack> subItems)
     {
-    	for (EntityAirshipBaseVC.Color contents : EntityAirshipBaseVC.Color.values()) 
+    	for (EntityAirshipBaseVC.Frame contents : EntityAirshipBaseVC.Frame.values()) 
     	{
 			int meta = contents.getMetadata();
 			ItemStack subItemStack = new ItemStack(itemIn, 1, meta);

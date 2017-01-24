@@ -1,6 +1,6 @@
 package com.viesis.viescraft.common.entity.airshipitems;
 
-import java.util.Random;
+import com.viesis.viescraft.api.Reference;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;
@@ -10,21 +10,19 @@ import net.minecraft.world.World;
 
 public class EntityItemAirshipCore extends EntityThrowable {
 	
-	public static Random random = new Random();
-	
-    public EntityItemAirshipCore(World worldObjIn)
+    public EntityItemAirshipCore(World worldIn)
     {
-        super(worldObjIn);
+        super(worldIn);
     }
     
-    public EntityItemAirshipCore(World worldObjIn, EntityLivingBase entity)
+    public EntityItemAirshipCore(World worldIn, EntityLivingBase entity)
     {
-        super(worldObjIn, entity);
+        super(worldIn, entity);
     }
     
-    public EntityItemAirshipCore(World worldObjIn, double x, double y, double z)
+    public EntityItemAirshipCore(World worldIn, double x, double y, double z)
     {
-        super(worldObjIn, x, y, z);
+        super(worldIn, x, y, z);
     }
     
     protected float getGravityVelocity()
@@ -50,7 +48,7 @@ public class EntityItemAirshipCore extends EntityThrowable {
     {
     	for (int ii = 0; ii < 10; ++ii)
     	{
-			int d = random.nextInt(100) + 1;
+			int d = Reference.random.nextInt(100) + 1;
 			
 			this.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_LARGE, 
 					this.posX + this.worldObj.rand.nextFloat() * this.width * 2.0F - this.width,

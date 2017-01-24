@@ -1,5 +1,10 @@
 package com.viesis.viescraft.client.gui;
 
+import org.lwjgl.input.Keyboard;
+import org.lwjgl.opengl.GL11;
+
+import com.viesis.viescraft.api.Reference;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -7,11 +12,6 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import org.lwjgl.input.Keyboard;
-import org.lwjgl.opengl.GL11;
-
-import com.viesis.viescraft.api.Reference;
 
 public class GuiGuidebookSocket extends GuiScreen {
 	

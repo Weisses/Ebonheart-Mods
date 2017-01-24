@@ -1,5 +1,11 @@
 package com.viesis.viescraft.client.gui;
 
+import org.lwjgl.input.Keyboard;
+import org.lwjgl.opengl.GL11;
+
+import com.viesis.viescraft.api.Reference;
+import com.viesis.viescraft.api.util.Keybinds;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -7,12 +13,6 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import org.lwjgl.input.Keyboard;
-import org.lwjgl.opengl.GL11;
-
-import com.viesis.viescraft.api.Reference;
-import com.viesis.viescraft.api.util.Keybinds;
 
 public class GuiGuidebookControls extends GuiScreen {
 	
@@ -43,7 +43,6 @@ public class GuiGuidebookControls extends GuiScreen {
         bookPageTextures[11] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/controls/page_11.png");
         
         //Title
-        
         stringPageText[0] = "\n\n\n\n\n\n\n"
         		+ "    " + "\u00A7l\u00A7nTaking Control\u00A7r"
         		+ "\n\n" 

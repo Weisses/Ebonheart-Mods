@@ -12,6 +12,7 @@ import com.viesis.viescraft.common.entity.airshipitems.v4.EntityItemAirshipV4;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 public class InitEntityVC {

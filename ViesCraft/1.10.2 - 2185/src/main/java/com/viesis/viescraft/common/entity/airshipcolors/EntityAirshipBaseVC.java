@@ -1,7 +1,6 @@
 package com.viesis.viescraft.common.entity.airshipcolors;
 
 import java.util.List;
-import java.util.Random;
 
 import javax.annotation.Nullable;
 
@@ -35,15 +34,20 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class EntityAirshipBaseVC extends Entity {
 	
 	public int metaFrame;
-	public int metaColor;
+	public int metaBalloon;
 	
-	public Random random = new Random();
+	public int metaColorRed;
+	public int metaColorGreen;
+	public int metaColorBlue;
 	
     public static final DataParameter<Integer> TIME_SINCE_HIT_VC = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
     protected static final DataParameter<Integer> FORWARD_DIRECTION_VC = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
     protected static final DataParameter<Float> DAMAGE_TAKEN_VC = EntityDataManager.<Float>createKey(EntityAirshipBaseVC.class, DataSerializers.FLOAT);
     protected static final DataParameter<Integer> AIRSHIP_TYPE_FRAME_VC = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
-    protected static final DataParameter<Integer> AIRSHIP_TYPE_COLOR_VC = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+    protected static final DataParameter<Integer> AIRSHIP_TYPE_BALLOON_VC = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+    protected static final DataParameter<Integer> BALLOON_COLOR_RED_VC = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+    protected static final DataParameter<Integer> BALLOON_COLOR_GREEN_VC = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+    protected static final DataParameter<Integer> BALLOON_COLOR_BLUE_VC = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
     
     /** How much of current speed to retain. Value zero to one. */
     protected float momentum;
@@ -90,12 +94,14 @@ public class EntityAirshipBaseVC extends Entity {
         this.setSize(1.0F, 0.5F);
     }
     
-    public EntityAirshipBaseVC(World worldObjIn, double x, double y, double z, int frameIn, int colorIn)
+    public EntityAirshipBaseVC(World worldObjIn, double x, double y, double z, int frameIn, int colorRedIn, int colorGreenIn, int colorBlueIn)
     {
         this(worldObjIn);
         this.setPosition(x, y, z);
         
-        this.metaColor = colorIn;
+        this.metaColorRed = colorRedIn;
+        this.metaColorGreen = colorGreenIn;
+        this.metaColorBlue = colorBlueIn;
         this.metaFrame = frameIn;
         
         this.motionX = 0.0D;
@@ -110,24 +116,30 @@ public class EntityAirshipBaseVC extends Entity {
      * Returns if this entity triggers Block.onEntityWalking on the blocks they walk on. used for spiders and wolves to
      * prevent them from trampling crops
      */
+    @Override
     protected boolean canTriggerWalking()
     {
         return false;
     }
     
+    @Override
     public void entityInit()
     {
         this.dataManager.register(TIME_SINCE_HIT_VC, Integer.valueOf(0));
         this.dataManager.register(FORWARD_DIRECTION_VC, Integer.valueOf(1));
         this.dataManager.register(DAMAGE_TAKEN_VC, Float.valueOf(0.0F));
         this.dataManager.register(AIRSHIP_TYPE_FRAME_VC, Integer.valueOf(this.metaFrame));
-        this.dataManager.register(AIRSHIP_TYPE_COLOR_VC, Integer.valueOf(this.metaColor));
+        this.dataManager.register(AIRSHIP_TYPE_BALLOON_VC, Integer.valueOf(this.metaBalloon));
+        this.dataManager.register(BALLOON_COLOR_RED_VC, Integer.valueOf(this.metaColorRed));
+        this.dataManager.register(BALLOON_COLOR_GREEN_VC, Integer.valueOf(this.metaColorGreen));
+        this.dataManager.register(BALLOON_COLOR_BLUE_VC, Integer.valueOf(this.metaColorBlue));
     }
     
     /**
      * Returns a boundingBox used to collide the entity with other entities and blocks. This enables the entity to be
      * pushable on contact, like boats or minecarts.
      */
+    @Override
     @Nullable
     public AxisAlignedBB getCollisionBox(Entity entityIn)
     {
@@ -137,6 +149,7 @@ public class EntityAirshipBaseVC extends Entity {
     /**
      * Returns the collision bounding box for this entity
      */
+    @Override
     @Nullable
     public AxisAlignedBB getCollisionBoundingBox()
     {
@@ -146,6 +159,7 @@ public class EntityAirshipBaseVC extends Entity {
     /**
      * Returns true if this entity should push and be pushed by other entities when colliding.
      */
+    @Override
     public boolean canBePushed()
     {
         return true;
@@ -154,6 +168,7 @@ public class EntityAirshipBaseVC extends Entity {
     /**
      * Returns the Y offset from the entity's position for any entity riding this one.
      */
+    @Override
     public double getMountedYOffset()
     {
         return 0.15D;
@@ -162,6 +177,7 @@ public class EntityAirshipBaseVC extends Entity {
     /**
      * Called when the entity is attacked.
      */
+    @Override
     public boolean attackEntityFrom(DamageSource source, float amount)
     {
         if (this.isEntityInvulnerable(source))
@@ -204,6 +220,7 @@ public class EntityAirshipBaseVC extends Entity {
     /**
      * Applies a velocity to the entities, to push them away from eachother.
      */
+    @Override
     public void applyEntityCollision(Entity entityIn)
     {
         if (entityIn instanceof EntityAirshipBaseVC)
@@ -231,6 +248,7 @@ public class EntityAirshipBaseVC extends Entity {
      * Setups the entity to do the hurt animation. Only used by packets in multiplayer.
      */
     @SideOnly(Side.CLIENT)
+    @Override
     public void performHurtAnimation()
     {
         this.setForwardDirection(-this.getForwardDirection());
@@ -241,6 +259,7 @@ public class EntityAirshipBaseVC extends Entity {
     /**
      * Returns true if other Entities should be prevented from moving through this Entity.
      */
+    @Override
     public boolean canBeCollidedWith()
     {
         return !this.isDead;
@@ -250,6 +269,7 @@ public class EntityAirshipBaseVC extends Entity {
      * Set the position and rotation values directly without any clamping.
      */
     @SideOnly(Side.CLIENT)
+    @Override
     public void setPositionAndRotationDirect(double x, double y, double z, float yaw, float pitch, int posRotationIncrements, boolean teleport)
     {
         this.boatPitch = x;
@@ -264,6 +284,7 @@ public class EntityAirshipBaseVC extends Entity {
      * Gets the horizontal facing direction of this Entity, adjusted to take specially-treated entity types into
      * account.
      */
+    @Override
     public EnumFacing getAdjustedHorizontalFacing()
     {
         return this.getHorizontalFacing().rotateY();
@@ -272,6 +293,7 @@ public class EntityAirshipBaseVC extends Entity {
     /**
      * Called to update the entity's position/logic.
      */
+    @Override
     public void onUpdate()
     {
     	
@@ -569,6 +591,7 @@ public class EntityAirshipBaseVC extends Entity {
     /**
      * Gets the passenger information.
      */
+    @Override
     public void updatePassenger(Entity passenger)
     {
         if (this.isPassenger(passenger))
@@ -627,6 +650,7 @@ public class EntityAirshipBaseVC extends Entity {
      * Applies this entity's orientation (pitch/yaw) to another entity. Used to update passenger orientation.
      */
     @SideOnly(Side.CLIENT)
+    @Override
     public void applyOrientationToEntity(Entity entityToUpdate)
     {
         this.applyYawToEntity(entityToUpdate);
@@ -635,6 +659,7 @@ public class EntityAirshipBaseVC extends Entity {
     /**
      * (abstract) Protected helper method to write subclass entity data to NBT.
      */
+    @Override
     protected void writeEntityToNBT(NBTTagCompound compound)
     {
         
@@ -643,6 +668,7 @@ public class EntityAirshipBaseVC extends Entity {
     /**
      * (abstract) Protected helper method to read subclass entity data from NBT.
      */
+    @Override
     protected void readEntityFromNBT(NBTTagCompound compound)
     {
         
@@ -672,6 +698,7 @@ public class EntityAirshipBaseVC extends Entity {
     /**
      * What happens when the Airship is in the air.
      */
+    @Override
     protected void updateFallState(double y, boolean onGroundIn, IBlockState state, BlockPos pos)
     {
         
@@ -726,7 +753,7 @@ public class EntityAirshipBaseVC extends Entity {
     }
 
     /**
-     * Sets the airshipTotalBurnTime to pass from server to client.
+     * Sets the Frame.
      */
     public void setAirshipMetaFrame(int airshipMeta)
     {
@@ -734,7 +761,7 @@ public class EntityAirshipBaseVC extends Entity {
     }
 	
     /**
-     * Gets the airshipTotalBurnTime to pass from server to client.
+     * Gets the Frame.
      */
     public int getAirshipMetaFrame()
     {
@@ -742,19 +769,67 @@ public class EntityAirshipBaseVC extends Entity {
     }
     
     /**
-     * Sets the airshipTotalBurnTime to pass from server to client.
+     * Sets the Balloon pattern.
      */
-    public void setAirshipMetaColor(int airshipMeta)
+    public void setAirshipMetaBalloon(int airshipMeta)
     {
-        this.dataManager.set(AIRSHIP_TYPE_COLOR_VC, Integer.valueOf(airshipMeta));
+        this.dataManager.set(AIRSHIP_TYPE_BALLOON_VC, Integer.valueOf(airshipMeta));
     }
 	
     /**
-     * Gets the airshipTotalBurnTime to pass from server to client.
+     * Gets the Balloon pattern.
      */
-    public int getAirshipMetaColor()
+    public int getAirshipMetaBalloon()
     {
-        return ((Integer)this.dataManager.get(AIRSHIP_TYPE_COLOR_VC)).intValue();
+        return ((Integer)this.dataManager.get(AIRSHIP_TYPE_BALLOON_VC)).intValue();
+    }
+    
+    /**
+     * Sets the Color Red.
+     */
+    public void setAirshipMetaColorRed(int airshipMeta)
+    {
+        this.dataManager.set(BALLOON_COLOR_RED_VC, Integer.valueOf(airshipMeta));
+    }
+	
+    /**
+     * Gets the Color Red.
+     */
+    public int getAirshipMetaColorRed()
+    {
+        return ((Integer)this.dataManager.get(BALLOON_COLOR_RED_VC)).intValue();
+    }
+    
+    /**
+     * Sets the Color Green.
+     */
+    public void setAirshipMetaColorGreen(int airshipMeta)
+    {
+        this.dataManager.set(BALLOON_COLOR_GREEN_VC, Integer.valueOf(airshipMeta));
+    }
+	
+    /**
+     * Gets the Color Green.
+     */
+    public int getAirshipMetaColorGreen()
+    {
+        return ((Integer)this.dataManager.get(BALLOON_COLOR_GREEN_VC)).intValue();
+    }
+    
+    /**
+     * Sets the Color Blue.
+     */
+    public void setAirshipMetaColorBlue(int airshipMeta)
+    {
+        this.dataManager.set(BALLOON_COLOR_BLUE_VC, Integer.valueOf(airshipMeta));
+    }
+	
+    /**
+     * Gets the Color Blue.
+     */
+    public int getAirshipMetaColorBlue()
+    {
+        return ((Integer)this.dataManager.get(BALLOON_COLOR_BLUE_VC)).intValue();
     }
     
     /**
@@ -764,17 +839,25 @@ public class EntityAirshipBaseVC extends Entity {
     {
         if (this.worldObj.isRemote)
         {
-        	this.metaColor = this.getAirshipMetaColor();
         	this.metaFrame = this.getAirshipMetaFrame();
+        	this.metaBalloon = this.getAirshipMetaBalloon();
+        	this.metaColorRed = this.getAirshipMetaColorRed();
+        	this.metaColorGreen = this.getAirshipMetaColorGreen();
+        	this.metaColorBlue = this.getAirshipMetaColorBlue();
+        	
         }
     	
         if(!this.worldObj.isRemote)
 		{
-        	this.setAirshipMetaColor(this.metaColor);
         	this.setAirshipMetaFrame(this.metaFrame);
+        	this.setAirshipMetaBalloon(this.metaBalloon);
+        	this.setAirshipMetaColorRed(this.metaColorRed);
+        	this.setAirshipMetaColorGreen(this.metaColorGreen);
+        	this.setAirshipMetaColorBlue(this.metaColorBlue);
 		}
     }
     
+    @Override
     protected boolean canFitPassenger(Entity passenger)
     {
         return this.getPassengers().size() < 2;
@@ -784,6 +867,7 @@ public class EntityAirshipBaseVC extends Entity {
      * For vehicles, the first passenger is generally considered the controller and "drives" the vehicle. For example,
      * Pigs, Horses, and Boats are generally "steered" by the controlling passenger.
      */
+    @Override
     @Nullable
     public Entity getControllingPassenger()
     {
@@ -824,8 +908,9 @@ public class EntityAirshipBaseVC extends Entity {
 		
 	}
     
-    
-	
+	/**
+	 * Frame enum - Represents various frame types.
+	 */
     public static enum Frame
     {
         WOOD0(0, "Oak"),
@@ -837,8 +922,16 @@ public class EntityAirshipBaseVC extends Entity {
         DIAMOND(6, "Diamond"),
         EMERALD(7, "Emerald"),
         NETHERBRICK(8, "Nether Brick"),
-        PURPUR(9, "Purpur");
-        
+        PURPUR(9, "Purpur"),
+        ICE(10, "Ice"),
+    	SANDSTONE(11, "Sandstone");
+    	//BRICK(12, "Brick")
+        //GLOWSTONE(13, "Glowstone")
+        //QUARTZ(14, "Quartz")
+    	//PRISMARINE(15, "Prismarine")
+    	//SOULSAND(16, "SoulSand")
+    	//GHOST(17, "Ghost")  // This is a special one that uses nether stars.
+    	
         private final String name;
         private final int metadata;
         

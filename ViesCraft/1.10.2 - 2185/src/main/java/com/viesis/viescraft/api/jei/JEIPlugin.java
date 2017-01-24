@@ -31,7 +31,7 @@ public class JEIPlugin implements IModPlugin {
 		IItemBlacklist itemBlacklist = registry.getJeiHelpers().getItemBlacklist();
 		
 		//Items to be blacklisted.
-		for (int ii = 1; ii < 18; ++ii)
+		for (int ii = 0; ii < 18; ++ii)
     	{
 			itemBlacklist.addItemToBlacklist(new ItemStack(InitItemsVC.item_airship_v1_wood0, 1, ii));
 			itemBlacklist.addItemToBlacklist(new ItemStack(InitItemsVC.item_airship_v1_iron, 1, ii));
@@ -84,7 +84,6 @@ public class JEIPlugin implements IModPlugin {
     	}
 		
 		itemBlacklist.addItemToBlacklist(new ItemStack(InitItemsVC.item_entity_airship));
-		
 	}
 	
 	@Override
