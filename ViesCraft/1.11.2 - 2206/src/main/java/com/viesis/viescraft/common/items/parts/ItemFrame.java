@@ -2,6 +2,11 @@ package com.viesis.viescraft.common.items.parts;
 
 import java.util.List;
 
+import com.viesis.viescraft.ViesCraft;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
+import com.viesis.viescraft.common.items.ItemHelper;
+import com.viesis.viescraft.init.InitAchievementsVC;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -13,11 +18,6 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import com.viesis.viescraft.ViesCraft;
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
-import com.viesis.viescraft.common.items.ItemHelper;
-import com.viesis.viescraft.init.InitAchievementsVC;
-
 public class ItemFrame extends Item {
 	
 	public ItemFrame() 
@@ -27,7 +27,7 @@ public class ItemFrame extends Item {
 		this.setHasSubtypes(true);
         this.setMaxDamage(0);
         
-		this.setMaxStackSize(16);
+		this.setMaxStackSize(1);
 		this.setCreativeTab(ViesCraft.tabViesCraftItems);
 	}
 	
@@ -97,12 +97,14 @@ public class ItemFrame extends Item {
 	@Override
 	public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity)
     {
-		EntityAirshipBaseVC airship = (EntityAirshipBaseVC) entity;
-		
+		ItemStack itemstack = player.getHeldItemMainhand();
+        
 		if (entity instanceof EntityAirshipBaseVC)
         {
 			if(player.isSneaking())
 			{
+				EntityAirshipBaseVC airship = (EntityAirshipBaseVC) entity;
+				
 				if(airship.metaFrame != this.getMetadata(stack))
 				{
 					airship.metaFrame = this.getMetadata(stack);
@@ -110,7 +112,7 @@ public class ItemFrame extends Item {
 					
 					if (!player.capabilities.isCreativeMode)
                     {
-						stack.shrink(1);
+						itemstack.shrink(1);
                     }
 					return true;
 				}

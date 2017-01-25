@@ -26,7 +26,7 @@ public class ItemFrame extends Item {
 		this.setHasSubtypes(true);
         this.setMaxDamage(0);
         
-		this.setMaxStackSize(16);
+		this.setMaxStackSize(1);
 		this.setCreativeTab(ViesCraft.tabViesCraftItems);
 	}
 	
@@ -96,12 +96,14 @@ public class ItemFrame extends Item {
 	@Override
 	public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity)
     {
-		EntityAirshipBaseVC airship = (EntityAirshipBaseVC) entity;
-		
+		ItemStack itemstack = player.getHeldItemMainhand();
+        
 		if (entity instanceof EntityAirshipBaseVC)
         {
 			if(player.isSneaking())
 			{
+				EntityAirshipBaseVC airship = (EntityAirshipBaseVC) entity;
+				
 				if(airship.metaFrame != this.getMetadata(stack))
 				{
 					airship.metaFrame = this.getMetadata(stack);
@@ -109,7 +111,7 @@ public class ItemFrame extends Item {
 					
 					if (!player.capabilities.isCreativeMode)
                     {
-						--stack.stackSize;
+						player.inventory.decrStackSize(player.inventory.currentItem, 1);
                     }
 					return true;
 				}

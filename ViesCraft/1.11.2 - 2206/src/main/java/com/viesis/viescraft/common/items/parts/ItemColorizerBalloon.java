@@ -38,7 +38,8 @@ public class ItemColorizerBalloon extends Item {
 	@Override
 	public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity)
     {
-		
+		ItemStack itemstack = player.getHeldItemMainhand();
+        
 		if (entity instanceof EntityAirshipBaseVC)
         {
 			if(player.isSneaking())
@@ -55,7 +56,7 @@ public class ItemColorizerBalloon extends Item {
 					
 					if (!player.capabilities.isCreativeMode)
                     {
-						stack.shrink(1);
+						itemstack.shrink(1);
                     }
 					return true;
 				}
@@ -65,7 +66,6 @@ public class ItemColorizerBalloon extends Item {
         }
         return true;
     }
-	
 	
 	@SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List toolTip, boolean advanced) 
@@ -88,7 +88,6 @@ public class ItemColorizerBalloon extends Item {
 		toolTip.add("");
 		toolTip.add(TextFormatting.WHITE + "[Shift + Left-Click]" + TextFormatting.GOLD + " on an");
 		toolTip.add(TextFormatting.GOLD + "airship to apply the color.");
-		
 	}
 	
 	public EnumRarity getRarity(ItemStack stack)
@@ -109,7 +108,6 @@ public class ItemColorizerBalloon extends Item {
         		Minecraft.getMinecraft().displayGuiScreen(new GuiItemBalloonColorizer(playerIn, itemstack));
 			}
         	return new ActionResult(EnumActionResult.SUCCESS, itemstack);
-			
         }
 		return new ActionResult(EnumActionResult.SUCCESS, itemstack);
     }
