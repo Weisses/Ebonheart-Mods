@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "vc:items/frame/airship_frame_gold"
+        "layer0": "vc:items/frame/airship_frame_brick"
     }
 }

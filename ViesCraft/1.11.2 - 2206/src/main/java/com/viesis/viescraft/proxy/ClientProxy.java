@@ -29,10 +29,10 @@ public class ClientProxy extends CommonProxy {
 		
 		Keybinds.init();
 		
-		InitItemsVCRender.registerItemRenderTEMP();
-		InitBlocksVCRender.registerBlockRenderTEMP();
-		InitEntityVCRender.registerEntityRenderTEMP();
-		InitTileEntityVCRender.registerTileEntityRenderTEMP();
+		//InitItemsVCRender.registerItemRenderTEMP();
+		//InitBlocksVCRender.registerBlockRenderTEMP();
+		//InitEntityVCRender.registerEntityRenderTEMP();
+		//InitTileEntityVCRender.registerTileEntityRenderTEMP();
 	}
 	
 	@Override

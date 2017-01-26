@@ -1,5 +1,6 @@
 package com.viesis.viescraft.common.entity.airshipitems.v2;
 
+import com.viesis.viescraft.client.InitParticlesVCRender;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV2Core;
 import com.viesis.viescraft.common.entity.airshipitems.EntityItemAirshipCore;
 
@@ -50,7 +51,7 @@ public class EntityItemAirshipV2 extends EntityItemAirshipCore {
         }
         else
     	{
-        	this.explosionAnimation();
+        	InitParticlesVCRender.generateExplosions(this);
     	}
     }
 }

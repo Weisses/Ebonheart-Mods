@@ -47,10 +47,6 @@ public class ItemAirshipV1 extends ItemAirshipCore {
 				colorGreen = itemstack.getTagCompound().getInteger("ColorGreen"); 
 				colorBlue = itemstack.getTagCompound().getInteger("ColorBlue");
 	        }
-        	else
-        	{
-        		
-        	}
         	
         	if (!playerIn.capabilities.isCreativeMode)
         	{

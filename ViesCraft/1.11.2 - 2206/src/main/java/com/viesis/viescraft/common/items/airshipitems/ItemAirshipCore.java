@@ -37,6 +37,7 @@ public class ItemAirshipCore extends Item {
         {
         	toolTip.add(TextFormatting.GREEN + "Color : Tan");
         }
+		
 		toolTip.add("");
 		toolTip.add(TextFormatting.DARK_PURPLE + "Hold " + TextFormatting.WHITE + "[Shift + Right-Click]" + TextFormatting.DARK_PURPLE + " to throw this");
 		toolTip.add(TextFormatting.DARK_PURPLE + "item and unleash the airship within.");
