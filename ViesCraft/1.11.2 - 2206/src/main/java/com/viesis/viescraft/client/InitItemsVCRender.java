@@ -41,6 +41,11 @@ public final class InitItemsVCRender extends ItemsVC {
 			registerRenderFrame(airship_frame, meta.getMetadata());
 		}
 		
+		for (EntityAirshipBaseVC.Balloon meta : EntityAirshipBaseVC.Balloon.values()) 
+		{
+			registerRenderBalloon(airship_balloon_pattern, meta.getMetadata());
+		}
+		
 		//==============================================
 		
 		//V1

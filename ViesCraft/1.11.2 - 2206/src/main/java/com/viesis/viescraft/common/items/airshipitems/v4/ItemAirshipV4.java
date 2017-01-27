@@ -25,7 +25,7 @@ public class ItemAirshipV4 extends ItemAirshipCore {
         this.setMaxDamage(0);
         
         ItemHelper.setItemName(this, unlocalizedName);
-		this.setCreativeTab(ViesCraft.tabViesCraftAirshipsV4);
+		this.setCreativeTab(ViesCraft.tabViesCraftAirships);
 	}
 	
 	@Override

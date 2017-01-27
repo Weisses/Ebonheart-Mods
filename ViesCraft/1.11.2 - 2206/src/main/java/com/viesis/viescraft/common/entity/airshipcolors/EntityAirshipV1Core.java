@@ -226,9 +226,12 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
 	@Override
 	public String getName() 
 	{
-		return this.hasCustomName() ? this.customName : Frame.byId(this.metaFrame).getName() + " " 
-	+ ColorHelperVC.getColorNameFromRgb(this.metaColorRed, this.metaColorGreen, this.metaColorBlue)		
-	+ " " + ViesCraftConfig.v1AirshipName;
+		return this.hasCustomName() ? this.customName : 
+			ColorHelperVC.getColorNameFromRgb(this.metaColorRed, this.metaColorGreen, this.metaColorBlue)		
+			+ " " 
+			+ Frame.byId(this.metaFrame).getName() 
+			+ " " 
+			+ ViesCraftConfig.v1AirshipName;
 	}
 	
 	

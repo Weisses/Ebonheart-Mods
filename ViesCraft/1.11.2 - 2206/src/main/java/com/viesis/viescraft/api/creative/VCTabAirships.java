@@ -1,13 +1,13 @@
 package com.viesis.viescraft.api.creative;
 
+import com.viesis.viescraft.init.InitItemsVC;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 
-import com.viesis.viescraft.init.InitItemsVC;
-
-public class VCTabAirshipsV2 extends CreativeTabs {
+public class VCTabAirships extends CreativeTabs {
 	
-	public VCTabAirshipsV2(String label) 
+	public VCTabAirships(String label) 
 	{
 		super(label);
 		this.setBackgroundImageName("viescraft.png");
@@ -16,6 +16,6 @@ public class VCTabAirshipsV2 extends CreativeTabs {
 	@Override
 	public ItemStack getTabIconItem() 
 	{
-		return new ItemStack(InitItemsVC.item_airship_v2, 1, 0);
+		return new ItemStack(InitItemsVC.item_airship_v1, 1, 0);
 	}
 }

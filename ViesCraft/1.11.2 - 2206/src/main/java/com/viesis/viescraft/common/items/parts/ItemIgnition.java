@@ -18,7 +18,7 @@ public class ItemIgnition extends Item {
 	public ItemIgnition() 
 	{
 		ItemHelper.setItemName(this, "airship_ignition");
-		this.setMaxStackSize(1);
+		this.setMaxStackSize(16);
 		this.setCreativeTab(ViesCraft.tabViesCraftItems);
 	}
 	

@@ -18,11 +18,11 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemFrame extends Item {
+public class ItemBalloonPattern extends Item {
 	
-	public ItemFrame() 
+	public ItemBalloonPattern() 
 	{
-		ItemHelper.setItemName(this, "airship_frame");
+		ItemHelper.setItemName(this, "airship_balloon_pattern");
 		
 		this.setHasSubtypes(true);
         this.setMaxDamage(0);
@@ -34,69 +34,18 @@ public class ItemFrame extends Item {
 	@SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List toolTip, boolean advanced) 
 	{
-		TextFormatting stringColor = TextFormatting.GRAY;
-		
-		if(this.getMetadata(stack) == 0
-		|| this.getMetadata(stack) == 1
-		|| this.getMetadata(stack) == 11)
-		{
-			stringColor = TextFormatting.GRAY;
-		}
-		if(this.getMetadata(stack) == 2
-		|| this.getMetadata(stack) == 3
-		|| this.getMetadata(stack) == 4)
-		{
-			stringColor = TextFormatting.GOLD;
-		}
-		if(this.getMetadata(stack) == 5
-		|| this.getMetadata(stack) == 6
-		|| this.getMetadata(stack) == 7)
-		{
-			stringColor = TextFormatting.DARK_AQUA;
-		}
-		if(this.getMetadata(stack) == 8
-		|| this.getMetadata(stack) == 9
-		|| this.getMetadata(stack) == 10)
-		{
-			stringColor = TextFormatting.DARK_PURPLE;
-		}
+		TextFormatting stringColor = TextFormatting.GOLD;
 		
 		toolTip.add(TextFormatting.WHITE + "[Shift + Left-Click]" + stringColor + " on an");
-		toolTip.add(stringColor + "airship to change the frame.");
-		toolTip.add("");
-		toolTip.add(stringColor + "Also used in crafting recipes.");
+		toolTip.add(stringColor + "airship to change the balloon pattern.");
 	}
 	
 	public EnumRarity getRarity(ItemStack stack)
     {
 		switch (this.getMetadata(stack))
         {
-            case 0:
-            	return EnumRarity.COMMON;
-            case 1:
-            	return EnumRarity.COMMON;
-            case 2:
-            	return EnumRarity.UNCOMMON;
-            case 3:
-            	return EnumRarity.UNCOMMON;
-            case 4:
-            	return EnumRarity.UNCOMMON;
-            case 5:
-            	return EnumRarity.RARE;
-            case 6:
-            	return EnumRarity.RARE;
-            case 7:
-            	return EnumRarity.RARE;
-            case 8:
-            	return EnumRarity.EPIC;
-            case 9:
-            	return EnumRarity.EPIC;
-            case 10:
-            	return EnumRarity.EPIC;
-            case 11:
-            	return EnumRarity.COMMON;
             default:
-            	return EnumRarity.COMMON;
+            	return EnumRarity.UNCOMMON;
         }
     }
 	
@@ -111,9 +60,9 @@ public class ItemFrame extends Item {
 			{
 				EntityAirshipBaseVC airship = (EntityAirshipBaseVC) entity;
 				
-				if(airship.metaFrame != this.getMetadata(stack))
+				if(airship.metaBalloon != this.getMetadata(stack))
 				{
-					airship.metaFrame = this.getMetadata(stack);
+					airship.metaBalloon = this.getMetadata(stack);
 					player.addStat(InitAchievementsVC.airship_create_color);
 					
 					if (!player.capabilities.isCreativeMode)
@@ -132,15 +81,15 @@ public class ItemFrame extends Item {
 	@Override
 	public String getItemStackDisplayName(ItemStack stack)
     {
-        return (EntityAirshipBaseVC.Frame.byId(this.getMetadata(stack)).getName() + " " 
-        		+ "Airship Frame");
+        return (EntityAirshipBaseVC.Balloon.byId(this.getMetadata(stack)).getName() + " " 
+        		+ "Balloon Pattern");
     }
 	
 	@SideOnly(Side.CLIENT)
 	@Override
     public void getSubItems(Item itemIn, CreativeTabs tab, NonNullList<ItemStack> subItems)
     {
-    	for (EntityAirshipBaseVC.Frame contents : EntityAirshipBaseVC.Frame.values()) 
+    	for (EntityAirshipBaseVC.Balloon contents : EntityAirshipBaseVC.Balloon.values()) 
     	{
 			int meta = contents.getMetadata();
 			ItemStack subItemStack = new ItemStack(itemIn, 1, meta);

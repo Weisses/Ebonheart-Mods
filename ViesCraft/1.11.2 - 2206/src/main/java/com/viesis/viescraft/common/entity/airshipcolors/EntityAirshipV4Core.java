@@ -6,6 +6,7 @@ import com.viesis.viescraft.api.ColorHelperVC;
 import com.viesis.viescraft.api.FuelVC;
 import com.viesis.viescraft.client.InitParticlesVCRender;
 import com.viesis.viescraft.common.caps.DualEnergyStorageVC;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC.Frame;
 import com.viesis.viescraft.common.utils.events.EventHandlerAirship;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 import com.viesis.viescraft.init.InitItemsVC;
@@ -226,9 +227,12 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
 	@Override
 	public String getName() 
 	{
-		return this.hasCustomName() ? this.customName : Frame.byId(this.metaFrame).getName() + " " 
-	+ ColorHelperVC.getColorNameFromRgb(this.metaColorRed, this.metaColorGreen, this.metaColorBlue)		
-	+ " " + ViesCraftConfig.v4AirshipName;
+		return this.hasCustomName() ? this.customName : 
+			ColorHelperVC.getColorNameFromRgb(this.metaColorRed, this.metaColorGreen, this.metaColorBlue)		
+			+ " " 
+			+ Frame.byId(this.metaFrame).getName() 
+			+ " " 
+			+ ViesCraftConfig.v4AirshipName;
 	}
 	
 	

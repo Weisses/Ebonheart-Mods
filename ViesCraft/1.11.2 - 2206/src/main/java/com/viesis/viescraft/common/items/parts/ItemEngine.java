@@ -18,7 +18,7 @@ public class ItemEngine extends Item {
 	public ItemEngine() 
 	{
 		ItemHelper.setItemName(this, "airship_engine");
-		this.setMaxStackSize(16);
+		this.setMaxStackSize(32);
 		this.setCreativeTab(ViesCraft.tabViesCraftItems);
 	}
 	

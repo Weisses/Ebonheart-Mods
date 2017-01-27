@@ -1,10 +1,10 @@
 package com.viesis.viescraft.api.creative;
 
+import com.viesis.viescraft.init.InitBlocksVC;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-
-import com.viesis.viescraft.init.InitBlocksVC;
 
 public class VCTabBlocks extends CreativeTabs {
 	
