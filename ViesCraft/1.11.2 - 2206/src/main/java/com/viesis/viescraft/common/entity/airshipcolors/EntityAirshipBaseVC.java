@@ -997,18 +997,9 @@ public class EntityAirshipBaseVC extends Entity {
     public static enum Balloon
     {
         PLAIN(0, "Plain"),
-    	RAINBOW(1, "Rainbow")//,
-        //REDSTONE(2, "Redstone"),
-        //GOLD(3, "Gold"),
-       //LAPISLAZULI(4, "Lapis Lazuli"),
-        //OBSIDIAN(5, "Obsidian"),
-        //DIAMOND(6, "Diamond"),
-        //EMERALD(7, "Emerald"),
-        //NETHERBRICK(8, "Nether Brick"),
-        //PURPUR(9, "Purpur"),
-        //ICE(10, "Ice"),
-    	//SANDSTONE(11, "Sandstone")
-    	;
+        CHECKER(1, "Checker"),
+        POLKADOT(2, "Polka Dot"),
+        ZIGZAG(3, "Zigzag");
     	
         private final String name;
         private final int metadata;

@@ -22,7 +22,7 @@ public class ItemBalloonPattern extends Item {
 	
 	public ItemBalloonPattern() 
 	{
-		ItemHelper.setItemName(this, "airship_balloon_pattern");
+		ItemHelper.setItemName(this, "patterns/airship_balloon_pattern");
 		
 		this.setHasSubtypes(true);
         this.setMaxDamage(0);
