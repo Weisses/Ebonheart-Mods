@@ -103,6 +103,24 @@ public class CraftingManagerVC {
 		//Colorizer using coal or charcoal
     	this.addRecipe(new ItemStack(InitItemsVC.item_balloon_colorizer), new Object[]{"I#I", "#M#", "I#I", '#', new ItemStack(Items.COAL, 1, 0), 'I', Items.IRON_INGOT, 'M', InitItemsVC.module_chip});
 		this.addRecipe(new ItemStack(InitItemsVC.item_balloon_colorizer), new Object[]{"I#I", "#M#", "I#I", '#', new ItemStack(Items.COAL, 1, 1), 'I', Items.IRON_INGOT, 'M', InitItemsVC.module_chip});
+    	
+    	//=================================================
+		
+		//Balloon Patterns
+		//Plain
+		this.addRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 0), new Object[]{"LLL", "LLL", "L#L", '#', InitItemsVC.module_chip, 'L', Items.LEATHER});
+		//Checker
+		this.addRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 1), new Object[]{"ILI", "LIL", "I#I", '#', InitItemsVC.module_chip, 'L', Items.LEATHER, 'I', new ItemStack(Items.DYE, 1, 0)});
+		//Checker Colorized
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 2), new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 1), new ItemStack(Items.ENDER_EYE));
+		//Polka Dot
+		this.addRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 3), new Object[]{"ILI", "LLL", "I#I", '#', InitItemsVC.module_chip, 'L', Items.LEATHER, 'I', new ItemStack(Items.DYE, 1, 0)});
+		//Polka Dot Colorized
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 4), new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 3), new ItemStack(Items.ENDER_EYE));
+		//Zigzag
+		this.addRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 5), new Object[]{"ILL", "LIL", "L#I", '#', InitItemsVC.module_chip, 'L', Items.LEATHER, 'I', new ItemStack(Items.DYE, 1, 0)});
+		//Zigzag Colorized
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 6), new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 5), new ItemStack(Items.ENDER_EYE));
 		
     	//=================================================
 		

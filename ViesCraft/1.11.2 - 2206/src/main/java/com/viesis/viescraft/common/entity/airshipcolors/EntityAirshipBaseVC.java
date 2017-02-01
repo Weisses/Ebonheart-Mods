@@ -998,8 +998,11 @@ public class EntityAirshipBaseVC extends Entity {
     {
         PLAIN(0, "Plain"),
         CHECKER(1, "Checker"),
-        POLKADOT(2, "Polka Dot"),
-        ZIGZAG(3, "Zigzag");
+        CHECKERCOLORIZED(2, "Colorized Checker"),
+        POLKADOT(3, "Polka Dot"),
+        POLKADOTCOLORIZED(4, "Colorized Polka Dot"),
+        ZIGZAG(5, "Zigzag"),
+    	ZIGZAGCOLORIZED(6, "Colorized Zigzag");
     	
         private final String name;
         private final int metadata;

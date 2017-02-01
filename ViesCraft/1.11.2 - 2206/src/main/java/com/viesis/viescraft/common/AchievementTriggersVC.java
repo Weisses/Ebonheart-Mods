@@ -38,10 +38,10 @@ public class AchievementTriggersVC extends InitAchievementsVC {
 			event.player.addStat(airship_create_ignition);
 		}
 		
-		if(event.crafting.getItem() == InitItemsVC.item_airship_v1_wood0
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v2_wood0
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v3_wood0
-		|| event.crafting.getItem() == InitItemsVC.item_airship_v4_wood0) 
+		if(event.crafting.getItem() == InitItemsVC.item_airship_v1
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v2
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v3
+		|| event.crafting.getItem() == InitItemsVC.item_airship_v4) 
 		{
 			event.player.addStat(airship_create);
 		}
