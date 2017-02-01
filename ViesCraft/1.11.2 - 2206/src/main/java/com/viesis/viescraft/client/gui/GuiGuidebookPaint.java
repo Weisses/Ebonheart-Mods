@@ -18,7 +18,7 @@ public class GuiGuidebookPaint extends GuiScreen {
     private final int bookImageHeight = 192;
     private final int bookImageWidth = 192;
     private int currPage = 0;
-    private static final int bookTotalPages = 4;//21;
+    private static final int bookTotalPages = 12;
     private static ResourceLocation[] bookPageTextures = new ResourceLocation[bookTotalPages];
     private static String[] stringPageText = new String[bookTotalPages];
     
@@ -32,7 +32,7 @@ public class GuiGuidebookPaint extends GuiScreen {
         bookPageTextures[1] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_1.png");
         bookPageTextures[2] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_2.png");
         bookPageTextures[3] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_3.png");
-        /**        bookPageTextures[4] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_4.png");
+        bookPageTextures[4] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_4.png");
         bookPageTextures[5] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_5.png");
         bookPageTextures[6] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_6.png");
         bookPageTextures[7] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_7.png");
@@ -40,16 +40,7 @@ public class GuiGuidebookPaint extends GuiScreen {
         bookPageTextures[9] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_9.png");
         bookPageTextures[10] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_10.png");
         bookPageTextures[11] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_11.png");
-        bookPageTextures[12] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_12.png");
-        bookPageTextures[13] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_13.png");
-        bookPageTextures[14] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_14.png");
-        bookPageTextures[15] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_15.png");
-        bookPageTextures[16] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_16.png");
-        bookPageTextures[17] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_17.png");
-        bookPageTextures[18] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_18.png");
-        bookPageTextures[19] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_19.png");
-        bookPageTextures[20] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_20.png");
-        */
+
         //Title
         stringPageText[0] = "\n\n\n\n\n\n\n"
         		+ "    " + "\u00A7l\u00A7nFlaming Paint?!\u00A7r"
@@ -64,7 +55,7 @@ public class GuiGuidebookPaint extends GuiScreen {
         		+ "move on to customizing "
         		+ "our airships... "
         		+ "\n\n"
-        		+ "   Using the new Balloon Colorizer, you can tint the balloon color to anything you want! "
+        		+ "   Let's talk about the Balloon Colorizer and Balloon Patterns! "
         		;
         
         stringPageText[2] = "   To use a colorizer, "
@@ -81,142 +72,64 @@ public class GuiGuidebookPaint extends GuiScreen {
         		+ "\u00A7l\u00A7nBalloon Colorizer\u00A7r"
         		+ "\n\n\n\n\n\n\n\n\n"
         		+ "\u00A7oUsed to paint an Airship's Balloons.\u00A7r";
-        /**
-        stringPageText[4] = "Paint Recipe:"
-        		+ "\n\n"
-        		+ "\u00A7l\u00A7nBlack Paint\u00A7r"
-        		+ "\n\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oIngredient:\u00A7r"
-        		+ "\n"
-        		+ "\u00A7o\u00A7lInk Sac\u00A7r";
         
-        stringPageText[5] = "Paint Recipe:"
+        stringPageText[4] = "   To use a pattern, "
+        		+ "\u00A75[Shift] \u00A70+ \u00A75[Left-Click] "
+        		+ "\u00A70any airship to apply the pattern. "
+        		+ "The item will be used. "
         		+ "\n\n"
-        		+ "\u00A7l\u00A7nBlue Paint\u00A7r"
-        		+ "\n\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oIngredient:\u00A7r"
-        		+ "\n"
-        		+ "\u00A7o\u00A7lLapis Lazuli\u00A7r";
+        		+ "   Colorized patterns already have rgb colors on it, and can have random results with the colorizer.  Have fun!"
+        		;
         
-        stringPageText[6] = "Paint Recipe:"
+        stringPageText[5] = "Pattern Recipe:"
         		+ "\n\n"
-        		+ "\u00A7l\u00A7nBrown Paint\u00A7r"
-        		+ "\n\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oIngredient:\u00A7r"
-        		+ "\n"
-        		+ "\u00A7o\u00A7lCocoa Beans\u00A7r";
+        		+ "\u00A7l\u00A7nPlain"
+        		+ "\nPattern\u00A7r"
+        		+ "\n\n\n\n\n\n\n\n"
+        		+ "\u00A7oDefault balloon pattern.\u00A7r";
         
-        stringPageText[7] = "Paint Recipe:"
+        stringPageText[6] = "Pattern Recipe:"
         		+ "\n\n"
-        		+ "\u00A7l\u00A7nCyan Paint\u00A7r"
-        		+ "\n\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oIngredient:\u00A7r"
-        		+ "\n"
-        		+ "\u00A7o\u00A7lCyan Dye\u00A7r";
+        		+ "\u00A7l\u00A7nChecker"
+        		+ "\nPattern\u00A7r"
+        		+ "\n\n\n\n\n\n\n\n"
+        		+ "\u00A7oGrayscaled checker pattern.\u00A7r";
         
-        stringPageText[8] = "Paint Recipe:"
+        stringPageText[7] = "Pattern Recipe:"
         		+ "\n\n"
-        		+ "\u00A7l\u00A7nGray Paint\u00A7r"
-        		+ "\n\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oIngredient:\u00A7r"
-        		+ "\n"
-        		+ "\u00A7o\u00A7lGray Dye\u00A7r";
+        		+ "\u00A7l\u00A7nColorized Checker"
+        		+ "\nPattern\u00A7r"
+        		+ "\n\n\n\n\n\n\n\n"
+        		+ "\u00A7oGreen/Blue checker pattern.\u00A7r";
         
-        stringPageText[9] = "Paint Recipe:"
+        stringPageText[8] = "Pattern Recipe:"
         		+ "\n\n"
-        		+ "\u00A7l\u00A7nGreen Paint\u00A7r"
-        		+ "\n\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oIngredient:\u00A7r"
-        		+ "\n"
-        		+ "\u00A7o\u00A7lCactus Green\u00A7r";
+        		+ "\u00A7l\u00A7nPolka Dot"
+        		+ "\nPattern\u00A7r"
+        		+ "\n\n\n\n\n\n\n\n"
+        		+ "\u00A7oGrayscaled Polka Dot pattern.\u00A7r";
         
-        stringPageText[10] = "Paint Recipe:"
+        stringPageText[9] = "Pattern Recipe:"
         		+ "\n\n"
-        		+ "\u00A7l\u00A7nLight Blue Paint\u00A7r"
-        		+ "\n\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oIngredient:\u00A7r"
-        		+ "\n"
-        		+ "\u00A7o\u00A7lLight Blue Dye\u00A7r";
+        		+ "\u00A7l\u00A7nColorized Polka Dot"
+        		+ "\nPattern\u00A7r"
+        		+ "\n\n\n\n\n\n\n\n"
+        		+ "\u00A7oRed/Green Polka Dot pattern.\u00A7r";
+        
+        stringPageText[10] = "Pattern Recipe:"
+        		+ "\n\n"
+        		+ "\u00A7l\u00A7nZigzag"
+        		+ "\nPattern\u00A7r"
+        		+ "\n\n\n\n\n\n\n\n"
+        		+ "\u00A7oGrayscaled zigzag pattern.\u00A7r";
     	
-        stringPageText[11] = "Paint Recipe:"
+        stringPageText[11] = "Pattern Recipe:"
         		+ "\n\n"
-        		+ "\u00A7l\u00A7nLight Gray Paint\u00A7r"
-        		+ "\n\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oIngredient:\u00A7r"
-        		+ "\n"
-        		+ "\u00A7o\u00A7lLight Gray Dye\u00A7r";
+        		+ "\u00A7l\u00A7nColorized Zigzag"
+        		+ "\nPattern\u00A7r"
+        		+ "\n\n\n\n\n\n\n\n"
+        		+ "\u00A7oRed/Green/Blue zigzag pattern.\u00A7r";
         
-        stringPageText[12] = "Paint Recipe:"
-        		+ "\n\n"
-        		+ "\u00A7l\u00A7nLime Paint\u00A7r"
-        		+ "\n\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oIngredient:\u00A7r"
-        		+ "\n"
-        		+ "\u00A7o\u00A7lLime Dye\u00A7r";
-    		
-        stringPageText[13] = "Paint Recipe:"
-        		+ "\n\n"
-        		+ "\u00A7l\u00A7nMagenta Paint\u00A7r"
-        		+ "\n\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oIngredient:\u00A7r"
-        		+ "\n"
-        		+ "\u00A7o\u00A7lMagenta Dye\u00A7r";
-        
-        stringPageText[14] = "Paint Recipe:"
-        		+ "\n\n"
-        		+ "\u00A7l\u00A7nOrange Paint\u00A7r"
-        		+ "\n\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oIngredient:\u00A7r"
-        		+ "\n"
-        		+ "\u00A7o\u00A7lOrange Dye\u00A7r";
-        
-        stringPageText[15] = "Paint Recipe:"
-        		+ "\n\n"
-        		+ "\u00A7l\u00A7nPink Paint\u00A7r"
-        		+ "\n\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oIngredient:\u00A7r"
-        		+ "\n"
-        		+ "\u00A7o\u00A7lPink Dye\u00A7r";
-        
-        stringPageText[16] = "Paint Recipe:"
-        		+ "\n\n"
-        		+ "\u00A7l\u00A7nPurple Paint\u00A7r"
-        		+ "\n\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oIngredient:\u00A7r"
-        		+ "\n"
-        		+ "\u00A7o\u00A7lPurple Dye\u00A7r";
-        
-        stringPageText[17] = "Paint Recipe:"
-        		+ "\n\n"
-        		+ "\u00A7l\u00A7nRed Paint\u00A7r"
-        		+ "\n\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oIngredient:\u00A7r"
-        		+ "\n"
-        		+ "\u00A7o\u00A7lRose Red\u00A7r";
-        
-        stringPageText[18] = "Paint Recipe:"
-        		+ "\n\n"
-        		+ "\u00A7l\u00A7nWhite Paint\u00A7r"
-        		+ "\n\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oIngredient:\u00A7r"
-        		+ "\n"
-        		+ "\u00A7o\u00A7lBone Meal\u00A7r";
-        
-        stringPageText[19] = "Paint Recipe:"
-        		+ "\n\n"
-        		+ "\u00A7l\u00A7nYellow Paint\u00A7r"
-        		+ "\n\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oIngredient:\u00A7r"
-        		+ "\n"
-        		+ "\u00A7o\u00A7lDandelion Yellow\u00A7r";
-        stringPageText[20] = "Paint Recipe:"
-        		+ "\n\n"
-        		+ "\u00A7l\u00A7nRainbow Paint\u00A7r"
-        		+ "\n\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oIngredient:\u00A7r"
-        		+ "\n"
-        		+ "\u00A7o\u00A7lBone Meal\u00A7r";
-        		*/
  }
 
     /**
@@ -275,7 +188,7 @@ public class GuiGuidebookPaint extends GuiScreen {
         {
         	mc.getTextureManager().bindTexture(bookPageTextures[3]);
         }
-        /**       if (currPage == 4)
+        if (currPage == 4)
         {
         	mc.getTextureManager().bindTexture(bookPageTextures[4]);
         }
@@ -307,43 +220,7 @@ public class GuiGuidebookPaint extends GuiScreen {
         {
         	mc.getTextureManager().bindTexture(bookPageTextures[11]);
         }
-        if (currPage == 12)
-        {
-        	mc.getTextureManager().bindTexture(bookPageTextures[12]);
-        }
-        if (currPage == 13)
-        {
-        	mc.getTextureManager().bindTexture(bookPageTextures[13]);
-        }
-        if (currPage == 14)
-        {
-        	mc.getTextureManager().bindTexture(bookPageTextures[14]);
-        }
-        if (currPage == 15)
-        {
-        	mc.getTextureManager().bindTexture(bookPageTextures[15]);
-        }
-        if (currPage == 16)
-        {
-        	mc.getTextureManager().bindTexture(bookPageTextures[16]);
-        }
-        if (currPage == 17)
-        {
-        	mc.getTextureManager().bindTexture(bookPageTextures[17]);
-        }
-        if (currPage == 18)
-        {
-        	mc.getTextureManager().bindTexture(bookPageTextures[18]);
-        }
-        if (currPage == 19)
-        {
-        	mc.getTextureManager().bindTexture(bookPageTextures[19]);
-        }
-        if (currPage == 20)
-        {
-        	mc.getTextureManager().bindTexture(bookPageTextures[20]);
-        }
-        */
+        
         //else
         //{
         // mc.getTextureManager().bindTexture(bookPageTextures[2]);
