@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "vc:items/airship_frame_redstone"
+        "layer0": "vc:items/frame/airship_frame_redstone"
     }
 }

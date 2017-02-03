@@ -16,45 +16,45 @@ public class ModelAirshipV2Color extends ModelBase {
 	
 	public ModelAirshipV2Color()
 	{
-		textureWidth = 256;
-		textureHeight = 128;
+		textureWidth = 512;
+		textureHeight = 256;
 		
-		BaseColorFloor = new ModelRenderer(this, 180, 0);
-		BaseColorFloor.addBox(0F, 0F, 0F, 14, 0, 24);
-		BaseColorFloor.setRotationPoint(-7F, 5F, -12F);
-		BaseColorFloor.setTextureSize(256, 128);
-		BaseColorFloor.mirror = true;
-		setRotation(BaseColorFloor, 0F, 0F, 0F);
-		BaseColorChest = new ModelRenderer(this, 196, 24);
-		BaseColorChest.addBox(0F, 0F, 0F, 10, 2, 8);
-		BaseColorChest.setRotationPoint(-5F, 4F, 3F);
-		BaseColorChest.setTextureSize(256, 128);
-		BaseColorChest.mirror = true;
-		setRotation(BaseColorChest, 0F, 0F, 0F);
-		BalloonR1a = new ModelRenderer(this, 0, 0);
-		BalloonR1a.addBox(0F, 0F, 0F, 8, 8, 26);
-		BalloonR1a.setRotationPoint(-21F, -6F, -13F);
-		BalloonR1a.setTextureSize(256, 128);
-		BalloonR1a.mirror = true;
-		setRotation(BalloonR1a, 0F, 0F, 0F);
-		BalloonR1b = new ModelRenderer(this, 70, 0);
-		BalloonR1b.addBox(0F, 0F, 0F, 10, 10, 25);
-		BalloonR1b.setRotationPoint(-22F, -7F, -12F);
-		BalloonR1b.setTextureSize(256, 128);
-		BalloonR1b.mirror = true;
-		setRotation(BalloonR1b, 0F, 0F, 0F);
-		BalloonL1a = new ModelRenderer(this, 0, 35);
-		BalloonL1a.addBox(0F, 0F, 0F, 8, 8, 26);
-		BalloonL1a.setRotationPoint(13F, -6F, -13F);
-		BalloonL1a.setTextureSize(256, 128);
-		BalloonL1a.mirror = true;
-		setRotation(BalloonL1a, 0F, 0F, 0F);
-		BalloonL1b = new ModelRenderer(this, 70, 35);
-		BalloonL1b.addBox(0F, 0F, 0F, 10, 10, 25);
-		BalloonL1b.setRotationPoint(12F, -7F, -12F);
-		BalloonL1b.setTextureSize(256, 128);
-		BalloonL1b.mirror = true;
-		setRotation(BalloonL1b, 0F, 0F, 0F);
+		BaseColorFloor = new ModelRenderer(this, 436, 0);
+	      BaseColorFloor.addBox(0F, 0F, 0F, 14, 0, 24);
+	      BaseColorFloor.setRotationPoint(-7F, 5F, -12F);
+	      BaseColorFloor.setTextureSize(512, 256);
+	      BaseColorFloor.mirror = true;
+	      setRotation(BaseColorFloor, 0F, 0F, 0F);
+	      BaseColorChest = new ModelRenderer(this, 452, 24);
+	      BaseColorChest.addBox(0F, 0F, 0F, 10, 2, 8);
+	      BaseColorChest.setRotationPoint(-5F, 4F, 3F);
+	      BaseColorChest.setTextureSize(512, 256);
+	      BaseColorChest.mirror = true;
+	      setRotation(BaseColorChest, 0F, 0F, 0F);
+	      BalloonR1a = new ModelRenderer(this, 0, 202);
+	      BalloonR1a.addBox(0F, 0F, 0F, 8, 8, 26);
+	      BalloonR1a.setRotationPoint(-21F, -6F, -13F);
+	      BalloonR1a.setTextureSize(512, 256);
+	      BalloonR1a.mirror = true;
+	      setRotation(BalloonR1a, 0F, 0F, 0F);
+	      BalloonR1b = new ModelRenderer(this, 70, 202);
+	      BalloonR1b.addBox(0F, 0F, 0F, 10, 10, 25);
+	      BalloonR1b.setRotationPoint(-22F, -7F, -12F);
+	      BalloonR1b.setTextureSize(512, 256);
+	      BalloonR1b.mirror = true;
+	      setRotation(BalloonR1b, 0F, 0F, 0F);
+	      BalloonL1a = new ModelRenderer(this, 0, 202);
+	      BalloonL1a.addBox(0F, 0F, 0F, 8, 8, 26);
+	      BalloonL1a.setRotationPoint(13F, -6F, -13F);
+	      BalloonL1a.setTextureSize(512, 256);
+	      BalloonL1a.mirror = true;
+	      setRotation(BalloonL1a, 0F, 0F, 0F);
+	      BalloonL1b = new ModelRenderer(this, 70, 202);
+	      BalloonL1b.addBox(0F, 0F, 0F, 10, 10, 25);
+	      BalloonL1b.setRotationPoint(12F, -7F, -12F);
+	      BalloonL1b.setTextureSize(512, 256);
+	      BalloonL1b.mirror = true;
+	      setRotation(BalloonL1b, 0F, 0F, 0F);
 	}
 	
 	public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)

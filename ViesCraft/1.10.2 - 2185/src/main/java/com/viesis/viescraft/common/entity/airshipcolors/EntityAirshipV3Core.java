@@ -4,8 +4,8 @@ import java.util.List;
 
 import com.viesis.viescraft.api.ColorHelperVC;
 import com.viesis.viescraft.api.FuelVC;
-import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.client.InitParticlesVCRender;
+import com.viesis.viescraft.common.caps.DualEnergyStorageVC;
 import com.viesis.viescraft.common.utils.events.EventHandlerAirship;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 import com.viesis.viescraft.init.InitItemsVC;
@@ -80,16 +80,16 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
     public float AirshipSpeedUp = 0.004F * (ViesCraftConfig.v3AirshipSpeed / 100);
     public float AirshipSpeedDown = 0.004F * (ViesCraftConfig.v3AirshipSpeed / 100);
 	
-	public EntityAirshipV3Core(World worldObjIn)
+	public EntityAirshipV3Core(World worldIn)
     {
-        super(worldObjIn);
+        super(worldIn);
         
         this.inventory = new ItemStackHandler(size);
     }
 	
-    public EntityAirshipV3Core(World worldObjIn, double x, double y, double z, int frameIn, int balloonIn, int metaColorRedItem, int metaColorGreenItem, int metaColorBlueItem)
+    public EntityAirshipV3Core(World worldIn, double x, double y, double z, int frameIn, int balloonIn, int metaColorRedItem, int metaColorGreenItem, int metaColorBlueItem)
     {
-        this(worldObjIn);
+        this(worldIn);
         this.setPosition(x, y + 0.5D, z);
         
         this.metaFrame = frameIn;
@@ -114,6 +114,7 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
 		this.dataManager.register(TIME_SINCE_HIT_VC, Integer.valueOf(0));
         this.dataManager.register(FORWARD_DIRECTION_VC, Integer.valueOf(1));
         this.dataManager.register(DAMAGE_TAKEN_VC, Float.valueOf(0.0F));
+        
         this.dataManager.register(AIRSHIP_TYPE_FRAME_VC, Integer.valueOf(this.metaFrame));
         this.dataManager.register(AIRSHIP_TYPE_BALLOON_VC, Integer.valueOf(this.metaBalloon));
         this.dataManager.register(BALLOON_COLOR_RED_VC, Integer.valueOf(this.metaColorRed));
@@ -178,7 +179,7 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
     	
         return compound;
     }
-
+    
     @Override
     public void readFromNBT(NBTTagCompound compound)
     {
@@ -224,9 +225,12 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
 	@Override
 	public String getName() 
 	{
-		return this.hasCustomName() ? this.customName : Frame.byId(this.metaFrame).getName() + " " 
-	+ ColorHelperVC.getColorNameFromRgb(this.metaColorRed, this.metaColorGreen, this.metaColorBlue)		
-	+ " " + ViesCraftConfig.v3AirshipName;
+		return this.hasCustomName() ? this.customName : 
+			ColorHelperVC.getColorNameFromRgb(this.metaColorRed, this.metaColorGreen, this.metaColorBlue)		
+			+ " " 
+			+ Frame.byId(this.metaFrame).getName() 
+			+ " " 
+			+ ViesCraftConfig.v3AirshipName;
 	}
 	
 	
@@ -241,22 +245,6 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
         this.previousStatus = this.status;
         this.status = this.getAirshipStatus();
         
-        //Sets explosion ticks to 0 if not in water, else increase the tick count
-        if (this.status != EntityAirshipBaseVC.Status.UNDER_WATER && this.status != EntityAirshipBaseVC.Status.UNDER_FLOWING_WATER)
-        {
-            this.outOfControlTicks = 0.0F;
-        }
-        else
-        {
-            ++this.outOfControlTicks;
-        }
-        
-        //Removes passenger if they do not get out of water in time to explode the airship.
-        if (!this.worldObj.isRemote && this.outOfControlTicks >= 60.0F)
-        {
-            this.removePassengers();
-        }
-        
         if (this.getTimeSinceHit() > 0)
         {
             this.setTimeSinceHit(this.getTimeSinceHit() - 1);
@@ -266,7 +254,8 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
         {
             this.setDamageTaken(this.getDamageTaken() - 1.0F);
         }
-        
+
+        this.waterDamage();
         this.updateAirshipMeta();
         
         this.prevPosX = this.posX;
@@ -357,38 +346,7 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
             else if (this.status == EntityAirshipBaseVC.Status.UNDER_FLOWING_WATER 
         	  || this.status == EntityAirshipBaseVC.Status.UNDER_WATER)
             {
-            	if (!this.worldObj.isRemote)
-            	{
-            		this.worldObj.createExplosion(this, this.posX, this.posY + (double)(this.height / 16.0F), this.posZ, 2.0F, true);
-            		
-            		int drop1 = Reference.random.nextInt(100) + 1;
-            		int drop2 = Reference.random.nextInt(100) + 1;
-            		int drop3 = Reference.random.nextInt(100) + 1;
-            		int drop4 = Reference.random.nextInt(100) + 1;
-            		
-            	    if (drop1 < 75)
-                	{
-            	    	this.dropItemWithOffset(InitItemsVC.airship_balloon, 1, 0.0F);
-                	}
-            	    
-            	    if (drop2 < 55)
-                	{
-            	    	this.dropItemWithOffset(InitItemsVC.airship_engine, 1, 0.0F);
-            	    	
-            	    	if (drop3 < 35)
-                    	{
-                	    	this.dropItemWithOffset(InitItemsVC.airship_engine, 1, 0.0F);
-                    	}
-                	}
-            	    
-            	    if (drop4 < 15)
-                	{
-            	    	this.dropItemWithOffset(InitItemsVC.airship_ignition, 1, 0.0F);
-                	}
-            	}
-            	
-            	this.dropInvDead();
-            	this.setDead();
+            	this.waterPartsDrop();
             }
             else if (this.status == EntityAirshipBaseVC.Status.IN_AIR
             	  || this.status == EntityAirshipBaseVC.Status.ON_LAND)
@@ -873,7 +831,7 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
         else
         {
             Item item = stack.getItem();
-            //DualEnergyStorageVC cap = (DualEnergyStorageVC) stack.getCapability(DualEnergyStorageVC.CAPABILITY_HOLDER , null);
+            DualEnergyStorageVC cap = (DualEnergyStorageVC) stack.getCapability(DualEnergyStorageVC.CAPABILITY_HOLDER , null);
             if(ViesCraftConfig.vanillaFuel)
     		{
 	            if (item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.AIR)
@@ -1043,7 +1001,7 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
 		int moduleNumber = this.getModuleID(itemModule);
 		
 		/**
-		if(this.worldObj.isRemote)
+		if(this.world.isRemote)
 		{
 			if(this.getModuleInventorySmall())
 				LogHelper.info("1");
@@ -1257,66 +1215,6 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
     }
     
     /**
-     * Drops inventory contents only from airship (not fuel/module).
-     */
-    public void dropInv()
-    {
-    	if(this.worldObj.isRemote)
-		{
-			for (int x = 2; x < 20; ++x) 
-			{
-				if(this.inventory.getStackInSlot(x) != null)
-				{
-					ItemStack test = this.inventory.getStackInSlot(x);
-					test = null;
-				}
-			}
-		}
-		else
-		{
-			for (int x = 2; x < 20; ++x) 
-			{
-				if(this.inventory.getStackInSlot(x) != null)
-				{
-					ItemStack test = this.inventory.getStackInSlot(x);
-					InventoryHelper.spawnItemStack(this.worldObj, this.posX, this.posY, this.posZ, this.inventory.getStackInSlot(x));
-					test = null;
-				}
-			}
-		}
-    }
-    
-    /**
-     * Drops all inventory contents.
-     */
-    public void dropInvDead()
-    {
-    	if(this.worldObj.isRemote)
-		{
-			for (int x = 0; x < 20; ++x) 
-			{
-				if(this.inventory.getStackInSlot(x) != null)
-				{
-					ItemStack test = this.inventory.getStackInSlot(x);
-					test = null;
-				}
-			}
-		}
-		else
-		{
-			for (int x = 0; x < 20; ++x) 
-			{
-				if(this.inventory.getStackInSlot(x) != null)
-				{
-					ItemStack test = this.inventory.getStackInSlot(x);
-					InventoryHelper.spawnItemStack(this.worldObj, this.posX, this.posY, this.posZ, this.inventory.getStackInSlot(x));
-					test = null;
-				}
-			}
-		}
-    }
-    
-    /**
      * Sets the Small Inventory boolean to pass from server to client.
      */
     public void setModuleInventorySmall(boolean moduleInvSmall1)
@@ -1394,5 +1292,71 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
     public boolean getModuleSpeedMajor()
     {
         return ((Boolean)this.dataManager.get(MODULE_SPEED_MAJOR)).booleanValue();
+    }
+    
+    
+    
+    //==================================//
+  	// TODO          Misc               //
+  	//==================================//
+    
+    /**
+     * Drops inventory contents only from airship (not fuel/module).
+     */
+    public void dropInv()
+    {
+    	if(this.worldObj.isRemote)
+		{
+			for (int x = 2; x < 20; ++x) 
+			{
+				if(this.inventory.getStackInSlot(x) != null)
+				{
+					ItemStack test = this.inventory.getStackInSlot(x);
+					test = null;
+				}
+			}
+		}
+		else
+		{
+			for (int x = 2; x < 20; ++x) 
+			{
+				if(this.inventory.getStackInSlot(x) != null)
+				{
+					ItemStack test = this.inventory.getStackInSlot(x);
+					InventoryHelper.spawnItemStack(this.worldObj, this.posX, this.posY, this.posZ, this.inventory.getStackInSlot(x));
+					test = null;
+				}
+			}
+		}
+    }
+    
+    /**
+     * Drops all inventory contents.
+     */
+    protected void dropInvDead()
+    {
+    	if(this.worldObj.isRemote)
+		{
+			for (int x = 0; x < 20; ++x) 
+			{
+				if(this.inventory.getStackInSlot(x) != null)
+				{
+					ItemStack test = this.inventory.getStackInSlot(x);
+					test = null;
+				}
+			}
+		}
+		else
+		{
+			for (int x = 0; x < 20; ++x) 
+			{
+				if(this.inventory.getStackInSlot(x) != null)
+				{
+					ItemStack test = this.inventory.getStackInSlot(x);
+					InventoryHelper.spawnItemStack(this.worldObj, this.posX, this.posY, this.posZ, this.inventory.getStackInSlot(x));
+					test = null;
+				}
+			}
+		}
     }
 }

@@ -1,8 +1,0 @@
-{
-    "parent": "item/generated",
-    "textures": {
-        "layer0": "vc:items/airships/colors/color_rainbow",
-        "layer1": "vc:items/airships/frames/frame_netherbrick",
-        "layer2": "vc:items/airships/types/type_v2"
-    }
-}

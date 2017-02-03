@@ -36,7 +36,8 @@ public class ItemFrame extends Item {
 		TextFormatting stringColor = TextFormatting.GRAY;
 		
 		if(this.getMetadata(stack) == 0
-		|| this.getMetadata(stack) == 1)
+		|| this.getMetadata(stack) == 1
+		|| this.getMetadata(stack) == 11)
 		{
 			stringColor = TextFormatting.GRAY;
 		}
@@ -53,7 +54,8 @@ public class ItemFrame extends Item {
 			stringColor = TextFormatting.DARK_AQUA;
 		}
 		if(this.getMetadata(stack) == 8
-		|| this.getMetadata(stack) == 9)
+		|| this.getMetadata(stack) == 9
+		|| this.getMetadata(stack) == 10)
 		{
 			stringColor = TextFormatting.DARK_PURPLE;
 		}
@@ -88,6 +90,10 @@ public class ItemFrame extends Item {
             	return EnumRarity.EPIC;
             case 9:
             	return EnumRarity.EPIC;
+            case 10:
+            	return EnumRarity.EPIC;
+            case 11:
+            	return EnumRarity.COMMON;
             default:
             	return EnumRarity.COMMON;
         }

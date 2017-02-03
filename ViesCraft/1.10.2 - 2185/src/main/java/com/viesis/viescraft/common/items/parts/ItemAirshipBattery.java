@@ -28,7 +28,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemAirshipBattery extends Item {
-	/**
+	
 	private int capacity;
 	private int maxReceive;
 	private int maxExtract;
@@ -72,34 +72,35 @@ public class ItemAirshipBattery extends Item {
     }
 	
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn)
+	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand)
     {
-		ItemStack itemstack = playerIn.getHeldItem(handIn);
-		DualEnergyStorageVC cap = (DualEnergyStorageVC) itemstack.getCapability(DualEnergyStorageVC.CAPABILITY_HOLDER, null);
+		//ItemStack itemstack = playerIn.getHeldItem(handIn);
+		//DualEnergyStorageVC cap = (DualEnergyStorageVC) itemstack.getCapability(DualEnergyStorageVC.CAPABILITY_HOLDER, null);
 		
 		if(playerIn.isSneaking())
 		{
 		//	if (!worldIn.isRemote)
 		//	{
-				cap.receiveEnergy(100, false);
+				//cap.receiveEnergy(100, false);
 				
-				LogHelper.info("+Stored energy: " + cap.getEnergyStored());
-				LogHelper.info("+Max energy = " + cap.getMaxEnergyStored());
+				//LogHelper.info("+Stored energy: " + cap.getEnergyStored());
+				//LogHelper.info("+Max energy = " + cap.getMaxEnergyStored());
 		//	}
 		}
 		else
 		{
 		//if (!worldIn.isRemote)
 		//	{
-				cap.extractEnergy(10, false);
+				//cap.extractEnergy(10, false);
 				
-				LogHelper.info("-Stored energy: " + cap.getEnergyStored());
-				LogHelper.info("-Max energy = " + cap.getMaxEnergyStored());
+				//LogHelper.info("-Stored energy: " + cap.getEnergyStored());
+				//LogHelper.info("-Max energy = " + cap.getMaxEnergyStored());
 		//	}
 		}
+		return null;
 		
 		
-        return new ActionResult(EnumActionResult.PASS, playerIn.getHeldItem(handIn));
+        //return new ActionResult(EnumActionResult.PASS, playerIn.getHeldItem(handIn));
     }
 	
 	@SideOnly(Side.CLIENT)
@@ -109,13 +110,13 @@ public class ItemAirshipBattery extends Item {
 		DualEnergyStorageVC cap = (DualEnergyStorageVC) stack.getCapability(DualEnergyStorageVC.CAPABILITY_HOLDER, null);
 		
 		toolTip.add(TextFormatting.DARK_PURPLE + "Forge Stored energy: " + cap.getEnergyStored());
-		toolTip.add(TextFormatting.DARK_PURPLE + "Tesla Stored energy: " + cap.getStoredPower());
+		//toolTip.add(TextFormatting.DARK_PURPLE + "Tesla Stored energy: " + cap.getStoredPower());
 		toolTip.add("");
 		toolTip.add(TextFormatting.DARK_PURPLE + "Max energy = " + cap.getMaxEnergyStored());
 	}
 
 	
 	
-	*/
+	
 	
 }

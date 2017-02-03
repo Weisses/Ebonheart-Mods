@@ -25,13 +25,13 @@ public class ItemAirshipV1 extends ItemAirshipCore {
         this.setMaxDamage(0);
         
         ItemHelper.setItemName(this, unlocalizedName);
-		this.setCreativeTab(ViesCraft.tabViesCraftAirshipsV1);
+		this.setCreativeTab(ViesCraft.tabViesCraftAirships);
 	}
 	
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand)
     {
-        ItemStack itemstack = playerIn.getHeldItemMainhand();
+		ItemStack itemstack = playerIn.getHeldItemMainhand();
         
         int balloon = 0;
         int colorRed = 210;
@@ -47,10 +47,6 @@ public class ItemAirshipV1 extends ItemAirshipCore {
 				colorGreen = itemstack.getTagCompound().getInteger("ColorGreen"); 
 				colorBlue = itemstack.getTagCompound().getInteger("ColorBlue");
 	        }
-        	else
-        	{
-        		
-        	}
         	
         	if (!playerIn.capabilities.isCreativeMode)
         	{

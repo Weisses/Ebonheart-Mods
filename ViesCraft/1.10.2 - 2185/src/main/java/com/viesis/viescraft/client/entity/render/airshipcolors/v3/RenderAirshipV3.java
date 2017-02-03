@@ -23,7 +23,13 @@ public class RenderAirshipV3 extends Render<EntityAirshipV3Core> {
 	
 	private static final ResourceLocation[] ENTITY_BALLOON_TEXTURE = new ResourceLocation[] 
 	{
-		new ResourceLocation(Reference.MOD_ID, "textures/models/patterns/airship_pattern_plain.png")
+		new ResourceLocation(Reference.MOD_ID, "textures/models/patterns/airship_pattern_plain.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/patterns/airship_pattern_checker.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/patterns/airship_pattern_checker_colorized.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/patterns/airship_pattern_polkadot.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/patterns/airship_pattern_polkadot_colorized.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/patterns/airship_pattern_zigzag.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/patterns/airship_pattern_zigzag_colorized.png")
 	};
 	
 	private static final ResourceLocation[] ENTITY_FRAME_TEXTURE = new ResourceLocation[] 

@@ -2,6 +2,14 @@ package com.viesis.viescraft;
 
 import java.io.File;
 
+import com.viesis.viescraft.api.Reference;
+import com.viesis.viescraft.api.creative.VCTabAirships;
+import com.viesis.viescraft.api.creative.VCTabBlocks;
+import com.viesis.viescraft.api.creative.VCTabItems;
+import com.viesis.viescraft.api.util.LogHelper;
+import com.viesis.viescraft.configs.ViesCraftConfig;
+import com.viesis.viescraft.proxy.CommonProxy;
+
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -9,17 +17,6 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-
-import com.viesis.viescraft.api.Reference;
-import com.viesis.viescraft.api.creative.VCTabAirshipsV1;
-import com.viesis.viescraft.api.creative.VCTabAirshipsV2;
-import com.viesis.viescraft.api.creative.VCTabAirshipsV3;
-import com.viesis.viescraft.api.creative.VCTabAirshipsV4;
-import com.viesis.viescraft.api.creative.VCTabBlocks;
-import com.viesis.viescraft.api.creative.VCTabItems;
-import com.viesis.viescraft.api.util.LogHelper;
-import com.viesis.viescraft.configs.ViesCraftConfig;
-import com.viesis.viescraft.proxy.CommonProxy;
 
 @Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.MOD_VERSION, guiFactory = Reference.CONFIG_GUI)
 public class ViesCraft {
@@ -29,11 +26,7 @@ public class ViesCraft {
     
 	public static final VCTabBlocks tabViesCraftBlocks = new VCTabBlocks("tabViesCraftBlocks");
 	public static final VCTabItems tabViesCraftItems = new VCTabItems("tabViesCraftItems");
-	
-	public static final VCTabAirshipsV1 tabViesCraftAirshipsV1 = new VCTabAirshipsV1("tabViesCraftAirshipsV1");
-	public static final VCTabAirshipsV2 tabViesCraftAirshipsV2 = new VCTabAirshipsV2("tabViesCraftAirshipsV2");
-	public static final VCTabAirshipsV3 tabViesCraftAirshipsV3 = new VCTabAirshipsV3("tabViesCraftAirshipsV3");
-	public static final VCTabAirshipsV4 tabViesCraftAirshipsV4 = new VCTabAirshipsV4("tabViesCraftAirshipsV4");
+	public static final VCTabAirships tabViesCraftAirships = new VCTabAirships("tabViesCraftAirships");
 	
 	private static File configDir;
 	

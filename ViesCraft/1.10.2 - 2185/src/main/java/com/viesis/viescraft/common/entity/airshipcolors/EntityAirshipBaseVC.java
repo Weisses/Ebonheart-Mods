@@ -5,7 +5,10 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import com.google.common.collect.Lists;
+import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.api.util.Keybinds;
+import com.viesis.viescraft.client.InitParticlesVCRender;
+import com.viesis.viescraft.init.InitItemsVC;
 
 import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.material.Material;
@@ -84,9 +87,9 @@ public class EntityAirshipBaseVC extends Entity {
     public float AirshipSpeedUp;
     public float AirshipSpeedDown;
 	
-    public EntityAirshipBaseVC(World worldObjIn)
+    public EntityAirshipBaseVC(World worldIn)
     {
-        super(worldObjIn);
+        super(worldIn);
         
         this.ignoreFrustumCheck = true;
         this.preventEntitySpawning = true;
@@ -94,15 +97,16 @@ public class EntityAirshipBaseVC extends Entity {
         this.setSize(1.0F, 0.5F);
     }
     
-    public EntityAirshipBaseVC(World worldObjIn, double x, double y, double z, int frameIn, int colorRedIn, int colorGreenIn, int colorBlueIn)
+    public EntityAirshipBaseVC(World worldIn, double x, double y, double z, int frameIn, int balloonIn, int colorRedIn, int colorGreenIn, int colorBlueIn)
     {
-        this(worldObjIn);
+        this(worldIn);
         this.setPosition(x, y, z);
         
+        this.metaFrame = frameIn;
+        this.metaBalloon = balloonIn;
         this.metaColorRed = colorRedIn;
         this.metaColorGreen = colorGreenIn;
         this.metaColorBlue = colorBlueIn;
-        this.metaFrame = frameIn;
         
         this.motionX = 0.0D;
         this.motionY = 0.0D;
@@ -112,10 +116,6 @@ public class EntityAirshipBaseVC extends Entity {
         this.prevPosZ = z;
     }
     
-    /**
-     * Returns if this entity triggers Block.onEntityWalking on the blocks they walk on. used for spiders and wolves to
-     * prevent them from trampling crops
-     */
     @Override
     protected boolean canTriggerWalking()
     {
@@ -135,10 +135,6 @@ public class EntityAirshipBaseVC extends Entity {
         this.dataManager.register(BALLOON_COLOR_BLUE_VC, Integer.valueOf(this.metaColorBlue));
     }
     
-    /**
-     * Returns a boundingBox used to collide the entity with other entities and blocks. This enables the entity to be
-     * pushable on contact, like boats or minecarts.
-     */
     @Override
     @Nullable
     public AxisAlignedBB getCollisionBox(Entity entityIn)
@@ -146,9 +142,6 @@ public class EntityAirshipBaseVC extends Entity {
         return entityIn.canBePushed() ? entityIn.getEntityBoundingBox() : null;
     }
     
-    /**
-     * Returns the collision bounding box for this entity
-     */
     @Override
     @Nullable
     public AxisAlignedBB getCollisionBoundingBox()
@@ -156,27 +149,18 @@ public class EntityAirshipBaseVC extends Entity {
         return this.getEntityBoundingBox();
     }
     
-    /**
-     * Returns true if this entity should push and be pushed by other entities when colliding.
-     */
     @Override
     public boolean canBePushed()
     {
         return true;
     }
     
-    /**
-     * Returns the Y offset from the entity's position for any entity riding this one.
-     */
     @Override
     public double getMountedYOffset()
     {
         return 0.15D;
     }
     
-    /**
-     * Called when the entity is attacked.
-     */
     @Override
     public boolean attackEntityFrom(DamageSource source, float amount)
     {
@@ -204,10 +188,8 @@ public class EntityAirshipBaseVC extends Entity {
                     {
                         this.entityDropItem(this.getItemBoat(), 0.0F);
                     }
-                    
                     this.setDeadVC();
                 }
-                
                 return true;
             }
         }
@@ -217,9 +199,6 @@ public class EntityAirshipBaseVC extends Entity {
         }
     }
     
-    /**
-     * Applies a velocity to the entities, to push them away from eachother.
-     */
     @Override
     public void applyEntityCollision(Entity entityIn)
     {
@@ -239,14 +218,11 @@ public class EntityAirshipBaseVC extends Entity {
     /**
      * Main entity item drop.
      */
-    public ItemStack getItemBoat()
+    protected ItemStack getItemBoat()
     {
 		return null;
     }
     
-    /**
-     * Setups the entity to do the hurt animation. Only used by packets in multiplayer.
-     */
     @SideOnly(Side.CLIENT)
     @Override
     public void performHurtAnimation()
@@ -256,18 +232,12 @@ public class EntityAirshipBaseVC extends Entity {
         this.setDamageTaken(this.getDamageTaken() * 11.0F);
     }
     
-    /**
-     * Returns true if other Entities should be prevented from moving through this Entity.
-     */
     @Override
     public boolean canBeCollidedWith()
     {
         return !this.isDead;
     }
     
-    /**
-     * Set the position and rotation values directly without any clamping.
-     */
     @SideOnly(Side.CLIENT)
     @Override
     public void setPositionAndRotationDirect(double x, double y, double z, float yaw, float pitch, int posRotationIncrements, boolean teleport)
@@ -280,19 +250,12 @@ public class EntityAirshipBaseVC extends Entity {
         this.lerpSteps = 10;
     }
     
-    /**
-     * Gets the horizontal facing direction of this Entity, adjusted to take specially-treated entity types into
-     * account.
-     */
     @Override
     public EnumFacing getAdjustedHorizontalFacing()
     {
         return this.getHorizontalFacing().rotateY();
     }
     
-    /**
-     * Called to update the entity's position/logic.
-     */
     @Override
     public void onUpdate()
     {
@@ -376,7 +339,7 @@ public class EntityAirshipBaseVC extends Entity {
         int i1 = MathHelper.floor_double(axisalignedbb.minZ);
         int j1 = MathHelper.ceiling_double_int(axisalignedbb.maxZ);
         BlockPos.PooledMutableBlockPos blockpos$pooledmutableblockpos = BlockPos.PooledMutableBlockPos.retain();
-
+        
         try
         {
             label78:
@@ -588,9 +551,6 @@ public class EntityAirshipBaseVC extends Entity {
         return flag ? EntityAirshipBaseVC.Status.UNDER_WATER : null;
     }
     
-    /**
-     * Gets the passenger information.
-     */
     @Override
     public void updatePassenger(Entity passenger)
     {
@@ -646,9 +606,6 @@ public class EntityAirshipBaseVC extends Entity {
         entityToUpdate.setRotationYawHead(entityToUpdate.rotationYaw);
     }
     
-    /**
-     * Applies this entity's orientation (pitch/yaw) to another entity. Used to update passenger orientation.
-     */
     @SideOnly(Side.CLIENT)
     @Override
     public void applyOrientationToEntity(Entity entityToUpdate)
@@ -656,18 +613,12 @@ public class EntityAirshipBaseVC extends Entity {
         this.applyYawToEntity(entityToUpdate);
     }
     
-    /**
-     * (abstract) Protected helper method to write subclass entity data to NBT.
-     */
     @Override
     protected void writeEntityToNBT(NBTTagCompound compound)
     {
         
     }
     
-    /**
-     * (abstract) Protected helper method to read subclass entity data from NBT.
-     */
     @Override
     protected void readEntityFromNBT(NBTTagCompound compound)
     {
@@ -844,7 +795,6 @@ public class EntityAirshipBaseVC extends Entity {
         	this.metaColorRed = this.getAirshipMetaColorRed();
         	this.metaColorGreen = this.getAirshipMetaColorGreen();
         	this.metaColorBlue = this.getAirshipMetaColorBlue();
-        	
         }
     	
         if(!this.worldObj.isRemote)
@@ -863,10 +813,6 @@ public class EntityAirshipBaseVC extends Entity {
         return this.getPassengers().size() < 2;
     }
     
-    /**
-     * For vehicles, the first passenger is generally considered the controller and "drives" the vehicle. For example,
-     * Pigs, Horses, and Boats are generally "steered" by the controlling passenger.
-     */
     @Override
     @Nullable
     public Entity getControllingPassenger()
@@ -908,6 +854,80 @@ public class EntityAirshipBaseVC extends Entity {
 		
 	}
     
+	/**
+     * Airship water interaction.
+     */
+	protected void waterDamage()
+	{
+		//Sets explosion ticks to 0 if not in water, else increase the tick count
+		if (this.status != EntityAirshipBaseVC.Status.UNDER_WATER 
+		 && this.status != EntityAirshipBaseVC.Status.UNDER_FLOWING_WATER)
+        {
+            this.outOfControlTicks = 0.0F;
+        }
+        else
+        {
+        	if(this.worldObj.isRemote)
+        	{
+        		InitParticlesVCRender.generateExplosions(this);
+        	}
+            ++this.outOfControlTicks;
+        }
+		
+		//Removes passenger if they do not get out of water in time to explode the airship.
+        if (!this.worldObj.isRemote && this.outOfControlTicks >= 60.0F)
+        {
+            this.removePassengers();
+        }
+	}
+	
+	/**
+     * Airship water interaction.
+     */
+	protected void waterPartsDrop()
+	{
+		if (!this.worldObj.isRemote)
+    	{
+    		this.worldObj.createExplosion(this, this.posX, this.posY + (double)(this.height / 16.0F), this.posZ, 2.0F, true);
+    		
+    		int drop1 = Reference.random.nextInt(100) + 1;
+    		int drop2 = Reference.random.nextInt(100) + 1;
+    		int drop3 = Reference.random.nextInt(100) + 1;
+    		int drop4 = Reference.random.nextInt(100) + 1;
+    		
+    	    if (drop1 < 75)
+        	{
+    	    	this.dropItemWithOffset(InitItemsVC.airship_balloon, 1, 0.0F);
+        	}
+    	    
+    	    if (drop2 < 55)
+        	{
+    	    	this.dropItemWithOffset(InitItemsVC.airship_engine, 1, 0.0F);
+    	    	
+    	    	if (drop3 < 35)
+            	{
+        	    	this.dropItemWithOffset(InitItemsVC.airship_engine, 1, 0.0F);
+            	}
+        	}
+    	    
+    	    if (drop4 < 15)
+        	{
+    	    	this.dropItemWithOffset(InitItemsVC.airship_ignition, 1, 0.0F);
+        	}
+    	    
+    	    this.dropInvDead();
+        	this.setDead();
+    	}
+	}
+	
+	/**
+     * Drops all inventory contents.
+     */
+    protected void dropInvDead()
+    {
+    	
+    }
+	
 	/**
 	 * Frame enum - Represents various frame types.
 	 */
@@ -983,32 +1003,23 @@ public class EntityAirshipBaseVC extends Entity {
         }
     }
     
-    public static enum Color
+    /**
+	 * Balloon enum - Represents various balloon types.
+	 */
+    public static enum Balloon
     {
-        
-    	NORMAL(0, "Plain"),
-    	BLACK(1, "Black"),
-        BLUE(2, "Blue"),
-        BROWN(3, "Brown"),
-        CYAN(4, "Cyan"),
-        GRAY(5, "Gray"),
-        GREEN(6, "Green"),
-        LIGHTBLUE(7, "Light Blue"),
-        LIGHTGRAY(8, "Light Gray"),
-        LIME(9, "Lime"),
-        MAGENTA(10, "Magenta"),
-        ORANGE(11, "Orange"),
-        PINK(12, "Pink"),
-        PURPLE(13, "Purple"),
-        RED(14, "Red"),
-        WHITE(15, "White"),
-        YELLOW(16, "Yellow"),
-    	RAINBOW(17, "Rainbow");
-        
+        PLAIN(0, "Plain"),
+        CHECKER(1, "Checker"),
+        CHECKERCOLORIZED(2, "Colorized Checker"),
+        POLKADOT(3, "Polka Dot"),
+        POLKADOTCOLORIZED(4, "Colorized Polka Dot"),
+        ZIGZAG(5, "Zigzag"),
+    	ZIGZAGCOLORIZED(6, "Colorized Zigzag");
+    	
         private final String name;
         private final int metadata;
         
-        private Color(int metadataIn, String nameIn)
+        private Balloon(int metadataIn, String nameIn)
         {
             this.name = nameIn;
             this.metadata = metadataIn;
@@ -1032,7 +1043,7 @@ public class EntityAirshipBaseVC extends Entity {
         /**
          * Get a boat type by it's enum ordinal
          */
-        public static EntityAirshipBaseVC.Color byId(int id)
+        public static EntityAirshipBaseVC.Balloon byId(int id)
         {
             if (id < 0 || id >= values().length)
             {
@@ -1042,7 +1053,7 @@ public class EntityAirshipBaseVC extends Entity {
             return values()[id];
         }
         
-        public static EntityAirshipBaseVC.Color getTypeFromString(String nameIn)
+        public static EntityAirshipBaseVC.Balloon getTypeFromString(String nameIn)
         {
             for (int i = 0; i < values().length; ++i)
             {
@@ -1055,6 +1066,8 @@ public class EntityAirshipBaseVC extends Entity {
             return values()[0];
         }
     }
+    
+    
     
 	//==================================//
   	// TODO     Sound Events            //

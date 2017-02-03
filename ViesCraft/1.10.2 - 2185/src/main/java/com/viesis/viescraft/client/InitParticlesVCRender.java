@@ -51,7 +51,6 @@ public class InitParticlesVCRender {
 		motionX, motionY, motionZ, new int[0]);
 	}
 	
-	
 	public static void generateColorFlameParticles(Entity entity)
 	{
 	    double motionX = entity.worldObj.rand.nextGaussian() * 0.02D;
@@ -90,6 +89,7 @@ public class InitParticlesVCRender {
     					entity.posZ + entity.worldObj.rand.nextFloat() * entity.width * 2.0F - entity.width,
     					0.0D, 0.0D, 0.0D, new int[0]);
     		}
+    		
     		if (d <= 15)
     		{
     			entity.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_NORMAL, 
@@ -98,6 +98,7 @@ public class InitParticlesVCRender {
     					entity.posZ + entity.worldObj.rand.nextFloat() * entity.width * 2.0F - entity.width,
     					0.0D, 0.25D, 0.0D, new int[0]);
     		}
+    		
     		if (d <= 25)
     		{
     			entity.worldObj.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, 

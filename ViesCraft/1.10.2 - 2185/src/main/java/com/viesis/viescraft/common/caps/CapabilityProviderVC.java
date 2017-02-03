@@ -17,18 +17,17 @@ public class CapabilityProviderVC implements INBTSerializable<NBTTagCompound>, I
 
 	@Override
 	public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
-	//	if(//capability == CapabilityEnergy.ENERGY || 
-				//capability == DualEnergyStorageVC.CAPABILITY_HOLDER
-	//			)
-	//		return true;
+		if(//capability == CapabilityEnergy.ENERGY || 
+				capability == DualEnergyStorageVC.CAPABILITY_HOLDER)
+			return true;
 		return false;
 	}
 
 	@Override
 	public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
-	//	if(//capability == CapabilityEnergy.ENERGY || 
-	//			capability == DualEnergyStorageVC.CAPABILITY_HOLDER)
-	//		return (T) this.energy;
+		if(//capability == CapabilityEnergy.ENERGY || 
+				capability == DualEnergyStorageVC.CAPABILITY_HOLDER)
+			return (T) this.energy;
 		return null;
 	}
 	

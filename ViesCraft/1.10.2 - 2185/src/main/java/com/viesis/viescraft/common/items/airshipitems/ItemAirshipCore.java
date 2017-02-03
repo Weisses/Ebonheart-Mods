@@ -27,15 +27,18 @@ public class ItemAirshipCore extends Item {
 	{
 		if(stack.hasTagCompound())
         {
-			toolTip.add(TextFormatting.GREEN + "Color : " + TextFormatting.GREEN + ColorHelperVC.getColorNameFromRgb(
+			toolTip.add(TextFormatting.GREEN + "Color : " + ColorHelperVC.getColorNameFromRgb(
 					stack.getTagCompound().getInteger("ColorRed"), 
 					stack.getTagCompound().getInteger("ColorGreen"), 
 					stack.getTagCompound().getInteger("ColorBlue")));
+			toolTip.add(TextFormatting.GREEN + "Pattern : " + EntityAirshipBaseVC.Balloon.byId(stack.getTagCompound().getInteger("Balloon")).getName());
         }
         else
         {
         	toolTip.add(TextFormatting.GREEN + "Color : Tan");
+        	toolTip.add(TextFormatting.GREEN + "Pattern : Plain");
         }
+		
 		toolTip.add("");
 		toolTip.add(TextFormatting.DARK_PURPLE + "Hold " + TextFormatting.WHITE + "[Shift + Right-Click]" + TextFormatting.DARK_PURPLE + " to throw this");
 		toolTip.add(TextFormatting.DARK_PURPLE + "item and unleash the airship within.");

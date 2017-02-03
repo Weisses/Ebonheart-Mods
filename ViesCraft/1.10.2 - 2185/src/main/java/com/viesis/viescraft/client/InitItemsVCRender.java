@@ -41,6 +41,11 @@ public final class InitItemsVCRender extends ItemsVC {
 			registerRenderFrame(airship_frame, meta.getMetadata());
 		}
 		
+		for (EntityAirshipBaseVC.Balloon meta : EntityAirshipBaseVC.Balloon.values()) 
+		{
+			registerRenderBalloon(airship_balloon_pattern, meta.getMetadata());
+		}
+		
 		//==============================================
 		
 		//V1
@@ -90,89 +95,7 @@ public final class InitItemsVCRender extends ItemsVC {
 		//========================
 		
 		
-		//V1
-				if(ViesCraftConfig.v1AirshipEnabled)
-				{
-					
-					
-					for (EntityAirshipBaseVC.Color meta : EntityAirshipBaseVC.Color.values()) 
-					{
-						registerRenderColor(item_airship_v1_wood0, meta.getMetadata());
-						registerRenderColor(item_airship_v1_iron, meta.getMetadata());
-						registerRenderColor(item_airship_v1_redstone, meta.getMetadata());
-						registerRenderColor(item_airship_v1_gold, meta.getMetadata());
-						registerRenderColor(item_airship_v1_lapislazuli, meta.getMetadata());
-						registerRenderColor(item_airship_v1_obsidian, meta.getMetadata());
-						registerRenderColor(item_airship_v1_diamond, meta.getMetadata());
-						registerRenderColor(item_airship_v1_emerald, meta.getMetadata());
-						registerRenderColor(item_airship_v1_netherbrick, meta.getMetadata());
-						registerRenderColor(item_airship_v1_purpur, meta.getMetadata());
-					}
-				}
-				
-				//==============================================
-				
-				//V2
-				if(ViesCraftConfig.v2AirshipEnabled)
-				{
-					
-					for (EntityAirshipBaseVC.Color meta : EntityAirshipBaseVC.Color.values()) 
-					{
-						registerRenderColor(item_airship_v2_wood0, meta.getMetadata());
-						registerRenderColor(item_airship_v2_iron, meta.getMetadata());
-						registerRenderColor(item_airship_v2_redstone, meta.getMetadata());
-						registerRenderColor(item_airship_v2_gold, meta.getMetadata());
-						registerRenderColor(item_airship_v2_lapislazuli, meta.getMetadata());
-						registerRenderColor(item_airship_v2_obsidian, meta.getMetadata());
-						registerRenderColor(item_airship_v2_diamond, meta.getMetadata());
-						registerRenderColor(item_airship_v2_emerald, meta.getMetadata());
-						registerRenderColor(item_airship_v2_netherbrick, meta.getMetadata());
-						registerRenderColor(item_airship_v2_purpur, meta.getMetadata());
-					}
-				}
-				
-				//==============================================
-				
-				//V3
-				if(ViesCraftConfig.v3AirshipEnabled)
-				{
-					
-					for (EntityAirshipBaseVC.Color meta : EntityAirshipBaseVC.Color.values()) 
-					{
-						registerRenderColor(item_airship_v3_wood0, meta.getMetadata());
-						registerRenderColor(item_airship_v3_iron, meta.getMetadata());
-						registerRenderColor(item_airship_v3_redstone, meta.getMetadata());
-						registerRenderColor(item_airship_v3_gold, meta.getMetadata());
-						registerRenderColor(item_airship_v3_lapislazuli, meta.getMetadata());
-						registerRenderColor(item_airship_v3_obsidian, meta.getMetadata());
-						registerRenderColor(item_airship_v3_diamond, meta.getMetadata());
-						registerRenderColor(item_airship_v3_emerald, meta.getMetadata());
-						registerRenderColor(item_airship_v3_netherbrick, meta.getMetadata());
-						registerRenderColor(item_airship_v3_purpur, meta.getMetadata());
-					}
-				}
-				
-				//==============================================
-				
-				//V4
-				if(ViesCraftConfig.v4AirshipEnabled)
-				{
-					
-					for (EntityAirshipBaseVC.Color meta : EntityAirshipBaseVC.Color.values()) 
-					{
-						registerRenderColor(item_airship_v4_wood0, meta.getMetadata());
-						registerRenderColor(item_airship_v4_iron, meta.getMetadata());
-						registerRenderColor(item_airship_v4_redstone, meta.getMetadata());
-						registerRenderColor(item_airship_v4_gold, meta.getMetadata());
-						registerRenderColor(item_airship_v4_lapislazuli, meta.getMetadata());
-						registerRenderColor(item_airship_v4_obsidian, meta.getMetadata());
-						registerRenderColor(item_airship_v4_diamond, meta.getMetadata());
-						registerRenderColor(item_airship_v4_emerald, meta.getMetadata());
-						registerRenderColor(item_airship_v4_netherbrick, meta.getMetadata());
-						registerRenderColor(item_airship_v4_purpur, meta.getMetadata());
-					}
-				}
-				
+		
 	}
 	
 	public static void registerRender(Item item)
@@ -180,16 +103,16 @@ public final class InitItemsVCRender extends ItemsVC {
 		ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(item.getRegistryName().toString(), "inventory"));
 	}
 	
-	public static void registerRenderColor(Item item, int meta)
+	public static void registerRenderFrame(Item item, int meta)
 	{
-		String itemName = item.getRegistryName().toString() + "_" + EntityAirshipBaseVC.Color.byId(meta).getName().toString().toLowerCase().replaceAll("\\s+","");
+		String itemName = item.getRegistryName().toString() + "_" + EntityAirshipBaseVC.Frame.byId(meta).getName().toString().toLowerCase().replaceAll("\\s+","");
 		
 		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(itemName, "inventory"));
 	}
 	
-	public static void registerRenderFrame(Item item, int meta)
+	public static void registerRenderBalloon(Item item, int meta)
 	{
-		String itemName = item.getRegistryName().toString() + "_" + EntityAirshipBaseVC.Frame.byId(meta).getName().toString().toLowerCase().replaceAll("\\s+","");
+		String itemName = item.getRegistryName().toString() + "_" + EntityAirshipBaseVC.Balloon.byId(meta).getName().toString().toLowerCase().replaceAll("\\s+","");
 		
 		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(itemName, "inventory"));
 	}

@@ -18,7 +18,7 @@ public class ContainerVC extends Container {
     	return true;
     }
 	
-    /**
+	/**
      * Take a stack from the specified inventory slot.
      */
 	@Override

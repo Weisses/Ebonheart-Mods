@@ -31,7 +31,7 @@ public class ItemGuidebookSocket extends Item {
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn)
     {
-        ItemStack itemStackIn = playerIn.getHeldItem(handIn);
+		ItemStack itemStackIn = playerIn.getHeldItemMainhand();
         
 		if(worldIn.isRemote)
 		{

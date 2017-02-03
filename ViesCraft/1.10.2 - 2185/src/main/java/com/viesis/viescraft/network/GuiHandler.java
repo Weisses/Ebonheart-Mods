@@ -92,7 +92,7 @@ public class GuiHandler implements IGuiHandler {
 		//Airship Workbench Container
 		if (ID == GUI_BATTERY_CHARGER)
 		{
-			//return new ContainerBatteryCharger(player.inventory, world, (TileEntityBatteryCharger)world.getTileEntity(new BlockPos(x, y, z)));
+			return new ContainerBatteryCharger(player.inventory, world, (TileEntityBatteryCharger)world.getTileEntity(new BlockPos(x, y, z)));
 		}
 		
 		
@@ -184,7 +184,7 @@ public class GuiHandler implements IGuiHandler {
 		//Airship Workbench GUI
 		if (ID == GUI_BATTERY_CHARGER)
 		{
-			//return new GuiTileEntityBatteryCharger(player.inventory, world, (TileEntityBatteryCharger)world.getTileEntity(new BlockPos(x, y, z)));
+			return new GuiTileEntityBatteryCharger(player.inventory, world, (TileEntityBatteryCharger)world.getTileEntity(new BlockPos(x, y, z)));
 		}
 		
 		
