@@ -932,13 +932,13 @@ public class EntityAirshipBaseVC extends Entity {
         NETHERBRICK(8, "Nether Brick"),
         PURPUR(9, "Purpur"),
         ICE(10, "Ice"),
-    	SANDSTONE(11, "Sandstone");
-    	//BRICK(12, "Brick")
-        //GLOWSTONE(13, "Glowstone")
+    	SANDSTONE(11, "Sandstone"),
+    	BRICK(12, "Brick"),
+        GLOWSTONE(13, "Glowstone");
         //QUARTZ(14, "Quartz")
     	//PRISMARINE(15, "Prismarine")
     	//SOULSAND(16, "SoulSand")
-    	//GHOST(17, "Ghost")  // This is a special one that uses nether stars.
+    	//GHOST(17, "Ghost");  // This is a special one that uses nether stars.
     	
         private final String name;
         private final int metadata;
@@ -1002,7 +1002,10 @@ public class EntityAirshipBaseVC extends Entity {
         POLKADOT(3, "Polka Dot"),
         POLKADOTCOLORIZED(4, "Colorized Polka Dot"),
         ZIGZAG(5, "Zigzag"),
-    	ZIGZAGCOLORIZED(6, "Colorized Zigzag");
+    	ZIGZAGCOLORIZED(6, "Colorized Zigzag")
+    	//BASKETWEAVE(7, "Basketweave")
+    	//BASKETWEAVECOLORIZED(7, "Colorized Basketweave")
+    	;
     	
         private final String name;
         private final int metadata;

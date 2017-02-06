@@ -44,7 +44,8 @@ public class ItemFrame extends Item {
 		}
 		if(this.getMetadata(stack) == 2
 		|| this.getMetadata(stack) == 3
-		|| this.getMetadata(stack) == 4)
+		|| this.getMetadata(stack) == 4
+		|| this.getMetadata(stack) == 12)
 		{
 			stringColor = TextFormatting.GOLD;
 		}
@@ -56,7 +57,8 @@ public class ItemFrame extends Item {
 		}
 		if(this.getMetadata(stack) == 8
 		|| this.getMetadata(stack) == 9
-		|| this.getMetadata(stack) == 10)
+		|| this.getMetadata(stack) == 10
+		|| this.getMetadata(stack) == 13)
 		{
 			stringColor = TextFormatting.DARK_PURPLE;
 		}
@@ -95,6 +97,10 @@ public class ItemFrame extends Item {
             	return EnumRarity.EPIC;
             case 11:
             	return EnumRarity.COMMON;
+            case 12:
+            	return EnumRarity.UNCOMMON;
+            case 13:
+            	return EnumRarity.RARE;
             default:
             	return EnumRarity.COMMON;
         }
