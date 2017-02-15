@@ -934,11 +934,11 @@ public class EntityAirshipBaseVC extends Entity {
         ICE(10, "Ice"),
     	SANDSTONE(11, "Sandstone"),
     	BRICK(12, "Brick"),
-        GLOWSTONE(13, "Glowstone");
-        //QUARTZ(14, "Quartz")
-    	//PRISMARINE(15, "Prismarine")
-    	//SOULSAND(16, "SoulSand")
-    	//GHOST(17, "Ghost");  // This is a special one that uses nether stars.
+        GLOWSTONE(13, "Glowstone"),
+        QUARTZ(14, "Quartz"),
+    	PRISMARINE(15, "Prismarine"),
+    	SOULSAND(16, "SoulSand"),
+    	NETHERSTAR(17, "Nether Star");  // This is a special one that uses nether stars.
     	
         private final String name;
         private final int metadata;
