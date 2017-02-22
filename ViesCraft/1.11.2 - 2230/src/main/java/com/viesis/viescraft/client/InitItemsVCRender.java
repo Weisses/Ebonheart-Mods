@@ -36,7 +36,7 @@ public final class InitItemsVCRender extends ItemsVC {
 		
 		registerRender(item_balloon_colorizer);
 		
-		for (EntityAirshipBaseVC.Frame meta : EntityAirshipBaseVC.Frame.values()) 
+		for (EntityAirshipBaseVC.FrameCore meta : EntityAirshipBaseVC.FrameCore.values()) 
 		{
 			registerRenderFrame(airship_frame, meta.getMetadata());
 		}
@@ -49,7 +49,7 @@ public final class InitItemsVCRender extends ItemsVC {
 		//==============================================
 		
 		//V1
-		for (EntityAirshipBaseVC.Frame meta : EntityAirshipBaseVC.Frame.values()) 
+		for (EntityAirshipBaseVC.FrameCore meta : EntityAirshipBaseVC.FrameCore.values()) 
 		{
 			registerRenderFrame(item_airship_v1, meta.getMetadata());
 		}
@@ -57,7 +57,7 @@ public final class InitItemsVCRender extends ItemsVC {
 		//==============================================
 		
 		//V2
-		for (EntityAirshipBaseVC.Frame meta : EntityAirshipBaseVC.Frame.values()) 
+		for (EntityAirshipBaseVC.FrameCore meta : EntityAirshipBaseVC.FrameCore.values()) 
 		{
 			registerRenderFrame(item_airship_v2, meta.getMetadata());
 		}
@@ -65,7 +65,7 @@ public final class InitItemsVCRender extends ItemsVC {
 		//==============================================
 		
 		//V3
-		for (EntityAirshipBaseVC.Frame meta : EntityAirshipBaseVC.Frame.values()) 
+		for (EntityAirshipBaseVC.FrameCore meta : EntityAirshipBaseVC.FrameCore.values()) 
 		{
 			registerRenderFrame(item_airship_v3, meta.getMetadata());
 		}
@@ -73,7 +73,7 @@ public final class InitItemsVCRender extends ItemsVC {
 		//==============================================
 		
 		//V4
-		for (EntityAirshipBaseVC.Frame meta : EntityAirshipBaseVC.Frame.values()) 
+		for (EntityAirshipBaseVC.FrameCore meta : EntityAirshipBaseVC.FrameCore.values()) 
 		{
 			registerRenderFrame(item_airship_v4, meta.getMetadata());
 		}
@@ -105,7 +105,7 @@ public final class InitItemsVCRender extends ItemsVC {
 	
 	public static void registerRenderFrame(Item item, int meta)
 	{
-		String itemName = item.getRegistryName().toString() + "_" + EntityAirshipBaseVC.Frame.byId(meta).getName().toString().toLowerCase().replaceAll("\\s+","");
+		String itemName = item.getRegistryName().toString() + "_" + EntityAirshipBaseVC.FrameCore.byId(meta).getName().toString().toLowerCase().replaceAll("\\s+","");
 		
 		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(itemName, "inventory"));
 	}

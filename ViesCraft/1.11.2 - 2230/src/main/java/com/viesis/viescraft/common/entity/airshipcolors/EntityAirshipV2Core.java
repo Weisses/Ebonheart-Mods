@@ -6,7 +6,6 @@ import com.viesis.viescraft.api.ColorHelperVC;
 import com.viesis.viescraft.api.FuelVC;
 import com.viesis.viescraft.client.InitParticlesVCRender;
 import com.viesis.viescraft.common.caps.DualEnergyStorageVC;
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC.Frame;
 import com.viesis.viescraft.common.utils.events.EventHandlerAirship;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 import com.viesis.viescraft.init.InitItemsVC;
@@ -94,7 +93,7 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
         this(worldIn);
         this.setPosition(x, y + 0.5D, z);
         
-        this.metaFrame = frameIn;
+        this.metaFrameCore = frameIn;
         this.metaBalloon = balloonIn;
         this.metaColorRed = metaColorRedItem;
         this.metaColorGreen = metaColorGreenItem;
@@ -117,7 +116,7 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
         this.dataManager.register(FORWARD_DIRECTION_VC, Integer.valueOf(1));
         this.dataManager.register(DAMAGE_TAKEN_VC, Float.valueOf(0.0F));
         
-        this.dataManager.register(AIRSHIP_TYPE_FRAME_VC, Integer.valueOf(this.metaFrame));
+        this.dataManager.register(AIRSHIP_TYPE_FRAME_VC, Integer.valueOf(this.metaFrameCore));
         this.dataManager.register(AIRSHIP_TYPE_BALLOON_VC, Integer.valueOf(this.metaBalloon));
         this.dataManager.register(BALLOON_COLOR_RED_VC, Integer.valueOf(this.metaColorRed));
         this.dataManager.register(BALLOON_COLOR_GREEN_VC, Integer.valueOf(this.metaColorGreen));
@@ -166,7 +165,7 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
     {
     	super.writeToNBT(compound);
     	
-    	compound.setInteger("Frame", this.metaFrame);
+    	compound.setInteger("Frame", this.metaFrameCore);
     	compound.setInteger("Balloon", this.metaBalloon);
     	compound.setInteger("ColorRed", this.metaColorRed);
     	compound.setInteger("ColorGreen", this.metaColorGreen);
@@ -187,7 +186,7 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
     {
     	super.readFromNBT(compound);
     	
-    	this.metaFrame = compound.getInteger("Frame");
+    	this.metaFrameCore = compound.getInteger("Frame");
     	this.metaBalloon = compound.getInteger("Balloon");
     	this.metaColorRed = compound.getInteger("ColorRed");
     	this.metaColorGreen = compound.getInteger("ColorGreen");
@@ -210,7 +209,7 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
     @Override
 	public ItemStack getItemBoat()
     {
-    	ItemStack stack = new ItemStack(InitItemsVC.item_airship_v2, 1, this.metaFrame);
+    	ItemStack stack = new ItemStack(InitItemsVC.item_airship_v2, 1, this.metaFrameCore);
     	stack.setTagCompound(new NBTTagCompound());
     	
     	stack.getTagCompound().setInteger("Balloon", this.metaBalloon);
@@ -230,7 +229,7 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
 		return this.hasCustomName() ? this.customName : 
 			ColorHelperVC.getColorNameFromRgb(this.metaColorRed, this.metaColorGreen, this.metaColorBlue)		
 			+ " " 
-			+ Frame.byId(this.metaFrame).getName() 
+			+ FrameCore.byId(this.metaFrameCore).getName() 
 			+ " " 
 			+ ViesCraftConfig.v2AirshipName;
 	}

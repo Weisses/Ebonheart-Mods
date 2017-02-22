@@ -80,7 +80,7 @@ public class CraftingManagerVC {
     	//=================================================
     	
     	//Airships
-    	for (EntityAirshipBaseVC.Frame meta : EntityAirshipBaseVC.Frame.values()) 
+    	for (EntityAirshipBaseVC.FrameCore meta : EntityAirshipBaseVC.FrameCore.values()) 
 		{
     		this.addRecipe(new ItemStack(InitItemsVC.item_airship_v1, 1, meta.getMetadata()), new Object[]{"LBL", "E#E", "LIL", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', new ItemStack(InitItemsVC.airship_frame, 1, meta.getMetadata())});
     		this.addRecipe(new ItemStack(InitItemsVC.item_airship_v2, 1, meta.getMetadata()), new Object[]{"BLB", "L#L", "EIE", 'B', InitItemsVC.airship_balloon, 'E', InitItemsVC.airship_engine, 'I', InitItemsVC.airship_ignition, 'L', Items.LEAD, '#', new ItemStack(InitItemsVC.airship_frame, 1, meta.getMetadata())});
