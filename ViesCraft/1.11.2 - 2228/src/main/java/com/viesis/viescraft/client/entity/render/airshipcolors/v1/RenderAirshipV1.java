@@ -21,6 +21,47 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderAirshipV1 extends Render<EntityAirshipV1Core> {
 	
+	/**
+	 * Used in Rendering Airship textures.
+	 */
+	public static final ResourceLocation[] ENTITY_FRAME_TEXTURE = new ResourceLocation[] 
+	{
+		//Common
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v1/airship_v1_frame_wood0.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v1/airship_v1_frame_wood1.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v1/airship_v1_frame_wood2.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v1/airship_v1_frame_wood3.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v1/airship_v1_frame_wood4.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v1/airship_v1_frame_wood5.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v1/airship_v1_frame_sandstone.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v1/airship_v1_frame_brick.png"),
+		
+		//Uncommon
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v1/airship_v1_frame_bone.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v1/airship_v1_frame_iron.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v1/airship_v1_frame_redstone.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v1/airship_v1_frame_gold.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v1/airship_v1_frame_lapislazuli.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v1/airship_v1_frame_slime.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v1/airship_v1_frame_mycelium.png"),
+		
+		//Rare
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v1/airship_v1_frame_netherbrick.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v1/airship_v1_frame_soulsand.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v1/airship_v1_frame_quartz.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v1/airship_v1_frame_ice.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v1/airship_v1_frame_glowstone.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v1/airship_v1_frame_obsidian.png"),
+		
+		//Epic
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v1/airship_v1_frame_diamond.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v1/airship_v1_frame_emerald.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v1/airship_v1_frame_prismarine.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v1/airship_v1_frame_purpur.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v1/airship_v1_frame_netherstar.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v1/airship_v1_frame_mythic.png")
+	};
+	
 	/** Instance of Color Model for rendering. */
 	protected ModelBase modelAirshipV1Color = new ModelAirshipV1Color();
 	/** Instance of V1-On Model for rendering. */
@@ -98,12 +139,12 @@ public class RenderAirshipV1 extends Render<EntityAirshipV1Core> {
         
         if(entity.getPowered() > 0)
         {
-        	this.bindTexture(Reference.ENTITY_FRAME_TEXTURE[entity.metaFrameCore]);
+        	this.bindTexture(ENTITY_FRAME_TEXTURE[entity.metaFrameCore]);
         	this.modelAirshipV1FrameOn.render(entity, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
         }
         else
         {
-        	this.bindTexture(Reference.ENTITY_FRAME_TEXTURE[entity.metaFrameCore]);
+        	this.bindTexture(ENTITY_FRAME_TEXTURE[entity.metaFrameCore]);
         	this.modelAirshipV1FrameOff.render(entity, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
         }
         
