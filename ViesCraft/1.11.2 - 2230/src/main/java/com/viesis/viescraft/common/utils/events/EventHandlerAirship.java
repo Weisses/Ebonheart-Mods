@@ -29,7 +29,7 @@ public class EventHandlerAirship {
     	if(isRiding) 
     	{
 			playerRidingEntity = event.player.getRidingEntity().getEntityId();
-					
+			
 			if(event.player.isCreative())
 			{
 				creativeBurn = true;
@@ -38,6 +38,10 @@ public class EventHandlerAirship {
 			{
 				creativeBurn = false;
 			}
+		}
+    	else
+		{
+			creativeBurn = false;
 		}
     }
 }

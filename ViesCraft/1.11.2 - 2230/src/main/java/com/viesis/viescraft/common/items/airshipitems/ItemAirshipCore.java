@@ -1,5 +1,6 @@
 package com.viesis.viescraft.common.items.airshipitems;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import com.viesis.viescraft.api.ColorHelperVC;
@@ -26,13 +27,19 @@ public class ItemAirshipCore extends Item {
 	@Override
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List toolTip, boolean advanced) 
 	{
+		DecimalFormat df = new DecimalFormat("###.#");
+		float speedModCal = EntityAirshipBaseVC.FrameCore.byId(this.getMetadata(stack)).getSpeed() * 100;
+		String speedMod = df.format(speedModCal);
+		TextFormatting stringColor = TextFormatting.GRAY;
+		
 		if(stack.hasTagCompound())
         {
 			toolTip.add(TextFormatting.GREEN + "Color : " + ColorHelperVC.getColorNameFromRgb(
 					stack.getTagCompound().getInteger("ColorRed"), 
 					stack.getTagCompound().getInteger("ColorGreen"), 
 					stack.getTagCompound().getInteger("ColorBlue")));
-			toolTip.add(TextFormatting.GREEN + "Pattern : " + EntityAirshipBaseVC.Balloon.byId(stack.getTagCompound().getInteger("Balloon")).getName());
+			toolTip.add(TextFormatting.GREEN + "Pattern : " + EntityAirshipBaseVC.Balloon.byId(
+					stack.getTagCompound().getInteger("Balloon")).getName());
         }
         else
         {
@@ -40,47 +47,23 @@ public class ItemAirshipCore extends Item {
         	toolTip.add(TextFormatting.GREEN + "Pattern : Plain");
         }
 		
-		TextFormatting stringColor = TextFormatting.GRAY;
-		
-		if(this.getMetadata(stack) == 0
-		|| this.getMetadata(stack) == 1
-		|| this.getMetadata(stack) == 2
-		|| this.getMetadata(stack) == 3
-		|| this.getMetadata(stack) == 4
-		|| this.getMetadata(stack) == 5
-		|| this.getMetadata(stack) == 6
-		|| this.getMetadata(stack) == 7)
+		if(this.getMetadata(stack) <= 7)
 		{
 			stringColor = TextFormatting.GRAY;
 		}
-		if(this.getMetadata(stack) == 8
-		|| this.getMetadata(stack) == 9
-		|| this.getMetadata(stack) == 10
-		|| this.getMetadata(stack) == 11
-		|| this.getMetadata(stack) == 12
-		|| this.getMetadata(stack) == 13
-		|| this.getMetadata(stack) == 14)
+		else if(this.getMetadata(stack) <= 14)
 		{
 			stringColor = TextFormatting.GOLD;
 		}
-		if(this.getMetadata(stack) == 15
-		|| this.getMetadata(stack) == 16
-		|| this.getMetadata(stack) == 17
-		|| this.getMetadata(stack) == 18
-		|| this.getMetadata(stack) == 19
-		|| this.getMetadata(stack) == 20)
+		else if(this.getMetadata(stack) <= 20)
 		{
 			stringColor = TextFormatting.DARK_AQUA;
 		}
-		if(this.getMetadata(stack) == 21
-		|| this.getMetadata(stack) == 22
-		|| this.getMetadata(stack) == 23
-		|| this.getMetadata(stack) == 24
-		|| this.getMetadata(stack) == 25)
+		else if(this.getMetadata(stack) <= 25)
 		{
 			stringColor = TextFormatting.DARK_PURPLE;
 		}
-		if(this.getMetadata(stack) == 26)
+		else if(this.getMetadata(stack) == 26)
 		{
 			stringColor = TextFormatting.DARK_RED;
 		}
@@ -89,13 +72,31 @@ public class ItemAirshipCore extends Item {
 		toolTip.add(stringColor + "Hold " + TextFormatting.WHITE + "[Shift + Right-Click]" + stringColor + " to throw this");
 		toolTip.add(stringColor + "item and unleash the airship within.");
 		toolTip.add("");
-		if(this.getMetadata(stack) == 26)
+		
+		if(this.getMetadata(stack) <= 5)
 		{
-			toolTip.add(stringColor + "Max altitude: Unlimited" );
+			toolTip.add(TextFormatting.WHITE + "Speed Modifier: " + stringColor + "+0.0");
+		}
+		else if(this.getMetadata(stack) == 15)
+		{
+			toolTip.add(TextFormatting.WHITE + "Speed Modifier: " + stringColor + "+1.0");
+		}
+		else if(this.getMetadata(stack) == 25)
+		{
+			toolTip.add(TextFormatting.WHITE + "Speed Modifier: " + stringColor + "+2.0");
 		}
 		else
 		{
-			toolTip.add(stringColor + "Max altitude: " + EntityAirshipBaseVC.FrameCore.byId(this.getMetadata(stack)).getElevation());
+			toolTip.add(TextFormatting.WHITE + "Speed Modifier: " + stringColor + "+" + speedMod);
+		}
+		
+		if(this.getMetadata(stack) >= 21)
+		{
+			toolTip.add(TextFormatting.WHITE + "Max altitude: " + stringColor + "Unlimited");
+		}
+		else
+		{
+			toolTip.add(TextFormatting.WHITE + "Max altitude: " + stringColor + df.format(EntityAirshipBaseVC.FrameCore.byId(this.getMetadata(stack)).getElevation()));
 		}
 	}
 	

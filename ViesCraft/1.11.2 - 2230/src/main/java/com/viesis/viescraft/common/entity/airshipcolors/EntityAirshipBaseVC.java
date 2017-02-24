@@ -941,40 +941,41 @@ public class EntityAirshipBaseVC extends Entity {
 	 */
     public static enum FrameCore
     {
+    	//STRING(meta, name, speed, altitude)
     	//Common - 8 items
-        WOOD0(0, "Oak", 0F, 100),
-        WOOD1(1, "Spruce", 0F, 100),
-        WOOD2(2, "Birch", 0F, 100),
-        WOOD3(3, "Jungle", 0F, 100),
-        WOOD4(4, "Acacia", 0F, 100),
-        WOOD5(5, "Dark Oak", 0F, 100),
-        SANDSTONE(6, "Sandstone", 0F, 100),
-        BRICK(7, "Brick", 0F, 100),
+        WOOD0(0, "Oak", 0F, 85),
+        WOOD1(1, "Spruce", 0F, 85),
+        WOOD2(2, "Birch", 0F, 85),
+        WOOD3(3, "Jungle", 0F, 85),
+        WOOD4(4, "Acacia", 0F, 85),
+        WOOD5(5, "Dark Oak", 0F, 85),
+        SANDSTONE(6, "Sandstone", 0.001F, 90),
+        BRICK(7, "Brick", 0.002F, 100),
         
         //Uncommon - 7 items
-        BONE(8, "Bone", 0.004F, 150),
-    	IRON(9, "Iron", 0.004F, 150),
-        REDSTONE(10, "Redstone", 0.004F, 150),
-        GOLD(11, "Gold", 0.004F, 150),
-        LAPISLAZULI(12, "Lapis Lazuli", 0.004F, 150),
-        SLIME(13, "Slime", 0.004F, 150),
-        MYCELIUM(14, "Mycelium", 0.004F, 150),
+        BONE(8, "Bone", 0.003F, 110),
+    	IRON(9, "Iron", 0.004F, 120),
+        REDSTONE(10, "Redstone", 0.005F, 130),
+        GOLD(11, "Gold", 0.006F, 140),
+        LAPISLAZULI(12, "Lapis Lazuli", 0.007F, 150),
+        SLIME(13, "Slime", 0.008F, 160),
+        MYCELIUM(14, "Mycelium", 0.009F, 170),
         
         //Rare - 6 items
-        NETHERBRICK(15, "Nether Brick", 0.008F, 200),
-        SOULSAND(16, "Soul Sand", 0.008F, 200),
-        QUARTZ(17, "Quartz", 0.008F, 200),
-        ICE(18, "Ice", 0.008F, 200),
-        GLOWSTONE(19, "Glowstone", 0.008F, 200),
-        OBSIDIAN(20, "Obsidian", 0.008F, 200),
+        NETHERBRICK(15, "Nether Brick", 0.010F, 180),
+        SOULSAND(16, "Soul Sand", 0.011F, 190),
+        QUARTZ(17, "Quartz", 0.012F, 200),
+        ICE(18, "Ice", 0.013F, 210),
+        GLOWSTONE(19, "Glowstone", 0.014F, 220),
+        OBSIDIAN(20, "Obsidian", 0.015F, 230),
         
         //Epic - 5 items + 1 admin-only item
-        DIAMOND(21, "Diamond", 0.012F, 500),
-        EMERALD(22, "Emerald", 0.012F, 500),
-        PRISMARINE(23, "Prismarine", 0.012F, 500),
-    	PURPUR(24, "Purpur", 0.012F, 500),
-    	NETHERSTAR(25, "Nether Star", 0.012F, 500),
-    	MYTHIC(26, "Mythic", 0.016F, 500);  // This is a special admin only Airship.
+        DIAMOND(21, "Diamond", 0.016F, 500),
+        EMERALD(22, "Emerald", 0.017F, 500),
+        PRISMARINE(23, "Prismarine", 0.018F, 500),
+    	PURPUR(24, "Purpur", 0.019F, 500),
+    	NETHERSTAR(25, "Nether Star", 0.020F, 500),
+    	MYTHIC(26, "Mythic", 0.025F, 500);  // This is a special admin only Airship.
     	
         private final String name;
         private final int metadata;

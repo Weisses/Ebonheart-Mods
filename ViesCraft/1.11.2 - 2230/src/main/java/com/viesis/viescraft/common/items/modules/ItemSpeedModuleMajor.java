@@ -27,7 +27,7 @@ public class ItemSpeedModuleMajor extends Item {
 	{
 		toolTip.add(TextFormatting.GOLD + "Effects while socketed:");
 		toolTip.add(" ");
-		toolTip.add(TextFormatting.GREEN + "Pro - Speed increased to 150%");
+		toolTip.add(TextFormatting.GREEN + "Pro - Speed Modifier: +1.6");
 		toolTip.add(TextFormatting.RED + "Con - Fuel burns x2 faster.");
 	}
 	
