@@ -74,23 +74,24 @@ public class GuiEntityAirshipV4ModuleInventoryLarge extends GuiContainer {
 		
 		if (this.airshipV4.getPowered() > 0)
         {
-			if(EventHandlerAirship.creativeBurn)
-			{
-				this.drawTexturedModalRect(this.guiLeft + 138, this.guiTop + 4, 184, 50, 8, 1 + 47);
-				this.drawTexturedModalRect(this.guiLeft + 152, this.guiTop + 17, 176, 119, 16, 16);
-				this.drawTexturedModalRect(this.guiLeft + 147, this.guiTop + 30, 176, 14, 26, 16);
-			}
-			else
-			{
+			//if(EventHandlerAirship.creativeBurn)
+			//{
+			//	this.drawTexturedModalRect(this.guiLeft + 138, this.guiTop + 4, 184, 50, 8, 1 + 47);
+			//	this.drawTexturedModalRect(this.guiLeft + 152, this.guiTop + 17, 176, 119, 16, 16);
+			//	this.drawTexturedModalRect(this.guiLeft + 147, this.guiTop + 30, 176, 14, 26, 16);
+			//}
+			//else
+			//{
 				int k = this.getBurnLeftScaled(47);
 	            this.drawTexturedModalRect(this.guiLeft + 138, this.guiTop + 4, 176, 50, 8, 1 + k);
 	            this.drawTexturedModalRect(this.guiLeft + 147, this.guiTop + 30, 176, 14, 26, 16);
-			}
+			//}
 		}
 		
 		//Draw a green fuel bar and magma in the coal slot
-		if(EventHandlerAirship.creativeBurn
-		|| this.airshipV4.getModuleFuelInfinite())
+		if(//EventHandlerAirship.creativeBurn
+		//|| 
+				this.airshipV4.getModuleFuelInfinite())
 		{
 			this.drawTexturedModalRect(this.guiLeft + 138, this.guiTop + 4, 184, 50, 8, 1 + 47);
 			this.drawTexturedModalRect(this.guiLeft + 152, this.guiTop + 17, 176, 119, 16, 16);

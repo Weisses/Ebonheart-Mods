@@ -6,7 +6,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 public class EventHandlerAirship {
-	
+	/**
 	public static boolean creativeBurn;
 	public static int playerRidingEntity;
 	
@@ -43,5 +43,5 @@ public class EventHandlerAirship {
 		{
 			creativeBurn = false;
 		}
-    }
+    }*/
 }

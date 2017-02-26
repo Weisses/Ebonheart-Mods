@@ -14,6 +14,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV2Core;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV2Core;
 import com.viesis.viescraft.common.utils.events.EventHandlerAirship;
 
 public class GuiV2HUD extends Gui {
@@ -82,13 +83,13 @@ public class GuiV2HUD extends Gui {
 				
 				//SMALL % BAR
 				// I can keep drawing without changing anything
-				if(EventHandlerAirship.creativeBurn)
-	        	{
+				//if(EventHandlerAirship.creativeBurn)
+	        	//{
 					//Same as the infinite fuel module
-					drawTexturedModalRect(hudX + 36, hudY + 33, 36, 77, 110, 6);
-	        	}
-				else
-				{
+				//	drawTexturedModalRect(hudX + 36, hudY + 33, 36, 77, 110, 6);
+	        	//}
+				//else
+				//{
 					//Creates a solid green bar
 					if(this.airshipV2.getModuleFuelInfinite())
 					{
@@ -99,17 +100,17 @@ public class GuiV2HUD extends Gui {
 						int fuelbarwidth1 = (int)(((float) (this.airshipV2.getPowered()) / (this.airshipV2.getPowered() + this.airshipV2.getTotalPowered())) * 220);
 						drawTexturedModalRect(hudX + 36, hudY + 33, 36, 53, fuelbarwidth1, 6);
 					}
-				}
+				//}
 				
 				//BIG % BAR
 				// I can keep drawing without changing anything
-				if(EventHandlerAirship.creativeBurn)
-	        	{
+				//if(EventHandlerAirship.creativeBurn)
+	        	//{
 					//Same as the infinite fuel module
-					drawTexturedModalRect(hudX + 2, hudY + 14, 2, 93, 178, 6);
-	        	}
-				else
-				{
+				//	drawTexturedModalRect(hudX + 2, hudY + 14, 2, 93, 178, 6);
+	        	//}
+				//else
+				//{
 					//Creates a solid green bar
 					if(this.airshipV2.getModuleFuelInfinite())
 					{
@@ -120,7 +121,7 @@ public class GuiV2HUD extends Gui {
 						int fuelbarwidth2 = (int)(((float) this.airshipV2.getItemFuelStackSizePowered() / 64) * 178);
 						drawTexturedModalRect(hudX + 2, hudY + 14, 2, 69, fuelbarwidth2, 6);
 					}
-				}
+				//}
 				
 				//Airship lights on
 				if(this.airshipV2.getPowered() >= 1)
@@ -179,13 +180,14 @@ public class GuiV2HUD extends Gui {
 				String hrs = (hours < 10 ? "0" : "") + hours;
 				String mins = (minutes < 10 ? "0" : "") + minutes;
 				String secs = (seconds < 10 ? "0" : "") + seconds;
-				if(EventHandlerAirship.creativeBurn)
-	        	{
+				//if(EventHandlerAirship.creativeBurn)
+	        	//{
 					//Time "infinite" to display
-					String s1 = "\u221e" + ":" + "\u221e" + ":" + "\u221e";
-					Minecraft.getMinecraft().fontRendererObj.drawString(s1, (hudX + 76), (hudY + 23), 982784);
-	        	}
-				else if(this.airshipV2.getModuleFuelInfinite())
+				//	String s1 = "\u221e" + ":" + "\u221e" + ":" + "\u221e";
+				//	Minecraft.getMinecraft().fontRendererObj.drawString(s1, (hudX + 76), (hudY + 23), 982784);
+	        	//}
+				//else 
+				if(this.airshipV2.getModuleFuelInfinite())
 				{
 					//Time "infinite" to display
 					String s1 = "\u221e" + ":" + "\u221e" + ":" + "\u221e";

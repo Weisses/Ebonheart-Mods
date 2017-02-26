@@ -6,7 +6,6 @@ import com.viesis.viescraft.api.ColorHelperVC;
 import com.viesis.viescraft.api.FuelVC;
 import com.viesis.viescraft.client.InitParticlesVCRender;
 import com.viesis.viescraft.common.caps.DualEnergyStorageVC;
-import com.viesis.viescraft.common.utils.events.EventHandlerAirship;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 import com.viesis.viescraft.init.InitItemsVC;
 import com.viesis.viescraft.network.NetworkHandler;
@@ -698,17 +697,17 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
         		
         	}
         	//The player in the airship is in Creative Mode
-        	else if(EventHandlerAirship.creativeBurn)
-        	{
-        		if(this.getEntityId() == EventHandlerAirship.playerRidingEntity)
-        		{
-        			
-        		}
-        		else
-        		{
-        			--this.airshipBurnTime;
-        		}
-        	}
+        	//else if(EventHandlerAirship.creativeBurn)
+        	//{
+        	//	if(this.getEntityId() == EventHandlerAirship.playerRidingEntity)
+        	//	{
+        	//		
+        	//	}
+        	//	else
+        	//	{
+        	//		--this.airshipBurnTime;
+        	//	}
+        	//}
         	//Airship has either Large Inventory or Minor Speed Module installed
         	else if(this.getModuleInventoryLarge()
         	|| this.getModuleSpeedMajor())
@@ -737,19 +736,19 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
         		this.airshipBurnTime = 1;
         	}
         	//The player in the airship is in Creative Mode
-        	else if(EventHandlerAirship.creativeBurn)
-        	{
-        		if (this.getEntityId() == EventHandlerAirship.playerRidingEntity
-        		&& this.getControllingPassenger() instanceof EntityPlayer)
-            	{
-            		this.airshipBurnTime = 1;
-            	}
-        		else
-        		{
-        			this.airshipBurnTime = 0;
-        		}
+        	//else if(EventHandlerAirship.creativeBurn)
+        	//{
+        	//	if (this.getControllingPassenger() instanceof EntityPlayer
+        	//	&& this.getEntityId() == EventHandlerAirship.playerRidingEntity)
+            //	{
+            //		this.airshipBurnTime = 1;
+            //	}
+        		//else
+        		//{
+        		//	this.airshipBurnTime = 0;
+        		//}
         		
-        	}
+        	//}
         	//Airship has no controlling passenger
         	else if(this.getControllingPassenger() == null)
         	{
@@ -807,7 +806,17 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
      */
     public boolean isClientAirshipBurning()
     {
-    	return this.airshipBurnTime > 0;
+    	boolean hasFuel = false;
+    	//if(EventHandlerAirship.creativeBurn
+    	//&& this.getEntityId() == EventHandlerAirship.playerRidingEntity)
+    	//{
+    	//	hasFuel = true;
+    	//}
+    	if(this.airshipBurnTime > 0)
+    	{
+    		hasFuel = true;
+    	}
+    	return hasFuel;
     }
     
     /**
