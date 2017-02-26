@@ -1,5 +1,6 @@
 package com.viesis.viescraft.common.items.parts;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import com.viesis.viescraft.ViesCraft;
@@ -34,6 +35,10 @@ public class ItemFrame extends Item {
 	@SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List toolTip, boolean advanced) 
 	{
+		DecimalFormat df = new DecimalFormat("###.#");
+		float speedModCal = EntityAirshipBaseVC.FrameCore.byId(this.getMetadata(stack)).getSpeed() * 100;
+		String speedMod = df.format(speedModCal);
+		
 		TextFormatting stringColor = TextFormatting.GRAY;
 		
 		if(this.getMetadata(stack) == 0
@@ -83,6 +88,33 @@ public class ItemFrame extends Item {
 		toolTip.add(stringColor + "airship to change the frame.");
 		toolTip.add("");
 		toolTip.add(stringColor + "Also used in crafting recipes.");
+		toolTip.add("");
+		
+		if(this.getMetadata(stack) <= 5)
+		{
+			toolTip.add(TextFormatting.WHITE + "Speed Modifier: " + stringColor + "+0.0");
+		}
+		else if(this.getMetadata(stack) == 15)
+		{
+			toolTip.add(TextFormatting.WHITE + "Speed Modifier: " + stringColor + "+1.0");
+		}
+		else if(this.getMetadata(stack) == 25)
+		{
+			toolTip.add(TextFormatting.WHITE + "Speed Modifier: " + stringColor + "+2.0");
+		}
+		else
+		{
+			toolTip.add(TextFormatting.WHITE + "Speed Modifier: " + stringColor + "+" + speedMod);
+		}
+		
+		if(this.getMetadata(stack) >= 21)
+		{
+			toolTip.add(TextFormatting.WHITE + "Max altitude: " + stringColor + "Unlimited");
+		}
+		else
+		{
+			toolTip.add(TextFormatting.WHITE + "Max altitude: " + stringColor + df.format(EntityAirshipBaseVC.FrameCore.byId(this.getMetadata(stack)).getElevation()));
+		}
 	}
 	
 	public EnumRarity getRarity(ItemStack stack)
@@ -140,7 +172,7 @@ public class ItemFrame extends Item {
 			{
 				EntityAirshipBaseVC airship = (EntityAirshipBaseVC) entity;
 				
-				if(airship.metaFrameCore != this.getMetadata(stack))
+				if(airship.metaFrameCore < this.getMetadata(stack))
 				{
 					airship.metaFrameCore = this.getMetadata(stack);
 					player.addStat(InitAchievementsVC.airship_create_color);
