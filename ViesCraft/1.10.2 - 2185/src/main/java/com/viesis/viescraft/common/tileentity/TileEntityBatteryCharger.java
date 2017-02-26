@@ -30,7 +30,7 @@ import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
 public class TileEntityBatteryCharger extends TileEntity {
-    
+
 	private DualEnergyStorageVC energy;// = new DualEnergyStorageVC(1000, 1000, 2000);
 	
     public ItemStackHandler inventory;
@@ -48,14 +48,14 @@ public class TileEntityBatteryCharger extends TileEntity {
     {
     	inventory = new ItemStackHandler(size);
     	
-    	energy = new DualEnergyStorageVC(10000, 1000, 2000);
+    	//energy = new DualEnergyStorageVC(10000, 1000, 2000);
     }
     
     @Override
     public boolean hasCapability(Capability<?> capability, EnumFacing facing)
     {
         if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) return true;
-        if (capability == DualEnergyStorageVC.CAPABILITY_HOLDER) return true;
+        //if (capability == DualEnergyStorageVC.CAPABILITY_HOLDER) return true;
         
         return super.hasCapability(capability, facing);
     }
@@ -64,7 +64,7 @@ public class TileEntityBatteryCharger extends TileEntity {
     public <T> T getCapability(Capability<T> capability, EnumFacing facing)
     {
         if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) return (T) inventory;
-        if(capability == DualEnergyStorageVC.CAPABILITY_HOLDER) return (T) this.energy;
+        //if(capability == DualEnergyStorageVC.CAPABILITY_HOLDER) return (T) this.energy;
         
         return super.getCapability(capability, facing);
     }

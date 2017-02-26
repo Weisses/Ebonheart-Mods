@@ -19,7 +19,7 @@ public class GuiGuidebookMain extends GuiScreen {
     private final int bookImageHeight = 192;
     private final int bookImageWidth = 192;
     private int currPage = 0;
-    private static final int bookTotalPages = 29;
+    private static final int bookTotalPages = 24;
     private static ResourceLocation[] bookPageTextures = new ResourceLocation[bookTotalPages];
     private static String[] stringPageText = new String[bookTotalPages];
     
@@ -53,11 +53,6 @@ public class GuiGuidebookMain extends GuiScreen {
         bookPageTextures[21] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/main/page_21.png");
         bookPageTextures[22] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/main/page_22.png");
         bookPageTextures[23] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/main/page_23.png");
-        bookPageTextures[24] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/main/page_24.png");
-        bookPageTextures[25] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/main/page_25.png");
-        bookPageTextures[26] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/main/page_26.png");
-        bookPageTextures[27] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/main/page_27.png");
-        bookPageTextures[28] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/main/page_28.png");
         
         //Title
         stringPageText[0] = "\n\n\n\n\n\n\n"
@@ -112,17 +107,19 @@ public class GuiGuidebookMain extends GuiScreen {
         		+ "\u00A7oThe \"heart\" of the airship.\u00A7r";
         
         
-        stringPageText[7] = "   Now that you have "
-        		+ "your basic parts, it's "
-        		+ "time to create the "
-        		+ "\u00A7oAirship Frame\u00A7r! "
-        		+ ""
-        		+ "This item dictates what "
-        		+ "your frame looks like "
-        		+ "and can be changed "
-        		+ "using any frame, any time. "
-        		+ "\n\n\n\n"
-        		+ "Note: Frames don't affect speed! ";
+        stringPageText[7] = "   It's time to create "
+        		+ "the \u00A7oAirship Frame\u00A7r! This "
+        		+ "item dictates what your "
+        		+ "frame looks like and "
+        		+ "can be changed using "
+        		+ "any frame, any time. "
+        		+ "The starter frames "
+        		+ "are the wooden ones "
+        		+ "made from planks."
+        		+ "\n\n"
+        		+ "Note: Frames affect "
+        		+ "the speed modifier "
+        		+ "and max altitude!";
         
         stringPageText[8] = "Part Recipe:"
         		+ "\n\n"
@@ -131,108 +128,66 @@ public class GuiGuidebookMain extends GuiScreen {
         		+ "\n\n\n\n\n\n\n\n"
         		+ "\u00A7oIngredient:\u00A7r"
         		+ "\n"
-        		+ "\u00A7o\u00A7lWood Planks\u00A7r";
+        		+ "\u00A7o\u00A7lOak Planks\u00A7r";
         
         stringPageText[9] = "Part Recipe:"
         		+ "\n\n"
-        		+ "\u00A7l\u00A7nIron"
+        		+ "\u00A7l\u00A7nSpruce"
         		+ "\nAirship Frame\u00A7r"
         		+ "\n\n\n\n\n\n\n\n"
         		+ "\u00A7oIngredient:\u00A7r"
         		+ "\n"
-        		+ "\u00A7o\u00A7lIron Ingot\u00A7r";
+        		+ "\u00A7o\u00A7lSpruce Planks\u00A7r";
         
         stringPageText[10] = "Part Recipe:"
         		+ "\n\n"
-        		+ "\u00A7l\u00A7nRedstone"
+        		+ "\u00A7l\u00A7nBirch"
         		+ "\nAirship Frame\u00A7r"
         		+ "\n\n\n\n\n\n\n\n"
         		+ "\u00A7oIngredient:\u00A7r"
         		+ "\n"
-        		+ "\u00A7o\u00A7lRedstone Dust\u00A7r";
+        		+ "\u00A7o\u00A7lBirch Planks\u00A7r";
         
         stringPageText[11] = "Part Recipe:"
         		+ "\n\n"
-        		+ "\u00A7l\u00A7nGold"
+        		+ "\u00A7l\u00A7nJungle"
         		+ "\nAirship Frame\u00A7r"
         		+ "\n\n\n\n\n\n\n\n"
         		+ "\u00A7oIngredient:\u00A7r"
         		+ "\n"
-        		+ "\u00A7o\u00A7lGold Ingot\u00A7r";
+        		+ "\u00A7o\u00A7lJungle Planks\u00A7r";
         
         stringPageText[12] = "Part Recipe:"
         		+ "\n\n"
-        		+ "\u00A7l\u00A7nLapis Lazuli"
+        		+ "\u00A7l\u00A7nAcacia"
         		+ "\nAirship Frame\u00A7r"
         		+ "\n\n\n\n\n\n\n\n"
         		+ "\u00A7oIngredient:\u00A7r"
         		+ "\n"
-        		+ "\u00A7o\u00A7lLapis Lazuli\u00A7r";
+        		+ "\u00A7o\u00A7lAcacia Planks\u00A7r";
         
         stringPageText[13] = "Part Recipe:"
         		+ "\n\n"
-        		+ "\u00A7l\u00A7nObsidian"
+        		+ "\u00A7l\u00A7nDark Oak"
         		+ "\nAirship Frame\u00A7r"
         		+ "\n\n\n\n\n\n\n\n"
         		+ "\u00A7oIngredient:\u00A7r"
         		+ "\n"
-        		+ "\u00A7o\u00A7lObsidian Block\u00A7r";
+        		+ "\u00A7o\u00A7lDark Oak Planks\u00A7r";
+        //-----------------------------------------------------------------
+        stringPageText[14] = "   There is a total of "
+        		+ "27 frames. To list all "
+        		+ "of them in here would "
+        		+ "be insanity! Feel free "
+        		+ "to use JEI for the "
+        		+ "recipes! "
+        		+ "\n\n\n\n"
+        		+ "Hint: All but the Nether "
+        		+ "Star frame is made "
+        		+ "with whole blocks in "
+        		+ "the same pattern.";
         
-        stringPageText[14] = "Part Recipe:"
-        		+ "\n\n"
-        		+ "\u00A7l\u00A7nDiamond"
-        		+ "\nAirship Frame\u00A7r"
-        		+ "\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oIngredient:\u00A7r"
-        		+ "\n"
-        		+ "\u00A7o\u00A7lDiamond\u00A7r";
-        
-        stringPageText[15] = "Part Recipe:"
-        		+ "\n\n"
-        		+ "\u00A7l\u00A7nEmerald"
-        		+ "\nAirship Frame\u00A7r"
-        		+ "\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oIngredient:\u00A7r"
-        		+ "\n"
-        		+ "\u00A7o\u00A7lEmerald\u00A7r";
-        
-        stringPageText[16] = "Part Recipe:"
-        		+ "\n\n"
-        		+ "\u00A7l\u00A7nNether Brick"
-        		+ "\nAirship Frame\u00A7r"
-        		+ "\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oIngredient:\u00A7r"
-        		+ "\n"
-        		+ "\u00A7o\u00A7lNether Brick\u00A7r";
-        
-        stringPageText[17] = "Part Recipe:"
-        		+ "\n\n"
-        		+ "\u00A7l\u00A7nPurpur"
-        		+ "\nAirship Frame\u00A7r"
-        		+ "\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oIngredient:\u00A7r"
-        		+ "\n"
-        		+ "\u00A7o\u00A7lPurpur\u00A7r";
-        
-        stringPageText[18] = "Part Recipe:"
-        		+ "\n\n"
-        		+ "\u00A7l\u00A7nIce"
-        		+ "\nAirship Frame\u00A7r"
-        		+ "\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oIngredient:\u00A7r"
-        		+ "\n"
-        		+ "\u00A7o\u00A7lIce\u00A7r";
-        
-        stringPageText[19] = "Part Recipe:"
-        		+ "\n\n"
-        		+ "\u00A7l\u00A7nSandstone"
-        		+ "\nAirship Frame\u00A7r"
-        		+ "\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oIngredient:\u00A7r"
-        		+ "\n"
-        		+ "\u00A7o\u00A7lSandstone\u00A7r";
-        
-        stringPageText[20] = "   Now that you have "
+        stringPageText[15] = "   Now that you have "
         		+ "the parts, let's get "
         		+ "\u00A7obuilding\u00A7r! There are \u00A7l4\u00A7r "
         		+ "airship styles: "
@@ -257,7 +212,7 @@ public class GuiGuidebookMain extends GuiScreen {
         		+ "Names can be changed via the config. "
         		;
         
-        stringPageText[21] = "Airship Recipe:"
+        stringPageText[16] = "Airship Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7n"
         		+ ViesCraftConfig.v1AirshipName
@@ -265,7 +220,7 @@ public class GuiGuidebookMain extends GuiScreen {
         		+ "\n\n\n\n\n\n\n\n\n"
         		+ "\u00A7oClassic airship. Some things can't be beat.\u00A7r";
         
-        stringPageText[22] = "Airship Recipe:"
+        stringPageText[17] = "Airship Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7n"
         		+ ViesCraftConfig.v2AirshipName
@@ -273,7 +228,7 @@ public class GuiGuidebookMain extends GuiScreen {
         		+ "\n\n\n\n\n\n\n\n\n"
         		+ "\u00A7oA unique twist on the airship design.\u00A7r";
     	
-        stringPageText[23] = "Airship Recipe:"
+        stringPageText[18] = "Airship Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7n"
         		+ ViesCraftConfig.v3AirshipName
@@ -281,7 +236,7 @@ public class GuiGuidebookMain extends GuiScreen {
         		+ "\n\n\n\n\n\n\n\n\n"
         		+ "\u00A7oAn airship built for the tech enthusiast.\u00A7r";
         
-        stringPageText[24] = "Airship Recipe:"
+        stringPageText[19] = "Airship Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7n"
         		+ ViesCraftConfig.v4AirshipName
@@ -289,27 +244,27 @@ public class GuiGuidebookMain extends GuiScreen {
         		+ "\n\n\n\n\n\n\n\n\n"
         		+ "\u00A7oSteampunk airship ingenuity at its finest.\u00A7r";
         
-        stringPageText[25] = "Extra Tools:"
+        stringPageText[20] = "Extra Tools:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nDismounter\u00A70\u00A7r\u00A70"
         		+ "\n\n\n\n\n\n\n\n\n"
         		+ "\u00A7oEject mobs from what they are riding in.\u00A7r";
     		
-        stringPageText[26] = "Further Reading:"
+        stringPageText[21] = "Further Reading:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nTaking Control\u00A7r\u00A70"
         		+ "\n               \u00A7l\u00A7nvol.2\u00A7r"
         		+ "\n\n\n\n\n\n\n\n"
         		+ "\u00A7oPiloting airships like a pro.\u00A7r";
     		
-        stringPageText[27] = "Further Reading:"
+        stringPageText[22] = "Further Reading:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nFlaming Paint?!\u00A7r\u00A70"
         		+ "\n               \u00A7l\u00A7nvol.3\u00A7r"
         		+ "\n\n\n\n\n\n\n\n"
         		+ "\u00A7oIns and outs of airship-safe paint.\u00A7r";
         
-        stringPageText[28] = "Further Reading:"
+        stringPageText[23] = "Further Reading:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nModules & You\u00A7r\u00A70"
         		+ "\n               \u00A7l\u00A7nvol.4\u00A7r"
@@ -454,31 +409,11 @@ public class GuiGuidebookMain extends GuiScreen {
         {
         	mc.getTextureManager().bindTexture(bookPageTextures[23]);
         }
-        if (currPage == 24)
-        {
-        	mc.getTextureManager().bindTexture(bookPageTextures[24]);
-        }
-        if (currPage == 25)
-        {
-        	mc.getTextureManager().bindTexture(bookPageTextures[25]);
-        }
-        if (currPage == 26)
-        {
-        	mc.getTextureManager().bindTexture(bookPageTextures[26]);
-        }
-        if (currPage == 27)
-        {
-        	mc.getTextureManager().bindTexture(bookPageTextures[27]);
-        }
-        if (currPage == 28)
-        {
-        	mc.getTextureManager().bindTexture(bookPageTextures[28]);
-        }
-        
         //else
         //{
         // mc.getTextureManager().bindTexture(bookPageTextures[2]);
         //}
+        
         int offsetFromScreenLeft = (width - bookImageWidth ) / 2;
         drawTexturedModalRect(offsetFromScreenLeft, 2, 0, 0, bookImageWidth, 
               bookImageHeight);

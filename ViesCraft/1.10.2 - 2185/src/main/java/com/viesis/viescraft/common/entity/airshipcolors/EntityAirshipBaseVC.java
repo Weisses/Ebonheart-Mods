@@ -36,7 +36,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class EntityAirshipBaseVC extends Entity {
 	
-	public int metaFrame;
+	public int metaFrameCore;
 	public int metaBalloon;
 	
 	public int metaColorRed;
@@ -102,7 +102,7 @@ public class EntityAirshipBaseVC extends Entity {
         this(worldIn);
         this.setPosition(x, y, z);
         
-        this.metaFrame = frameIn;
+        this.metaFrameCore = frameIn;
         this.metaBalloon = balloonIn;
         this.metaColorRed = colorRedIn;
         this.metaColorGreen = colorGreenIn;
@@ -128,7 +128,7 @@ public class EntityAirshipBaseVC extends Entity {
         this.dataManager.register(TIME_SINCE_HIT_VC, Integer.valueOf(0));
         this.dataManager.register(FORWARD_DIRECTION_VC, Integer.valueOf(1));
         this.dataManager.register(DAMAGE_TAKEN_VC, Float.valueOf(0.0F));
-        this.dataManager.register(AIRSHIP_TYPE_FRAME_VC, Integer.valueOf(this.metaFrame));
+        this.dataManager.register(AIRSHIP_TYPE_FRAME_VC, Integer.valueOf(this.metaFrameCore));
         this.dataManager.register(AIRSHIP_TYPE_BALLOON_VC, Integer.valueOf(this.metaBalloon));
         this.dataManager.register(BALLOON_COLOR_RED_VC, Integer.valueOf(this.metaColorRed));
         this.dataManager.register(BALLOON_COLOR_GREEN_VC, Integer.valueOf(this.metaColorGreen));
@@ -390,7 +390,7 @@ public class EntityAirshipBaseVC extends Entity {
             blockpos$pooledmutableblockpos.release();
         }
     }
-
+    
     public static float getBlockLiquidHeight(IBlockState p_184456_0_, IBlockAccess p_184456_1_, BlockPos p_184456_2_)
     {
         int i = ((Integer)p_184456_0_.getValue(BlockLiquid.LEVEL)).intValue();
@@ -495,7 +495,7 @@ public class EntityAirshipBaseVC extends Entity {
 
         return flag;
     }
-
+    
     public static float getLiquidHeight(IBlockState p_184452_0_, IBlockAccess p_184452_1_, BlockPos p_184452_2_)
     {
         return (float)p_184452_2_.getY() + getBlockLiquidHeight(p_184452_0_, p_184452_1_, p_184452_2_);
@@ -790,7 +790,7 @@ public class EntityAirshipBaseVC extends Entity {
     {
         if (this.worldObj.isRemote)
         {
-        	this.metaFrame = this.getAirshipMetaFrame();
+        	this.metaFrameCore = this.getAirshipMetaFrame();
         	this.metaBalloon = this.getAirshipMetaBalloon();
         	this.metaColorRed = this.getAirshipMetaColorRed();
         	this.metaColorGreen = this.getAirshipMetaColorGreen();
@@ -799,7 +799,7 @@ public class EntityAirshipBaseVC extends Entity {
     	
         if(!this.worldObj.isRemote)
 		{
-        	this.setAirshipMetaFrame(this.metaFrame);
+        	this.setAirshipMetaFrame(this.metaFrameCore);
         	this.setAirshipMetaBalloon(this.metaBalloon);
         	this.setAirshipMetaColorRed(this.metaColorRed);
         	this.setAirshipMetaColorGreen(this.metaColorGreen);
@@ -927,38 +927,79 @@ public class EntityAirshipBaseVC extends Entity {
     {
     	
     }
-	
-	/**
-	 * Frame enum - Represents various frame types.
-	 */
-    public static enum Frame
+    
+    /**
+     * Height Restrictions.
+     */
+    protected boolean airshipHeightLimit()
     {
-        WOOD0(0, "Oak"),
-    	IRON(1, "Iron"),
-        REDSTONE(2, "Redstone"),
-        GOLD(3, "Gold"),
-        LAPISLAZULI(4, "Lapis Lazuli"),
-        OBSIDIAN(5, "Obsidian"),
-        DIAMOND(6, "Diamond"),
-        EMERALD(7, "Emerald"),
-        NETHERBRICK(8, "Nether Brick"),
-        PURPUR(9, "Purpur"),
-        ICE(10, "Ice"),
-    	SANDSTONE(11, "Sandstone");
-    	//BRICK(12, "Brick")
-        //GLOWSTONE(13, "Glowstone")
-        //QUARTZ(14, "Quartz")
-    	//PRISMARINE(15, "Prismarine")
-    	//SOULSAND(16, "SoulSand")
-    	//GHOST(17, "Ghost")  // This is a special one that uses nether stars.
+    	Boolean maxHeightReached;
+    	
+    	int airshipHeight = this.getPosition().getY();
+    	if(airshipHeight >= FrameCore.byId(this.metaFrameCore).getElevation())
+    	{
+    		maxHeightReached = true;
+    	}
+    	else
+    	{
+    		maxHeightReached = false;
+    	}
+		
+		return maxHeightReached;
+    }
+	
+    /**
+	 * Core Frame enum - Represents various frame types.
+	 */
+    public static enum FrameCore
+    {
+    	//STRING(meta, name, speed, altitude)
+    	//Common - 8 items
+        WOOD0(0, "Oak", 0F, 85),
+        WOOD1(1, "Spruce", 0F, 85),
+        WOOD2(2, "Birch", 0F, 85),
+        WOOD3(3, "Jungle", 0F, 85),
+        WOOD4(4, "Acacia", 0F, 85),
+        WOOD5(5, "Dark Oak", 0F, 85),
+        SANDSTONE(6, "Sandstone", 0.001F, 90),
+        BRICK(7, "Brick", 0.002F, 100),
+        
+        //Uncommon - 7 items
+        BONE(8, "Bone", 0.003F, 110),
+    	IRON(9, "Iron", 0.004F, 120),
+        REDSTONE(10, "Redstone", 0.005F, 130),
+        GOLD(11, "Gold", 0.006F, 140),
+        LAPISLAZULI(12, "Lapis Lazuli", 0.007F, 150),
+        SLIME(13, "Slime", 0.008F, 160),
+        MYCELIUM(14, "Mycelium", 0.009F, 170),
+        
+        //Rare - 6 items
+        NETHERBRICK(15, "Nether Brick", 0.010F, 180),
+        SOULSAND(16, "Soul Sand", 0.011F, 190),
+        QUARTZ(17, "Quartz", 0.012F, 200),
+        ICE(18, "Ice", 0.013F, 210),
+        GLOWSTONE(19, "Glowstone", 0.014F, 220),
+        OBSIDIAN(20, "Obsidian", 0.015F, 230),
+        
+        //Epic - 5 items + 1 admin-only item
+        DIAMOND(21, "Diamond", 0.016F, 500),
+        EMERALD(22, "Emerald", 0.017F, 500),
+        PRISMARINE(23, "Prismarine", 0.018F, 500),
+    	PURPUR(24, "Purpur", 0.019F, 500),
+    	NETHERSTAR(25, "Nether Star", 0.020F, 500),
+    	MYTHIC(26, "Mythic", 0.025F, 500);  // This is a special admin only Airship.
     	
         private final String name;
         private final int metadata;
+        private final float speed;
+        private final int elevation;
         
-        private Frame(int metadataIn, String nameIn)
+        private FrameCore(int metadataIn, String nameIn, float speedModifier, int maxElevation)
         {
             this.name = nameIn;
             this.metadata = metadataIn;
+            this.speed = speedModifier;
+            this.elevation = maxElevation;
         }
         
         public String getName()
@@ -976,10 +1017,20 @@ public class EntityAirshipBaseVC extends Entity {
             return this.name;
         }
         
+        public float getSpeed()
+        {
+            return this.speed;
+        }
+        
+        public float getElevation()
+        {
+            return this.elevation;
+        }
+        
         /**
          * Get a boat type by it's enum ordinal
          */
-        public static EntityAirshipBaseVC.Frame byId(int id)
+        public static EntityAirshipBaseVC.FrameCore byId(int id)
         {
             if (id < 0 || id >= values().length)
             {
@@ -989,7 +1040,7 @@ public class EntityAirshipBaseVC extends Entity {
             return values()[id];
         }
         
-        public static EntityAirshipBaseVC.Frame getTypeFromString(String nameIn)
+        public static EntityAirshipBaseVC.FrameCore getTypeFromString(String nameIn)
         {
             for (int i = 0; i < values().length; ++i)
             {
@@ -1014,7 +1065,10 @@ public class EntityAirshipBaseVC extends Entity {
         POLKADOT(3, "Polka Dot"),
         POLKADOTCOLORIZED(4, "Colorized Polka Dot"),
         ZIGZAG(5, "Zigzag"),
-    	ZIGZAGCOLORIZED(6, "Colorized Zigzag");
+    	ZIGZAGCOLORIZED(6, "Colorized Zigzag")
+    	//BASKETWEAVE(7, "Basketweave")
+    	//BASKETWEAVECOLORIZED(7, "Colorized Basketweave")
+    	;
     	
         private final String name;
         private final int metadata;

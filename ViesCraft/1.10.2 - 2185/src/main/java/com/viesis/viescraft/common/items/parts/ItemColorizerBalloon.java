@@ -99,7 +99,7 @@ public class ItemColorizerBalloon extends Item {
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand)
     {
-		ItemStack itemstack = playerIn.getHeldItemMainhand();
+        ItemStack itemstack = playerIn.getHeldItemMainhand();
         
     	if(playerIn.isSneaking())
     	{

@@ -57,6 +57,6 @@ public class ViesCraft {
 	public void postInit(FMLPostInitializationEvent event)
 	{
 		this.proxy.postInit(event);
-		LogHelper.info("Initiating Brannigan's Law.");
+		LogHelper.info("Enforcing Brannigan's Law...");
 	}
 }

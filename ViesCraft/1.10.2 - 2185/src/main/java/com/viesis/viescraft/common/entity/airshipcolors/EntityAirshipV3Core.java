@@ -5,7 +5,6 @@ import java.util.List;
 import com.viesis.viescraft.api.ColorHelperVC;
 import com.viesis.viescraft.api.FuelVC;
 import com.viesis.viescraft.client.InitParticlesVCRender;
-import com.viesis.viescraft.common.caps.DualEnergyStorageVC;
 import com.viesis.viescraft.common.utils.events.EventHandlerAirship;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 import com.viesis.viescraft.init.InitItemsVC;
@@ -92,7 +91,7 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
         this(worldIn);
         this.setPosition(x, y + 0.5D, z);
         
-        this.metaFrame = frameIn;
+        this.metaFrameCore = frameIn;
         this.metaBalloon = balloonIn;
         this.metaColorRed = metaColorRedItem;
         this.metaColorGreen = metaColorGreenItem;
@@ -115,7 +114,7 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
         this.dataManager.register(FORWARD_DIRECTION_VC, Integer.valueOf(1));
         this.dataManager.register(DAMAGE_TAKEN_VC, Float.valueOf(0.0F));
         
-        this.dataManager.register(AIRSHIP_TYPE_FRAME_VC, Integer.valueOf(this.metaFrame));
+        this.dataManager.register(AIRSHIP_TYPE_FRAME_VC, Integer.valueOf(this.metaFrameCore));
         this.dataManager.register(AIRSHIP_TYPE_BALLOON_VC, Integer.valueOf(this.metaBalloon));
         this.dataManager.register(BALLOON_COLOR_RED_VC, Integer.valueOf(this.metaColorRed));
         this.dataManager.register(BALLOON_COLOR_GREEN_VC, Integer.valueOf(this.metaColorGreen));
@@ -164,7 +163,7 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
     {
     	super.writeToNBT(compound);
     	
-    	compound.setInteger("Frame", this.metaFrame);
+    	compound.setInteger("Frame", this.metaFrameCore);
     	compound.setInteger("Balloon", this.metaBalloon);
     	compound.setInteger("ColorRed", this.metaColorRed);
     	compound.setInteger("ColorGreen", this.metaColorGreen);
@@ -185,7 +184,7 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
     {
     	super.readFromNBT(compound);
     	
-    	this.metaFrame = compound.getInteger("Frame");
+    	this.metaFrameCore = compound.getInteger("Frame");
     	this.metaBalloon = compound.getInteger("Balloon");
     	this.metaColorRed = compound.getInteger("ColorRed");
     	this.metaColorGreen = compound.getInteger("ColorGreen");
@@ -208,7 +207,7 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
     @Override
 	public ItemStack getItemBoat()
     {
-    	ItemStack stack = new ItemStack(InitItemsVC.item_airship_v3, 1, this.metaFrame);
+    	ItemStack stack = new ItemStack(InitItemsVC.item_airship_v3, 1, this.metaFrameCore);
     	stack.setTagCompound(new NBTTagCompound());
     	
     	stack.getTagCompound().setInteger("Balloon", this.metaBalloon);
@@ -228,7 +227,7 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
 		return this.hasCustomName() ? this.customName : 
 			ColorHelperVC.getColorNameFromRgb(this.metaColorRed, this.metaColorGreen, this.metaColorBlue)		
 			+ " " 
-			+ Frame.byId(this.metaFrame).getName() 
+			+ FrameCore.byId(this.metaFrameCore).getName() 
 			+ " " 
 			+ ViesCraftConfig.v3AirshipName;
 	}
@@ -254,7 +253,7 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
         {
             this.setDamageTaken(this.getDamageTaken() - 1.0F);
         }
-
+        
         this.waterDamage();
         this.updateAirshipMeta();
         
@@ -395,6 +394,11 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
     @Override
     public void controlAirship()
     {
+    	float finalAirshipSpeedTurn = AirshipSpeedTurn + (FrameCore.byId(this.metaFrameCore).getSpeed() * 4);
+        float finalAirshipSpeedForward = AirshipSpeedForward + FrameCore.byId(this.metaFrameCore).getSpeed();
+        float finalAirshipSpeedUp = AirshipSpeedUp + (FrameCore.byId(this.metaFrameCore).getSpeed() / 4);
+        float finalAirshipSpeedDown = AirshipSpeedDown + (FrameCore.byId(this.metaFrameCore).getSpeed() / 4);
+        
         if (this.isBeingRidden())
         {
             float f = 0.0F;
@@ -405,11 +409,11 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
             {
             	if(isClientAirshipBurning())
             	{
-            		this.deltaRotation -= AirshipSpeedTurn;
+            		this.deltaRotation -= finalAirshipSpeedTurn;
             	}
             	else
             	{
-            		this.deltaRotation -= AirshipSpeedTurn * 0.5F;
+            		this.deltaRotation -= finalAirshipSpeedTurn * 0.5F;
             	}
             }
             
@@ -418,11 +422,11 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
             {
             	if(isClientAirshipBurning())
             	{
-            		this.deltaRotation += AirshipSpeedTurn;
+            		this.deltaRotation += finalAirshipSpeedTurn;
             	}
             	else
             	{
-            		this.deltaRotation += AirshipSpeedTurn * 0.5F;
+            		this.deltaRotation += finalAirshipSpeedTurn * 0.5F;
             	}
             }
             
@@ -433,44 +437,41 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
             
             this.rotationYaw += this.deltaRotation;
             
-            //Moving Forward
+            //Move Forward
             if (this.forwardInputDown)
             {
-            	//If airship is on & small inv module installed
-            	if(isClientAirshipBurning()
-                && this.getModuleInventorySmall())
-                {
-            		f += AirshipSpeedForward - (AirshipSpeedForward * 0.2F);
-                }
-            	//If airship is on & large inv module installed
-            	else if(isClientAirshipBurning()
-            	&& this.getModuleInventoryLarge())
-            	{
-            		f += AirshipSpeedForward - (AirshipSpeedForward * 0.3F);
-            	}
-            	//If airship is on & infinite fuel module installed
-            	else if(isClientAirshipBurning()
-            	&& this.getModuleFuelInfinite())
-            	{
-            		f += AirshipSpeedForward - (AirshipSpeedForward * 0.4F);
-            	}
-            	//If airship is on & minor speed module installed
-            	else if(isClientAirshipBurning()
-            	&& this.getModuleSpeedMinor())
-            	{
-            		f += AirshipSpeedForward + 0.008F;
-            	}
-            	//If airship is on & major speed module installed
-            	else if(isClientAirshipBurning()
-            	&& this.getModuleSpeedMajor())
-            	{
-            		f += AirshipSpeedForward + 0.016F;
-            	}
-            	//If airship is on
-            	else if(isClientAirshipBurning())
-            	{
-            		f += AirshipSpeedForward;
-            	}
+            	if(isClientAirshipBurning())
+        		{
+        			//Small inv module installed
+                	if(this.getModuleInventorySmall())
+                    {
+                		f += finalAirshipSpeedForward - (finalAirshipSpeedForward * 0.2F);
+                    }
+                	//Large inv module installed
+                	else if(this.getModuleInventoryLarge())
+                	{
+                		f += finalAirshipSpeedForward - (finalAirshipSpeedForward * 0.3F);
+                	}
+                	//Infinite fuel module installed
+                	else if(this.getModuleFuelInfinite())
+                	{
+                		f += finalAirshipSpeedForward - (finalAirshipSpeedForward * 0.4F);
+                	}
+                	//Minor speed module installed
+                	else if(this.getModuleSpeedMinor())
+                	{
+                		f += finalAirshipSpeedForward + 0.008F;
+                	}
+                	//Major speed module installed
+                	else if(this.getModuleSpeedMajor())
+                	{
+                		f += finalAirshipSpeedForward + 0.016F;
+                	}
+                	else
+                	{
+                		f += finalAirshipSpeedForward;
+                	}
+        		}
             	//If airship is off
             	else
             	{
@@ -481,41 +482,39 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
             //Moving Backwards
             if (this.backInputDown)
             {
-            	//If airship is on & small inv module installed
-            	if(isClientAirshipBurning()
-            	&& this.getModuleInventorySmall())
-            	{
-            		f -= (AirshipSpeedForward * 0.5) - ((AirshipSpeedForward * 0.5)* 0.2);
-            	} 
-            	//If airship is on & large inv module installed
-            	else if(isClientAirshipBurning()
-            	&& this.getModuleInventoryLarge())
-            	{
-            		f -= (AirshipSpeedForward * 0.5) - ((AirshipSpeedForward * 0.5)* 0.3);
-            	}
-            	//If airship is on & infinite fuel module installed
-            	else if(isClientAirshipBurning()
-            	&& this.getModuleFuelInfinite())
-            	{
-            		f -= (AirshipSpeedForward * 0.5) - ((AirshipSpeedForward * 0.4)* 0.5);
-            	}
-            	//If airship is on & minor speed module installed
-            	else if(isClientAirshipBurning()
-            	&& this.getModuleSpeedMinor())
-            	{
-            		f -= (AirshipSpeedForward * 0.5) + 0.004F;
-            	}
-            	//If airship is on & major speed module installed
-            	else if(isClientAirshipBurning()
-            	&& this.getModuleSpeedMajor())
-            	{
-            		f -= (AirshipSpeedForward * 0.5) + 0.008F;
-            	}
-            	//If airship is on
-            	else if(isClientAirshipBurning())
-            	{
-            		f -= AirshipSpeedForward * 0.5;
-            	}
+            	//Check airship is burning fuel
+        		if(isClientAirshipBurning())
+        		{
+        			//Small inv module installed
+                	if(this.getModuleInventorySmall())
+                	{
+                		f -= (finalAirshipSpeedForward * 0.5) - ((finalAirshipSpeedForward * 0.5)* 0.2);
+                	} 
+                	//Large inv module installed
+                	else if(this.getModuleInventoryLarge())
+                	{
+                		f -= (finalAirshipSpeedForward * 0.5) - ((finalAirshipSpeedForward * 0.5)* 0.3);
+                	}
+                	//Infinite fuel module installed
+                	else if(this.getModuleFuelInfinite())
+                	{
+                		f -= (finalAirshipSpeedForward * 0.5) - ((finalAirshipSpeedForward * 0.4)* 0.5);
+                	}
+                	//Minor speed module installed
+                	else if(this.getModuleSpeedMinor())
+                	{
+                		f -= (finalAirshipSpeedForward * 0.5) + 0.004F;
+                	}
+                	//Major speed module installed
+                	else if(this.getModuleSpeedMajor())
+                	{
+                		f -= (finalAirshipSpeedForward * 0.5) + 0.008F;
+                	}
+                	else
+                	{
+                		f -= finalAirshipSpeedForward * 0.5;
+                	}
+        		}
             	//If airship is off
             	else
             	{
@@ -526,47 +525,39 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
             //Moving Up
             if (this.upInputDown)
             {
-            	//If airship is on & small inv module installed
-            	if(isClientAirshipBurning()
-            	&& this.getModuleInventorySmall())
-            	{
-            		f1 += AirshipSpeedUp - (AirshipSpeedUp * 0.2);
-            	}
-            	//If airship is on & large inv module installed
-            	else if(isClientAirshipBurning()
-            	&& this.getModuleInventoryLarge())
-            	{
-            		f1 += AirshipSpeedUp - (AirshipSpeedUp * 0.3);
-            	}
-            	//If airship is on & infinite fuel module installed
-            	else if(isClientAirshipBurning()
-            	&& this.getModuleFuelInfinite())
-            	{
-            		f1 += AirshipSpeedUp - (AirshipSpeedUp * 0.4);
-            	}
-            	//If airship is on & minor speed module installed
-            	else if(isClientAirshipBurning()
-            	&& this.getModuleSpeedMinor())
-            	{
-            		f1 += AirshipSpeedUp;
-            	}
-            	//If airship is on & major speed module installed
-            	else if(isClientAirshipBurning()
-            	&& this.getModuleSpeedMajor())
-            	{
-            		f1 += AirshipSpeedUp;
-            	}
-            	//If airship is on
-            	else if(isClientAirshipBurning())
-            	{
-            		f1 += AirshipSpeedUp;
-            	}
+            	//Check airship max height
+            	if(!this.airshipHeightLimit())
+    			{
+            		//Check airship is burning fuel
+            		if(isClientAirshipBurning())
+            		{
+            			//Small inv module installed
+                    	if(this.getModuleInventorySmall())
+                    	{
+                    		f1 += finalAirshipSpeedUp - (finalAirshipSpeedUp * 0.2);
+                    	}
+                    	//Large inv module installed
+                    	else if(this.getModuleInventoryLarge())
+                    	{
+                    		f1 += finalAirshipSpeedUp - (finalAirshipSpeedUp * 0.3);
+                    	}
+                    	//Infinite fuel module installed
+                    	else if(this.getModuleFuelInfinite())
+                    	{
+                    		f1 += finalAirshipSpeedUp - (finalAirshipSpeedUp * 0.4);
+                    	}
+                    	else
+                    	{
+                    		f1 += finalAirshipSpeedUp;
+                    	}
+            		}
+    			}
             }
             
             //Moving down
             if (this.downInputDown)
             {
-                f1 -= AirshipSpeedDown;
+                f1 -= finalAirshipSpeedDown;
             }
             
             this.motionX += (double)(MathHelper.sin(-this.rotationYaw * 0.017453292F) * f);
@@ -709,14 +700,7 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
         	{
         		if(this.getEntityId() == EventHandlerAirship.playerRidingEntity)
         		{
-	        		if(this.getControllingPassenger() == null)
-	            	{
-	            		--this.airshipBurnTime;
-	            	}
-	        		else
-	        		{
-	        			
-	        		}
+        			
         		}
         		else
         		{
@@ -750,18 +734,24 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
         	{
         		this.airshipBurnTime = 1;
         	}
+        	//The player in the airship is in Creative Mode
+        	else if(EventHandlerAirship.creativeBurn)
+        	{
+        		if (this.getEntityId() == EventHandlerAirship.playerRidingEntity
+        		&& this.getControllingPassenger() instanceof EntityPlayer)
+            	{
+            		this.airshipBurnTime = 1;
+            	}
+        		else
+        		{
+        			this.airshipBurnTime = 0;
+        		}
+        		
+        	}
         	//Airship has no controlling passenger
         	else if(this.getControllingPassenger() == null)
         	{
         		this.airshipBurnTime = 0;
-        	}
-        	//The player in the airship is in Creative Mode
-        	else if(EventHandlerAirship.creativeBurn)
-        	{
-        		if (this.getEntityId() == EventHandlerAirship.playerRidingEntity)
-            	{
-            		this.airshipBurnTime = 1;
-            	}
         	}
         	else 
         	{
@@ -831,7 +821,7 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
         else
         {
             Item item = stack.getItem();
-            DualEnergyStorageVC cap = (DualEnergyStorageVC) stack.getCapability(DualEnergyStorageVC.CAPABILITY_HOLDER , null);
+            //DualEnergyStorageVC cap = (DualEnergyStorageVC) stack.getCapability(DualEnergyStorageVC.CAPABILITY_HOLDER , null);
             if(ViesCraftConfig.vanillaFuel)
     		{
 	            if (item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.AIR)

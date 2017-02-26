@@ -6,7 +6,9 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.util.INBTSerializable;
 
-public class CapabilityProviderVC implements INBTSerializable<NBTTagCompound>, ICapabilityProvider {
+public class CapabilityProviderVC {
+	/**implements INBTSerializable<NBTTagCompound>, ICapabilityProvider {
+}
 
 	private DualEnergyStorageVC energy;
 	
@@ -33,14 +35,13 @@ public class CapabilityProviderVC implements INBTSerializable<NBTTagCompound>, I
 	
 	@Override
     public NBTTagCompound serializeNBT () {
-		return null;
         
-        //return this.energy.serializeNBT();
+        return this.energy.serializeNBT();
     }
     
     @Override
     public void deserializeNBT (NBTTagCompound nbt) {
         
-        //this.energy.deserializeNBT(nbt);
-    }
+        this.energy.deserializeNBT(nbt);
+    }*/
 }

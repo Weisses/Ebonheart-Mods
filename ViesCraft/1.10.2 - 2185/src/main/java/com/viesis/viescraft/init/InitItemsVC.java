@@ -53,10 +53,10 @@ public class InitItemsVC extends ItemsVC {
 		
 		airship_dismounter = registerItem(new ItemAirshipDismounter());
 		
-		item_balloon_colorizer = registerItem(new ItemColorizerBalloon());
-		
 		airship_frame = registerItem(new ItemFrame());
 		airship_balloon_pattern = registerItem(new ItemBalloonPattern());
+
+		item_balloon_colorizer = registerItem(new ItemColorizerBalloon());
 		
 		module_chip = registerItem(new ItemModuleChip());
 		

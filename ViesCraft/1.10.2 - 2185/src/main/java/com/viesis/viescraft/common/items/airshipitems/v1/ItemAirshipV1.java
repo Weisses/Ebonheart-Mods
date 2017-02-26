@@ -31,7 +31,7 @@ public class ItemAirshipV1 extends ItemAirshipCore {
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand)
     {
-		ItemStack itemstack = playerIn.getHeldItemMainhand();
+        ItemStack itemstack = playerIn.getHeldItemMainhand();
         
         int balloon = 0;
         int colorRed = 210;
@@ -73,7 +73,7 @@ public class ItemAirshipV1 extends ItemAirshipCore {
 	@Override
 	public String getItemStackDisplayName(ItemStack stack)
     {
-        return (EntityAirshipBaseVC.Frame.byId(this.getMetadata(stack)).getName() 
+        return (EntityAirshipBaseVC.FrameCore.byId(this.getMetadata(stack)).getName() 
             		+ " " 
             		+ ViesCraftConfig.v1AirshipName);
     }
