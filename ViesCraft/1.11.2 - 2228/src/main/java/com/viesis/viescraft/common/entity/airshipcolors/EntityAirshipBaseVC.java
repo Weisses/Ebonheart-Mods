@@ -38,6 +38,9 @@ public class EntityAirshipBaseVC extends Entity {
 	public int metaFrameCore;
 	public int metaBalloon;
 	
+	public int metaFrameVisual;
+	public boolean frameVisualActive;
+	
 	public int metaColorRed;
 	public int metaColorGreen;
 	public int metaColorBlue;
@@ -45,6 +48,10 @@ public class EntityAirshipBaseVC extends Entity {
     public static final DataParameter<Integer> TIME_SINCE_HIT_VC = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
     protected static final DataParameter<Integer> FORWARD_DIRECTION_VC = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
     protected static final DataParameter<Float> DAMAGE_TAKEN_VC = EntityDataManager.<Float>createKey(EntityAirshipBaseVC.class, DataSerializers.FLOAT);
+
+    protected static final DataParameter<Integer> AIRSHIP_VISUAL_FRAME_VC = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+    protected static final DataParameter<Boolean> AIRSHIP_VISUAL_FRAME_ACTIVE_VC = EntityDataManager.<Boolean>createKey(EntityAirshipBaseVC.class, DataSerializers.BOOLEAN);
+    
     protected static final DataParameter<Integer> AIRSHIP_TYPE_FRAME_VC = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
     protected static final DataParameter<Integer> AIRSHIP_TYPE_BALLOON_VC = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
     protected static final DataParameter<Integer> BALLOON_COLOR_RED_VC = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
@@ -96,10 +103,13 @@ public class EntityAirshipBaseVC extends Entity {
         this.setSize(1.0F, 0.5F);
     }
     
-    public EntityAirshipBaseVC(World worldIn, double x, double y, double z, int frameIn, int balloonIn, int colorRedIn, int colorGreenIn, int colorBlueIn)
+    public EntityAirshipBaseVC(World worldIn, double x, double y, double z, int frameIn, int balloonIn, int colorRedIn, int colorGreenIn, int colorBlueIn, int frameVisualIn, boolean frameVisualActive)
     {
         this(worldIn);
         this.setPosition(x, y, z);
+        
+        this.metaFrameVisual = frameVisualIn;
+        this.frameVisualActive = frameVisualActive;
         
         this.metaFrameCore = frameIn;
         this.metaBalloon = balloonIn;
@@ -127,6 +137,10 @@ public class EntityAirshipBaseVC extends Entity {
         this.dataManager.register(TIME_SINCE_HIT_VC, Integer.valueOf(0));
         this.dataManager.register(FORWARD_DIRECTION_VC, Integer.valueOf(1));
         this.dataManager.register(DAMAGE_TAKEN_VC, Float.valueOf(0.0F));
+        
+        this.dataManager.register(AIRSHIP_VISUAL_FRAME_VC, Integer.valueOf(this.metaFrameVisual));
+        this.dataManager.register(AIRSHIP_VISUAL_FRAME_ACTIVE_VC, Boolean.valueOf(this.frameVisualActive));
+        
         this.dataManager.register(AIRSHIP_TYPE_FRAME_VC, Integer.valueOf(this.metaFrameCore));
         this.dataManager.register(AIRSHIP_TYPE_BALLOON_VC, Integer.valueOf(this.metaBalloon));
         this.dataManager.register(BALLOON_COLOR_RED_VC, Integer.valueOf(this.metaColorRed));

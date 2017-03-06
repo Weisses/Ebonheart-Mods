@@ -19,7 +19,7 @@ import com.viesis.viescraft.network.NetworkHandler;
 import com.viesis.viescraft.network.server.v4.MessageGuiV4Module;
 
 public class GuiEntityAirshipV4ModuleInventorySmall extends GuiContainer {
-	
+	/** Module */
 	private GuiButton buttonModule;
 	private IInventory playerInv;
 	private EntityAirshipV4Core airshipV4;

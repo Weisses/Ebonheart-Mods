@@ -2,7 +2,9 @@ package com.viesis.viescraft.network;
 
 import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.network.client.MessageConfig;
+import com.viesis.viescraft.network.server.MessageGuiAppearance;
 import com.viesis.viescraft.network.server.MessageGuiColorizerBalloon;
+import com.viesis.viescraft.network.server.v1.MessageGuiV1Appearance;
 import com.viesis.viescraft.network.server.v1.MessageGuiV1Default;
 import com.viesis.viescraft.network.server.v1.MessageGuiV1Module;
 import com.viesis.viescraft.network.server.v1.MessageGuiV1ModuleInventoryLarge;
@@ -58,6 +60,12 @@ public class NetworkHandler {
 		INSTANCE.registerMessage(MessageGuiV4ModuleInventoryLarge.class, MessageGuiV4ModuleInventoryLarge.class, 16, Side.SERVER);
 		
 		INSTANCE.registerMessage(MessageGuiColorizerBalloon.class, MessageGuiColorizerBalloon.class, 61, Side.SERVER);
+		INSTANCE.registerMessage(MessageGuiAppearance.class, MessageGuiAppearance.class, 62, Side.SERVER);
+		
+		INSTANCE.registerMessage(MessageGuiV1Appearance.class, MessageGuiV1Appearance.class, 17, Side.SERVER);
+		//INSTANCE.registerMessage(MessageGuiV2Module.class, MessageGuiV2Module.class, 18, Side.SERVER);
+		//INSTANCE.registerMessage(MessageGuiV3Module.class, MessageGuiV3Module.class, 19, Side.SERVER);
+		//INSTANCE.registerMessage(MessageGuiV4Module.class, MessageGuiV4Module.class, 20, Side.SERVER);
 		
 	}
 	
