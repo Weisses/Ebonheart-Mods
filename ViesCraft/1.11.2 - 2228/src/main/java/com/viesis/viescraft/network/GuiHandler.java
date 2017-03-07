@@ -2,7 +2,10 @@ package com.viesis.viescraft.network;
 
 import com.viesis.viescraft.client.gui.GuiTileEntityAirshipWorkbench;
 import com.viesis.viescraft.client.gui.GuiTileEntityBatteryCharger;
-import com.viesis.viescraft.client.gui.v1.GuiEntityAirshipV1Appearance;
+import com.viesis.viescraft.client.gui.v1.GuiEntityAirshipV1AppearancePage1;
+import com.viesis.viescraft.client.gui.v1.GuiEntityAirshipV1AppearancePage2;
+import com.viesis.viescraft.client.gui.v1.GuiEntityAirshipV1AppearancePage3;
+import com.viesis.viescraft.client.gui.v1.GuiEntityAirshipV1AppearancePage4;
 import com.viesis.viescraft.client.gui.v1.GuiEntityAirshipV1Default;
 import com.viesis.viescraft.client.gui.v1.GuiEntityAirshipV1Module;
 import com.viesis.viescraft.client.gui.v1.GuiEntityAirshipV1ModuleInventoryLarge;
@@ -23,7 +26,10 @@ import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV2Core;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV3Core;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV4Core;
-import com.viesis.viescraft.common.entity.airshipcolors.containers.v1.ContainerAirshipV1Appearance;
+import com.viesis.viescraft.common.entity.airshipcolors.containers.v1.ContainerAirshipV1AppearancePage1;
+import com.viesis.viescraft.common.entity.airshipcolors.containers.v1.ContainerAirshipV1AppearancePage2;
+import com.viesis.viescraft.common.entity.airshipcolors.containers.v1.ContainerAirshipV1AppearancePage3;
+import com.viesis.viescraft.common.entity.airshipcolors.containers.v1.ContainerAirshipV1AppearancePage4;
 import com.viesis.viescraft.common.entity.airshipcolors.containers.v1.ContainerAirshipV1Default;
 import com.viesis.viescraft.common.entity.airshipcolors.containers.v1.ContainerAirshipV1Module;
 import com.viesis.viescraft.common.entity.airshipcolors.containers.v1.ContainerAirshipV1ModuleInvLarge;
@@ -77,7 +83,11 @@ public class GuiHandler implements IGuiHandler {
 	public static final int GUI_V3_MODULE_INVENTORY_LARGE = 15;
 	public static final int GUI_V4_MODULE_INVENTORY_LARGE = 16;
 	
-	public static final int GUI_V1_APPEARANCE = 17;
+	public static final int GUI_V1_APPEARANCE_PAGE1 = 17;
+	public static final int GUI_V1_APPEARANCE_PAGE2 = 18;
+	public static final int GUI_V1_APPEARANCE_PAGE3 = 19;
+	public static final int GUI_V1_APPEARANCE_PAGE4 = 20;
+	
 	//public static final int GUI_V2_APPEARANCE = 18;
 	//public static final int GUI_V3_APPEARANCE = 19;
 	//public static final int GUI_V4_APPEARANCE = 20;
@@ -177,22 +187,27 @@ public class GuiHandler implements IGuiHandler {
 		}
 		
 		//Airship Module Container
-		if (ID == GUI_V1_APPEARANCE)
+		if (ID == GUI_V1_APPEARANCE_PAGE1)
 		{
-			return new ContainerAirshipV1Appearance(player.inventory, (EntityAirshipV1Core)player.getRidingEntity());
+			return new ContainerAirshipV1AppearancePage1(player.inventory, (EntityAirshipV1Core)player.getRidingEntity());
 		}
-		//if (ID == GUI_V2_APPEARANCE)
-		//{
-		//	return new ContainerAirshipV2Module(player.inventory, (EntityAirshipV2Core)player.getRidingEntity());
-		//}
-		//if (ID == GUI_V3_APPEARANCE)
-		//{
-		//	return new ContainerAirshipV3Module(player.inventory, (EntityAirshipV3Core)player.getRidingEntity());
-		//}
-		//if (ID == GUI_V4_APPEARANCE)
-		//{
-		//	return new ContainerAirshipV4Module(player.inventory, (EntityAirshipV4Core)player.getRidingEntity());
-		//}
+		if (ID == GUI_V1_APPEARANCE_PAGE2)
+		{
+			return new ContainerAirshipV1AppearancePage2(player.inventory, (EntityAirshipV1Core)player.getRidingEntity());
+		}
+		if (ID == GUI_V1_APPEARANCE_PAGE3)
+		{
+			return new ContainerAirshipV1AppearancePage3(player.inventory, (EntityAirshipV1Core)player.getRidingEntity());
+		}
+		if (ID == GUI_V1_APPEARANCE_PAGE4)
+		{
+			return new ContainerAirshipV1AppearancePage4(player.inventory, (EntityAirshipV1Core)player.getRidingEntity());
+		}
+		
+		
+		
+		
+		
 		
 		return null;
 	}
@@ -287,22 +302,25 @@ public class GuiHandler implements IGuiHandler {
 		}
 		
 		//Airship Appearance GUI
-		if (ID == GUI_V1_APPEARANCE)
+		if (ID == GUI_V1_APPEARANCE_PAGE1)
 		{
-			return new GuiEntityAirshipV1Appearance(player.inventory, (EntityAirshipV1Core)player.getRidingEntity());
+			return new GuiEntityAirshipV1AppearancePage1(player.inventory, (EntityAirshipV1Core)player.getRidingEntity());
 		}
-		//if (ID == GUI_V2_APPEARANCE)
-		//{
-		//	return new GuiEntityAirshipV2Module(player.inventory, (EntityAirshipV2Core)player.getRidingEntity());
-		//}
-		//if (ID == GUI_V3_APPEARANCE)
-		//{
-		//	return new GuiEntityAirshipV3Module(player.inventory, (EntityAirshipV3Core)player.getRidingEntity());
-		//}
-		//if (ID == GUI_V4_APPEARANCE)
-		//{
-		//	return new GuiEntityAirshipV4Module(player.inventory, (EntityAirshipV4Core)player.getRidingEntity());
-		//}
+		if (ID == GUI_V1_APPEARANCE_PAGE2)
+		{
+			return new GuiEntityAirshipV1AppearancePage2(player.inventory, (EntityAirshipV1Core)player.getRidingEntity());
+		}
+		if (ID == GUI_V1_APPEARANCE_PAGE3)
+		{
+			return new GuiEntityAirshipV1AppearancePage3(player.inventory, (EntityAirshipV1Core)player.getRidingEntity());
+		}
+		if (ID == GUI_V1_APPEARANCE_PAGE4)
+		{
+			return new GuiEntityAirshipV1AppearancePage4(player.inventory, (EntityAirshipV1Core)player.getRidingEntity());
+		}
+		
+		
+		
 		
 		return null;
 	}

@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.viesis.viescraft.api.ColorHelperVC;
 import com.viesis.viescraft.api.FuelVC;
-import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.client.InitParticlesVCRender;
 import com.viesis.viescraft.common.caps.DualEnergyStorageVC;
 import com.viesis.viescraft.configs.ViesCraftConfig;
@@ -226,6 +225,7 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
     	
     	stack.getTagCompound().setInteger("FrameVisual", this.metaFrameVisual);
     	stack.getTagCompound().setBoolean("FrameVisualActive", this.frameVisualActive);
+    	
     	stack.getTagCompound().setInteger("Balloon", this.metaBalloon);
     	stack.getTagCompound().setInteger("ColorRed", this.metaColorRed);
     	stack.getTagCompound().setInteger("ColorGreen", this.metaColorGreen);
@@ -240,10 +240,17 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
 	@Override
 	public String getName() 
 	{
+		String name = FrameCore.byId(this.metaFrameCore).getName();
+		
+		if(this.frameVisualActive)
+		{
+			name = "\"" + FrameCore.byId(this.metaFrameCore).getName() + "\"";
+		}
+		
 		return this.hasCustomName() ? this.customName : 
 			ColorHelperVC.getColorNameFromRgb(this.metaColorRed, this.metaColorGreen, this.metaColorBlue)		
-			+ " " 
-			+ FrameCore.byId(this.metaFrameCore).getName() 
+			+ " "
+			+ name 
 			+ " " 
 			+ ViesCraftConfig.v1AirshipName;
 	}

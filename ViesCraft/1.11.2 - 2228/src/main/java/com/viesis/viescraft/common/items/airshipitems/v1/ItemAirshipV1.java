@@ -35,6 +35,7 @@ public class ItemAirshipV1 extends ItemAirshipCore {
         
         int frameVisual = 0;
         boolean frameVisualActive = false;
+        
         int balloon = 0;
         int colorRed = 210;
 		int colorGreen = 180;

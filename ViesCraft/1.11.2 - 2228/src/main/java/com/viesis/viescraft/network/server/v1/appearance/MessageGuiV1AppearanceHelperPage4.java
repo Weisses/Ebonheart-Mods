@@ -1,13 +1,13 @@
-package com.viesis.viescraft.network.server;
+package com.viesis.viescraft.network.server.v1.appearance;
 
-import com.viesis.viescraft.client.gui.v1.GuiEntityAirshipV1Appearance;
+import com.viesis.viescraft.client.gui.v1.GuiEntityAirshipV1AppearancePage4;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
 import com.viesis.viescraft.network.packet.MessageBase;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayer;
 
-public class MessageGuiAppearance extends MessageBase<MessageGuiAppearance> {
+public class MessageGuiV1AppearanceHelperPage4 extends MessageBase<MessageGuiV1AppearanceHelperPage4> {
 	
 	private int metaFrame;
 	private boolean metaFrameActive;
@@ -22,18 +22,18 @@ public class MessageGuiAppearance extends MessageBase<MessageGuiAppearance> {
 	@Override
 	public void toBytes(ByteBuf buf) 
 	{
-		buf.writeInt(GuiEntityAirshipV1Appearance.metaInfo);
-		buf.writeBoolean(GuiEntityAirshipV1Appearance.metaActiveInfo);
+		buf.writeInt(GuiEntityAirshipV1AppearancePage4.metaInfo);
+		buf.writeBoolean(GuiEntityAirshipV1AppearancePage4.metaActiveInfo);
 	}
 	
 	@Override
-	public void handleClientSide(MessageGuiAppearance message, EntityPlayer player) 
+	public void handleClientSide(MessageGuiV1AppearanceHelperPage4 message, EntityPlayer player) 
 	{
 		
 	}
 	
 	@Override
-	public void handleServerSide(MessageGuiAppearance message, EntityPlayer player) 
+	public void handleServerSide(MessageGuiV1AppearanceHelperPage4 message, EntityPlayer player) 
 	{
 		EntityAirshipV1Core airship = (EntityAirshipV1Core) player.getRidingEntity();
 		airship.metaFrameVisual = message.metaFrame;

@@ -17,8 +17,8 @@ import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
 import com.viesis.viescraft.common.entity.airshipcolors.containers.v1.ContainerAirshipV1Default;
 import com.viesis.viescraft.common.utils.events.EventHandlerAirship;
 import com.viesis.viescraft.network.NetworkHandler;
-import com.viesis.viescraft.network.server.v1.MessageGuiV1Appearance;
 import com.viesis.viescraft.network.server.v1.MessageGuiV1Module;
+import com.viesis.viescraft.network.server.v1.appearance.MessageGuiV1AppearancePage1;
 
 public class GuiEntityAirshipV1Default extends GuiContainer {
 	/** Frame */
@@ -68,7 +68,7 @@ public class GuiEntityAirshipV1Default extends GuiContainer {
 	    }
 		if (parButton.id == 2)
 	    {
-			NetworkHandler.sendToServer(new MessageGuiV1Appearance());
+			NetworkHandler.sendToServer(new MessageGuiV1AppearancePage1());
 	    }
 		
         this.buttonList.clear();
