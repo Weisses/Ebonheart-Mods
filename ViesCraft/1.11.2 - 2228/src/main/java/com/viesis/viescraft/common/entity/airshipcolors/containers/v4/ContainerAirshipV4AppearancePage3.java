@@ -1,20 +1,20 @@
-package com.viesis.viescraft.common.entity.airshipcolors.containers.v1;
+package com.viesis.viescraft.common.entity.airshipcolors.containers.v4;
 
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV4Core;
 import com.viesis.viescraft.common.entity.airshipcolors.containers.ContainerVC;
 
 import net.minecraft.inventory.IInventory;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ContainerAirshipV1AppearancePage1 extends ContainerVC {
+public class ContainerAirshipV4AppearancePage3 extends ContainerVC {
 	
-	private EntityAirshipV1Core airship;
+	private EntityAirshipV4Core airship;
 	private int airshipBurnTime;
     
-	public ContainerAirshipV1AppearancePage1(IInventory playerInv, EntityAirshipV1Core entityAirshipV1Core) 
+	public ContainerAirshipV4AppearancePage3(IInventory playerInv, EntityAirshipV4Core entityAirshipV4Core) 
 	{
-		this.airship = entityAirshipV1Core;
+		this.airship = entityAirshipV4Core;
 	}
 	
 	@SideOnly(Side.CLIENT)

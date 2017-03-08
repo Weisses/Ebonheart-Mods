@@ -1,4 +1,4 @@
-package com.viesis.viescraft.client.gui.v1;
+package com.viesis.viescraft.client.gui.all;
 
 import java.io.IOException;
 
@@ -7,11 +7,11 @@ import org.lwjgl.input.Keyboard;
 import com.viesis.viescraft.api.GuiVC;
 import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.api.util.Keybinds;
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
-import com.viesis.viescraft.common.entity.airshipcolors.containers.v1.ContainerAirshipV1AppearancePage4;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
+import com.viesis.viescraft.common.entity.airshipcolors.containers.ContainerAirshipAppearance;
 import com.viesis.viescraft.network.NetworkHandler;
-import com.viesis.viescraft.network.server.v1.appearance.MessageGuiV1AppearanceHelperPage4;
-import com.viesis.viescraft.network.server.v1.appearance.MessageGuiV1AppearancePage3;
+import com.viesis.viescraft.network.server.appearance.MessageGuiAppearanceHelperPage4;
+import com.viesis.viescraft.network.server.appearance.MessageGuiAppearancePage3;
 
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -19,19 +19,19 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.util.ResourceLocation;
 
-public class GuiEntityAirshipV1AppearancePage4 extends GuiContainer {
+public class GuiEntityAirshipAppearancePage4 extends GuiContainer {
 	
 	private IInventory playerInv;
-	private EntityAirshipV1Core airshipV1;
+	private EntityAirshipBaseVC airship;
 	public static int metaInfo;
 	public static boolean metaActiveInfo;
 	
-	public GuiEntityAirshipV1AppearancePage4(IInventory playerInv, EntityAirshipV1Core airshipV1)
+	public GuiEntityAirshipAppearancePage4(IInventory playerInv, EntityAirshipBaseVC airship)
 	{
-		super(new ContainerAirshipV1AppearancePage4(playerInv, airshipV1));
+		super(new ContainerAirshipAppearance(playerInv, airship));
 		
 		this.playerInv = playerInv;
-		this.airshipV1 = airshipV1;
+		this.airship = airship;
 		this.xSize = 176;
 		this.ySize = 166;
 	}
@@ -58,7 +58,6 @@ public class GuiEntityAirshipV1AppearancePage4 extends GuiContainer {
 		GuiVC.button26 = new GuiButton( 26, this.guiLeft + 105, this.guiTop + 115, 57, 20, "Mythic");
 		
 		this.buttonList.add(GuiVC.buttonDone);
-		this.buttonList.add(GuiVC.buttonNext);
 		this.buttonList.add(GuiVC.buttonPrev);
 		
 		this.buttonList.add(GuiVC.button21);
@@ -68,7 +67,7 @@ public class GuiEntityAirshipV1AppearancePage4 extends GuiContainer {
 		this.buttonList.add(GuiVC.button25);
 		this.buttonList.add(GuiVC.button26);
 		
-		if(this.airshipV1.metaFrameCore == 21)
+		if(this.airship.metaFrameCore == 21)
     	{
     		GuiVC.button22.visible = false;
     		GuiVC.button23.visible = false;
@@ -76,25 +75,25 @@ public class GuiEntityAirshipV1AppearancePage4 extends GuiContainer {
     		GuiVC.button25.visible = false;
     		GuiVC.button26.visible = false;
     	}
-		if(this.airshipV1.metaFrameCore == 22)
+		if(this.airship.metaFrameCore == 22)
     	{
     		GuiVC.button23.visible = false;
     		GuiVC.button24.visible = false;
     		GuiVC.button25.visible = false;
     		GuiVC.button26.visible = false;
     	}
-		if(this.airshipV1.metaFrameCore == 23)
+		if(this.airship.metaFrameCore == 23)
     	{
     		GuiVC.button24.visible = false;
     		GuiVC.button25.visible = false;
     		GuiVC.button26.visible = false;
     	}
-		if(this.airshipV1.metaFrameCore == 24)
+		if(this.airship.metaFrameCore == 24)
     	{
     		GuiVC.button25.visible = false;
     		GuiVC.button26.visible = false;
     	}
-		if(this.airshipV1.metaFrameCore == 25)
+		if(this.airship.metaFrameCore == 25)
     	{
     		GuiVC.button26.visible = false;
     	}
@@ -112,43 +111,43 @@ public class GuiEntityAirshipV1AppearancePage4 extends GuiContainer {
 	    }
 		if (parButton.id == 32)
 	    {
-			NetworkHandler.sendToServer(new MessageGuiV1AppearancePage3());
+			NetworkHandler.sendToServer(new MessageGuiAppearancePage3());
 	    }
 		if (parButton.id == 21)
 	    {
 			this.metaInfo = 21;
 			metaActiveInfo = true;
-			NetworkHandler.sendToServer(new MessageGuiV1AppearanceHelperPage4());
+			NetworkHandler.sendToServer(new MessageGuiAppearanceHelperPage4());
 	    }
 		if (parButton.id == 22)
 	    {
 			this.metaInfo = 22;
 			metaActiveInfo = true;
-			NetworkHandler.sendToServer(new MessageGuiV1AppearanceHelperPage4());
+			NetworkHandler.sendToServer(new MessageGuiAppearanceHelperPage4());
 	    }
 		if (parButton.id == 23)
 	    {
 			this.metaInfo = 23;
 			metaActiveInfo = true;
-			NetworkHandler.sendToServer(new MessageGuiV1AppearanceHelperPage4());
+			NetworkHandler.sendToServer(new MessageGuiAppearanceHelperPage4());
 	    }
 		if (parButton.id == 24)
 	    {
 			this.metaInfo = 24;
 			metaActiveInfo = true;
-			NetworkHandler.sendToServer(new MessageGuiV1AppearanceHelperPage4());
+			NetworkHandler.sendToServer(new MessageGuiAppearanceHelperPage4());
 	    }
 		if (parButton.id == 25)
 	    {
 			this.metaInfo = 25;
 			metaActiveInfo = true;
-			NetworkHandler.sendToServer(new MessageGuiV1AppearanceHelperPage4());
+			NetworkHandler.sendToServer(new MessageGuiAppearanceHelperPage4());
 	    }
 		if (parButton.id == 26)
 	    {
 			this.metaInfo = 26;
 			metaActiveInfo = true;
-			NetworkHandler.sendToServer(new MessageGuiV1AppearanceHelperPage4());
+			NetworkHandler.sendToServer(new MessageGuiAppearanceHelperPage4());
 	    }
 		
         this.buttonList.clear();

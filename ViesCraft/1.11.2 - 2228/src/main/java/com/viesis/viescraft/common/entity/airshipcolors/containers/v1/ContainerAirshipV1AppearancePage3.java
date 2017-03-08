@@ -1,25 +1,17 @@
 package com.viesis.viescraft.common.entity.airshipcolors.containers.v1;
 
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
 import com.viesis.viescraft.common.entity.airshipcolors.containers.ContainerVC;
 
 import net.minecraft.inventory.IInventory;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ContainerAirshipV1AppearancePage3 extends ContainerVC {
 	
-	private EntityAirshipV1Core airship;
+	private EntityAirshipBaseVC airship;
 	private int airshipBurnTime;
     
-	public ContainerAirshipV1AppearancePage3(IInventory playerInv, EntityAirshipV1Core entityAirshipV1Core) 
+	public ContainerAirshipV1AppearancePage3(IInventory playerInv, EntityAirshipBaseVC entityAirship) 
 	{
-		this.airship = entityAirshipV1Core;
+		this.airship = entityAirship;
 	}
-	
-	@SideOnly(Side.CLIENT)
-    public void updateProgressBar(int id, int data)
-    {
-        this.airship.setField(id, data);
-    }
 }

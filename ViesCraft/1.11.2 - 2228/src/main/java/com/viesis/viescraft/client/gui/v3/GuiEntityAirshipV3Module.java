@@ -2,12 +2,6 @@ package com.viesis.viescraft.client.gui.v3;
 
 import java.io.IOException;
 
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.input.Keyboard;
 
 import com.viesis.viescraft.api.Reference;
@@ -18,6 +12,12 @@ import com.viesis.viescraft.network.NetworkHandler;
 import com.viesis.viescraft.network.server.v3.MessageGuiV3Default;
 import com.viesis.viescraft.network.server.v3.MessageGuiV3ModuleInventoryLarge;
 import com.viesis.viescraft.network.server.v3.MessageGuiV3ModuleInventorySmall;
+
+import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.util.ResourceLocation;
 
 public class GuiEntityAirshipV3Module extends GuiContainer {
 	

@@ -139,12 +139,28 @@ public class RenderAirshipV3 extends Render<EntityAirshipV3Core> {
         
         if(entity.getPowered() > 0)
         {
-        	this.bindTexture(ENTITY_FRAME_TEXTURE[entity.metaFrameCore]);
+        	if(entity.frameVisualActive == true)
+        	{
+        		this.bindTexture(ENTITY_FRAME_TEXTURE[entity.metaFrameVisual]);
+        	}
+        	else
+        	{
+        		this.bindTexture(ENTITY_FRAME_TEXTURE[entity.metaFrameCore]);
+        	}
+        	
         	this.modelAirshipV3FrameOn.render(entity, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
         }
         else
         {
-        	this.bindTexture(ENTITY_FRAME_TEXTURE[entity.metaFrameCore]);
+        	if(entity.frameVisualActive == true)
+        	{
+        		this.bindTexture(ENTITY_FRAME_TEXTURE[entity.metaFrameVisual]);
+        	}
+        	else
+        	{
+        		this.bindTexture(ENTITY_FRAME_TEXTURE[entity.metaFrameCore]);
+        	}
+        	
         	this.modelAirshipV3FrameOff.render(entity, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
         }
         

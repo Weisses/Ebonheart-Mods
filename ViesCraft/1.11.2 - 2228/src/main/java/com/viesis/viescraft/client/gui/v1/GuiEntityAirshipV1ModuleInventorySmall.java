@@ -9,8 +9,8 @@ import com.viesis.viescraft.api.util.Keybinds;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
 import com.viesis.viescraft.common.entity.airshipcolors.containers.v1.ContainerAirshipV1ModuleInvSmall;
 import com.viesis.viescraft.network.NetworkHandler;
+import com.viesis.viescraft.network.server.appearance.MessageGuiAppearancePage1;
 import com.viesis.viescraft.network.server.v1.MessageGuiV1Module;
-import com.viesis.viescraft.network.server.v1.appearance.MessageGuiV1AppearancePage1;
 
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -66,7 +66,7 @@ public class GuiEntityAirshipV1ModuleInventorySmall extends GuiContainer {
 	    }
 		if (parButton.id == 2)
 	    {
-			NetworkHandler.sendToServer(new MessageGuiV1AppearancePage1());
+			NetworkHandler.sendToServer(new MessageGuiAppearancePage1());
 	    }
 		
         this.buttonList.clear();
