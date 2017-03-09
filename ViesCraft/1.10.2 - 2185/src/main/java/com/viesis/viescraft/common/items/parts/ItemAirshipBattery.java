@@ -114,8 +114,8 @@ public class ItemAirshipBattery extends Item {
 		toolTip.add(TextFormatting.DARK_PURPLE + "Max energy = " + cap.getMaxEnergyStored());
 	}
 
-	
-	
 	*/
+	
+	
 	
 }

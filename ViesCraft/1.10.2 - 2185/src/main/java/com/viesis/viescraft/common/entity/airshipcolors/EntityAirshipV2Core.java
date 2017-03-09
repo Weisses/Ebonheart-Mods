@@ -5,7 +5,6 @@ import java.util.List;
 import com.viesis.viescraft.api.ColorHelperVC;
 import com.viesis.viescraft.api.FuelVC;
 import com.viesis.viescraft.client.InitParticlesVCRender;
-import com.viesis.viescraft.common.utils.events.EventHandlerAirship;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 import com.viesis.viescraft.init.InitItemsVC;
 import com.viesis.viescraft.network.NetworkHandler;
@@ -86,10 +85,13 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
         this.inventory = new ItemStackHandler(size);
     }
 	
-    public EntityAirshipV2Core(World worldIn, double x, double y, double z, int frameIn, int balloonIn, int metaColorRedItem, int metaColorGreenItem, int metaColorBlueItem)
+    public EntityAirshipV2Core(World worldIn, double x, double y, double z, int frameIn, int balloonIn, int metaColorRedItem, int metaColorGreenItem, int metaColorBlueItem, int frameVisualIn, boolean frameVisualActive)
     {
         this(worldIn);
         this.setPosition(x, y + 0.5D, z);
+        
+        this.metaFrameVisual = frameVisualIn;
+        this.frameVisualActive = frameVisualActive;
         
         this.metaFrameCore = frameIn;
         this.metaBalloon = balloonIn;
@@ -113,6 +115,9 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
 		this.dataManager.register(TIME_SINCE_HIT_VC, Integer.valueOf(0));
         this.dataManager.register(FORWARD_DIRECTION_VC, Integer.valueOf(1));
         this.dataManager.register(DAMAGE_TAKEN_VC, Float.valueOf(0.0F));
+        
+        this.dataManager.register(AIRSHIP_VISUAL_FRAME_VC, Integer.valueOf(this.metaFrameVisual));
+        this.dataManager.register(AIRSHIP_VISUAL_FRAME_ACTIVE_VC, Boolean.valueOf(this.frameVisualActive));
         
         this.dataManager.register(AIRSHIP_TYPE_FRAME_VC, Integer.valueOf(this.metaFrameCore));
         this.dataManager.register(AIRSHIP_TYPE_BALLOON_VC, Integer.valueOf(this.metaBalloon));
@@ -163,6 +168,9 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
     {
     	super.writeToNBT(compound);
     	
+    	compound.setInteger("FrameVisual", this.metaFrameVisual);
+    	compound.setBoolean("FrameVisualActive", this.frameVisualActive);
+    	
     	compound.setInteger("Frame", this.metaFrameCore);
     	compound.setInteger("Balloon", this.metaBalloon);
     	compound.setInteger("ColorRed", this.metaColorRed);
@@ -183,6 +191,9 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
     public void readFromNBT(NBTTagCompound compound)
     {
     	super.readFromNBT(compound);
+    	
+    	this.metaFrameVisual = compound.getInteger("FrameVisual");
+    	this.frameVisualActive = compound.getBoolean("FrameVisualActive");
     	
     	this.metaFrameCore = compound.getInteger("Frame");
     	this.metaBalloon = compound.getInteger("Balloon");
@@ -210,6 +221,9 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
     	ItemStack stack = new ItemStack(InitItemsVC.item_airship_v2, 1, this.metaFrameCore);
     	stack.setTagCompound(new NBTTagCompound());
     	
+    	stack.getTagCompound().setInteger("FrameVisual", this.metaFrameVisual);
+    	stack.getTagCompound().setBoolean("FrameVisualActive", this.frameVisualActive);
+    	
     	stack.getTagCompound().setInteger("Balloon", this.metaBalloon);
     	stack.getTagCompound().setInteger("ColorRed", this.metaColorRed);
     	stack.getTagCompound().setInteger("ColorGreen", this.metaColorGreen);
@@ -224,10 +238,17 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
 	@Override
 	public String getName() 
 	{
+		String name = FrameCore.byId(this.metaFrameCore).getName();
+		
+		if(this.frameVisualActive)
+		{
+			name = "\"" + FrameCore.byId(this.metaFrameCore).getName() + "\"";
+		}
+		
 		return this.hasCustomName() ? this.customName : 
 			ColorHelperVC.getColorNameFromRgb(this.metaColorRed, this.metaColorGreen, this.metaColorBlue)		
-			+ " " 
-			+ FrameCore.byId(this.metaFrameCore).getName() 
+			+ " "
+			+ name 
 			+ " " 
 			+ ViesCraftConfig.v2AirshipName;
 	}
@@ -266,6 +287,7 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
         this.fuelFlight();
         this.getTotalFuelSlotBurnTime();
         
+        this.visualFrame();
         this.currentModule();
         
         if (this.canPassengerSteer())
@@ -696,17 +718,17 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
         		
         	}
         	//The player in the airship is in Creative Mode
-        	else if(EventHandlerAirship.creativeBurn)
-        	{
-        		if(this.getEntityId() == EventHandlerAirship.playerRidingEntity)
-        		{
-        			
-        		}
-        		else
-        		{
-        			--this.airshipBurnTime;
-        		}
-        	}
+        	//else if(EventHandlerAirship.creativeBurn)
+        	//{
+        	//	if(this.getEntityId() == EventHandlerAirship.playerRidingEntity)
+        	//	{
+        	//		
+        	//	}
+        	//	else
+        	//	{
+        	//		--this.airshipBurnTime;
+        	//	}
+        	//}
         	//Airship has either Large Inventory or Minor Speed Module installed
         	else if(this.getModuleInventoryLarge()
         	|| this.getModuleSpeedMajor())
@@ -735,19 +757,19 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
         		this.airshipBurnTime = 1;
         	}
         	//The player in the airship is in Creative Mode
-        	else if(EventHandlerAirship.creativeBurn)
-        	{
-        		if (this.getEntityId() == EventHandlerAirship.playerRidingEntity
-        		&& this.getControllingPassenger() instanceof EntityPlayer)
-            	{
-            		this.airshipBurnTime = 1;
-            	}
-        		else
-        		{
-        			this.airshipBurnTime = 0;
-        		}
+        	//else if(EventHandlerAirship.creativeBurn)
+        	//{
+        	//	if (this.getControllingPassenger() instanceof EntityPlayer
+        	//	&& this.getEntityId() == EventHandlerAirship.playerRidingEntity)
+            //	{
+            //		this.airshipBurnTime = 1;
+            //	}
+        		//else
+        		//{
+        		//	this.airshipBurnTime = 0;
+        		//}
         		
-        	}
+        	//}
         	//Airship has no controlling passenger
         	else if(this.getControllingPassenger() == null)
         	{
@@ -805,7 +827,17 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
      */
     public boolean isClientAirshipBurning()
     {
-    	return this.airshipBurnTime > 0;
+    	boolean hasFuel = false;
+    	//if(EventHandlerAirship.creativeBurn
+    	//&& this.getEntityId() == EventHandlerAirship.playerRidingEntity)
+    	//{
+    	//	hasFuel = true;
+    	//}
+    	if(this.airshipBurnTime > 0)
+    	{
+    		hasFuel = true;
+    	}
+    	return hasFuel;
     }
     
     /**
@@ -1348,5 +1380,62 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
 				}
 			}
 		}
+    }
+    
+    public void visualFrame()
+    {
+    	
+    	if(this.frameVisualActive == true
+    	&& this.metaFrameVisual == this.metaFrameCore)
+    	{
+    		this.frameVisualActive = false;
+    	}
+    	
+    	//Syncs the module boolean client side
+		if(this.worldObj.isRemote)
+		{
+    		this.metaFrameVisual = this.getVisualFrame();
+    		this.frameVisualActive = this.getVisualFrameActive();
+		}
+    	
+    	//Saves the visual frame to server side
+    	if(!this.worldObj.isRemote)
+		{
+			this.setVisualFrame(this.metaFrameVisual);
+			this.setVisualFrameActive(this.frameVisualActive);
+			
+    	}
+    }
+    
+	/**
+     * Sets the Visual Frame to pass from server to client.
+     */
+    public void setVisualFrame(int metaVisualFrame1)
+    {
+        this.dataManager.set(AIRSHIP_VISUAL_FRAME_VC, Integer.valueOf(metaVisualFrame1));
+    }
+	
+    /**
+     * Gets the Visual Frame to pass from server to client.
+     */
+    public int getVisualFrame()
+    {
+        return ((Integer)this.dataManager.get(AIRSHIP_VISUAL_FRAME_VC)).intValue();
+    }
+    
+    /**
+     * Gets the Minor Speed boolean to pass from server to client.
+     */
+    public boolean getVisualFrameActive()
+    {
+        return ((Boolean)this.dataManager.get(AIRSHIP_VISUAL_FRAME_ACTIVE_VC)).booleanValue();
+    }
+    
+    /**
+     * Sets if Major Speed Increase mod is installed to pass from server to client.
+     */
+    public void setVisualFrameActive(boolean frameVisualActive1)
+    {
+        this.dataManager.set(AIRSHIP_VISUAL_FRAME_ACTIVE_VC, Boolean.valueOf(frameVisualActive1));
     }
 }

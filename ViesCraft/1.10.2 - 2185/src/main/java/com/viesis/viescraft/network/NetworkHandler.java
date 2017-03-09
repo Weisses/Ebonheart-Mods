@@ -3,6 +3,14 @@ package com.viesis.viescraft.network;
 import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.network.client.MessageConfig;
 import com.viesis.viescraft.network.server.MessageGuiColorizerBalloon;
+import com.viesis.viescraft.network.server.appearance.MessageGuiAppearanceHelperPage1;
+import com.viesis.viescraft.network.server.appearance.MessageGuiAppearanceHelperPage2;
+import com.viesis.viescraft.network.server.appearance.MessageGuiAppearanceHelperPage3;
+import com.viesis.viescraft.network.server.appearance.MessageGuiAppearanceHelperPage4;
+import com.viesis.viescraft.network.server.appearance.MessageGuiAppearancePage1;
+import com.viesis.viescraft.network.server.appearance.MessageGuiAppearancePage2;
+import com.viesis.viescraft.network.server.appearance.MessageGuiAppearancePage3;
+import com.viesis.viescraft.network.server.appearance.MessageGuiAppearancePage4;
 import com.viesis.viescraft.network.server.v1.MessageGuiV1Default;
 import com.viesis.viescraft.network.server.v1.MessageGuiV1Module;
 import com.viesis.viescraft.network.server.v1.MessageGuiV1ModuleInventoryLarge;
@@ -59,6 +67,15 @@ public class NetworkHandler {
 		
 		INSTANCE.registerMessage(MessageGuiColorizerBalloon.class, MessageGuiColorizerBalloon.class, 61, Side.SERVER);
 		
+		INSTANCE.registerMessage(MessageGuiAppearancePage1.class, MessageGuiAppearancePage1.class, 17, Side.SERVER);
+		INSTANCE.registerMessage(MessageGuiAppearancePage2.class, MessageGuiAppearancePage2.class, 18, Side.SERVER);
+		INSTANCE.registerMessage(MessageGuiAppearancePage3.class, MessageGuiAppearancePage3.class, 19, Side.SERVER);
+		INSTANCE.registerMessage(MessageGuiAppearancePage4.class, MessageGuiAppearancePage4.class, 20, Side.SERVER);
+		
+		INSTANCE.registerMessage(MessageGuiAppearanceHelperPage1.class, MessageGuiAppearanceHelperPage1.class, 21, Side.SERVER);
+		INSTANCE.registerMessage(MessageGuiAppearanceHelperPage2.class, MessageGuiAppearanceHelperPage2.class, 22, Side.SERVER);
+		INSTANCE.registerMessage(MessageGuiAppearanceHelperPage3.class, MessageGuiAppearanceHelperPage3.class, 23, Side.SERVER);
+		INSTANCE.registerMessage(MessageGuiAppearanceHelperPage4.class, MessageGuiAppearanceHelperPage4.class, 24, Side.SERVER);
 	}
 	
 	public static void sendToServer(IMessage message)

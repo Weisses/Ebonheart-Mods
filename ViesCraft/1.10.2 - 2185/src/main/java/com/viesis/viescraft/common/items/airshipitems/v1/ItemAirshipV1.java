@@ -33,6 +33,9 @@ public class ItemAirshipV1 extends ItemAirshipCore {
     {
         ItemStack itemstack = playerIn.getHeldItemMainhand();
         
+        int frameVisual = 0;
+        boolean frameVisualActive = false;
+        
         int balloon = 0;
         int colorRed = 210;
 		int colorGreen = 180;
@@ -42,6 +45,9 @@ public class ItemAirshipV1 extends ItemAirshipCore {
 		{
         	if(itemstack.hasTagCompound())
 	        {
+        		frameVisual = itemstack.getTagCompound().getInteger("FrameVisual"); 
+        		frameVisualActive = itemstack.getTagCompound().getBoolean("FrameVisualActive"); 
+        		
         		balloon = itemstack.getTagCompound().getInteger("Balloon"); 
         		colorRed = itemstack.getTagCompound().getInteger("ColorRed"); 
 				colorGreen = itemstack.getTagCompound().getInteger("ColorGreen"); 
@@ -57,7 +63,7 @@ public class ItemAirshipV1 extends ItemAirshipCore {
 			
 			if (!worldIn.isRemote)
 			{
-				EntityItemAirshipV1 entityairship = new EntityItemAirshipV1(worldIn, playerIn, this.getMetadata(itemstack), balloon, colorRed, colorGreen, colorBlue);
+				EntityItemAirshipV1 entityairship = new EntityItemAirshipV1(worldIn, playerIn, this.getMetadata(itemstack), balloon, colorRed, colorGreen, colorBlue, frameVisual, frameVisualActive);
 				
 				entityairship.setHeadingFromThrower(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, -20.0F, 0.7F, 1.0F);
 				worldIn.spawnEntityInWorld(entityairship);

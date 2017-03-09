@@ -6,10 +6,10 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.util.INBTSerializable;
 
-public class CapabilityProviderVC {
-	/**implements INBTSerializable<NBTTagCompound>, ICapabilityProvider {
-}
-
+public class CapabilityProviderVC 
+//implements INBTSerializable<NBTTagCompound>, ICapabilityProvider 
+{
+/**
 	private DualEnergyStorageVC energy;
 	
 	public CapabilityProviderVC(DualEnergyStorageVC energyIn) 

@@ -47,7 +47,7 @@ public class GuiEntityAirshipV3ModuleInventorySmall extends GuiContainer {
     	buttonList.clear();
     	Keyboard.enableRepeatEvents(true);
     	
-		buttonModule = new GuiButton( 1, this.guiLeft + 133, this.guiTop + 60, 37, 20, "Module");
+    	buttonModule = new GuiButton( 1, this.guiLeft + 133, this.guiTop + 67, 37, 14, "Module");
 		this.buttonList.add(buttonModule);
 		
 		buttonFrame = new GuiButton( 2, this.guiLeft + 133, this.guiTop + 53, 37, 14, "Frame");

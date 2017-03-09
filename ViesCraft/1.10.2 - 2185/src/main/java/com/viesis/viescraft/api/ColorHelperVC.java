@@ -5,9 +5,7 @@ import java.util.ArrayList;
 
 public class ColorHelperVC {
 	
-	/**
-     * Initialize the color list that we have.
-     */
+	/** Initialize the color list that we have. */
     public static ArrayList<ColorName> initColorList() 
     {
         ArrayList<ColorName> colorList = new ArrayList<ColorName>();
@@ -154,9 +152,7 @@ public class ColorHelperVC {
         return colorList;
     }
     
-    /**
-     * Get the closest color name from our list
-     */
+    /** Get the closest color name from our list. */
     public static String getColorNameFromRgb(float r, float g, float b) 
     {
         ArrayList<ColorName> colorList = initColorList();
@@ -183,9 +179,7 @@ public class ColorHelperVC {
         }
     }
     
-    /**
-     * Convert hexColor to rgb, then call getColorNameFromRgb(r, g, b)
-     */
+    /** Convert hexColor to rgb, then call getColorNameFromRgb(r, g, b). */
     public String getColorNameFromHex(int hexColor) 
     {
         int r = (hexColor & 0xFF0000) >> 16;
@@ -204,9 +198,7 @@ public class ColorHelperVC {
         return getColorNameFromRgb(color.getRed(), color.getGreen(), color.getBlue());
     }
     
-    /**
-     * SubClass of ColorUtils. In order to lookup color name
-     */
+    /** SubClass of ColorUtils. In order to lookup color name. */
     public static class ColorName 
     {
         public int r, g, b;

@@ -143,8 +143,8 @@ public class CraftingManagerVC {
 		//Zigzag Colorized
 		this.addShapelessRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 6), new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 5), new ItemStack(Items.ENDER_EYE));
 		
-		//=================================================
-
+    	//=================================================
+		
         Collections.sort(this.recipes, new Comparator<IRecipe>()
         {
             public int compare(IRecipe p_compare_1_, IRecipe p_compare_2_)

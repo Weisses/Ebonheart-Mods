@@ -33,15 +33,26 @@ public class ItemAirshipCore extends Item {
 		
 		if(stack.hasTagCompound())
         {
+			if(stack.getTagCompound().getBoolean("FrameVisualActive") == true)
+			{
+				toolTip.add(TextFormatting.GREEN + "Appearance : " + EntityAirshipBaseVC.FrameCore.byId(
+						stack.getTagCompound().getInteger("FrameVisual")).getName());
+			}
+			else
+			{
+				toolTip.add(TextFormatting.GREEN + "Appearance : None");
+			}
 			toolTip.add(TextFormatting.GREEN + "Color : " + ColorHelperVC.getColorNameFromRgb(
 					stack.getTagCompound().getInteger("ColorRed"), 
 					stack.getTagCompound().getInteger("ColorGreen"), 
 					stack.getTagCompound().getInteger("ColorBlue")));
 			toolTip.add(TextFormatting.GREEN + "Pattern : " + EntityAirshipBaseVC.Balloon.byId(
 					stack.getTagCompound().getInteger("Balloon")).getName());
+			
         }
         else
         {
+        	toolTip.add(TextFormatting.GREEN + "Appearance : None");
         	toolTip.add(TextFormatting.GREEN + "Color : Tan");
         	toolTip.add(TextFormatting.GREEN + "Pattern : Plain");
         }

@@ -2,24 +2,26 @@ package com.viesis.viescraft.client.gui.v2;
 
 import java.io.IOException;
 
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.input.Keyboard;
 
 import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.api.util.Keybinds;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV2Core;
 import com.viesis.viescraft.common.entity.airshipcolors.containers.v2.ContainerAirshipV2Default;
-import com.viesis.viescraft.common.utils.events.EventHandlerAirship;
 import com.viesis.viescraft.network.NetworkHandler;
+import com.viesis.viescraft.network.server.appearance.MessageGuiAppearancePage1;
 import com.viesis.viescraft.network.server.v2.MessageGuiV2Module;
 
+import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.util.ResourceLocation;
+
 public class GuiEntityAirshipV2Default extends GuiContainer {
-	
+	/** Frame */
+	private GuiButton buttonFrame;
+	/** Module */
 	private GuiButton buttonModule;
 	private IInventory playerInv;
 	private EntityAirshipV2Core airshipV2;
@@ -45,8 +47,11 @@ public class GuiEntityAirshipV2Default extends GuiContainer {
     	buttonList.clear();
     	Keyboard.enableRepeatEvents(true);
     	
-		buttonModule = new GuiButton( 1, this.guiLeft + 133, this.guiTop + 60, 37, 20, "Module");
+		buttonModule = new GuiButton( 1, this.guiLeft + 133, this.guiTop + 67, 37, 14, "Module");
 		this.buttonList.add(buttonModule);
+		
+		buttonFrame = new GuiButton( 2, this.guiLeft + 133, this.guiTop + 53, 37, 14, "Frame");
+		this.buttonList.add(buttonFrame);
     }
     
     /**
@@ -58,6 +63,10 @@ public class GuiEntityAirshipV2Default extends GuiContainer {
 		if (parButton.id == 1)
 	    {
 			NetworkHandler.sendToServer(new MessageGuiV2Module());
+	    }
+		if (parButton.id == 2)
+	    {
+			NetworkHandler.sendToServer(new MessageGuiAppearancePage1());
 	    }
 		
         this.buttonList.clear();
@@ -74,18 +83,9 @@ public class GuiEntityAirshipV2Default extends GuiContainer {
 		
 		if (this.airshipV2.getPowered() > 0)
         {
-			if(EventHandlerAirship.creativeBurn)
-			{
-				this.drawTexturedModalRect(this.guiLeft + 138, this.guiTop + 4, 184, 50, 8, 1 + 47);
-				this.drawTexturedModalRect(this.guiLeft + 152, this.guiTop + 17, 176, 119, 16, 16);
-				this.drawTexturedModalRect(this.guiLeft + 147, this.guiTop + 30, 176, 14, 26, 16);
-			}
-			else
-			{
 			int k = this.getBurnLeftScaled(47);
             this.drawTexturedModalRect(this.guiLeft + 138, this.guiTop + 4, 176, 50, 8, 1 + k);
             this.drawTexturedModalRect(this.guiLeft + 147, this.guiTop + 30, 176, 14, 26, 16);
-			}
 		}
 		
 		//On button is green in gui
@@ -97,8 +97,7 @@ public class GuiEntityAirshipV2Default extends GuiContainer {
 		}
 		
 		//Draw a green fuel bar and magma in the coal slot
-		if(EventHandlerAirship.creativeBurn
-		|| this.airshipV2.getModuleFuelInfinite())
+		if(this.airshipV2.getModuleFuelInfinite())
 		{
 			this.drawTexturedModalRect(this.guiLeft + 138, this.guiTop + 4, 184, 50, 8, 1 + 47);
 			this.drawTexturedModalRect(this.guiLeft + 152, this.guiTop + 17, 176, 119, 16, 16);
