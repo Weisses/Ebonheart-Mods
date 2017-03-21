@@ -176,7 +176,7 @@ public class EntityAirshipBaseVC extends Entity {
     @Override
     public boolean canBePushed()
     {
-        return true;
+        return false;
     }
     
     @Override
@@ -222,7 +222,7 @@ public class EntityAirshipBaseVC extends Entity {
             return true;
         }
     }
-    
+    /**
     @Override
     public void applyEntityCollision(Entity entityIn)
     {
@@ -238,7 +238,7 @@ public class EntityAirshipBaseVC extends Entity {
             super.applyEntityCollision(entityIn);
         }
     }
-    
+    */
     /**
      * Main entity item drop.
      */
