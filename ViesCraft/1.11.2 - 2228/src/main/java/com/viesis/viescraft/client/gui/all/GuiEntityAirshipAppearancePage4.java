@@ -8,7 +8,7 @@ import com.viesis.viescraft.api.GuiVC;
 import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.api.util.Keybinds;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
-import com.viesis.viescraft.common.entity.airshipcolors.containers.ContainerAirshipAppearance;
+import com.viesis.viescraft.common.entity.airshipcolors.containers.all.ContainerAirshipAppearance;
 import com.viesis.viescraft.network.NetworkHandler;
 import com.viesis.viescraft.network.server.appearance.MessageGuiAppearanceHelperPage4;
 import com.viesis.viescraft.network.server.appearance.MessageGuiAppearancePage3;

@@ -5,10 +5,7 @@ import com.viesis.viescraft.client.InitBlocksVCRender;
 import com.viesis.viescraft.client.InitEntityVCRender;
 import com.viesis.viescraft.client.InitItemsVCRender;
 import com.viesis.viescraft.client.InitTileEntityVCRender;
-import com.viesis.viescraft.client.gui.v1.GuiV1HUD;
-import com.viesis.viescraft.client.gui.v2.GuiV2HUD;
-import com.viesis.viescraft.client.gui.v3.GuiV3HUD;
-import com.viesis.viescraft.client.gui.v4.GuiV4HUD;
+import com.viesis.viescraft.client.gui.all.GuiHUD;
 
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -40,10 +37,7 @@ public class ClientProxy extends CommonProxy {
 	{
 		super.init(event);
 		
-		MinecraftForge.EVENT_BUS.register(new GuiV1HUD());
-		MinecraftForge.EVENT_BUS.register(new GuiV2HUD());
-		MinecraftForge.EVENT_BUS.register(new GuiV3HUD());
-		MinecraftForge.EVENT_BUS.register(new GuiV4HUD());
+		MinecraftForge.EVENT_BUS.register(new GuiHUD());
 	}
 	
 	@Override

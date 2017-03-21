@@ -32,9 +32,20 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.items.ItemStackHandler;
 
 public class EntityAirshipBaseVC extends Entity {
 	
+	/** Fuel */
+	public int airshipBurnTime;
+	public int airshipTotalBurnTime;
+	public int itemFuelStackSize;
+	public int itemFuelStack;
+	
+    /** My capabilities inventory */
+    public ItemStackHandler inventory;
+    protected int size = 20;
+    
 	public int metaFrameCore;
 	public int metaBalloon;
 	
@@ -80,7 +91,7 @@ public class EntityAirshipBaseVC extends Entity {
     protected double waterLevel;
     
     /**
-     * How much the boat should glide given the slippery blocks it's currently gliding over.
+     * How much the airship should glide given the slippery blocks it's currently gliding over.
      * Halved every tick.
      */
     private float boatGlide;
@@ -1126,6 +1137,96 @@ public class EntityAirshipBaseVC extends Entity {
     
     
 	//==================================//
+  	// TODO    Root Getter Methods      //
+  	//==================================//
+    
+    /**
+     * Gets the Small Inventory boolean to pass from server to client.
+     */
+    public boolean getModuleInventorySmall()
+    {
+        return false;
+    }
+    
+    /**
+     * Gets the Large Inventory boolean to pass from server to client.
+     */
+    public boolean getModuleInventoryLarge()
+    {
+        return false;
+    }
+    
+    /**
+     * Gets the Infinite Fuel boolean to pass from server to client.
+     */
+    public boolean getModuleFuelInfinite()
+    {
+        return false;
+    }
+    
+    /**
+     * Gets the Minor Speed boolean to pass from server to client.
+     */
+    public boolean getModuleSpeedMinor()
+    {
+        return false;
+    }
+    
+    /**
+     * Gets the Major Speed boolean to pass from server to client.
+     */
+    public boolean getModuleSpeedMajor()
+    {
+        return false;
+    }
+    
+    /**
+     * Gets the airshipBurnTime to pass from server to client.
+     */
+    public int getPowered()
+    {
+        return 0;
+    }
+    
+    /**
+     * Gets the airshipTotalBurnTime to pass from server to client.
+     */
+    public int getTotalPowered()
+    {
+        return 0;
+    }
+    
+    /**
+     * Gets the itemFuelStack to pass from server to client.
+     */
+    public int getItemFuelStackPowered()
+    {
+        return 0;
+    }
+    
+    /**
+     * Gets the itemFuelStackSize to pass from server to client.
+     */
+    public int getItemFuelStackSizePowered()
+    {
+        return 0;
+    }
+    
+    /**
+     * Setter for variables to pass through fields.
+     */
+    public void setField(int id, int value)
+    {
+        
+    }
+    
+    public int getField(int id)
+    {
+    	return 0;
+    }
+    
+    
+	//==================================//
   	// TODO     Sound Events            //
   	//==================================//
     
@@ -1154,5 +1255,5 @@ public class EntityAirshipBaseVC extends Entity {
     //{
     //    return 5.0F;
     //}
-	
+    
 }
