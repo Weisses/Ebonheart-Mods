@@ -271,6 +271,7 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
         
         this.waterDamage();
         this.updateAirshipMeta();
+        this.fallInGround();
         
         this.prevPosX = this.posX;
         this.prevPosY = this.posY;
@@ -295,11 +296,11 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
         		this.controlAirshipGui();
             }
         	
-            this.move(MoverType.SELF, this.motionX, this.motionY, this.motionZ);
+        	this.move(MoverType.SELF, this.motionX, this.motionY, this.motionZ);
         }
         else
         {
-            this.motionX = 0.0D;
+        	this.motionX = 0.0D;
             this.motionY = 0.0D;
             this.motionZ = 0.0D;
         }
@@ -375,34 +376,27 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
             
             if(this.getControllingPassenger() == null)
             {
-            	if(this.isCollidedVertically)
-                {
-                	this.motionY = 0;
-                }
-            	else
-            	{
-            		if(this.motionY >= -0.039D)
-            		{
-            			this.motionY += d5;
-            		}
-            		else
-            		{
-            			this.motionY = -0.04D;
-            		}
-            			
-            	}
+        		if(this.motionY >= -0.039D)
+        		{
+        			this.motionY += d5;
+        		}
+        		else
+        		{
+        			this.motionY = -0.04D;
+        		}
             }
             else if(isClientAirshipBurning())
         	{
             	this.motionY *= (double)this.momentum;
         	}
-            else if(this.isCollidedVertically)
-            {
-            	this.motionY = 0;
-            }
             else
             {
             	this.motionY += d5;
+            }
+            
+            if(fallInGround())
+            {
+            	this.motionY = 0;
             }
         }
     }

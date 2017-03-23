@@ -7,6 +7,7 @@ import javax.annotation.Nullable;
 import com.google.common.collect.Lists;
 import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.api.util.Keybinds;
+import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.client.InitParticlesVCRender;
 import com.viesis.viescraft.init.InitItemsVC;
 
@@ -111,7 +112,7 @@ public class EntityAirshipBaseVC extends Entity {
         this.ignoreFrustumCheck = true;
         this.preventEntitySpawning = true;
         
-        this.setSize(1.0F, 0.5F);
+        this.setSize(0.9F, 0.3F);
     }
     
     public EntityAirshipBaseVC(World worldIn, double x, double y, double z, int frameIn, int balloonIn, int colorRedIn, int colorGreenIn, int colorBlueIn, int frameVisualIn, boolean frameVisualActive)
@@ -1224,6 +1225,22 @@ public class EntityAirshipBaseVC extends Entity {
     {
     	return 0;
     }
+    
+    /**
+     * Checker to see if the airship has glitched through solid ground.
+     */
+    protected boolean fallInGround()
+    {
+    	boolean isGlitched = false;
+    	
+    	if(this.isEntityInsideOpaqueBlock())
+    	{
+    		isGlitched = true;
+    	}
+    	
+		return isGlitched;
+    }
+    
     
     
 	//==================================//
