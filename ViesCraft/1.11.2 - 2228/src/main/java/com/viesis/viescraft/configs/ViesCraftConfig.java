@@ -37,6 +37,8 @@ public class ViesCraftConfig {
 	public static String v3AirshipName;
 	public static String v4AirshipName;
 	
+	public static boolean recipeMythic;
+	
 	public static final boolean V1AIRSHIPENABLED_DEFAULT = true;
 	public static final String V1AIRSHIPENABLED_NAME = "Enable V1 Viesdenburg Airships?";
 	public static final String V1AIRSHIPENABLED_COMMENT = "Should Viesdenburg airships be globally enabled?";
@@ -92,6 +94,10 @@ public class ViesCraftConfig {
 	public static final int VIESOLINEBURNTIME_DEFAULT = 90;
 	public static final String VIESOLINEBURNTIME_NAME = "Viesoline Burn Time?";
 	public static final String VIESOLINEBURNTIME_COMMENT = "How long does Viesoline burn for in seconds? ";
+
+	public static final boolean RECIPEMYTHIC_DEFAULT = false;
+	public static final String RECIPEMYTHIC_NAME = "Enable Mythic Airship Frame Recipe?";
+	public static final String RECIPEMYTHIC_COMMENT = "Should Mythic Airship Frame be craftable?";
 	
 	public static void init(File file)
 	{
@@ -132,6 +138,9 @@ public class ViesCraftConfig {
 		v2AirshipName = config.getString(TextFormatting.WHITE + V2AIRSHIPNAME_NAME, category2, V2AIRSHIPNAME_DEFAULT, V2AIRSHIPNAME_COMMENT);
 		v3AirshipName = config.getString(TextFormatting.WHITE + V3AIRSHIPNAME_NAME, category2, V3AIRSHIPNAME_DEFAULT, V3AIRSHIPNAME_COMMENT);
 		v4AirshipName = config.getString(TextFormatting.WHITE + V4AIRSHIPNAME_NAME, category2, V4AIRSHIPNAME_DEFAULT, V4AIRSHIPNAME_COMMENT);
+		
+		recipeMythic = config.getBoolean(TextFormatting.WHITE + RECIPEMYTHIC_NAME, category2, RECIPEMYTHIC_DEFAULT, RECIPEMYTHIC_COMMENT);
+		
 		
 		//Fuel settings
 		final String category3 = CATEGORY_VC + config.CATEGORY_SPLITTER + TextFormatting.AQUA + "Fuel";
