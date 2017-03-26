@@ -48,7 +48,7 @@ public class GuiGuidebookControls extends GuiScreen {
         		+ "\n\n" 
         		+ "         " + "\u00A7oby Viesis\u00A7r"
         		+ "\n\n\n\n" 
-        		+ "           " + Reference.MOD_VERSION;
+        		+ "          " + Reference.MOD_VERSION;
         
         stringPageText[1] = "\n\n\n\n\n\n\n"
         		+ "   Before you decide "

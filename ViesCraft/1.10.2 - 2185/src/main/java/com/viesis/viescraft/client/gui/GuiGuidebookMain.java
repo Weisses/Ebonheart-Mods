@@ -19,7 +19,7 @@ public class GuiGuidebookMain extends GuiScreen {
     private final int bookImageHeight = 192;
     private final int bookImageWidth = 192;
     private int currPage = 0;
-    private static final int bookTotalPages = 24;
+    private static final int bookTotalPages = 25;
     private static ResourceLocation[] bookPageTextures = new ResourceLocation[bookTotalPages];
     private static String[] stringPageText = new String[bookTotalPages];
     
@@ -53,6 +53,7 @@ public class GuiGuidebookMain extends GuiScreen {
         bookPageTextures[21] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/main/page_21.png");
         bookPageTextures[22] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/main/page_22.png");
         bookPageTextures[23] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/main/page_23.png");
+        bookPageTextures[24] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/main/page_24.png");
         
         //Title
         stringPageText[0] = "\n\n\n\n\n\n\n"
@@ -60,7 +61,7 @@ public class GuiGuidebookMain extends GuiScreen {
         		+ "\n\n" 
         		+ "         " + "\u00A7oby Viesis\u00A7r"
         		+ "\n\n\n\n" 
-        		+ "           " + Reference.MOD_VERSION;
+        		+ "          " + Reference.MOD_VERSION;
         
         stringPageText[1] = "   Nem said it wasn't possible! He always said players can only fly via the power "
         		+ "of \"\u00A7ocreative\u00A7r\". "
@@ -175,7 +176,16 @@ public class GuiGuidebookMain extends GuiScreen {
         		+ "\n"
         		+ "\u00A7o\u00A7lDark Oak Planks\u00A7r";
         //-----------------------------------------------------------------
-        stringPageText[14] = "   There is a total of "
+        stringPageText[14] = "Part Recipe:"
+        		+ "\n\n"
+        		+ "\u00A7l\u00A7nMythic"
+        		+ "\nAirship Frame\u00A7r"
+        		+ "\n\n\n\n\n\n\n\n"
+        		+ "\u00A7oNote:\u00A7r"
+        		+ "\n"
+        		+ "\u00A7o\u00A7lDisabled by default.\u00A7r";
+        //-----------------------------------------------------------------
+        stringPageText[15] = "   There is a total of "
         		+ "27 frames. To list all "
         		+ "of them in here would "
         		+ "be insanity! Feel free "
@@ -187,7 +197,7 @@ public class GuiGuidebookMain extends GuiScreen {
         		+ "with whole blocks in "
         		+ "the same pattern.";
         
-        stringPageText[15] = "   Now that you have "
+        stringPageText[16] = "   Now that you have "
         		+ "the parts, let's get "
         		+ "\u00A7obuilding\u00A7r! There are \u00A7l4\u00A7r "
         		+ "airship styles: "
@@ -212,7 +222,7 @@ public class GuiGuidebookMain extends GuiScreen {
         		+ "Names can be changed via the config. "
         		;
         
-        stringPageText[16] = "Airship Recipe:"
+        stringPageText[17] = "Airship Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7n"
         		+ ViesCraftConfig.v1AirshipName
@@ -220,7 +230,7 @@ public class GuiGuidebookMain extends GuiScreen {
         		+ "\n\n\n\n\n\n\n\n\n"
         		+ "\u00A7oClassic airship. Some things can't be beat.\u00A7r";
         
-        stringPageText[17] = "Airship Recipe:"
+        stringPageText[18] = "Airship Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7n"
         		+ ViesCraftConfig.v2AirshipName
@@ -228,7 +238,7 @@ public class GuiGuidebookMain extends GuiScreen {
         		+ "\n\n\n\n\n\n\n\n\n"
         		+ "\u00A7oA unique twist on the airship design.\u00A7r";
     	
-        stringPageText[18] = "Airship Recipe:"
+        stringPageText[19] = "Airship Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7n"
         		+ ViesCraftConfig.v3AirshipName
@@ -236,7 +246,7 @@ public class GuiGuidebookMain extends GuiScreen {
         		+ "\n\n\n\n\n\n\n\n\n"
         		+ "\u00A7oAn airship built for the tech enthusiast.\u00A7r";
         
-        stringPageText[19] = "Airship Recipe:"
+        stringPageText[20] = "Airship Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7n"
         		+ ViesCraftConfig.v4AirshipName
@@ -244,27 +254,27 @@ public class GuiGuidebookMain extends GuiScreen {
         		+ "\n\n\n\n\n\n\n\n\n"
         		+ "\u00A7oSteampunk airship ingenuity at its finest.\u00A7r";
         
-        stringPageText[20] = "Extra Tools:"
+        stringPageText[21] = "Extra Tools:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nDismounter\u00A70\u00A7r\u00A70"
         		+ "\n\n\n\n\n\n\n\n\n"
         		+ "\u00A7oEject mobs from what they are riding in.\u00A7r";
     		
-        stringPageText[21] = "Further Reading:"
+        stringPageText[22] = "Further Reading:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nTaking Control\u00A7r\u00A70"
         		+ "\n               \u00A7l\u00A7nvol.2\u00A7r"
         		+ "\n\n\n\n\n\n\n\n"
         		+ "\u00A7oPiloting airships like a pro.\u00A7r";
     		
-        stringPageText[22] = "Further Reading:"
+        stringPageText[23] = "Further Reading:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nFlaming Paint?!\u00A7r\u00A70"
         		+ "\n               \u00A7l\u00A7nvol.3\u00A7r"
         		+ "\n\n\n\n\n\n\n\n"
         		+ "\u00A7oIns and outs of airship-safe paint.\u00A7r";
         
-        stringPageText[23] = "Further Reading:"
+        stringPageText[24] = "Further Reading:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nModules & You\u00A7r\u00A70"
         		+ "\n               \u00A7l\u00A7nvol.4\u00A7r"
@@ -408,6 +418,10 @@ public class GuiGuidebookMain extends GuiScreen {
         if (currPage == 23)
         {
         	mc.getTextureManager().bindTexture(bookPageTextures[23]);
+        }
+        if (currPage == 24)
+        {
+        	mc.getTextureManager().bindTexture(bookPageTextures[24]);
         }
         //else
         //{

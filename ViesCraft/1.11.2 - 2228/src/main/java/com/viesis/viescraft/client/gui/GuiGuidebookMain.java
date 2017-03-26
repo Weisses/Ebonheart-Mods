@@ -61,7 +61,7 @@ public class GuiGuidebookMain extends GuiScreen {
         		+ "\n\n" 
         		+ "         " + "\u00A7oby Viesis\u00A7r"
         		+ "\n\n\n\n" 
-        		+ "           " + Reference.MOD_VERSION;
+        		+ "          " + Reference.MOD_VERSION;
         
         stringPageText[1] = "   Nem said it wasn't possible! He always said players can only fly via the power "
         		+ "of \"\u00A7ocreative\u00A7r\". "

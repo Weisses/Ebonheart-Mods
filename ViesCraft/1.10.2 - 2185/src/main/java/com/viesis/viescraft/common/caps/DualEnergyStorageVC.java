@@ -11,7 +11,7 @@ import net.minecraftforge.fml.common.Optional;
 public class DualEnergyStorageVC 
 //extends EnergyStorage implements ITeslaHolder, ITeslaConsumer, ITeslaProducer, INBTSerializable<NBTTagCompound> 
 {
-/**	
+	/**
 	@CapabilityInject(ITeslaConsumer.class)
 	public static Capability<?> CAPABILITY_CONSUMER = null;
 	@CapabilityInject(ITeslaProducer.class)

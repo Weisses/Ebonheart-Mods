@@ -46,7 +46,7 @@ public class GuiGuidebookSocket extends GuiScreen {
         		+ "\n\n" 
         		+ "         " + "\u00A7oby Viesis\u00A7r"
         		+ "\n\n\n\n" 
-        		+ "           " + Reference.MOD_VERSION;
+        		+ "          " + Reference.MOD_VERSION;
         
         stringPageText[1] = "   The sky is within our "
         		+ "reach, but what if you "

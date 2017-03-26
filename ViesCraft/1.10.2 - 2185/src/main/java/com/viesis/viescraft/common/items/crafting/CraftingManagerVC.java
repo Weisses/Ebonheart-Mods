@@ -10,6 +10,7 @@ import javax.annotation.Nullable;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
+import com.viesis.viescraft.configs.ViesCraftConfig;
 import com.viesis.viescraft.init.InitBlocksVC;
 import com.viesis.viescraft.init.InitItemsVC;
 
@@ -96,7 +97,10 @@ public class CraftingManagerVC {
     	this.addRecipe(new ItemStack(InitItemsVC.airship_frame, 1, 24), new Object[]{"###", "#M#", "###", '#', Blocks.PURPUR_BLOCK, 'M', Items.MINECART});
     	this.addRecipe(new ItemStack(InitItemsVC.airship_frame, 1, 25), new Object[]{"###", "#M#", "###", '#', Items.NETHER_STAR, 'M', Items.MINECART});
     	
-    	//this.addRecipe(new ItemStack(InitItemsVC.airship_frame, 1, 26), new Object[]{"###", "#M#", "###", '#', Blocks.SANDSTONE, 'M', Items.MINECART});
+    	if(ViesCraftConfig.recipeMythic)
+    	{
+    		this.addRecipe(new ItemStack(InitItemsVC.airship_frame, 1, 26), new Object[]{"###", "#M#", "###", '#', Items.END_CRYSTAL, 'M', new ItemStack(InitItemsVC.airship_frame, 1, 25)});
+    	}
     	
     	//=================================================
     	
@@ -143,7 +147,7 @@ public class CraftingManagerVC {
 		//Zigzag Colorized
 		this.addShapelessRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 6), new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 5), new ItemStack(Items.ENDER_EYE));
 		
-    	//=================================================
+//=================================================
 		
         Collections.sort(this.recipes, new Comparator<IRecipe>()
         {

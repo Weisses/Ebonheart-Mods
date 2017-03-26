@@ -8,9 +8,9 @@ import com.viesis.viescraft.client.InitParticlesVCRender;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 import com.viesis.viescraft.init.InitItemsVC;
 import com.viesis.viescraft.network.NetworkHandler;
-import com.viesis.viescraft.network.server.v2.MessageGuiV2Default;
-import com.viesis.viescraft.network.server.v2.MessageGuiV2ModuleInventoryLarge;
-import com.viesis.viescraft.network.server.v2.MessageGuiV2ModuleInventorySmall;
+import com.viesis.viescraft.network.server.airship.MessageGuiDefault;
+import com.viesis.viescraft.network.server.airship.MessageGuiModuleInventoryLarge;
+import com.viesis.viescraft.network.server.airship.MessageGuiModuleInventorySmall;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -56,11 +56,7 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
 	public String customName;
 	private int dropNumber;
 	
-	/** Fuel */
-	public int airshipBurnTime;
-	public int airshipTotalBurnTime;
-	public int itemFuelStackSize;
-	public int itemFuelStack;
+	
 	
 	/** Passive Modules */
     public static boolean moduleInventorySmall;
@@ -68,10 +64,6 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
     public static boolean moduleFuelInfinite;
     public static boolean moduleSpeedMinor;
     public static boolean moduleSpeedMajor;
-    
-    /** My capabilities inventory */
-    public ItemStackHandler inventory;
-    private int size = 20;
     
     public float AirshipSpeedTurn = 0.18F * (ViesCraftConfig.v2AirshipSpeed / 100);
     public float AirshipSpeedForward = 0.016F * (ViesCraftConfig.v2AirshipSpeed / 100);
@@ -277,6 +269,7 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
         
         this.waterDamage();
         this.updateAirshipMeta();
+        this.fallInGround();
         
         this.prevPosX = this.posX;
         this.prevPosY = this.posY;
@@ -301,11 +294,11 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
         		this.controlAirshipGui();
             }
         	
-            this.moveEntity(this.motionX, this.motionY, this.motionZ);
+        	this.moveEntity(this.motionX, this.motionY, this.motionZ);
         }
         else
         {
-            this.motionX = 0.0D;
+        	this.motionX = 0.0D;
             this.motionY = 0.0D;
             this.motionZ = 0.0D;
         }
@@ -381,34 +374,27 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
             
             if(this.getControllingPassenger() == null)
             {
-            	if(this.isCollidedVertically)
-                {
-                	this.motionY = 0;
-                }
-            	else
-            	{
-            		if(this.motionY >= -0.039D)
-            		{
-            			this.motionY += d5;
-            		}
-            		else
-            		{
-            			this.motionY = -0.04D;
-            		}
-            			
-            	}
+        		if(this.motionY >= -0.039D)
+        		{
+        			this.motionY += d5;
+        		}
+        		else
+        		{
+        			this.motionY = -0.04D;
+        		}
             }
             else if(isClientAirshipBurning())
         	{
             	this.motionY *= (double)this.momentum;
         	}
-            else if(this.isCollidedVertically)
-            {
-            	this.motionY = 0;
-            }
             else
             {
             	this.motionY += d5;
+            }
+            
+            if(fallInGround())
+            {
+            	this.motionY = 0;
             }
         }
     }
@@ -607,19 +593,19 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
 			//If airship has small inv module installed
         	if(this.getModuleInventorySmall())
         	{
-        		NetworkHandler.sendToServer(new MessageGuiV2ModuleInventorySmall());
+        		NetworkHandler.sendToServer(new MessageGuiModuleInventorySmall());
             	Minecraft.getMinecraft().setIngameFocus();
         	}
         	//If airship has large inv module installed
         	else if(this.getModuleInventoryLarge())
         	{
-        		NetworkHandler.sendToServer(new MessageGuiV2ModuleInventoryLarge());
+        		NetworkHandler.sendToServer(new MessageGuiModuleInventoryLarge());
             	Minecraft.getMinecraft().setIngameFocus();
         	}
         	//Default for airship gui
         	else
         	{
-        		NetworkHandler.sendToServer(new MessageGuiV2Default());
+        		NetworkHandler.sendToServer(new MessageGuiDefault());
             	Minecraft.getMinecraft().setIngameFocus();
         	}	
         }
@@ -668,6 +654,7 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
         }
     }
     
+    @Override
     public void setField(int id, int value)
     {
         switch (id)
@@ -955,9 +942,7 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
         this.dataManager.set(POWERED, Integer.valueOf(airshipBurnTime1));
     }
 	
-    /**
-     * Gets the airshipBurnTime to pass from server to client.
-     */
+    @Override
     public int getPowered()
     {
         return ((Integer)this.dataManager.get(POWERED)).intValue();
@@ -971,9 +956,7 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
         this.dataManager.set(TOTALPOWERED, Integer.valueOf(airshipTotalBurnTime1));
     }
 	
-    /**
-     * Gets the airshipTotalBurnTime to pass from server to client.
-     */
+    @Override
     public int getTotalPowered()
     {
         return ((Integer)this.dataManager.get(TOTALPOWERED)).intValue();
@@ -987,9 +970,7 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
         this.dataManager.set(ITEMFUELSTACKPOWERED, Integer.valueOf(itemFuelStack1));
     }
 	
-    /**
-     * Gets the itemFuelStack to pass from server to client.
-     */
+    @Override
     public int getItemFuelStackPowered()
     {
         return ((Integer)this.dataManager.get(ITEMFUELSTACKPOWERED)).intValue();
@@ -1003,9 +984,7 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
         this.dataManager.set(ITEMFUELSTACKSIZEPOWERED, Integer.valueOf(itemFuelStackSize1));
     }
 	
-    /**
-     * Gets the itemFuelStackSize to pass from server to client.
-     */
+    @Override
     public int getItemFuelStackSizePowered()
     {
         return ((Integer)this.dataManager.get(ITEMFUELSTACKSIZEPOWERED)).intValue();
@@ -1244,9 +1223,7 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
         this.dataManager.set(MODULE_INVENTORY_SMALL, Boolean.valueOf(moduleInvSmall1));
     }
 	
-    /**
-     * Gets the Small Inventory boolean to pass from server to client.
-     */
+    @Override
     public boolean getModuleInventorySmall()
     {
         return ((Boolean)this.dataManager.get(MODULE_INVENTORY_SMALL)).booleanValue();
@@ -1260,9 +1237,7 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
         this.dataManager.set(MODULE_INVENTORY_LARGE, Boolean.valueOf(moduleInvLarge1));
     }
 	
-    /**
-     * Gets the Large Inventory boolean to pass from server to client.
-     */
+    @Override
     public boolean getModuleInventoryLarge()
     {
         return ((Boolean)this.dataManager.get(MODULE_INVENTORY_LARGE)).booleanValue();
@@ -1276,9 +1251,7 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
         this.dataManager.set(MODULE_FUEL_INFINITE, Boolean.valueOf(moduleFuelInfinite1));
     }
 	
-    /**
-     * Gets the Infinite Fuel boolean to pass from server to client.
-     */
+    @Override
     public boolean getModuleFuelInfinite()
     {
         return ((Boolean)this.dataManager.get(MODULE_FUEL_INFINITE)).booleanValue();
@@ -1292,9 +1265,7 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
         this.dataManager.set(MODULE_SPEED_MINOR, Boolean.valueOf(moduleSpeed1));
     }
     
-    /**
-     * Gets the Minor Speed boolean to pass from server to client.
-     */
+    @Override
     public boolean getModuleSpeedMinor()
     {
         return ((Boolean)this.dataManager.get(MODULE_SPEED_MINOR)).booleanValue();
@@ -1308,9 +1279,7 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
         this.dataManager.set(MODULE_SPEED_MAJOR, Boolean.valueOf(moduleSpeed2));
     }
     
-    /**
-     * Gets the Major Speed boolean to pass from server to client.
-     */
+    @Override
     public boolean getModuleSpeedMajor()
     {
         return ((Boolean)this.dataManager.get(MODULE_SPEED_MAJOR)).booleanValue();
