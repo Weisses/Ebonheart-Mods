@@ -19,14 +19,14 @@ public class ItemModuleChip extends Item {
 	{
 		ItemHelper.setItemName(this, "module_chip");
 		this.setMaxStackSize(64);
-		this.setCreativeTab(ViesCraft.tabViesCraftItems);
+		//this.setCreativeTab(ViesCraft.tabViesCraftItems);
 	}
 	
 	@SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List toolTip, boolean advanced) 
 	{
-		toolTip.add(TextFormatting.DARK_AQUA + "A basic chip used to make");
-		toolTip.add(TextFormatting.DARK_AQUA + "airship parts.");
+		toolTip.add(TextFormatting.RED + "OUTDATED ITEM!");
+		toolTip.add(TextFormatting.GOLD + "Place in a crafting table to get the new upgrade.");
 	}
 	
 	public EnumRarity getRarity(ItemStack stack)

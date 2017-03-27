@@ -36,11 +36,12 @@ public class Reference {
 	public static final ResourceLocation[] ENTITY_SCREEN_TEXTURE = new ResourceLocation[] 
 	{
 		new ResourceLocation(Reference.MOD_ID, "textures/models/screens/no_module.png"),
-		new ResourceLocation(Reference.MOD_ID, "textures/models/screens/module_inv_small.png"),
-		new ResourceLocation(Reference.MOD_ID, "textures/models/screens/module_inv_large.png"),
 		new ResourceLocation(Reference.MOD_ID, "textures/models/screens/module_speed_minor.png"),
 		new ResourceLocation(Reference.MOD_ID, "textures/models/screens/module_speed_major.png"),
-		new ResourceLocation(Reference.MOD_ID, "textures/models/screens/module_fuel_infinite.png")
+		new ResourceLocation(Reference.MOD_ID, "textures/models/screens/module_inv_small.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/screens/module_inv_large.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/screens/module_fuel_infinite.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/screens/module_water_landing.png")
 	};
 	
 }

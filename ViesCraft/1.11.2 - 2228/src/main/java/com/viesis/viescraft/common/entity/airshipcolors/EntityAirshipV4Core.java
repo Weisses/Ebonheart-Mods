@@ -5,7 +5,6 @@ import java.util.List;
 import com.viesis.viescraft.api.ColorHelperVC;
 import com.viesis.viescraft.api.FuelVC;
 import com.viesis.viescraft.client.InitParticlesVCRender;
-import com.viesis.viescraft.common.caps.DualEnergyStorageVC;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 import com.viesis.viescraft.init.InitItemsVC;
 import com.viesis.viescraft.network.NetworkHandler;
@@ -54,11 +53,10 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
 	protected static final DataParameter<Boolean> MODULE_FUEL_INFINITE = EntityDataManager.<Boolean>createKey(EntityAirshipV4Core.class, DataSerializers.BOOLEAN);
 	protected static final DataParameter<Boolean> MODULE_SPEED_MINOR = EntityDataManager.<Boolean>createKey(EntityAirshipV4Core.class, DataSerializers.BOOLEAN);
 	protected static final DataParameter<Boolean> MODULE_SPEED_MAJOR = EntityDataManager.<Boolean>createKey(EntityAirshipV4Core.class, DataSerializers.BOOLEAN);
+	protected static final DataParameter<Boolean> MODULE_WATER_LANDING = EntityDataManager.<Boolean>createKey(EntityAirshipV4Core.class, DataSerializers.BOOLEAN);
 	
 	public String customName;
 	private int dropNumber;
-	
-	
 	
 	/** Passive Modules */
     public static boolean moduleInventorySmall;
@@ -66,6 +64,7 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
     public static boolean moduleFuelInfinite;
     public static boolean moduleSpeedMinor;
     public static boolean moduleSpeedMajor;
+    public static boolean moduleWaterLanding;
     
     public float AirshipSpeedTurn = 0.18F * (ViesCraftConfig.v4AirshipSpeed / 100);
     public float AirshipSpeedForward = 0.016F * (ViesCraftConfig.v4AirshipSpeed / 100);
@@ -124,11 +123,12 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
         this.dataManager.register(ITEMFUELSTACKPOWERED, Integer.valueOf(this.itemFuelStack));
         this.dataManager.register(ITEMFUELSTACKSIZEPOWERED, Integer.valueOf(this.itemFuelStackSize));
         
+        this.dataManager.register(MODULE_SPEED_MINOR, Boolean.valueOf(this.moduleSpeedMinor));
+        this.dataManager.register(MODULE_SPEED_MAJOR, Boolean.valueOf(this.moduleSpeedMajor));
         this.dataManager.register(MODULE_INVENTORY_SMALL, Boolean.valueOf(this.moduleInventorySmall));
         this.dataManager.register(MODULE_INVENTORY_LARGE, Boolean.valueOf(this.moduleInventoryLarge));
         this.dataManager.register(MODULE_FUEL_INFINITE, Boolean.valueOf(this.moduleFuelInfinite));
-        this.dataManager.register(MODULE_SPEED_MINOR, Boolean.valueOf(this.moduleSpeedMinor));
-        this.dataManager.register(MODULE_SPEED_MAJOR, Boolean.valueOf(this.moduleSpeedMajor));
+        this.dataManager.register(MODULE_WATER_LANDING, Boolean.valueOf(this.moduleWaterLanding));
 	}
 	
 	
@@ -374,6 +374,7 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
             this.motionZ *= (double)this.momentum;
             this.deltaRotation *= this.momentum;
             
+            
             if(this.getControllingPassenger() == null)
             {
         		if(this.motionY >= -0.039D)
@@ -397,6 +398,19 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
             if(fallInGround())
             {
             	this.motionY = 0;
+            }
+            
+            if(this.getModuleWaterLanding())
+            {
+            	if (this.status == EntityAirshipBaseVC.Status.UNDER_FLOWING_WATER 
+				|| this.status == EntityAirshipBaseVC.Status.UNDER_WATER)
+				{
+            		this.setPosition(this.posX, (double)(this.getWaterLevelAbove() - this.height) + 0.101D, this.posZ);
+				}
+            	if (this.status == EntityAirshipBaseVC.Status.IN_WATER)
+	            {
+	            	this.motionY = 0;
+	            }
             }
         }
     }
@@ -465,7 +479,7 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
                 	//Infinite fuel module installed
                 	else if(this.getModuleFuelInfinite())
                 	{
-                		f += finalAirshipSpeedForward - (finalAirshipSpeedForward * 0.4F);
+                		f += finalAirshipSpeedForward - (finalAirshipSpeedForward * 0.5F);
                 	}
                 	//Minor speed module installed
                 	else if(this.getModuleSpeedMinor())
@@ -842,7 +856,7 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
         else
         {
             Item item = stack.getItem();
-            DualEnergyStorageVC cap = (DualEnergyStorageVC) stack.getCapability(DualEnergyStorageVC.CAPABILITY_HOLDER , null);
+            //DualEnergyStorageVC cap = (DualEnergyStorageVC) stack.getCapability(DualEnergyStorageVC.CAPABILITY_HOLDER , null);
             if(ViesCraftConfig.vanillaFuel)
     		{
 	            if (item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.AIR)
@@ -1006,17 +1020,17 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
 		/**
 		if(this.world.isRemote)
 		{
-			if(this.getModuleInventorySmall())
-				LogHelper.info("1");
-			if(this.getModuleInventoryLarge())
-				LogHelper.info("2");
 			if(this.getModuleSpeedMinor())
+				LogHelper.info("1");
+			if(this.getModuleSpeedMajor())
+				LogHelper.info("2");
+			if(this.getModuleInventorySmall())
 				LogHelper.info("3");
-			if(this.getModuleFuelInfinite())
+			if(this.getModuleInventoryLarge())
 				LogHelper.info("4");
-			if(this.getModuleStealth())
+			if(this.getModuleFuelInfinite())
 				LogHelper.info("5");
-			if(this.getModuleDash())
+			if(this.getModuleWaterLanding())
 				LogHelper.info("6");
 		}
 		*/
@@ -1024,60 +1038,76 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
 		//Syncs the module boolean client side
 		if(this.world.isRemote)
 		{
-    		this.moduleInventorySmall = this.getModuleInventorySmall();
-    		this.moduleInventoryLarge = this.getModuleInventoryLarge();
     		this.moduleSpeedMinor = this.getModuleSpeedMinor();
     		this.moduleSpeedMajor = this.getModuleSpeedMajor();
+    		this.moduleInventorySmall = this.getModuleInventorySmall();
+    		this.moduleInventoryLarge = this.getModuleInventoryLarge();
     		this.moduleFuelInfinite = this.getModuleFuelInfinite();
+    		this.moduleWaterLanding = this.getModuleWaterLanding();
 		}
 		
 		if(moduleNumber == 1)
 		{
-			this.moduleInventorySmall = true;
-			this.moduleInventoryLarge = false;
-			this.moduleSpeedMinor = false;
+			this.moduleSpeedMinor = true;
 			this.moduleSpeedMajor = false;
+			this.moduleInventorySmall = false;
+			this.moduleInventoryLarge = false;
 			this.moduleFuelInfinite = false;
+			this.moduleWaterLanding = false;
 		}
 		else if(moduleNumber == 2)
 		{
-			this.moduleInventorySmall = false;
-			this.moduleInventoryLarge = true;
 			this.moduleSpeedMinor = false;
-			this.moduleSpeedMajor = false;
+			this.moduleSpeedMajor = true;
+			this.moduleInventorySmall = false;
+			this.moduleInventoryLarge = false;
 			this.moduleFuelInfinite = false;
+			this.moduleWaterLanding = false;
 		}
 		else if(moduleNumber == 3)
 		{
-			this.moduleInventorySmall = false;
-			this.moduleInventoryLarge = false;
-			this.moduleSpeedMinor = true;
+			this.moduleSpeedMinor = false;
 			this.moduleSpeedMajor = false;
+			this.moduleInventorySmall = true;
+			this.moduleInventoryLarge = false;
 			this.moduleFuelInfinite = false;
+			this.moduleWaterLanding = false;
 		}
 		else if(moduleNumber == 4)
 		{
-			this.moduleInventorySmall = false;
-			this.moduleInventoryLarge = false;
 			this.moduleSpeedMinor = false;
-			this.moduleSpeedMajor = true;
+			this.moduleSpeedMajor = false;
+			this.moduleInventorySmall = false;
+			this.moduleInventoryLarge = true;
 			this.moduleFuelInfinite = false;
+			this.moduleWaterLanding = false;
 		}
 		else if(moduleNumber == 5)
 		{
-			this.moduleInventorySmall = false;
-			this.moduleInventoryLarge = false;
 			this.moduleSpeedMinor = false;
 			this.moduleSpeedMajor = false;
+			this.moduleInventorySmall = false;
+			this.moduleInventoryLarge = false;
 			this.moduleFuelInfinite = true;
+			this.moduleWaterLanding = false;
+		}
+		else if(moduleNumber == 6)
+		{
+			this.moduleSpeedMinor = false;
+			this.moduleSpeedMajor = false;
+			this.moduleInventorySmall = false;
+			this.moduleInventoryLarge = false;
+			this.moduleFuelInfinite = false;
+			this.moduleWaterLanding = true;
 		}
 		else// if(moduleNumber == 0)
 		{
-			this.moduleInventorySmall = false;
-			this.moduleInventoryLarge = false;
 			this.moduleSpeedMinor = false;
 			this.moduleSpeedMajor = false;
+			this.moduleInventorySmall = false;
+			this.moduleInventoryLarge = false;
 			this.moduleFuelInfinite = false;
+			this.moduleWaterLanding = false;
 		}
 		
 		//Used to drop inventory if inv modules are removed/switched
@@ -1135,11 +1165,12 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
 		//Saves the module boolean to server side
     	if(!this.world.isRemote)
 		{
-			this.setModuleInventorySmall(this.moduleInventorySmall);
-    		this.setModuleInventoryLarge(this.moduleInventoryLarge);
     		this.setModuleSpeedMinor(this.moduleSpeedMinor);
     		this.setModuleSpeedMajor(this.moduleSpeedMajor);
+    		this.setModuleInventorySmall(this.moduleInventorySmall);
+    		this.setModuleInventoryLarge(this.moduleInventoryLarge);
     		this.setModuleFuelInfinite(this.moduleFuelInfinite);
+    		this.setModuleWaterLanding(this.moduleWaterLanding);
     	}
     }
     
@@ -1156,12 +1187,7 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
         {
             Item item = stack.getItem();
             
-            //Passive
-            if (item == InitItemsVC.module_inventory_small) return true;
-            if (item == InitItemsVC.module_inventory_large) return true;
-            if (item == InitItemsVC.module_speed_increase_minor) return true;
-            if (item == InitItemsVC.module_speed_increase_major) return true;
-            if (item == InitItemsVC.module_fuel_infinite) return true;
+            if (item == InitItemsVC.airship_module) return true;
             
             return false;
         }
@@ -1180,27 +1206,10 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
         {
             Item item = stack.getItem();
             
-            if (item == InitItemsVC.module_inventory_small)
+            if(item == InitItemsVC.airship_module)
             {
-            	return 1;
+            	return item.getMetadata(stack);
             }
-            else if (item == InitItemsVC.module_inventory_large)
-            {
-            	return 2;
-            }
-            else if (item == InitItemsVC.module_speed_increase_minor)
-            {
-            	return 3;
-            }
-            else if (item == InitItemsVC.module_speed_increase_major)
-            {
-            	return 4;
-            }
-            else if (item == InitItemsVC.module_fuel_infinite)
-            {
-            	return 5;
-            }
-            
             else 
             {
             	return 0;
@@ -1215,6 +1224,34 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
          * fuel
          */
         return getItemModule(stack);
+    }
+    
+    /**
+     * Sets if Minor Speed Increase mod is installed to pass from server to client.
+     */
+    public void setModuleSpeedMinor(boolean moduleSpeed1)
+    {
+        this.dataManager.set(MODULE_SPEED_MINOR, Boolean.valueOf(moduleSpeed1));
+    }
+    
+    @Override
+    public boolean getModuleSpeedMinor()
+    {
+        return ((Boolean)this.dataManager.get(MODULE_SPEED_MINOR)).booleanValue();
+    }
+    
+    /**
+     * Sets if Major Speed Increase mod is installed to pass from server to client.
+     */
+    public void setModuleSpeedMajor(boolean moduleSpeed2)
+    {
+        this.dataManager.set(MODULE_SPEED_MAJOR, Boolean.valueOf(moduleSpeed2));
+    }
+    
+    @Override
+    public boolean getModuleSpeedMajor()
+    {
+        return ((Boolean)this.dataManager.get(MODULE_SPEED_MAJOR)).booleanValue();
     }
     
     /**
@@ -1260,31 +1297,17 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
     }
     
     /**
-     * Sets if Minor Speed Increase mod is installed to pass from server to client.
-     */
-    public void setModuleSpeedMinor(boolean moduleSpeed1)
-    {
-        this.dataManager.set(MODULE_SPEED_MINOR, Boolean.valueOf(moduleSpeed1));
-    }
-    
-    @Override
-    public boolean getModuleSpeedMinor()
-    {
-        return ((Boolean)this.dataManager.get(MODULE_SPEED_MINOR)).booleanValue();
-    }
-    
-    /**
      * Sets if Major Speed Increase mod is installed to pass from server to client.
      */
-    public void setModuleSpeedMajor(boolean moduleSpeed2)
+    public void setModuleWaterLanding(boolean moduleWaterLanding1)
     {
-        this.dataManager.set(MODULE_SPEED_MAJOR, Boolean.valueOf(moduleSpeed2));
+        this.dataManager.set(MODULE_WATER_LANDING, Boolean.valueOf(moduleWaterLanding1));
     }
     
     @Override
-    public boolean getModuleSpeedMajor()
+    public boolean getModuleWaterLanding()
     {
-        return ((Boolean)this.dataManager.get(MODULE_SPEED_MAJOR)).booleanValue();
+        return ((Boolean)this.dataManager.get(MODULE_WATER_LANDING)).booleanValue();
     }
     
     

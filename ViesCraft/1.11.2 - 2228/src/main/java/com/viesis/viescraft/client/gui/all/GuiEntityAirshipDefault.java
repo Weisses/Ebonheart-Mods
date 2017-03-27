@@ -92,7 +92,8 @@ public class GuiEntityAirshipDefault extends GuiContainer {
 		//On button is green in gui
 		if(this.airship.getModuleSpeedMinor()
 		|| this.airship.getModuleSpeedMajor()
-		|| this.airship.getModuleFuelInfinite())
+		|| this.airship.getModuleFuelInfinite()
+		|| this.airship.getModuleWaterLanding())
 		{
 			this.drawTexturedModalRect(this.guiLeft + 124, this.guiTop + 61, 176, 100, 8, 8);
 		}
@@ -120,6 +121,7 @@ public class GuiEntityAirshipDefault extends GuiContainer {
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
 	{
 		String s = this.airship.getDisplayName().getUnformattedText();
+		
 		//this.fontRendererObj.drawString("Fuel", 150, 6, 4210752);
 		this.fontRendererObj.drawString(this.playerInv.getDisplayName().getUnformattedText(), 8, 72, 4210752);
 	}

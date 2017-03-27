@@ -128,6 +128,10 @@ public class GuiHUD extends Gui {
 				{
 					drawTexturedModalRect(hudX + 83, hudY, 48, 240, 16, 16);
 				}
+				if(this.airship.getModuleWaterLanding())
+				{
+					drawTexturedModalRect(hudX + 83, hudY, 80, 240, 16, 16);
+				}
 				
 				int timer;
 				int remainder;

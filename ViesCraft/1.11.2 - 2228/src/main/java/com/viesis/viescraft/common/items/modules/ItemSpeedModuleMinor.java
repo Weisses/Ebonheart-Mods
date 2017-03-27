@@ -19,16 +19,14 @@ public class ItemSpeedModuleMinor extends Item {
 	{
 		ItemHelper.setItemName(this, "module_speed_increase_minor");
 		this.setMaxStackSize(1);
-		this.setCreativeTab(ViesCraft.tabViesCraftItems);
+		//this.setCreativeTab(ViesCraft.tabViesCraftItems);
 	}
 	
 	@SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List toolTip, boolean advanced) 
 	{
-		toolTip.add(TextFormatting.GOLD + "Effects while socketed:");
-		toolTip.add(" ");
-		toolTip.add(TextFormatting.GREEN + "Pro - Speed Modifier: +0.8");
-		toolTip.add(TextFormatting.RED + "Con - None.");
+		toolTip.add(TextFormatting.RED + "OUTDATED ITEM!");
+		toolTip.add(TextFormatting.GOLD + "Place in a crafting table to get the new upgrade.");
 	}
 	
 	public EnumRarity getRarity(ItemStack stack)

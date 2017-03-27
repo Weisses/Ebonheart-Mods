@@ -15,8 +15,10 @@ public class ItemsVC {
 	public static Item airship_balloon;
 	public static Item airship_engine;
 	public static Item airship_ignition;
+	
 	public static Item airship_frame;
 	public static Item airship_balloon_pattern;
+	public static Item airship_module;
 	
 	public static Item airship_dismounter;
 	

@@ -7,7 +7,6 @@ import javax.annotation.Nullable;
 import com.google.common.collect.Lists;
 import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.api.util.Keybinds;
-import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.client.InitParticlesVCRender;
 import com.viesis.viescraft.init.InitItemsVC;
 
@@ -223,23 +222,7 @@ public class EntityAirshipBaseVC extends Entity {
             return true;
         }
     }
-    /**
-    @Override
-    public void applyEntityCollision(Entity entityIn)
-    {
-        if (entityIn instanceof EntityAirshipBaseVC)
-        {
-            if (entityIn.getEntityBoundingBox().minY < this.getEntityBoundingBox().maxY)
-            {
-                super.applyEntityCollision(entityIn);
-            }
-        }
-        else if (entityIn.getEntityBoundingBox().minY <= this.getEntityBoundingBox().minY)
-        {
-            super.applyEntityCollision(entityIn);
-        }
-    }
-    */
+    
     /**
      * Main entity item drop.
      */
@@ -1135,6 +1118,73 @@ public class EntityAirshipBaseVC extends Entity {
         }
     }
     
+    /**
+	 * Module enum - Represents various Module types.
+	 */
+    public static enum Module
+    {
+        CHIP(0, "Chip"),
+        MINORSPEED(1, "Minor Speed"),
+        MAJORSPEED(2, "Major Speed"),
+        SMALLINVENTORY(3, "Small Inventory"),
+        LARGEINVENTORY(4, "Large Inventory"),
+        INFINITEFUEL(5, "Infinite Fuel"),
+    	WATERLANDING(6, "Water Landing")
+    	//BASKETWEAVE(7, "Basketweave")
+    	//BASKETWEAVECOLORIZED(7, "Colorized Basketweave")
+    	;
+    	
+        private final String name;
+        private final int metadata;
+        
+        private Module(int metadataIn, String nameIn)
+        {
+            this.name = nameIn;
+            this.metadata = metadataIn;
+        }
+        
+        public String getName()
+        {
+            return this.name;
+        }
+        
+        public int getMetadata()
+        {
+            return this.metadata;
+        }
+        
+        public String toString()
+        {
+            return this.name;
+        }
+        
+        /**
+         * Get a boat type by it's enum ordinal
+         */
+        public static EntityAirshipBaseVC.Module byId(int id)
+        {
+            if (id < 0 || id >= values().length)
+            {
+                id = 0;
+            }
+            
+            return values()[id];
+        }
+        
+        public static EntityAirshipBaseVC.Module getTypeFromString(String nameIn)
+        {
+            for (int i = 0; i < values().length; ++i)
+            {
+                if (values()[i].getName().equals(nameIn))
+                {
+                    return values()[i];
+                }
+            }
+            
+            return values()[0];
+        }
+    }
+    
     
     
 	//==================================//
@@ -1177,6 +1227,14 @@ public class EntityAirshipBaseVC extends Entity {
      * Gets the Major Speed boolean to pass from server to client.
      */
     public boolean getModuleSpeedMajor()
+    {
+        return false;
+    }
+    
+    /**
+     * Gets the Water Landing boolean to pass from server to client.
+     */
+    public boolean getModuleWaterLanding()
     {
         return false;
     }

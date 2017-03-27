@@ -19,17 +19,14 @@ public class ItemInventoryModuleLarge extends Item {
 	{
 		ItemHelper.setItemName(this, "module_inventory_large");
 		this.setMaxStackSize(1);
-		this.setCreativeTab(ViesCraft.tabViesCraftItems);
+		//this.setCreativeTab(ViesCraft.tabViesCraftItems);
 	}
 	
 	@SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List toolTip, boolean advanced) 
 	{
-		toolTip.add(TextFormatting.GOLD + "Effects while socketed:");
-		toolTip.add(" ");
-		toolTip.add(TextFormatting.GREEN + "Pro - 18 slot inventory.");
-		toolTip.add(TextFormatting.RED + "Con - Speed reduced to 70%");
-		toolTip.add(TextFormatting.RED + "Con - Fuel burns x2 faster.");
+		toolTip.add(TextFormatting.RED + "OUTDATED ITEM!");
+		toolTip.add(TextFormatting.GOLD + "Place in a crafting table to get the new upgrade.");
 	}
 	
 	public EnumRarity getRarity(ItemStack stack)

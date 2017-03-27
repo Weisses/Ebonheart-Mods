@@ -27,6 +27,7 @@ import com.viesis.viescraft.common.items.parts.ItemColorizerBalloon;
 import com.viesis.viescraft.common.items.parts.ItemEngine;
 import com.viesis.viescraft.common.items.parts.ItemFrame;
 import com.viesis.viescraft.common.items.parts.ItemIgnition;
+import com.viesis.viescraft.common.items.parts.ItemModule;
 import com.viesis.viescraft.common.items.parts.ItemViesoline;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 
@@ -55,7 +56,8 @@ public class InitItemsVC extends ItemsVC {
 		
 		airship_frame = registerItem(new ItemFrame());
 		airship_balloon_pattern = registerItem(new ItemBalloonPattern());
-
+		airship_module = registerItem(new ItemModule());
+		
 		item_balloon_colorizer = registerItem(new ItemColorizerBalloon());
 		
 		module_chip = registerItem(new ItemModuleChip());

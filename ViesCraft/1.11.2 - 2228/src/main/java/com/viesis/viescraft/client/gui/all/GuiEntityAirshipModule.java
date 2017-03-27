@@ -8,6 +8,7 @@ import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.api.util.Keybinds;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
 import com.viesis.viescraft.common.entity.airshipcolors.containers.all.ContainerAirshipModule;
+import com.viesis.viescraft.init.InitItemsVC;
 import com.viesis.viescraft.network.NetworkHandler;
 import com.viesis.viescraft.network.server.airship.MessageGuiDefault;
 import com.viesis.viescraft.network.server.airship.MessageGuiModuleInventoryLarge;
@@ -86,11 +87,7 @@ public class GuiEntityAirshipModule extends GuiContainer {
 		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
 		
 		//If any Module installed
-		if(this.airship.getModuleInventorySmall()
-		|| this.airship.getModuleInventoryLarge()
-		|| this.airship.getModuleSpeedMinor()
-		|| this.airship.getModuleSpeedMajor()
-		|| this.airship.getModuleFuelInfinite())
+		if(this.airship.inventory.getStackInSlot(1).getItem() == InitItemsVC.airship_module)
 		{
 		    //Draws the box overlay around module slot
 			this.drawTexturedModalRect(this.guiLeft + 64, this.guiTop + 14, 176, 0, 48, 48);
