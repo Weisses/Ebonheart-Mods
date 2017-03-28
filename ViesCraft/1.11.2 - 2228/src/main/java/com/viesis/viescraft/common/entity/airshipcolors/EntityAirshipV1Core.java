@@ -269,7 +269,11 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
             this.setDamageTaken(this.getDamageTaken() - 1.0F);
         }
         
-        this.waterDamage();
+        if(!this.getModuleWaterLanding())
+        {
+        	this.waterDamage();
+        }
+        
         this.updateAirshipMeta();
         this.fallInGround();
         
@@ -360,7 +364,8 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
             	this.momentum = 0.45F;
             }
             else if (this.status == EntityAirshipBaseVC.Status.UNDER_FLOWING_WATER 
-        	  || this.status == EntityAirshipBaseVC.Status.UNDER_WATER)
+        	  || this.status == EntityAirshipBaseVC.Status.UNDER_WATER
+        	  && !this.getModuleWaterLanding())
             {
             	this.waterPartsDrop();
             }
