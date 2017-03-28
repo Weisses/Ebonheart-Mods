@@ -126,4 +126,16 @@ public class GuiEntityAirshipModuleInventoryLarge extends GuiContainer {
             this.mc.player.closeScreen();
         }
     }
+	
+	@Override
+	public void updateScreen()
+    {
+        super.updateScreen();
+
+        if (!this.mc.player.isEntityAlive() || this.mc.player.isDead
+        || !this.mc.player.isRiding())
+        {
+            this.mc.player.closeScreen();
+        }
+    }
 }
