@@ -359,9 +359,15 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
         }
         else
         {
-            if (this.status == EntityAirshipBaseVC.Status.IN_WATER)
+            if (this.status == EntityAirshipBaseVC.Status.IN_WATER
+            && !this.getModuleWaterLanding())
             {
             	this.momentum = 0.45F;
+            }
+            else if (this.status == EntityAirshipBaseVC.Status.IN_WATER
+            && this.getModuleWaterLanding())
+            {
+            	this.momentum = 0.9F;
             }
             else if (this.status == EntityAirshipBaseVC.Status.UNDER_FLOWING_WATER 
         	  || this.status == EntityAirshipBaseVC.Status.UNDER_WATER
