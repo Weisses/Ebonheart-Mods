@@ -93,7 +93,10 @@ public class GuiEntityAirshipDefault extends GuiContainer {
 		if(this.airship.getModuleSpeedMinor()
 		|| this.airship.getModuleSpeedMajor()
 		|| this.airship.getModuleFuelInfinite()
-		|| this.airship.getModuleWaterLanding())
+		|| this.airship.getModuleWaterLanding()
+		|| this.airship.getModuleMaxAltitude()
+		|| this.airship.getModuleMinorEfficiency()
+		|| this.airship.getModuleMajorEfficiency())
 		{
 			this.drawTexturedModalRect(this.guiLeft + 124, this.guiTop + 61, 176, 100, 8, 8);
 		}

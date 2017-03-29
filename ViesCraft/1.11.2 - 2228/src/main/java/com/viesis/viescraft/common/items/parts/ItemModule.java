@@ -84,6 +84,27 @@ public class ItemModule extends Item {
 			toolTip.add(TextFormatting.GREEN + "Pro - Land on water.");
 			toolTip.add(TextFormatting.RED + "Con - None.");
 		}
+		if(stack.getMetadata() == 7)
+		{
+			toolTip.add(TextFormatting.GOLD + "Effects while socketed:");
+			toolTip.add(" ");
+			toolTip.add(TextFormatting.GREEN + "Pro - Unlimited max altitude.");
+			toolTip.add(TextFormatting.RED + "Con - None.");
+		}
+		if(stack.getMetadata() == 8)
+		{
+			toolTip.add(TextFormatting.GOLD + "Effects while socketed:");
+			toolTip.add(" ");
+			toolTip.add(TextFormatting.GREEN + "Pro - Fuel lasts 25% longer.");
+			toolTip.add(TextFormatting.RED + "Con - None.");
+		}
+		if(stack.getMetadata() == 9)
+		{
+			toolTip.add(TextFormatting.GOLD + "Effects while socketed:");
+			toolTip.add(" ");
+			toolTip.add(TextFormatting.GREEN + "Pro - Fuel lasts 50% longer.");
+			toolTip.add(TextFormatting.RED + "Con - Speed Modifier: -30%");
+		}
 	}
 	
 	public EnumRarity getRarity(ItemStack stack)

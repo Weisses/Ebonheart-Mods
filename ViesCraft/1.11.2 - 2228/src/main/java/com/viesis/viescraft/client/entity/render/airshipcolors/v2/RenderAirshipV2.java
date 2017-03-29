@@ -121,6 +121,18 @@ public class RenderAirshipV2 extends Render<EntityAirshipV2Core> {
 		{
 			this.moduleNumber = 6;
 		}
+        else if(entity.getModuleMaxAltitude())
+		{
+			this.moduleNumber = 7;
+		}
+        else if(entity.getModuleMinorEfficiency())
+		{
+			this.moduleNumber = 8;
+		}
+        else if(entity.getModuleMajorEfficiency())
+		{
+			this.moduleNumber = 9;
+		}
         else
         {
         	this.moduleNumber = 0;

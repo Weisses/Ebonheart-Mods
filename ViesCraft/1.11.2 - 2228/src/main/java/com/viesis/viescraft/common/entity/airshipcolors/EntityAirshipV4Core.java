@@ -54,6 +54,9 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
 	protected static final DataParameter<Boolean> MODULE_SPEED_MINOR = EntityDataManager.<Boolean>createKey(EntityAirshipV4Core.class, DataSerializers.BOOLEAN);
 	protected static final DataParameter<Boolean> MODULE_SPEED_MAJOR = EntityDataManager.<Boolean>createKey(EntityAirshipV4Core.class, DataSerializers.BOOLEAN);
 	protected static final DataParameter<Boolean> MODULE_WATER_LANDING = EntityDataManager.<Boolean>createKey(EntityAirshipV4Core.class, DataSerializers.BOOLEAN);
+	protected static final DataParameter<Boolean> MODULE_MAX_ALTITUDE = EntityDataManager.<Boolean>createKey(EntityAirshipV4Core.class, DataSerializers.BOOLEAN);
+	protected static final DataParameter<Boolean> MODULE_MINOR_EFFICIENCY = EntityDataManager.<Boolean>createKey(EntityAirshipV4Core.class, DataSerializers.BOOLEAN);
+	protected static final DataParameter<Boolean> MODULE_MAJOR_EFFICIENCY = EntityDataManager.<Boolean>createKey(EntityAirshipV4Core.class, DataSerializers.BOOLEAN);
 	
 	public String customName;
 	private int dropNumber;
@@ -65,6 +68,9 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
     public static boolean moduleSpeedMinor;
     public static boolean moduleSpeedMajor;
     public static boolean moduleWaterLanding;
+    public static boolean moduleMaxAltitude;
+    public static boolean moduleMinorEfficiency;
+    public static boolean moduleMajorEfficiency;
     
     public float AirshipSpeedTurn = 0.18F * (ViesCraftConfig.v4AirshipSpeed / 100);
     public float AirshipSpeedForward = 0.016F * (ViesCraftConfig.v4AirshipSpeed / 100);
@@ -129,6 +135,9 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
         this.dataManager.register(MODULE_INVENTORY_LARGE, Boolean.valueOf(this.moduleInventoryLarge));
         this.dataManager.register(MODULE_FUEL_INFINITE, Boolean.valueOf(this.moduleFuelInfinite));
         this.dataManager.register(MODULE_WATER_LANDING, Boolean.valueOf(this.moduleWaterLanding));
+        this.dataManager.register(MODULE_MAX_ALTITUDE, Boolean.valueOf(this.moduleMaxAltitude));
+        this.dataManager.register(MODULE_MINOR_EFFICIENCY, Boolean.valueOf(this.moduleMinorEfficiency));
+        this.dataManager.register(MODULE_MAJOR_EFFICIENCY, Boolean.valueOf(this.moduleMajorEfficiency));
 	}
 	
 	
@@ -241,10 +250,7 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
 		
 		return this.hasCustomName() ? this.customName : 
 			ColorHelperVC.getColorNameFromRgb(this.metaColorRed, this.metaColorGreen, this.metaColorBlue)		
-			+ " "
-			+ name 
-			+ " " 
-			+ ViesCraftConfig.v4AirshipName;
+			+ " " + name + " " + ViesCraftConfig.v4AirshipName;
 	}
 	
 	
@@ -276,6 +282,7 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
         
         this.updateAirshipMeta();
         this.fallInGround();
+        this.getAirshipFuelTick();
         
         this.prevPosX = this.posX;
         this.prevPosY = this.posY;
@@ -423,6 +430,12 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
 	            	this.motionY = 0;
 	            }
             }
+            
+            if(!this.getModuleMaxAltitude()
+            && this.getPosition().getY() > FrameCore.byId(this.metaFrameCore).getElevation())
+            {
+            	this.motionY = -0.1D;
+            }
         }
     }
     
@@ -482,8 +495,9 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
                     {
                 		f += finalAirshipSpeedForward - (finalAirshipSpeedForward * 0.2F);
                     }
-                	//Large inv module installed
-                	else if(this.getModuleInventoryLarge())
+                	//Large inv or major efficiency module installed
+                	else if(this.getModuleInventoryLarge()
+                	|| this.getModuleMajorEfficiency())
                 	{
                 		f += finalAirshipSpeedForward - (finalAirshipSpeedForward * 0.3F);
                 	}
@@ -561,7 +575,8 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
             if (this.upInputDown)
             {
             	//Check airship max height
-            	if(!this.airshipHeightLimit())
+            	if(!this.airshipHeightLimit()
+            	|| this.getModuleMaxAltitude())
     			{
             		//Check airship is burning fuel
             		if(isClientAirshipBurning())
@@ -731,34 +746,9 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
         	{
         		
         	}
-        	//The player in the airship is in Creative Mode
-        	//else if(EventHandlerAirship.creativeBurn)
-        	//{
-        	//	if(this.getEntityId() == EventHandlerAirship.playerRidingEntity)
-        	//	{
-        	//		
-        	//	}
-        	//	else
-        	//	{
-        	//		--this.airshipBurnTime;
-        	//	}
-        	//}
-        	//Airship has either Large Inventory or Minor Speed Module installed
-        	else if(this.getModuleInventoryLarge()
-        	|| this.getModuleSpeedMajor())
+        	else 
         	{
-        		--this.airshipBurnTime;
-        		--this.airshipBurnTime;
-        	}
-        	//Airship has no controlling passenger
-        	else if(this.getControllingPassenger() == null)
-        	{
-        		--this.airshipBurnTime;
-        	}
-        	//Anything else
-        	else
-        	{
-        		--this.airshipBurnTime;
+        		this.airshipBurnTime = this.airshipBurnTime - this.airshipFuelTick;
         	}
         }
         
@@ -770,20 +760,6 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
         	{
         		this.airshipBurnTime = 1;
         	}
-        	//The player in the airship is in Creative Mode
-        	//else if(EventHandlerAirship.creativeBurn)
-        	//{
-        	//	if (this.getControllingPassenger() instanceof EntityPlayer
-        	//	&& this.getEntityId() == EventHandlerAirship.playerRidingEntity)
-            //	{
-            //		this.airshipBurnTime = 1;
-            //	}
-        		//else
-        		//{
-        		//	this.airshipBurnTime = 0;
-        		//}
-        		
-        	//}
         	//Airship has no controlling passenger
         	else if(this.getControllingPassenger() == null)
         	{
@@ -828,7 +804,7 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
             flag1 = true;
         }
         
-        //Saves the fuel burntime server side
+        //Saves the fuel burn time server side
         if(!this.world.isRemote)
         {
         	this.setPowered(this.airshipBurnTime);
@@ -842,15 +818,12 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
     public boolean isClientAirshipBurning()
     {
     	boolean hasFuel = false;
-    	//if(EventHandlerAirship.creativeBurn
-    	//&& this.getEntityId() == EventHandlerAirship.playerRidingEntity)
-    	//{
-    	//	hasFuel = true;
-    	//}
+    	
     	if(this.airshipBurnTime > 0)
     	{
     		hasFuel = true;
     	}
+    	
     	return hasFuel;
     }
     
@@ -876,32 +849,32 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
 	                
 	                if (block == Blocks.WOODEN_SLAB)
 	                {
-	                    return FuelVC.wooden_slab;
+	                    return FuelVC.wooden_slab * 10;
 	                }
 	                
 	                if (block.getDefaultState().getMaterial() == Material.WOOD)
 	                {
-	                    return FuelVC.wood_block_material;
+	                    return FuelVC.wood_block_material * 10;
 	                }
 	                
 	                if (block == Blocks.COAL_BLOCK)
 	                {
-	                    return FuelVC.coal_block;
+	                    return FuelVC.coal_block * 10;
 	                }
 	            }
 	            
-	            if (item == Items.STICK) return FuelVC.stick;
-	            if (item == Item.getItemFromBlock(Blocks.SAPLING)) return FuelVC.sapling;
-	            if (item == Items.COAL) return FuelVC.coal;
-	            if (item == Items.BLAZE_ROD) return FuelVC.blaze_rod;
+	            if (item == Items.STICK) return FuelVC.stick * 10;
+	            if (item == Item.getItemFromBlock(Blocks.SAPLING)) return FuelVC.sapling * 10;
+	            if (item == Items.COAL) return FuelVC.coal * 10;
+	            if (item == Items.BLAZE_ROD) return FuelVC.blaze_rod * 10;
 	            
-	            if (item == Items.LAVA_BUCKET) return 20000;
+	            if (item == Items.LAVA_BUCKET) return 20000 * 10;
     		}
             
-            if (item == InitItemsVC.viesoline_pellets) return (ViesCraftConfig.viesolineBurnTime * 20);
+            if (item == InitItemsVC.viesoline_pellets) return (ViesCraftConfig.viesolineBurnTime * 20) * 10;
             //if (item == InitItemsVC.airship_battery) return cap.getEnergyStored();
             
-            return net.minecraftforge.fml.common.registry.GameRegistry.getFuelValue(stack);
+            return net.minecraftforge.fml.common.registry.GameRegistry.getFuelValue(stack) * 10;
         }
     }
     
@@ -918,7 +891,6 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
     /**
      * Calculates total fuel burn time by stack size for GUI
      */
-    //TODO
     public void getTotalFuelSlotBurnTime()
     {
     	//Passes itemFuelStack to client for gui
@@ -1043,6 +1015,10 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
 				LogHelper.info("5");
 			if(this.getModuleWaterLanding())
 				LogHelper.info("6");
+			if(this.getModuleMinorEfficiency())
+				LogHelper.info("7");
+			if(this.getModuleMajorEfficiency())
+				LogHelper.info("8");
 		}
 		*/
 		
@@ -1055,6 +1031,9 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
     		this.moduleInventoryLarge = this.getModuleInventoryLarge();
     		this.moduleFuelInfinite = this.getModuleFuelInfinite();
     		this.moduleWaterLanding = this.getModuleWaterLanding();
+    		this.moduleMaxAltitude = this.getModuleMaxAltitude();
+    		this.moduleMinorEfficiency = this.getModuleMinorEfficiency();
+    		this.moduleMajorEfficiency = this.getModuleMajorEfficiency();
 		}
 		
 		if(moduleNumber == 1)
@@ -1065,6 +1044,9 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
 			this.moduleInventoryLarge = false;
 			this.moduleFuelInfinite = false;
 			this.moduleWaterLanding = false;
+			this.moduleMaxAltitude = false;
+			this.moduleMinorEfficiency = false;
+			this.moduleMajorEfficiency = false;
 		}
 		else if(moduleNumber == 2)
 		{
@@ -1074,6 +1056,9 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
 			this.moduleInventoryLarge = false;
 			this.moduleFuelInfinite = false;
 			this.moduleWaterLanding = false;
+			this.moduleMaxAltitude = false;
+			this.moduleMinorEfficiency = false;
+			this.moduleMajorEfficiency = false;
 		}
 		else if(moduleNumber == 3)
 		{
@@ -1083,6 +1068,9 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
 			this.moduleInventoryLarge = false;
 			this.moduleFuelInfinite = false;
 			this.moduleWaterLanding = false;
+			this.moduleMaxAltitude = false;
+			this.moduleMinorEfficiency = false;
+			this.moduleMajorEfficiency = false;
 		}
 		else if(moduleNumber == 4)
 		{
@@ -1092,6 +1080,9 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
 			this.moduleInventoryLarge = true;
 			this.moduleFuelInfinite = false;
 			this.moduleWaterLanding = false;
+			this.moduleMaxAltitude = false;
+			this.moduleMinorEfficiency = false;
+			this.moduleMajorEfficiency = false;
 		}
 		else if(moduleNumber == 5)
 		{
@@ -1101,6 +1092,9 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
 			this.moduleInventoryLarge = false;
 			this.moduleFuelInfinite = true;
 			this.moduleWaterLanding = false;
+			this.moduleMaxAltitude = false;
+			this.moduleMinorEfficiency = false;
+			this.moduleMajorEfficiency = false;
 		}
 		else if(moduleNumber == 6)
 		{
@@ -1110,6 +1104,45 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
 			this.moduleInventoryLarge = false;
 			this.moduleFuelInfinite = false;
 			this.moduleWaterLanding = true;
+			this.moduleMaxAltitude = false;
+			this.moduleMinorEfficiency = false;
+			this.moduleMajorEfficiency = false;
+		}
+		else if(moduleNumber == 7)
+		{
+			this.moduleSpeedMinor = false;
+			this.moduleSpeedMajor = false;
+			this.moduleInventorySmall = false;
+			this.moduleInventoryLarge = false;
+			this.moduleFuelInfinite = false;
+			this.moduleWaterLanding = false;
+			this.moduleMaxAltitude = true;
+			this.moduleMinorEfficiency = false;
+			this.moduleMajorEfficiency = false;
+		}
+		else if(moduleNumber == 8)
+		{
+			this.moduleSpeedMinor = false;
+			this.moduleSpeedMajor = false;
+			this.moduleInventorySmall = false;
+			this.moduleInventoryLarge = false;
+			this.moduleFuelInfinite = false;
+			this.moduleWaterLanding = false;
+			this.moduleMaxAltitude = false;
+			this.moduleMinorEfficiency = true;
+			this.moduleMajorEfficiency = false;
+		}
+		else if(moduleNumber == 9)
+		{
+			this.moduleSpeedMinor = false;
+			this.moduleSpeedMajor = false;
+			this.moduleInventorySmall = false;
+			this.moduleInventoryLarge = false;
+			this.moduleFuelInfinite = false;
+			this.moduleWaterLanding = false;
+			this.moduleMaxAltitude = false;
+			this.moduleMinorEfficiency = false;
+			this.moduleMajorEfficiency = true;
 		}
 		else// if(moduleNumber == 0)
 		{
@@ -1119,6 +1152,9 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
 			this.moduleInventoryLarge = false;
 			this.moduleFuelInfinite = false;
 			this.moduleWaterLanding = false;
+			this.moduleMaxAltitude = false;
+			this.moduleMinorEfficiency = false;
+			this.moduleMajorEfficiency = false;
 		}
 		
 		//Used to drop inventory if inv modules are removed/switched
@@ -1182,6 +1218,9 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
     		this.setModuleInventoryLarge(this.moduleInventoryLarge);
     		this.setModuleFuelInfinite(this.moduleFuelInfinite);
     		this.setModuleWaterLanding(this.moduleWaterLanding);
+    		this.setModuleMaxAltitude(this.moduleMaxAltitude);
+    		this.setModuleMinorEfficiency(this.moduleMinorEfficiency);
+    		this.setModuleMajorEfficiency(this.moduleMajorEfficiency);
     	}
     }
     
@@ -1308,7 +1347,7 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
     }
     
     /**
-     * Sets if Major Speed Increase mod is installed to pass from server to client.
+     * Sets if Water Landing mod is installed to pass from server to client.
      */
     public void setModuleWaterLanding(boolean moduleWaterLanding1)
     {
@@ -1319,6 +1358,48 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
     public boolean getModuleWaterLanding()
     {
         return ((Boolean)this.dataManager.get(MODULE_WATER_LANDING)).booleanValue();
+    }
+
+    /**
+     * Sets if Max Altitude mod is installed to pass from server to client.
+     */
+    public void setModuleMaxAltitude(boolean moduleMaxAltitude1)
+    {
+        this.dataManager.set(MODULE_MAX_ALTITUDE, Boolean.valueOf(moduleMaxAltitude1));
+    }
+    
+    @Override
+    public boolean getModuleMaxAltitude()
+    {
+        return ((Boolean)this.dataManager.get(MODULE_MAX_ALTITUDE)).booleanValue();
+    }
+
+    /**
+     * Sets if Minor Efficiency mod is installed to pass from server to client.
+     */
+    public void setModuleMinorEfficiency(boolean moduleMinorEfficiency1)
+    {
+        this.dataManager.set(MODULE_MINOR_EFFICIENCY, Boolean.valueOf(moduleMinorEfficiency1));
+    }
+    
+    @Override
+    public boolean getModuleMinorEfficiency()
+    {
+        return ((Boolean)this.dataManager.get(MODULE_MINOR_EFFICIENCY)).booleanValue();
+    }
+
+    /**
+     * Sets if Major Efficiency mod is installed to pass from server to client.
+     */
+    public void setModuleMajorEfficiency(boolean moduleMajorEfficiency1)
+    {
+        this.dataManager.set(MODULE_MAJOR_EFFICIENCY, Boolean.valueOf(moduleMajorEfficiency1));
+    }
+    
+    @Override
+    public boolean getModuleMajorEfficiency()
+    {
+        return ((Boolean)this.dataManager.get(MODULE_MAJOR_EFFICIENCY)).booleanValue();
     }
     
     

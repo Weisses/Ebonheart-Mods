@@ -41,6 +41,7 @@ public class EntityAirshipBaseVC extends Entity {
 	public int airshipTotalBurnTime;
 	public int itemFuelStackSize;
 	public int itemFuelStack;
+	public int airshipFuelTick;
 	
     /** My capabilities inventory */
     public ItemStackHandler inventory;
@@ -933,7 +934,7 @@ public class EntityAirshipBaseVC extends Entity {
     	Boolean maxHeightReached;
     	
     	int airshipHeight = this.getPosition().getY();
-    	if(airshipHeight >= FrameCore.byId(this.metaFrameCore).getElevation())
+    	if(airshipHeight > FrameCore.byId(this.metaFrameCore).getElevation())
     	{
     		maxHeightReached = true;
     	}
@@ -944,7 +945,33 @@ public class EntityAirshipBaseVC extends Entity {
 		
 		return maxHeightReached;
     }
+    
+    /**
+     * Calculates the number of ticks an airship needs.
+     */
+    protected int getAirshipFuelTick()
+    {
+    	this.airshipFuelTick = 10;
+    	
+    	if(this.getModuleMinorEfficiency())
+    	{
+    		this.airshipFuelTick = 8;
+    	}
+    	if(this.getModuleMajorEfficiency())
+    	{
+    		this.airshipFuelTick = 5;
+    	}
+    	if(this.getModuleSpeedMajor()
+    	|| this.getModuleInventoryLarge())
+    	{
+    		this.airshipFuelTick = 20;
+    	}
+    	
+    	return airshipFuelTick;
+    }
 	
+    
+    
     /**
 	 * Core Frame enum - Represents various frame types.
 	 */
@@ -952,37 +979,37 @@ public class EntityAirshipBaseVC extends Entity {
     {
     	//STRING(meta, name, speed, altitude)
     	//Common - 8 items
-        WOOD0(0, "Oak", 0F, 85),
-        WOOD1(1, "Spruce", 0F, 85),
-        WOOD2(2, "Birch", 0F, 85),
-        WOOD3(3, "Jungle", 0F, 85),
-        WOOD4(4, "Acacia", 0F, 85),
-        WOOD5(5, "Dark Oak", 0F, 85),
-        SANDSTONE(6, "Sandstone", 0.001F, 90),
-        BRICK(7, "Brick", 0.002F, 100),
+        WOOD0(0, "Oak", 0F, 75),
+        WOOD1(1, "Spruce", 0F, 75),
+        WOOD2(2, "Birch", 0F, 75),
+        WOOD3(3, "Jungle", 0F, 75),
+        WOOD4(4, "Acacia", 0F, 75),
+        WOOD5(5, "Dark Oak", 0F, 75),
+        SANDSTONE(6, "Sandstone", 0.001F, 80),
+        BRICK(7, "Brick", 0.002F, 90),
         
         //Uncommon - 7 items
-        BONE(8, "Bone", 0.003F, 110),
-    	IRON(9, "Iron", 0.004F, 120),
-        REDSTONE(10, "Redstone", 0.005F, 130),
-        GOLD(11, "Gold", 0.006F, 140),
-        LAPISLAZULI(12, "Lapis Lazuli", 0.007F, 150),
-        SLIME(13, "Slime", 0.008F, 160),
-        MYCELIUM(14, "Mycelium", 0.009F, 170),
+        BONE(8, "Bone", 0.003F, 100),
+    	IRON(9, "Iron", 0.004F, 110),
+        REDSTONE(10, "Redstone", 0.005F, 120),
+        GOLD(11, "Gold", 0.006F, 130),
+        LAPISLAZULI(12, "Lapis Lazuli", 0.007F, 140),
+        SLIME(13, "Slime", 0.008F, 150),
+        MYCELIUM(14, "Mycelium", 0.009F, 160),
         
         //Rare - 6 items
-        NETHERBRICK(15, "Nether Brick", 0.010F, 180),
-        SOULSAND(16, "Soul Sand", 0.011F, 190),
-        QUARTZ(17, "Quartz", 0.012F, 200),
-        ICE(18, "Ice", 0.013F, 210),
-        GLOWSTONE(19, "Glowstone", 0.014F, 220),
-        OBSIDIAN(20, "Obsidian", 0.015F, 230),
+        NETHERBRICK(15, "Nether Brick", 0.010F, 170),
+        SOULSAND(16, "Soul Sand", 0.011F, 180),
+        QUARTZ(17, "Quartz", 0.012F, 190),
+        ICE(18, "Ice", 0.013F, 200),
+        GLOWSTONE(19, "Glowstone", 0.014F, 210),
+        OBSIDIAN(20, "Obsidian", 0.015F, 220),
         
         //Epic - 5 items + 1 admin-only item
-        DIAMOND(21, "Diamond", 0.016F, 500),
-        EMERALD(22, "Emerald", 0.017F, 500),
-        PRISMARINE(23, "Prismarine", 0.018F, 500),
-    	PURPUR(24, "Purpur", 0.019F, 500),
+        DIAMOND(21, "Diamond", 0.016F, 230),
+        EMERALD(22, "Emerald", 0.017F, 240),
+        PRISMARINE(23, "Prismarine", 0.018F, 250),
+    	PURPUR(24, "Purpur", 0.019F, 260),
     	NETHERSTAR(25, "Nether Star", 0.020F, 500),
     	MYTHIC(26, "Mythic", 0.025F, 500);  // This is a special admin only Airship.
     	
@@ -1129,10 +1156,10 @@ public class EntityAirshipBaseVC extends Entity {
         SMALLINVENTORY(3, "Small Inventory"),
         LARGEINVENTORY(4, "Large Inventory"),
         INFINITEFUEL(5, "Infinite Fuel"),
-    	WATERLANDING(6, "Water Landing")
-    	//BASKETWEAVE(7, "Basketweave")
-    	//BASKETWEAVECOLORIZED(7, "Colorized Basketweave")
-    	;
+    	WATERLANDING(6, "Water Landing"),
+    	MAXALTITUDE(7, "Max Altitude"),
+    	MINOREFFICIENCY(8, "Minor Efficiency"),
+    	MAJOREFFICIENCY(9, "Major Efficiency");
     	
         private final String name;
         private final int metadata;
@@ -1235,6 +1262,30 @@ public class EntityAirshipBaseVC extends Entity {
      * Gets the Water Landing boolean to pass from server to client.
      */
     public boolean getModuleWaterLanding()
+    {
+        return false;
+    }
+    
+    /**
+     * Gets the Max Altitude boolean to pass from server to client.
+     */
+    public boolean getModuleMaxAltitude()
+    {
+        return false;
+    }
+    
+    /**
+     * Gets the Minor Efficiency boolean to pass from server to client.
+     */
+    public boolean getModuleMinorEfficiency()
+    {
+        return false;
+    }
+    
+    /**
+     * Gets the Major Efficiency boolean to pass from server to client.
+     */
+    public boolean getModuleMajorEfficiency()
     {
         return false;
     }
