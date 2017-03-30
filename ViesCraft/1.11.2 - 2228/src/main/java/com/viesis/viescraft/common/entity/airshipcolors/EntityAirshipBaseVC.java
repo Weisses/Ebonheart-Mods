@@ -1089,7 +1089,11 @@ public class EntityAirshipBaseVC extends Entity {
         POLKADOT(3, "Polka Dot"),
         POLKADOTCOLORIZED(4, "Colorized Polka Dot"),
         ZIGZAG(5, "Zigzag"),
-    	ZIGZAGCOLORIZED(6, "Colorized Zigzag")
+    	ZIGZAGCOLORIZED(6, "Colorized Zigzag")//,
+        //WAVEHORIZONTAL(7, "Horizontal Wave"),
+        //WAVEHORIZONTALCOLORIZED(8, "Colorized Horizontal Wave"),
+        //WAVEVERTICAL(9, "Vertical Wave"),
+        //WAVEVERTICALCOLORIZED(10, "Colorized Vertical Wave")
     	//BASKETWEAVE(7, "Basketweave")
     	//BASKETWEAVECOLORIZED(7, "Colorized Basketweave")
     	;

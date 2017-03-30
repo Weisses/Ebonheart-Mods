@@ -22,7 +22,7 @@ public class ItemGuidebookPaint extends Item {
 	public ItemGuidebookPaint() 
 	{
 		ItemHelper.setItemName(this, "guidebook_paint");
-		this.setMaxStackSize(64);
+		this.setMaxStackSize(1);
 		this.setCreativeTab(ViesCraft.tabViesCraftItems);
 	}
 	

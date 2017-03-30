@@ -23,7 +23,7 @@ public class ItemGuidebookSocket extends Item {
 	public ItemGuidebookSocket() 
 	{
 		ItemHelper.setItemName(this, "guidebook_socket");
-		this.setMaxStackSize(64);
+		this.setMaxStackSize(1);
 		this.setCreativeTab(ViesCraft.tabViesCraftItems);
 	}
 	

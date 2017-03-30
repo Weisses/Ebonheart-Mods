@@ -22,7 +22,7 @@ public class ItemGuidebookControls extends Item {
 	public ItemGuidebookControls() 
 	{
 		ItemHelper.setItemName(this, "guidebook_controls");
-		this.setMaxStackSize(64);
+		this.setMaxStackSize(1);
 		this.setCreativeTab(ViesCraft.tabViesCraftItems);
 	}
 	

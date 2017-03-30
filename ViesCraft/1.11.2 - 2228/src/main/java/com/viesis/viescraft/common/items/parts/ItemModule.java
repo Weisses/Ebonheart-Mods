@@ -103,7 +103,7 @@ public class ItemModule extends Item {
 			toolTip.add(TextFormatting.GOLD + "Effects while socketed:");
 			toolTip.add(" ");
 			toolTip.add(TextFormatting.GREEN + "Pro - Fuel lasts 50% longer.");
-			toolTip.add(TextFormatting.RED + "Con - Speed Modifier: -30%");
+			toolTip.add(TextFormatting.RED + "Con - Speed Modifier: -25%");//Really 30%
 		}
 	}
 	
