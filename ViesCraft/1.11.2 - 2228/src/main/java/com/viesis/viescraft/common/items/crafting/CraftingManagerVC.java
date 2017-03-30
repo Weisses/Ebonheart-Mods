@@ -122,6 +122,11 @@ public class CraftingManagerVC {
     	this.addRecipe(new ItemStack(InitItemsVC.airship_module, 1, 4), new Object[]{"C#C", "D#D", "CEC", 'C', new ItemStack(InitItemsVC.airship_module, 1, 0), 'E', Items.EMERALD, 'D', Items.DIAMOND, '#', Blocks.CHEST});
     	this.addRecipe(new ItemStack(InitItemsVC.airship_module, 1, 5), new Object[]{"CBC", "Q#Q", "CBC", 'C', new ItemStack(InitItemsVC.airship_module, 1, 0), 'B', Items.BLAZE_ROD, 'Q', Items.QUARTZ, '#', Items.NETHER_STAR});
     	this.addRecipe(new ItemStack(InitItemsVC.airship_module, 1, 6), new Object[]{"CBC", "Q#Q", "CBC", 'C', new ItemStack(InitItemsVC.airship_module, 1, 0), 'B', Items.GLASS_BOTTLE, 'Q', Items.QUARTZ, '#', Items.GHAST_TEAR});
+    	this.addRecipe(new ItemStack(InitItemsVC.airship_module, 1, 7), new Object[]{"CGC", "F#F", "CGC", 'C', new ItemStack(InitItemsVC.airship_module, 1, 0), 'G', Items.GLOWSTONE_DUST, 'F', Items.FEATHER, '#', Items.DIAMOND});
+    	this.addRecipe(new ItemStack(InitItemsVC.airship_module, 1, 8), new Object[]{"CPC", "D#D", "CPC", 'C', new ItemStack(InitItemsVC.airship_module, 1, 0), 'P', Items.ENDER_PEARL, 'D', Items.DIAMOND, '#', Items.BLAZE_ROD});
+    	this.addRecipe(new ItemStack(InitItemsVC.airship_module, 1, 9), new Object[]{"CPC", "E#E", "CPC", 'C', new ItemStack(InitItemsVC.airship_module, 1, 0), 'P', Items.ENDER_PEARL, 'E', Items.EMERALD, '#', Items.BLAZE_ROD});
+    	
+    	
     	
     	this.addRecipe(new ItemStack(InitItemsVC.airship_module, 1, 0), new Object[]{"C", 'C', InitItemsVC.module_chip});
     	this.addRecipe(new ItemStack(InitItemsVC.airship_module, 1, 1), new Object[]{"C", 'C', InitItemsVC.module_speed_increase_minor});
