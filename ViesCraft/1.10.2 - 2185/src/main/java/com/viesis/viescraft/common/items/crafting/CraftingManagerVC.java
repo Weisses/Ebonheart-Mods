@@ -116,12 +116,25 @@ public class CraftingManagerVC {
     	//=================================================
     	
     	//Airship modules
-    	this.addRecipe(new ItemStack(InitItemsVC.module_chip, 1), new Object[]{"CRC", "GGG", 'C', Blocks.COBBLESTONE, 'R', Items.REDSTONE, 'G', Items.GOLD_NUGGET});
-    	this.addRecipe(new ItemStack(InitItemsVC.module_inventory_small, 1), new Object[]{"CNC", "D#D", "CNC", 'C', InitItemsVC.module_chip, 'N', Items.GOLD_NUGGET, 'D', Items.DIAMOND, '#', Blocks.CHEST});
-    	this.addRecipe(new ItemStack(InitItemsVC.module_inventory_large, 1), new Object[]{"C#C", "D#D", "CEC", 'C', InitItemsVC.module_chip, 'E', Items.EMERALD, 'D', Items.DIAMOND, '#', Blocks.CHEST});
-    	this.addRecipe(new ItemStack(InitItemsVC.module_speed_increase_minor, 1), new Object[]{"CGC", "FDF", "CGC", 'C', InitItemsVC.module_chip, 'G', Items.GOLD_INGOT, 'D', Items.DIAMOND, 'F', Items.FIRE_CHARGE});
-    	this.addRecipe(new ItemStack(InitItemsVC.module_speed_increase_major, 1), new Object[]{"CDC", "FEF", "CDC", 'C', InitItemsVC.module_chip, 'E', Items.EMERALD, 'D', Items.DIAMOND, 'F', Items.FIRE_CHARGE});
-    	this.addRecipe(new ItemStack(InitItemsVC.module_fuel_infinite, 1), new Object[]{"CBC", "Q#Q", "CBC", 'C', InitItemsVC.module_chip, 'B', Items.BLAZE_ROD, 'Q', Items.QUARTZ, '#', Items.NETHER_STAR});
+    	this.addRecipe(new ItemStack(InitItemsVC.airship_module, 1, 0), new Object[]{"CRC", "GGG", 'C', Blocks.COBBLESTONE, 'R', Items.REDSTONE, 'G', Items.GOLD_NUGGET});
+    	this.addRecipe(new ItemStack(InitItemsVC.airship_module, 1, 1), new Object[]{"CGC", "FDF", "CGC", 'C', new ItemStack(InitItemsVC.airship_module, 1, 0), 'G', Items.GOLD_INGOT, 'D', Items.DIAMOND, 'F', Items.FIRE_CHARGE});
+    	this.addRecipe(new ItemStack(InitItemsVC.airship_module, 1, 2), new Object[]{"CDC", "FEF", "CDC", 'C', new ItemStack(InitItemsVC.airship_module, 1, 0), 'E', Items.EMERALD, 'D', Items.DIAMOND, 'F', Items.FIRE_CHARGE});
+    	this.addRecipe(new ItemStack(InitItemsVC.airship_module, 1, 3), new Object[]{"CNC", "D#D", "CNC", 'C', new ItemStack(InitItemsVC.airship_module, 1, 0), 'N', Items.GOLD_NUGGET, 'D', Items.DIAMOND, '#', Blocks.CHEST});
+    	this.addRecipe(new ItemStack(InitItemsVC.airship_module, 1, 4), new Object[]{"C#C", "D#D", "CEC", 'C', new ItemStack(InitItemsVC.airship_module, 1, 0), 'E', Items.EMERALD, 'D', Items.DIAMOND, '#', Blocks.CHEST});
+    	this.addRecipe(new ItemStack(InitItemsVC.airship_module, 1, 5), new Object[]{"CBC", "Q#Q", "CBC", 'C', new ItemStack(InitItemsVC.airship_module, 1, 0), 'B', Items.BLAZE_ROD, 'Q', Items.QUARTZ, '#', Items.NETHER_STAR});
+    	this.addRecipe(new ItemStack(InitItemsVC.airship_module, 1, 6), new Object[]{"CBC", "Q#Q", "CBC", 'C', new ItemStack(InitItemsVC.airship_module, 1, 0), 'B', Items.GLASS_BOTTLE, 'Q', Items.QUARTZ, '#', Items.GHAST_TEAR});
+    	this.addRecipe(new ItemStack(InitItemsVC.airship_module, 1, 7), new Object[]{"CGC", "F#F", "CGC", 'C', new ItemStack(InitItemsVC.airship_module, 1, 0), 'G', Items.GLOWSTONE_DUST, 'F', Items.FEATHER, '#', Items.DIAMOND});
+    	this.addRecipe(new ItemStack(InitItemsVC.airship_module, 1, 8), new Object[]{"CPC", "D#D", "CPC", 'C', new ItemStack(InitItemsVC.airship_module, 1, 0), 'P', Items.ENDER_PEARL, 'D', Items.DIAMOND, '#', Items.BLAZE_ROD});
+    	this.addRecipe(new ItemStack(InitItemsVC.airship_module, 1, 9), new Object[]{"CPC", "E#E", "CPC", 'C', new ItemStack(InitItemsVC.airship_module, 1, 0), 'P', Items.ENDER_PEARL, 'E', Items.EMERALD, '#', Items.BLAZE_ROD});
+    	
+    	
+    	
+    	this.addRecipe(new ItemStack(InitItemsVC.airship_module, 1, 0), new Object[]{"C", 'C', InitItemsVC.module_chip});
+    	this.addRecipe(new ItemStack(InitItemsVC.airship_module, 1, 1), new Object[]{"C", 'C', InitItemsVC.module_speed_increase_minor});
+    	this.addRecipe(new ItemStack(InitItemsVC.airship_module, 1, 2), new Object[]{"C", 'C', InitItemsVC.module_speed_increase_major});
+    	this.addRecipe(new ItemStack(InitItemsVC.airship_module, 1, 3), new Object[]{"C", 'C', InitItemsVC.module_inventory_small});
+    	this.addRecipe(new ItemStack(InitItemsVC.airship_module, 1, 4), new Object[]{"C", 'C', InitItemsVC.module_inventory_large});
+    	this.addRecipe(new ItemStack(InitItemsVC.airship_module, 1, 5), new Object[]{"C", 'C', InitItemsVC.module_fuel_infinite});
     	
     	//=================================================
 		

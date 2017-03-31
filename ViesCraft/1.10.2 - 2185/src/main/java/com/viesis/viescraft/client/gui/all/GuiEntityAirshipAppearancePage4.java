@@ -179,4 +179,16 @@ public class GuiEntityAirshipAppearancePage4 extends GuiContainer {
             this.mc.thePlayer.closeScreen();
         }
     }
+	
+	@Override
+	public void updateScreen()
+    {
+        super.updateScreen();
+
+        if (!this.mc.thePlayer.isEntityAlive() || this.mc.thePlayer.isDead
+        || !this.mc.thePlayer.isRiding())
+        {
+            this.mc.thePlayer.closeScreen();
+        }
+    }
 }

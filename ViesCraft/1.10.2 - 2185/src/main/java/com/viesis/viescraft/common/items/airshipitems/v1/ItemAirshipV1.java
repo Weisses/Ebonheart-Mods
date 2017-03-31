@@ -56,7 +56,7 @@ public class ItemAirshipV1 extends ItemAirshipCore {
         	
         	if (!playerIn.capabilities.isCreativeMode)
         	{
-        		--itemStackIn.stackSize;
+        		playerIn.inventory.decrStackSize(playerIn.inventory.currentItem, 1);
         	}
         	
 			worldIn.playSound((EntityPlayer)null, playerIn.posX, playerIn.posY, playerIn.posZ, SoundEvents.ENTITY_EXPERIENCE_BOTTLE_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));

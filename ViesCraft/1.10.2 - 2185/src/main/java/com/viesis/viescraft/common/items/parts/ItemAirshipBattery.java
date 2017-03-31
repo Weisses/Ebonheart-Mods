@@ -28,7 +28,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemAirshipBattery extends Item {
-	
+	/**
 	private int capacity;
 	private int maxReceive;
 	private int maxExtract;
@@ -51,7 +51,7 @@ public class ItemAirshipBattery extends Item {
     {
 		return EnumRarity.UNCOMMON;
     }
-	/**
+	
 	public void onUpdate(ItemStack stack, World worldIn, Entity entityIn, int itemSlot, boolean isSelected)
     {
 		DualEnergyStorageVC cap = (DualEnergyStorageVC) stack.getCapability(DualEnergyStorageVC.CAPABILITY_HOLDER , null);

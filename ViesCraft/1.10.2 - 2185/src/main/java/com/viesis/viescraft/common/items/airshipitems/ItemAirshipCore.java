@@ -100,7 +100,7 @@ public class ItemAirshipCore extends Item {
 			toolTip.add(TextFormatting.WHITE + "Speed Modifier: " + stringColor + "+" + speedMod);
 		}
 		
-		if(this.getMetadata(stack) >= 21)
+		if(this.getMetadata(stack) >= 25)
 		{
 			toolTip.add(TextFormatting.WHITE + "Max altitude: " + stringColor + "Unlimited");
 		}

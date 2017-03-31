@@ -46,6 +46,11 @@ public final class InitItemsVCRender extends ItemsVC {
 			registerRenderBalloon(airship_balloon_pattern, meta.getMetadata());
 		}
 		
+		for (EntityAirshipBaseVC.Module meta : EntityAirshipBaseVC.Module.values()) 
+		{
+			registerRenderModule(airship_module, meta.getMetadata());
+		}
+		
 		//==============================================
 		
 		//V1
@@ -113,6 +118,13 @@ public final class InitItemsVCRender extends ItemsVC {
 	public static void registerRenderBalloon(Item item, int meta)
 	{
 		String itemName = item.getRegistryName().toString() + "_" + EntityAirshipBaseVC.Balloon.byId(meta).getName().toString().toLowerCase().replaceAll("\\s+","");
+		
+		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(itemName, "inventory"));
+	}
+	
+	public static void registerRenderModule(Item item, int meta)
+	{
+		String itemName = item.getRegistryName().toString() + "_" + EntityAirshipBaseVC.Module.byId(meta).getName().toString().toLowerCase().replaceAll("\\s+","");
 		
 		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(itemName, "inventory"));
 	}

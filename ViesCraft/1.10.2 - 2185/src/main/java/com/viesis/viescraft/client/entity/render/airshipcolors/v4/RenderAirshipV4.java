@@ -97,36 +97,41 @@ public class RenderAirshipV4 extends Render<EntityAirshipV4Core> {
         int randomTick = Reference.random.nextInt(100) + 1;
 		
         //Draw current module icons in screen
-		if(entity.getModuleInventorySmall())
+        if(entity.getModuleSpeedMinor())
 		{
-        	this.moduleNumber = 1;
-		}
-        else if(entity.getModuleInventoryLarge())
-		{
-			this.moduleNumber = 2;
-		}
-        else if(entity.getModuleSpeedMinor())
-		{
-			this.moduleNumber = 3;
-			
-			//if(randomTick < 30)
-			//{
-				//InitParticlesVCRender.generateRunicParticles(entity);
-			//	InitParticlesVCRender.generateColorFlameParticles(entity);
-			//}
+			this.moduleNumber = 1;
 		}
         else if(entity.getModuleSpeedMajor())
 		{
+			this.moduleNumber = 2;
+		}
+		else if(entity.getModuleInventorySmall())
+		{
+        	this.moduleNumber = 3;
+		}
+        else if(entity.getModuleInventoryLarge())
+		{
 			this.moduleNumber = 4;
-			
-			//if(randomTick < 25)
-			//{
-			//	InitParticlesVCRender.generateFlameParticles(entity);
-			//}
 		}
         else if(entity.getModuleFuelInfinite())
 		{
 			this.moduleNumber = 5;
+		}
+        else if(entity.getModuleWaterLanding())
+		{
+			this.moduleNumber = 6;
+		}
+        else if(entity.getModuleMaxAltitude())
+		{
+			this.moduleNumber = 7;
+		}
+        else if(entity.getModuleMinorEfficiency())
+		{
+			this.moduleNumber = 8;
+		}
+        else if(entity.getModuleMajorEfficiency())
+		{
+			this.moduleNumber = 9;
 		}
         else
         {

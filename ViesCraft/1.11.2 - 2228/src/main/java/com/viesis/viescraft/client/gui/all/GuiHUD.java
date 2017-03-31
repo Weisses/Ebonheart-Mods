@@ -154,7 +154,15 @@ public class GuiHUD extends Gui {
 				int hours;
 				
 				//Calculation from ticks to seconds.
-	            timer = ((((this.airship.getPowered() / this.airship.airshipFuelTick) + 18) + (this.airship.getItemFuelStackPowered() / this.airship.airshipFuelTick)) / 20);
+				if(this.airship.airshipFuelTick == 0)
+				{
+					timer = ((((this.airship.getPowered() / 10) + 18) + (this.airship.getItemFuelStackPowered() / 10)) / 20);
+				}
+				else
+				{
+					timer = ((((this.airship.getPowered() / this.airship.airshipFuelTick) + 18) + (this.airship.getItemFuelStackPowered() / this.airship.airshipFuelTick)) / 20);
+				}
+				
 				remainder = (timer % 3600);
 				minutes = remainder / 60;
 				seconds = remainder % 60;

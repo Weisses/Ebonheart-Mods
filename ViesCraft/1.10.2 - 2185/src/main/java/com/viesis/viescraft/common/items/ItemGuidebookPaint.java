@@ -22,7 +22,7 @@ public class ItemGuidebookPaint extends Item {
 	public ItemGuidebookPaint() 
 	{
 		ItemHelper.setItemName(this, "guidebook_paint");
-		this.setMaxStackSize(64);
+		this.setMaxStackSize(1);
 		this.setCreativeTab(ViesCraft.tabViesCraftItems);
 	}
 	
@@ -30,7 +30,7 @@ public class ItemGuidebookPaint extends Item {
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand)
     {
-        //ItemStack itemStackIn = playerIn.getHeldItemMainhand();
+		//ItemStack itemStackIn = playerIn.getHeldItemMainhand();
         
 		if(worldIn.isRemote)
 		{

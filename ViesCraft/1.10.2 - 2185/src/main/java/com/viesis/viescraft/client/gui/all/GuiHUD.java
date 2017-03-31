@@ -79,6 +79,7 @@ public class GuiHUD extends Gui {
 				// Params: int screenX, int screenY, int textureX, int textureY, int width, int height
 				drawTexturedModalRect(hudX, hudY, 0, 0, hudWidth, hudHeight + 2);
 				
+				//Bottom lower fuel bar
 				//Creates a solid green bar
 				if(this.airship.getModuleFuelInfinite())
 				{
@@ -86,10 +87,11 @@ public class GuiHUD extends Gui {
 				}
 				else
 				{
-					int fuelbarwidth1 = (int)(((float) (this.airship.getPowered()) / (this.airship.getPowered() + this.airship.getTotalPowered())) * 220);
+					int fuelbarwidth1 = (int)(((float) this.airship.getPowered() / (this.airship.getPowered() + this.airship.getTotalPowered())) * 220);
 					drawTexturedModalRect(hudX + 36, hudY + 33, 36, 53, fuelbarwidth1, 6);
 				}
 				
+				//Top bigger stack bar
 				//Creates a solid green bar
 				if(this.airship.getModuleFuelInfinite())
 				{
@@ -128,6 +130,22 @@ public class GuiHUD extends Gui {
 				{
 					drawTexturedModalRect(hudX + 83, hudY, 48, 240, 16, 16);
 				}
+				if(this.airship.getModuleWaterLanding())
+				{
+					drawTexturedModalRect(hudX + 83, hudY, 80, 240, 16, 16);
+				}
+				if(this.airship.getModuleMaxAltitude())
+				{
+					drawTexturedModalRect(hudX + 83, hudY, 64, 240, 16, 16);
+				}
+				if(this.airship.getModuleMinorEfficiency())
+				{
+					drawTexturedModalRect(hudX + 83, hudY, 112, 240, 16, 16);
+				}
+				if(this.airship.getModuleMajorEfficiency())
+				{
+					drawTexturedModalRect(hudX + 83, hudY, 128, 240, 16, 16);
+				}
 				
 				int timer;
 				int remainder;
@@ -135,25 +153,20 @@ public class GuiHUD extends Gui {
 				int seconds;
 				int hours;
 				
-				if(this.airship.getModuleInventoryLarge()
-				|| this.airship.getModuleSpeedMajor())
+				//Calculation from ticks to seconds.
+				if(this.airship.airshipFuelTick == 0)
 				{
-					//Calculation from ticks to seconds.
-		            timer = (((this.airship.getPowered() + 18) + this.airship.getItemFuelStackPowered()) / 20) / 2;
-					remainder = (timer % 3600);
-					minutes = remainder / 60;
-					seconds = remainder % 60;
-					hours = timer / 3600;
+					timer = ((((this.airship.getPowered() / 10) + 18) + (this.airship.getItemFuelStackPowered() / 10)) / 20);
 				}
 				else
 				{
-					//Calculation from ticks to seconds.
-		            timer = (((this.airship.getPowered() + 18) + this.airship.getItemFuelStackPowered()) / 20);
-					remainder = (timer % 3600);
-					minutes = remainder / 60;
-					seconds = remainder % 60;
-					hours = timer / 3600;
+					timer = ((((this.airship.getPowered() / this.airship.airshipFuelTick) + 18) + (this.airship.getItemFuelStackPowered() / this.airship.airshipFuelTick)) / 20);
 				}
+	            //timer = ((((this.airship.getPowered() / this.airship.airshipFuelTick) + 18) + (this.airship.getItemFuelStackPowered() / this.airship.airshipFuelTick)) / 20);
+				remainder = (timer % 3600);
+				minutes = remainder / 60;
+				seconds = remainder % 60;
+				hours = timer / 3600;
 				
 				String hrs = (hours < 10 ? "0" : "") + hours;
 				String mins = (minutes < 10 ? "0" : "") + minutes;
