@@ -1179,21 +1179,21 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
 		else
 		{
 			//If the module in the slot is small inv mod
-			if(this.inventory.getStackInSlot(1).getItem() == InitItemsVC.module_inventory_small
+			if(this.inventory.getStackInSlot(1).getItem() == new ItemStack(InitItemsVC.airship_module, 1, 3).getItem()
 			&& dropNumber == 0)
 			{
 				dropNumber = 1;
 			}
 			
 			//If the module in the slot is large inv mod
-			else if(this.inventory.getStackInSlot(1).getItem() == InitItemsVC.module_inventory_large
+			else if(this.inventory.getStackInSlot(1).getItem() == new ItemStack(InitItemsVC.airship_module, 1, 4).getItem()
 			&& dropNumber == 0)
 			{
 				dropNumber = 2;
 			}
 			
 			//If the module in the slot is not small inv mod but had it in previously
-			else if(this.inventory.getStackInSlot(1).getItem() != InitItemsVC.module_inventory_small
+			else if(this.inventory.getStackInSlot(1).getItem() != new ItemStack(InitItemsVC.airship_module, 1, 3).getItem()
 					&& dropNumber == 1)
 			{
 				dropNumber = 0;
@@ -1201,7 +1201,7 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
 			}
 			
 			//If the module in the slot is not large inv mod but had it in previously
-			else if(this.inventory.getStackInSlot(1).getItem() != InitItemsVC.module_inventory_large
+			else if(this.inventory.getStackInSlot(1).getItem() != new ItemStack(InitItemsVC.airship_module, 1, 4).getItem()
 					&& dropNumber == 2)
 			{
 				dropNumber = 0;

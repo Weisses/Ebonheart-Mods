@@ -128,8 +128,17 @@ public class ItemModule extends Item {
 	@Override
 	public String getItemStackDisplayName(ItemStack stack)
     {
-        return ("Module - " +
-        		EntityAirshipBaseVC.Module.byId(this.getMetadata(stack)).getName());
+		String itemName;
+		
+		if(stack.getMetadata() == 0)
+        {
+        	itemName = "Logic Chip";
+        }
+        else
+        {
+        	itemName = "Module - " + EntityAirshipBaseVC.Module.byId(this.getMetadata(stack)).getName();
+        }
+		return itemName;
     }
 	
 	@SideOnly(Side.CLIENT)

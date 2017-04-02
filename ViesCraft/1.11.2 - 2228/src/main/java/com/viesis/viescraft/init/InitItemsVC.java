@@ -15,12 +15,6 @@ import com.viesis.viescraft.common.items.airshipitems.v1.ItemAirshipV1;
 import com.viesis.viescraft.common.items.airshipitems.v2.ItemAirshipV2;
 import com.viesis.viescraft.common.items.airshipitems.v3.ItemAirshipV3;
 import com.viesis.viescraft.common.items.airshipitems.v4.ItemAirshipV4;
-import com.viesis.viescraft.common.items.modules.ItemFuelModuleInfinite;
-import com.viesis.viescraft.common.items.modules.ItemInventoryModuleLarge;
-import com.viesis.viescraft.common.items.modules.ItemInventoryModuleSmall;
-import com.viesis.viescraft.common.items.modules.ItemModuleChip;
-import com.viesis.viescraft.common.items.modules.ItemSpeedModuleMajor;
-import com.viesis.viescraft.common.items.modules.ItemSpeedModuleMinor;
 import com.viesis.viescraft.common.items.parts.ItemBalloon;
 import com.viesis.viescraft.common.items.parts.ItemBalloonPattern;
 import com.viesis.viescraft.common.items.parts.ItemColorizerBalloon;
@@ -59,14 +53,6 @@ public class InitItemsVC extends ItemsVC {
 		airship_module = registerItem(new ItemModule());
 		
 		item_balloon_colorizer = registerItem(new ItemColorizerBalloon());
-		
-		module_chip = registerItem(new ItemModuleChip());
-		
-		module_inventory_small = registerItem(new ItemInventoryModuleSmall());
-		module_inventory_large = registerItem(new ItemInventoryModuleLarge());
-		module_speed_increase_minor = registerItem(new ItemSpeedModuleMinor());
-		module_speed_increase_major = registerItem(new ItemSpeedModuleMajor());
-		module_fuel_infinite = registerItem(new ItemFuelModuleInfinite());
 		
 		//==============================================
 		
