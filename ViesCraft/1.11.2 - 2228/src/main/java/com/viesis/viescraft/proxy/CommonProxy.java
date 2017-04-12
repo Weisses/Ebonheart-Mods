@@ -33,7 +33,6 @@ public class CommonProxy {
 		InitEntityVC.registerEntity();
 		
 		NetworkHandler.preInit();
-		NetworkHandler.preInit();
 		//InitItemsVC.registerItemTEMP();
 		//InitBlocksVC.registerBlockTEMP();
 		//InitTileEntitiesVC.registerTileEntityTEMP();

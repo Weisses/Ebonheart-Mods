@@ -7,6 +7,7 @@ import com.viesis.viescraft.client.gui.all.GuiEntityAirshipAppearancePage2;
 import com.viesis.viescraft.client.gui.all.GuiEntityAirshipAppearancePage3;
 import com.viesis.viescraft.client.gui.all.GuiEntityAirshipAppearancePage4;
 import com.viesis.viescraft.client.gui.all.GuiEntityAirshipDefault;
+import com.viesis.viescraft.client.gui.all.GuiEntityAirshipJukebox;
 import com.viesis.viescraft.client.gui.all.GuiEntityAirshipModule;
 import com.viesis.viescraft.client.gui.all.GuiEntityAirshipModuleInventoryLarge;
 import com.viesis.viescraft.client.gui.all.GuiEntityAirshipModuleInventorySmall;
@@ -37,6 +38,7 @@ public class GuiHandler implements IGuiHandler {
 	public static final int GUI_MODULE = 5;
 	public static final int GUI_MODULE_INVENTORY_SMALL = 9;
 	public static final int GUI_MODULE_INVENTORY_LARGE = 13;
+	public static final int GUI_MODULE_JUKEBOX = 14;
 	
 	public static final int GUI_APPEARANCE_PAGE1 = 17;
 	public static final int GUI_APPEARANCE_PAGE2 = 18;
@@ -86,6 +88,16 @@ public class GuiHandler implements IGuiHandler {
 		{
 			return new ContainerAirshipModuleInvLarge(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
 		}
+		
+
+		
+		//Airship Large Inventory Container
+		if (ID == GUI_MODULE_JUKEBOX)
+		{
+			return new ContainerAirshipDefault(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
+		}
+		
+		
 		
 		//Airship Appearance Containers
 		if (ID == GUI_APPEARANCE_PAGE1)
@@ -145,6 +157,26 @@ public class GuiHandler implements IGuiHandler {
 		if (ID == GUI_MODULE_INVENTORY_LARGE)
 		{
 			return new GuiEntityAirshipModuleInventoryLarge(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
+		}
+		
+
+		
+		//Airship GUI with Small Inventory Module
+		if (ID == GUI_MODULE_INVENTORY_SMALL)
+		{
+			return new GuiEntityAirshipModuleInventorySmall(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
+		}
+		
+		//Airship GUI with Large Inventory Module
+		if (ID == GUI_MODULE_INVENTORY_LARGE)
+		{
+			return new GuiEntityAirshipModuleInventoryLarge(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
+		}
+		
+		//Airship GUI with Large Inventory Module
+		if (ID == GUI_MODULE_JUKEBOX)
+		{
+			return new GuiEntityAirshipJukebox(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
 		}
 		
 		//Airship Appearance GUI

@@ -7,6 +7,7 @@ import com.viesis.viescraft.network.server.airship.MessageGuiDefault;
 import com.viesis.viescraft.network.server.airship.MessageGuiModule;
 import com.viesis.viescraft.network.server.airship.MessageGuiModuleInventoryLarge;
 import com.viesis.viescraft.network.server.airship.MessageGuiModuleInventorySmall;
+import com.viesis.viescraft.network.server.airship.MessageGuiModuleJukebox;
 import com.viesis.viescraft.network.server.appearance.MessageGuiAppearanceHelperPage1;
 import com.viesis.viescraft.network.server.appearance.MessageGuiAppearanceHelperPage2;
 import com.viesis.viescraft.network.server.appearance.MessageGuiAppearanceHelperPage3;
@@ -49,6 +50,8 @@ public class NetworkHandler {
 		INSTANCE.registerMessage(MessageGuiAppearanceHelperPage2.class, MessageGuiAppearanceHelperPage2.class, 22, Side.SERVER);
 		INSTANCE.registerMessage(MessageGuiAppearanceHelperPage3.class, MessageGuiAppearanceHelperPage3.class, 23, Side.SERVER);
 		INSTANCE.registerMessage(MessageGuiAppearanceHelperPage4.class, MessageGuiAppearanceHelperPage4.class, 24, Side.SERVER);
+		
+		INSTANCE.registerMessage(MessageGuiModuleJukebox.class, MessageGuiModuleJukebox.class, 25, Side.SERVER);
 	}
 	
 	public static void sendToServer(IMessage message)
