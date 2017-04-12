@@ -44,7 +44,8 @@ public class Reference {
 		new ResourceLocation(Reference.MOD_ID, "textures/models/screens/module_water_landing.png"),
 		new ResourceLocation(Reference.MOD_ID, "textures/models/screens/module_max_altitude.png"),
 		new ResourceLocation(Reference.MOD_ID, "textures/models/screens/module_minor_efficiency.png"),
-		new ResourceLocation(Reference.MOD_ID, "textures/models/screens/module_major_efficiency.png")
+		new ResourceLocation(Reference.MOD_ID, "textures/models/screens/module_major_efficiency.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/screens/module_jukebox.png")
 	};
 	
 }

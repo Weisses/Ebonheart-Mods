@@ -6,6 +6,7 @@ import com.viesis.viescraft.client.InitEntityVCRender;
 import com.viesis.viescraft.client.InitItemsVCRender;
 import com.viesis.viescraft.client.InitTileEntityVCRender;
 import com.viesis.viescraft.client.gui.all.GuiHUD;
+import com.viesis.viescraft.network.NetworkHandler;
 
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -25,7 +26,7 @@ public class ClientProxy extends CommonProxy {
 		InitTileEntityVCRender.registerTileEntityRender();
 		
 		Keybinds.init();
-		
+		//NetworkHandler.preInitClient();
 		//InitItemsVCRender.registerItemRenderTEMP();
 		//InitBlocksVCRender.registerBlockRenderTEMP();
 		//InitEntityVCRender.registerEntityRenderTEMP();

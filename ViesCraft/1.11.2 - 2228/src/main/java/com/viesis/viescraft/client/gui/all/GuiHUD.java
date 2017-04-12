@@ -146,6 +146,10 @@ public class GuiHUD extends Gui {
 				{
 					drawTexturedModalRect(hudX + 83, hudY, 128, 240, 16, 16);
 				}
+				if(this.airship.getModuleJukebox())
+				{
+					drawTexturedModalRect(hudX + 83, hudY, 144, 240, 16, 16);
+				}
 				
 				int timer;
 				int remainder;

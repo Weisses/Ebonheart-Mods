@@ -775,13 +775,13 @@ public class ModelAirshipV2FrameOn extends ModelBase {
 	{
 		super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 		
-    	long now = System.nanoTime();
-    	int elapsed = (int) ((now - lastframe) / (1000000));
-    	// 1000000 nanoseconds = .001 seconds
-    	bladespin = (float) elapsed / 300.0f;
-    	// 0.001 seconds / 300 = 3.3333 repeating.
-    	lastframe = now;
-    	
+		long now = System.nanoTime();
+		int elapsed = (int) ((now - lastframe) / (1000000));
+		// 1000000 nanoseconds = .001 seconds
+		bladespin = (float) elapsed / 300.0f;
+		// 0.001 seconds / 300 = 3.3333 repeating.
+		lastframe = now;
+	    
     	this.Propeller_R1a.rotateAngleZ += (bladespin * 3);
     	this.Propeller_R1b.rotateAngleZ += (bladespin * 3);
     	this.Propeller_R1c.rotateAngleZ += (bladespin * 3);

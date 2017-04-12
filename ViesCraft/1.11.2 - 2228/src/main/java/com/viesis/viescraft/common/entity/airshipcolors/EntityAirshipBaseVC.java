@@ -7,15 +7,19 @@ import javax.annotation.Nullable;
 import com.google.common.collect.Lists;
 import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.api.util.Keybinds;
+import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.client.InitParticlesVCRender;
+import com.viesis.viescraft.client.MovingSoundVC;
 import com.viesis.viescraft.init.InitItemsVC;
 
 import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
@@ -25,6 +29,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EntityDamageSourceIndirect;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -1163,7 +1168,8 @@ public class EntityAirshipBaseVC extends Entity {
     	WATERLANDING(6, "Water Landing"),
     	MAXALTITUDE(7, "Max Altitude"),
     	MINOREFFICIENCY(8, "Minor Efficiency"),
-    	MAJOREFFICIENCY(9, "Major Efficiency");
+    	MAJOREFFICIENCY(9, "Major Efficiency"),
+    	JUKEBOX(10, "Jukebox");
     	
         private final String name;
         private final int metadata;
@@ -1295,6 +1301,14 @@ public class EntityAirshipBaseVC extends Entity {
     }
     
     /**
+     * Gets the Jukebox boolean to pass from server to client.
+     */
+    public boolean getModuleJukebox()
+    {
+        return false;
+    }
+    
+    /**
      * Gets the airshipBurnTime to pass from server to client.
      */
     public int getPowered()
@@ -1365,7 +1379,7 @@ public class EntityAirshipBaseVC extends Entity {
      */
     //public SoundCategory getSoundCategory()
     //{
-    //    return SoundCategory.HOSTILE;
+    //    return SoundCategory.RECORDS;
     //}
 	
     //protected SoundEvent getAmbientSound()
@@ -1385,5 +1399,48 @@ public class EntityAirshipBaseVC extends Entity {
     //{
     //    return 5.0F;
     //}
+
+    
+    //@SideOnly(Side.CLIENT)
+    //@Override
+    public void playSoundVC(SoundEvent soundIn, float volume, float pitch)
+    {
+    	//MovingSoundVC t = new MovingSoundVC(this, SoundEvents.RECORD_WARD);
+    	
+
+    	//NetworkHandler
+    	//.sendToAllAround(new MessageGuiNoMusic(), 
+    	//new TargetPoint(this.dimension, this.posX, this.posY, this.posZ, 15));
+    	
+    	
+    	//t.getSound();
+    	LogHelper.info("here = " 
+    	//+ t
+    			);
+    	
+    	
+    	
+    	//if (!this.isSilent())
+        //{
+    	//	Minecraft.getMinecraft().getSoundHandler().playSound(t);
+    		//soundHandler.playSound(new MovingSoundVC((EntityAirshipBaseVC) player.getRidingEntity(), SoundEvents.RECORD_WARD));
+    		///////////////Minecraft.getMinecraft().getSoundHandler().playSound(t);
+    		//this.world.playSound((EntityPlayer)null, 
+    		//    	t.getXPosF(), 
+    		//    	t.getYPosF(), 
+    		//    	t.getZPosF(),
+    		//		this.posX, 
+    		//		this.posY, 
+    		//		this.posZ, 
+    		//		soundIn, this.getSoundCategory(), volume, pitch);
+        //}
+    	
+    	//MovingSoundVC t = new MovingSoundVC(this, SoundEvents.RECORD_WARD);
+    	
+        //if (!this.isSilent())
+        //{
+        //    this.world.playSound((EntityPlayer)null, t.getXPosF(), t.getYPosF(), t.getZPosF(), soundIn, SoundCategory.RECORDS, volume, pitch);
+        //}
+    }
     
 }

@@ -13,6 +13,7 @@ import com.viesis.viescraft.network.NetworkHandler;
 import com.viesis.viescraft.network.server.airship.MessageGuiDefault;
 import com.viesis.viescraft.network.server.airship.MessageGuiModuleInventoryLarge;
 import com.viesis.viescraft.network.server.airship.MessageGuiModuleInventorySmall;
+import com.viesis.viescraft.network.server.airship.MessageGuiModuleJukebox;
 
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -68,6 +69,10 @@ public class GuiEntityAirshipModule extends GuiContainer {
 			{
 				NetworkHandler.sendToServer(new MessageGuiModuleInventoryLarge());
 			}
+			else if(this.airship.getModuleJukebox())
+			{
+				NetworkHandler.sendToServer(new MessageGuiModuleJukebox());
+			}
 			else
 			{
 				NetworkHandler.sendToServer(new MessageGuiDefault());
@@ -95,7 +100,8 @@ public class GuiEntityAirshipModule extends GuiContainer {
 		|| this.airship.getModuleWaterLanding()
 		|| this.airship.getModuleMaxAltitude()
 		|| this.airship.getModuleMinorEfficiency()
-		|| this.airship.getModuleMajorEfficiency())
+		|| this.airship.getModuleMajorEfficiency()
+		|| this.airship.getModuleJukebox())
 		{
 		    //Draws the box overlay around module slot
 			this.drawTexturedModalRect(this.guiLeft + 64, this.guiTop + 14, 176, 0, 48, 48);
