@@ -38,7 +38,7 @@ public class MessageGuiNoMusic extends MessageBase<MessageGuiNoMusic> {
 	@Override
 	public void handleClientSide(MessageGuiNoMusic message, EntityPlayer player) 
 	{
-		LogHelper.info("Client within 15 blocks!1 " + new MessageGuiPlayMusic().airship);
+		LogHelper.info("Client within 15 blocks!1 ");
 		
 		SoundHandler soundHandler = Minecraft.getMinecraft().getSoundHandler();
 		soundHandler.stopSounds();

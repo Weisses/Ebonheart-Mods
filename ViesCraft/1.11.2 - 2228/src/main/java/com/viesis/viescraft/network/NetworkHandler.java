@@ -8,6 +8,7 @@ import com.viesis.viescraft.network.server.airship.MessageGuiModule;
 import com.viesis.viescraft.network.server.airship.MessageGuiModuleInventoryLarge;
 import com.viesis.viescraft.network.server.airship.MessageGuiModuleInventorySmall;
 import com.viesis.viescraft.network.server.airship.MessageGuiModuleJukebox;
+import com.viesis.viescraft.network.server.airship.MessageGuiPlayMusic;
 import com.viesis.viescraft.network.server.appearance.MessageGuiAppearanceHelperPage1;
 import com.viesis.viescraft.network.server.appearance.MessageGuiAppearanceHelperPage2;
 import com.viesis.viescraft.network.server.appearance.MessageGuiAppearanceHelperPage3;
@@ -16,6 +17,10 @@ import com.viesis.viescraft.network.server.appearance.MessageGuiAppearancePage1;
 import com.viesis.viescraft.network.server.appearance.MessageGuiAppearancePage2;
 import com.viesis.viescraft.network.server.appearance.MessageGuiAppearancePage3;
 import com.viesis.viescraft.network.server.appearance.MessageGuiAppearancePage4;
+import com.viesis.viescraft.network.test.CMessageIMessageTest;
+import com.viesis.viescraft.network.test.SMessageHandlerTest;
+import com.viesis.viescraft.network.test.SMessageHandlerTestDummy;
+import com.viesis.viescraft.network.test.SMessageIMessageTest;
 
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
@@ -38,6 +43,7 @@ public class NetworkHandler {
 		INSTANCE.registerMessage(MessageGuiModule.class, MessageGuiModule.class, 5, Side.SERVER);
 		INSTANCE.registerMessage(MessageGuiModuleInventorySmall.class, MessageGuiModuleInventorySmall.class, 9, Side.SERVER);
 		INSTANCE.registerMessage(MessageGuiModuleInventoryLarge.class, MessageGuiModuleInventoryLarge.class, 13, Side.SERVER);
+		INSTANCE.registerMessage(MessageGuiModuleJukebox.class, MessageGuiModuleJukebox.class, 25, Side.SERVER);
 		
 		INSTANCE.registerMessage(MessageGuiColorizerBalloon.class, MessageGuiColorizerBalloon.class, 61, Side.SERVER);
 		
@@ -51,7 +57,11 @@ public class NetworkHandler {
 		INSTANCE.registerMessage(MessageGuiAppearanceHelperPage3.class, MessageGuiAppearanceHelperPage3.class, 23, Side.SERVER);
 		INSTANCE.registerMessage(MessageGuiAppearanceHelperPage4.class, MessageGuiAppearanceHelperPage4.class, 24, Side.SERVER);
 		
-		INSTANCE.registerMessage(MessageGuiModuleJukebox.class, MessageGuiModuleJukebox.class, 25, Side.SERVER);
+		//INSTANCE.registerMessage(MessageGuiPlayMusic.class, MessageGuiPlayMusic.class, 31, Side.SERVER);
+		
+		INSTANCE.registerMessage(SMessageHandlerTest.class, SMessageIMessageTest.class, 101, Side.SERVER);
+		INSTANCE.registerMessage(SMessageHandlerTestDummy.class, CMessageIMessageTest.class, 102, Side.SERVER);
+		
 	}
 	
 	public static void sendToServer(IMessage message)

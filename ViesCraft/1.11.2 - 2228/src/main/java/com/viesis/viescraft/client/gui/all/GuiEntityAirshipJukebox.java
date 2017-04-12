@@ -1,6 +1,7 @@
 package com.viesis.viescraft.client.gui.all;
 
 import java.io.IOException;
+import java.util.Random;
 
 import org.lwjgl.input.Keyboard;
 
@@ -10,13 +11,17 @@ import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
 import com.viesis.viescraft.common.entity.airshipcolors.containers.all.ContainerAirshipDefault;
 import com.viesis.viescraft.network.NetworkHandler;
 import com.viesis.viescraft.network.server.airship.MessageGuiModule;
+import com.viesis.viescraft.network.server.airship.MessageGuiPlayMusic;
 import com.viesis.viescraft.network.server.appearance.MessageGuiAppearancePage1;
+import com.viesis.viescraft.network.test.SMessageIMessageTest;
+import com.viesis.viescraft.network.test.SMessageHandlerTest;
 
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.Vec3d;
 
 public class GuiEntityAirshipJukebox extends GuiContainer {
 	
@@ -92,16 +97,18 @@ public class GuiEntityAirshipJukebox extends GuiContainer {
 			//NetworkHandler.sendToServer(new MessageGuiPlayMusic());
 
 			///////////////this.airship.playSoundVC(null, 0, 0);
-			//Vec3d targetPosition = this.airship.getPositionVector();
-			// Random random = new Random();
-			//TestMessageToServer.Projectile [] choices = TestMessageToServer.Projectile.values();
-		    //.Projectile projectile = choices[random.nextInt(choices.length)];
+			Vec3d targetPosition = this.airship.getPositionVector();
+			 Random random = new Random();
+			 SMessageIMessageTest.Projectile [] choices = SMessageIMessageTest.Projectile.values();
+		    SMessageIMessageTest.Projectile projectile = choices[random.nextInt(choices.length)];
 		    
-			//TestMessageToServer airstrikeMessageToServer = new TestMessageToServer(projectile, targetPosition);
-			//NetworkHandler.sendToServer(airstrikeMessageToServer);
+		    SMessageIMessageTest airstrikeMessageToServer = new SMessageIMessageTest(projectile, targetPosition);
+			NetworkHandler.sendToServer(airstrikeMessageToServer);
 			
-			//TESTTEST airshipVC = new TESTTEST(airship);
-			//NetworkHandler.sendToServer(airshipVC);
+			//MessageGuiPlayMusic airshipVC = new MessageGuiPlayMusic(airship);
+			//NetworkHandler.sendToServer(new MessageGuiPlayMusic(airship)
+					//airshipVC
+			//		);
 			///NetworkHandlerOLD.sendToServer(new MessageGuiPlayMusic());
 	    }
 		

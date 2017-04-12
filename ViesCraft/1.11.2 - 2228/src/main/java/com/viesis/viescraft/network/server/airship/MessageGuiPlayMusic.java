@@ -29,50 +29,57 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
 import net.minecraftforge.client.event.sound.PlaySoundEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
+import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 
 
-public class MessageGuiPlayMusic extends MessageBase<MessageGuiPlayMusic> {
+public class MessageGuiPlayMusic extends MessageBase<MessageGuiPlayMusic> implements IMessage {
 	
-	public static EntityAirshipBaseVC airship;
+	public EntityAirshipBaseVC airship;
 	
+	public MessageGuiPlayMusic(EntityAirshipBaseVC airship2) 
+	{
+		this.airship = airship2;
+	}
+
 	@Override
 	public void fromBytes(ByteBuf buf) 
 	{
-		
+		LogHelper.info("fromBytes");
 	}
 	
 	@Override
 	public void toBytes(ByteBuf buf) 
 	{
-		
+		LogHelper.info("toBytes");
 	}
 	
 	//@SideOnly(Side.CLIENT)
 	@Override
 	public void handleClientSide(MessageGuiPlayMusic message, EntityPlayer player) 
 	{
-		//LogHelper.info("Client started playing = " + message.airship + "   " + this.airship);
+		LogHelper.info("Client = " + message.airship);
 	}
 	//@SideOnly(Side.CLIENT)
 	@Override
 	public void handleServerSide(MessageGuiPlayMusic message, EntityPlayer player) 
 	{
+		LogHelper.info("Server = " + message.airship);
 		
-		message.airship = (EntityAirshipBaseVC) player.getRidingEntity();
+		///message.airship = (EntityAirshipBaseVC) player.getRidingEntity();
 		
 		//message.airship.playSoundVC(SoundEvents.RECORD_WARD, 1F, 1F);
 		
 		
-		LogHelper.info("Server started playing = " + message.airship);
+		//LogHelper.info("Server started playing = " + message.airship);
 		
 		
-		NetworkHandler
+		//NetworkHandler
 		
-		.sendToClient(new MessageGuiNoMusic(), (EntityPlayerMP) player);
+		//.sendToClient(new MessageGuiNoMusic(), (EntityPlayerMP) player);
 		
 		//message.handleClientSide(message, player);
 		
