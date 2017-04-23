@@ -851,8 +851,8 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
             
             if (item == InitItemsVC.viesoline_pellets) return (ViesCraftConfig.viesolineBurnTime * 20) * 10;
             //if (item == InitItemsVC.airship_battery) return cap.getEnergyStored();
-            
-            return net.minecraftforge.fml.common.registry.GameRegistry.getFuelValue(stack) * 10;
+            return 0;
+            //return net.minecraftforge.fml.common.registry.GameRegistry.getFuelValue(stack) * 10;
         }
     }
     

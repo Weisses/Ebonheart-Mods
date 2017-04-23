@@ -811,13 +811,14 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
      */
     public static int getItemBurnTime(ItemStack stack)
     {
-        if (stack == (ItemStack)null)
+        if (stack == null)
         {
             return 0;
         }
         else
         {
             Item item = stack.getItem();
+            
             //DualEnergyStorageVC cap = (DualEnergyStorageVC) stack.getCapability(DualEnergyStorageVC.CAPABILITY_HOLDER , null);
             if(ViesCraftConfig.vanillaFuel)
     		{
@@ -851,8 +852,8 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
             
             if (item == InitItemsVC.viesoline_pellets) return (ViesCraftConfig.viesolineBurnTime * 20) * 10;
             //if (item == InitItemsVC.airship_battery) return cap.getEnergyStored();
-            
-            return net.minecraftforge.fml.common.registry.GameRegistry.getFuelValue(stack) * 10;
+            return 0;
+            //return net.minecraftforge.fml.common.registry.GameRegistry.getFuelValue(stack);
         }
     }
     
