@@ -27,13 +27,6 @@ public final class InitItemsVCRender extends ItemsVC {
 		
 		registerRender(airship_dismounter);
 		
-		registerRender(module_chip);
-		registerRender(module_inventory_small);
-		registerRender(module_inventory_large);
-		registerRender(module_speed_increase_minor);
-		registerRender(module_speed_increase_major);
-		registerRender(module_fuel_infinite);
-		
 		registerRender(item_balloon_colorizer);
 		
 		for (EntityAirshipBaseVC.FrameCore meta : EntityAirshipBaseVC.FrameCore.values()) 

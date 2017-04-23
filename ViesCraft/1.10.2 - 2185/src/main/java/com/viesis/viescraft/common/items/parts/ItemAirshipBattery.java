@@ -28,7 +28,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemAirshipBattery extends Item {
-	/**
+	
 	private int capacity;
 	private int maxReceive;
 	private int maxExtract;
@@ -46,7 +46,7 @@ public class ItemAirshipBattery extends Item {
 		this.setCreativeTab(ViesCraft.tabViesCraftItems);
 		
 	}
-	
+	/**
 	public EnumRarity getRarity(ItemStack stack)
     {
 		return EnumRarity.UNCOMMON;
@@ -114,8 +114,8 @@ public class ItemAirshipBattery extends Item {
 		toolTip.add(TextFormatting.DARK_PURPLE + "Max energy = " + cap.getMaxEnergyStored());
 	}
 
-	*/
 	
+	*/
 	
 	
 }

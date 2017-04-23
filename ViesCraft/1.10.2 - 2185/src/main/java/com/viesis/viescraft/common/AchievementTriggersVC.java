@@ -3,6 +3,7 @@ package com.viesis.viescraft.common;
 import com.viesis.viescraft.init.InitAchievementsVC;
 import com.viesis.viescraft.init.InitItemsVC;
 
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent;
 
@@ -46,11 +47,15 @@ public class AchievementTriggersVC extends InitAchievementsVC {
 			event.player.addStat(airship_create);
 		}
 		
-		if(event.crafting.getItem() == InitItemsVC.module_inventory_small
-		|| event.crafting.getItem() == InitItemsVC.module_inventory_large
-		|| event.crafting.getItem() == InitItemsVC.module_speed_increase_minor
-		|| event.crafting.getItem() == InitItemsVC.module_speed_increase_major
-		|| event.crafting.getItem() == InitItemsVC.module_fuel_infinite) 
+		if(event.crafting.getItem() == new ItemStack(InitItemsVC.airship_module, 1, 1).getItem()
+		|| event.crafting.getItem() == new ItemStack(InitItemsVC.airship_module, 1, 2).getItem()
+		|| event.crafting.getItem() == new ItemStack(InitItemsVC.airship_module, 1, 3).getItem()
+		|| event.crafting.getItem() == new ItemStack(InitItemsVC.airship_module, 1, 4).getItem()
+		|| event.crafting.getItem() == new ItemStack(InitItemsVC.airship_module, 1, 5).getItem()
+		|| event.crafting.getItem() == new ItemStack(InitItemsVC.airship_module, 1, 6).getItem()
+		|| event.crafting.getItem() == new ItemStack(InitItemsVC.airship_module, 1, 7).getItem()
+		|| event.crafting.getItem() == new ItemStack(InitItemsVC.airship_module, 1, 8).getItem()
+		|| event.crafting.getItem() == new ItemStack(InitItemsVC.airship_module, 1, 9).getItem()) 
 		{
 			event.player.addStat(airship_create_module);
 		}

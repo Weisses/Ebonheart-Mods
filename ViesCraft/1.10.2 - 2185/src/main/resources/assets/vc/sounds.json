@@ -1,0 +1,47 @@
+{
+    "record.trigun": {
+        "category": "record",
+        "sounds": [
+            {
+            "name": "vc:records/trigun",
+            "stream": true
+            }
+        ]
+    },
+    "record.bramble": {
+        "category": "record",
+        "sounds": [
+            {
+            "name": "vc:records/bramble",
+            "stream": true
+            }
+        ]
+    },
+    "record.storms": {
+        "category": "record",
+        "sounds": [
+            {
+            "name": "vc:records/storms",
+            "stream": true
+            }
+        ]
+    },
+    "record.cowboy": {
+        "category": "record",
+        "sounds": [
+            {
+            "name": "vc:records/cowboy",
+            "stream": true
+            }
+        ]
+    },
+    "record.bay": {
+        "category": "record",
+        "sounds": [
+            {
+            "name": "vc:records/bay",
+            "stream": true
+            }
+        ]
+    }
+}

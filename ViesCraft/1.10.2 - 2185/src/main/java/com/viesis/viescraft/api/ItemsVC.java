@@ -25,21 +25,6 @@ public class ItemsVC {
 	public static Item item_frame_colorizer;
 	public static Item item_balloon_colorizer;
 	
-	public static Item module_chip;
-	
-	//Passive
-	public static Item module_inventory_small;
-	public static Item module_inventory_large;
-	public static Item module_speed_increase_minor;
-	public static Item module_speed_increase_major;
-	public static Item module_fuel_infinite;
-	
-	//Cosmetic
-	public static Item module_cosmetic_runic;
-	public static Item module_cosmetic_fuel_infinitel;
-	public static Item module_cosmetic_fuel_infinitell;
-	public static Item module_cosmetic_fuel_infinitelll;
-	
 	//==================================================
 	
 	//Airships

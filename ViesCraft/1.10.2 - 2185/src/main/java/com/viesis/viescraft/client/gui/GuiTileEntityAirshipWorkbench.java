@@ -44,12 +44,7 @@ public class GuiTileEntityAirshipWorkbench extends GuiContainer {
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
 	{
-		//String s = this.airship.getDisplayName().getUnformattedText();
-		////this.fontRendererObj.drawString(s, 8, 6, 4210752);
-		//////////////////////this.fontRendererObj.drawString("Input", 32, 6, 4210752);
-		// This sets the Airship name in the top center.
-		//this.fontRendererObj.drawString(s, 88 - this.fontRendererObj.getStringWidth(s) / 2, 6, 4210752);
-		//this.fontRendererObj.drawString(this.playerInv.getDisplayName().getUnformattedText(), 8, 72, 4210752);
+		
 	}
 	
 	@Override

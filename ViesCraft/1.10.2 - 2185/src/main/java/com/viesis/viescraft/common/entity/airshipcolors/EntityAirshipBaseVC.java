@@ -8,6 +8,7 @@ import com.google.common.collect.Lists;
 import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.api.util.Keybinds;
 import com.viesis.viescraft.client.InitParticlesVCRender;
+import com.viesis.viescraft.client.InitSoundEventsVC;
 import com.viesis.viescraft.init.InitItemsVC;
 
 import net.minecraft.block.BlockLiquid;
@@ -16,6 +17,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.datasync.DataParameter;
@@ -25,6 +27,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EntityDamageSourceIndirect;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -37,28 +40,8 @@ import net.minecraftforge.items.ItemStackHandler;
 
 public class EntityAirshipBaseVC extends Entity {
 	
-	/** Fuel */
-	public int airshipBurnTime;
-	public int airshipTotalBurnTime;
-	public int itemFuelStackSize;
-	public int itemFuelStack;
-	public int airshipFuelTick;
-	
-    /** My capabilities inventory */
-    public ItemStackHandler inventory;
-    protected int size = 20;
-    
-	public int metaFrameCore;
-	public int metaBalloon;
-	
-	public int metaFrameVisual;
-	public boolean frameVisualActive;
-	
-	public int metaColorRed;
-	public int metaColorGreen;
-	public int metaColorBlue;
-	
-    public static final DataParameter<Integer> TIME_SINCE_HIT_VC = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+	/** General */
+    protected static final DataParameter<Integer> TIME_SINCE_HIT_VC = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
     protected static final DataParameter<Integer> FORWARD_DIRECTION_VC = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
     protected static final DataParameter<Float> DAMAGE_TAKEN_VC = EntityDataManager.<Float>createKey(EntityAirshipBaseVC.class, DataSerializers.FLOAT);
 
@@ -71,6 +54,47 @@ public class EntityAirshipBaseVC extends Entity {
     protected static final DataParameter<Integer> BALLOON_COLOR_GREEN_VC = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
     protected static final DataParameter<Integer> BALLOON_COLOR_BLUE_VC = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
     
+	/** Fuel */
+	protected static final DataParameter<Integer> POWERED = EntityDataManager.<Integer>createKey(EntityAirshipV1Core.class, DataSerializers.VARINT);
+	protected static final DataParameter<Integer> TOTALPOWERED = EntityDataManager.<Integer>createKey(EntityAirshipV1Core.class, DataSerializers.VARINT);
+	protected static final DataParameter<Integer> ITEMFUELSTACKPOWERED = EntityDataManager.<Integer>createKey(EntityAirshipV1Core.class, DataSerializers.VARINT);
+	protected static final DataParameter<Integer> ITEMFUELSTACKSIZEPOWERED = EntityDataManager.<Integer>createKey(EntityAirshipV1Core.class, DataSerializers.VARINT);
+    
+    /** Passive Modules */
+	protected static final DataParameter<Boolean> MODULE_INVENTORY_SMALL = EntityDataManager.<Boolean>createKey(EntityAirshipV1Core.class, DataSerializers.BOOLEAN);
+	protected static final DataParameter<Boolean> MODULE_INVENTORY_LARGE = EntityDataManager.<Boolean>createKey(EntityAirshipV1Core.class, DataSerializers.BOOLEAN);
+	protected static final DataParameter<Boolean> MODULE_FUEL_INFINITE = EntityDataManager.<Boolean>createKey(EntityAirshipV1Core.class, DataSerializers.BOOLEAN);
+	protected static final DataParameter<Boolean> MODULE_SPEED_MINOR = EntityDataManager.<Boolean>createKey(EntityAirshipV1Core.class, DataSerializers.BOOLEAN);
+	protected static final DataParameter<Boolean> MODULE_SPEED_MAJOR = EntityDataManager.<Boolean>createKey(EntityAirshipV1Core.class, DataSerializers.BOOLEAN);
+	protected static final DataParameter<Boolean> MODULE_WATER_LANDING = EntityDataManager.<Boolean>createKey(EntityAirshipV1Core.class, DataSerializers.BOOLEAN);
+	protected static final DataParameter<Boolean> MODULE_MAX_ALTITUDE = EntityDataManager.<Boolean>createKey(EntityAirshipV1Core.class, DataSerializers.BOOLEAN);
+	protected static final DataParameter<Boolean> MODULE_MINOR_EFFICIENCY = EntityDataManager.<Boolean>createKey(EntityAirshipV1Core.class, DataSerializers.BOOLEAN);
+	protected static final DataParameter<Boolean> MODULE_MAJOR_EFFICIENCY = EntityDataManager.<Boolean>createKey(EntityAirshipV1Core.class, DataSerializers.BOOLEAN);
+	protected static final DataParameter<Boolean> MODULE_JUKEBOX = EntityDataManager.<Boolean>createKey(EntityAirshipV1Core.class, DataSerializers.BOOLEAN);
+	protected static final DataParameter<Integer> MODULE_JUKEBOX_SELECTED_SONG = EntityDataManager.<Integer>createKey(EntityAirshipV1Core.class, DataSerializers.VARINT);
+	
+	//Fuel
+	public int airshipBurnTime;
+	public int airshipTotalBurnTime;
+	public int itemFuelStackSize;
+	public int itemFuelStack;
+	public int airshipFuelTick;
+	
+    //My capabilities inventory
+    public ItemStackHandler inventory;
+    protected int size = 20;
+    
+    //Main getters
+	public int metaFrameCore;
+	public int metaBalloon;
+	
+	public int metaFrameVisual;
+	public boolean frameVisualActive;
+	
+	public int metaColorRed;
+	public int metaColorGreen;
+	public int metaColorBlue;
+	
     /** How much of current speed to retain. Value zero to one. */
     protected float momentum;
     protected float outOfControlTicks;
@@ -82,6 +106,7 @@ public class EntityAirshipBaseVC extends Entity {
     private double boatYaw;
     private double lerpXRot;
     
+    //Movement
     public boolean leftInputDown;
     public boolean rightInputDown;
     public boolean forwardInputDown;
@@ -106,6 +131,22 @@ public class EntityAirshipBaseVC extends Entity {
     public float AirshipSpeedUp;
     public float AirshipSpeedDown;
 	
+	public String customName;
+	protected int dropNumber;
+	
+	/** Passive Modules */
+    public static boolean moduleInventorySmall;
+    public static boolean moduleInventoryLarge;
+    public static boolean moduleFuelInfinite;
+    public static boolean moduleSpeedMinor;
+    public static boolean moduleSpeedMajor;
+    public static boolean moduleWaterLanding;
+    public static boolean moduleMaxAltitude;
+    public static boolean moduleMinorEfficiency;
+    public static boolean moduleMajorEfficiency;
+    public static boolean moduleJukebox;
+    public int jukeboxSelectedSong;
+    
     public EntityAirshipBaseVC(World worldIn)
     {
         super(worldIn);
@@ -1175,7 +1216,8 @@ public class EntityAirshipBaseVC extends Entity {
     	WATERLANDING(6, "Water Landing"),
     	MAXALTITUDE(7, "Max Altitude"),
     	MINOREFFICIENCY(8, "Minor Efficiency"),
-    	MAJOREFFICIENCY(9, "Major Efficiency");
+    	MAJOREFFICIENCY(9, "Major Efficiency"),
+    	JUKEBOX(10, "Jukebox");
     	
         private final String name;
         private final int metadata;
@@ -1215,6 +1257,89 @@ public class EntityAirshipBaseVC extends Entity {
         }
         
         public static EntityAirshipBaseVC.Module getTypeFromString(String nameIn)
+        {
+            for (int i = 0; i < values().length; ++i)
+            {
+                if (values()[i].getName().equals(nameIn))
+                {
+                    return values()[i];
+                }
+            }
+            
+            return values()[0];
+        }
+    }
+    
+    /**
+	 * Song enum - Represents various song types.
+	 */
+    public static enum Song
+    {
+    	NONE(0, "None", SoundEvents.UI_BUTTON_CLICK),
+    	RECORD11(1, "11", SoundEvents.RECORD_11),
+        RECORD13(2, "13", SoundEvents.RECORD_13),
+        RECORDBLOCKS(3, "Blocks", SoundEvents.RECORD_BLOCKS),
+        RECORDMELLOHI(4, "Mellohi", SoundEvents.RECORD_MELLOHI),
+        RECORDCAT(5, "Cat", SoundEvents.RECORD_CAT),
+        RECORDSTAL(6, "Stal", SoundEvents.RECORD_STAL),
+        RECORDSTRAD(7, "Strad", SoundEvents.RECORD_STRAD),
+        RECORDCHIRP(8, "Chirp", SoundEvents.RECORD_CHIRP),
+        RECORDFAR(9, "Far", SoundEvents.RECORD_FAR),
+        RECORDMALL(10, "Mall", SoundEvents.RECORD_MALL),
+        RECORDWAIT(11, "Wait", SoundEvents.RECORD_WAIT),
+        RECORDWARD(12, "Ward", SoundEvents.RECORD_WARD),
+        RECORDTRIGUN(13, "Trigun", InitSoundEventsVC.trigun),
+        RECORDBRAMBLE(14, "Bramble", InitSoundEventsVC.bramble),
+        RECORDSTORMS(15, "Storms", InitSoundEventsVC.storms),
+        RECORDCOWBOY(16, "Cowboy", InitSoundEventsVC.cowboy),
+        RECORDSECRET(17, "Secret", InitSoundEventsVC.bay)
+    	;
+    	
+        private final String name;
+        private final int metadata;
+        private final SoundEvent song;
+        
+        private Song(int metadataIn, String nameIn, SoundEvent soundIn)
+        {
+            this.name = nameIn;
+            this.metadata = metadataIn;
+            this.song = soundIn;
+        }
+        
+        public String getName()
+        {
+            return this.name;
+        }
+        
+        public int getMetadata()
+        {
+            return this.metadata;
+        }
+        
+        public SoundEvent getSong()
+        {
+            return this.song;
+        }
+        
+        public String toString()
+        {
+            return this.name;
+        }
+        
+        /**
+         * Get a boat type by it's enum ordinal
+         */
+        public static EntityAirshipBaseVC.Song byId(int id)
+        {
+            if (id < 0 || id >= values().length)
+            {
+                id = 0;
+            }
+            
+            return values()[id];
+        }
+        
+        public static EntityAirshipBaseVC.Song getTypeFromString(String nameIn)
         {
             for (int i = 0; i < values().length; ++i)
             {
@@ -1307,6 +1432,22 @@ public class EntityAirshipBaseVC extends Entity {
     }
     
     /**
+     * Gets the Jukebox boolean to pass from server to client.
+     */
+    public boolean getModuleJukebox()
+    {
+        return false;
+    }
+    
+    /**
+     * Gets the Jukebox selected song int to pass from server to client.
+     */
+    public int getJukeboxSelectedSong()
+    {
+        return 0;
+    }
+    
+    /**
      * Gets the airshipBurnTime to pass from server to client.
      */
     public int getPowered()
@@ -1377,7 +1518,7 @@ public class EntityAirshipBaseVC extends Entity {
      */
     //public SoundCategory getSoundCategory()
     //{
-    //    return SoundCategory.HOSTILE;
+    //    return SoundCategory.RECORDS;
     //}
 	
     //protected SoundEvent getAmbientSound()
@@ -1397,5 +1538,4 @@ public class EntityAirshipBaseVC extends Entity {
     //{
     //    return 5.0F;
     //}
-    
 }

@@ -126,37 +126,29 @@ public class CraftingManagerVC {
     	this.addRecipe(new ItemStack(InitItemsVC.airship_module, 1, 7), new Object[]{"CGC", "F#F", "CGC", 'C', new ItemStack(InitItemsVC.airship_module, 1, 0), 'G', Items.GLOWSTONE_DUST, 'F', Items.FEATHER, '#', Items.DIAMOND});
     	this.addRecipe(new ItemStack(InitItemsVC.airship_module, 1, 8), new Object[]{"CPC", "D#D", "CPC", 'C', new ItemStack(InitItemsVC.airship_module, 1, 0), 'P', Items.ENDER_PEARL, 'D', Items.DIAMOND, '#', Items.BLAZE_ROD});
     	this.addRecipe(new ItemStack(InitItemsVC.airship_module, 1, 9), new Object[]{"CPC", "E#E", "CPC", 'C', new ItemStack(InitItemsVC.airship_module, 1, 0), 'P', Items.ENDER_PEARL, 'E', Items.EMERALD, '#', Items.BLAZE_ROD});
-    	
-    	
-    	
-    	this.addRecipe(new ItemStack(InitItemsVC.airship_module, 1, 0), new Object[]{"C", 'C', InitItemsVC.module_chip});
-    	this.addRecipe(new ItemStack(InitItemsVC.airship_module, 1, 1), new Object[]{"C", 'C', InitItemsVC.module_speed_increase_minor});
-    	this.addRecipe(new ItemStack(InitItemsVC.airship_module, 1, 2), new Object[]{"C", 'C', InitItemsVC.module_speed_increase_major});
-    	this.addRecipe(new ItemStack(InitItemsVC.airship_module, 1, 3), new Object[]{"C", 'C', InitItemsVC.module_inventory_small});
-    	this.addRecipe(new ItemStack(InitItemsVC.airship_module, 1, 4), new Object[]{"C", 'C', InitItemsVC.module_inventory_large});
-    	this.addRecipe(new ItemStack(InitItemsVC.airship_module, 1, 5), new Object[]{"C", 'C', InitItemsVC.module_fuel_infinite});
+    	this.addRecipe(new ItemStack(InitItemsVC.airship_module, 1, 10), new Object[]{"CPC", "Q#Q", "CPC", 'C', new ItemStack(InitItemsVC.airship_module, 1, 0), 'P', Items.ENDER_PEARL, 'Q', Items.QUARTZ, '#', Blocks.JUKEBOX});
     	
     	//=================================================
 		
 		//Colorizer using coal or charcoal
-    	this.addRecipe(new ItemStack(InitItemsVC.item_balloon_colorizer), new Object[]{"I#I", "#M#", "I#I", '#', new ItemStack(Items.COAL, 1, 0), 'I', Items.IRON_INGOT, 'M', InitItemsVC.module_chip});
-		this.addRecipe(new ItemStack(InitItemsVC.item_balloon_colorizer), new Object[]{"I#I", "#M#", "I#I", '#', new ItemStack(Items.COAL, 1, 1), 'I', Items.IRON_INGOT, 'M', InitItemsVC.module_chip});
+    	this.addRecipe(new ItemStack(InitItemsVC.item_balloon_colorizer), new Object[]{"I#I", "#M#", "I#I", '#', new ItemStack(Items.COAL, 1, 0), 'I', Items.IRON_INGOT, 'M', new ItemStack(InitItemsVC.airship_module, 1, 0)});
+		this.addRecipe(new ItemStack(InitItemsVC.item_balloon_colorizer), new Object[]{"I#I", "#M#", "I#I", '#', new ItemStack(Items.COAL, 1, 1), 'I', Items.IRON_INGOT, 'M', new ItemStack(InitItemsVC.airship_module, 1, 0)});
     	
     	//=================================================
 		
 		//Balloon Patterns
 		//Plain
-		this.addRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 0), new Object[]{"LLL", "LLL", "L#L", '#', InitItemsVC.module_chip, 'L', Items.LEATHER});
+		this.addRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 0), new Object[]{"LLL", "LLL", "L#L", '#', new ItemStack(InitItemsVC.airship_module, 1, 0), 'L', Items.LEATHER});
 		//Checker
-		this.addRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 1), new Object[]{"ILI", "LIL", "I#I", '#', InitItemsVC.module_chip, 'L', Items.LEATHER, 'I', new ItemStack(Items.DYE, 1, 0)});
+		this.addRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 1), new Object[]{"ILI", "LIL", "I#I", '#', new ItemStack(InitItemsVC.airship_module, 1, 0), 'L', Items.LEATHER, 'I', new ItemStack(Items.DYE, 1, 0)});
 		//Checker Colorized
 		this.addShapelessRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 2), new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 1), new ItemStack(Items.ENDER_EYE));
 		//Polka Dot
-		this.addRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 3), new Object[]{"ILI", "LLL", "I#I", '#', InitItemsVC.module_chip, 'L', Items.LEATHER, 'I', new ItemStack(Items.DYE, 1, 0)});
+		this.addRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 3), new Object[]{"ILI", "LLL", "I#I", '#', new ItemStack(InitItemsVC.airship_module, 1, 0), 'L', Items.LEATHER, 'I', new ItemStack(Items.DYE, 1, 0)});
 		//Polka Dot Colorized
 		this.addShapelessRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 4), new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 3), new ItemStack(Items.ENDER_EYE));
 		//Zigzag
-		this.addRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 5), new Object[]{"ILL", "LIL", "L#I", '#', InitItemsVC.module_chip, 'L', Items.LEATHER, 'I', new ItemStack(Items.DYE, 1, 0)});
+		this.addRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 5), new Object[]{"ILL", "LIL", "L#I", '#', new ItemStack(InitItemsVC.airship_module, 1, 0), 'L', Items.LEATHER, 'I', new ItemStack(Items.DYE, 1, 0)});
 		//Zigzag Colorized
 		this.addShapelessRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 6), new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 5), new ItemStack(Items.ENDER_EYE));
 		

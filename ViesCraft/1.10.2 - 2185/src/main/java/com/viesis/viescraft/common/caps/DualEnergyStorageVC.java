@@ -8,10 +8,10 @@ import net.minecraftforge.fml.common.Optional;
 	@Optional.Interface(iface = "net.darkhax.tesla.api.ITeslaProducer", modid = "tesla")
 })
 
-public class DualEnergyStorageVC 
-//extends EnergyStorage implements ITeslaHolder, ITeslaConsumer, ITeslaProducer, INBTSerializable<NBTTagCompound> 
+public class DualEnergyStorageVC //extends EnergyStorage 
+//implements ITeslaHolder, ITeslaConsumer, ITeslaProducer, INBTSerializable<NBTTagCompound> 
 {
-/**	
+	/**
 	@CapabilityInject(ITeslaConsumer.class)
 	public static Capability<?> CAPABILITY_CONSUMER = null;
 	@CapabilityInject(ITeslaProducer.class)

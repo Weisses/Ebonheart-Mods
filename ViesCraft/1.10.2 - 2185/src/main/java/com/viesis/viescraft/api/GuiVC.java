@@ -69,4 +69,32 @@ public class GuiVC {
 	
 	/** Mythic */
 	public static GuiButton button26;
+	
+
+	/** Record 11 */
+	public static GuiButton button27;
+	/** Record 13 */
+	public static GuiButton button28;
+	/** Record Blocks */
+	public static GuiButton button29;
+	/** Record Mellohi */
+	public static GuiButton button30;
+	
+	/** Record Cat */
+	public static GuiButton button31;
+	/** Record Stal */
+	public static GuiButton button32;
+	/** Record Strad */
+	public static GuiButton button33;
+	/** Record Chirp */
+	public static GuiButton button34;
+	
+	/** Record Far */
+	public static GuiButton button35;
+	/** Record Mall */
+	public static GuiButton button36;
+	/** Record Wait  */
+	public static GuiButton button37;
+	/** Record Ward  */
+	public static GuiButton button38;
 }

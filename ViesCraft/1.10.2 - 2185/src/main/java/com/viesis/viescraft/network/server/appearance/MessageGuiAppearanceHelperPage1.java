@@ -1,6 +1,6 @@
 package com.viesis.viescraft.network.server.appearance;
 
-import com.viesis.viescraft.client.gui.all.GuiEntityAirshipAppearancePage1;
+import com.viesis.viescraft.client.gui.airship.frames.GuiAirshipAppearancePg1;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
 import com.viesis.viescraft.network.packet.MessageBase;
 
@@ -22,8 +22,8 @@ public class MessageGuiAppearanceHelperPage1 extends MessageBase<MessageGuiAppea
 	@Override
 	public void toBytes(ByteBuf buf) 
 	{
-		buf.writeInt(GuiEntityAirshipAppearancePage1.metaInfo);
-		buf.writeBoolean(GuiEntityAirshipAppearancePage1.metaActiveInfo);
+		buf.writeInt(GuiAirshipAppearancePg1.metaInfo);
+		buf.writeBoolean(GuiAirshipAppearancePg1.metaActiveInfo);
 	}
 	
 	@Override

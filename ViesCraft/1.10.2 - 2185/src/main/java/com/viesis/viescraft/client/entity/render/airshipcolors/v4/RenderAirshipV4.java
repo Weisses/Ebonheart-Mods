@@ -133,6 +133,10 @@ public class RenderAirshipV4 extends Render<EntityAirshipV4Core> {
 		{
 			this.moduleNumber = 9;
 		}
+        else if(entity.getModuleJukebox())
+		{
+			this.moduleNumber = 10;
+		}
         else
         {
         	this.moduleNumber = 0;

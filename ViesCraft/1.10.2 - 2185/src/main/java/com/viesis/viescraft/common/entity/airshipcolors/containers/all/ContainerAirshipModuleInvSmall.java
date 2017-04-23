@@ -13,7 +13,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ContainerAirshipModuleInvSmall extends ContainerVC {
 	
 	private EntityAirshipBaseVC airship;
-	
 	private int airshipBurnTime;
 	
 	/*

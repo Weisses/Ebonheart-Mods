@@ -479,14 +479,14 @@ public class ModelAirshipWorkbench extends ModelBase {
   	public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity)
   	{
 	    super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
-	    
-	    long now = System.nanoTime();
+		
+		long now = System.nanoTime();
 		int elapsed = (int) ((now - lastframe) / (1000000));
 		// 1000000 nanoseconds = .001 seconds
 		bladespin = (float) elapsed / 300.0f;
 		// 0.001 seconds / 300 = 3.3333 repeating.
 		lastframe = now;
-		
+	    
 		this.InnerGear1a.rotateAngleY += (bladespin * 2);
 		this.InnerGear1b.rotateAngleY += (bladespin * 2);
 		this.InnerGear1c.rotateAngleY += (bladespin * 2);
