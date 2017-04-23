@@ -18,7 +18,7 @@ public class GuiGuidebookSocket extends GuiScreen {
     private final int bookImageHeight = 192;
     private final int bookImageWidth = 192;
     private int currPage = 0;
-    private static final int bookTotalPages = 13;
+    private static final int bookTotalPages = 14;
     private static ResourceLocation[] bookPageTextures = new ResourceLocation[bookTotalPages];
     private static String[] stringPageText = new String[bookTotalPages];
     
@@ -41,6 +41,7 @@ public class GuiGuidebookSocket extends GuiScreen {
         bookPageTextures[10] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/socket/page_10.png");
         bookPageTextures[11] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/socket/page_11.png");
         bookPageTextures[12] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/socket/page_12.png");
+        bookPageTextures[13] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/socket/page_13.png");
         
         
         //Title
@@ -76,10 +77,10 @@ public class GuiGuidebookSocket extends GuiScreen {
         
         stringPageText[3] = "Module Recipe:"
         		+ "\n\n"
-        		+ "\u00A7l\u00A7nModule Chip\u00A70\u00A7r\u00A70"
+        		+ "\u00A7l\u00A7nLogic Chip\u00A70\u00A7r\u00A70"
         		+ "\n\n\n\n\n\n\n\n\n"
         		+ "\u00A7oBasic chip used to"
-        		+ "\nmake modules.\u00A7r";
+        		+ "\nmake modules/items.\u00A7r";
         
 
         stringPageText[4] = "Module Recipe:"
@@ -146,6 +147,13 @@ public class GuiGuidebookSocket extends GuiScreen {
         		+ "\n\n\n\n\n\n\n\n"
         		+ "\u00A72 Fuel burn +50%"
         		+ "\n\u00A7c Speed -25%\u00A7r";//Really 30%
+        
+        stringPageText[13] = "Module Recipe:"
+        		+ "\n\n"
+        		+ "\u00A7l\u00A7nJukebox\nModule\u00A70\u00A7r\u00A70"
+        		+ "\n\n\n\n\n\n\n\n"
+        		+ "\u00A72 Play music"
+        		+ "\n\u00A7c None\u00A7r";//Really 30%
         /**
         stringPageText[8] = "Module Recipe:"
         		+ "\n\n"
@@ -254,6 +262,10 @@ public class GuiGuidebookSocket extends GuiScreen {
         if (currPage == 12)
         {
         	mc.getTextureManager().bindTexture(bookPageTextures[12]);
+        }
+        if (currPage == 13)
+        {
+        	mc.getTextureManager().bindTexture(bookPageTextures[13]);
         }
         //else
         //{

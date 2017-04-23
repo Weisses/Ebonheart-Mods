@@ -105,6 +105,13 @@ public class ItemModule extends Item {
 			toolTip.add(TextFormatting.GREEN + "Pro - Fuel lasts 50% longer.");
 			toolTip.add(TextFormatting.RED + "Con - Speed Modifier: -25%");//Really 30%
 		}
+		if(stack.getMetadata() == 10)
+		{
+			toolTip.add(TextFormatting.GOLD + "Effects while socketed:");
+			toolTip.add(" ");
+			toolTip.add(TextFormatting.GREEN + "Pro - Play music in area.");
+			toolTip.add(TextFormatting.RED + "Con - None.");//Really 30%
+		}
 	}
 	
 	public EnumRarity getRarity(ItemStack stack)

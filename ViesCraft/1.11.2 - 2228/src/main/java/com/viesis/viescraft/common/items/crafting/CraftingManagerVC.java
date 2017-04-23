@@ -125,6 +125,7 @@ public class CraftingManagerVC {
     	this.addRecipe(new ItemStack(InitItemsVC.airship_module, 1, 7), new Object[]{"CGC", "F#F", "CGC", 'C', new ItemStack(InitItemsVC.airship_module, 1, 0), 'G', Items.GLOWSTONE_DUST, 'F', Items.FEATHER, '#', Items.DIAMOND});
     	this.addRecipe(new ItemStack(InitItemsVC.airship_module, 1, 8), new Object[]{"CPC", "D#D", "CPC", 'C', new ItemStack(InitItemsVC.airship_module, 1, 0), 'P', Items.ENDER_PEARL, 'D', Items.DIAMOND, '#', Items.BLAZE_ROD});
     	this.addRecipe(new ItemStack(InitItemsVC.airship_module, 1, 9), new Object[]{"CPC", "E#E", "CPC", 'C', new ItemStack(InitItemsVC.airship_module, 1, 0), 'P', Items.ENDER_PEARL, 'E', Items.EMERALD, '#', Items.BLAZE_ROD});
+    	this.addRecipe(new ItemStack(InitItemsVC.airship_module, 1, 10), new Object[]{"CPC", "Q#Q", "CPC", 'C', new ItemStack(InitItemsVC.airship_module, 1, 0), 'P', Items.ENDER_PEARL, 'Q', Items.QUARTZ, '#', Blocks.JUKEBOX});
     	
     	//=================================================
 		
