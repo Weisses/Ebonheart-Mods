@@ -130,8 +130,4 @@ public class InitParticlesVCRender {
 	          motionZ);
 	    Minecraft.getMinecraft().effectRenderer.addEffect(particleUnholy);        
 	}
-	
-	
-	
-	
 }

@@ -5,7 +5,8 @@ import com.viesis.viescraft.client.InitBlocksVCRender;
 import com.viesis.viescraft.client.InitEntityVCRender;
 import com.viesis.viescraft.client.InitItemsVCRender;
 import com.viesis.viescraft.client.InitTileEntityVCRender;
-import com.viesis.viescraft.client.gui.all.GuiHUD;
+import com.viesis.viescraft.client.InitSoundEventsVC;
+import com.viesis.viescraft.client.gui.airship.GuiAirshipHUD;
 import com.viesis.viescraft.network.NetworkHandler;
 
 import net.minecraftforge.common.MinecraftForge;
@@ -19,7 +20,7 @@ public class ClientProxy extends CommonProxy {
 	public void preInit(FMLPreInitializationEvent event) 
 	{
 		super.preInit(event);
-		
+		InitSoundEventsVC.registerSounds();
 		InitItemsVCRender.registerItemRender();
 		InitBlocksVCRender.registerBlockRender();
 		InitEntityVCRender.registerEntityRender();
@@ -38,7 +39,7 @@ public class ClientProxy extends CommonProxy {
 	{
 		super.init(event);
 		
-		MinecraftForge.EVENT_BUS.register(new GuiHUD());
+		MinecraftForge.EVENT_BUS.register(new GuiAirshipHUD());
 	}
 	
 	@Override

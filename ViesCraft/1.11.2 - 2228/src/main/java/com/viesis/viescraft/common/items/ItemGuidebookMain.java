@@ -15,7 +15,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.viesis.viescraft.ViesCraft;
-import com.viesis.viescraft.client.gui.GuiGuidebookMain;
+import com.viesis.viescraft.client.gui.guidebooks.GuiGuidebookMain;
 
 public class ItemGuidebookMain extends Item {
 	

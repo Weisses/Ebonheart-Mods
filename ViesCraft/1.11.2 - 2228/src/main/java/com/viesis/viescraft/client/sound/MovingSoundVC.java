@@ -1,6 +1,4 @@
-package com.viesis.viescraft.client;
-
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
+package com.viesis.viescraft.client.sound;
 
 import net.minecraft.client.audio.MovingSound;
 import net.minecraft.entity.Entity;
@@ -11,8 +9,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class MovingSoundVC extends MovingSound
-{
+public class MovingSoundVC extends MovingSound {
+	
     private final Entity airship;
     private float distance = 0.0F;
     private SoundEvent sound;

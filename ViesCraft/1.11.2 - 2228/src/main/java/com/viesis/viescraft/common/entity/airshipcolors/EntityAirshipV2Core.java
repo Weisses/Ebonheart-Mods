@@ -11,6 +11,7 @@ import com.viesis.viescraft.network.NetworkHandler;
 import com.viesis.viescraft.network.server.airship.MessageGuiDefault;
 import com.viesis.viescraft.network.server.airship.MessageGuiModuleInventoryLarge;
 import com.viesis.viescraft.network.server.airship.MessageGuiModuleInventorySmall;
+import com.viesis.viescraft.network.server.airship.MessageGuiModuleJukebox;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -28,9 +29,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.datasync.DataParameter;
-import net.minecraft.network.datasync.DataSerializers;
-import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.EntitySelectors;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.MathHelper;
@@ -41,37 +39,6 @@ import net.minecraftforge.items.ItemStackHandler;
 
 public class EntityAirshipV2Core extends EntityAirshipBaseVC {
 	
-	/** Fuel */
-	protected static final DataParameter<Integer> POWERED = EntityDataManager.<Integer>createKey(EntityAirshipV2Core.class, DataSerializers.VARINT);
-	protected static final DataParameter<Integer> TOTALPOWERED = EntityDataManager.<Integer>createKey(EntityAirshipV2Core.class, DataSerializers.VARINT);
-	protected static final DataParameter<Integer> ITEMFUELSTACKPOWERED = EntityDataManager.<Integer>createKey(EntityAirshipV2Core.class, DataSerializers.VARINT);
-	protected static final DataParameter<Integer> ITEMFUELSTACKSIZEPOWERED = EntityDataManager.<Integer>createKey(EntityAirshipV2Core.class, DataSerializers.VARINT);
-    
-    /** Passive Modules */
-	protected static final DataParameter<Boolean> MODULE_INVENTORY_SMALL = EntityDataManager.<Boolean>createKey(EntityAirshipV2Core.class, DataSerializers.BOOLEAN);
-	protected static final DataParameter<Boolean> MODULE_INVENTORY_LARGE = EntityDataManager.<Boolean>createKey(EntityAirshipV2Core.class, DataSerializers.BOOLEAN);
-	protected static final DataParameter<Boolean> MODULE_FUEL_INFINITE = EntityDataManager.<Boolean>createKey(EntityAirshipV2Core.class, DataSerializers.BOOLEAN);
-	protected static final DataParameter<Boolean> MODULE_SPEED_MINOR = EntityDataManager.<Boolean>createKey(EntityAirshipV2Core.class, DataSerializers.BOOLEAN);
-	protected static final DataParameter<Boolean> MODULE_SPEED_MAJOR = EntityDataManager.<Boolean>createKey(EntityAirshipV2Core.class, DataSerializers.BOOLEAN);
-	protected static final DataParameter<Boolean> MODULE_WATER_LANDING = EntityDataManager.<Boolean>createKey(EntityAirshipV2Core.class, DataSerializers.BOOLEAN);
-	protected static final DataParameter<Boolean> MODULE_MAX_ALTITUDE = EntityDataManager.<Boolean>createKey(EntityAirshipV2Core.class, DataSerializers.BOOLEAN);
-	protected static final DataParameter<Boolean> MODULE_MINOR_EFFICIENCY = EntityDataManager.<Boolean>createKey(EntityAirshipV2Core.class, DataSerializers.BOOLEAN);
-	protected static final DataParameter<Boolean> MODULE_MAJOR_EFFICIENCY = EntityDataManager.<Boolean>createKey(EntityAirshipV2Core.class, DataSerializers.BOOLEAN);
-	
-	public String customName;
-	private int dropNumber;
-	
-	/** Passive Modules */
-    public static boolean moduleInventorySmall;
-    public static boolean moduleInventoryLarge;
-    public static boolean moduleFuelInfinite;
-    public static boolean moduleSpeedMinor;
-    public static boolean moduleSpeedMajor;
-    public static boolean moduleWaterLanding;
-    public static boolean moduleMaxAltitude;
-    public static boolean moduleMinorEfficiency;
-    public static boolean moduleMajorEfficiency;
-    
     public float AirshipSpeedTurn = 0.18F * (ViesCraftConfig.v2AirshipSpeed / 100);
     public float AirshipSpeedForward = 0.016F * (ViesCraftConfig.v2AirshipSpeed / 100);
     public float AirshipSpeedUp = 0.004F * (ViesCraftConfig.v2AirshipSpeed / 100);
@@ -138,6 +105,8 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
         this.dataManager.register(MODULE_MAX_ALTITUDE, Boolean.valueOf(this.moduleMaxAltitude));
         this.dataManager.register(MODULE_MINOR_EFFICIENCY, Boolean.valueOf(this.moduleMinorEfficiency));
         this.dataManager.register(MODULE_MAJOR_EFFICIENCY, Boolean.valueOf(this.moduleMajorEfficiency));
+        this.dataManager.register(MODULE_JUKEBOX, Boolean.valueOf(this.moduleJukebox));
+        this.dataManager.register(MODULE_JUKEBOX_SELECTED_SONG, Integer.valueOf(this.jukeboxSelectedSong));
 	}
 	
 	
@@ -187,6 +156,8 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
     	compound.setInteger("FuelStackTime", this.itemFuelStack);
     	compound.setInteger("FuelStackTimeSize", this.itemFuelStackSize);
     	
+    	compound.setInteger("JukeboxSelectedSong", this.jukeboxSelectedSong);
+    	
         return compound;
     }
     
@@ -210,6 +181,8 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
         this.airshipTotalBurnTime = compound.getInteger("TotalBurnTime");
         this.itemFuelStack = compound.getInteger("FuelStackTime");
         this.itemFuelStackSize = compound.getInteger("FuelStackTimeSize");
+        
+        this.jukeboxSelectedSong = compound.getInteger("JukeboxSelectedSong");
     }
     
     
@@ -391,7 +364,6 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
             this.motionX *= (double)this.momentum;
             this.motionZ *= (double)this.momentum;
             this.deltaRotation *= this.momentum;
-            
             
             if(this.getControllingPassenger() == null)
             {
@@ -644,12 +616,18 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
         		NetworkHandler.sendToServer(new MessageGuiModuleInventoryLarge());
             	Minecraft.getMinecraft().setIngameFocus();
         	}
+        	//If airship has jukebox module installed
+        	else if(this.getModuleJukebox())
+        	{
+        		NetworkHandler.sendToServer(new MessageGuiModuleJukebox());
+            	Minecraft.getMinecraft().setIngameFocus();
+        	}
         	//Default for airship gui
         	else
         	{
         		NetworkHandler.sendToServer(new MessageGuiDefault());
             	Minecraft.getMinecraft().setIngameFocus();
-        	}	
+        	}
         }
     }
     
@@ -833,7 +811,7 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
      */
     public static int getItemBurnTime(ItemStack stack)
     {
-        if (stack == null)
+        if (stack == (ItemStack)null)
         {
             return 0;
         }
@@ -1015,10 +993,14 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
 				LogHelper.info("5");
 			if(this.getModuleWaterLanding())
 				LogHelper.info("6");
-			if(this.getModuleMinorEfficiency())
+			if(this.getModuleMaxAltitude())
 				LogHelper.info("7");
-			if(this.getModuleMajorEfficiency())
+			if(this.getModuleMinorEfficiency())
 				LogHelper.info("8");
+			if(this.getModuleMajorEfficiency())
+				LogHelper.info("9");
+			if(this.getModuleJukebox())
+				LogHelper.info("10");
 		}
 		*/
 		
@@ -1034,117 +1016,11 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
     		this.moduleMaxAltitude = this.getModuleMaxAltitude();
     		this.moduleMinorEfficiency = this.getModuleMinorEfficiency();
     		this.moduleMajorEfficiency = this.getModuleMajorEfficiency();
+    		this.moduleJukebox = this.getModuleJukebox();
+    		this.jukeboxSelectedSong = this.getJukeboxSelectedSong();
 		}
 		
-		if(moduleNumber == 1)
-		{
-			this.moduleSpeedMinor = true;
-			this.moduleSpeedMajor = false;
-			this.moduleInventorySmall = false;
-			this.moduleInventoryLarge = false;
-			this.moduleFuelInfinite = false;
-			this.moduleWaterLanding = false;
-			this.moduleMaxAltitude = false;
-			this.moduleMinorEfficiency = false;
-			this.moduleMajorEfficiency = false;
-		}
-		else if(moduleNumber == 2)
-		{
-			this.moduleSpeedMinor = false;
-			this.moduleSpeedMajor = true;
-			this.moduleInventorySmall = false;
-			this.moduleInventoryLarge = false;
-			this.moduleFuelInfinite = false;
-			this.moduleWaterLanding = false;
-			this.moduleMaxAltitude = false;
-			this.moduleMinorEfficiency = false;
-			this.moduleMajorEfficiency = false;
-		}
-		else if(moduleNumber == 3)
-		{
-			this.moduleSpeedMinor = false;
-			this.moduleSpeedMajor = false;
-			this.moduleInventorySmall = true;
-			this.moduleInventoryLarge = false;
-			this.moduleFuelInfinite = false;
-			this.moduleWaterLanding = false;
-			this.moduleMaxAltitude = false;
-			this.moduleMinorEfficiency = false;
-			this.moduleMajorEfficiency = false;
-		}
-		else if(moduleNumber == 4)
-		{
-			this.moduleSpeedMinor = false;
-			this.moduleSpeedMajor = false;
-			this.moduleInventorySmall = false;
-			this.moduleInventoryLarge = true;
-			this.moduleFuelInfinite = false;
-			this.moduleWaterLanding = false;
-			this.moduleMaxAltitude = false;
-			this.moduleMinorEfficiency = false;
-			this.moduleMajorEfficiency = false;
-		}
-		else if(moduleNumber == 5)
-		{
-			this.moduleSpeedMinor = false;
-			this.moduleSpeedMajor = false;
-			this.moduleInventorySmall = false;
-			this.moduleInventoryLarge = false;
-			this.moduleFuelInfinite = true;
-			this.moduleWaterLanding = false;
-			this.moduleMaxAltitude = false;
-			this.moduleMinorEfficiency = false;
-			this.moduleMajorEfficiency = false;
-		}
-		else if(moduleNumber == 6)
-		{
-			this.moduleSpeedMinor = false;
-			this.moduleSpeedMajor = false;
-			this.moduleInventorySmall = false;
-			this.moduleInventoryLarge = false;
-			this.moduleFuelInfinite = false;
-			this.moduleWaterLanding = true;
-			this.moduleMaxAltitude = false;
-			this.moduleMinorEfficiency = false;
-			this.moduleMajorEfficiency = false;
-		}
-		else if(moduleNumber == 7)
-		{
-			this.moduleSpeedMinor = false;
-			this.moduleSpeedMajor = false;
-			this.moduleInventorySmall = false;
-			this.moduleInventoryLarge = false;
-			this.moduleFuelInfinite = false;
-			this.moduleWaterLanding = false;
-			this.moduleMaxAltitude = true;
-			this.moduleMinorEfficiency = false;
-			this.moduleMajorEfficiency = false;
-		}
-		else if(moduleNumber == 8)
-		{
-			this.moduleSpeedMinor = false;
-			this.moduleSpeedMajor = false;
-			this.moduleInventorySmall = false;
-			this.moduleInventoryLarge = false;
-			this.moduleFuelInfinite = false;
-			this.moduleWaterLanding = false;
-			this.moduleMaxAltitude = false;
-			this.moduleMinorEfficiency = true;
-			this.moduleMajorEfficiency = false;
-		}
-		else if(moduleNumber == 9)
-		{
-			this.moduleSpeedMinor = false;
-			this.moduleSpeedMajor = false;
-			this.moduleInventorySmall = false;
-			this.moduleInventoryLarge = false;
-			this.moduleFuelInfinite = false;
-			this.moduleWaterLanding = false;
-			this.moduleMaxAltitude = false;
-			this.moduleMinorEfficiency = false;
-			this.moduleMajorEfficiency = true;
-		}
-		else// if(moduleNumber == 0)
+		if(moduleNumber >= 0)
 		{
 			this.moduleSpeedMinor = false;
 			this.moduleSpeedMajor = false;
@@ -1155,6 +1031,48 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
 			this.moduleMaxAltitude = false;
 			this.moduleMinorEfficiency = false;
 			this.moduleMajorEfficiency = false;
+			this.moduleJukebox = false;
+			
+			if(moduleNumber == 1)
+			{
+				this.moduleSpeedMinor = true;
+			}
+			if(moduleNumber == 2)
+			{
+				this.moduleSpeedMajor = true;
+			}
+			if(moduleNumber == 3)
+			{
+				this.moduleInventorySmall = true;
+			}
+			if(moduleNumber == 4)
+			{
+				this.moduleInventoryLarge = true;
+			}
+			if(moduleNumber == 5)
+			{
+				this.moduleFuelInfinite = true;
+			}
+			if(moduleNumber == 6)
+			{
+				this.moduleWaterLanding = true;
+			}
+			if(moduleNumber == 7)
+			{
+				this.moduleMaxAltitude = true;
+			}
+			if(moduleNumber == 8)
+			{
+				this.moduleMinorEfficiency = true;
+			}
+			if(moduleNumber == 9)
+			{
+				this.moduleMajorEfficiency = true;
+			}
+			if(moduleNumber == 10)
+			{
+				this.moduleJukebox = true;
+			}
 		}
 		
 		//Used to drop inventory if inv modules are removed/switched
@@ -1221,6 +1139,8 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
     		this.setModuleMaxAltitude(this.moduleMaxAltitude);
     		this.setModuleMinorEfficiency(this.moduleMinorEfficiency);
     		this.setModuleMajorEfficiency(this.moduleMajorEfficiency);
+    		this.setModuleJukebox(this.moduleJukebox);
+    		this.setJukeboxSelectedSong(this.jukeboxSelectedSong);
     	}
     }
     
@@ -1401,6 +1321,34 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
     {
         return ((Boolean)this.dataManager.get(MODULE_MAJOR_EFFICIENCY)).booleanValue();
     }
+
+    /**
+     * Sets if Jukebox mod is installed to pass from server to client.
+     */
+    public void setModuleJukebox(boolean moduleJukebox1)
+    {
+        this.dataManager.set(MODULE_JUKEBOX, Boolean.valueOf(moduleJukebox1));
+    }
+    
+    @Override
+    public boolean getModuleJukebox()
+    {
+        return ((Boolean)this.dataManager.get(MODULE_JUKEBOX)).booleanValue();
+    }
+    
+	/**
+     * Sets the jukebox selected song to pass from server to client.
+     */
+    public void setJukeboxSelectedSong(int jukeboxSelectedSong1)
+    {
+        this.dataManager.set(MODULE_JUKEBOX_SELECTED_SONG, Integer.valueOf(jukeboxSelectedSong1));
+    }
+	
+    @Override
+    public int getJukeboxSelectedSong()
+    {
+        return ((Integer)this.dataManager.get(MODULE_JUKEBOX_SELECTED_SONG)).intValue();
+    }
     
     
     
@@ -1470,7 +1418,6 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
     
     public void visualFrame()
     {
-    	
     	if(this.frameVisualActive == true
     	&& this.metaFrameVisual == this.metaFrameCore)
     	{
@@ -1489,7 +1436,6 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
 		{
 			this.setVisualFrame(this.metaFrameVisual);
 			this.setVisualFrameActive(this.frameVisualActive);
-			
     	}
     }
     

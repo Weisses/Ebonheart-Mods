@@ -1,4 +1,4 @@
-package com.viesis.viescraft.client.gui;
+package com.viesis.viescraft.client.gui.guidebooks;
 
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;

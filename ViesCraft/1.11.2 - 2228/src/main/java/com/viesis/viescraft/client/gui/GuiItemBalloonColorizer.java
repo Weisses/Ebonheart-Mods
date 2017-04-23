@@ -76,8 +76,6 @@ public class GuiItemBalloonColorizer extends GuiScreen {
             this.tagColor.appendTag(new NBTTagString("ColorRed"));
             this.tagColor.appendTag(new NBTTagString("ColorGreen"));
             this.tagColor.appendTag(new NBTTagString("ColorBlue"));
-            
-            
 		}
 		
 		if (this.tagColor == null)
@@ -380,7 +378,6 @@ public class GuiItemBalloonColorizer extends GuiScreen {
 			this.sendTagToServer(4);
 			
 			this.mc.player.closeScreen();
-			//this.mc.displayGuiScreen((GuiScreen)null);
 	    }
 		
         this.buttonList.clear();

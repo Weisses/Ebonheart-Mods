@@ -1,6 +1,9 @@
 package com.viesis.viescraft.network.packet;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
@@ -13,12 +16,30 @@ public abstract class MessageBase<REQ extends IMessage> implements IMessage, IMe
 	{
 		if(ctx.side == Side.SERVER)
 		{
-			handleServerSide(message, ctx.getServerHandler().playerEntity);
+			final EntityPlayerMP sendingPlayer = ctx.getServerHandler().playerEntity;
+			final WorldServer playerWorldServer = sendingPlayer.getServerWorld();
+			
+			playerWorldServer.addScheduledTask(new Runnable() 
+		    {
+		    	public void run() 
+		    	{
+		    		handleServerSide(message, sendingPlayer);
+		    	}
+		    });
 		}
 		else
 		{
-			handleClientSide(message, null);
+			final Minecraft playerWorldClient = Minecraft.getMinecraft();
+		    
+			playerWorldClient.addScheduledTask(new Runnable() 
+		    {
+		    	public void run() 
+		    	{
+		    		handleClientSide(message, null);
+		    	}
+		    });
 		}
+		
 		return null;
 	}
 	

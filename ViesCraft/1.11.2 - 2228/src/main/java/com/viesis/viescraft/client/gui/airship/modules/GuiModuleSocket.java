@@ -1,4 +1,4 @@
-package com.viesis.viescraft.client.gui.all;
+package com.viesis.viescraft.client.gui.airship.modules;
 
 import java.io.IOException;
 
@@ -7,10 +7,12 @@ import org.lwjgl.input.Keyboard;
 import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.api.util.Keybinds;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
-import com.viesis.viescraft.common.entity.airshipcolors.containers.all.ContainerAirshipModuleInvLarge;
+import com.viesis.viescraft.common.entity.airshipcolors.containers.all.ContainerAirshipModule;
 import com.viesis.viescraft.network.NetworkHandler;
-import com.viesis.viescraft.network.server.airship.MessageGuiModule;
-import com.viesis.viescraft.network.server.appearance.MessageGuiAppearancePage1;
+import com.viesis.viescraft.network.server.airship.MessageGuiDefault;
+import com.viesis.viescraft.network.server.airship.MessageGuiModuleInventoryLarge;
+import com.viesis.viescraft.network.server.airship.MessageGuiModuleInventorySmall;
+import com.viesis.viescraft.network.server.airship.MessageGuiModuleJukebox;
 
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -18,18 +20,16 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.util.ResourceLocation;
 
-public class GuiEntityAirshipModuleInventoryLarge extends GuiContainer {
+public class GuiModuleSocket extends GuiContainer {
 	
-	/** Frame */
-	private GuiButton buttonFrame;
 	/** Module */
 	private GuiButton buttonModule;
 	private IInventory playerInv;
 	private EntityAirshipBaseVC airship;
 	
-	public GuiEntityAirshipModuleInventoryLarge(IInventory playerInv, EntityAirshipBaseVC airshipIn)
+	public GuiModuleSocket(IInventory playerInv, EntityAirshipBaseVC airshipIn)
 	{
-		super(new ContainerAirshipModuleInvLarge(playerInv, airshipIn));
+		super(new ContainerAirshipModule(playerInv, airshipIn));
 		
 		this.playerInv = playerInv;
 		this.airship = airshipIn;
@@ -48,13 +48,10 @@ public class GuiEntityAirshipModuleInventoryLarge extends GuiContainer {
     	buttonList.clear();
     	Keyboard.enableRepeatEvents(true);
     	
-    	buttonModule = new GuiButton( 1, this.guiLeft + 133, this.guiTop + 67, 37, 14, "Module");
+		buttonModule = new GuiButton( 1, this.guiLeft + 133, this.guiTop + 60, 37, 20, "Back");
 		this.buttonList.add(buttonModule);
-		
-		buttonFrame = new GuiButton( 2, this.guiLeft + 133, this.guiTop + 53, 37, 14, "Frame");
-		this.buttonList.add(buttonFrame);
     }
-    
+	
     /**
      * Called by the controls from the buttonList when activated. (Mouse pressed for buttons)
      */
@@ -63,11 +60,22 @@ public class GuiEntityAirshipModuleInventoryLarge extends GuiContainer {
     {
 		if (parButton.id == 1)
 	    {
-			NetworkHandler.sendToServer(new MessageGuiModule());
-	    }
-		if (parButton.id == 2)
-	    {
-			NetworkHandler.sendToServer(new MessageGuiAppearancePage1());
+			if(this.airship.getModuleInventorySmall())
+			{
+				NetworkHandler.sendToServer(new MessageGuiModuleInventorySmall());
+			}
+			else if(this.airship.getModuleInventoryLarge())
+			{
+				NetworkHandler.sendToServer(new MessageGuiModuleInventoryLarge());
+			}
+			else if(this.airship.getModuleJukebox())
+			{
+				NetworkHandler.sendToServer(new MessageGuiModuleJukebox());
+			}
+			else
+			{
+				NetworkHandler.sendToServer(new MessageGuiDefault());
+			}
 	    }
 		
         this.buttonList.clear();
@@ -79,40 +87,30 @@ public class GuiEntityAirshipModuleInventoryLarge extends GuiContainer {
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) 
 	{
 		GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
-		this.mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":" + "textures/gui/container_airship_module2.png"));
+		this.mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":" + "textures/gui/container_airship_module.png"));
 		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
 		
-		if (this.airship.getPowered() > 0)
-        {
-			int k = this.getBurnLeftScaled(47);
-            this.drawTexturedModalRect(this.guiLeft + 138, this.guiTop + 4, 176, 50, 8, 1 + k);
-            this.drawTexturedModalRect(this.guiLeft + 147, this.guiTop + 30, 176, 14, 26, 16);
-		}
-		
-		//Draw a green fuel bar and magma in the coal slot
-		if(this.airship.getModuleFuelInfinite())
+		//If any Module installed
+		if(this.airship.getModuleSpeedMinor()
+		|| this.airship.getModuleSpeedMajor()
+		|| this.airship.getModuleInventorySmall()
+		|| this.airship.getModuleInventoryLarge()
+		|| this.airship.getModuleFuelInfinite()
+		|| this.airship.getModuleWaterLanding()
+		|| this.airship.getModuleMaxAltitude()
+		|| this.airship.getModuleMinorEfficiency()
+		|| this.airship.getModuleMajorEfficiency()
+		|| this.airship.getModuleJukebox())
 		{
-			this.drawTexturedModalRect(this.guiLeft + 138, this.guiTop + 4, 184, 50, 8, 1 + 47);
-			this.drawTexturedModalRect(this.guiLeft + 152, this.guiTop + 17, 176, 119, 16, 16);
+		    //Draws the box overlay around module slot
+			this.drawTexturedModalRect(this.guiLeft + 64, this.guiTop + 14, 176, 0, 48, 48);
 		}
-    }
-	
-	private int getBurnLeftScaled(int pixels)
-    {
-        int i = this.airship.getField(1);
-        if (i == 0)
-        {
-        	i = this.airship.itemFuelStack + 1;
-        }
-        
-        return this.airship.getField(0) * pixels / i;
     }
 	
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
 	{
 		String s = this.airship.getDisplayName().getUnformattedText();
-		//this.fontRendererObj.drawString("Fuel", 150, 6, 4210752);
 		this.fontRendererObj.drawString(this.playerInv.getDisplayName().getUnformattedText(), 8, 72, 4210752);
 	}
 	

@@ -1,4 +1,4 @@
-package com.viesis.viescraft.client.gui.all;
+package com.viesis.viescraft.client.gui.airship.frames;
 
 import java.io.IOException;
 
@@ -20,14 +20,14 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.util.ResourceLocation;
 
-public class GuiEntityAirshipAppearancePage2 extends GuiContainer {
+public class GuiAirshipAppearancePg2 extends GuiContainer {
 	
 	private IInventory playerInv;
 	private EntityAirshipBaseVC airship;
 	public static int metaInfo;
 	public static boolean metaActiveInfo;
 	
-	public GuiEntityAirshipAppearancePage2(IInventory playerInv, EntityAirshipBaseVC airshipIn)
+	public GuiAirshipAppearancePg2(IInventory playerInv, EntityAirshipBaseVC airshipIn)
 	{
 		super(new ContainerAirshipAppearance(playerInv, airshipIn));
 		

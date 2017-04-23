@@ -1,4 +1,4 @@
-package com.viesis.viescraft.client.gui.all;
+package com.viesis.viescraft.client.gui.airship.modules;
 
 import java.io.IOException;
 
@@ -7,10 +7,12 @@ import org.lwjgl.input.Keyboard;
 import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.api.util.Keybinds;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
-import com.viesis.viescraft.common.entity.airshipcolors.containers.all.ContainerAirshipModuleInvSmall;
+import com.viesis.viescraft.common.entity.airshipcolors.containers.all.ContainerAirshipDefault;
 import com.viesis.viescraft.network.NetworkHandler;
 import com.viesis.viescraft.network.server.airship.MessageGuiModule;
+import com.viesis.viescraft.network.server.airship.MessageGuiPlayMusic;
 import com.viesis.viescraft.network.server.appearance.MessageGuiAppearancePage1;
+import com.viesis.viescraft.network.server.song.MessageGuiMusicPg1;
 
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -18,18 +20,23 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.util.ResourceLocation;
 
-public class GuiEntityAirshipModuleInventorySmall extends GuiContainer {
+public class GuiModuleJukebox extends GuiContainer {
 	
 	/** Frame */
 	private GuiButton buttonFrame;
 	/** Module */
 	private GuiButton buttonModule;
+	/** Play */
+	private GuiButton buttonPlay;
+	/** Choose Music */
+	private GuiButton buttonChooseMusic;
 	private IInventory playerInv;
 	private EntityAirshipBaseVC airship;
+	public static int airshipId;
 	
-	public GuiEntityAirshipModuleInventorySmall(IInventory playerInv, EntityAirshipBaseVC airshipIn)
+	public GuiModuleJukebox(IInventory playerInv, EntityAirshipBaseVC airshipIn)
 	{
-		super(new ContainerAirshipModuleInvSmall(playerInv, airshipIn));
+		super(new ContainerAirshipDefault(playerInv, airshipIn));
 		
 		this.playerInv = playerInv;
 		this.airship = airshipIn;
@@ -48,11 +55,17 @@ public class GuiEntityAirshipModuleInventorySmall extends GuiContainer {
     	buttonList.clear();
     	Keyboard.enableRepeatEvents(true);
     	
-    	buttonModule = new GuiButton( 1, this.guiLeft + 133, this.guiTop + 67, 37, 14, "Module");
+		buttonModule = new GuiButton( 1, this.guiLeft + 133, this.guiTop + 67, 37, 14, "Module");
 		this.buttonList.add(buttonModule);
 		
 		buttonFrame = new GuiButton( 2, this.guiLeft + 133, this.guiTop + 53, 37, 14, "Frame");
 		this.buttonList.add(buttonFrame);
+
+		buttonPlay = new GuiButton( 3, this.guiLeft + 78, this.guiTop + 54, 37, 14, "Play");
+		this.buttonList.add(buttonPlay);
+		
+		buttonChooseMusic = new GuiButton( 4, this.guiLeft + 21, this.guiTop + 10, 78, 14, "Choose Music");
+		this.buttonList.add(buttonChooseMusic);
     }
     
     /**
@@ -69,6 +82,15 @@ public class GuiEntityAirshipModuleInventorySmall extends GuiContainer {
 	    {
 			NetworkHandler.sendToServer(new MessageGuiAppearancePage1());
 	    }
+		if (parButton.id == 3)
+	    {
+			airshipId = this.airship.getEntityId();
+			NetworkHandler.sendToServer(new MessageGuiPlayMusic());
+	    }
+		if (parButton.id == 4)
+	    {
+			NetworkHandler.sendToServer(new MessageGuiMusicPg1());
+	    }
 		
         this.buttonList.clear();
         this.initGui();
@@ -79,7 +101,7 @@ public class GuiEntityAirshipModuleInventorySmall extends GuiContainer {
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) 
 	{
 		GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
-		this.mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":" + "textures/gui/container_airship_module1.png"));
+		this.mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":" + "textures/gui/container_airship_jukebox.png"));
 		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
 		
 		if (this.airship.getPowered() > 0)
@@ -87,6 +109,18 @@ public class GuiEntityAirshipModuleInventorySmall extends GuiContainer {
 			int k = this.getBurnLeftScaled(47);
             this.drawTexturedModalRect(this.guiLeft + 138, this.guiTop + 4, 176, 50, 8, 1 + k);
             this.drawTexturedModalRect(this.guiLeft + 147, this.guiTop + 30, 176, 14, 26, 16);
+		}
+		
+		//On button is green in gui
+		if(this.airship.getModuleSpeedMinor()
+		|| this.airship.getModuleSpeedMajor()
+		|| this.airship.getModuleFuelInfinite()
+		|| this.airship.getModuleWaterLanding()
+		|| this.airship.getModuleMaxAltitude()
+		|| this.airship.getModuleMinorEfficiency()
+		|| this.airship.getModuleMajorEfficiency())
+		{
+			this.drawTexturedModalRect(this.guiLeft + 124, this.guiTop + 61, 176, 100, 8, 8);
 		}
 		
 		//Draw a green fuel bar and magma in the coal slot
@@ -97,7 +131,7 @@ public class GuiEntityAirshipModuleInventorySmall extends GuiContainer {
 		}
     }
 	
-	private int getBurnLeftScaled(int pixels)
+    private int getBurnLeftScaled(int pixels)
     {
         int i = this.airship.getField(1);
         if (i == 0)
@@ -112,7 +146,9 @@ public class GuiEntityAirshipModuleInventorySmall extends GuiContainer {
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
 	{
 		String s = this.airship.getDisplayName().getUnformattedText();
-		//this.fontRendererObj.drawString("Fuel", 150, 6, 4210752);
+		
+		this.fontRendererObj.drawString("Current Song:", 26, 28, 4587264);
+		this.fontRendererObj.drawString("- " + EntityAirshipBaseVC.Song.byId(this.airship.jukeboxSelectedSong).getName(), 26, 42, 4587264);
 		this.fontRendererObj.drawString(this.playerInv.getDisplayName().getUnformattedText(), 8, 72, 4210752);
 	}
 	

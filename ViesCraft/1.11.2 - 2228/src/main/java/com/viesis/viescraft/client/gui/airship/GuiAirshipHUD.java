@@ -1,4 +1,4 @@
-package com.viesis.viescraft.client.gui.all;
+package com.viesis.viescraft.client.gui.airship;
 
 import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
@@ -15,7 +15,7 @@ import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class GuiHUD extends Gui {
+public class GuiAirshipHUD extends Gui {
 	
 	private final Minecraft mc = Minecraft.getMinecraft();
 	private static FontRenderer fontRenderer;
@@ -28,7 +28,7 @@ public class GuiHUD extends Gui {
 	private boolean isAirship;
 	private EntityAirshipBaseVC airship;
 	
-	public GuiHUD()
+	public GuiAirshipHUD()
 	{
 		super();
 		

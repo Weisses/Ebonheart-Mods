@@ -1,4 +1,4 @@
-package com.viesis.viescraft.client.gui.all;
+package com.viesis.viescraft.client.gui.airship;
 
 import java.io.IOException;
 
@@ -18,7 +18,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.util.ResourceLocation;
 
-public class GuiEntityAirshipDefault extends GuiContainer {
+public class GuiAirshipDefaultInterface extends GuiContainer {
 	
 	/** Frame */
 	private GuiButton buttonFrame;
@@ -27,7 +27,7 @@ public class GuiEntityAirshipDefault extends GuiContainer {
 	private IInventory playerInv;
 	private EntityAirshipBaseVC airship;
 	
-	public GuiEntityAirshipDefault(IInventory playerInv, EntityAirshipBaseVC airshipIn)
+	public GuiAirshipDefaultInterface(IInventory playerInv, EntityAirshipBaseVC airshipIn)
 	{
 		super(new ContainerAirshipDefault(playerInv, airshipIn));
 		
@@ -125,7 +125,6 @@ public class GuiEntityAirshipDefault extends GuiContainer {
 	{
 		String s = this.airship.getDisplayName().getUnformattedText();
 		
-		//this.fontRendererObj.drawString("Fuel", 150, 6, 4210752);
 		this.fontRendererObj.drawString(this.playerInv.getDisplayName().getUnformattedText(), 8, 72, 4210752);
 	}
 	

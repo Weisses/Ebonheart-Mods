@@ -4,9 +4,7 @@ import java.util.List;
 
 import com.viesis.viescraft.api.ColorHelperVC;
 import com.viesis.viescraft.api.FuelVC;
-import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.client.InitParticlesVCRender;
-import com.viesis.viescraft.client.MovingSoundVC;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 import com.viesis.viescraft.init.InitItemsVC;
 import com.viesis.viescraft.network.NetworkHandler;
@@ -14,20 +12,15 @@ import com.viesis.viescraft.network.server.airship.MessageGuiDefault;
 import com.viesis.viescraft.network.server.airship.MessageGuiModuleInventoryLarge;
 import com.viesis.viescraft.network.server.airship.MessageGuiModuleInventorySmall;
 import com.viesis.viescraft.network.server.airship.MessageGuiModuleJukebox;
-import com.viesis.viescraft.network.server.airship.MessageGuiNoMusic;
-import com.viesis.viescraft.network.server.airship.MessageGuiPlayMusic;
-import com.viesis.viescraft.network.server.airship.MessageGuiPlayMusicCLIENT;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.audio.SoundHandler;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.passive.EntityWaterMob;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
@@ -36,57 +29,16 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.datasync.DataParameter;
-import net.minecraft.network.datasync.DataSerializers;
-import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.EntitySelectors;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.fml.common.network.NetworkRegistry.TargetPoint;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
 public class EntityAirshipV1Core extends EntityAirshipBaseVC {
 	
-	/** Fuel */
-	protected static final DataParameter<Integer> POWERED = EntityDataManager.<Integer>createKey(EntityAirshipV1Core.class, DataSerializers.VARINT);
-	protected static final DataParameter<Integer> TOTALPOWERED = EntityDataManager.<Integer>createKey(EntityAirshipV1Core.class, DataSerializers.VARINT);
-	protected static final DataParameter<Integer> ITEMFUELSTACKPOWERED = EntityDataManager.<Integer>createKey(EntityAirshipV1Core.class, DataSerializers.VARINT);
-	protected static final DataParameter<Integer> ITEMFUELSTACKSIZEPOWERED = EntityDataManager.<Integer>createKey(EntityAirshipV1Core.class, DataSerializers.VARINT);
-    
-    /** Passive Modules */
-	protected static final DataParameter<Boolean> MODULE_INVENTORY_SMALL = EntityDataManager.<Boolean>createKey(EntityAirshipV1Core.class, DataSerializers.BOOLEAN);
-	protected static final DataParameter<Boolean> MODULE_INVENTORY_LARGE = EntityDataManager.<Boolean>createKey(EntityAirshipV1Core.class, DataSerializers.BOOLEAN);
-	protected static final DataParameter<Boolean> MODULE_FUEL_INFINITE = EntityDataManager.<Boolean>createKey(EntityAirshipV1Core.class, DataSerializers.BOOLEAN);
-	protected static final DataParameter<Boolean> MODULE_SPEED_MINOR = EntityDataManager.<Boolean>createKey(EntityAirshipV1Core.class, DataSerializers.BOOLEAN);
-	protected static final DataParameter<Boolean> MODULE_SPEED_MAJOR = EntityDataManager.<Boolean>createKey(EntityAirshipV1Core.class, DataSerializers.BOOLEAN);
-	protected static final DataParameter<Boolean> MODULE_WATER_LANDING = EntityDataManager.<Boolean>createKey(EntityAirshipV1Core.class, DataSerializers.BOOLEAN);
-	protected static final DataParameter<Boolean> MODULE_MAX_ALTITUDE = EntityDataManager.<Boolean>createKey(EntityAirshipV1Core.class, DataSerializers.BOOLEAN);
-	protected static final DataParameter<Boolean> MODULE_MINOR_EFFICIENCY = EntityDataManager.<Boolean>createKey(EntityAirshipV1Core.class, DataSerializers.BOOLEAN);
-	protected static final DataParameter<Boolean> MODULE_MAJOR_EFFICIENCY = EntityDataManager.<Boolean>createKey(EntityAirshipV1Core.class, DataSerializers.BOOLEAN);
-	protected static final DataParameter<Boolean> MODULE_JUKEBOX = EntityDataManager.<Boolean>createKey(EntityAirshipV1Core.class, DataSerializers.BOOLEAN);
-	
-	public String customName;
-	private int dropNumber;
-	
-	/** Passive Modules */
-    public static boolean moduleInventorySmall;
-    public static boolean moduleInventoryLarge;
-    public static boolean moduleFuelInfinite;
-    public static boolean moduleSpeedMinor;
-    public static boolean moduleSpeedMajor;
-    public static boolean moduleWaterLanding;
-    public static boolean moduleMaxAltitude;
-    public static boolean moduleMinorEfficiency;
-    public static boolean moduleMajorEfficiency;
-    public static boolean moduleJukebox;
-    
     public float AirshipSpeedTurn = 0.18F * (ViesCraftConfig.v1AirshipSpeed / 100);
     public float AirshipSpeedForward = 0.016F * (ViesCraftConfig.v1AirshipSpeed / 100);
     public float AirshipSpeedUp = 0.004F * (ViesCraftConfig.v1AirshipSpeed / 100);
@@ -154,6 +106,7 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
         this.dataManager.register(MODULE_MINOR_EFFICIENCY, Boolean.valueOf(this.moduleMinorEfficiency));
         this.dataManager.register(MODULE_MAJOR_EFFICIENCY, Boolean.valueOf(this.moduleMajorEfficiency));
         this.dataManager.register(MODULE_JUKEBOX, Boolean.valueOf(this.moduleJukebox));
+        this.dataManager.register(MODULE_JUKEBOX_SELECTED_SONG, Integer.valueOf(this.jukeboxSelectedSong));
 	}
 	
 	
@@ -203,6 +156,8 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
     	compound.setInteger("FuelStackTime", this.itemFuelStack);
     	compound.setInteger("FuelStackTimeSize", this.itemFuelStackSize);
     	
+    	compound.setInteger("JukeboxSelectedSong", this.jukeboxSelectedSong);
+    	
         return compound;
     }
     
@@ -226,6 +181,8 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
         this.airshipTotalBurnTime = compound.getInteger("TotalBurnTime");
         this.itemFuelStack = compound.getInteger("FuelStackTime");
         this.itemFuelStackSize = compound.getInteger("FuelStackTimeSize");
+        
+        this.jukeboxSelectedSong = compound.getInteger("JukeboxSelectedSong");
     }
     
     
@@ -312,28 +269,10 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
         this.visualFrame();
         this.currentModule();
         
-        //if (this.world.isRemote)
-        
-        //if(this.getModuleJukebox())
-    	//{
-        
-        	//NetworkHandler
-        	//.sendToAllAround(new MessageGuiNoMusic(), 
-        	//new TargetPoint(this.dimension, this.posX, this.posY, this.posZ, 15));
-        	//.sendToClient(new MessageGuiNoMusic(), (EntityPlayerMP) this.getRidingEntity());
-    	//}
-        
         if (this.canPassengerSteer())
         {
-        	
         	this.updateMotion();
         	this.controlAirship();
-        	
-        	//NetworkHandler
-        	//.sendToAllAround(new MessageGuiPlayMusicCLIENT(), 
-			//new TargetPoint(this.dimension, this.getPosition().getX(), this.getPosition().getY(), this.getPosition().getZ(), 15));
-        	
-        	
         	
         	if (this.world.isRemote)
             {
@@ -425,7 +364,6 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
             this.motionX *= (double)this.momentum;
             this.motionZ *= (double)this.momentum;
             this.deltaRotation *= this.momentum;
-            
             
             if(this.getControllingPassenger() == null)
             {
@@ -678,7 +616,7 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
         		NetworkHandler.sendToServer(new MessageGuiModuleInventoryLarge());
             	Minecraft.getMinecraft().setIngameFocus();
         	}
-        	//If airship has large inv module installed
+        	//If airship has jukebox module installed
         	else if(this.getModuleJukebox())
         	{
         		NetworkHandler.sendToServer(new MessageGuiModuleJukebox());
@@ -690,43 +628,11 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
         		NetworkHandler.sendToServer(new MessageGuiDefault());
             	Minecraft.getMinecraft().setIngameFocus();
         	}
-        	
-        	
-        	
-        	//EntityPlayer test1 = (EntityPlayer) this.getRidingEntity();
-        	//NetworkHandler.sendToClient(new MessageGuiPlayMusic(), (EntityPlayerMP) test1);
-        	//.sendToAll(new MessageGuiPlayMusic());
-        	//.sendToAllAround(new MessageGuiPlayMusic(), 
-        	//new TargetPoint(this.dimension, 
-        	//		this.getPosition().getX(), 
-        	//		this.getPosition().getY(), 
-        	//		this.getPosition().getZ(), 3000));
-        	//.sendToServer(new MessageGuiPlayMusic());
-        	//this.test();
-        	
         }
     }
     
-    /**
-    @SideOnly(Side.CLIENT)
-    public void test()
-    {
-    	if(this.world.isRemote)
-		{
-			
-			LogHelper.info("-Client Playing-");
-			
-			//SoundHandler soundHandler = Minecraft.getMinecraft().getSoundHandler();
-			Minecraft test = Minecraft.getMinecraft();
-			if(test.getSoundHandler() != null)
-			{
-				SoundHandler soundHandler = Minecraft.getMinecraft().getSoundHandler();
-				soundHandler.stopSounds();
-				soundHandler.playSound(new MovingSoundVC(this, SoundEvents.RECORD_WARD));
-			}
-		}
-    }
-    */
+    
+    
     //==================================//
     // TODO          Misc               //
 	//==================================//
@@ -905,7 +811,7 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
      */
     public static int getItemBurnTime(ItemStack stack)
     {
-        if (stack == null)
+        if (stack == (ItemStack)null)
         {
             return 0;
         }
@@ -1111,6 +1017,7 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
     		this.moduleMinorEfficiency = this.getModuleMinorEfficiency();
     		this.moduleMajorEfficiency = this.getModuleMajorEfficiency();
     		this.moduleJukebox = this.getModuleJukebox();
+    		this.jukeboxSelectedSong = this.getJukeboxSelectedSong();
 		}
 		
 		if(moduleNumber >= 0)
@@ -1233,6 +1140,7 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
     		this.setModuleMinorEfficiency(this.moduleMinorEfficiency);
     		this.setModuleMajorEfficiency(this.moduleMajorEfficiency);
     		this.setModuleJukebox(this.moduleJukebox);
+    		this.setJukeboxSelectedSong(this.jukeboxSelectedSong);
     	}
     }
     
@@ -1428,6 +1336,20 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
         return ((Boolean)this.dataManager.get(MODULE_JUKEBOX)).booleanValue();
     }
     
+	/**
+     * Sets the jukebox selected song to pass from server to client.
+     */
+    public void setJukeboxSelectedSong(int jukeboxSelectedSong1)
+    {
+        this.dataManager.set(MODULE_JUKEBOX_SELECTED_SONG, Integer.valueOf(jukeboxSelectedSong1));
+    }
+	
+    @Override
+    public int getJukeboxSelectedSong()
+    {
+        return ((Integer)this.dataManager.get(MODULE_JUKEBOX_SELECTED_SONG)).intValue();
+    }
+    
     
     
     //==================================//
@@ -1496,7 +1418,6 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
     
     public void visualFrame()
     {
-    	
     	if(this.frameVisualActive == true
     	&& this.metaFrameVisual == this.metaFrameCore)
     	{
@@ -1515,7 +1436,6 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
 		{
 			this.setVisualFrame(this.metaFrameVisual);
 			this.setVisualFrameActive(this.frameVisualActive);
-			
     	}
     }
     

@@ -1,4 +1,4 @@
-package com.viesis.viescraft.client.gui.all;
+package com.viesis.viescraft.client.gui.airship.frames;
 
 import java.io.IOException;
 
@@ -10,8 +10,9 @@ import com.viesis.viescraft.api.util.Keybinds;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
 import com.viesis.viescraft.common.entity.airshipcolors.containers.all.ContainerAirshipAppearance;
 import com.viesis.viescraft.network.NetworkHandler;
-import com.viesis.viescraft.network.server.appearance.MessageGuiAppearanceHelperPage1;
+import com.viesis.viescraft.network.server.appearance.MessageGuiAppearanceHelperPage3;
 import com.viesis.viescraft.network.server.appearance.MessageGuiAppearancePage2;
+import com.viesis.viescraft.network.server.appearance.MessageGuiAppearancePage4;
 
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -19,19 +20,19 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.util.ResourceLocation;
 
-public class GuiEntityAirshipAppearancePage1 extends GuiContainer {
+public class GuiAirshipAppearancePg3 extends GuiContainer {
 	
 	private IInventory playerInv;
 	private EntityAirshipBaseVC airship;
 	public static int metaInfo;
 	public static boolean metaActiveInfo;
 	
-	public GuiEntityAirshipAppearancePage1(IInventory playerInv, EntityAirshipBaseVC airshipIn)
+	public GuiAirshipAppearancePg3(IInventory playerInv, EntityAirshipBaseVC airship)
 	{
-		super(new ContainerAirshipAppearance(playerInv, airshipIn));
+		super(new ContainerAirshipAppearance(playerInv, airship));
 		
 		this.playerInv = playerInv;
-		this.airship = airshipIn;
+		this.airship = airship;
 		this.xSize = 176;
 		this.ySize = 166;
 	}
@@ -49,46 +50,57 @@ public class GuiEntityAirshipAppearancePage1 extends GuiContainer {
     	
     	GuiVC.buttonDone = new GuiButton( 30, this.guiLeft + 40, this.guiTop + 156, 96, 20, "Done");
     	GuiVC.buttonNext = new GuiButton( 31, this.guiLeft + 116, this.guiTop + 4, 57, 20, "Next");
+    	GuiVC.buttonPrev = new GuiButton( 32, this.guiLeft + 4, this.guiTop + 4, 57, 20, "Prev");
 		
-    	GuiVC.button0 = new GuiButton( 0, this.guiLeft + 15, this.guiTop + 40, 57, 20, "Oak");
-		GuiVC.button1 = new GuiButton( 1, this.guiLeft + 15, this.guiTop + 67, 57, 20, "Spruce");
-		GuiVC.button2 = new GuiButton( 2, this.guiLeft + 15, this.guiTop + 94, 57, 20, "Birch");
-		GuiVC.button3 = new GuiButton( 3, this.guiLeft + 15, this.guiTop + 121, 57, 20, "Jungle");
-		GuiVC.button4 = new GuiButton( 4, this.guiLeft + 105, this.guiTop + 40, 57, 20, "Acacia");
-		GuiVC.button5 = new GuiButton( 5, this.guiLeft + 105, this.guiTop + 67, 57, 20, "Dark Oak");
-		GuiVC.button6 = new GuiButton( 6, this.guiLeft + 105, this.guiTop + 94, 57, 20, "Sandstone");
-		GuiVC.button7 = new GuiButton( 7, this.guiLeft + 105, this.guiTop + 121, 57, 20, "Brick");
+    	GuiVC.button15 = new GuiButton( 15, this.guiLeft + 15, this.guiTop + 46, 57, 20, "N. Brick");
+		GuiVC.button16 = new GuiButton( 16, this.guiLeft + 15, this.guiTop + 81, 57, 20, "Soul Sand");
+		GuiVC.button17 = new GuiButton( 17, this.guiLeft + 15, this.guiTop + 115, 57, 20, "Quartz");
+		GuiVC.button18 = new GuiButton( 18, this.guiLeft + 105, this.guiTop + 46, 57, 20, "Ice");
+		GuiVC.button19 = new GuiButton( 19, this.guiLeft + 105, this.guiTop + 81, 57, 20, "Glowstone");
+		GuiVC.button20 = new GuiButton( 20, this.guiLeft + 105, this.guiTop + 115, 57, 20, "Obsidian");
 		
 		this.buttonList.add(GuiVC.buttonDone);
 		this.buttonList.add(GuiVC.buttonNext);
+		this.buttonList.add(GuiVC.buttonPrev);
 		
-		this.buttonList.add(GuiVC.button0);
-		this.buttonList.add(GuiVC.button1);
-		this.buttonList.add(GuiVC.button2);
-		this.buttonList.add(GuiVC.button3);
-		this.buttonList.add(GuiVC.button4);
-		this.buttonList.add(GuiVC.button5);
-		this.buttonList.add(GuiVC.button6);
-		this.buttonList.add(GuiVC.button7);
+		this.buttonList.add(GuiVC.button15);
+		this.buttonList.add(GuiVC.button16);
+		this.buttonList.add(GuiVC.button17);
+		this.buttonList.add(GuiVC.button18);
+		this.buttonList.add(GuiVC.button19);
+		this.buttonList.add(GuiVC.button20);
 		
-		if(this.airship.metaFrameCore <= 5)
+		if(this.airship.metaFrameCore == 15)
     	{
-    		GuiVC.button0.visible = false;
-    		GuiVC.button1.visible = false;
-    		GuiVC.button2.visible = false;
-    		GuiVC.button3.visible = false;
-    		GuiVC.button4.visible = false;
-    		GuiVC.button5.visible = false;
-    		GuiVC.button6.visible = false;
-    		GuiVC.button7.visible = false;
+    		GuiVC.button16.visible = false;
+    		GuiVC.button17.visible = false;
+    		GuiVC.button18.visible = false;
+    		GuiVC.button19.visible = false;
+    		GuiVC.button20.visible = false;
     	}
-		
-    	if(this.airship.metaFrameCore == 6)
+		if(this.airship.metaFrameCore == 16)
     	{
-    		GuiVC.button7.visible = false;
+    		GuiVC.button17.visible = false;
+    		GuiVC.button18.visible = false;
+    		GuiVC.button19.visible = false;
+    		GuiVC.button20.visible = false;
     	}
-    	
-    	if(this.airship.metaFrameCore < 8)
+		if(this.airship.metaFrameCore == 17)
+    	{
+    		GuiVC.button18.visible = false;
+    		GuiVC.button19.visible = false;
+    		GuiVC.button20.visible = false;
+    	}
+		if(this.airship.metaFrameCore == 18)
+    	{
+    		GuiVC.button19.visible = false;
+    		GuiVC.button20.visible = false;
+    	}
+		if(this.airship.metaFrameCore == 19)
+    	{
+    		GuiVC.button20.visible = false;
+    	}
+    	if(this.airship.metaFrameCore < 21)
     	{
     		GuiVC.buttonNext.visible = false;
     	}
@@ -106,55 +118,47 @@ public class GuiEntityAirshipAppearancePage1 extends GuiContainer {
 	    }
 		if (parButton.id == 31)
 	    {
+			NetworkHandler.sendToServer(new MessageGuiAppearancePage4());
+	    }
+		if (parButton.id == 32)
+	    {
 			NetworkHandler.sendToServer(new MessageGuiAppearancePage2());
 	    }
-		if (parButton.id == 0)
+		if (parButton.id == 15)
 	    {
-			this.metaInfo = 0;
+			this.metaInfo = 15;
 			metaActiveInfo = true;
-			NetworkHandler.sendToServer(new MessageGuiAppearanceHelperPage1());
+			NetworkHandler.sendToServer(new MessageGuiAppearanceHelperPage3());
 	    }
-		if (parButton.id == 1)
+		if (parButton.id == 16)
 	    {
-			this.metaInfo = 1;
+			this.metaInfo = 16;
 			metaActiveInfo = true;
-			NetworkHandler.sendToServer(new MessageGuiAppearanceHelperPage1());
+			NetworkHandler.sendToServer(new MessageGuiAppearanceHelperPage3());
 	    }
-		if (parButton.id == 2)
+		if (parButton.id == 17)
 	    {
-			this.metaInfo = 2;
+			this.metaInfo = 17;
 			metaActiveInfo = true;
-			NetworkHandler.sendToServer(new MessageGuiAppearanceHelperPage1());
+			NetworkHandler.sendToServer(new MessageGuiAppearanceHelperPage3());
 	    }
-		if (parButton.id == 3)
+		if (parButton.id == 18)
 	    {
-			this.metaInfo = 3;
+			this.metaInfo = 18;
 			metaActiveInfo = true;
-			NetworkHandler.sendToServer(new MessageGuiAppearanceHelperPage1());
+			NetworkHandler.sendToServer(new MessageGuiAppearanceHelperPage3());
 	    }
-		if (parButton.id == 4)
+		if (parButton.id == 19)
 	    {
-			this.metaInfo = 4;
+			this.metaInfo = 19;
 			metaActiveInfo = true;
-			NetworkHandler.sendToServer(new MessageGuiAppearanceHelperPage1());
+			NetworkHandler.sendToServer(new MessageGuiAppearanceHelperPage3());
 	    }
-		if (parButton.id == 5)
+		if (parButton.id == 20)
 	    {
-			this.metaInfo = 5;
+			this.metaInfo = 20;
 			metaActiveInfo = true;
-			NetworkHandler.sendToServer(new MessageGuiAppearanceHelperPage1());
-	    }
-		if (parButton.id == 6)
-	    {
-			this.metaInfo = 6;
-			metaActiveInfo = true;
-			NetworkHandler.sendToServer(new MessageGuiAppearanceHelperPage1());
-	    }
-		if (parButton.id == 7)
-	    {
-			this.metaInfo = 7;
-			metaActiveInfo = true;
-			NetworkHandler.sendToServer(new MessageGuiAppearanceHelperPage1());
+			NetworkHandler.sendToServer(new MessageGuiAppearanceHelperPage3());
 	    }
 		
         this.buttonList.clear();
@@ -173,7 +177,7 @@ public class GuiEntityAirshipAppearancePage1 extends GuiContainer {
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
 	{
-		this.fontRendererObj.drawString("Tier I", 74, 10, 11111111);
+		this.fontRendererObj.drawString("Tier III", 70, 10, 11111111);
 	}
 	
 	@Override

@@ -3,7 +3,7 @@ package com.viesis.viescraft.common.items;
 import java.util.List;
 
 import com.viesis.viescraft.ViesCraft;
-import com.viesis.viescraft.client.gui.GuiGuidebookControls;
+import com.viesis.viescraft.client.gui.guidebooks.GuiGuidebookControls;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
