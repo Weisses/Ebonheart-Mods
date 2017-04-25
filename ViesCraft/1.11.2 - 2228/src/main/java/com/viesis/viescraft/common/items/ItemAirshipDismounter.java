@@ -5,6 +5,7 @@ import java.util.List;
 import com.viesis.viescraft.ViesCraft;
 
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -32,29 +33,31 @@ public class ItemAirshipDismounter extends Item {
         return true;
     }
 	
+	@SideOnly(Side.CLIENT)
+    public void addInformation(ItemStack stack, EntityPlayer playerIn, List toolTip, boolean advanced) 
+	{
+		toolTip.add(TextFormatting.WHITE + "[Left-Click]" + TextFormatting.GREEN + " a mounted entity");
+		toolTip.add(TextFormatting.GREEN + "to safely dismount it.");
+		toolTip.add(TextFormatting.GREEN + "");
+		toolTip.add(TextFormatting.GOLD + "Does no damage, may cause laughter.");
+	}
+	
 	@Override
-    public boolean itemInteractionForEntity(ItemStack itemstack, net.minecraft.entity.player.EntityPlayer player, EntityLivingBase entity, net.minecraft.util.EnumHand hand)
+	public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity)
     {
-        if (entity.world.isRemote)
+		ItemStack itemstack = player.getHeldItemMainhand();
+        
+		if (!(entity instanceof EntityPlayer)
+		&& (entity.getRidingEntity() != null))
         {
-            return false;
-        }
-        if (!(entity instanceof EntityPlayer)
-        && (entity.getRidingEntity() != null))
-        {
-        	itemstack.damageItem(1, entity);
-        	
+			if (!player.capabilities.isCreativeMode)
+            {
+				itemstack.damageItem(1, player);
+            }
         	entity.dismountRidingEntity();
         	
             return true;
         }
-        return false;
+        return true;
     }
-	
-	@SideOnly(Side.CLIENT)
-    public void addInformation(ItemStack stack, EntityPlayer playerIn, List toolTip, boolean advanced) 
-	{
-		toolTip.add(TextFormatting.WHITE + "[Right-Click]" + TextFormatting.GREEN + " a mounted entity");
-		toolTip.add(TextFormatting.GREEN + "to safely dismount it.");
-	}
 }
