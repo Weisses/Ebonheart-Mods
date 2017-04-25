@@ -27,7 +27,9 @@ public class Reference {
 		new ResourceLocation(Reference.MOD_ID, "textures/models/patterns/airship_pattern_polkadot.png"),
 		new ResourceLocation(Reference.MOD_ID, "textures/models/patterns/airship_pattern_polkadot_colorized.png"),
 		new ResourceLocation(Reference.MOD_ID, "textures/models/patterns/airship_pattern_zigzag.png"),
-		new ResourceLocation(Reference.MOD_ID, "textures/models/patterns/airship_pattern_zigzag_colorized.png")
+		new ResourceLocation(Reference.MOD_ID, "textures/models/patterns/airship_pattern_zigzag_colorized.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/patterns/airship_pattern_creeper.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/patterns/airship_pattern_creeper_colorized.png")
 	};
 	
 	/**

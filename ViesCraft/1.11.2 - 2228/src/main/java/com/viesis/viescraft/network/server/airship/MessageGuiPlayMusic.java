@@ -26,13 +26,12 @@ public class MessageGuiPlayMusic extends MessageBase<MessageGuiPlayMusic> implem
 		buf.writeInt(GuiModuleJukebox.airshipId);
 	}
 	
-	//@SideOnly(Side.CLIENT)
 	@Override
 	public void handleClientSide(MessageGuiPlayMusic message, EntityPlayer player) 
 	{
 		
 	}
-	//@SideOnly(Side.CLIENT)
+	
 	@Override
 	public void handleServerSide(MessageGuiPlayMusic message, EntityPlayer player) 
 	{
