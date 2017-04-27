@@ -18,7 +18,7 @@ public class MessageConfig extends MessageBase<MessageConfig> {
 		
 		ViesCraftConfig.viesolineBurnTime = buf.readInt();
 		ViesCraftConfig.vanillaFuel = buf.readBoolean();
-		
+		ViesCraftConfig.outsideModFuel = buf.readBoolean();
 	}
 	
 	@Override
@@ -31,6 +31,7 @@ public class MessageConfig extends MessageBase<MessageConfig> {
 		
 		buf.writeInt(ViesCraftConfig.viesolineBurnTime);
 		buf.writeBoolean(ViesCraftConfig.vanillaFuel);
+		buf.writeBoolean(ViesCraftConfig.outsideModFuel);
 	}
 	
 	@Override

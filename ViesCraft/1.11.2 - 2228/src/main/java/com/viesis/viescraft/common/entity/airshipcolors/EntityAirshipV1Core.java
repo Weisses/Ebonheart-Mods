@@ -763,7 +763,7 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
                     flag1 = true;
                     
                     //Consumes the fuel item
-                    if (this.inventory.getStackInSlot(0) != null)
+                    if (!this.inventory.getStackInSlot(0).isEmpty())
                     {
                         if (this.inventory.getStackInSlot(0).getCount() == 0)
                         {
@@ -852,7 +852,14 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
             if (item == InitItemsVC.viesoline_pellets) return (ViesCraftConfig.viesolineBurnTime * 20) * 10;
             //if (item == InitItemsVC.airship_battery) return cap.getEnergyStored();
             
-            return net.minecraftforge.fml.common.registry.GameRegistry.getFuelValue(stack);
+            if(ViesCraftConfig.outsideModFuel)
+    		{
+            	return net.minecraftforge.fml.common.registry.GameRegistry.getFuelValue(stack);
+    		}
+            else
+            {
+            	return 0;
+            }
         }
     }
     

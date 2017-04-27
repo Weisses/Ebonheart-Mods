@@ -38,8 +38,6 @@ public class ItemColorizerBalloon extends Item {
 	@Override
 	public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity)
     {
-		ItemStack itemstack = player.getHeldItemMainhand();
-        
 		if (entity instanceof EntityAirshipBaseVC)
         {
 			if(player.isSneaking())
@@ -56,7 +54,7 @@ public class ItemColorizerBalloon extends Item {
 					
 					if (!player.capabilities.isCreativeMode)
                     {
-						itemstack.shrink(1);
+						stack.shrink(1);
                     }
 					return true;
 				}

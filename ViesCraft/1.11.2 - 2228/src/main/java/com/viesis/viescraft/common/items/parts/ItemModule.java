@@ -5,10 +5,8 @@ import java.util.List;
 import com.viesis.viescraft.ViesCraft;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
 import com.viesis.viescraft.common.items.ItemHelper;
-import com.viesis.viescraft.init.InitAchievementsVC;
 
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
@@ -27,19 +25,16 @@ public class ItemModule extends Item {
 		this.setHasSubtypes(true);
         this.setMaxDamage(0);
         
-		this.setMaxStackSize(1);
 		this.setCreativeTab(ViesCraft.tabViesCraftItems);
 	}
 	
 	@SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List toolTip, boolean advanced) 
 	{
-		TextFormatting stringColor = TextFormatting.DARK_AQUA;
-		
 		if(stack.getMetadata() == 0)
 		{
-			toolTip.add(stringColor + "A basic chip used to make");
-			toolTip.add(stringColor + "airship parts.");
+			toolTip.add(TextFormatting.GOLD + "A basic chip used to make");
+			toolTip.add(TextFormatting.GOLD + "airship parts.");
 		}
 		if(stack.getMetadata() == 1)
 		{
@@ -127,7 +122,9 @@ public class ItemModule extends Item {
         
 		switch (this.getMetadata(stack))
         {
-            default:
+			case 0:
+				return EnumRarity.UNCOMMON;
+			default:
             	return EnumRarity.RARE;
         }
     }
@@ -145,6 +142,7 @@ public class ItemModule extends Item {
         {
         	itemName = "Module - " + EntityAirshipBaseVC.Module.byId(this.getMetadata(stack)).getName();
         }
+		
 		return itemName;
     }
 	

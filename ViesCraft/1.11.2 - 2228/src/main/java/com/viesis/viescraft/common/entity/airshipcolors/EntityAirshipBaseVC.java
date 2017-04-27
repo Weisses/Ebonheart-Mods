@@ -80,6 +80,10 @@ public class EntityAirshipBaseVC extends Entity {
 	public int airshipFuelTick;
 	
     //My capabilities inventory
+	//Slot 0 =    Fuel
+	//Slot 1 = 	  Module 1st
+	//Slot 2-19 = Inventory slots
+	//Slot 20 =   Unused
     public ItemStackHandler inventory;
     protected int size = 20;
     
