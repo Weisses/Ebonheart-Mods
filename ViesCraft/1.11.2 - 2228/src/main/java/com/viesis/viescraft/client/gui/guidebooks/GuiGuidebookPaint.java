@@ -18,7 +18,7 @@ public class GuiGuidebookPaint extends GuiScreen {
     private final int bookImageHeight = 192;
     private final int bookImageWidth = 192;
     private int currPage = 0;
-    private static final int bookTotalPages = 12;
+    private static final int bookTotalPages = 14;
     private static ResourceLocation[] bookPageTextures = new ResourceLocation[bookTotalPages];
     private static String[] stringPageText = new String[bookTotalPages];
     
@@ -40,6 +40,8 @@ public class GuiGuidebookPaint extends GuiScreen {
         bookPageTextures[9] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_9.png");
         bookPageTextures[10] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_10.png");
         bookPageTextures[11] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_11.png");
+        bookPageTextures[12] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_12.png");
+        bookPageTextures[13] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_13.png");
 
         //Title
         stringPageText[0] = "\n\n\n\n\n\n\n"
@@ -130,6 +132,19 @@ public class GuiGuidebookPaint extends GuiScreen {
         		+ "\n\n\n\n\n\n\n\n"
         		+ "\u00A7oRed/Green/Blue zigzag pattern.\u00A7r";
         
+        stringPageText[12] = "Pattern Recipe:"
+        		+ "\n\n"
+        		+ "\u00A7l\u00A7nCreeper"
+        		+ "\nPattern\u00A7r"
+        		+ "\n\n\n\n\n\n\n\n"
+        		+ "\u00A7oGrayscaled Creeper pattern.\u00A7r";
+    	
+        stringPageText[13] = "Pattern Recipe:"
+        		+ "\n\n"
+        		+ "\u00A7l\u00A7nColorized Creeper"
+        		+ "\nPattern\u00A7r"
+        		+ "\n\n\n\n\n\n\n\n"
+        		+ "\u00A7oGreen/White Creeper pattern.\u00A7r";
  }
 
     /**
@@ -219,6 +234,14 @@ public class GuiGuidebookPaint extends GuiScreen {
         if (currPage == 11)
         {
         	mc.getTextureManager().bindTexture(bookPageTextures[11]);
+        }
+        if (currPage == 12)
+        {
+        	mc.getTextureManager().bindTexture(bookPageTextures[12]);
+        }
+        if (currPage == 13)
+        {
+        	mc.getTextureManager().bindTexture(bookPageTextures[13]);
         }
         
         //else
