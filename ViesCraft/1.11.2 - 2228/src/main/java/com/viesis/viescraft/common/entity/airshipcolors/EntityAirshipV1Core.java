@@ -891,12 +891,11 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
             {
     			ItemStack itemFuel = this.inventory.getStackInSlot(0);
     			
-    			if(itemFuel != null)
+    			if(!itemFuel.isEmpty())
     			{
     				this.itemFuelStackSize = this.inventory.getStackInSlot(0).getCount();
     					
-    				this.itemFuelStack = this.itemFuelStackSize 
-    						* this.getItemBurnTime(this.inventory.getStackInSlot(0));
+    				this.itemFuelStack = this.itemFuelStackSize * this.getItemBurnTime(this.inventory.getStackInSlot(0));
     			}
     			else
     			{

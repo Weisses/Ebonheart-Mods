@@ -763,7 +763,7 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
                     flag1 = true;
                     
                     //Consumes the fuel item
-                    if (this.inventory.getStackInSlot(0) != null)
+                    if (!this.inventory.getStackInSlot(0).isEmpty())
                     {
                         if (this.inventory.getStackInSlot(0).getCount() == 0)
                         {
@@ -850,9 +850,16 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
     		}
             
             if (item == InitItemsVC.viesoline_pellets) return (ViesCraftConfig.viesolineBurnTime * 20) * 10;
+            //if (item == InitItemsVC.airship_battery) return cap.getEnergyStored();
             
-            
-            return net.minecraftforge.fml.common.registry.GameRegistry.getFuelValue(stack) * 10;
+            if(ViesCraftConfig.outsideModFuel)
+    		{
+            	return net.minecraftforge.fml.common.registry.GameRegistry.getFuelValue(stack);
+    		}
+            else
+            {
+            	return 0;
+            }
         }
     }
     
@@ -884,12 +891,11 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
             {
     			ItemStack itemFuel = this.inventory.getStackInSlot(0);
     			
-    			if(itemFuel != null)
+    			if(!itemFuel.isEmpty())
     			{
     				this.itemFuelStackSize = this.inventory.getStackInSlot(0).getCount();
     					
-    				this.itemFuelStack = this.itemFuelStackSize 
-    						* this.getItemBurnTime(this.inventory.getStackInSlot(0));
+    				this.itemFuelStack = this.itemFuelStackSize * this.getItemBurnTime(this.inventory.getStackInSlot(0));
     			}
     			else
     			{
@@ -1077,7 +1083,7 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
 		
 		//Used to drop inventory if inv modules are removed/switched
 		// If there is no module in slot
-		if(this.inventory.getStackInSlot(1) == null)
+		if(this.inventory.getStackInSlot(1).isEmpty())
 		{
 			//If small inv mod is removed and slot is empty
 			if(dropNumber == 1)
@@ -1149,7 +1155,7 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
      */
     public static boolean getItemModule(ItemStack stack)
     {
-        if (stack == null)
+        if (stack.isEmpty())
         {
             return false;
         }
@@ -1168,7 +1174,7 @@ public class EntityAirshipV4Core extends EntityAirshipBaseVC {
      */
     public static int getModuleID(ItemStack stack)
     {
-        if (stack == null)
+        if (stack.isEmpty())
         {
             return 0;
         }
