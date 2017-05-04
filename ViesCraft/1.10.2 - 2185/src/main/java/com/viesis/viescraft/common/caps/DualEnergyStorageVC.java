@@ -1,5 +1,7 @@
 package com.viesis.viescraft.common.caps;
 
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.energy.EnergyStorage;
 import net.minecraftforge.fml.common.Optional;
 
 @Optional.InterfaceList({
@@ -8,15 +10,15 @@ import net.minecraftforge.fml.common.Optional;
 	@Optional.Interface(iface = "net.darkhax.tesla.api.ITeslaProducer", modid = "tesla")
 })
 
-public class DualEnergyStorageVC //extends EnergyStorage 
+public class DualEnergyStorageVC extends EnergyStorage 
 //implements ITeslaHolder, ITeslaConsumer, ITeslaProducer, INBTSerializable<NBTTagCompound> 
 {
-	/**
-	@CapabilityInject(ITeslaConsumer.class)
+	
+	//@CapabilityInject(ITeslaConsumer.class)
 	public static Capability<?> CAPABILITY_CONSUMER = null;
-	@CapabilityInject(ITeslaProducer.class)
+	//@CapabilityInject(ITeslaProducer.class)
 	public static Capability<?> CAPABILITY_PRODUCER = null;
-	@CapabilityInject(ITeslaHolder.class)
+	//@CapabilityInject(ITeslaHolder.class)
 	public static Capability<?> CAPABILITY_HOLDER = null;
 
 	public DualEnergyStorageVC(int capacity) {
@@ -30,7 +32,7 @@ public class DualEnergyStorageVC //extends EnergyStorage
 	public DualEnergyStorageVC(int capacity, int maxReceive, int maxExtract) {
 		super(capacity, maxReceive, maxExtract);
 	}
-
+/**
 	@Override
 	@Optional.Method(modid = "tesla")
 	public long givePower(long tesla, boolean simulate) {

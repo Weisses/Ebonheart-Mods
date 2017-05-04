@@ -19,13 +19,6 @@ item.vc:airship_ignition.name=Airship Ignition
 
 item.vc:item_airship_dismounter.name=Dismounter
 
-item.vc:module_chip.name=OLD Module Chip
-item.vc:module_inventory_small.name=OLD Small Inventory Module
-item.vc:module_inventory_large.name=OLD Large Inventory Module
-item.vc:module_speed_increase_minor.name=OLD Minor Speed Boost Module
-item.vc:module_speed_increase_major.name=OLD Major Speed Boost Module
-item.vc:module_fuel_infinite.name=OLD Infinite Fuel Module
-
 //-----Entity-----
 entity.vc.test.normal.name=Placeholder1
 container.vc.test.normal.name=Placeholder2

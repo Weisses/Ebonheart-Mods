@@ -43,14 +43,14 @@ public class TileEntityBatteryCharger extends TileEntity {
     private int cookTime;
     private int totalCookTime;
     private String furnaceCustomName;
-    /**
+    
     public TileEntityBatteryCharger() 
     {
     	inventory = new ItemStackHandler(size);
     	
     	energy = new DualEnergyStorageVC(10000, 1000, 2000);
     }
-    
+    /** 
     @Override
     public boolean hasCapability(Capability<?> capability, EnumFacing facing)
     {
@@ -118,7 +118,7 @@ public class TileEntityBatteryCharger extends TileEntity {
     
     /**
      * Like the old updateEntity(), except more generic.
-     *//**
+     *//** 
     public void update()
     {
         boolean flag = this.isBurning();
@@ -213,7 +213,7 @@ public class TileEntityBatteryCharger extends TileEntity {
 
     /**
      * Returns true if the furnace can smelt an item, i.e. has a source item, destination stack isn't full, etc.
-     *//**
+     *//** 
     private boolean canSmelt()
     {
         if (((ItemStack)this.inventory.getStackInSlot(0)).isEmpty())
@@ -246,14 +246,14 @@ public class TileEntityBatteryCharger extends TileEntity {
                 int result = itemstack1.getCount() + itemstack.getCount();
                 return result <= getInventoryStackLimit() && result <= itemstack1.getMaxStackSize(); // Forge fix: make furnace respect stack sizes in furnace recipes
             }
-            *//**
-        }/**
+            *//** 
+        }
 		return false;
     }
 
     /**
      * Turn one item from the furnace source stack into the appropriate smelted item in the furnace result stack
-     *//**
+     *//** 
     public void smeltItem()
     {
         if (this.canSmelt())
@@ -279,7 +279,7 @@ public class TileEntityBatteryCharger extends TileEntity {
 
             itemstack.shrink(1);
             
-            *//**
+            *//** 
         }
     }
     
@@ -287,7 +287,7 @@ public class TileEntityBatteryCharger extends TileEntity {
     /**
      * Returns the number of ticks that the supplied fuel item will keep the furnace burning, or 0 if the item isn't
      * fuel
-     *//**
+     *//** 
     public static int getItemBurnTime(ItemStack stack)
     {
         if (stack.isEmpty())
@@ -335,7 +335,7 @@ public class TileEntityBatteryCharger extends TileEntity {
         /**
          * Returns the number of ticks that the supplied fuel item will keep the furnace burning, or 0 if the item isn't
          * fuel
-         *//**
+         *//** 
         return getItemBurnTime(stack) > 0;
     }
 
@@ -343,7 +343,7 @@ public class TileEntityBatteryCharger extends TileEntity {
     /**
      * Returns true if automation is allowed to insert the given stack (ignoring stack size) into the given slot. For
      * guis use Slot.isItemValid
-     *//**
+     *//** 
     public boolean isItemValidForSlot(int index, ItemStack stack)
     {
         if (index == 2)
@@ -368,7 +368,7 @@ public class TileEntityBatteryCharger extends TileEntity {
 
     /**
      * Returns true if automation can insert the given item in the given slot from the given side.
-     *//**
+     *//** 
     public boolean canInsertItem(int index, ItemStack itemStackIn, EnumFacing direction)
     {
         return this.isItemValidForSlot(index, itemStackIn);
@@ -376,7 +376,7 @@ public class TileEntityBatteryCharger extends TileEntity {
 
     /**
      * Returns true if automation can extract the given item in the given slot from the given side.
-     */
+     *//** 
     public boolean canExtractItem(int index, ItemStack stack, EnumFacing direction)
     {
         if (direction == EnumFacing.DOWN && index == 1)
@@ -438,6 +438,6 @@ public class TileEntityBatteryCharger extends TileEntity {
     {
         return 4;
     }
-
+*/
     
 }

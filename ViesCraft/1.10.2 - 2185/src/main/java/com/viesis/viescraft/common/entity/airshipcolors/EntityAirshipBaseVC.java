@@ -81,6 +81,10 @@ public class EntityAirshipBaseVC extends Entity {
 	public int airshipFuelTick;
 	
     //My capabilities inventory
+	//Slot 0 =    Fuel
+	//Slot 1 = 	  Module 1st
+	//Slot 2-19 = Inventory slots
+	//Slot 20 =   Unused
     public ItemStackHandler inventory;
     protected int size = 20;
     
@@ -441,7 +445,7 @@ public class EntityAirshipBaseVC extends Entity {
             blockpos$pooledmutableblockpos.release();
         }
     }
-
+    
     public static float getBlockLiquidHeight(IBlockState p_184456_0_, IBlockAccess p_184456_1_, BlockPos p_184456_2_)
     {
         int i = ((Integer)p_184456_0_.getValue(BlockLiquid.LEVEL)).intValue();
@@ -546,7 +550,7 @@ public class EntityAirshipBaseVC extends Entity {
 
         return flag;
     }
-
+    
     public static float getLiquidHeight(IBlockState p_184452_0_, IBlockAccess p_184452_1_, BlockPos p_184452_2_)
     {
         return (float)p_184452_2_.getY() + getBlockLiquidHeight(p_184452_0_, p_184452_1_, p_184452_2_);
@@ -1142,7 +1146,9 @@ public class EntityAirshipBaseVC extends Entity {
         POLKADOT(3, "Polka Dot"),
         POLKADOTCOLORIZED(4, "Colorized Polka Dot"),
         ZIGZAG(5, "Zigzag"),
-    	ZIGZAGCOLORIZED(6, "Colorized Zigzag")//,
+    	ZIGZAGCOLORIZED(6, "Colorized Zigzag"),
+        CREEPER(7, "Creeper"),
+    	CREEPERCOLORIZED(8, "Colorized Creeper")//,
         //WAVEHORIZONTAL(7, "Horizontal Wave"),
         //WAVEHORIZONTALCOLORIZED(8, "Colorized Horizontal Wave"),
         //WAVEVERTICAL(9, "Vertical Wave"),

@@ -1,5 +1,11 @@
 package com.viesis.viescraft.client.gui.airship;
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+
+import org.lwjgl.opengl.GL11;
+
 import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
 
@@ -9,6 +15,7 @@ import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.client.GuiIngameForge;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
@@ -149,6 +156,89 @@ public class GuiAirshipHUD extends Gui {
 				if(this.airship.getModuleJukebox())
 				{
 					drawTexturedModalRect(hudX + 83, hudY, 144, 240, 16, 16);
+				}
+				
+				//Speed Modifier
+				//Minecraft.getMinecraft().fontRendererObj.drawString(EntityAirshipBaseVC.FrameCore.byId(this.airship.metaFrameCore).getSpeed() * 100 + " ", (hudX + 40), (hudY + 3), 982784);
+
+				//Altitude Current
+				if(this.airship.getPosition().getY() <= 99)
+				{
+					if(this.airship.getModuleMaxAltitude())
+					{
+						Minecraft.getMinecraft().fontRendererObj.drawString(" " + this.airship.getPosition().getY() + " ", (hudX + 60), (hudY + 4), 16777215);
+					}
+					else if(this.airship.getPosition().getY() >= (int)EntityAirshipBaseVC.FrameCore.byId(this.airship.metaFrameCore).getElevation() - 5)
+					{
+						Minecraft.getMinecraft().fontRendererObj.drawString(" " + this.airship.getPosition().getY() + " ", (hudX + 60), (hudY + 4), 16711680);
+					}
+					else if(this.airship.getPosition().getY() >= (int)EntityAirshipBaseVC.FrameCore.byId(this.airship.metaFrameCore).getElevation() - 15)
+					{
+						Minecraft.getMinecraft().fontRendererObj.drawString(" " + this.airship.getPosition().getY() + " ", (hudX + 60), (hudY + 4), 16187136);
+					}
+					else
+					{
+						Minecraft.getMinecraft().fontRendererObj.drawString(" " + this.airship.getPosition().getY() + " ", (hudX + 60), (hudY + 4), 16777215);
+					}
+				}
+				else
+				{
+					if(this.airship.getModuleMaxAltitude())
+					{
+						Minecraft.getMinecraft().fontRendererObj.drawString(" " + this.airship.getPosition().getY() + " ", (hudX + 57), (hudY + 4), 16777215);
+					}
+					else if(this.airship.getPosition().getY() >= (int)EntityAirshipBaseVC.FrameCore.byId(this.airship.metaFrameCore).getElevation() - 5)
+					{
+						Minecraft.getMinecraft().fontRendererObj.drawString(" " + this.airship.getPosition().getY() + " ", (hudX + 57), (hudY + 4), 16711680);
+					}
+					else if(this.airship.getPosition().getY() >= (int)EntityAirshipBaseVC.FrameCore.byId(this.airship.metaFrameCore).getElevation() - 15)
+					{
+						Minecraft.getMinecraft().fontRendererObj.drawString(" " + this.airship.getPosition().getY() + " ", (hudX + 57), (hudY + 4), 16187136);
+					}
+					else
+					{
+						Minecraft.getMinecraft().fontRendererObj.drawString(" " + this.airship.getPosition().getY() + " ", (hudX + 57), (hudY + 4), 16777215);
+					}
+				}
+				
+				//Altitude Max
+				if(this.airship.getModuleMaxAltitude())
+				{
+					Minecraft.getMinecraft().fontRendererObj.drawString(" " + "\u221e" + " ", (int)(hudX + 104.5), (hudY + 4), 60155);
+				}
+				else if(this.airship.metaFrameCore >= 25)
+				{
+					Minecraft.getMinecraft().fontRendererObj.drawString(" " + "\u221e" + " ", (int)(hudX + 104.5), (hudY + 4), 60155);
+				}
+				else if(this.airship.metaFrameCore <= 8)
+				{
+					if(this.airship.getPosition().getY() >= (int)EntityAirshipBaseVC.FrameCore.byId(this.airship.metaFrameCore).getElevation() - 5)
+					{
+						Minecraft.getMinecraft().fontRendererObj.drawString(" " + (int)EntityAirshipBaseVC.FrameCore.byId(this.airship.metaFrameCore).getElevation() + " ", (int)(hudX + 103.5), (hudY + 4), 16711680);
+					}
+					else if(this.airship.getPosition().getY() >= (int)EntityAirshipBaseVC.FrameCore.byId(this.airship.metaFrameCore).getElevation() - 15)
+					{
+						Minecraft.getMinecraft().fontRendererObj.drawString(" " + (int)EntityAirshipBaseVC.FrameCore.byId(this.airship.metaFrameCore).getElevation() + " ", (int)(hudX + 103.5), (hudY + 4), 16187136);
+					}
+					else
+					{
+						Minecraft.getMinecraft().fontRendererObj.drawString(" " + (int)EntityAirshipBaseVC.FrameCore.byId(this.airship.metaFrameCore).getElevation() + " ", (int)(hudX + 103.5), (hudY + 4), 16777215);
+					}
+				}
+				else
+				{
+					if(this.airship.getPosition().getY() >= (int)EntityAirshipBaseVC.FrameCore.byId(this.airship.metaFrameCore).getElevation() - 5)
+					{
+						Minecraft.getMinecraft().fontRendererObj.drawString(" " + (int)EntityAirshipBaseVC.FrameCore.byId(this.airship.metaFrameCore).getElevation() + " ", (hudX + 100), (hudY + 4), 16711680);
+					}
+					else if(this.airship.getPosition().getY() >= (int)EntityAirshipBaseVC.FrameCore.byId(this.airship.metaFrameCore).getElevation() - 15)
+					{
+						Minecraft.getMinecraft().fontRendererObj.drawString(" " + (int)EntityAirshipBaseVC.FrameCore.byId(this.airship.metaFrameCore).getElevation() + " ", (hudX + 100), (hudY + 4), 16187136);
+					}
+					else
+					{
+						Minecraft.getMinecraft().fontRendererObj.drawString(" " + (int)EntityAirshipBaseVC.FrameCore.byId(this.airship.metaFrameCore).getElevation() + " ", (hudX + 100), (hudY + 4), 16777215);
+					}
 				}
 				
 				int timer;

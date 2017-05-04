@@ -151,7 +151,11 @@ public class CraftingManagerVC {
 		this.addRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 5), new Object[]{"ILL", "LIL", "L#I", '#', new ItemStack(InitItemsVC.airship_module, 1, 0), 'L', Items.LEATHER, 'I', new ItemStack(Items.DYE, 1, 0)});
 		//Zigzag Colorized
 		this.addShapelessRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 6), new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 5), new ItemStack(Items.ENDER_EYE));
-		
+		//Creeper
+		this.addRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 7), new Object[]{"IGI", "LGL", "I#I", '#', new ItemStack(InitItemsVC.airship_module, 1, 0), 'L', Items.LEATHER, 'I', new ItemStack(Items.DYE, 1, 0), 'G', new ItemStack(Items.GUNPOWDER)});
+		//Creeper Colorized
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 8), new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 7), new ItemStack(Items.ENDER_EYE));
+    	
 //=================================================
 		
         Collections.sort(this.recipes, new Comparator<IRecipe>()

@@ -16,8 +16,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemViesoline extends Item {
 	
-	private int size = 2000;
-	
 	public ItemViesoline() 
 	{
 		ItemHelper.setItemName(this, "item_viesoline");

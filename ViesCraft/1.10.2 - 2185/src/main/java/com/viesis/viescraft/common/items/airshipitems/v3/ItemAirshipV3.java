@@ -31,7 +31,7 @@ public class ItemAirshipV3 extends ItemAirshipCore {
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand)
     {
-        ItemStack itemstack = playerIn.getHeldItemMainhand();
+		ItemStack itemstack = playerIn.getHeldItemMainhand();
         
         int frameVisual = 0;
         boolean frameVisualActive = false;

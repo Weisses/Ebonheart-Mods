@@ -38,6 +38,7 @@ public class MessageGuiPlayInArea extends MessageBase<MessageGuiPlayInArea> {
 		soundHandler.stopSounds();
 		soundHandler.playSound(new MovingSoundVC(message.airship, EntityAirshipBaseVC.Song.byId(message.airship.jukeboxSelectedSong).getSong()));
 	}
+	
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void handleServerSide(MessageGuiPlayInArea message, EntityPlayer player) 

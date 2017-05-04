@@ -9,7 +9,7 @@ public class Reference {
 	public static final String MOD_ID = "vc";
 	public static final String MOD_ID_COLON = MOD_ID + ":";
 	public static final String MOD_NAME = "ViesCraft";
-	public static final String MOD_VERSION = "4.27.21";
+	public static final String MOD_VERSION = "4.30.29";
 	public static final String CONFIG_GUI = "com.viesis.viescraft.api.gui.VCGuiFactory";
 	public static final String CLIENT_PROXY_CLASS = "com.viesis.viescraft.proxy.ClientProxy";
 	public static final String SERVER_PROXY_CLASS = "com.viesis.viescraft.proxy.ServerProxy";
@@ -27,7 +27,9 @@ public class Reference {
 		new ResourceLocation(Reference.MOD_ID, "textures/models/patterns/airship_pattern_polkadot.png"),
 		new ResourceLocation(Reference.MOD_ID, "textures/models/patterns/airship_pattern_polkadot_colorized.png"),
 		new ResourceLocation(Reference.MOD_ID, "textures/models/patterns/airship_pattern_zigzag.png"),
-		new ResourceLocation(Reference.MOD_ID, "textures/models/patterns/airship_pattern_zigzag_colorized.png")
+		new ResourceLocation(Reference.MOD_ID, "textures/models/patterns/airship_pattern_zigzag_colorized.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/patterns/airship_pattern_creeper.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/patterns/airship_pattern_creeper_colorized.png")
 	};
 	
 	/**

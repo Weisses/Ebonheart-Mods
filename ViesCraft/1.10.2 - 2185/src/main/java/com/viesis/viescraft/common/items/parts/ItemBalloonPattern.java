@@ -51,8 +51,6 @@ public class ItemBalloonPattern extends Item {
 	@Override
 	public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity)
     {
-		ItemStack itemstack = player.getHeldItemMainhand();
-        
 		if (entity instanceof EntityAirshipBaseVC)
         {
 			if(player.isSneaking())

@@ -30,6 +30,7 @@ public class ViesCraftConfig {
 	public static int v4AirshipSpeed;
 	
 	public static boolean vanillaFuel;
+	public static boolean outsideModFuel;
 	public static int viesolineBurnTime;
 	
 	public static String v1AirshipName;
@@ -91,6 +92,10 @@ public class ViesCraftConfig {
 	public static final String VANILLAFUEL_NAME = "Enable using vanilla fuel?";
 	public static final String VANILLAFUEL_COMMENT = "Should airships be able to use vanilla fuel?";
 	
+	public static final boolean OUTSIDEMODFUEL_DEFAULT = true;
+	public static final String OUTSIDEMODFUEL_NAME = "Enable using other mod's fuel?";
+	public static final String OUTSIDEMODFUEL_COMMENT = "Should airships be able to use other mod's fuel?";
+	
 	public static final int VIESOLINEBURNTIME_DEFAULT = 90;
 	public static final String VIESOLINEBURNTIME_NAME = "Viesoline Burn Time?";
 	public static final String VIESOLINEBURNTIME_COMMENT = "How long does Viesoline burn for in seconds? ";
@@ -117,20 +122,16 @@ public class ViesCraftConfig {
 		v3AirshipEnabled = config.getBoolean(TextFormatting.WHITE + V3AIRSHIPENABLED_NAME, category1, V3AIRSHIPENABLED_DEFAULT, V3AIRSHIPENABLED_COMMENT);
 		v4AirshipEnabled = config.getBoolean(TextFormatting.WHITE + V4AIRSHIPENABLED_NAME, category1, V4AIRSHIPENABLED_DEFAULT, V4AIRSHIPENABLED_COMMENT);
 		
-		
 		//General settings
 		final String category2 = CATEGORY_VC + config.CATEGORY_SPLITTER + TextFormatting.GREEN + "General";
 		config.addCustomCategoryComment(category2, "General airship options.");
 		
 		//v1FuelBurnTime = config.getInt(TextFormatting.WHITE + V1FUELBURNTIME_NAME, category1, V1FUELBURNTIME_DEFAULT, 1, 600, V1FUELBURNTIME_COMMENT);
 		v1AirshipSpeed = config.getInt(TextFormatting.WHITE + V1AIRSHIPSPEED_NAME, category2, V1AIRSHIPSPEED_DEFAULT, 100, 400, V1AIRSHIPSPEED_COMMENT);
-		
 		//v2FuelBurnTime = config.getInt(TextFormatting.WHITE + V2FUELBURNTIME_NAME, category1, V2FUELBURNTIME_DEFAULT, 1, 600, V2FUELBURNTIME_COMMENT);
 		v2AirshipSpeed = config.getInt(TextFormatting.WHITE + V2AIRSHIPSPEED_NAME, category2, V2AIRSHIPSPEED_DEFAULT, 100, 400, V2AIRSHIPSPEED_COMMENT);
-		
 		//v3FuelBurnTime = config.getInt(TextFormatting.WHITE + V3FUELBURNTIME_NAME, category1, V3FUELBURNTIME_DEFAULT, 1, 600, V3FUELBURNTIME_COMMENT);
 		v3AirshipSpeed = config.getInt(TextFormatting.WHITE + V3AIRSHIPSPEED_NAME, category2, V3AIRSHIPSPEED_DEFAULT, 100, 400, V3AIRSHIPSPEED_COMMENT);
-		
 		//v4FuelBurnTime = config.getInt(TextFormatting.WHITE + V4FUELBURNTIME_NAME, category1, V4FUELBURNTIME_DEFAULT, 1, 600, V4FUELBURNTIME_COMMENT);
 		v4AirshipSpeed = config.getInt(TextFormatting.WHITE + V4AIRSHIPSPEED_NAME, category2, V4AIRSHIPSPEED_DEFAULT, 100, 400, V4AIRSHIPSPEED_COMMENT);
 		
@@ -141,14 +142,14 @@ public class ViesCraftConfig {
 		
 		recipeMythic = config.getBoolean(TextFormatting.WHITE + RECIPEMYTHIC_NAME, category2, RECIPEMYTHIC_DEFAULT, RECIPEMYTHIC_COMMENT);
 		
-		
 		//Fuel settings
 		final String category3 = CATEGORY_VC + config.CATEGORY_SPLITTER + TextFormatting.AQUA + "Fuel";
 		config.addCustomCategoryComment(category3, "Airship fuel options.");
 		
 		vanillaFuel = config.getBoolean(TextFormatting.WHITE + VANILLAFUEL_NAME, category3, VANILLAFUEL_DEFAULT, VANILLAFUEL_COMMENT);
-		viesolineBurnTime = config.getInt(TextFormatting.WHITE + VIESOLINEBURNTIME_NAME, category3, VIESOLINEBURNTIME_DEFAULT, 1, 500, VIESOLINEBURNTIME_COMMENT);
+		outsideModFuel = config.getBoolean(TextFormatting.WHITE + OUTSIDEMODFUEL_NAME, category3, OUTSIDEMODFUEL_DEFAULT, OUTSIDEMODFUEL_COMMENT);
 		
+		viesolineBurnTime = config.getInt(TextFormatting.WHITE + VIESOLINEBURNTIME_NAME, category3, VIESOLINEBURNTIME_DEFAULT, 1, 500, VIESOLINEBURNTIME_COMMENT);
 		
 		//Save the config
 		config.save();
