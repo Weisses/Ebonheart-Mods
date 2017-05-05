@@ -1,6 +1,6 @@
 package com.viesis.viescraft.network.server.airship;
 
-import com.viesis.viescraft.client.sound.MovingSoundVC;
+import com.viesis.viescraft.client.sound.JukeboxMovingSoundVC;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
 import com.viesis.viescraft.network.packet.MessageBase;
 
@@ -11,7 +11,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class MessageGuiPlayInArea extends MessageBase<MessageGuiPlayInArea> {
+public class MessageGuiPlayMusicArea extends MessageBase<MessageGuiPlayMusicArea> {
 	
 	private int airshipId;
 	private EntityAirshipBaseVC airship;
@@ -30,18 +30,18 @@ public class MessageGuiPlayInArea extends MessageBase<MessageGuiPlayInArea> {
 	
 	@SideOnly(Side.CLIENT)
 	@Override
-	public void handleClientSide(MessageGuiPlayInArea message, EntityPlayer player) 
+	public void handleClientSide(MessageGuiPlayMusicArea message, EntityPlayer player) 
 	{
 		message.airship = (EntityAirshipBaseVC) Minecraft.getMinecraft().world.getEntityByID(message.airshipId);
 		
 		SoundHandler soundHandler = Minecraft.getMinecraft().getSoundHandler();
 		soundHandler.stopSounds();
-		soundHandler.playSound(new MovingSoundVC(message.airship, EntityAirshipBaseVC.Song.byId(message.airship.jukeboxSelectedSong).getSong()));
+		soundHandler.playSound(new JukeboxMovingSoundVC(message.airship, EntityAirshipBaseVC.Song.byId(message.airship.jukeboxSelectedSong).getSong()));
 	}
 	
 	@SideOnly(Side.CLIENT)
 	@Override
-	public void handleServerSide(MessageGuiPlayInArea message, EntityPlayer player) 
+	public void handleServerSide(MessageGuiPlayMusicArea message, EntityPlayer player) 
 	{
 		
 	}

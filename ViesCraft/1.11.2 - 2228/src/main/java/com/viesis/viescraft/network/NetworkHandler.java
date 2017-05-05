@@ -8,8 +8,8 @@ import com.viesis.viescraft.network.server.airship.MessageGuiModule;
 import com.viesis.viescraft.network.server.airship.MessageGuiModuleInventoryLarge;
 import com.viesis.viescraft.network.server.airship.MessageGuiModuleInventorySmall;
 import com.viesis.viescraft.network.server.airship.MessageGuiModuleJukebox;
-import com.viesis.viescraft.network.server.airship.MessageGuiPlayInArea;
 import com.viesis.viescraft.network.server.airship.MessageGuiPlayMusic;
+import com.viesis.viescraft.network.server.airship.MessageGuiPlayMusicArea;
 import com.viesis.viescraft.network.server.appearance.MessageGuiAppearanceHelperPage1;
 import com.viesis.viescraft.network.server.appearance.MessageGuiAppearanceHelperPage2;
 import com.viesis.viescraft.network.server.appearance.MessageGuiAppearanceHelperPage3;
@@ -64,7 +64,7 @@ public class NetworkHandler {
 		register(MessageGuiAppearanceHelperPage4.class, MessageGuiAppearanceHelperPage4.class, Side.SERVER);
 		
 		register(MessageGuiPlayMusic.class, MessageGuiPlayMusic.class, Side.SERVER);
-		register(MessageGuiPlayInArea.class, MessageGuiPlayInArea.class, Side.CLIENT);
+		register(MessageGuiPlayMusicArea.class, MessageGuiPlayMusicArea.class, Side.CLIENT);
 		
 		register(MessageGuiMusicPg1.class, MessageGuiMusicPg1.class, Side.SERVER);
 		register(MessageGuiMusicPg2.class, MessageGuiMusicPg2.class, Side.SERVER);

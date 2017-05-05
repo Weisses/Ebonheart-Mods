@@ -133,6 +133,8 @@ public class EntityAirshipBaseVC extends Entity {
     public float AirshipSpeedForward;
     public float AirshipSpeedUp;
     public float AirshipSpeedDown;
+    
+    public float speedModifier;
 	
 	public String customName;
 	protected int dropNumber;
@@ -1512,17 +1514,17 @@ public class EntityAirshipBaseVC extends Entity {
      */
     //public SoundCategory getSoundCategory()
     //{
-    //    return SoundCategory.RECORDS;
+    //    return SoundCategory.AMBIENT;
     //}
 	
     //protected SoundEvent getAmbientSound()
     //{
-    //    return SoundEvents.ENTITY_ENDERDRAGON_AMBIENT;
+    //    return SoundEvents.ENTITY_GENERIC_EXPLODE;
     //}
 	
     //protected SoundEvent getHurtSound()
     //{
-    //    return SoundEvents.ENTITY_ENDERDRAGON_HURT;
+    //    return SoundEvents.ENTITY_COW_HURT;
     //}
 	
     /**

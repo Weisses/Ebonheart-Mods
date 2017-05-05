@@ -1,10 +1,5 @@
 package com.viesis.viescraft.common.utils.events;
 
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
-
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.TickEvent;
-
 public class EventHandlerAirship {
 	/**
 	public static boolean creativeBurn;
@@ -28,7 +23,13 @@ public class EventHandlerAirship {
     	
     	if(isRiding) 
     	{
-			playerRidingEntity = event.player.getRidingEntity().getEntityId();
+    		//EntityAirshipBaseVC test = (EntityAirshipBaseVC) event.player.getRidingEntity();
+    		
+    		//test.getAmbientSound();
+    		
+    		//NetworkHandler.sendToServer(new MessageGuiPlayEngineSound());
+    		/**
+    		playerRidingEntity = event.player.getRidingEntity().getEntityId();
 			
 			if(event.player.isCreative())
 			{
@@ -38,10 +39,11 @@ public class EventHandlerAirship {
 			{
 				creativeBurn = false;
 			}
+			
 		}
-    	else
-		{
-			creativeBurn = false;
-		}
-    }*/
+    	//else
+		//{
+		//	creativeBurn = false;
+		//}*/
+    //}
 }

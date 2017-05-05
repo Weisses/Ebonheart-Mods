@@ -9,13 +9,13 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class MovingSoundVC extends MovingSound {
+public class JukeboxMovingSoundVC extends MovingSound {
 	
     private final Entity airship;
     private float distance = 0.0F;
     private SoundEvent sound;
-
-    public MovingSoundVC(Entity airshipIn, SoundEvent soundIn)
+    
+    public JukeboxMovingSoundVC(Entity airshipIn, SoundEvent soundIn)
     {
         super(soundIn, SoundCategory.RECORDS);
         this.airship = airshipIn;
@@ -23,7 +23,7 @@ public class MovingSoundVC extends MovingSound {
         this.repeatDelay = 0;
         this.sound = soundIn;
     }
-
+    
     /**
      * Like the old updateEntity(), except more generic.
      */
@@ -39,7 +39,7 @@ public class MovingSoundVC extends MovingSound {
             this.yPosF = (float)this.airship.posY;
             this.zPosF = (float)this.airship.posZ;
             float f = MathHelper.sqrt(this.airship.motionX * this.airship.motionX + this.airship.motionZ * this.airship.motionZ);
-
+            
             if ((double)f >= 0.01D)
             {
                 this.distance = MathHelper.clamp(this.distance + 0.0025F, 0.0F, 1.0F);

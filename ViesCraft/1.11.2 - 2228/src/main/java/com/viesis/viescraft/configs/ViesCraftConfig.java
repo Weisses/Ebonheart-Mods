@@ -39,6 +39,7 @@ public class ViesCraftConfig {
 	public static String v4AirshipName;
 	
 	public static boolean recipeMythic;
+	public static boolean engineSounds;
 	
 	public static final boolean V1AIRSHIPENABLED_DEFAULT = true;
 	public static final String V1AIRSHIPENABLED_NAME = "Enable V1 Viesdenburg Airships?";
@@ -103,6 +104,10 @@ public class ViesCraftConfig {
 	public static final boolean RECIPEMYTHIC_DEFAULT = false;
 	public static final String RECIPEMYTHIC_NAME = "Enable Mythic Airship Frame Recipe?";
 	public static final String RECIPEMYTHIC_COMMENT = "Should Mythic Airship Frame be craftable?";
+
+	public static final boolean ENGINESOUND_DEFAULT = true;
+	public static final String ENGINESOUND_NAME = "Enable airship engine sounds?";
+	public static final String ENGINESOUND_COMMENT = "Should airships have engine sounds when powered?";
 	
 	public static void init(File file)
 	{
@@ -135,11 +140,6 @@ public class ViesCraftConfig {
 		//v4FuelBurnTime = config.getInt(TextFormatting.WHITE + V4FUELBURNTIME_NAME, category1, V4FUELBURNTIME_DEFAULT, 1, 600, V4FUELBURNTIME_COMMENT);
 		v4AirshipSpeed = config.getInt(TextFormatting.WHITE + V4AIRSHIPSPEED_NAME, category2, V4AIRSHIPSPEED_DEFAULT, 100, 400, V4AIRSHIPSPEED_COMMENT);
 		
-		v1AirshipName = config.getString(TextFormatting.WHITE + V1AIRSHIPNAME_NAME, category2, V1AIRSHIPNAME_DEFAULT, V1AIRSHIPNAME_COMMENT);
-		v2AirshipName = config.getString(TextFormatting.WHITE + V2AIRSHIPNAME_NAME, category2, V2AIRSHIPNAME_DEFAULT, V2AIRSHIPNAME_COMMENT);
-		v3AirshipName = config.getString(TextFormatting.WHITE + V3AIRSHIPNAME_NAME, category2, V3AIRSHIPNAME_DEFAULT, V3AIRSHIPNAME_COMMENT);
-		v4AirshipName = config.getString(TextFormatting.WHITE + V4AIRSHIPNAME_NAME, category2, V4AIRSHIPNAME_DEFAULT, V4AIRSHIPNAME_COMMENT);
-		
 		recipeMythic = config.getBoolean(TextFormatting.WHITE + RECIPEMYTHIC_NAME, category2, RECIPEMYTHIC_DEFAULT, RECIPEMYTHIC_COMMENT);
 		
 		//Fuel settings
@@ -150,6 +150,17 @@ public class ViesCraftConfig {
 		outsideModFuel = config.getBoolean(TextFormatting.WHITE + OUTSIDEMODFUEL_NAME, category3, OUTSIDEMODFUEL_DEFAULT, OUTSIDEMODFUEL_COMMENT);
 		
 		viesolineBurnTime = config.getInt(TextFormatting.WHITE + VIESOLINEBURNTIME_NAME, category3, VIESOLINEBURNTIME_DEFAULT, 1, 500, VIESOLINEBURNTIME_COMMENT);
+		
+		//General settings
+		final String category4 = CATEGORY_VC + config.CATEGORY_SPLITTER + TextFormatting.GOLD + "Client";
+		config.addCustomCategoryComment(category4, "Client airship options.");
+
+		v1AirshipName = config.getString(TextFormatting.WHITE + V1AIRSHIPNAME_NAME, category4, V1AIRSHIPNAME_DEFAULT, V1AIRSHIPNAME_COMMENT);
+		v2AirshipName = config.getString(TextFormatting.WHITE + V2AIRSHIPNAME_NAME, category4, V2AIRSHIPNAME_DEFAULT, V2AIRSHIPNAME_COMMENT);
+		v3AirshipName = config.getString(TextFormatting.WHITE + V3AIRSHIPNAME_NAME, category4, V3AIRSHIPNAME_DEFAULT, V3AIRSHIPNAME_COMMENT);
+		v4AirshipName = config.getString(TextFormatting.WHITE + V4AIRSHIPNAME_NAME, category4, V4AIRSHIPNAME_DEFAULT, V4AIRSHIPNAME_COMMENT);
+		
+		engineSounds = config.getBoolean(TextFormatting.WHITE + ENGINESOUND_NAME, category4, ENGINESOUND_DEFAULT, ENGINESOUND_COMMENT);
 		
 		//Save the config
 		config.save();
