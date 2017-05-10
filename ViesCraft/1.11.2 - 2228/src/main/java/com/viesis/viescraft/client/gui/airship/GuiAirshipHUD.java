@@ -161,6 +161,10 @@ public class GuiAirshipHUD extends Gui {
 				{
 					drawTexturedModalRect(hudX + 83, hudY, 144, 240, 16, 16);
 				}
+				if(this.airship.getModuleCruiseControl())
+				{
+					drawTexturedModalRect(hudX + 83, hudY, 160, 240, 16, 16);
+				}
 				
 				
 				//if(mc.player.getRidingEntity() instanceof EntityAirshipV1Core)

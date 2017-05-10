@@ -17,6 +17,8 @@ public class InitSoundEventsVC extends SoundsVC {
 		storms = registerSound("record.storms");
 		cowboy = registerSound("record.cowboy");
 		bay = registerSound("record.bay");
+		engineOn = registerSound("sound.engineon");
+		//engineMoving = registerSound("record.enginemoving");
 	}
 	
 	private static SoundEvent registerSound(String soundName) 

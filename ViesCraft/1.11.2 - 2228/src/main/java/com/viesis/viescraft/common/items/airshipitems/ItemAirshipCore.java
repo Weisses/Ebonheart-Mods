@@ -6,6 +6,7 @@ import java.util.List;
 import com.viesis.viescraft.api.ColorHelperVC;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
 
+import net.minecraft.client.resources.I18n;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
@@ -36,26 +37,26 @@ public class ItemAirshipCore extends Item {
         {
 			if(stack.getTagCompound().getBoolean("FrameVisualActive") == true)
 			{
-				toolTip.add(TextFormatting.GREEN + "Appearance : " + EntityAirshipBaseVC.FrameCore.byId(
+				toolTip.add(TextFormatting.GREEN + I18n.format("vc.item.tt.airship.5") + " " + EntityAirshipBaseVC.FrameCore.byId(
 						stack.getTagCompound().getInteger("FrameVisual")).getName());
 			}
 			else
 			{
-				toolTip.add(TextFormatting.GREEN + "Appearance : None");
+				toolTip.add(TextFormatting.GREEN + I18n.format("vc.item.tt.airship.6"));
 			}
-			toolTip.add(TextFormatting.GREEN + "Color : " + ColorHelperVC.getColorNameFromRgb(
+			toolTip.add(TextFormatting.GREEN + I18n.format("vc.item.tt.airship.7") + " " + ColorHelperVC.getColorNameFromRgb(
 					stack.getTagCompound().getInteger("ColorRed"), 
 					stack.getTagCompound().getInteger("ColorGreen"), 
 					stack.getTagCompound().getInteger("ColorBlue")));
-			toolTip.add(TextFormatting.GREEN + "Pattern : " + EntityAirshipBaseVC.Balloon.byId(
+			toolTip.add(TextFormatting.GREEN + I18n.format("vc.item.tt.airship.8") + " " + EntityAirshipBaseVC.Balloon.byId(
 					stack.getTagCompound().getInteger("Balloon")).getName());
 			
         }
         else
         {
-        	toolTip.add(TextFormatting.GREEN + "Appearance : None");
-        	toolTip.add(TextFormatting.GREEN + "Color : Tan");
-        	toolTip.add(TextFormatting.GREEN + "Pattern : Plain");
+        	toolTip.add(TextFormatting.GREEN + I18n.format("vc.item.tt.airship.9"));
+        	toolTip.add(TextFormatting.GREEN + I18n.format("vc.item.tt.airship.10"));
+        	toolTip.add(TextFormatting.GREEN + I18n.format("vc.item.tt.airship.11"));
         }
 		
 		if(this.getMetadata(stack) <= 7)
@@ -80,34 +81,34 @@ public class ItemAirshipCore extends Item {
 		}
 		
 		toolTip.add("");
-		toolTip.add(stringColor + "Hold " + TextFormatting.WHITE + "[Shift + Right-Click]" + stringColor + " to throw this");
-		toolTip.add(stringColor + "item and unleash the airship within.");
+		toolTip.add(stringColor + I18n.format("vc.item.tt.airship.1") + " " + TextFormatting.WHITE + I18n.format("vc.item.tt.airship.2") + stringColor + " " + I18n.format("vc.item.tt.airship.3"));
+		toolTip.add(stringColor + I18n.format("vc.item.tt.airship.4"));
 		toolTip.add("");
 		
 		if(this.getMetadata(stack) <= 5)
 		{
-			toolTip.add(TextFormatting.WHITE + "Speed Modifier: " + stringColor + "+0.0");
+			toolTip.add(TextFormatting.WHITE + I18n.format("vc.item.tt.airship.#.1") + " " + stringColor + "+0.0");
 		}
 		else if(this.getMetadata(stack) == 15)
 		{
-			toolTip.add(TextFormatting.WHITE + "Speed Modifier: " + stringColor + "+1.0");
+			toolTip.add(TextFormatting.WHITE + I18n.format("vc.item.tt.airship.#.1") + " " + stringColor + "+1.0");
 		}
 		else if(this.getMetadata(stack) == 25)
 		{
-			toolTip.add(TextFormatting.WHITE + "Speed Modifier: " + stringColor + "+2.0");
+			toolTip.add(TextFormatting.WHITE + I18n.format("vc.item.tt.airship.#.1") + " " + stringColor + "+2.0");
 		}
 		else
 		{
-			toolTip.add(TextFormatting.WHITE + "Speed Modifier: " + stringColor + "+" + speedMod);
+			toolTip.add(TextFormatting.WHITE + I18n.format("vc.item.tt.airship.#.1") + " " + stringColor + "+" + speedMod);
 		}
 		
 		if(this.getMetadata(stack) >= 25)
 		{
-			toolTip.add(TextFormatting.WHITE + "Max altitude: " + stringColor + "Unlimited");
+			toolTip.add(TextFormatting.WHITE + I18n.format("vc.item.tt.airship.#.2") + " " + stringColor + I18n.format("vc.item.tt.airship.#.3"));
 		}
 		else
 		{
-			toolTip.add(TextFormatting.WHITE + "Max altitude: " + stringColor + df.format(EntityAirshipBaseVC.FrameCore.byId(this.getMetadata(stack)).getElevation()));
+			toolTip.add(TextFormatting.WHITE + I18n.format("vc.item.tt.airship.#.2") + " " + stringColor + df.format(EntityAirshipBaseVC.FrameCore.byId(this.getMetadata(stack)).getElevation()));
 		}
 	}
 	

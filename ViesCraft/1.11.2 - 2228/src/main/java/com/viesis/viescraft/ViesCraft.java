@@ -43,20 +43,26 @@ public class ViesCraft {
 		ViesCraftConfig.init(new File(configDir.getPath(), Reference.MOD_ID + ".cfg"));
 		
 		this.proxy.preInit(event);
-		LogHelper.info("Pre Init Complete.");
+		LogHelper.info("<<==============================>>");
+		LogHelper.info("        Pre Init Complete.");
+		LogHelper.info("<<==============================>>");
 	}
 	
 	@EventHandler
 	public void init(FMLInitializationEvent event)
 	{
 		this.proxy.init(event);
-		LogHelper.info("Init Complete.");
+		LogHelper.info("<<==============================>>");
+		LogHelper.info("          Init Complete.");
+		LogHelper.info("<<==============================>>");
 	}
 	
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event)
 	{
 		this.proxy.postInit(event);
-		LogHelper.info("Enforcing Brannigan's Law...");
+		LogHelper.info("<<==============================>>");
+		LogHelper.info("   Enforcing Brannigan's Law...");
+		LogHelper.info("<<==============================>>");
 	}
 }

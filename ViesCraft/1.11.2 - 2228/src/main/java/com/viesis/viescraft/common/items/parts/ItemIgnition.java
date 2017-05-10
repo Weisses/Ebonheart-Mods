@@ -5,6 +5,7 @@ import java.util.List;
 import com.viesis.viescraft.ViesCraft;
 import com.viesis.viescraft.common.items.ItemHelper;
 
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
@@ -25,8 +26,8 @@ public class ItemIgnition extends Item {
 	@SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List toolTip, boolean advanced) 
 	{
-		toolTip.add(TextFormatting.DARK_AQUA + "The heart of the airship! Travel to");
-		toolTip.add(TextFormatting.DARK_AQUA + "different chunks in mere minutes!");
+		toolTip.add(TextFormatting.DARK_AQUA + I18n.format("vc.item.tt.ignition.1"));
+		toolTip.add(TextFormatting.DARK_AQUA + I18n.format("vc.item.tt.ignition.2"));
 	}
 	
 	public EnumRarity getRarity(ItemStack stack)

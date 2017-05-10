@@ -43,5 +43,23 @@
             "stream": true
             }
         ]
+    },
+    "sound.engineon": {
+        "category": "sound",
+        "sounds": [
+            {
+            "name": "vc:engineon",
+            "stream": true
+            }
+        ]
+    },
+    "record.enginemoving": {
+        "category": "record",
+        "sounds": [
+            {
+            "name": "vc:records/enginemoving",
+            "stream": true
+            }
+        ]
     }
 }

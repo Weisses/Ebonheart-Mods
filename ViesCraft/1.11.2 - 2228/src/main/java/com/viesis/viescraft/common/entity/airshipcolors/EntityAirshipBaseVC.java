@@ -14,6 +14,7 @@ import com.viesis.viescraft.init.InitItemsVC;
 import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
@@ -54,23 +55,26 @@ public class EntityAirshipBaseVC extends Entity {
     protected static final DataParameter<Integer> BALLOON_COLOR_BLUE_VC = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
     
 	/** Fuel */
-	protected static final DataParameter<Integer> POWERED = EntityDataManager.<Integer>createKey(EntityAirshipV1Core.class, DataSerializers.VARINT);
-	protected static final DataParameter<Integer> TOTALPOWERED = EntityDataManager.<Integer>createKey(EntityAirshipV1Core.class, DataSerializers.VARINT);
-	protected static final DataParameter<Integer> ITEMFUELSTACKPOWERED = EntityDataManager.<Integer>createKey(EntityAirshipV1Core.class, DataSerializers.VARINT);
-	protected static final DataParameter<Integer> ITEMFUELSTACKSIZEPOWERED = EntityDataManager.<Integer>createKey(EntityAirshipV1Core.class, DataSerializers.VARINT);
+	protected static final DataParameter<Integer> POWERED = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+	protected static final DataParameter<Integer> TOTALPOWERED = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+	protected static final DataParameter<Integer> ITEMFUELSTACKPOWERED = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+	protected static final DataParameter<Integer> ITEMFUELSTACKSIZEPOWERED = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
     
     /** Passive Modules */
-	protected static final DataParameter<Boolean> MODULE_INVENTORY_SMALL = EntityDataManager.<Boolean>createKey(EntityAirshipV1Core.class, DataSerializers.BOOLEAN);
-	protected static final DataParameter<Boolean> MODULE_INVENTORY_LARGE = EntityDataManager.<Boolean>createKey(EntityAirshipV1Core.class, DataSerializers.BOOLEAN);
-	protected static final DataParameter<Boolean> MODULE_FUEL_INFINITE = EntityDataManager.<Boolean>createKey(EntityAirshipV1Core.class, DataSerializers.BOOLEAN);
-	protected static final DataParameter<Boolean> MODULE_SPEED_MINOR = EntityDataManager.<Boolean>createKey(EntityAirshipV1Core.class, DataSerializers.BOOLEAN);
-	protected static final DataParameter<Boolean> MODULE_SPEED_MAJOR = EntityDataManager.<Boolean>createKey(EntityAirshipV1Core.class, DataSerializers.BOOLEAN);
-	protected static final DataParameter<Boolean> MODULE_WATER_LANDING = EntityDataManager.<Boolean>createKey(EntityAirshipV1Core.class, DataSerializers.BOOLEAN);
-	protected static final DataParameter<Boolean> MODULE_MAX_ALTITUDE = EntityDataManager.<Boolean>createKey(EntityAirshipV1Core.class, DataSerializers.BOOLEAN);
-	protected static final DataParameter<Boolean> MODULE_MINOR_EFFICIENCY = EntityDataManager.<Boolean>createKey(EntityAirshipV1Core.class, DataSerializers.BOOLEAN);
-	protected static final DataParameter<Boolean> MODULE_MAJOR_EFFICIENCY = EntityDataManager.<Boolean>createKey(EntityAirshipV1Core.class, DataSerializers.BOOLEAN);
-	protected static final DataParameter<Boolean> MODULE_JUKEBOX = EntityDataManager.<Boolean>createKey(EntityAirshipV1Core.class, DataSerializers.BOOLEAN);
-	protected static final DataParameter<Integer> MODULE_JUKEBOX_SELECTED_SONG = EntityDataManager.<Integer>createKey(EntityAirshipV1Core.class, DataSerializers.VARINT);
+	protected static final DataParameter<Boolean> MODULE_INVENTORY_SMALL = EntityDataManager.<Boolean>createKey(EntityAirshipBaseVC.class, DataSerializers.BOOLEAN);
+	protected static final DataParameter<Boolean> MODULE_INVENTORY_LARGE = EntityDataManager.<Boolean>createKey(EntityAirshipBaseVC.class, DataSerializers.BOOLEAN);
+	protected static final DataParameter<Boolean> MODULE_FUEL_INFINITE = EntityDataManager.<Boolean>createKey(EntityAirshipBaseVC.class, DataSerializers.BOOLEAN);
+	protected static final DataParameter<Boolean> MODULE_SPEED_MINOR = EntityDataManager.<Boolean>createKey(EntityAirshipBaseVC.class, DataSerializers.BOOLEAN);
+	protected static final DataParameter<Boolean> MODULE_SPEED_MAJOR = EntityDataManager.<Boolean>createKey(EntityAirshipBaseVC.class, DataSerializers.BOOLEAN);
+	protected static final DataParameter<Boolean> MODULE_WATER_LANDING = EntityDataManager.<Boolean>createKey(EntityAirshipBaseVC.class, DataSerializers.BOOLEAN);
+	protected static final DataParameter<Boolean> MODULE_MAX_ALTITUDE = EntityDataManager.<Boolean>createKey(EntityAirshipBaseVC.class, DataSerializers.BOOLEAN);
+	protected static final DataParameter<Boolean> MODULE_MINOR_EFFICIENCY = EntityDataManager.<Boolean>createKey(EntityAirshipBaseVC.class, DataSerializers.BOOLEAN);
+	protected static final DataParameter<Boolean> MODULE_MAJOR_EFFICIENCY = EntityDataManager.<Boolean>createKey(EntityAirshipBaseVC.class, DataSerializers.BOOLEAN);
+	protected static final DataParameter<Boolean> MODULE_JUKEBOX = EntityDataManager.<Boolean>createKey(EntityAirshipBaseVC.class, DataSerializers.BOOLEAN);
+	protected static final DataParameter<Integer> MODULE_JUKEBOX_SELECTED_SONG = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+	protected static final DataParameter<Boolean> MODULE_CRUISECONTROL = EntityDataManager.<Boolean>createKey(EntityAirshipBaseVC.class, DataSerializers.BOOLEAN);
+	protected static final DataParameter<Integer> MODULE_CRUISECONTROL_SELECTED_SPEED = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+	protected static final DataParameter<Boolean> MODULE_CRUISECONTROL_TOGGLE = EntityDataManager.<Boolean>createKey(EntityAirshipBaseVC.class, DataSerializers.BOOLEAN);
 	
 	//Fuel
 	public int airshipBurnTime;
@@ -151,6 +155,10 @@ public class EntityAirshipBaseVC extends Entity {
     public static boolean moduleMajorEfficiency;
     public static boolean moduleJukebox;
     public int jukeboxSelectedSong;
+    public static boolean moduleCruiseControl;
+    public int cruiseControlSelectedSpeed;
+    public static boolean cruiseControlToggle;
+    
     
     public EntityAirshipBaseVC(World worldIn)
     {
@@ -334,6 +342,12 @@ public class EntityAirshipBaseVC extends Entity {
         
     }
     
+    
+    
+    //==================================//
+    // TODO       Core Logic            //
+	//==================================//
+	
     /**
      * Downward empty movement.
      */
@@ -875,6 +889,12 @@ public class EntityAirshipBaseVC extends Entity {
         IN_AIR;
     }
     
+    
+    
+	//==================================//
+    // TODO     Input Updates           //
+	//==================================//
+    
     /**
      * For vehicles, the first passenger is generally considered the controller and "drives" the vehicle. For example,
      * Pigs, Horses, and Boats are generally "steered" by the controlling passenger.
@@ -1016,8 +1036,12 @@ public class EntityAirshipBaseVC extends Entity {
     	
     	return airshipFuelTick;
     }
-	
     
+    
+    
+	//==================================//
+    // TODO          Enums              //
+	//==================================//
     
     /**
 	 * Core Frame enum - Represents various frame types.
@@ -1026,39 +1050,39 @@ public class EntityAirshipBaseVC extends Entity {
     {
     	//STRING(meta, name, speed, altitude)
     	//Common - 8 items
-        WOOD0(0, "Oak", 0F, 75),
-        WOOD1(1, "Spruce", 0F, 75),
-        WOOD2(2, "Birch", 0F, 75),
-        WOOD3(3, "Jungle", 0F, 75),
-        WOOD4(4, "Acacia", 0F, 75),
-        WOOD5(5, "Dark Oak", 0F, 75),
-        SANDSTONE(6, "Sandstone", 0.001F, 80),
-        BRICK(7, "Brick", 0.002F, 90),
+        WOOD0(0, I18n.format("vc.item.enum.frame.0"), 0F, 75),
+        WOOD1(1, I18n.format("vc.item.enum.frame.1"), 0F, 75),
+        WOOD2(2, I18n.format("vc.item.enum.frame.2"), 0F, 75),
+        WOOD3(3, I18n.format("vc.item.enum.frame.3"), 0F, 75),
+        WOOD4(4, I18n.format("vc.item.enum.frame.4"), 0F, 75),
+        WOOD5(5, I18n.format("vc.item.enum.frame.5"), 0F, 75),
+        SANDSTONE(6, I18n.format("vc.item.enum.frame.6"), 0.001F, 80),
+        BRICK(7, I18n.format("vc.item.enum.frame.7"), 0.002F, 90),
         
         //Uncommon - 7 items
-        BONE(8, "Bone", 0.003F, 100),
-    	IRON(9, "Iron", 0.004F, 110),
-        REDSTONE(10, "Redstone", 0.005F, 120),
-        GOLD(11, "Gold", 0.006F, 130),
-        LAPISLAZULI(12, "Lapis Lazuli", 0.007F, 140),
-        SLIME(13, "Slime", 0.008F, 150),
-        MYCELIUM(14, "Mycelium", 0.009F, 160),
+        BONE(8, I18n.format("vc.item.enum.frame.8"), 0.003F, 100),
+    	IRON(9, I18n.format("vc.item.enum.frame.9"), 0.004F, 110),
+        REDSTONE(10, I18n.format("vc.item.enum.frame.10"), 0.005F, 120),
+        GOLD(11, I18n.format("vc.item.enum.frame.11"), 0.006F, 130),
+        LAPISLAZULI(12, I18n.format("vc.item.enum.frame.12"), 0.007F, 140),
+        SLIME(13, I18n.format("vc.item.enum.frame.13"), 0.008F, 150),
+        MYCELIUM(14, I18n.format("vc.item.enum.frame.14"), 0.009F, 160),
         
         //Rare - 6 items
-        NETHERBRICK(15, "Nether Brick", 0.010F, 170),
-        SOULSAND(16, "Soul Sand", 0.011F, 180),
-        QUARTZ(17, "Quartz", 0.012F, 190),
-        ICE(18, "Ice", 0.013F, 200),
-        GLOWSTONE(19, "Glowstone", 0.014F, 210),
-        OBSIDIAN(20, "Obsidian", 0.015F, 220),
+        NETHERBRICK(15, I18n.format("vc.item.enum.frame.15"), 0.010F, 170),
+        SOULSAND(16, I18n.format("vc.item.enum.frame.16"), 0.011F, 180),
+        QUARTZ(17, I18n.format("vc.item.enum.frame.17"), 0.012F, 190),
+        ICE(18, I18n.format("vc.item.enum.frame.18"), 0.013F, 200),
+        GLOWSTONE(19, I18n.format("vc.item.enum.frame.19"), 0.014F, 210),
+        OBSIDIAN(20, I18n.format("vc.item.enum.frame.20"), 0.015F, 220),
         
         //Epic - 5 items + 1 admin-only item
-        DIAMOND(21, "Diamond", 0.016F, 230),
-        EMERALD(22, "Emerald", 0.017F, 240),
-        PRISMARINE(23, "Prismarine", 0.018F, 250),
-    	PURPUR(24, "Purpur", 0.019F, 260),
-    	NETHERSTAR(25, "Nether Star", 0.020F, 500),
-    	MYTHIC(26, "Mythic", 0.025F, 500);  // This is a special admin only Airship.
+        DIAMOND(21, I18n.format("vc.item.enum.frame.21"), 0.016F, 230),
+        EMERALD(22, I18n.format("vc.item.enum.frame.22"), 0.017F, 240),
+        PRISMARINE(23, I18n.format("vc.item.enum.frame.23"), 0.018F, 250),
+    	PURPUR(24, I18n.format("vc.item.enum.frame.24"), 0.019F, 260),
+    	NETHERSTAR(25, I18n.format("vc.item.enum.frame.25"), 0.020F, 500),
+    	MYTHIC(26, I18n.format("vc.item.enum.frame.26"), 0.025F, 500);  // This is a special admin only Airship.
     	
         private final String name;
         private final int metadata;
@@ -1130,15 +1154,15 @@ public class EntityAirshipBaseVC extends Entity {
 	 */
     public static enum Balloon
     {
-        PLAIN(0, "Plain"),
-        CHECKER(1, "Checker"),
-        CHECKERCOLORIZED(2, "Colorized Checker"),
-        POLKADOT(3, "Polka Dot"),
-        POLKADOTCOLORIZED(4, "Colorized Polka Dot"),
-        ZIGZAG(5, "Zigzag"),
-    	ZIGZAGCOLORIZED(6, "Colorized Zigzag"),
-        CREEPER(7, "Creeper"),
-    	CREEPERCOLORIZED(8, "Colorized Creeper")//,
+        PLAIN(0, I18n.format("vc.item.enum.balloon.0")),
+        CHECKER(1, I18n.format("vc.item.enum.balloon.1")),
+        CHECKERCOLORIZED(2, I18n.format("vc.item.enum.balloon.2")),
+        POLKADOT(3, I18n.format("vc.item.enum.balloon.3")),
+        POLKADOTCOLORIZED(4, I18n.format("vc.item.enum.balloon.4")),
+        ZIGZAG(5, I18n.format("vc.item.enum.balloon.5")),
+    	ZIGZAGCOLORIZED(6, I18n.format("vc.item.enum.balloon.6")),
+        CREEPER(7, I18n.format("vc.item.enum.balloon.7")),
+    	CREEPERCOLORIZED(8, I18n.format("vc.item.enum.balloon.8"))//,
         //WAVEHORIZONTAL(7, "Horizontal Wave"),
         //WAVEHORIZONTALCOLORIZED(8, "Colorized Horizontal Wave"),
         //WAVEVERTICAL(9, "Vertical Wave"),
@@ -1203,17 +1227,18 @@ public class EntityAirshipBaseVC extends Entity {
 	 */
     public static enum Module
     {
-        CHIP(0, "Chip"),
-        MINORSPEED(1, "Minor Speed"),
-        MAJORSPEED(2, "Major Speed"),
-        SMALLINVENTORY(3, "Small Inventory"),
-        LARGEINVENTORY(4, "Large Inventory"),
-        INFINITEFUEL(5, "Infinite Fuel"),
-    	WATERLANDING(6, "Water Landing"),
-    	MAXALTITUDE(7, "Max Altitude"),
-    	MINOREFFICIENCY(8, "Minor Efficiency"),
-    	MAJOREFFICIENCY(9, "Major Efficiency"),
-    	JUKEBOX(10, "Jukebox");
+        CHIP(0, I18n.format("vc.item.enum.module.0")),
+        MINORSPEED(1, I18n.format("vc.item.enum.module.1")),
+        MAJORSPEED(2, I18n.format("vc.item.enum.module.2")),
+        SMALLINVENTORY(3, I18n.format("vc.item.enum.module.3")),
+        LARGEINVENTORY(4, I18n.format("vc.item.enum.module.4")),
+        INFINITEFUEL(5, I18n.format("vc.item.enum.module.5")),
+    	WATERLANDING(6, I18n.format("vc.item.enum.module.6")),
+    	MAXALTITUDE(7, I18n.format("vc.item.enum.module.7")),
+    	MINOREFFICIENCY(8, I18n.format("vc.item.enum.module.8")),
+    	MAJOREFFICIENCY(9, I18n.format("vc.item.enum.module.9")),
+    	JUKEBOX(10, I18n.format("vc.item.enum.module.10")),
+    	CRUISECONTROL(11, I18n.format("vc.item.enum.module.11"));
     	
         private final String name;
         private final int metadata;
@@ -1271,24 +1296,24 @@ public class EntityAirshipBaseVC extends Entity {
 	 */
     public static enum Song
     {
-    	NONE(0, "None", SoundEvents.UI_BUTTON_CLICK),
-    	RECORD11(1, "11", SoundEvents.RECORD_11),
-        RECORD13(2, "13", SoundEvents.RECORD_13),
-        RECORDBLOCKS(3, "Blocks", SoundEvents.RECORD_BLOCKS),
-        RECORDMELLOHI(4, "Mellohi", SoundEvents.RECORD_MELLOHI),
-        RECORDCAT(5, "Cat", SoundEvents.RECORD_CAT),
-        RECORDSTAL(6, "Stal", SoundEvents.RECORD_STAL),
-        RECORDSTRAD(7, "Strad", SoundEvents.RECORD_STRAD),
-        RECORDCHIRP(8, "Chirp", SoundEvents.RECORD_CHIRP),
-        RECORDFAR(9, "Far", SoundEvents.RECORD_FAR),
-        RECORDMALL(10, "Mall", SoundEvents.RECORD_MALL),
-        RECORDWAIT(11, "Wait", SoundEvents.RECORD_WAIT),
-        RECORDWARD(12, "Ward", SoundEvents.RECORD_WARD),
-        RECORDTRIGUN(13, "Trigun", InitSoundEventsVC.trigun),
-        RECORDBRAMBLE(14, "Bramble", InitSoundEventsVC.bramble),
-        RECORDSTORMS(15, "Storms", InitSoundEventsVC.storms),
-        RECORDCOWBOY(16, "Cowboy", InitSoundEventsVC.cowboy),
-        RECORDSECRET(17, "Secret", InitSoundEventsVC.bay)
+    	NONE(0, I18n.format("vc.item.enum.song.0"), SoundEvents.UI_BUTTON_CLICK),
+    	RECORD11(1, I18n.format("vc.item.enum.song.1"), SoundEvents.RECORD_11),
+        RECORD13(2, I18n.format("vc.item.enum.song.2"), SoundEvents.RECORD_13),
+        RECORDBLOCKS(3, I18n.format("vc.item.enum.song.3"), SoundEvents.RECORD_BLOCKS),
+        RECORDMELLOHI(4, I18n.format("vc.item.enum.song.4"), SoundEvents.RECORD_MELLOHI),
+        RECORDCAT(5, I18n.format("vc.item.enum.song.5"), SoundEvents.RECORD_CAT),
+        RECORDSTAL(6, I18n.format("vc.item.enum.song.6"), SoundEvents.RECORD_STAL),
+        RECORDSTRAD(7, I18n.format("vc.item.enum.song.7"), SoundEvents.RECORD_STRAD),
+        RECORDCHIRP(8, I18n.format("vc.item.enum.song.8"), SoundEvents.RECORD_CHIRP),
+        RECORDFAR(9, I18n.format("vc.item.enum.song.9"), SoundEvents.RECORD_FAR),
+        RECORDMALL(10, I18n.format("vc.item.enum.song.10"), SoundEvents.RECORD_MALL),
+        RECORDWAIT(11, I18n.format("vc.item.enum.song.11"), SoundEvents.RECORD_WAIT),
+        RECORDWARD(12, I18n.format("vc.item.enum.song.12"), SoundEvents.RECORD_WARD),
+        RECORDTRIGUN(13, I18n.format("vc.item.enum.song.13"), InitSoundEventsVC.trigun),
+        RECORDBRAMBLE(14, I18n.format("vc.item.enum.song.14"), InitSoundEventsVC.bramble),
+        RECORDSTORMS(15, I18n.format("vc.item.enum.song.15"), InitSoundEventsVC.storms),
+        RECORDCOWBOY(16, I18n.format("vc.item.enum.song.16"), InitSoundEventsVC.cowboy),
+        RECORDSECRET(17, I18n.format("vc.item.enum.song.17"), InitSoundEventsVC.bay)
     	;
     	
         private final String name;
@@ -1441,6 +1466,30 @@ public class EntityAirshipBaseVC extends Entity {
     public int getJukeboxSelectedSong()
     {
         return 0;
+    }
+    
+    /**
+     * Gets the Cruise Control boolean to pass from server to client.
+     */
+    public boolean getModuleCruiseControl()
+    {
+        return false;
+    }
+    
+    /**
+     * Gets the Cruise Control selected speed int to pass from server to client.
+     */
+    public int getCruiseControlSelectedSpeed()
+    {
+        return 0;
+    }
+    
+    /**
+     * Gets the Cruise Control Toggle boolean to pass from server to client.
+     */
+    public boolean getCruiseControlToggle()
+    {
+        return false;
     }
     
     /**

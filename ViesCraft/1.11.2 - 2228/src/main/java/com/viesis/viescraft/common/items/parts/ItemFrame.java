@@ -8,6 +8,7 @@ import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
 import com.viesis.viescraft.common.items.ItemHelper;
 import com.viesis.viescraft.init.InitAchievementsVC;
 
+import net.minecraft.client.resources.I18n;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -84,36 +85,36 @@ public class ItemFrame extends Item {
 			stringColor = TextFormatting.DARK_RED;
 		}
 		
-		toolTip.add(TextFormatting.WHITE + "[Shift + Left-Click]" + stringColor + " on an");
-		toolTip.add(stringColor + "airship to change the frame.");
+		toolTip.add(TextFormatting.WHITE + I18n.format("vc.item.tt.frame.1")+" " + stringColor + I18n.format("vc.item.tt.frame.2"));
+		toolTip.add(stringColor + I18n.format("vc.item.tt.frame.3"));
 		toolTip.add("");
-		toolTip.add(stringColor + "Also used in crafting recipes.");
+		toolTip.add(stringColor + I18n.format("vc.item.tt.frame.4"));
 		toolTip.add("");
 		
 		if(this.getMetadata(stack) <= 5)
 		{
-			toolTip.add(TextFormatting.WHITE + "Speed Modifier: " + stringColor + "+0.0");
+			toolTip.add(TextFormatting.WHITE + I18n.format("vc.item.tt.frame.5") + " " + stringColor + "+0.0");
 		}
 		else if(this.getMetadata(stack) == 15)
 		{
-			toolTip.add(TextFormatting.WHITE + "Speed Modifier: " + stringColor + "+1.0");
+			toolTip.add(TextFormatting.WHITE + I18n.format("vc.item.tt.frame.5") + " " + stringColor + "+1.0");
 		}
 		else if(this.getMetadata(stack) == 25)
 		{
-			toolTip.add(TextFormatting.WHITE + "Speed Modifier: " + stringColor + "+2.0");
+			toolTip.add(TextFormatting.WHITE + I18n.format("vc.item.tt.frame.5") + " " + stringColor + "+2.0");
 		}
 		else
 		{
-			toolTip.add(TextFormatting.WHITE + "Speed Modifier: " + stringColor + "+" + speedMod);
+			toolTip.add(TextFormatting.WHITE + I18n.format("vc.item.tt.frame.5") + " " + stringColor + "+" + speedMod);
 		}
 		
 		if(this.getMetadata(stack) >= 21)
 		{
-			toolTip.add(TextFormatting.WHITE + "Max altitude: " + stringColor + "Unlimited");
+			toolTip.add(TextFormatting.WHITE + I18n.format("vc.item.tt.frame.6") + " " + stringColor + I18n.format("vc.item.tt.frame.7"));
 		}
 		else
 		{
-			toolTip.add(TextFormatting.WHITE + "Max altitude: " + stringColor + df.format(EntityAirshipBaseVC.FrameCore.byId(this.getMetadata(stack)).getElevation()));
+			toolTip.add(TextFormatting.WHITE + I18n.format("vc.item.tt.frame.6") + " " + stringColor + df.format(EntityAirshipBaseVC.FrameCore.byId(this.getMetadata(stack)).getElevation()));
 		}
 	}
 	
@@ -194,7 +195,7 @@ public class ItemFrame extends Item {
 	public String getItemStackDisplayName(ItemStack stack)
     {
         return (EntityAirshipBaseVC.FrameCore.byId(this.getMetadata(stack)).getName() + " " 
-        		+ "Airship Frame");
+        		+ I18n.format("vc.item.frame"));
     }
 	
 	@SideOnly(Side.CLIENT)

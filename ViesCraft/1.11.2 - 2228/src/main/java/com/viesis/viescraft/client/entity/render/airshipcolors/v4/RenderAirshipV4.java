@@ -137,6 +137,10 @@ public class RenderAirshipV4 extends Render<EntityAirshipV4Core> {
 		{
 			this.moduleNumber = 10;
 		}
+        else if(entity.getModuleCruiseControl())
+		{
+			this.moduleNumber = 11;
+		}
         else
         {
         	this.moduleNumber = 0;
