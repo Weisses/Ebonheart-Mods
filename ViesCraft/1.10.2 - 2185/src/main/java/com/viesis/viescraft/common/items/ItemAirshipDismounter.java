@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.viesis.viescraft.ViesCraft;
 
+import net.minecraft.util.text.translation.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -25,10 +26,10 @@ public class ItemAirshipDismounter extends Item {
 	@SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List toolTip, boolean advanced) 
 	{
-		toolTip.add(TextFormatting.WHITE + "[Left-Click]" + TextFormatting.GREEN + " a mounted entity");
-		toolTip.add(TextFormatting.GREEN + "to safely dismount it.");
+		toolTip.add(TextFormatting.WHITE + I18n.translateToLocal("vc.item.tt.dismounter.1") + " " + TextFormatting.GREEN + I18n.translateToLocal("vc.item.tt.dismounter.2"));
+		toolTip.add(TextFormatting.GREEN + I18n.translateToLocal("vc.item.tt.dismounter.3"));
 		toolTip.add(TextFormatting.GREEN + "");
-		toolTip.add(TextFormatting.GOLD + "Does no damage, may cause laughter.");
+		toolTip.add(TextFormatting.GOLD + I18n.translateToLocal("vc.item.tt.dismounter.4"));
 	}
 	
 	@Override

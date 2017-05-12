@@ -10,7 +10,7 @@ import com.viesis.viescraft.common.items.ItemHelper;
 import com.viesis.viescraft.init.InitAchievementsVC;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.resources.I18n;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
@@ -70,22 +70,22 @@ public class ItemColorizerBalloon extends Item {
 	{
 		if(stack.hasTagCompound())
         {
-			toolTip.add(TextFormatting.GREEN + I18n.format("vc.item.tt.colorizer.7") + " " + TextFormatting.GREEN + ColorHelperVC.getColorNameFromRgb(
+			toolTip.add(TextFormatting.GREEN + I18n.translateToLocal("vc.item.tt.colorizer.7") + " " + TextFormatting.GREEN + ColorHelperVC.getColorNameFromRgb(
 					stack.getTagCompound().getInteger("ColorRed"), 
 					stack.getTagCompound().getInteger("ColorGreen"), 
 					stack.getTagCompound().getInteger("ColorBlue")));
         }
 		else
         {
-        	toolTip.add(TextFormatting.GREEN + I18n.format("vc.item.tt.colorizer.8"));
+        	toolTip.add(TextFormatting.GREEN + I18n.translateToLocal("vc.item.tt.colorizer.8"));
         }
 		
 		toolTip.add("");
-		toolTip.add(TextFormatting.WHITE + I18n.format("vc.item.tt.colorizer.1") + " " + TextFormatting.GOLD + I18n.format("vc.item.tt.colorizer.2"));
-		toolTip.add(TextFormatting.GOLD + I18n.format("vc.item.tt.colorizer.3"));
+		toolTip.add(TextFormatting.WHITE + I18n.translateToLocal("vc.item.tt.colorizer.1") + " " + TextFormatting.GOLD + I18n.translateToLocal("vc.item.tt.colorizer.2"));
+		toolTip.add(TextFormatting.GOLD + I18n.translateToLocal("vc.item.tt.colorizer.3"));
 		toolTip.add("");
-		toolTip.add(TextFormatting.WHITE + I18n.format("vc.item.tt.colorizer.4") + " " + TextFormatting.GOLD + I18n.format("vc.item.tt.colorizer.5"));
-		toolTip.add(TextFormatting.GOLD + I18n.format("vc.item.tt.colorizer.6"));
+		toolTip.add(TextFormatting.WHITE + I18n.translateToLocal("vc.item.tt.colorizer.4") + " " + TextFormatting.GOLD + I18n.translateToLocal("vc.item.tt.colorizer.5"));
+		toolTip.add(TextFormatting.GOLD + I18n.translateToLocal("vc.item.tt.colorizer.6"));
 	}
 	
 	public EnumRarity getRarity(ItemStack stack)
@@ -113,6 +113,6 @@ public class ItemColorizerBalloon extends Item {
 	@Override
 	public String getItemStackDisplayName(ItemStack stack)
     {
-		return (I18n.format("vc.item.colorizer"));
+		return (I18n.translateToLocal("vc.item.colorizer"));
     }
 }

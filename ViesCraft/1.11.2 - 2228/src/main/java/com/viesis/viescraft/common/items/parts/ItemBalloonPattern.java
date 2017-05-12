@@ -7,7 +7,7 @@ import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
 import com.viesis.viescraft.common.items.ItemHelper;
 import com.viesis.viescraft.init.InitAchievementsVC;
 
-import net.minecraft.client.resources.I18n;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -37,8 +37,8 @@ public class ItemBalloonPattern extends Item {
 	{
 		TextFormatting stringColor = TextFormatting.GOLD;
 		
-		toolTip.add(TextFormatting.WHITE + I18n.format("vc.item.tt.pattern.1") + " " + stringColor + I18n.format("vc.item.tt.pattern.2"));
-		toolTip.add(stringColor + I18n.format("vc.item.tt.pattern.3"));
+		toolTip.add(TextFormatting.WHITE + I18n.translateToLocal("vc.item.tt.pattern.1") + " " + stringColor + I18n.translateToLocal("vc.item.tt.pattern.2"));
+		toolTip.add(stringColor + I18n.translateToLocal("vc.item.tt.pattern.3"));
 	}
 	
 	public EnumRarity getRarity(ItemStack stack)
@@ -81,7 +81,7 @@ public class ItemBalloonPattern extends Item {
 	public String getItemStackDisplayName(ItemStack stack)
     {
         return (EntityAirshipBaseVC.Balloon.byId(this.getMetadata(stack)).getName() + " " 
-        		+ I18n.format("vc.item.pattern"));
+        		+ I18n.translateToLocal("vc.item.pattern"));
     }
 	
 	@SideOnly(Side.CLIENT)

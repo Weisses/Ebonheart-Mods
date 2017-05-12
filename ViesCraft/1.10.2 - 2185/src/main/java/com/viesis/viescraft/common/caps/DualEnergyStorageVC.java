@@ -1,6 +1,8 @@
 package com.viesis.viescraft.common.caps;
 
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.util.INBTSerializable;
 import net.minecraftforge.energy.EnergyStorage;
 import net.minecraftforge.fml.common.Optional;
 
@@ -10,9 +12,8 @@ import net.minecraftforge.fml.common.Optional;
 	@Optional.Interface(iface = "net.darkhax.tesla.api.ITeslaProducer", modid = "tesla")
 })
 
-public class DualEnergyStorageVC extends EnergyStorage 
-//implements ITeslaHolder, ITeslaConsumer, ITeslaProducer, INBTSerializable<NBTTagCompound> 
-{
+public class DualEnergyStorageVC extends EnergyStorage implements //ITeslaHolder, ITeslaConsumer, ITeslaProducer, 
+INBTSerializable<NBTTagCompound> {
 	
 	//@CapabilityInject(ITeslaConsumer.class)
 	public static Capability<?> CAPABILITY_CONSUMER = null;
@@ -32,30 +33,30 @@ public class DualEnergyStorageVC extends EnergyStorage
 	public DualEnergyStorageVC(int capacity, int maxReceive, int maxExtract) {
 		super(capacity, maxReceive, maxExtract);
 	}
-/**
-	@Override
-	@Optional.Method(modid = "tesla")
-	public long givePower(long tesla, boolean simulate) {
-		return receiveEnergy((int) tesla & 0xEFFFFFFF, simulate);
-	}
 
-	@Override
-	@Optional.Method(modid = "tesla")
-	public long getStoredPower() {
-		return getEnergyStored();
-	}
+	//@Override
+	//@Optional.Method(modid = "tesla")
+	//public long givePower(long tesla, boolean simulate) {
+	//	return receiveEnergy((int) tesla & 0xEFFFFFFF, simulate);
+	//}
 
-	@Override
-	@Optional.Method(modid = "tesla")
-	public long getCapacity() {
-		return getMaxEnergyStored();
-	}
+	//@Override
+	//@Optional.Method(modid = "tesla")
+	//public long getStoredPower() {
+	//	return getEnergyStored();
+	//}
 
-	@Override
-	@Optional.Method(modid = "tesla")
-	public long takePower(long tesla, boolean simulate) {
-		return extractEnergy((int) tesla & 0xEFFFFFFF, simulate);
-	}
+	//@Override
+	//@Optional.Method(modid = "tesla")
+	//public long getCapacity() {
+	//	return getMaxEnergyStored();
+	//}
+
+	//@Override
+	//@Optional.Method(modid = "tesla")
+	//public long takePower(long tesla, boolean simulate) {
+	//	return extractEnergy((int) tesla & 0xEFFFFFFF, simulate);
+	//}
 
 	@Override
 	public NBTTagCompound serializeNBT() {
@@ -73,5 +74,5 @@ public class DualEnergyStorageVC extends EnergyStorage
 		capacity = nbt.getInteger("capacity");
 		maxReceive = nbt.getInteger("maxReceive");
 		maxExtract = nbt.getInteger("maxExtract");
-	}*/
+	}
 }

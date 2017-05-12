@@ -14,7 +14,7 @@ import com.viesis.viescraft.init.InitItemsVC;
 import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.resources.I18n;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
@@ -1049,39 +1049,39 @@ public class EntityAirshipBaseVC extends Entity {
     {
     	//STRING(meta, name, speed, altitude)
     	//Common - 8 items
-        WOOD0(0, I18n.format("vc.item.enum.frame.0"), 0F, 75),
-        WOOD1(1, I18n.format("vc.item.enum.frame.1"), 0F, 75),
-        WOOD2(2, I18n.format("vc.item.enum.frame.2"), 0F, 75),
-        WOOD3(3, I18n.format("vc.item.enum.frame.3"), 0F, 75),
-        WOOD4(4, I18n.format("vc.item.enum.frame.4"), 0F, 75),
-        WOOD5(5, I18n.format("vc.item.enum.frame.5"), 0F, 75),
-        SANDSTONE(6, I18n.format("vc.item.enum.frame.6"), 0.001F, 80),
-        BRICK(7, I18n.format("vc.item.enum.frame.7"), 0.002F, 90),
+        WOOD0(0, I18n.translateToLocal("vc.item.enum.frame.0"), 0F, 75),
+        WOOD1(1, I18n.translateToLocal("vc.item.enum.frame.1"), 0F, 75),
+        WOOD2(2, I18n.translateToLocal("vc.item.enum.frame.2"), 0F, 75),
+        WOOD3(3, I18n.translateToLocal("vc.item.enum.frame.3"), 0F, 75),
+        WOOD4(4, I18n.translateToLocal("vc.item.enum.frame.4"), 0F, 75),
+        WOOD5(5, I18n.translateToLocal("vc.item.enum.frame.5"), 0F, 75),
+        SANDSTONE(6, I18n.translateToLocal("vc.item.enum.frame.6"), 0.001F, 80),
+        BRICK(7, I18n.translateToLocal("vc.item.enum.frame.7"), 0.002F, 90),
         
         //Uncommon - 7 items
-        BONE(8, I18n.format("vc.item.enum.frame.8"), 0.003F, 100),
-    	IRON(9, I18n.format("vc.item.enum.frame.9"), 0.004F, 110),
-        REDSTONE(10, I18n.format("vc.item.enum.frame.10"), 0.005F, 120),
-        GOLD(11, I18n.format("vc.item.enum.frame.11"), 0.006F, 130),
-        LAPISLAZULI(12, I18n.format("vc.item.enum.frame.12"), 0.007F, 140),
-        SLIME(13, I18n.format("vc.item.enum.frame.13"), 0.008F, 150),
-        MYCELIUM(14, I18n.format("vc.item.enum.frame.14"), 0.009F, 160),
+        BONE(8, I18n.translateToLocal("vc.item.enum.frame.8"), 0.003F, 100),
+    	IRON(9, I18n.translateToLocal("vc.item.enum.frame.9"), 0.004F, 110),
+        REDSTONE(10, I18n.translateToLocal("vc.item.enum.frame.10"), 0.005F, 120),
+        GOLD(11, I18n.translateToLocal("vc.item.enum.frame.11"), 0.006F, 130),
+        LAPISLAZULI(12, I18n.translateToLocal("vc.item.enum.frame.12"), 0.007F, 140),
+        SLIME(13, I18n.translateToLocal("vc.item.enum.frame.13"), 0.008F, 150),
+        MYCELIUM(14, I18n.translateToLocal("vc.item.enum.frame.14"), 0.009F, 160),
         
         //Rare - 6 items
-        NETHERBRICK(15, I18n.format("vc.item.enum.frame.15"), 0.010F, 170),
-        SOULSAND(16, I18n.format("vc.item.enum.frame.16"), 0.011F, 180),
-        QUARTZ(17, I18n.format("vc.item.enum.frame.17"), 0.012F, 190),
-        ICE(18, I18n.format("vc.item.enum.frame.18"), 0.013F, 200),
-        GLOWSTONE(19, I18n.format("vc.item.enum.frame.19"), 0.014F, 210),
-        OBSIDIAN(20, I18n.format("vc.item.enum.frame.20"), 0.015F, 220),
+        NETHERBRICK(15, I18n.translateToLocal("vc.item.enum.frame.15"), 0.010F, 170),
+        SOULSAND(16, I18n.translateToLocal("vc.item.enum.frame.16"), 0.011F, 180),
+        QUARTZ(17, I18n.translateToLocal("vc.item.enum.frame.17"), 0.012F, 190),
+        ICE(18, I18n.translateToLocal("vc.item.enum.frame.18"), 0.013F, 200),
+        GLOWSTONE(19, I18n.translateToLocal("vc.item.enum.frame.19"), 0.014F, 210),
+        OBSIDIAN(20, I18n.translateToLocal("vc.item.enum.frame.20"), 0.015F, 220),
         
         //Epic - 5 items + 1 admin-only item
-        DIAMOND(21, I18n.format("vc.item.enum.frame.21"), 0.016F, 230),
-        EMERALD(22, I18n.format("vc.item.enum.frame.22"), 0.017F, 240),
-        PRISMARINE(23, I18n.format("vc.item.enum.frame.23"), 0.018F, 250),
-    	PURPUR(24, I18n.format("vc.item.enum.frame.24"), 0.019F, 260),
-    	NETHERSTAR(25, I18n.format("vc.item.enum.frame.25"), 0.020F, 500),
-    	MYTHIC(26, I18n.format("vc.item.enum.frame.26"), 0.025F, 500);  // This is a special admin only Airship.
+        DIAMOND(21, I18n.translateToLocal("vc.item.enum.frame.21"), 0.016F, 230),
+        EMERALD(22, I18n.translateToLocal("vc.item.enum.frame.22"), 0.017F, 240),
+        PRISMARINE(23, I18n.translateToLocal("vc.item.enum.frame.23"), 0.018F, 250),
+    	PURPUR(24, I18n.translateToLocal("vc.item.enum.frame.24"), 0.019F, 260),
+    	NETHERSTAR(25, I18n.translateToLocal("vc.item.enum.frame.25"), 0.020F, 500),
+    	MYTHIC(26, I18n.translateToLocal("vc.item.enum.frame.26"), 0.025F, 500);  // This is a special admin only Airship.
     	
         private final String name;
         private final int metadata;
@@ -1153,15 +1153,15 @@ public class EntityAirshipBaseVC extends Entity {
 	 */
     public static enum Balloon
     {
-        PLAIN(0, I18n.format("vc.item.enum.balloon.0")),
-        CHECKER(1, I18n.format("vc.item.enum.balloon.1")),
-        CHECKERCOLORIZED(2, I18n.format("vc.item.enum.balloon.2")),
-        POLKADOT(3, I18n.format("vc.item.enum.balloon.3")),
-        POLKADOTCOLORIZED(4, I18n.format("vc.item.enum.balloon.4")),
-        ZIGZAG(5, I18n.format("vc.item.enum.balloon.5")),
-    	ZIGZAGCOLORIZED(6, I18n.format("vc.item.enum.balloon.6")),
-        CREEPER(7, I18n.format("vc.item.enum.balloon.7")),
-    	CREEPERCOLORIZED(8, I18n.format("vc.item.enum.balloon.8"))//,
+        PLAIN(0, I18n.translateToLocal("vc.item.enum.balloon.0")),
+        CHECKER(1, I18n.translateToLocal("vc.item.enum.balloon.1")),
+        CHECKERCOLORIZED(2, I18n.translateToLocal("vc.item.enum.balloon.2")),
+        POLKADOT(3, I18n.translateToLocal("vc.item.enum.balloon.3")),
+        POLKADOTCOLORIZED(4, I18n.translateToLocal("vc.item.enum.balloon.4")),
+        ZIGZAG(5, I18n.translateToLocal("vc.item.enum.balloon.5")),
+    	ZIGZAGCOLORIZED(6, I18n.translateToLocal("vc.item.enum.balloon.6")),
+        CREEPER(7, I18n.translateToLocal("vc.item.enum.balloon.7")),
+    	CREEPERCOLORIZED(8, I18n.translateToLocal("vc.item.enum.balloon.8"))//,
         //WAVEHORIZONTAL(7, "Horizontal Wave"),
         //WAVEHORIZONTALCOLORIZED(8, "Colorized Horizontal Wave"),
         //WAVEVERTICAL(9, "Vertical Wave"),
@@ -1226,18 +1226,18 @@ public class EntityAirshipBaseVC extends Entity {
 	 */
     public static enum Module
     {
-        CHIP(0, I18n.format("vc.item.enum.module.0")),
-        MINORSPEED(1, I18n.format("vc.item.enum.module.1")),
-        MAJORSPEED(2, I18n.format("vc.item.enum.module.2")),
-        SMALLINVENTORY(3, I18n.format("vc.item.enum.module.3")),
-        LARGEINVENTORY(4, I18n.format("vc.item.enum.module.4")),
-        INFINITEFUEL(5, I18n.format("vc.item.enum.module.5")),
-    	WATERLANDING(6, I18n.format("vc.item.enum.module.6")),
-    	MAXALTITUDE(7, I18n.format("vc.item.enum.module.7")),
-    	MINOREFFICIENCY(8, I18n.format("vc.item.enum.module.8")),
-    	MAJOREFFICIENCY(9, I18n.format("vc.item.enum.module.9")),
-    	JUKEBOX(10, I18n.format("vc.item.enum.module.10")),
-    	CRUISECONTROL(11, I18n.format("vc.item.enum.module.11"));
+        CHIP(0, I18n.translateToLocal("vc.item.enum.module.0")),
+        MINORSPEED(1, I18n.translateToLocal("vc.item.enum.module.1")),
+        MAJORSPEED(2, I18n.translateToLocal("vc.item.enum.module.2")),
+        SMALLINVENTORY(3, I18n.translateToLocal("vc.item.enum.module.3")),
+        LARGEINVENTORY(4, I18n.translateToLocal("vc.item.enum.module.4")),
+        INFINITEFUEL(5, I18n.translateToLocal("vc.item.enum.module.5")),
+    	WATERLANDING(6, I18n.translateToLocal("vc.item.enum.module.6")),
+    	MAXALTITUDE(7, I18n.translateToLocal("vc.item.enum.module.7")),
+    	MINOREFFICIENCY(8, I18n.translateToLocal("vc.item.enum.module.8")),
+    	MAJOREFFICIENCY(9, I18n.translateToLocal("vc.item.enum.module.9")),
+    	JUKEBOX(10, I18n.translateToLocal("vc.item.enum.module.10")),
+    	CRUISECONTROL(11, I18n.translateToLocal("vc.item.enum.module.11"));
     	
         private final String name;
         private final int metadata;
@@ -1295,24 +1295,24 @@ public class EntityAirshipBaseVC extends Entity {
 	 */
     public static enum Song
     {
-    	NONE(0, I18n.format("vc.item.enum.song.0"), SoundEvents.UI_BUTTON_CLICK),
-    	RECORD11(1, I18n.format("vc.item.enum.song.1"), SoundEvents.RECORD_11),
-        RECORD13(2, I18n.format("vc.item.enum.song.2"), SoundEvents.RECORD_13),
-        RECORDBLOCKS(3, I18n.format("vc.item.enum.song.3"), SoundEvents.RECORD_BLOCKS),
-        RECORDMELLOHI(4, I18n.format("vc.item.enum.song.4"), SoundEvents.RECORD_MELLOHI),
-        RECORDCAT(5, I18n.format("vc.item.enum.song.5"), SoundEvents.RECORD_CAT),
-        RECORDSTAL(6, I18n.format("vc.item.enum.song.6"), SoundEvents.RECORD_STAL),
-        RECORDSTRAD(7, I18n.format("vc.item.enum.song.7"), SoundEvents.RECORD_STRAD),
-        RECORDCHIRP(8, I18n.format("vc.item.enum.song.8"), SoundEvents.RECORD_CHIRP),
-        RECORDFAR(9, I18n.format("vc.item.enum.song.9"), SoundEvents.RECORD_FAR),
-        RECORDMALL(10, I18n.format("vc.item.enum.song.10"), SoundEvents.RECORD_MALL),
-        RECORDWAIT(11, I18n.format("vc.item.enum.song.11"), SoundEvents.RECORD_WAIT),
-        RECORDWARD(12, I18n.format("vc.item.enum.song.12"), SoundEvents.RECORD_WARD),
-        RECORDTRIGUN(13, I18n.format("vc.item.enum.song.13"), InitSoundEventsVC.trigun),
-        RECORDBRAMBLE(14, I18n.format("vc.item.enum.song.14"), InitSoundEventsVC.bramble),
-        RECORDSTORMS(15, I18n.format("vc.item.enum.song.15"), InitSoundEventsVC.storms),
-        RECORDCOWBOY(16, I18n.format("vc.item.enum.song.16"), InitSoundEventsVC.cowboy),
-        RECORDSECRET(17, I18n.format("vc.item.enum.song.17"), InitSoundEventsVC.bay)
+    	NONE(0, I18n.translateToLocal("vc.item.enum.song.0"), SoundEvents.UI_BUTTON_CLICK),
+    	RECORD11(1, I18n.translateToLocal("vc.item.enum.song.1"), SoundEvents.RECORD_11),
+        RECORD13(2, I18n.translateToLocal("vc.item.enum.song.2"), SoundEvents.RECORD_13),
+        RECORDBLOCKS(3, I18n.translateToLocal("vc.item.enum.song.3"), SoundEvents.RECORD_BLOCKS),
+        RECORDMELLOHI(4, I18n.translateToLocal("vc.item.enum.song.4"), SoundEvents.RECORD_MELLOHI),
+        RECORDCAT(5, I18n.translateToLocal("vc.item.enum.song.5"), SoundEvents.RECORD_CAT),
+        RECORDSTAL(6, I18n.translateToLocal("vc.item.enum.song.6"), SoundEvents.RECORD_STAL),
+        RECORDSTRAD(7, I18n.translateToLocal("vc.item.enum.song.7"), SoundEvents.RECORD_STRAD),
+        RECORDCHIRP(8, I18n.translateToLocal("vc.item.enum.song.8"), SoundEvents.RECORD_CHIRP),
+        RECORDFAR(9, I18n.translateToLocal("vc.item.enum.song.9"), SoundEvents.RECORD_FAR),
+        RECORDMALL(10, I18n.translateToLocal("vc.item.enum.song.10"), SoundEvents.RECORD_MALL),
+        RECORDWAIT(11, I18n.translateToLocal("vc.item.enum.song.11"), SoundEvents.RECORD_WAIT),
+        RECORDWARD(12, I18n.translateToLocal("vc.item.enum.song.12"), SoundEvents.RECORD_WARD),
+        RECORDTRIGUN(13, I18n.translateToLocal("vc.item.enum.song.13"), InitSoundEventsVC.trigun),
+        RECORDBRAMBLE(14, I18n.translateToLocal("vc.item.enum.song.14"), InitSoundEventsVC.bramble),
+        RECORDSTORMS(15, I18n.translateToLocal("vc.item.enum.song.15"), InitSoundEventsVC.storms),
+        RECORDCOWBOY(16, I18n.translateToLocal("vc.item.enum.song.16"), InitSoundEventsVC.cowboy),
+        RECORDSECRET(17, I18n.translateToLocal("vc.item.enum.song.17"), InitSoundEventsVC.bay)
     	;
     	
         private final String name;

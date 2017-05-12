@@ -9,21 +9,21 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
-public class MovingSoundVC extends MovingSound {
+public class EngineOnMovingSoundVC extends MovingSound {
 	
     private final Entity airship;
     private float distance = 0.0F;
     private SoundEvent sound;
-
-    public MovingSoundVC(Entity airshipIn, SoundEvent soundIn)
+    
+    public EngineOnMovingSoundVC(Entity airshipIn, SoundEvent soundIn)
     {
-        super(soundIn, SoundCategory.RECORDS);
+        super(soundIn, SoundCategory.AMBIENT);
         this.airship = airshipIn;
-        this.repeat = false;
+        this.repeat = true;
         this.repeatDelay = 0;
         this.sound = soundIn;
     }
-
+    
     /**
      * Like the old updateEntity(), except more generic.
      */
@@ -39,16 +39,16 @@ public class MovingSoundVC extends MovingSound {
             this.yPosF = (float)this.airship.posY;
             this.zPosF = (float)this.airship.posZ;
             float f = MathHelper.sqrt_double(this.airship.motionX * this.airship.motionX + this.airship.motionZ * this.airship.motionZ);
-
+            
             if ((double)f >= 0.01D)
             {
-                this.distance = MathHelper.clamp_float(this.distance + 0.0025F, 0.0F, 1.0F);
-                this.volume = 0.5F + MathHelper.clamp_float(f, 0.0F, 0.5F) * 0.7F;
+                this.distance = MathHelper.clamp_float(this.distance + 0.0025F, 0.0F, 0.5F);
+                this.volume = 0.25F + MathHelper.clamp_float(f, 0.0F, 0.5F) * 0.7F;
             }
             else
             {
                 this.distance = 0.0F;
-                this.volume = 0.5F;
+                this.volume = 0.25F;
             }
         }
     }

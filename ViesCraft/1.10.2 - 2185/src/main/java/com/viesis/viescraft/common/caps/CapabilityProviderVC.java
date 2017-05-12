@@ -33,14 +33,13 @@ public class CapabilityProviderVC implements INBTSerializable<NBTTagCompound>, I
 	
 	@Override
     public NBTTagCompound serializeNBT () {
-		return null;
         
-        //return this.energy.serializeNBT();
+        return this.energy.serializeNBT();
     }
     
     @Override
     public void deserializeNBT (NBTTagCompound nbt) {
         
-        //this.energy.deserializeNBT(nbt);
+        this.energy.deserializeNBT(nbt);
     }
 }

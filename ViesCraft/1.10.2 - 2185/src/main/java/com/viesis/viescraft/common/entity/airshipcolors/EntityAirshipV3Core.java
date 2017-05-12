@@ -16,6 +16,7 @@ import com.viesis.viescraft.network.server.airship.MessageGuiModuleJukebox;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.audio.ISound;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.passive.EntityWaterMob;
@@ -38,11 +39,14 @@ import net.minecraftforge.items.ItemStackHandler;
 
 public class EntityAirshipV3Core extends EntityAirshipBaseVC {
 	
-    public float AirshipSpeedTurn = 0.18F * (ViesCraftConfig.v3AirshipSpeed / 100);
-    public float AirshipSpeedForward = 0.016F * (ViesCraftConfig.v3AirshipSpeed / 100);
-    public float AirshipSpeedUp = 0.004F * (ViesCraftConfig.v3AirshipSpeed / 100);
-    public float AirshipSpeedDown = 0.004F * (ViesCraftConfig.v3AirshipSpeed / 100);
-	
+    float finalAirshipSpeedTurn = 0.18F * (ViesCraftConfig.v3AirshipSpeed / 100);
+    float finalAirshipSpeedForward = (0.01F * (ViesCraftConfig.v3AirshipSpeed / 100));
+    float finalAirshipSpeedUp = 0.004F * (ViesCraftConfig.v3AirshipSpeed / 100);
+    float finalAirshipSpeedDown = 0.004F * (ViesCraftConfig.v3AirshipSpeed / 100);
+    
+    ISound soundCacheIdle;
+    ISound soundCacheMoving;
+    
 	public EntityAirshipV3Core(World worldIn)
     {
         super(worldIn);
@@ -106,6 +110,9 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
         this.dataManager.register(MODULE_MAJOR_EFFICIENCY, Boolean.valueOf(this.moduleMajorEfficiency));
         this.dataManager.register(MODULE_JUKEBOX, Boolean.valueOf(this.moduleJukebox));
         this.dataManager.register(MODULE_JUKEBOX_SELECTED_SONG, Integer.valueOf(this.jukeboxSelectedSong));
+        this.dataManager.register(MODULE_CRUISECONTROL, Boolean.valueOf(this.moduleCruiseControl));
+        this.dataManager.register(MODULE_CRUISECONTROL_SELECTED_SPEED, Integer.valueOf(this.cruiseControlSelectedSpeed));
+        
 	}
 	
 	
@@ -252,21 +259,13 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
         	this.waterDamage();
         }
         
-        this.updateAirshipMeta();
-        this.fallInGround();
-        this.getAirshipFuelTick();
-        
         this.prevPosX = this.posX;
         this.prevPosY = this.posY;
         this.prevPosZ = this.posZ;
         super.onUpdate();
         this.tickLerp();
         
-        this.fuelFlight();
-        this.getTotalFuelSlotBurnTime();
-        
-        this.visualFrame();
-        this.currentModule();
+        this.airshipCoreAI();
         
         if (this.canPassengerSteer())
         {
@@ -313,6 +312,36 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
                 }
             }
         }
+    }
+    
+    /**
+     * Handles root method calls for core airship AI logic
+     */
+    private void airshipCoreAI()
+    {
+    	this.updateAirshipMeta();
+        this.fallInGround();
+        this.getAirshipFuelTick();
+        
+        this.fuelFlight();
+        this.getTotalFuelSlotBurnTime();
+        
+        this.visualFrame();
+        this.currentModule();
+        
+        this.noModuleDropInv();
+        
+        //if (this.world.isRemote)
+        //{
+        //	this.engineOnSound();
+        //}
+        
+        if(!(this.getControllingPassenger() instanceof EntityPlayer)
+        	&& this.cruiseControlSelectedSpeed != 0)
+		{
+    		this.cruiseControlSelectedSpeed = 0;
+    		this.setCruiseControlSelectedSpeed(this.cruiseControlSelectedSpeed);
+		}
     }
     
     
@@ -413,12 +442,7 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
     @Override
     public void controlAirship()
     {
-    	float finalAirshipSpeedTurn = AirshipSpeedTurn + (FrameCore.byId(this.metaFrameCore).getSpeed() * 4);
-        float finalAirshipSpeedForward = AirshipSpeedForward + FrameCore.byId(this.metaFrameCore).getSpeed();
-        float finalAirshipSpeedUp = AirshipSpeedUp + (FrameCore.byId(this.metaFrameCore).getSpeed() / 4);
-        float finalAirshipSpeedDown = AirshipSpeedDown + (FrameCore.byId(this.metaFrameCore).getSpeed() / 4);
-        
-        if (this.isBeingRidden())
+    	if (this.isBeingRidden())
         {
             float f = 0.0F;
             float f1 = 0.0F;
@@ -428,11 +452,11 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
             {
             	if(isClientAirshipBurning())
             	{
-            		this.deltaRotation -= finalAirshipSpeedTurn;
+            		this.deltaRotation -= (finalAirshipSpeedTurn + (FrameCore.byId(this.metaFrameCore).getSpeed() * 4));
             	}
             	else
             	{
-            		this.deltaRotation -= finalAirshipSpeedTurn * 0.5F;
+            		this.deltaRotation -= (finalAirshipSpeedTurn + (FrameCore.byId(this.metaFrameCore).getSpeed() * 4)) * 0.5F;
             	}
             }
             
@@ -441,11 +465,11 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
             {
             	if(isClientAirshipBurning())
             	{
-            		this.deltaRotation += finalAirshipSpeedTurn;
+            		this.deltaRotation += (finalAirshipSpeedTurn + (FrameCore.byId(this.metaFrameCore).getSpeed() * 4));
             	}
             	else
             	{
-            		this.deltaRotation += finalAirshipSpeedTurn * 0.5F;
+            		this.deltaRotation += (finalAirshipSpeedTurn + (FrameCore.byId(this.metaFrameCore).getSpeed() * 4)) * 0.5F;
             	}
             }
             
@@ -457,88 +481,112 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
             this.rotationYaw += this.deltaRotation;
             
             //Move Forward
-            if (this.forwardInputDown)
+            if(this.getModuleCruiseControl())
             {
-            	if(isClientAirshipBurning())
-        		{
-        			//Small inv module installed
-                	if(this.getModuleInventorySmall())
-                    {
-                		f += finalAirshipSpeedForward - (finalAirshipSpeedForward * 0.2F);
-                    }
-                	//Large inv or major efficiency module installed
-                	else if(this.getModuleInventoryLarge()
-                	|| this.getModuleMajorEfficiency())
-                	{
-                		f += finalAirshipSpeedForward - (finalAirshipSpeedForward * 0.3F);
-                	}
-                	//Infinite fuel module installed
-                	else if(this.getModuleFuelInfinite())
-                	{
-                		f += finalAirshipSpeedForward - (finalAirshipSpeedForward * 0.5F);
-                	}
-                	//Minor speed module installed
-                	else if(this.getModuleSpeedMinor())
-                	{
-                		f += finalAirshipSpeedForward + 0.008F;
-                	}
-                	//Major speed module installed
-                	else if(this.getModuleSpeedMajor())
-                	{
-                		f += finalAirshipSpeedForward + 0.016F;
-                	}
-                	else
-                	{
-                		f += finalAirshipSpeedForward;
-                	}
-        		}
-            	//If airship is off
-            	else
-            	{
-            		f += 0.0030F;
-            	}
+            	if(this.forwardInputDown)
+	            {
+            		if(this.cruiseControlSelectedSpeed < 3)
+	            	{
+	            		this.cruiseControlSelectedSpeed++;
+	            	}
+	            	else
+	            	{
+	            		this.cruiseControlSelectedSpeed = 3;
+	            	}
+            		
+            		this.setCruiseControlSelectedSpeed(this.cruiseControlSelectedSpeed);
+	            	
+	            	if(isClientAirshipBurning())
+	        		{
+	        			
+	        		}
+	            	else
+	            	{
+	            		f += 0.003F;
+	            	}
+	            }
+            }
+            else
+            {
+            	if(this.forwardInputDown)
+	            {
+	            	if(isClientAirshipBurning())
+	        		{
+	        			f += finalAirshipSpeedForward + FrameCore.byId(this.metaFrameCore).getSpeed() + this.speedModifier;
+	        		}
+	            	else
+	            	{
+	            		f += 0.003F;
+	            	}
+	            }
             }
             
             //Moving Backwards
-            if (this.backInputDown)
+            if(this.getModuleCruiseControl())
             {
-            	//Check airship is burning fuel
-        		if(isClientAirshipBurning())
+            	if(this.backInputDown)
+	            {
+	            	if(this.cruiseControlSelectedSpeed > 0)
+	            	{
+	            		this.cruiseControlSelectedSpeed--;
+	            	}
+	            	else
+	            	{
+	            		this.cruiseControlSelectedSpeed = 0;
+	            	}
+	            	
+            		this.setCruiseControlSelectedSpeed(this.cruiseControlSelectedSpeed);
+	            	
+		            if(isClientAirshipBurning())
+	        		{
+	        			f -= (finalAirshipSpeedForward + FrameCore.byId(this.metaFrameCore).getSpeed() + this.speedModifier) * 0.5;
+	        		}
+	            	else
+	            	{
+	            		f -= 0.003F * 0.5;
+	            	}
+	            }
+            }
+            else
+            {
+	            if (this.backInputDown)
+	            {
+	            	if(isClientAirshipBurning())
+	        		{
+	        			f -= (finalAirshipSpeedForward + FrameCore.byId(this.metaFrameCore).getSpeed() + this.speedModifier) * 0.5;
+	        		}
+	            	else
+	            	{
+	            		f -= 0.003F * 0.5;
+	            	}
+	            }
+            }
+            
+            //Handles forward movement with the Cruise Control Module
+            if(this.getModuleCruiseControl())
+            {
+            	if(isClientAirshipBurning()
+            	&& this.getControllingPassenger() != null)
         		{
-        			//Small inv module installed
-                	if(this.getModuleInventorySmall())
-                	{
-                		f -= (finalAirshipSpeedForward * 0.5) - ((finalAirshipSpeedForward * 0.5)* 0.2);
-                	} 
-                	//Large inv module installed
-                	else if(this.getModuleInventoryLarge())
-                	{
-                		f -= (finalAirshipSpeedForward * 0.5) - ((finalAirshipSpeedForward * 0.5)* 0.3);
-                	}
-                	//Infinite fuel module installed
-                	else if(this.getModuleFuelInfinite())
-                	{
-                		f -= (finalAirshipSpeedForward * 0.5) - ((finalAirshipSpeedForward * 0.4)* 0.5);
-                	}
-                	//Minor speed module installed
-                	else if(this.getModuleSpeedMinor())
-                	{
-                		f -= (finalAirshipSpeedForward * 0.5) + 0.004F;
-                	}
-                	//Major speed module installed
-                	else if(this.getModuleSpeedMajor())
-                	{
-                		f -= (finalAirshipSpeedForward * 0.5) + 0.008F;
-                	}
-                	else
-                	{
-                		f -= finalAirshipSpeedForward * 0.5;
-                	}
+            		switch(this.cruiseControlSelectedSpeed)
+	            	{
+		            	case 0:
+		            		f += 0F;
+		            		break;
+		            	case 1:
+		            		f += (finalAirshipSpeedForward + FrameCore.byId(this.metaFrameCore).getSpeed() + this.speedModifier) / 4;
+		            		break;
+		            	case 2:
+		            		f += (finalAirshipSpeedForward + FrameCore.byId(this.metaFrameCore).getSpeed() + this.speedModifier) / 2;
+		            		break;
+		            	case 3:
+		            		f += finalAirshipSpeedForward + FrameCore.byId(this.metaFrameCore).getSpeed() + this.speedModifier;
+		            		break;
+	            	}
         		}
-            	//If airship is off
             	else
             	{
-            		f -= 0.0030F * 0.5;
+            		f += 0F;
             	}
             }
             
@@ -549,28 +597,9 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
             	if(!this.airshipHeightLimit()
             	|| this.getModuleMaxAltitude())
     			{
-            		//Check airship is burning fuel
             		if(isClientAirshipBurning())
             		{
-            			//Small inv module installed
-                    	if(this.getModuleInventorySmall())
-                    	{
-                    		f1 += finalAirshipSpeedUp - (finalAirshipSpeedUp * 0.2);
-                    	}
-                    	//Large inv module installed
-                    	else if(this.getModuleInventoryLarge())
-                    	{
-                    		f1 += finalAirshipSpeedUp - (finalAirshipSpeedUp * 0.3);
-                    	}
-                    	//Infinite fuel module installed
-                    	else if(this.getModuleFuelInfinite())
-                    	{
-                    		f1 += finalAirshipSpeedUp - (finalAirshipSpeedUp * 0.4);
-                    	}
-                    	else
-                    	{
-                    		f1 += finalAirshipSpeedUp;
-                    	}
+            			f1 += finalAirshipSpeedUp + (FrameCore.byId(this.metaFrameCore).getSpeed() / 4);
             		}
     			}
             }
@@ -578,7 +607,7 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
             //Moving down
             if (this.downInputDown)
             {
-                f1 -= finalAirshipSpeedDown;
+                f1 -= finalAirshipSpeedDown + (FrameCore.byId(this.metaFrameCore).getSpeed() / 4);
             }
             
             this.motionX += (double)(MathHelper.sin(-this.rotationYaw * 0.017453292F) * f);
@@ -1006,6 +1035,8 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
 				LogHelper.info("9");
 			if(this.getModuleJukebox())
 				LogHelper.info("10");
+			if(this.getModuleCruiseControl())
+				LogHelper.info("11");
 		}
 		*/
 		
@@ -1023,6 +1054,8 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
     		this.moduleMajorEfficiency = this.getModuleMajorEfficiency();
     		this.moduleJukebox = this.getModuleJukebox();
     		this.jukeboxSelectedSong = this.getJukeboxSelectedSong();
+    		this.moduleCruiseControl = this.getModuleCruiseControl();
+    		this.cruiseControlSelectedSpeed = this.getCruiseControlSelectedSpeed();
 		}
 		
 		if(moduleNumber >= 0)
@@ -1037,98 +1070,66 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
 			this.moduleMinorEfficiency = false;
 			this.moduleMajorEfficiency = false;
 			this.moduleJukebox = false;
+			this.moduleCruiseControl = false;
 			
+			if(moduleNumber == 0)
+			{
+				this.speedModifier = 0;
+			}
 			if(moduleNumber == 1)
 			{
 				this.moduleSpeedMinor = true;
+				this.speedModifier = 0.008F;
 			}
 			if(moduleNumber == 2)
 			{
 				this.moduleSpeedMajor = true;
+				this.speedModifier = 0.016F;
 			}
 			if(moduleNumber == 3)
 			{
 				this.moduleInventorySmall = true;
+				this.speedModifier = -(finalAirshipSpeedForward * 0.2F);
 			}
 			if(moduleNumber == 4)
 			{
 				this.moduleInventoryLarge = true;
+				this.speedModifier = -(finalAirshipSpeedForward * 0.3F);
 			}
 			if(moduleNumber == 5)
 			{
 				this.moduleFuelInfinite = true;
+				this.speedModifier = -(finalAirshipSpeedForward * 0.5F);
 			}
 			if(moduleNumber == 6)
 			{
 				this.moduleWaterLanding = true;
+				this.speedModifier = 0;
 			}
 			if(moduleNumber == 7)
 			{
 				this.moduleMaxAltitude = true;
+				this.speedModifier = 0;
 			}
 			if(moduleNumber == 8)
 			{
 				this.moduleMinorEfficiency = true;
+				this.speedModifier = 0;
 			}
 			if(moduleNumber == 9)
 			{
 				this.moduleMajorEfficiency = true;
+				this.speedModifier = -(finalAirshipSpeedForward * 0.3F);
 			}
 			if(moduleNumber == 10)
 			{
 				this.moduleJukebox = true;
+				this.speedModifier = 0;
 			}
-		}
-		
-		//Used to drop inventory if inv modules are removed/switched
-		// If there is no module in slot
-		if(this.inventory.getStackInSlot(1) == null)
-		{
-			//If small inv mod is removed and slot is empty
-			if(dropNumber == 1)
+			if(moduleNumber == 11)
 			{
-				dropNumber = 0;
-				this.dropInv();
-			}
-			
-			//If large inv mod is removed and slot is empty
-			if(dropNumber == 2)
-			{
-				dropNumber = 0;
-				this.dropInv();
-			}
-		}
-		//If a module is still in the slot
-		else
-		{
-			//If the module in the slot is small inv mod
-			if(this.inventory.getStackInSlot(1).getItem() == new ItemStack(InitItemsVC.airship_module, 1, 3).getItem()
-			&& dropNumber == 0)
-			{
-				dropNumber = 1;
-			}
-			
-			//If the module in the slot is large inv mod
-			else if(this.inventory.getStackInSlot(1).getItem() == new ItemStack(InitItemsVC.airship_module, 1, 4).getItem()
-			&& dropNumber == 0)
-			{
-				dropNumber = 2;
-			}
-			
-			//If the module in the slot is not small inv mod but had it in previously
-			else if(this.inventory.getStackInSlot(1).getItem() != new ItemStack(InitItemsVC.airship_module, 1, 3).getItem()
-					&& dropNumber == 1)
-			{
-				dropNumber = 0;
-				this.dropInv();
-			}
-			
-			//If the module in the slot is not large inv mod but had it in previously
-			else if(this.inventory.getStackInSlot(1).getItem() != new ItemStack(InitItemsVC.airship_module, 1, 4).getItem()
-					&& dropNumber == 2)
-			{
-				dropNumber = 0;
-				this.dropInv();
+				this.moduleCruiseControl = true;
+				this.speedModifier = 0;
 			}
 		}
 		
@@ -1146,6 +1147,8 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
     		this.setModuleMajorEfficiency(this.moduleMajorEfficiency);
     		this.setModuleJukebox(this.moduleJukebox);
     		this.setJukeboxSelectedSong(this.jukeboxSelectedSong);
+    		this.setModuleCruiseControl(this.moduleCruiseControl);
+    		this.setCruiseControlSelectedSpeed(this.cruiseControlSelectedSpeed);
     	}
     }
     
@@ -1354,12 +1357,98 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
     {
         return ((Integer)this.dataManager.get(MODULE_JUKEBOX_SELECTED_SONG)).intValue();
     }
+
+    /**
+     * Sets if Cruise Control mod is installed to pass from server to client.
+     */
+    public void setModuleCruiseControl(boolean moduleCruiseControl1)
+    {
+        this.dataManager.set(MODULE_CRUISECONTROL, Boolean.valueOf(moduleCruiseControl1));
+    }
+    
+    @Override
+    public boolean getModuleCruiseControl()
+    {
+        return ((Boolean)this.dataManager.get(MODULE_CRUISECONTROL)).booleanValue();
+    }
+    
+	/**
+     * Sets the Cruise Control selected speed to pass from server to client.
+     */
+    public void setCruiseControlSelectedSpeed(int cruiseControlSelectedSpeed1)
+    {
+        this.dataManager.set(MODULE_CRUISECONTROL_SELECTED_SPEED, Integer.valueOf(cruiseControlSelectedSpeed1));
+    }
+	
+    @Override
+    public int getCruiseControlSelectedSpeed()
+    {
+        return ((Integer)this.dataManager.get(MODULE_CRUISECONTROL_SELECTED_SPEED)).intValue();
+    }
     
     
     
     //==================================//
   	// TODO          Misc               //
   	//==================================//
+    
+    /**
+     * Root Method that will drop everything in all inventory slots minus fuel
+     */
+    private void noModuleDropInv()
+    {
+    	//Used to drop inventory if inv modules are removed/switched
+		// If there is no module in slot
+		if(this.inventory.getStackInSlot(1) == null)
+		{
+			//If small inv mod is removed and slot is empty
+			if(dropNumber == 1)
+			{
+				dropNumber = 0;
+				this.dropInv();
+			}
+			
+			//If large inv mod is removed and slot is empty
+			if(dropNumber == 2)
+			{
+				dropNumber = 0;
+				this.dropInv();
+			}
+		}
+		//If a module is still in the slot
+		else
+		{
+			//If the module in the slot is small inv mod
+			if(this.inventory.getStackInSlot(1).getItem() == new ItemStack(InitItemsVC.airship_module, 1, 3).getItem()
+			&& dropNumber == 0)
+			{
+				dropNumber = 1;
+			}
+			
+			//If the module in the slot is large inv mod
+			else if(this.inventory.getStackInSlot(1).getItem() == new ItemStack(InitItemsVC.airship_module, 1, 4).getItem()
+			&& dropNumber == 0)
+			{
+				dropNumber = 2;
+			}
+			
+			//If the module in the slot is not small inv mod but had it in previously
+			else if(this.inventory.getStackInSlot(1).getItem() != new ItemStack(InitItemsVC.airship_module, 1, 3).getItem()
+					&& dropNumber == 1)
+			{
+				dropNumber = 0;
+				this.dropInv();
+			}
+			
+			//If the module in the slot is not large inv mod but had it in previously
+			else if(this.inventory.getStackInSlot(1).getItem() != new ItemStack(InitItemsVC.airship_module, 1, 4).getItem()
+					&& dropNumber == 2)
+			{
+				dropNumber = 0;
+				this.dropInv();
+			}
+		}
+    }
     
     /**
      * Drops inventory contents only from airship (not fuel/module).
@@ -1475,4 +1564,78 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
     {
         this.dataManager.set(AIRSHIP_VISUAL_FRAME_ACTIVE_VC, Boolean.valueOf(frameVisualActive1));
     }
+    
+    
+    
+	//==================================//
+  	// TODO     Sound Events            //
+  	//==================================//
+    /**
+    @SideOnly(Side.CLIENT)
+    protected void engineOnSound()
+    {
+    	if(ViesCraftConfig.engineSounds)
+    	{
+	    	SoundHandler handler = Minecraft.getMinecraft().getSoundHandler();
+	    	
+	    	if(this.isClientAirshipBurning())
+	    	{
+	    		/**
+	    		if(this.motionX >= 0.003 || this.motionY >= 0.003 || this.motionX >= 0.003
+	    		|| this.motionX <= -0.003 || this.motionY <= -0.003 || this.motionX <= -0.003)
+				{
+	    			if(soundCacheMoving==null || !handler.isSoundPlaying(soundCacheMoving))
+			    	{
+			    		if(soundCacheMoving==null)
+			    		{
+			    			soundCacheMoving = new EngineOnMovingSoundVC(this, InitSoundEventsVC.engineOn);
+			    		}
+			    		handler.playSound(soundCacheMoving);
+			    	}
+				}
+    			else
+    	        {
+    	    		if(handler.isSoundPlaying(soundCacheMoving))
+    		    	{
+    		    		handler.stopSound(soundCacheMoving);
+    		    	}
+    	        }
+	    		*/
+    /**
+	    		//soundCacheIdle = new EngineOnMovingSoundVC(this, InitSoundEventsVC.engineOn);
+		    	if(soundCacheIdle==null || !handler.isSoundPlaying(soundCacheIdle))
+		    	{
+		    		if(soundCacheIdle==null)
+		    		{
+		    			LogHelper.info("Set sound");
+		    			soundCacheIdle = new EngineOnMovingSoundVC(this, InitSoundEventsVC.engineOn);
+		    		}
+		    		LogHelper.info("Play sound");
+		    		handler.playSound(soundCacheIdle);
+		    	}
+	    	}
+	    	else
+	        {
+	    		if(handler.isSoundPlaying(soundCacheIdle))
+		    	{
+	    			LogHelper.info("Stop sound");
+		    		handler.stopSound(soundCacheIdle);
+		    	}
+	        }
+    	}
+    }
+    */
+    //public void test()
+    //{
+    //	LogHelper.info("test = " + Keybinds.vcForward.isPressed());
+    //	if(Keybinds.vcForward
+    ///			.isPressed()
+    //			//.isKeyDown()
+    //			&& this.getControllingPassenger() != null
+    //			)
+    //	{
+    		
+    //		LogHelper.info("Pressed tg254");
+    //	}
+    //}
 }

@@ -37,7 +37,7 @@ public class MessageGuiPlayMusic extends MessageBase<MessageGuiPlayMusic> implem
 	{
 		EntityAirshipBaseVC airship = (EntityAirshipBaseVC) player.getRidingEntity();
 		
-		NetworkHandler.sendToAllAround(new MessageGuiPlayInArea(), 
+		NetworkHandler.sendToAllAround(new MessageGuiPlayMusicArea(), 
     	new TargetPoint(airship.dimension, airship.posX, airship.posY, airship.posZ, 30));
 	}
 }

@@ -1,9 +1,9 @@
 package com.viesis.viescraft.api.util;
 
+import org.lwjgl.input.Keyboard;
+
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
-
-import org.lwjgl.input.Keyboard;
 
 public class Keybinds {
 	

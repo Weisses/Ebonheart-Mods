@@ -6,7 +6,7 @@ import com.viesis.viescraft.ViesCraft;
 import com.viesis.viescraft.common.items.ItemHelper;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 
-import net.minecraft.client.resources.I18n;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
@@ -44,10 +44,10 @@ public class ItemViesoline extends Item {
 		//Time in seconds to display
 		String s = mins + ":" + secs;
 		
-		toolTip.add(TextFormatting.GOLD + I18n.format("vc.item.tt.viesoline.1"));
-		toolTip.add(TextFormatting.GOLD + I18n.format("vc.item.tt.viesoline.2"));
+		toolTip.add(TextFormatting.GOLD + I18n.translateToLocal("vc.item.tt.viesoline.1"));
+		toolTip.add(TextFormatting.GOLD + I18n.translateToLocal("vc.item.tt.viesoline.2"));
 		toolTip.add("");
-		toolTip.add(TextFormatting.GREEN + I18n.format("vc.item.tt.viesoline.3") + " " + s);
+		toolTip.add(TextFormatting.GREEN + I18n.translateToLocal("vc.item.tt.viesoline.3") + " " + s);
 	}
 	
 	public EnumRarity getRarity(ItemStack stack)

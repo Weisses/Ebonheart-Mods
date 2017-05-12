@@ -13,7 +13,6 @@ import com.viesis.viescraft.init.InitRecipesVC;
 import com.viesis.viescraft.init.InitTileEntitiesVC;
 import com.viesis.viescraft.network.GuiHandler;
 import com.viesis.viescraft.network.NetworkHandler;
-import com.viesis.viescraft.network.NetworkHandler;
 
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -33,6 +32,7 @@ public class CommonProxy {
 		InitEntityVC.registerEntity();
 		
 		NetworkHandler.preInit();
+		
 		//InitItemsVC.registerItemTEMP();
 		//InitBlocksVC.registerBlockTEMP();
 		//InitTileEntitiesVC.registerTileEntityTEMP();

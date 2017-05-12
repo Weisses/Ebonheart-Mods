@@ -10,6 +10,7 @@ import com.viesis.viescraft.common.items.ItemHelper;
 import com.viesis.viescraft.init.InitAchievementsVC;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
@@ -30,7 +31,6 @@ public class ItemColorizerBalloon extends Item {
 		ItemHelper.setItemName(this, "item_balloon_colorizer");
 		
 		this.setMaxDamage(0);
-        
 		this.setMaxStackSize(1);
 		this.setCreativeTab(ViesCraft.tabViesCraftItems);
 	}
@@ -70,22 +70,22 @@ public class ItemColorizerBalloon extends Item {
 	{
 		if(stack.hasTagCompound())
         {
-			toolTip.add(TextFormatting.GREEN + "Color : " + TextFormatting.GREEN + ColorHelperVC.getColorNameFromRgb(
+			toolTip.add(TextFormatting.GREEN + I18n.translateToLocal("vc.item.tt.colorizer.7") + " " + TextFormatting.GREEN + ColorHelperVC.getColorNameFromRgb(
 					stack.getTagCompound().getInteger("ColorRed"), 
 					stack.getTagCompound().getInteger("ColorGreen"), 
 					stack.getTagCompound().getInteger("ColorBlue")));
         }
 		else
         {
-        	toolTip.add(TextFormatting.GREEN + "Color : None");
+        	toolTip.add(TextFormatting.GREEN + I18n.translateToLocal("vc.item.tt.colorizer.8"));
         }
 		
 		toolTip.add("");
-		toolTip.add(TextFormatting.WHITE + "[Shift + Right-Click]" + TextFormatting.GOLD + " to set");
-		toolTip.add(TextFormatting.GOLD + "the color you want to use.");
+		toolTip.add(TextFormatting.WHITE + I18n.translateToLocal("vc.item.tt.colorizer.1") + " " + TextFormatting.GOLD + I18n.translateToLocal("vc.item.tt.colorizer.2"));
+		toolTip.add(TextFormatting.GOLD + I18n.translateToLocal("vc.item.tt.colorizer.3"));
 		toolTip.add("");
-		toolTip.add(TextFormatting.WHITE + "[Shift + Left-Click]" + TextFormatting.GOLD + " on an");
-		toolTip.add(TextFormatting.GOLD + "airship to apply the color.");
+		toolTip.add(TextFormatting.WHITE + I18n.translateToLocal("vc.item.tt.colorizer.4") + " " + TextFormatting.GOLD + I18n.translateToLocal("vc.item.tt.colorizer.5"));
+		toolTip.add(TextFormatting.GOLD + I18n.translateToLocal("vc.item.tt.colorizer.6"));
 	}
 	
 	public EnumRarity getRarity(ItemStack stack)
@@ -97,7 +97,7 @@ public class ItemColorizerBalloon extends Item {
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand)
     {
-        ItemStack itemstack = playerIn.getHeldItemMainhand();
+		ItemStack itemstack = playerIn.getHeldItemMainhand();
         
     	if(playerIn.isSneaking())
     	{
@@ -113,6 +113,6 @@ public class ItemColorizerBalloon extends Item {
 	@Override
 	public String getItemStackDisplayName(ItemStack stack)
     {
-		return ("Balloon Colorizer");
+		return (I18n.translateToLocal("vc.item.colorizer"));
     }
 }

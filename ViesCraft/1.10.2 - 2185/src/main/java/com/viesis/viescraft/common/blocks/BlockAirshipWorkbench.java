@@ -13,6 +13,7 @@ import com.viesis.viescraft.network.GuiHandler;
 
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.InventoryHelper;
@@ -104,7 +105,7 @@ public class BlockAirshipWorkbench extends BlockEA implements ITileEntityProvide
 	@SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List toolTip, boolean advanced) 
 	{
-		toolTip.add(TextFormatting.GREEN + "Used to craft all parts,");
-		toolTip.add(TextFormatting.GREEN + "airships, and modules.");
+		toolTip.add(TextFormatting.GREEN + I18n.translateToLocal("vc.item.tt.workbench.1"));
+		toolTip.add(TextFormatting.GREEN + I18n.translateToLocal("vc.item.tt.workbench.2"));
 	}
 }
