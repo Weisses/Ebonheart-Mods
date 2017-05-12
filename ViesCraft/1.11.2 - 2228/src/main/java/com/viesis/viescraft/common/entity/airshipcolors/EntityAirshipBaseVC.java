@@ -74,7 +74,6 @@ public class EntityAirshipBaseVC extends Entity {
 	protected static final DataParameter<Integer> MODULE_JUKEBOX_SELECTED_SONG = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
 	protected static final DataParameter<Boolean> MODULE_CRUISECONTROL = EntityDataManager.<Boolean>createKey(EntityAirshipBaseVC.class, DataSerializers.BOOLEAN);
 	protected static final DataParameter<Integer> MODULE_CRUISECONTROL_SELECTED_SPEED = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
-	protected static final DataParameter<Boolean> MODULE_CRUISECONTROL_TOGGLE = EntityDataManager.<Boolean>createKey(EntityAirshipBaseVC.class, DataSerializers.BOOLEAN);
 	
 	//Fuel
 	public int airshipBurnTime;
@@ -1482,14 +1481,6 @@ public class EntityAirshipBaseVC extends Entity {
     public int getCruiseControlSelectedSpeed()
     {
         return 0;
-    }
-    
-    /**
-     * Gets the Cruise Control Toggle boolean to pass from server to client.
-     */
-    public boolean getCruiseControlToggle()
-    {
-        return false;
     }
     
     /**

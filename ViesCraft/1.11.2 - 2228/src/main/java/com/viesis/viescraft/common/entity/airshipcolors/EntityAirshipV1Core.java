@@ -113,7 +113,6 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
         this.dataManager.register(MODULE_JUKEBOX_SELECTED_SONG, Integer.valueOf(this.jukeboxSelectedSong));
         this.dataManager.register(MODULE_CRUISECONTROL, Boolean.valueOf(this.moduleCruiseControl));
         this.dataManager.register(MODULE_CRUISECONTROL_SELECTED_SPEED, Integer.valueOf(this.cruiseControlSelectedSpeed));
-        this.dataManager.register(MODULE_CRUISECONTROL_TOGGLE, Boolean.valueOf(this.cruiseControlToggle));
         
 	}
 	
@@ -487,21 +486,16 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
             {
             	if(this.forwardInputDown)
 	            {
-	            	if(!this.cruiseControlToggle)
+            		if(this.cruiseControlSelectedSpeed < 3)
 	            	{
-	            		this.cruiseControlToggle = true;
-	            		this.setCruiseControlToggle(this.cruiseControlToggle);
-	            		
-	            		if(this.cruiseControlSelectedSpeed < 3)
-		            	{
-		            		this.cruiseControlSelectedSpeed++;
-		            	}
-		            	else
-		            	{
-		            		this.cruiseControlSelectedSpeed = 3;
-		            	}
-	            		this.setCruiseControlSelectedSpeed(this.cruiseControlSelectedSpeed);
+	            		this.cruiseControlSelectedSpeed++;
 	            	}
+	            	else
+	            	{
+	            		this.cruiseControlSelectedSpeed = 3;
+	            	}
+            		
+            		this.setCruiseControlSelectedSpeed(this.cruiseControlSelectedSpeed);
 	            	
 	            	if(isClientAirshipBurning())
 	        		{
@@ -511,11 +505,6 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
 	            	{
 	            		f += 0.003F;
 	            	}
-	            }
-	            else
-	            {
-	            	this.cruiseControlToggle = false;
-	            	this.setCruiseControlToggle(this.cruiseControlToggle);
 	            }
             }
             else
@@ -538,23 +527,18 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
             {
             	if(this.backInputDown)
 	            {
-	            	if(!this.cruiseControlToggle)
+	            	if(this.cruiseControlSelectedSpeed > 0)
 	            	{
-	            		this.cruiseControlToggle = true;
-	            		this.setCruiseControlToggle(this.cruiseControlToggle);
-	            		
-	            		if(this.cruiseControlSelectedSpeed > 0)
-		            	{
-		            		this.cruiseControlSelectedSpeed--;
-		            	}
-		            	else
-		            	{
-		            		this.cruiseControlSelectedSpeed = 0;
-		            	}
-	            		this.setCruiseControlSelectedSpeed(this.cruiseControlSelectedSpeed);
+	            		this.cruiseControlSelectedSpeed--;
+	            	}
+	            	else
+	            	{
+	            		this.cruiseControlSelectedSpeed = 0;
 	            	}
 	            	
-	            	if(isClientAirshipBurning())
+            		this.setCruiseControlSelectedSpeed(this.cruiseControlSelectedSpeed);
+	            	
+		            if(isClientAirshipBurning())
 	        		{
 	        			f -= (finalAirshipSpeedForward + FrameCore.byId(this.metaFrameCore).getSpeed() + this.speedModifier) * 0.5;
 	        		}
@@ -562,11 +546,6 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
 	            	{
 	            		f -= 0.003F * 0.5;
 	            	}
-	            }
-	            else
-	            {
-	            	this.cruiseControlToggle = false;
-            		this.setCruiseControlToggle(this.cruiseControlToggle);
 	            }
             }
             else
@@ -584,6 +563,7 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
 	            }
             }
             
+            //Handles forward movement with the Cruise Control Module
             if(this.getModuleCruiseControl())
             {
             	if(isClientAirshipBurning()
@@ -1077,7 +1057,6 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
     		this.jukeboxSelectedSong = this.getJukeboxSelectedSong();
     		this.moduleCruiseControl = this.getModuleCruiseControl();
     		this.cruiseControlSelectedSpeed = this.getCruiseControlSelectedSpeed();
-    		this.cruiseControlToggle = this.getCruiseControlToggle();
 		}
 		
 		if(moduleNumber >= 0)
@@ -1171,7 +1150,6 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
     		this.setJukeboxSelectedSong(this.jukeboxSelectedSong);
     		this.setModuleCruiseControl(this.moduleCruiseControl);
     		this.setCruiseControlSelectedSpeed(this.cruiseControlSelectedSpeed);
-    		this.setCruiseControlToggle(this.cruiseControlToggle);
     	}
     }
     
@@ -1408,21 +1386,6 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
     {
         return ((Integer)this.dataManager.get(MODULE_CRUISECONTROL_SELECTED_SPEED)).intValue();
     }
-
-    /**
-     * Sets if Cruise Control mod is installed to pass from server to client.
-     */
-    public void setCruiseControlToggle(boolean cruiseControlToggle1)
-    {
-        this.dataManager.set(MODULE_CRUISECONTROL_TOGGLE, Boolean.valueOf(cruiseControlToggle1));
-    }
-    
-    @Override
-    public boolean getCruiseControlToggle()
-    {
-        return ((Boolean)this.dataManager.get(MODULE_CRUISECONTROL_TOGGLE)).booleanValue();
-    }
-    
     
     
     
