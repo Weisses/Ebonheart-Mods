@@ -18,7 +18,7 @@ public class GuiGuidebookSocket extends GuiScreen {
     private final int bookImageHeight = 192;
     private final int bookImageWidth = 192;
     private int currPage = 0;
-    private static final int bookTotalPages = 14;
+    private static final int bookTotalPages = 15;
     private static ResourceLocation[] bookPageTextures = new ResourceLocation[bookTotalPages];
     private static String[] stringPageText = new String[bookTotalPages];
     
@@ -42,6 +42,7 @@ public class GuiGuidebookSocket extends GuiScreen {
         bookPageTextures[11] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/socket/page_11.png");
         bookPageTextures[12] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/socket/page_12.png");
         bookPageTextures[13] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/socket/page_13.png");
+        bookPageTextures[14] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/socket/page_14.png");
         
         
         //Title
@@ -50,7 +51,8 @@ public class GuiGuidebookSocket extends GuiScreen {
         		+ "\n\n" 
         		+ "         " + "\u00A7oby Viesis\u00A7r"
         		+ "\n\n\n\n" 
-        		+ "          " + Reference.MOD_VERSION;
+        		+ "          " + Reference.MOD_VERSION
+        		;
         
         stringPageText[1] = "   The sky is within our "
         		+ "reach, but what if you "
@@ -64,7 +66,6 @@ public class GuiGuidebookSocket extends GuiScreen {
         		+ "your airships. This is "
         		+ "called the module "
         		+ "system. "
-        		
         		;
         
         stringPageText[2] = "\n\n\n\n\n\n"
@@ -80,80 +81,97 @@ public class GuiGuidebookSocket extends GuiScreen {
         		+ "\u00A7l\u00A7nLogic Chip\u00A70\u00A7r\u00A70"
         		+ "\n\n\n\n\n\n\n\n\n"
         		+ "\u00A7oBasic chip used to"
-        		+ "\nmake modules/items.\u00A7r";
-        
-
+        		+ "\nmake modules/items.\u00A7r"
+        		;
+        		
         stringPageText[4] = "Module Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nMinor Speed\nModule\u00A70\u00A7r\u00A70"
         		+ "\n\n\n\n\n\n\n\n"
         		+ "\u00A72 Speed +0.8"
-        		+ "\n\u00A7c None \u00A7r";
+        		+ "\n\u00A7c None \u00A7r"
+        		;
         
         stringPageText[5] = "Module Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nMajor Speed\nModule\u00A70\u00A7r\u00A70"
         		+ "\n\n\n\n\n\n\n\n"
         		+ "\u00A72 Speed +1.6"
-        		+ "\n\u00A7c Fuel x2\u00A7r";
-        
-        
+        		+ "\n\u00A7c Fuel x2\u00A7r"
+        		;
         
         stringPageText[6] = "Module Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nSmall Inventory\nModule\u00A70\u00A7r\u00A70"
         		+ "\n\n\n\n\n\n\n\n"
         		+ "\u00A72 9 slot inventory."
-        		+ "\n\u00A7c Speed -20%\u00A7r";
+        		+ "\n\u00A7c Speed -20%\u00A7r"
+        		;
         
         stringPageText[7] = "Module Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nLarge Inventory\nModule\u00A70\u00A7r\u00A70"
         		+ "\n\n\n\n\n\n\n\n"
         		+ "\u00A72 18 slot inventory."
-        		+ "\n\u00A7c Speed -30% & Fuel x2\u00A7r";
+        		+ "\n\u00A7c Speed -30% & Fuel x2\u00A7r"
+        		;
         
         stringPageText[8] = "Module Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nInfinite Fuel\nModule\u00A70\u00A7r\u00A70"
         		+ "\n\n\n\n\n\n\n\n"
         		+ "\u00A72 No fuel needed."
-        		+ "\n\u00A7c Speed -50%\u00A7r";
+        		+ "\n\u00A7c Speed -50%\u00A7r"
+        		;
         
         stringPageText[9] = "Module Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nWater Landing\nModule\u00A70\u00A7r\u00A70"
         		+ "\n\n\n\n\n\n\n\n"
         		+ "\u00A72 Land on water."
-        		+ "\n\u00A7c None \u00A7r";
+        		+ "\n\u00A7c None \u00A7r"
+        		;
         
         stringPageText[10] = "Module Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nMax Altitude\nModule\u00A70\u00A7r\u00A70"
         		+ "\n\n\n\n\n\n\n\n"
         		+ "\u00A72 Unlimited max altitude."
-        		+ "\n\u00A7c None \u00A7r";
+        		+ "\n\u00A7c None \u00A7r"
+        		;
         
         stringPageText[11] = "Module Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nMinor Efficiency\nModule\u00A70\u00A7r\u00A70"
         		+ "\n\n\n\n\n\n\n\n"
         		+ "\u00A72 Fuel burn +25%"
-        		+ "\n\u00A7c None \u00A7r";
+        		+ "\n\u00A7c None \u00A7r"
+        		;
         
         stringPageText[12] = "Module Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nMajor Efficiency\nModule\u00A70\u00A7r\u00A70"
         		+ "\n\n\n\n\n\n\n\n"
         		+ "\u00A72 Fuel burn +50%"
-        		+ "\n\u00A7c Speed -25%\u00A7r";//Really 30%
+        		+ "\n\u00A7c Speed -25%\u00A7r"
+        		;//Really 30%
         
         stringPageText[13] = "Module Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nJukebox\nModule\u00A70\u00A7r\u00A70"
         		+ "\n\n\n\n\n\n\n\n"
-        		+ "\u00A72 Play music"
-        		+ "\n\u00A7c None\u00A7r";//Really 30%
+        		+ "\u00A72 Play music."
+        		+ "\n\u00A7c None \u00A7r"
+        		;
+        
+        stringPageText[14] = "Module Recipe:"
+        		+ "\n\n"
+        		+ "\u00A7l\u00A7nCruise Control\nModule\u00A70\u00A7r\u00A70"
+        		+ "\n\n\n\n\n\n\n\n"
+        		+ "\u00A72 Auto-Forward."
+        		+ "\n\u00A7c None \u00A7r"
+        		;
+        
         /**
         stringPageText[8] = "Module Recipe:"
         		+ "\n\n"
@@ -266,6 +284,10 @@ public class GuiGuidebookSocket extends GuiScreen {
         if (currPage == 13)
         {
         	mc.getTextureManager().bindTexture(bookPageTextures[13]);
+        }
+        if (currPage == 14)
+        {
+        	mc.getTextureManager().bindTexture(bookPageTextures[14]);
         }
         //else
         //{

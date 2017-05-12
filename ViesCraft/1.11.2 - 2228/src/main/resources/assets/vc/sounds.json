@@ -52,14 +52,5 @@
             "stream": true
             }
         ]
-    },
-    "record.enginemoving": {
-        "category": "record",
-        "sounds": [
-            {
-            "name": "vc:records/enginemoving",
-            "stream": true
-            }
-        ]
     }
 }
