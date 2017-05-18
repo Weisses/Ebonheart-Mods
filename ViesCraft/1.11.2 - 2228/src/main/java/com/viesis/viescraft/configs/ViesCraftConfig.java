@@ -101,9 +101,9 @@ public class ViesCraftConfig {
 	public static final String VIESOLINEBURNTIME_NAME = "Viesoline Burn Time?";
 	public static final String VIESOLINEBURNTIME_COMMENT = "How long does Viesoline burn for in seconds? ";
 
-	public static final boolean RECIPEMYTHIC_DEFAULT = false;
-	public static final String RECIPEMYTHIC_NAME = "Enable Mythic Airship Frame Recipe?";
-	public static final String RECIPEMYTHIC_COMMENT = "Should Mythic Airship Frame be craftable?";
+	public static final boolean RECIPEMYTHIC_DEFAULT = true;
+	public static final String RECIPEMYTHIC_NAME = "Enable Mythic+ Airship Frame Recipe?";
+	public static final String RECIPEMYTHIC_COMMENT = "Should Mythic+ Airship Frame be craftable?";
 
 	public static final boolean ENGINESOUND_DEFAULT = true;
 	public static final String ENGINESOUND_NAME = "Enable airship engine sounds?";

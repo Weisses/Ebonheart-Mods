@@ -167,6 +167,7 @@ public class GuiAirshipAppearancePg4 extends GuiContainer {
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
 	{
 		this.fontRendererObj.drawString("Tier IV", 71, 10, 11111111);
+		this.fontRendererObj.drawString("Appearance", 58, -10, 65521);
 	}
 	
 	@Override

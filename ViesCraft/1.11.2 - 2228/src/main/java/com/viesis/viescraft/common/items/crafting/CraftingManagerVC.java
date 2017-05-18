@@ -66,6 +66,7 @@ public class CraftingManagerVC {
     	this.addRecipe(new ItemStack(InitItemsVC.airship_ignition, 1), new Object[]{"IBI", "D#D", "IGI", 'I', Items.IRON_INGOT, 'G', Items.GOLD_INGOT, 'D', Items.DIAMOND, 'B', Blocks.IRON_BARS, '#', Blocks.MAGMA});
     	
     	//Airship Frames
+    	//Tier 1
     	this.addRecipe(new ItemStack(InitItemsVC.airship_frame, 1, 0), new Object[]{"###", "#M#", "###", '#', new ItemStack(Blocks.PLANKS, 1, 0), 'M', Items.MINECART});
     	this.addRecipe(new ItemStack(InitItemsVC.airship_frame, 1, 1), new Object[]{"###", "#M#", "###", '#', new ItemStack(Blocks.PLANKS, 1, 1), 'M', Items.MINECART});
     	this.addRecipe(new ItemStack(InitItemsVC.airship_frame, 1, 2), new Object[]{"###", "#M#", "###", '#', new ItemStack(Blocks.PLANKS, 1, 2), 'M', Items.MINECART});
@@ -74,7 +75,7 @@ public class CraftingManagerVC {
     	this.addRecipe(new ItemStack(InitItemsVC.airship_frame, 1, 5), new Object[]{"###", "#M#", "###", '#', new ItemStack(Blocks.PLANKS, 1, 5), 'M', Items.MINECART});
     	this.addRecipe(new ItemStack(InitItemsVC.airship_frame, 1, 6), new Object[]{"###", "#M#", "###", '#', Blocks.SANDSTONE, 'M', Items.MINECART});
     	this.addRecipe(new ItemStack(InitItemsVC.airship_frame, 1, 7), new Object[]{"###", "#M#", "###", '#', Blocks.BRICK_BLOCK, 'M', Items.MINECART});
-    	
+    	//Tier 2
     	this.addRecipe(new ItemStack(InitItemsVC.airship_frame, 1, 8), new Object[]{"###", "#M#", "###", '#', Blocks.BONE_BLOCK, 'M', Items.MINECART});
     	this.addRecipe(new ItemStack(InitItemsVC.airship_frame, 1, 9), new Object[]{"###", "#M#", "###", '#', Blocks.IRON_BLOCK, 'M', Items.MINECART});
     	this.addRecipe(new ItemStack(InitItemsVC.airship_frame, 1, 10), new Object[]{"###", "#M#", "###", '#', Blocks.REDSTONE_BLOCK, 'M', Items.MINECART});
@@ -82,14 +83,14 @@ public class CraftingManagerVC {
     	this.addRecipe(new ItemStack(InitItemsVC.airship_frame, 1, 12), new Object[]{"###", "#M#", "###", '#', Blocks.LAPIS_BLOCK, 'M', Items.MINECART});
     	this.addRecipe(new ItemStack(InitItemsVC.airship_frame, 1, 13), new Object[]{"###", "#M#", "###", '#', Blocks.SLIME_BLOCK, 'M', Items.MINECART});
     	this.addRecipe(new ItemStack(InitItemsVC.airship_frame, 1, 14), new Object[]{"###", "#M#", "###", '#', Blocks.MYCELIUM, 'M', Items.MINECART});
-    	
+    	//Tier 3
     	this.addRecipe(new ItemStack(InitItemsVC.airship_frame, 1, 15), new Object[]{"###", "#M#", "###", '#', Blocks.NETHER_BRICK, 'M', Items.MINECART});
     	this.addRecipe(new ItemStack(InitItemsVC.airship_frame, 1, 16), new Object[]{"###", "#M#", "###", '#', Blocks.SOUL_SAND, 'M', Items.MINECART});
     	this.addRecipe(new ItemStack(InitItemsVC.airship_frame, 1, 17), new Object[]{"###", "#M#", "###", '#', Blocks.QUARTZ_BLOCK, 'M', Items.MINECART});
     	this.addRecipe(new ItemStack(InitItemsVC.airship_frame, 1, 18), new Object[]{"###", "#M#", "###", '#', Blocks.ICE, 'M', Items.MINECART});
     	this.addRecipe(new ItemStack(InitItemsVC.airship_frame, 1, 19), new Object[]{"###", "#M#", "###", '#', Blocks.GLOWSTONE, 'M', Items.MINECART});
     	this.addRecipe(new ItemStack(InitItemsVC.airship_frame, 1, 20), new Object[]{"###", "#M#", "###", '#', Blocks.OBSIDIAN, 'M', Items.MINECART});
-    	
+    	//Tier 4
     	this.addRecipe(new ItemStack(InitItemsVC.airship_frame, 1, 21), new Object[]{"###", "#M#", "###", '#', Blocks.DIAMOND_BLOCK, 'M', Items.MINECART});
     	this.addRecipe(new ItemStack(InitItemsVC.airship_frame, 1, 22), new Object[]{"###", "#M#", "###", '#', Blocks.EMERALD_BLOCK, 'M', Items.MINECART});
     	this.addRecipe(new ItemStack(InitItemsVC.airship_frame, 1, 23), new Object[]{"###", "#M#", "###", '#', Blocks.PRISMARINE, 'M', Items.MINECART});
@@ -99,6 +100,9 @@ public class CraftingManagerVC {
     	if(ViesCraftConfig.recipeMythic)
     	{
     		this.addRecipe(new ItemStack(InitItemsVC.airship_frame, 1, 26), new Object[]{"###", "#M#", "###", '#', Items.END_CRYSTAL, 'M', new ItemStack(InitItemsVC.airship_frame, 1, 25)});
+    		this.addRecipe(new ItemStack(InitItemsVC.airship_frame, 1, 27), new Object[]{"###", "#M#", "###", '#', Items.WATER_BUCKET, 'M', new ItemStack(InitItemsVC.airship_frame, 1, 26)});
+    		this.addRecipe(new ItemStack(InitItemsVC.airship_frame, 1, 28), new Object[]{"###", "#M#", "###", '#', Items.LAVA_BUCKET, 'M', new ItemStack(InitItemsVC.airship_frame, 1, 26)});
+    		this.addRecipe(new ItemStack(InitItemsVC.airship_frame, 1, 29), new Object[]{"###", "#M#", "###", '#', Items.ENDER_EYE, 'M', new ItemStack(InitItemsVC.airship_frame, 1, 26)});
     	}
     	
     	//=================================================
@@ -139,23 +143,46 @@ public class CraftingManagerVC {
 		//Balloon Patterns
 		//Plain
 		this.addRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 0), new Object[]{"LLL", "LLL", "L#L", '#', new ItemStack(InitItemsVC.airship_module, 1, 0), 'L', Items.LEATHER});
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 1), new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 0), new ItemStack(Items.ENDER_EYE));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 2), new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 1), new ItemStack(Items.NETHER_WART));
 		//Checker
-		this.addRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 1), new Object[]{"ILI", "LIL", "I#I", '#', new ItemStack(InitItemsVC.airship_module, 1, 0), 'L', Items.LEATHER, 'I', new ItemStack(Items.DYE, 1, 0)});
-		//Checker Colorized
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 2), new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 1), new ItemStack(Items.ENDER_EYE));
-		//Polka Dot
-		this.addRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 3), new Object[]{"ILI", "LLL", "I#I", '#', new ItemStack(InitItemsVC.airship_module, 1, 0), 'L', Items.LEATHER, 'I', new ItemStack(Items.DYE, 1, 0)});
-		//Polka Dot Colorized
+		this.addRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 3), new Object[]{"ILI", "LIL", "I#I", '#', new ItemStack(InitItemsVC.airship_module, 1, 0), 'L', Items.LEATHER, 'I', new ItemStack(Items.DYE, 1, 0)});
 		this.addShapelessRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 4), new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 3), new ItemStack(Items.ENDER_EYE));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 5), new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 4), new ItemStack(Items.NETHER_WART));
+		//Polka Dot
+		this.addRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 6), new Object[]{"ILI", "LLL", "I#I", '#', new ItemStack(InitItemsVC.airship_module, 1, 0), 'L', Items.LEATHER, 'I', new ItemStack(Items.DYE, 1, 0)});
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 7), new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 6), new ItemStack(Items.ENDER_EYE));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 8), new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 7), new ItemStack(Items.NETHER_WART));
 		//Zigzag
-		this.addRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 5), new Object[]{"ILL", "LIL", "L#I", '#', new ItemStack(InitItemsVC.airship_module, 1, 0), 'L', Items.LEATHER, 'I', new ItemStack(Items.DYE, 1, 0)});
-		//Zigzag Colorized
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 6), new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 5), new ItemStack(Items.ENDER_EYE));
+		this.addRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 9), new Object[]{"ILL", "LIL", "L#I", '#', new ItemStack(InitItemsVC.airship_module, 1, 0), 'L', Items.LEATHER, 'I', new ItemStack(Items.DYE, 1, 0)});
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 10), new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 9), new ItemStack(Items.ENDER_EYE));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 11), new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 10), new ItemStack(Items.NETHER_WART));
 		//Creeper
-		this.addRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 7), new Object[]{"IGI", "LGL", "I#I", '#', new ItemStack(InitItemsVC.airship_module, 1, 0), 'L', Items.LEATHER, 'I', new ItemStack(Items.DYE, 1, 0), 'G', new ItemStack(Items.GUNPOWDER)});
-		//Creeper Colorized
-		this.addShapelessRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 8), new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 7), new ItemStack(Items.ENDER_EYE));
-    	//=================================================
+		this.addRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 12), new Object[]{"IGI", "LGL", "I#I", '#', new ItemStack(InitItemsVC.airship_module, 1, 0), 'L', Items.LEATHER, 'I', new ItemStack(Items.DYE, 1, 0), 'G', new ItemStack(Items.GUNPOWDER)});
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 13), new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 12), new ItemStack(Items.ENDER_EYE));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 14), new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 13), new ItemStack(Items.NETHER_WART));
+		//Water
+		this.addRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 15), new Object[]{"ILI", "LWL", "I#I", '#', new ItemStack(InitItemsVC.airship_module, 1, 0), 'L', Items.LEATHER, 'I', new ItemStack(Items.DYE, 1, 0), 'W', new ItemStack(Items.WATER_BUCKET)});
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 16), new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 15), new ItemStack(Items.ENDER_EYE));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 17), new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 16), new ItemStack(Items.NETHER_WART));
+		//Lava
+		this.addRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 18), new Object[]{"ILI", "LLL", "I#I", '#', new ItemStack(InitItemsVC.airship_module, 1, 0), 'L', Items.LEATHER, 'I', new ItemStack(Items.DYE, 1, 0), 'L', new ItemStack(Items.LAVA_BUCKET)});
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 19), new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 18), new ItemStack(Items.ENDER_EYE));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 20), new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 19), new ItemStack(Items.NETHER_WART));
+		//Ender
+		this.addRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 21), new Object[]{"ILI", "LEL", "I#I", '#', new ItemStack(InitItemsVC.airship_module, 1, 0), 'L', Items.LEATHER, 'I', new ItemStack(Items.DYE, 1, 0), 'E', new ItemStack(Items.ENDER_PEARL)});
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 22), new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 21), new ItemStack(Items.ENDER_EYE));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 23), new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 22), new ItemStack(Items.NETHER_WART));
+		//Tools
+		this.addRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 24), new Object[]{"ILI", "LTL", "I#I", '#', new ItemStack(InitItemsVC.airship_module, 1, 0), 'L', Items.LEATHER, 'I', new ItemStack(Items.DYE, 1, 0), 'T', new ItemStack(Items.DIAMOND)});
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 25), new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 24), new ItemStack(Items.ENDER_EYE));
+		this.addShapelessRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 26), new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 25), new ItemStack(Items.NETHER_WART));
+		
+		
+		
+		//=================================================
+		
+		
 		
 		Collections.sort(this.recipes, new Comparator<IRecipe>()
         {

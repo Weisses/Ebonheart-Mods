@@ -80,7 +80,7 @@ public class ItemBalloonPattern extends Item {
 	@Override
 	public String getItemStackDisplayName(ItemStack stack)
     {
-        return (EntityAirshipBaseVC.Balloon.byId(this.getMetadata(stack)).getName() + " " 
+        return (EntityAirshipBaseVC.Balloon.byId(this.getMetadata(stack)).getLocalizedName() + " " 
         		+ I18n.translateToLocal("vc.item.pattern"));
     }
 	

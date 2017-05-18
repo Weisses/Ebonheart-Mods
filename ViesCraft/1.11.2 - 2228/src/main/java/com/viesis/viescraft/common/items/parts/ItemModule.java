@@ -148,7 +148,7 @@ public class ItemModule extends Item {
         }
         else
         {
-        	itemName = I18n.translateToLocal("vc.item.module.#") + " - " + EntityAirshipBaseVC.Module.byId(this.getMetadata(stack)).getName();
+        	itemName = I18n.translateToLocal("vc.item.module.#") + " - " + EntityAirshipBaseVC.Module.byId(this.getMetadata(stack)).getLocalizedName();
         }
 		
 		return itemName;

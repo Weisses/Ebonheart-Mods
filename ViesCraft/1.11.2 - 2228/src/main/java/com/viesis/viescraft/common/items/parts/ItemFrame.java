@@ -80,7 +80,10 @@ public class ItemFrame extends Item {
 		{
 			stringColor = TextFormatting.DARK_PURPLE;
 		}
-		if(this.getMetadata(stack) == 26)
+		if(this.getMetadata(stack) == 26
+		|| this.getMetadata(stack) == 27
+		|| this.getMetadata(stack) == 28
+		|| this.getMetadata(stack) == 29)
 		{
 			stringColor = TextFormatting.DARK_RED;
 		}
@@ -102,6 +105,12 @@ public class ItemFrame extends Item {
 		else if(this.getMetadata(stack) == 25)
 		{
 			toolTip.add(TextFormatting.WHITE + I18n.translateToLocal("vc.item.tt.frame.5") + " " + stringColor + "+2.0");
+		}
+		else if(this.getMetadata(stack) == 27
+		|| this.getMetadata(stack) == 28
+		|| this.getMetadata(stack) == 29)
+		{
+			toolTip.add(TextFormatting.WHITE + I18n.translateToLocal("vc.item.tt.frame.5") + " " + stringColor + "+3.0");
 		}
 		else
 		{
@@ -155,6 +164,9 @@ public class ItemFrame extends Item {
             case 24:
             case 25:
             case 26:
+            case 27:
+            case 28:
+            case 29:
             	return EnumRarity.EPIC;
             
             default:
@@ -194,7 +206,7 @@ public class ItemFrame extends Item {
 	@Override
 	public String getItemStackDisplayName(ItemStack stack)
     {
-        return (EntityAirshipBaseVC.FrameCore.byId(this.getMetadata(stack)).getName() + " " 
+        return (EntityAirshipBaseVC.FrameCore.byId(this.getMetadata(stack)).getLocalizedName() + " " 
         		+ I18n.translateToLocal("vc.item.frame"));
     }
 	

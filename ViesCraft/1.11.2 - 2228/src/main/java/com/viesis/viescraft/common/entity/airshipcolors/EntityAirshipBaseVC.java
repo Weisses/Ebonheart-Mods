@@ -1049,51 +1049,57 @@ public class EntityAirshipBaseVC extends Entity {
     {
     	//STRING(meta, name, speed, altitude)
     	//Common - 8 items
-        WOOD0(0, I18n.translateToLocal("vc.item.enum.frame.0"), 0F, 75),
-        WOOD1(1, I18n.translateToLocal("vc.item.enum.frame.1"), 0F, 75),
-        WOOD2(2, I18n.translateToLocal("vc.item.enum.frame.2"), 0F, 75),
-        WOOD3(3, I18n.translateToLocal("vc.item.enum.frame.3"), 0F, 75),
-        WOOD4(4, I18n.translateToLocal("vc.item.enum.frame.4"), 0F, 75),
-        WOOD5(5, I18n.translateToLocal("vc.item.enum.frame.5"), 0F, 75),
-        SANDSTONE(6, I18n.translateToLocal("vc.item.enum.frame.6"), 0.001F, 80),
-        BRICK(7, I18n.translateToLocal("vc.item.enum.frame.7"), 0.002F, 90),
+        WOOD0(0, "Oak", I18n.translateToLocal("vc.item.enum.frame.0"), 0F, 75),
+        WOOD1(1, "Spruce", I18n.translateToLocal("vc.item.enum.frame.1"), 0F, 75),
+        WOOD2(2, "Birch", I18n.translateToLocal("vc.item.enum.frame.2"), 0F, 75),
+        WOOD3(3, "Jungle", I18n.translateToLocal("vc.item.enum.frame.3"), 0F, 75),
+        WOOD4(4, "Acacia", I18n.translateToLocal("vc.item.enum.frame.4"), 0F, 75),
+        WOOD5(5, "Dark Oak", I18n.translateToLocal("vc.item.enum.frame.5"), 0F, 75),
+        SANDSTONE(6, "Sandstone", I18n.translateToLocal("vc.item.enum.frame.6"), 0.001F, 80),
+        BRICK(7, "Brick", I18n.translateToLocal("vc.item.enum.frame.7"), 0.002F, 90),
         
         //Uncommon - 7 items
-        BONE(8, I18n.translateToLocal("vc.item.enum.frame.8"), 0.003F, 100),
-    	IRON(9, I18n.translateToLocal("vc.item.enum.frame.9"), 0.004F, 110),
-        REDSTONE(10, I18n.translateToLocal("vc.item.enum.frame.10"), 0.005F, 120),
-        GOLD(11, I18n.translateToLocal("vc.item.enum.frame.11"), 0.006F, 130),
-        LAPISLAZULI(12, I18n.translateToLocal("vc.item.enum.frame.12"), 0.007F, 140),
-        SLIME(13, I18n.translateToLocal("vc.item.enum.frame.13"), 0.008F, 150),
-        MYCELIUM(14, I18n.translateToLocal("vc.item.enum.frame.14"), 0.009F, 160),
+        BONE(8, "Bone", I18n.translateToLocal("vc.item.enum.frame.8"), 0.003F, 100),
+    	IRON(9, "Iron", I18n.translateToLocal("vc.item.enum.frame.9"), 0.004F, 110),
+        REDSTONE(10, "Redstone", I18n.translateToLocal("vc.item.enum.frame.10"), 0.005F, 120),
+        GOLD(11, "Gold", I18n.translateToLocal("vc.item.enum.frame.11"), 0.006F, 130),
+        LAPISLAZULI(12, "Lapis Lazuli", I18n.translateToLocal("vc.item.enum.frame.12"), 0.007F, 140),
+        SLIME(13, "Slime", I18n.translateToLocal("vc.item.enum.frame.13"), 0.008F, 150),
+        MYCELIUM(14, "Mycelium", I18n.translateToLocal("vc.item.enum.frame.14"), 0.009F, 160),
         
         //Rare - 6 items
-        NETHERBRICK(15, I18n.translateToLocal("vc.item.enum.frame.15"), 0.010F, 170),
-        SOULSAND(16, I18n.translateToLocal("vc.item.enum.frame.16"), 0.011F, 180),
-        QUARTZ(17, I18n.translateToLocal("vc.item.enum.frame.17"), 0.012F, 190),
-        ICE(18, I18n.translateToLocal("vc.item.enum.frame.18"), 0.013F, 200),
-        GLOWSTONE(19, I18n.translateToLocal("vc.item.enum.frame.19"), 0.014F, 210),
-        OBSIDIAN(20, I18n.translateToLocal("vc.item.enum.frame.20"), 0.015F, 220),
+        NETHERBRICK(15, "Nether Brick", I18n.translateToLocal("vc.item.enum.frame.15"), 0.010F, 170),
+        SOULSAND(16, "Soul Sand", I18n.translateToLocal("vc.item.enum.frame.16"), 0.011F, 180),
+        QUARTZ(17, "Quartz", I18n.translateToLocal("vc.item.enum.frame.17"), 0.012F, 190),
+        ICE(18, "Ice", I18n.translateToLocal("vc.item.enum.frame.18"), 0.013F, 200),
+        GLOWSTONE(19, "Glowstone", I18n.translateToLocal("vc.item.enum.frame.19"), 0.014F, 210),
+        OBSIDIAN(20, "Obsidian", I18n.translateToLocal("vc.item.enum.frame.20"), 0.015F, 220),
         
         //Epic - 5 items + 1 admin-only item
-        DIAMOND(21, I18n.translateToLocal("vc.item.enum.frame.21"), 0.016F, 230),
-        EMERALD(22, I18n.translateToLocal("vc.item.enum.frame.22"), 0.017F, 240),
-        PRISMARINE(23, I18n.translateToLocal("vc.item.enum.frame.23"), 0.018F, 250),
-    	PURPUR(24, I18n.translateToLocal("vc.item.enum.frame.24"), 0.019F, 260),
-    	NETHERSTAR(25, I18n.translateToLocal("vc.item.enum.frame.25"), 0.020F, 500),
-    	MYTHIC(26, I18n.translateToLocal("vc.item.enum.frame.26"), 0.025F, 500);  // This is a special admin only Airship.
+        DIAMOND(21, "Diamond", I18n.translateToLocal("vc.item.enum.frame.21"), 0.016F, 230),
+        EMERALD(22, "Emerald", I18n.translateToLocal("vc.item.enum.frame.22"), 0.017F, 240),
+        PRISMARINE(23, "Prismarine", I18n.translateToLocal("vc.item.enum.frame.23"), 0.018F, 250),
+    	PURPUR(24, "Purpur", I18n.translateToLocal("vc.item.enum.frame.24"), 0.019F, 260),
+    	NETHERSTAR(25, "Nether Star", I18n.translateToLocal("vc.item.enum.frame.25"), 0.020F, 500),
+    	
+    	MYTHIC(26, "Mythic", I18n.translateToLocal("vc.item.enum.frame.26"), 0.025F, 500),  // This is a special admin only Airship.
+    	WATER(27, "Water", I18n.translateToLocal("vc.item.enum.frame.27"), 0.030F, 500), 
+    	LAVA(28, "Lava", I18n.translateToLocal("vc.item.enum.frame.28"), 0.031F, 500), 
+    	ENDER(29, "Ender", I18n.translateToLocal("vc.item.enum.frame.29"), 0.032F, 500); 
     	
         private final String name;
         private final int metadata;
         private final float speed;
         private final int elevation;
+        private final String localizedName;
         
-        private FrameCore(int metadataIn, String nameIn, float speedModifier, int maxElevation)
+        private FrameCore(int metadataIn, String nameIn, String localizedNameIn, float speedModifier, int maxElevation)
         {
             this.name = nameIn;
             this.metadata = metadataIn;
             this.speed = speedModifier;
             this.elevation = maxElevation;
+            this.localizedName = localizedNameIn;
         }
         
         public String getName()
@@ -1119,6 +1125,11 @@ public class EntityAirshipBaseVC extends Entity {
         public float getElevation()
         {
             return this.elevation;
+        }
+        
+        public String getLocalizedName()
+        {
+            return this.localizedName;
         }
         
         /**
@@ -1153,16 +1164,35 @@ public class EntityAirshipBaseVC extends Entity {
 	 */
     public static enum Balloon
     {
-        PLAIN(0, I18n.translateToLocal("vc.item.enum.balloon.0")),
-        CHECKER(1, I18n.translateToLocal("vc.item.enum.balloon.1")),
-        CHECKERCOLORIZED(2, I18n.translateToLocal("vc.item.enum.balloon.2")),
-        POLKADOT(3, I18n.translateToLocal("vc.item.enum.balloon.3")),
-        POLKADOTCOLORIZED(4, I18n.translateToLocal("vc.item.enum.balloon.4")),
-        ZIGZAG(5, I18n.translateToLocal("vc.item.enum.balloon.5")),
-    	ZIGZAGCOLORIZED(6, I18n.translateToLocal("vc.item.enum.balloon.6")),
-        CREEPER(7, I18n.translateToLocal("vc.item.enum.balloon.7")),
-    	CREEPERCOLORIZED(8, I18n.translateToLocal("vc.item.enum.balloon.8"))//,
-        //WAVEHORIZONTAL(7, "Horizontal Wave"),
+        PLAIN(0, "Plain", I18n.translateToLocal("vc.item.enum.balloon.0")),
+        PLAINCOLORIZED(1, "Colorized Plain", I18n.translateToLocal("vc.item.enum.balloon.1")),
+        PLAINPHANTOM(2, "Phantom Plain", I18n.translateToLocal("vc.item.enum.balloon.2")),
+        CHECKER(3, "Checker", I18n.translateToLocal("vc.item.enum.balloon.3")),
+        CHECKERCOLORIZED(4, "Colorized Checker", I18n.translateToLocal("vc.item.enum.balloon.4")),
+        CHECKERPHANTOM(5, "Phantom Checker", I18n.translateToLocal("vc.item.enum.balloon.5")),
+        POLKADOT(6, "Polka Dot", I18n.translateToLocal("vc.item.enum.balloon.6")),
+        POLKADOTCOLORIZED(7, "Colorized Polka Dot", I18n.translateToLocal("vc.item.enum.balloon.7")),
+        POLKADOTPHANTOM(8, "Phantom Polka Dot", I18n.translateToLocal("vc.item.enum.balloon.8")),
+        ZIGZAG(9, "Zigzag", I18n.translateToLocal("vc.item.enum.balloon.9")),
+    	ZIGZAGCOLORIZED(10, "Colorized Zigzag", I18n.translateToLocal("vc.item.enum.balloon.10")),
+    	ZIGZAGPHANTOM(11, "Phantom Zigzag", I18n.translateToLocal("vc.item.enum.balloon.11")),
+    	CREEPER(12, "Creeper", I18n.translateToLocal("vc.item.enum.balloon.12")),
+    	CREEPERCOLORIZED(13, "Colorized Creeper", I18n.translateToLocal("vc.item.enum.balloon.13")),
+    	CREEPERPHANTOM(14, "Phantom Creeper", I18n.translateToLocal("vc.item.enum.balloon.14")),
+    	WATER(15, "Water", I18n.translateToLocal("vc.item.enum.balloon.15")),
+    	WATERCOLORIZED(16, "Colorized Water", I18n.translateToLocal("vc.item.enum.balloon.16")),
+    	WATERPHANTOM(17, "Phantom Water", I18n.translateToLocal("vc.item.enum.balloon.17")),
+    	LAVA(18, "Lava", I18n.translateToLocal("vc.item.enum.balloon.18")),
+    	LAVACOLORIZED(19, "Colorized Lava", I18n.translateToLocal("vc.item.enum.balloon.19")),
+    	LAVAPHANTOM(20, "Phantom Lava", I18n.translateToLocal("vc.item.enum.balloon.20")),
+    	ENDER(21, "Ender", I18n.translateToLocal("vc.item.enum.balloon.21")),
+    	ENDERCOLORIZED(22, "Colorized Ender", I18n.translateToLocal("vc.item.enum.balloon.22")),
+    	ENDERPHANTOM(23, "Phantom Ender", I18n.translateToLocal("vc.item.enum.balloon.23")),
+    	TOOLS(24, "Tools", I18n.translateToLocal("vc.item.enum.balloon.24")),
+    	TOOLSCOLORIZED(25, "Colorized Tools", I18n.translateToLocal("vc.item.enum.balloon.25")),
+    	TOOLSPHANTOM(26, "Phantom Tools", I18n.translateToLocal("vc.item.enum.balloon.26"))//,
+        
+    	//WAVEHORIZONTAL(7, "Horizontal Wave"),
         //WAVEHORIZONTALCOLORIZED(8, "Colorized Horizontal Wave"),
         //WAVEVERTICAL(9, "Vertical Wave"),
         //WAVEVERTICALCOLORIZED(10, "Colorized Vertical Wave")
@@ -1172,11 +1202,13 @@ public class EntityAirshipBaseVC extends Entity {
     	
         private final String name;
         private final int metadata;
+        private final String localizedName;
         
-        private Balloon(int metadataIn, String nameIn)
+        private Balloon(int metadataIn, String nameIn, String localizedNameIn)
         {
             this.name = nameIn;
             this.metadata = metadataIn;
+            this.localizedName = localizedNameIn;
         }
         
         public String getName()
@@ -1192,6 +1224,11 @@ public class EntityAirshipBaseVC extends Entity {
         public String toString()
         {
             return this.name;
+        }
+        
+        public String getLocalizedName()
+        {
+            return this.localizedName;
         }
         
         /**
@@ -1226,26 +1263,28 @@ public class EntityAirshipBaseVC extends Entity {
 	 */
     public static enum Module
     {
-        CHIP(0, I18n.translateToLocal("vc.item.enum.module.0")),
-        MINORSPEED(1, I18n.translateToLocal("vc.item.enum.module.1")),
-        MAJORSPEED(2, I18n.translateToLocal("vc.item.enum.module.2")),
-        SMALLINVENTORY(3, I18n.translateToLocal("vc.item.enum.module.3")),
-        LARGEINVENTORY(4, I18n.translateToLocal("vc.item.enum.module.4")),
-        INFINITEFUEL(5, I18n.translateToLocal("vc.item.enum.module.5")),
-    	WATERLANDING(6, I18n.translateToLocal("vc.item.enum.module.6")),
-    	MAXALTITUDE(7, I18n.translateToLocal("vc.item.enum.module.7")),
-    	MINOREFFICIENCY(8, I18n.translateToLocal("vc.item.enum.module.8")),
-    	MAJOREFFICIENCY(9, I18n.translateToLocal("vc.item.enum.module.9")),
-    	JUKEBOX(10, I18n.translateToLocal("vc.item.enum.module.10")),
-    	CRUISECONTROL(11, I18n.translateToLocal("vc.item.enum.module.11"));
+        CHIP(0, "Chip", I18n.translateToLocal("vc.item.enum.module.0")),
+        MINORSPEED(1, "Minor Speed", I18n.translateToLocal("vc.item.enum.module.1")),
+        MAJORSPEED(2, "Major Speed", I18n.translateToLocal("vc.item.enum.module.2")),
+        SMALLINVENTORY(3, "Small Inventory", I18n.translateToLocal("vc.item.enum.module.3")),
+        LARGEINVENTORY(4, "Large Inventory", I18n.translateToLocal("vc.item.enum.module.4")),
+        INFINITEFUEL(5, "Infinite Fuel", I18n.translateToLocal("vc.item.enum.module.5")),
+    	WATERLANDING(6, "Water Landing", I18n.translateToLocal("vc.item.enum.module.6")),
+    	MAXALTITUDE(7, "Max Altitude", I18n.translateToLocal("vc.item.enum.module.7")),
+    	MINOREFFICIENCY(8, "Minor Efficiency", I18n.translateToLocal("vc.item.enum.module.8")),
+    	MAJOREFFICIENCY(9, "Major Efficiency", I18n.translateToLocal("vc.item.enum.module.9")),
+    	JUKEBOX(10, "Jukebox", I18n.translateToLocal("vc.item.enum.module.10")),
+    	CRUISECONTROL(11, "Cruise Control", I18n.translateToLocal("vc.item.enum.module.11"));
     	
         private final String name;
         private final int metadata;
+        private final String localizedName;
         
-        private Module(int metadataIn, String nameIn)
+        private Module(int metadataIn, String nameIn, String localizedNameIn)
         {
             this.name = nameIn;
             this.metadata = metadataIn;
+            this.localizedName = localizedNameIn;
         }
         
         public String getName()
@@ -1261,6 +1300,11 @@ public class EntityAirshipBaseVC extends Entity {
         public String toString()
         {
             return this.name;
+        }
+        
+        public String getLocalizedName()
+        {
+            return this.localizedName;
         }
         
         /**
