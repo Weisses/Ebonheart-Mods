@@ -18,7 +18,7 @@ public class GuiGuidebookPaint extends GuiScreen {
     private final int bookImageHeight = 192;
     private final int bookImageWidth = 192;
     private int currPage = 0;
-    private static final int bookTotalPages = 14;
+    private static final int bookTotalPages = 16;
     private static ResourceLocation[] bookPageTextures = new ResourceLocation[bookTotalPages];
     private static String[] stringPageText = new String[bookTotalPages];
     
@@ -42,6 +42,8 @@ public class GuiGuidebookPaint extends GuiScreen {
         bookPageTextures[11] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_11.png");
         bookPageTextures[12] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_12.png");
         bookPageTextures[13] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_13.png");
+        bookPageTextures[14] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_14.png");
+        bookPageTextures[15] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_15.png");
 
         //Title
         stringPageText[0] = "\n\n\n\n\n\n\n"
@@ -68,7 +70,7 @@ public class GuiGuidebookPaint extends GuiScreen {
         		+ "\u00A75[Shift] \u00A70+ \u00A75[Left-Click] "
         		+ "\u00A70any airship to apply the color. "
         		+ "The item will be used. ";
-
+        
         stringPageText[3] = "Paint Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nBalloon Colorizer\u00A7r"
@@ -95,56 +97,71 @@ public class GuiGuidebookPaint extends GuiScreen {
         		+ "\u00A7l\u00A7nChecker"
         		+ "\nPattern\u00A7r"
         		+ "\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oGrayscaled checker pattern.\u00A7r";
+        		+ "\u00A7oGrayscaled pattern.\u00A7r";
         
         stringPageText[7] = "Pattern Recipe:"
-        		+ "\n\n"
-        		+ "\u00A7l\u00A7nColorized Checker"
-        		+ "\nPattern\u00A7r"
-        		+ "\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oGreen/Blue checker pattern.\u00A7r";
-        
-        stringPageText[8] = "Pattern Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nPolka Dot"
         		+ "\nPattern\u00A7r"
         		+ "\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oGrayscaled Polka Dot pattern.\u00A7r";
+        		+ "\u00A7oGrayscaled pattern.\u00A7r";
         
-        stringPageText[9] = "Pattern Recipe:"
-        		+ "\n\n"
-        		+ "\u00A7l\u00A7nColorized Polka Dot"
-        		+ "\nPattern\u00A7r"
-        		+ "\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oRed/Green Polka Dot pattern.\u00A7r";
-        
-        stringPageText[10] = "Pattern Recipe:"
+        stringPageText[8] = "Pattern Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nZigzag"
         		+ "\nPattern\u00A7r"
         		+ "\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oGrayscaled zigzag pattern.\u00A7r";
-    	
-        stringPageText[11] = "Pattern Recipe:"
-        		+ "\n\n"
-        		+ "\u00A7l\u00A7nColorized Zigzag"
-        		+ "\nPattern\u00A7r"
-        		+ "\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oRed/Green/Blue zigzag pattern.\u00A7r";
+        		+ "\u00A7oGrayscaled pattern.\u00A7r";
         
-        stringPageText[12] = "Pattern Recipe:"
+        stringPageText[9] = "Pattern Recipe:"
         		+ "\n\n"
         		+ "\u00A7l\u00A7nCreeper"
         		+ "\nPattern\u00A7r"
         		+ "\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oGrayscaled Creeper pattern.\u00A7r";
-    	
-        stringPageText[13] = "Pattern Recipe:"
+        		+ "\u00A7oGrayscaled pattern.\u00A7r";
+        
+        stringPageText[10] = "Pattern Recipe:"
         		+ "\n\n"
-        		+ "\u00A7l\u00A7nColorized Creeper"
+        		+ "\u00A7l\u00A7nWater"
         		+ "\nPattern\u00A7r"
         		+ "\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oGreen/White Creeper pattern.\u00A7r";
+        		+ "\u00A7oGrayscaled pattern.\u00A7r";
+        
+        stringPageText[11] = "Pattern Recipe:"
+        		+ "\n\n"
+        		+ "\u00A7l\u00A7nLava"
+        		+ "\nPattern\u00A7r"
+        		+ "\n\n\n\n\n\n\n\n"
+        		+ "\u00A7oGrayscaled pattern.\u00A7r";
+        
+        stringPageText[12] = "Pattern Recipe:"
+        		+ "\n\n"
+        		+ "\u00A7l\u00A7nEnder"
+        		+ "\nPattern\u00A7r"
+        		+ "\n\n\n\n\n\n\n\n"
+        		+ "\u00A7oGrayscaled pattern.\u00A7r";
+        
+        stringPageText[13] = "Pattern Recipe:"
+        		+ "\n\n"
+        		+ "\u00A7l\u00A7nTools"
+        		+ "\nPattern\u00A7r"
+        		+ "\n\n\n\n\n\n\n\n"
+        		+ "\u00A7oGrayscaled pattern.\u00A7r";
+        
+        stringPageText[14] = "Pattern Recipe:"
+        		+ "\n\n"
+        		+ "\u00A7l\u00A7nColorized"
+        		+ "\nPattern\u00A7r"
+        		+ "\n\n\n\n\n\n\n\n"
+        		+ "\u00A7oPattern with color.\u00A7r";
+        
+        stringPageText[15] = "Pattern Recipe:"
+        		+ "\n\n"
+        		+ "\u00A7l\u00A7nPhantom"
+        		+ "\nPattern\u00A7r"
+        		+ "\n\n\n\n\n\n\n\n"
+        		+ "\u00A7oSemi-transparent with color.\u00A7r";
+        
  }
 
     /**
@@ -242,6 +259,14 @@ public class GuiGuidebookPaint extends GuiScreen {
         if (currPage == 13)
         {
         	mc.getTextureManager().bindTexture(bookPageTextures[13]);
+        }
+        if (currPage == 14)
+        {
+        	mc.getTextureManager().bindTexture(bookPageTextures[14]);
+        }
+        if (currPage == 15)
+        {
+        	mc.getTextureManager().bindTexture(bookPageTextures[15]);
         }
         
         //else

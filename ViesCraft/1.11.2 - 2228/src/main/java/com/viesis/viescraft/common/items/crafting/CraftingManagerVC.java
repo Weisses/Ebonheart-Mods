@@ -162,11 +162,11 @@ public class CraftingManagerVC {
 		this.addShapelessRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 13), new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 12), new ItemStack(Items.ENDER_EYE));
 		this.addShapelessRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 14), new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 13), new ItemStack(Items.NETHER_WART));
 		//Water
-		this.addRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 15), new Object[]{"ILI", "LWL", "I#I", '#', new ItemStack(InitItemsVC.airship_module, 1, 0), 'L', Items.LEATHER, 'I', new ItemStack(Items.DYE, 1, 0), 'W', new ItemStack(Items.WATER_BUCKET)});
+		this.addRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 15), new Object[]{"ILI", "LBL", "I#I", '#', new ItemStack(InitItemsVC.airship_module, 1, 0), 'L', Items.LEATHER, 'I', new ItemStack(Items.DYE, 1, 0), 'B', new ItemStack(Items.WATER_BUCKET)});
 		this.addShapelessRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 16), new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 15), new ItemStack(Items.ENDER_EYE));
 		this.addShapelessRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 17), new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 16), new ItemStack(Items.NETHER_WART));
 		//Lava
-		this.addRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 18), new Object[]{"ILI", "LLL", "I#I", '#', new ItemStack(InitItemsVC.airship_module, 1, 0), 'L', Items.LEATHER, 'I', new ItemStack(Items.DYE, 1, 0), 'L', new ItemStack(Items.LAVA_BUCKET)});
+		this.addRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 18), new Object[]{"ILI", "LBL", "I#I", '#', new ItemStack(InitItemsVC.airship_module, 1, 0), 'L', Items.LEATHER, 'I', new ItemStack(Items.DYE, 1, 0), 'B', new ItemStack(Items.LAVA_BUCKET)});
 		this.addShapelessRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 19), new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 18), new ItemStack(Items.ENDER_EYE));
 		this.addShapelessRecipe(new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 20), new ItemStack(InitItemsVC.airship_balloon_pattern, 1, 19), new ItemStack(Items.NETHER_WART));
 		//Ender
