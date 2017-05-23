@@ -45,7 +45,6 @@ public class JEIPlugin implements IModPlugin {
 		
 		//Adds "+" sign capability.
 		recipeTranferRegistry.addRecipeTransferHandler(ContainerAirshipWorkbench.class, VanillaRecipeCategoryUid.CRAFTING, 1, 9, 10, 36);
-		
 	}
 	
 	@Override
