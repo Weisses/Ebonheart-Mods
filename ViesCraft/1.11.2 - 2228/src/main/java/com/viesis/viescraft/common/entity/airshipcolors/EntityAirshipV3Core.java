@@ -883,7 +883,7 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
             
             if(ViesCraftConfig.outsideModFuel)
     		{
-            	return net.minecraftforge.fml.common.registry.GameRegistry.getFuelValue(stack);
+            	return net.minecraftforge.fml.common.registry.GameRegistry.getFuelValue(stack) * 10;
     		}
             else
             {

@@ -3,6 +3,7 @@ package com.viesis.viescraft.api.jei;
 import javax.annotation.Nonnull;
 
 import com.viesis.viescraft.common.items.crafting.CraftingManagerVC;
+import com.viesis.viescraft.common.tileentity.ContainerAirshipWorkbench;
 import com.viesis.viescraft.init.InitBlocksVC;
 import com.viesis.viescraft.init.InitItemsVC;
 
@@ -13,6 +14,7 @@ import mezz.jei.api.ISubtypeRegistry;
 import mezz.jei.api.ingredients.IIngredientBlacklist;
 import mezz.jei.api.ingredients.IModIngredientRegistration;
 import mezz.jei.api.recipe.VanillaRecipeCategoryUid;
+import mezz.jei.api.recipe.transfer.IRecipeTransferRegistry;
 import net.minecraft.item.ItemStack;
 
 @mezz.jei.api.JEIPlugin
@@ -30,6 +32,9 @@ public class JEIPlugin implements IModPlugin {
 		//Adds items with no recipes to the black list.
 		IIngredientBlacklist itemBlacklist = registry.getJeiHelpers().getIngredientBlacklist();
 		
+		//Adds the recipe transfer handlers.
+		IRecipeTransferRegistry recipeTranferRegistry = registry.getRecipeTransferRegistry();
+		
 		//Items to be blacklisted.
 		for (int ii = 0; ii < 8; ++ii)
     	{
@@ -37,6 +42,10 @@ public class JEIPlugin implements IModPlugin {
     	}
 		
 		itemBlacklist.addIngredientToBlacklist(new ItemStack(InitItemsVC.item_entity_airship));
+		
+		//Adds "+" sign capability.
+		recipeTranferRegistry.addRecipeTransferHandler(ContainerAirshipWorkbench.class, VanillaRecipeCategoryUid.CRAFTING, 1, 9, 10, 36);
+		
 	}
 	
 	@Override
