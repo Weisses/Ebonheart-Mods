@@ -19,7 +19,7 @@ public class EngineOnMovingSoundVC extends MovingSound {
     {
         super(soundIn, SoundCategory.AMBIENT);
         this.airship = airshipIn;
-        this.repeat = true;
+        this.repeat = false;
         this.repeatDelay = 0;
         this.sound = soundIn;
     }

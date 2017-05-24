@@ -69,7 +69,12 @@ public class GuiVC {
 	
 	/** Mythic */
 	public static GuiButton button26;
-	
+	/** Water */
+	public static GuiButton button39;
+	/** Lava */
+	public static GuiButton button40;
+	/** Ender */
+	public static GuiButton button41;
 
 	/** Record 11 */
 	public static GuiButton button27;

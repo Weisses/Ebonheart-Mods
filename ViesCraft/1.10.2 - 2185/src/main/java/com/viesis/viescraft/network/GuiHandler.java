@@ -7,6 +7,7 @@ import com.viesis.viescraft.client.gui.airship.frames.GuiAirshipAppearancePg1;
 import com.viesis.viescraft.client.gui.airship.frames.GuiAirshipAppearancePg2;
 import com.viesis.viescraft.client.gui.airship.frames.GuiAirshipAppearancePg3;
 import com.viesis.viescraft.client.gui.airship.frames.GuiAirshipAppearancePg4;
+import com.viesis.viescraft.client.gui.airship.frames.GuiAirshipAppearancePg5;
 import com.viesis.viescraft.client.gui.airship.modules.GuiModuleInventoryLarge;
 import com.viesis.viescraft.client.gui.airship.modules.GuiModuleInventorySmall;
 import com.viesis.viescraft.client.gui.airship.modules.GuiModuleJukebox;
@@ -48,6 +49,7 @@ public class GuiHandler implements IGuiHandler {
 	public static final int GUI_APPEARANCE_PAGE2 = 18;
 	public static final int GUI_APPEARANCE_PAGE3 = 19;
 	public static final int GUI_APPEARANCE_PAGE4 = 20;
+	public static final int GUI_APPEARANCE_PAGE5 = 21;
 	
 	public static final int GUI_MUSIC_PAGE1 = 27;
 	public static final int GUI_MUSIC_PAGE2 = 28;
@@ -118,6 +120,10 @@ public class GuiHandler implements IGuiHandler {
 			return new ContainerAirshipAppearance(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
 		}
 		if (ID == GUI_APPEARANCE_PAGE4)
+		{
+			return new ContainerAirshipAppearance(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
+		}
+		if (ID == GUI_APPEARANCE_PAGE5)
 		{
 			return new ContainerAirshipAppearance(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
 		}
@@ -216,6 +222,10 @@ public class GuiHandler implements IGuiHandler {
 		if (ID == GUI_APPEARANCE_PAGE4)
 		{
 			return new GuiAirshipAppearancePg4(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
+		}
+		if (ID == GUI_APPEARANCE_PAGE5)
+		{
+			return new GuiAirshipAppearancePg5(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
 		}
 		
 		//Airship Music GUI

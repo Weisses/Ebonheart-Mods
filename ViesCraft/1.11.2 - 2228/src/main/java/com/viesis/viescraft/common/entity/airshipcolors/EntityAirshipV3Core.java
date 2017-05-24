@@ -5,6 +5,7 @@ import java.util.List;
 import com.viesis.viescraft.api.ColorHelperVC;
 import com.viesis.viescraft.api.FuelVC;
 import com.viesis.viescraft.client.InitParticlesVCRender;
+import com.viesis.viescraft.client.InitSoundEventsVC;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 import com.viesis.viescraft.init.InitItemsVC;
 import com.viesis.viescraft.network.NetworkHandler;
@@ -332,10 +333,13 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
         
         this.noModuleDropInv();
         
-        //if (this.world.isRemote)
-        //{
-        //	this.engineOnSound();
-        //}
+        if(ViesCraftConfig.engineSounds)
+        {
+	        if(this.isClientAirshipBurning())
+	        {
+	        	this.playSound(InitSoundEventsVC.engineOn, 0.2F, (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2F + 0.7F);
+	        }
+        }
         
         if(!(this.getControllingPassenger() instanceof EntityPlayer)
         	&& this.cruiseControlSelectedSpeed != 0)
@@ -1565,78 +1569,4 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
     {
         this.dataManager.set(AIRSHIP_VISUAL_FRAME_ACTIVE_VC, Boolean.valueOf(frameVisualActive1));
     }
-    
-    
-    
-	//==================================//
-  	// TODO     Sound Events            //
-  	//==================================//
-    /**
-    @SideOnly(Side.CLIENT)
-    protected void engineOnSound()
-    {
-    	if(ViesCraftConfig.engineSounds)
-    	{
-	    	SoundHandler handler = Minecraft.getMinecraft().getSoundHandler();
-	    	
-	    	if(this.isClientAirshipBurning())
-	    	{
-	    		/**
-	    		if(this.motionX >= 0.003 || this.motionY >= 0.003 || this.motionX >= 0.003
-	    		|| this.motionX <= -0.003 || this.motionY <= -0.003 || this.motionX <= -0.003)
-				{
-	    			if(soundCacheMoving==null || !handler.isSoundPlaying(soundCacheMoving))
-			    	{
-			    		if(soundCacheMoving==null)
-			    		{
-			    			soundCacheMoving = new EngineOnMovingSoundVC(this, InitSoundEventsVC.engineOn);
-			    		}
-			    		handler.playSound(soundCacheMoving);
-			    	}
-				}
-    			else
-    	        {
-    	    		if(handler.isSoundPlaying(soundCacheMoving))
-    		    	{
-    		    		handler.stopSound(soundCacheMoving);
-    		    	}
-    	        }
-	    		*/
-    /**
-	    		//soundCacheIdle = new EngineOnMovingSoundVC(this, InitSoundEventsVC.engineOn);
-		    	if(soundCacheIdle==null || !handler.isSoundPlaying(soundCacheIdle))
-		    	{
-		    		if(soundCacheIdle==null)
-		    		{
-		    			LogHelper.info("Set sound");
-		    			soundCacheIdle = new EngineOnMovingSoundVC(this, InitSoundEventsVC.engineOn);
-		    		}
-		    		LogHelper.info("Play sound");
-		    		handler.playSound(soundCacheIdle);
-		    	}
-	    	}
-	    	else
-	        {
-	    		if(handler.isSoundPlaying(soundCacheIdle))
-		    	{
-	    			LogHelper.info("Stop sound");
-		    		handler.stopSound(soundCacheIdle);
-		    	}
-	        }
-    	}
-    }
-    */
-    //public void test()
-    //{
-    //	LogHelper.info("test = " + Keybinds.vcForward.isPressed());
-    //	if(Keybinds.vcForward
-    ///			.isPressed()
-    //			//.isKeyDown()
-    //			&& this.getControllingPassenger() != null
-    //			)
-    //	{
-    		
-    //		LogHelper.info("Pressed tg254");
-    //	}
-    //}
 }

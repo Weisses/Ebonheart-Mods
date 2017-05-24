@@ -79,7 +79,7 @@ public class ItemAirshipV1 extends ItemAirshipCore {
 	@Override
 	public String getItemStackDisplayName(ItemStack stack)
     {
-        return (EntityAirshipBaseVC.FrameCore.byId(this.getMetadata(stack)).getName() 
+        return (EntityAirshipBaseVC.FrameCore.byId(this.getMetadata(stack)).getLocalizedName() 
             		+ " " 
             		+ ViesCraftConfig.v1AirshipName);
     }

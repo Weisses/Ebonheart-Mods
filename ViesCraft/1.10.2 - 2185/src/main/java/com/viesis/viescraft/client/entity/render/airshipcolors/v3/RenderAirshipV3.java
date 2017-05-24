@@ -59,7 +59,12 @@ public class RenderAirshipV3 extends Render<EntityAirshipV3Core> {
 		new ResourceLocation(Reference.MOD_ID, "textures/models/v3/airship_v3_frame_prismarine.png"),
 		new ResourceLocation(Reference.MOD_ID, "textures/models/v3/airship_v3_frame_purpur.png"),
 		new ResourceLocation(Reference.MOD_ID, "textures/models/v3/airship_v3_frame_netherstar.png"),
-		new ResourceLocation(Reference.MOD_ID, "textures/models/v3/airship_v3_frame_mythic.png")
+		
+		//Mythic
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v3/airship_v3_frame_mythic.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v3/airship_v3_frame_water.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v3/airship_v3_frame_lava.png"),
+		new ResourceLocation(Reference.MOD_ID, "textures/models/v3/airship_v3_frame_ender.png")
 	};
 	
 	/** Instance of Color Model for rendering. */

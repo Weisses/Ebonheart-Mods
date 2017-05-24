@@ -12,6 +12,7 @@ import com.viesis.viescraft.common.entity.airshipcolors.containers.all.Container
 import com.viesis.viescraft.network.NetworkHandler;
 import com.viesis.viescraft.network.server.appearance.MessageGuiAppearanceHelperPage4;
 import com.viesis.viescraft.network.server.appearance.MessageGuiAppearancePage3;
+import com.viesis.viescraft.network.server.appearance.MessageGuiAppearancePage5;
 
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -48,16 +49,17 @@ public class GuiAirshipAppearancePg4 extends GuiContainer {
     	Keyboard.enableRepeatEvents(true);
     	
     	GuiVC.buttonDone = new GuiButton( 30, this.guiLeft + 40, this.guiTop + 156, 96, 20, "Done");
+    	GuiVC.buttonNext = new GuiButton( 31, this.guiLeft + 116, this.guiTop + 4, 57, 20, "Next");
     	GuiVC.buttonPrev = new GuiButton( 32, this.guiLeft + 4, this.guiTop + 4, 57, 20, "Prev");
 		
     	GuiVC.button21 = new GuiButton( 21, this.guiLeft + 15, this.guiTop + 46, 57, 20, "Diamond");
 		GuiVC.button22 = new GuiButton( 22, this.guiLeft + 15, this.guiTop + 81, 57, 20, "Emerald");
 		GuiVC.button23 = new GuiButton( 23, this.guiLeft + 15, this.guiTop + 115, 57, 20, "Prismarine");
-		GuiVC.button24 = new GuiButton( 24, this.guiLeft + 105, this.guiTop + 46, 57, 20, "Purpur");
-		GuiVC.button25 = new GuiButton( 25, this.guiLeft + 105, this.guiTop + 81, 57, 20, "N. Star");
-		GuiVC.button26 = new GuiButton( 26, this.guiLeft + 105, this.guiTop + 115, 57, 20, "Mythic");
+		GuiVC.button24 = new GuiButton( 24, this.guiLeft + 105, this.guiTop + 62, 57, 20, "Purpur");
+		GuiVC.button25 = new GuiButton( 25, this.guiLeft + 105, this.guiTop + 97, 57, 20, "N. Star");
 		
 		this.buttonList.add(GuiVC.buttonDone);
+		this.buttonList.add(GuiVC.buttonNext);
 		this.buttonList.add(GuiVC.buttonPrev);
 		
 		this.buttonList.add(GuiVC.button21);
@@ -65,7 +67,6 @@ public class GuiAirshipAppearancePg4 extends GuiContainer {
 		this.buttonList.add(GuiVC.button23);
 		this.buttonList.add(GuiVC.button24);
 		this.buttonList.add(GuiVC.button25);
-		this.buttonList.add(GuiVC.button26);
 		
 		if(this.airship.metaFrameCore == 21)
     	{
@@ -73,29 +74,25 @@ public class GuiAirshipAppearancePg4 extends GuiContainer {
     		GuiVC.button23.visible = false;
     		GuiVC.button24.visible = false;
     		GuiVC.button25.visible = false;
-    		GuiVC.button26.visible = false;
     	}
 		if(this.airship.metaFrameCore == 22)
     	{
     		GuiVC.button23.visible = false;
     		GuiVC.button24.visible = false;
     		GuiVC.button25.visible = false;
-    		GuiVC.button26.visible = false;
     	}
 		if(this.airship.metaFrameCore == 23)
     	{
     		GuiVC.button24.visible = false;
     		GuiVC.button25.visible = false;
-    		GuiVC.button26.visible = false;
     	}
 		if(this.airship.metaFrameCore == 24)
     	{
     		GuiVC.button25.visible = false;
-    		GuiVC.button26.visible = false;
     	}
-		if(this.airship.metaFrameCore == 25)
+    	if(this.airship.metaFrameCore < 26)
     	{
-    		GuiVC.button26.visible = false;
+    		GuiVC.buttonNext.visible = false;
     	}
     }
     
@@ -108,6 +105,10 @@ public class GuiAirshipAppearancePg4 extends GuiContainer {
 		if (parButton.id == 30)
 	    {
 			this.mc.thePlayer.closeScreen();
+	    }
+		if (parButton.id == 31)
+	    {
+			NetworkHandler.sendToServer(new MessageGuiAppearancePage5());
 	    }
 		if (parButton.id == 32)
 	    {
@@ -143,12 +144,6 @@ public class GuiAirshipAppearancePg4 extends GuiContainer {
 			metaActiveInfo = true;
 			NetworkHandler.sendToServer(new MessageGuiAppearanceHelperPage4());
 	    }
-		if (parButton.id == 26)
-	    {
-			this.metaInfo = 26;
-			metaActiveInfo = true;
-			NetworkHandler.sendToServer(new MessageGuiAppearanceHelperPage4());
-	    }
 		
         this.buttonList.clear();
         this.initGui();
@@ -167,6 +162,7 @@ public class GuiAirshipAppearancePg4 extends GuiContainer {
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
 	{
 		this.fontRendererObj.drawString("Tier IV", 71, 10, 11111111);
+		this.fontRendererObj.drawString("Appearance", 58, -10, 65521);
 	}
 	
 	@Override

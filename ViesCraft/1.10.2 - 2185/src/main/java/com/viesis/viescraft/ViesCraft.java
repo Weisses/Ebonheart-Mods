@@ -44,7 +44,7 @@ public class ViesCraft {
 		
 		this.proxy.preInit(event);
 		LogHelper.info("<<==============================>>");
-		LogHelper.info("        Pre Init Complete.");
+		LogHelper.info("        Pre Init Complete.        ");
 		LogHelper.info("<<==============================>>");
 	}
 	
@@ -53,7 +53,7 @@ public class ViesCraft {
 	{
 		this.proxy.init(event);
 		LogHelper.info("<<==============================>>");
-		LogHelper.info("          Init Complete.");
+		LogHelper.info("          Init Complete.          ");
 		LogHelper.info("<<==============================>>");
 	}
 	
@@ -62,7 +62,7 @@ public class ViesCraft {
 	{
 		this.proxy.postInit(event);
 		LogHelper.info("<<==============================>>");
-		LogHelper.info("   Enforcing Brannigan's Law...");
+		LogHelper.info("   Enforcing Brannigan's Law...   ");
 		LogHelper.info("<<==============================>>");
 	}
 }

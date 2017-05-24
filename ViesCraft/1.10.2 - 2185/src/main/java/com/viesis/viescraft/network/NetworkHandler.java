@@ -14,10 +14,12 @@ import com.viesis.viescraft.network.server.appearance.MessageGuiAppearanceHelper
 import com.viesis.viescraft.network.server.appearance.MessageGuiAppearanceHelperPage2;
 import com.viesis.viescraft.network.server.appearance.MessageGuiAppearanceHelperPage3;
 import com.viesis.viescraft.network.server.appearance.MessageGuiAppearanceHelperPage4;
+import com.viesis.viescraft.network.server.appearance.MessageGuiAppearanceHelperPage5;
 import com.viesis.viescraft.network.server.appearance.MessageGuiAppearancePage1;
 import com.viesis.viescraft.network.server.appearance.MessageGuiAppearancePage2;
 import com.viesis.viescraft.network.server.appearance.MessageGuiAppearancePage3;
 import com.viesis.viescraft.network.server.appearance.MessageGuiAppearancePage4;
+import com.viesis.viescraft.network.server.appearance.MessageGuiAppearancePage5;
 import com.viesis.viescraft.network.server.song.MessageGuiMusicPg1;
 import com.viesis.viescraft.network.server.song.MessageGuiMusicPg2;
 import com.viesis.viescraft.network.server.song.MessageGuiMusicPg3;
@@ -57,11 +59,13 @@ public class NetworkHandler {
 		register(MessageGuiAppearancePage2.class, MessageGuiAppearancePage2.class, Side.SERVER);
 		register(MessageGuiAppearancePage3.class, MessageGuiAppearancePage3.class, Side.SERVER);
 		register(MessageGuiAppearancePage4.class, MessageGuiAppearancePage4.class, Side.SERVER);
+		register(MessageGuiAppearancePage5.class, MessageGuiAppearancePage5.class, Side.SERVER);
 		
 		register(MessageGuiAppearanceHelperPage1.class, MessageGuiAppearanceHelperPage1.class, Side.SERVER);
 		register(MessageGuiAppearanceHelperPage2.class, MessageGuiAppearanceHelperPage2.class, Side.SERVER);
 		register(MessageGuiAppearanceHelperPage3.class, MessageGuiAppearanceHelperPage3.class, Side.SERVER);
 		register(MessageGuiAppearanceHelperPage4.class, MessageGuiAppearanceHelperPage4.class, Side.SERVER);
+		register(MessageGuiAppearanceHelperPage5.class, MessageGuiAppearanceHelperPage5.class, Side.SERVER);
 		
 		register(MessageGuiPlayMusic.class, MessageGuiPlayMusic.class, Side.SERVER);
 		register(MessageGuiPlayMusicArea.class, MessageGuiPlayMusicArea.class, Side.CLIENT);
