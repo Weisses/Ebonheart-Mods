@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "half=bottom,type=stone": { "model": "ea:gemstone/slab/half_soularite_slab" },
+        "half=top,type=stone": { "model": "ea:gemstone/slab/upper_soularite_slab" }
+    }
+}

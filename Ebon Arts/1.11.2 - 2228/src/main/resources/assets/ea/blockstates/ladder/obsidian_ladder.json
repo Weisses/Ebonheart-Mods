@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "ea:ladder/obsidian/obsidian_ladder" },
+        "facing=east":  { "model": "ea:ladder/obsidian/obsidian_ladder", "y": 90 },
+        "facing=south": { "model": "ea:ladder/obsidian/obsidian_ladder", "y": 180 },
+        "facing=west":  { "model": "ea:ladder/obsidian/obsidian_ladder", "y": 270 }
+    }
+}

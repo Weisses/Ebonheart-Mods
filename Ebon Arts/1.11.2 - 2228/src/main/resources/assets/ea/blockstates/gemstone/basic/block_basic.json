@@ -1,0 +1,49 @@
+{
+    "forge_marker": 1,
+    "defaults": 
+    {
+        "model": "ea:gemstone/basic/block_basic_draconite"
+    },
+    "variants": 
+    {
+        "variant": 
+        {
+            "draconite": 
+            {
+                "model": "ea:gemstone/basic/block_basic_draconite"
+            },
+            "velious": 
+            {
+                "model": "ea:gemstone/basic/block_basic_velious"
+            },
+            "arcanite": 
+            {
+                "model": "ea:gemstone/basic/block_basic_arcanite"
+            },
+            "katcheen": 
+            {
+                "model": "ea:gemstone/basic/block_basic_katcheen"
+            },
+            "carnelian": 
+            {
+                "model": "ea:gemstone/basic/block_basic_carnelian"
+            },
+            "necrocite": 
+            {
+                "model": "ea:gemstone/basic/block_basic_necrocite"
+            },
+            "onyxius": 
+            {
+                "model": "ea:gemstone/basic/block_basic_onyxius"
+            },
+            "soularite": 
+            {
+                "model": "ea:gemstone/basic/block_basic_soularite"
+            },
+            "ebonheart": 
+            {
+                "model": "ea:gemstone/basic/block_basic_ebonheart"
+            }
+        }
+    }
+}

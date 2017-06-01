@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "particle": "ea:blocks/block/velious_block",
+        "down": "ea:blocks/block/velious_block",
+        "up": "ea:blocks/block/velious_block",
+        "north": "ea:blocks/block/velious_block",
+        "east": "ea:blocks/block/velious_block",
+        "south": "ea:blocks/block/velious_block",
+        "west": "ea:blocks/block/velious_block"
+    }
+}

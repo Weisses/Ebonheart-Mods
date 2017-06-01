@@ -1,0 +1,6 @@
+{
+    "parent": "block/wall_side",
+    "textures": {
+        "wall": "ea:blocks/block/ebonheart_brick_base"
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "particle": "ea:blocks/gemstones/basic/katcheen_block",
+        "down": "ea:blocks/gemstones/basic/katcheen_block",
+        "up": "ea:blocks/gemstones/basic/katcheen_block",
+        "north": "ea:blocks/gemstones/basic/katcheen_block",
+        "east": "ea:blocks/gemstones/basic/katcheen_block",
+        "south": "ea:blocks/gemstones/basic/katcheen_block",
+        "west": "ea:blocks/gemstones/basic/katcheen_block"
+    }
+}

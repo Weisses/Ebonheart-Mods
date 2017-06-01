@@ -1,0 +1,6 @@
+{
+    "parent": "block/wall_inventory",
+    "textures": {
+        "wall": "ea:blocks/block/cryptic_velious_block"
+    }
+}

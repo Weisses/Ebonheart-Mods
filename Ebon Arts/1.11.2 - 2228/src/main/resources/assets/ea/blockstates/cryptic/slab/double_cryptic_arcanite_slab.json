@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "type=stone": { "model": "ea:cryptic/slab/arcanite/full_arcanite_slab" }
+    }
+}

@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "half=bottom,type=stone": { "model": "ea:gemstone/slab/half_katcheen_slab" },
+        "half=top,type=stone": { "model": "ea:gemstone/slab/upper_katcheen_slab" }
+    }
+}

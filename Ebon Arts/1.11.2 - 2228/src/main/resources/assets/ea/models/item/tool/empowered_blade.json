@@ -1,0 +1,6 @@
+{
+    "parent": "item/handheld",
+    "textures": {
+        "layer0": "ea:items/tools/empowered_blade"
+    }
+}

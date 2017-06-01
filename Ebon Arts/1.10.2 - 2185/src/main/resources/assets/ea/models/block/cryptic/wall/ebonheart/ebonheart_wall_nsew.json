@@ -1,0 +1,6 @@
+{
+    "parent": "block/wall_nsew",
+    "textures": {
+        "wall": "ea:blocks/block/cryptic_ebonheart_block"
+    }
+}

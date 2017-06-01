@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "ea:paper_block" },
+        "facing=south": { "model": "ea:paper_block", "y": 180 },
+        "facing=west":  { "model": "ea:paper_block", "y": 270 },
+        "facing=east":  { "model": "ea:paper_block", "y": 90 }
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "particle": "ea:blocks/gemstones/basic/necrocite_block",
+        "down": "ea:blocks/gemstones/basic/necrocite_block",
+        "up": "ea:blocks/gemstones/basic/necrocite_block",
+        "north": "ea:blocks/gemstones/basic/necrocite_block",
+        "east": "ea:blocks/gemstones/basic/necrocite_block",
+        "south": "ea:blocks/gemstones/basic/necrocite_block",
+        "west": "ea:blocks/gemstones/basic/necrocite_block"
+    }
+}

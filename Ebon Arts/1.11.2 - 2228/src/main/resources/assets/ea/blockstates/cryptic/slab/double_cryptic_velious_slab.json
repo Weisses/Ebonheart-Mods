@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "type=stone": { "model": "ea:cryptic/slab/velious/full_velious_slab" }
+    }
+}

@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "type=stone": { "model": "ea:slab/katcheen/full_katcheen_slab" }
+    }
+}

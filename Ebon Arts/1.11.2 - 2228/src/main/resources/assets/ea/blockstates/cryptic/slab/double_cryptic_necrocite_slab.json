@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "type=stone": { "model": "ea:cryptic/slab/necrocite/full_necrocite_slab" }
+    }
+}

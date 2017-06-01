@@ -1,0 +1,6 @@
+{
+    "parent": "block/wall_side",
+    "textures": {
+        "wall": "ea:blocks/block/cryptic_katcheen_brick_base"
+    }
+}

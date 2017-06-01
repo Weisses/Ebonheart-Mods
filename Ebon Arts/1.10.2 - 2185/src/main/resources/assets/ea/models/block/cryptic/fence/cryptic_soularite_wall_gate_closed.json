@@ -1,0 +1,6 @@
+{
+    "parent": "block/wall_gate_closed",
+    "textures": {
+        "texture": "ea:blocks/block/cryptic_soularite_block"
+    }
+}

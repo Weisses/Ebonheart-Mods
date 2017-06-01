@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "particle": "ea:blocks/block/cryptic_necrocite_block",
+        "down": "ea:blocks/block/cryptic_necrocite_block",
+        "up": "ea:blocks/block/cryptic_necrocite_block",
+        "north": "ea:blocks/block/cryptic_necrocite_block",
+        "east": "ea:blocks/block/cryptic_necrocite_block",
+        "south": "ea:blocks/block/cryptic_necrocite_block",
+        "west": "ea:blocks/block/cryptic_necrocite_block"
+    }
+}

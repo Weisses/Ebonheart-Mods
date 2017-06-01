@@ -1,0 +1,6 @@
+{
+	"parent": "block/fence_post",
+	"textures": {
+		"texture": "ea:blocks/block/cryptic_glowstone_block"
+	}
+}

@@ -1,0 +1,9 @@
+{
+    "variants": {
+        "facing=up": { "model": "ea:gem/arcanite/normal_arcanite_torch" },
+        "facing=east": { "model": "ea:gem/arcanite/normal_arcanite_torch_wall" },
+        "facing=south": { "model": "ea:gem/arcanite/normal_arcanite_torch_wall", "y": 90 },
+        "facing=west": { "model": "ea:gem/arcanite/normal_arcanite_torch_wall", "y": 180 },
+        "facing=north": { "model": "ea:gem/arcanite/normal_arcanite_torch_wall", "y": 270 }
+    }
+}

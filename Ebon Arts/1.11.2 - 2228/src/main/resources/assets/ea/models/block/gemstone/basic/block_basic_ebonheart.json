@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "particle": "ea:blocks/gemstones/basic/ebonheart_block",
+        "down": "ea:blocks/gemstones/basic/ebonheart_block",
+        "up": "ea:blocks/gemstones/basic/ebonheart_block",
+        "north": "ea:blocks/gemstones/basic/ebonheart_block",
+        "east": "ea:blocks/gemstones/basic/ebonheart_block",
+        "south": "ea:blocks/gemstones/basic/ebonheart_block",
+        "west": "ea:blocks/gemstones/basic/ebonheart_block"
+    }
+}

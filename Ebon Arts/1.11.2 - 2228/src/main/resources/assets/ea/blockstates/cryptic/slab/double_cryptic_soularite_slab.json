@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "type=stone": { "model": "ea:cryptic/slab/soularite/full_soularite_slab" }
+    }
+}

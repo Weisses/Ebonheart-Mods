@@ -1,0 +1,9 @@
+{
+    "variants": {
+        "facing=up": { "model": "ea:gem/obsidian/normal_obsidian_torch" },
+        "facing=east": { "model": "ea:gem/obsidian/normal_obsidian_torch_wall" },
+        "facing=south": { "model": "ea:gem/obsidian/normal_obsidian_torch_wall", "y": 90 },
+        "facing=west": { "model": "ea:gem/obsidian/normal_obsidian_torch_wall", "y": 180 },
+        "facing=north": { "model": "ea:gem/obsidian/normal_obsidian_torch_wall", "y": 270 }
+    }
+}

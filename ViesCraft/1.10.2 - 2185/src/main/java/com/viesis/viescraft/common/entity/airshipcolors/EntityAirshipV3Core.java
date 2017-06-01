@@ -32,6 +32,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EntitySelectors;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
@@ -334,9 +335,9 @@ public class EntityAirshipV3Core extends EntityAirshipBaseVC {
         
         if(ViesCraftConfig.engineSounds)
         {
-	        if(this.isClientAirshipBurning())
+        	if(this.isClientAirshipBurning())
 	        {
-	        	this.playSound(InitSoundEventsVC.engineOn, 0.2F, (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2F + 0.7F);
+	        	this.worldObj.playSound(this.posX, this.posY, this.posZ, InitSoundEventsVC.engineOn, SoundCategory.AMBIENT, 0.3F, (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2F + 0.7F, true);
 	        }
         }
         

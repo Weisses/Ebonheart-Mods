@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "type=stone": { "model": "ea:slab/velious/full_velious_slab" }
+    }
+}

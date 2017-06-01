@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "particle": "ea:blocks/gemstones/basic/velious_slab_side",
+        "down": "ea:blocks/gemstones/basic/velious_slab_bottom",
+        "up": "ea:blocks/gemstones/basic/velious_slab_top",
+        "north": "ea:blocks/gemstones/basic/velious_slab_side",
+        "east": "ea:blocks/gemstones/basic/velious_slab_side",
+        "south": "ea:blocks/gemstones/basic/velious_slab_side",
+        "west": "ea:blocks/gemstones/basic/velious_slab_side"
+    }
+}
