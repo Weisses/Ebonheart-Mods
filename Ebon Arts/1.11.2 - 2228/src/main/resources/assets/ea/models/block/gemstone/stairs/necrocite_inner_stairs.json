@@ -1,8 +1,0 @@
-{
-    "parent": "block/inner_stairs",
-    "textures": {
-        "bottom": "ea:blocks/gemstones/basic/necrocite_stairs",
-        "top": "ea:blocks/gemstones/basic/necrocite_stairs",
-        "side": "ea:blocks/gemstones/basic/necrocite_stairs"
-    }
-}

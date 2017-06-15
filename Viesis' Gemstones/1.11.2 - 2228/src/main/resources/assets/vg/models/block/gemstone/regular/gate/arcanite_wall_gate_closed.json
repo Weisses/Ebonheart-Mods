@@ -1,0 +1,6 @@
+{
+    "parent": "block/wall_gate_closed",
+    "textures": {
+        "texture": "vg:blocks/gemstones/regular/arcanite_block"
+    }
+}

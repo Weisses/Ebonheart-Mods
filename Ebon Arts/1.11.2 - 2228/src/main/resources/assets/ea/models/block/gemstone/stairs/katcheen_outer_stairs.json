@@ -1,8 +1,0 @@
-{
-    "parent": "block/outer_stairs",
-    "textures": {
-        "bottom": "ea:blocks/gemstones/basic/katcheen_stairs",
-        "top": "ea:blocks/gemstones/basic/katcheen_stairs",
-        "side": "ea:blocks/gemstones/basic/katcheen_stairs"
-    }
-}

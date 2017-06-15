@@ -1,0 +1,6 @@
+{
+    "parent": "block/wall_side",
+    "textures": {
+        "wall": "vg:blocks/gemstones/regular/draconite_block_base"
+    }
+}

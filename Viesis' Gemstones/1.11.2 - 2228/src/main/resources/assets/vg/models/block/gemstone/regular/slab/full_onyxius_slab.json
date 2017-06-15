@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "particle": "vg:blocks/gemstones/regular/onyxius_slab_side",
+        "down": "vg:blocks/gemstones/regular/onyxius_slab_bottom",
+        "up": "vg:blocks/gemstones/regular/onyxius_slab_top",
+        "north": "vg:blocks/gemstones/regular/onyxius_slab_side",
+        "east": "vg:blocks/gemstones/regular/onyxius_slab_side",
+        "south": "vg:blocks/gemstones/regular/onyxius_slab_side",
+        "west": "vg:blocks/gemstones/regular/onyxius_slab_side"
+    }
+}

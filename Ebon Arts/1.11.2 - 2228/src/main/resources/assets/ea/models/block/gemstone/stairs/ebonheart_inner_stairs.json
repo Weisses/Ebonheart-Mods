@@ -1,8 +1,0 @@
-{
-    "parent": "block/inner_stairs",
-    "textures": {
-        "bottom": "ea:blocks/gemstones/basic/ebonheart_stairs",
-        "top": "ea:blocks/gemstones/basic/ebonheart_stairs",
-        "side": "ea:blocks/gemstones/basic/ebonheart_stairs"
-    }
-}

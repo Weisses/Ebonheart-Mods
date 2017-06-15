@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "type=stone": { "model": "vg:gemstone/regular/slab/full_ebonheart_slab" }
+    }
+}

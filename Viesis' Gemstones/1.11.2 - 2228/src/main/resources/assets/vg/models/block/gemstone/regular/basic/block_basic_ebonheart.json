@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "particle": "vg:blocks/gemstones/regular/ebonheart_block",
+        "down": "vg:blocks/gemstones/regular/ebonheart_block",
+        "up": "vg:blocks/gemstones/regular/ebonheart_block",
+        "north": "vg:blocks/gemstones/regular/ebonheart_block",
+        "east": "vg:blocks/gemstones/regular/ebonheart_block",
+        "south": "vg:blocks/gemstones/regular/ebonheart_block",
+        "west": "vg:blocks/gemstones/regular/ebonheart_block"
+    }
+}

@@ -1,0 +1,6 @@
+{
+	"parent": "block/fence_post",
+	"textures": {
+		"texture": "vg:blocks/gemstones/regular/velious_block"
+	}
+}

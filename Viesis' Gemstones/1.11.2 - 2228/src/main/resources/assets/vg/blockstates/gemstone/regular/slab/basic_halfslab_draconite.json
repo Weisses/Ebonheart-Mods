@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "half=bottom,type=stone": { "model": "vg:gemstone/regular/slab/half_draconite_slab" },
+        "half=top,type=stone": { "model": "vg:gemstone/regular/slab/upper_draconite_slab" }
+    }
+}

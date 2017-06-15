@@ -1,8 +1,0 @@
-{
-    "parent": "block/stairs",
-    "textures": {
-        "bottom": "ea:blocks/gemstones/basic/arcanite_stairs",
-        "top": "ea:blocks/gemstones/basic/arcanite_stairs",
-        "side": "ea:blocks/gemstones/basic/arcanite_stairs"
-    }
-}

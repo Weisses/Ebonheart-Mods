@@ -1,0 +1,6 @@
+{
+    "parent": "block/wall_nse",
+    "textures": {
+        "wall": "vg:blocks/gemstones/regular/arcanite_block"
+    }
+}
