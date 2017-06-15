@@ -337,7 +337,7 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
         {
         	if(this.isClientAirshipBurning())
 	        {
-	        	this.worldObj.playSound(this.posX, this.posY, this.posZ, InitSoundEventsVC.engineOn, SoundCategory.AMBIENT, 0.3F, (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2F + 0.7F, true);
+	        	this.worldObj.playSound(this.posX, this.posY, this.posZ, InitSoundEventsVC.engineOn, SoundCategory.AMBIENT, 0.4F, (this.rand.nextFloat() - this.rand.nextFloat()) * 0.2F + 0.7F, true);
 	        }
         }
         

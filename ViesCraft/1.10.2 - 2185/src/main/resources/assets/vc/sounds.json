@@ -49,7 +49,7 @@
         "sounds": [
             {
             "name": "vc:engineon",
-            "stream": true
+            "stream": false
             }
         ]
     }
