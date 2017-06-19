@@ -1,5 +1,7 @@
 package com.viesis.gemstones.common.tileentity.slots;
 
+import com.viesis.gemstones.init.InitItemsVG;
+
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -19,13 +21,7 @@ public class CutterSlotInputVG  extends SlotItemHandler {
     {
 		Item item = stack.getItem();
 		
-        if (item instanceof net.minecraft.item.ItemBlock && Block.getBlockFromItem(item) != Blocks.AIR)
-        {
-            Block block = Block.getBlockFromItem(item);
-            
-            if (block == Blocks.WOODEN_SLAB) return true;
-            
-        }
+		if(item == InitItemsVG.gemstone_item_basic_v1) return false;
         
 		return true;
     }

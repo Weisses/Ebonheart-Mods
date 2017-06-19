@@ -10,7 +10,8 @@ import com.viesis.gemstones.common.tileentity.TileEntityGemstoneWorkbench;
 import com.viesis.gemstones.common.tileentity.containers.ContainerGemstoneWorkbench;
 import com.viesis.gemstones.init.InitItemsVG;
 import com.viesis.gemstones.network.NetworkHandler;
-import com.viesis.gemstones.network.server.MessageGuiWorkbenchSyncServer;
+import com.viesis.gemstones.network.server.MessageGuiWorkbenchSyncServerGem;
+import com.viesis.gemstones.network.server.MessageGuiWorkbenchSyncServerOn;
 
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -27,11 +28,13 @@ public class GuiTileEntityGemstoneWorkbenchMain extends GuiContainer {
 	private final World world;
 	private ItemStack draggedStack = ItemStack.EMPTY;
 	
+	public static boolean metaOn;
 	public static int metaGem;
 	public static int metaPosX;
 	public static int metaPosY;
 	public static int metaPosZ;
 	
+	private GuiButton buttonPower;
 	private GuiButton buttonDraconite;
 	private GuiButton buttonVelious;
 	private GuiButton buttonArcanite;
@@ -68,6 +71,7 @@ public class GuiTileEntityGemstoneWorkbenchMain extends GuiContainer {
     	buttonList.clear();
     	Keyboard.enableRepeatEvents(true);
     	
+    	buttonPower = new GuiButton(9, this.guiLeft + 17, this.guiTop + 53, 16, 16, " ");
     	buttonDraconite = new GuiButton(0, this.guiLeft - 31, this.guiTop + 8, 16, 16, " ");
     	buttonVelious = new GuiButton(1, this.guiLeft - 31, this.guiTop + 24, 16, 16, " ");
     	buttonArcanite = new GuiButton(2, this.guiLeft - 31, this.guiTop + 40, 16, 16, " ");
@@ -78,6 +82,7 @@ public class GuiTileEntityGemstoneWorkbenchMain extends GuiContainer {
     	buttonSoularite = new GuiButton(7, this.guiLeft - 15, this.guiTop + 56, 16, 16, " ");
     	buttonEbonheart = new GuiButton(8, this.guiLeft - 23, this.guiTop + 72, 16, 16, " ");
 		
+    	this.buttonList.add(buttonPower);
     	this.buttonList.add(buttonDraconite);
     	this.buttonList.add(buttonVelious);
     	this.buttonList.add(buttonArcanite);
@@ -95,50 +100,55 @@ public class GuiTileEntityGemstoneWorkbenchMain extends GuiContainer {
 	@Override
     protected void actionPerformed(GuiButton parButton) 
     {
-		if (parButton.id == 0)
+		if(parButton.id == 0)
 	    {
 			this.metaGem = 0;
-			NetworkHandler.sendToServer(new MessageGuiWorkbenchSyncServer());
+			NetworkHandler.sendToServer(new MessageGuiWorkbenchSyncServerGem());
 	    }
-		if (parButton.id == 1)
+		if(parButton.id == 1)
 	    {
 			this.metaGem = 1;
-			NetworkHandler.sendToServer(new MessageGuiWorkbenchSyncServer());
+			NetworkHandler.sendToServer(new MessageGuiWorkbenchSyncServerGem());
 	    }
-		if (parButton.id == 2)
+		if(parButton.id == 2)
 	    {
 			this.metaGem = 2;
-			NetworkHandler.sendToServer(new MessageGuiWorkbenchSyncServer());
+			NetworkHandler.sendToServer(new MessageGuiWorkbenchSyncServerGem());
 	    }
-		if (parButton.id == 3)
+		if(parButton.id == 3)
 	    {
 			this.metaGem = 3;
-			NetworkHandler.sendToServer(new MessageGuiWorkbenchSyncServer());
+			NetworkHandler.sendToServer(new MessageGuiWorkbenchSyncServerGem());
 	    }
-		if (parButton.id == 4)
+		if(parButton.id == 4)
 	    {
 			this.metaGem = 4;
-			NetworkHandler.sendToServer(new MessageGuiWorkbenchSyncServer());
+			NetworkHandler.sendToServer(new MessageGuiWorkbenchSyncServerGem());
 	    }
-		if (parButton.id == 5)
+		if(parButton.id == 5)
 	    {
 			this.metaGem = 5;
-			NetworkHandler.sendToServer(new MessageGuiWorkbenchSyncServer());
+			NetworkHandler.sendToServer(new MessageGuiWorkbenchSyncServerGem());
 	    }
-		if (parButton.id == 6)
+		if(parButton.id == 6)
 	    {
 			this.metaGem = 6;
-			NetworkHandler.sendToServer(new MessageGuiWorkbenchSyncServer());
+			NetworkHandler.sendToServer(new MessageGuiWorkbenchSyncServerGem());
 	    }
-		if (parButton.id == 7)
+		if(parButton.id == 7)
 	    {
 			this.metaGem = 7;
-			NetworkHandler.sendToServer(new MessageGuiWorkbenchSyncServer());
+			NetworkHandler.sendToServer(new MessageGuiWorkbenchSyncServerGem());
 	    }
-		if (parButton.id == 8)
+		if(parButton.id == 8)
 	    {
 			this.metaGem = 8;
-			NetworkHandler.sendToServer(new MessageGuiWorkbenchSyncServer());
+			NetworkHandler.sendToServer(new MessageGuiWorkbenchSyncServerGem());
+	    }
+		if(parButton.id == 9)
+	    {
+			this.metaOn = !this.metaOn;
+			NetworkHandler.sendToServer(new MessageGuiWorkbenchSyncServerOn());
 	    }
 		
         this.buttonList.clear();
@@ -158,8 +168,8 @@ public class GuiTileEntityGemstoneWorkbenchMain extends GuiContainer {
         
         int i = (this.width - this.xSize) / 2;
         int j = (this.height - this.ySize) / 2;
-
-        if (this.gemstoneWorkbench.isWorkbenchOn())
+        
+        if(this.gemstoneWorkbench.isWorkbenchOn())
         {
             int k = this.getBurnLeftScaled(13);
             this.drawTexturedModalRect(i + 57, j + 38 + 12 - k, 176, 12 - k, 14, k + 1);
@@ -173,7 +183,7 @@ public class GuiTileEntityGemstoneWorkbenchMain extends GuiContainer {
     {
         int i = this.gemstoneWorkbench.getField(1);
         
-        if (i == 0)
+        if(i == 0)
         {
             i = 200;
         }
@@ -184,6 +194,17 @@ public class GuiTileEntityGemstoneWorkbenchMain extends GuiContainer {
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
 	{
+		this.mc.getTextureManager().bindTexture(new ResourceLocation(References.MOD_ID + ":" + "textures/gui/container_gemstone_workbench.png"));
+		
+		if(this.gemstoneWorkbench.isOn)
+		{
+			this.drawTexturedModalRect(17, 53, 16, 166, 16, 16);
+		}
+		else
+		{
+			this.drawTexturedModalRect(17, 53, 0, 166, 16, 16);
+		}
+		
 		this.drawItemStack(new ItemStack(InitItemsVG.gemstone_item_basic_v1, 1, this.gemstoneWorkbench.gemstoneMeta), 56, 17, "");
 		
 		this.drawItemStack(new ItemStack(InitItemsVG.gemstone_item_basic_v1, 1, 0), -31, 9, "");
@@ -196,12 +217,28 @@ public class GuiTileEntityGemstoneWorkbenchMain extends GuiContainer {
 		this.drawItemStack(new ItemStack(InitItemsVG.gemstone_item_basic_v1, 1, 7), -15, 57, "");
 		this.drawItemStack(new ItemStack(InitItemsVG.gemstone_item_basic_v1, 1, 8), -23, 73, "");
 		
+		if(this.gemstoneWorkbench.getField(2) == 100)
+		{
+			this.fontRendererObj.drawString("100%", 14, 27, 0);
+		}
+		else if(this.gemstoneWorkbench.getField(2) > 9)
+		{
+			this.fontRendererObj.drawString(this.gemstoneWorkbench.getField(2) + "%", 17, 27, 0);
+		}
+		else if(this.gemstoneWorkbench.getField(2) > 0)
+		{
+			this.fontRendererObj.drawString(this.gemstoneWorkbench.getField(2) + "%", 20, 27, 0);
+		}
+		else if(this.gemstoneWorkbench.getField(2) == 0)
+		{
+			this.fontRendererObj.drawString("0%", 20, 27, 0);
+		}
 	}
 	
 	@Override
 	protected void keyTyped(char typedChar, int keyCode) throws IOException
     {
-		if (keyCode == 1 
+		if(keyCode == 1 
         || this.mc.gameSettings.keyBindInventory.isActiveAndMatches(keyCode))
         {
             this.mc.player.closeScreen();

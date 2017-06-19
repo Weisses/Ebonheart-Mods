@@ -20,6 +20,7 @@ public class ContainerGemstoneWorkbench extends ContainerVC {
     
     private int cutTime;
     private int totalCutTime;
+    private int procChance;
     
     public ContainerGemstoneWorkbench(InventoryPlayer playerInventory, World worldIn, TileEntityGemstoneWorkbench gemstoneWorkbenchIn)
     {
@@ -69,51 +70,34 @@ public class ContainerGemstoneWorkbench extends ContainerVC {
     {
         super.detectAndSendChanges();
         
-
         for (int i = 0; i < this.listeners.size(); ++i)
         {
             IContainerListener icontainerlistener = (IContainerListener)this.listeners.get(i);
-
+            
             if (this.cutTime != this.gemstoneWorkbench.getField(0))
             {
                 icontainerlistener.sendProgressBarUpdate(this, 0, this.gemstoneWorkbench.getField(0));
             }
-
+            
             if (this.totalCutTime != this.gemstoneWorkbench.getField(1))
             {
                 icontainerlistener.sendProgressBarUpdate(this, 1, this.gemstoneWorkbench.getField(1));
             }
-/**
-            if (this.furnaceBurnTime != this.tileFurnace.getField(0))
+            
+            if (this.procChance != this.gemstoneWorkbench.getField(2))
             {
-                icontainerlistener.sendProgressBarUpdate(this, 0, this.tileFurnace.getField(0));
+                icontainerlistener.sendProgressBarUpdate(this, 2, this.gemstoneWorkbench.getField(2));
             }
-
-            if (this.currentItemBurnTime != this.tileFurnace.getField(1))
-            {
-                icontainerlistener.sendProgressBarUpdate(this, 1, this.tileFurnace.getField(1));
-            }
-
-            if (this.totalCookTime != this.tileFurnace.getField(3))
-            {
-                icontainerlistener.sendProgressBarUpdate(this, 3, this.tileFurnace.getField(3));
-            }
-            */
         }
 
-        this.cutTime = this.gemstoneWorkbench.getField(2);
-        //this.furnaceBurnTime = this.tileFurnace.getField(0);
-        //this.currentItemBurnTime = this.tileFurnace.getField(1);
-        //this.totalCookTime = this.tileFurnace.getField(3);
+        this.cutTime = this.gemstoneWorkbench.getField(0);
+        this.totalCutTime = this.gemstoneWorkbench.getField(1);
+        this.procChance = this.gemstoneWorkbench.getField(2);
     }
     
-    
-    
-
     @SideOnly(Side.CLIENT)
     public void updateProgressBar(int id, int data)
     {
         this.gemstoneWorkbench.setField(id, data);
     }
-    
 }

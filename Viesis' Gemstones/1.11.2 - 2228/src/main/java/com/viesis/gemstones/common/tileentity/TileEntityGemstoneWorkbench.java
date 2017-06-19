@@ -2,14 +2,13 @@ package com.viesis.gemstones.common.tileentity;
 
 import javax.annotation.Nullable;
 
-import com.viesis.gemstones.api.internal.inventory.InputItemStackHandler;
+import com.viesis.gemstones.api.References;
 import com.viesis.gemstones.api.util.LogHelper;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemStack;
@@ -29,12 +28,15 @@ import net.minecraftforge.items.ItemStackHandler;
 
 public class TileEntityGemstoneWorkbench extends TileEntity implements ITickable {
     
-    public ItemStackHandler inventory;
     //public InputItemStackHandler inventoryInput;
+    public ItemStackHandler inventory;
     private int size = 2;
-    private int cutTime;
+    public int cutTime;
     private int totalCutTime;
     public int gemstoneMeta;
+    public int procChance;
+    public boolean isOn;
+    private String gemstoneWorkbenchCustomName;
     
     public TileEntityGemstoneWorkbench() 
     {
@@ -45,14 +47,14 @@ public class TileEntityGemstoneWorkbench extends TileEntity implements ITickable
     @Override
     public boolean hasCapability(Capability<?> capability, EnumFacing facing)
     {
-        if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) return true;
+        if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) return true;
         return super.hasCapability(capability, facing);
     }
     
     @Override
     public <T> T getCapability(Capability<T> capability, EnumFacing facing)
     {
-        if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) return (T) this.inventory;
+        if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) return (T) this.inventory;
         return super.getCapability(capability, facing);
     }
     
@@ -60,10 +62,17 @@ public class TileEntityGemstoneWorkbench extends TileEntity implements ITickable
     public NBTTagCompound writeToNBT(NBTTagCompound compound)
     {
     	super.writeToNBT(compound);
-    	
     	compound.setTag("Slots", this.inventory.serializeNBT());
     	compound.setInteger("CutTime", this.cutTime);
     	compound.setInteger("GemstoneMeta", this.gemstoneMeta);
+    	compound.setInteger("ProcChance", this.procChance);
+    	compound.setBoolean("IsOn", this.isOn);
+    	
+    	if (this.hasCustomName())
+        {
+            compound.setString("CustomName", this.gemstoneWorkbenchCustomName);
+        }
+    	
         return compound;
     }
     
@@ -71,17 +80,23 @@ public class TileEntityGemstoneWorkbench extends TileEntity implements ITickable
     public void readFromNBT(NBTTagCompound compound)
     {
     	super.readFromNBT(compound);
-    	
     	this.inventory.deserializeNBT(compound.getCompoundTag("Slots"));
     	this.cutTime = compound.getInteger("CutTime");
     	this.gemstoneMeta = compound.getInteger("GemstoneMeta");
+    	this.procChance = compound.getInteger("ProcChance");
+    	this.isOn = compound.getBoolean("IsOn");
+    	
+        if (compound.hasKey("CustomName", 8))
+        {
+            this.gemstoneWorkbenchCustomName = compound.getString("CustomName");
+        }
     }
     
 	@Override
 	@Nullable
 	public SPacketUpdateTileEntity getUpdatePacket() 
 	{
-		return new SPacketUpdateTileEntity(this.pos, 3, this.getUpdateTag());
+		return new SPacketUpdateTileEntity(this.pos, 7, this.getUpdateTag());
 	}
 
 	@Override
@@ -93,26 +108,33 @@ public class TileEntityGemstoneWorkbench extends TileEntity implements ITickable
 	@Override
 	public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) 
 	{
+		//this.setName(pkt.getNbtCompound().getString("name")); //These may help sync tile entity data.
+        //this.setCost(pkt.getNbtCompound().getInteger("cost"));
+        
 		super.onDataPacket(net, pkt);
 		handleUpdateTag(pkt.getNbtCompound());
 	}
 	
+	/**
+     * Get the name of this object. For players this returns their username
+     */
+	public String getName()
+    {
+        return this.hasCustomName() ? this.gemstoneWorkbenchCustomName : "gemstone_workbench";
+    }
+	
+	/**
+     * Returns true if this thing is named
+     */
+    public boolean hasCustomName()
+    {
+        return this.gemstoneWorkbenchCustomName != null && !this.gemstoneWorkbenchCustomName.isEmpty();
+    }
+	
     @Override
     public void update()
     {
-    	cuttingLogic();
-    	if(!this.world.isRemote)
-    	{
-    		//LogHelper.info("Cut Time = " + this.cutTime + " - " + this.canCut());
-    		//LogHelper.info("Item in FUEL slot = " + this.inventory.getStackInSlot(0));
-    		//LogHelper.info("Item in GEM slot = " + this.inventory.getStackInSlot(1));
-    		//LogHelper.info("GEM to cut = " + GemCuttingRecipes.CUT_GEM_OUTPUT[this.gemstoneMeta]);
-    	}
-    	if(this.world.isRemote)
-    	{
-    		//LogHelper.info("Client ----- " + this.gemstoneMeta);
-    	}
-    	
+    	this.cuttingLogic();
     }
     
     /**
@@ -125,40 +147,69 @@ public class TileEntityGemstoneWorkbench extends TileEntity implements ITickable
     	
         if(!this.world.isRemote)
         {
-            //If something in input slot
-        	if(!this.inventory.getStackInSlot(0).isEmpty())
-            {             
-        		this.totalCutTime = getMaxCutTime(this.inventory.getStackInSlot(0));
-                
-        		//Start cutting
-                if(!cuttingSomething() && canCut())
-                {
-                     if(cuttingSomething())
-                     {
-                         changedCuttingState = true;
-                     }
-                }
-                
-                //Continue cutting
-                if(cuttingSomething() && canCut())
-                {
-                    ++this.cutTime;
-                    
-                    //Check if completed cutting a gem
-                    if (this.cutTime == this.totalCutTime)
-                    {
-                    	this.cutTime = 0;
-                    	this.totalCutTime = getMaxCutTime(this.inventory.getStackInSlot(0));
-                        //ticksPerItem = timeToGrindOneItem(grinderItemStackArray[0]);
-                        cutGem();
-                        changedCuttingState = true;
-                    }
-                }
-                else
-                {
-                    this.cutTime = 0;
-                }
-            }
+        	if(this.isOn)
+            {
+        		//If something in input slot
+            	if(!this.inventory.getStackInSlot(0).isEmpty())
+            	{
+	        		this.totalCutTime = getMaxCutTime(this.inventory.getStackInSlot(0));
+	                this.procChance = getGemProc(this.inventory.getStackInSlot(0));
+	                
+	        		//Start cutting
+	                if(!cuttingSomething() && canCut())
+	                {
+	                     if(cuttingSomething())
+	                     {
+	                         changedCuttingState = true;
+	                     }
+	                }
+	                
+	                //Continue cutting
+	                if(cuttingSomething() && canCut())
+	                {
+	                    ++this.cutTime;
+	                    
+	                    //Check if completed cutting a gem
+	                    if(this.cutTime == this.totalCutTime)
+	                    {
+	                    	double procSuccessful = References.random.nextInt(100);
+	                    	this.cutTime = 0;
+	                    	this.totalCutTime = getMaxCutTime(this.inventory.getStackInSlot(0));
+	                        if(this.procChance >= procSuccessful)
+	                        {
+	                        	cutGem();
+	                        }
+	                        else
+	                        {
+	                        	this.inventory.getStackInSlot(0).shrink(1);
+	                        }
+	                    	
+	                        changedCuttingState = true;
+	                    }
+	                }
+	                else
+	                {
+	                    this.cutTime = 0;
+	                }
+            	}
+        		else
+        		{
+        			this.procChance = 0;
+        		}
+        	}
+        	else
+        	{
+        		this.cutTime = 0;
+        		
+        		if(!this.inventory.getStackInSlot(0).isEmpty())
+            	{
+        			this.procChance = getGemProc(this.inventory.getStackInSlot(0));
+            	}
+        		else
+        		{
+        			this.procChance = 0;
+        		}
+        	}
         	
             if(!canCut()
             && this.cutTime > 0)
@@ -176,11 +227,10 @@ public class TileEntityGemstoneWorkbench extends TileEntity implements ITickable
             if(hasBeenCutting != cuttingSomething())
             {
                 changedCuttingState = true;
-                //BlockGrinder.changeBlockBasedOnGrindingStatus(
-                //		cuttingSomething(), this.world, pos);
+                //BlockGrinder.changeBlockBasedOnGrindingStatus(cuttingSomething(), this.world, pos);
             }
-        }
-        
+    	}
+	    
         if(changedCuttingState)
         {
             this.markDirty();
@@ -203,7 +253,6 @@ public class TileEntityGemstoneWorkbench extends TileEntity implements ITickable
         	if(itemstack1.isEmpty()) return true;
         	if(!itemstack1.isItemEqual(GemCuttingRecipes.CUT_GEM_OUTPUT[this.gemstoneMeta])) return false;
         	
-            
             int result = itemstack1.getCount() + GemCuttingRecipes.CUT_GEM_OUTPUT[this.gemstoneMeta].getCount();
             return result <= 64 && result <= itemstack1.getMaxStackSize();
         }
@@ -241,15 +290,16 @@ public class TileEntityGemstoneWorkbench extends TileEntity implements ITickable
      */
     public int getMaxCutTime(ItemStack stack)
     {
-        if (stack.isEmpty())
+        if(stack.isEmpty())
         {
             return 0;
         }
         else
         {
+        	/**
         	Item item = stack.getItem();
 
-            if (item instanceof net.minecraft.item.ItemBlock && Block.getBlockFromItem(item) != Blocks.AIR)
+            if(item instanceof net.minecraft.item.ItemBlock && Block.getBlockFromItem(item) != Blocks.AIR)
             {
                 Block block = Block.getBlockFromItem(item);
 
@@ -273,7 +323,6 @@ public class TileEntityGemstoneWorkbench extends TileEntity implements ITickable
                 if (block == Blocks.GRASS_PATH) return 100;
                 if (block == Blocks.FARMLAND) return 100;
                 
-                
                 if (block == Blocks.NETHERRACK) return 100;
                 if (block == Blocks.NETHER_BRICK) return 100;
                 if (block == Blocks.RED_NETHER_BRICK) return 100;
@@ -293,14 +342,21 @@ public class TileEntityGemstoneWorkbench extends TileEntity implements ITickable
 
                 if (block == Blocks.COAL_BLOCK)
                 {
-                    return 16000;
+                    return 100;
                 }
             }
-        	
+        	*/
             return 100;
         }
     }
-    public static int getItemBurnTime(ItemStack stack)
+    
+    //TODO input % gain to harvest gemstone from input ItemStack
+    /**
+     * Gets the Max time needed to process an ItemStack into a Gem.
+     * @param stack ItemStack input (Slot 0) For now, just returns 100.
+     * @return
+     */
+    public int getGemProc(ItemStack stack)
     {
         if (stack.isEmpty())
         {
@@ -308,39 +364,97 @@ public class TileEntityGemstoneWorkbench extends TileEntity implements ITickable
         }
         else
         {
-            Item item = stack.getItem();
+        	Item item = stack.getItem();
 
             if (item instanceof net.minecraft.item.ItemBlock && Block.getBlockFromItem(item) != Blocks.AIR)
             {
                 Block block = Block.getBlockFromItem(item);
-
-                if (block == Blocks.WOODEN_SLAB)
-                {
-                    return 150;
-                }
-
-                if (block.getDefaultState().getMaterial() == Material.WOOD)
-                {
-                    return 300;
-                }
-
-                if (block == Blocks.COAL_BLOCK)
-                {
-                    return 16000;
-                }
+                
+                //Low 		1-15
+                if(block == Blocks.SAPLING) return 2;
+                if(block == Blocks.DIRT) return 3;
+                if(block == Blocks.GRASS) return 3;
+                if(block == Blocks.PLANKS) return 4;
+                if(block == Blocks.SAND) return 5;
+                if(block == Blocks.COBBLESTONE) return 5;
+                if(block == Blocks.GRAVEL) return 5;
+                if(block == Blocks.LOG) return 6;
+                if(block == Blocks.LEAVES) return 6;
+                
+                
+                
+                
+                //Mid-Low 	15-30
+                if(block == Blocks.STONE) return 10;
+                if(block == Blocks.COAL_ORE) return 50;
+                
+                //Mid 		30-45
+                if(block == Blocks.IRON_ORE) return 60;
+                
+                //Mid-High 	45-60
+                if(block == Blocks.REDSTONE_ORE) return 75;
+                if(block == Blocks.GOLD_BLOCK) return 80;
+                
+                //High 		60-75
+                if(block == Blocks.QUARTZ_ORE) return 85;
+                
+                //High-Rare 75-90
+                if(block == Blocks.LAPIS_ORE) return 90;
+                
+                //Rare 		90-100
+                if(block == Blocks.BEDROCK) return 100;
+                if(block == Blocks.DIAMOND_ORE) return 100;
+                if(block == Blocks.EMERALD_ORE) return 100;
+                
+                /**
+                if(block == Blocks.CLAY) return 8;
+                if(block == Blocks.STONE) return 10;
+                if(block == Blocks.SANDSTONE) return 10;
+                if(block == Blocks.RED_SANDSTONE) return 12;
+                if(block == Blocks.GRAVEL) return 15;
+                if(block == Blocks.HARDENED_CLAY) return 18;
+                if(block == Blocks.MOSSY_COBBLESTONE) return 20;
+                if(block == Blocks.MYCELIUM) return 20;
+                
+                
+                //Ores
+                if(block == Blocks.COAL_ORE) return 50;
+                if(block == Blocks.IRON_ORE) return 60;
+                if(block == Blocks.REDSTONE_ORE) return 75;
+                if(block == Blocks.GOLD_BLOCK) return 80;
+                if(block == Blocks.LAPIS_ORE) return 90;
+                if(block == Blocks.QUARTZ_ORE) return 85;
+                if(block == Blocks.DIAMOND_ORE) return 100;
+                if(block == Blocks.EMERALD_ORE) return 100;
+                
+                
+                
+                
+                
+                
+                
+                
+                if(block == Blocks.NETHERRACK) return 15;
+                if(block == Blocks.NETHER_BRICK) return 20;
+                if(block == Blocks.RED_NETHER_BRICK) return 20;
+                if(block == Blocks.ENCHANTING_TABLE) return 100;
+                if(block == Blocks.QUARTZ_BLOCK) return 100;
+                if(block == Blocks.OBSIDIAN) return 75;
+                if(block == Blocks.PRISMARINE) return 100;
+                if(block == Blocks.GLOWSTONE) return 85;
+                if(block == Blocks.END_STONE) return 100;
+                if(block == Blocks.PURPUR_BLOCK) return 100;
+                if(block == Blocks.SEA_LANTERN) return 100;
+                
+                */
             }
-
-            if (item instanceof ItemTool && "WOOD".equals(((ItemTool)item).getToolMaterialName())) return 200;
-            if (item instanceof ItemSword && "WOOD".equals(((ItemSword)item).getToolMaterialName())) return 200;
-            if (item instanceof ItemHoe && "WOOD".equals(((ItemHoe)item).getMaterialName())) return 200;
-            if (item == Items.STICK) return 100;
-            if (item == Items.COAL) return 1600;
-            if (item == Items.LAVA_BUCKET) return 20000;
-            if (item == Item.getItemFromBlock(Blocks.SAPLING)) return 100;
-            if (item == Items.BLAZE_ROD) return 2400;
-            return net.minecraftforge.fml.common.registry.GameRegistry.getFuelValue(stack);
+            
+            if(item == Items.STICK) return 5;
+        	
+            return 20;
         }
     }
+    
     /**
      * Is workbench on?
      */
@@ -366,12 +480,6 @@ public class TileEntityGemstoneWorkbench extends TileEntity implements ITickable
         return true;
     }
     
-    
-    
-    
-    
-    
-
     public int getField(int id)
     {
         switch (id)
@@ -380,11 +488,13 @@ public class TileEntityGemstoneWorkbench extends TileEntity implements ITickable
                 return this.cutTime;
             case 1:
                 return this.totalCutTime;
+            case 2:
+                return this.procChance;
             default:
                 return 0;
         }
     }
-
+    
     public void setField(int id, int value)
     {
         switch (id)
@@ -395,12 +505,15 @@ public class TileEntityGemstoneWorkbench extends TileEntity implements ITickable
             case 1:
                 this.totalCutTime = value;
                 break;
+            case 2:
+                this.procChance = value;
+                break;
         }
     }
-
+    
     public int getFieldCount()
     {
-        return 2;
+        return 3;
     }
 
     

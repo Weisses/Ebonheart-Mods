@@ -1,9 +1,11 @@
 package com.viesis.gemstones.network;
 
 import com.viesis.gemstones.api.References;
-import com.viesis.gemstones.network.client.MessageGuiWorkbenchSyncClient;
+import com.viesis.gemstones.network.client.MessageGuiWorkbenchSyncClientGem;
+import com.viesis.gemstones.network.client.MessageGuiWorkbenchSyncClientOn;
 import com.viesis.gemstones.network.server.MessageGuiWorkbenchMain;
-import com.viesis.gemstones.network.server.MessageGuiWorkbenchSyncServer;
+import com.viesis.gemstones.network.server.MessageGuiWorkbenchSyncServerGem;
+import com.viesis.gemstones.network.server.MessageGuiWorkbenchSyncServerOn;
 
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
@@ -23,8 +25,11 @@ public class NetworkHandler {
 		INSTANCE =  NetworkRegistry.INSTANCE.newSimpleChannel(References.MOD_ID);
 		
 		register(MessageGuiWorkbenchMain.class, MessageGuiWorkbenchMain.class, Side.SERVER);
-		register(MessageGuiWorkbenchSyncServer.class, MessageGuiWorkbenchSyncServer.class, Side.SERVER);
-		register(MessageGuiWorkbenchSyncClient.class, MessageGuiWorkbenchSyncClient.class, Side.CLIENT);
+		register(MessageGuiWorkbenchSyncServerGem.class, MessageGuiWorkbenchSyncServerGem.class, Side.SERVER);
+		register(MessageGuiWorkbenchSyncClientGem.class, MessageGuiWorkbenchSyncClientGem.class, Side.CLIENT);
+		
+		register(MessageGuiWorkbenchSyncServerOn.class, MessageGuiWorkbenchSyncServerOn.class, Side.SERVER);
+		register(MessageGuiWorkbenchSyncClientOn.class, MessageGuiWorkbenchSyncClientOn.class, Side.CLIENT);
 		
 		//register(MessageConfig.class, MessageConfig.class, Side.SERVER);
 		//register(MessageGuiDefault.class, MessageGuiDefault.class, Side.SERVER);
