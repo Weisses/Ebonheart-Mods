@@ -1,5 +1,6 @@
 package com.viesis.gemstones.common.blocks.basic;
 
+import com.viesis.gemstones.ViesisGemstones;
 import com.viesis.gemstones.common.blocks.BlockHelper;
 
 import net.minecraft.block.BlockFenceGate;
@@ -20,6 +21,7 @@ public class BlockGateVG extends BlockFenceGate {
         this.setHarvestLevel("pickaxe", 2);
         this.setHardness(5.0F);
         this.setSoundType(SoundType.STONE);
+		this.setCreativeTab(ViesisGemstones.tabVGBlocksRegular);
 	}
 	
 	@Override

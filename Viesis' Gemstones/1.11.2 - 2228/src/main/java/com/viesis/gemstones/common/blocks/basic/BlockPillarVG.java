@@ -1,5 +1,6 @@
 package com.viesis.gemstones.common.blocks.basic;
 
+import com.viesis.gemstones.ViesisGemstones;
 import com.viesis.gemstones.common.blocks.BlockHelper;
 
 import net.minecraft.block.BlockRotatedPillar;
@@ -18,6 +19,7 @@ public class BlockPillarVG extends BlockRotatedPillar {
 		this.setHardness(5.0F);
 		this.setSoundType(SoundType.STONE);
 		this.useNeighborBrightness = true;
+		this.setCreativeTab(ViesisGemstones.tabVGBlocksRegular);
 	}
 	
 	@Override

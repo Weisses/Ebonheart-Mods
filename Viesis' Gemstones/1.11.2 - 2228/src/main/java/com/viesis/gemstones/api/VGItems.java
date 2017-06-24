@@ -4,6 +4,8 @@ import net.minecraft.item.Item;
 
 public class VGItems {
 	
+	public static Item gemstone_item_unidentified;
+	
 	public static Item gemstone_item_basic_v1;
 	public static Item gemstone_item_dense_v1;
 	public static Item gemstone_item_cryptic_v1;
@@ -11,33 +13,6 @@ public class VGItems {
 	
 	
 	/**
-	public static Item draconium_dust;
-	public static Item velious;
-	public static Item arcanite;
-	public static Item katcheen;
-	public static Item necrocite;
-	public static Item soularite;
-	public static Item ebonheart;
-	public static Item enchanted_ebonheart;
-	public static Item obsidian_shards;
-	public static Item glowstone_shards;
-	
-	public static Item cryptic_draconium_dust;
-	public static Item cryptic_velious;
-	public static Item cryptic_arcanite;
-	public static Item cryptic_katcheen;
-	public static Item cryptic_necrocite;
-	public static Item cryptic_soularite;
-	public static Item cryptic_ebonheart;
-	public static Item cryptic_obsidian_shards;
-	public static Item cryptic_glowstone_shards;
-	
-	public static Item dense_draconium_dust;
-	public static Item dense_velious;
-	public static Item dense_arcanite;
-	public static Item dense_katcheen;
-	public static Item dense_necrocite;
-	public static Item dense_soularite;
 	
 	public static Item mirroring_disc;
 	public static Item glowing_disc;

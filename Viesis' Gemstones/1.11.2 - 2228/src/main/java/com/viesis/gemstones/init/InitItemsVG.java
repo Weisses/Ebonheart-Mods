@@ -6,6 +6,7 @@ import java.util.Set;
 import com.viesis.gemstones.api.VGItems;
 import com.viesis.gemstones.common.items.resources.gemstones.ItemGemstoneBasicV1;
 import com.viesis.gemstones.common.items.resources.gemstones.ItemGemstoneDenseV1;
+import com.viesis.gemstones.common.items.resources.gemstones.ItemGemstoneUnidentified;
 
 import net.minecraft.item.Item;
 import net.minecraftforge.common.util.EnumHelper;
@@ -24,7 +25,7 @@ public class InitItemsVG extends VGItems {
 	
 	public static void registerItem()
 	{
-		//test_book = registerItem(new ItemGuideEA());
+		gemstone_item_unidentified = registerItem(new ItemGemstoneUnidentified());
 		
 		gemstone_item_basic_v1 = registerItem(new ItemGemstoneBasicV1());
 		gemstone_item_dense_v1 = registerItem(new ItemGemstoneDenseV1());

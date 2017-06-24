@@ -1,11 +1,12 @@
 package com.viesis.gemstones.common.blocks.gemstones;
 
+import com.viesis.gemstones.ViesisGemstones;
 import com.viesis.gemstones.api.VGEnum.GemstoneTypeBlockV1;
 import com.viesis.gemstones.api.VGEnum.RegistryType;
 import com.viesis.gemstones.common.blocks.BlockHelper;
 import com.viesis.gemstones.common.blocks.IMetaBlockGemstone;
+import com.viesis.gemstones.common.blocks.basic.BlockBaseVG;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -23,32 +24,16 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockGemstoneBasicV1 extends Block implements IMetaBlockGemstone {
+public class BlockGemstoneBasicV1 extends BlockBaseVG implements IMetaBlockGemstone {
 	
 	public static final IProperty<GemstoneTypeBlockV1> VARIANT = PropertyEnum.create("variant", GemstoneTypeBlockV1.class);
 	
 	public BlockGemstoneBasicV1(String unlocalizedName) 
 	{
-		super(Material.ROCK);
-		BlockHelper.setBlockName(this, unlocalizedName);
+		super(unlocalizedName);
 		
-		this.setHarvestLevel("pickaxe", 2);
-		this.setHardness(5.0F);
-		this.setSoundType(SoundType.STONE);
-		this.useNeighborBrightness=true;
+		this.setCreativeTab(ViesisGemstones.tabVGBlocksRegular);
 	}
-	
-	@Override
-    public boolean isOpaqueCube(IBlockState state)
-    {
-    	return false;
-    }
-	
-	@Override
-	public boolean isFlammable(IBlockAccess world, BlockPos pos, EnumFacing face)
-    {
-        return false;
-    }
 	
 	@Override
 	protected BlockStateContainer createBlockState() 

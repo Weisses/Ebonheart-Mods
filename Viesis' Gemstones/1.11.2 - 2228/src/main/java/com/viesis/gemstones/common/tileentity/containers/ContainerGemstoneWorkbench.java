@@ -21,6 +21,7 @@ public class ContainerGemstoneWorkbench extends ContainerVC {
     private int cutTime;
     private int totalCutTime;
     private int procChance;
+    private boolean isOn;
     
     public ContainerGemstoneWorkbench(InventoryPlayer playerInventory, World worldIn, TileEntityGemstoneWorkbench gemstoneWorkbenchIn)
     {
@@ -55,6 +56,8 @@ public class ContainerGemstoneWorkbench extends ContainerVC {
     public void onContainerClosed(EntityPlayer playerIn)
     {
         super.onContainerClosed(playerIn);
+        
+        this.saveCraftingMatrix();
     }
     
     /**
@@ -62,6 +65,8 @@ public class ContainerGemstoneWorkbench extends ContainerVC {
      */
     public boolean canInteractWith(EntityPlayer playerIn)
     {
+    	this.saveCraftingMatrix();
+    	
         return this.world.getBlockState(this.gemstoneWorkbench.getPos()).getBlock() != InitBlocksVG.gemstone_workbench ? false : playerIn.getDistanceSq((double)this.gemstoneWorkbench.getPos().getX() + 0.5D, (double)this.gemstoneWorkbench.getPos().getY() + 0.5D, (double)this.gemstoneWorkbench.getPos().getZ() + 0.5D) <= 64.0D;
     }
     
@@ -69,6 +74,8 @@ public class ContainerGemstoneWorkbench extends ContainerVC {
     public void detectAndSendChanges()
     {
         super.detectAndSendChanges();
+        
+        this.saveCraftingMatrix();
         
         for (int i = 0; i < this.listeners.size(); ++i)
         {
@@ -93,11 +100,23 @@ public class ContainerGemstoneWorkbench extends ContainerVC {
         this.cutTime = this.gemstoneWorkbench.getField(0);
         this.totalCutTime = this.gemstoneWorkbench.getField(1);
         this.procChance = this.gemstoneWorkbench.getField(2);
+        this.isOn = this.gemstoneWorkbench.isOn;
     }
     
     @SideOnly(Side.CLIENT)
     public void updateProgressBar(int id, int data)
     {
         this.gemstoneWorkbench.setField(id, data);
+    }
+    
+    /**
+     * Saves the crafting matrix to the workbench inventory.
+     */
+    private void saveCraftingMatrix()
+    {
+	  	for (int i = 0; i < this.gemstoneWorkbench.inventory.getSlots(); i++) 
+    	{
+    		this.gemstoneWorkbench.inventory.setStackInSlot(i, this.gemstoneWorkbench.inventory.getStackInSlot(i));
+    	}
     }
 }

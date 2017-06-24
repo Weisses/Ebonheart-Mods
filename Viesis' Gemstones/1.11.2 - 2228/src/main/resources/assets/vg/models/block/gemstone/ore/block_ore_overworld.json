@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "particle": "vg:blocks/gemstones/ores/block_ore_overworld",
+        "down": "vg:blocks/gemstones/ores/block_ore_overworld",
+        "up": "vg:blocks/gemstones/ores/block_ore_overworld",
+        "north": "vg:blocks/gemstones/ores/block_ore_overworld",
+        "east": "vg:blocks/gemstones/ores/block_ore_overworld",
+        "south": "vg:blocks/gemstones/ores/block_ore_overworld",
+        "west": "vg:blocks/gemstones/ores/block_ore_overworld"
+    }
+}

@@ -25,6 +25,5 @@ public class BlockHelper extends Block {
 	{
 		block.setRegistryName(blockName);
 		block.setUnlocalizedName(block.getRegistryName().toString());
-		block.setCreativeTab(ViesisGemstones.tabVGBlocks);
 	}
 }

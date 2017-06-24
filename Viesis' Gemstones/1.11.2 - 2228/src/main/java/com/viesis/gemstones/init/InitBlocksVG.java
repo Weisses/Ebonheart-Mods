@@ -7,6 +7,7 @@ import java.util.function.Function;
 import javax.annotation.Nullable;
 
 import com.viesis.gemstones.ViesisGemstones;
+import com.viesis.gemstones.api.References;
 import com.viesis.gemstones.api.VGBlocks;
 import com.viesis.gemstones.common.blocks.basic.BlockFenceVG;
 import com.viesis.gemstones.common.blocks.basic.BlockGateVG;
@@ -29,6 +30,8 @@ import com.viesis.gemstones.common.blocks.torches.BlockTorchNecrociteVG;
 import com.viesis.gemstones.common.blocks.torches.BlockTorchOnyxiusVG;
 import com.viesis.gemstones.common.blocks.torches.BlockTorchSoulariteVG;
 import com.viesis.gemstones.common.blocks.torches.BlockTorchVeliousVG;
+import com.viesis.gemstones.common.blocks.world.BlockOreVG;
+import com.viesis.gemstones.common.blocks.world.ItemBlockOreVG;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockSlab;
@@ -44,6 +47,8 @@ public class InitBlocksVG extends VGBlocks {
 	{
 		gemstone_workbench = registerBlock(new BlockGemstoneWorkbench("gemstone_workbench"));
 		
+		gemstone_ore = registerBlockMetaGemstoneOre(new BlockOreVG("gemstone/ore/block_ore"));
+		
 		gemstone_block_basic_v1 = registerBlockMetaGemstoneBasicV1(new BlockGemstoneBasicV1("gemstone/regular/basic/block_basic"));
 		gemstone_block_brick_v1 = registerBlockMetaGemstoneBasicV1(new BlockGemstoneBasicV1("gemstone/regular/brick/block_brick"));
 		gemstone_block_fancybrick_v1 = registerBlockMetaGemstoneBasicV1(new BlockGemstoneBasicV1("gemstone/regular/fancybrick/block_fancybrick"));
@@ -58,15 +63,15 @@ public class InitBlocksVG extends VGBlocks {
 		basic_doubleslab_soularite = new BlockDoubleSlabVG("gemstone/regular/slab/basic_doubleslab_soularite").setResistance(45.0F);
 		basic_doubleslab_ebonheart = new BlockDoubleSlabVG("gemstone/regular/slab/basic_doubleslab_ebonheart").setResistance(2000.0F);
 		
-		basic_halfslab_draconite = new BlockHalfSlabVG("gemstone/regular/slab/basic_halfslab_draconite").setResistance(4.0F).setLightLevel(0.4f).setCreativeTab(ViesisGemstones.tabVGBlocks);
-		basic_halfslab_velious = new BlockHalfSlabVG("gemstone/regular/slab/basic_halfslab_velious").setResistance(15.0F).setCreativeTab(ViesisGemstones.tabVGBlocks);
-		basic_halfslab_arcanite = new BlockHalfSlabVG("gemstone/regular/slab/basic_halfslab_arcanite").setResistance(30.0F).setCreativeTab(ViesisGemstones.tabVGBlocks);
-		basic_halfslab_katcheen = new BlockHalfSlabVG("gemstone/regular/slab/basic_halfslab_katcheen").setResistance(100.0F).setCreativeTab(ViesisGemstones.tabVGBlocks);
-		basic_halfslab_carnelian = new BlockHalfSlabVG("gemstone/regular/slab/basic_halfslab_carnelian").setResistance(45.0F).setCreativeTab(ViesisGemstones.tabVGBlocks);
-		basic_halfslab_necrocite = new BlockHalfSlabVG("gemstone/regular/slab/basic_halfslab_necrocite").setResistance(45.0F).setCreativeTab(ViesisGemstones.tabVGBlocks);
-		basic_halfslab_onyxius = new BlockHalfSlabVG("gemstone/regular/slab/basic_halfslab_onyxius").setResistance(45.0F).setCreativeTab(ViesisGemstones.tabVGBlocks);
-		basic_halfslab_soularite = new BlockHalfSlabVG("gemstone/regular/slab/basic_halfslab_soularite").setResistance(45.0F).setCreativeTab(ViesisGemstones.tabVGBlocks);
-		basic_halfslab_ebonheart = new BlockHalfSlabVG("gemstone/regular/slab/basic_halfslab_ebonheart").setResistance(2000.0F).setCreativeTab(ViesisGemstones.tabVGBlocks);
+		basic_halfslab_draconite = new BlockHalfSlabVG("gemstone/regular/slab/basic_halfslab_draconite").setResistance(4.0F).setLightLevel(0.4f).setCreativeTab(ViesisGemstones.tabVGBlocksRegular);
+		basic_halfslab_velious = new BlockHalfSlabVG("gemstone/regular/slab/basic_halfslab_velious").setResistance(15.0F).setCreativeTab(ViesisGemstones.tabVGBlocksRegular);
+		basic_halfslab_arcanite = new BlockHalfSlabVG("gemstone/regular/slab/basic_halfslab_arcanite").setResistance(30.0F).setCreativeTab(ViesisGemstones.tabVGBlocksRegular);
+		basic_halfslab_katcheen = new BlockHalfSlabVG("gemstone/regular/slab/basic_halfslab_katcheen").setResistance(100.0F).setCreativeTab(ViesisGemstones.tabVGBlocksRegular);
+		basic_halfslab_carnelian = new BlockHalfSlabVG("gemstone/regular/slab/basic_halfslab_carnelian").setResistance(45.0F).setCreativeTab(ViesisGemstones.tabVGBlocksRegular);
+		basic_halfslab_necrocite = new BlockHalfSlabVG("gemstone/regular/slab/basic_halfslab_necrocite").setResistance(45.0F).setCreativeTab(ViesisGemstones.tabVGBlocksRegular);
+		basic_halfslab_onyxius = new BlockHalfSlabVG("gemstone/regular/slab/basic_halfslab_onyxius").setResistance(45.0F).setCreativeTab(ViesisGemstones.tabVGBlocksRegular);
+		basic_halfslab_soularite = new BlockHalfSlabVG("gemstone/regular/slab/basic_halfslab_soularite").setResistance(45.0F).setCreativeTab(ViesisGemstones.tabVGBlocksRegular);
+		basic_halfslab_ebonheart = new BlockHalfSlabVG("gemstone/regular/slab/basic_halfslab_ebonheart").setResistance(2000.0F).setCreativeTab(ViesisGemstones.tabVGBlocksRegular);
 		
 		registerBlockSlab(basic_halfslab_draconite, basic_doubleslab_draconite);
 		registerBlockSlab(basic_halfslab_velious, basic_doubleslab_velious);
@@ -536,62 +541,90 @@ public class InitBlocksVG extends VGBlocks {
 	}
 	
 	/**
-	 * Register a Block with a custom ItemBlock class.
+	 * Register a basic Block with a custom ItemBlock class.
 	 *
 	 * @param <BLOCK>     The Block type
 	 * @param block       The Block instance
 	 * @param itemFactory A function that creates the ItemBlock instance, or null if no ItemBlock should be created
 	 * @return The Block instance
 	 */
-	protected static <BLOCK extends Block> BLOCK registerBlock(BLOCK block, @Nullable Function<BLOCK, ItemBlock> itemFactory) {
+	protected static <BLOCK extends Block> BLOCK registerBlock(BLOCK block, @Nullable Function<BLOCK, ItemBlock> itemFactory) 
+	{
 		GameRegistry.register(block);
-
-		if (itemFactory != null) {
+		
+		if (itemFactory != null) 
+		{
 			final ItemBlock itemBlock = itemFactory.apply(block);
-
 			GameRegistry.register(itemBlock.setRegistryName(block.getRegistryName()));
 		}
+		
 		blocks.add(block);
 		return block;
 	}
 	
-
 	protected static <V extends Block> V registerBlockMetaGemstoneBasicV1(V block)
 	{
 		return registerBlock(block, ItemBlockGemstoneBasicV1::new);
 	}
 	
 	/**
-	 * Register a Block with a custom ItemBlock class.
+	 * Register a "meta" Block with a custom ItemBlock class.
 	 *
 	 * @param <BLOCK>     The Block type
 	 * @param block       The Block instance
 	 * @param itemFactory A function that creates the ItemBlock instance, or null if no ItemBlock should be created
 	 * @return The Block instance
 	 */
-	protected static <BLOCK extends Block> BLOCK registerBlockMetaGemstoneBasicV1(BLOCK block, @Nullable Function<BLOCK, ItemBlockGemstoneBasicV1> itemFactory) {
+	protected static <BLOCK extends Block> BLOCK registerBlockMetaGemstoneBasicV1(BLOCK block, @Nullable Function<BLOCK, ItemBlockGemstoneBasicV1> itemFactory) 
+	{
 		GameRegistry.register(block);
-
-		if (itemFactory != null) {
+		
+		if (itemFactory != null) 
+		{
 			final ItemBlockGemstoneBasicV1 itemBlock = itemFactory.apply(block);
-
 			GameRegistry.register(itemBlock.setRegistryName(block.getRegistryName()));
 		}
+		
 		blocks.add(block);
 		return block;
 	}
 	
+	protected static <V extends Block> V registerBlockMetaGemstoneOre(V block)
+	{
+		return registerBlock(block, ItemBlockOreVG::new);
+	}
 	
+	/**
+	 * Register a "meta" Ore Block with a custom ItemBlock class.
+	 *
+	 * @param <BLOCK>     The Block type
+	 * @param block       The Block instance
+	 * @param itemFactory A function that creates the ItemBlock instance, or null if no ItemBlock should be created
+	 * @return The Block instance
+	 */
+	protected static <BLOCK extends Block> BLOCK registerBlockMetaGemstoneOre(BLOCK block, @Nullable Function<BLOCK, ItemBlockOreVG> itemFactory) 
+	{
+		GameRegistry.register(block);
+		
+		if (itemFactory != null) 
+		{
+			final ItemBlockOreVG itemBlock = itemFactory.apply(block);
+			GameRegistry.register(itemBlock.setRegistryName(block.getRegistryName()));
+		}
+		
+		blocks.add(block);
+		return block;
+	}
 	
-	
-	
-	
-	private static void registerBlockSlab(Block slab, Block doubleslab){
+	private static void registerBlockSlab(Block slab, Block doubleslab)
+	{
 		GameRegistry.register(slab);
 		GameRegistry.register(doubleslab);
 		ItemSlab item = new ItemSlab(slab, (BlockSlab) slab, (BlockSlab) doubleslab);
 		item.setRegistryName(slab.getRegistryName());
 		GameRegistry.register(item);
 	}
+
+	
 	
 }

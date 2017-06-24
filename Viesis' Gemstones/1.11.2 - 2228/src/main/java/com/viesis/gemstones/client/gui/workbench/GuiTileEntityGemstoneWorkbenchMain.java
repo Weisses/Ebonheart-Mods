@@ -54,6 +54,7 @@ public class GuiTileEntityGemstoneWorkbenchMain extends GuiContainer {
 		this.gemstoneWorkbench = gemstoneWorkbenchIn;
 		this.xSize = 176;
 		this.ySize = 166;
+		this.metaOn = this.gemstoneWorkbench.isOn;
 		
 		this.metaPosX = this.gemstoneWorkbench.getPos().getX();
 		this.metaPosY = this.gemstoneWorkbench.getPos().getY();
@@ -217,9 +218,13 @@ public class GuiTileEntityGemstoneWorkbenchMain extends GuiContainer {
 		this.drawItemStack(new ItemStack(InitItemsVG.gemstone_item_basic_v1, 1, 7), -15, 57, "");
 		this.drawItemStack(new ItemStack(InitItemsVG.gemstone_item_basic_v1, 1, 8), -23, 73, "");
 		
-		if(this.gemstoneWorkbench.getField(2) == 100)
+		if(this.gemstoneWorkbench.getField(2) >= 200)
 		{
-			this.fontRendererObj.drawString("100%", 14, 27, 0);
+			this.fontRendererObj.drawString(this.gemstoneWorkbench.getField(2) + "%", 14, 27, 0);
+		}
+		else if(this.gemstoneWorkbench.getField(2) >= 100)
+		{
+			this.fontRendererObj.drawString(this.gemstoneWorkbench.getField(2) + "%", 16, 27, 0);
 		}
 		else if(this.gemstoneWorkbench.getField(2) > 9)
 		{

@@ -1,254 +1,170 @@
 < en_US.lang - English localization file for the Viesis' Gemstones Mod >
 
 //-----Creative Tabs-----
-itemGroup.tabVGBlocks=Viesis' Gemstones Blocks
+itemGroup.tabVGGeneral=Viesis' Gemstones General Blocks
 itemGroup.tabVGItems=Viesis' Gemstones Items
-itemGroup.tabVGDyeables=Viesis' Gemstones Dyeables
-itemGroup.tabVGCryptic=Viesis' Gemstones Cryptic
+itemGroup.tabVGBlocksRegular=Viesis' Gemstones Regular Blocks
+itemGroup.tabVGBlocks=Viesis' Gemstones Cosmic Blocks
+itemGroup.tabVGBlocks=Viesis' Gemstones Shadow Blocks
 
 //-----Items-----
+vg.item.gemstone_unidentified=Unidentified Gemstone
 vg.item.gemstone=Gemstone
 vg.item.dense=Dense
 vg.item.cryptic=Cryptic
 vg.block.gemstone=Block
 
-item.vg:gem/draconium_dust.name=Draconite Dust
-item.vg:gem/velious.name=Velious
-item.vg:gem/arcanite.name=Arcanite
-item.vg:gem/katcheen.name=Katcheen
-item.vg:gem/necrocite.name=Necrocite
-item.vg:gem/soularite.name=Soularite
-item.vg:gem/ebonheart.name=Ebonheart
-item.vg:gem/enchanted_ebonheart.name=Enchanted Ebonheart
-item.vg:gem/obsidian_shard.name=Obsidian Shard
-item.vg:gem/glowstone_shard.name=Glowstone Shard
-item.vg:tool/empowered_blade.name=Empowered Blade
-
-item.vg:gem/cryptic_draconium_dust.name=Cryptic Draconite Dust
-item.vg:gem/cryptic_draconium_dust.desc=Cryptic Draconite Dust TEST!
-item.vg:gem/cryptic_velious.name=Cryptic Velious
-item.vg:gem/cryptic_arcanite.name=Cryptic Arcanite
-item.vg:gem/cryptic_katcheen.name=Cryptic Katcheen
-item.vg:gem/cryptic_necrocite.name=Cryptic Necrocite
-item.vg:gem/cryptic_soularite.name=Cryptic Soularite
-item.vg:gem/cryptic_ebonheart.name=Cryptic Ebonheart
-item.vg:gem/cryptic_obsidian_shard.name=Cryptic Obsidian Shard
-item.vg:gem/cryptic_glowstone_shard.name=Cryptic Glowstone Shard
-
-item.vg:gem/dense_draconium_dust.name=Dense Draconite Dust
-item.vg:gem/dense_velious.name=Dense Velious
-item.vg:gem/dense_arcanite.name=Dense Arcanite
-item.vg:gem/dense_katcheen.name=Dense Katcheen
-item.vg:gem/dense_necrocite.name=Dense Necrocite
-item.vg:gem/dense_soularite.name=Dense Soularite
-
-item.vg:disc/glowing_disc.name=Glowing Disc
-item.vg:disc/shimmering_disc.name=Shimmering Disc
-item.vg:disc/laminate_disc.name=Laminate Disc
-item.vg:disc/resilient_disc.name=Resilient Disc
-item.vg:disc/dismal_disc.name=Dismal Disc
-item.vg:disc/ethereal_disc.name=Ethereal Disc
-item.vg:disc/mirroring_disc.name=Mirroring Disc
+//-----Tile Entity-----
+tile.vg:gemstone_workbench.name=Gemstone Workbench
 
 //-----Ores-----
-tile.vg:ore/draconium_ore.name=Draconite Ore
-tile.vg:ore/velious_ore.name=Velious Ore
-tile.vg:ore/arcanite_ore.name=Arcanite Ore
-tile.vg:ore/katcheen_ore.name=Katcheen Ore
-tile.vg:ore/ebon_ore.name=Ebon Ore
-tile.vg:ore/necrocite_ore.name=Necrocite Ore
-tile.vg:ore/soularite_ore.name=Soularite Ore
-tile.vg:ore/ebonheart_ore.name=Ebonheart Ore
-tile.vg:ore/ebon_ore_nether.name=Ebon Ore
-tile.vg:ore/necrocite_ore_end.name=Necrocite Ore
-tile.vg:ore/soularite_ore_end.name=Soularite Ore
-tile.vg:ore/ebonheart_ore_end.name=Ebonheart Ore
-tile.vg:ore/ebon_ore_end.name=Ebon Ore
+tile.vg:gemstone/ore/block_ore_overworld.name=Gem-Infused Ore
+tile.vg:gemstone/ore/block_ore_nether.name=Gem-Infused Ore
+tile.vg:gemstone/ore/block_ore_end.name=Gem-Infused Ore
 
 //-----Blocks-----
-tile.vg:gem/mystic/stone/mystic_block_normal.name=Mystic Stone
-tile.vg:gem/mystic/stone/mystic_block_white.name=White Mystic Stone
-tile.vg:gem/mystic/stone/mystic_block_orange.name=Orange Mystic Stone
-tile.vg:gem/mystic/stone/mystic_block_magenta.name=Magenta Mystic Stone
-tile.vg:gem/mystic/stone/mystic_block_lightblue.name=Light Blue Mystic Stone
-tile.vg:gem/mystic/stone/mystic_block_yellow.name=Yellow Mystic Stone
-tile.vg:gem/mystic/stone/mystic_block_lime.name=Lime Mystic Stone
-tile.vg:gem/mystic/stone/mystic_block_pink.name=Pink Mystic Stone
-tile.vg:gem/mystic/stone/mystic_block_gray.name=Gray Mystic Stone
-tile.vg:gem/mystic/stone/mystic_block_lightgray.name=Light Gray Mystic Stone
-tile.vg:gem/mystic/stone/mystic_block_cyan.name=Cyan Mystic Stone
-tile.vg:gem/mystic/stone/mystic_block_purple.name=Purple Mystic Stone
-tile.vg:gem/mystic/stone/mystic_block_blue.name=Blue Mystic Stone
-tile.vg:gem/mystic/stone/mystic_block_brown.name=Brown Mystic Stone
-tile.vg:gem/mystic/stone/mystic_block_green.name=Green Mystic Stone
-tile.vg:gem/mystic/stone/mystic_block_red.name=Red Mystic Stone
-tile.vg:gem/mystic/stone/mystic_block_black.name=Black Mystic Stone
-tile.vg:gem/mystic/stone/mystic_block_glass.name=Clear Mystic Stone
+tile.vg:gemstone/regular/basic/block_basic_draconite.name=Draconite Block
+tile.vg:gemstone/regular/basic/block_basic_velious.name=Velious Block
+tile.vg:gemstone/regular/basic/block_basic_arcanite.name=Arcanite Block
+tile.vg:gemstone/regular/basic/block_basic_katcheen.name=Katcheen Block
+tile.vg:gemstone/regular/basic/block_basic_carnelian.name=Carnelian Block
+tile.vg:gemstone/regular/basic/block_basic_necrocite.name=Necrocite Block
+tile.vg:gemstone/regular/basic/block_basic_onyxius.name=Onyxius Block
+tile.vg:gemstone/regular/basic/block_basic_soularite.name=Soularite Block
+tile.vg:gemstone/regular/basic/block_basic_ebonheart.name=Ebonheart Block
 
-tile.vg:gem/mystic/cobblestone/cobble_mystic_block_normal.name=Mystic Cobblestone
-tile.vg:gem/mystic/cobblestone/cobble_mystic_block_white.name=White Mystic Cobblestone
-tile.vg:gem/mystic/cobblestone/cobble_mystic_block_orange.name=Orange Mystic Cobblestone
-tile.vg:gem/mystic/cobblestone/cobble_mystic_block_magenta.name=Magenta Mystic Cobblestone
-tile.vg:gem/mystic/cobblestone/cobble_mystic_block_lightblue.name=Light Blue Mystic Cobblestone
-tile.vg:gem/mystic/cobblestone/cobble_mystic_block_yellow.name=Yellow Mystic Cobblestone
-tile.vg:gem/mystic/cobblestone/cobble_mystic_block_lime.name=Lime Mystic Cobblestone
-tile.vg:gem/mystic/cobblestone/cobble_mystic_block_pink.name=Pink Mystic Cobblestone
-tile.vg:gem/mystic/cobblestone/cobble_mystic_block_gray.name=Gray Mystic Cobblestone
-tile.vg:gem/mystic/cobblestone/cobble_mystic_block_lightgray.name=Light Gray Mystic Cobblestone
-tile.vg:gem/mystic/cobblestone/cobble_mystic_block_cyan.name=Cyan Mystic Cobblestone
-tile.vg:gem/mystic/cobblestone/cobble_mystic_block_purple.name=Purple Mystic Cobblestone
-tile.vg:gem/mystic/cobblestone/cobble_mystic_block_blue.name=Blue Mystic Cobblestone
-tile.vg:gem/mystic/cobblestone/cobble_mystic_block_brown.name=Brown Mystic Cobblestone
-tile.vg:gem/mystic/cobblestone/cobble_mystic_block_green.name=Green Mystic Cobblestone
-tile.vg:gem/mystic/cobblestone/cobble_mystic_block_red.name=Red Mystic Cobblestone
-tile.vg:gem/mystic/cobblestone/cobble_mystic_block_black.name=Black Mystic Cobblestone
-tile.vg:gem/mystic/cobblestone/cobble_mystic_block_glass.name=Clear Mystic Cobblestone
+tile.vg:gemstone/regular/brick/block_brick_draconite.name=Draconite Brick
+tile.vg:gemstone/regular/brick/block_brick_velious.name=Velious Brick
+tile.vg:gemstone/regular/brick/block_brick_arcanite.name=Arcanite Brick
+tile.vg:gemstone/regular/brick/block_brick_katcheen.name=Katcheen Brick
+tile.vg:gemstone/regular/brick/block_brick_carnelian.name=Carnelian Brick
+tile.vg:gemstone/regular/brick/block_brick_necrocite.name=Necrocite Brick
+tile.vg:gemstone/regular/brick/block_brick_onyxius.name=Onyxius Brick
+tile.vg:gemstone/regular/brick/block_brick_soularite.name=Soularite Brick
+tile.vg:gemstone/regular/brick/block_brick_ebonheart.name=Ebonheart Brick
 
-tile.vg:gem/mystic/wood/wood_mystic_block_normal.name=Mystic Wood Planks
-tile.vg:gem/mystic/wood/wood_mystic_block_white.name=White Mystic Wood Planks
-tile.vg:gem/mystic/wood/wood_mystic_block_orange.name=Orange Mystic Wood Planks
-tile.vg:gem/mystic/wood/wood_mystic_block_magenta.name=Magenta Mystic Wood Planks
-tile.vg:gem/mystic/wood/wood_mystic_block_lightblue.name=Light Blue Mystic Wood Planks
-tile.vg:gem/mystic/wood/wood_mystic_block_yellow.name=Yellow Mystic Wood Planks
-tile.vg:gem/mystic/wood/wood_mystic_block_lime.name=Lime Mystic Wood Planks
-tile.vg:gem/mystic/wood/wood_mystic_block_pink.name=Pink Mystic Wood Planks
-tile.vg:gem/mystic/wood/wood_mystic_block_gray.name=Gray Mystic Wood Planks
-tile.vg:gem/mystic/wood/wood_mystic_block_lightgray.name=Light Gray Mystic Wood Planks
-tile.vg:gem/mystic/wood/wood_mystic_block_cyan.name=Cyan Mystic Wood Planks
-tile.vg:gem/mystic/wood/wood_mystic_block_purple.name=Purple Mystic Wood Planks
-tile.vg:gem/mystic/wood/wood_mystic_block_blue.name=Blue Mystic Wood Planks
-tile.vg:gem/mystic/wood/wood_mystic_block_brown.name=Brown Mystic Wood Planks
-tile.vg:gem/mystic/wood/wood_mystic_block_green.name=Green Mystic Wood Planks
-tile.vg:gem/mystic/wood/wood_mystic_block_red.name=Red Mystic Wood Planks
-tile.vg:gem/mystic/wood/wood_mystic_block_black.name=Black Mystic Wood Planks
-tile.vg:gem/mystic/wood/wood_mystic_block_glass.name=Clear Mystic Wood Planks
+tile.vg:gemstone/regular/fancybrick/block_fancybrick_draconite.name=Draconite Fancy Brick
+tile.vg:gemstone/regular/fancybrick/block_fancybrick_velious.name=Velious Fancy Brick
+tile.vg:gemstone/regular/fancybrick/block_fancybrick_arcanite.name=Arcanite Fancy Brick
+tile.vg:gemstone/regular/fancybrick/block_fancybrick_katcheen.name=Katcheen Fancy Brick
+tile.vg:gemstone/regular/fancybrick/block_fancybrick_carnelian.name=Carnelian Fancy Brick
+tile.vg:gemstone/regular/fancybrick/block_fancybrick_necrocite.name=Necrocite Fancy Brick
+tile.vg:gemstone/regular/fancybrick/block_fancybrick_onyxius.name=Onyxius Fancy Brick
+tile.vg:gemstone/regular/fancybrick/block_fancybrick_soularite.name=Soularite Fancy Brick
+tile.vg:gemstone/regular/fancybrick/block_fancybrick_ebonheart.name=Ebonheart Fancy Brick
 
-tile.vg:gem/draconium/draconium_block.name=Draconite Block
-tile.vg:gem/velious/velious_block.name=Velious Block
-tile.vg:gem/arcanite/arcanite_block.name=Arcanite Block
-tile.vg:gem/katcheen/katcheen_block.name=Katcheen Block
-tile.vg:gem/necrocite/necrocite_block.name=Necrocite Block
-tile.vg:gem/soularite/soularite_block.name=Soularite Block
-tile.vg:gem/obsidian/obsidian_block.name=Purified Obsidian Block
-tile.vg:gem/glowstone/glowstone_block.name=Purified Glowstone Block
-tile.vg:gem/ebonheart/ebonheart_block.name=Ebonheart Block
+tile.gemstone/regular/slab/basic_halfslab_draconite.name=Draconite Slab
+tile.gemstone/regular/slab/basic_halfslab_velious.name=Velious Slab
+tile.gemstone/regular/slab/basic_halfslab_arcanite.name=Arcanite Slab
+tile.gemstone/regular/slab/basic_halfslab_katcheen.name=Katcheen Slab
+tile.gemstone/regular/slab/basic_halfslab_carnelian.name=Carnelian Slab
+tile.gemstone/regular/slab/basic_halfslab_necrocite.name=Necrocite Slab
+tile.gemstone/regular/slab/basic_halfslab_onyxius.name=Onyxius Slab
+tile.gemstone/regular/slab/basic_halfslab_soularite.name=Soularite Slab
+tile.gemstone/regular/slab/basic_halfslab_ebonheart.name=Ebonheart Slab
 
-tile.vg:gem/draconium/draconium_block_brick.name=Draconite Brick
-tile.vg:gem/velious/velious_block_brick.name=Velious Brick
-tile.vg:gem/arcanite/arcanite_block_brick.name=Arcanite Brick
-tile.vg:gem/katcheen/katcheen_block_brick.name=Katcheen Brick
-tile.vg:gem/necrocite/necrocite_block_brick.name=Necrocite Brick
-tile.vg:gem/soularite/soularite_block_brick.name=Soularite Brick
-tile.vg:gem/obsidian/obsidian_block_brick.name=Purified Obsidian Brick
-tile.vg:gem/glowstone/glowstone_block_brick.name=Purified Glowstone Brick
-tile.vg:gem/ebonheart/ebonheart_block_brick.name=Ebonheart Brick
+tile.gemstone/regular/slab/basic_doubleslab_draconite.name=Draconite Slab
+tile.gemstone/regular/slab/basic_doubleslab_velious.name=Velious Slab
+tile.gemstone/regular/slab/basic_doubleslab_arcanite.name=Arcanite Slab
+tile.gemstone/regular/slab/basic_doubleslab_katcheen.name=Katcheen Slab
+tile.gemstone/regular/slab/basic_doubleslab_carnelian.name=Carnelian Slab
+tile.gemstone/regular/slab/basic_doubleslab_necrocite.name=Necrocite Slab
+tile.gemstone/regular/slab/basic_doubleslab_onyxius.name=Onyxius Slab
+tile.gemstone/regular/slab/basic_doubleslab_soularite.name=Soularite Slab
+tile.gemstone/regular/slab/basic_doubleslab_ebonheart.name=Ebonheart Slab
 
-tile.vg:fence/draconium_fence.name=Draconite Fence
-tile.vg:fence/velious_fence.name=Velious Fence
-tile.vg:fence/arcanite_fence.name=Arcanite Fence
-tile.vg:fence/katcheen_fence.name=Katcheen Fence
-tile.vg:fence/necrocite_fence.name=Necrocite Fence
-tile.vg:fence/soularite_fence.name=Soularite Fence
-tile.vg:fence/obsidian_fence.name=Purified Obsidian Fence
-tile.vg:fence/glowstone_fence.name=Purified Glowstone Fence
-tile.vg:fence/ebonheart_fence.name=Ebonheart Fence
+tile.vg:gemstone/regular/stairs/basic_stairs_draconite.name=Draconite Stairs
+tile.vg:gemstone/regular/stairs/basic_stairs_velious.name=Velious Stairs
+tile.vg:gemstone/regular/stairs/basic_stairs_arcanite.name=Arcanite Stairs
+tile.vg:gemstone/regular/stairs/basic_stairs_katcheen.name=Katcheen Stairs
+tile.vg:gemstone/regular/stairs/basic_stairs_carnelian.name=Carnelian Stairs
+tile.vg:gemstone/regular/stairs/basic_stairs_necrocite.name=Necrocite Stairs
+tile.vg:gemstone/regular/stairs/basic_stairs_onyxius.name=Onyxius Stairs
+tile.vg:gemstone/regular/stairs/basic_stairs_soularite.name=Soularite Stairs
+tile.vg:gemstone/regular/stairs/basic_stairs_ebonheart.name=Ebonheart Stairs
 
-tile.vg:fence/draconium_fence_gate.name=Draconite Gate
-tile.vg:fence/velious_fence_gate.name=Velious Gate
-tile.vg:fence/arcanite_fence_gate.name=Arcanite Gate
-tile.vg:fence/katcheen_fence_gate.name=Katcheen Gate
-tile.vg:fence/necrocite_fence_gate.name=Necrocite Gate
-tile.vg:fence/soularite_fence_gate.name=Soularite Gate
-tile.vg:fence/obsidian_fence_gate.name=Purified Obsidian Gate
-tile.vg:fence/glowstone_fence_gate.name=Purified Glowstone Gate
-tile.vg:fence/ebonheart_fence_gate.name=Ebonheart Gate
+tile.vg:gemstone/regular/fence/basic_fence_draconite.name=Draconite Fence
+tile.vg:gemstone/regular/fence/basic_fence_velious.name=Velious Fence
+tile.vg:gemstone/regular/fence/basic_fence_arcanite.name=Arcanite Fence
+tile.vg:gemstone/regular/fence/basic_fence_katcheen.name=Katcheen Fence
+tile.vg:gemstone/regular/fence/basic_fence_carnelian.name=Carnelian Fence
+tile.vg:gemstone/regular/fence/basic_fence_necrocite.name=Necrocite Fence
+tile.vg:gemstone/regular/fence/basic_fence_onyxius.name=Onyxius Fence
+tile.vg:gemstone/regular/fence/basic_fence_soularite.name=Soularite Fence
+tile.vg:gemstone/regular/fence/basic_fence_ebonheart.name=Ebonheart Fence
 
-tile.vg:wall/draconium_wall.name=Draconite Wall
-tile.vg:wall/velious_wall.name=Velious Wall
-tile.vg:wall/arcanite_wall.name=Arcanite Wall
-tile.vg:wall/katcheen_wall.name=Katcheen Wall
-tile.vg:wall/necrocite_wall.name=Necrocite Wall
-tile.vg:wall/soularite_wall.name=Soularite Wall
-tile.vg:wall/obsidian_wall.name=Purified Obsidian Wall
-tile.vg:wall/glowstone_wall.name=Purified Glowstone Wall
-tile.vg:wall/ebonheart_wall.name=Ebonheart Wall
+tile.vg:gemstone/regular/gate/basic_gate_draconite.name=Draconite Gate
+tile.vg:gemstone/regular/gate/basic_gate_velious.name=Velious Gate
+tile.vg:gemstone/regular/gate/basic_gate_arcanite.name=Arcanite Gate
+tile.vg:gemstone/regular/gate/basic_gate_katcheen.name=Katcheen Gate
+tile.vg:gemstone/regular/gate/basic_gate_carnelian.name=Carnelian Gate
+tile.vg:gemstone/regular/gate/basic_gate_necrocite.name=Necrocite Gate
+tile.vg:gemstone/regular/gate/basic_gate_onyxius.name=Onyxius Gate
+tile.vg:gemstone/regular/gate/basic_gate_soularite.name=Soularite Gate
+tile.vg:gemstone/regular/gate/basic_gate_ebonheart.name=Ebonheart Gate
 
-tile.vg:stairs/draconium_stairs.name=Draconite Stairs
-tile.vg:stairs/velious_stairs.name=Velious Stairs
-tile.vg:stairs/arcanite_stairs.name=Arcanite Stairs
-tile.vg:stairs/katcheen_stairs.name=Katcheen Stairs
-tile.vg:stairs/necrocite_stairs.name=Necrocite Stairs
-tile.vg:stairs/soularite_stairs.name=Soularite Stairs
-tile.vg:stairs/obsidian_stairs.name=Purified Obsidian Stairs
-tile.vg:stairs/glowstone_stairs.name=Purified Glowstone Stairs
-tile.vg:stairs/ebonheart_stairs.name=Ebonheart Stairs
+tile.vg:gemstone/regular/wall/basic_wall_draconite.name=Draconite Wall
+tile.vg:gemstone/regular/wall/basic_wall_velious.name=Velious Wall
+tile.vg:gemstone/regular/wall/basic_wall_arcanite.name=Arcanite Wall
+tile.vg:gemstone/regular/wall/basic_wall_katcheen.name=Katcheen Wall
+tile.vg:gemstone/regular/wall/basic_wall_carnelian.name=Carnelian Wall
+tile.vg:gemstone/regular/wall/basic_wall_necrocite.name=Necrocite Wall
+tile.vg:gemstone/regular/wall/basic_wall_onyxius.name=Onyxius Wall
+tile.vg:gemstone/regular/wall/basic_wall_soularite.name=Soularite Wall
+tile.vg:gemstone/regular/wall/basic_wall_ebonheart.name=Ebonheart Wall
 
-tile.slab/draconium/draconium_slab.name=Draconite Slab
-tile.slab/velious/velious_slab.name=Velious Slab
-tile.slab/arcanite/arcanite_slab.name=Arcanite Slab
-tile.slab/katcheen/katcheen_slab.name=Katcheen Slab
-tile.slab/necrocite/necrocite_slab.name=Necrocite Slab
-tile.slab/soularite/soularite_slab.name=Soularite Slab
-tile.slab/obsidian/obsidian_slab.name=Purified Obsidian Slab
-tile.slab/glowstone/glowstone_slab.name=Purified Glowstone Slab
-tile.slab/ebonheart/ebonheart_slab.name=Ebonheart Slab
+tile.vg:gemstone/regular/torch/basic_torch_draconite.name=Draconite Torch
+tile.vg:gemstone/regular/torch/basic_torch_velious.name=Velious Torch
+tile.vg:gemstone/regular/torch/basic_torch_arcanite.name=Arcanite Torch
+tile.vg:gemstone/regular/torch/basic_torch_katcheen.name=Katcheen Torch
+tile.vg:gemstone/regular/torch/basic_torch_carnelian.name=Carnelian Torch
+tile.vg:gemstone/regular/torch/basic_torch_necrocite.name=Necrocite Torch
+tile.vg:gemstone/regular/torch/basic_torch_onyxius.name=Onyxius Torch
+tile.vg:gemstone/regular/torch/basic_torch_soularite.name=Soularite Torch
+tile.vg:gemstone/regular/torch/basic_torch_ebonheart.name=Ebonheart Torch
 
-tile.vg:gem/draconium/draconium_torch.name=Draconite Torch
-tile.vg:gem/velious/velious_torch.name=Velious Torch
-tile.vg:gem/arcanite/arcanite_torch.name=Arcanite Torch
-tile.vg:gem/katcheen/katcheen_torch.name=Katcheen Torch
-tile.vg:gem/necrocite/necrocite_torch.name=Necrocite Torch
-tile.vg:gem/soularite/soularite_torch.name=Soularite Torch
-tile.vg:gem/obsidian/obsidian_torch.name=Purified Obsidian Torch
-tile.vg:gem/glowstone/glowstone_torch.name=Purified Glowstone Torch
-tile.vg:gem/ebonheart/ebonheart_torch.name=Ebonheart Torch
+tile.vg:gemstone/regular/trapdoor/basic_trapdoor_draconite.name=Draconite Trapdoor
+tile.vg:gemstone/regular/trapdoor/basic_trapdoor_velious.name=Velious Trapdoor
+tile.vg:gemstone/regular/trapdoor/basic_trapdoor_arcanite.name=Arcanite Trapdoor
+tile.vg:gemstone/regular/trapdoor/basic_trapdoor_katcheen.name=Katcheen Trapdoor
+tile.vg:gemstone/regular/trapdoor/basic_trapdoor_carnelian.name=Carnelian Trapdoor
+tile.vg:gemstone/regular/trapdoor/basic_trapdoor_necrocite.name=Necrocite Trapdoor
+tile.vg:gemstone/regular/trapdoor/basic_trapdoor_onyxius.name=Onyxius Trapdoor
+tile.vg:gemstone/regular/trapdoor/basic_trapdoor_soularite.name=Soularite Trapdoor
+tile.vg:gemstone/regular/trapdoor/basic_trapdoor_ebonheart.name=Ebonheart Trapdoor
 
-tile.vg:ladder/draconium_ladder.name=Draconite Ladder
-tile.vg:ladder/velious_ladder.name=Velious Ladder
-tile.vg:ladder/arcanite_ladder.name=Arcanite Ladder
-tile.vg:ladder/katcheen_ladder.name=Katcheen Ladder
-tile.vg:ladder/necrocite_ladder.name=Necrocite Ladder
-tile.vg:ladder/soularite_ladder.name=Soularite Ladder
-tile.vg:ladder/obsidian_ladder.name=Purified Obsidian Ladder
-tile.vg:ladder/glowstone_ladder.name=Purified Glowstone Ladder
-tile.vg:ladder/ebonheart_ladder.name=Ebonheart Ladder
+tile.vg:gemstone/regular/ladder/basic_ladder_draconite.name=Draconite Ladder
+tile.vg:gemstone/regular/ladder/basic_ladder_velious.name=Velious Ladder
+tile.vg:gemstone/regular/ladder/basic_ladder_arcanite.name=Arcanite Ladder
+tile.vg:gemstone/regular/ladder/basic_ladder_katcheen.name=Katcheen Ladder
+tile.vg:gemstone/regular/ladder/basic_ladder_carnelian.name=Carnelian Ladder
+tile.vg:gemstone/regular/ladder/basic_ladder_necrocite.name=Necrocite Ladder
+tile.vg:gemstone/regular/ladder/basic_ladder_onyxius.name=Onyxius Ladder
+tile.vg:gemstone/regular/ladder/basic_ladder_soularite.name=Soularite Ladder
+tile.vg:gemstone/regular/ladder/basic_ladder_ebonheart.name=Ebonheart Ladder
 
-tile.vg:pillar/draconium_pillar.name=Draconite Pillar
-tile.vg:pillar/velious_pillar.name=Velious Pillar
-tile.vg:pillar/arcanite_pillar.name=Arcanite Pillar
-tile.vg:pillar/katcheen_pillar.name=Katcheen Pillar
-tile.vg:pillar/necrocite_pillar.name=Necrocite Pillar
-tile.vg:pillar/soularite_pillar.name=Soularite Pillar
-tile.vg:pillar/obsidian_pillar.name=Purified Obsidian Pillar
-tile.vg:pillar/glowstone_pillar.name=Purified Glowstone Pillar
-tile.vg:pillar/ebonheart_pillar.name=Ebonheart Pillar
+tile.vg:gemstone/regular/pillar/basic_pillar_draconite.name=Draconite Pillar
+tile.vg:gemstone/regular/pillar/basic_pillar_velious.name=Velious Pillar
+tile.vg:gemstone/regular/pillar/basic_pillar_arcanite.name=Arcanite Pillar
+tile.vg:gemstone/regular/pillar/basic_pillar_katcheen.name=Katcheen Pillar
+tile.vg:gemstone/regular/pillar/basic_pillar_carnelian.name=Carnelian Pillar
+tile.vg:gemstone/regular/pillar/basic_pillar_necrocite.name=Necrocite Pillar
+tile.vg:gemstone/regular/pillar/basic_pillar_onyxius.name=Onyxius Pillar
+tile.vg:gemstone/regular/pillar/basic_pillar_soularite.name=Soularite Pillar
+tile.vg:gemstone/regular/pillar/basic_pillar_ebonheart.name=Ebonheart Pillar
 
-tile.vg:door/draconium_trapdoor.name=Draconite Trapdoor
-tile.vg:door/velious_trapdoor.name=Velious Trapdoor
-tile.vg:door/arcanite_trapdoor.name=Arcanite Trapdoor
-tile.vg:door/katcheen_trapdoor.name=Katcheen Trapdoor
-tile.vg:door/necrocite_trapdoor.name=Necrocite Trapdoor
-tile.vg:door/soularite_trapdoor.name=Soularite Trapdoor
-tile.vg:door/obsidian_trapdoor.name=Purified Obsidian Trapdoor
-tile.vg:door/glowstone_trapdoor.name=Purified Glowstone Trapdoor
-tile.vg:door/ebonheart_trapdoor.name=Ebonheart Trapdoor
 
-tile.vg:gem/draconium/draconium_block_fancybrick.name=Draconite Fancy Brick
-tile.vg:gem/velious/velious_block_fancybrick.name=Velious Fancy Brick
-tile.vg:gem/arcanite/arcanite_block_fancybrick.name=Arcanite Fancy Brick
-tile.vg:gem/katcheen/katcheen_block_fancybrick.name=Katcheen Fancy Brick
-tile.vg:gem/necrocite/necrocite_block_fancybrick.name=Necrocite Fancy Brick
-tile.vg:gem/soularite/soularite_block_fancybrick.name=Soularite Fancy Brick
-tile.vg:gem/obsidian/obsidian_block_fancybrick.name=Purified Obsidian Fancy Brick
-tile.vg:gem/glowstone/glowstone_block_fancybrick.name=Purified Glowstone Fancy Brick
-tile.vg:gem/ebonheart/ebonheart_block_fancybrick.name=Ebonheart Fancy Brick
+
+
+
+
+
+
 
 tile.vg:paper_block.name=Block of Paper
 tile.vg:leather_block.name=Block of Leather
 tile.vg:reed_block.name=Block of Sugar Cane
 
-//-----Tile Entity-----
-tile.vg:gemstone_workbench.name=Gemstone Workbench
 
 //-----Tools-----
 item.vg:tool/arcanite_pickaxe.name=Arcanite Pickaxe
@@ -402,15 +318,98 @@ vg.item.enum.frame.6=Onyxius
 vg.item.enum.frame.7=Soularite
 vg.item.enum.frame.8=Ebonheart
 
+vg.world.enum.0=Overworld
+vg.world.enum.1=Nether
+vg.world.enum.2=End
+
 vg.item.enum.frame.14=Garamite
 vg.item.enum.frame.16=Mystalious
 vg.item.enum.frame.19=Infernus
 vg.item.enum.frame.111=Atrius
 vg.item.enum.frame.112=Enstatite
 
+
 //-----Tool Tips-----
 vg.item.tt.workbench.1=Compress any material to attempt 
 vg.item.tt.workbench.2=to create elemental gemstones.
+
+//  TO ADJUST
+
+
+item.vg:gem/enchanted_ebonheart.name=Enchanted Ebonheart
+item.vg:gem/obsidian_shard.name=Obsidian Shard
+item.vg:gem/glowstone_shard.name=Glowstone Shard
+item.vg:tool/empowered_blade.name=Empowered Blade
+
+item.vg:disc/glowing_disc.name=Glowing Disc
+item.vg:disc/shimmering_disc.name=Shimmering Disc
+item.vg:disc/laminate_disc.name=Laminate Disc
+item.vg:disc/resilient_disc.name=Resilient Disc
+item.vg:disc/dismal_disc.name=Dismal Disc
+item.vg:disc/ethereal_disc.name=Ethereal Disc
+item.vg:disc/mirroring_disc.name=Mirroring Disc
+
+tile.vg:gem/mystic/stone/mystic_block_normal.name=Mystic Stone
+tile.vg:gem/mystic/stone/mystic_block_white.name=White Mystic Stone
+tile.vg:gem/mystic/stone/mystic_block_orange.name=Orange Mystic Stone
+tile.vg:gem/mystic/stone/mystic_block_magenta.name=Magenta Mystic Stone
+tile.vg:gem/mystic/stone/mystic_block_lightblue.name=Light Blue Mystic Stone
+tile.vg:gem/mystic/stone/mystic_block_yellow.name=Yellow Mystic Stone
+tile.vg:gem/mystic/stone/mystic_block_lime.name=Lime Mystic Stone
+tile.vg:gem/mystic/stone/mystic_block_pink.name=Pink Mystic Stone
+tile.vg:gem/mystic/stone/mystic_block_gray.name=Gray Mystic Stone
+tile.vg:gem/mystic/stone/mystic_block_lightgray.name=Light Gray Mystic Stone
+tile.vg:gem/mystic/stone/mystic_block_cyan.name=Cyan Mystic Stone
+tile.vg:gem/mystic/stone/mystic_block_purple.name=Purple Mystic Stone
+tile.vg:gem/mystic/stone/mystic_block_blue.name=Blue Mystic Stone
+tile.vg:gem/mystic/stone/mystic_block_brown.name=Brown Mystic Stone
+tile.vg:gem/mystic/stone/mystic_block_green.name=Green Mystic Stone
+tile.vg:gem/mystic/stone/mystic_block_red.name=Red Mystic Stone
+tile.vg:gem/mystic/stone/mystic_block_black.name=Black Mystic Stone
+tile.vg:gem/mystic/stone/mystic_block_glass.name=Clear Mystic Stone
+
+tile.vg:gem/mystic/cobblestone/cobble_mystic_block_normal.name=Mystic Cobblestone
+tile.vg:gem/mystic/cobblestone/cobble_mystic_block_white.name=White Mystic Cobblestone
+tile.vg:gem/mystic/cobblestone/cobble_mystic_block_orange.name=Orange Mystic Cobblestone
+tile.vg:gem/mystic/cobblestone/cobble_mystic_block_magenta.name=Magenta Mystic Cobblestone
+tile.vg:gem/mystic/cobblestone/cobble_mystic_block_lightblue.name=Light Blue Mystic Cobblestone
+tile.vg:gem/mystic/cobblestone/cobble_mystic_block_yellow.name=Yellow Mystic Cobblestone
+tile.vg:gem/mystic/cobblestone/cobble_mystic_block_lime.name=Lime Mystic Cobblestone
+tile.vg:gem/mystic/cobblestone/cobble_mystic_block_pink.name=Pink Mystic Cobblestone
+tile.vg:gem/mystic/cobblestone/cobble_mystic_block_gray.name=Gray Mystic Cobblestone
+tile.vg:gem/mystic/cobblestone/cobble_mystic_block_lightgray.name=Light Gray Mystic Cobblestone
+tile.vg:gem/mystic/cobblestone/cobble_mystic_block_cyan.name=Cyan Mystic Cobblestone
+tile.vg:gem/mystic/cobblestone/cobble_mystic_block_purple.name=Purple Mystic Cobblestone
+tile.vg:gem/mystic/cobblestone/cobble_mystic_block_blue.name=Blue Mystic Cobblestone
+tile.vg:gem/mystic/cobblestone/cobble_mystic_block_brown.name=Brown Mystic Cobblestone
+tile.vg:gem/mystic/cobblestone/cobble_mystic_block_green.name=Green Mystic Cobblestone
+tile.vg:gem/mystic/cobblestone/cobble_mystic_block_red.name=Red Mystic Cobblestone
+tile.vg:gem/mystic/cobblestone/cobble_mystic_block_black.name=Black Mystic Cobblestone
+tile.vg:gem/mystic/cobblestone/cobble_mystic_block_glass.name=Clear Mystic Cobblestone
+
+tile.vg:gem/mystic/wood/wood_mystic_block_normal.name=Mystic Wood Planks
+tile.vg:gem/mystic/wood/wood_mystic_block_white.name=White Mystic Wood Planks
+tile.vg:gem/mystic/wood/wood_mystic_block_orange.name=Orange Mystic Wood Planks
+tile.vg:gem/mystic/wood/wood_mystic_block_magenta.name=Magenta Mystic Wood Planks
+tile.vg:gem/mystic/wood/wood_mystic_block_lightblue.name=Light Blue Mystic Wood Planks
+tile.vg:gem/mystic/wood/wood_mystic_block_yellow.name=Yellow Mystic Wood Planks
+tile.vg:gem/mystic/wood/wood_mystic_block_lime.name=Lime Mystic Wood Planks
+tile.vg:gem/mystic/wood/wood_mystic_block_pink.name=Pink Mystic Wood Planks
+tile.vg:gem/mystic/wood/wood_mystic_block_gray.name=Gray Mystic Wood Planks
+tile.vg:gem/mystic/wood/wood_mystic_block_lightgray.name=Light Gray Mystic Wood Planks
+tile.vg:gem/mystic/wood/wood_mystic_block_cyan.name=Cyan Mystic Wood Planks
+tile.vg:gem/mystic/wood/wood_mystic_block_purple.name=Purple Mystic Wood Planks
+tile.vg:gem/mystic/wood/wood_mystic_block_blue.name=Blue Mystic Wood Planks
+tile.vg:gem/mystic/wood/wood_mystic_block_brown.name=Brown Mystic Wood Planks
+tile.vg:gem/mystic/wood/wood_mystic_block_green.name=Green Mystic Wood Planks
+tile.vg:gem/mystic/wood/wood_mystic_block_red.name=Red Mystic Wood Planks
+tile.vg:gem/mystic/wood/wood_mystic_block_black.name=Black Mystic Wood Planks
+tile.vg:gem/mystic/wood/wood_mystic_block_glass.name=Clear Mystic Wood Planks
+
+
+
+
+
 
 //-----Archived-----
 item.mystic_dust.name=Mystic Dust

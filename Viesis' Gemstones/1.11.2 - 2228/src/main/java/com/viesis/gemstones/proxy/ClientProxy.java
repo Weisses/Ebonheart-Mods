@@ -1,11 +1,18 @@
 package com.viesis.gemstones.proxy;
 
+import com.viesis.gemstones.api.References;
 import com.viesis.gemstones.client.InitBlocksVGRender;
 import com.viesis.gemstones.client.InitEntityVGRender;
 import com.viesis.gemstones.client.InitItemsVGRender;
 import com.viesis.gemstones.client.InitSoundEventsVG;
 import com.viesis.gemstones.client.InitTileEntityVGRender;
+import com.viesis.gemstones.client.tileentity.RenderGemstoneWorkbench;
+import com.viesis.gemstones.common.tileentity.TileEntityGemstoneWorkbench;
 
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.item.Item;
+import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.client.model.obj.OBJLoader;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -22,6 +29,10 @@ public class ClientProxy extends CommonProxy {
 		InitEntityVGRender.registerEntityRender();
 		InitTileEntityVGRender.registerTileEntityRender();
 		
+		OBJLoader.INSTANCE.addDomain(References.MOD_ID);
+        //Item item2 = Item.getItemFromBlock(TileEntityGemstoneWorkbench.instance);
+        //ModelLoader.setCustomModelResourceLocation(item2, 0, new ModelResourceLocation(References.MOD_ID + ":" + TileEntityGemstoneWorkbench.name, "inventory"));
+
 		//Keybinds.init();
 		//NetworkHandler.preInitClient();
 		//InitItemsEARender.registerItemRenderTEMP();

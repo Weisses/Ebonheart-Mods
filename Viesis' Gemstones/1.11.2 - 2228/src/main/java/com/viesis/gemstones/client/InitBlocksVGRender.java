@@ -2,6 +2,7 @@ package com.viesis.gemstones.client;
 
 import com.viesis.gemstones.api.VGBlocks;
 import com.viesis.gemstones.api.VGEnum.GemstoneTypeBlockV1;
+import com.viesis.gemstones.api.VGEnum.GemstoneTypeOre;
 import com.viesis.gemstones.api.VGEnum.RegistryType;
 
 import net.minecraft.block.Block;
@@ -359,6 +360,11 @@ public final class InitBlocksVGRender extends VGBlocks {
 		
 		registerRender(gemstone_workbench);
 		
+		for (GemstoneTypeOre meta : GemstoneTypeOre.values()) 
+		{
+			registerRenderEnumOre(gemstone_ore, meta.getMetadata());
+		}
+		
 		for (GemstoneTypeBlockV1 meta : GemstoneTypeBlockV1.values()) 
 		{
 			if(meta.getRegistryType() == RegistryType.ALL
@@ -505,6 +511,13 @@ public final class InitBlocksVGRender extends VGBlocks {
 	public static void registerRenderEnum(Block block, int meta)
 	{
 		String itemName = block.getRegistryName().toString() + "_" + GemstoneTypeBlockV1.byMetadata(meta).getName().toString().toLowerCase().replaceAll("\\s+","");
+		Item item = Item.getItemFromBlock(block);
+		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(itemName, "inventory"));
+	}
+	
+	public static void registerRenderEnumOre(Block block, int meta)
+	{
+		String itemName = block.getRegistryName().toString() + "_" + GemstoneTypeOre.byMetadata(meta).getName().toString().toLowerCase().replaceAll("\\s+","");
 		Item item = Item.getItemFromBlock(block);
 		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(itemName, "inventory"));
 	}

@@ -1,5 +1,6 @@
 package com.viesis.gemstones.common.blocks.basic;
 
+import com.viesis.gemstones.ViesisGemstones;
 import com.viesis.gemstones.common.blocks.BlockHelper;
 
 import net.minecraft.block.BlockLadder;
@@ -15,5 +16,6 @@ public class BlockLadderVG extends BlockLadder {
         this.useNeighborBrightness = true;
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
         this.setHardness(5.0F);
+		this.setCreativeTab(ViesisGemstones.tabVGBlocksRegular);
     }
 }

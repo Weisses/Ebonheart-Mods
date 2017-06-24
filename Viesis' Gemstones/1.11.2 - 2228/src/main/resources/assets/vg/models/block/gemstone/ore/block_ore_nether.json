@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "particle": "vg:blocks/gemstones/ores/block_ore_nether",
+        "down": "vg:blocks/gemstones/ores/block_ore_nether",
+        "up": "vg:blocks/gemstones/ores/block_ore_nether",
+        "north": "vg:blocks/gemstones/ores/block_ore_nether",
+        "east": "vg:blocks/gemstones/ores/block_ore_nether",
+        "south": "vg:blocks/gemstones/ores/block_ore_nether",
+        "west": "vg:blocks/gemstones/ores/block_ore_nether"
+    }
+}

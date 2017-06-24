@@ -16,6 +16,7 @@ import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.StatList;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -32,9 +33,9 @@ public class BlockGemstoneWorkbench extends BlockBaseVG implements ITileEntityPr
 	{
 		super(unlocalizedName);
 		
-		this.setCreativeTab(ViesisGemstones.tabVGBlocks);
 		this.isBlockContainer = true;
-		this.useNeighborBrightness = true;
+		this.setLightOpacity(255);
+		this.setCreativeTab(ViesisGemstones.tabVGGeneral);
 	}
 	
 	@Override
@@ -59,10 +60,22 @@ public class BlockGemstoneWorkbench extends BlockBaseVG implements ITileEntityPr
 	}
 	
 	@Override
-	public EnumBlockRenderType getRenderType(IBlockState state) 
-	{
-		return EnumBlockRenderType.INVISIBLE;
-	}
+    public boolean isFullCube(IBlockState state)
+    {
+        return false;
+    }
+	
+    @SideOnly(Side.CLIENT)
+    public BlockRenderLayer getBlockLayer()
+    {
+        return BlockRenderLayer.CUTOUT;
+    }
+	
+	//@Override
+	//public EnumBlockRenderType getRenderType(IBlockState state) 
+	//{
+	//	return EnumBlockRenderType.ENTITYBLOCK_ANIMATED;
+	//}
 	
 	@Override
 	public void breakBlock(World world, BlockPos pos, IBlockState state) 

@@ -2,6 +2,7 @@ package com.viesis.gemstones.common.blocks.torches;
 
 import java.util.Random;
 
+import com.viesis.gemstones.ViesisGemstones;
 import com.viesis.gemstones.common.blocks.BlockHelper;
 
 import net.minecraft.block.BlockTorch;
@@ -23,6 +24,7 @@ public class BlockTorchKatcheenVG extends BlockTorch {
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.UP));
         this.setTickRandomly(true);
         this.setLightLevel(0.9375F);
+		this.setCreativeTab(ViesisGemstones.tabVGBlocksRegular);
     }
     
     @SideOnly(Side.CLIENT)

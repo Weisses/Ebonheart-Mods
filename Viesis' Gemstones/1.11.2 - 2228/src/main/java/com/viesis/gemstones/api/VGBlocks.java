@@ -6,6 +6,8 @@ public class VGBlocks {
 	
 	public static Block gemstone_workbench;
 	
+	public static Block gemstone_ore;
+	
 	public static Block gemstone_block_basic_v1;
 	public static Block gemstone_block_brick_v1;
 	public static Block gemstone_block_fancybrick_v1;

@@ -12,6 +12,8 @@ public final class InitItemsVGRender extends VGItems {
 	
 	public static void registerItemRender()
 	{
+		registerRender(gemstone_item_unidentified);
+		
 		for (GemstoneTypeItemV1 meta : GemstoneTypeItemV1.values()) 
 		{
 			if(meta.getRegistryType() == RegistryType.ALL

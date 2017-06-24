@@ -34,8 +34,8 @@ public class ItemGemstoneBasicV1 extends Item {
 		switch(stack.getMetadata())
 		{
 			case 0: 
-				toolTip.add(TextFormatting.GRAY + "This gemstone consists of little");
-				toolTip.add(TextFormatting.GRAY + "shiny imperfections.");
+				toolTip.add(TextFormatting.GOLD + "This gemstone consists of little");
+				toolTip.add(TextFormatting.GOLD + "shiny imperfections.");
 				break;
 			case 1: 
 				toolTip.add(TextFormatting.GOLD + "A subtle chill emanates from");
@@ -46,28 +46,28 @@ public class ItemGemstoneBasicV1 extends Item {
 				toolTip.add(TextFormatting.GOLD + "is stronger than Iron.");
 				break;
 			case 3: 
-				toolTip.add(TextFormatting.DARK_AQUA + "This gemstone gives off a steady");
-				toolTip.add(TextFormatting.DARK_AQUA + "wave of warmth when held.");
+				toolTip.add(TextFormatting.GOLD + "This gemstone gives off a steady");
+				toolTip.add(TextFormatting.GOLD + "wave of warmth when held.");
 				break;
 			case 4: 
-				toolTip.add(TextFormatting.DARK_AQUA + "Death and decay flows from");
-				toolTip.add(TextFormatting.DARK_AQUA + "this cursed gemstone.");
+				toolTip.add(TextFormatting.GOLD + "Death and decay flows from");
+				toolTip.add(TextFormatting.GOLD + "this cursed gemstone.");
 				break;
 			case 5: 
-				toolTip.add(TextFormatting.DARK_PURPLE + "Angelic power radiates from");
-				toolTip.add(TextFormatting.DARK_PURPLE + "this divine gemstone.");
+				toolTip.add(TextFormatting.GOLD + "Angelic power radiates from");
+				toolTip.add(TextFormatting.GOLD + "this divine gemstone.");
 				break;
 			case 6: 
-				toolTip.add(TextFormatting.DARK_AQUA + "This gemstone feels much heavier");
-				toolTip.add(TextFormatting.DARK_AQUA + "than it looks.");
+				toolTip.add(TextFormatting.GOLD + "This gemstone feels much heavier");
+				toolTip.add(TextFormatting.GOLD + "than it looks.");
 				break;
 			case 7: 
-				toolTip.add(TextFormatting.DARK_PURPLE + "Ender energy has been infused");
-				toolTip.add(TextFormatting.DARK_PURPLE + "in this gemstone.");
+				toolTip.add(TextFormatting.GOLD + "Ender energy has been infused");
+				toolTip.add(TextFormatting.GOLD + "in this gemstone.");
 				break;
 			case 8: 
-				toolTip.add(TextFormatting.DARK_PURPLE + "Lost knowledge has been forever");
-				toolTip.add(TextFormatting.DARK_PURPLE + "trapped in this gemstone.");
+				toolTip.add(TextFormatting.GOLD + "Lost knowledge has been forever");
+				toolTip.add(TextFormatting.GOLD + "trapped in this gemstone.");
 				break;
 		}
 	}

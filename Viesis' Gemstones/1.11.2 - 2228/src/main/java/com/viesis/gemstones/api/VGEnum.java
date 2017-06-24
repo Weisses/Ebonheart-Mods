@@ -66,15 +66,15 @@ public class VGEnum {
     public static enum GemstoneTypeItemV1 implements IStringSerializable
     {
     	//STRING(meta, registerName, localizedName, generalType, enumRarity)
-        DRACONITE(0, "draconite", I18n.translateToLocal("vg.item.enum.frame.0"), RegistryType.ITEMONLY, EnumRarity.COMMON),
+        DRACONITE(0, "draconite", I18n.translateToLocal("vg.item.enum.frame.0"), RegistryType.ITEMONLY, EnumRarity.UNCOMMON),
         VELIOUS(1, "velious", I18n.translateToLocal("vg.item.enum.frame.1"), RegistryType.ITEMONLY, EnumRarity.UNCOMMON),
     	ARCANITE(2, "arcanite", I18n.translateToLocal("vg.item.enum.frame.2"), RegistryType.ITEMONLY, EnumRarity.UNCOMMON),
-    	KATCHEEN(3, "katcheen", I18n.translateToLocal("vg.item.enum.frame.3"), RegistryType.ITEMONLY, EnumRarity.RARE),
-    	CARNELIAN(4, "carnelian", I18n.translateToLocal("vg.item.enum.frame.4"), RegistryType.ITEMONLY, EnumRarity.RARE),
-    	NECROCITE(5, "necrocite", I18n.translateToLocal("vg.item.enum.frame.5"), RegistryType.ITEMONLY, EnumRarity.EPIC),
-    	ONYXIUS(6, "onyxius", I18n.translateToLocal("vg.item.enum.frame.6"), RegistryType.ITEMONLY, EnumRarity.RARE),
-    	SOULARITE(7, "soularite", I18n.translateToLocal("vg.item.enum.frame.7"), RegistryType.ITEMONLY, EnumRarity.EPIC),
-    	EBONHEART(8, "ebonheart", I18n.translateToLocal("vg.item.enum.frame.8"), RegistryType.ITEMONLY, EnumRarity.EPIC);
+    	KATCHEEN(3, "katcheen", I18n.translateToLocal("vg.item.enum.frame.3"), RegistryType.ITEMONLY, EnumRarity.UNCOMMON),
+    	CARNELIAN(4, "carnelian", I18n.translateToLocal("vg.item.enum.frame.4"), RegistryType.ITEMONLY, EnumRarity.UNCOMMON),
+    	NECROCITE(5, "necrocite", I18n.translateToLocal("vg.item.enum.frame.5"), RegistryType.ITEMONLY, EnumRarity.UNCOMMON),
+    	ONYXIUS(6, "onyxius", I18n.translateToLocal("vg.item.enum.frame.6"), RegistryType.ITEMONLY, EnumRarity.UNCOMMON),
+    	SOULARITE(7, "soularite", I18n.translateToLocal("vg.item.enum.frame.7"), RegistryType.ITEMONLY, EnumRarity.UNCOMMON),
+    	EBONHEART(8, "ebonheart", I18n.translateToLocal("vg.item.enum.frame.8"), RegistryType.ITEMONLY, EnumRarity.UNCOMMON);
     	
     	private final int metadata;
         private final String registerName;
@@ -352,7 +352,72 @@ public class VGEnum {
         }
     }
     
-	
+    /**
+	 * Ore enum - Represents various Ore types.
+	 */
+    public static enum GemstoneTypeOre implements IStringSerializable
+    {
+    	//STRING(meta, registerName, localizedName, enumRarity)
+        OVERWORLD(0, "overworld", I18n.translateToLocal("vg.world.enum.0"), EnumRarity.COMMON),
+        NETHER(1, "nether", I18n.translateToLocal("vg.world.enum.1"), EnumRarity.COMMON),
+    	END(2, "end", I18n.translateToLocal("vg.world.enum.2"), EnumRarity.COMMON);
+    	
+    	private final int metadata;
+        private final String registerName;
+        private final String localizedName;
+        private final EnumRarity enumRarity;
+        
+        private GemstoneTypeOre(int metadataIn, String registerNameIn, String localizedNameIn, EnumRarity enumRarityIn)
+        {
+            this.metadata = metadataIn;
+            this.registerName = registerNameIn;
+            this.localizedName = localizedNameIn;
+            this.enumRarity = enumRarityIn;
+        }
+        
+        public int getMetadata()
+        {
+            return this.metadata;
+        }
+        
+        public String getName()
+        {
+            return this.registerName;
+        }
+        
+        public String getLocalizedName()
+        {
+            return this.localizedName;
+        }
+        
+        public EnumRarity getEnumRarity()
+        {
+            return this.enumRarity;
+        }
+        
+        public static GemstoneTypeOre byMetadata(int meta)
+        {
+            if (meta < 0 || meta >= values().length)
+            {
+            	meta = 0;
+            }
+            
+            return values()[meta];
+        }
+        
+        public static GemstoneTypeOre getTypeFromString(String nameIn)
+        {
+            for (int i = 0; i < values().length; ++i)
+            {
+                if (values()[i].getName().equals(nameIn))
+                {
+                    return values()[i];
+                }
+            }
+            
+            return values()[0];
+        }
+    }
 	
 	
 	

@@ -10,7 +10,7 @@ public class VGTabItems extends CreativeTabs {
 	public VGTabItems(String label) 
 	{
 		super(label);
-		this.setBackgroundImageName("ebonarts.png");
+		this.setBackgroundImageName("vg.png");
 	}
 
 	@Override

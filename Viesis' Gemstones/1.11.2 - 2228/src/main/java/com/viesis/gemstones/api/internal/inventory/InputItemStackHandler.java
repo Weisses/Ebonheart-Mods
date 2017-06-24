@@ -48,6 +48,7 @@ public class InputItemStackHandler extends ItemStackHandler {
 	@Override
 	public ItemStack extractItem(int slot, int amount, boolean simulate) 
 	{
+		//if(internalSlot.)
 		return internalSlot.extractItem(slot, amount, simulate);
 	}
 }
