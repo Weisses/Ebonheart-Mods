@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "vc:airship_balloon_pattern_normalwater",
+  "ingredients": [
+    {
+      "item": "vc:patterns/airship_balloon_pattern",
+      "data": 15
+    },
+    {
+      "item": "minecraft:ender_eye"
+    }
+  ],
+  "result": {
+    "item": "vc:patterns/airship_balloon_pattern",
+    "data": 16,
+    "count": 1
+  }
+}

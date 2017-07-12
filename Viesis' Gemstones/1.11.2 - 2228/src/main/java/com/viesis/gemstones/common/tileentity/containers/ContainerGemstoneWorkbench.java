@@ -1,8 +1,8 @@
 package com.viesis.gemstones.common.tileentity.containers;
 
 import com.viesis.gemstones.common.tileentity.TileEntityGemstoneWorkbench;
-import com.viesis.gemstones.common.tileentity.slots.CutterSlotInputVG;
-import com.viesis.gemstones.common.tileentity.slots.CutterSlotOutputVG;
+import com.viesis.gemstones.common.tileentity.slots.SlotInputCutterVG;
+import com.viesis.gemstones.common.tileentity.slots.SlotOutputVG;
 import com.viesis.gemstones.init.InitBlocksVG;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -29,10 +29,10 @@ public class ContainerGemstoneWorkbench extends ContainerVC {
         this.gemstoneWorkbench = gemstoneWorkbenchIn;
         
         //Stone Input slot
-        this.addSlotToContainer(new CutterSlotInputVG(this.gemstoneWorkbench.inventory, 0, 56, 53));
+        this.addSlotToContainer(new SlotInputCutterVG(this.gemstoneWorkbench.inventory, 0, 56, 53));
         
         //Gemstone output slot
-        this.addSlotToContainer(new CutterSlotOutputVG(this.gemstoneWorkbench.inventory, 1, 116, 35));
+        this.addSlotToContainer(new SlotOutputVG(this.gemstoneWorkbench.inventory, 1, 116, 35));
         
         //Player Hotbar, Slot 0-8, Slot IDs 36-44
         for (int l = 0; l < 9; ++l)

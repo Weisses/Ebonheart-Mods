@@ -1,0 +1,6 @@
+{
+    "parent": "block/wall_ns",
+    "textures": {
+        "wall": "vg:blocks/gemstones/regular/electium_block"
+    }
+}

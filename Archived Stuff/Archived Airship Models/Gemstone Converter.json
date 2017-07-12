@@ -1,0 +1,153 @@
+{
+	"credit": "Made with Blockbench, a free, modern block model editor by JannisX11",
+	"textures": {},
+	"elements": [
+		{
+			"name": "BaseBottomA",
+			"from": [2, 0.5, 2],
+			"to": [14, 1, 14],
+			"shade": true,
+			"faces": {}
+		},
+		{
+			"name": "BaseBottomC",
+			"from": [4.5, 1.5, 4.5],
+			"to": [11.5, 2, 11.5],
+			"shade": true,
+			"faces": {},
+			"rotation": {
+				"origin": [8, 8, 8],
+				"axis": "y",
+				"angle": 45
+			}
+		},
+		{
+			"name": "BaseBottomSpikeA1",
+			"from": [1.5, 0, 1.5],
+			"to": [2.5, 1.5, 2.5],
+			"shade": true,
+			"faces": {}
+		},
+		{
+			"name": "BaseBottomSpikeA2",
+			"from": [1.5, 0, 13.5],
+			"to": [2.5, 1.5, 14.5],
+			"shade": true,
+			"faces": {}
+		},
+		{
+			"name": "BaseBottomSpikeA3",
+			"from": [13.5, 0, 13.5],
+			"to": [14.5, 1.5, 14.5],
+			"shade": true,
+			"faces": {}
+		},
+		{
+			"name": "BaseBottomSpikeA4",
+			"from": [13.5, 0, 1.5],
+			"to": [14.5, 1.5, 2.5],
+			"shade": true,
+			"faces": {}
+		},
+		{
+			"name": "BaseBottomSpikeB1",
+			"from": [1.75, 1.5, 1.75],
+			"to": [2.25, 3.5, 2.25],
+			"shade": true,
+			"faces": {},
+			"rotation": {
+				"origin": [8, 8, 8],
+				"axis": "y",
+				"angle": 0
+			}
+		},
+		{
+			"name": "BaseBottomSpikeB2",
+			"from": [1.75, 1.5, 13.75],
+			"to": [2.25, 3.5, 14.25],
+			"shade": true,
+			"faces": {},
+			"rotation": {
+				"origin": [8, 8, 8],
+				"axis": "y",
+				"angle": 0
+			}
+		},
+		{
+			"name": "BaseBottomSpikeB3",
+			"from": [13.75, 1.5, 13.75],
+			"to": [14.25, 3.5, 14.25],
+			"shade": true,
+			"faces": {},
+			"rotation": {
+				"origin": [8, 8, 8],
+				"axis": "y",
+				"angle": 0
+			}
+		},
+		{
+			"name": "BaseBottomSpikeB4",
+			"from": [13.75, 1.5, 1.75],
+			"to": [14.25, 3.5, 2.25],
+			"shade": true,
+			"faces": {},
+			"rotation": {
+				"origin": [8, 8, 8],
+				"axis": "y",
+				"angle": 0
+			}
+		},
+		{
+			"name": "BaseBottomSpikeC1",
+			"from": [1.5, 3.5, 1.5],
+			"to": [2.5, 4, 2.5],
+			"shade": true,
+			"faces": {}
+		},
+		{
+			"name": "BaseBottomSpikeC2",
+			"from": [1.5, 3.5, 13.5],
+			"to": [2.5, 4, 14.5],
+			"shade": true,
+			"faces": {}
+		},
+		{
+			"name": "BaseBottomSpikeC3",
+			"from": [13.5, 3.5, 13.5],
+			"to": [14.5, 4, 14.5],
+			"shade": true,
+			"faces": {}
+		},
+		{
+			"name": "BaseBottomSpikeC4",
+			"from": [13.5, 3.5, 1.5],
+			"to": [14.5, 4, 2.5],
+			"shade": true,
+			"faces": {}
+		},
+		{
+			"name": "BaseBottomB",
+			"from": [3, 1, 3],
+			"to": [13, 1.5, 13],
+			"shade": true,
+			"faces": {}
+		},
+		{
+			"name": "cube",
+			"from": [0, 0, 0],
+			"to": [1, 8, 1],
+			"shade": true,
+			"faces": {}
+		},
+		{
+			"name": "cube",
+			"from": [0, 0, 0],
+			"to": [1, 1, 1],
+			"shade": true,
+			"faces": {}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {"scale": [1, 1, 1]}
+	}
+}

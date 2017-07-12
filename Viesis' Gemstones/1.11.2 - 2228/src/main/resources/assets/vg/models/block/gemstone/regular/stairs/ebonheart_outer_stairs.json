@@ -1,8 +1,0 @@
-{
-    "parent": "block/outer_stairs",
-    "textures": {
-        "bottom": "vg:blocks/gemstones/regular/ebonheart_stairs",
-        "top": "vg:blocks/gemstones/regular/ebonheart_stairs",
-        "side": "vg:blocks/gemstones/regular/ebonheart_stairs"
-    }
-}

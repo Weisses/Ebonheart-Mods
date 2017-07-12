@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "vc:guidebook_main",
+  "ingredients": [
+    {
+      "item": "vc:guidebook_main"
+    },
+    {
+      "item": "minecraft:dye",
+      "data": 0
+    }
+  ],
+  "result": {
+    "item": "vc:guidebook_paint",
+    "count": 1
+  }
+}

@@ -10,6 +10,7 @@ itemGroup.tabVGBlocks=Viesis' Gemstones Shadow Blocks
 //-----Items-----
 vg.item.gemstone_unidentified=Unidentified Gemstone
 vg.item.gemstone=Gemstone
+vg.item.enchanted=Enchanted
 vg.item.dense=Dense
 vg.item.cryptic=Cryptic
 vg.block.gemstone=Block
@@ -23,135 +24,135 @@ tile.vg:gemstone/ore/block_ore_nether.name=Gem-Infused Ore
 tile.vg:gemstone/ore/block_ore_end.name=Gem-Infused Ore
 
 //-----Blocks-----
-tile.vg:gemstone/regular/basic/block_basic_draconite.name=Draconite Block
-tile.vg:gemstone/regular/basic/block_basic_velious.name=Velious Block
 tile.vg:gemstone/regular/basic/block_basic_arcanite.name=Arcanite Block
-tile.vg:gemstone/regular/basic/block_basic_katcheen.name=Katcheen Block
-tile.vg:gemstone/regular/basic/block_basic_carnelian.name=Carnelian Block
+tile.vg:gemstone/regular/basic/block_basic_velious.name=Velious Block
+tile.vg:gemstone/regular/basic/block_basic_fenryte.name=Fenryte Block
+tile.vg:gemstone/regular/basic/block_basic_electium.name=Electium Block
+tile.vg:gemstone/regular/basic/block_basic_igneelis.name=Igneelis Block
 tile.vg:gemstone/regular/basic/block_basic_necrocite.name=Necrocite Block
+tile.vg:gemstone/regular/basic/block_basic_zephyrium.name=Zephyrium Block
 tile.vg:gemstone/regular/basic/block_basic_onyxius.name=Onyxius Block
 tile.vg:gemstone/regular/basic/block_basic_soularite.name=Soularite Block
-tile.vg:gemstone/regular/basic/block_basic_ebonheart.name=Ebonheart Block
 
-tile.vg:gemstone/regular/brick/block_brick_draconite.name=Draconite Brick
-tile.vg:gemstone/regular/brick/block_brick_velious.name=Velious Brick
 tile.vg:gemstone/regular/brick/block_brick_arcanite.name=Arcanite Brick
-tile.vg:gemstone/regular/brick/block_brick_katcheen.name=Katcheen Brick
-tile.vg:gemstone/regular/brick/block_brick_carnelian.name=Carnelian Brick
+tile.vg:gemstone/regular/brick/block_brick_velious.name=Velious Brick
+tile.vg:gemstone/regular/brick/block_brick_fenryte.name=Fenryte Brick
+tile.vg:gemstone/regular/brick/block_brick_electium.name=Electium Brick
+tile.vg:gemstone/regular/brick/block_brick_igneelis.name=Igneelis Brick
 tile.vg:gemstone/regular/brick/block_brick_necrocite.name=Necrocite Brick
+tile.vg:gemstone/regular/brick/block_brick_zephyrium.name=Zephyrium Brick
 tile.vg:gemstone/regular/brick/block_brick_onyxius.name=Onyxius Brick
 tile.vg:gemstone/regular/brick/block_brick_soularite.name=Soularite Brick
-tile.vg:gemstone/regular/brick/block_brick_ebonheart.name=Ebonheart Brick
 
-tile.vg:gemstone/regular/fancybrick/block_fancybrick_draconite.name=Draconite Fancy Brick
-tile.vg:gemstone/regular/fancybrick/block_fancybrick_velious.name=Velious Fancy Brick
 tile.vg:gemstone/regular/fancybrick/block_fancybrick_arcanite.name=Arcanite Fancy Brick
-tile.vg:gemstone/regular/fancybrick/block_fancybrick_katcheen.name=Katcheen Fancy Brick
-tile.vg:gemstone/regular/fancybrick/block_fancybrick_carnelian.name=Carnelian Fancy Brick
+tile.vg:gemstone/regular/fancybrick/block_fancybrick_velious.name=Velious Fancy Brick
+tile.vg:gemstone/regular/fancybrick/block_fancybrick_fenryte.name=Fenryte Fancy Brick
+tile.vg:gemstone/regular/fancybrick/block_fancybrick_electium.name=Electium Fancy Brick
+tile.vg:gemstone/regular/fancybrick/block_fancybrick_igneelis.name=Igneelis Fancy Brick
 tile.vg:gemstone/regular/fancybrick/block_fancybrick_necrocite.name=Necrocite Fancy Brick
+tile.vg:gemstone/regular/fancybrick/block_fancybrick_zephyrium.name=Zephyrium Fancy Brick
 tile.vg:gemstone/regular/fancybrick/block_fancybrick_onyxius.name=Onyxius Fancy Brick
 tile.vg:gemstone/regular/fancybrick/block_fancybrick_soularite.name=Soularite Fancy Brick
-tile.vg:gemstone/regular/fancybrick/block_fancybrick_ebonheart.name=Ebonheart Fancy Brick
 
-tile.gemstone/regular/slab/basic_halfslab_draconite.name=Draconite Slab
-tile.gemstone/regular/slab/basic_halfslab_velious.name=Velious Slab
 tile.gemstone/regular/slab/basic_halfslab_arcanite.name=Arcanite Slab
-tile.gemstone/regular/slab/basic_halfslab_katcheen.name=Katcheen Slab
-tile.gemstone/regular/slab/basic_halfslab_carnelian.name=Carnelian Slab
+tile.gemstone/regular/slab/basic_halfslab_velious.name=Velious Slab
+tile.gemstone/regular/slab/basic_halfslab_fenryte.name=Fenryte Slab
+tile.gemstone/regular/slab/basic_halfslab_electium.name=Electium Slab
+tile.gemstone/regular/slab/basic_halfslab_igneelis.name=Igneelis Slab
 tile.gemstone/regular/slab/basic_halfslab_necrocite.name=Necrocite Slab
+tile.gemstone/regular/slab/basic_halfslab_zephyrium.name=Zephyrium Slab
 tile.gemstone/regular/slab/basic_halfslab_onyxius.name=Onyxius Slab
 tile.gemstone/regular/slab/basic_halfslab_soularite.name=Soularite Slab
-tile.gemstone/regular/slab/basic_halfslab_ebonheart.name=Ebonheart Slab
 
-tile.gemstone/regular/slab/basic_doubleslab_draconite.name=Draconite Slab
-tile.gemstone/regular/slab/basic_doubleslab_velious.name=Velious Slab
 tile.gemstone/regular/slab/basic_doubleslab_arcanite.name=Arcanite Slab
-tile.gemstone/regular/slab/basic_doubleslab_katcheen.name=Katcheen Slab
-tile.gemstone/regular/slab/basic_doubleslab_carnelian.name=Carnelian Slab
+tile.gemstone/regular/slab/basic_doubleslab_velious.name=Velious Slab
+tile.gemstone/regular/slab/basic_doubleslab_fenryte.name=Fenryte Slab
+tile.gemstone/regular/slab/basic_doubleslab_electium.name=Electium Slab
+tile.gemstone/regular/slab/basic_doubleslab_igneelis.name=Igneelis Slab
 tile.gemstone/regular/slab/basic_doubleslab_necrocite.name=Necrocite Slab
+tile.gemstone/regular/slab/basic_doubleslab_zephyrium.name=Zephyrium Slab
 tile.gemstone/regular/slab/basic_doubleslab_onyxius.name=Onyxius Slab
 tile.gemstone/regular/slab/basic_doubleslab_soularite.name=Soularite Slab
-tile.gemstone/regular/slab/basic_doubleslab_ebonheart.name=Ebonheart Slab
 
-tile.vg:gemstone/regular/stairs/basic_stairs_draconite.name=Draconite Stairs
-tile.vg:gemstone/regular/stairs/basic_stairs_velious.name=Velious Stairs
 tile.vg:gemstone/regular/stairs/basic_stairs_arcanite.name=Arcanite Stairs
-tile.vg:gemstone/regular/stairs/basic_stairs_katcheen.name=Katcheen Stairs
-tile.vg:gemstone/regular/stairs/basic_stairs_carnelian.name=Carnelian Stairs
+tile.vg:gemstone/regular/stairs/basic_stairs_velious.name=Velious Stairs
+tile.vg:gemstone/regular/stairs/basic_stairs_fenryte.name=Fenryte Stairs
+tile.vg:gemstone/regular/stairs/basic_stairs_electium.name=Electium Stairs
+tile.vg:gemstone/regular/stairs/basic_stairs_igneelis.name=Igneelis Stairs
 tile.vg:gemstone/regular/stairs/basic_stairs_necrocite.name=Necrocite Stairs
+tile.vg:gemstone/regular/stairs/basic_stairs_zephyrium.name=Zephyrium Stairs
 tile.vg:gemstone/regular/stairs/basic_stairs_onyxius.name=Onyxius Stairs
 tile.vg:gemstone/regular/stairs/basic_stairs_soularite.name=Soularite Stairs
-tile.vg:gemstone/regular/stairs/basic_stairs_ebonheart.name=Ebonheart Stairs
 
-tile.vg:gemstone/regular/fence/basic_fence_draconite.name=Draconite Fence
-tile.vg:gemstone/regular/fence/basic_fence_velious.name=Velious Fence
 tile.vg:gemstone/regular/fence/basic_fence_arcanite.name=Arcanite Fence
-tile.vg:gemstone/regular/fence/basic_fence_katcheen.name=Katcheen Fence
-tile.vg:gemstone/regular/fence/basic_fence_carnelian.name=Carnelian Fence
+tile.vg:gemstone/regular/fence/basic_fence_velious.name=Velious Fence
+tile.vg:gemstone/regular/fence/basic_fence_fenryte.name=Fenryte Fence
+tile.vg:gemstone/regular/fence/basic_fence_electium.name=Electium Fence
+tile.vg:gemstone/regular/fence/basic_fence_igneelis.name=Igneelis Fence
 tile.vg:gemstone/regular/fence/basic_fence_necrocite.name=Necrocite Fence
+tile.vg:gemstone/regular/fence/basic_fence_zephyrium.name=Zephyrium Fence
 tile.vg:gemstone/regular/fence/basic_fence_onyxius.name=Onyxius Fence
 tile.vg:gemstone/regular/fence/basic_fence_soularite.name=Soularite Fence
-tile.vg:gemstone/regular/fence/basic_fence_ebonheart.name=Ebonheart Fence
 
-tile.vg:gemstone/regular/gate/basic_gate_draconite.name=Draconite Gate
-tile.vg:gemstone/regular/gate/basic_gate_velious.name=Velious Gate
 tile.vg:gemstone/regular/gate/basic_gate_arcanite.name=Arcanite Gate
-tile.vg:gemstone/regular/gate/basic_gate_katcheen.name=Katcheen Gate
-tile.vg:gemstone/regular/gate/basic_gate_carnelian.name=Carnelian Gate
+tile.vg:gemstone/regular/gate/basic_gate_velious.name=Velious Gate
+tile.vg:gemstone/regular/gate/basic_gate_fenryte.name=Fenryte Gate
+tile.vg:gemstone/regular/gate/basic_gate_electium.name=Electium Gate
+tile.vg:gemstone/regular/gate/basic_gate_igneelis.name=Igneelis Gate
 tile.vg:gemstone/regular/gate/basic_gate_necrocite.name=Necrocite Gate
+tile.vg:gemstone/regular/gate/basic_gate_zephyrium.name=Zephyrium Gate
 tile.vg:gemstone/regular/gate/basic_gate_onyxius.name=Onyxius Gate
 tile.vg:gemstone/regular/gate/basic_gate_soularite.name=Soularite Gate
-tile.vg:gemstone/regular/gate/basic_gate_ebonheart.name=Ebonheart Gate
 
-tile.vg:gemstone/regular/wall/basic_wall_draconite.name=Draconite Wall
-tile.vg:gemstone/regular/wall/basic_wall_velious.name=Velious Wall
 tile.vg:gemstone/regular/wall/basic_wall_arcanite.name=Arcanite Wall
-tile.vg:gemstone/regular/wall/basic_wall_katcheen.name=Katcheen Wall
-tile.vg:gemstone/regular/wall/basic_wall_carnelian.name=Carnelian Wall
+tile.vg:gemstone/regular/wall/basic_wall_velious.name=Velious Wall
+tile.vg:gemstone/regular/wall/basic_wall_fenryte.name=Fenryte Wall
+tile.vg:gemstone/regular/wall/basic_wall_electium.name=Electium Wall
+tile.vg:gemstone/regular/wall/basic_wall_igneelis.name=Igneelis Wall
 tile.vg:gemstone/regular/wall/basic_wall_necrocite.name=Necrocite Wall
+tile.vg:gemstone/regular/wall/basic_wall_zephyrium.name=Zephyrium Wall
 tile.vg:gemstone/regular/wall/basic_wall_onyxius.name=Onyxius Wall
 tile.vg:gemstone/regular/wall/basic_wall_soularite.name=Soularite Wall
-tile.vg:gemstone/regular/wall/basic_wall_ebonheart.name=Ebonheart Wall
 
-tile.vg:gemstone/regular/torch/basic_torch_draconite.name=Draconite Torch
-tile.vg:gemstone/regular/torch/basic_torch_velious.name=Velious Torch
 tile.vg:gemstone/regular/torch/basic_torch_arcanite.name=Arcanite Torch
-tile.vg:gemstone/regular/torch/basic_torch_katcheen.name=Katcheen Torch
-tile.vg:gemstone/regular/torch/basic_torch_carnelian.name=Carnelian Torch
+tile.vg:gemstone/regular/torch/basic_torch_velious.name=Velious Torch
+tile.vg:gemstone/regular/torch/basic_torch_fenryte.name=Fenryte Torch
+tile.vg:gemstone/regular/torch/basic_torch_electium.name=Electium Torch
+tile.vg:gemstone/regular/torch/basic_torch_igneelis.name=Igneelis Torch
 tile.vg:gemstone/regular/torch/basic_torch_necrocite.name=Necrocite Torch
+tile.vg:gemstone/regular/torch/basic_torch_zephyrium.name=Zephyrium Torch
 tile.vg:gemstone/regular/torch/basic_torch_onyxius.name=Onyxius Torch
 tile.vg:gemstone/regular/torch/basic_torch_soularite.name=Soularite Torch
-tile.vg:gemstone/regular/torch/basic_torch_ebonheart.name=Ebonheart Torch
 
-tile.vg:gemstone/regular/trapdoor/basic_trapdoor_draconite.name=Draconite Trapdoor
-tile.vg:gemstone/regular/trapdoor/basic_trapdoor_velious.name=Velious Trapdoor
 tile.vg:gemstone/regular/trapdoor/basic_trapdoor_arcanite.name=Arcanite Trapdoor
-tile.vg:gemstone/regular/trapdoor/basic_trapdoor_katcheen.name=Katcheen Trapdoor
-tile.vg:gemstone/regular/trapdoor/basic_trapdoor_carnelian.name=Carnelian Trapdoor
+tile.vg:gemstone/regular/trapdoor/basic_trapdoor_velious.name=Velious Trapdoor
+tile.vg:gemstone/regular/trapdoor/basic_trapdoor_fenryte.name=Fenryte Trapdoor
+tile.vg:gemstone/regular/trapdoor/basic_trapdoor_electium.name=Electium Trapdoor
+tile.vg:gemstone/regular/trapdoor/basic_trapdoor_igneelis.name=Igneelis Trapdoor
 tile.vg:gemstone/regular/trapdoor/basic_trapdoor_necrocite.name=Necrocite Trapdoor
+tile.vg:gemstone/regular/trapdoor/basic_trapdoor_zephyrium.name=Zephyrium Trapdoor
 tile.vg:gemstone/regular/trapdoor/basic_trapdoor_onyxius.name=Onyxius Trapdoor
 tile.vg:gemstone/regular/trapdoor/basic_trapdoor_soularite.name=Soularite Trapdoor
-tile.vg:gemstone/regular/trapdoor/basic_trapdoor_ebonheart.name=Ebonheart Trapdoor
 
-tile.vg:gemstone/regular/ladder/basic_ladder_draconite.name=Draconite Ladder
-tile.vg:gemstone/regular/ladder/basic_ladder_velious.name=Velious Ladder
 tile.vg:gemstone/regular/ladder/basic_ladder_arcanite.name=Arcanite Ladder
-tile.vg:gemstone/regular/ladder/basic_ladder_katcheen.name=Katcheen Ladder
-tile.vg:gemstone/regular/ladder/basic_ladder_carnelian.name=Carnelian Ladder
+tile.vg:gemstone/regular/ladder/basic_ladder_velious.name=Velious Ladder
+tile.vg:gemstone/regular/ladder/basic_ladder_fenryte.name=Fenryte Ladder
+tile.vg:gemstone/regular/ladder/basic_ladder_electium.name=Electium Ladder
+tile.vg:gemstone/regular/ladder/basic_ladder_igneelis.name=Igneelis Ladder
 tile.vg:gemstone/regular/ladder/basic_ladder_necrocite.name=Necrocite Ladder
+tile.vg:gemstone/regular/ladder/basic_ladder_zephyrium.name=Zephyrium Ladder
 tile.vg:gemstone/regular/ladder/basic_ladder_onyxius.name=Onyxius Ladder
 tile.vg:gemstone/regular/ladder/basic_ladder_soularite.name=Soularite Ladder
-tile.vg:gemstone/regular/ladder/basic_ladder_ebonheart.name=Ebonheart Ladder
 
-tile.vg:gemstone/regular/pillar/basic_pillar_draconite.name=Draconite Pillar
-tile.vg:gemstone/regular/pillar/basic_pillar_velious.name=Velious Pillar
 tile.vg:gemstone/regular/pillar/basic_pillar_arcanite.name=Arcanite Pillar
-tile.vg:gemstone/regular/pillar/basic_pillar_katcheen.name=Katcheen Pillar
-tile.vg:gemstone/regular/pillar/basic_pillar_carnelian.name=Carnelian Pillar
+tile.vg:gemstone/regular/pillar/basic_pillar_velious.name=Velious Pillar
+tile.vg:gemstone/regular/pillar/basic_pillar_fenryte.name=Fenryte Pillar
+tile.vg:gemstone/regular/pillar/basic_pillar_electium.name=Electium Pillar
+tile.vg:gemstone/regular/pillar/basic_pillar_igneelis.name=Igneelis Pillar
 tile.vg:gemstone/regular/pillar/basic_pillar_necrocite.name=Necrocite Pillar
+tile.vg:gemstone/regular/pillar/basic_pillar_zephyrium.name=Zephyrium Pillar
 tile.vg:gemstone/regular/pillar/basic_pillar_onyxius.name=Onyxius Pillar
 tile.vg:gemstone/regular/pillar/basic_pillar_soularite.name=Soularite Pillar
-tile.vg:gemstone/regular/pillar/basic_pillar_ebonheart.name=Ebonheart Pillar
 
 
 
@@ -167,17 +168,17 @@ tile.vg:reed_block.name=Block of Sugar Cane
 
 
 //-----Tools-----
-item.vg:tool/arcanite_pickaxe.name=Arcanite Pickaxe
-item.vg:tool/arcanite_axe.name=Arcanite Axe
-item.vg:tool/arcanite_shovel.name=Arcanite Shovel
-item.vg:tool/arcanite_hoe.name=Arcanite Hoe
-item.vg:tool/arcanite_sword.name=Arcanite Sword
+item.vg:tool/fenryte_pickaxe.name=Fenryte Pickaxe
+item.vg:tool/fenryte_axe.name=Fenryte Axe
+item.vg:tool/fenryte_shovel.name=Fenryte Shovel
+item.vg:tool/fenryte_hoe.name=Fenryte Hoe
+item.vg:tool/fenryte_sword.name=Fenryte Sword
 
-item.vg:tool/katcheen_pickaxe.name=Katcheen Pickaxe
-item.vg:tool/katcheen_axe.name=Katcheen Axe
-item.vg:tool/katcheen_shovel.name=Katcheen Shovel
-item.vg:tool/katcheen_hoe.name=Katcheen Hoe
-item.vg:tool/katcheen_sword.name=Katcheen Sword
+item.vg:tool/electium_pickaxe.name=Electium Pickaxe
+item.vg:tool/electium_axe.name=Electium Axe
+item.vg:tool/electium_shovel.name=Electium Shovel
+item.vg:tool/electium_hoe.name=Electium Hoe
+item.vg:tool/electium_sword.name=Electium Sword
 
 item.vg:tool/necrosis.name=Necrosis
 item.vg:tool/consecration.name=Consecration
@@ -215,7 +216,7 @@ achievement.vg:alchemical_compendium=And so it begins!
 achievement.vg:alchemical_compendium.desc=Obtain an Alchemical Compendium.
 
 achievement.vg:mine_draconium_ore=A touch of Dragon!
-achievement.vg:mine_draconium_ore.desc=Mine some Draconite Ore.
+achievement.vg:mine_draconium_ore.desc=Mine some Arcanite Ore.
 achievement.vg:glowing_disc=Chant of Dragons!
 achievement.vg:glowing_disc.desc=Craft a Glowing Disc.
 
@@ -224,13 +225,13 @@ achievement.vg:mine_velious_ore.desc=Mine some Velious Ore.
 achievement.vg:shimmering_disc=Melody of Ice!
 achievement.vg:shimmering_disc.desc=Craft a Shimmering Disc.
 
-achievement.vg:mine_arcanite_ore=Might of Arcanite!
-achievement.vg:mine_arcanite_ore.desc=Mine some Arcanite Ore.
+achievement.vg:mine_fenryte_ore=Might of Fenryte!
+achievement.vg:mine_fenryte_ore.desc=Mine some Fenryte Ore.
 achievement.vg:laminate_disc=Song of Gaia!
 achievement.vg:laminate_disc.desc=Craft a Laminate Disc.
 
-achievement.vg:mine_katcheen_ore=What Diamonds should be!
-achievement.vg:mine_katcheen_ore.desc=Mine some Katcheen Ore.
+achievement.vg:mine_electium_ore=What Diamonds should be!
+achievement.vg:mine_electium_ore.desc=Mine some Electium Ore.
 achievement.vg:resilient_disc=Chorus of Strength!
 achievement.vg:resilient_disc.desc=Craft a Resilient Disc.
 
@@ -239,13 +240,13 @@ achievement.vg:mine_necrocite_ore.desc=Mine some Necrocite Ore.
 achievement.vg:dismal_disc=Symphony of the Night!
 achievement.vg:dismal_disc.desc=Craft a Dismal Disc.
 
-achievement.vg:mine_soularite_ore=Reap the Soularite!
-achievement.vg:mine_soularite_ore.desc=Mine some Soularite Ore.
+achievement.vg:mine_onyxius_ore=Reap the Onyxius!
+achievement.vg:mine_onyxius_ore.desc=Mine some Onyxius Ore.
 achievement.vg:ethereal_disc=Harmony of Light!
 achievement.vg:ethereal_disc.desc=Craft an Ethereal Disc.
 
-achievement.vg:ebonheart=Power level's over 9000!
-achievement.vg:ebonheart.desc=Obtain an Ebonheart Gemstone.
+achievement.vg:soularite=Power level's over 9000!
+achievement.vg:soularite.desc=Obtain an Soularite Gemstone.
 
 achievement.vg:empowered_blade=One step closer!
 achievement.vg:empowered_blade.desc=Craft an Empowered Blade.
@@ -268,8 +269,8 @@ achievement.vg:despair.desc=Craft the legendary weapon, Despair.
 achievement.vg:souleater=From death to life!
 achievement.vg:souleater.desc=Craft the legendary weapon, Souleater.
 
-achievement.vg:enchanted_ebonheart=Powering up!
-achievement.vg:enchanted_ebonheart.desc=Craft an Enchanted Ebonheart.
+achievement.vg:enchanted_soularite=Powering up!
+achievement.vg:enchanted_soularite.desc=Craft an Enchanted Soularite.
 
 achievement.vg:nether_bound=Nether bound!
 achievement.vg:nether_bound.desc=Craft an Obsidian Shard.
@@ -308,15 +309,15 @@ item.record.vg:disc/mirroring_disc.desc=Lost Woods
 
 
 //-----Enums-----
-vg.item.enum.frame.0=Draconite
+vg.item.enum.frame.0=Arcanite
 vg.item.enum.frame.1=Velious
-vg.item.enum.frame.2=Arcanite
-vg.item.enum.frame.3=Katcheen
-vg.item.enum.frame.4=Carnelian
+vg.item.enum.frame.2=Fenryte
+vg.item.enum.frame.3=Electium
+vg.item.enum.frame.4=Igneelis
 vg.item.enum.frame.5=Necrocite
-vg.item.enum.frame.6=Onyxius
-vg.item.enum.frame.7=Soularite
-vg.item.enum.frame.8=Ebonheart
+vg.item.enum.frame.6=Zephyrium
+vg.item.enum.frame.7=Onyxius
+vg.item.enum.frame.8=Soularite
 
 vg.world.enum.0=Overworld
 vg.world.enum.1=Nether
@@ -336,7 +337,7 @@ vg.item.tt.workbench.2=to create elemental gemstones.
 //  TO ADJUST
 
 
-item.vg:gem/enchanted_ebonheart.name=Enchanted Ebonheart
+item.vg:gem/enchanted_soularite.name=Enchanted Soularite
 item.vg:gem/obsidian_shard.name=Obsidian Shard
 item.vg:gem/glowstone_shard.name=Glowstone Shard
 item.vg:tool/empowered_blade.name=Empowered Blade
@@ -418,24 +419,24 @@ item.tier_1_catalyst.name=Catalyst (Tier 1)
 item.tier_2_catalyst.name=Catalyst (Tier 2)
 item.tier_3_catalyst.name=Catalyst (Tier 3)
 item.tier_4_catalyst.name=Catalyst (Tier 4)
-item.gem/arcanite_shard.name=Arcanite Shard
+item.gem/fenryte_shard.name=Fenryte Shard
 item.ebon_sigil.name=Ebon Sigil
-item.gem/innate_arcanite.name=Innate Arcanite
+item.gem/innate_fenryte.name=Innate Fenryte
 tile.dragonwoodplant.name=Dragonwood Sapling
 tile.purified_mystic_block.name=Purified Mystic Block
 tile.ebon_alter.name=Ebon Alter
 death.attack.electric=%1$s was roasted by electric current.
 death.attack.electric.player=%1$s was roasted by electric current while fighting %2$s.
-tile.fence/innate_arcanite_fence_normal.name=Innate Arcanite Fence
+tile.fence/innate_fenryte_fence_normal.name=Innate Fenryte Fence
 item.banana.name=Banana
-item.vg:armor/arcanite_helmet.name=Arcanite Helmet
-item.vg:armor/arcanite_chestplate.name=Arcanite Chestplate
-item.vg:armor/arcanite_leggings.name=Arcanite Leggings
-item.vg:armor/arcanite_boots.name=Arcanite Boots
-item.vg:armor/katcheen_helmet.name=Katcheen Helmet
-item.vg:armor/katcheen_chestplate.name=Katcheen Chestplate
-item.vg:armor/katcheen_leggings.name=Katcheen Leggings
-item.vg:armor/katcheen_boots.name=Katcheen Boots
+item.vg:armor/fenryte_helmet.name=Fenryte Helmet
+item.vg:armor/fenryte_chestplate.name=Fenryte Chestplate
+item.vg:armor/fenryte_leggings.name=Fenryte Leggings
+item.vg:armor/fenryte_boots.name=Fenryte Boots
+item.vg:armor/electium_helmet.name=Electium Helmet
+item.vg:armor/electium_chestplate.name=Electium Chestplate
+item.vg:armor/electium_leggings.name=Electium Leggings
+item.vg:armor/electium_boots.name=Electium Boots
 
 item.ebon_tome.name=Ebon Tome-WIP
 item.disc/chrono_disc.name=Chrono Disc - WIP

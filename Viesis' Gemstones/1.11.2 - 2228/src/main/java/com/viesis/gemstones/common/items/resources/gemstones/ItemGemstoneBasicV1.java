@@ -33,41 +33,50 @@ public class ItemGemstoneBasicV1 extends Item {
 	{
 		switch(stack.getMetadata())
 		{
+			//Arcane
 			case 0: 
-				toolTip.add(TextFormatting.GOLD + "This gemstone consists of little");
-				toolTip.add(TextFormatting.GOLD + "shiny imperfections.");
+				toolTip.add(TextFormatting.GOLD + "Shiny imperfections shimmer with");
+				toolTip.add(TextFormatting.GOLD + "the essence of arcane.");
 				break;
+			//Ice
 			case 1: 
 				toolTip.add(TextFormatting.GOLD + "A subtle chill emanates from");
 				toolTip.add(TextFormatting.GOLD + "the core of this gemstone.");
 				break;
+			//Earth
 			case 2: 
-				toolTip.add(TextFormatting.GOLD + "Sharp, slate like gemstone that");
-				toolTip.add(TextFormatting.GOLD + "is stronger than Iron.");
+				toolTip.add(TextFormatting.GOLD + "A sharp, slate gemstone infused");
+				toolTip.add(TextFormatting.GOLD + "with earthen qualities.");
 				break;
+			//Electric
 			case 3: 
+				toolTip.add(TextFormatting.GOLD + "Minor static buildup fluctuates");
+				toolTip.add(TextFormatting.GOLD + "in the core of this gemstone.");
+				break;
+			//Fire
+			case 4: 
 				toolTip.add(TextFormatting.GOLD + "This gemstone gives off a steady");
 				toolTip.add(TextFormatting.GOLD + "wave of warmth when held.");
 				break;
-			case 4: 
+			//Unholy
+			case 5: 
 				toolTip.add(TextFormatting.GOLD + "Death and decay flows from");
 				toolTip.add(TextFormatting.GOLD + "this cursed gemstone.");
 				break;
-			case 5: 
-				toolTip.add(TextFormatting.GOLD + "Angelic power radiates from");
-				toolTip.add(TextFormatting.GOLD + "this divine gemstone.");
-				break;
+			//Air
 			case 6: 
-				toolTip.add(TextFormatting.GOLD + "This gemstone feels much heavier");
-				toolTip.add(TextFormatting.GOLD + "than it looks.");
+				toolTip.add(TextFormatting.GOLD + "This gemstone feels light as air");
+				toolTip.add(TextFormatting.GOLD + "almost hovering when held.");
 				break;
+			//Ender
 			case 7: 
 				toolTip.add(TextFormatting.GOLD + "Ender energy has been infused");
 				toolTip.add(TextFormatting.GOLD + "in this gemstone.");
 				break;
+			//Holy
 			case 8: 
-				toolTip.add(TextFormatting.GOLD + "Lost knowledge has been forever");
-				toolTip.add(TextFormatting.GOLD + "trapped in this gemstone.");
+				toolTip.add(TextFormatting.GOLD + "Divine light radiates from");
+				toolTip.add(TextFormatting.GOLD + "this sacred gemstone.");
 				break;
 		}
 	}

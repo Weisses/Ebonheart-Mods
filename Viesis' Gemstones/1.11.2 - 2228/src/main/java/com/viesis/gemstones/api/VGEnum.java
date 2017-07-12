@@ -66,15 +66,15 @@ public class VGEnum {
     public static enum GemstoneTypeItemV1 implements IStringSerializable
     {
     	//STRING(meta, registerName, localizedName, generalType, enumRarity)
-        DRACONITE(0, "draconite", I18n.translateToLocal("vg.item.enum.frame.0"), RegistryType.ITEMONLY, EnumRarity.UNCOMMON),
+        ARCANITE(0, "arcanite", I18n.translateToLocal("vg.item.enum.frame.0"), RegistryType.ITEMONLY, EnumRarity.UNCOMMON),
         VELIOUS(1, "velious", I18n.translateToLocal("vg.item.enum.frame.1"), RegistryType.ITEMONLY, EnumRarity.UNCOMMON),
-    	ARCANITE(2, "arcanite", I18n.translateToLocal("vg.item.enum.frame.2"), RegistryType.ITEMONLY, EnumRarity.UNCOMMON),
-    	KATCHEEN(3, "katcheen", I18n.translateToLocal("vg.item.enum.frame.3"), RegistryType.ITEMONLY, EnumRarity.UNCOMMON),
-    	CARNELIAN(4, "carnelian", I18n.translateToLocal("vg.item.enum.frame.4"), RegistryType.ITEMONLY, EnumRarity.UNCOMMON),
+    	FENRYTE(2, "fenryte", I18n.translateToLocal("vg.item.enum.frame.2"), RegistryType.ITEMONLY, EnumRarity.UNCOMMON),
+    	ELECTIUM(3, "electium", I18n.translateToLocal("vg.item.enum.frame.3"), RegistryType.ITEMONLY, EnumRarity.UNCOMMON),
+    	IGNEELIS(4, "igneelis", I18n.translateToLocal("vg.item.enum.frame.4"), RegistryType.ITEMONLY, EnumRarity.UNCOMMON),
     	NECROCITE(5, "necrocite", I18n.translateToLocal("vg.item.enum.frame.5"), RegistryType.ITEMONLY, EnumRarity.UNCOMMON),
-    	ONYXIUS(6, "onyxius", I18n.translateToLocal("vg.item.enum.frame.6"), RegistryType.ITEMONLY, EnumRarity.UNCOMMON),
-    	SOULARITE(7, "soularite", I18n.translateToLocal("vg.item.enum.frame.7"), RegistryType.ITEMONLY, EnumRarity.UNCOMMON),
-    	EBONHEART(8, "ebonheart", I18n.translateToLocal("vg.item.enum.frame.8"), RegistryType.ITEMONLY, EnumRarity.UNCOMMON);
+    	ZEPHYRIUM(6, "zephyrium", I18n.translateToLocal("vg.item.enum.frame.6"), RegistryType.ITEMONLY, EnumRarity.UNCOMMON),
+    	ONYXIUS(7, "onyxius", I18n.translateToLocal("vg.item.enum.frame.7"), RegistryType.ITEMONLY, EnumRarity.UNCOMMON),
+    	SOULARITE(8, "soularite", I18n.translateToLocal("vg.item.enum.frame.8"), RegistryType.ITEMONLY, EnumRarity.UNCOMMON);
     	
     	private final int metadata;
         private final String registerName;
@@ -141,124 +141,20 @@ public class VGEnum {
     }
     
     /**
-	 * Item Basic V1 enum - Represents various Item Basic V1 types.
-	 */
-    public static enum GemstoneTypeItemV2 implements IStringSerializable
-    {
-    	//STRING(meta, registerName, localizedName, generalType, enumRarity)
-        GATAMITE(0, "zz1", I18n.translateToLocal("vg.item.enum.frame.0"), RegistryType.ITEMONLY, EnumRarity.COMMON),
-        INFERNUS(1, "zz2", I18n.translateToLocal("vg.item.enum.frame.1"), RegistryType.ITEMONLY, EnumRarity.UNCOMMON),
-        ATRIUS(2, "zz3", I18n.translateToLocal("vg.item.enum.frame.2"), RegistryType.ITEMONLY, EnumRarity.UNCOMMON),
-        ENSTATITE(3, "zz4", I18n.translateToLocal("vg.item.enum.frame.3"), RegistryType.ITEMONLY, EnumRarity.RARE),
-    	Z1(4, "z1", I18n.translateToLocal("vg.item.enum.frame.4"), RegistryType.ITEMONLY, EnumRarity.RARE),
-    	Z2(5, "z2", I18n.translateToLocal("vg.item.enum.frame.5"), RegistryType.ITEMONLY, EnumRarity.EPIC),
-    	Z3(6, "z3", I18n.translateToLocal("vg.item.enum.frame.6"), RegistryType.ITEMONLY, EnumRarity.RARE),
-    	Z4(7, "z4", I18n.translateToLocal("vg.item.enum.frame.7"), RegistryType.ITEMONLY, EnumRarity.EPIC),
-    	Z5(8, "x5", I18n.translateToLocal("vg.item.enum.frame.8"), RegistryType.ITEMONLY, EnumRarity.EPIC);
-    	
-    	
-    	
-    	//,
-        ////KATCHEEN(3, "katcheen", I18n.translateToLocal("ea.item.enum.frame.3"), 3, 100.0F),
-        //ONYXIUS(3, "Katcheen", I18n.translateToLocal("ea.item.enum.frame.3"), 3, 100.0F),
-        //GARAMITE(3, "Katcheen", I18n.translateToLocal("ea.item.enum.frame.3"), 3, 100.0F),
-        //MYSTALIOUS(3, "Katcheen", I18n.translateToLocal("ea.item.enum.frame.3"), 3, 100.0F),
-        
-        
-        ////NECROCITE(4, "necrocite", I18n.translateToLocal("ea.item.enum.frame.4"), 3, 45.0F),
-        ////SOULARITE(5, "soularite", I18n.translateToLocal("ea.item.enum.frame.5"), 3, 45.0F),
-        //INFERNUS(5, "Infernus", I18n.translateToLocal("ea.item.enum.frame.5"), 3, 45.0F),
-        
-        
-        //CARNELIAN(5, "Carnelian", I18n.translateToLocal("ea.item.enum.frame.5"), 3, 45.0F),
-        //ATRIUS(5, "Infernus", I18n.translateToLocal("ea.item.enum.frame.5"), 3, 45.0F),
-       // ENSTATITE(5, "Infernus", I18n.translateToLocal("ea.item.enum.frame.5"), 3, 45.0F),
-        
-        
-        ////EBONHEART(6, "ebonheart", I18n.translateToLocal("ea.item.enum.frame.6"), 3, 2000.0F);
-        
-    	private final int metadata;
-        private final String registerName;
-        private final String localizedName;
-        private final RegistryType registryType;
-        private final EnumRarity enumRarity;
-        
-        private GemstoneTypeItemV2(int metadataIn, String registerNameIn, String localizedNameIn, RegistryType registryTypeIn, EnumRarity enumRarityIn)
-        {
-            this.metadata = metadataIn;
-            this.registerName = registerNameIn;
-            this.localizedName = localizedNameIn;
-            this.registryType = registryTypeIn;
-            this.enumRarity = enumRarityIn;
-        }
-        
-        public int getMetadata()
-        {
-            return this.metadata;
-        }
-        
-        public String getName()
-        {
-            return this.registerName;
-        }
-        
-        public String getLocalizedName()
-        {
-            return this.localizedName;
-        }
-        
-        public RegistryType getRegistryType()
-        {
-            return this.registryType;
-        }
-        
-        public EnumRarity getEnumRarity()
-        {
-            return this.enumRarity;
-        }
-        
-        public static GemstoneTypeItemV2 byMetadata(int meta)
-        {
-            if (meta < 0 || meta >= values().length)
-            {
-            	meta = 0;
-            }
-            
-            return values()[meta];
-        }
-        
-        public static GemstoneTypeItemV2 getTypeFromString(String nameIn)
-        {
-            for (int i = 0; i < values().length; ++i)
-            {
-                if (values()[i].getName().equals(nameIn))
-                {
-                    return values()[i];
-                }
-            }
-            
-            return values()[0];
-        }
-    }
-    
-    
-    
-	
-    /**
 	 * Block Basic V1 enum - Represents various Block Basic V1 types.
 	 */
     public static enum GemstoneTypeBlockV1 implements IStringSerializable
     {
     	//STRING(meta, registerName, localizedName, generalType, enumRarity, harvestLevel, hardnessLevel, resistance, lightLevel)
-        DRACONITE(0, "draconite", I18n.translateToLocal("vg.blockv1.enum.frame.0"), RegistryType.ALL, EnumRarity.COMMON, 2, 5.0F, 4.0F, 0F),
+        ARCANITE(0, "arcanite", I18n.translateToLocal("vg.blockv1.enum.frame.0"), RegistryType.ALL, EnumRarity.COMMON, 2, 5.0F, 4.0F, 0F),
         VELIOUS(1, "velious", I18n.translateToLocal("vg.blockv1.enum.frame.1"), RegistryType.ALL, EnumRarity.COMMON, 2, 5.0F, 15.0F, 0F),
-    	ARCANITE(2, "arcanite", I18n.translateToLocal("vg.blockv1.enum.frame.2"), RegistryType.ALL, EnumRarity.COMMON, 2, 5.0F, 30.0F, 0F),
-    	KATCHEEN(3, "katcheen", I18n.translateToLocal("vg.blockv1.enum.frame.3"), RegistryType.ALL, EnumRarity.COMMON, 2, 5.0F, 30.0F, 0F),
-    	CARNELIAN(4, "carnelian", I18n.translateToLocal("vg.blockv1.enum.frame.4"), RegistryType.ALL, EnumRarity.COMMON, 2, 5.0F, 30.0F, 0F),
+    	FENRYTE(2, "fenryte", I18n.translateToLocal("vg.blockv1.enum.frame.2"), RegistryType.ALL, EnumRarity.COMMON, 2, 5.0F, 30.0F, 0F),
+    	ELECTIUM(3, "electium", I18n.translateToLocal("vg.blockv1.enum.frame.3"), RegistryType.ALL, EnumRarity.COMMON, 2, 5.0F, 30.0F, 0F),
+    	IGNEELIS(4, "igneelis", I18n.translateToLocal("vg.blockv1.enum.frame.4"), RegistryType.ALL, EnumRarity.COMMON, 2, 5.0F, 30.0F, 0F),
     	NECROCITE(5, "necrocite", I18n.translateToLocal("vg.blockv1.enum.frame.5"), RegistryType.ALL, EnumRarity.COMMON, 2, 5.0F, 30.0F, 0F),
-    	ONYXIUS(6, "onyxius", I18n.translateToLocal("vg.blockv1.enum.frame.6"), RegistryType.ALL, EnumRarity.COMMON, 2, 5.0F, 30.0F, 0F),
-    	SOULARITE(7, "soularite", I18n.translateToLocal("vg.blockv1.enum.frame.7"), RegistryType.ALL, EnumRarity.COMMON, 2, 5.0F, 30.0F, 0F),
-    	EBONHEART(8, "ebonheart", I18n.translateToLocal("vg.blockv1.enum.frame.8"), RegistryType.ALL, EnumRarity.COMMON, 2, 5.0F, 30F, 0F);
+    	ZEPHYRIUM(6, "zephyrium", I18n.translateToLocal("vg.blockv1.enum.frame.6"), RegistryType.ALL, EnumRarity.COMMON, 2, 5.0F, 30.0F, 0F),
+    	ONYXIUS(7, "onyxius", I18n.translateToLocal("vg.blockv1.enum.frame.7"), RegistryType.ALL, EnumRarity.COMMON, 2, 5.0F, 30.0F, 0F),
+    	SOULARITE(8, "soularite", I18n.translateToLocal("vg.blockv1.enum.frame.8"), RegistryType.ALL, EnumRarity.COMMON, 2, 5.0F, 30F, 0F);
     	
     	private final int metadata;
         private final String registerName;
@@ -476,7 +372,7 @@ public class VGEnum {
 /**    public static enum MaterialTypeItem implements IStringSerializable
     {
     	//STRING(meta, registerName, localizedName, generalType, enumRarity, harvestLevel, hardnessLevel, resistance, lightLevel)
-        DRACONITE(0, "draconite", I18n.translateToLocal("ea.item.enum.frame.0"), RegistryType.ALL, EnumRarity.COMMON, 2, 5.0F, 4.0F, 0F),
+        DRACONITE(0, "arcanite", I18n.translateToLocal("ea.item.enum.frame.0"), RegistryType.ALL, EnumRarity.COMMON, 2, 5.0F, 4.0F, 0F),
         UNUSED1(1, "placeholder1", I18n.translateToLocal("null1"), RegistryType.NONE, EnumRarity.COMMON, 2, 0F, 0F, 0F),
         UNUSED2(2, "placeholder2", I18n.translateToLocal("null2"), RegistryType.NONE, EnumRarity.COMMON, 2, 0F, 0F, 0F),
         UNUSED3(3, "placeholder3", I18n.translateToLocal("null3"), RegistryType.NONE, EnumRarity.COMMON, 2, 0F, 0F, 0F),
@@ -488,13 +384,13 @@ public class VGEnum {
     	UNUSED8(8, "placeholder8", I18n.translateToLocal("null8"), RegistryType.NONE, EnumRarity.COMMON, 2, 0F, 0F, 0F),
     	UNUSED9(9, "placeholder9", I18n.translateToLocal("null9"), RegistryType.NONE, EnumRarity.COMMON, 2, 0F, 0F, 0F),
     	
-    	ARCANITE(10, "arcanite", I18n.translateToLocal("ea.item.enum.frame.2"), RegistryType.ALL, EnumRarity.COMMON, 2, 5.0F, 30.0F, 0F),
+    	ARCANITE(10, "fenryte", I18n.translateToLocal("ea.item.enum.frame.2"), RegistryType.ALL, EnumRarity.COMMON, 2, 5.0F, 30.0F, 0F),
     	UNUSED11(11, "placeholder11", I18n.translateToLocal("null11"), RegistryType.NONE, EnumRarity.COMMON, 2, 0F, 0F, 0F),
     	UNUSED12(12, "placeholder12", I18n.translateToLocal("null12"), RegistryType.NONE, EnumRarity.COMMON, 2, 0F, 0F, 0F),
     	UNUSED13(13, "placeholder13", I18n.translateToLocal("null13"), RegistryType.NONE, EnumRarity.COMMON, 2, 0F, 0F, 0F),
     	UNUSED14(14, "placeholder14", I18n.translateToLocal("null14"), RegistryType.NONE, EnumRarity.COMMON, 2, 0F, 0F, 0F),
     	
-    	KATCHEEN(15, "katcheen", I18n.translateToLocal("ea.item.enum.frame.3"), RegistryType.ALL, EnumRarity.COMMON, 2, 5.0F, 30.0F, 0F),
+    	KATCHEEN(15, "electium", I18n.translateToLocal("ea.item.enum.frame.3"), RegistryType.ALL, EnumRarity.COMMON, 2, 5.0F, 30.0F, 0F),
     	UNUSED16(16, "placeholder16", I18n.translateToLocal("null11"), RegistryType.NONE, EnumRarity.COMMON, 2, 0F, 0F, 0F),
     	UNUSED17(17, "placeholder17", I18n.translateToLocal("null12"), RegistryType.NONE, EnumRarity.COMMON, 2, 0F, 0F, 0F),
     	UNUSED18(18, "placeholder18", I18n.translateToLocal("null13"), RegistryType.NONE, EnumRarity.COMMON, 2, 0F, 0F, 0F),
@@ -681,10 +577,10 @@ public class VGEnum {
     /**    public static enum MaterialTypeGemstoneBlock implements IStringSerializable
     {
     	//STRING(meta, registerName, localizedName, generalType, enumRarity, harvestLevel, hardnessLevel, resistance, lightLevel)
-        DRACONITE(0, "draconite", I18n.translateToLocal("ea.item.enum.frame.0"), RegistryType.ALL, EnumRarity.COMMON, 2, 5.0F, 4.0F, 0F),
+        DRACONITE(0, "arcanite", I18n.translateToLocal("ea.item.enum.frame.0"), RegistryType.ALL, EnumRarity.COMMON, 2, 5.0F, 4.0F, 0F),
         VELIOUS(5, "velious", I18n.translateToLocal("ea.item.enum.frame.1"), RegistryType.ALL, EnumRarity.COMMON, 2, 5.0F, 15.0F, 0F),
-    	ARCANITE(10, "arcanite", I18n.translateToLocal("ea.item.enum.frame.2"), RegistryType.ALL, EnumRarity.COMMON, 2, 5.0F, 30.0F, 0F),
-    	KATCHEEN(15, "katcheen", I18n.translateToLocal("ea.item.enum.frame.2"), RegistryType.ALL, EnumRarity.COMMON, 2, 5.0F, 30.0F, 0F),
+    	ARCANITE(10, "fenryte", I18n.translateToLocal("ea.item.enum.frame.2"), RegistryType.ALL, EnumRarity.COMMON, 2, 5.0F, 30.0F, 0F),
+    	KATCHEEN(15, "electium", I18n.translateToLocal("ea.item.enum.frame.2"), RegistryType.ALL, EnumRarity.COMMON, 2, 5.0F, 30.0F, 0F),
     	ONYXIUS(20, "onyxius", I18n.translateToLocal("ea.item.enum.frame.2"), RegistryType.ALL, EnumRarity.COMMON, 2, 5.0F, 30.0F, 0F),
     	MYSTALIOUS(25, "mystalious", I18n.translateToLocal("ea.item.enum.frame.2"), RegistryType.ALL, EnumRarity.COMMON, 2, 5.0F, 30.0F, 0F),
     	
@@ -699,7 +595,7 @@ public class VGEnum {
     	
     	
     	//,
-        ////KATCHEEN(3, "katcheen", I18n.translateToLocal("ea.item.enum.frame.3"), 3, 100.0F),
+        ////KATCHEEN(3, "electium", I18n.translateToLocal("ea.item.enum.frame.3"), 3, 100.0F),
         //ONYXIUS(3, "Katcheen", I18n.translateToLocal("ea.item.enum.frame.3"), 3, 100.0F),
         //GARAMITE(3, "Katcheen", I18n.translateToLocal("ea.item.enum.frame.3"), 3, 100.0F),
         //MYSTALIOUS(3, "Katcheen", I18n.translateToLocal("ea.item.enum.frame.3"), 3, 100.0F),

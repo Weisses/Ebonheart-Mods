@@ -1,0 +1,8 @@
+{
+    "parent": "block/stairs",
+    "textures": {
+        "bottom": "vg:blocks/gemstones/regular/igneelis_stairs",
+        "top": "vg:blocks/gemstones/regular/igneelis_stairs",
+        "side": "vg:blocks/gemstones/regular/igneelis_stairs"
+    }
+}

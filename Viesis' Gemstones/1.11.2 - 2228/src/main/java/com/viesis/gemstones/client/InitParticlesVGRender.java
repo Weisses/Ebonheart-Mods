@@ -2,8 +2,10 @@ package com.viesis.gemstones.client;
 
 import com.viesis.gemstones.api.References;
 import com.viesis.gemstones.client.particle.EntityColorFlameFX;
+import com.viesis.gemstones.client.particle.EntityGemstoneRunesFX;
 import com.viesis.gemstones.client.particle.EntityRunicFX;
 import com.viesis.gemstones.client.particle.EntityUnholyFX;
+import com.viesis.gemstones.common.tileentity.TileEntityGemstoneWorkbench;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.Particle;
@@ -13,6 +15,22 @@ import net.minecraft.util.math.MathHelper;
 
 public class InitParticlesVGRender {
 	
+	public static void generateRunicWorkbenchParticles(TileEntityGemstoneWorkbench entity)
+	{
+		double motionX = entity.getWorld().rand.nextGaussian() * 0.03D;
+	    double motionY = entity.getWorld().rand.nextGaussian() * 0.03D;
+	    double motionZ = entity.getWorld().rand.nextGaussian() * 0.03D;
+	    
+	    Particle particleRunic = new EntityGemstoneRunesFX(entity.getWorld(), 
+			entity.getPos().getX() + entity.getWorld().rand.nextFloat(), 
+			entity.getPos().getY() + entity.getWorld().rand.nextFloat(), 
+			entity.getPos().getZ() + entity.getWorld().rand.nextFloat(), 
+			motionX, motionY, motionZ);
+	    
+	    Minecraft.getMinecraft().effectRenderer.addEffect(particleRunic);        
+	}
+	
+	/**
 	public static void generateSmokeParticles(Entity entity)
 	{
 		entity.world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, 
@@ -130,6 +148,8 @@ public class InitParticlesVGRender {
 	          motionZ);
 	    Minecraft.getMinecraft().effectRenderer.addEffect(particleUnholy);        
 	}
+	
+	
 	
 	//=============================================================
 	

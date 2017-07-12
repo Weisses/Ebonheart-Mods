@@ -28,7 +28,7 @@ public final class InitItemsVGRender extends VGItems {
 			if(meta.getRegistryType() == RegistryType.ALL
 			|| meta.getRegistryType() == RegistryType.ITEMONLY)
 			{
-				registerRenderEnum(gemstone_item_dense_v1, meta.getMetadata());
+				registerRenderEnum(gemstone_item_enchanted_v1, meta.getMetadata());
 			}
 		}
 		

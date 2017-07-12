@@ -7,8 +7,9 @@ public class VGItems {
 	public static Item gemstone_item_unidentified;
 	
 	public static Item gemstone_item_basic_v1;
-	public static Item gemstone_item_dense_v1;
-	public static Item gemstone_item_cryptic_v1;
+	public static Item gemstone_item_enchanted_v1;
+	//public static Item gemstone_item_dense_v1;
+	//public static Item gemstone_item_cryptic_v1;
 	
 	
 	

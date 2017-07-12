@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "vc:item_airship_v2_netherbrick",
+  "pattern": [
+    "BLB", 
+    "L#L", 
+    "EIE"
+  ],
+  "key": {
+    "#": {
+      "item": "vc:frames/airship_frame",
+      "data": 17
+    },
+    "B": {
+      "item": "vc:airship_balloon"
+    },
+    "E": {
+      "item": "vc:airship_engine"
+    },
+    "I": {
+      "item": "vc:airship_ignition"
+    },
+    "L": {
+      "item": "minecraft:lead"
+    }
+  },
+  "result": {
+    "item": "vc:v2/item_airship_v2",
+    "data": 17,
+    "count": 1
+  }
+}

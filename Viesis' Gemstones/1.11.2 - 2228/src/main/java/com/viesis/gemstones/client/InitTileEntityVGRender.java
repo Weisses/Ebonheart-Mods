@@ -1,6 +1,8 @@
 package com.viesis.gemstones.client;
 
+import com.viesis.gemstones.client.tileentity.RenderGemstoneConverter;
 import com.viesis.gemstones.client.tileentity.RenderGemstoneWorkbench;
+import com.viesis.gemstones.common.tileentity.TileEntityGemstoneConverter;
 import com.viesis.gemstones.common.tileentity.TileEntityGemstoneWorkbench;
 
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
@@ -12,6 +14,7 @@ public class InitTileEntityVGRender {
 	public static void registerTileEntityRender()
 	{
 		registerRender(TileEntityGemstoneWorkbench.class, new RenderGemstoneWorkbench());
+		registerRender(TileEntityGemstoneConverter.class, new RenderGemstoneConverter());
 	}
 	
 	public static void registerTileEntityRenderTEMP()

@@ -1,6 +1,0 @@
-{
-	"parent": "block/fence_inventory",
-	"textures": {
-		"texture": "vg:blocks/gemstones/regular/ebonheart_block"
-	}
-}

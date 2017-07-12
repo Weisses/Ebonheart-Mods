@@ -1,7 +1,6 @@
 package com.viesis.gemstones.init;
 
 import com.viesis.gemstones.ViesisGemstones;
-import com.viesis.gemstones.zzzArk.EntityEnchantedEbonheart;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
@@ -13,7 +12,7 @@ public class InitEntityVG {
 	
 	public static void registerEntity()
 	{
-		register("enchanted_ebonheart", EntityEnchantedEbonheart.class, "enchanted.ebonheart", 64, 20, true);
+		//register("enchanted_ebonheart", EntityEnchantedEbonheart.class, "enchanted.ebonheart", 64, 20, true);
 	}
 	
 	public static void registerEntityTEMP()

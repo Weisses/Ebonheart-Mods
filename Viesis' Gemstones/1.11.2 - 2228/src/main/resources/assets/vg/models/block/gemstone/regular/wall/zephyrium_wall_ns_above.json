@@ -1,0 +1,6 @@
+{
+    "parent": "block/wall_ns_above",
+    "textures": {
+        "wall": "vg:blocks/gemstones/regular/zephyrium_block"
+    }
+}

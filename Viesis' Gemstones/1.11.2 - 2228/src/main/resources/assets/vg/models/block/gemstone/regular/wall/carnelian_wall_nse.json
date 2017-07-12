@@ -1,6 +1,0 @@
-{
-    "parent": "block/wall_nse",
-    "textures": {
-        "wall": "vg:blocks/gemstones/regular/carnelian_block"
-    }
-}

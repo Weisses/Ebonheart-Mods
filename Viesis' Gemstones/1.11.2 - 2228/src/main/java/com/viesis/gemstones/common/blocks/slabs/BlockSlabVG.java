@@ -70,15 +70,15 @@ public abstract class BlockSlabVG extends BlockSlab {
 	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune)
     {
-		return this == InitBlocksVG.basic_doubleslab_draconite ? Item.getItemFromBlock(InitBlocksVG.basic_halfslab_draconite)
+		return this == InitBlocksVG.basic_doubleslab_arcanite ? Item.getItemFromBlock(InitBlocksVG.basic_halfslab_arcanite)
 				: (this == InitBlocksVG.basic_doubleslab_velious ? Item.getItemFromBlock(InitBlocksVG.basic_halfslab_velious) 
-				: (this == InitBlocksVG.basic_doubleslab_arcanite ? Item.getItemFromBlock(InitBlocksVG.basic_halfslab_arcanite) 
-				: (this == InitBlocksVG.basic_doubleslab_katcheen ? Item.getItemFromBlock(InitBlocksVG.basic_halfslab_katcheen) 
-				: (this == InitBlocksVG.basic_doubleslab_carnelian ? Item.getItemFromBlock(InitBlocksVG.basic_halfslab_carnelian)
+				: (this == InitBlocksVG.basic_doubleslab_fenryte ? Item.getItemFromBlock(InitBlocksVG.basic_halfslab_fenryte) 
+				: (this == InitBlocksVG.basic_doubleslab_electium ? Item.getItemFromBlock(InitBlocksVG.basic_halfslab_electium) 
+				: (this == InitBlocksVG.basic_doubleslab_igneelis ? Item.getItemFromBlock(InitBlocksVG.basic_halfslab_igneelis)
 				: (this == InitBlocksVG.basic_doubleslab_necrocite ? Item.getItemFromBlock(InitBlocksVG.basic_halfslab_necrocite) 
+				: (this == InitBlocksVG.basic_doubleslab_zephyrium ? Item.getItemFromBlock(InitBlocksVG.basic_halfslab_zephyrium) 
 				: (this == InitBlocksVG.basic_doubleslab_onyxius ? Item.getItemFromBlock(InitBlocksVG.basic_halfslab_onyxius) 
 				: (this == InitBlocksVG.basic_doubleslab_soularite ? Item.getItemFromBlock(InitBlocksVG.basic_halfslab_soularite) 
-				: (this == InitBlocksVG.basic_doubleslab_ebonheart ? Item.getItemFromBlock(InitBlocksVG.basic_halfslab_ebonheart) 
 						
 				//: (this == InitBlocksEA.basic_doubleslab_cryptic_draconium ? Item.getItemFromBlock(InitBlocksEA.cryptic_draconium)
 				//: (this == InitBlocksEA.basic_doubleslab_cryptic_velious ? Item.getItemFromBlock(InitBlocksEA.cryptic_velious) 
@@ -97,15 +97,15 @@ public abstract class BlockSlabVG extends BlockSlab {
 	@Override
 	public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player)
 	{
-		return this == InitBlocksVG.basic_doubleslab_draconite ? new ItemStack(Item.getItemFromBlock(InitBlocksVG.basic_halfslab_draconite), 1)
+		return this == InitBlocksVG.basic_doubleslab_arcanite ? new ItemStack(Item.getItemFromBlock(InitBlocksVG.basic_halfslab_arcanite), 1)
 				: (this == InitBlocksVG.basic_doubleslab_velious ? new ItemStack(Item.getItemFromBlock(InitBlocksVG.basic_halfslab_velious) , 1)
-				: (this == InitBlocksVG.basic_doubleslab_arcanite ? new ItemStack(Item.getItemFromBlock(InitBlocksVG.basic_halfslab_arcanite) , 1)
-				: (this == InitBlocksVG.basic_doubleslab_katcheen ? new ItemStack(Item.getItemFromBlock(InitBlocksVG.basic_halfslab_katcheen) , 1)
-				: (this == InitBlocksVG.basic_doubleslab_carnelian ? new ItemStack(Item.getItemFromBlock(InitBlocksVG.basic_halfslab_carnelian), 1)
+				: (this == InitBlocksVG.basic_doubleslab_fenryte ? new ItemStack(Item.getItemFromBlock(InitBlocksVG.basic_halfslab_fenryte) , 1)
+				: (this == InitBlocksVG.basic_doubleslab_electium ? new ItemStack(Item.getItemFromBlock(InitBlocksVG.basic_halfslab_electium) , 1)
+				: (this == InitBlocksVG.basic_doubleslab_igneelis ? new ItemStack(Item.getItemFromBlock(InitBlocksVG.basic_halfslab_igneelis), 1)
 				: (this == InitBlocksVG.basic_doubleslab_necrocite ? new ItemStack(Item.getItemFromBlock(InitBlocksVG.basic_halfslab_necrocite) , 1)
+				: (this == InitBlocksVG.basic_doubleslab_zephyrium ? new ItemStack(Item.getItemFromBlock(InitBlocksVG.basic_halfslab_zephyrium) , 1)
 				: (this == InitBlocksVG.basic_doubleslab_onyxius ? new ItemStack(Item.getItemFromBlock(InitBlocksVG.basic_halfslab_onyxius) , 1)
 				: (this == InitBlocksVG.basic_doubleslab_soularite ? new ItemStack(Item.getItemFromBlock(InitBlocksVG.basic_halfslab_soularite) , 1)
-				: (this == InitBlocksVG.basic_doubleslab_ebonheart ? new ItemStack(Item.getItemFromBlock(InitBlocksVG.basic_halfslab_ebonheart) , 1)
 						
 				//: (this == InitBlocksEA.basic_doubleslab_cryptic_draconium ? Item.getItemFromBlock(InitBlocksEA.cryptic_draconium)
 				//: (this == InitBlocksEA.basic_doubleslab_cryptic_velious ? Item.getItemFromBlock(InitBlocksEA.cryptic_velious) 

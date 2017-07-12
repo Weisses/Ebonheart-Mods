@@ -1,8 +1,0 @@
-{
-    "parent": "block/stairs",
-    "textures": {
-        "bottom": "vg:blocks/gemstones/regular/katcheen_stairs",
-        "top": "vg:blocks/gemstones/regular/katcheen_stairs",
-        "side": "vg:blocks/gemstones/regular/katcheen_stairs"
-    }
-}

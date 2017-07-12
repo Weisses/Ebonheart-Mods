@@ -3,32 +3,19 @@ package com.viesis.gemstones.common.items.armor;
 import java.util.List;
 import java.util.Random;
 
-import com.ebonheart.EbonArtsMod.EbonArts;
-import com.ebonheart.EbonArtsMod.common.entity.modifiers.EAAttributeModifier;
-import com.ebonheart.EbonArtsMod.common.items.MaterialHelper;
-import com.ebonheart.EbonArtsMod.common.items.ItemHelper;
-import com.ebonheart.EbonArtsMod.configs.EbonArtsConfiguration;
-import com.ebonheart.EbonArtsMod.init.InitItemsEA;
+import com.viesis.gemstones.ViesisGemstones;
+import com.viesis.gemstones.common.items.ItemHelper;
+import com.viesis.gemstones.common.items.MaterialHelper;
+import com.viesis.gemstones.configs.ViesisGemstonesConfig;
+import com.viesis.gemstones.init.InitItemsVG;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
-import net.minecraft.init.MobEffects;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.EnumRarity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
-import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.SoundEvent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -50,12 +37,12 @@ public class ItemScalemailArmor extends ItemArmor {
 		super(MaterialHelper.SCALEMAIL, renderIndexIn, equipmentSlotIn);
 		
 		ItemHelper.setItemName(this, unlocalizedName);
-		this.setCreativeTab(ViesisGemstones.tabEbonArtsItems);
+		//this.setCreativeTab(ViesisGemstones.tabEbonArtsItems);
 	}
 	
 	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair)
     {
-        return InitItemsVG.katcheen == repair.getItem() ? true : super.getIsRepairable(toRepair, repair);
+		return new ItemStack(InitItemsVG.gemstone_item_basic_v1, 1, 0) == repair ? true : super.getIsRepairable(toRepair, repair);
     }
 	
 	@SideOnly(Side.CLIENT)
@@ -74,7 +61,7 @@ public class ItemScalemailArmor extends ItemArmor {
     {
         return EnumRarity.RARE;
     }
-	
+	/**
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) 
 	{
@@ -139,6 +126,6 @@ public class ItemScalemailArmor extends ItemArmor {
 			
 		}
 		
-	}
+	}*/
 	
 }

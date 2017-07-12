@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "vg:gemstone/regular/ladder/igneelis_ladder" },
+        "facing=east":  { "model": "vg:gemstone/regular/ladder/igneelis_ladder", "y": 90 },
+        "facing=south": { "model": "vg:gemstone/regular/ladder/igneelis_ladder", "y": 180 },
+        "facing=west":  { "model": "vg:gemstone/regular/ladder/igneelis_ladder", "y": 270 }
+    }
+}

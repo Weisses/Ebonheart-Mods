@@ -6,9 +6,9 @@ import java.util.Random;
 import com.viesis.gemstones.ViesisGemstones;
 import com.viesis.gemstones.common.items.ItemHelper;
 import com.viesis.gemstones.common.items.MaterialHelper;
+import com.viesis.gemstones.common.utils.modifiers.VGAttributeModifier;
 import com.viesis.gemstones.configs.ViesisGemstonesConfig;
 import com.viesis.gemstones.init.InitItemsVG;
-import com.viesis.gemstones.zzzArk.modifier.VGAttributeModifier;
 
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.player.EntityPlayer;
@@ -41,7 +41,8 @@ public class ItemBurnishedArmor extends ItemArmor {
 	
 	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair)
     {
-        return InitItemsVG.arcanite == repair.getItem() ? true : super.getIsRepairable(toRepair, repair);
+        return new ItemStack(InitItemsVG.gemstone_item_basic_v1, 1, 0) == repair ? true : super.getIsRepairable(toRepair, repair);
+        		//InitItemsVG.arcanite == repair.getItem() ? true : super.getIsRepairable(toRepair, repair);
     }
 	
 	@SideOnly(Side.CLIENT)
@@ -59,7 +60,7 @@ public class ItemBurnishedArmor extends ItemArmor {
     {
         return EnumRarity.UNCOMMON;
     }
-	
+	/**
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) 
 	{
@@ -117,7 +118,7 @@ public class ItemBurnishedArmor extends ItemArmor {
 		}
 		
 	}
-	
+	*/
 	
 	
 }

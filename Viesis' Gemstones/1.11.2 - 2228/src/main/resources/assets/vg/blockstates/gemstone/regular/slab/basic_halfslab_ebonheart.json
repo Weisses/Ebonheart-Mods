@@ -1,6 +1,0 @@
-{
-    "variants": {
-        "half=bottom,type=stone": { "model": "vg:gemstone/regular/slab/half_ebonheart_slab" },
-        "half=top,type=stone": { "model": "vg:gemstone/regular/slab/upper_ebonheart_slab" }
-    }
-}

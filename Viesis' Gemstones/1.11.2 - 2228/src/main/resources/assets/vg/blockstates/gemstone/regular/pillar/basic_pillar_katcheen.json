@@ -1,8 +1,0 @@
-{
-    "variants": {
-        "axis=none":  { "model": "vg:gemstone/regular/pillar/katcheen_pillar" },
-        "axis=y":   { "model": "vg:gemstone/regular/pillar/katcheen_pillar" },
-        "axis=z":   { "model": "vg:gemstone/regular/pillar/katcheen_pillar", "x": 90 },
-        "axis=x":   { "model": "vg:gemstone/regular/pillar/katcheen_pillar", "x": 90, "y": 90 }
-    }
-}

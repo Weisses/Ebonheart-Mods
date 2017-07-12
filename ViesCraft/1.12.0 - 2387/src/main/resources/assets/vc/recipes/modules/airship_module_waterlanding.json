@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "vc:airship_module_minorspeed",
+  "pattern": [
+    "CBC",
+    "Q#Q",
+    "CBC"
+  ],
+  "key": {
+    "C": {
+      "item": "vc:modules/airship_module",
+    "data": 0
+    },
+    "B": {
+      "item": "minecraft:glass_bottle"
+    },
+    "#": {
+      "item": "minecraft:ghast_tear"
+    },
+    "Q": {
+      "item": "minecraft:quartz"
+    }
+  },
+  "result": {
+    "item": "vc:modules/airship_module",
+    "data": 6,
+    "count": 1
+  }
+}

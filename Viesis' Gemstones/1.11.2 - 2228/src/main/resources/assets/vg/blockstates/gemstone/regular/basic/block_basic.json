@@ -2,35 +2,39 @@
     "forge_marker": 1,
     "defaults": 
     {
-        "model": "vg:gemstone/regular/basic/block_basic_draconite"
+        "model": "vg:gemstone/regular/basic/block_basic_arcanite"
     },
     "variants": 
     {
         "variant": 
         {
-            "draconite": 
+            "arcanite": 
             {
-                "model": "vg:gemstone/regular/basic/block_basic_draconite"
+                "model": "vg:gemstone/regular/basic/block_basic_arcanite"
             },
             "velious": 
             {
                 "model": "vg:gemstone/regular/basic/block_basic_velious"
             },
-            "arcanite": 
+            "fenryte": 
             {
-                "model": "vg:gemstone/regular/basic/block_basic_arcanite"
+                "model": "vg:gemstone/regular/basic/block_basic_fenryte"
             },
-            "katcheen": 
+            "electium": 
             {
-                "model": "vg:gemstone/regular/basic/block_basic_katcheen"
+                "model": "vg:gemstone/regular/basic/block_basic_electium"
             },
-            "carnelian": 
+            "igneelis": 
             {
-                "model": "vg:gemstone/regular/basic/block_basic_carnelian"
+                "model": "vg:gemstone/regular/basic/block_basic_igneelis"
             },
             "necrocite": 
             {
                 "model": "vg:gemstone/regular/basic/block_basic_necrocite"
+            },
+            "zephyrium": 
+            {
+                "model": "vg:gemstone/regular/basic/block_basic_zephyrium"
             },
             "onyxius": 
             {
@@ -39,10 +43,6 @@
             "soularite": 
             {
                 "model": "vg:gemstone/regular/basic/block_basic_soularite"
-            },
-            "ebonheart": 
-            {
-                "model": "vg:gemstone/regular/basic/block_basic_ebonheart"
             }
         }
     }

@@ -3,6 +3,12 @@ package com.viesis.gemstones.common.items.armor;
 import java.util.List;
 import java.util.Random;
 
+import com.viesis.gemstones.ViesisGemstones;
+import com.viesis.gemstones.api.util.LogHelper;
+import com.viesis.gemstones.common.items.ItemHelper;
+import com.viesis.gemstones.common.items.MaterialHelper;
+import com.viesis.gemstones.init.InitItemsVG;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -15,12 +21,6 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import com.ebonheart.EbonArtsMod.EbonArts;
-import com.ebonheart.EbonArtsMod.api.util.LogHelper;
-import com.ebonheart.EbonArtsMod.common.items.ItemHelper;
-import com.ebonheart.EbonArtsMod.common.items.MaterialHelper;
-import com.ebonheart.EbonArtsMod.init.InitItemsEA;
 
 //Ender
 public class ItemVoidArmor extends ItemArmor {
@@ -37,7 +37,7 @@ public class ItemVoidArmor extends ItemArmor {
 		super(MaterialHelper.VOID, renderIndexIn, equipmentSlotIn);
 		
 		ItemHelper.setItemName(this, unlocalizedName);
-		this.setCreativeTab(ViesisGemstones.tabEbonArtsItems);
+		//this.setCreativeTab(ViesisGemstones.tabEbonArtsItems);
 	}
 	
 	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair)
@@ -61,7 +61,7 @@ public class ItemVoidArmor extends ItemArmor {
     {
         return EnumRarity.RARE;
     }
-	
+	/**
 	@Override
 	public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack) 
 	{
@@ -306,3 +306,4 @@ public class ItemVoidArmor extends ItemArmor {
 						
 
 **/
+}

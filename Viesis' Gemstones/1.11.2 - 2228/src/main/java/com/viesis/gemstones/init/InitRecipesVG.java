@@ -11,6 +11,46 @@ public class InitRecipesVG {
 	
 	public static void initShapedRecipe()
 	{
+		
+		GameRegistry.addShapedRecipe(new ItemStack(InitBlocksVG.gemstone_basic_block_v1, 1, 0), new Object[]{"##", "##", '#', new ItemStack(InitItemsVG.gemstone_item_basic_v1, 1, 0)});
+		GameRegistry.addShapedRecipe(new ItemStack(InitBlocksVG.basic_halfslab_arcanite, 6), new Object[]{"DDD", 'D', new ItemStack(InitBlocksVG.gemstone_basic_block_v1, 1, 0)});
+		GameRegistry.addShapedRecipe(new ItemStack(InitBlocksVG.basic_stairs_arcanite, 4), new Object[]{"  D", " DD", "DDD", 'D', new ItemStack(InitBlocksVG.gemstone_basic_block_v1, 1, 0)});
+		GameRegistry.addShapedRecipe(new ItemStack(InitBlocksVG.basic_stairs_arcanite, 4), new Object[]{"D  ", "DD ", "DDD", 'D', new ItemStack(InitBlocksVG.gemstone_basic_block_v1, 1, 0)});
+		GameRegistry.addShapedRecipe(new ItemStack(InitBlocksVG.basic_stairs_arcanite, 4), new Object[]{"DDD", " DD", "  D", 'D', new ItemStack(InitBlocksVG.gemstone_basic_block_v1, 1, 0)});
+		GameRegistry.addShapedRecipe(new ItemStack(InitBlocksVG.basic_stairs_arcanite, 4), new Object[]{"DDD", "DD ", "D  ", 'D', new ItemStack(InitBlocksVG.gemstone_basic_block_v1, 1, 0)});
+		GameRegistry.addShapedRecipe(new ItemStack(InitBlocksVG.basic_fence_arcanite, 3), new Object[]{"D#D", "D#D", 'D', new ItemStack(InitBlocksVG.gemstone_basic_block_v1, 1, 0), '#', new ItemStack(InitItemsVG.gemstone_item_basic_v1, 1, 0)});
+		GameRegistry.addShapedRecipe(new ItemStack(InitBlocksVG.basic_gate_arcanite), new Object[]{"#D#", "#D#", 'D', new ItemStack(InitBlocksVG.gemstone_basic_block_v1, 1, 0), '#', new ItemStack(InitItemsVG.gemstone_item_basic_v1, 1, 0)});
+		GameRegistry.addShapedRecipe(new ItemStack(InitBlocksVG.basic_wall_arcanite, 3), new Object[]{"DDD", "DDD", 'D', new ItemStack(InitBlocksVG.gemstone_basic_block_v1, 1, 0)});
+		GameRegistry.addShapedRecipe(new ItemStack(InitBlocksVG.gemstone_basic_brick_v1, 4, 0), new Object[]{"DD", "DD", 'D', new ItemStack(InitBlocksVG.gemstone_basic_block_v1, 1, 0)});
+		GameRegistry.addShapedRecipe(new ItemStack(InitBlocksVG.basic_torch_arcanite, 4), new Object[]{"C", "D", 'D', new ItemStack(InitBlocksVG.gemstone_basic_block_v1, 1, 0), 'C', Items.COAL});
+		GameRegistry.addShapedRecipe(new ItemStack(InitBlocksVG.basic_torch_arcanite, 4), new Object[]{"C", "D", 'D', new ItemStack(InitBlocksVG.gemstone_basic_block_v1, 1, 0), 'C', new ItemStack(Items.COAL, 1, 1)});
+		GameRegistry.addShapedRecipe(new ItemStack(InitBlocksVG.basic_ladder_arcanite, 4), new Object[]{"# #", "###", "# #", '#', new ItemStack(InitItemsVG.gemstone_item_basic_v1, 1, 0)});
+		GameRegistry.addShapedRecipe(new ItemStack(InitBlocksVG.basic_pillar_arcanite, 2), new Object[]{"D", "D", 'D', new ItemStack(InitBlocksVG.gemstone_basic_block_v1, 1, 0)});
+		GameRegistry.addShapedRecipe(new ItemStack(InitBlocksVG.basic_trapdoor_arcanite, 2), new Object[]{"###", "###", '#', new ItemStack(InitItemsVG.gemstone_item_basic_v1, 1, 0)});
+		GameRegistry.addShapedRecipe(new ItemStack(InitBlocksVG.gemstone_basic_fancybrick_v1, 2, 0), new Object[]{"D", "D", 'D', new ItemStack(InitBlocksVG.gemstone_basic_brick_v1, 1, 0)});
+		
+		
+		
+		/**
+		GameRegistry.addShapedRecipe(new ItemStack(InitBlocksVG.gemstone_basic_block_v1, 1, 0), new Object[]{"##", "##", '#', new ItemStack(InitItemsVG.gemstone_item_basic_v1, 1, 0)});
+		GameRegistry.addShapedRecipe(new ItemStack(InitBlocksEA.draconite_slab, 6), new Object[]{"DDD", 'D', new ItemStack(InitItemsVG.gemstone_item_basic_v1, 1, 0)});
+		GameRegistry.addShapedRecipe(new ItemStack(InitBlocksEA.draconite_stairs, 4), new Object[]{"  D", " DD", "DDD", 'D', new ItemStack(InitItemsVG.gemstone_item_basic_v1, 1, 0)});
+		GameRegistry.addShapedRecipe(new ItemStack(InitBlocksEA.draconite_stairs, 4), new Object[]{"D  ", "DD ", "DDD", 'D', new ItemStack(InitItemsVG.gemstone_item_basic_v1, 1, 0)});
+		GameRegistry.addShapedRecipe(new ItemStack(InitBlocksEA.draconite_stairs, 4), new Object[]{"DDD", " DD", "  D", 'D', new ItemStack(InitItemsVG.gemstone_item_basic_v1, 1, 0)});
+		GameRegistry.addShapedRecipe(new ItemStack(InitBlocksEA.draconite_stairs, 4), new Object[]{"DDD", "DD ", "D  ", 'D', new ItemStack(InitItemsVG.gemstone_item_basic_v1, 1, 0)});
+		GameRegistry.addShapedRecipe(new ItemStack(InitBlocksEA.draconite_fence, 3), new Object[]{"D#D", "D#D", 'D', new ItemStack(InitItemsVG.gemstone_item_basic_v1, 1, 0), '#', InitItemsEA.draconite_dust});
+		GameRegistry.addShapedRecipe(new ItemStack(InitBlocksEA.draconite_fence_gate), new Object[]{"#D#", "#D#", 'D', new ItemStack(InitItemsVG.gemstone_item_basic_v1, 1, 0), '#', InitItemsEA.draconite_dust});
+		GameRegistry.addShapedRecipe(new ItemStack(InitBlocksEA.draconite_wall, 3), new Object[]{"DDD", "DDD", 'D', new ItemStack(InitItemsVG.gemstone_item_basic_v1, 1, 0)});
+		GameRegistry.addShapedRecipe(new ItemStack(InitBlocksVG.gemstone_basic_brick_v1, 4, 0), new Object[]{"DD", "DD", 'D', new ItemStack(InitItemsVG.gemstone_item_basic_v1, 1, 0)});
+		GameRegistry.addShapedRecipe(new ItemStack(InitBlocksEA.draconite_torch, 4), new Object[]{"C", "D", 'D', new ItemStack(InitItemsVG.gemstone_item_basic_v1, 1, 0), 'C', Items.COAL});
+		GameRegistry.addShapedRecipe(new ItemStack(InitBlocksEA.draconite_torch, 4), new Object[]{"C", "D", 'D', new ItemStack(InitItemsVG.gemstone_item_basic_v1, 1, 0), 'C', new ItemStack(Items.COAL, 1, 1)});
+		GameRegistry.addShapedRecipe(new ItemStack(InitBlocksEA.draconite_ladder, 4), new Object[]{"D D", "DDD", "D D", 'D', new ItemStack(InitItemsVG.gemstone_item_basic_v1, 1, 0)});
+		GameRegistry.addShapedRecipe(new ItemStack(InitBlocksEA.draconite_pillar, 2), new Object[]{"D", "D", 'D', new ItemStack(InitItemsVG.gemstone_item_basic_v1, 1, 0)});
+		GameRegistry.addShapedRecipe(new ItemStack(InitBlocksEA.draconite_trapdoor, 2), new Object[]{"###", "###", '#', InitItemsEA.draconite_dust});
+		GameRegistry.addShapedRecipe(new ItemStack(InitBlocksEA.draconite_block_fancybrick, 2), new Object[]{"D", "D", 'D', InitBlocksEA.draconite_block_brick});
+		
+		
+		
 		/**
 		GameRegistry.addShapedRecipe(new ItemStack(InitItemsEA.dense_draconium_dust), new Object[]{"###", "###", "###", '#', InitItemsEA.draconium_dust});
 		GameRegistry.addShapedRecipe(new ItemStack(InitItemsEA.dense_velious), new Object[]{"###", "###", "###", '#', InitItemsEA.velious});

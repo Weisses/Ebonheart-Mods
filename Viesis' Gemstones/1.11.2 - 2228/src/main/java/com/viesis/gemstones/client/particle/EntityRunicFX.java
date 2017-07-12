@@ -10,9 +10,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class EntityRunicFX extends ParticleEnchantmentTable {
 	
-    public EntityRunicFX(World parWorld,
-            double parX, double parY, double parZ,
-            double parMotionX, double parMotionY, double parMotionZ) 
+    public EntityRunicFX(World parWorld, double parX, double parY, double parZ, double parMotionX, double parMotionY, double parMotionZ) 
     {
         super(parWorld, parX, parY, parZ, parMotionX, parMotionY, parMotionZ);
         

@@ -55,7 +55,7 @@ public class TileEntityGemstoneWorkbench extends TileEntity implements ITickable
     @Override
     public boolean hasCapability(Capability<?> capability, EnumFacing facing)
     {
-        if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) return true;
+        if(capability != CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) return false;
         return super.hasCapability(capability, facing);
     }
     

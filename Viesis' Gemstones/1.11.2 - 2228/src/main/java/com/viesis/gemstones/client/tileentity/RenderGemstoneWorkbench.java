@@ -4,7 +4,7 @@ import org.lwjgl.opengl.GL11;
 
 import com.viesis.gemstones.api.References;
 import com.viesis.gemstones.api.VGEnum.GemstoneTypeItemV1;
-import com.viesis.gemstones.client.model.ModelGemstoneWorkbench;
+import com.viesis.gemstones.client.InitParticlesVGRender;
 import com.viesis.gemstones.common.tileentity.TileEntityGemstoneWorkbench;
 import com.viesis.gemstones.init.InitItemsVG;
 
@@ -16,22 +16,33 @@ import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
 
 public class RenderGemstoneWorkbench extends TileEntitySpecialRenderer<TileEntityGemstoneWorkbench> {
 	
-	//ResourceLocation texture = new ResourceLocation(References.MOD_ID + ":" + "textures/models/airship_workbench.png");
-	private ModelGemstoneWorkbench model;
+	//private ModelGemstoneWorkbench model;
 	
 	public RenderGemstoneWorkbench() 
 	{
-		this.model = new ModelGemstoneWorkbench();
+		//this.model = new ModelGemstoneWorkbench();
 	}
 	
 	@Override
 	public void renderTileEntityAt(TileEntityGemstoneWorkbench te, double x, double y, double z, float partialTicks, int destroyStage) 
 	{
+		if(!te.inventory.getStackInSlot(0).isEmpty()
+		&& te.isOn
+		&& !Minecraft.getMinecraft().isGamePaused()
+		&& te.cutTime >= 1)
+		{
+			int d = References.random.nextInt(100) + 1;
+			
+			if (d <= 50)
+			{
+				InitParticlesVGRender.generateRunicWorkbenchParticles(te);
+			}
+		}
+		
 		if (te.getName() != null 
 		&& this.rendererDispatcher.cameraHitResult != null 
 		&& te.getPos().equals(this.rendererDispatcher.cameraHitResult.getBlockPos()))
@@ -40,59 +51,68 @@ public class RenderGemstoneWorkbench extends TileEntitySpecialRenderer<TileEntit
 			{
 				this.setLightmapDisabled(true);
 				
+				
 				if(te.inventory.getStackInSlot(1).getCount() > 63)
             	{
-            		this.drawNameplate(te, TextFormatting.LIGHT_PURPLE + "Full", x, y + 0.75D, z, 16);
+            		this.drawNameplate(te, TextFormatting.LIGHT_PURPLE + "Full", x, y + 0.5D, z, 16);
             	}
+				else
+				{
+	            	if(te.cutTime >= 180)
+	            	{
+	            		this.drawNameplate(te, TextFormatting.AQUA + " |||||||||||||||||||| ", x, y + 0.5D, z, 16);
+	            	}
+	            	else if(te.cutTime >= 160)
+	            	{
+	            		this.drawNameplate(te, TextFormatting.AQUA + " ||||||||||||||||||  ", x, y + 0.5D, z, 16);
+	            	}
+	            	else if(te.cutTime >= 140)
+	            	{
+	            		this.drawNameplate(te, TextFormatting.GREEN + " ||||||||||||||||   ", x, y + 0.5D, z, 16);
+	            	}
+	            	else if(te.cutTime >= 120)
+	            	{
+	            		this.drawNameplate(te, TextFormatting.GREEN + " ||||||||||||||    ", x, y + 0.5D, z, 16);
+	            	}
+	            	else if(te.cutTime >= 100)
+	            	{
+	            		this.drawNameplate(te, TextFormatting.YELLOW + " ||||||||||||     ", x, y + 0.5D, z, 16);
+	            	}
+	            	else if(te.cutTime >= 80)
+	            	{
+	            		this.drawNameplate(te, TextFormatting.YELLOW + " ||||||||||      ", x, y + 0.5D, z, 16);
+	            	}
+	            	else if(te.cutTime >= 60)
+	            	{
+	            		this.drawNameplate(te, TextFormatting.GOLD + " ||||||||       ", x, y + 0.5D, z, 16);
+	            	}
+	            	else if(te.cutTime >= 40)
+	            	{
+	            		this.drawNameplate(te, TextFormatting.GOLD + " ||||||        ", x, y + 0.5D, z, 16);
+	            	}
+	            	else if(te.cutTime >= 20)
+	            	{
+	            		this.drawNameplate(te, TextFormatting.DARK_RED + " ||||         ", x, y + 0.5D, z, 16);
+	            	}
+	            	else if(te.cutTime >= 1)
+	            	{
+	            		this.drawNameplate(te, TextFormatting.DARK_RED + " ||          ", x, y + 0.5D, z, 16);
+	            	}
+		            
+		            this.drawNameplate(te, TextFormatting.WHITE + "[          ]", x, y + 0.5D, z, 16);
+				}
 				
-            	if(te.cutTime >= 180)
-            	{
-            		this.drawNameplate(te, TextFormatting.AQUA + " |||||||||||||||||||| ", x, y + 0.5D, z, 16);
-            	}
-            	else if(te.cutTime >= 160)
-            	{
-            		this.drawNameplate(te, TextFormatting.AQUA + " ||||||||||||||||||  ", x, y + 0.5D, z, 16);
-            	}
-            	else if(te.cutTime >= 140)
-            	{
-            		this.drawNameplate(te, TextFormatting.GREEN + " ||||||||||||||||   ", x, y + 0.5D, z, 16);
-            	}
-            	else if(te.cutTime >= 120)
-            	{
-            		this.drawNameplate(te, TextFormatting.GREEN + " ||||||||||||||    ", x, y + 0.5D, z, 16);
-            	}
-            	else if(te.cutTime >= 100)
-            	{
-            		this.drawNameplate(te, TextFormatting.YELLOW + " ||||||||||||     ", x, y + 0.5D, z, 16);
-            	}
-            	else if(te.cutTime >= 80)
-            	{
-            		this.drawNameplate(te, TextFormatting.YELLOW + " ||||||||||      ", x, y + 0.5D, z, 16);
-            	}
-            	else if(te.cutTime >= 60)
-            	{
-            		this.drawNameplate(te, TextFormatting.GOLD + " ||||||||       ", x, y + 0.5D, z, 16);
-            	}
-            	else if(te.cutTime >= 40)
-            	{
-            		this.drawNameplate(te, TextFormatting.GOLD + " ||||||        ", x, y + 0.5D, z, 16);
-            	}
-            	else if(te.cutTime >= 20)
-            	{
-            		this.drawNameplate(te, TextFormatting.DARK_RED + " ||||         ", x, y + 0.5D, z, 16);
-            	}
-            	else if(te.cutTime >= 1)
-            	{
-            		this.drawNameplate(te, TextFormatting.DARK_RED + " ||          ", x, y + 0.5D, z, 16);
-            	}
-	            
-	            this.drawNameplate(te, TextFormatting.WHITE + "[          ]", x, y + 0.5D, z, 16);
-				this.drawNameplate(te, TextFormatting.WHITE + "Gem: " + TextFormatting.YELLOW + GemstoneTypeItemV1.byMetadata(te.gemstoneMeta).getLocalizedName(), x, y + 0.25D, z, 16);
+		        this.drawNameplate(te, TextFormatting.WHITE + "Gem: " + TextFormatting.YELLOW + GemstoneTypeItemV1.byMetadata(te.gemstoneMeta).getLocalizedName(), x, y + 0.25D, z, 16);
 	            this.drawNameplate(te, TextFormatting.WHITE + "Power: " + TextFormatting.GREEN + "On", x, y, z, 16);
 	            this.setLightmapDisabled(false);
 			}
 			else
 			{
+				if(te.inventory.getStackInSlot(1).getCount() > 63)
+            	{
+            		this.drawNameplate(te, TextFormatting.LIGHT_PURPLE + "Full", x, y + 0.5D, z, 16);
+            	}
+				
 				this.setLightmapDisabled(true);
 	            this.drawNameplate(te, TextFormatting.WHITE + "Gem: " + TextFormatting.YELLOW + GemstoneTypeItemV1.byMetadata(te.gemstoneMeta).getLocalizedName(), x, y + 0.25D, z, 16);
 	            this.drawNameplate(te, TextFormatting.WHITE + "Power: " + TextFormatting.RED + "Off", x, y, z, 16);
@@ -108,8 +128,8 @@ public class RenderGemstoneWorkbench extends TileEntitySpecialRenderer<TileEntit
 		
 		/////this.model.renderModel(0.0625f);
 		
-		this.renderItemGem(te, z, z, z, partialTicks, destroyStage);
-		this.renderItemFuel(te, z, z, z, partialTicks, destroyStage);
+		this.renderItemGem(te, x, y, z, partialTicks, destroyStage);
+		this.renderItemFuel(te, x, y, z, partialTicks, destroyStage);
 		
 		GL11.glPopMatrix();
 		GL11.glPopMatrix();
@@ -133,7 +153,7 @@ public class RenderGemstoneWorkbench extends TileEntitySpecialRenderer<TileEntit
         GlStateManager.scale(0.5F, 0.5F, 0.5F);
         
 		float angle = (((float)te.getWorld().getTotalWorldTime() + partialTicks) / 20.0F) * (180F / (float)Math.PI);
-		GlStateManager.rotate(angle, 0F, 1F, 0F);
+		GlStateManager.rotate(angle + angle, 0F, 1F, 0F);
 		Minecraft.getMinecraft().getRenderItem().renderItem(itemstack, TransformType.GROUND);
 		GlStateManager.popMatrix();
     }

@@ -2,17 +2,12 @@ package com.viesis.gemstones.common.items.resources.gemstones;
 
 import java.util.List;
 
-import com.viesis.gemstones.api.VGEnum.GemstoneTypeItemV1;
-import com.viesis.gemstones.api.VGEnum.RegistryType;
 import com.viesis.gemstones.common.items.ItemHelper;
 
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.enchantment.Enchantment.Rarity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.NonNullList;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.fml.relauncher.Side;
@@ -29,7 +24,7 @@ public class ItemGemstoneUnidentified extends Item {
 	@SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer playerIn, List toolTip, boolean advanced) 
 	{
-		toolTip.add(TextFormatting.GRAY + "With all of the ridges and colors, this");
+		toolTip.add(TextFormatting.GRAY + "Gems are infused with this stone. This");
 		toolTip.add(TextFormatting.GRAY + "can be processed into any gemstone.");
 	}
 	

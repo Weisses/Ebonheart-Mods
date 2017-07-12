@@ -1,6 +1,0 @@
-{
-    "parent": "block/wall_nsew",
-    "textures": {
-        "wall": "vg:blocks/gemstones/regular/katcheen_block"
-    }
-}

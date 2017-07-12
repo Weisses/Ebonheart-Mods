@@ -1,9 +1,11 @@
 package com.viesis.gemstones.proxy;
 
 import com.viesis.gemstones.api.References;
+import com.viesis.gemstones.common.world.WorldGeneratorVG;
 import com.viesis.gemstones.init.InitBlocksVG;
 import com.viesis.gemstones.init.InitEntityVG;
 import com.viesis.gemstones.init.InitItemsVG;
+import com.viesis.gemstones.init.InitRecipesVG;
 import com.viesis.gemstones.init.InitTileEntitiesVG;
 import com.viesis.gemstones.network.GuiHandler;
 import com.viesis.gemstones.network.NetworkHandler;
@@ -12,6 +14,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class CommonProxy {
 	
@@ -34,7 +37,8 @@ public class CommonProxy {
 	
 	public void init(FMLInitializationEvent event) 
 	{
-		//InitRecipesVC.initShapedRecipe();
+		InitRecipesVG.initShapedRecipe();
+		
 		//InitAchievementsVC.init();
 		
 		//MinecraftForge.EVENT_BUS.register(new AchievementTriggersVC());
@@ -50,7 +54,7 @@ public class CommonProxy {
 		//MinecraftForge.EVENT_BUS.register(new ArmorBuffHandler());
 	    
 		
-		//GameRegistry.registerWorldGenerator(new WorldGeneratorEA(), 0);
+		GameRegistry.registerWorldGenerator(new WorldGeneratorVG(), 0);
 		NetworkRegistry.INSTANCE.registerGuiHandler(References.MOD_ID, new GuiHandler());
 	}
 	

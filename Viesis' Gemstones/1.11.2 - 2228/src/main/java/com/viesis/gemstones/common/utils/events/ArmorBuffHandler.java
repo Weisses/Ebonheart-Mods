@@ -1,6 +1,6 @@
 package com.viesis.gemstones.common.utils.events;
 
-import com.viesis.gemstones.zzzArk.modifier.VGAttributeModifier;
+import com.viesis.gemstones.common.utils.modifiers.VGAttributeModifier;
 
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.inventory.EntityEquipmentSlot;

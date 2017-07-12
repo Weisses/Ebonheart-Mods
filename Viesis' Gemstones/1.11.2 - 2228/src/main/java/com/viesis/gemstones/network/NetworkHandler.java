@@ -1,8 +1,13 @@
 package com.viesis.gemstones.network;
 
 import com.viesis.gemstones.api.References;
+import com.viesis.gemstones.network.client.MessageGuiConverterSyncClientGem;
+import com.viesis.gemstones.network.client.MessageGuiConverterSyncClientOn;
 import com.viesis.gemstones.network.client.MessageGuiWorkbenchSyncClientGem;
 import com.viesis.gemstones.network.client.MessageGuiWorkbenchSyncClientOn;
+import com.viesis.gemstones.network.server.MessageGuiConverterMain;
+import com.viesis.gemstones.network.server.MessageGuiConverterSyncServerGem;
+import com.viesis.gemstones.network.server.MessageGuiConverterSyncServerOn;
 import com.viesis.gemstones.network.server.MessageGuiWorkbenchMain;
 import com.viesis.gemstones.network.server.MessageGuiWorkbenchSyncServerGem;
 import com.viesis.gemstones.network.server.MessageGuiWorkbenchSyncServerOn;
@@ -26,18 +31,17 @@ public class NetworkHandler {
 		
 		register(MessageGuiWorkbenchMain.class, MessageGuiWorkbenchMain.class, Side.SERVER);
 		register(MessageGuiWorkbenchSyncServerGem.class, MessageGuiWorkbenchSyncServerGem.class, Side.SERVER);
-		register(MessageGuiWorkbenchSyncClientGem.class, MessageGuiWorkbenchSyncClientGem.class, Side.CLIENT);
-		
 		register(MessageGuiWorkbenchSyncServerOn.class, MessageGuiWorkbenchSyncServerOn.class, Side.SERVER);
+		
+		register(MessageGuiWorkbenchSyncClientGem.class, MessageGuiWorkbenchSyncClientGem.class, Side.CLIENT);
 		register(MessageGuiWorkbenchSyncClientOn.class, MessageGuiWorkbenchSyncClientOn.class, Side.CLIENT);
 		
-		//register(MessageConfig.class, MessageConfig.class, Side.SERVER);
-		//register(MessageGuiDefault.class, MessageGuiDefault.class, Side.SERVER);
-		//register(MessageGuiModule.class, MessageGuiModule.class, Side.SERVER);
-		//register(MessageGuiModuleInventorySmall.class, MessageGuiModuleInventorySmall.class, Side.SERVER);
-		//register(MessageGuiModuleInventoryLarge.class, MessageGuiModuleInventoryLarge.class, Side.SERVER);
-		//register(MessageGuiModuleJukebox.class, MessageGuiModuleJukebox.class, Side.SERVER);
+		register(MessageGuiConverterMain.class, MessageGuiConverterMain.class, Side.SERVER);
+		register(MessageGuiConverterSyncServerGem.class, MessageGuiConverterSyncServerGem.class, Side.SERVER);
+		register(MessageGuiConverterSyncServerOn.class, MessageGuiConverterSyncServerOn.class, Side.SERVER);
 		
+		register(MessageGuiConverterSyncClientGem.class, MessageGuiConverterSyncClientGem.class, Side.CLIENT);
+		register(MessageGuiConverterSyncClientOn.class, MessageGuiConverterSyncClientOn.class, Side.CLIENT);
 	}
 	
 	public static <REQ extends IMessage, REPLY extends IMessage> void register(Class<? extends IMessageHandler<REQ, REPLY>> message1, Class<REQ> message2, Side side)

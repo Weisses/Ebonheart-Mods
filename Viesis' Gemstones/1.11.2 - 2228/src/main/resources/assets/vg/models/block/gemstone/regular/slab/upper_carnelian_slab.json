@@ -1,8 +1,0 @@
-{
-    "parent": "block/upper_slab",
-    "textures": {
-        "bottom": "vg:blocks/gemstones/regular/carnelian_slab_bottom",
-        "top": "vg:blocks/gemstones/regular/carnelian_slab_top",
-        "side": "vg:blocks/gemstones/regular/carnelian_slab_side"
-    }
-}

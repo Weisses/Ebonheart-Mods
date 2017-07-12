@@ -2,35 +2,39 @@
     "forge_marker": 1,
     "defaults": 
     {
-        "model": "vg:gemstone/regular/fancybrick/block_fancybrick_draconite"
+        "model": "vg:gemstone/regular/fancybrick/block_fancybrick_arcanite"
     },
     "variants": 
     {
         "variant": 
         {
-            "draconite": 
+            "arcanite": 
             {
-                "model": "vg:gemstone/regular/fancybrick/block_fancybrick_draconite"
+                "model": "vg:gemstone/regular/fancybrick/block_fancybrick_arcanite"
             },
             "velious": 
             {
                 "model": "vg:gemstone/regular/fancybrick/block_fancybrick_velious"
             },
-            "arcanite": 
+            "fenryte": 
             {
-                "model": "vg:gemstone/regular/fancybrick/block_fancybrick_arcanite"
+                "model": "vg:gemstone/regular/fancybrick/block_fancybrick_fenryte"
             },
-            "katcheen": 
+            "electium": 
             {
-                "model": "vg:gemstone/regular/fancybrick/block_fancybrick_katcheen"
+                "model": "vg:gemstone/regular/fancybrick/block_fancybrick_electium"
             },
-            "carnelian": 
+            "igneelis": 
             {
-                "model": "vg:gemstone/regular/fancybrick/block_fancybrick_carnelian"
+                "model": "vg:gemstone/regular/fancybrick/block_fancybrick_igneelis"
             },
             "necrocite": 
             {
                 "model": "vg:gemstone/regular/fancybrick/block_fancybrick_necrocite"
+            },
+            "zephyrium": 
+            {
+                "model": "vg:gemstone/regular/fancybrick/block_fancybrick_zephyrium"
             },
             "onyxius": 
             {
@@ -39,10 +43,6 @@
             "soularite": 
             {
                 "model": "vg:gemstone/regular/fancybrick/block_fancybrick_soularite"
-            },
-            "ebonheart": 
-            {
-                "model": "vg:gemstone/regular/fancybrick/block_fancybrick_ebonheart"
             }
         }
     }
