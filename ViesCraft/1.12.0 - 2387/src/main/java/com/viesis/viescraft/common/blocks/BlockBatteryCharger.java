@@ -69,13 +69,12 @@ public class BlockBatteryCharger extends BlockEA implements ITileEntityProvider 
 	{
 		TileEntityBatteryCharger te = (TileEntityBatteryCharger)world.getTileEntity(pos);
 		
-		for (int x = 0; x < 8; ++x) 
+		for (int x = 0; x < 9; ++x) 
 		{
 			if(te.inventory.getStackInSlot(x) != null)
 			{
 				ItemStack test = te.inventory.getStackInSlot(x);
 				InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), te.inventory.getStackInSlot(x));
-				test = null;
 			}
 		}
 		

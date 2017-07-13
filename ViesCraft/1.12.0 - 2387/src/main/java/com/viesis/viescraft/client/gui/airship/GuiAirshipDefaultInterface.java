@@ -108,6 +108,9 @@ public class GuiAirshipDefaultInterface extends GuiContainer {
 			this.drawTexturedModalRect(this.guiLeft + 138, this.guiTop + 4, 184, 50, 8, 1 + 47);
 			this.drawTexturedModalRect(this.guiLeft + 152, this.guiTop + 17, 176, 119, 16, 16);
 		}
+
+		//Potential paint bucket
+		//this.drawTexturedModalRect(this.guiLeft + 135, this.guiTop + 50, 176, 138, 16, 16);
     }
 	
     private int getBurnLeftScaled(int pixels)

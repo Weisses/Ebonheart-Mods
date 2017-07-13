@@ -54,14 +54,8 @@ public final class InitBlocksVCRender extends BlocksVC {
 	/**
 	 * Register this mod's {@link Item} models.
 	 */
-	private void registerItemModels() {
-		// Register items with custom model names first
-		//registerItemModel(InitBlocksVC.AIRSHIP_WORKBENCH);
-		
-
-		//registerVariantItemModels(ModItems.VARIANTS_ITEM, "variant", ItemVariants.EnumType.values());
-
-		// Then register items with default model names
+	private void registerItemModels() 
+	{
 		InitBlocksVC.RegistrationHandler.ITEM_BLOCKS.stream().filter(item -> !itemsRegistered.contains(item)).forEach(this::registerItemModel);
 	}
 
@@ -72,16 +66,19 @@ public final class InitBlocksVCRender extends BlocksVC {
 	 *
 	 * @param item The Item
 	 */
-	private void registerItemModel(final Item item) {
+	private void registerItemModel(final Item item) 
+	{
 		registerItemModel(item, item.getRegistryName().toString());
 	}
 	
-	private void registerItemModel(final Item item, final String modelLocation) {
+	private void registerItemModel(final Item item, final String modelLocation) 
+	{
 		final ModelResourceLocation fullModelLocation = new ModelResourceLocation(modelLocation, "inventory");
 		registerItemModel(item, fullModelLocation);
 	}
 	
-	private void registerItemModel(final Item item, final ModelResourceLocation fullModelLocation) {
+	private void registerItemModel(final Item item, final ModelResourceLocation fullModelLocation) 
+	{
 		ModelBakery.registerItemVariants(item, fullModelLocation); // Ensure the custom model is loaded and prevent the default model from being loaded
 		registerItemModel(item, MeshDefinitionFix.create(stack -> fullModelLocation));
 	}
@@ -100,20 +97,25 @@ public final class InitBlocksVCRender extends BlocksVC {
 		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(item.getRegistryName().toString(), "inventory"));
 	}
 	
-	interface MeshDefinitionFix extends ItemMeshDefinition {
+	interface MeshDefinitionFix extends ItemMeshDefinition 
+	{
 		ModelResourceLocation getLocation(final ItemStack stack);
 
 		// Helper method to easily create lambda instances of this class
-		static ItemMeshDefinition create(final MeshDefinitionFix lambda) {
+		static ItemMeshDefinition create(final MeshDefinitionFix lambda) 
+		{
 			return lambda;
 		}
 
 		@Override
-		default ModelResourceLocation getModelLocation(final ItemStack stack) {
+		default ModelResourceLocation getModelLocation(final ItemStack stack) 
+		{
 			return getLocation(stack);
 		}
 	}
-	private void registerItemModel(final Item item, final ItemMeshDefinition meshDefinition) {
+	
+	private void registerItemModel(final Item item, final ItemMeshDefinition meshDefinition) 
+	{
 		itemsRegistered.add(item);
 		ModelLoader.setCustomMeshDefinition(item, meshDefinition);
 	}

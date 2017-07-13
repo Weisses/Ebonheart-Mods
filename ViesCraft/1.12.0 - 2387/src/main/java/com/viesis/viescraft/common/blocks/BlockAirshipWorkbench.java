@@ -11,7 +11,6 @@ import com.viesis.viescraft.network.GuiHandler;
 
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.util.text.translation.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.InventoryHelper;
@@ -23,6 +22,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -71,14 +71,12 @@ public class BlockAirshipWorkbench extends BlockEA implements ITileEntityProvide
 	{
 		TileEntityAirshipWorkbench te = (TileEntityAirshipWorkbench)world.getTileEntity(pos);
 		
-		//TODO Check this!
-		for (int x = 0; x < 8; ++x) 
+		for (int x = 0; x < 9; ++x) 
 		{
 			if(te.inventory.getStackInSlot(x) != null)
 			{
 				ItemStack test = te.inventory.getStackInSlot(x);
 				InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), te.inventory.getStackInSlot(x));
-				test = null;
 			}
 		}
 		

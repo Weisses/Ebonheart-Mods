@@ -307,6 +307,9 @@ item.record.vg:disc/dismal_disc.desc=Castle
 item.record.vg:disc/ethereal_disc.desc=Timescar
 item.record.vg:disc/mirroring_disc.desc=Lost Woods
 
+//-----Tool Tips -----
+vg.item.tt.cutter.1=Extract elemental essence from materials
+vg.item.tt.cutter.2=and convert it into gemstones.
 
 //-----Enums-----
 vg.item.enum.frame.0=Arcanite

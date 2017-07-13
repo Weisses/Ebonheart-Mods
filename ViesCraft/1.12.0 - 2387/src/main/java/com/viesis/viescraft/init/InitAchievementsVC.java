@@ -1,13 +1,13 @@
 package com.viesis.viescraft.init;
 
-import com.viesis.viescraft.api.AchievementsVC;
+import com.viesis.viescraft.api.AdvancementVC;
 import com.viesis.viescraft.api.Reference;
 
 import net.minecraft.item.ItemStack;
 //import net.minecraft.stats.Achievement;
 //import net.minecraftforge.common.AchievementPage;
 
-public class InitAchievementsVC extends AchievementsVC {
+public class InitAchievementsVC extends AdvancementVC {
 	/**
 	public static final AchievementPage achievementPageEA = new AchievementPage(Reference.MOD_NAME);
 	
