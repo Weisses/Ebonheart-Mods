@@ -100,5 +100,4 @@ public class TileEntityAirshipWorkbench extends TileEntity {
     {
         return this.airshipWorkbenchCustomName != null && !this.airshipWorkbenchCustomName.isEmpty();
     }
-	
 }

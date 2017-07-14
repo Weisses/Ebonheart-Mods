@@ -1,5 +1,6 @@
 package com.viesis.viescraft.client.gui.airship.frames;
 
+import java.awt.Color;
 import java.io.IOException;
 
 import org.lwjgl.input.Keyboard;
@@ -10,6 +11,10 @@ import com.viesis.viescraft.api.util.Keybinds;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
 import com.viesis.viescraft.common.entity.airshipcolors.containers.all.ContainerAirshipAppearance;
 import com.viesis.viescraft.network.NetworkHandler;
+import com.viesis.viescraft.network.server.airship.MessageGuiDefault;
+import com.viesis.viescraft.network.server.airship.MessageGuiModuleInventoryLarge;
+import com.viesis.viescraft.network.server.airship.MessageGuiModuleInventorySmall;
+import com.viesis.viescraft.network.server.airship.MessageGuiModuleJukebox;
 import com.viesis.viescraft.network.server.appearance.MessageGuiAppearanceHelperPage1;
 import com.viesis.viescraft.network.server.appearance.MessageGuiAppearancePage2;
 
@@ -102,7 +107,26 @@ public class GuiAirshipAppearancePg1 extends GuiContainer {
     {
 		if (parButton.id == 30)
 	    {
-			this.mc.thePlayer.closeScreen();
+			//If airship has small inv module installed
+        	if(this.airship.getModuleInventorySmall())
+        	{
+        		NetworkHandler.sendToServer(new MessageGuiModuleInventorySmall());
+        	}
+        	//If airship has large inv module installed
+        	else if(this.airship.getModuleInventoryLarge())
+        	{
+        		NetworkHandler.sendToServer(new MessageGuiModuleInventoryLarge());
+        	}
+        	//If airship has jukebox module installed
+        	else if(this.airship.getModuleJukebox())
+        	{
+        		NetworkHandler.sendToServer(new MessageGuiModuleJukebox());
+        	}
+        	//Default for airship gui
+        	else
+        	{
+        		NetworkHandler.sendToServer(new MessageGuiDefault());
+        	}
 	    }
 		if (parButton.id == 31)
 	    {
@@ -168,13 +192,15 @@ public class GuiAirshipAppearancePg1 extends GuiContainer {
 		GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
 		this.mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":" + "textures/gui/container_airship_appearance.png"));
 		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
+		this.drawRect(this.guiLeft + 32, this.guiTop - 16, this.guiLeft + 142, this.guiTop, Color.LIGHT_GRAY.getRGB());
+		this.drawRect(this.guiLeft + 34, this.guiTop - 14, this.guiLeft + 140, this.guiTop, Color.BLACK.getRGB());
     }
 	
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
 	{
 		this.fontRendererObj.drawString("Tier I", 74, 10, 11111111);
-		this.fontRendererObj.drawString("Appearance", 58, -10, 65521);
+		this.fontRendererObj.drawString("Frame Appearance", 40, -10, 65521);
 	}
 	
 	@Override
