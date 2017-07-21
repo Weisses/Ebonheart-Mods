@@ -1,6 +1,5 @@
 package com.viesis.viescraft.common.tileentity;
 
-import com.viesis.viescraft.common.items.crafting.CraftingManagerVC;
 import com.viesis.viescraft.common.items.crafting.SlotCraftingVC;
 import com.viesis.viescraft.init.InitBlocksVC;
 

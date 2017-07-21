@@ -1,0 +1,6 @@
+{
+    "parent": "block/wall_post",
+    "textures": {
+        "wall": "vg:blocks/gemstones/regular/necrocite_block"
+    }
+}

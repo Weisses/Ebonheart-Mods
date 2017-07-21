@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "half=bottom,type=stone": { "model": "ea:slab/ebonheart/half_ebonheart_slab" },
+        "half=top,type=stone": { "model": "ea:slab/ebonheart/upper_ebonheart_slab" }
+    }
+}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "LLL",
+    "D#D",
+    "LDL"
+  ],
+  "key": {
+    "#": {
+      "item": "vc:item_pouch_module",
+      "data": 0
+    },
+    "D": {
+      "item": "minecraft:diamond"
+    },
+    "L": {
+      "item": "minecraft:leather"
+    }
+  },
+  "result": {
+    "item": "vc:item_pouch_all",
+    "count": 1
+  }
+}

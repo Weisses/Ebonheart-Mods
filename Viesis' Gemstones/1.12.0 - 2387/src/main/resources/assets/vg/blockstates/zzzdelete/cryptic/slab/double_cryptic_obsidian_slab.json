@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "type=stone": { "model": "ea:cryptic/slab/obsidian/full_obsidian_slab" }
+    }
+}

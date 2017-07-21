@@ -16,18 +16,24 @@ import com.viesis.viescraft.client.gui.airship.music.GuiAirshipMusicPg1;
 import com.viesis.viescraft.client.gui.airship.music.GuiAirshipMusicPg2;
 import com.viesis.viescraft.client.gui.airship.music.GuiAirshipMusicPg3;
 import com.viesis.viescraft.client.gui.airship.music.GuiAirshipMusicPg4;
+import com.viesis.viescraft.client.gui.pouch.GuiPouchAll;
+import com.viesis.viescraft.client.gui.pouch.GuiPouchModule;
+import com.viesis.viescraft.client.gui.pouch.InventoryPouch;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
 import com.viesis.viescraft.common.entity.airshipcolors.containers.all.ContainerAirshipAppearance;
 import com.viesis.viescraft.common.entity.airshipcolors.containers.all.ContainerAirshipDefault;
 import com.viesis.viescraft.common.entity.airshipcolors.containers.all.ContainerAirshipModule;
 import com.viesis.viescraft.common.entity.airshipcolors.containers.all.ContainerAirshipModuleInvLarge;
 import com.viesis.viescraft.common.entity.airshipcolors.containers.all.ContainerAirshipModuleInvSmall;
+import com.viesis.viescraft.common.items.parts.pouch.ContainerPouchAll;
+import com.viesis.viescraft.common.items.parts.pouch.ContainerPouchModule;
 import com.viesis.viescraft.common.tileentity.ContainerAirshipWorkbench;
 import com.viesis.viescraft.common.tileentity.ContainerBatteryCharger;
 import com.viesis.viescraft.common.tileentity.TileEntityAirshipWorkbench;
 import com.viesis.viescraft.common.tileentity.TileEntityBatteryCharger;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.network.IGuiHandler;
@@ -38,6 +44,9 @@ public class GuiHandler implements IGuiHandler {
 	
 	public static final int GUI_AIRSHIP_WORKBENCH = 50;
 	public static final int GUI_BATTERY_CHARGER = 51;
+	
+	public static final int GUI_ITEM_POUCH_MODULE = 52;
+	public static final int GUI_ITEM_POUCH_ALL = 53;
 	
 	public static final int GUI_DEFAULT = 1;
 	public static final int GUI_MODULE = 5;
@@ -74,6 +83,16 @@ public class GuiHandler implements IGuiHandler {
 		if (ID == GUI_BATTERY_CHARGER)
 		{
 			return new ContainerBatteryCharger(player.inventory, world, (TileEntityBatteryCharger)world.getTileEntity(new BlockPos(x, y, z)));
+		}
+		
+		//Module Pouch
+		if (ID == GUI_ITEM_POUCH_MODULE)
+		{
+			return new ContainerPouchModule(player, new InventoryPouch(player.getHeldItem(EnumHand.MAIN_HAND)));
+		}
+		if (ID == GUI_ITEM_POUCH_ALL)
+		{
+			return new ContainerPouchAll(player, new InventoryPouch(player.getHeldItem(EnumHand.MAIN_HAND)));
 		}
 		
 		//Airship Container with no module
@@ -162,6 +181,16 @@ public class GuiHandler implements IGuiHandler {
 		if (ID == GUI_BATTERY_CHARGER)
 		{
 			return new GuiTileEntityBatteryCharger(player.inventory, world, (TileEntityBatteryCharger)world.getTileEntity(new BlockPos(x, y, z)));
+		}
+
+		//Module Pouch
+		if (ID == GUI_ITEM_POUCH_MODULE)
+		{
+			return new GuiPouchModule(player, new InventoryPouch(player.getHeldItem(EnumHand.MAIN_HAND)));
+		}
+		if (ID == GUI_ITEM_POUCH_ALL)
+		{
+			return new GuiPouchAll(player, new InventoryPouch(player.getHeldItem(EnumHand.MAIN_HAND)));
 		}
 		
 		//Airship GUI with no module

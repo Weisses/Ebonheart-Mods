@@ -1,0 +1,6 @@
+{
+    "parent": "block/wall_gate_open",
+    "textures": {
+        "texture": "ea:blocks/block/cryptic_draconium_block"
+    }
+}

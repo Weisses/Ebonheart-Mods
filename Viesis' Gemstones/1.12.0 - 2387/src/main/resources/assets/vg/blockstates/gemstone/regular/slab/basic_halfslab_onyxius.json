@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "half=bottom,type=stone": { "model": "vg:gemstone/regular/slab/half_onyxius_slab" },
+        "half=top,type=stone": { "model": "vg:gemstone/regular/slab/upper_onyxius_slab" }
+    }
+}

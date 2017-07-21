@@ -1,0 +1,6 @@
+{
+    "parent": "block/fence_side",
+    "textures": {
+        "texture": "ea:blocks/block/arcanite_brick_base"
+    }
+}

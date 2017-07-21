@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "particle": "ea:blocks/block/draconium_block",
+        "down": "ea:blocks/block/draconium_block",
+        "up": "ea:blocks/block/draconium_block",
+        "north": "ea:blocks/block/draconium_block",
+        "east": "ea:blocks/block/draconium_block",
+        "south": "ea:blocks/block/draconium_block",
+        "west": "ea:blocks/block/draconium_block"
+    }
+}

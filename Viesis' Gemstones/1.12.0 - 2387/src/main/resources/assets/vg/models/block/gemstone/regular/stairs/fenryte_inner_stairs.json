@@ -1,0 +1,8 @@
+{
+    "parent": "block/inner_stairs",
+    "textures": {
+        "bottom": "vg:blocks/gemstones/regular/fenryte_stairs",
+        "top": "vg:blocks/gemstones/regular/fenryte_stairs",
+        "side": "vg:blocks/gemstones/regular/fenryte_stairs"
+    }
+}

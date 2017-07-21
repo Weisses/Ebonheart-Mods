@@ -1,15 +1,16 @@
 [
 {
-  "modid": "examplemod",
-  "name": "Example Mod",
-  "description": "Example placeholder mod.",
-  "version": "${version}",
-  "mcversion": "${mcversion}",
-  "url": "",
+  "modid": "vg",
+  "name": "Viesis' Gemstones",
+  "description": "Build with new blocks, obtain powerful armor, craft ultimate weapons!",
+  "version": "0.0.1",
+  "mcversion": "1.11.2",
+  "logoFile": "assets/vg/textures/logo.png",
+  "url": " TBD ",
   "updateUrl": "",
-  "authorList": ["ExampleDude"],
-  "credits": "The Forge and FML guys, for making this example",
-  "logoFile": "",
+  "authorList": ["Viesis"],
+  "credits": "Viesis' Gemstones is a trademark of Viesis!",
+  "parent": "",
   "screenshots": [],
   "dependencies": []
 }

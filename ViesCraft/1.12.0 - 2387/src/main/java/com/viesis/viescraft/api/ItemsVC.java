@@ -19,6 +19,8 @@ import com.viesis.viescraft.common.items.parts.ItemFrame;
 import com.viesis.viescraft.common.items.parts.ItemIgnition;
 import com.viesis.viescraft.common.items.parts.ItemModule;
 import com.viesis.viescraft.common.items.parts.ItemViesoline;
+import com.viesis.viescraft.common.items.parts.pouch.ItemPouchAll;
+import com.viesis.viescraft.common.items.parts.pouch.ItemPouchModule;
 
 public class ItemsVC {
 	
@@ -40,6 +42,10 @@ public class ItemsVC {
 	public static final ItemModule AIRSHIP_MODULE = new ItemModule();
 	
 	public static final ItemColorizerBalloon ITEM_BALLOON_COLORIZER = new ItemColorizerBalloon();
+	public static final ItemColorizerBalloon ITEM_FRAME_COLORIZER = new ItemColorizerBalloon();
+	
+	public static final ItemPouchModule ITEM_POUCH_MODULE = new ItemPouchModule();
+	public static final ItemPouchAll ITEM_POUCH_ALL = new ItemPouchAll();
 	
 	//==============================================
 	

@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "normal":   { "model": "ea:gem/mystic/stone/mystic_block_lime" }
+    }
+}

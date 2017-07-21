@@ -1,0 +1,25 @@
+{
+    "forge_marker": 1,
+    "defaults": 
+    {
+        "model": "vg:gemstone/ore/block_ore_overworld"
+    },
+    "variants": 
+    {
+        "variant": 
+        {
+            "overworld": 
+            {
+                "model": "vg:gemstone/ore/block_ore_overworld"
+            },
+            "nether": 
+            {
+                "model": "vg:gemstone/ore/block_ore_nether"
+            },
+            "end": 
+            {
+                "model": "vg:gemstone/ore/block_ore_end"
+            }
+        }
+    }
+}

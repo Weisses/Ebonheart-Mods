@@ -3,6 +3,9 @@ package com.viesis.viescraft.common.utils.events;
 import com.viesis.viescraft.api.util.Keybinds;
 import com.viesis.viescraft.api.util.LogHelper;
 
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityTracker;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.ClientTickEvent;
@@ -10,6 +13,19 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class EventHandlerAirship {
+	/**
+	@SubscribeEvent
+	public void onKeyInput(PlayerEvent.StartTracking event) 
+	{
+		LogHelper.info("test");
+		
+		
+		
+		//event.getEntityPlayer().startRiding(entityIn)
+		//EntityTracker et = ((WorldServer) entity.worldObj).getEntityTracker(); // You get EntityTracker of world in which there is entity you want to synchronize
+		//et.func_151248_b(entity, SimpleNetworkWrapper#getInstance().getPacketFrom(new SomeDataPacket()); // You need SNW instance, the method might vari between versions. The method itself says "send this packet to everyone who is tracking this "entity".
+	}
+	
 	/**
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent

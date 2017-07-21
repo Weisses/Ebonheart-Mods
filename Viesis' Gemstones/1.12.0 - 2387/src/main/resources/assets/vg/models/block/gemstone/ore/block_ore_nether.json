@@ -1,0 +1,34 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "particle": "vg:blocks/gemstones/ores/block_geminfused_ore",
+        "base": "blocks/netherrack",
+        "gem": "vg:blocks/gemstones/ores/block_geminfused_ore"
+    },
+    "elements": [
+    {
+      "from": [ 0, 0, 0 ],
+      "to": [ 16, 16, 16 ],
+      "faces": {
+        "down":  { "texture": "#base", "cullface": "down" },
+        "up":    { "texture": "#base", "cullface": "up" },
+        "north": { "texture": "#base", "cullface": "north" },
+        "south": { "texture": "#base", "cullface": "south" },
+        "west":  { "texture": "#base", "cullface": "west" },
+        "east":  { "texture": "#base", "cullface": "east" }
+      }
+    },
+    {
+      "from": [ 0, 0, 0 ],
+      "to": [ 16, 16, 16 ],
+      "faces": {
+        "down":  { "tintindex": 3, "texture": "#gem", "cullface": "down" },
+        "up":    { "tintindex": 3, "texture": "#gem", "cullface": "up" },
+        "north": { "tintindex": 3, "texture": "#gem", "cullface": "north" },
+        "south": { "tintindex": 3, "texture": "#gem", "cullface": "south" },
+        "west":  { "tintindex": 3, "texture": "#gem", "cullface": "west" },
+        "east":  { "tintindex": 3, "texture": "#gem", "cullface": "east" }
+      }
+    }
+  ]
+}

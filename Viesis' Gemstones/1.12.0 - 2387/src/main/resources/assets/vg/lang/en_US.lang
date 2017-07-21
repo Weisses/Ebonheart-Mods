@@ -1,0 +1,445 @@
+< en_US.lang - English localization file for the Viesis' Gemstones Mod >
+
+//-----Creative Tabs-----
+itemGroup.tabVGGeneral=Viesis' Gemstones General Blocks
+itemGroup.tabVGItems=Viesis' Gemstones Items
+itemGroup.tabVGBlocksRegular=Viesis' Gemstones Regular Blocks
+itemGroup.tabVGBlocks=Viesis' Gemstones Cosmic Blocks
+itemGroup.tabVGBlocks=Viesis' Gemstones Shadow Blocks
+
+//-----Items-----
+vg.item.gemstone_unidentified=Unidentified Gemstone
+vg.item.gemstone=Gemstone
+vg.item.enchanted=Enchanted
+vg.item.dense=Dense
+vg.item.cryptic=Cryptic
+vg.block.gemstone=Block
+
+//-----Tile Entity-----
+tile.vg:gemstone_workbench.name=Gemstone Workbench
+
+//-----Ores-----
+tile.vg:gemstone/ore/block_ore_overworld.name=Gem-Infused Ore
+tile.vg:gemstone/ore/block_ore_nether.name=Gem-Infused Ore
+tile.vg:gemstone/ore/block_ore_end.name=Gem-Infused Ore
+
+//-----Blocks-----
+tile.vg:gemstone/regular/basic/block_basic_arcanite.name=Arcanite Block
+tile.vg:gemstone/regular/basic/block_basic_velious.name=Velious Block
+tile.vg:gemstone/regular/basic/block_basic_fenryte.name=Fenryte Block
+tile.vg:gemstone/regular/basic/block_basic_electium.name=Electium Block
+tile.vg:gemstone/regular/basic/block_basic_igneelis.name=Igneelis Block
+tile.vg:gemstone/regular/basic/block_basic_necrocite.name=Necrocite Block
+tile.vg:gemstone/regular/basic/block_basic_zephyrium.name=Zephyrium Block
+tile.vg:gemstone/regular/basic/block_basic_onyxius.name=Onyxius Block
+tile.vg:gemstone/regular/basic/block_basic_soularite.name=Soularite Block
+
+tile.vg:gemstone/regular/brick/block_brick_arcanite.name=Arcanite Brick
+tile.vg:gemstone/regular/brick/block_brick_velious.name=Velious Brick
+tile.vg:gemstone/regular/brick/block_brick_fenryte.name=Fenryte Brick
+tile.vg:gemstone/regular/brick/block_brick_electium.name=Electium Brick
+tile.vg:gemstone/regular/brick/block_brick_igneelis.name=Igneelis Brick
+tile.vg:gemstone/regular/brick/block_brick_necrocite.name=Necrocite Brick
+tile.vg:gemstone/regular/brick/block_brick_zephyrium.name=Zephyrium Brick
+tile.vg:gemstone/regular/brick/block_brick_onyxius.name=Onyxius Brick
+tile.vg:gemstone/regular/brick/block_brick_soularite.name=Soularite Brick
+
+tile.vg:gemstone/regular/fancybrick/block_fancybrick_arcanite.name=Arcanite Fancy Brick
+tile.vg:gemstone/regular/fancybrick/block_fancybrick_velious.name=Velious Fancy Brick
+tile.vg:gemstone/regular/fancybrick/block_fancybrick_fenryte.name=Fenryte Fancy Brick
+tile.vg:gemstone/regular/fancybrick/block_fancybrick_electium.name=Electium Fancy Brick
+tile.vg:gemstone/regular/fancybrick/block_fancybrick_igneelis.name=Igneelis Fancy Brick
+tile.vg:gemstone/regular/fancybrick/block_fancybrick_necrocite.name=Necrocite Fancy Brick
+tile.vg:gemstone/regular/fancybrick/block_fancybrick_zephyrium.name=Zephyrium Fancy Brick
+tile.vg:gemstone/regular/fancybrick/block_fancybrick_onyxius.name=Onyxius Fancy Brick
+tile.vg:gemstone/regular/fancybrick/block_fancybrick_soularite.name=Soularite Fancy Brick
+
+tile.gemstone/regular/slab/basic_halfslab_arcanite.name=Arcanite Slab
+tile.gemstone/regular/slab/basic_halfslab_velious.name=Velious Slab
+tile.gemstone/regular/slab/basic_halfslab_fenryte.name=Fenryte Slab
+tile.gemstone/regular/slab/basic_halfslab_electium.name=Electium Slab
+tile.gemstone/regular/slab/basic_halfslab_igneelis.name=Igneelis Slab
+tile.gemstone/regular/slab/basic_halfslab_necrocite.name=Necrocite Slab
+tile.gemstone/regular/slab/basic_halfslab_zephyrium.name=Zephyrium Slab
+tile.gemstone/regular/slab/basic_halfslab_onyxius.name=Onyxius Slab
+tile.gemstone/regular/slab/basic_halfslab_soularite.name=Soularite Slab
+
+tile.gemstone/regular/slab/basic_doubleslab_arcanite.name=Arcanite Slab
+tile.gemstone/regular/slab/basic_doubleslab_velious.name=Velious Slab
+tile.gemstone/regular/slab/basic_doubleslab_fenryte.name=Fenryte Slab
+tile.gemstone/regular/slab/basic_doubleslab_electium.name=Electium Slab
+tile.gemstone/regular/slab/basic_doubleslab_igneelis.name=Igneelis Slab
+tile.gemstone/regular/slab/basic_doubleslab_necrocite.name=Necrocite Slab
+tile.gemstone/regular/slab/basic_doubleslab_zephyrium.name=Zephyrium Slab
+tile.gemstone/regular/slab/basic_doubleslab_onyxius.name=Onyxius Slab
+tile.gemstone/regular/slab/basic_doubleslab_soularite.name=Soularite Slab
+
+tile.vg:gemstone/regular/stairs/basic_stairs_arcanite.name=Arcanite Stairs
+tile.vg:gemstone/regular/stairs/basic_stairs_velious.name=Velious Stairs
+tile.vg:gemstone/regular/stairs/basic_stairs_fenryte.name=Fenryte Stairs
+tile.vg:gemstone/regular/stairs/basic_stairs_electium.name=Electium Stairs
+tile.vg:gemstone/regular/stairs/basic_stairs_igneelis.name=Igneelis Stairs
+tile.vg:gemstone/regular/stairs/basic_stairs_necrocite.name=Necrocite Stairs
+tile.vg:gemstone/regular/stairs/basic_stairs_zephyrium.name=Zephyrium Stairs
+tile.vg:gemstone/regular/stairs/basic_stairs_onyxius.name=Onyxius Stairs
+tile.vg:gemstone/regular/stairs/basic_stairs_soularite.name=Soularite Stairs
+
+tile.vg:gemstone/regular/fence/basic_fence_arcanite.name=Arcanite Fence
+tile.vg:gemstone/regular/fence/basic_fence_velious.name=Velious Fence
+tile.vg:gemstone/regular/fence/basic_fence_fenryte.name=Fenryte Fence
+tile.vg:gemstone/regular/fence/basic_fence_electium.name=Electium Fence
+tile.vg:gemstone/regular/fence/basic_fence_igneelis.name=Igneelis Fence
+tile.vg:gemstone/regular/fence/basic_fence_necrocite.name=Necrocite Fence
+tile.vg:gemstone/regular/fence/basic_fence_zephyrium.name=Zephyrium Fence
+tile.vg:gemstone/regular/fence/basic_fence_onyxius.name=Onyxius Fence
+tile.vg:gemstone/regular/fence/basic_fence_soularite.name=Soularite Fence
+
+tile.vg:gemstone/regular/gate/basic_gate_arcanite.name=Arcanite Gate
+tile.vg:gemstone/regular/gate/basic_gate_velious.name=Velious Gate
+tile.vg:gemstone/regular/gate/basic_gate_fenryte.name=Fenryte Gate
+tile.vg:gemstone/regular/gate/basic_gate_electium.name=Electium Gate
+tile.vg:gemstone/regular/gate/basic_gate_igneelis.name=Igneelis Gate
+tile.vg:gemstone/regular/gate/basic_gate_necrocite.name=Necrocite Gate
+tile.vg:gemstone/regular/gate/basic_gate_zephyrium.name=Zephyrium Gate
+tile.vg:gemstone/regular/gate/basic_gate_onyxius.name=Onyxius Gate
+tile.vg:gemstone/regular/gate/basic_gate_soularite.name=Soularite Gate
+
+tile.vg:gemstone/regular/wall/basic_wall_arcanite.name=Arcanite Wall
+tile.vg:gemstone/regular/wall/basic_wall_velious.name=Velious Wall
+tile.vg:gemstone/regular/wall/basic_wall_fenryte.name=Fenryte Wall
+tile.vg:gemstone/regular/wall/basic_wall_electium.name=Electium Wall
+tile.vg:gemstone/regular/wall/basic_wall_igneelis.name=Igneelis Wall
+tile.vg:gemstone/regular/wall/basic_wall_necrocite.name=Necrocite Wall
+tile.vg:gemstone/regular/wall/basic_wall_zephyrium.name=Zephyrium Wall
+tile.vg:gemstone/regular/wall/basic_wall_onyxius.name=Onyxius Wall
+tile.vg:gemstone/regular/wall/basic_wall_soularite.name=Soularite Wall
+
+tile.vg:gemstone/regular/torch/basic_torch_arcanite.name=Arcanite Torch
+tile.vg:gemstone/regular/torch/basic_torch_velious.name=Velious Torch
+tile.vg:gemstone/regular/torch/basic_torch_fenryte.name=Fenryte Torch
+tile.vg:gemstone/regular/torch/basic_torch_electium.name=Electium Torch
+tile.vg:gemstone/regular/torch/basic_torch_igneelis.name=Igneelis Torch
+tile.vg:gemstone/regular/torch/basic_torch_necrocite.name=Necrocite Torch
+tile.vg:gemstone/regular/torch/basic_torch_zephyrium.name=Zephyrium Torch
+tile.vg:gemstone/regular/torch/basic_torch_onyxius.name=Onyxius Torch
+tile.vg:gemstone/regular/torch/basic_torch_soularite.name=Soularite Torch
+
+tile.vg:gemstone/regular/trapdoor/basic_trapdoor_arcanite.name=Arcanite Trapdoor
+tile.vg:gemstone/regular/trapdoor/basic_trapdoor_velious.name=Velious Trapdoor
+tile.vg:gemstone/regular/trapdoor/basic_trapdoor_fenryte.name=Fenryte Trapdoor
+tile.vg:gemstone/regular/trapdoor/basic_trapdoor_electium.name=Electium Trapdoor
+tile.vg:gemstone/regular/trapdoor/basic_trapdoor_igneelis.name=Igneelis Trapdoor
+tile.vg:gemstone/regular/trapdoor/basic_trapdoor_necrocite.name=Necrocite Trapdoor
+tile.vg:gemstone/regular/trapdoor/basic_trapdoor_zephyrium.name=Zephyrium Trapdoor
+tile.vg:gemstone/regular/trapdoor/basic_trapdoor_onyxius.name=Onyxius Trapdoor
+tile.vg:gemstone/regular/trapdoor/basic_trapdoor_soularite.name=Soularite Trapdoor
+
+tile.vg:gemstone/regular/ladder/basic_ladder_arcanite.name=Arcanite Ladder
+tile.vg:gemstone/regular/ladder/basic_ladder_velious.name=Velious Ladder
+tile.vg:gemstone/regular/ladder/basic_ladder_fenryte.name=Fenryte Ladder
+tile.vg:gemstone/regular/ladder/basic_ladder_electium.name=Electium Ladder
+tile.vg:gemstone/regular/ladder/basic_ladder_igneelis.name=Igneelis Ladder
+tile.vg:gemstone/regular/ladder/basic_ladder_necrocite.name=Necrocite Ladder
+tile.vg:gemstone/regular/ladder/basic_ladder_zephyrium.name=Zephyrium Ladder
+tile.vg:gemstone/regular/ladder/basic_ladder_onyxius.name=Onyxius Ladder
+tile.vg:gemstone/regular/ladder/basic_ladder_soularite.name=Soularite Ladder
+
+tile.vg:gemstone/regular/pillar/basic_pillar_arcanite.name=Arcanite Pillar
+tile.vg:gemstone/regular/pillar/basic_pillar_velious.name=Velious Pillar
+tile.vg:gemstone/regular/pillar/basic_pillar_fenryte.name=Fenryte Pillar
+tile.vg:gemstone/regular/pillar/basic_pillar_electium.name=Electium Pillar
+tile.vg:gemstone/regular/pillar/basic_pillar_igneelis.name=Igneelis Pillar
+tile.vg:gemstone/regular/pillar/basic_pillar_necrocite.name=Necrocite Pillar
+tile.vg:gemstone/regular/pillar/basic_pillar_zephyrium.name=Zephyrium Pillar
+tile.vg:gemstone/regular/pillar/basic_pillar_onyxius.name=Onyxius Pillar
+tile.vg:gemstone/regular/pillar/basic_pillar_soularite.name=Soularite Pillar
+
+
+
+
+
+
+
+
+
+tile.vg:paper_block.name=Block of Paper
+tile.vg:leather_block.name=Block of Leather
+tile.vg:reed_block.name=Block of Sugar Cane
+
+
+//-----Tools-----
+item.vg:tool/fenryte_pickaxe.name=Fenryte Pickaxe
+item.vg:tool/fenryte_axe.name=Fenryte Axe
+item.vg:tool/fenryte_shovel.name=Fenryte Shovel
+item.vg:tool/fenryte_hoe.name=Fenryte Hoe
+item.vg:tool/fenryte_sword.name=Fenryte Sword
+
+item.vg:tool/electium_pickaxe.name=Electium Pickaxe
+item.vg:tool/electium_axe.name=Electium Axe
+item.vg:tool/electium_shovel.name=Electium Shovel
+item.vg:tool/electium_hoe.name=Electium Hoe
+item.vg:tool/electium_sword.name=Electium Sword
+
+item.vg:tool/necrosis.name=Necrosis
+item.vg:tool/consecration.name=Consecration
+
+item.vg:tool/deception.name=Deception
+item.vg:tool/frostbite.name=Frostbite
+item.vg:tool/massacre.name=Massacre
+item.vg:tool/blazefury.name=Blazefury
+item.vg:tool/despair.name=Despair
+item.vg:tool/souleater.name=Souleater
+
+//-----Armor-----
+item.vg:armor/burnished_helmet.name=Burnished Helmet
+item.vg:armor/burnished_chestplate.name=Burnished Chestplate
+item.vg:armor/burnished_leggings.name=Burnished Leggings
+item.vg:armor/burnished_boots.name=Burnished Boots
+
+item.vg:armor/scalemail_helmet.name=Scalemail Helmet
+item.vg:armor/scalemail_chestplate.name=Scalemail Chestplate
+item.vg:armor/scalemail_leggings.name=Scalemail Leggings
+item.vg:armor/scalemail_boots.name=Scalemail Boots
+
+item.vg:armor/vengeance_helmet.name=Vengeance Helmet
+item.vg:armor/vengeance_chestplate.name=Vengeance Chestplate
+item.vg:armor/vengeance_leggings.name=Vengeance Leggings
+item.vg:armor/vengeance_boots.name=Vengeance Boots
+
+item.vg:armor/celestial_helmet.name=Celestial Helmet
+item.vg:armor/celestial_chestplate.name=Celestial Chestplate
+item.vg:armor/celestial_leggings.name=Celestial Leggings
+item.vg:armor/celestial_boots.name=Celestial Boots
+
+//-----Achievements-----
+achievement.vg:alchemical_compendium=And so it begins!
+achievement.vg:alchemical_compendium.desc=Obtain an Alchemical Compendium.
+
+achievement.vg:mine_draconium_ore=A touch of Dragon!
+achievement.vg:mine_draconium_ore.desc=Mine some Arcanite Ore.
+achievement.vg:glowing_disc=Chant of Dragons!
+achievement.vg:glowing_disc.desc=Craft a Glowing Disc.
+
+achievement.vg:mine_velious_ore=Discovery of Velious!
+achievement.vg:mine_velious_ore.desc=Mine some Velious Ore.
+achievement.vg:shimmering_disc=Melody of Ice!
+achievement.vg:shimmering_disc.desc=Craft a Shimmering Disc.
+
+achievement.vg:mine_fenryte_ore=Might of Fenryte!
+achievement.vg:mine_fenryte_ore.desc=Mine some Fenryte Ore.
+achievement.vg:laminate_disc=Song of Gaia!
+achievement.vg:laminate_disc.desc=Craft a Laminate Disc.
+
+achievement.vg:mine_electium_ore=What Diamonds should be!
+achievement.vg:mine_electium_ore.desc=Mine some Electium Ore.
+achievement.vg:resilient_disc=Chorus of Strength!
+achievement.vg:resilient_disc.desc=Craft a Resilient Disc.
+
+achievement.vg:mine_necrocite_ore=Blight of Necrocite!
+achievement.vg:mine_necrocite_ore.desc=Mine some Necrocite Ore.
+achievement.vg:dismal_disc=Symphony of the Night!
+achievement.vg:dismal_disc.desc=Craft a Dismal Disc.
+
+achievement.vg:mine_onyxius_ore=Reap the Onyxius!
+achievement.vg:mine_onyxius_ore.desc=Mine some Onyxius Ore.
+achievement.vg:ethereal_disc=Harmony of Light!
+achievement.vg:ethereal_disc.desc=Craft an Ethereal Disc.
+
+achievement.vg:soularite=Power level's over 9000!
+achievement.vg:soularite.desc=Obtain an Soularite Gemstone.
+
+achievement.vg:empowered_blade=One step closer!
+achievement.vg:empowered_blade.desc=Craft an Empowered Blade.
+
+achievement.vg:deception=Illusion of truth!
+achievement.vg:deception.desc=Craft the legendary weapon, Deception.
+
+achievement.vg:frostbite=Icebound doom!
+achievement.vg:frostbite.desc=Craft the legendary weapon, Frostbite.
+
+achievement.vg:massacre=Leave no survivors!
+achievement.vg:massacre.desc=Craft the legendary weapon, Massacre.
+
+achievement.vg:blazefury=Let the world burn!
+achievement.vg:blazefury.desc=Craft the legendary weapon, Blazefury.
+
+achievement.vg:despair=Abandon all hope!
+achievement.vg:despair.desc=Craft the legendary weapon, Despair.
+
+achievement.vg:souleater=From death to life!
+achievement.vg:souleater.desc=Craft the legendary weapon, Souleater.
+
+achievement.vg:enchanted_soularite=Powering up!
+achievement.vg:enchanted_soularite.desc=Craft an Enchanted Soularite.
+
+achievement.vg:nether_bound=Nether bound!
+achievement.vg:nether_bound.desc=Craft an Obsidian Shard.
+
+achievement.vg:nether_doomed=Nether doomed!
+achievement.vg:nether_doomed.desc=Craft a Glowstone Shard.
+
+achievement.vg:burnished_armor=Stealthy velocity!
+achievement.vg:burnished_armor.desc=Craft any piece of the Burnished Armor set.
+
+achievement.vg:scalemail_armor=Athletic prowess!
+achievement.vg:scalemail_armor.desc=Craft any piece of the Scalemail Armor set.
+
+achievement.vg:vengeance_armor=Shadowy catastrophe!
+achievement.vg:vengeance_armor.desc=Craft any piece of the Vengeance Armor set.
+
+achievement.vg:celestial_armor=Hallowed light!
+achievement.vg:celestial_armor.desc=Craft any piece of the Celestial Armor set.
+
+achievement.vg:necrosis=Corruption of Life!
+achievement.vg:necrosis.desc=Craft the legendary tool, Necrosis.
+
+achievement.vg:consecration=Divination of Tera!
+achievement.vg:consecration.desc=Craft the legendary tool, Consecration.
+
+
+
+//-----Music Discs-----
+item.record.vg:disc/glowing_disc.desc=Island
+item.record.vg:disc/shimmering_disc.desc=Dire
+item.record.vg:disc/laminate_disc.desc=Marble
+item.record.vg:disc/resilient_disc.desc=Strength
+item.record.vg:disc/dismal_disc.desc=Castle
+item.record.vg:disc/ethereal_disc.desc=Timescar
+item.record.vg:disc/mirroring_disc.desc=Lost Woods
+
+//-----Tool Tips -----
+vg.item.tt.cutter.1=Extract elemental essence from materials
+vg.item.tt.cutter.2=and convert it into gemstones.
+
+//-----Enums-----
+vg.item.enum.frame.0=Arcanite
+vg.item.enum.frame.1=Velious
+vg.item.enum.frame.2=Fenryte
+vg.item.enum.frame.3=Electium
+vg.item.enum.frame.4=Igneelis
+vg.item.enum.frame.5=Necrocite
+vg.item.enum.frame.6=Zephyrium
+vg.item.enum.frame.7=Onyxius
+vg.item.enum.frame.8=Soularite
+
+vg.world.enum.0=Overworld
+vg.world.enum.1=Nether
+vg.world.enum.2=End
+
+vg.item.enum.frame.14=Garamite
+vg.item.enum.frame.16=Mystalious
+vg.item.enum.frame.19=Infernus
+vg.item.enum.frame.111=Atrius
+vg.item.enum.frame.112=Enstatite
+
+
+//-----Tool Tips-----
+vg.item.tt.workbench.1=Compress any material to attempt 
+vg.item.tt.workbench.2=to create elemental gemstones.
+
+//  TO ADJUST
+
+
+item.vg:gem/enchanted_soularite.name=Enchanted Soularite
+item.vg:gem/obsidian_shard.name=Obsidian Shard
+item.vg:gem/glowstone_shard.name=Glowstone Shard
+item.vg:tool/empowered_blade.name=Empowered Blade
+
+item.vg:disc/glowing_disc.name=Glowing Disc
+item.vg:disc/shimmering_disc.name=Shimmering Disc
+item.vg:disc/laminate_disc.name=Laminate Disc
+item.vg:disc/resilient_disc.name=Resilient Disc
+item.vg:disc/dismal_disc.name=Dismal Disc
+item.vg:disc/ethereal_disc.name=Ethereal Disc
+item.vg:disc/mirroring_disc.name=Mirroring Disc
+
+tile.vg:gem/mystic/stone/mystic_block_normal.name=Mystic Stone
+tile.vg:gem/mystic/stone/mystic_block_white.name=White Mystic Stone
+tile.vg:gem/mystic/stone/mystic_block_orange.name=Orange Mystic Stone
+tile.vg:gem/mystic/stone/mystic_block_magenta.name=Magenta Mystic Stone
+tile.vg:gem/mystic/stone/mystic_block_lightblue.name=Light Blue Mystic Stone
+tile.vg:gem/mystic/stone/mystic_block_yellow.name=Yellow Mystic Stone
+tile.vg:gem/mystic/stone/mystic_block_lime.name=Lime Mystic Stone
+tile.vg:gem/mystic/stone/mystic_block_pink.name=Pink Mystic Stone
+tile.vg:gem/mystic/stone/mystic_block_gray.name=Gray Mystic Stone
+tile.vg:gem/mystic/stone/mystic_block_lightgray.name=Light Gray Mystic Stone
+tile.vg:gem/mystic/stone/mystic_block_cyan.name=Cyan Mystic Stone
+tile.vg:gem/mystic/stone/mystic_block_purple.name=Purple Mystic Stone
+tile.vg:gem/mystic/stone/mystic_block_blue.name=Blue Mystic Stone
+tile.vg:gem/mystic/stone/mystic_block_brown.name=Brown Mystic Stone
+tile.vg:gem/mystic/stone/mystic_block_green.name=Green Mystic Stone
+tile.vg:gem/mystic/stone/mystic_block_red.name=Red Mystic Stone
+tile.vg:gem/mystic/stone/mystic_block_black.name=Black Mystic Stone
+tile.vg:gem/mystic/stone/mystic_block_glass.name=Clear Mystic Stone
+
+tile.vg:gem/mystic/cobblestone/cobble_mystic_block_normal.name=Mystic Cobblestone
+tile.vg:gem/mystic/cobblestone/cobble_mystic_block_white.name=White Mystic Cobblestone
+tile.vg:gem/mystic/cobblestone/cobble_mystic_block_orange.name=Orange Mystic Cobblestone
+tile.vg:gem/mystic/cobblestone/cobble_mystic_block_magenta.name=Magenta Mystic Cobblestone
+tile.vg:gem/mystic/cobblestone/cobble_mystic_block_lightblue.name=Light Blue Mystic Cobblestone
+tile.vg:gem/mystic/cobblestone/cobble_mystic_block_yellow.name=Yellow Mystic Cobblestone
+tile.vg:gem/mystic/cobblestone/cobble_mystic_block_lime.name=Lime Mystic Cobblestone
+tile.vg:gem/mystic/cobblestone/cobble_mystic_block_pink.name=Pink Mystic Cobblestone
+tile.vg:gem/mystic/cobblestone/cobble_mystic_block_gray.name=Gray Mystic Cobblestone
+tile.vg:gem/mystic/cobblestone/cobble_mystic_block_lightgray.name=Light Gray Mystic Cobblestone
+tile.vg:gem/mystic/cobblestone/cobble_mystic_block_cyan.name=Cyan Mystic Cobblestone
+tile.vg:gem/mystic/cobblestone/cobble_mystic_block_purple.name=Purple Mystic Cobblestone
+tile.vg:gem/mystic/cobblestone/cobble_mystic_block_blue.name=Blue Mystic Cobblestone
+tile.vg:gem/mystic/cobblestone/cobble_mystic_block_brown.name=Brown Mystic Cobblestone
+tile.vg:gem/mystic/cobblestone/cobble_mystic_block_green.name=Green Mystic Cobblestone
+tile.vg:gem/mystic/cobblestone/cobble_mystic_block_red.name=Red Mystic Cobblestone
+tile.vg:gem/mystic/cobblestone/cobble_mystic_block_black.name=Black Mystic Cobblestone
+tile.vg:gem/mystic/cobblestone/cobble_mystic_block_glass.name=Clear Mystic Cobblestone
+
+tile.vg:gem/mystic/wood/wood_mystic_block_normal.name=Mystic Wood Planks
+tile.vg:gem/mystic/wood/wood_mystic_block_white.name=White Mystic Wood Planks
+tile.vg:gem/mystic/wood/wood_mystic_block_orange.name=Orange Mystic Wood Planks
+tile.vg:gem/mystic/wood/wood_mystic_block_magenta.name=Magenta Mystic Wood Planks
+tile.vg:gem/mystic/wood/wood_mystic_block_lightblue.name=Light Blue Mystic Wood Planks
+tile.vg:gem/mystic/wood/wood_mystic_block_yellow.name=Yellow Mystic Wood Planks
+tile.vg:gem/mystic/wood/wood_mystic_block_lime.name=Lime Mystic Wood Planks
+tile.vg:gem/mystic/wood/wood_mystic_block_pink.name=Pink Mystic Wood Planks
+tile.vg:gem/mystic/wood/wood_mystic_block_gray.name=Gray Mystic Wood Planks
+tile.vg:gem/mystic/wood/wood_mystic_block_lightgray.name=Light Gray Mystic Wood Planks
+tile.vg:gem/mystic/wood/wood_mystic_block_cyan.name=Cyan Mystic Wood Planks
+tile.vg:gem/mystic/wood/wood_mystic_block_purple.name=Purple Mystic Wood Planks
+tile.vg:gem/mystic/wood/wood_mystic_block_blue.name=Blue Mystic Wood Planks
+tile.vg:gem/mystic/wood/wood_mystic_block_brown.name=Brown Mystic Wood Planks
+tile.vg:gem/mystic/wood/wood_mystic_block_green.name=Green Mystic Wood Planks
+tile.vg:gem/mystic/wood/wood_mystic_block_red.name=Red Mystic Wood Planks
+tile.vg:gem/mystic/wood/wood_mystic_block_black.name=Black Mystic Wood Planks
+tile.vg:gem/mystic/wood/wood_mystic_block_glass.name=Clear Mystic Wood Planks
+
+
+
+
+
+
+//-----Archived-----
+item.mystic_dust.name=Mystic Dust
+item.purified_mystic_dust.name=Purified Mystic Dust
+item.tier_1_catalyst.name=Catalyst (Tier 1)
+item.tier_2_catalyst.name=Catalyst (Tier 2)
+item.tier_3_catalyst.name=Catalyst (Tier 3)
+item.tier_4_catalyst.name=Catalyst (Tier 4)
+item.gem/fenryte_shard.name=Fenryte Shard
+item.ebon_sigil.name=Ebon Sigil
+item.gem/innate_fenryte.name=Innate Fenryte
+tile.dragonwoodplant.name=Dragonwood Sapling
+tile.purified_mystic_block.name=Purified Mystic Block
+tile.ebon_alter.name=Ebon Alter
+death.attack.electric=%1$s was roasted by electric current.
+death.attack.electric.player=%1$s was roasted by electric current while fighting %2$s.
+tile.fence/innate_fenryte_fence_normal.name=Innate Fenryte Fence
+item.banana.name=Banana
+item.vg:armor/fenryte_helmet.name=Fenryte Helmet
+item.vg:armor/fenryte_chestplate.name=Fenryte Chestplate
+item.vg:armor/fenryte_leggings.name=Fenryte Leggings
+item.vg:armor/fenryte_boots.name=Fenryte Boots
+item.vg:armor/electium_helmet.name=Electium Helmet
+item.vg:armor/electium_chestplate.name=Electium Chestplate
+item.vg:armor/electium_leggings.name=Electium Leggings
+item.vg:armor/electium_boots.name=Electium Boots
+
+item.ebon_tome.name=Ebon Tome-WIP
+item.disc/chrono_disc.name=Chrono Disc - WIP

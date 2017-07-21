@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "particle": "ea:blocks/dyeable/cobblestone/cobble_mystic_block_green_top",
+        "down": "ea:blocks/dyeable/cobblestone/cobble_mystic_block_green_top",
+        "up": "ea:blocks/dyeable/cobblestone/cobble_mystic_block_green_top",
+        "north": "ea:blocks/dyeable/cobblestone/cobble_mystic_block_green_side",
+        "east": "ea:blocks/dyeable/cobblestone/cobble_mystic_block_green_side",
+        "south": "ea:blocks/dyeable/cobblestone/cobble_mystic_block_green_side",
+        "west": "ea:blocks/dyeable/cobblestone/cobble_mystic_block_green_side"
+    }
+}

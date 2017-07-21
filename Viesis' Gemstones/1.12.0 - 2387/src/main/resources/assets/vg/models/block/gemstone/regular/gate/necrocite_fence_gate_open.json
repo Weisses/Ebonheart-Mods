@@ -1,0 +1,6 @@
+{
+    "parent": "block/fence_gate_open",
+    "textures": {
+        "texture": "vg:blocks/gemstones/regular/necrocite_block"
+    }
+}

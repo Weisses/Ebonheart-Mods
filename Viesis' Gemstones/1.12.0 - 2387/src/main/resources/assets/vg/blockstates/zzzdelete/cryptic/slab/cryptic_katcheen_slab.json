@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "half=bottom,type=stone": { "model": "ea:cryptic/slab/katcheen/half_katcheen_slab" },
+        "half=top,type=stone": { "model": "ea:cryptic/slab/katcheen/upper_katcheen_slab" }
+    }
+}

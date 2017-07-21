@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "half=bottom,type=stone": { "model": "vg:gemstone/regular/slab/half_zephyrium_slab" },
+        "half=top,type=stone": { "model": "vg:gemstone/regular/slab/upper_zephyrium_slab" }
+    }
+}

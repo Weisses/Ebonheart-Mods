@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "particle": "ea:blocks/slab/glowstone_slab_side",
+        "down": "ea:blocks/slab/glowstone_slab_bottom",
+        "up": "ea:blocks/slab/glowstone_slab_top",
+        "north": "ea:blocks/slab/glowstone_slab_side",
+        "east": "ea:blocks/slab/glowstone_slab_side",
+        "south": "ea:blocks/slab/glowstone_slab_side",
+        "west": "ea:blocks/slab/glowstone_slab_side"
+    }
+}

@@ -1,0 +1,9 @@
+{
+    "variants": {
+        "facing=up": { "model": "vg:gemstone/regular/torch/normal_necrocite_torch" },
+        "facing=east": { "model": "vg:gemstone/regular/torch/normal_necrocite_torch_wall" },
+        "facing=south": { "model": "vg:gemstone/regular/torch/normal_necrocite_torch_wall", "y": 90 },
+        "facing=west": { "model": "vg:gemstone/regular/torch/normal_necrocite_torch_wall", "y": 180 },
+        "facing=north": { "model": "vg:gemstone/regular/torch/normal_necrocite_torch_wall", "y": 270 }
+    }
+}
