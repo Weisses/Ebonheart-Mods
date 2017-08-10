@@ -88,7 +88,7 @@ public class EntityAirshipBaseVC extends Entity {
 	//Slot 2-19 = Inventory slots
 	//Slot 20 =   Unused
     public ItemStackHandler inventory;
-    protected int size = 20;
+    protected int size = 25;// Fuel=0 Module=1 Inventory=2-19 Gem=20
     
     //Main getters
 	public int metaFrameCore;

@@ -279,7 +279,7 @@ public class TileEntityGemstoneConverter extends TileEntity implements ITickable
             
             if(itemstack1.isEmpty())
             {
-            	this.inventory.insertItem(1, new ItemStack(InitItemsVG.gemstone_item_basic_v1, 1 + this.procAmount, this.gemstoneMeta), false);
+            	this.inventory.insertItem(1, new ItemStack(InitItemsVG.GEMSTONE_ITEM_BASIC_V1, 1 + this.procAmount, this.gemstoneMeta), false);
             }
             else if(itemstack1.isItemEqual(GemCuttingRecipes.CUT_GEM_OUTPUT[this.gemstoneMeta]))
             {
@@ -347,7 +347,7 @@ public class TileEntityGemstoneConverter extends TileEntity implements ITickable
         {
         	Item item = stack.getItem();
         	
-            if(item == InitItemsVG.gemstone_item_unidentified) return 500;
+            if(item == InitItemsVG.GEMSTONE_ITEM_UNIDENTIFIED) return 500;
             
             if(item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.AIR)
             {

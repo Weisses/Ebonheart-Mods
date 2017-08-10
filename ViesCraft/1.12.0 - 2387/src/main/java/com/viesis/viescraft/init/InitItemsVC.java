@@ -79,7 +79,7 @@ public class InitItemsVC extends ItemsVC {
 					ACHIEVEMENT_AIRSHIP,//
 					ITEM_ENTITY_AIRSHIP,//
 					ITEM_POUCH_MODULE,
-					ITEM_POUCH_ALL
+					//ITEM_POUCH_ALL
 			};
 
 			final IForgeRegistry<Item> registry = event.getRegistry();

@@ -3,6 +3,7 @@ package com.viesis.gemstones.init;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.viesis.gemstones.api.References;
 import com.viesis.gemstones.api.VGItems;
 import com.viesis.gemstones.common.items.resources.gemstones.ItemGemstoneBasicV1;
 import com.viesis.gemstones.common.items.resources.gemstones.ItemGemstoneDenseV1;
@@ -11,18 +12,83 @@ import com.viesis.gemstones.common.items.resources.gemstones.ItemGemstoneUnident
 
 import net.minecraft.item.Item;
 import net.minecraftforge.common.util.EnumHelper;
+import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.registries.IForgeRegistry;
 
 public class InitItemsVG extends VGItems {
 	
-	public static final Set<Item> items = new HashSet<>();
+	//public static final Set<Item> items = new HashSet<>();
 	
 	public static final Item.ToolMaterial arcaniteToolMaterial = EnumHelper.addToolMaterial("arcaniteToolMaterial", 2, 315, 6.5F, 2.5F, 15);
 	public static final Item.ToolMaterial katcheenToolMaterial = EnumHelper.addToolMaterial("katcheenToolMaterial", 3, 1400, 8.5F, 4.0F, 20);
 	public static final Item.ToolMaterial legendaryWeaponMaterial = EnumHelper.addToolMaterial("legendaryWeaponMaterial", 3, 1661, 9.5F, 6.0F, 30);
 	public static final Item.ToolMaterial legendaryToolMaterial = EnumHelper.addToolMaterial("legendaryToolMaterial", 4, 1500, 9.5F, 2.5F, 30);
 	
+
+	public static void registerItemTEMP()
+	{
+		//========================
+		//    To be deleted
+		//========================
+		
+		
+		
+	}
 	
+	@Mod.EventBusSubscriber(modid = References.MOD_ID)
+	public static class RegistrationHandler 
+	{
+		public static final Set<Item> ITEMS = new HashSet<>();
+		
+		/**
+		 * Register this mod's {@link Item}s.
+		 *
+		 * @param event The event
+		 */
+		@SubscribeEvent
+		public static void registerItems(final RegistryEvent.Register<Item> event) 
+		{
+			final Item[] items = {
+					//
+					GEMSTONE_ITEM_BASIC_V1,//
+					GEMSTONE_ITEM_ENCHANTED_V1,
+					GEMSTONE_ITEM_UNIDENTIFIED,
+					/**,//
+					GUIDEBOOK_SOCKET,//
+					VIESOLINE_PELLETS,//
+					AIRSHIP_BALLOON,//
+					AIRSHIP_ENGINE,//
+					AIRSHIP_IGNITION,//
+					ITEM_DISMOUNTER,//
+					AIRSHIP_FRAME,//
+					AIRSHIP_BALLOON_PATTERN,//
+					AIRSHIP_MODULE,//
+					ITEM_BALLOON_COLORIZER,//
+					ITEM_AIRSHIP_V1,//
+					ITEM_AIRSHIP_V2,//
+					ITEM_AIRSHIP_V3,//
+					ITEM_AIRSHIP_V4,//
+					ACHIEVEMENT_AIRSHIP,//
+					ITEM_ENTITY_AIRSHIP,//
+					ITEM_POUCH_MODULE,
+					ITEM_POUCH_ALL*/
+			};
+
+			final IForgeRegistry<Item> registry = event.getRegistry();
+
+			for (final Item item : items) 
+			{
+				registry.register(item);
+				ITEMS.add(item);
+			}
+		}
+	}
+}
+
+/**
 	
 	public static void registerItem()
 	{
@@ -154,7 +220,7 @@ public class InitItemsVG extends VGItems {
 		
 		*/
 		//test_door = registerItem(new EAItemDoor(InitBlocksEA.test_door));
-		
+	/**	
 	}
 	
 	private static <V extends Item> V registerItem(V item) 
@@ -164,4 +230,4 @@ public class InitItemsVG extends VGItems {
 
 		return item;
 	}
-}
+}*/

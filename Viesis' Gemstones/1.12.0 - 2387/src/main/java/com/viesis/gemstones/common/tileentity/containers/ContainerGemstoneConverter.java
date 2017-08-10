@@ -69,7 +69,7 @@ public class ContainerGemstoneConverter extends ContainerVC {
     {
     	this.saveCraftingMatrix();
     	
-        return this.world.getBlockState(this.gemstoneConverter.getPos()).getBlock() != InitBlocksVG.gemstone_converter ? false : playerIn.getDistanceSq((double)this.gemstoneConverter.getPos().getX() + 0.5D, (double)this.gemstoneConverter.getPos().getY() + 0.5D, (double)this.gemstoneConverter.getPos().getZ() + 0.5D) <= 64.0D;
+        return this.world.getBlockState(this.gemstoneConverter.getPos()).getBlock() != InitBlocksVG.GEMSTONE_CONVERTER ? false : playerIn.getDistanceSq((double)this.gemstoneConverter.getPos().getX() + 0.5D, (double)this.gemstoneConverter.getPos().getY() + 0.5D, (double)this.gemstoneConverter.getPos().getZ() + 0.5D) <= 64.0D;
     }
     
     @Override

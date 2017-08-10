@@ -1,5 +1,6 @@
 package com.viesis.viescraft.client.gui.airship;
 
+import java.awt.Color;
 import java.io.IOException;
 
 import org.lwjgl.input.Keyboard;
@@ -108,6 +109,18 @@ public class GuiAirshipDefaultInterface extends GuiContainer {
 			this.drawTexturedModalRect(this.guiLeft + 138, this.guiTop + 4, 184, 50, 8, 1 + 47);
 			this.drawTexturedModalRect(this.guiLeft + 152, this.guiTop + 17, 176, 119, 16, 16);
 		}
+		
+
+		this.drawRect(this.guiLeft - 23, this.guiTop + 29, this.guiLeft, this.guiTop + 53, Color.BLACK.getRGB());
+		this.drawRect(this.guiLeft - 22, this.guiTop + 30, this.guiLeft, this.guiTop + 52, Color.LIGHT_GRAY.getRGB());
+		
+		this.drawTexturedModalRect(this.guiLeft - 20, this.guiTop + 32, 7, 101, 18, 18);
+		
+		
+		
+		////////this.drawTexturedModalRect(this.guiLeft - 22, this.guiTop + 20, 236, 0, 20, 10);
+		
+		//this.drawRect(this.guiLeft + 34, this.guiTop - 14, this.guiLeft + 140, this.guiTop, Color.BLACK.getRGB());
 
 		//Potential paint bucket
 		//this.drawTexturedModalRect(this.guiLeft + 135, this.guiTop + 50, 176, 138, 16, 16);

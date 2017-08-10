@@ -22,15 +22,15 @@ public class GemCuttingRecipes {
     
     public final static ItemStack[] CUT_GEM_OUTPUT = new ItemStack[] 
 	{
-		new ItemStack(InitItemsVG.gemstone_item_basic_v1, 1, 0),
-		new ItemStack(InitItemsVG.gemstone_item_basic_v1, 1, 1),
-		new ItemStack(InitItemsVG.gemstone_item_basic_v1, 1, 2),
-		new ItemStack(InitItemsVG.gemstone_item_basic_v1, 1, 3),
-		new ItemStack(InitItemsVG.gemstone_item_basic_v1, 1, 4),
-		new ItemStack(InitItemsVG.gemstone_item_basic_v1, 1, 5),
-		new ItemStack(InitItemsVG.gemstone_item_basic_v1, 1, 6),
-		new ItemStack(InitItemsVG.gemstone_item_basic_v1, 1, 7),
-		new ItemStack(InitItemsVG.gemstone_item_basic_v1, 1, 8)
+		new ItemStack(InitItemsVG.GEMSTONE_ITEM_BASIC_V1, 1, 0),
+		new ItemStack(InitItemsVG.GEMSTONE_ITEM_BASIC_V1, 1, 1),
+		new ItemStack(InitItemsVG.GEMSTONE_ITEM_BASIC_V1, 1, 2),
+		new ItemStack(InitItemsVG.GEMSTONE_ITEM_BASIC_V1, 1, 3),
+		new ItemStack(InitItemsVG.GEMSTONE_ITEM_BASIC_V1, 1, 4),
+		new ItemStack(InitItemsVG.GEMSTONE_ITEM_BASIC_V1, 1, 5),
+		new ItemStack(InitItemsVG.GEMSTONE_ITEM_BASIC_V1, 1, 6),
+		new ItemStack(InitItemsVG.GEMSTONE_ITEM_BASIC_V1, 1, 7),
+		new ItemStack(InitItemsVG.GEMSTONE_ITEM_BASIC_V1, 1, 8)
 	};
     
     /**

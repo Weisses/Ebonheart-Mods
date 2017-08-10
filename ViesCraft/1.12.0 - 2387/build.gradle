@@ -21,7 +21,7 @@ repositories {
   }
 }
 
-version = "1.12.0-5.0.6"
+version = "1.12.0-5.0.8"
 group = "com.viesis.ViesCraft" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "ViesCraft"
 
@@ -46,18 +46,26 @@ minecraft {
 repositories {
     
     maven { url 'http://maven.epoxide.org' }
+
+flatDir {
+        dirs "zexternalmods"
+    }
 }
 
 dependencies {
     // compile against the JEI API
-    deobfCompile 'mezz.jei:jei_1.11.2:4.2.2.215:api'
+    deobfCompile 'mezz.jei:jei_1.12:4.7.2.77:api'
 
     compile "net.darkhax.tesla:Tesla-1.12:1.0.61"
     //compile "net.darkhax.tesla:Tesla:1.11-1.3.0.51"
 
     // at runtime, use the full JEI jar
-    runtime 'mezz.jei:jei_1.12:4.7.1.69'
+    runtime 'mezz.jei:jei_1.12:4.7.2.77'
     
+deobfCompile "com.viesis.gemstones:ViesisGemstones:1.12.0-0.0.1"
+    compile "com.viesis.gemstones:ViesisGemstones:1.12.0-0.0.1"
+    runtime "com.viesis.gemstones:ViesisGemstones:1.12.0-0.0.1"
+
     // you may put jars on which you depend on in ./libs
     // or you may define them like so..
     //compile "some.group:artifact:version:classifier"

@@ -206,17 +206,17 @@ public class GuiTileEntityGemstoneWorkbenchMain extends GuiContainer {
 			this.drawTexturedModalRect(17, 53, 0, 166, 16, 16);
 		}
 		
-		this.drawItemStack(new ItemStack(InitItemsVG.gemstone_item_basic_v1, 1, this.gemstoneWorkbench.gemstoneMeta), 56, 17, "");
+		this.drawItemStack(new ItemStack(InitItemsVG.GEMSTONE_ITEM_BASIC_V1, 1, this.gemstoneWorkbench.gemstoneMeta), 56, 17, "");
 		
-		this.drawItemStack(new ItemStack(InitItemsVG.gemstone_item_basic_v1, 1, 0), -31, 9, "");
-		this.drawItemStack(new ItemStack(InitItemsVG.gemstone_item_basic_v1, 1, 1), -31, 25, "");
-		this.drawItemStack(new ItemStack(InitItemsVG.gemstone_item_basic_v1, 1, 2), -31, 41, "");
-		this.drawItemStack(new ItemStack(InitItemsVG.gemstone_item_basic_v1, 1, 3), -31, 57, "");
-		this.drawItemStack(new ItemStack(InitItemsVG.gemstone_item_basic_v1, 1, 4), -15, 9, "");
-		this.drawItemStack(new ItemStack(InitItemsVG.gemstone_item_basic_v1, 1, 5), -15, 25, "");
-		this.drawItemStack(new ItemStack(InitItemsVG.gemstone_item_basic_v1, 1, 6), -15, 41, "");
-		this.drawItemStack(new ItemStack(InitItemsVG.gemstone_item_basic_v1, 1, 7), -15, 57, "");
-		this.drawItemStack(new ItemStack(InitItemsVG.gemstone_item_basic_v1, 1, 8), -23, 73, "");
+		this.drawItemStack(new ItemStack(InitItemsVG.GEMSTONE_ITEM_BASIC_V1, 1, 0), -31, 9, "");
+		this.drawItemStack(new ItemStack(InitItemsVG.GEMSTONE_ITEM_BASIC_V1, 1, 1), -31, 25, "");
+		this.drawItemStack(new ItemStack(InitItemsVG.GEMSTONE_ITEM_BASIC_V1, 1, 2), -31, 41, "");
+		this.drawItemStack(new ItemStack(InitItemsVG.GEMSTONE_ITEM_BASIC_V1, 1, 3), -31, 57, "");
+		this.drawItemStack(new ItemStack(InitItemsVG.GEMSTONE_ITEM_BASIC_V1, 1, 4), -15, 9, "");
+		this.drawItemStack(new ItemStack(InitItemsVG.GEMSTONE_ITEM_BASIC_V1, 1, 5), -15, 25, "");
+		this.drawItemStack(new ItemStack(InitItemsVG.GEMSTONE_ITEM_BASIC_V1, 1, 6), -15, 41, "");
+		this.drawItemStack(new ItemStack(InitItemsVG.GEMSTONE_ITEM_BASIC_V1, 1, 7), -15, 57, "");
+		this.drawItemStack(new ItemStack(InitItemsVG.GEMSTONE_ITEM_BASIC_V1, 1, 8), -23, 73, "");
 		
 		if(this.gemstoneWorkbench.getField(2) >= 200)
 		{

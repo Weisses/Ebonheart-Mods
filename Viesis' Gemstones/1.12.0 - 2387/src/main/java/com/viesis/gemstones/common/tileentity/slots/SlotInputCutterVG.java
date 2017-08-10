@@ -21,8 +21,8 @@ public class SlotInputCutterVG  extends SlotItemHandler {
     {
 		Item item = stack.getItem();
 		
-		if(item == InitItemsVG.gemstone_item_basic_v1) return false;
-		if(item == InitItemsVG.gemstone_item_enchanted_v1) return false;
+		if(item == InitItemsVG.GEMSTONE_ITEM_BASIC_V1) return false;
+		if(item == InitItemsVG.GEMSTONE_ITEM_ENCHANTED_V1) return false;
         
 		return true;
     }

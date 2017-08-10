@@ -2,22 +2,16 @@ package com.viesis.gemstones.init;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.util.function.Function;
-
-import javax.annotation.Nullable;
 
 import com.google.common.base.Preconditions;
 import com.viesis.gemstones.api.References;
 import com.viesis.gemstones.api.VGBlocks;
-import com.viesis.gemstones.common.blocks.gemstones.ItemBlockGemstoneBasicV1;
-import com.viesis.gemstones.common.blocks.world.ItemBlockOreVG;
+import com.viesis.gemstones.common.tileentity.TileEntityGemstoneConverter;
 import com.viesis.gemstones.common.tileentity.TileEntityGemstoneWorkbench;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockSlab;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemSlab;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
@@ -336,7 +330,7 @@ public class InitBlocksVG extends VGBlocks {
 	public static void registerTileEntities() 
 	{
 		registerTileEntity(TileEntityGemstoneWorkbench.class, "container_gemstone_workbench");
-		registerTileEntity(TileEntityGemstoneWorkbench.class, "container_gemstone_workbench");
+		registerTileEntity(TileEntityGemstoneConverter.class, "container_gemstone_converter");
 		//registerTileEntity(TileEntityFluidTank.class, "fluid_tank", "FluidTank");
 		//registerTileEntity(TileEntityColoredRotatable.class, "colored_rotatable", "ColoredRotatable");
 		//registerTileEntity(TileEntityColoredMultiRotatable.class, "colored_multi_rotatable", "ColoredMultiRotatable");

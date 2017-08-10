@@ -1,5 +1,6 @@
 package com.viesis.viescraft.client.gui.airship;
 
+import com.viesis.viescraft.ViesCraft;
 import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
@@ -166,6 +167,13 @@ public class GuiAirshipHUD extends Gui {
 					drawTexturedModalRect(hudX + 83, hudY, 160, 240, 16, 16);
 				}
 				
+
+		        
+		        if(ViesCraft.isViesisGemstonesModLoaded) 
+		        {
+		        	LogHelper.info("Viesis' Gemstones is loaded");
+		        	// do your stuff
+		        }
 				
 				//if(mc.player.getRidingEntity() instanceof EntityAirshipV1Core)
 				//{

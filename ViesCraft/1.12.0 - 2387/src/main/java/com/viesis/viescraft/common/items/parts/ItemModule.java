@@ -10,16 +10,15 @@ import com.viesis.viescraft.ViesCraft;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
 import com.viesis.viescraft.common.items.ItemHelper;
 
-import net.minecraft.util.text.translation.I18n;
-import net.minecraft.world.World;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.text.TextFormatting;
+import net.minecraft.util.text.translation.I18n;
+import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -126,15 +125,6 @@ public class ItemModule extends Item {
 	
 	public EnumRarity getRarity(ItemStack stack)
     {
-		if(stack.getMetadata() == 0)
-        {
-        	this.setMaxStackSize(64);
-        }
-        else
-        {
-        	this.setMaxStackSize(1);
-        }
-        
 		switch (this.getMetadata(stack))
         {
 			case 0:

@@ -25,11 +25,11 @@ public class ContainerPouchModule extends Container {
 		this.player = playerIn;
 		this.pouch = boxInv;
 		
-        for(i = 0; i < 3; ++i)
+		for(i = 0; i < 3; ++i)
         {
-			for(j = 0; j < 8; ++j) 
+			for(j = 0; j < 6; ++j) 
 			{
-				addSlotToContainer(new SlotPouchModuleVC(pouch, j + i * 8, 17 + j * 18, 17 + i * 18));
+				this.addSlotToContainer(new SlotPouchModuleVC(this.pouch, j + i * 8, 35 + j * 18, 17 + i * 18));
 			}
         }
         
@@ -37,13 +37,13 @@ public class ContainerPouchModule extends Container {
 		{
 			for(j = 0; j < 9; ++j)
 			{
-				addSlotToContainer(new Slot(player.inventory, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
+				this.addSlotToContainer(new Slot(this.player.inventory, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
 			}
 		}
 		
 		for(i = 0; i < 9; ++i) 
 		{
-			addSlotToContainer(new Slot(player.inventory, i, 8 + i * 18, 142));
+			this.addSlotToContainer(new Slot(this.player.inventory, i, 8 + i * 18, 142));
 		}
     }
     
@@ -59,6 +59,33 @@ public class ContainerPouchModule extends Container {
 	{
     	super.setAll(l);
 	}
+	
+	@Override
+	public void onContainerClosed(EntityPlayer playerIn)
+    {
+        super.onContainerClosed(playerIn);
+        
+        saveCraftingMatrix();
+    }
+	
+	/**
+     * Saves the crafting matrix to the workbench inventory.
+     */
+    private void saveCraftingMatrix()
+    {
+	  	for (int i = 0; i < this.pouch.getSlots(); i++) 
+    	{
+    		this.pouch.setStackInSlot(i, this.pouch.getStackInSlot(i));
+    	}
+    }
+    
+    @Override
+    public void detectAndSendChanges()
+    {
+        super.detectAndSendChanges();
+        
+        saveCraftingMatrix();
+    }
 	
 	@Nonnull
 	@Override

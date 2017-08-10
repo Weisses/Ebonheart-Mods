@@ -19,6 +19,6 @@ public class VGTabItems extends CreativeTabs {
 	@SideOnly(Side.CLIENT)
 	public ItemStack getTabIconItem() 
 	{
-		return new ItemStack(InitItemsVG.gemstone_item_basic_v1, 1, 5);
+		return new ItemStack(InitItemsVG.GEMSTONE_ITEM_BASIC_V1, 1, 5);
 	}
 }

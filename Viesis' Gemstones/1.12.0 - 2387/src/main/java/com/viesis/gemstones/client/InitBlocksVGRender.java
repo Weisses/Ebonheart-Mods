@@ -6,6 +6,7 @@ import java.util.Set;
 import com.viesis.gemstones.api.References;
 import com.viesis.gemstones.api.VGBlocks;
 import com.viesis.gemstones.api.VGEnum.GemstoneTypeBlockV1;
+import com.viesis.gemstones.api.VGEnum.GemstoneTypeItemV1;
 import com.viesis.gemstones.api.VGEnum.GemstoneTypeOre;
 import com.viesis.gemstones.api.VGEnum.RegistryType;
 import com.viesis.gemstones.init.InitBlocksVG;
@@ -50,8 +51,9 @@ public final class InitBlocksVGRender extends VGBlocks {
 	private void registerBlockModels() 
 	{
 		InitBlocksVG.RegistrationHandler.ITEM_BLOCKS.stream().filter(item -> !itemsRegistered.contains(item)).forEach(this::registerItemModel);
+		
+		
 	}
-	
 	
 	/**
 	 * Register this mod's {@link Item} models.
@@ -59,6 +61,21 @@ public final class InitBlocksVGRender extends VGBlocks {
 	private void registerItemModels() 
 	{
 		InitBlocksVG.RegistrationHandler.ITEM_BLOCKS.stream().filter(item -> !itemsRegistered.contains(item)).forEach(this::registerItemModel);
+		//==============================================
+		
+		for (GemstoneTypeItemV1 meta : GemstoneTypeItemV1.values()) 
+		{
+			//registerRenderFrame(GEMSTONE_BASIC_BLOCK_V1, meta.getMetadata());
+			//registerRenderFrame(GEMSTONE_ITEM_ENCHANTED_V1, meta.getMetadata());
+		}
+		
+		//for (GemstoneTypeItemV1 meta : GemstoneTypeItemV1.values()) 
+		//{
+		//	registerRenderFrame(GEMSTONE_BASIC_BLOCK_V1, meta.getMetadata());
+		//	registerRenderFrame(GEMSTONE_BASIC_BLOCK_V1, meta.getMetadata());
+		//	registerRenderFrame(GEMSTONE_BASIC_BRICK_V1, meta.getMetadata());
+		//	registerRenderFrame(GEMSTONE_BASIC_FANCYBRICK_V1, meta.getMetadata());
+		//}
 	}
 
 	/**
@@ -114,6 +131,16 @@ public final class InitBlocksVGRender extends VGBlocks {
 		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(itemName, "inventory"));
 	}
 	
+	private void registerRenderFrame(Item item, int meta)
+	{
+		Block test = item.getBlockFromItem(item);
+		String itemName = item.getRegistryName() + "_" + GemstoneTypeItemV1.byMetadata(meta).getName().toString().toLowerCase().replaceAll("\\s+","");
+		
+		itemsRegistered.add(item);
+		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(itemName, "inventory"));
+	}
+	
+	
 	
 	interface MeshDefinitionFix extends ItemMeshDefinition 
 	{
@@ -137,6 +164,13 @@ public final class InitBlocksVGRender extends VGBlocks {
 		itemsRegistered.add(item);
 		ModelLoader.setCustomMeshDefinition(item, meshDefinition);
 	}
+	
+	
+	
+
+	
+	
+	
 	
 	/**
 	public static void registerBlockRender()

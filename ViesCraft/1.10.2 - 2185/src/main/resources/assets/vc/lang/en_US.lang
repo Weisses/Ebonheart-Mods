@@ -15,6 +15,8 @@ item.vc:airship_balloon.name=Airship Balloon
 item.vc:airship_engine.name=Airship Engine
 item.vc:airship_ignition.name=Airship Ignition
 item.vc:item_airship_dismounter.name=Dismounter
+item.vc:item_pouch_module.name=Module Vies-Bag
+item.vc:item_pouch_all.name=Vies-Bag
 vc.item.frame=Airship Frame
 vc.item.pattern=Balloon Pattern
 vc.item.module.0=Logic Chip
@@ -126,6 +128,10 @@ vc.item.tt.airship.11=Pattern : Plain
 vc.item.tt.airship.#.1=Speed Modifier:
 vc.item.tt.airship.#.2=Max altitude:
 vc.item.tt.airship.#.3=Unlimited
+vc.item.tt.pouchmodule.1=This bag could hold anything, even
+vc.item.tt.pouchmodule.2=a boat?! Nope just modules...
+vc.item.tt.pouchall.1=This bag really could hold
+vc.item.tt.pouchall.2=anything, even a boat!
 
 //-----Enums-----
 vc.item.enum.frame.0=Oak

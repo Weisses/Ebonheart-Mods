@@ -67,7 +67,7 @@ public class ContainerGemstoneWorkbench extends ContainerVC {
     {
     	this.saveCraftingMatrix();
     	
-        return this.world.getBlockState(this.gemstoneWorkbench.getPos()).getBlock() != InitBlocksVG.gemstone_workbench ? false : playerIn.getDistanceSq((double)this.gemstoneWorkbench.getPos().getX() + 0.5D, (double)this.gemstoneWorkbench.getPos().getY() + 0.5D, (double)this.gemstoneWorkbench.getPos().getZ() + 0.5D) <= 64.0D;
+        return this.world.getBlockState(this.gemstoneWorkbench.getPos()).getBlock() != InitBlocksVG.GEMSTONE_WORKBENCH ? false : playerIn.getDistanceSq((double)this.gemstoneWorkbench.getPos().getX() + 0.5D, (double)this.gemstoneWorkbench.getPos().getY() + 0.5D, (double)this.gemstoneWorkbench.getPos().getZ() + 0.5D) <= 64.0D;
     }
     
     @Override

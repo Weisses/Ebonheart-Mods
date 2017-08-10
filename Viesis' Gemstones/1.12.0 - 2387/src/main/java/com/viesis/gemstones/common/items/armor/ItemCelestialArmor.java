@@ -36,7 +36,7 @@ public class ItemCelestialArmor extends ItemArmor {
 	
 	public boolean getIsRepairable(ItemStack toRepair, ItemStack repair)
     {
-		return new ItemStack(InitItemsVG.gemstone_item_basic_v1, 1, 0) == repair ? true : super.getIsRepairable(toRepair, repair);
+		return new ItemStack(InitItemsVG.GEMSTONE_ITEM_BASIC_V1, 1, 0) == repair ? true : super.getIsRepairable(toRepair, repair);
     }
 	
 	@SideOnly(Side.CLIENT)

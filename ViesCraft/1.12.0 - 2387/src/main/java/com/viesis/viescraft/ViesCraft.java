@@ -11,6 +11,7 @@ import com.viesis.viescraft.configs.ViesCraftConfig;
 import com.viesis.viescraft.proxy.CommonProxy;
 
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -33,6 +34,7 @@ public class ViesCraft {
 	
 	private static File configDir;
 	
+	public static boolean isViesisGemstonesModLoaded;
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
@@ -41,6 +43,8 @@ public class ViesCraft {
 		configDir = new File(event.getModConfigurationDirectory() + "/" + Reference.MOD_ID);
 		configDir.mkdirs();
 		ViesCraftConfig.init(new File(configDir.getPath(), Reference.MOD_ID + ".cfg"));
+		
+		isViesisGemstonesModLoaded = Loader.isModLoaded("vg");
 		
 		this.proxy.preInit(event);
 		LogHelper.info("<<==============================>>");

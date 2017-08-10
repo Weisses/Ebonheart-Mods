@@ -141,7 +141,7 @@ public class RenderGemstoneConverter extends TileEntitySpecialRenderer<TileEntit
 	
 	private void renderItemGem(TileEntityGemstoneConverter te, double x, double y, double z, float partialTicks, int destroyStage)
     {
-        ItemStack itemstack = new ItemStack(InitItemsVG.gemstone_item_basic_v1, 1, te.gemstoneMeta);//itemFrame.getDisplayedItem();
+        ItemStack itemstack = new ItemStack(InitItemsVG.GEMSTONE_ITEM_BASIC_V1, 1, te.gemstoneMeta);//itemFrame.getDisplayedItem();
         
         if(itemstack.isEmpty())
 		{

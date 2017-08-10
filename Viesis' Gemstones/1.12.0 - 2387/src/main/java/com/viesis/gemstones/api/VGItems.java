@@ -1,9 +1,19 @@
 package com.viesis.gemstones.api;
 
+import com.viesis.gemstones.common.items.resources.gemstones.ItemGemstoneBasicV1;
+import com.viesis.gemstones.common.items.resources.gemstones.ItemGemstoneEnchantedV1;
+import com.viesis.gemstones.common.items.resources.gemstones.ItemGemstoneUnidentified;
+
 import net.minecraft.item.Item;
 
 public class VGItems {
 	
+	public static final ItemGemstoneUnidentified GEMSTONE_ITEM_UNIDENTIFIED = new ItemGemstoneUnidentified();
+	
+	public static final ItemGemstoneBasicV1 GEMSTONE_ITEM_BASIC_V1 = new ItemGemstoneBasicV1();
+	public static final ItemGemstoneEnchantedV1 GEMSTONE_ITEM_ENCHANTED_V1 = new ItemGemstoneEnchantedV1();
+	
+	/**
 	public static Item gemstone_item_unidentified;
 	
 	public static Item gemstone_item_basic_v1;

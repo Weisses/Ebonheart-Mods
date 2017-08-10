@@ -55,7 +55,8 @@ public class ModColourManager {
 		};
 
 		blockColors.registerBlockColorHandler(grassColourHandler, 
-				InitBlocksVG.gemstone_basic_block_v1
+				InitBlocksVG.GEMSTONE_BASIC_BLOCK_V1
+				//.gemstone_basic_block_v1
 				//ModBlocks.WATER_GRASS
 				);
 	}
@@ -76,7 +77,7 @@ public class ModColourManager {
 		};
 
 		itemColors.registerItemColorHandler(itemBlockColourHandler, 
-				InitBlocksVG.gemstone_basic_block_v1
+				InitBlocksVG.GEMSTONE_BASIC_BLOCK_V1
 				//ModBlocks.WATER_GRASS
 		);
 	}

@@ -23,6 +23,8 @@ import com.viesis.viescraft.common.items.parts.ItemFrame;
 import com.viesis.viescraft.common.items.parts.ItemIgnition;
 import com.viesis.viescraft.common.items.parts.ItemModule;
 import com.viesis.viescraft.common.items.parts.ItemViesoline;
+import com.viesis.viescraft.common.items.parts.pouch.ItemPouchAll;
+import com.viesis.viescraft.common.items.parts.pouch.ItemPouchModule;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 
 import net.minecraft.item.Item;
@@ -85,6 +87,9 @@ public class InitItemsVC extends ItemsVC {
 		achievement_airship = registerItem(new ItemAchievement());
 		
 		item_entity_airship = registerItem(new ItemEntityAirship());
+		
+		item_pouch_module = registerItem(new ItemPouchModule());
+		item_pouch_all = registerItem(new ItemPouchAll());
 	}
 	
 	public static void registerItemTEMP()

@@ -119,11 +119,11 @@ public class BlockOreVG extends BlockBaseVG implements IMetaBlockGemstone {
 	public ArrayList<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState blockstate, int fortune) 
 	{
 		ArrayList<ItemStack> drops = new ArrayList<ItemStack>();
-		drops.add(new ItemStack(InitItemsVG.gemstone_item_unidentified, References.random.nextInt(3) + 2));
+		drops.add(new ItemStack(InitItemsVG.GEMSTONE_ITEM_UNIDENTIFIED, References.random.nextInt(3) + 2));
 		
 		if (References.random.nextFloat() < 0.5F)
 		{
-			drops.add(new ItemStack(InitItemsVG.gemstone_item_basic_v1, References.random.nextInt(4), References.random.nextInt(8)));
+			drops.add(new ItemStack(InitItemsVG.GEMSTONE_ITEM_BASIC_V1, References.random.nextInt(4), References.random.nextInt(8)));
 		}
 		
 		return drops;
