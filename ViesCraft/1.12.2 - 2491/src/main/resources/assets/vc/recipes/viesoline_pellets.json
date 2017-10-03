@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:redstone"
+    },
+    {
+      "item": "minecraft:coal",
+      "data": 32767
+    }
+  ],
+  "result": {
+    "item": "vc:viesoline_pellets",
+    "count": 1
+  }
+}

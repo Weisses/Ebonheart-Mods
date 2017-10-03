@@ -89,7 +89,7 @@ public class InitItemsVC extends ItemsVC {
 		item_entity_airship = registerItem(new ItemEntityAirship());
 		
 		item_pouch_module = registerItem(new ItemPouchModule());
-		item_pouch_all = registerItem(new ItemPouchAll());
+		//item_pouch_all = registerItem(new ItemPouchAll());
 	}
 	
 	public static void registerItemTEMP()

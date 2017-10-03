@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "vc:guidebook_main",
+  "ingredients": [
+    {
+      "item": "vc:guidebook_main"
+    },
+    {
+      "item": "minecraft:redstone"
+    }
+  ],
+  "result": {
+    "item": "vc:guidebook_socket",
+    "count": 1
+  }
+}

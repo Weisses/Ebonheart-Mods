@@ -40,5 +40,5 @@ public class ItemsVC {
 	public static Item item_entity_airship;
 	
 	public static Item item_pouch_module;
-	public static Item item_pouch_all;
+	//public static Item item_pouch_all;
 }

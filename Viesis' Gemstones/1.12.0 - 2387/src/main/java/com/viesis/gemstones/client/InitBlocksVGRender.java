@@ -133,7 +133,7 @@ public final class InitBlocksVGRender extends VGBlocks {
 	
 	private void registerRenderFrame(Item item, int meta)
 	{
-		Block test = item.getBlockFromItem(item);
+		//Block test = item.getBlockFromItem(item);
 		String itemName = item.getRegistryName() + "_" + GemstoneTypeItemV1.byMetadata(meta).getName().toString().toLowerCase().replaceAll("\\s+","");
 		
 		itemsRegistered.add(item);

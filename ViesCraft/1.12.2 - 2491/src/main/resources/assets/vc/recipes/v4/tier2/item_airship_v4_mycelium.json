@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "vc:item_airship_v4_bone",
+  "pattern": [
+    "EBE", 
+    "L#L", 
+    "LIL"
+  ],
+  "key": {
+    "#": {
+      "item": "vc:frames/airship_frame",
+      "data": 14
+    },
+    "B": {
+      "item": "vc:airship_balloon"
+    },
+    "E": {
+      "item": "vc:airship_engine"
+    },
+    "I": {
+      "item": "vc:airship_ignition"
+    },
+    "L": {
+      "item": "minecraft:lead"
+    }
+  },
+  "result": {
+    "item": "vc:v4/item_airship_v4",
+    "data": 14,
+    "count": 1
+  }
+}
