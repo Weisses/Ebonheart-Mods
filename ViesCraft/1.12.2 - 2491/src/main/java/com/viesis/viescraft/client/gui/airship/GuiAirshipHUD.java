@@ -171,7 +171,7 @@ public class GuiAirshipHUD extends Gui {
 		        
 		        if(ViesCraft.isViesisGemstonesModLoaded) 
 		        {
-		        	LogHelper.info("Viesis' Gemstones is loaded");
+		        	//////LogHelper.info("Viesis' Gemstones is loaded");
 		        	// do your stuff
 		        }
 				

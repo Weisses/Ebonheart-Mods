@@ -21,7 +21,7 @@ repositories {
   }
 }
 
-version = "1.11.2-5.0.6-final"
+version = "1.11.2-5.0.10-final"
 group= "com.viesis.ViesCraft" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "ViesCraft"
 

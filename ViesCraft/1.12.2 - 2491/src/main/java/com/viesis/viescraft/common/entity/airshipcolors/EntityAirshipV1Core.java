@@ -2,8 +2,6 @@ package com.viesis.viescraft.common.entity.airshipcolors;
 
 import java.util.List;
 
-//import com.viesis.gemstones.api.util.LogHelper;
-import com.viesis.viescraft.ViesCraft;
 import com.viesis.viescraft.api.ColorHelperVC;
 import com.viesis.viescraft.api.FuelVC;
 import com.viesis.viescraft.client.InitParticlesVCRender;

@@ -18,15 +18,16 @@ public class SlotPouchAllVC extends SlotItemHandler {
      */
     public boolean isItemValid(ItemStack stack)
     {
-    	if(stack.getItem() == InitItemsVC.ITEM_POUCH_MODULE
+		return false;
+    	////if(stack.getItem() == InitItemsVC.ITEM_POUCH_MODULE
     	//|| stack.getItem() == InitItemsVC.ITEM_POUCH_ALL
-    			)
-    	{
-    		return false;
-    	}
-    	else
-    	{
-    		return true;
-    	}
+    	////		)
+    	////{
+    	////	return false;
+    	////}
+    	////else
+    	////{
+    	////	return true;
+    	////}
     }
 }

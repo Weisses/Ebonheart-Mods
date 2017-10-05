@@ -85,7 +85,7 @@ public final class InitItemsVCRender extends ItemsVC {
 		
 		registerRender(item_entity_airship);
 		
-		registerRender(item_pouch_module);
+		//registerRender(item_pouch_module);
 		//registerRender(item_pouch_all);
 	}
 	

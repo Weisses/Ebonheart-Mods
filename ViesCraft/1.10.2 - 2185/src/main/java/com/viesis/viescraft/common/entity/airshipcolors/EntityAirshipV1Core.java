@@ -205,8 +205,6 @@ public class EntityAirshipV1Core extends EntityAirshipBaseVC {
     	ItemStack stack = new ItemStack(InitItemsVC.item_airship_v1, 1, this.metaFrameCore);
     	stack.setTagCompound(new NBTTagCompound());
     	
-    	stack.getTagCompound().setTag("Slots", inventory.serializeNBT());
-    	
     	stack.getTagCompound().setInteger("FrameVisual", this.metaFrameVisual);
     	stack.getTagCompound().setBoolean("FrameVisualActive", this.frameVisualActive);
     	

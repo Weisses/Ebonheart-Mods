@@ -44,7 +44,7 @@ public class ItemsVC {
 	public static final ItemColorizerBalloon ITEM_BALLOON_COLORIZER = new ItemColorizerBalloon();
 	public static final ItemColorizerBalloon ITEM_FRAME_COLORIZER = new ItemColorizerBalloon();
 	
-	public static final ItemPouchModule ITEM_POUCH_MODULE = new ItemPouchModule();
+	//public static final ItemPouchModule ITEM_POUCH_MODULE = new ItemPouchModule();
 	//public static final ItemPouchAll ITEM_POUCH_ALL = new ItemPouchAll();
 	
 	//==============================================

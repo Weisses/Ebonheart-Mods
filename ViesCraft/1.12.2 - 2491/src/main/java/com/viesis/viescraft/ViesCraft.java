@@ -35,6 +35,7 @@ public class ViesCraft {
 	private static File configDir;
 	
 	public static boolean isViesisGemstonesModLoaded;
+	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
