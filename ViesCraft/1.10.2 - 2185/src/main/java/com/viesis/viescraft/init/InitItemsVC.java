@@ -15,6 +15,8 @@ import com.viesis.viescraft.common.items.airshipitems.v1.ItemAirshipV1;
 import com.viesis.viescraft.common.items.airshipitems.v2.ItemAirshipV2;
 import com.viesis.viescraft.common.items.airshipitems.v3.ItemAirshipV3;
 import com.viesis.viescraft.common.items.airshipitems.v4.ItemAirshipV4;
+import com.viesis.viescraft.common.items.airshipitems.v5.ItemAirshipV5;
+import com.viesis.viescraft.common.items.airshipitems.v6.ItemAirshipV6;
 import com.viesis.viescraft.common.items.parts.ItemBalloon;
 import com.viesis.viescraft.common.items.parts.ItemBalloonPattern;
 import com.viesis.viescraft.common.items.parts.ItemColorizerBalloon;
@@ -23,8 +25,6 @@ import com.viesis.viescraft.common.items.parts.ItemFrame;
 import com.viesis.viescraft.common.items.parts.ItemIgnition;
 import com.viesis.viescraft.common.items.parts.ItemModule;
 import com.viesis.viescraft.common.items.parts.ItemViesoline;
-import com.viesis.viescraft.common.items.parts.pouch.ItemPouchAll;
-import com.viesis.viescraft.common.items.parts.pouch.ItemPouchModule;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 
 import net.minecraft.item.Item;
@@ -63,13 +63,11 @@ public class InitItemsVC extends ItemsVC {
 		{
 			item_airship_v1 = registerItem(new ItemAirshipV1("v1/item_airship_v1"));
 		}
-		
 		//V2
 		if(ViesCraftConfig.v2AirshipEnabled)
 		{
 			item_airship_v2 = registerItem(new ItemAirshipV2("v2/item_airship_v2"));
 		}
-		
 		//V3
 		if(ViesCraftConfig.v3AirshipEnabled)
 		{
@@ -80,6 +78,16 @@ public class InitItemsVC extends ItemsVC {
 		if(ViesCraftConfig.v4AirshipEnabled)
 		{
 			item_airship_v4 = registerItem(new ItemAirshipV4("v4/item_airship_v4"));
+		}
+		//V5
+		if(ViesCraftConfig.v5AirshipEnabled)
+		{
+			item_airship_v5 = registerItem(new ItemAirshipV5("v5/item_airship_v5"));
+		}
+		//V6
+		if(ViesCraftConfig.v6AirshipEnabled)
+		{
+			item_airship_v6 = registerItem(new ItemAirshipV6("v6/item_airship_v6"));
 		}
 		
 		//==============================================

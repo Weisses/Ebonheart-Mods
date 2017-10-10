@@ -76,6 +76,8 @@ public class InitItemsVC extends ItemsVC {
 					ITEM_AIRSHIP_V2,//
 					ITEM_AIRSHIP_V3,//
 					ITEM_AIRSHIP_V4,//
+					ITEM_AIRSHIP_V5,//
+					ITEM_AIRSHIP_V6,//
 					ACHIEVEMENT_AIRSHIP,//
 					ITEM_ENTITY_AIRSHIP,//
 					//ITEM_POUCH_MODULE,

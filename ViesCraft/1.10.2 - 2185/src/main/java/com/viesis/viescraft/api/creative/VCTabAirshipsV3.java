@@ -3,13 +3,14 @@ package com.viesis.viescraft.api.creative;
 import com.viesis.viescraft.init.InitItemsVC;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class VCTabAirships extends CreativeTabs {
+public class VCTabAirshipsV3 extends CreativeTabs {
 	
-	public VCTabAirships(String label) 
+	public VCTabAirshipsV3(String label) 
 	{
 		super(label);
 		this.setBackgroundImageName("viescraft.png");
@@ -17,8 +18,8 @@ public class VCTabAirships extends CreativeTabs {
 	
 	@SideOnly(Side.CLIENT)
 	@Override
-	public ItemStack getTabIconItem() 
+	public Item getTabIconItem() 
 	{
-		return new ItemStack(InitItemsVC.ITEM_AIRSHIP_V1, 1, 0);
+		return new ItemStack(InitItemsVC.item_airship_v3, 1, 21).getItem();
 	}
 }

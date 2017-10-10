@@ -3,7 +3,13 @@
 //-----Creative Tabs-----
 itemGroup.tabViesCraftBlocks=ViesCraft Blocks
 itemGroup.tabViesCraftItems=ViesCraft Items
-itemGroup.tabViesCraftAirships=ViesCraft Airships
+itemGroup.tabViesCraftAirshipsV1=ViesCraft V1 Airships
+itemGroup.tabViesCraftAirshipsV2=ViesCraft V2 Airships
+itemGroup.tabViesCraftAirshipsV3=ViesCraft V3 Airships
+itemGroup.tabViesCraftAirshipsV4=ViesCraft V4 Airships
+itemGroup.tabViesCraftAirshipsV5=ViesCraft V5 Airships
+itemGroup.tabViesCraftAirshipsV6=ViesCraft V6 Airships
+itemGroup.tabViesCraftAirshipsV7=ViesCraft V7 Airships
 
 //-----Items-----
 item.vc:guidebook_main.name=The 'Vies' Craft, vol.1

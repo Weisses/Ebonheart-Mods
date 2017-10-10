@@ -11,6 +11,8 @@ import com.viesis.viescraft.common.items.airshipitems.v1.ItemAirshipV1;
 import com.viesis.viescraft.common.items.airshipitems.v2.ItemAirshipV2;
 import com.viesis.viescraft.common.items.airshipitems.v3.ItemAirshipV3;
 import com.viesis.viescraft.common.items.airshipitems.v4.ItemAirshipV4;
+import com.viesis.viescraft.common.items.airshipitems.v5.ItemAirshipV5;
+import com.viesis.viescraft.common.items.airshipitems.v6.ItemAirshipV6;
 import com.viesis.viescraft.common.items.parts.ItemBalloon;
 import com.viesis.viescraft.common.items.parts.ItemBalloonPattern;
 import com.viesis.viescraft.common.items.parts.ItemColorizerBalloon;
@@ -19,8 +21,6 @@ import com.viesis.viescraft.common.items.parts.ItemFrame;
 import com.viesis.viescraft.common.items.parts.ItemIgnition;
 import com.viesis.viescraft.common.items.parts.ItemModule;
 import com.viesis.viescraft.common.items.parts.ItemViesoline;
-import com.viesis.viescraft.common.items.parts.pouch.ItemPouchAll;
-import com.viesis.viescraft.common.items.parts.pouch.ItemPouchModule;
 
 public class ItemsVC {
 	
@@ -52,7 +52,10 @@ public class ItemsVC {
 	public static final ItemAirshipV1 ITEM_AIRSHIP_V1 = new ItemAirshipV1("v1/item_airship_v1");
 	public static final ItemAirshipV2 ITEM_AIRSHIP_V2 = new ItemAirshipV2("v2/item_airship_v2");
 	public static final ItemAirshipV3 ITEM_AIRSHIP_V3 = new ItemAirshipV3("v3/item_airship_v3");
+	
 	public static final ItemAirshipV4 ITEM_AIRSHIP_V4 = new ItemAirshipV4("v4/item_airship_v4");
+	public static final ItemAirshipV5 ITEM_AIRSHIP_V5 = new ItemAirshipV5("v5/item_airship_v5");
+	public static final ItemAirshipV6 ITEM_AIRSHIP_V6 = new ItemAirshipV6("v6/item_airship_v6");
 	
 	public static final ItemAchievement ACHIEVEMENT_AIRSHIP = new ItemAchievement();
 	public static final ItemEntityAirship ITEM_ENTITY_AIRSHIP = new ItemEntityAirship();

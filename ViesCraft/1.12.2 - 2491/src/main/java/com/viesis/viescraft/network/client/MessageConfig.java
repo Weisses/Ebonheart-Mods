@@ -15,6 +15,8 @@ public class MessageConfig extends MessageBase<MessageConfig> {
 		ViesCraftConfig.v2AirshipSpeed = buf.readInt();
 		ViesCraftConfig.v3AirshipSpeed = buf.readInt();
 		ViesCraftConfig.v4AirshipSpeed = buf.readInt();
+		ViesCraftConfig.v5AirshipSpeed = buf.readInt();
+		ViesCraftConfig.v6AirshipSpeed = buf.readInt();
 		
 		ViesCraftConfig.recipeBookAddAll = buf.readBoolean();
 		
@@ -30,6 +32,8 @@ public class MessageConfig extends MessageBase<MessageConfig> {
 		buf.writeInt(ViesCraftConfig.v2AirshipSpeed);
 		buf.writeInt(ViesCraftConfig.v3AirshipSpeed);
 		buf.writeInt(ViesCraftConfig.v4AirshipSpeed);
+		buf.writeInt(ViesCraftConfig.v5AirshipSpeed);
+		buf.writeInt(ViesCraftConfig.v6AirshipSpeed);
 		
 		buf.writeBoolean(ViesCraftConfig.recipeBookAddAll);
 		

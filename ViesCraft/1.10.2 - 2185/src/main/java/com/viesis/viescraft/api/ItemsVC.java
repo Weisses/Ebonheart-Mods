@@ -32,6 +32,8 @@ public class ItemsVC {
 	public static Item item_airship_v2;
 	public static Item item_airship_v3;
 	public static Item item_airship_v4;
+	public static Item item_airship_v5;
+	public static Item item_airship_v6;
 	
 	//=================================================
 	

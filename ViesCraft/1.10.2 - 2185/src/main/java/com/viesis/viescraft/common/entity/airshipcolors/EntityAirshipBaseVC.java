@@ -5,6 +5,7 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 import com.google.common.collect.Lists;
+import com.viesis.viescraft.api.EnumsVC;
 import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.api.util.Keybinds;
 import com.viesis.viescraft.client.InitParticlesVCRender;
@@ -1012,7 +1013,7 @@ public class EntityAirshipBaseVC extends Entity {
     	Boolean maxHeightReached;
     	
     	int airshipHeight = this.getPosition().getY();
-    	if(airshipHeight > FrameCore.byId(this.metaFrameCore).getElevation())
+    	if(airshipHeight > EnumsVC.AirshipTier.byId(this.metaFrameCore).getElevation())
     	{
     		maxHeightReached = true;
     	}
@@ -1057,20 +1058,36 @@ public class EntityAirshipBaseVC extends Entity {
     /**
 	 * Core Frame enum - Represents various frame types.
 	 */
-    public static enum FrameCore
+    /**public static enum FrameCore
     {
     	//STRING(meta, name, speed, altitude)
     	//Common - 8 items
+    	//DIRT(0, "Dirt", I18n.translateToLocal("vc.item.enum.frame.0"), 0F, 75),
+    	//SAND(6, "Cobblestone", I18n.translateToLocal("vc.item.enum.frame.6"), 0.001F, 80),
         WOOD0(0, "Oak", I18n.translateToLocal("vc.item.enum.frame.0"), 0F, 75),
         WOOD1(1, "Spruce", I18n.translateToLocal("vc.item.enum.frame.1"), 0F, 75),
         WOOD2(2, "Birch", I18n.translateToLocal("vc.item.enum.frame.2"), 0F, 75),
         WOOD3(3, "Jungle", I18n.translateToLocal("vc.item.enum.frame.3"), 0F, 75),
         WOOD4(4, "Acacia", I18n.translateToLocal("vc.item.enum.frame.4"), 0F, 75),
         WOOD5(5, "Dark Oak", I18n.translateToLocal("vc.item.enum.frame.5"), 0F, 75),
+        
+        
+        
+        //GRAVEL(0, "Gravel", I18n.translateToLocal("vc.item.enum.frame.0"), 0F, 75),
+        
+        
+        
+        //GRANITE(6, "Granite", I18n.translateToLocal("vc.item.enum.frame.6"), 0.001F, 80),
+        //DIORITE(6, "Diorite", I18n.translateToLocal("vc.item.enum.frame.6"), 0.001F, 80),
+        //ANDESITE(6, "Andesite", I18n.translateToLocal("vc.item.enum.frame.6"), 0.001F, 80),
         SANDSTONE(6, "Sandstone", I18n.translateToLocal("vc.item.enum.frame.6"), 0.001F, 80),
+        //STONE(0, "Stone", I18n.translateToLocal("vc.item.enum.frame.0"), 0F, 75),
+        //////COBBLESTONE(6, "Cobblestone", I18n.translateToLocal("vc.item.enum.frame.6"), 0.001F, 80),
         BRICK(7, "Brick", I18n.translateToLocal("vc.item.enum.frame.7"), 0.002F, 90),
         
         //Uncommon - 7 items
+        //////MOSSYCOBBLESTONE(6, "Mossy Cobblestone", I18n.translateToLocal("vc.item.enum.frame.6"), 0.001F, 80),
+        
         BONE(8, "Bone", I18n.translateToLocal("vc.item.enum.frame.8"), 0.003F, 100),
     	IRON(9, "Iron", I18n.translateToLocal("vc.item.enum.frame.9"), 0.004F, 110),
         REDSTONE(10, "Redstone", I18n.translateToLocal("vc.item.enum.frame.10"), 0.005F, 120),
@@ -1147,7 +1164,7 @@ public class EntityAirshipBaseVC extends Entity {
         /**
          * Get a boat type by it's enum ordinal
          */
-        public static EntityAirshipBaseVC.FrameCore byId(int id)
+       /** public static EntityAirshipBaseVC.FrameCore byId(int id)
         {
             if (id < 0 || id >= values().length)
             {
@@ -1169,12 +1186,12 @@ public class EntityAirshipBaseVC extends Entity {
             
             return values()[0];
         }
-    }
+    }*/
     
     /**
 	 * Balloon enum - Represents various balloon types.
 	 */
-    public static enum Balloon
+    /**public static enum Balloon
     {
         PLAIN(0, "Plain", I18n.translateToLocal("vc.item.enum.balloon.0")),
         PLAINCOLORIZED(1, "Colorized Plain", I18n.translateToLocal("vc.item.enum.balloon.1")),
@@ -1246,7 +1263,7 @@ public class EntityAirshipBaseVC extends Entity {
         /**
          * Get a boat type by it's enum ordinal
          */
-        public static EntityAirshipBaseVC.Balloon byId(int id)
+        /**public static EntityAirshipBaseVC.Balloon byId(int id)
         {
             if (id < 0 || id >= values().length)
             {
@@ -1273,7 +1290,7 @@ public class EntityAirshipBaseVC extends Entity {
     /**
 	 * Module enum - Represents various Module types.
 	 */
-    public static enum Module
+    /**public static enum Module
     {
         CHIP(0, "Chip", I18n.translateToLocal("vc.item.enum.module.0")),
         MINORSPEED(1, "Minor Speed", I18n.translateToLocal("vc.item.enum.module.1")),
@@ -1322,7 +1339,7 @@ public class EntityAirshipBaseVC extends Entity {
         /**
          * Get a boat type by it's enum ordinal
          */
-        public static EntityAirshipBaseVC.Module byId(int id)
+        /**public static EntityAirshipBaseVC.Module byId(int id)
         {
             if (id < 0 || id >= values().length)
             {
@@ -1349,7 +1366,7 @@ public class EntityAirshipBaseVC extends Entity {
     /**
 	 * Song enum - Represents various song types.
 	 */
-    public static enum Song
+    /**public static enum Song
     {
     	NONE(0, I18n.translateToLocal("vc.item.enum.song.0"), SoundEvents.UI_BUTTON_CLICK),
     	RECORD11(1, I18n.translateToLocal("vc.item.enum.song.1"), SoundEvents.RECORD_11),
@@ -1405,7 +1422,7 @@ public class EntityAirshipBaseVC extends Entity {
         /**
          * Get a boat type by it's enum ordinal
          */
-        public static EntityAirshipBaseVC.Song byId(int id)
+        /**public static EntityAirshipBaseVC.Song byId(int id)
         {
             if (id < 0 || id >= values().length)
             {
@@ -1428,7 +1445,7 @@ public class EntityAirshipBaseVC extends Entity {
             return values()[0];
         }
     }
-    
+    */
     
     
 	//==================================//

@@ -5,18 +5,21 @@ import com.viesis.viescraft.init.InitItemsVC;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class VCTabAirships extends CreativeTabs {
+public class VCTabAirshipsV5 extends CreativeTabs {
 	
-	public VCTabAirships(String label) 
+	public VCTabAirshipsV5(String label) 
 	{
 		super(label);
 		this.setBackgroundImageName("viescraft.png");
 	}
 	
+	@SideOnly(Side.CLIENT)
 	@Override
 	public Item getTabIconItem() 
 	{
-		return new ItemStack(InitItemsVC.item_airship_v1, 1, 0).getItem();
+		return new ItemStack(InitItemsVC.item_airship_v5, 1, 21).getItem();
 	}
 }

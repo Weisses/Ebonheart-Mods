@@ -78,6 +78,22 @@ public final class InitItemsVCRender extends ItemsVC {
 		
 		//==============================================
 		
+		//V5
+		for (EntityAirshipBaseVC.FrameCore meta : EntityAirshipBaseVC.FrameCore.values()) 
+		{
+			registerRenderFrame(item_airship_v5, meta.getMetadata());
+		}
+		
+		//==============================================
+		
+		//V6
+		for (EntityAirshipBaseVC.FrameCore meta : EntityAirshipBaseVC.FrameCore.values()) 
+		{
+			registerRenderFrame(item_airship_v6, meta.getMetadata());
+		}
+		
+		//==============================================
+		
 		for (ItemAchievement.Achievement meta : ItemAchievement.Achievement.values()) 
 		{
 			registerRenderAchievement(achievement_airship, meta.getMetadata());
