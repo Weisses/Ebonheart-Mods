@@ -2,17 +2,19 @@ package com.viesis.viescraft.common.entity.airshipcolors;
 
 import java.util.List;
 
-import com.viesis.viescraft.api.ColorHelperVC;
+import com.viesis.viescraft.api.EnumsVC;
 import com.viesis.viescraft.api.FuelVC;
+import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.client.InitParticlesVCRender;
 import com.viesis.viescraft.client.InitSoundEventsVC;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 import com.viesis.viescraft.init.InitItemsVC;
 import com.viesis.viescraft.network.NetworkHandler;
-import com.viesis.viescraft.network.server.airship.MessageGuiDefault;
-import com.viesis.viescraft.network.server.airship.MessageGuiModuleInventoryLarge;
-import com.viesis.viescraft.network.server.airship.MessageGuiModuleInventorySmall;
-import com.viesis.viescraft.network.server.airship.MessageGuiModuleJukebox;
+import com.viesis.viescraft.network.server.airship.main.MessageGuiAirshipMenu;
+import com.viesis.viescraft.network.server.airship.main.MessageGuiAirshipMenuMusic;
+import com.viesis.viescraft.network.server.airship.main.MessageGuiAirshipMenuStorageGreater;
+import com.viesis.viescraft.network.server.airship.main.MessageGuiAirshipMenuStorageLesser;
+import com.viesis.viescraft.network.server.airship.main.MessageGuiAirshipMenuStorageNormal;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -25,7 +27,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
-import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
@@ -34,10 +35,11 @@ import net.minecraft.util.EntitySelectors;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
-import net.minecraftforge.items.ItemStackHandler;
 
 public class EntityAirshipV6Core extends EntityAirshipBaseVC {
 	
@@ -49,26 +51,71 @@ public class EntityAirshipV6Core extends EntityAirshipBaseVC {
     ISound soundCacheIdle;
     ISound soundCacheMoving;
     
+    References rf;
+    
 	public EntityAirshipV6Core(World worldIn)
     {
         super(worldIn);
-        
-        this.inventory = new ItemStackHandler(size);
     }
 	
-    public EntityAirshipV6Core(World worldIn, double x, double y, double z, int frameIn, int balloonIn, int metaColorRedItem, int metaColorGreenItem, int metaColorBlueItem, int frameVisualIn, boolean frameVisualActive)
+    public EntityAirshipV6Core(World worldIn, double x, double y, double z, 
+    		int frameTierIn, int coreTierIn, int engineTierIn, int balloonTierIn, 
+    		int moduleSlot1In,
+    		int frameVisualIn, boolean frameVisualTransparentIn, boolean frameVisualColorIn,
+    		int frameColorRedIn, int frameColorGreenIn, int frameColorBlueIn,
+    		int balloonVisualIn, boolean balloonVisualTransparentIn, boolean balloonVisualColorIn,
+    		int balloonColorRedIn, int balloonColorGreenIn, int balloonColorBlueIn, 
+    		boolean learnedModuleAltitudeIn, int selectedModuleAltitudeIn, 
+    		boolean learnedModuleSpeedIn, int selectedModuleSpeedIn, 
+    		boolean learnedModuleStorageIn, int selectedModuleStorageIn, 
+    		boolean learnedModuleFuelIn, int selectedModuleFuelIn, 
+    		boolean learnedModuleMusicIn, int selectedModuleMusicIn, 
+    		boolean learnedModuleCruiseIn, int selectedModuleCruiseIn, 
+    		boolean learnedModuleWaterIn, int selectedModuleWaterIn, 
+    		boolean learnedModuleFuelInfiniteIn, int selectedModuleFuelInfiniteIn)
     {
         this(worldIn);
         this.setPosition(x, y + 0.5D, z);
+
+        this.metaTierFrame = frameTierIn;
+        this.metaTierCore = coreTierIn;
+        this.metaTierEngine = engineTierIn;
+        this.metaTierBalloon = balloonTierIn;
+        
+        this.metaModuleVariantSlot1 = moduleSlot1In;
         
         this.metaFrameVisual = frameVisualIn;
-        this.frameVisualActive = frameVisualActive;
+        this.metaFrameVisualTransparent = frameVisualTransparentIn;
+        this.metaFrameVisualColor = frameVisualColorIn;
+        this.metaFrameColorRed = frameColorRedIn;
+        this.metaFrameColorGreen = frameColorGreenIn;
+        this.metaFrameColorBlue = frameColorBlueIn;
         
-        this.metaFrameCore = frameIn;
-        this.metaBalloon = balloonIn;
-        this.metaColorRed = metaColorRedItem;
-        this.metaColorGreen = metaColorGreenItem;
-        this.metaColorBlue = metaColorBlueItem;
+        this.metaBalloonVisual = balloonVisualIn;
+        this.metaBalloonVisualTransparent = balloonVisualTransparentIn;
+        this.metaBalloonVisualColor = balloonVisualColorIn;
+        this.metaBalloonColorRed = balloonColorRedIn;
+        this.metaBalloonColorGreen = balloonColorGreenIn;
+        this.metaBalloonColorBlue = balloonColorBlueIn;
+        
+        this.learnedModuleAltitude = learnedModuleAltitudeIn;
+        this.selectedModuleAltitude = selectedModuleAltitudeIn;
+        this.learnedModuleSpeed = learnedModuleSpeedIn;
+        this.selectedModuleSpeed = selectedModuleSpeedIn;
+        this.learnedModuleStorage = learnedModuleStorageIn;
+        this.selectedModuleStorage = selectedModuleStorageIn;
+        this.learnedModuleFuel = learnedModuleFuelIn;
+        this.selectedModuleFuel = selectedModuleFuelIn;
+        this.learnedModuleMusic = learnedModuleMusicIn;
+        this.selectedModuleMusic = selectedModuleMusicIn;
+        this.learnedModuleCruise = learnedModuleCruiseIn;
+        this.selectedModuleCruise = selectedModuleCruiseIn;
+        this.learnedModuleWater = learnedModuleWaterIn;
+        this.selectedModuleWater = selectedModuleWaterIn;
+        this.learnedModuleFuelInfinite = learnedModuleFuelInfiniteIn;
+        this.selectedModuleFuelInfinite = selectedModuleFuelInfiniteIn;
+        
+        
         
         this.motionX = 0.0D;
         this.motionY = 0.0D;
@@ -76,45 +123,12 @@ public class EntityAirshipV6Core extends EntityAirshipBaseVC {
         this.prevPosX = x;
         this.prevPosY = y;
         this.prevPosZ = z;
-        
-        this.inventory = new ItemStackHandler(size);
     }
     
 	@Override
 	public void entityInit() 
 	{
-		this.dataManager.register(TIME_SINCE_HIT_VC, Integer.valueOf(0));
-        this.dataManager.register(FORWARD_DIRECTION_VC, Integer.valueOf(1));
-        this.dataManager.register(DAMAGE_TAKEN_VC, Float.valueOf(0.0F));
-        
-        this.dataManager.register(AIRSHIP_VISUAL_FRAME_VC, Integer.valueOf(this.metaFrameVisual));
-        this.dataManager.register(AIRSHIP_VISUAL_FRAME_ACTIVE_VC, Boolean.valueOf(this.frameVisualActive));
-        
-        this.dataManager.register(AIRSHIP_TYPE_FRAME_VC, Integer.valueOf(this.metaFrameCore));
-        this.dataManager.register(AIRSHIP_TYPE_BALLOON_VC, Integer.valueOf(this.metaBalloon));
-        this.dataManager.register(BALLOON_COLOR_RED_VC, Integer.valueOf(this.metaColorRed));
-        this.dataManager.register(BALLOON_COLOR_GREEN_VC, Integer.valueOf(this.metaColorGreen));
-        this.dataManager.register(BALLOON_COLOR_BLUE_VC, Integer.valueOf(this.metaColorBlue));
-        
-		this.dataManager.register(POWERED, Integer.valueOf(this.airshipBurnTime));
-        this.dataManager.register(TOTALPOWERED, Integer.valueOf(this.airshipTotalBurnTime));
-        this.dataManager.register(ITEMFUELSTACKPOWERED, Integer.valueOf(this.itemFuelStack));
-        this.dataManager.register(ITEMFUELSTACKSIZEPOWERED, Integer.valueOf(this.itemFuelStackSize));
-        
-        this.dataManager.register(MODULE_SPEED_MINOR, Boolean.valueOf(this.moduleSpeedMinor));
-        this.dataManager.register(MODULE_SPEED_MAJOR, Boolean.valueOf(this.moduleSpeedMajor));
-        this.dataManager.register(MODULE_INVENTORY_SMALL, Boolean.valueOf(this.moduleInventorySmall));
-        this.dataManager.register(MODULE_INVENTORY_LARGE, Boolean.valueOf(this.moduleInventoryLarge));
-        this.dataManager.register(MODULE_FUEL_INFINITE, Boolean.valueOf(this.moduleFuelInfinite));
-        this.dataManager.register(MODULE_WATER_LANDING, Boolean.valueOf(this.moduleWaterLanding));
-        this.dataManager.register(MODULE_MAX_ALTITUDE, Boolean.valueOf(this.moduleMaxAltitude));
-        this.dataManager.register(MODULE_MINOR_EFFICIENCY, Boolean.valueOf(this.moduleMinorEfficiency));
-        this.dataManager.register(MODULE_MAJOR_EFFICIENCY, Boolean.valueOf(this.moduleMajorEfficiency));
-        this.dataManager.register(MODULE_JUKEBOX, Boolean.valueOf(this.moduleJukebox));
-        this.dataManager.register(MODULE_JUKEBOX_SELECTED_SONG, Integer.valueOf(this.jukeboxSelectedSong));
-        this.dataManager.register(MODULE_CRUISECONTROL, Boolean.valueOf(this.moduleCruiseControl));
-        this.dataManager.register(MODULE_CRUISECONTROL_SELECTED_SPEED, Integer.valueOf(this.cruiseControlSelectedSpeed));
-        
+		super.entityInit();
 	}
 	
 	
@@ -148,24 +162,52 @@ public class EntityAirshipV6Core extends EntityAirshipBaseVC {
     {
     	super.writeToNBT(compound);
     	
-    	compound.setInteger("FrameVisual", this.metaFrameVisual);
-    	compound.setBoolean("FrameVisualActive", this.frameVisualActive);
+    	compound.setTag(rf.META_AIRSHIP_SLOTS_TAG, inventory.serializeNBT());
+
+    	compound.setInteger(rf.META_TIER_FRAME_TAG, this.metaTierFrame);
+    	compound.setInteger(rf.META_TIER_CORE_TAG, this.metaTierCore);
+    	compound.setInteger(rf.META_TIER_ENGINE_TAG, this.metaTierEngine);
+    	compound.setInteger(rf.META_TIER_BALLOON_TAG, this.metaTierBalloon);
     	
-    	compound.setInteger("Frame", this.metaFrameCore);
-    	compound.setInteger("Balloon", this.metaBalloon);
-    	compound.setInteger("ColorRed", this.metaColorRed);
-    	compound.setInteger("ColorGreen", this.metaColorGreen);
-    	compound.setInteger("ColorBlue", this.metaColorBlue);
+    	compound.setInteger(rf.META_FRAME_VISUAL_TAG, this.metaFrameVisual);
+    	compound.setBoolean(rf.META_FRAME_VISUAL_TRANSPARENT_TAG, this.metaFrameVisualTransparent);
+    	compound.setBoolean(rf.META_FRAME_VISUAL_COLOR_TAG, this.metaFrameVisualColor);
+    	compound.setInteger(rf.META_FRAME_VISUAL_COLOR_RED_TAG, this.metaFrameColorRed);
+    	compound.setInteger(rf.META_FRAME_VISUAL_COLOR_GREEN_TAG, this.metaFrameColorGreen);
+    	compound.setInteger(rf.META_FRAME_VISUAL_COLOR_BLUE_TAG, this.metaFrameColorBlue);
     	
-    	compound.setTag("Slots", inventory.serializeNBT());
+    	compound.setInteger(rf.META_BALLOON_VISUAL_TAG, this.metaBalloonVisual);
+    	compound.setBoolean(rf.META_BALLOON_VISUAL_TRANSPARENT_TAG, this.metaBalloonVisualTransparent);
+    	compound.setBoolean(rf.META_BALLOON_VISUAL_COLOR_TAG, this.metaBalloonVisualColor);
+    	compound.setInteger(rf.META_BALLOON_VISUAL_COLOR_RED_TAG, this.metaBalloonColorRed);
+    	compound.setInteger(rf.META_BALLOON_VISUAL_COLOR_GREEN_TAG, this.metaBalloonColorGreen);
+    	compound.setInteger(rf.META_BALLOON_VISUAL_COLOR_BLUE_TAG, this.metaBalloonColorBlue);
     	
-    	compound.setInteger("BurnTime", this.airshipBurnTime);
-    	compound.setInteger("TotalBurnTime", this.airshipTotalBurnTime);
-    	compound.setInteger("FuelStackTime", this.itemFuelStack);
-    	compound.setInteger("FuelStackTimeSize", this.itemFuelStackSize);
+    	compound.setInteger(rf.META_AIRSHIP_BURNTIME_TAG, this.airshipBurnTime);
+    	compound.setInteger(rf.META_AIRSHIP_BURNTIME_TOTAL_TAG, this.airshipTotalBurnTime);
+    	compound.setInteger(rf.META_ITEM_FUELSTACK_TAG, this.itemFuelStack);
+    	compound.setInteger(rf.META_ITEM_FUELSTACK_SIZE_TAG, this.itemFuelStackSize);
     	
-    	compound.setInteger("JukeboxSelectedSong", this.jukeboxSelectedSong);
-    	
+    	compound.setInteger(rf.META_MODULE_VARIANT_SLOT1_TAG, this.metaModuleVariantSlot1);
+		compound.setInteger(rf.META_JUKEBOX_SELECTED_SONG_TAG, this.metaJukeboxSelectedSong);
+		
+		compound.setBoolean(rf.META_LEARNED_MODULE_ALTITUDE_TAG, this.learnedModuleAltitude);
+		compound.setInteger(rf.META_SELECTED_MODULE_ALTITUDE_TAG, this.selectedModuleAltitude);
+		compound.setBoolean(rf.META_LEARNED_MODULE_SPEED_TAG, this.learnedModuleSpeed);
+		compound.setInteger(rf.META_SELECTED_MODULE_SPEED_TAG, this.selectedModuleSpeed);
+		compound.setBoolean(rf.META_LEARNED_MODULE_STORAGE_TAG, this.learnedModuleStorage);
+		compound.setInteger(rf.META_SELECTED_MODULE_STORAGE_TAG, this.selectedModuleStorage);
+		compound.setBoolean(rf.META_LEARNED_MODULE_FUEL_TAG, this.learnedModuleFuel);
+		compound.setInteger(rf.META_SELECTED_MODULE_FUEL_TAG, this.selectedModuleFuel);
+		compound.setBoolean(rf.META_LEARNED_MODULE_MUSIC_TAG, this.learnedModuleMusic);
+		compound.setInteger(rf.META_SELECTED_MODULE_MUSIC_TAG, this.selectedModuleMusic);
+		compound.setBoolean(rf.META_LEARNED_MODULE_CRUISE_TAG, this.learnedModuleCruise);
+		compound.setInteger(rf.META_SELECTED_MODULE_CRUISE_TAG, this.selectedModuleCruise);
+		compound.setBoolean(rf.META_LEARNED_MODULE_WATER_TAG, this.learnedModuleWater);
+		compound.setInteger(rf.META_SELECTED_MODULE_WATER_TAG, this.selectedModuleWater);
+		compound.setBoolean(rf.META_LEARNED_MODULE_FUELINFINITE_TAG, this.learnedModuleFuelInfinite);
+		compound.setInteger(rf.META_SELECTED_MODULE_FUELINFINITE_TAG, this.selectedModuleFuelInfinite);
+		
         return compound;
     }
     
@@ -174,23 +216,51 @@ public class EntityAirshipV6Core extends EntityAirshipBaseVC {
     {
     	super.readFromNBT(compound);
     	
-    	this.metaFrameVisual = compound.getInteger("FrameVisual");
-    	this.frameVisualActive = compound.getBoolean("FrameVisualActive");
+    	inventory.deserializeNBT(compound.getCompoundTag(rf.META_AIRSHIP_SLOTS_TAG));
+
+    	this.metaTierFrame = compound.getInteger(rf.META_TIER_FRAME_TAG);
+    	this.metaTierCore = compound.getInteger(rf.META_TIER_CORE_TAG);
+    	this.metaTierEngine = compound.getInteger(rf.META_TIER_ENGINE_TAG);
+    	this.metaTierBalloon = compound.getInteger(rf.META_TIER_BALLOON_TAG);
     	
-    	this.metaFrameCore = compound.getInteger("Frame");
-    	this.metaBalloon = compound.getInteger("Balloon");
-    	this.metaColorRed = compound.getInteger("ColorRed");
-    	this.metaColorGreen = compound.getInteger("ColorGreen");
-    	this.metaColorBlue = compound.getInteger("ColorBlue");
+    	this.metaFrameVisual = compound.getInteger(rf.META_FRAME_VISUAL_TAG);
+    	this.metaFrameVisualTransparent = compound.getBoolean(rf.META_FRAME_VISUAL_TRANSPARENT_TAG);
+    	this.metaFrameVisualColor = compound.getBoolean(rf.META_FRAME_VISUAL_COLOR_TAG);
+    	this.metaFrameColorRed = compound.getInteger(rf.META_FRAME_VISUAL_COLOR_RED_TAG);
+    	this.metaFrameColorGreen = compound.getInteger(rf.META_FRAME_VISUAL_COLOR_GREEN_TAG);
+    	this.metaFrameColorBlue = compound.getInteger(rf.META_FRAME_VISUAL_COLOR_BLUE_TAG);
     	
-    	inventory.deserializeNBT(compound.getCompoundTag("Slots"));
+    	this.metaBalloonVisual = compound.getInteger(rf.META_BALLOON_VISUAL_TAG);
+    	this.metaBalloonVisualTransparent = compound.getBoolean(rf.META_BALLOON_VISUAL_TRANSPARENT_TAG);
+    	this.metaBalloonVisualColor = compound.getBoolean(rf.META_BALLOON_VISUAL_COLOR_TAG);
+    	this.metaBalloonColorRed = compound.getInteger(rf.META_BALLOON_VISUAL_COLOR_RED_TAG);
+    	this.metaBalloonColorGreen = compound.getInteger(rf.META_BALLOON_VISUAL_COLOR_GREEN_TAG);
+    	this.metaBalloonColorBlue = compound.getInteger(rf.META_BALLOON_VISUAL_COLOR_BLUE_TAG);
     	
-        this.airshipBurnTime = compound.getInteger("BurnTime");
-        this.airshipTotalBurnTime = compound.getInteger("TotalBurnTime");
-        this.itemFuelStack = compound.getInteger("FuelStackTime");
-        this.itemFuelStackSize = compound.getInteger("FuelStackTimeSize");
+        this.airshipBurnTime = compound.getInteger(rf.META_AIRSHIP_BURNTIME_TAG);
+        this.airshipTotalBurnTime = compound.getInteger(rf.META_AIRSHIP_BURNTIME_TOTAL_TAG);
+        this.itemFuelStack = compound.getInteger(rf.META_ITEM_FUELSTACK_TAG);
+        this.itemFuelStackSize = compound.getInteger(rf.META_ITEM_FUELSTACK_SIZE_TAG);
         
-        this.jukeboxSelectedSong = compound.getInteger("JukeboxSelectedSong");
+        this.metaModuleVariantSlot1 = compound.getInteger(rf.META_MODULE_VARIANT_SLOT1_TAG);
+        this.metaJukeboxSelectedSong = compound.getInteger(rf.META_JUKEBOX_SELECTED_SONG_TAG);
+        
+        this.learnedModuleAltitude = compound.getBoolean(rf.META_LEARNED_MODULE_ALTITUDE_TAG);
+        this.selectedModuleAltitude = compound.getInteger(rf.META_SELECTED_MODULE_ALTITUDE_TAG);
+        this.learnedModuleSpeed = compound.getBoolean(rf.META_LEARNED_MODULE_SPEED_TAG);
+        this.selectedModuleSpeed = compound.getInteger(rf.META_SELECTED_MODULE_SPEED_TAG);
+        this.learnedModuleStorage = compound.getBoolean(rf.META_LEARNED_MODULE_STORAGE_TAG);
+        this.selectedModuleStorage = compound.getInteger(rf.META_SELECTED_MODULE_STORAGE_TAG);
+        this.learnedModuleFuel = compound.getBoolean(rf.META_LEARNED_MODULE_FUEL_TAG);
+        this.selectedModuleFuel = compound.getInteger(rf.META_SELECTED_MODULE_FUEL_TAG);
+        this.learnedModuleMusic = compound.getBoolean(rf.META_LEARNED_MODULE_MUSIC_TAG);
+        this.selectedModuleMusic = compound.getInteger(rf.META_SELECTED_MODULE_MUSIC_TAG);
+        this.learnedModuleCruise = compound.getBoolean(rf.META_LEARNED_MODULE_CRUISE_TAG);
+        this.selectedModuleCruise = compound.getInteger(rf.META_SELECTED_MODULE_CRUISE_TAG);
+        this.learnedModuleWater = compound.getBoolean(rf.META_LEARNED_MODULE_WATER_TAG);
+        this.selectedModuleWater = compound.getInteger(rf.META_SELECTED_MODULE_WATER_TAG);
+        this.learnedModuleFuelInfinite = compound.getBoolean(rf.META_LEARNED_MODULE_FUELINFINITE_TAG);
+        this.selectedModuleFuelInfinite = compound.getInteger(rf.META_SELECTED_MODULE_FUELINFINITE_TAG);
     }
     
     
@@ -200,19 +270,54 @@ public class EntityAirshipV6Core extends EntityAirshipBaseVC {
 	//==================================//
     
     @Override
-	public ItemStack getItemBoat()
+	public ItemStack getItemAirship()
     {
-    	ItemStack stack = new ItemStack(InitItemsVC.item_airship_v6, 1, this.metaFrameCore);
+    	ItemStack stack = new ItemStack(InitItemsVC.item_v6_airship, 1, this.metaTierFrame);
     	stack.setTagCompound(new NBTTagCompound());
     	
-    	stack.getTagCompound().setInteger("FrameVisual", this.metaFrameVisual);
-    	stack.getTagCompound().setBoolean("FrameVisualActive", this.frameVisualActive);
+    	stack.getTagCompound().setInteger(rf.META_TIER_CORE_TAG, this.metaTierCore);
+    	stack.getTagCompound().setInteger(rf.META_TIER_ENGINE_TAG, this.metaTierEngine);
+    	stack.getTagCompound().setInteger(rf.META_TIER_BALLOON_TAG, this.metaTierBalloon);
     	
-    	stack.getTagCompound().setInteger("Balloon", this.metaBalloon);
-    	stack.getTagCompound().setInteger("ColorRed", this.metaColorRed);
-    	stack.getTagCompound().setInteger("ColorGreen", this.metaColorGreen);
-    	stack.getTagCompound().setInteger("ColorBlue", this.metaColorBlue);
+    	stack.getTagCompound().setInteger(rf.META_FRAME_VISUAL_TAG, this.metaFrameVisual);
+    	stack.getTagCompound().setBoolean(rf.META_FRAME_VISUAL_TRANSPARENT_TAG, this.metaFrameVisualTransparent);
+    	stack.getTagCompound().setBoolean(rf.META_FRAME_VISUAL_COLOR_TAG, this.metaFrameVisualColor);
+    	stack.getTagCompound().setInteger(rf.META_FRAME_VISUAL_COLOR_RED_TAG, this.metaFrameColorRed);
+    	stack.getTagCompound().setInteger(rf.META_FRAME_VISUAL_COLOR_GREEN_TAG, this.metaFrameColorGreen);
+    	stack.getTagCompound().setInteger(rf.META_FRAME_VISUAL_COLOR_BLUE_TAG, this.metaFrameColorBlue);
     	
+    	stack.getTagCompound().setInteger(rf.META_BALLOON_VISUAL_TAG, this.metaBalloonVisual);
+    	stack.getTagCompound().setBoolean(rf.META_BALLOON_VISUAL_TRANSPARENT_TAG, this.metaBalloonVisualTransparent);
+    	stack.getTagCompound().setBoolean(rf.META_BALLOON_VISUAL_COLOR_TAG, this.metaBalloonVisualColor);
+    	stack.getTagCompound().setInteger(rf.META_BALLOON_VISUAL_COLOR_RED_TAG, this.metaBalloonColorRed);
+    	stack.getTagCompound().setInteger(rf.META_BALLOON_VISUAL_COLOR_GREEN_TAG, this.metaBalloonColorGreen);
+    	stack.getTagCompound().setInteger(rf.META_BALLOON_VISUAL_COLOR_BLUE_TAG, this.metaBalloonColorBlue);
+    	
+    	stack.getTagCompound().setInteger(rf.META_AIRSHIP_BURNTIME_TAG, this.airshipBurnTime);
+    	stack.getTagCompound().setInteger(rf.META_AIRSHIP_BURNTIME_TOTAL_TAG, this.airshipTotalBurnTime);
+    	stack.getTagCompound().setInteger(rf.META_ITEM_FUELSTACK_TAG, this.itemFuelStack);
+    	stack.getTagCompound().setInteger(rf.META_ITEM_FUELSTACK_SIZE_TAG, this.itemFuelStackSize);
+    	
+    	stack.getTagCompound().setInteger(rf.META_MODULE_VARIANT_SLOT1_TAG, this.metaModuleVariantSlot1);
+		stack.getTagCompound().setInteger(rf.META_JUKEBOX_SELECTED_SONG_TAG, this.metaJukeboxSelectedSong);
+    	
+		stack.getTagCompound().setBoolean(rf.META_LEARNED_MODULE_ALTITUDE_TAG, this.learnedModuleAltitude);
+		stack.getTagCompound().setInteger(rf.META_SELECTED_MODULE_ALTITUDE_TAG, this.selectedModuleAltitude);
+		stack.getTagCompound().setBoolean(rf.META_LEARNED_MODULE_SPEED_TAG, this.learnedModuleSpeed);
+		stack.getTagCompound().setInteger(rf.META_SELECTED_MODULE_SPEED_TAG, this.selectedModuleSpeed);
+		stack.getTagCompound().setBoolean(rf.META_LEARNED_MODULE_STORAGE_TAG, this.learnedModuleStorage);
+		stack.getTagCompound().setInteger(rf.META_SELECTED_MODULE_STORAGE_TAG, this.selectedModuleStorage);
+		stack.getTagCompound().setBoolean(rf.META_LEARNED_MODULE_FUEL_TAG, this.learnedModuleFuel);
+		stack.getTagCompound().setInteger(rf.META_SELECTED_MODULE_FUEL_TAG, this.selectedModuleFuel);
+		stack.getTagCompound().setBoolean(rf.META_LEARNED_MODULE_MUSIC_TAG, this.learnedModuleMusic);
+		stack.getTagCompound().setInteger(rf.META_SELECTED_MODULE_MUSIC_TAG, this.selectedModuleMusic);
+		stack.getTagCompound().setBoolean(rf.META_LEARNED_MODULE_CRUISE_TAG, this.learnedModuleCruise);
+		stack.getTagCompound().setInteger(rf.META_SELECTED_MODULE_CRUISE_TAG, this.selectedModuleCruise);
+		stack.getTagCompound().setBoolean(rf.META_LEARNED_MODULE_WATER_TAG, this.learnedModuleWater);
+		stack.getTagCompound().setInteger(rf.META_SELECTED_MODULE_WATER_TAG, this.selectedModuleWater);
+		stack.getTagCompound().setBoolean(rf.META_LEARNED_MODULE_FUELINFINITE_TAG, this.learnedModuleFuelInfinite);
+		stack.getTagCompound().setInteger(rf.META_SELECTED_MODULE_FUELINFINITE_TAG, this.selectedModuleFuelInfinite);
+		
     	return stack;
     }
     
@@ -222,16 +327,43 @@ public class EntityAirshipV6Core extends EntityAirshipBaseVC {
 	@Override
 	public String getName() 
 	{
-		String name = FrameCore.byId(this.metaFrameCore).getName();
+		String tier_name = this.getNameColor() + EnumsVC.AirshipTierFrame.byId(this.getMetaTierFrame()).getLocalizedName();
+		String visualframe_name = "";
+		String visualballoon_name = "";
 		
-		if(this.frameVisualActive)
+		if(this.getFrameVisual() > 0)
 		{
-			name = "\"" + FrameCore.byId(this.metaFrameCore).getName() + "\"";
+			visualframe_name = "\"" + EnumsVC.VisualFrame.byId(this.metaFrameVisual).getLocalizedName() + "\" ";
+		}
+		
+		if(this.getBalloonVisual() > 0)
+		{
+			visualballoon_name = "\"" + EnumsVC.VisualBalloon.byId(this.metaBalloonVisual).getLocalizedName() + "\" ";
 		}
 		
 		return this.hasCustomName() ? this.customName : 
-			ColorHelperVC.getColorNameFromRgb(this.metaColorRed, this.metaColorGreen, this.metaColorBlue)		
-			+ " " + name + " " + ViesCraftConfig.v6AirshipName;
+			this.getNameColor() + ViesCraftConfig.v6AirshipName + " " + TextFormatting.GRAY + "(" + tier_name + TextFormatting.GRAY +")";
+	}
+	
+	private String getNameColor()
+	{
+		switch (this.getMetaTierFrame())
+        {
+	        case 0:
+	        	return TextFormatting.GRAY + "";
+        	case 1:
+            	return TextFormatting.WHITE + "";
+            case 2:
+            	return TextFormatting.GOLD + "";
+            case 3:
+            	return TextFormatting.AQUA + "";
+            case 4:
+            	return TextFormatting.LIGHT_PURPLE + "";
+            case 5:
+            	return TextFormatting.RED + "";
+            default:
+            	return TextFormatting.GRAY + "";
+        }
 	}
 	
 	
@@ -243,20 +375,9 @@ public class EntityAirshipV6Core extends EntityAirshipBaseVC {
     @Override
     public void onUpdate()
     {
-        this.previousStatus = this.status;
-        this.status = this.getAirshipStatus();
-        
-        if (this.getTimeSinceHit() > 0)
-        {
-            this.setTimeSinceHit(this.getTimeSinceHit() - 1);
-        }
-        
-        if (this.getDamageTaken() > 0.0F)
-        {
-            this.setDamageTaken(this.getDamageTaken() - 1.0F);
-        }
-        
-        if(!this.getModuleWaterLanding())
+        if(this.getModuleVariantSlot1() != EnumsVC.ModuleType.WATER_LESSER.getMetadata()
+		|| this.getModuleVariantSlot1() != EnumsVC.ModuleType.WATER_NORMAL.getMetadata()
+		|| this.getModuleVariantSlot1() != EnumsVC.ModuleType.WATER_GREATER.getMetadata())
         {
         	this.waterDamage();
         }
@@ -321,17 +442,12 @@ public class EntityAirshipV6Core extends EntityAirshipBaseVC {
      */
     private void airshipCoreAI()
     {
-    	this.updateAirshipMeta();
-        this.fallInGround();
-        this.getAirshipFuelTick();
-        
-        this.fuelFlight();
+    	this.fuelFlight();
         this.getTotalFuelSlotBurnTime();
         
-        this.visualFrame();
         this.currentModule();
         
-        this.noModuleDropInv();
+        this.noInventoryModuleDropItems();
         
         if(ViesCraftConfig.engineSounds)
         {
@@ -342,10 +458,10 @@ public class EntityAirshipV6Core extends EntityAirshipBaseVC {
         }
         
         if(!(this.getControllingPassenger() instanceof EntityPlayer)
-        	&& this.cruiseControlSelectedSpeed != 0)
+          && this.metaCruiseControlSelectedSpeed != 0)
 		{
-    		this.cruiseControlSelectedSpeed = 0;
-    		this.setCruiseControlSelectedSpeed(this.cruiseControlSelectedSpeed);
+    		this.metaCruiseControlSelectedSpeed = 0;
+    		this.setCruiseControlSelectedSpeed(this.metaCruiseControlSelectedSpeed);
 		}
     }
     
@@ -372,21 +488,30 @@ public class EntityAirshipV6Core extends EntityAirshipBaseVC {
         }
         else
         {
-            if (this.status == EntityAirshipBaseVC.Status.IN_WATER
-            && !this.getModuleWaterLanding())
+            if(this.status == EntityAirshipBaseVC.Status.IN_WATER
+            && this.getModuleVariantSlot1() == EnumsVC.ModuleType.WATER_LESSER.getMetadata())
             {
             	this.momentum = 0.45F;
             }
-            else if (this.status == EntityAirshipBaseVC.Status.IN_WATER
-            && this.getModuleWaterLanding())
+            else if(this.status == EntityAirshipBaseVC.Status.IN_WATER
+            && this.getModuleVariantSlot1() == EnumsVC.ModuleType.WATER_NORMAL.getMetadata())
+            {
+            	this.momentum = 0.67F;
+            }
+            else if(this.status == EntityAirshipBaseVC.Status.IN_WATER
+            && this.getModuleVariantSlot1() == EnumsVC.ModuleType.WATER_GREATER.getMetadata())
             {
             	this.momentum = 0.9F;
             }
-            else if (this.status == EntityAirshipBaseVC.Status.UNDER_FLOWING_WATER 
-        	  || this.status == EntityAirshipBaseVC.Status.UNDER_WATER
-        	  && !this.getModuleWaterLanding())
+            else if(this.status == EntityAirshipBaseVC.Status.UNDER_FLOWING_WATER 
+        	  || this.status == EntityAirshipBaseVC.Status.UNDER_WATER)
             {
-            	this.waterPartsDrop();
+            	if(this.getModuleVariantSlot1() != EnumsVC.ModuleType.WATER_LESSER.getMetadata()
+        		|| this.getModuleVariantSlot1() != EnumsVC.ModuleType.WATER_NORMAL.getMetadata()
+        		|| this.getModuleVariantSlot1() != EnumsVC.ModuleType.WATER_GREATER.getMetadata())
+            	{
+            		this.waterPartsDrop();
+            	}
             }
             else if (this.status == EntityAirshipBaseVC.Status.IN_AIR
             	  || this.status == EntityAirshipBaseVC.Status.ON_LAND)
@@ -400,7 +525,11 @@ public class EntityAirshipV6Core extends EntityAirshipBaseVC {
             
             if(this.getControllingPassenger() == null)
             {
-        		if(this.motionY >= -0.039D)
+            	if(this.fallenInGround())
+        		{
+            		this.motionY = 0;
+        		}
+            	else if(this.motionY <= -0.039D)
         		{
         			this.motionY += d5;
         		}
@@ -418,50 +547,97 @@ public class EntityAirshipV6Core extends EntityAirshipBaseVC {
             	this.motionY += d5;
             }
             
-            if(fallInGround())
-            {
-            	this.motionY = 0;
-            }
             
-            if(this.getModuleWaterLanding())
+            
+            if(this.getModuleVariantSlot1() == EnumsVC.ModuleType.WATER_LESSER.getMetadata()
+    		|| this.getModuleVariantSlot1() == EnumsVC.ModuleType.WATER_NORMAL.getMetadata()
+    		|| this.getModuleVariantSlot1() == EnumsVC.ModuleType.WATER_GREATER.getMetadata())
             {
-            	if (this.status == EntityAirshipBaseVC.Status.UNDER_FLOWING_WATER 
+            	if(this.status == EntityAirshipBaseVC.Status.UNDER_FLOWING_WATER 
 				|| this.status == EntityAirshipBaseVC.Status.UNDER_WATER)
 				{
             		this.setPosition(this.posX, (double)(this.getWaterLevelAbove() - this.height) + 0.101D, this.posZ);
 				}
-            	if (this.status == EntityAirshipBaseVC.Status.IN_WATER)
+            	if(this.status == EntityAirshipBaseVC.Status.IN_WATER)
 	            {
 	            	this.motionY = 0;
 	            }
             }
             
-            if(!this.getModuleMaxAltitude()
-            && this.getPosition().getY() > FrameCore.byId(this.metaFrameCore).getElevation())
+            //Max altitude Module
+            if(this.getModuleVariantSlot1() == EnumsVC.ModuleType.ALTITUDE_LESSER.getMetadata()
+    		|| this.getModuleVariantSlot1() == EnumsVC.ModuleType.ALTITUDE_NORMAL.getMetadata()
+    		|| this.getModuleVariantSlot1() == EnumsVC.ModuleType.ALTITUDE_GREATER.getMetadata())
             {
-            	this.motionY = -0.1D;
-            }
+            	if(this.getModuleVariantSlot1() == EnumsVC.ModuleType.ALTITUDE_LESSER.getMetadata())
+            	{
+            		//Lesser Altitude
+                	if(this.getPosition().getY() > 225)
+    	            {
+    	            	this.motionY = -0.1D;
+    	            }
+            	}
+            	if(this.getModuleVariantSlot1() == EnumsVC.ModuleType.ALTITUDE_NORMAL.getMetadata())
+            	{
+            		//Altitude
+                	if(this.getPosition().getY() > 250)
+    	            {
+    	            	this.motionY = -0.1D;
+    	            }
+            	}
+            	if(this.getModuleVariantSlot1() == EnumsVC.ModuleType.ALTITUDE_GREATER.getMetadata())
+            	{
+            		//Greater Altitude
+                	if(this.getPosition().getY() > 500)
+    	            {
+    	            	this.motionY = -0.1D;
+    	            }
+            	}
+        	}
+        	//Default Altitude logic.
+            else
+        	{
+            	if(this.getPosition().getY() > EnumsVC.AirshipTierBalloon.byId(this.metaTierBalloon).getMaxAltitude())
+	            {
+            		this.motionY = -0.1D;
+	            }
+        	}
         }
     }
     
     @Override
     public void controlAirship()
     {
-    	if (this.isBeingRidden())
+    	if(this.isBeingRidden())
         {
             float f = 0.0F;
             float f1 = 0.0F;
             
             //Turning Left
-            if (this.leftInputDown)
+            if(this.leftInputDown)
             {
             	if(isClientAirshipBurning())
             	{
-            		this.deltaRotation -= (finalAirshipSpeedTurn + (FrameCore.byId(this.metaFrameCore).getSpeed() * 4));
+            		if(this.getModuleVariantSlot1() == EnumsVC.ModuleType.SPEED_LESSER.getMetadata())
+                    {
+            			this.deltaRotation -= (finalAirshipSpeedTurn + (EnumsVC.AirshipTierCore.byId(this.metaTierCore).getSpeedModifier() + this.speedModifier * 4));
+                    }
+            		else if(this.getModuleVariantSlot1() == EnumsVC.ModuleType.SPEED_NORMAL.getMetadata())
+                    {
+            			this.deltaRotation -= (finalAirshipSpeedTurn + (EnumsVC.AirshipTierCore.byId(this.metaTierCore).getSpeedModifier() + this.speedModifier * 8));
+                    }
+            		else if(this.getModuleVariantSlot1() == EnumsVC.ModuleType.SPEED_GREATER.getMetadata())
+                    {
+            			this.deltaRotation -= (finalAirshipSpeedTurn + (EnumsVC.AirshipTierCore.byId(this.metaTierCore).getSpeedModifier() + this.speedModifier * 12));
+                    }
+            		else
+            		{
+            			this.deltaRotation -= (finalAirshipSpeedTurn + (EnumsVC.AirshipTierCore.byId(this.metaTierCore).getSpeedModifier() * 2));
+            		}
             	}
             	else
             	{
-            		this.deltaRotation -= (finalAirshipSpeedTurn + (FrameCore.byId(this.metaFrameCore).getSpeed() * 4)) * 0.5F;
+            		this.deltaRotation -= (finalAirshipSpeedTurn + (EnumsVC.AirshipTierCore.byId(this.metaTierCore).getSpeedModifier() * 4)) * 0.5F;
             	}
             }
             
@@ -470,11 +646,26 @@ public class EntityAirshipV6Core extends EntityAirshipBaseVC {
             {
             	if(isClientAirshipBurning())
             	{
-            		this.deltaRotation += (finalAirshipSpeedTurn + (FrameCore.byId(this.metaFrameCore).getSpeed() * 4));
+            		if(this.getModuleVariantSlot1() == EnumsVC.ModuleType.SPEED_LESSER.getMetadata())
+                    {
+            			this.deltaRotation += (finalAirshipSpeedTurn + (EnumsVC.AirshipTierCore.byId(this.metaTierCore).getSpeedModifier() + this.speedModifier * 4));
+                    }
+            		else if(this.getModuleVariantSlot1() == EnumsVC.ModuleType.SPEED_NORMAL.getMetadata())
+                    {
+            			this.deltaRotation += (finalAirshipSpeedTurn + (EnumsVC.AirshipTierCore.byId(this.metaTierCore).getSpeedModifier() + this.speedModifier * 8));
+                    }
+            		else if(this.getModuleVariantSlot1() == EnumsVC.ModuleType.SPEED_GREATER.getMetadata())
+                    {
+            			this.deltaRotation += (finalAirshipSpeedTurn + (EnumsVC.AirshipTierCore.byId(this.metaTierCore).getSpeedModifier() + this.speedModifier * 12));
+                    }
+            		else
+            		{
+            			this.deltaRotation += (finalAirshipSpeedTurn + (EnumsVC.AirshipTierCore.byId(this.metaTierCore).getSpeedModifier() * 2));
+            		}
             	}
             	else
             	{
-            		this.deltaRotation += (finalAirshipSpeedTurn + (FrameCore.byId(this.metaFrameCore).getSpeed() * 4)) * 0.5F;
+            		this.deltaRotation += (finalAirshipSpeedTurn + (EnumsVC.AirshipTierCore.byId(this.metaTierCore).getSpeedModifier() * 4)) * 0.5F;
             	}
             }
             
@@ -486,20 +677,23 @@ public class EntityAirshipV6Core extends EntityAirshipBaseVC {
             this.rotationYaw += this.deltaRotation;
             
             //Move Forward
-            if(this.getModuleCruiseControl())
+            //Cruise Control
+            if(this.getModuleVariantSlot1() == EnumsVC.ModuleType.CRUISE_LESSER.getMetadata()
+    		|| this.getModuleVariantSlot1() == EnumsVC.ModuleType.CRUISE_NORMAL.getMetadata()
+    		|| this.getModuleVariantSlot1() == EnumsVC.ModuleType.CRUISE_GREATER.getMetadata())
             {
             	if(this.forwardInputDown)
 	            {
-            		if(this.cruiseControlSelectedSpeed < 3)
+            		if(this.metaCruiseControlSelectedSpeed < 3)
 	            	{
-	            		this.cruiseControlSelectedSpeed++;
+	            		this.metaCruiseControlSelectedSpeed++;
 	            	}
 	            	else
 	            	{
-	            		this.cruiseControlSelectedSpeed = 3;
+	            		this.metaCruiseControlSelectedSpeed = 3;
 	            	}
             		
-            		this.setCruiseControlSelectedSpeed(this.cruiseControlSelectedSpeed);
+            		this.setCruiseControlSelectedSpeed(this.metaCruiseControlSelectedSpeed);
 	            	
 	            	if(isClientAirshipBurning())
 	        		{
@@ -517,7 +711,7 @@ public class EntityAirshipV6Core extends EntityAirshipBaseVC {
 	            {
 	            	if(isClientAirshipBurning())
 	        		{
-	        			f += finalAirshipSpeedForward + FrameCore.byId(this.metaFrameCore).getSpeed() + this.speedModifier;
+	        			f += finalAirshipSpeedForward + EnumsVC.AirshipTierCore.byId(this.metaTierCore).getSpeedModifier() + this.speedModifier;
 	        		}
 	            	else
 	            	{
@@ -527,24 +721,27 @@ public class EntityAirshipV6Core extends EntityAirshipBaseVC {
             }
             
             //Moving Backwards
-            if(this.getModuleCruiseControl())
+            //Cruise Control
+            if(this.getModuleVariantSlot1() == EnumsVC.ModuleType.CRUISE_LESSER.getMetadata()
+    		|| this.getModuleVariantSlot1() == EnumsVC.ModuleType.CRUISE_NORMAL.getMetadata()
+    		|| this.getModuleVariantSlot1() == EnumsVC.ModuleType.CRUISE_GREATER.getMetadata())
             {
             	if(this.backInputDown)
 	            {
-	            	if(this.cruiseControlSelectedSpeed > 0)
+	            	if(this.metaCruiseControlSelectedSpeed > 0)
 	            	{
-	            		this.cruiseControlSelectedSpeed--;
+	            		this.metaCruiseControlSelectedSpeed--;
 	            	}
 	            	else
 	            	{
-	            		this.cruiseControlSelectedSpeed = 0;
+	            		this.metaCruiseControlSelectedSpeed = 0;
 	            	}
 	            	
-            		this.setCruiseControlSelectedSpeed(this.cruiseControlSelectedSpeed);
+            		this.setCruiseControlSelectedSpeed(this.metaCruiseControlSelectedSpeed);
 	            	
 		            if(isClientAirshipBurning())
 	        		{
-	        			f -= (finalAirshipSpeedForward + FrameCore.byId(this.metaFrameCore).getSpeed() + this.speedModifier) * 0.5;
+	        			f -= (finalAirshipSpeedForward + EnumsVC.AirshipTierCore.byId(this.metaTierCore).getSpeedModifier() + this.speedModifier) * 0.5;
 	        		}
 	            	else
 	            	{
@@ -558,7 +755,7 @@ public class EntityAirshipV6Core extends EntityAirshipBaseVC {
 	            {
 	            	if(isClientAirshipBurning())
 	        		{
-	        			f -= (finalAirshipSpeedForward + FrameCore.byId(this.metaFrameCore).getSpeed() + this.speedModifier) * 0.5;
+	        			f -= (finalAirshipSpeedForward + EnumsVC.AirshipTierCore.byId(this.metaTierCore).getSpeedModifier() + this.speedModifier) * 0.5;
 	        		}
 	            	else
 	            	{
@@ -568,24 +765,26 @@ public class EntityAirshipV6Core extends EntityAirshipBaseVC {
             }
             
             //Handles forward movement with the Cruise Control Module
-            if(this.getModuleCruiseControl())
+            if(this.getModuleVariantSlot1() == EnumsVC.ModuleType.CRUISE_LESSER.getMetadata()
+    		|| this.getModuleVariantSlot1() == EnumsVC.ModuleType.CRUISE_NORMAL.getMetadata()
+    		|| this.getModuleVariantSlot1() == EnumsVC.ModuleType.CRUISE_GREATER.getMetadata())
             {
             	if(isClientAirshipBurning()
             	&& this.getControllingPassenger() != null)
         		{
-            		switch(this.cruiseControlSelectedSpeed)
+            		switch(this.metaCruiseControlSelectedSpeed)
 	            	{
 		            	case 0:
 		            		f += 0F;
 		            		break;
 		            	case 1:
-		            		f += (finalAirshipSpeedForward + FrameCore.byId(this.metaFrameCore).getSpeed() + this.speedModifier) / 4;
+		            		f += (finalAirshipSpeedForward + EnumsVC.AirshipTierCore.byId(this.metaTierCore).getSpeedModifier() + this.speedModifier) / 4;
 		            		break;
 		            	case 2:
-		            		f += (finalAirshipSpeedForward + FrameCore.byId(this.metaFrameCore).getSpeed() + this.speedModifier) / 2;
+		            		f += (finalAirshipSpeedForward + EnumsVC.AirshipTierCore.byId(this.metaTierCore).getSpeedModifier() + this.speedModifier) / 2;
 		            		break;
 		            	case 3:
-		            		f += finalAirshipSpeedForward + FrameCore.byId(this.metaFrameCore).getSpeed() + this.speedModifier;
+		            		f += finalAirshipSpeedForward + EnumsVC.AirshipTierCore.byId(this.metaTierCore).getSpeedModifier() + this.speedModifier;
 		            		break;
 	            	}
         		}
@@ -598,21 +797,31 @@ public class EntityAirshipV6Core extends EntityAirshipBaseVC {
             //Moving Up
             if (this.upInputDown)
             {
-            	//Check airship max height
-            	if(!this.airshipHeightLimit()
-            	|| this.getModuleMaxAltitude())
-    			{
-            		if(isClientAirshipBurning())
-            		{
-            			f1 += finalAirshipSpeedUp + (FrameCore.byId(this.metaFrameCore).getSpeed() / 4);
-            		}
-    			}
+            	if(isClientAirshipBurning())
+        		{
+        			if(this.getModuleVariantSlot1() == EnumsVC.ModuleType.ALTITUDE_LESSER.getMetadata())
+                    {
+        				f1 += finalAirshipSpeedUp + (EnumsVC.AirshipTierCore.byId(this.metaTierCore).getSpeedModifier() / 14);
+                    }
+                	else if(this.getModuleVariantSlot1() == EnumsVC.ModuleType.ALTITUDE_NORMAL.getMetadata())
+                    {
+                		f1 += finalAirshipSpeedUp + (EnumsVC.AirshipTierCore.byId(this.metaTierCore).getSpeedModifier() / 8);
+                    }
+                	else if(this.getModuleVariantSlot1() == EnumsVC.ModuleType.ALTITUDE_GREATER.getMetadata())
+                    {
+                		f1 += finalAirshipSpeedUp + (EnumsVC.AirshipTierCore.byId(this.metaTierCore).getSpeedModifier() / 4);
+                    }
+                	else if(!this.airshipHeightLimit())
+	    			{
+                		f1 += finalAirshipSpeedUp + (EnumsVC.AirshipTierCore.byId(this.metaTierCore).getSpeedModifier() / 32);
+	    			}
+        		}
             }
             
             //Moving down
             if (this.downInputDown)
             {
-                f1 -= finalAirshipSpeedDown + (FrameCore.byId(this.metaFrameCore).getSpeed() / 4);
+                f1 -= finalAirshipSpeedDown + (EnumsVC.AirshipTierCore.byId(this.metaTierCore).getSpeedModifier() / 4) + (this.speedModifier / 4);
             }
             
             this.motionX += (double)(MathHelper.sin(-this.rotationYaw * 0.017453292F) * f);
@@ -637,28 +846,36 @@ public class EntityAirshipV6Core extends EntityAirshipBaseVC {
     	if(this.openInputDown 
     	&& this.getControllingPassenger() != null)
 		{
-			//If airship has small inv module installed
-        	if(this.getModuleInventorySmall())
+			//Lesser Storage
+        	if(this.getModuleVariantSlot1() == EnumsVC.ModuleType.STORAGE_LESSER.getMetadata())
         	{
-        		NetworkHandler.sendToServer(new MessageGuiModuleInventorySmall());
+        		NetworkHandler.sendToServer(new MessageGuiAirshipMenuStorageLesser());
             	Minecraft.getMinecraft().setIngameFocus();
         	}
-        	//If airship has large inv module installed
-        	else if(this.getModuleInventoryLarge())
+        	//Normal Storage
+        	else if(this.getModuleVariantSlot1() == EnumsVC.ModuleType.STORAGE_NORMAL.getMetadata())
         	{
-        		NetworkHandler.sendToServer(new MessageGuiModuleInventoryLarge());
+        		NetworkHandler.sendToServer(new MessageGuiAirshipMenuStorageNormal());
             	Minecraft.getMinecraft().setIngameFocus();
         	}
-        	//If airship has jukebox module installed
-        	else if(this.getModuleJukebox())
+        	//Greater Storage
+        	else if(this.getModuleVariantSlot1() == EnumsVC.ModuleType.STORAGE_GREATER.getMetadata())
         	{
-        		NetworkHandler.sendToServer(new MessageGuiModuleJukebox());
+        		NetworkHandler.sendToServer(new MessageGuiAirshipMenuStorageGreater());
+            	Minecraft.getMinecraft().setIngameFocus();
+        	}
+        	//Any Music
+        	else if(this.getModuleVariantSlot1() == EnumsVC.ModuleType.MUSIC_LESSER.getMetadata()
+    			 || this.getModuleVariantSlot1() == EnumsVC.ModuleType.MUSIC_NORMAL.getMetadata()
+    			 || this.getModuleVariantSlot1() == EnumsVC.ModuleType.MUSIC_GREATER.getMetadata())
+        	{
+        		NetworkHandler.sendToServer(new MessageGuiAirshipMenuMusic());
             	Minecraft.getMinecraft().setIngameFocus();
         	}
         	//Default for airship gui
         	else
         	{
-        		NetworkHandler.sendToServer(new MessageGuiDefault());
+        		NetworkHandler.sendToServer(new MessageGuiAirshipMenu());
             	Minecraft.getMinecraft().setIngameFocus();
         	}
         }
@@ -675,7 +892,7 @@ public class EntityAirshipV6Core extends EntityAirshipBaseVC {
     {
     	if (!this.worldObj.isRemote)
     	{
-    		this.dropInvDead();
+    		this.dropInventoryAll();
     		
     		this.playSound(SoundEvents.ENTITY_ENDEREYE_LAUNCH, 0.5F, 0.4F / .5F * 0.4F + 0.8F);
     		this.playSound(SoundEvents.ENTITY_SHEEP_SHEAR, 0.5F, 0.4F / .5F * 0.4F + 0.8F);
@@ -742,24 +959,30 @@ public class EntityAirshipV6Core extends EntityAirshipBaseVC {
     	boolean flag = this.isClientAirshipBurning();
         boolean flag1 = false;
         
-        //Syncs the server info to the client
-        if(this.worldObj.isRemote)
+        //Sets burn time to 0
+        if(this.airshipBurnTime <= this.getBaseFuelTick())
         {
-        	this.airshipBurnTime = this.getPowered();
-        	this.airshipTotalBurnTime = this.getTotalPowered();
+        	this.airshipBurnTime = 0;
         }
         
         //Handles how burn time is ticked down
         if (this.isClientAirshipBurning())
         {
         	//Airship has Infinite Fuel Module installed
-        	if(this.getModuleFuelInfinite())
+        	if(this.getModuleVariantSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_LESSER.getMetadata()
+			|| this.getModuleVariantSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_NORMAL.getMetadata()
+			|| this.getModuleVariantSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_GREATER.getMetadata())
         	{
         		
         	}
+        	else if(this.status == EntityAirshipBaseVC.Status.IN_WATER
+            && this.getModuleVariantSlot1() == EnumsVC.ModuleType.WATER_GREATER.getMetadata())
+            {
+        		
+            }
         	else 
         	{
-        		this.airshipBurnTime = this.airshipBurnTime - this.airshipFuelTick;
+        		this.airshipBurnTime = this.airshipBurnTime - this.getAirshipFuelTick();
         	}
         }
         
@@ -767,10 +990,18 @@ public class EntityAirshipV6Core extends EntityAirshipBaseVC {
         if (!this.isClientAirshipBurning())
         {
         	//Airship has Infinite Fuel Module installed
-        	if(this.getModuleFuelInfinite())
+        	if(this.getModuleVariantSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_LESSER.getMetadata()
+			|| this.getModuleVariantSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_NORMAL.getMetadata()
+			|| this.getModuleVariantSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_GREATER.getMetadata())
         	{
         		this.airshipBurnTime = 1;
         	}
+        	//Greater Water no fuel
+        	else if(this.status == EntityAirshipBaseVC.Status.IN_WATER
+            && this.getModuleVariantSlot1() == EnumsVC.ModuleType.WATER_GREATER.getMetadata())
+            {
+        		this.airshipBurnTime = 1;
+            }
         	//Airship has no controlling passenger
         	else if(this.getControllingPassenger() == null)
         	{
@@ -781,6 +1012,8 @@ public class EntityAirshipV6Core extends EntityAirshipBaseVC {
         		this.airshipBurnTime = 0;
         	}
         }
+        
+        
         
         //Core fuel slot logic
         if (this.isClientAirshipBurning() || this.inventory.getStackInSlot(0) != null)
@@ -814,13 +1047,6 @@ public class EntityAirshipV6Core extends EntityAirshipBaseVC {
         {
             flag1 = true;
         }
-        
-        //Saves the fuel burn time server side
-        if(!this.worldObj.isRemote)
-        {
-        	this.setPowered(this.airshipBurnTime);
-        	this.setTotalPowered(this.airshipTotalBurnTime);
-        }
     }
     
     /**
@@ -851,7 +1077,9 @@ public class EntityAirshipV6Core extends EntityAirshipBaseVC {
         else
         {
             Item item = stack.getItem();
+            
             //DualEnergyStorageVC cap = (DualEnergyStorageVC) stack.getCapability(DualEnergyStorageVC.CAPABILITY_HOLDER , null);
+            
             if(ViesCraftConfig.vanillaFuel)
     		{
 	            if (item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.AIR)
@@ -911,13 +1139,6 @@ public class EntityAirshipV6Core extends EntityAirshipBaseVC {
      */
     public void getTotalFuelSlotBurnTime()
     {
-    	//Passes itemFuelStack to client for gui
-    	if(this.worldObj.isRemote)
-		{
-    		this.itemFuelStack = this.getItemFuelStackPowered();
-			this.itemFuelStackSize = this.getItemFuelStackSizePowered();
-		}
-    	
     	if(this.getControllingPassenger() != null)
     	{
     		if (this.isClientAirshipBurning())
@@ -942,70 +1163,7 @@ public class EntityAirshipV6Core extends EntityAirshipBaseVC {
     			this.itemFuelStackSize = 0;
     		}
     	}
-    	
-    	if(!this.worldObj.isRemote)
-		{
-    		this.setItemFuelStackPowered(this.itemFuelStack);
-			this.setItemFuelStackSizePowered(this.itemFuelStackSize);
-		}
     }
-    
-	/**
-     * Sets the airshipBurnTime to pass from server to client.
-     */
-    public void setPowered(int airshipBurnTime1)
-    {
-        this.dataManager.set(POWERED, Integer.valueOf(airshipBurnTime1));
-    }
-	
-    @Override
-    public int getPowered()
-    {
-        return ((Integer)this.dataManager.get(POWERED)).intValue();
-    }
-    
-    /**
-     * Sets the airshipTotalBurnTime to pass from server to client.
-     */
-    public void setTotalPowered(int airshipTotalBurnTime1)
-    {
-        this.dataManager.set(TOTALPOWERED, Integer.valueOf(airshipTotalBurnTime1));
-    }
-	
-    @Override
-    public int getTotalPowered()
-    {
-        return ((Integer)this.dataManager.get(TOTALPOWERED)).intValue();
-    }
-    
-    /**
-     * Sets the itemFuelStack to pass from server to client.
-     */
-    public void setItemFuelStackPowered(int itemFuelStack1)
-    {
-        this.dataManager.set(ITEMFUELSTACKPOWERED, Integer.valueOf(itemFuelStack1));
-    }
-	
-    @Override
-    public int getItemFuelStackPowered()
-    {
-        return ((Integer)this.dataManager.get(ITEMFUELSTACKPOWERED)).intValue();
-    }
-    
-	/**
-     * Sets the itemFuelStackSize to pass from server to client.
-     */
-    public void setItemFuelStackSizePowered(int itemFuelStackSize1)
-    {
-        this.dataManager.set(ITEMFUELSTACKSIZEPOWERED, Integer.valueOf(itemFuelStackSize1));
-    }
-	
-    @Override
-    public int getItemFuelStackSizePowered()
-    {
-        return ((Integer)this.dataManager.get(ITEMFUELSTACKSIZEPOWERED)).intValue();
-    }
-    
     
     
     //==================================//
@@ -1014,559 +1172,91 @@ public class EntityAirshipV6Core extends EntityAirshipBaseVC {
     
     public void currentModule()
     {
-    	ItemStack itemModule = this.inventory.getStackInSlot(1);
-		int moduleNumber = this.getModuleID(itemModule);
-		
-		/**
-		if(this.world.isRemote)
-		{
-			if(this.getModuleSpeedMinor())
-				LogHelper.info("1");
-			if(this.getModuleSpeedMajor())
-				LogHelper.info("2");
-			if(this.getModuleInventorySmall())
-				LogHelper.info("3");
-			if(this.getModuleInventoryLarge())
-				LogHelper.info("4");
-			if(this.getModuleFuelInfinite())
-				LogHelper.info("5");
-			if(this.getModuleWaterLanding())
-				LogHelper.info("6");
-			if(this.getModuleMaxAltitude())
-				LogHelper.info("7");
-			if(this.getModuleMinorEfficiency())
-				LogHelper.info("8");
-			if(this.getModuleMajorEfficiency())
-				LogHelper.info("9");
-			if(this.getModuleJukebox())
-				LogHelper.info("10");
-			if(this.getModuleCruiseControl())
-				LogHelper.info("11");
-		}
-		*/
-		
-		//Syncs the module boolean client side
-		if(this.worldObj.isRemote)
-		{
-    		this.moduleSpeedMinor = this.getModuleSpeedMinor();
-    		this.moduleSpeedMajor = this.getModuleSpeedMajor();
-    		this.moduleInventorySmall = this.getModuleInventorySmall();
-    		this.moduleInventoryLarge = this.getModuleInventoryLarge();
-    		this.moduleFuelInfinite = this.getModuleFuelInfinite();
-    		this.moduleWaterLanding = this.getModuleWaterLanding();
-    		this.moduleMaxAltitude = this.getModuleMaxAltitude();
-    		this.moduleMinorEfficiency = this.getModuleMinorEfficiency();
-    		this.moduleMajorEfficiency = this.getModuleMajorEfficiency();
-    		this.moduleJukebox = this.getModuleJukebox();
-    		this.jukeboxSelectedSong = this.getJukeboxSelectedSong();
-    		this.moduleCruiseControl = this.getModuleCruiseControl();
-    		this.cruiseControlSelectedSpeed = this.getCruiseControlSelectedSpeed();
-		}
-		
+    	int moduleNumber = this.getModuleVariantSlot1();
+    	
 		if(moduleNumber >= 0)
 		{
-			this.moduleSpeedMinor = false;
-			this.moduleSpeedMajor = false;
-			this.moduleInventorySmall = false;
-			this.moduleInventoryLarge = false;
-			this.moduleFuelInfinite = false;
-			this.moduleWaterLanding = false;
-			this.moduleMaxAltitude = false;
-			this.moduleMinorEfficiency = false;
-			this.moduleMajorEfficiency = false;
-			this.moduleJukebox = false;
-			this.moduleCruiseControl = false;
+			this.metaModuleVariantSlot1 = 0;
 			
-			if(moduleNumber == 0)
+			if(moduleNumber > 0)
+			{
+				this.metaModuleVariantSlot1 = moduleNumber;
+			}
+			
+			if(moduleNumber == EnumsVC.ModuleType.BASE.getMetadata())
 			{
 				this.speedModifier = 0;
 			}
-			if(moduleNumber == 1)
+			
+			if(moduleNumber == EnumsVC.ModuleType.SPEED_LESSER.getMetadata())
 			{
-				this.moduleSpeedMinor = true;
-				this.speedModifier = 0.008F;
+				this.speedModifier = 0.01F;
 			}
-			if(moduleNumber == 2)
+			if(moduleNumber == EnumsVC.ModuleType.SPEED_NORMAL.getMetadata())
 			{
-				this.moduleSpeedMajor = true;
-				this.speedModifier = 0.016F;
+				this.speedModifier = 0.02F;
 			}
-			if(moduleNumber == 3)
+			if(moduleNumber == EnumsVC.ModuleType.SPEED_GREATER.getMetadata())
 			{
-				this.moduleInventorySmall = true;
-				this.speedModifier = -(finalAirshipSpeedForward * 0.2F);
+				this.speedModifier = 0.03F;
 			}
-			if(moduleNumber == 4)
+			if(moduleNumber == EnumsVC.ModuleType.STORAGE_LESSER.getMetadata())
 			{
-				this.moduleInventoryLarge = true;
-				this.speedModifier = -(finalAirshipSpeedForward * 0.3F);
+				this.speedModifier = -((finalAirshipSpeedForward + EnumsVC.AirshipTierCore.byId(this.metaTierCore).getSpeedModifier()) * 0.30F);
 			}
-			if(moduleNumber == 5)
+			if(moduleNumber == EnumsVC.ModuleType.STORAGE_NORMAL.getMetadata())
 			{
-				this.moduleFuelInfinite = true;
-				this.speedModifier = -(finalAirshipSpeedForward * 0.5F);
+				this.speedModifier = -((finalAirshipSpeedForward + EnumsVC.AirshipTierCore.byId(this.metaTierCore).getSpeedModifier()) * 0.30F);
 			}
-			if(moduleNumber == 6)
+			if(moduleNumber == EnumsVC.ModuleType.STORAGE_GREATER.getMetadata())
 			{
-				this.moduleWaterLanding = true;
+				this.speedModifier = -((finalAirshipSpeedForward + EnumsVC.AirshipTierCore.byId(this.metaTierCore).getSpeedModifier()) * 0.30F);
+			}
+			
+			if(moduleNumber == EnumsVC.ModuleType.CRUISE_LESSER.getMetadata())
+			{
+				this.speedModifier = -((finalAirshipSpeedForward + EnumsVC.AirshipTierCore.byId(this.metaTierCore).getSpeedModifier()) * 0.66F);
+			}
+			if(moduleNumber == EnumsVC.ModuleType.CRUISE_NORMAL.getMetadata())
+			{
+				this.speedModifier = -((finalAirshipSpeedForward + EnumsVC.AirshipTierCore.byId(this.metaTierCore).getSpeedModifier()) * 0.33F);
+			}
+			if(moduleNumber == EnumsVC.ModuleType.CRUISE_GREATER.getMetadata())
+			{
 				this.speedModifier = 0;
 			}
-			if(moduleNumber == 7)
+			
+			if(moduleNumber == EnumsVC.ModuleType.INFINITE_FUEL_LESSER.getMetadata())
 			{
-				this.moduleMaxAltitude = true;
-				this.speedModifier = 0;
+				this.speedModifier = -((finalAirshipSpeedForward + EnumsVC.AirshipTierCore.byId(this.metaTierCore).getSpeedModifier()) * 0.90F);
 			}
-			if(moduleNumber == 8)
+			if(moduleNumber == EnumsVC.ModuleType.INFINITE_FUEL_NORMAL.getMetadata())
 			{
-				this.moduleMinorEfficiency = true;
-				this.speedModifier = 0;
+				this.speedModifier = -((finalAirshipSpeedForward + EnumsVC.AirshipTierCore.byId(this.metaTierCore).getSpeedModifier()) * 0.80F);
 			}
-			if(moduleNumber == 9)
+			if(moduleNumber == EnumsVC.ModuleType.INFINITE_FUEL_GREATER.getMetadata())
 			{
-				this.moduleMajorEfficiency = true;
-				this.speedModifier = -(finalAirshipSpeedForward * 0.3F);
+				this.speedModifier = -((finalAirshipSpeedForward + EnumsVC.AirshipTierCore.byId(this.metaTierCore).getSpeedModifier()) * 0.70F);
 			}
-			if(moduleNumber == 10)
-			{
-				this.moduleJukebox = true;
-				this.speedModifier = 0;
-			}
-			if(moduleNumber == 11)
-			{
-				this.moduleCruiseControl = true;
-				this.speedModifier = 0;
-			}
+			
+			
+			
 		}
-		
-		//Saves the module boolean to server side
-    	if(!this.worldObj.isRemote)
-		{
-    		this.setModuleSpeedMinor(this.moduleSpeedMinor);
-    		this.setModuleSpeedMajor(this.moduleSpeedMajor);
-    		this.setModuleInventorySmall(this.moduleInventorySmall);
-    		this.setModuleInventoryLarge(this.moduleInventoryLarge);
-    		this.setModuleFuelInfinite(this.moduleFuelInfinite);
-    		this.setModuleWaterLanding(this.moduleWaterLanding);
-    		this.setModuleMaxAltitude(this.moduleMaxAltitude);
-    		this.setModuleMinorEfficiency(this.moduleMinorEfficiency);
-    		this.setModuleMajorEfficiency(this.moduleMajorEfficiency);
-    		this.setModuleJukebox(this.moduleJukebox);
-    		this.setJukeboxSelectedSong(this.jukeboxSelectedSong);
-    		this.setModuleCruiseControl(this.moduleCruiseControl);
-    		this.setCruiseControlSelectedSpeed(this.cruiseControlSelectedSpeed);
-    	}
     }
     
-    /**
-     * Checks if a module is in the module slot.
-     */
-    public static boolean getItemModule(ItemStack stack)
-    {
-        if (stack == null)
-        {
-            return false;
-        }
-        else
-        {
-            Item item = stack.getItem();
-            
-            if (item == InitItemsVC.airship_module) return true;
-            
-            return false;
-        }
-    }
-    
-    /**
-     * Set module ID for module in slot.
-     */
-    public static int getModuleID(ItemStack stack)
-    {
-        if (stack == null)
-        {
-            return 0;
-        }
-        else
-        {
-            Item item = stack.getItem();
-            
-            if(item == InitItemsVC.airship_module)
-            {
-            	return item.getMetadata(stack);
-            }
-            else 
-            {
-            	return 0;
-            }
-        }
-    }
-    
-    public static boolean isItemModule(ItemStack stack)
-    {
-        /**
-         * Returns the number of ticks that the supplied fuel item will keep the furnace burning, or 0 if the item isn't
-         * fuel
-         */
-        return getItemModule(stack);
-    }
-    
-    /**
-     * Sets if Minor Speed Increase mod is installed to pass from server to client.
-     */
-    public void setModuleSpeedMinor(boolean moduleSpeed1)
-    {
-        this.dataManager.set(MODULE_SPEED_MINOR, Boolean.valueOf(moduleSpeed1));
-    }
-    
-    @Override
-    public boolean getModuleSpeedMinor()
-    {
-        return ((Boolean)this.dataManager.get(MODULE_SPEED_MINOR)).booleanValue();
-    }
-    
-    /**
-     * Sets if Major Speed Increase mod is installed to pass from server to client.
-     */
-    public void setModuleSpeedMajor(boolean moduleSpeed2)
-    {
-        this.dataManager.set(MODULE_SPEED_MAJOR, Boolean.valueOf(moduleSpeed2));
-    }
-    
-    @Override
-    public boolean getModuleSpeedMajor()
-    {
-        return ((Boolean)this.dataManager.get(MODULE_SPEED_MAJOR)).booleanValue();
-    }
-    
-    /**
-     * Sets the Small Inventory boolean to pass from server to client.
-     */
-    public void setModuleInventorySmall(boolean moduleInvSmall1)
-    {
-        this.dataManager.set(MODULE_INVENTORY_SMALL, Boolean.valueOf(moduleInvSmall1));
-    }
 	
-    @Override
-    public boolean getModuleInventorySmall()
-    {
-        return ((Boolean)this.dataManager.get(MODULE_INVENTORY_SMALL)).booleanValue();
-    }
-    
-    /**
-     * Sets the Large Inventory boolean to pass from server to client.
-     */
-    public void setModuleInventoryLarge(boolean moduleInvLarge1)
-    {
-        this.dataManager.set(MODULE_INVENTORY_LARGE, Boolean.valueOf(moduleInvLarge1));
-    }
-	
-    @Override
-    public boolean getModuleInventoryLarge()
-    {
-        return ((Boolean)this.dataManager.get(MODULE_INVENTORY_LARGE)).booleanValue();
-    }
-    
-    /**
-     * Sets the Infinite Fuel boolean to pass from server to client.
-     */
-    public void setModuleFuelInfinite(boolean moduleFuelInfinite1)
-    {
-        this.dataManager.set(MODULE_FUEL_INFINITE, Boolean.valueOf(moduleFuelInfinite1));
-    }
-	
-    @Override
-    public boolean getModuleFuelInfinite()
-    {
-        return ((Boolean)this.dataManager.get(MODULE_FUEL_INFINITE)).booleanValue();
-    }
-    
-    /**
-     * Sets if Water Landing mod is installed to pass from server to client.
-     */
-    public void setModuleWaterLanding(boolean moduleWaterLanding1)
-    {
-        this.dataManager.set(MODULE_WATER_LANDING, Boolean.valueOf(moduleWaterLanding1));
-    }
-    
-    @Override
-    public boolean getModuleWaterLanding()
-    {
-        return ((Boolean)this.dataManager.get(MODULE_WATER_LANDING)).booleanValue();
-    }
-
-    /**
-     * Sets if Max Altitude mod is installed to pass from server to client.
-     */
-    public void setModuleMaxAltitude(boolean moduleMaxAltitude1)
-    {
-        this.dataManager.set(MODULE_MAX_ALTITUDE, Boolean.valueOf(moduleMaxAltitude1));
-    }
-    
-    @Override
-    public boolean getModuleMaxAltitude()
-    {
-        return ((Boolean)this.dataManager.get(MODULE_MAX_ALTITUDE)).booleanValue();
-    }
-
-    /**
-     * Sets if Minor Efficiency mod is installed to pass from server to client.
-     */
-    public void setModuleMinorEfficiency(boolean moduleMinorEfficiency1)
-    {
-        this.dataManager.set(MODULE_MINOR_EFFICIENCY, Boolean.valueOf(moduleMinorEfficiency1));
-    }
-    
-    @Override
-    public boolean getModuleMinorEfficiency()
-    {
-        return ((Boolean)this.dataManager.get(MODULE_MINOR_EFFICIENCY)).booleanValue();
-    }
-
-    /**
-     * Sets if Major Efficiency mod is installed to pass from server to client.
-     */
-    public void setModuleMajorEfficiency(boolean moduleMajorEfficiency1)
-    {
-        this.dataManager.set(MODULE_MAJOR_EFFICIENCY, Boolean.valueOf(moduleMajorEfficiency1));
-    }
-    
-    @Override
-    public boolean getModuleMajorEfficiency()
-    {
-        return ((Boolean)this.dataManager.get(MODULE_MAJOR_EFFICIENCY)).booleanValue();
-    }
-
-    /**
-     * Sets if Jukebox mod is installed to pass from server to client.
-     */
-    public void setModuleJukebox(boolean moduleJukebox1)
-    {
-        this.dataManager.set(MODULE_JUKEBOX, Boolean.valueOf(moduleJukebox1));
-    }
-    
-    @Override
-    public boolean getModuleJukebox()
-    {
-        return ((Boolean)this.dataManager.get(MODULE_JUKEBOX)).booleanValue();
-    }
-    
-	/**
-     * Sets the jukebox selected song to pass from server to client.
-     */
-    public void setJukeboxSelectedSong(int jukeboxSelectedSong1)
-    {
-        this.dataManager.set(MODULE_JUKEBOX_SELECTED_SONG, Integer.valueOf(jukeboxSelectedSong1));
-    }
-	
-    @Override
-    public int getJukeboxSelectedSong()
-    {
-        return ((Integer)this.dataManager.get(MODULE_JUKEBOX_SELECTED_SONG)).intValue();
-    }
-
-    /**
-     * Sets if Cruise Control mod is installed to pass from server to client.
-     */
-    public void setModuleCruiseControl(boolean moduleCruiseControl1)
-    {
-        this.dataManager.set(MODULE_CRUISECONTROL, Boolean.valueOf(moduleCruiseControl1));
-    }
-    
-    @Override
-    public boolean getModuleCruiseControl()
-    {
-        return ((Boolean)this.dataManager.get(MODULE_CRUISECONTROL)).booleanValue();
-    }
-    
-	/**
-     * Sets the Cruise Control selected speed to pass from server to client.
-     */
-    public void setCruiseControlSelectedSpeed(int cruiseControlSelectedSpeed1)
-    {
-        this.dataManager.set(MODULE_CRUISECONTROL_SELECTED_SPEED, Integer.valueOf(cruiseControlSelectedSpeed1));
-    }
-	
-    @Override
-    public int getCruiseControlSelectedSpeed()
-    {
-        return ((Integer)this.dataManager.get(MODULE_CRUISECONTROL_SELECTED_SPEED)).intValue();
-    }
-    
-    
     
     //==================================//
   	// TODO          Misc               //
   	//==================================//
     
-    /**
-     * Root Method that will drop everything in all inventory slots minus fuel
-     */
-    private void noModuleDropInv()
+    public ItemStack getPickedResult(RayTraceResult target)
     {
-    	//Used to drop inventory if inv modules are removed/switched
-		// If there is no module in slot
-		if(this.inventory.getStackInSlot(1) == null)
-		{
-			//If small inv mod is removed and slot is empty
-			if(dropNumber == 1)
-			{
-				dropNumber = 0;
-				this.dropInv();
-			}
-			
-			//If large inv mod is removed and slot is empty
-			if(dropNumber == 2)
-			{
-				dropNumber = 0;
-				this.dropInv();
-			}
-		}
-		//If a module is still in the slot
-		else
-		{
-			//If the module in the slot is small inv mod
-			if(this.inventory.getStackInSlot(1).getItem() == new ItemStack(InitItemsVC.airship_module, 1, 3).getItem()
-			&& dropNumber == 0)
-			{
-				dropNumber = 1;
-			}
-			
-			//If the module in the slot is large inv mod
-			else if(this.inventory.getStackInSlot(1).getItem() == new ItemStack(InitItemsVC.airship_module, 1, 4).getItem()
-			&& dropNumber == 0)
-			{
-				dropNumber = 2;
-			}
-			
-			//If the module in the slot is not small inv mod but had it in previously
-			else if(this.inventory.getStackInSlot(1).getItem() != new ItemStack(InitItemsVC.airship_module, 1, 3).getItem()
-					&& dropNumber == 1)
-			{
-				dropNumber = 0;
-				this.dropInv();
-			}
-			
-			//If the module in the slot is not large inv mod but had it in previously
-			else if(this.inventory.getStackInSlot(1).getItem() != new ItemStack(InitItemsVC.airship_module, 1, 4).getItem()
-					&& dropNumber == 2)
-			{
-				dropNumber = 0;
-				this.dropInv();
-			}
-		}
-    }
-    
-    /**
-     * Drops inventory contents only from airship (not fuel/module).
-     */
-    public void dropInv()
-    {
-    	if(this.worldObj.isRemote)
-		{
-			for (int x = 2; x < 20; ++x) 
-			{
-				if(this.inventory.getStackInSlot(x) != null)
-				{
-					ItemStack test = this.inventory.getStackInSlot(x);
-					test = null;
-				}
-			}
-		}
-		else
-		{
-			for (int x = 2; x < 20; ++x) 
-			{
-				if(this.inventory.getStackInSlot(x) != null)
-				{
-					ItemStack test = this.inventory.getStackInSlot(x);
-					InventoryHelper.spawnItemStack(this.worldObj, this.posX, this.posY, this.posZ, this.inventory.getStackInSlot(x));
-					test = null;
-				}
-			}
-		}
-    }
-    
-    /**
-     * Drops all inventory contents.
-     */
-    protected void dropInvDead()
-    {
-    	if(this.worldObj.isRemote)
-		{
-			for (int x = 0; x < 20; ++x) 
-			{
-				if(this.inventory.getStackInSlot(x) != null)
-				{
-					ItemStack test = this.inventory.getStackInSlot(x);
-					test = null;
-				}
-			}
-		}
-		else
-		{
-			for (int x = 0; x < 20; ++x) 
-			{
-				if(this.inventory.getStackInSlot(x) != null)
-				{
-					ItemStack test = this.inventory.getStackInSlot(x);
-					InventoryHelper.spawnItemStack(this.worldObj, this.posX, this.posY, this.posZ, this.inventory.getStackInSlot(x));
-					test = null;
-				}
-			}
-		}
-    }
-    
-    public void visualFrame()
-    {
-    	if(this.frameVisualActive == true
-    	&& this.metaFrameVisual == this.metaFrameCore)
-    	{
-    		this.frameVisualActive = false;
-    	}
-    	
-    	//Syncs the module boolean client side
-		if(this.worldObj.isRemote)
-		{
-    		this.metaFrameVisual = this.getVisualFrame();
-    		this.frameVisualActive = this.getVisualFrameActive();
-		}
-    	
-    	//Saves the visual frame to server side
-    	if(!this.worldObj.isRemote)
-		{
-			this.setVisualFrame(this.metaFrameVisual);
-			this.setVisualFrameActive(this.frameVisualActive);
-    	}
-    }
-    
-	/**
-     * Sets the Visual Frame to pass from server to client.
-     */
-    public void setVisualFrame(int metaVisualFrame1)
-    {
-        this.dataManager.set(AIRSHIP_VISUAL_FRAME_VC, Integer.valueOf(metaVisualFrame1));
-    }
-	
-    /**
-     * Gets the Visual Frame to pass from server to client.
-     */
-    public int getVisualFrame()
-    {
-        return ((Integer)this.dataManager.get(AIRSHIP_VISUAL_FRAME_VC)).intValue();
-    }
-    
-    /**
-     * Gets the Minor Speed boolean to pass from server to client.
-     */
-    public boolean getVisualFrameActive()
-    {
-        return ((Boolean)this.dataManager.get(AIRSHIP_VISUAL_FRAME_ACTIVE_VC)).booleanValue();
-    }
-    
-    /**
-     * Sets if Major Speed Increase mod is installed to pass from server to client.
-     */
-    public void setVisualFrameActive(boolean frameVisualActive1)
-    {
-        this.dataManager.set(AIRSHIP_VISUAL_FRAME_ACTIVE_VC, Boolean.valueOf(frameVisualActive1));
+        if (this instanceof EntityBaseVC)
+        {
+        	return this.getItemAirship();
+        }
+        
+        return null;
     }
 }

@@ -2,8 +2,6 @@ package com.viesis.viescraft.common.tileentity;
 
 import javax.annotation.Nullable;
 
-import com.viesis.viescraft.common.items.crafting.CraftingManagerVC;
-import com.viesis.viescraft.common.items.crafting.SlotCraftingVC;
 import com.viesis.viescraft.init.InitBlocksVC;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -13,7 +11,9 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryCraftResult;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.inventory.Slot;
+import net.minecraft.inventory.SlotCrafting;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.world.World;
 
 public class ContainerAirshipWorkbench extends Container {
@@ -36,7 +36,7 @@ public class ContainerAirshipWorkbench extends Container {
         loadCraftingMatrix();
         
         //CraftResult Slot, Slot 0, Slot ID 0
-        this.addSlotToContainer(new SlotCraftingVC(playerInventory.player, this.craftMatrix, this.craftResult, 0, 124, 35));
+        this.addSlotToContainer(new SlotCrafting(playerInventory.player, this.craftMatrix, this.craftResult, 0, 124, 35));
         
         //Craft Matrix, Slot 1-9, Slot ID 0
         for (int i = 0; i < 3; ++i)
@@ -71,7 +71,7 @@ public class ContainerAirshipWorkbench extends Container {
      */
     public void onCraftMatrixChanged(IInventory inventoryIn)
     {
-    	this.craftResult.setInventorySlotContents(0, CraftingManagerVC.getInstance().findMatchingRecipe(this.craftMatrix, this.world));
+    	this.craftResult.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(this.craftMatrix, this.world));
     }
     
     /**

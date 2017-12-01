@@ -4,13 +4,13 @@ import net.minecraftforge.fml.common.FMLLog;
 
 import org.apache.logging.log4j.Level;
 
-import com.viesis.viescraft.api.Reference;
+import com.viesis.viescraft.api.References;
 
 public class LogHelper {
 	
 	public static void log(Level logLevel, Object object)
 	{
-		FMLLog.log(Reference.MOD_NAME, logLevel, String.valueOf(object));
+		FMLLog.log(References.MOD_NAME, logLevel, String.valueOf(object));
 	}
 	
 	public static void all(Object object) 

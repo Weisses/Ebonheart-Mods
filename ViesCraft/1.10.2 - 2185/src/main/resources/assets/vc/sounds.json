@@ -1,18 +1,36 @@
 {
-    "record.trigun": {
-        "category": "record",
-        "sounds": [
-            {
-            "name": "vc:records/trigun",
-            "stream": true
-            }
-        ]
-    },
     "record.bramble": {
         "category": "record",
         "sounds": [
             {
             "name": "vc:records/bramble",
+            "stream": true
+            }
+        ]
+    },
+    "record.castle": {
+        "category": "record",
+        "sounds": [
+            {
+            "name": "vc:records/castle",
+            "stream": true
+            }
+        ]
+    },
+    "record.jungle": {
+        "category": "record",
+        "sounds": [
+            {
+            "name": "vc:records/jungle",
+            "stream": true
+            }
+        ]
+    },
+    "record.dire": {
+        "category": "record",
+        "sounds": [
+            {
+            "name": "vc:records/dire",
             "stream": true
             }
         ]
@@ -26,20 +44,11 @@
             }
         ]
     },
-    "record.cowboy": {
+    "record.timescar": {
         "category": "record",
         "sounds": [
             {
-            "name": "vc:records/cowboy",
-            "stream": true
-            }
-        ]
-    },
-    "record.bay": {
-        "category": "record",
-        "sounds": [
-            {
-            "name": "vc:records/bay",
+            "name": "vc:records/timescar",
             "stream": true
             }
         ]

@@ -1,6 +1,6 @@
 package com.viesis.viescraft.client;
 
-import com.viesis.viescraft.api.Reference;
+import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.client.particle.EntityColorFlameFX;
 import com.viesis.viescraft.client.particle.EntityRunicFX;
 import com.viesis.viescraft.client.particle.EntityUnholyFX;
@@ -79,7 +79,7 @@ public class InitParticlesVCRender {
     	
     	for (int ii = 0; ii < 10; ++ii)
     	{
-    		int d = Reference.random.nextInt(100) + 1;
+    		int d = References.random.nextInt(100) + 1;
     		
     		if (d <= 2)
     		{

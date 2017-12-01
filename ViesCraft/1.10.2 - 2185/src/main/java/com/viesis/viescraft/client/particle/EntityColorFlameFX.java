@@ -1,6 +1,6 @@
 package com.viesis.viescraft.client.particle;
 
-import com.viesis.viescraft.api.Reference;
+import com.viesis.viescraft.api.References;
 
 import net.minecraft.client.particle.ParticleFlame;
 import net.minecraft.world.World;
@@ -16,9 +16,9 @@ public class EntityColorFlameFX extends ParticleFlame {
     {
         super(parWorld, parX, parY, parZ, parMotionX, parMotionY, parMotionZ);
         
-        int d1 = Reference.random.nextInt(254) + 1;
-        int d2 = Reference.random.nextInt(254) + 1;
-        int d3 = Reference.random.nextInt(254) + 1;
+        int d1 = References.random.nextInt(254) + 1;
+        int d2 = References.random.nextInt(254) + 1;
+        int d3 = References.random.nextInt(254) + 1;
         
         //setParticleTextureIndex(49);
         

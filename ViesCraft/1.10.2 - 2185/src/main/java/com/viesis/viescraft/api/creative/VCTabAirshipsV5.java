@@ -20,6 +20,6 @@ public class VCTabAirshipsV5 extends CreativeTabs {
 	@Override
 	public Item getTabIconItem() 
 	{
-		return new ItemStack(InitItemsVC.item_airship_v5, 1, 21).getItem();
+		return new ItemStack(InitItemsVC.item_v5_airship, 1, 21).getItem();
 	}
 }

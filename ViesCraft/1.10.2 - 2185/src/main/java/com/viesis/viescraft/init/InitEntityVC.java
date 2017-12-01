@@ -7,12 +7,12 @@ import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV3Core;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV4Core;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV5Core;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV6Core;
-import com.viesis.viescraft.common.entity.airshipitems.v1.EntityItemAirshipV1;
-import com.viesis.viescraft.common.entity.airshipitems.v2.EntityItemAirshipV2;
-import com.viesis.viescraft.common.entity.airshipitems.v3.EntityItemAirshipV3;
-import com.viesis.viescraft.common.entity.airshipitems.v4.EntityItemAirshipV4;
-import com.viesis.viescraft.common.entity.airshipitems.v5.EntityItemAirshipV5;
-import com.viesis.viescraft.common.entity.airshipitems.v6.EntityItemAirshipV6;
+import com.viesis.viescraft.common.entity.airshipitems.EntityItemAirshipV1;
+import com.viesis.viescraft.common.entity.airshipitems.EntityItemAirshipV2;
+import com.viesis.viescraft.common.entity.airshipitems.EntityItemAirshipV3;
+import com.viesis.viescraft.common.entity.airshipitems.EntityItemAirshipV4;
+import com.viesis.viescraft.common.entity.airshipitems.EntityItemAirshipV5;
+import com.viesis.viescraft.common.entity.airshipitems.EntityItemAirshipV6;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 
 import net.minecraft.entity.Entity;
@@ -48,12 +48,12 @@ public class InitEntityVC {
 		//V5
 		if(ViesCraftConfig.v5AirshipEnabled)
 		{
-			register("item_airship_v5", EntityItemAirshipV5.class, "item.airship.v5", 64, 20, true);
+			//register("item_airship_v5", EntityItemAirshipV5.class, "item.airship.v5", 64, 20, true);
 		}
 		//V6
 		if(ViesCraftConfig.v6AirshipEnabled)
 		{
-			register("item_airship_v6", EntityItemAirshipV6.class, "item.airship.v6", 64, 20, true);
+			//register("item_airship_v6", EntityItemAirshipV6.class, "item.airship.v6", 64, 20, true);
 		}
 		
 		//===========================================
@@ -82,12 +82,12 @@ public class InitEntityVC {
 		//V5
 		if(ViesCraftConfig.v5AirshipEnabled)
 		{
-			register("airship_v5", EntityAirshipV5Core.class, "airship.v5", 64, 1, true);
+			//register("airship_v5", EntityAirshipV5Core.class, "airship.v5", 64, 1, true);
 		}
 		//V6
 		if(ViesCraftConfig.v6AirshipEnabled)
 		{
-			register("airship_v6", EntityAirshipV6Core.class, "airship.v6", 64, 1, true);
+			//register("airship_v6", EntityAirshipV6Core.class, "airship.v6", 64, 1, true);
 		}
 	}
 	

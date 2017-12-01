@@ -2,7 +2,7 @@ package com.viesis.viescraft.client.gui;
 
 import org.lwjgl.input.Keyboard;
 
-import com.viesis.viescraft.api.Reference;
+import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 
@@ -14,7 +14,7 @@ public class ConfigGui extends GuiConfig {
 	
 	public ConfigGui(GuiScreen screen) 
 	{
-		super(screen, new ConfigElement(ViesCraftConfig.config.getCategory(ViesCraftConfig.CATEGORY_VC)).getChildElements(), Reference.MOD_NAME, true, true, GuiConfig.getAbridgedConfigPath(ViesCraftConfig.config.toString()));
+		super(screen, new ConfigElement(ViesCraftConfig.config.getCategory(ViesCraftConfig.CATEGORY_VC)).getChildElements(), References.MOD_NAME, true, true, GuiConfig.getAbridgedConfigPath(ViesCraftConfig.config.toString()));
 	}
 	
 	@Override

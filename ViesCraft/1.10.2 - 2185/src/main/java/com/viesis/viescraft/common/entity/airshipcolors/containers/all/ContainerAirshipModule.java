@@ -11,23 +11,29 @@ public class ContainerAirshipModule extends ContainerVC {
 	
 	private EntityAirshipBaseVC airship;
 	
-	/*
-	 * SLOTS:
+	/**
+	 * SLOTS: <br> <br>
 	 *
-	 * Airship Fuel ........... 0
-	 * Airship Module ......... 1
-	 * Airship Inv ............ 2 - 20
+	 * Slot  0 = Fuel <br>
+	 * Slot  1 = Upgrade Frame <br>
+	 * Slot  2 = Upgrade Core <br>
+	 * Slot  3 = Upgrade Engine <br>
+	 * Slot  4 = Upgrade Balloon <br>
+	 * Slot 11 = Module Slot1 <br>
+	 * Slot 12 = Module Slot2 <br>
+	 * Slot 20-28 = Inventory Small <br>
+	 * Slot 20-37 = Inventory Large <br>
 	 */
 	public ContainerAirshipModule(IInventory playerInv, EntityAirshipBaseVC airshipIn) 
 	{
 		this.airship = airshipIn;
 		
-		// Expansion Module, Slot 1, Slot ID 1
+		//Slot 11 - Module Slot1
 		for (int y = 0; y < 1; ++y) 
 		{
 			for (int x = 0; x < 1; ++x) 
 			{
-				this.addSlotToContainer(new ModuleSlotVC(this.airship.inventory, 1, 80, 30));
+				this.addSlotToContainer(new ModuleSlotVC(this.airship.inventory, 11, 97, 88));
 			}
 		}
 		
@@ -36,14 +42,14 @@ public class ContainerAirshipModule extends ContainerVC {
 		{
 			for (int x = 0; x < 9; ++x) 
 			{
-				this.addSlotToContainer(new Slot(playerInv, x + y * 9 + 9, 8 + x * 18, 84 + y * 18));
+				this.addSlotToContainer(new Slot(playerInv, x + y * 9 + 9, 8 + x * 18, 120 + y * 18));
 			}
 		}
 		
 		// Player Hotbar, Slot 0-8, Slot IDs 36-44
 		for (int x = 0; x < 9; ++x) 
 		{
-			this.addSlotToContainer(new Slot(playerInv, x, 8 + x * 18, 142));
+			this.addSlotToContainer(new Slot(playerInv, x, 8 + x * 18, 178));
 		}
 	}
 }

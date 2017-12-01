@@ -21,12 +21,16 @@ public class ModuleSlotVC extends SlotItemHandler {
     {
 		Item item = stack.getItem();
         
-        if (item == InitItemsVC.airship_module)
+        if (item == InitItemsVC.module_type)
         {
         	if(stack.getMetadata() != 0)
         	{
         		return true;
         	}
+        }
+        if(item == InitItemsVC.module_creative)
+        {
+        	return true;
         }
         
         return false;

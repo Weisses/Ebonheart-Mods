@@ -1,6 +1,6 @@
 package com.viesis.viescraft.client.gui.pouch;
 
-import com.viesis.viescraft.api.Reference;
+import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.common.items.parts.pouch.ContainerPouchModule;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -11,7 +11,7 @@ import net.minecraft.util.ResourceLocation;
 
 public class GuiPouchModule extends GuiContainer {
 	
-	private static final ResourceLocation texture = new ResourceLocation(Reference.MOD_ID + ":" + "textures/gui/container_module_pouch.png");
+	private static final ResourceLocation texture = new ResourceLocation(References.MOD_ID + ":" + "textures/gui/container_module_pouch.png");
 	
 	public GuiPouchModule(EntityPlayer player, InventoryPouch box) 
 	{

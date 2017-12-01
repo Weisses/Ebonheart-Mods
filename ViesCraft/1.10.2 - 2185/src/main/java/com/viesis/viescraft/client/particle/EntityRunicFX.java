@@ -1,6 +1,6 @@
 package com.viesis.viescraft.client.particle;
 
-import com.viesis.viescraft.api.Reference;
+import com.viesis.viescraft.api.References;
 
 import net.minecraft.client.particle.ParticleEnchantmentTable;
 import net.minecraft.world.World;
@@ -16,9 +16,9 @@ public class EntityRunicFX extends ParticleEnchantmentTable {
     {
         super(parWorld, parX, parY, parZ, parMotionX, parMotionY, parMotionZ);
         
-        int d1 = Reference.random.nextInt(150) + 1;
-        int d2 = Reference.random.nextInt(150) + 1;
-        int d3 = Reference.random.nextInt(150) + 1;
+        int d1 = References.random.nextInt(150) + 1;
+        int d2 = References.random.nextInt(150) + 1;
+        int d3 = References.random.nextInt(150) + 1;
         
         particleScale = 0.5F;
         setRBGColorF(d1, d2, d3);

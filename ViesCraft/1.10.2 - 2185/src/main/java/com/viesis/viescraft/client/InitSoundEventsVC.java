@@ -1,6 +1,6 @@
 package com.viesis.viescraft.client;
 
-import com.viesis.viescraft.api.Reference;
+import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.api.SoundsVC;
 
 import net.minecraft.util.ResourceLocation;
@@ -12,18 +12,18 @@ public class InitSoundEventsVC extends SoundsVC {
 	//Register the {@link SoundEvent}s.
 	public static void registerSounds() 
 	{
-		trigun = registerSound("record.trigun");
 		bramble = registerSound("record.bramble");
+		castle = registerSound("record.castle");
+		jungle = registerSound("record.jungle");
+		dire = registerSound("record.dire");
 		storms = registerSound("record.storms");
-		cowboy = registerSound("record.cowboy");
-		bay = registerSound("record.bay");
+		timescar = registerSound("record.timescar");
 		engineOn = registerSound("sound.engineon");
-		//engineMoving = registerSound("record.enginemoving");
 	}
 	
 	private static SoundEvent registerSound(String soundName) 
 	{
-		final ResourceLocation soundID = new ResourceLocation(Reference.MOD_ID, soundName);
+		final ResourceLocation soundID = new ResourceLocation(References.MOD_ID, soundName);
 		return GameRegistry.register(new SoundEvent(soundID).setRegistryName(soundID));
 	}
 }

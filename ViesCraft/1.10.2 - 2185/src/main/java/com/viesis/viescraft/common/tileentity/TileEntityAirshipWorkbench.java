@@ -14,7 +14,7 @@ import net.minecraftforge.items.ItemStackHandler;
 public class TileEntityAirshipWorkbench extends TileEntity {
     
     public ItemStackHandler inventory;
-    private int size = 9;
+    private int size = 64;
     private String airshipWorkbenchCustomName;
     
     public TileEntityAirshipWorkbench() 

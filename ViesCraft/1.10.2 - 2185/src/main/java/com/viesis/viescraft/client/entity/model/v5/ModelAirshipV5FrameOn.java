@@ -1,6 +1,6 @@
 package com.viesis.viescraft.client.entity.model.v5;
 
-import com.viesis.viescraft.api.Reference;
+import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.client.InitParticlesVCRender;
 
 import net.minecraft.client.model.ModelBase;
@@ -949,7 +949,7 @@ public class ModelAirshipV5FrameOn extends ModelBase {
     	this.Propeller_L1b.rotateAngleZ += (bladespin * 3);
     	this.Propeller_L1c.rotateAngleZ += (bladespin * 3);
     	
-    	int randomTick = Reference.random.nextInt(100) + 1;
+    	int randomTick = References.random.nextInt(100) + 1;
     	
 		if(randomTick < 20)
 		{

@@ -1,6 +1,6 @@
 package com.viesis.viescraft.proxy;
 
-import com.viesis.viescraft.api.Reference;
+import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.common.AchievementTriggersVC;
 import com.viesis.viescraft.common.utils.events.EventHandlerAchievement;
 import com.viesis.viescraft.common.utils.events.EventHandlerAirship;
@@ -49,7 +49,7 @@ public class CommonProxy {
 		MinecraftForge.EVENT_BUS.register(new EventHandlerConfig());
 		MinecraftForge.EVENT_BUS.register(new EventHandlerAirship());
 		
-		NetworkRegistry.INSTANCE.registerGuiHandler(Reference.MOD_ID, new GuiHandler());
+		NetworkRegistry.INSTANCE.registerGuiHandler(References.MOD_ID, new GuiHandler());
 	}
 	
 	public void postInit(FMLPostInitializationEvent event) 

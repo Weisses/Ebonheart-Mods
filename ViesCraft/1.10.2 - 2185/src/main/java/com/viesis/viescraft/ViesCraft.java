@@ -2,7 +2,8 @@ package com.viesis.viescraft;
 
 import java.io.File;
 
-import com.viesis.viescraft.api.Reference;
+import com.viesis.viescraft.api.References;
+import com.viesis.viescraft.api.creative.VCTabAirships;
 import com.viesis.viescraft.api.creative.VCTabAirshipsV1;
 import com.viesis.viescraft.api.creative.VCTabAirshipsV2;
 import com.viesis.viescraft.api.creative.VCTabAirshipsV3;
@@ -23,24 +24,19 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
-@Mod(modid = Reference.MOD_ID, name = Reference.MOD_NAME, version = Reference.MOD_VERSION, guiFactory = Reference.CONFIG_GUI)
+@Mod(modid = References.MOD_ID, name = References.MOD_NAME, version = References.MOD_VERSION, guiFactory = References.CONFIG_GUI)
 public class ViesCraft {
     
-    @SidedProxy(clientSide = Reference.CLIENT_PROXY_CLASS, serverSide = Reference.SERVER_PROXY_CLASS)
+    @SidedProxy(clientSide = References.CLIENT_PROXY_CLASS, serverSide = References.SERVER_PROXY_CLASS)
 	public static CommonProxy proxy;
     
-	public static final VCTabBlocks tabViesCraftBlocks = new VCTabBlocks("tabViesCraftBlocks");
 	public static final VCTabItems tabViesCraftItems = new VCTabItems("tabViesCraftItems");
-	public static final VCTabAirshipsV1 tabViesCraftAirshipsV1 = new VCTabAirshipsV1("tabViesCraftAirshipsV1");
-	public static final VCTabAirshipsV2 tabViesCraftAirshipsV2 = new VCTabAirshipsV2("tabViesCraftAirshipsV2");
-	public static final VCTabAirshipsV3 tabViesCraftAirshipsV3 = new VCTabAirshipsV3("tabViesCraftAirshipsV3");
-	public static final VCTabAirshipsV4 tabViesCraftAirshipsV4 = new VCTabAirshipsV4("tabViesCraftAirshipsV4");
-	public static final VCTabAirshipsV5 tabViesCraftAirshipsV5 = new VCTabAirshipsV5("tabViesCraftAirshipsV5");
-	public static final VCTabAirshipsV6 tabViesCraftAirshipsV6 = new VCTabAirshipsV6("tabViesCraftAirshipsV6");
+	public static final VCTabBlocks tabViesCraftBlocks = new VCTabBlocks("tabViesCraftBlocks");
+	public static final VCTabAirships tabViesCraftAirships = new VCTabAirships("tabViesCraftAirships");
 	
 	private static File configDir;
 	
-	@Mod.Instance(Reference.MOD_ID)
+	@Mod.Instance(References.MOD_ID)
 	public static ViesCraft instance;
 	
 	@EventHandler
@@ -48,9 +44,9 @@ public class ViesCraft {
 	{
 		MinecraftForge.EVENT_BUS.register(instance);
 		
-		configDir = new File(event.getModConfigurationDirectory() + "/" + Reference.MOD_ID);
+		configDir = new File(event.getModConfigurationDirectory() + "/" + References.MOD_ID);
 		configDir.mkdirs();
-		ViesCraftConfig.init(new File(configDir.getPath(), Reference.MOD_ID + ".cfg"));
+		ViesCraftConfig.init(new File(configDir.getPath(), References.MOD_ID + ".cfg"));
 		
 		this.proxy.preInit(event);
 		LogHelper.info("<<==============================>>");

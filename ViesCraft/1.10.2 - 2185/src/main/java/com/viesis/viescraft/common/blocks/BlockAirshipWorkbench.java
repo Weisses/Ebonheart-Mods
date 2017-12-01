@@ -6,7 +6,7 @@ import java.util.Random;
 import javax.annotation.Nullable;
 
 import com.viesis.viescraft.ViesCraft;
-import com.viesis.viescraft.api.Reference;
+import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.common.blocks.basic.BlockEA;
 import com.viesis.viescraft.common.tileentity.TileEntityAirshipWorkbench;
 import com.viesis.viescraft.network.GuiHandler;
@@ -50,7 +50,7 @@ public class BlockAirshipWorkbench extends BlockEA implements ITileEntityProvide
         }
         else
         {
-        	playerIn.openGui(Reference.MOD_ID, GuiHandler.GUI_AIRSHIP_WORKBENCH, worldIn, pos.getX(), pos.getY(), pos.getZ());
+        	playerIn.openGui(References.MOD_ID, GuiHandler.GUI_AIRSHIP_WORKBENCH, worldIn, pos.getX(), pos.getY(), pos.getZ());
             playerIn.addStat(StatList.CRAFTING_TABLE_INTERACTION);
             return true;
         }

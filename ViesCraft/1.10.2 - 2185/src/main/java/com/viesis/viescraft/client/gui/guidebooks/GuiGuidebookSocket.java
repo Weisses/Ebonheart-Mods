@@ -3,7 +3,7 @@ package com.viesis.viescraft.client.gui.guidebooks;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
-import com.viesis.viescraft.api.Reference;
+import com.viesis.viescraft.api.References;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
@@ -28,21 +28,21 @@ public class GuiGuidebookSocket extends GuiScreen {
     
     public GuiGuidebookSocket()
     {
-    	bookPageTextures[0] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/socket/page_0.png");
-        bookPageTextures[1] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/socket/page_1.png");
-        bookPageTextures[2] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/socket/page_2.png");
-        bookPageTextures[3] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/socket/page_3.png");
-        bookPageTextures[4] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/socket/page_4.png");
-        bookPageTextures[5] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/socket/page_5.png");
-        bookPageTextures[6] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/socket/page_6.png");
-        bookPageTextures[7] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/socket/page_7.png");
-        bookPageTextures[8] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/socket/page_8.png");
-        bookPageTextures[9] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/socket/page_9.png");
-        bookPageTextures[10] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/socket/page_10.png");
-        bookPageTextures[11] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/socket/page_11.png");
-        bookPageTextures[12] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/socket/page_12.png");
-        bookPageTextures[13] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/socket/page_13.png");
-        bookPageTextures[14] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/socket/page_14.png");
+    	bookPageTextures[0] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/socket/page_0.png");
+        bookPageTextures[1] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/socket/page_1.png");
+        bookPageTextures[2] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/socket/page_2.png");
+        bookPageTextures[3] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/socket/page_3.png");
+        bookPageTextures[4] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/socket/page_4.png");
+        bookPageTextures[5] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/socket/page_5.png");
+        bookPageTextures[6] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/socket/page_6.png");
+        bookPageTextures[7] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/socket/page_7.png");
+        bookPageTextures[8] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/socket/page_8.png");
+        bookPageTextures[9] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/socket/page_9.png");
+        bookPageTextures[10] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/socket/page_10.png");
+        bookPageTextures[11] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/socket/page_11.png");
+        bookPageTextures[12] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/socket/page_12.png");
+        bookPageTextures[13] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/socket/page_13.png");
+        bookPageTextures[14] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/socket/page_14.png");
         
         
         //Title
@@ -51,7 +51,7 @@ public class GuiGuidebookSocket extends GuiScreen {
         		+ "\n\n" 
         		+ "         " + "\u00A7oby Viesis\u00A7r"
         		+ "\n\n\n\n" 
-        		+ "          " + Reference.MOD_VERSION
+        		+ "          " + References.MOD_VERSION
         		;
         
         stringPageText[1] = "   The sky is within our "

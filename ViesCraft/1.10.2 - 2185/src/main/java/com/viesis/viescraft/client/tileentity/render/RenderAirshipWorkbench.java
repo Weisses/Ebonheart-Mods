@@ -2,7 +2,7 @@ package com.viesis.viescraft.client.tileentity.render;
 
 import org.lwjgl.opengl.GL11;
 
-import com.viesis.viescraft.api.Reference;
+import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.client.tileentity.model.ModelAirshipWorkbench;
 import com.viesis.viescraft.common.tileentity.TileEntityAirshipWorkbench;
 
@@ -18,7 +18,7 @@ import net.minecraft.util.ResourceLocation;
 
 public class RenderAirshipWorkbench extends TileEntitySpecialRenderer<TileEntityAirshipWorkbench> {
 	
-	ResourceLocation texture = new ResourceLocation(Reference.MOD_ID + ":" + "textures/models/airship_workbench.png");
+	ResourceLocation texture = new ResourceLocation(References.MOD_ID + ":" + "textures/models/airship_workbench.png");
 	private ModelAirshipWorkbench model;
 	
 	public RenderAirshipWorkbench() 
@@ -72,6 +72,7 @@ public class RenderAirshipWorkbench extends TileEntitySpecialRenderer<TileEntity
         {
 	        GL11.glTranslatef(-0.44F, 1.1F, 0.31F);
 			GlStateManager.rotate(180, 0F, 1F, 1F);
+			GlStateManager.rotate(180, 0F, 1F, 0F);
         }
         
 		Minecraft.getMinecraft().getRenderItem().renderItem(itemstack0, TransformType.GROUND);
@@ -99,6 +100,7 @@ public class RenderAirshipWorkbench extends TileEntitySpecialRenderer<TileEntity
         {
 	        GL11.glTranslatef(0, 1.1F, 0.31F);
 			GlStateManager.rotate(180, 0F, 1F, 1F);
+			GlStateManager.rotate(180, 0F, 1F, 0F);
         }
         
 		Minecraft.getMinecraft().getRenderItem().renderItem(itemstack1, TransformType.GROUND);
@@ -126,6 +128,7 @@ public class RenderAirshipWorkbench extends TileEntitySpecialRenderer<TileEntity
         {
 	        GL11.glTranslatef(0.44F, 1.1F, 0.31F);
 			GlStateManager.rotate(180, 0F, 1F, 1F);
+			GlStateManager.rotate(180, 0F, 1F, 0F);
         }
         
 		Minecraft.getMinecraft().getRenderItem().renderItem(itemstack2, TransformType.GROUND);
@@ -153,6 +156,7 @@ public class RenderAirshipWorkbench extends TileEntitySpecialRenderer<TileEntity
         {
 	        GL11.glTranslatef(-0.44F, 1.1F, -0.13F);
 			GlStateManager.rotate(180, 0F, 1F, 1F);
+			GlStateManager.rotate(180, 0F, 1F, 0F);
         }
         
 		Minecraft.getMinecraft().getRenderItem().renderItem(itemstack3, TransformType.GROUND);
@@ -180,6 +184,7 @@ public class RenderAirshipWorkbench extends TileEntitySpecialRenderer<TileEntity
         {
 	        GL11.glTranslatef(0, 1.1F, -0.13F);
 			GlStateManager.rotate(180, 0F, 1F, 1F);
+			GlStateManager.rotate(180, 0F, 1F, 0F);
         }
         
 		Minecraft.getMinecraft().getRenderItem().renderItem(itemstack4, TransformType.GROUND);
@@ -207,6 +212,7 @@ public class RenderAirshipWorkbench extends TileEntitySpecialRenderer<TileEntity
         {
 	        GL11.glTranslatef(0.44F, 1.1F, -0.13F);
 			GlStateManager.rotate(180, 0F, 1F, 1F);
+			GlStateManager.rotate(180, 0F, 1F, 0F);
         }
         
 		Minecraft.getMinecraft().getRenderItem().renderItem(itemstack5, TransformType.GROUND);
@@ -234,6 +240,7 @@ public class RenderAirshipWorkbench extends TileEntitySpecialRenderer<TileEntity
         {
 	        GL11.glTranslatef(-0.44F, 1.1F, -0.56F);
 			GlStateManager.rotate(180, 0F, 1F, 1F);
+			GlStateManager.rotate(180, 0F, 1F, 0F);
         }
         
 		Minecraft.getMinecraft().getRenderItem().renderItem(itemstack6, TransformType.GROUND);
@@ -261,6 +268,7 @@ public class RenderAirshipWorkbench extends TileEntitySpecialRenderer<TileEntity
         {
 	        GL11.glTranslatef(0, 1.1F, -0.56F);
 			GlStateManager.rotate(180, 0F, 1F, 1F);
+			GlStateManager.rotate(180, 0F, 1F, 0F);
         }
         
 		Minecraft.getMinecraft().getRenderItem().renderItem(itemstack7, TransformType.GROUND);
@@ -288,6 +296,7 @@ public class RenderAirshipWorkbench extends TileEntitySpecialRenderer<TileEntity
         {
 	        GL11.glTranslatef(0.44F, 1.1F, -0.56F);
 			GlStateManager.rotate(180, 0F, 1F, 1F);
+			GlStateManager.rotate(180, 0F, 1F, 0F);
         }
         
 		Minecraft.getMinecraft().getRenderItem().renderItem(itemstack8, TransformType.GROUND);

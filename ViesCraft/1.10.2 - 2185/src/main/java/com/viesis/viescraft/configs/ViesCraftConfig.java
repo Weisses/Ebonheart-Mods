@@ -40,7 +40,8 @@ public class ViesCraftConfig {
 	public static String v5AirshipName;
 	public static String v6AirshipName;
 	
-	public static boolean recipeMythic;
+	public static boolean recipeDismounterPlayer;
+	//public static boolean recipeMythic;
 	public static boolean engineSounds;
 	
 	public static final boolean V1AIRSHIPENABLED_DEFAULT = true;
@@ -115,9 +116,9 @@ public class ViesCraftConfig {
 	public static final String VIESOLINEBURNTIME_NAME = "Viesoline Burn Time?";
 	public static final String VIESOLINEBURNTIME_COMMENT = "How long does Viesoline burn for in seconds? ";
 
-	public static final boolean RECIPEMYTHIC_DEFAULT = true;
-	public static final String RECIPEMYTHIC_NAME = "Enable Mythic+ Airship Frame Recipe?";
-	public static final String RECIPEMYTHIC_COMMENT = "Should Mythic+ Airship Frame be craftable?";
+	public static final boolean RECIPEDISMOUNTERPLAYER_DEFAULT = true;
+	public static final String RECIPEDISMOUNTERPLAYER_NAME = "Enable Player Dismounter Recipe?";
+	public static final String RECIPEDISMOUNTERPLAYER_COMMENT = "Should Player Dismounter be craftable?";
 
 	public static final boolean ENGINESOUND_DEFAULT = true;
 	public static final String ENGINESOUND_NAME = "Enable airship engine sounds?";
@@ -141,8 +142,8 @@ public class ViesCraftConfig {
 		v3AirshipEnabled = config.getBoolean(TextFormatting.WHITE + V3AIRSHIPENABLED_NAME, category1, V3AIRSHIPENABLED_DEFAULT, V3AIRSHIPENABLED_COMMENT);
 		
 		v4AirshipEnabled = config.getBoolean(TextFormatting.WHITE + V4AIRSHIPENABLED_NAME, category1, V4AIRSHIPENABLED_DEFAULT, V4AIRSHIPENABLED_COMMENT);
-		v5AirshipEnabled = config.getBoolean(TextFormatting.WHITE + V5AIRSHIPENABLED_NAME, category1, V5AIRSHIPENABLED_DEFAULT, V5AIRSHIPENABLED_COMMENT);
-		v6AirshipEnabled = config.getBoolean(TextFormatting.WHITE + V6AIRSHIPENABLED_NAME, category1, V6AIRSHIPENABLED_DEFAULT, V6AIRSHIPENABLED_COMMENT);
+		///////v5AirshipEnabled = config.getBoolean(TextFormatting.WHITE + V5AIRSHIPENABLED_NAME, category1, V5AIRSHIPENABLED_DEFAULT, V5AIRSHIPENABLED_COMMENT);
+		///////v6AirshipEnabled = config.getBoolean(TextFormatting.WHITE + V6AIRSHIPENABLED_NAME, category1, V6AIRSHIPENABLED_DEFAULT, V6AIRSHIPENABLED_COMMENT);
 		
 		//General settings
 		final String category2 = CATEGORY_VC + config.CATEGORY_SPLITTER + TextFormatting.GREEN + "General";
@@ -153,10 +154,10 @@ public class ViesCraftConfig {
 		v3AirshipSpeed = config.getInt(TextFormatting.WHITE + V3AIRSHIPSPEED_NAME, category2, V3AIRSHIPSPEED_DEFAULT, 100, 400, V3AIRSHIPSPEED_COMMENT);
 		
 		v4AirshipSpeed = config.getInt(TextFormatting.WHITE + V4AIRSHIPSPEED_NAME, category2, V4AIRSHIPSPEED_DEFAULT, 100, 400, V4AIRSHIPSPEED_COMMENT);
-		v5AirshipSpeed = config.getInt(TextFormatting.WHITE + V5AIRSHIPSPEED_NAME, category2, V5AIRSHIPSPEED_DEFAULT, 100, 400, V5AIRSHIPSPEED_COMMENT);
-		v6AirshipSpeed = config.getInt(TextFormatting.WHITE + V6AIRSHIPSPEED_NAME, category2, V6AIRSHIPSPEED_DEFAULT, 100, 400, V6AIRSHIPSPEED_COMMENT);
+		///////v5AirshipSpeed = config.getInt(TextFormatting.WHITE + V5AIRSHIPSPEED_NAME, category2, V5AIRSHIPSPEED_DEFAULT, 100, 400, V5AIRSHIPSPEED_COMMENT);
+		///////v6AirshipSpeed = config.getInt(TextFormatting.WHITE + V6AIRSHIPSPEED_NAME, category2, V6AIRSHIPSPEED_DEFAULT, 100, 400, V6AIRSHIPSPEED_COMMENT);
 		
-		recipeMythic = config.getBoolean(TextFormatting.WHITE + RECIPEMYTHIC_NAME, category2, RECIPEMYTHIC_DEFAULT, RECIPEMYTHIC_COMMENT);
+		recipeDismounterPlayer = config.getBoolean(TextFormatting.WHITE + RECIPEDISMOUNTERPLAYER_NAME, category2, RECIPEDISMOUNTERPLAYER_DEFAULT, RECIPEDISMOUNTERPLAYER_COMMENT);
 		
 		//Fuel settings
 		final String category3 = CATEGORY_VC + config.CATEGORY_SPLITTER + TextFormatting.AQUA + "Fuel";
@@ -176,8 +177,8 @@ public class ViesCraftConfig {
 		v3AirshipName = config.getString(TextFormatting.WHITE + V3AIRSHIPNAME_NAME, category4, V3AIRSHIPNAME_DEFAULT, V3AIRSHIPNAME_COMMENT);
 		
 		v4AirshipName = config.getString(TextFormatting.WHITE + V4AIRSHIPNAME_NAME, category4, V4AIRSHIPNAME_DEFAULT, V4AIRSHIPNAME_COMMENT);
-		v5AirshipName = config.getString(TextFormatting.WHITE + V5AIRSHIPNAME_NAME, category4, V5AIRSHIPNAME_DEFAULT, V5AIRSHIPNAME_COMMENT);
-		v6AirshipName = config.getString(TextFormatting.WHITE + V6AIRSHIPNAME_NAME, category4, V6AIRSHIPNAME_DEFAULT, V6AIRSHIPNAME_COMMENT);
+		///////v5AirshipName = config.getString(TextFormatting.WHITE + V5AIRSHIPNAME_NAME, category4, V5AIRSHIPNAME_DEFAULT, V5AIRSHIPNAME_COMMENT);
+		///////v6AirshipName = config.getString(TextFormatting.WHITE + V6AIRSHIPNAME_NAME, category4, V6AIRSHIPNAME_DEFAULT, V6AIRSHIPNAME_COMMENT);
 		
 		engineSounds = config.getBoolean(TextFormatting.WHITE + ENGINESOUND_NAME, category4, ENGINESOUND_DEFAULT, ENGINESOUND_COMMENT);
 		

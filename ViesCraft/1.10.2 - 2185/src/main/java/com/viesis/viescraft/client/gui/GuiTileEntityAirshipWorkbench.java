@@ -2,7 +2,7 @@ package com.viesis.viescraft.client.gui;
 
 import java.io.IOException;
 
-import com.viesis.viescraft.api.Reference;
+import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.api.util.Keybinds;
 import com.viesis.viescraft.common.tileentity.ContainerAirshipWorkbench;
 import com.viesis.viescraft.common.tileentity.TileEntityAirshipWorkbench;
@@ -34,7 +34,7 @@ public class GuiTileEntityAirshipWorkbench extends GuiContainer {
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) 
 	{
 		GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
-		this.mc.getTextureManager().bindTexture(new ResourceLocation(Reference.MOD_ID + ":" + "textures/gui/container_airship_workbench.png"));
+		this.mc.getTextureManager().bindTexture(new ResourceLocation(References.MOD_ID + ":" + "textures/gui/container_airship_workbench.png"));
 		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
 		
 		this.drawTexturedModalRect(this.guiLeft + 156, this.guiTop + 19, 176, 50, 8, 1);

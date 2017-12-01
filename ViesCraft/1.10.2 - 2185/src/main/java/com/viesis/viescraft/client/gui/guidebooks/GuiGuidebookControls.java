@@ -3,7 +3,7 @@ package com.viesis.viescraft.client.gui.guidebooks;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
-import com.viesis.viescraft.api.Reference;
+import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.api.util.Keybinds;
 
 import net.minecraft.client.Minecraft;
@@ -29,18 +29,18 @@ public class GuiGuidebookControls extends GuiScreen {
     
     public GuiGuidebookControls()
     {
-    	bookPageTextures[0] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/controls/page_0.png");
-        bookPageTextures[1] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/controls/page_1.png");
-        bookPageTextures[2] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/controls/page_2.png");
-        bookPageTextures[3] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/controls/page_3.png");
-        bookPageTextures[4] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/controls/page_4.png");
-        bookPageTextures[5] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/controls/page_5.png");
-        bookPageTextures[6] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/controls/page_6.png");
-        bookPageTextures[7] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/controls/page_7.png");
-        bookPageTextures[8] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/controls/page_8.png");
-        bookPageTextures[9] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/controls/page_9.png");
-        bookPageTextures[10] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/controls/page_10.png");
-        bookPageTextures[11] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/controls/page_11.png");
+    	bookPageTextures[0] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/controls/page_0.png");
+        bookPageTextures[1] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/controls/page_1.png");
+        bookPageTextures[2] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/controls/page_2.png");
+        bookPageTextures[3] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/controls/page_3.png");
+        bookPageTextures[4] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/controls/page_4.png");
+        bookPageTextures[5] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/controls/page_5.png");
+        bookPageTextures[6] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/controls/page_6.png");
+        bookPageTextures[7] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/controls/page_7.png");
+        bookPageTextures[8] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/controls/page_8.png");
+        bookPageTextures[9] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/controls/page_9.png");
+        bookPageTextures[10] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/controls/page_10.png");
+        bookPageTextures[11] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/controls/page_11.png");
         
         //Title
         stringPageText[0] = "\n\n\n\n\n\n\n"
@@ -48,7 +48,7 @@ public class GuiGuidebookControls extends GuiScreen {
         		+ "\n\n" 
         		+ "         " + "\u00A7oby Viesis\u00A7r"
         		+ "\n\n\n\n" 
-        		+ "          " + Reference.MOD_VERSION;
+        		+ "          " + References.MOD_VERSION;
         
         stringPageText[1] = "\n\n\n\n\n\n\n"
         		+ "   Before you decide "

@@ -1,8 +1,9 @@
 package com.viesis.viescraft.client.entity.model.v4;
 
-import com.viesis.viescraft.api.Reference;
+import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.client.InitParticlesVCRender;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
@@ -935,25 +936,28 @@ public class ModelAirshipV4FrameOn extends ModelBase {
 	{
 		super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
 		
-		long now = System.nanoTime();
-		int elapsed = (int) ((now - lastframe) / (1000000));
-		// 1000000 nanoseconds = .001 seconds
-		bladespin = (float) elapsed / 300.0f;
-		// 0.001 seconds / 300 = 3.3333 repeating.
-		lastframe = now;
-	    
-    	this.Propeller_R1a.rotateAngleZ += (bladespin * 3);
-    	this.Propeller_R1b.rotateAngleZ += (bladespin * 3);
-    	this.Propeller_R1c.rotateAngleZ += (bladespin * 3);
-    	this.Propeller_L1a.rotateAngleZ += (bladespin * 3);
-    	this.Propeller_L1b.rotateAngleZ += (bladespin * 3);
-    	this.Propeller_L1c.rotateAngleZ += (bladespin * 3);
-    	
-    	int randomTick = Reference.random.nextInt(100) + 1;
-    	
-		if(randomTick < 20)
+		if(!Minecraft.getMinecraft().isGamePaused())
 		{
-			InitParticlesVCRender.generateSmokeParticles(entity);
+			long now = System.nanoTime();
+			int elapsed = (int) ((now - lastframe) / (1000000));
+			// 1000000 nanoseconds = .001 seconds
+			bladespin = (float) elapsed / 300.0f;
+			// 0.001 seconds / 300 = 3.3333 repeating.
+			lastframe = now;
+		    
+			this.Propeller_R1a.rotateAngleZ += (bladespin * 3);
+			this.Propeller_R1b.rotateAngleZ += (bladespin * 3);
+			this.Propeller_R1c.rotateAngleZ += (bladespin * 3);
+			this.Propeller_L1a.rotateAngleZ += (bladespin * 3);
+			this.Propeller_L1b.rotateAngleZ += (bladespin * 3);
+			this.Propeller_L1c.rotateAngleZ += (bladespin * 3);
+			
+			int randomTick = References.random.nextInt(100) + 1;
+			
+			if(randomTick < 20)
+			{
+				InitParticlesVCRender.generateSmokeParticles(entity);
+			}
 		}
 	}
 }
