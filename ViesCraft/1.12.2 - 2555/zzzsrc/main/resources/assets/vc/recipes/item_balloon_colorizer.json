@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "I#I",
+    "#C#",
+    "I#I"
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "#": {
+      "item": "minecraft:coal",
+      "data": 32767
+    },
+    "C": {
+      "item": "vc:modules/airship_module",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "vc:item_balloon_colorizer",
+    "count": 1
+  }
+}

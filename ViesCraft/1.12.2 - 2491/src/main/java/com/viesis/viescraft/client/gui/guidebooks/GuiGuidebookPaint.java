@@ -3,7 +3,7 @@ package com.viesis.viescraft.client.gui.guidebooks;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
-import com.viesis.viescraft.api.Reference;
+import com.viesis.viescraft.api.References;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
@@ -28,22 +28,22 @@ public class GuiGuidebookPaint extends GuiScreen {
     
     public GuiGuidebookPaint()
     {
-    	bookPageTextures[0] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_0.png");
-        bookPageTextures[1] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_1.png");
-        bookPageTextures[2] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_2.png");
-        bookPageTextures[3] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_3.png");
-        bookPageTextures[4] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_4.png");
-        bookPageTextures[5] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_5.png");
-        bookPageTextures[6] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_6.png");
-        bookPageTextures[7] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_7.png");
-        bookPageTextures[8] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_8.png");
-        bookPageTextures[9] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_9.png");
-        bookPageTextures[10] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_10.png");
-        bookPageTextures[11] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_11.png");
-        bookPageTextures[12] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_12.png");
-        bookPageTextures[13] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_13.png");
-        bookPageTextures[14] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_14.png");
-        bookPageTextures[15] = new ResourceLocation(Reference.MOD_ID + ":textures/gui/guides/paint/page_15.png");
+    	bookPageTextures[0] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/paint/page_0.png");
+        bookPageTextures[1] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/paint/page_1.png");
+        bookPageTextures[2] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/paint/page_2.png");
+        bookPageTextures[3] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/paint/page_3.png");
+        bookPageTextures[4] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/paint/page_4.png");
+        bookPageTextures[5] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/paint/page_5.png");
+        bookPageTextures[6] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/paint/page_6.png");
+        bookPageTextures[7] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/paint/page_7.png");
+        bookPageTextures[8] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/paint/page_8.png");
+        bookPageTextures[9] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/paint/page_9.png");
+        bookPageTextures[10] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/paint/page_10.png");
+        bookPageTextures[11] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/paint/page_11.png");
+        bookPageTextures[12] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/paint/page_12.png");
+        bookPageTextures[13] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/paint/page_13.png");
+        bookPageTextures[14] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/paint/page_14.png");
+        bookPageTextures[15] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/paint/page_15.png");
 
         //Title
         stringPageText[0] = "\n\n\n\n\n\n\n"
@@ -51,7 +51,7 @@ public class GuiGuidebookPaint extends GuiScreen {
         		+ "\n\n" 
         		+ "         " + "\u00A7oby Viesis\u00A7r"
         		+ "\n\n\n\n" 
-        		+ "          " + Reference.MOD_VERSION;
+        		+ "          " + References.MOD_VERSION;
         
         stringPageText[1] = "   Now that you built "
         		+ "your airship and can "
@@ -279,11 +279,11 @@ public class GuiGuidebookPaint extends GuiScreen {
         int widthOfString;
         String stringPageIndicator = I18n.format("book.pageIndicator", 
               new Object[] {Integer.valueOf(currPage + 1), bookTotalPages});
-        widthOfString = fontRenderer.getStringWidth(stringPageIndicator);
-        fontRenderer.drawString(stringPageIndicator, 
+        widthOfString = fontRendererObj.getStringWidth(stringPageIndicator);
+        fontRendererObj.drawString(stringPageIndicator, 
               offsetFromScreenLeft - widthOfString + bookImageWidth - 44, 
               18, 1);
-        fontRenderer.drawSplitString(stringPageText[currPage], 
+        fontRendererObj.drawSplitString(stringPageText[currPage], 
               offsetFromScreenLeft + 36, 34, 116, 0);
         super.drawScreen(parWidth, parHeight, p_73863_3_);
 
@@ -362,14 +362,14 @@ public class GuiGuidebookPaint extends GuiScreen {
          * Draws this button to the screen.
          */
         @Override
-        public void drawButton(Minecraft mc, int parX, int parY, float partialTicks)
+        public void drawButton(Minecraft mc, int parX, int parY)
         {
             if (visible)
             {
-                boolean isButtonPressed = (parX >= x 
-                      && parY >= y 
-                      && parX < x + width 
-                      && parY < y + height);
+                boolean isButtonPressed = (parX >= xPosition 
+                      && parY >= yPosition 
+                      && parX < xPosition + width 
+                      && parY < yPosition + height);
                 GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
                 mc.getTextureManager().bindTexture(bookPageTextures[1]);
                 int textureX = 0;
@@ -385,7 +385,7 @@ public class GuiGuidebookPaint extends GuiScreen {
                     textureY += 13;
                 }
 
-                drawTexturedModalRect(x, y, 
+                drawTexturedModalRect(xPosition, yPosition, 
                       textureX, textureY, 
                       23, 13);
             }

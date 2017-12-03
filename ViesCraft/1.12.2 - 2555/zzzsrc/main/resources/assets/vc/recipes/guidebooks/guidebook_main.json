@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "vc:guidebook_main",
+  "pattern": [
+    " F ",
+    "FBF",
+    " F "
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:book"
+    },
+    "F": {
+      "item": "minecraft:feather"
+    }
+  },
+  "result": {
+    "item": "vc:guidebook_main",
+    "count": 1
+  }
+}

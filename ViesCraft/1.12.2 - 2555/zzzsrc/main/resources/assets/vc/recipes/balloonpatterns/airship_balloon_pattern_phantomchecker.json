@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "vc:airship_balloon_pattern_normalchecker",
+  "ingredients": [
+    {
+      "item": "vc:patterns/airship_balloon_pattern",
+      "data": 3
+    },
+    {
+      "item": "minecraft:nether_wart"
+    }
+  ],
+  "result": {
+    "item": "vc:patterns/airship_balloon_pattern",
+    "data": 5,
+    "count": 1
+  }
+}

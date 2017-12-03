@@ -1,6 +1,7 @@
 package com.viesis.viescraft.common.tileentity;
 
-import com.viesis.viescraft.common.items.crafting.SlotCraftingVC;
+import javax.annotation.Nullable;
+
 import com.viesis.viescraft.init.InitBlocksVC;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -10,7 +11,9 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryCraftResult;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.inventory.Slot;
+import net.minecraft.inventory.SlotCrafting;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.world.World;
 
 public class ContainerAirshipWorkbench extends Container {
@@ -21,7 +24,6 @@ public class ContainerAirshipWorkbench extends Container {
     public IInventory craftResult = new InventoryCraftResult();
     
     private final World world;
-    private final EntityPlayer player;
     
     /** Position of the workbench */
     private final TileEntityAirshipWorkbench airship;
@@ -30,12 +32,11 @@ public class ContainerAirshipWorkbench extends Container {
     {
         this.world = worldIn;
         this.airship = tileEntityAirshipWorkbench;
-        this.player = playerInventory.player;
         
         loadCraftingMatrix();
         
         //CraftResult Slot, Slot 0, Slot ID 0
-        this.addSlotToContainer(new SlotCraftingVC(playerInventory.player, this.craftMatrix, this.craftResult, 0, 124, 35));
+        this.addSlotToContainer(new SlotCrafting(playerInventory.player, this.craftMatrix, this.craftResult, 0, 124, 35));
         
         //Craft Matrix, Slot 1-9, Slot ID 0
         for (int i = 0; i < 3; ++i)
@@ -70,9 +71,7 @@ public class ContainerAirshipWorkbench extends Container {
      */
     public void onCraftMatrixChanged(IInventory inventoryIn)
     {
-    	this.slotChangedCraftingGrid(this.world, this.player, this.craftMatrix, (InventoryCraftResult) this.craftResult);
-    	
-    	//this.craftResult.setInventorySlotContents(0, CraftingManagerVC.findMatchingRecipe(this.craftMatrix, this.world));
+    	this.craftResult.setInventorySlotContents(0, CraftingManager.getInstance().findMatchingRecipe(this.craftMatrix, this.world));
     }
     
     /**
@@ -112,15 +111,16 @@ public class ContainerAirshipWorkbench extends Container {
      */
     public boolean canInteractWith(EntityPlayer playerIn)
     {
-        return this.world.getBlockState(this.airship.getPos()).getBlock() != InitBlocksVC.AIRSHIP_WORKBENCH ? false : playerIn.getDistanceSq((double)this.airship.getPos().getX() + 0.5D, (double)this.airship.getPos().getY() + 0.5D, (double)this.airship.getPos().getZ() + 0.5D) <= 64.0D;
+        return this.world.getBlockState(this.airship.getPos()).getBlock() != InitBlocksVC.airship_workbench ? false : playerIn.getDistanceSq((double)this.airship.getPos().getX() + 0.5D, (double)this.airship.getPos().getY() + 0.5D, (double)this.airship.getPos().getZ() + 0.5D) <= 64.0D;
     }
     
     /**
      * Take a stack from the specified inventory slot.
      */
+    @Nullable
     public ItemStack transferStackInSlot(EntityPlayer playerIn, int index)
     {
-        ItemStack itemstack = ItemStack.EMPTY;
+        ItemStack itemstack = null;
         Slot slot = (Slot)this.inventorySlots.get(index);
 
         if (slot != null && slot.getHasStack())
@@ -130,11 +130,9 @@ public class ContainerAirshipWorkbench extends Container {
 
             if (index == 0)
             {
-                itemstack1.getItem().onCreated(itemstack1, this.world, playerIn);
-
                 if (!this.mergeItemStack(itemstack1, 10, 46, true))
                 {
-                    return ItemStack.EMPTY;
+                    return null;
                 }
 
                 slot.onSlotChange(itemstack1, itemstack);
@@ -143,41 +141,36 @@ public class ContainerAirshipWorkbench extends Container {
             {
                 if (!this.mergeItemStack(itemstack1, 37, 46, false))
                 {
-                    return ItemStack.EMPTY;
+                    return null;
                 }
             }
             else if (index >= 37 && index < 46)
             {
                 if (!this.mergeItemStack(itemstack1, 10, 37, false))
                 {
-                    return ItemStack.EMPTY;
+                    return null;
                 }
             }
             else if (!this.mergeItemStack(itemstack1, 10, 46, false))
             {
-                return ItemStack.EMPTY;
+                return null;
             }
 
-            if (itemstack1.isEmpty())
+            if (itemstack1.stackSize == 0)
             {
-                slot.putStack(ItemStack.EMPTY);
+                slot.putStack((ItemStack)null);
             }
             else
             {
                 slot.onSlotChanged();
             }
 
-            if (itemstack1.getCount() == itemstack.getCount())
+            if (itemstack1.stackSize == itemstack.stackSize)
             {
-                return ItemStack.EMPTY;
+                return null;
             }
 
-            ItemStack itemstack2 = slot.onTake(playerIn, itemstack1);
-
-            if (index == 0)
-            {
-                playerIn.dropItem(itemstack2, false);
-            }
+            slot.onPickupFromSlot(playerIn, itemstack1);
         }
 
         return itemstack;

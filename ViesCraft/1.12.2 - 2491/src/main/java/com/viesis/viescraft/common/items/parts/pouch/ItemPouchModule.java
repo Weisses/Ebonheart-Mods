@@ -3,13 +3,11 @@ package com.viesis.viescraft.common.items.parts.pouch;
 import java.util.List;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
 import com.viesis.viescraft.ViesCraft;
 import com.viesis.viescraft.common.items.ItemHelper;
 import com.viesis.viescraft.network.GuiHandler;
 
-import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
@@ -48,7 +46,6 @@ public class ItemPouchModule extends Item {
 		this.setCreativeTab(ViesCraft.tabViesCraftItems);
 	}
 	
-	@Nonnull
 	@Override
 	public ICapabilityProvider initCapabilities(ItemStack stack, NBTTagCompound oldCapNbt) 
 	{
@@ -57,31 +54,16 @@ public class ItemPouchModule extends Item {
 	
 	private static class InvProviderModule implements ICapabilitySerializable<NBTBase> {
 		
-		private final IItemHandler inv = new ItemStackHandler(24) 
-		{
-			@Nonnull
-			@Override
-			public ItemStack insertItem(int slot, @Nonnull ItemStack toInsert, boolean simulate) 
-			{
-				if(!toInsert.isEmpty())
-				{
-					return super.insertItem(slot, toInsert, simulate);
-				}
-				else 
-				{
-					return toInsert;
-				}
-			}
-		};
+		private final IItemHandler inv = new ItemStackHandler(24);
 		
 		@Override
-		public boolean hasCapability(@Nonnull Capability<?> capability, @Nullable EnumFacing facing) 
+		public boolean hasCapability(Capability<?> capability, EnumFacing facing) 
 		{
 			return capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY;
 		}
 		
 		@Override
-		public <T> T getCapability(@Nonnull Capability<T> capability, @Nullable EnumFacing facing) 
+		public <T> T getCapability(Capability<T> capability, EnumFacing facing) 
 		{
 			if(capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
 			{
@@ -127,15 +109,15 @@ public class ItemPouchModule extends Item {
 	
 	@Nonnull
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(World world, EntityPlayer player, @Nonnull EnumHand hand) 
+	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand) 
 	{
-		player.openGui(ViesCraft.instance, GuiHandler.GUI_ITEM_POUCH_MODULE, world, hand == EnumHand.OFF_HAND ? 1 : 0, 0, 0);
-		return ActionResult.newResult(EnumActionResult.SUCCESS, player.getHeldItem(hand));
+		playerIn.openGui(ViesCraft.instance, GuiHandler.GUI_ITEM_POUCH_MODULE, worldIn, hand == EnumHand.OFF_HAND ? 1 : 0, 0, 0);
+		return ActionResult.newResult(EnumActionResult.SUCCESS, playerIn.getHeldItem(hand));
 	}
 	
 	@SideOnly(Side.CLIENT)
 	@Override
-    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
+	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, boolean advanced)
     {
 		tooltip.add(TextFormatting.DARK_AQUA + I18n.translateToLocal("vc.item.tt.pouchmodule.1"));
 		tooltip.add(TextFormatting.DARK_AQUA + I18n.translateToLocal("vc.item.tt.pouchmodule.2"));

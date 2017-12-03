@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "vc:v4/item_airship_v4",
+      "data": 32767
+    }
+  ],
+  "result": {
+    "item": "airships/item_airship_v4",
+    "data": 4,
+    "count": 1
+  }
+}

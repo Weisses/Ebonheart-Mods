@@ -26,7 +26,7 @@ public class AchievementTriggersVC extends InitAchievementsVC {
 	 * Craft an item for an achievement
 	 * @param event
 	 */
-/**	@SubscribeEvent
+	@SubscribeEvent
 	public void onCraft(PlayerEvent.ItemCraftedEvent event) 
 	{
 		if(event.crafting.getItem() == InitItemsVC.airship_engine) 
@@ -68,5 +68,4 @@ public class AchievementTriggersVC extends InitAchievementsVC {
 	//		event.player.triggerAchievement(EbonArtsAchievements.smeltMysticDust);
 	//	}
 	//}
-	 * */
 }

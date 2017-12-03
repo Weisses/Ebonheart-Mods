@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "vc:items/airships/v3/item_airship_v3_prismarine"
+        "layer0": "vc:items/airships/item_airship_v1_old"
     }
 }

@@ -5,8 +5,6 @@ import com.viesis.viescraft.init.InitBlocksVC;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class VCTabBlocks extends CreativeTabs {
 	
@@ -16,10 +14,9 @@ public class VCTabBlocks extends CreativeTabs {
 		this.setBackgroundImageName("viescraft.png");
 	}
 	
-	@SideOnly(Side.CLIENT)
 	@Override
-	public ItemStack getTabIconItem() 
+	public Item getTabIconItem() 
 	{
-		return new ItemStack(Item.getItemFromBlock(InitBlocksVC.AIRSHIP_WORKBENCH));
+		return new ItemStack(Item.getItemFromBlock(InitBlocksVC.airship_workbench)).getItem();
 	}
 }

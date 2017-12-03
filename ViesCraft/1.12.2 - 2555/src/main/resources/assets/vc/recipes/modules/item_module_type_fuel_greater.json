@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "vc:modules/item_module_type",
+  "pattern": [
+    "EEE",
+    "Q#Q",
+    "MPM"
+  ],
+  "key": {
+    "#": {
+      "item": "vc:modules/item_module_type",
+      "data": 11
+    },
+    "E": {
+      "item": "minecraft:emerald"
+    },
+    "Q": {
+      "item": "minecraft:quartz"
+    },
+    "P": {
+      "item": "minecraft:heavy_weighted_pressure_plate"
+    },
+    "M": {
+      "item": "vc:modules/item_module_type",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "vc:modules/item_module_type",
+    "data": 12,
+    "count": 1
+  }
+}

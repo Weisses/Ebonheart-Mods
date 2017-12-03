@@ -117,8 +117,7 @@ public class ContainerBatteryCharger extends ContainerVC {
     @Override
     public boolean canInteractWith(EntityPlayer playerIn)
     {
-		return false;
-        //return this.world.getBlockState(this.airship.getPos()).getBlock() != InitBlocksVC.battery_charger ? false : playerIn.getDistanceSq((double)this.airship.getPos().getX() + 0.5D, (double)this.airship.getPos().getY() + 0.5D, (double)this.airship.getPos().getZ() + 0.5D) <= 64.0D;
+        return this.world.getBlockState(this.airship.getPos()).getBlock() != InitBlocksVC.battery_charger ? false : playerIn.getDistanceSq((double)this.airship.getPos().getX() + 0.5D, (double)this.airship.getPos().getY() + 0.5D, (double)this.airship.getPos().getZ() + 0.5D) <= 64.0D;
     }
     
     /**

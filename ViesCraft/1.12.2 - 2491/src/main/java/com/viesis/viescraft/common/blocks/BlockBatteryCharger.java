@@ -3,8 +3,10 @@ package com.viesis.viescraft.common.blocks;
 import java.util.List;
 import java.util.Random;
 
+import javax.annotation.Nullable;
+
 import com.viesis.viescraft.ViesCraft;
-import com.viesis.viescraft.api.Reference;
+import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.common.blocks.basic.BlockEA;
 import com.viesis.viescraft.common.tileentity.TileEntityBatteryCharger;
 import com.viesis.viescraft.network.GuiHandler;
@@ -38,7 +40,7 @@ public class BlockBatteryCharger extends BlockEA implements ITileEntityProvider 
 	}
 	
 	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing heldItem, float side, float hitX, float hitY) 
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) 
 	{
 		if (worldIn.isRemote)
         {
@@ -46,7 +48,7 @@ public class BlockBatteryCharger extends BlockEA implements ITileEntityProvider 
         }
         else
         {
-        	playerIn.openGui(Reference.MOD_ID, GuiHandler.GUI_BATTERY_CHARGER, worldIn, pos.getX(), pos.getY(), pos.getZ());
+        	playerIn.openGui(References.MOD_ID, GuiHandler.GUI_BATTERY_CHARGER, worldIn, pos.getX(), pos.getY(), pos.getZ());
             //playerIn.addStat(StatList.CRAFTING_TABLE_INTERACTION);
             return true;
         }
@@ -69,12 +71,13 @@ public class BlockBatteryCharger extends BlockEA implements ITileEntityProvider 
 	{
 		TileEntityBatteryCharger te = (TileEntityBatteryCharger)world.getTileEntity(pos);
 		
-		for (int x = 0; x < 9; ++x) 
+		for (int x = 0; x < 8; ++x) 
 		{
 			if(te.inventory.getStackInSlot(x) != null)
 			{
 				ItemStack test = te.inventory.getStackInSlot(x);
 				InventoryHelper.spawnItemStack(world, pos.getX(), pos.getY(), pos.getZ(), te.inventory.getStackInSlot(x));
+				test = null;
 			}
 		}
 		

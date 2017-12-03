@@ -3,6 +3,7 @@ package com.viesis.viescraft.common.items.parts.pouch;
 import java.util.List;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import com.viesis.viescraft.client.gui.pouch.InventoryPouch;
 
@@ -18,12 +19,12 @@ public class ContainerPouchAll extends Container {
 	private final EntityPlayer player;
     private final InventoryPouch pouch;
     
-    public ContainerPouchAll(EntityPlayer playerIn, InventoryPouch boxInv)
+    public ContainerPouchAll(EntityPlayer playerIn, InventoryPouch pouchIn)
     {
         int i;
 		int j;
 		this.player = playerIn;
-		this.pouch = boxInv;
+		this.pouch = pouchIn;
 		
         for(i = 0; i < 3; ++i)
         {
@@ -48,57 +49,23 @@ public class ContainerPouchAll extends Container {
     }
     
 	@Override
-	public boolean canInteractWith(@Nonnull EntityPlayer player) 
+	public boolean canInteractWith(EntityPlayer player) 
 	{
 		return true;
 	}
 	
-	@SideOnly(Side.CLIENT)
-	@Override
-	public void setAll(List<ItemStack> l) 
-	{
-    	super.setAll(l);
-	}
-	
-	@Override
-	public void onContainerClosed(EntityPlayer playerIn)
-    {
-        super.onContainerClosed(playerIn);
-        
-        saveCraftingMatrix();
-    }
-	
-	/**
-     * Saves the crafting matrix to the workbench inventory.
-     */
-    private void saveCraftingMatrix()
-    {
-	  	for (int i = 0; i < this.pouch.getSlots(); i++) 
-    	{
-    		this.pouch.setStackInSlot(i, this.pouch.getStackInSlot(i));
-    	}
-    }
-    
-    @Override
-    public void detectAndSendChanges()
-    {
-        super.detectAndSendChanges();
-        
-        saveCraftingMatrix();
-    }
-	
-	@Nonnull
+	@Nullable
 	@Override
 	public ItemStack transferStackInSlot(EntityPlayer player, int slotIndex) 
 	{
-		ItemStack itemstack = ItemStack.EMPTY;
-		Slot slot = inventorySlots.get(slotIndex);
+		ItemStack itemstack = null;
+		Slot slot = (Slot)this.inventorySlots.get(slotIndex);
 		
 		if(slot != null && slot.getHasStack()) 
 		{
 			ItemStack itemstack1 = slot.getStack();
 			itemstack = itemstack1.copy();
-			
+			/**
 			int boxStart = 0;
 			int boxEnd = boxStart + 24;
 			int invEnd = boxEnd + 36;
@@ -107,34 +74,34 @@ public class ContainerPouchAll extends Container {
 			{
 				if(!mergeItemStack(itemstack1, boxEnd, invEnd, true))
 				{
-					return ItemStack.EMPTY;
+					return null;
 				}
+				
+            	slot.onSlotChange(itemstack1, itemstack);
 			} 
 			else 
 			{
-				if(!itemstack1.isEmpty() 
-				&& itemstack1.getItem() instanceof ItemPouchModule
-				&& !mergeItemStack(itemstack1, boxStart, boxEnd, false))
+				if(!mergeItemStack(itemstack1, boxStart, boxEnd, false))
 				{
-					return ItemStack.EMPTY;
+					return null;
 				}
 			}
-			
-			if(itemstack1.isEmpty())
+			*/
+			if (itemstack1.stackSize == 0)
 			{
-				slot.putStack(ItemStack.EMPTY);
+				slot.putStack((ItemStack) null);
 			}
 			else 
 			{
 				slot.onSlotChanged();
 			}
 			
-			if(itemstack1.getCount() == itemstack.getCount())
+			if (itemstack1.stackSize == itemstack.stackSize)
 			{
-				return ItemStack.EMPTY;
+				return null;
 			}
 			
-			slot.onTake(player, itemstack1);
+			slot.onPickupFromSlot(player, itemstack1);
 		}
 		
 		return itemstack;

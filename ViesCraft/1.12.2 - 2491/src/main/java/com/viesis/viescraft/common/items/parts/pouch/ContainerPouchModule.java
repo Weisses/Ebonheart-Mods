@@ -3,6 +3,7 @@ package com.viesis.viescraft.common.items.parts.pouch;
 import java.util.List;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import com.viesis.viescraft.client.gui.pouch.InventoryPouch;
 
@@ -18,18 +19,18 @@ public class ContainerPouchModule extends Container {
 	private final EntityPlayer player;
     private final InventoryPouch pouch;
     
-    public ContainerPouchModule(EntityPlayer playerIn, InventoryPouch boxInv)
+    public ContainerPouchModule(EntityPlayer playerIn, InventoryPouch pouchIn)
     {
         int i;
 		int j;
 		this.player = playerIn;
-		this.pouch = boxInv;
+		this.pouch = pouchIn;
 		
-		for(i = 0; i < 3; ++i)
+        for(i = 0; i < 3; ++i)
         {
-			for(j = 0; j < 6; ++j) 
+			for(j = 0; j < 8; ++j) 
 			{
-				this.addSlotToContainer(new SlotPouchModuleVC(this.pouch, j + i * 8, 35 + j * 18, 17 + i * 18));
+				this.addSlotToContainer(new SlotPouchModuleVC(this.pouch, j + i * 8, 17 + j * 18, 17 + i * 18));
 			}
         }
         
@@ -48,51 +49,17 @@ public class ContainerPouchModule extends Container {
     }
     
 	@Override
-	public boolean canInteractWith(@Nonnull EntityPlayer player) 
+	public boolean canInteractWith(EntityPlayer player) 
 	{
 		return true;
 	}
 	
-	@SideOnly(Side.CLIENT)
-	@Override
-	public void setAll(List<ItemStack> l) 
-	{
-    	super.setAll(l);
-	}
-	
-	@Override
-	public void onContainerClosed(EntityPlayer playerIn)
-    {
-        super.onContainerClosed(playerIn);
-        
-        saveCraftingMatrix();
-    }
-	
-	/**
-     * Saves the crafting matrix to the workbench inventory.
-     */
-    private void saveCraftingMatrix()
-    {
-	  	for (int i = 0; i < this.pouch.getSlots(); i++) 
-    	{
-    		this.pouch.setStackInSlot(i, this.pouch.getStackInSlot(i));
-    	}
-    }
-    
-    @Override
-    public void detectAndSendChanges()
-    {
-        super.detectAndSendChanges();
-        
-        saveCraftingMatrix();
-    }
-	
-	@Nonnull
+	@Nullable
 	@Override
 	public ItemStack transferStackInSlot(EntityPlayer player, int slotIndex) 
 	{
-		ItemStack itemstack = ItemStack.EMPTY;
-		Slot slot = inventorySlots.get(slotIndex);
+		ItemStack itemstack = null;
+		Slot slot = (Slot)this.inventorySlots.get(slotIndex);
 		
 		if(slot != null && slot.getHasStack()) 
 		{
@@ -103,38 +70,38 @@ public class ContainerPouchModule extends Container {
 			int boxEnd = boxStart + 24;
 			int invEnd = boxEnd + 36;
 			
-			if(slotIndex < boxEnd) 
-			{
-				if(!mergeItemStack(itemstack1, boxEnd, invEnd, true))
-				{
-					return ItemStack.EMPTY;
-				}
-			} 
-			else 
-			{
-				if(!itemstack1.isEmpty() 
-				&& itemstack1.getItem() instanceof ItemPouchModule
-				&& !mergeItemStack(itemstack1, boxStart, boxEnd, false))
-				{
-					return ItemStack.EMPTY;
-				}
-			}
+			//if(slotIndex < 24) 
+			//{
+			//	if(!this.mergeItemStack(itemstack1, 0, 23, true))
+			//	{
+			//		return null;
+			//	}
+				
+            	//slot.onSlotChange(itemstack1, itemstack);
+			//} 
+			//else 
+			//{
+			//	if(!this.mergeItemStack(itemstack1, 24, 59, false))
+			//	{
+			//		return null;
+			//	}
+			//}
 			
-			if(itemstack1.isEmpty())
+			if(itemstack1.stackSize == 0)
 			{
-				slot.putStack(ItemStack.EMPTY);
+				slot.putStack((ItemStack)null);
 			}
 			else 
 			{
 				slot.onSlotChanged();
 			}
 			
-			if(itemstack1.getCount() == itemstack.getCount())
+			if (itemstack1.stackSize == itemstack.stackSize)
 			{
-				return ItemStack.EMPTY;
+				return null;
 			}
 			
-			slot.onTake(player, itemstack1);
+			slot.onPickupFromSlot(player, itemstack1);
 		}
 		
 		return itemstack;

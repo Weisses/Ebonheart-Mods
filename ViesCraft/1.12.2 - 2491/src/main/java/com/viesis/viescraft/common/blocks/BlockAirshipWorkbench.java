@@ -3,14 +3,17 @@ package com.viesis.viescraft.common.blocks;
 import java.util.List;
 import java.util.Random;
 
+import javax.annotation.Nullable;
+
 import com.viesis.viescraft.ViesCraft;
-import com.viesis.viescraft.api.Reference;
+import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.common.blocks.basic.BlockEA;
 import com.viesis.viescraft.common.tileentity.TileEntityAirshipWorkbench;
 import com.viesis.viescraft.network.GuiHandler;
 
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.util.text.translation.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.InventoryHelper;
@@ -22,7 +25,6 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -40,7 +42,7 @@ public class BlockAirshipWorkbench extends BlockEA implements ITileEntityProvide
 	}
 	
 	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing heldItem, float side, float hitX, float hitY) 
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) 
 	{
 		if (worldIn.isRemote)
         {
@@ -48,7 +50,7 @@ public class BlockAirshipWorkbench extends BlockEA implements ITileEntityProvide
         }
         else
         {
-        	playerIn.openGui(Reference.MOD_ID, GuiHandler.GUI_AIRSHIP_WORKBENCH, worldIn, pos.getX(), pos.getY(), pos.getZ());
+        	playerIn.openGui(References.MOD_ID, GuiHandler.GUI_AIRSHIP_WORKBENCH, worldIn, pos.getX(), pos.getY(), pos.getZ());
             playerIn.addStat(StatList.CRAFTING_TABLE_INTERACTION);
             return true;
         }
@@ -71,6 +73,7 @@ public class BlockAirshipWorkbench extends BlockEA implements ITileEntityProvide
 	{
 		TileEntityAirshipWorkbench te = (TileEntityAirshipWorkbench)world.getTileEntity(pos);
 		
+		//TODO Check this!
 		for (int x = 0; x < 9; ++x) 
 		{
 			if(te.inventory.getStackInSlot(x) != null)

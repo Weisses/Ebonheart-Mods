@@ -21,7 +21,7 @@ public class FuelSlotVC extends SlotItemHandler {
     {
 		Item item = stack.getItem();
         
-		if (item == InitItemsVC.VIESOLINE_PELLETS) return true;
+		if (item == InitItemsVC.viesoline_pellets) return true;
         
 		return EntityAirshipV1Core.isItemFuel(stack) || isBucket(stack);
     }

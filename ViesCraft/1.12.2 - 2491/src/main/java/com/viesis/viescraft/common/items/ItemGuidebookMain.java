@@ -2,10 +2,7 @@ package com.viesis.viescraft.common.items;
 
 import java.util.List;
 
-import javax.annotation.Nullable;
-
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -31,9 +28,9 @@ public class ItemGuidebookMain extends Item {
 	
 	@SideOnly(Side.CLIENT)
 	@Override
-	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn)
+	public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand)
     {
-		ItemStack itemStackIn = playerIn.getHeldItemMainhand();
+        //ItemStack itemStackIn = playerIn.getHeldItemMainhand();
         
 		if(worldIn.isRemote)
 		{
@@ -44,9 +41,8 @@ public class ItemGuidebookMain extends Item {
     }
 	
 	@SideOnly(Side.CLIENT)
-	@Override
-	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> toolTip, ITooltipFlag flagIn)
-    {
+    public void addInformation(ItemStack stack, EntityPlayer playerIn, List toolTip, boolean advanced) 
+	{
 		toolTip.add(TextFormatting.GRAY + "by Viesis");
 	}
 }

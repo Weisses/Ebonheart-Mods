@@ -18,7 +18,7 @@ public class InventoryPouch implements IItemHandlerModifiable {
 	}
 	
 	@Override
-	public void setStackInSlot(int slot, @Nonnull ItemStack stack) 
+	public void setStackInSlot(int slot, ItemStack stack) 
 	{
 		boxInv.setStackInSlot(slot, stack);
 	}
@@ -29,30 +29,30 @@ public class InventoryPouch implements IItemHandlerModifiable {
 		return boxInv.getSlots();
 	}
 	
-	@Nonnull
 	@Override
 	public ItemStack getStackInSlot(int slot) 
 	{
 		return boxInv.getStackInSlot(slot);
 	}
 	
-	@Nonnull
 	@Override
-	public ItemStack insertItem(int slot, @Nonnull ItemStack stack, boolean simulate) 
+	public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) 
 	{
 		return boxInv.insertItem(slot, stack, simulate);
 	}
 	
-	@Nonnull
 	@Override
 	public ItemStack extractItem(int slot, int amount, boolean simulate) 
 	{
 		return boxInv.extractItem(slot, amount, simulate);
 	}
 	
-	@Override
-	public int getSlotLimit(int slot) 
-	{
-		return boxInv.getSlotLimit(slot);
-	}
+	//@Override
+	//public int getStackLimit(int slot, ItemStack stack)
+    //{
+    //    return stack.getMaxStackSize();
+    //}
+	//{
+	//	return boxInv.getSlotLimit(slot);
+	//}
 }

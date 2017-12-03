@@ -1,127 +1,164 @@
 package com.viesis.viescraft.client;
 
-import java.util.HashSet;
-import java.util.Set;
-
+import com.viesis.viescraft.api.EnumsVC;
 import com.viesis.viescraft.api.ItemsVC;
-import com.viesis.viescraft.api.Reference;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
 import com.viesis.viescraft.common.items.achievements.ItemAchievement;
-import com.viesis.viescraft.init.InitItemsVC;
 
-import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
-import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.relauncher.Side;
 
-@Mod.EventBusSubscriber(value = Side.CLIENT, modid = Reference.MOD_ID)
 public final class InitItemsVCRender extends ItemsVC {
 	
-	public static final InitItemsVCRender INSTANCE = new InitItemsVCRender();
-	
-	/**
-	 * Register this mod's {@link Fluid}, {@link Block} and {@link Item} models.
-	 *
-	 * @param event The event
-	 */
-	@SubscribeEvent
-	public static void registerAllModels(final ModelRegistryEvent event) 
+	public static void registerItemRender()
 	{
-		INSTANCE.registerItemRender();
-	}
-
-	/**
-	 * The {@link Item}s that have had models registered so far.
-	 */
-	private final Set<Item> itemsRegistered = new HashSet<>();
-	
-	private void registerItemRender()
-	{
-		registerRender(InitItemsVC.GUIDEBOOK_MAIN);
-		registerRender(InitItemsVC.GUIDEBOOK_CONTROL);
-		registerRender(InitItemsVC.GUIDEBOOK_PAINT);
-		registerRender(InitItemsVC.GUIDEBOOK_SOCKET);
+		//registerRender(airship_battery);
 		
-		InitItemsVC.RegistrationHandler.ITEMS.stream().filter(item -> !itemsRegistered.contains(item)).forEach(this::registerRender);
+		registerRender(guidebook_main);
+		
+		registerRender(dismounter_normal);
+		registerRender(dismounter_player);
+		
+		registerRender(viesoline_pellets);
+		
+		registerRender(logic_chip);
+		
+		registerRender(airship_balloon);
+		registerRender(airship_frame);
+		registerRender(airship_engine);
+		registerRender(airship_ignition);
+		
+		registerRender(module_creative);
+		
+		for (EnumsVC.AirshipTierCore meta : EnumsVC.AirshipTierCore.values()) 
+		{
+			registerRenderTierCore(upgrade_core, meta.getMetadata());
+		}
+		
+		for (EnumsVC.AirshipTierFrame meta : EnumsVC.AirshipTierFrame.values()) 
+		{
+			registerRenderTierFrame(upgrade_frame, meta.getMetadata());
+		}
+		
+		for (EnumsVC.AirshipTierEngine meta : EnumsVC.AirshipTierEngine.values()) 
+		{
+			registerRenderTierEngine(upgrade_engine, meta.getMetadata());
+		}
+		
+		for (EnumsVC.AirshipTierBalloon meta : EnumsVC.AirshipTierBalloon.values()) 
+		{
+			registerRenderTierBalloon(upgrade_balloon, meta.getMetadata());
+		}
+		
+		for (EnumsVC.ModuleType meta : EnumsVC.ModuleType.values()) 
+		{
+			registerRenderModuleType(module_type, meta.getMetadata());
+		}
+		
 		//==============================================
 		
-		for (EntityAirshipBaseVC.FrameCore meta : EntityAirshipBaseVC.FrameCore.values()) 
+		//V1
+		for (EnumsVC.AirshipTierCore meta : EnumsVC.AirshipTierCore.values()) 
 		{
-			registerRenderFrame(AIRSHIP_FRAME, meta.getMetadata());
+			registerRenderTierAirship(item_v1_airship, meta.getMetadata());
+		}
+		//V2
+		for (EnumsVC.AirshipTierCore meta : EnumsVC.AirshipTierCore.values()) 
+		{
+			registerRenderTierAirship(item_v2_airship, meta.getMetadata());
+		}
+		//V3
+		for (EnumsVC.AirshipTierCore meta : EnumsVC.AirshipTierCore.values()) 
+		{
+			registerRenderTierAirship(item_v3_airship, meta.getMetadata());
 		}
 		
-		for (EntityAirshipBaseVC.Balloon meta : EntityAirshipBaseVC.Balloon.values()) 
+		//V4
+		for (EnumsVC.AirshipTierCore meta : EnumsVC.AirshipTierCore.values()) 
 		{
-			registerRenderBalloon(AIRSHIP_BALLOON_PATTERN, meta.getMetadata());
+			registerRenderTierAirship(item_v4_airship, meta.getMetadata());
+		}
+		//V5
+		for (EnumsVC.AirshipTierCore meta : EnumsVC.AirshipTierCore.values()) 
+		{
+			//registerRenderTier(item_v5_airship, meta.getMetadata());
+		}
+		//V6
+		for (EnumsVC.AirshipTierCore meta : EnumsVC.AirshipTierCore.values()) 
+		{
+			//registerRenderTier(item_v6_airship, meta.getMetadata());
 		}
 		
-		for (EntityAirshipBaseVC.Module meta : EntityAirshipBaseVC.Module.values()) 
+		registerRender(item_creative_v1_airship);
+		registerRender(item_creative_v2_airship);
+		registerRender(item_creative_v3_airship);
+		registerRender(item_creative_v4_airship);
+		//registerRender(item_creative_v5_airship);
+		//registerRender(item_creative_v6_airship);
+		
+		//==============================================
+		
+		for (EnumsVC.Achievement meta : EnumsVC.Achievement.values()) 
 		{
-			registerRenderModule(AIRSHIP_MODULE, meta.getMetadata());
+			registerRenderAchievement(achievement_airship, meta.getMetadata());
 		}
 		
+		registerRender(item_entity_airship);
+		
+		//registerRender(item_pouch_module);
+		//registerRender(item_pouch_all);
+		
+		
+		//REMOVE ME NEXT UPDATE
+		registerRender(guidebook_paint);
+		registerRender(guidebook_socket);
+		registerRender(guidebook_controls);
+		registerRender(item_balloon_colorizer);
+		registerRender(airship_dismounter);
+		
+		//TODO REMOVE NEXT UPDATE
+		for (EnumsVC.AirshipModule meta : EnumsVC.AirshipModule.values()) 
+		{
+			registerRenderModule(airship_module, meta.getMetadata());
+		}
+		for (EnumsVC.AirshipTierFrame meta : EnumsVC.AirshipTierFrame.values()) 
+		{
+			registerRenderFrame(airship_baseframe, meta.getMetadata());
+		}
+		for (EnumsVC.AirshipBalloon meta : EnumsVC.AirshipBalloon.values()) 
+		{
+			registerRenderTierBalloonOLD(airship_balloon_pattern, meta.getMetadata());
+		}
+
+		//OLD
 		//V1
 		for (EntityAirshipBaseVC.FrameCore meta : EntityAirshipBaseVC.FrameCore.values()) 
 		{
-			registerRenderFrame(ITEM_AIRSHIP_V1, meta.getMetadata());
+			registerRenderFrame(item_airship_v1, meta.getMetadata());
 		}
-		
-		//==============================================
-		
 		//V2
 		for (EntityAirshipBaseVC.FrameCore meta : EntityAirshipBaseVC.FrameCore.values()) 
 		{
-			registerRenderFrame(ITEM_AIRSHIP_V2, meta.getMetadata());
+			registerRenderFrame(item_airship_v2, meta.getMetadata());
 		}
-		
-		//==============================================
-		
 		//V3
 		for (EntityAirshipBaseVC.FrameCore meta : EntityAirshipBaseVC.FrameCore.values()) 
 		{
-			registerRenderFrame(ITEM_AIRSHIP_V3, meta.getMetadata());
+			registerRenderFrame(item_airship_v3, meta.getMetadata());
 		}
-		
-		//==============================================
-		
 		//V4
 		for (EntityAirshipBaseVC.FrameCore meta : EntityAirshipBaseVC.FrameCore.values()) 
 		{
-			registerRenderFrame(ITEM_AIRSHIP_V4, meta.getMetadata());
+			registerRenderFrame(item_airship_v4, meta.getMetadata());
 		}
 		
 		//==============================================
 		
-		//V5
-		for (EntityAirshipBaseVC.FrameCore meta : EntityAirshipBaseVC.FrameCore.values()) 
-		{
-			registerRenderFrame(ITEM_AIRSHIP_V5, meta.getMetadata());
-		}
 		
-		//==============================================
-		
-		//V6
-		for (EntityAirshipBaseVC.FrameCore meta : EntityAirshipBaseVC.FrameCore.values()) 
-		{
-			registerRenderFrame(ITEM_AIRSHIP_V6, meta.getMetadata());
-		}
-		
-		//==============================================
-		
-		for (ItemAchievement.Achievement meta : ItemAchievement.Achievement.values()) 
-		{
-			registerRenderAchievement(ACHIEVEMENT_AIRSHIP, meta.getMetadata());
-		}
-		
-		registerRender(ITEM_ENTITY_AIRSHIP);
 	}
 	
-	private static void registerItemRenderTEMP()
+	public static void registerItemRenderTEMP()
 	{
 		//========================
 		//    To be deleted
@@ -131,38 +168,86 @@ public final class InitItemsVCRender extends ItemsVC {
 		
 	}
 	
-	private void registerRender(Item item)
+	public static void registerRender(Item item)
 	{
-		itemsRegistered.add(item);
 		ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(item.getRegistryName().toString(), "inventory"));
 	}
 	
-	private void registerRenderFrame(Item item, int meta)
+	
+	
+	
+	public static void registerRenderTierAirship(Item item, int meta)
 	{
-		String itemName = item.getRegistryName() + "_" + EntityAirshipBaseVC.FrameCore.byId(meta).getName().toString().toLowerCase().replaceAll("\\s+","");
+		String itemName = item.getRegistryName().toString() + "_" + EnumsVC.AirshipTierFrame.byId(meta).getName().toString().toLowerCase().replaceAll("\\s+","");
 		
-		itemsRegistered.add(item);
 		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(itemName, "inventory"));
 	}
 	
-	private void registerRenderBalloon(Item item, int meta)
+	public static void registerRenderTierFrame(Item item, int meta)
 	{
-		String itemName = item.getRegistryName().toString() + "_" + EntityAirshipBaseVC.Balloon.byId(meta).getName().toString().toLowerCase().replaceAll("\\s+","");
-		itemsRegistered.add(item);
+		String itemName = item.getRegistryName().toString() + "_" + EnumsVC.AirshipTierFrame.byId(meta).getName().toString().toLowerCase().replaceAll("\\s+","");
+		
 		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(itemName, "inventory"));
 	}
 	
-	private void registerRenderModule(Item item, int meta)
+	public static void registerRenderTierCore(Item item, int meta)
 	{
-		String itemName = item.getRegistryName().toString() + "_" + EntityAirshipBaseVC.Module.byId(meta).getName().toString().toLowerCase().replaceAll("\\s+","");
-		itemsRegistered.add(item);
+		String itemName = item.getRegistryName().toString() + "_" + EnumsVC.AirshipTierCore.byId(meta).getName().toString().toLowerCase().replaceAll("\\s+","");
+		
 		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(itemName, "inventory"));
 	}
 	
-	private void registerRenderAchievement(Item item, int meta)
+	public static void registerRenderTierEngine(Item item, int meta)
 	{
-		String itemName = item.getRegistryName().toString() + "_" + ItemAchievement.Achievement.byId(meta).getName().toString().toLowerCase().replaceAll("\\s+","");
-		itemsRegistered.add(item);
+		String itemName = item.getRegistryName().toString() + "_" + EnumsVC.AirshipTierEngine.byId(meta).getName().toString().toLowerCase().replaceAll("\\s+","");
+		
 		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(itemName, "inventory"));
 	}
+	
+	public static void registerRenderTierBalloon(Item item, int meta)
+	{
+		String itemName = item.getRegistryName().toString() + "_" + EnumsVC.AirshipTierBalloon.byId(meta).getName().toString().toLowerCase().replaceAll("\\s+","");
+		
+		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(itemName, "inventory"));
+	}
+	
+	public static void registerRenderModuleType(Item item, int meta)
+	{
+		String itemName = item.getRegistryName().toString() + "_" + EnumsVC.ModuleType.byId(meta).getName().toString().toLowerCase().replaceAll("\\s+","");
+		
+		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(itemName, "inventory"));
+	}
+	
+	public static void registerRenderAchievement(Item item, int meta)
+	{
+		String itemName = item.getRegistryName().toString() + "_" + EnumsVC.Achievement.byId(meta).getName().toString().toLowerCase().replaceAll("\\s+","");
+		
+		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(itemName, "inventory"));
+	}
+	
+	
+	
+	//TODO to be removed next update
+		public static void registerRenderFrame(Item item, int meta)
+		{
+			String itemName = item.getRegistryName().toString() + "_" + EntityAirshipBaseVC.FrameCore.byId(meta).getName().toString().toLowerCase().replaceAll("\\s+","");
+			
+			ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(itemName, "inventory"));
+		}
+
+		public static void registerRenderModule(Item item, int meta)
+		{
+			String itemName = item.getRegistryName().toString() + "_" + EnumsVC.AirshipModule.byId(meta).getName().toString().toLowerCase().replaceAll("\\s+","");
+			
+			ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(itemName, "inventory"));
+		}	
+		
+		public static void registerRenderTierBalloonOLD(Item item, int meta)
+		{
+			String itemName = item.getRegistryName().toString() + "_" + EnumsVC.AirshipBalloon.byId(meta).getName().toString().toLowerCase().replaceAll("\\s+","");
+			
+			ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(itemName, "inventory"));
+		}
+		
+		
 }

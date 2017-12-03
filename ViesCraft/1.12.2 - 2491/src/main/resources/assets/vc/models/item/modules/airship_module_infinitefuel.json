@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "vc:items/modules/module_fuel_infinite"
+        "layer0": "vc:items/modules/old_item_module_type"
     }
 }

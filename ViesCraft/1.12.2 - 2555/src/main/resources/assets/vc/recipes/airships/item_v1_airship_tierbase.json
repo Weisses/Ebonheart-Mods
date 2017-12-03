@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "LBL",
+    "E#E",
+    "LIL"
+  ],
+  "key": {
+    "#": {
+      "item": "vc:airship_frame"
+    },
+    "B": {
+      "item": "vc:airship_balloon"
+    },
+    "E": {
+      "item": "vc:airship_engine"
+    },
+    "I": {
+      "item": "vc:airship_ignition"
+    },
+    "L": {
+      "item": "minecraft:lead"
+    }
+  },
+  "result": {
+    "item": "airships/item_airship_v1",
+    "data": 0,
+    "count": 1
+  }
+}

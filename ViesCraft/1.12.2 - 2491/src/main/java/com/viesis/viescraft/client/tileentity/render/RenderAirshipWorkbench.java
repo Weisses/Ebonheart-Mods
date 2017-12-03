@@ -2,7 +2,7 @@ package com.viesis.viescraft.client.tileentity.render;
 
 import org.lwjgl.opengl.GL11;
 
-import com.viesis.viescraft.api.Reference;
+import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.client.tileentity.model.ModelAirshipWorkbench;
 import com.viesis.viescraft.common.tileentity.TileEntityAirshipWorkbench;
 
@@ -18,7 +18,7 @@ import net.minecraft.util.ResourceLocation;
 
 public class RenderAirshipWorkbench extends TileEntitySpecialRenderer<TileEntityAirshipWorkbench> {
 	
-	ResourceLocation texture = new ResourceLocation(Reference.MOD_ID + ":" + "textures/models/airship_workbench.png");
+	ResourceLocation texture = new ResourceLocation(References.MOD_ID + ":" + "textures/models/airship_workbench.png");
 	private ModelAirshipWorkbench model;
 	
 	public RenderAirshipWorkbench() 
@@ -27,7 +27,7 @@ public class RenderAirshipWorkbench extends TileEntitySpecialRenderer<TileEntity
 	}
 	
 	@Override
-	public void render(TileEntityAirshipWorkbench te, double x, double y, double z, float partialTicks, int destroyStage, float alpha)
+	public void renderTileEntityAt(TileEntityAirshipWorkbench te, double x, double y, double z, float partialTicks, int destroyStage) 
 	{
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float)x + 0.5f, (float)y + 1.5f, (float)z + 0.5f);
@@ -36,7 +36,7 @@ public class RenderAirshipWorkbench extends TileEntitySpecialRenderer<TileEntity
 		GL11.glPushMatrix();
 		
 		this.model.renderModel(0.0625f);
-		
+
 		this.renderItemSlot0(te, x, y, z, partialTicks, destroyStage);
 		this.renderItemSlot1(te, x, y, z, partialTicks, destroyStage);
 		this.renderItemSlot2(te, x, y, z, partialTicks, destroyStage);
@@ -50,12 +50,12 @@ public class RenderAirshipWorkbench extends TileEntitySpecialRenderer<TileEntity
 		GL11.glPopMatrix();
 		GL11.glPopMatrix();
 	}
-	
+
 	private void renderItemSlot0(TileEntityAirshipWorkbench te, double x, double y, double z, float partialTicks, int destroyStage)
     {
         ItemStack itemstack0 = te.inventory.getStackInSlot(0);
         
-        if(itemstack0.isEmpty())
+        if(itemstack0 == null)
 		{
 			return;
 		}
@@ -72,6 +72,7 @@ public class RenderAirshipWorkbench extends TileEntitySpecialRenderer<TileEntity
         {
 	        GL11.glTranslatef(-0.44F, 1.1F, 0.31F);
 			GlStateManager.rotate(180, 0F, 1F, 1F);
+			GlStateManager.rotate(180, 0F, 1F, 0F);
         }
         
 		Minecraft.getMinecraft().getRenderItem().renderItem(itemstack0, TransformType.GROUND);
@@ -82,7 +83,7 @@ public class RenderAirshipWorkbench extends TileEntitySpecialRenderer<TileEntity
     {
         ItemStack itemstack1 = te.inventory.getStackInSlot(1);
         
-        if(itemstack1.isEmpty())
+        if(itemstack1 == null)
 		{
 			return;
 		}
@@ -99,6 +100,7 @@ public class RenderAirshipWorkbench extends TileEntitySpecialRenderer<TileEntity
         {
 	        GL11.glTranslatef(0, 1.1F, 0.31F);
 			GlStateManager.rotate(180, 0F, 1F, 1F);
+			GlStateManager.rotate(180, 0F, 1F, 0F);
         }
         
 		Minecraft.getMinecraft().getRenderItem().renderItem(itemstack1, TransformType.GROUND);
@@ -109,7 +111,7 @@ public class RenderAirshipWorkbench extends TileEntitySpecialRenderer<TileEntity
     {
         ItemStack itemstack2 = te.inventory.getStackInSlot(2);
         
-        if(itemstack2.isEmpty())
+        if(itemstack2 == null)
 		{
 			return;
 		}
@@ -126,6 +128,7 @@ public class RenderAirshipWorkbench extends TileEntitySpecialRenderer<TileEntity
         {
 	        GL11.glTranslatef(0.44F, 1.1F, 0.31F);
 			GlStateManager.rotate(180, 0F, 1F, 1F);
+			GlStateManager.rotate(180, 0F, 1F, 0F);
         }
         
 		Minecraft.getMinecraft().getRenderItem().renderItem(itemstack2, TransformType.GROUND);
@@ -136,7 +139,7 @@ public class RenderAirshipWorkbench extends TileEntitySpecialRenderer<TileEntity
     {
         ItemStack itemstack3 = te.inventory.getStackInSlot(3);
         
-        if(itemstack3.isEmpty())
+        if(itemstack3 == null)
 		{
 			return;
 		}
@@ -153,6 +156,7 @@ public class RenderAirshipWorkbench extends TileEntitySpecialRenderer<TileEntity
         {
 	        GL11.glTranslatef(-0.44F, 1.1F, -0.13F);
 			GlStateManager.rotate(180, 0F, 1F, 1F);
+			GlStateManager.rotate(180, 0F, 1F, 0F);
         }
         
 		Minecraft.getMinecraft().getRenderItem().renderItem(itemstack3, TransformType.GROUND);
@@ -163,7 +167,7 @@ public class RenderAirshipWorkbench extends TileEntitySpecialRenderer<TileEntity
     {
         ItemStack itemstack4 = te.inventory.getStackInSlot(4);
         
-        if(itemstack4.isEmpty())
+        if(itemstack4 == null)
 		{
 			return;
 		}
@@ -180,6 +184,7 @@ public class RenderAirshipWorkbench extends TileEntitySpecialRenderer<TileEntity
         {
 	        GL11.glTranslatef(0, 1.1F, -0.13F);
 			GlStateManager.rotate(180, 0F, 1F, 1F);
+			GlStateManager.rotate(180, 0F, 1F, 0F);
         }
         
 		Minecraft.getMinecraft().getRenderItem().renderItem(itemstack4, TransformType.GROUND);
@@ -190,7 +195,7 @@ public class RenderAirshipWorkbench extends TileEntitySpecialRenderer<TileEntity
     {
         ItemStack itemstack5 = te.inventory.getStackInSlot(5);
         
-        if(itemstack5.isEmpty())
+        if(itemstack5 == null)
 		{
 			return;
 		}
@@ -207,6 +212,7 @@ public class RenderAirshipWorkbench extends TileEntitySpecialRenderer<TileEntity
         {
 	        GL11.glTranslatef(0.44F, 1.1F, -0.13F);
 			GlStateManager.rotate(180, 0F, 1F, 1F);
+			GlStateManager.rotate(180, 0F, 1F, 0F);
         }
         
 		Minecraft.getMinecraft().getRenderItem().renderItem(itemstack5, TransformType.GROUND);
@@ -217,7 +223,7 @@ public class RenderAirshipWorkbench extends TileEntitySpecialRenderer<TileEntity
     {
         ItemStack itemstack6 = te.inventory.getStackInSlot(6);
         
-        if(itemstack6.isEmpty())
+        if(itemstack6 == null)
 		{
 			return;
 		}
@@ -234,6 +240,7 @@ public class RenderAirshipWorkbench extends TileEntitySpecialRenderer<TileEntity
         {
 	        GL11.glTranslatef(-0.44F, 1.1F, -0.56F);
 			GlStateManager.rotate(180, 0F, 1F, 1F);
+			GlStateManager.rotate(180, 0F, 1F, 0F);
         }
         
 		Minecraft.getMinecraft().getRenderItem().renderItem(itemstack6, TransformType.GROUND);
@@ -244,7 +251,7 @@ public class RenderAirshipWorkbench extends TileEntitySpecialRenderer<TileEntity
     {
         ItemStack itemstack7 = te.inventory.getStackInSlot(7);
         
-        if(itemstack7.isEmpty())
+        if(itemstack7 == null)
 		{
 			return;
 		}
@@ -261,6 +268,7 @@ public class RenderAirshipWorkbench extends TileEntitySpecialRenderer<TileEntity
         {
 	        GL11.glTranslatef(0, 1.1F, -0.56F);
 			GlStateManager.rotate(180, 0F, 1F, 1F);
+			GlStateManager.rotate(180, 0F, 1F, 0F);
         }
         
 		Minecraft.getMinecraft().getRenderItem().renderItem(itemstack7, TransformType.GROUND);
@@ -271,7 +279,7 @@ public class RenderAirshipWorkbench extends TileEntitySpecialRenderer<TileEntity
     {
         ItemStack itemstack8 = te.inventory.getStackInSlot(8);
         
-        if(itemstack8.isEmpty())
+        if(itemstack8 == null)
 		{
 			return;
 		}
@@ -288,6 +296,7 @@ public class RenderAirshipWorkbench extends TileEntitySpecialRenderer<TileEntity
         {
 	        GL11.glTranslatef(0.44F, 1.1F, -0.56F);
 			GlStateManager.rotate(180, 0F, 1F, 1F);
+			GlStateManager.rotate(180, 0F, 1F, 0F);
         }
         
 		Minecraft.getMinecraft().getRenderItem().renderItem(itemstack8, TransformType.GROUND);

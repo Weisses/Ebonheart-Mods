@@ -32,6 +32,6 @@ public class MessageGuiMusicPg1 extends MessageBase<MessageGuiMusicPg1> {
 	@Override
 	public void handleServerSide(MessageGuiMusicPg1 message, EntityPlayer player) 
 	{
-		player.openGui(ViesCraft.instance, GuiHandler.GUI_MUSIC_PAGE1, player.world, player.getPosition().getX(), player.getPosition().getY(), player.getPosition().getZ());
+		player.openGui(ViesCraft.instance, GuiHandler.GUI_MUSIC_PG1, player.worldObj, player.getPosition().getX(), player.getPosition().getY(), player.getPosition().getZ());
 	}
 }

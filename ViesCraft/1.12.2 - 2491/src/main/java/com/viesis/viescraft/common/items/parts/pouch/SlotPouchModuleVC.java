@@ -18,7 +18,7 @@ public class SlotPouchModuleVC extends SlotItemHandler {
      */
     public boolean isItemValid(ItemStack stack)
     {
-    	if(stack.getItem() == InitItemsVC.AIRSHIP_MODULE)
+    	if(stack.getItem() == InitItemsVC.airship_module)
     	{
     		return true;
     	}

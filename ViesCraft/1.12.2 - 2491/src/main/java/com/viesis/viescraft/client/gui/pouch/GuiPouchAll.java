@@ -1,6 +1,6 @@
 package com.viesis.viescraft.client.gui.pouch;
 
-import com.viesis.viescraft.api.Reference;
+import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.common.items.parts.pouch.ContainerPouchAll;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -11,7 +11,7 @@ import net.minecraft.util.ResourceLocation;
 
 public class GuiPouchAll extends GuiContainer {
 	
-	private static final ResourceLocation texture = new ResourceLocation(Reference.MOD_ID + ":" + "textures/gui/container_module_pouch.png");
+	private static final ResourceLocation texture = new ResourceLocation(References.MOD_ID + ":" + "textures/gui/container_module_pouch.png");
 	
 	public GuiPouchAll(EntityPlayer player, InventoryPouch box) 
 	{
@@ -31,7 +31,7 @@ public class GuiPouchAll extends GuiContainer {
 			
 			if(slot.getHasStack() && slot.getSlotStackLimit() == 1)
 			{
-				drawTexturedModalRect(guiLeft+slot.xPos, guiTop+slot.yPos, 200, 0, 16, 16);
+				drawTexturedModalRect(guiLeft+slot.xDisplayPosition, guiTop+slot.yDisplayPosition, 200, 0, 16, 16);
 			}
 		}
 	}

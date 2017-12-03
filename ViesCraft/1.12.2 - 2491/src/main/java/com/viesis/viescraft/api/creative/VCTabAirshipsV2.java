@@ -3,6 +3,7 @@ package com.viesis.viescraft.api.creative;
 import com.viesis.viescraft.init.InitItemsVC;
 
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -17,8 +18,8 @@ public class VCTabAirshipsV2 extends CreativeTabs {
 	
 	@SideOnly(Side.CLIENT)
 	@Override
-	public ItemStack getTabIconItem() 
+	public Item getTabIconItem() 
 	{
-		return new ItemStack(InitItemsVC.ITEM_AIRSHIP_V2, 1, 21);
+		return new ItemStack(InitItemsVC.item_v2_airship, 1, 21).getItem();
 	}
 }

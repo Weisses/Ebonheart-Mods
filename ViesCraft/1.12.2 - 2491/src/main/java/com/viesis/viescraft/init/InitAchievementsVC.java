@@ -1,15 +1,15 @@
 package com.viesis.viescraft.init;
 
-import com.viesis.viescraft.api.AdvancementVC;
-import com.viesis.viescraft.api.Reference;
+import com.viesis.viescraft.api.AchievementsVC;
+import com.viesis.viescraft.api.References;
 
 import net.minecraft.item.ItemStack;
-//import net.minecraft.stats.Achievement;
-//import net.minecraftforge.common.AchievementPage;
+import net.minecraft.stats.Achievement;
+import net.minecraftforge.common.AchievementPage;
 
-public class InitAchievementsVC extends AdvancementVC {
-	/**
-	public static final AchievementPage achievementPageEA = new AchievementPage(Reference.MOD_NAME);
+public class InitAchievementsVC extends AchievementsVC {
+	
+	public static final AchievementPage achievementPageEA = new AchievementPage(References.MOD_NAME);
 	
     public static void init()
     {
@@ -33,9 +33,9 @@ public class InitAchievementsVC extends AdvancementVC {
     
     private static Achievement addAchievement(String unlocalizedName, String identifier, int column, int row, ItemStack iconStack, Achievement parent)
     {
-        Achievement achievement = new Achievement(unlocalizedName, Reference.MOD_ID + ":" + identifier, column, row, iconStack, parent);
+        Achievement achievement = new Achievement(unlocalizedName, References.MOD_ID + ":" + identifier, column, row, iconStack, parent);
         achievement.registerStat();
         achievementPageEA.getAchievements().add(achievement);
         return achievement;
-    }*/
+    }
 }

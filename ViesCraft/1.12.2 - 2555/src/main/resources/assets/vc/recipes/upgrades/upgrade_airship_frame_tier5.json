@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "vc:upgrades/upgrade_airship_frame",
+  "pattern": [
+    "FLF",
+    "L#L",
+    "FLF"
+  ],
+  "key": {
+    "F": {
+      "item": "vc:upgrades/upgrade_airship_frame",
+      "data": 0
+    },
+    "L": {
+      "item": "vc:item_logic_chip"
+    },
+    "#": {
+      "item": "vc:upgrades/upgrade_airship_frame",
+      "data": 4
+    }
+  },
+  "result": {
+    "item": "vc:upgrades/upgrade_airship_frame",
+    "data": 5,
+    "count": 1
+  }
+}

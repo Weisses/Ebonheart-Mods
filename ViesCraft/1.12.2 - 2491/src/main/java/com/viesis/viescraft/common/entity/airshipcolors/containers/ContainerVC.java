@@ -17,14 +17,14 @@ public class ContainerVC extends Container {
     {
     	return true;
     }
-	
-    /**
+
+	/**
      * Take a stack from the specified inventory slot.
      */
 	@Override
-    public ItemStack transferStackInSlot(EntityPlayer playerIn, int index)
+	public ItemStack transferStackInSlot(EntityPlayer playerIn, int index)
     {
-        ItemStack itemstack = ItemStack.EMPTY;
+        ItemStack itemstack = null;
         Slot slot = (Slot)this.inventorySlots.get(index);
         
         if (slot != null && slot.getHasStack())
@@ -36,7 +36,7 @@ public class ContainerVC extends Container {
             {
             	if (!this.mergeItemStack(itemstack1, 1, 37, true))
                 {
-                    return ItemStack.EMPTY;
+                    return null;
                 }
             	
             	slot.onSlotChange(itemstack1, itemstack);
@@ -45,25 +45,25 @@ public class ContainerVC extends Container {
             {
             	if (!this.mergeItemStack(itemstack1, 0, 1, false))
 				{
-					return ItemStack.EMPTY;
+					return null;
 				}
             }
             
-            if (itemstack1.isEmpty())
-            {
-                slot.putStack(ItemStack.EMPTY);
-            }
-            else
-            {
-                slot.onSlotChanged();
-            }
+            if (itemstack1.stackSize == 0)
+			{
+				slot.putStack((ItemStack) null);
+			}
+			else
+			{
+				slot.onSlotChanged();
+			}
+			
+			if (itemstack1.stackSize == itemstack.stackSize)
+			{
+				return null;
+			}
             
-            if (itemstack1.getCount() == itemstack.getCount())
-            {
-                return ItemStack.EMPTY;
-            }
-            
-            slot.onTake(playerIn, itemstack1);
+			slot.onPickupFromSlot(playerIn, itemstack1);
         }
         
         return itemstack;

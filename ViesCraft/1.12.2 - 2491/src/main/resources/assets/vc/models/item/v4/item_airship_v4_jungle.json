@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "vc:items/airships/v4/item_airship_v4_jungle"
+        "layer0": "vc:items/airships/item_airship_v1_old"
     }
 }

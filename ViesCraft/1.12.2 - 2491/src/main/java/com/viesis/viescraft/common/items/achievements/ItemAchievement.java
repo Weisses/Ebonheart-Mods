@@ -1,15 +1,15 @@
 package com.viesis.viescraft.common.items.achievements;
 
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
+import com.viesis.viescraft.api.EnumsVC;
 import com.viesis.viescraft.common.items.ItemHelper;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.NonNullList;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemAchievement extends Item {
 	
@@ -27,79 +27,18 @@ public class ItemAchievement extends Item {
 	@Override
 	public String getItemStackDisplayName(ItemStack stack)
     {
-		return ("Icon - " + ItemAchievement.Achievement.byId(this.getMetadata(stack)).getName());
+		return ("Icon - " + EnumsVC.Achievement.byId(this.getMetadata(stack)).getName());
     }
 	
+	@SideOnly(Side.CLIENT)
 	@Override
-	public void getSubItems(final CreativeTabs tab, final NonNullList<ItemStack> subItems) {
-		if (isInCreativeTab(tab)) {
-			final List<ItemStack> items = Stream.of(ItemAchievement.Achievement.values())
-					.map(enumType -> new ItemStack(this, 1, enumType.getMetadata()))
-					.collect(Collectors.toList());
-
-			subItems.addAll(items);
-		}
-	}
-	
-    public static enum Achievement
+    public void getSubItems(Item itemIn, CreativeTabs tab, List<ItemStack> subItems)
     {
-        CREATEENGINE(0, "create_engine"),
-    	CREATEIGNITION(1, "create_ignition"),
-        CREATE(2, "create"),
-        CREATECOLOR(3, "create_color"),
-        CREATEMODULE(4, "create_module"),
-        AIRBORN(5, "airborn"),
-        WATER(6, "water"),
-        LAVA(7, "lava");
-        
-        private final String name;
-        private final int metadata;
-        
-        private Achievement(int metadataIn, String nameIn)
-        {
-            this.name = nameIn;
-            this.metadata = metadataIn;
-        }
-        
-        public String getName()
-        {
-            return this.name;
-        }
-        
-        public int getMetadata()
-        {
-            return this.metadata;
-        }
-        
-        public String toString()
-        {
-            return this.name;
-        }
-        
-        /**
-         * Get a boat type by it's enum ordinal
-         */
-        public static ItemAchievement.Achievement byId(int id)
-        {
-            if (id < 0 || id >= values().length)
-            {
-                id = 0;
-            }
-            
-            return values()[id];
-        }
-        
-        public static ItemAchievement.Achievement getTypeFromString(String nameIn)
-        {
-            for (int i = 0; i < values().length; ++i)
-            {
-                if (values()[i].getName().equals(nameIn))
-                {
-                    return values()[i];
-                }
-            }
-            
-            return values()[0];
-        }
+    	for (EnumsVC.Achievement contents : EnumsVC.Achievement.values()) 
+    	{
+			int meta = contents.getMetadata();
+			ItemStack subItemStack = new ItemStack(itemIn, 1, meta);
+			subItems.add(subItemStack);
+    	}
     }
 }

@@ -16,7 +16,7 @@ public abstract class MessageBase<REQ extends IMessage> implements IMessage, IMe
 	{
 		if(ctx.side == Side.SERVER)
 		{
-			final EntityPlayerMP sendingPlayer = ctx.getServerHandler().player;
+			final EntityPlayerMP sendingPlayer = ctx.getServerHandler().playerEntity;
 			final WorldServer playerWorldServer = sendingPlayer.getServerWorld();
 			
 			playerWorldServer.addScheduledTask(new Runnable() 
