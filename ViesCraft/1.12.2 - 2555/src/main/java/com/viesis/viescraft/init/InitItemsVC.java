@@ -93,10 +93,10 @@ public class InitItemsVC extends ItemsVC {
 					ITEM_AIRSHIP_V2,//
 					ITEM_AIRSHIP_V3,//
 					ITEM_AIRSHIP_V4,//
-					
 					//ITEM_POUCH_MODULE,
 					//ITEM_POUCH_ALL
-					
+
+					//VIESOLINE_PELLETS1,
 					GUIDEBOOK_CONTROL,//
 					GUIDEBOOK_PAINT,//
 					GUIDEBOOK_SOCKET//

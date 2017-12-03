@@ -11,6 +11,7 @@ import com.viesis.viescraft.common.items.OLDItemGuidebookControls;
 import com.viesis.viescraft.common.items.OLDItemGuidebookPaint;
 import com.viesis.viescraft.common.items.OLDItemGuidebookSocket;
 import com.viesis.viescraft.common.items.OLDItemModule;
+import com.viesis.viescraft.common.items.OLDItemViesoline;
 import com.viesis.viescraft.common.items.achievements.ItemAchievement;
 import com.viesis.viescraft.common.items.achievements.ItemEntityAirship;
 import com.viesis.viescraft.common.items.airshipitems.ItemAirshipV1;
@@ -110,6 +111,8 @@ public class ItemsVC {
 	public static final OLDItemFrame AIRSHIP_BASEFRAME = new OLDItemFrame();
 	
 	public static final OLDItemAirshipDismounter ITEM_DISMOUNTER = new OLDItemAirshipDismounter();
+	
+	//public static final OLDItemViesoline VIESOLINE_PELLETS1 = new OLDItemViesoline();
 	
 	public static final OLDItemGuidebookControls GUIDEBOOK_CONTROL = new OLDItemGuidebookControls();
 	public static final OLDItemGuidebookPaint GUIDEBOOK_PAINT = new OLDItemGuidebookPaint();
