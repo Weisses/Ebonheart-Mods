@@ -549,7 +549,10 @@ vc.item.enum.module.18=Greater Cruise Control
 vc.item.enum.module.19=Lesser Water Landing
 vc.item.enum.module.20=Water Landing
 vc.item.enum.module.21=Greater Water Landing
-vc.item.enum.module.22=Infinite Fuel
+vc.item.enum.module.22=Lesser Infinite Fuel
+vc.item.enum.module.23=Infinite Fuel
+vc.item.enum.module.24=Greater Infinite Fuel
+
 
 vc.item.enum.song.0=None
 vc.item.enum.song.1=11
