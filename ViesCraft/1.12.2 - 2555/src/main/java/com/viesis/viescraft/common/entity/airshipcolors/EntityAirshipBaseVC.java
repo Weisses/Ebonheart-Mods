@@ -1223,7 +1223,7 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
 				if(!this.inventory.getStackInSlot(x).isEmpty())
 				{
 					InventoryHelper.spawnItemStack(this.world, this.posX, this.posY, this.posZ, this.inventory.getStackInSlot(x));
-					this.inventory.setStackInSlot(x, null);
+					//this.inventory.setStackInSlot(x, null);
 				}
 			}
 		}
@@ -1251,7 +1251,7 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
 				if(!this.inventory.getStackInSlot(x).isEmpty())
 				{
 					InventoryHelper.spawnItemStack(this.world, this.posX, this.posY, this.posZ, this.inventory.getStackInSlot(x));
-					this.inventory.setStackInSlot(x, null);
+					//this.inventory.setStackInSlot(x, null);
 				}
 			}
 		}

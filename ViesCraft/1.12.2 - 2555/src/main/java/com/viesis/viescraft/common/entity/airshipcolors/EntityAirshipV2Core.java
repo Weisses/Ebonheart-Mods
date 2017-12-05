@@ -1015,33 +1015,31 @@ public class EntityAirshipV2Core extends EntityAirshipBaseVC {
         }
         
         
-        
-        //Core fuel slot logic
-        if (this.isClientAirshipBurning() || !this.inventory.getStackInSlot(0).isEmpty())
+        if (!this.world.isRemote)
         {
-            if (!this.isClientAirshipBurning()
-            && this.getControllingPassenger() != null)
-            {
-                this.airshipBurnTime = getItemBurnTime(this.inventory.getStackInSlot(0));
-                this.airshipTotalBurnTime = getItemBurnTime(this.inventory.getStackInSlot(0));
-                
-                if (this.isClientAirshipBurning())
-                {
-                    flag1 = true;
-                    
-                    //Consumes the fuel item
-                    if (!this.inventory.getStackInSlot(0).isEmpty())
-                    {
-                    	if (this.inventory.getStackInSlot(0).getCount() == 0)
-                        {
-                        	ItemStack test = this.inventory.getStackInSlot(0);
-                            test = inventory.getStackInSlot(0).getItem().getContainerItem(inventory.getStackInSlot(0));
-                        }
-                        
-                        this.inventory.extractItem(0, 1, false);
-                    }
-                }
-            }
+        	ItemStack fuelSlot = this.inventory.getStackInSlot(0);
+        	
+	        //Core fuel slot logic
+	        if (this.isClientAirshipBurning() || !fuelSlot.isEmpty())
+	        {
+	            if (!this.isClientAirshipBurning()
+	            && this.getControllingPassenger() != null)
+	            {
+	                this.airshipBurnTime = getItemBurnTime(fuelSlot);
+	                this.airshipTotalBurnTime = getItemBurnTime(fuelSlot);
+	                
+	                if (this.isClientAirshipBurning())
+	                {
+	                    flag1 = true;
+	                    
+	                    //Consumes the fuel item
+	                    if (!fuelSlot.isEmpty())
+	                    {
+	                    	this.inventory.extractItem(0, 1, false);
+	                    }
+	                }
+	            }
+	        }
         }
         
         if (flag != this.isClientAirshipBurning())
