@@ -56,22 +56,22 @@ public class GuiVisualMenuBalloonTier2Pg1 extends GuiContainer {
     	Keyboard.enableRepeatEvents(true);
     	int startPlace = 25;
     	
-		GuiVC.button502 = new GuiButtonGeneralVC(502, this.guiLeft + 110, this.guiTop + 143, 48, 14, "Reset");
-		GuiVC.button505 = new GuiButtonGeneralVC(505, this.guiLeft + 125, this.guiTop + 177, 40, 14, "Back");
+		GuiVC.button502 = new GuiButtonGeneralVC(502, this.guiLeft + 110, this.guiTop + 143, 48, 14, References.localNameVC("vc.button.reset"));
+		GuiVC.button505 = new GuiButtonGeneralVC(505, this.guiLeft + 125, this.guiTop + 177, 40, 14, References.localNameVC("vc.button.back"));
     	
-    	GuiVC.buttonB19 = new GuiButtonGeneralVC(19, this.guiLeft + 15, this.guiTop + startPlace + (14 * 0), 76, 14, "Polkadot");
-		GuiVC.buttonB20 = new GuiButtonGeneralVC(20, this.guiLeft + 15, this.guiTop + startPlace + (14 * 1), 76, 14, "Colorized");
-		GuiVC.buttonB21 = new GuiButtonGeneralVC(21, this.guiLeft + 15, this.guiTop + startPlace + (14 * 2), 76, 14, "Inverted");
-		GuiVC.buttonB22 = new GuiButtonGeneralVC(22, this.guiLeft + 15, this.guiTop + startPlace + (14 * 3), 76, 14, "----");
-		GuiVC.buttonB23 = new GuiButtonGeneralVC(23, this.guiLeft + 15, this.guiTop + startPlace + (14 * 4), 76, 14, "Colorized");
-		GuiVC.buttonB24 = new GuiButtonGeneralVC(24, this.guiLeft + 15, this.guiTop + startPlace + (14 * 5), 76, 14, "Inverted");
+    	GuiVC.buttonB19 = new GuiButtonGeneralVC(19, this.guiLeft + 15, this.guiTop + startPlace + (14 * 0), 76, 14, References.localNameVC("vc.enum.visualballoon.19"));
+		GuiVC.buttonB20 = new GuiButtonGeneralVC(20, this.guiLeft + 15, this.guiTop + startPlace + (14 * 1), 76, 14, References.localNameVC("vc.enum.visualballoon.20"));
+		GuiVC.buttonB21 = new GuiButtonGeneralVC(21, this.guiLeft + 15, this.guiTop + startPlace + (14 * 2), 76, 14, References.localNameVC("vc.enum.visualballoon.21"));
+		GuiVC.buttonB22 = new GuiButtonGeneralVC(22, this.guiLeft + 15, this.guiTop + startPlace + (14 * 3), 76, 14, References.localNameVC("vc.enum.visualballoon.22"));
+		GuiVC.buttonB23 = new GuiButtonGeneralVC(23, this.guiLeft + 15, this.guiTop + startPlace + (14 * 4), 76, 14, References.localNameVC("vc.enum.visualballoon.23"));
+		GuiVC.buttonB24 = new GuiButtonGeneralVC(24, this.guiLeft + 15, this.guiTop + startPlace + (14 * 5), 76, 14, References.localNameVC("vc.enum.visualballoon.24"));
 		
-		GuiVC.buttonB25 = new GuiButtonGeneralVC(25, this.guiLeft + 15, this.guiTop + startPlace + (14 * 6), 76, 14, "----");
-		GuiVC.buttonB26 = new GuiButtonGeneralVC(26, this.guiLeft + 15, this.guiTop + startPlace + (14 * 7), 76, 14, "Colorized");
-		GuiVC.buttonB27 = new GuiButtonGeneralVC(27, this.guiLeft + 15, this.guiTop + startPlace + (14 * 8), 76, 14, "Inverted");
-		GuiVC.buttonB28 = new GuiButtonGeneralVC(28, this.guiLeft + 15, this.guiTop + startPlace + (14 * 9), 76, 14, "----");
-		GuiVC.buttonB29 = new GuiButtonGeneralVC(29, this.guiLeft + 15, this.guiTop + startPlace + (14 * 10), 76, 14, "Colorized");
-		GuiVC.buttonB30 = new GuiButtonGeneralVC(30, this.guiLeft + 15, this.guiTop + startPlace + (14 * 11), 76, 14, "Inverted");
+		GuiVC.buttonB25 = new GuiButtonGeneralVC(25, this.guiLeft + 15, this.guiTop + startPlace + (14 * 6), 76, 14, References.localNameVC("vc.enum.visualballoon.25"));
+		GuiVC.buttonB26 = new GuiButtonGeneralVC(26, this.guiLeft + 15, this.guiTop + startPlace + (14 * 7), 76, 14, References.localNameVC("vc.enum.visualballoon.26"));
+		GuiVC.buttonB27 = new GuiButtonGeneralVC(27, this.guiLeft + 15, this.guiTop + startPlace + (14 * 8), 76, 14, References.localNameVC("vc.enum.visualballoon.27"));
+		GuiVC.buttonB28 = new GuiButtonGeneralVC(28, this.guiLeft + 15, this.guiTop + startPlace + (14 * 9), 76, 14, References.localNameVC("vc.enum.visualballoon.28"));
+		GuiVC.buttonB29 = new GuiButtonGeneralVC(29, this.guiLeft + 15, this.guiTop + startPlace + (14 * 10), 76, 14, References.localNameVC("vc.enum.visualballoon.29"));
+		GuiVC.buttonB30 = new GuiButtonGeneralVC(30, this.guiLeft + 15, this.guiTop + startPlace + (14 * 11), 76, 14, References.localNameVC("vc.enum.visualballoon.30"));
 		
 		this.buttonList.add(GuiVC.button502);
 		this.buttonList.add(GuiVC.button505);
@@ -138,8 +138,8 @@ public class GuiVisualMenuBalloonTier2Pg1 extends GuiContainer {
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
 	{
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-		this.fontRenderer.drawString("Tier 2", 120, 29, 16777215);
-		this.fontRenderer.drawString("Appearance", 58, -10, 65521);
+		this.fontRenderer.drawString(References.localNameVC("vc.enum.tier.2"), 120, 29, 16777215);
+		this.fontRenderer.drawString(References.localNameVC("vc.main.appearance"), 58, -10, 65521);
 		
 		int i = this.guiLeft;
         int j = this.guiTop;

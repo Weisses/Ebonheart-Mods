@@ -441,7 +441,7 @@ public class GuiAirshipHUD extends Gui {
 		{
 			//Time in seconds to display
 			String s = hrs + ":" + mins + ":" + secs;
-			String s2 = "*No Fuel*";
+			String s2 = "*" + References.localNameVC("vc.hud.nofuel") + "*";
 			
 			//Aqua timer
 			if(hours > 0)

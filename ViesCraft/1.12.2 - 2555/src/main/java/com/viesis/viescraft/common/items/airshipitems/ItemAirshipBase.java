@@ -12,7 +12,6 @@ import com.viesis.viescraft.api.References;
 
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -25,7 +24,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemAirshipBase extends Item {
     
-    References rf;
+    protected References rf;
     
 	protected int metaModuleVariantSlot1;
 	

@@ -191,8 +191,8 @@ public class GuiAirshipMenuStorageLesser extends GuiContainer {
 	{
 		GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
 		
-		this.fontRenderer.drawString("Main Menu", 64, -10, 65535);
-		this.fontRenderer.drawString("Fuel", 145, 10, 16777215);
+		this.fontRenderer.drawString(References.localNameVC("vc.main.mainmenu"), 64, -10, 65535);
+		this.fontRenderer.drawString(References.localNameVC("vc.main.fuel"), 145, 10, 16777215);
 		
 		//Speed
 		GlStateManager.pushMatrix();
@@ -215,7 +215,7 @@ public class GuiAirshipMenuStorageLesser extends GuiContainer {
 				speedIn = TextFormatting.BLACK + "-" + TextFormatting.AQUA + "+" + String.valueOf((int)(EnumsVC.AirshipTierCore.byId(this.airship.metaTierCore).getSpeedModifier() *100)  + 3);
 			}
 			
-			this.fontRenderer.drawString("Speed: " + speedIn, 0, 0, 16777215);
+			this.fontRenderer.drawString(References.localNameVC("vc.main.speed") + ": " + speedIn, 0, 0, 16777215);
 		}
 		GlStateManager.popMatrix();
 		
@@ -239,7 +239,7 @@ public class GuiAirshipMenuStorageLesser extends GuiContainer {
 				}
 			}
 			
-			this.fontRenderer.drawString("Fuel: " + fuelIn, 0, 0, 16777215);
+			this.fontRenderer.drawString(References.localNameVC("vc.main.fuel") + ": " + fuelIn, 0, 0, 16777215);
 		}
 		GlStateManager.popMatrix();
 		
@@ -268,7 +268,7 @@ public class GuiAirshipMenuStorageLesser extends GuiContainer {
 				altitudeIn = TextFormatting.BLACK + "-" + TextFormatting.GREEN + String.valueOf((int)EnumsVC.AirshipTierBalloon.byId(this.airship.metaTierBalloon).getMaxAltitude());
 			}
 			
-			this.fontRenderer.drawString("Altitude: " + altitudeIn, 0, 0, 16777215);
+			this.fontRenderer.drawString(References.localNameVC("vc.main.altitude") + ": " + altitudeIn, 0, 0, 16777215);
 			
 		}
 		GlStateManager.popMatrix();
@@ -281,7 +281,7 @@ public class GuiAirshipMenuStorageLesser extends GuiContainer {
 			GlStateManager.translate(18, 31.5, 0);
 			GlStateManager.scale(0.55, 0.55, 0.55);
 			
-			this.fontRenderer.drawString("Frame", 0, 0, 16777215);
+			this.fontRenderer.drawString(References.localNameVC("vc.main.frame"), 0, 0, 16777215);
 		}
 		GlStateManager.popMatrix();
 		GlStateManager.pushMatrix();
@@ -302,7 +302,7 @@ public class GuiAirshipMenuStorageLesser extends GuiContainer {
 			GlStateManager.translate(42.5, 31.5, 0);
 			GlStateManager.scale(0.55, 0.55, 0.55);
 			
-			this.fontRenderer.drawString("Core", 0, 0, 16777215);
+			this.fontRenderer.drawString(References.localNameVC("vc.main.core"), 0, 0, 16777215);
 		}
 		GlStateManager.popMatrix();
 		GlStateManager.pushMatrix();
@@ -323,7 +323,7 @@ public class GuiAirshipMenuStorageLesser extends GuiContainer {
 			GlStateManager.translate(63.5, 31.5, 0);
 			GlStateManager.scale(0.55, 0.55, 0.55);
 			
-			this.fontRenderer.drawString("Engine", 0, 0, 16777215);
+			this.fontRenderer.drawString(References.localNameVC("vc.main.engine"), 0, 0, 16777215);
 		}
 		GlStateManager.popMatrix();
 		GlStateManager.pushMatrix();
@@ -344,7 +344,7 @@ public class GuiAirshipMenuStorageLesser extends GuiContainer {
 			GlStateManager.translate(85.5, 31.5, 0);
 			GlStateManager.scale(0.55, 0.55, 0.55);
 			
-			this.fontRenderer.drawString("Balloon", 0, 0, 16777215);
+			this.fontRenderer.drawString(References.localNameVC("vc.main.balloon"), 0, 0, 16777215);
 		}
 		GlStateManager.popMatrix();
 		GlStateManager.pushMatrix();
@@ -365,7 +365,7 @@ public class GuiAirshipMenuStorageLesser extends GuiContainer {
 			GlStateManager.translate(18.2, 10.5, 0);
 			GlStateManager.scale(0.55, 0.55, 0.55);
 			
-			this.fontRenderer.drawString("Slot 1", 0, 0, 16777215);
+			this.fontRenderer.drawString(References.localNameVC("vc.main.slot1"), 0, 0, 16777215);
 		}
 		GlStateManager.popMatrix();
 		GlStateManager.pushMatrix();
@@ -396,8 +396,8 @@ public class GuiAirshipMenuStorageLesser extends GuiContainer {
 			else 
 			{
 				List<String> text = new ArrayList<String>();
-				text.add(TextFormatting.YELLOW + "Insert fuel to");
-				text.add(TextFormatting.YELLOW + "begin flying!");
+				text.add(TextFormatting.YELLOW + References.localNameVC("vc.gui.tt.fuel.1"));
+				text.add(TextFormatting.YELLOW + References.localNameVC("vc.gui.tt.fuel.2"));
 				
 				GlStateManager.pushMatrix();
 				{
@@ -418,9 +418,9 @@ public class GuiAirshipMenuStorageLesser extends GuiContainer {
 			
 			if(this.isShiftKeyDown())
 			{
-				text.add(TextFormatting.LIGHT_PURPLE + "Frame affects the Core, Engine,");
-				text.add(TextFormatting.LIGHT_PURPLE + "and Balloon tier upgrades that");
-				text.add(TextFormatting.LIGHT_PURPLE + "can be applied.");
+				text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.frame.1"));
+				text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.frame.2"));
+				text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.frame.3"));
 				
 				FontRenderer fontrenderer = this.getFontRenderer();
 				
@@ -435,7 +435,7 @@ public class GuiAirshipMenuStorageLesser extends GuiContainer {
 			}
 			else
 			{
-				text.add(TextFormatting.WHITE + "Hold [Shift] for more info.");
+				text.add(TextFormatting.WHITE + References.localNameVC("vc.item.tt.shifthelper.0"));
 				
 				FontRenderer fontrenderer = this.getFontRenderer();
 				
@@ -458,10 +458,10 @@ public class GuiAirshipMenuStorageLesser extends GuiContainer {
 			
 			if(this.isShiftKeyDown())
 			{
-				text.add(TextFormatting.LIGHT_PURPLE + "Core affects an airship's");
-				text.add(TextFormatting.LIGHT_PURPLE + "base speed.");
+				text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.core.1"));
+				text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.core.2"));
 				text.add(TextFormatting.LIGHT_PURPLE + "");
-				text.add(TextFormatting.WHITE + "Base bonus: " + TextFormatting.GREEN + "+" + this.airship.metaTierCore);
+				text.add(TextFormatting.WHITE + References.localNameVC("vc.gui.tt.basebonus") + ": " + TextFormatting.GREEN + "+" + this.airship.metaTierCore);
 				
 				FontRenderer fontrenderer = this.getFontRenderer();
 				
@@ -476,7 +476,7 @@ public class GuiAirshipMenuStorageLesser extends GuiContainer {
 			}
 			else
 			{
-				text.add(TextFormatting.WHITE + "Hold [Shift] for more info.");
+				text.add(TextFormatting.WHITE + References.localNameVC("vc.item.tt.shifthelper.0"));
 				
 				FontRenderer fontrenderer = this.getFontRenderer();
 				
@@ -499,10 +499,10 @@ public class GuiAirshipMenuStorageLesser extends GuiContainer {
 			
 			if(this.isShiftKeyDown())
 			{
-				text.add(TextFormatting.LIGHT_PURPLE + "Engine affects an airship's");
-				text.add(TextFormatting.LIGHT_PURPLE + "fuel efficiency.");
+				text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.engine.1"));
+				text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.engine.2"));
 				text.add(TextFormatting.LIGHT_PURPLE + "");
-				text.add(TextFormatting.WHITE + "Base bonus: " + TextFormatting.RED + "-" + (EnumsVC.AirshipTierEngine.byId(this.airship.metaTierEngine).getFuelPerTick()));
+				text.add(TextFormatting.WHITE + References.localNameVC("vc.gui.tt.basebonus") + ": " + TextFormatting.RED + "-" + (EnumsVC.AirshipTierEngine.byId(this.airship.metaTierEngine).getFuelPerTick()));
 				
 				FontRenderer fontrenderer = this.getFontRenderer();
 				
@@ -517,7 +517,7 @@ public class GuiAirshipMenuStorageLesser extends GuiContainer {
 			}
 			else
 			{
-				text.add(TextFormatting.WHITE + "Hold [Shift] for more info.");
+				text.add(TextFormatting.WHITE + References.localNameVC("vc.item.tt.shifthelper.0"));
 				
 				FontRenderer fontrenderer = this.getFontRenderer();
 				
@@ -540,10 +540,10 @@ public class GuiAirshipMenuStorageLesser extends GuiContainer {
 			
 			if(this.isShiftKeyDown())
 			{
-				text.add(TextFormatting.LIGHT_PURPLE + "Balloon affects an airship's");
-				text.add(TextFormatting.LIGHT_PURPLE + "maximum elevation.");
+				text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.balloon.1"));
+				text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.balloon.2"));
 				text.add(TextFormatting.LIGHT_PURPLE + "");
-				text.add(TextFormatting.WHITE + "Base bonus: " + TextFormatting.GREEN + (EnumsVC.AirshipTierBalloon.byId(this.airship.metaTierBalloon).getMaxAltitude()));
+				text.add(TextFormatting.WHITE + References.localNameVC("vc.gui.tt.basebonus") + ": " + TextFormatting.GREEN + (EnumsVC.AirshipTierBalloon.byId(this.airship.metaTierBalloon).getMaxAltitude()));
 				
 				FontRenderer fontrenderer = this.getFontRenderer();
 				
@@ -558,7 +558,7 @@ public class GuiAirshipMenuStorageLesser extends GuiContainer {
 			}
 			else
 			{
-				text.add(TextFormatting.WHITE + "Hold [Shift] for more info.");
+				text.add(TextFormatting.WHITE + References.localNameVC("vc.item.tt.shifthelper.0"));
 				
 				FontRenderer fontrenderer = this.getFontRenderer();
 				

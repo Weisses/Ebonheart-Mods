@@ -79,21 +79,21 @@ public class GuiVisualMenu extends GuiContainer {
     	GuiVC.buttonM3 = new GuiButtonMenuVC(3, this.guiLeft - 32, this.guiTop + 38, 36, 14, "", 2);
     	GuiVC.buttonM4 = new GuiButtonMenuVC(4, this.guiLeft - 32, this.guiTop + 52, 36, 14, "", 3);
 		
-    	GuiVC.buttonCore1 = new GuiButtonTransparentVC(11, this.guiLeft + 14,  this.guiTop + startPlace - 50 + (14 * 0), 56, 14, "");
-    	GuiVC.buttonCore2 = new GuiButtonGeneralVC(12, this.guiLeft + 14, this.guiTop + startPlace - 50 + (14 * 1), 70, 14, "Core");
-		GuiVC.buttonCore3 = new GuiButtonGeneralVC(13, this.guiLeft + 14, this.guiTop + startPlace - 50 + (14 * 2), 70, 14, "Core Color");
+    	GuiVC.buttonCore1 = new GuiButtonTransparentVC(11, this.guiLeft + 92,  this.guiTop + startPlace - 50 + (14 * 0), 56, 14, "");
+    	GuiVC.buttonCore2 = new GuiButtonGeneralVC(12, this.guiLeft + 92,  this.guiTop + startPlace - 50 + (14 * 1), 70, 14, References.localNameVC("vc.main.core"));
+		GuiVC.buttonCore3 = new GuiButtonGeneralVC(13, this.guiLeft + 92,  this.guiTop + startPlace - 50 + (14 * 2), 70, 14, References.localNameVC("vc.main.corecolor"));
 		
-		GuiVC.buttonFrame1 = new GuiButtonTransparentVC(21, this.guiLeft + 92,  this.guiTop + startPlace - 50 + (14 * 0), 56, 14, "");
-		GuiVC.buttonFrame2 = new GuiButtonGeneralVC(22, this.guiLeft + 92, this.guiTop + startPlace - 50 + (14 * 1), 70, 14, "Frame");
-		GuiVC.buttonFrame3 = new GuiButtonGeneralVC(23, this.guiLeft + 92, this.guiTop + startPlace - 50 + (14 * 2), 70, 14, "Frame Color");
+		GuiVC.buttonFrame1 = new GuiButtonTransparentVC(21, this.guiLeft + 14,  this.guiTop + startPlace - 50 + (14 * 0), 56, 14, "");
+		GuiVC.buttonFrame2 = new GuiButtonGeneralVC(22, this.guiLeft + 14, this.guiTop + startPlace - 50 + (14 * 1), 70, 14, References.localNameVC("vc.main.frame"));
+		GuiVC.buttonFrame3 = new GuiButtonGeneralVC(23, this.guiLeft + 14, this.guiTop + startPlace - 50 + (14 * 2), 70, 14, References.localNameVC("vc.main.framecolor"));
 		
     	GuiVC.buttonEngine1 = new GuiButtonTransparentVC(31, this.guiLeft + 14,  this.guiTop + startPlace + (14 * 0), 56, 14, "");
-    	GuiVC.buttonEngine2 = new GuiButtonGeneralVC(31, this.guiLeft + 14, this.guiTop + startPlace + (14 * 1), 70, 14, "Engine");
-		GuiVC.buttonEngine3 = new GuiButtonGeneralVC(32, this.guiLeft + 14, this.guiTop + startPlace + (14 * 2), 70, 14, "Engine Color");
+    	GuiVC.buttonEngine2 = new GuiButtonGeneralVC(31, this.guiLeft + 14,  this.guiTop + startPlace + (14 * 1), 70, 14, References.localNameVC("vc.main.engine"));
+		GuiVC.buttonEngine3 = new GuiButtonGeneralVC(32, this.guiLeft + 14,  this.guiTop + startPlace + (14 * 2), 70, 14, References.localNameVC("vc.main.enginecolor"));
 		
 		GuiVC.buttonBalloon1 = new GuiButtonTransparentVC(41, this.guiLeft + 92,  this.guiTop + startPlace + (14 * 0), 56, 14, "");
-		GuiVC.buttonBalloon2 = new GuiButtonGeneralVC(42, this.guiLeft + 92, this.guiTop + startPlace + (14 * 1), 70, 14, "Balloon");
-		GuiVC.buttonBalloon3 = new GuiButtonGeneralVC(43, this.guiLeft + 92, this.guiTop + startPlace + (14 * 2), 70, 14, "Balloon Color");
+		GuiVC.buttonBalloon2 = new GuiButtonGeneralVC(42, this.guiLeft + 92, this.guiTop + startPlace + (14 * 1), 70, 14, References.localNameVC("vc.main.balloon"));
+		GuiVC.buttonBalloon3 = new GuiButtonGeneralVC(43, this.guiLeft + 92, this.guiTop + startPlace + (14 * 2), 70, 14, References.localNameVC("vc.main.ballooncolor"));
 		
     	this.buttonList.add(GuiVC.buttonM1);
 		this.buttonList.add(GuiVC.buttonM2);

@@ -1,8 +1,9 @@
-package com.viesis.viescraft.common.items.airshipitems;
+package com.viesis.viescraft.common.items.airshipitems.normal;
 
 import com.viesis.viescraft.ViesCraft;
 import com.viesis.viescraft.common.entity.airshipitems.EntityItemAirshipV3;
 import com.viesis.viescraft.common.items.ItemHelper;
+import com.viesis.viescraft.common.items.airshipitems.ItemAirshipBase;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 
 import net.minecraft.entity.player.EntityPlayer;

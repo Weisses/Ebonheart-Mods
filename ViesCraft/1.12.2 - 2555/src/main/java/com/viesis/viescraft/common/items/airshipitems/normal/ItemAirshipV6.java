@@ -1,8 +1,9 @@
-package com.viesis.viescraft.common.items.airshipitems;
+package com.viesis.viescraft.common.items.airshipitems.normal;
 
 import com.viesis.viescraft.ViesCraft;
-import com.viesis.viescraft.common.entity.airshipitems.EntityItemAirshipV5;
+import com.viesis.viescraft.common.entity.airshipitems.EntityItemAirshipV6;
 import com.viesis.viescraft.common.items.ItemHelper;
+import com.viesis.viescraft.common.items.airshipitems.ItemAirshipBase;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -16,9 +17,9 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
-public class ItemAirshipV5 extends ItemAirshipBase {
+public class ItemAirshipV6 extends ItemAirshipBase {
 	
-	public ItemAirshipV5(String unlocalizedName) 
+	public ItemAirshipV6(String unlocalizedName) 
 	{
 		this.setHasSubtypes(true);
         this.setMaxDamage(0);
@@ -122,7 +123,7 @@ public class ItemAirshipV5 extends ItemAirshipBase {
 			
 			if (!worldIn.isRemote)
 			{
-				EntityItemAirshipV5 entityairship = new EntityItemAirshipV5(worldIn, playerIn, 
+				EntityItemAirshipV6 entityairship = new EntityItemAirshipV6(worldIn, playerIn, 
 						this.getMetadata(itemstack), this.metaTierCore, this.metaTierEngine, this.metaTierBalloon,
 						this.metaModuleVariantSlot1,
 			    		this.metaFrameVisual, this.metaFrameVisualTransparent, this.metaFrameVisualColor, 
@@ -152,22 +153,22 @@ public class ItemAirshipV5 extends ItemAirshipBase {
 	@Override
 	public String getItemStackDisplayName(ItemStack stack)
     {
-		String colorName = TextFormatting.WHITE + ViesCraftConfig.v5AirshipName;
+		String colorName = TextFormatting.WHITE + ViesCraftConfig.v6AirshipName;
 		
 		switch(stack.getMetadata())
 		{
 			case 0:
-				return colorName = TextFormatting.GRAY + "" + TextFormatting.BOLD + ViesCraftConfig.v5AirshipName;
+				return colorName = TextFormatting.GRAY + "" + TextFormatting.BOLD + ViesCraftConfig.v6AirshipName;
 			case 1:
-				return colorName = TextFormatting.WHITE + "" + TextFormatting.BOLD + ViesCraftConfig.v5AirshipName;
+				return colorName = TextFormatting.WHITE + "" + TextFormatting.BOLD + ViesCraftConfig.v6AirshipName;
 			case 2:
-				return colorName = TextFormatting.YELLOW + "" + TextFormatting.BOLD + ViesCraftConfig.v5AirshipName;
+				return colorName = TextFormatting.YELLOW + "" + TextFormatting.BOLD + ViesCraftConfig.v6AirshipName;
 			case 3:
-				return colorName = TextFormatting.AQUA + "" + TextFormatting.BOLD + ViesCraftConfig.v5AirshipName;
+				return colorName = TextFormatting.AQUA + "" + TextFormatting.BOLD + ViesCraftConfig.v6AirshipName;
 			case 4:
-				return colorName = TextFormatting.LIGHT_PURPLE + "" + TextFormatting.BOLD + ViesCraftConfig.v5AirshipName;
+				return colorName = TextFormatting.LIGHT_PURPLE + "" + TextFormatting.BOLD + ViesCraftConfig.v6AirshipName;
 			case 5:
-				return colorName = TextFormatting.RED + "" + TextFormatting.BOLD +  ViesCraftConfig.v5AirshipName;
+				return colorName = TextFormatting.RED + "" + TextFormatting.BOLD +  ViesCraftConfig.v6AirshipName;
 		}
 		return colorName;
     }

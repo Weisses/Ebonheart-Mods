@@ -50,35 +50,35 @@ public class GuiAirshipMusicPg1 extends GuiContainer {
     	Keyboard.enableRepeatEvents(true);
     	int startPlace = 16;
     	
-    	GuiVC.button501 = new GuiButton(501, this.guiLeft + 40, this.guiTop + 156, 96, 20, "Done");
+    	GuiVC.button501 = new GuiButton(501, this.guiLeft + 40, this.guiTop + 156, 96, 20, References.localNameVC("vc.button.done"));
     	
-    	GuiVC.buttonR01 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORD11.getMetadata(), this.guiLeft + 16, this.guiTop + startPlace + (14 * 0), 62, 14, "11");
-		GuiVC.buttonR02 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORD13.getMetadata(), this.guiLeft + 16, this.guiTop + startPlace + (14 * 1), 62, 14, "13");
-    	GuiVC.buttonR03 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDBLOCKS.getMetadata(), this.guiLeft + 16, this.guiTop + startPlace + (14 * 2), 62, 14, "Blocks");
+    	GuiVC.buttonR01 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORD11.getMetadata(), this.guiLeft + 16, this.guiTop + startPlace + (14 * 0), 62, 14, References.localNameVC("vc.item.enum.song.1"));
+		GuiVC.buttonR02 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORD13.getMetadata(), this.guiLeft + 16, this.guiTop + startPlace + (14 * 1), 62, 14, References.localNameVC("vc.item.enum.song.2"));
+    	GuiVC.buttonR03 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDBLOCKS.getMetadata(), this.guiLeft + 16, this.guiTop + startPlace + (14 * 2), 62, 14, References.localNameVC("vc.item.enum.song.3"));
 
-		GuiVC.buttonR04 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDSTRAD.getMetadata(), this.guiLeft + 98, this.guiTop + startPlace + (14 * 0), 62, 14, "Strad");
-		GuiVC.buttonR05 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDCHIRP.getMetadata(), this.guiLeft + 98, this.guiTop + startPlace + (14 * 1), 62, 14, "Chirp");
-		GuiVC.buttonR06 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDFAR.getMetadata(), this.guiLeft + 98, this.guiTop + startPlace + (14 * 2), 62, 14, "Far");
+		GuiVC.buttonR04 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDSTRAD.getMetadata(), this.guiLeft + 98, this.guiTop + startPlace + (14 * 0), 62, 14, References.localNameVC("vc.item.enum.song.7"));
+		GuiVC.buttonR05 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDCHIRP.getMetadata(), this.guiLeft + 98, this.guiTop + startPlace + (14 * 1), 62, 14, References.localNameVC("vc.item.enum.song.8"));
+		GuiVC.buttonR06 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDFAR.getMetadata(), this.guiLeft + 98, this.guiTop + startPlace + (14 * 2), 62, 14, References.localNameVC("vc.item.enum.song.9"));
 		
 		//======================================
 		
-    	GuiVC.buttonR07 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDMELLOHI.getMetadata(), this.guiLeft + 16, this.guiTop + startPlace + (14 * 3), 62, 14, "Mellohi");
-		GuiVC.buttonR08 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDCAT.getMetadata(), this.guiLeft + 16, this.guiTop + startPlace + (14 * 4), 62, 14, "Cat");
-		GuiVC.buttonR09 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDSTAL.getMetadata(), this.guiLeft + 16, this.guiTop + startPlace + (14 * 5), 62, 14, "Stal");
+    	GuiVC.buttonR07 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDMELLOHI.getMetadata(), this.guiLeft + 16, this.guiTop + startPlace + (14 * 3), 62, 14, References.localNameVC("vc.item.enum.song.4"));
+		GuiVC.buttonR08 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDCAT.getMetadata(), this.guiLeft + 16, this.guiTop + startPlace + (14 * 4), 62, 14, References.localNameVC("vc.item.enum.song.5"));
+		GuiVC.buttonR09 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDSTAL.getMetadata(), this.guiLeft + 16, this.guiTop + startPlace + (14 * 5), 62, 14, References.localNameVC("vc.item.enum.song.6"));
 
-		GuiVC.buttonR10 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDMALL.getMetadata(), this.guiLeft + 98, this.guiTop + startPlace + (14 * 3), 62, 14, "Mall");
-		GuiVC.buttonR11 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDWAIT.getMetadata(), this.guiLeft + 98, this.guiTop + startPlace + (14 * 4), 62, 14, "Wait");
-		GuiVC.buttonR12 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDWARD.getMetadata(), this.guiLeft + 98, this.guiTop + startPlace + (14 * 5), 62, 14, "Ward");
+		GuiVC.buttonR10 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDMALL.getMetadata(), this.guiLeft + 98, this.guiTop + startPlace + (14 * 3), 62, 14, References.localNameVC("vc.item.enum.song.10"));
+		GuiVC.buttonR11 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDWAIT.getMetadata(), this.guiLeft + 98, this.guiTop + startPlace + (14 * 4), 62, 14, References.localNameVC("vc.item.enum.song.11"));
+		GuiVC.buttonR12 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDWARD.getMetadata(), this.guiLeft + 98, this.guiTop + startPlace + (14 * 5), 62, 14, References.localNameVC("vc.item.enum.song.12"));
 		
 		//======================================
 		
-		GuiVC.buttonR13 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDBRAMBLE.getMetadata(), this.guiLeft + 16, this.guiTop + startPlace + (14 * 6), 62, 14, "Bramble");
-		GuiVC.buttonR14 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDCASTLE.getMetadata(), this.guiLeft + 16, this.guiTop + startPlace + (14 * 7), 62, 14, "Castle");
-		GuiVC.buttonR15 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDJUNGLE.getMetadata(), this.guiLeft + 16, this.guiTop + startPlace + (14 * 8), 62, 14, "Jungle");
+		GuiVC.buttonR13 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDBRAMBLE.getMetadata(), this.guiLeft + 16, this.guiTop + startPlace + (14 * 6), 62, 14, References.localNameVC("vc.item.enum.song.13"));
+		GuiVC.buttonR14 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDCASTLE.getMetadata(), this.guiLeft + 16, this.guiTop + startPlace + (14 * 7), 62, 14, References.localNameVC("vc.item.enum.song.14"));
+		GuiVC.buttonR15 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDJUNGLE.getMetadata(), this.guiLeft + 16, this.guiTop + startPlace + (14 * 8), 62, 14, References.localNameVC("vc.item.enum.song.15"));
 		
-		GuiVC.buttonR16 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDDIRE.getMetadata(), this.guiLeft + 98, this.guiTop + startPlace + (14 * 6), 62, 14, "Dire");
-		GuiVC.buttonR17 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDSTORMS.getMetadata(), this.guiLeft + 98, this.guiTop + startPlace + (14 * 7), 62, 14, "Storms");
-		GuiVC.buttonR18 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDTIMESCAR.getMetadata(), this.guiLeft + 98, this.guiTop + startPlace + (14 * 8), 62, 14, "Timescar");
+		GuiVC.buttonR16 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDDIRE.getMetadata(), this.guiLeft + 98, this.guiTop + startPlace + (14 * 6), 62, 14, References.localNameVC("vc.item.enum.song.16"));
+		GuiVC.buttonR17 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDSTORMS.getMetadata(), this.guiLeft + 98, this.guiTop + startPlace + (14 * 7), 62, 14, References.localNameVC("vc.item.enum.song.17"));
+		GuiVC.buttonR18 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDTIMESCAR.getMetadata(), this.guiLeft + 98, this.guiTop + startPlace + (14 * 8), 62, 14, References.localNameVC("vc.item.enum.song.18"));
     	
 		
 		
@@ -183,7 +183,7 @@ public class GuiAirshipMusicPg1 extends GuiContainer {
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
 	{
-		this.fontRenderer.drawString("Selected :", 41, -10, 11111111);
+		this.fontRenderer.drawString(References.localNameVC("vc.main.selected") + " :", 41, -10, 11111111);
 		this.fontRenderer.drawString(EnumsVC.AirshipSong.byId(this.airship.metaJukeboxSelectedSong).getName(), 93, -10, 4587264);
 	}
 	

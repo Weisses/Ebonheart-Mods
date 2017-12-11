@@ -4,12 +4,6 @@ import java.io.File;
 
 import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.api.creative.VCTabAirships;
-import com.viesis.viescraft.api.creative.VCTabAirshipsV1;
-import com.viesis.viescraft.api.creative.VCTabAirshipsV2;
-import com.viesis.viescraft.api.creative.VCTabAirshipsV3;
-import com.viesis.viescraft.api.creative.VCTabAirshipsV4;
-import com.viesis.viescraft.api.creative.VCTabAirshipsV5;
-import com.viesis.viescraft.api.creative.VCTabAirshipsV6;
 import com.viesis.viescraft.api.creative.VCTabBlocks;
 import com.viesis.viescraft.api.creative.VCTabItems;
 import com.viesis.viescraft.api.util.LogHelper;

@@ -56,22 +56,22 @@ public class GuiVisualMenuFrameTier2Pg1 extends GuiContainer {
     	Keyboard.enableRepeatEvents(true);
     	int startPlace = 25;
     	
-		GuiVC.button502 = new GuiButtonGeneralVC(502, this.guiLeft + 110, this.guiTop + 143, 48, 14, "Reset");
-		GuiVC.button505 = new GuiButtonGeneralVC(505, this.guiLeft + 125, this.guiTop + 177, 40, 14, "Back");
+		GuiVC.button502 = new GuiButtonGeneralVC(502, this.guiLeft + 110, this.guiTop + 143, 48, 14, References.localNameVC("vc.button.reset"));
+		GuiVC.button505 = new GuiButtonGeneralVC(505, this.guiLeft + 125, this.guiTop + 177, 40, 14, References.localNameVC("vc.button.back"));
     	
-    	GuiVC.buttonA19 = new GuiButtonGeneralVC(19, this.guiLeft + 15, this.guiTop + startPlace + (14 * 0), 76, 14, "Granite");
-		GuiVC.buttonA20 = new GuiButtonGeneralVC(20, this.guiLeft + 15, this.guiTop + startPlace + (14 * 1), 76, 14, "Diorite");
-		GuiVC.buttonA21 = new GuiButtonGeneralVC(21, this.guiLeft + 15, this.guiTop + startPlace + (14 * 2), 76, 14, "Andesite");
-		GuiVC.buttonA22 = new GuiButtonGeneralVC(22, this.guiLeft + 15, this.guiTop + startPlace + (14 * 3), 76, 14, "Sandstone");
-		GuiVC.buttonA23 = new GuiButtonGeneralVC(23, this.guiLeft + 15, this.guiTop + startPlace + (14 * 4), 76, 14, "Cobblestone");
-		GuiVC.buttonA24 = new GuiButtonGeneralVC(24, this.guiLeft + 15, this.guiTop + startPlace + (14 * 5), 76, 14, "Stone");
+    	GuiVC.buttonA19 = new GuiButtonGeneralVC(19, this.guiLeft + 15, this.guiTop + startPlace + (14 * 0), 76, 14, References.localNameVC("vc.enum.visualframe.19"));
+		GuiVC.buttonA20 = new GuiButtonGeneralVC(20, this.guiLeft + 15, this.guiTop + startPlace + (14 * 1), 76, 14, References.localNameVC("vc.enum.visualframe.20"));
+		GuiVC.buttonA21 = new GuiButtonGeneralVC(21, this.guiLeft + 15, this.guiTop + startPlace + (14 * 2), 76, 14, References.localNameVC("vc.enum.visualframe.21"));
+		GuiVC.buttonA22 = new GuiButtonGeneralVC(22, this.guiLeft + 15, this.guiTop + startPlace + (14 * 3), 76, 14, References.localNameVC("vc.enum.visualframe.22"));
+		GuiVC.buttonA23 = new GuiButtonGeneralVC(23, this.guiLeft + 15, this.guiTop + startPlace + (14 * 4), 76, 14, References.localNameVC("vc.enum.visualframe.23"));
+		GuiVC.buttonA24 = new GuiButtonGeneralVC(24, this.guiLeft + 15, this.guiTop + startPlace + (14 * 5), 76, 14, References.localNameVC("vc.enum.visualframe.24"));
 		
-		GuiVC.buttonA25 = new GuiButtonGeneralVC(25, this.guiLeft + 15, this.guiTop + startPlace + (14 * 6), 76, 14, "Snow");
-		GuiVC.buttonA26 = new GuiButtonGeneralVC(26, this.guiLeft + 15, this.guiTop + startPlace + (14 * 7), 76, 14, "Packed Ice");
-		GuiVC.buttonA27 = new GuiButtonGeneralVC(27, this.guiLeft + 15, this.guiTop + startPlace + (14 * 8), 76, 14, "Bone");
-		GuiVC.buttonA28 = new GuiButtonGeneralVC(28, this.guiLeft + 15, this.guiTop + startPlace + (14 * 9), 76, 14, "Podzol");
-		GuiVC.buttonA29 = new GuiButtonGeneralVC(29, this.guiLeft + 15, this.guiTop + startPlace + (14 * 10), 76, 14, "Mycelium");
-		GuiVC.buttonA30 = new GuiButtonGeneralVC(30, this.guiLeft + 15, this.guiTop + startPlace + (14 * 11), 76, 14, "Glass");
+		GuiVC.buttonA25 = new GuiButtonGeneralVC(25, this.guiLeft + 15, this.guiTop + startPlace + (14 * 6), 76, 14, References.localNameVC("vc.enum.visualframe.25"));
+		GuiVC.buttonA26 = new GuiButtonGeneralVC(26, this.guiLeft + 15, this.guiTop + startPlace + (14 * 7), 76, 14, References.localNameVC("vc.enum.visualframe.26"));
+		GuiVC.buttonA27 = new GuiButtonGeneralVC(27, this.guiLeft + 15, this.guiTop + startPlace + (14 * 8), 76, 14, References.localNameVC("vc.enum.visualframe.27"));
+		GuiVC.buttonA28 = new GuiButtonGeneralVC(28, this.guiLeft + 15, this.guiTop + startPlace + (14 * 9), 76, 14, References.localNameVC("vc.enum.visualframe.28"));
+		GuiVC.buttonA29 = new GuiButtonGeneralVC(29, this.guiLeft + 15, this.guiTop + startPlace + (14 * 10), 76, 14, References.localNameVC("vc.enum.visualframe.29"));
+		GuiVC.buttonA30 = new GuiButtonGeneralVC(30, this.guiLeft + 15, this.guiTop + startPlace + (14 * 11), 76, 14, References.localNameVC("vc.enum.visualframe.30"));
 		
 		this.buttonList.add(GuiVC.button502);
 		this.buttonList.add(GuiVC.button505);
@@ -138,8 +138,8 @@ public class GuiVisualMenuFrameTier2Pg1 extends GuiContainer {
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
 	{
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-		this.fontRenderer.drawString("Tier 2", 120, 29, 16777215);
-		this.fontRenderer.drawString("Appearance", 58, -10, 65521);
+		this.fontRenderer.drawString(References.localNameVC("vc.enum.tier.2"), 120, 29, 16777215);
+		this.fontRenderer.drawString(References.localNameVC("vc.main.appearance"), 58, -10, 65521);
 		
 		int i = this.guiLeft;
         int j = this.guiTop;

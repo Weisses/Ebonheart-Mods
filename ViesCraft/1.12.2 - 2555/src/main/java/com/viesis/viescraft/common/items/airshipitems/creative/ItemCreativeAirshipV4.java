@@ -1,8 +1,9 @@
-package com.viesis.viescraft.common.items.airshipitems;
+package com.viesis.viescraft.common.items.airshipitems.creative;
 
 import com.viesis.viescraft.ViesCraft;
-import com.viesis.viescraft.common.entity.airshipitems.EntityItemAirshipV2;
+import com.viesis.viescraft.common.entity.airshipitems.EntityItemAirshipV4;
 import com.viesis.viescraft.common.items.ItemHelper;
+import com.viesis.viescraft.common.items.airshipitems.ItemCreativeAirshipBase;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -16,9 +17,9 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
-public class ItemCreativeAirshipV2 extends ItemCreativeAirshipBase {
+public class ItemCreativeAirshipV4 extends ItemCreativeAirshipBase {
 	
-	public ItemCreativeAirshipV2(String unlocalizedName) 
+	public ItemCreativeAirshipV4(String unlocalizedName) 
 	{
 		this.setHasSubtypes(true);
         this.setMaxDamage(0);
@@ -43,7 +44,7 @@ public class ItemCreativeAirshipV2 extends ItemCreativeAirshipBase {
 			
 			if (!worldIn.isRemote)
 			{
-				EntityItemAirshipV2 entityairship = new EntityItemAirshipV2(worldIn, playerIn, 
+				EntityItemAirshipV4 entityairship = new EntityItemAirshipV4(worldIn, playerIn, 
 						5, 5, 5, 5,
 						0,
 			    		0, false, false,
@@ -68,7 +69,7 @@ public class ItemCreativeAirshipV2 extends ItemCreativeAirshipBase {
 	@Override
 	public String getItemStackDisplayName(ItemStack stack)
     {
-		String colorName = TextFormatting.GOLD + "" + TextFormatting.BOLD +  ViesCraftConfig.v2AirshipName;
+		String colorName = TextFormatting.GOLD + "" + TextFormatting.BOLD +  ViesCraftConfig.v4AirshipName;
 		
 		return colorName 
 				+ TextFormatting.DARK_RED + "" + TextFormatting.BOLD

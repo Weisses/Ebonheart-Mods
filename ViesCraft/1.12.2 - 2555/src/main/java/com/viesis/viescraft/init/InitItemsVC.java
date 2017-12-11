@@ -78,28 +78,7 @@ public class InitItemsVC extends ItemsVC {
 					ACHIEVEMENT_AIRSHIP,
 					ITEM_ENTITY_AIRSHIP,
 					
-					
-					
 					//================================
-					
-					
-					
-					ITEM_DISMOUNTER,//
-					AIRSHIP_BASEFRAME,//
-					AIRSHIP_BALLOON_PATTERN,//
-					AIRSHIP_MODULE,//
-					ITEM_BALLOON_COLORIZER,//
-					ITEM_AIRSHIP_V1,//
-					ITEM_AIRSHIP_V2,//
-					ITEM_AIRSHIP_V3,//
-					ITEM_AIRSHIP_V4,//
-					//ITEM_POUCH_MODULE,
-					//ITEM_POUCH_ALL
-
-					//VIESOLINE_PELLETS1,
-					GUIDEBOOK_CONTROL,//
-					GUIDEBOOK_PAINT,//
-					GUIDEBOOK_SOCKET//
 			};
 
 			final IForgeRegistry<Item> registry = event.getRegistry();

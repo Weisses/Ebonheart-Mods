@@ -77,7 +77,7 @@ public class GuiButtonGeneralVC extends GuiButton {
             GlStateManager.pushMatrix();
 			{
 				GlStateManager.translate(this.x + this.width / 2, this.y + (this.height - 6) / 2, 0); //-6 was a -8 by default
-				GlStateManager.scale(.8, .8, .8);
+				GlStateManager.scale(.7, .7, .7);
             
 				this.drawCenteredString(fontrenderer, this.displayString, 0, 0, j);
 			}

@@ -3,10 +3,9 @@ package com.viesis.viescraft.api;
 import java.util.Calendar;
 import java.util.Random;
 
+import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.translation.I18n;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -117,6 +116,7 @@ public class References {
 	/**
 	 * Sets the correct Text Toolitp color
 	 */
+	@SideOnly(Side.CLIENT)
 	public static TextFormatting textColorTooltip(ItemStack stackIn)
 	{
 		TextFormatting stringColorText = TextFormatting.GRAY;
@@ -149,7 +149,15 @@ public class References {
 		return stringColorText;
 	}
 	
-	
+	/**
+	 * A simple wrapper for the new Localization format.
+	 * This is Client side only!
+	 */
+	@SideOnly(Side.CLIENT)
+	public static String localNameVC(String stringIn)
+	{
+		return I18n.format(stringIn, new Object[0]);
+	}
 	
 	
 	

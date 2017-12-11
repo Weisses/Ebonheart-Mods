@@ -71,13 +71,13 @@ public class GuiVisualMenuBalloon extends GuiContainer {
     	GuiVC.buttonM3 = new GuiButtonMenuVC(3, this.guiLeft - 32, this.guiTop + 38, 36, 14, "", 2);
     	GuiVC.buttonM4 = new GuiButtonMenuVC(4, this.guiLeft - 32, this.guiTop + 52, 36, 14, "", 3);
     	
-    	GuiVC.button505 = new GuiButtonGeneralVC(505, this.guiLeft + 125, this.guiTop + 177, 40, 14, "Back");
+    	GuiVC.button505 = new GuiButtonGeneralVC(505, this.guiLeft + 125, this.guiTop + 177, 40, 14, References.localNameVC("vc.button.back"));
     	
-    	GuiVC.buttonT1 = new GuiButtonGeneralVC(11, this.guiLeft + 32, this.guiTop + startPlace + 0, 68, 14, "Tier 1");
-		GuiVC.buttonT2 = new GuiButtonGeneralVC(12, this.guiLeft + 32, this.guiTop + startPlace + (19 * 1), 68, 14, "Tier 2");
-		GuiVC.buttonT3 = new GuiButtonGeneralVC(13, this.guiLeft + 32, this.guiTop + startPlace + (19 * 2), 68, 14, "Tier 3");
-		GuiVC.buttonT4 = new GuiButtonGeneralVC(14, this.guiLeft + 32, this.guiTop + startPlace + (19 * 3), 68, 14, "Tier 4");
-		GuiVC.buttonT5 = new GuiButtonGeneralVC(15, this.guiLeft + 32, this.guiTop + startPlace + (19 * 4), 68, 14, "Tier 5");
+    	GuiVC.buttonT1 = new GuiButtonGeneralVC(11, this.guiLeft + 32, this.guiTop + startPlace + (19 * 0), 68, 14, References.localNameVC("vc.enum.tier.1"));
+		GuiVC.buttonT2 = new GuiButtonGeneralVC(12, this.guiLeft + 32, this.guiTop + startPlace + (19 * 1), 68, 14, References.localNameVC("vc.enum.tier.2"));
+		GuiVC.buttonT3 = new GuiButtonGeneralVC(13, this.guiLeft + 32, this.guiTop + startPlace + (19 * 2), 68, 14, References.localNameVC("vc.enum.tier.3"));
+		GuiVC.buttonT4 = new GuiButtonGeneralVC(14, this.guiLeft + 32, this.guiTop + startPlace + (19 * 3), 68, 14, References.localNameVC("vc.enum.tier.4"));
+		GuiVC.buttonT5 = new GuiButtonGeneralVC(15, this.guiLeft + 32, this.guiTop + startPlace + (19 * 4), 68, 14, References.localNameVC("vc.enum.tier.5"));
 		
     	this.buttonList.add(GuiVC.buttonM1);
 		this.buttonList.add(GuiVC.buttonM2);
@@ -222,8 +222,8 @@ public class GuiVisualMenuBalloon extends GuiContainer {
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
 	{
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-		this.fontRenderer.drawString("Balloon", 73, 18, 11111111);
-		this.fontRenderer.drawString("Appearance", 58, -10, 65521);
+		this.fontRenderer.drawString(References.localNameVC("vc.main.balloon"), 73, 18, 11111111);
+		this.fontRenderer.drawString(References.localNameVC("vc.main.appearance"), 58, -10, 65521);
 		
 		int i = this.guiLeft;
         int j = this.guiTop;

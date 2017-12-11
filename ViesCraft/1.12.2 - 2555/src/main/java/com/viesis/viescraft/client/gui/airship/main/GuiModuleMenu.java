@@ -114,7 +114,7 @@ public class GuiModuleMenu extends GuiContainer {
     	GuiVC.buttonModuleInfiniteFuelNormal = new GuiButtonModuleToggleVC(EnumsVC.ModuleType.INFINITE_FUEL_NORMAL.getMetadata(), this.guiLeft + 28 + (26 * 2), this.guiTop + 16 + (19 * 1), 14, 14, "", this.buttonInfiniteFuel);
     	GuiVC.buttonModuleInfiniteFuelGreater = new GuiButtonModuleToggleVC(EnumsVC.ModuleType.INFINITE_FUEL_GREATER.getMetadata(), this.guiLeft + 28 + (26 * 2), this.guiTop + 16 + (19 * 1), 14, 14, "", this.buttonInfiniteFuel);
     	
-    	GuiVC.buttonModuleLearn = new GuiButtonConfirmVC(100, this.guiLeft + 116, this.guiTop + 89, 36, 14, "Learn");
+    	GuiVC.buttonModuleLearn = new GuiButtonConfirmVC(100, this.guiLeft + 116, this.guiTop + 89, 36, 14, References.localNameVC("vc.button.learn"));
 		
     	
     	
@@ -244,9 +244,7 @@ public class GuiModuleMenu extends GuiContainer {
 			else
 			{
 				this.toggleModule = parButton.id;
-				//this.allButtonsRed();
 				this.airship.setModuleVariantSlot1(parButton.id);
-				//this.buttonColor();
 			}
 			
 			NetworkHandler.sendToServer(new MessageHelperGuiModuleToggleSlot1());
@@ -261,16 +259,11 @@ public class GuiModuleMenu extends GuiContainer {
 				if(this.airship.inventory.getStackInSlot(11).getItem() == InitItemsVC.MODULE_CREATIVE)
 				{
 					this.learnModule = 50;
-					//this.allButtonsRed();
 				}
 				else
 				{
 					this.learnModule = this.airship.inventory.getStackInSlot(11).getMetadata();
-					//this.allButtonsRed();
 				}
-				
-				//this.allButtonsRed();
-				
 				
 				NetworkHandler.sendToServer(new MessageHelperGuiModuleLearn());
 				this.airship.metaModuleVariantSlot1 = 0;
@@ -310,7 +303,7 @@ public class GuiModuleMenu extends GuiContainer {
 				GlStateManager.translate(this.guiLeft + 53.25, this.guiTop + 82, 0);
 				GlStateManager.scale(0.44, 0.44, 0.44);
 				
-				this.drawCenteredString(fontRenderer, I18n.format(TextFormatting.LIGHT_PURPLE + "" + TextFormatting.UNDERLINE + "" + TextFormatting.BOLD + nameIn, new Object[0]), 0, 0, 0);
+				this.drawCenteredString(fontRenderer, TextFormatting.LIGHT_PURPLE + "" + TextFormatting.UNDERLINE + "" + TextFormatting.BOLD + nameIn, 0, 0, 0);
 			}
 			GlStateManager.popMatrix();
 			
@@ -320,7 +313,7 @@ public class GuiModuleMenu extends GuiContainer {
 				GlStateManager.translate(this.guiLeft + 53.25, this.guiTop + 90, 0);
 				GlStateManager.scale(0.38, 0.38, 0.38);
 				
-				this.drawCenteredString(fontRenderer, TextFormatting.GREEN + I18n.format("vc.item.tt.moduletype.#." + this.airship.getModuleVariantSlot1() + ".pros1", new Object[0]), 0, 0, 0);
+				this.drawCenteredString(fontRenderer, TextFormatting.GREEN + References.localNameVC("vc.item.tt.moduletype.#." + this.airship.getModuleVariantSlot1() + ".pros1"), 0, 0, 0);
 			}
 			GlStateManager.popMatrix();
 			//Pros2
@@ -329,7 +322,7 @@ public class GuiModuleMenu extends GuiContainer {
 				GlStateManager.translate(this.guiLeft + 53.25, this.guiTop + 95, 0);
 				GlStateManager.scale(0.38, 0.38, 0.38);
 				
-				this.drawCenteredString(fontRenderer, TextFormatting.GREEN + I18n.format("vc.item.tt.moduletype.#." + this.airship.getModuleVariantSlot1() + ".pros2", new Object[0]), 0, 0, 0);
+				this.drawCenteredString(fontRenderer, TextFormatting.GREEN + References.localNameVC("vc.item.tt.moduletype.#." + this.airship.getModuleVariantSlot1() + ".pros2"), 0, 0, 0);
 			}
 			GlStateManager.popMatrix();
 			
@@ -339,7 +332,7 @@ public class GuiModuleMenu extends GuiContainer {
 				GlStateManager.translate(this.guiLeft + 53.25, this.guiTop + 102, 0);
 				GlStateManager.scale(0.38, 0.38, 0.38);
 				
-				this.drawCenteredString(fontRenderer, TextFormatting.RED + I18n.format("vc.item.tt.moduletype.#." + this.airship.getModuleVariantSlot1() + ".cons1", new Object[0]), 0, 0, 0);
+				this.drawCenteredString(fontRenderer, TextFormatting.RED + References.localNameVC("vc.item.tt.moduletype.#." + this.airship.getModuleVariantSlot1() + ".cons1"), 0, 0, 0);
 			}
 			GlStateManager.popMatrix();
 			//Cons2
@@ -348,7 +341,7 @@ public class GuiModuleMenu extends GuiContainer {
 				GlStateManager.translate(this.guiLeft + 53.25, this.guiTop + 107, 0);
 				GlStateManager.scale(0.38, 0.38, 0.38);
 				
-				this.drawCenteredString(fontRenderer, TextFormatting.RED + I18n.format("vc.item.tt.moduletype.#." + this.airship.getModuleVariantSlot1() + ".cons2", new Object[0]), 0, 0, 0);
+				this.drawCenteredString(fontRenderer, TextFormatting.RED + References.localNameVC("vc.item.tt.moduletype.#." + this.airship.getModuleVariantSlot1() + ".cons2"), 0, 0, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -361,7 +354,7 @@ public class GuiModuleMenu extends GuiContainer {
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
 	{
-		this.fontRenderer.drawString("Module Menu", 58, -10, 65535);
+		this.fontRenderer.drawString(References.localNameVC("vc.main.modulemenu"), 58, -10, 65535);
 		
 		//Altitude Icons
 		if(this.airship.getModuleLearnedAltitude())

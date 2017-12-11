@@ -7,7 +7,6 @@ import com.viesis.viescraft.api.EnumsVC;
 import com.viesis.viescraft.api.ItemsVC;
 import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
-import com.viesis.viescraft.common.items.achievements.ItemAchievement;
 import com.viesis.viescraft.init.InitItemsVC;
 
 import net.minecraft.block.Block;
@@ -128,7 +127,7 @@ public final class InitItemsVCRender extends ItemsVC {
 		
 		//=====================================================================
 		
-		
+		/**
 		for (EntityAirshipBaseVC.FrameCore meta : EntityAirshipBaseVC.FrameCore.values()) 
 		{
 			registerRenderFrameOLD(AIRSHIP_BASEFRAME, meta.getMetadata());
@@ -184,7 +183,7 @@ public final class InitItemsVCRender extends ItemsVC {
 		registerRender(InitItemsVC.GUIDEBOOK_CONTROL);
 		registerRender(InitItemsVC.GUIDEBOOK_PAINT);
 		registerRender(InitItemsVC.GUIDEBOOK_SOCKET);
-		
+		*/
 	}
 	
 	private static void registerItemRenderTEMP()

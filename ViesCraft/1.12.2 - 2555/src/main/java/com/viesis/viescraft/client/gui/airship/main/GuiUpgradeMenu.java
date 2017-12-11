@@ -341,7 +341,7 @@ public class GuiUpgradeMenu extends GuiContainer {
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
 	{
-		this.fontRenderer.drawString("Upgrade Menu", 53, -10, 65535);
+		this.fontRenderer.drawString(References.localNameVC("vc.main.upgrademenu"), 53, -10, 65535);
 		
 		//Frame
 		GlStateManager.pushMatrix();
@@ -349,7 +349,7 @@ public class GuiUpgradeMenu extends GuiContainer {
 			GlStateManager.translate(20, 22.2, 0);
 			GlStateManager.scale(0.75, 0.75, 0.75);
 			
-			this.fontRenderer.drawString("Frame", 0, 0, 16777215);
+			this.fontRenderer.drawString(References.localNameVC("vc.main.frame"), 0, 0, 16777215);
 		}
 		GlStateManager.popMatrix();
 		if(this.airship.getMetaTierFrame() > 0)
@@ -370,7 +370,7 @@ public class GuiUpgradeMenu extends GuiContainer {
 			GlStateManager.translate(60, 22.2, 0);
 			GlStateManager.scale(0.75, 0.75, 0.75);
 			
-			this.fontRenderer.drawString("Core", 0, 0, 16777215);
+			this.fontRenderer.drawString(References.localNameVC("vc.main.core"), 0, 0, 16777215);
 		}
 		GlStateManager.popMatrix();
 		if(this.airship.getMetaTierCore() > 0)
@@ -391,7 +391,7 @@ public class GuiUpgradeMenu extends GuiContainer {
 			GlStateManager.translate(95.5, 22.2, 0);
 			GlStateManager.scale(0.75, 0.75, 0.75);
 			
-			this.fontRenderer.drawString("Engine", 0, 0, 16777215);
+			this.fontRenderer.drawString(References.localNameVC("vc.main.engine"), 0, 0, 16777215);
 		}
 		GlStateManager.popMatrix();
 		if(this.airship.getMetaTierEngine() > 0)
@@ -412,7 +412,7 @@ public class GuiUpgradeMenu extends GuiContainer {
 			GlStateManager.translate(132, 22.2, 0);
 			GlStateManager.scale(0.75, 0.75, 0.75);
 			
-			this.fontRenderer.drawString("Balloon", 0, 0, 16777215);
+			this.fontRenderer.drawString(References.localNameVC("vc.main.balloon"), 0, 0, 16777215);
 		}
 		GlStateManager.popMatrix();
 		if(this.airship.getMetaTierBalloon() > 0)
@@ -435,9 +435,9 @@ public class GuiUpgradeMenu extends GuiContainer {
 		&& mouseY >= this.guiTop + tooltipFrameY + 0 && mouseY <= this.guiTop + tooltipFrameY + 17)
 		{
 			List<String> text = new ArrayList<String>();
-			text.add(TextFormatting.LIGHT_PURPLE + "Frame affects the Core, Engine,");
-			text.add(TextFormatting.LIGHT_PURPLE + "and Balloon tier upgrades that");
-			text.add(TextFormatting.LIGHT_PURPLE + "can be applied.");
+			text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.frame.1"));
+			text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.frame.2"));
+			text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.frame.3"));
 			
 			FontRenderer fontrenderer = this.getFontRenderer();
 			
@@ -456,10 +456,10 @@ public class GuiUpgradeMenu extends GuiContainer {
 		&& mouseY >= this.guiTop + tooltipFrameY + 0 && mouseY <= this.guiTop + tooltipFrameY + 17)
 		{
 			List<String> text = new ArrayList<String>();
-			text.add(TextFormatting.LIGHT_PURPLE + "Core affects an airship's");
-			text.add(TextFormatting.LIGHT_PURPLE + "base speed.");
+			text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.core.1"));
+			text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.core.2"));
 			text.add(TextFormatting.LIGHT_PURPLE + "");
-			text.add(TextFormatting.WHITE + "Base bonus: " + TextFormatting.GREEN + "+" + this.airship.metaTierCore);
+			text.add(TextFormatting.WHITE + References.localNameVC("vc.gui.tt.basebonus") + ": " + TextFormatting.GREEN + "+" + this.airship.metaTierCore);
 			
 			FontRenderer fontrenderer = this.getFontRenderer();
 			
@@ -478,10 +478,10 @@ public class GuiUpgradeMenu extends GuiContainer {
 		&& mouseY >= this.guiTop + tooltipFrameY + 0 && mouseY <= this.guiTop + tooltipFrameY + 17)
 		{
 			List<String> text = new ArrayList<String>();
-			text.add(TextFormatting.LIGHT_PURPLE + "Engine affects an airship's");
-			text.add(TextFormatting.LIGHT_PURPLE + "fuel efficiency.");
+			text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.engine.1"));
+			text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.engine.2"));
 			text.add(TextFormatting.LIGHT_PURPLE + "");
-			text.add(TextFormatting.WHITE + "Base bonus: " + TextFormatting.RED + "-" + (EnumsVC.AirshipTierEngine.byId(this.airship.metaTierEngine).getFuelPerTick()));
+			text.add(TextFormatting.WHITE + References.localNameVC("vc.gui.tt.basebonus") + ": " + TextFormatting.RED + "-" + (EnumsVC.AirshipTierEngine.byId(this.airship.metaTierEngine).getFuelPerTick()));
 			
 			FontRenderer fontrenderer = this.getFontRenderer();
 			
@@ -500,10 +500,10 @@ public class GuiUpgradeMenu extends GuiContainer {
 		&& mouseY >= this.guiTop + tooltipFrameY + 0 && mouseY <= this.guiTop + tooltipFrameY + 17)
 		{
 			List<String> text = new ArrayList<String>();
-			text.add(TextFormatting.LIGHT_PURPLE + "Balloon affects an airship's");
-			text.add(TextFormatting.LIGHT_PURPLE + "maximum elevation.");
+			text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.balloon.1"));
+			text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.balloon.2"));
 			text.add(TextFormatting.LIGHT_PURPLE + "");
-			text.add(TextFormatting.WHITE + "Base bonus: " + TextFormatting.GREEN + (EnumsVC.AirshipTierBalloon.byId(this.airship.metaTierCore).getMaxAltitude()));
+			text.add(TextFormatting.WHITE + References.localNameVC("vc.gui.tt.basebonus") + ": " + TextFormatting.GREEN + (EnumsVC.AirshipTierBalloon.byId(this.airship.metaTierCore).getMaxAltitude()));
 			
 			FontRenderer fontrenderer = this.getFontRenderer();
 			
