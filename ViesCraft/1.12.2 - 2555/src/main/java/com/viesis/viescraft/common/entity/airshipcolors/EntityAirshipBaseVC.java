@@ -3,9 +3,7 @@ package com.viesis.viescraft.common.entity.airshipcolors;
 import com.viesis.viescraft.api.EnumsVC;
 import com.viesis.viescraft.api.FuelVC;
 import com.viesis.viescraft.api.References;
-import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.client.InitParticlesVCRender;
-import com.viesis.viescraft.client.InitSoundEventsVC;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 import com.viesis.viescraft.init.InitItemsVC;
 import com.viesis.viescraft.network.NetworkHandler;
@@ -18,8 +16,6 @@ import com.viesis.viescraft.network.server.airship.main.MessageGuiAirshipMenuSto
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.audio.ISound;
-import net.minecraft.client.audio.SoundHandler;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
@@ -34,7 +30,6 @@ import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
@@ -1933,147 +1928,5 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
     }
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    //==================================//
-    // TODO          Enums              //
-	//==================================//
-    
-    /**
-	 * TO BE REMOVED.
-	 */
-    public static enum FrameCore
-    {
-    	//STRING(meta, name, speed, altitude)
-    	//Common - 8 items
-    	WOOD0(0, "Oak", I18n.translateToLocal("vc.item.enum.frame.0"), 0F, 75),
-        WOOD1(1, "Spruce", I18n.translateToLocal("vc.item.enum.frame.1"), 0F, 75),
-        WOOD2(2, "Birch", I18n.translateToLocal("vc.item.enum.frame.2"), 0F, 75),
-        WOOD3(3, "Jungle", I18n.translateToLocal("vc.item.enum.frame.3"), 0F, 75),
-        WOOD4(4, "Acacia", I18n.translateToLocal("vc.item.enum.frame.4"), 0F, 75),
-        WOOD5(5, "Dark Oak", I18n.translateToLocal("vc.item.enum.frame.5"), 0F, 75),
-        
-        
-        
-        //GRAVEL(0, "Gravel", I18n.translateToLocal("vc.item.enum.frame.0"), 0F, 75),
-        
-        
-        
-        //GRANITE(6, "Granite", I18n.translateToLocal("vc.item.enum.frame.6"), 0.001F, 80),
-        //DIORITE(6, "Diorite", I18n.translateToLocal("vc.item.enum.frame.6"), 0.001F, 80),
-        //ANDESITE(6, "Andesite", I18n.translateToLocal("vc.item.enum.frame.6"), 0.001F, 80),
-        SANDSTONE(6, "Sandstone", I18n.translateToLocal("vc.item.enum.frame.6"), 0.001F, 80),
-        //STONE(0, "Stone", I18n.translateToLocal("vc.item.enum.frame.0"), 0F, 75),
-        //////COBBLESTONE(6, "Cobblestone", I18n.translateToLocal("vc.item.enum.frame.6"), 0.001F, 80),
-        BRICK(7, "Brick", I18n.translateToLocal("vc.item.enum.frame.7"), 0.002F, 90),
-        
-        //Uncommon - 7 items
-        //////MOSSYCOBBLESTONE(6, "Mossy Cobblestone", I18n.translateToLocal("vc.item.enum.frame.6"), 0.001F, 80),
-        
-        BONE(8, "Bone", I18n.translateToLocal("vc.item.enum.frame.8"), 0.003F, 100),
-    	IRON(9, "Iron", I18n.translateToLocal("vc.item.enum.frame.9"), 0.004F, 110),
-        REDSTONE(10, "Redstone", I18n.translateToLocal("vc.item.enum.frame.10"), 0.005F, 120),
-        GOLD(11, "Gold", I18n.translateToLocal("vc.item.enum.frame.11"), 0.006F, 130),
-        LAPISLAZULI(12, "Lapis Lazuli", I18n.translateToLocal("vc.item.enum.frame.12"), 0.007F, 140),
-        SLIME(13, "Slime", I18n.translateToLocal("vc.item.enum.frame.13"), 0.008F, 150),
-        MYCELIUM(14, "Mycelium", I18n.translateToLocal("vc.item.enum.frame.14"), 0.009F, 160),
-        
-        //Rare - 6 items
-        NETHERBRICK(15, "Nether Brick", I18n.translateToLocal("vc.item.enum.frame.15"), 0.010F, 170),
-        SOULSAND(16, "Soul Sand", I18n.translateToLocal("vc.item.enum.frame.16"), 0.011F, 180),
-        QUARTZ(17, "Quartz", I18n.translateToLocal("vc.item.enum.frame.17"), 0.012F, 190),
-        ICE(18, "Ice", I18n.translateToLocal("vc.item.enum.frame.18"), 0.013F, 200),
-        GLOWSTONE(19, "Glowstone", I18n.translateToLocal("vc.item.enum.frame.19"), 0.014F, 210),
-        OBSIDIAN(20, "Obsidian", I18n.translateToLocal("vc.item.enum.frame.20"), 0.015F, 220),
-        
-        //Epic - 5 items + 1 admin-only item
-        DIAMOND(21, "Diamond", I18n.translateToLocal("vc.item.enum.frame.21"), 0.016F, 230),
-        EMERALD(22, "Emerald", I18n.translateToLocal("vc.item.enum.frame.22"), 0.017F, 240),
-        PRISMARINE(23, "Prismarine", I18n.translateToLocal("vc.item.enum.frame.23"), 0.018F, 250),
-    	PURPUR(24, "Purpur", I18n.translateToLocal("vc.item.enum.frame.24"), 0.019F, 260),
-    	NETHERSTAR(25, "Nether Star", I18n.translateToLocal("vc.item.enum.frame.25"), 0.020F, 500),
-    	
-    	MYTHIC(26, "Mythic", I18n.translateToLocal("vc.item.enum.frame.26"), 0.025F, 500),  // This is a special admin only Airship.
-    	WATER(27, "Water", I18n.translateToLocal("vc.item.enum.frame.27"), 0.030F, 500), 
-    	LAVA(28, "Lava", I18n.translateToLocal("vc.item.enum.frame.28"), 0.031F, 500), 
-    	ENDER(29, "Ender", I18n.translateToLocal("vc.item.enum.frame.29"), 0.032F, 500); 
-    	
-        private final String name;
-        private final int metadata;
-        private final float speed;
-        private final int elevation;
-        private final String localizedName;
-        
-        private FrameCore(int metadataIn, String nameIn, String localizedNameIn, float speedModifier, int maxElevation)
-        {
-            this.name = nameIn;
-            this.metadata = metadataIn;
-            this.speed = speedModifier;
-            this.elevation = maxElevation;
-            this.localizedName = localizedNameIn;
-        }
-        
-        public String getName()
-        {
-            return this.name;
-        }
-        
-        public int getMetadata()
-        {
-            return this.metadata;
-        }
-        
-        public String toString()
-        {
-            return this.name;
-        }
-        
-        public float getSpeed()
-        {
-            return this.speed;
-        }
-        
-        public float getElevation()
-        {
-            return this.elevation;
-        }
-        
-        public String getLocalizedName()
-        {
-            return this.localizedName;
-        }
-        
-        /**
-         * Get a boat type by it's enum ordinal
-         */
-        public static EntityAirshipBaseVC.FrameCore byId(int id)
-        {
-            if (id < 0 || id >= values().length)
-            {
-                id = 0;
-            }
-            
-            return values()[id];
-        }
-        
-        public static EntityAirshipBaseVC.FrameCore getTypeFromString(String nameIn)
-        {
-            for (int i = 0; i < values().length; ++i)
-            {
-                if (values()[i].getName().equals(nameIn))
-                {
-                    return values()[i];
-                }
-            }
-            
-            return values()[0];
-        }
-    }
     
 }
