@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "half=bottom,type=stone": { "model": "ea:slab/glowstone/half_glowstone_slab" },
+        "half=top,type=stone": { "model": "ea:slab/glowstone/upper_glowstone_slab" }
+    }
+}

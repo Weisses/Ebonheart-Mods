@@ -1,0 +1,49 @@
+{
+    "forge_marker": 1,
+    "defaults": 
+    {
+        "model": "vg:gemstone/regular/brick/block_brick_arcanite"
+    },
+    "variants": 
+    {
+        "variant": 
+        {
+            "arcanite": 
+            {
+                "model": "vg:gemstone/regular/brick/block_brick_arcanite"
+            },
+            "velious": 
+            {
+                "model": "vg:gemstone/regular/brick/block_brick_velious"
+            },
+            "fenryte": 
+            {
+                "model": "vg:gemstone/regular/brick/block_brick_fenryte"
+            },
+            "electium": 
+            {
+                "model": "vg:gemstone/regular/brick/block_brick_electium"
+            },
+            "igneelis": 
+            {
+                "model": "vg:gemstone/regular/brick/block_brick_igneelis"
+            },
+            "necrocite": 
+            {
+                "model": "vg:gemstone/regular/brick/block_brick_necrocite"
+            },
+            "zephyrium": 
+            {
+                "model": "vg:gemstone/regular/brick/block_brick_zephyrium"
+            },
+            "onyxius": 
+            {
+                "model": "vg:gemstone/regular/brick/block_brick_onyxius"
+            },
+            "soularite": 
+            {
+                "model": "vg:gemstone/regular/brick/block_brick_soularite"
+            }
+        }
+    }
+}

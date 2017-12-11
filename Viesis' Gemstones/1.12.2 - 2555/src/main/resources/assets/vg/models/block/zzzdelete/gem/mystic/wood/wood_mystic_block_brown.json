@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "particle": "ea:blocks/dyeable/wood/wood_mystic_block_brown_top",
+        "down": "ea:blocks/dyeable/wood/wood_mystic_block_brown_top",
+        "up": "ea:blocks/dyeable/wood/wood_mystic_block_brown_top",
+        "north": "ea:blocks/dyeable/wood/wood_mystic_block_brown_back",
+        "east": "ea:blocks/dyeable/wood/wood_mystic_block_brown_side",
+        "south": "ea:blocks/dyeable/wood/wood_mystic_block_brown_front",
+        "west": "ea:blocks/dyeable/wood/wood_mystic_block_brown_side"
+    }
+}

@@ -1,0 +1,6 @@
+{
+	"parent": "block/cube_all",
+	"textures": {
+		"all": "ea:blocks/tile_entity_tutorial_base"
+	}
+}

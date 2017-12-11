@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "particle": "ea:blocks/block/arcanite_block",
+        "down": "ea:blocks/block/arcanite_block",
+        "up": "ea:blocks/block/arcanite_block",
+        "north": "ea:blocks/block/arcanite_block",
+        "east": "ea:blocks/block/arcanite_block",
+        "south": "ea:blocks/block/arcanite_block",
+        "west": "ea:blocks/block/arcanite_block"
+    }
+}

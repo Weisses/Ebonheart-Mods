@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "half=bottom,type=stone": { "model": "ea:cryptic/slab/necrocite/half_necrocite_slab" },
+        "half=top,type=stone": { "model": "ea:cryptic/slab/necrocite/upper_necrocite_slab" }
+    }
+}

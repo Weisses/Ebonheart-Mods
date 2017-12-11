@@ -1,0 +1,65 @@
+{
+    "record.glowing_disc": {
+        "category": "record",
+        "sounds": [
+            {
+            "name": "vg:records/glowing_disc",
+            "stream": true
+            }
+        ]
+    },
+    "record.shimmering_disc": {
+        "category": "record",
+        "sounds": [
+            {
+            "name": "vg:records/shimmering_disc",
+            "stream": true
+            }
+        ]
+    },
+    "record.laminate_disc": {
+        "category": "record",
+        "sounds": [
+            {
+            "name": "vg:records/laminate_disc",
+            "stream": true
+            }
+        ]
+    },
+    "record.resilient_disc": {
+        "category": "record",
+        "sounds": [
+            {
+            "name": "vg:records/resilient_disc",
+            "stream": true
+            }
+        ]
+    },
+    "record.dismal_disc": {
+        "category": "record",
+        "sounds": [
+            {
+            "name": "vg:records/dismal_disc",
+            "stream": true
+            }
+        ]
+    },
+    "record.ethereal_disc": {
+        "category": "record",
+        "sounds": [
+            {
+            "name": "vg:records/ethereal_disc",
+            "stream": true
+            }
+        ]
+    },
+    "record.mirroring_disc": {
+        "category": "record",
+        "sounds": [
+            {
+            "name": "vg:records/mirroring_disc",
+            "stream": true
+            }
+        ]
+    }
+}

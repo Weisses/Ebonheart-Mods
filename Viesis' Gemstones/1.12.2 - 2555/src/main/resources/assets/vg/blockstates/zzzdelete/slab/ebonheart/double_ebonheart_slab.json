@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "type=stone": { "model": "ea:slab/ebonheart/full_ebonheart_slab" }
+    }
+}

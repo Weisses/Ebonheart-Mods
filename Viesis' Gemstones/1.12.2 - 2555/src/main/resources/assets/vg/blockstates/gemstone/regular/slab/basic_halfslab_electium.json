@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "half=bottom,type=stone": { "model": "vg:gemstone/regular/slab/half_electium_slab" },
+        "half=top,type=stone": { "model": "vg:gemstone/regular/slab/upper_electium_slab" }
+    }
+}

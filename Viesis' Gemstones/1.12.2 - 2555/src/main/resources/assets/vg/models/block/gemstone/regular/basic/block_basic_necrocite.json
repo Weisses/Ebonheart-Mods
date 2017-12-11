@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "particle": "vg:blocks/gemstones/regular/necrocite_block",
+        "down": "vg:blocks/gemstones/regular/necrocite_block",
+        "up": "vg:blocks/gemstones/regular/necrocite_block",
+        "north": "vg:blocks/gemstones/regular/necrocite_block",
+        "east": "vg:blocks/gemstones/regular/necrocite_block",
+        "south": "vg:blocks/gemstones/regular/necrocite_block",
+        "west": "vg:blocks/gemstones/regular/necrocite_block"
+    }
+}

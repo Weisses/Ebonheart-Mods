@@ -1,0 +1,9 @@
+{
+    "variants": {
+        "facing=up": { "model": "ea:gem/velious/normal_velious_torch" },
+        "facing=east": { "model": "ea:gem/velious/normal_velious_torch_wall" },
+        "facing=south": { "model": "ea:gem/velious/normal_velious_torch_wall", "y": 90 },
+        "facing=west": { "model": "ea:gem/velious/normal_velious_torch_wall", "y": 180 },
+        "facing=north": { "model": "ea:gem/velious/normal_velious_torch_wall", "y": 270 }
+    }
+}

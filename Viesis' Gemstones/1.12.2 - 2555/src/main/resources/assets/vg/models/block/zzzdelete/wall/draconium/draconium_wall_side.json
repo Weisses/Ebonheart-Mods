@@ -1,0 +1,6 @@
+{
+    "parent": "block/wall_side",
+    "textures": {
+        "wall": "ea:blocks/block/draconium_brick_base"
+    }
+}

@@ -1,0 +1,9 @@
+{
+    "variants": {
+        "facing=up": { "model": "ea:cryptic/velious/normal_velious_torch" },
+        "facing=east": { "model": "ea:cryptic/velious/normal_velious_torch_wall" },
+        "facing=south": { "model": "ea:cryptic/velious/normal_velious_torch_wall", "y": 90 },
+        "facing=west": { "model": "ea:cryptic/velious/normal_velious_torch_wall", "y": 180 },
+        "facing=north": { "model": "ea:cryptic/velious/normal_velious_torch_wall", "y": 270 }
+    }
+}

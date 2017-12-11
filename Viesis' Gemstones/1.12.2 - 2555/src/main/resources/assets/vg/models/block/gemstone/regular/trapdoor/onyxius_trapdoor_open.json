@@ -1,0 +1,6 @@
+{
+    "parent": "block/trapdoor_open",
+    "textures": {
+        "texture": "vg:blocks/gemstones/regular/onyxius_trapdoor"
+    }
+}

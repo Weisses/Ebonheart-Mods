@@ -1,0 +1,6 @@
+{
+	"parent": "block/fence_ne",
+	"textures": {
+		"texture": "ea:blocks/block/cryptic_katcheen_block"
+	}
+}

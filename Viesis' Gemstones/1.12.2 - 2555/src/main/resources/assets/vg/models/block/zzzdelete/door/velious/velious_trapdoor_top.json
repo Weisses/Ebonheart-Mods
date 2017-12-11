@@ -1,0 +1,6 @@
+{
+    "parent": "block/trapdoor_top",
+    "textures": {
+        "texture": "ea:blocks/door/velious_trapdoor"
+    }
+}

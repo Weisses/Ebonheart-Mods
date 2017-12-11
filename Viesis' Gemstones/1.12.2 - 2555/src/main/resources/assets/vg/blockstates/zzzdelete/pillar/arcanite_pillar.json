@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "axis=none":  { "model": "ea:pillar/arcanite_pillar" },
+        "axis=y":   { "model": "ea:pillar/arcanite_pillar" },
+        "axis=z":   { "model": "ea:pillar/arcanite_pillar", "x": 90 },
+        "axis=x":   { "model": "ea:pillar/arcanite_pillar", "x": 90, "y": 90 }
+    }
+}

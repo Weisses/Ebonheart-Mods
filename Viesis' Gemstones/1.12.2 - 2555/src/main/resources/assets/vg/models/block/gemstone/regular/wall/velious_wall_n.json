@@ -1,0 +1,6 @@
+{
+    "parent": "block/wall_n",
+    "textures": {
+        "wall": "vg:blocks/gemstones/regular/velious_block"
+    }
+}

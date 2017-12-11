@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "particle": "vg:blocks/gemstones/regular/zephyrium_block",
+        "down": "vg:blocks/gemstones/regular/zephyrium_block",
+        "up": "vg:blocks/gemstones/regular/zephyrium_block",
+        "north": "vg:blocks/gemstones/regular/zephyrium_block",
+        "east": "vg:blocks/gemstones/regular/zephyrium_block",
+        "south": "vg:blocks/gemstones/regular/zephyrium_block",
+        "west": "vg:blocks/gemstones/regular/zephyrium_block"
+    }
+}

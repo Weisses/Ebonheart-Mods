@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "half=bottom,type=stone": { "model": "vg:gemstone/regular/slab/half_necrocite_slab" },
+        "half=top,type=stone": { "model": "vg:gemstone/regular/slab/upper_necrocite_slab" }
+    }
+}
