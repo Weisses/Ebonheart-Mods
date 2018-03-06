@@ -10,12 +10,14 @@ import com.viesis.viescraft.client.entity.model.v1.ModelAirshipV1FrameOff;
 import com.viesis.viescraft.client.entity.model.v1.ModelAirshipV1FrameOn;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
+import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -39,6 +41,19 @@ public class RenderAirshipV1 extends Render<EntityAirshipV1Core> {
         this.shadowSize = 1.0F;
     }
     
+    public static final ResourceLocation[] TEST_TEXTURE = new ResourceLocation[] 
+	{
+		new ResourceLocation(References.MOD_ID, "textures/models/test/background_0.png"),
+		new ResourceLocation(References.MOD_ID, "textures/models/test/overlay_0.png"),
+		
+	};
+    
+    @Override
+    public boolean isMultipass()
+    {
+        return true;
+    }
+    
     @Override
     public void doRender(EntityAirshipV1Core entity, double x, double y, double z, float entityYaw, float partialTicks)
     {
@@ -47,7 +62,36 @@ public class RenderAirshipV1 extends Render<EntityAirshipV1Core> {
         this.setupTranslation(x, y, z);
         this.setupRotation(entity, entityYaw, partialTicks);
         this.bindEntityTexture(entity);
-		
+        
+    	FMLClientHandler.instance().getClient().renderEngine.bindTexture(TEST_TEXTURE[0]);
+    	this.modelAirshipV1FrameOn.render(entity, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
+        
+        GlStateManager.popMatrix();
+        super.doRender(entity, x, y, z, entityYaw, partialTicks);
+    }
+    
+    @Override
+    public void renderMultipass(EntityAirshipV1Core entity, double x, double y, double z, float entityYaw, float partialTicks)
+    {
+    	GlStateManager.pushMatrix();
+        
+        this.setupTranslation(x, y, z);
+        this.setupRotation(entity, entityYaw, partialTicks);
+        this.bindEntityTexture(entity);
+        
+    	FMLClientHandler.instance().getClient().renderEngine.bindTexture(TEST_TEXTURE[1]);
+    	this.modelAirshipV1FrameOn.render(entity, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
+        
+    	this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/balloons/airship_visualballoon_" + EnumsVC.AirshipTierCore.byId(entity.getMetaTierCore()).getName() +".png"));
+    	this.modelAirshipV1Color.render(entity, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
+    	
+        GlStateManager.popMatrix();
+        super.doRender(entity, x, y, z, entityYaw, partialTicks);
+        
+    }
+    
+        
+		/**
         //Get Colors
         float frameRed;
         float frameGreen;
@@ -223,10 +267,10 @@ public class RenderAirshipV1 extends Render<EntityAirshipV1Core> {
         	this.modelAirshipV1Color.render(entity, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
     	}
     	GlStateManager.disableBlend();
-    	
-        GlStateManager.popMatrix();
+    	*/
+/**        GlStateManager.popMatrix();
         super.doRender(entity, x, y, z, entityYaw, partialTicks);
-    }
+    }*/
     
     public void setupRotation(EntityAirshipV1Core entity, float p_188311_2_, float p_188311_3_)
     {
