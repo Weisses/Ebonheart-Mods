@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "vc:airship_module_minorspeed",
+  "pattern": [
+    "CPC",
+    "D#D",
+    "CPC"
+  ],
+  "key": {
+    "C": {
+      "item": "vc:modules/airship_module",
+    "data": 0
+    },
+    "P": {
+      "item": "minecraft:ender_pearl"
+    },
+    "#": {
+      "item": "minecraft:blaze_rod"
+    },
+    "D": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "result": {
+    "item": "vc:modules/airship_module",
+    "data": 8,
+    "count": 1
+  }
+}

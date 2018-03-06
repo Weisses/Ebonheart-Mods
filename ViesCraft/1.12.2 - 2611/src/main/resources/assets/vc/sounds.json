@@ -1,0 +1,65 @@
+{
+    "record.bramble": {
+        "category": "record",
+        "sounds": [
+            {
+            "name": "vc:records/bramble",
+            "stream": true
+            }
+        ]
+    },
+    "record.castle": {
+        "category": "record",
+        "sounds": [
+            {
+            "name": "vc:records/castle",
+            "stream": true
+            }
+        ]
+    },
+    "record.jungle": {
+        "category": "record",
+        "sounds": [
+            {
+            "name": "vc:records/jungle",
+            "stream": true
+            }
+        ]
+    },
+    "record.dire": {
+        "category": "record",
+        "sounds": [
+            {
+            "name": "vc:records/dire",
+            "stream": true
+            }
+        ]
+    },
+    "record.storms": {
+        "category": "record",
+        "sounds": [
+            {
+            "name": "vc:records/storms",
+            "stream": true
+            }
+        ]
+    },
+    "record.timescar": {
+        "category": "record",
+        "sounds": [
+            {
+            "name": "vc:records/timescar",
+            "stream": true
+            }
+        ]
+    },
+    "sound.engineon": {
+        "category": "sound",
+        "sounds": [
+            {
+            "name": "vc:engineon",
+            "stream": false
+            }
+        ]
+    }
+}

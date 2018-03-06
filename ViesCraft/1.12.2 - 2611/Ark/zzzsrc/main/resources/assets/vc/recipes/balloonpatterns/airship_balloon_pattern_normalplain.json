@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "vc:airship_balloon_pattern_normalplain",
+  "pattern": [
+    "LLL",
+    "LLL",
+    "L#L"
+  ],
+  "key": {
+    "#": {
+      "item": "vc:modules/airship_module",
+      "data": 0
+    },
+    "L": {
+      "item": "minecraft:leather"
+    }
+  },
+  "result": {
+    "item": "vc:patterns/airship_balloon_pattern",
+    "data": 0,
+    "count": 1
+  }
+}

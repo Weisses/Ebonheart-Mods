@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "vc:airship_frame_bone",
+  "pattern": [
+    "###",
+    "#M#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:redstone_block"
+    },
+    "M": [
+      {
+        "item": "minecraft:minecart"
+      }
+    ]
+  },
+  "result": {
+    "item": "vc:frames/airship_frame",
+    "data": 10,
+    "count": 1
+  }
+}

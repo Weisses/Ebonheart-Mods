@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "vc:airship_frame_diamond",
+  "pattern": [
+    "###",
+    "#M#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:prismarine",
+      "data": 0
+    },
+    "M": [
+      {
+        "item": "minecraft:minecart"
+      }
+    ]
+  },
+  "result": {
+    "item": "vc:frames/airship_frame",
+    "data": 23,
+    "count": 1
+  }
+}

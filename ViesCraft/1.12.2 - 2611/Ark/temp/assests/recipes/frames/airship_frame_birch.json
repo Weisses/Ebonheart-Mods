@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "vc:airship_frame_oak",
+  "pattern": [
+    "###",
+    "#M#",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:planks",
+      "data": 2
+    },
+    "M": [
+      {
+        "item": "minecraft:minecart"
+      }
+    ]
+  },
+  "result": {
+    "item": "vc:frames/airship_frame",
+    "data": 2,
+    "count": 1
+  }
+}
