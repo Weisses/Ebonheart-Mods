@@ -34,70 +34,70 @@ public final class InitEntityVCRender extends ItemsVC {
 	public static void registerEntityRender()
 	{
 		//V1
-		if(ViesCraftConfig.v1AirshipEnabled)
-		{
+		//if(ViesCraftConfig.v1AirshipEnabled)
+		//{
 			RenderingRegistry.registerEntityRenderingHandler(EntityItemAirshipV1.class, renderManager -> new RenderItemAirshipV1(renderManager));
-		}
+		//}
 		//V2
-		if(ViesCraftConfig.v2AirshipEnabled)
-		{
+		//if(ViesCraftConfig.v2AirshipEnabled)
+		//{
 			RenderingRegistry.registerEntityRenderingHandler(EntityItemAirshipV2.class, renderManager -> new RenderItemAirshipV2(renderManager));
-		}
+		//}
 		//V3
-		if(ViesCraftConfig.v3AirshipEnabled)
-		{
+		//if(ViesCraftConfig.v3AirshipEnabled)
+		//{
 			RenderingRegistry.registerEntityRenderingHandler(EntityItemAirshipV3.class, renderManager -> new RenderItemAirshipV3(renderManager));
-		}
+		//}
 		
 		//V4
-		if(ViesCraftConfig.v4AirshipEnabled)
-		{
+		//if(ViesCraftConfig.v4AirshipEnabled)
+		//{
 			RenderingRegistry.registerEntityRenderingHandler(EntityItemAirshipV4.class, renderManager -> new RenderItemAirshipV4(renderManager));
-		}
+		//}
 		//V5
-		if(ViesCraftConfig.v5AirshipEnabled)
-		{
+		//if(ViesCraftConfig.v5AirshipEnabled)
+		//{
 			//RenderingRegistry.registerEntityRenderingHandler(EntityItemAirshipV5.class, renderManager -> new RenderItemAirshipV5(renderManager));
-		}
+		//}
 		//V6
-		if(ViesCraftConfig.v6AirshipEnabled)
-		{
+		//if(ViesCraftConfig.v6AirshipEnabled)
+		//{
 			//RenderingRegistry.registerEntityRenderingHandler(EntityItemAirshipV6.class, renderManager -> new RenderItemAirshipV6(renderManager));
-		}
+		//}
 		
 		//===========================================
 		
 		//V1
-		if(ViesCraftConfig.v1AirshipEnabled)
-		{
+		//if(ViesCraftConfig.v1AirshipEnabled)
+		//{
 			RenderingRegistry.registerEntityRenderingHandler(EntityAirshipV1Core.class, renderManager -> new RenderAirshipV1(renderManager));
-		}
+		//}
 		//V2
-		if(ViesCraftConfig.v2AirshipEnabled)
-		{
+		//if(ViesCraftConfig.v2AirshipEnabled)
+		//{
 			RenderingRegistry.registerEntityRenderingHandler(EntityAirshipV2Core.class, renderManager -> new RenderAirshipV2(renderManager));
-		}
+		//}
 		//V3
-		if(ViesCraftConfig.v3AirshipEnabled)
-		{
+		//if(ViesCraftConfig.v3AirshipEnabled)
+		//{
 			RenderingRegistry.registerEntityRenderingHandler(EntityAirshipV3Core.class, renderManager -> new RenderAirshipV3(renderManager));
-		}
+		//}
 		
 		//V4
-		if(ViesCraftConfig.v4AirshipEnabled)
-		{
+		//if(ViesCraftConfig.v4AirshipEnabled)
+		//{
 			RenderingRegistry.registerEntityRenderingHandler(EntityAirshipV4Core.class, renderManager -> new RenderAirshipV4(renderManager));
-		}
+		//}
 		//V5
-		if(ViesCraftConfig.v5AirshipEnabled)
-		{
+		//if(ViesCraftConfig.v5AirshipEnabled)
+		//{
 			//RenderingRegistry.registerEntityRenderingHandler(EntityAirshipV5Core.class, renderManager -> new RenderAirshipV5(renderManager));
-		}
+		//}
 		//V6
-		if(ViesCraftConfig.v6AirshipEnabled)
-		{
+		//if(ViesCraftConfig.v6AirshipEnabled)
+		//{
 			//RenderingRegistry.registerEntityRenderingHandler(EntityAirshipV6Core.class, renderManager -> new RenderAirshipV6(renderManager));
-		}
+		//}
 		
 		/**
 		registerRender1(EntityAirshipV1.class,  renderManager -> new RenderAirshipV1(renderManager));

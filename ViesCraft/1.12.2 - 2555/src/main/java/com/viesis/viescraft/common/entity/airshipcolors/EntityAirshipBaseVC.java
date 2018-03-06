@@ -737,13 +737,7 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
     {
     	if(this.world.isRemote)
 		{
-			for(int x = 0; x < this.inventory.getSlots(); ++x) 
-			{
-				if(!this.inventory.getStackInSlot(x).isEmpty())
-				{
-					this.inventory.setStackInSlot(x, null);
-				}
-			}
+			
 		}
 		else
 		{
@@ -752,7 +746,7 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
 				if(!this.inventory.getStackInSlot(x).isEmpty())
 				{
 					InventoryHelper.spawnItemStack(this.world, this.posX, this.posY, this.posZ, this.inventory.getStackInSlot(x));
-					//this.inventory.setStackInSlot(x, null);
+					this.inventory.extractItem(x, this.inventory.getStackInSlot(x).getCount(), false);
 				}
 			}
 		}
@@ -765,13 +759,7 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
     {
     	if(this.world.isRemote)
 		{
-			for (int x = 20; x < 47; ++x) 
-			{
-				if(!this.inventory.getStackInSlot(x).isEmpty())
-				{
-					this.inventory.setStackInSlot(x, null);
-				}
-			}
+			
 		}
 		else
 		{
@@ -780,7 +768,7 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
 				if(!this.inventory.getStackInSlot(x).isEmpty())
 				{
 					InventoryHelper.spawnItemStack(this.world, this.posX, this.posY, this.posZ, this.inventory.getStackInSlot(x));
-					//this.inventory.setStackInSlot(x, null);
+					this.inventory.extractItem(x, this.inventory.getStackInSlot(x).getCount(), false);
 				}
 			}
 		}

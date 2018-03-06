@@ -1,5 +1,21 @@
 {
-  "type": "minecraft:crafting_shaped",
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:crafting_table"
+    },
+    {
+      "item": "vc:item_logic_chip"
+    }
+  ],
+  "result": {
+    "item": "vc:airship_workbench",
+    "count": 1
+  }
+}
+
+{
+  "type": "minecraft:crafting_shapeless",
   "pattern": [
     "ICI", 
     "GFG", 

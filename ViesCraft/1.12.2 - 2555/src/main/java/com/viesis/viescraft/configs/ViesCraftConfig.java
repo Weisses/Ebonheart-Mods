@@ -9,16 +9,19 @@ import net.minecraftforge.common.config.Configuration;
 
 public class ViesCraftConfig {
 	
+	public static boolean worldRestart;
+	public static boolean mcRestart;
+	
 	public static Configuration config;
 	public static final String CATEGORY_VC = "ViesCraft Config";
 	
-	public static boolean v1AirshipEnabled;
-	public static boolean v2AirshipEnabled;
-	public static boolean v3AirshipEnabled;
+	//public static boolean v1AirshipEnabled;
+	//public static boolean v2AirshipEnabled;
+	//public static boolean v3AirshipEnabled;
 	
-	public static boolean v4AirshipEnabled;
-	public static boolean v5AirshipEnabled;
-	public static boolean v6AirshipEnabled;
+	//public static boolean v4AirshipEnabled;
+	//public static boolean v5AirshipEnabled;
+	//public static boolean v6AirshipEnabled;
 	
 	public static int v1AirshipSpeed;
 	public static int v2AirshipSpeed;
@@ -43,6 +46,10 @@ public class ViesCraftConfig {
 	public static boolean recipeDismounterPlayer;
 	//public static boolean recipeMythic;
 	public static boolean engineSounds;
+	
+	public static int HUDX;
+	public static int HUDY;
+	public static int HUDScale;
 	
 	public static final boolean V1AIRSHIPENABLED_DEFAULT = true;
 	public static final String V1AIRSHIPENABLED_NAME = "Enable V1 Viesdenburg Airships?";
@@ -124,6 +131,17 @@ public class ViesCraftConfig {
 	public static final String ENGINESOUND_NAME = "Enable airship engine sounds?";
 	public static final String ENGINESOUND_COMMENT = "Should airships have engine sounds when powered?";
 	
+	public static final int HUDX_DEFAULT = 0;
+	public static final String HUDX_NAME = "Set the X position of the HUD.";
+	public static final String HUDX_COMMENT = "0 puts it back in the original position.";
+	public static final int HUDY_DEFAULT = 0;
+	public static final String HUDY_NAME = "Set the Y position of the HUD.";
+	public static final String HUDY_COMMENT = "0 puts it back in the original position.";
+	public static final int HUDSCALE_DEFAULT = 100;
+	public static final String HUDSCALE_NAME = "Set the Scale of the HUD.";
+	public static final String HUDSCALE_COMMENT = "100 puts it back in the original scale.";
+	
+	
 	public static void init(File file)
 	{
 		config = new Configuration(file);
@@ -134,19 +152,13 @@ public class ViesCraftConfig {
 	public static void syncConfig()
 	{
 		//Main settings
-		final String category1 = CATEGORY_VC + config.CATEGORY_SPLITTER + TextFormatting.LIGHT_PURPLE + "Global";
-		config.addCustomCategoryComment(category1, "Global Airship settings.");
+		final String category1 = CATEGORY_VC + config.CATEGORY_SPLITTER + TextFormatting.LIGHT_PURPLE + "Global Settings";
+		config.addCustomCategoryComment(category1, "Global settings.");
 		
-		v1AirshipEnabled = config.getBoolean(TextFormatting.WHITE + V1AIRSHIPENABLED_NAME, category1, V1AIRSHIPENABLED_DEFAULT, V1AIRSHIPENABLED_COMMENT);
-		v2AirshipEnabled = config.getBoolean(TextFormatting.WHITE + V2AIRSHIPENABLED_NAME, category1, V2AIRSHIPENABLED_DEFAULT, V2AIRSHIPENABLED_COMMENT);
-		v3AirshipEnabled = config.getBoolean(TextFormatting.WHITE + V3AIRSHIPENABLED_NAME, category1, V3AIRSHIPENABLED_DEFAULT, V3AIRSHIPENABLED_COMMENT);
-		
-		v4AirshipEnabled = config.getBoolean(TextFormatting.WHITE + V4AIRSHIPENABLED_NAME, category1, V4AIRSHIPENABLED_DEFAULT, V4AIRSHIPENABLED_COMMENT);
-		///////v5AirshipEnabled = config.getBoolean(TextFormatting.WHITE + V5AIRSHIPENABLED_NAME, category1, V5AIRSHIPENABLED_DEFAULT, V5AIRSHIPENABLED_COMMENT);
-		///////v6AirshipEnabled = config.getBoolean(TextFormatting.WHITE + V6AIRSHIPENABLED_NAME, category1, V6AIRSHIPENABLED_DEFAULT, V6AIRSHIPENABLED_COMMENT);
+		recipeDismounterPlayer = config.getBoolean(TextFormatting.WHITE + RECIPEDISMOUNTERPLAYER_NAME, category1, RECIPEDISMOUNTERPLAYER_DEFAULT, RECIPEDISMOUNTERPLAYER_COMMENT);
 		
 		//General settings
-		final String category2 = CATEGORY_VC + config.CATEGORY_SPLITTER + TextFormatting.GREEN + "General";
+		final String category2 = CATEGORY_VC + config.CATEGORY_SPLITTER + TextFormatting.GREEN + "General Settings";
 		config.addCustomCategoryComment(category2, "General airship options.");
 		
 		v1AirshipSpeed = config.getInt(TextFormatting.WHITE + V1AIRSHIPSPEED_NAME, category2, V1AIRSHIPSPEED_DEFAULT, 100, 400, V1AIRSHIPSPEED_COMMENT);
@@ -157,20 +169,18 @@ public class ViesCraftConfig {
 		///////v5AirshipSpeed = config.getInt(TextFormatting.WHITE + V5AIRSHIPSPEED_NAME, category2, V5AIRSHIPSPEED_DEFAULT, 100, 400, V5AIRSHIPSPEED_COMMENT);
 		///////v6AirshipSpeed = config.getInt(TextFormatting.WHITE + V6AIRSHIPSPEED_NAME, category2, V6AIRSHIPSPEED_DEFAULT, 100, 400, V6AIRSHIPSPEED_COMMENT);
 		
-		recipeDismounterPlayer = config.getBoolean(TextFormatting.WHITE + RECIPEDISMOUNTERPLAYER_NAME, category2, RECIPEDISMOUNTERPLAYER_DEFAULT, RECIPEDISMOUNTERPLAYER_COMMENT);
-		
 		//Fuel settings
-		final String category3 = CATEGORY_VC + config.CATEGORY_SPLITTER + TextFormatting.AQUA + "Fuel";
+		final String category3 = CATEGORY_VC + config.CATEGORY_SPLITTER + TextFormatting.AQUA + "Fuel Settings";
 		config.addCustomCategoryComment(category3, "Airship fuel options.");
 		
 		vanillaFuel = config.getBoolean(TextFormatting.WHITE + VANILLAFUEL_NAME, category3, VANILLAFUEL_DEFAULT, VANILLAFUEL_COMMENT);
 		outsideModFuel = config.getBoolean(TextFormatting.WHITE + OUTSIDEMODFUEL_NAME, category3, OUTSIDEMODFUEL_DEFAULT, OUTSIDEMODFUEL_COMMENT);
 		
-		viesolineBurnTime = config.getInt(TextFormatting.WHITE + VIESOLINEBURNTIME_NAME, category3, VIESOLINEBURNTIME_DEFAULT, 1, 500, VIESOLINEBURNTIME_COMMENT);
+		viesolineBurnTime = config.getInt(TextFormatting.WHITE + VIESOLINEBURNTIME_NAME, category3, VIESOLINEBURNTIME_DEFAULT, 20, 500, VIESOLINEBURNTIME_COMMENT);
 		
-		//General settings
-		final String category4 = CATEGORY_VC + config.CATEGORY_SPLITTER + TextFormatting.GOLD + "Client";
-		config.addCustomCategoryComment(category4, "Client airship options.");
+		//Client settings
+		final String category4 = CATEGORY_VC + config.CATEGORY_SPLITTER + TextFormatting.GOLD + "Client Side Settings";
+		config.addCustomCategoryComment(category4, "Client side airship options.");
 
 		v1AirshipName = config.getString(TextFormatting.WHITE + V1AIRSHIPNAME_NAME, category4, V1AIRSHIPNAME_DEFAULT, V1AIRSHIPNAME_COMMENT);
 		v2AirshipName = config.getString(TextFormatting.WHITE + V2AIRSHIPNAME_NAME, category4, V2AIRSHIPNAME_DEFAULT, V2AIRSHIPNAME_COMMENT);
@@ -181,6 +191,14 @@ public class ViesCraftConfig {
 		///////v6AirshipName = config.getString(TextFormatting.WHITE + V6AIRSHIPNAME_NAME, category4, V6AIRSHIPNAME_DEFAULT, V6AIRSHIPNAME_COMMENT);
 		
 		engineSounds = config.getBoolean(TextFormatting.WHITE + ENGINESOUND_NAME, category4, ENGINESOUND_DEFAULT, ENGINESOUND_COMMENT);
+		
+		//HUD settings
+		final String category5 = CATEGORY_VC + config.CATEGORY_SPLITTER + TextFormatting.GOLD + "HUD Settings";
+		config.addCustomCategoryComment(category5, "HUD airship options.");
+		
+		HUDX = config.getInt(TextFormatting.WHITE + HUDX_NAME, category5, HUDX_DEFAULT, -200, 200, HUDX_COMMENT);
+		HUDY = config.getInt(TextFormatting.WHITE + HUDY_NAME, category5, HUDY_DEFAULT, -200, 200, HUDY_COMMENT);
+		HUDScale = config.getInt(TextFormatting.WHITE + HUDSCALE_NAME, category5, HUDSCALE_DEFAULT, 25, 150, HUDSCALE_COMMENT);
 		
 		//Save the config
 		config.save();

@@ -3,6 +3,7 @@ package com.viesis.viescraft.client.gui.airship;
 import com.viesis.viescraft.api.EnumsVC;
 import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
+import com.viesis.viescraft.configs.ViesCraftConfig;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
@@ -52,95 +53,103 @@ public class GuiAirshipHUD extends Gui {
 			
 			if(this.isAirship)
 		    {
-				this.airship = (EntityAirshipBaseVC) Minecraft.getMinecraft().player.getRidingEntity();
+				float scaleIn = ViesCraftConfig.HUDScale/100F;
 				
-				GlStateManager.enableRescaleNormal();
-	            GlStateManager.enableBlend();
-	            GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
-	            
-	            //Add this block of code before you draw the section of your texture containing transparency
-	 			GlStateManager.pushAttrib();
-	 			GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-	 			GlStateManager.disableLighting();
-	 			
-	 			//Alpha test and blend needed due to vanilla or Forge rendering bug
-	 			GlStateManager.enableAlpha();
-	 			GlStateManager.enableBlend();
-	         	
-	            Minecraft.getMinecraft().getTextureManager().bindTexture(HUD_TEXTURE);
-				
-	            //Screen resolution
-				ScaledResolution sr = new ScaledResolution(mc);
-	            int hudX = sr.getScaledWidth() / 2 - (hudWidth / 2); // left edge of GUI
-	            int hudY = 2; // top edge of GUI
-	            int textX = hudX + 30; // xcoord for text
-	            int textY = hudY + 22; // ycoord for text
-	            int ledX = 1;
-				
-				//Draw the background static texture.
-				drawTexturedModalRect(hudX, hudY, 0, 0, hudWidth, hudHeight + 2);
-				
-				//Bottom lower fuel bar
-				//Creates a solid green bar
-				if(this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_LESSER.getMetadata()
-				|| this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_NORMAL.getMetadata()
-				|| this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_GREATER.getMetadata())
-				{
-					drawTexturedModalRect(hudX + 36, hudY + 31, 36, 72, hudX, 6);
-				}
-				else
-				{
-					int fuelbarwidth1 = (int)(((float) this.airship.getPowered() / (this.airship.getTotalPowered())) * 110);
-					
-					drawTexturedModalRect(hudX + 36, hudY + 31, 36, 59, fuelbarwidth1, 6);
-				}
-				
-				//Top bigger stack bar
-				//Creates a solid green bar
-				if(this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_LESSER.getMetadata()
-				|| this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_NORMAL.getMetadata()
-				|| this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_GREATER.getMetadata())
-				{
-					drawTexturedModalRect(hudX + 2, hudY + 14, 2, 66, 177, 6);
-				}
-				else
-				{
-					int fuelbarwidth2 = (int)(((float) this.airship.getItemFuelStackSizePowered() / 64) * 178);
-					drawTexturedModalRect(hudX + 2, hudY + 14, 2, 53, fuelbarwidth2, 6);
-				}
-				
-				//Airship lights on
-				if(this.airship.getPowered() >= 1)
-				{
-					drawTexturedModalRect(hudX + 16, hudY, 16, 44, 150, 7);
-				}
-				
-				//Draw Module Icon
 				GlStateManager.pushMatrix();
 				{
-					GlStateManager.translate(hudX + 85, hudY + 2, 0);
-					GlStateManager.scale(1.5, 1.5, 1.5);
+					GlStateManager.scale(scaleIn, scaleIn, scaleIn);
 					
+					this.airship = (EntityAirshipBaseVC) Minecraft.getMinecraft().player.getRidingEntity();
+					
+					GlStateManager.enableRescaleNormal();
+		            GlStateManager.enableBlend();
+		            GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+		            
+		            //Add this block of code before you draw the section of your texture containing transparency
+		 			GlStateManager.pushAttrib();
+		 			GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+		 			GlStateManager.disableLighting();
+		 			
+		 			//Alpha test and blend needed due to vanilla or Forge rendering bug
+		 			GlStateManager.enableAlpha();
+		 			GlStateManager.enableBlend();
+		         	
+		            Minecraft.getMinecraft().getTextureManager().bindTexture(HUD_TEXTURE);
+					
+		            //Screen resolution
+					ScaledResolution sr = new ScaledResolution(mc);
+		            int hudX = sr.getScaledWidth() / 2 - (hudWidth / 2); // left edge of GUI
+		            int hudY = 2; // top edge of GUI
+		            int textX = hudX + 30; // xcoord for text
+		            int textY = hudY + 22; // ycoord for text
+		            int ledX = 1;
+					
+					//Draw the background static texture.
+					drawTexturedModalRect(ViesCraftConfig.HUDX + hudX, ViesCraftConfig.HUDY + hudY, 0, 0, hudWidth, hudHeight + 2);
+					
+					//Bottom lower fuel bar
+					//Creates a solid green bar
+					if(this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_LESSER.getMetadata()
+					|| this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_NORMAL.getMetadata()
+					|| this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_GREATER.getMetadata())
+					{
+						drawTexturedModalRect(ViesCraftConfig.HUDX + hudX + 36, ViesCraftConfig.HUDY + hudY + 31, 36, 72, hudX, 6);
+					}
+					else
+					{
+						int fuelbarwidth1 = (int)(((float) this.airship.getPowered() / (this.airship.getTotalPowered())) * 110);
+						
+						drawTexturedModalRect(ViesCraftConfig.HUDX + hudX + 36, ViesCraftConfig.HUDY + hudY + 31, 36, 59, fuelbarwidth1, 6);
+					}
+					
+					//Top bigger stack bar
+					//Creates a solid green bar
+					if(this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_LESSER.getMetadata()
+					|| this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_NORMAL.getMetadata()
+					|| this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_GREATER.getMetadata())
+					{
+						drawTexturedModalRect(ViesCraftConfig.HUDX + hudX + 2, ViesCraftConfig.HUDY + hudY + 14, 2, 66, 177, 6);
+					}
+					else
+					{
+						int fuelbarwidth2 = (int)(((float) this.airship.getItemFuelStackSizePowered() / 64) * 178);
+						drawTexturedModalRect(ViesCraftConfig.HUDX + hudX + 2, ViesCraftConfig.HUDY + hudY + 14, 2, 53, fuelbarwidth2, 6);
+					}
+					
+					//Airship lights on
+					if(this.airship.getPowered() >= 1)
+					{
+						drawTexturedModalRect(ViesCraftConfig.HUDX + hudX + 16, ViesCraftConfig.HUDY + hudY, 16, 44, 150, 7);
+					}
+					
+					//Draw Module Icon
+					GlStateManager.pushMatrix();
+					{
+						GlStateManager.translate(ViesCraftConfig.HUDX + hudX + 85, ViesCraftConfig.HUDY + hudY + 2, 0);
+						GlStateManager.scale(1.5, 1.5, 1.5);
+						
+						if(this.airship.getModuleVariantSlot1() > 0)
+						{
+							this.drawModuleIcon(this.airship.getModuleVariantSlot1());
+						}
+					}
+					GlStateManager.popMatrix();
+					
+					//Draw Yellow Border over Module Icon
 					if(this.airship.getModuleVariantSlot1() > 0)
 					{
-						this.drawModuleIcon(this.airship.getModuleVariantSlot1());
+						this.drawTexturedModalRect(ViesCraftConfig.HUDX + hudX + 83, ViesCraftConfig.HUDY + hudY + 0, 0, 224, 16, 16);
 					}
+					
+					//Altitude Logic
+					this.renderHUDAltitude(ViesCraftConfig.HUDX + hudX, ViesCraftConfig.HUDY + hudY);
+					
+					//Timer Logic
+					this.renderHUDFuelTimer(ViesCraftConfig.HUDX + hudX, ViesCraftConfig.HUDY + hudY);
+					
+					GlStateManager.popAttrib();
 				}
 				GlStateManager.popMatrix();
-				
-				//Draw Yellow Border over Module Icon
-				if(this.airship.getModuleVariantSlot1() > 0)
-				{
-					this.drawTexturedModalRect(hudX + 83, hudY + 0, 0, 224, 16, 16);
-				}
-				
-				//Altitude Logic
-				this.renderHUDAltitude(hudX, hudY);
-				
-				//Timer Logic
-				this.renderHUDFuelTimer(hudX, hudY);
-				
-				GlStateManager.popAttrib();
 		    }
 		}
 	}

@@ -14,7 +14,11 @@ public class ConfigGui extends GuiConfig {
 	
 	public ConfigGui(GuiScreen screen) 
 	{
-		super(screen, new ConfigElement(ViesCraftConfig.config.getCategory(ViesCraftConfig.CATEGORY_VC)).getChildElements(), References.MOD_NAME, true, true, GuiConfig.getAbridgedConfigPath(ViesCraftConfig.config.toString()));
+		super(screen, new ConfigElement(ViesCraftConfig.config.getCategory(ViesCraftConfig.CATEGORY_VC)).getChildElements(), 
+				References.MOD_NAME, 
+				false, 
+				false, 
+				GuiConfig.getAbridgedConfigPath(ViesCraftConfig.config.toString()));
 	}
 	
 	@Override
@@ -35,6 +39,7 @@ public class ConfigGui extends GuiConfig {
 		}
 		
 		ViesCraftConfig.config.save();
+		ViesCraftConfig.syncConfig();
 		LogHelper.info("Configuration saved.");
 	}
 }
