@@ -1,0 +1,29 @@
+{
+    "conditions": [
+      {
+          "type": "vc:is_pulse_loaded",
+          "pulse_name": "ViesCraft"
+      }
+  ],
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "LLL",
+    "L#L",
+    "LLL"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:string"
+    },
+    "L": [
+      {
+        "item": "minecraft:leather",
+        "data": 0
+      }
+    ]
+  },
+  "result": {
+    "item": "vc:airship_balloon",
+    "count": 1
+  }
+}
