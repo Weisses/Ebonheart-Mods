@@ -15,8 +15,8 @@ public class ContainerAirshipModule extends ContainerVC {
 	 * SLOTS: <br> <br>
 	 *
 	 * Slot  0 = Fuel <br>
-	 * Slot  1 = Upgrade Frame <br>
-	 * Slot  2 = Upgrade Core <br>
+	 * Slot  1 = Upgrade Core <br>
+	 * Slot  2 = Upgrade Frame <br>
 	 * Slot  3 = Upgrade Engine <br>
 	 * Slot  4 = Upgrade Balloon <br>
 	 * Slot 11 = Module Slot1 <br>

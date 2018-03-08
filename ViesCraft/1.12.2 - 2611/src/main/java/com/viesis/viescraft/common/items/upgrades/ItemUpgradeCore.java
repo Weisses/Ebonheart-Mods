@@ -7,6 +7,11 @@ import java.util.stream.Stream;
 
 import javax.annotation.Nullable;
 
+import com.viesis.viescraft.ViesCraft;
+import com.viesis.viescraft.api.EnumsVC;
+import com.viesis.viescraft.api.References;
+import com.viesis.viescraft.common.items.ItemHelper;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.settings.GameSettings;
@@ -21,16 +26,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-import com.viesis.viescraft.ViesCraft;
-import com.viesis.viescraft.api.EnumsVC;
-import com.viesis.viescraft.api.References;
-import com.viesis.viescraft.common.items.ItemHelper;
-
 public class ItemUpgradeCore extends Item {
 	
 	public ItemUpgradeCore() 
 	{
-		ItemHelper.setItemName(this, "upgrades/upgrade_airship_type");
+		ItemHelper.setItemName(this, "upgrades/upgrade_airship_core");
 		
 		this.setHasSubtypes(true);
         this.setMaxDamage(0);
@@ -44,7 +44,7 @@ public class ItemUpgradeCore extends Item {
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
     {
 		DecimalFormat df = new DecimalFormat("###.#");
-		float speedModCal = EnumsVC.AirshipTierCore.byId(this.getMetadata(stack)).getSpeedModifier() * 100;
+		float speedModCal = EnumsVC.AirshipTierFrame.byId(this.getMetadata(stack)).getSpeedModifier() * 100;
 		String speedMod = df.format(speedModCal);
 		
 		GameSettings gameSettingsIn = Minecraft.getMinecraft().gameSettings;
@@ -75,7 +75,7 @@ public class ItemUpgradeCore extends Item {
 				//Airship Speed
 				tooltip.add(TextFormatting.DARK_GREEN + "||" + TextFormatting.BLACK + "---------l" + TextFormatting.BLUE + I18n.format("vc.item.tt.airship.11", new Object[0]) + TextFormatting.DARK_BLUE + " : " 
 						+ TextFormatting.GRAY + "(" + stringColorMain + "+" 
-						+ df.format(EnumsVC.AirshipTierCore.byId(this.getMetadata(stack)).getSpeedModifier() * 100)
+						+ df.format(EnumsVC.AirshipTierFrame.byId(this.getMetadata(stack)).getSpeedModifier() * 100)
 						+ TextFormatting.GRAY + ")"
 						+ TextFormatting.BLACK + "----------il" + TextFormatting.DARK_GREEN + "||");
 				
@@ -108,7 +108,7 @@ public class ItemUpgradeCore extends Item {
 				//Airship Speed
 				tooltip.add(TextFormatting.DARK_GREEN + "||" + TextFormatting.BLACK + "---------l" + TextFormatting.BLUE + I18n.format("vc.item.tt.airship.11", new Object[0]) + TextFormatting.DARK_BLUE + " : " 
 						+ TextFormatting.GRAY + "(" + stringColorMain + "+" 
-						+ df.format(EnumsVC.AirshipTierCore.byId(this.getMetadata(stack)).getSpeedModifier() * 100)
+						+ df.format(EnumsVC.AirshipTierFrame.byId(this.getMetadata(stack)).getSpeedModifier() * 100)
 						+ TextFormatting.GRAY + ")"
 						+ TextFormatting.BLACK + "----------il" + TextFormatting.DARK_GREEN + "||");
 				
@@ -185,31 +185,31 @@ public class ItemUpgradeCore extends Item {
 				return colorName = TextFormatting.WHITE 
 				+ "Core Upgrade "
 				+ TextFormatting.GRAY + "("
-				+ TextFormatting.WHITE + EnumsVC.AirshipTierType.byId(this.getMetadata(stack)).getLocalizedName()
+				+ TextFormatting.WHITE + EnumsVC.AirshipTierCore.byId(this.getMetadata(stack)).getLocalizedName()
 				+ TextFormatting.GRAY + ")";
 			case 2:
 				return colorName = TextFormatting.YELLOW 
 				+ "Core Upgrade "
 				+ TextFormatting.GRAY + "("
-				+ TextFormatting.YELLOW + EnumsVC.AirshipTierType.byId(this.getMetadata(stack)).getLocalizedName()
+				+ TextFormatting.YELLOW + EnumsVC.AirshipTierCore.byId(this.getMetadata(stack)).getLocalizedName()
 				+ TextFormatting.GRAY + ")";
 			case 3:
 				return colorName = TextFormatting.AQUA 
 				+ "Core Upgrade "
 				+ TextFormatting.GRAY + "("
-				+ TextFormatting.AQUA + EnumsVC.AirshipTierType.byId(this.getMetadata(stack)).getLocalizedName()
+				+ TextFormatting.AQUA + EnumsVC.AirshipTierCore.byId(this.getMetadata(stack)).getLocalizedName()
 				+ TextFormatting.GRAY + ")";
 			case 4:
 				return colorName = TextFormatting.LIGHT_PURPLE 
 				+ "Core Upgrade "
 				+ TextFormatting.GRAY + "("
-				+ TextFormatting.LIGHT_PURPLE + EnumsVC.AirshipTierType.byId(this.getMetadata(stack)).getLocalizedName()
+				+ TextFormatting.LIGHT_PURPLE + EnumsVC.AirshipTierCore.byId(this.getMetadata(stack)).getLocalizedName()
 				+ TextFormatting.GRAY + ")";
 			case 5:
 				return colorName = TextFormatting.RED 
 				+ "Core Upgrade "
 				+ TextFormatting.GRAY + "("
-				+ TextFormatting.RED + EnumsVC.AirshipTierType.byId(this.getMetadata(stack)).getLocalizedName()
+				+ TextFormatting.RED + EnumsVC.AirshipTierCore.byId(this.getMetadata(stack)).getLocalizedName()
 				+ TextFormatting.GRAY + ")";
 		}
 		

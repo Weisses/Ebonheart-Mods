@@ -24,7 +24,6 @@ import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -33,7 +32,8 @@ import net.minecraft.util.text.TextFormatting;
 public class GuiAirshipMenu extends GuiContainer {
 	
 	private IInventory playerInv;
-	private EntityAirshipBaseVC airship;
+	protected EntityAirshipBaseVC airship;
+	private ResourceLocation texture = new ResourceLocation(References.MOD_ID + ":" + "textures/gui/container_gui_airship_menu.png");
 	
 	public GuiAirshipMenu(IInventory playerInv, EntityAirshipBaseVC airshipIn)
 	{
@@ -101,7 +101,7 @@ public class GuiAirshipMenu extends GuiContainer {
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) 
 	{
 		GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
-		this.mc.getTextureManager().bindTexture(new ResourceLocation(References.MOD_ID + ":" + "textures/gui/container_gui_airship_menu.png"));
+		this.mc.getTextureManager().bindTexture(texture);
 		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
 		
 		//Draw "on" indicators
@@ -130,11 +130,11 @@ public class GuiAirshipMenu extends GuiContainer {
 		this.drawRect(this.guiLeft + 52+6, this.guiTop - 14, this.guiLeft + 124-6, this.guiTop, Color.BLACK.getRGB());
 		
 		//Draws a gray box over the red X if there is an item in the slot
-		if(this.airship.getMetaTierFrame() > 0)
+		if(this.airship.getMetaTierCore() > 0)
 		{
 			this.drawRect(this.guiLeft + 21, this.guiTop + 41, this.guiLeft + 31, this.guiTop + 51, Color.GRAY.getRGB());
 		}
-		if(this.airship.getMetaTierCore() > 0)
+		if(this.airship.getMetaTierFrame() > 0)
 		{
 			this.drawRect(this.guiLeft + 44, this.guiTop + 41, this.guiLeft + 54, this.guiTop + 51, Color.GRAY.getRGB());
 		}
@@ -149,13 +149,13 @@ public class GuiAirshipMenu extends GuiContainer {
 		
 		
 		
-		//Logic for mouse-over Frame tooltip
+		//Logic for mouse-over Core tooltip
 		if(mouseX >= this.guiLeft + 15 && mouseX <= this.guiLeft + 36
 		&& mouseY >= this.guiTop + 30 && mouseY <= this.guiTop + 54)
 		{
 			this.drawTexturedModalRect(this.guiLeft + 14, this.guiTop + 28, 177, 83, 24, 28);
 		}
-		//Logic for mouse-over Core tooltip
+		//Logic for mouse-over Frame tooltip
 		if(mouseX >= 23 + this.guiLeft + 15 && mouseX <= 23 + this.guiLeft + 36
 		&& mouseY >= this.guiTop + 30 && mouseY <= this.guiTop + 54)
 		{
@@ -201,19 +201,19 @@ public class GuiAirshipMenu extends GuiContainer {
 			GlStateManager.translate(71.5 + 4, 11.25, 0);
 			GlStateManager.scale(0.55, 0.55, 0.55);
 			
-			String speedIn = TextFormatting.BLACK + "-" + TextFormatting.GREEN + "+" + String.valueOf((int)(EnumsVC.AirshipTierCore.byId(this.airship.metaTierCore).getSpeedModifier() *100));
+			String speedIn = TextFormatting.BLACK + "-" + TextFormatting.GREEN + "+" + String.valueOf((int)(EnumsVC.AirshipTierFrame.byId(this.airship.metaTierFrame).getSpeedModifier() *100));
 			
 			if(this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.SPEED_LESSER.getMetadata())
 			{
-				speedIn = TextFormatting.BLACK + "-" + TextFormatting.AQUA + "+" + String.valueOf((int)(EnumsVC.AirshipTierCore.byId(this.airship.metaTierCore).getSpeedModifier() *100)  + 1);
+				speedIn = TextFormatting.BLACK + "-" + TextFormatting.AQUA + "+" + String.valueOf((int)(EnumsVC.AirshipTierFrame.byId(this.airship.metaTierFrame).getSpeedModifier() *100)  + 1);
 			}
 			else if(this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.SPEED_NORMAL.getMetadata())
 			{
-				speedIn = TextFormatting.BLACK + "-" + TextFormatting.AQUA + "+" + String.valueOf((int)(EnumsVC.AirshipTierCore.byId(this.airship.metaTierCore).getSpeedModifier() *100)  + 2);
+				speedIn = TextFormatting.BLACK + "-" + TextFormatting.AQUA + "+" + String.valueOf((int)(EnumsVC.AirshipTierFrame.byId(this.airship.metaTierFrame).getSpeedModifier() *100)  + 2);
 			}
 			else if(this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.SPEED_GREATER.getMetadata())
 			{
-				speedIn = TextFormatting.BLACK + "-" + TextFormatting.AQUA + "+" + String.valueOf((int)(EnumsVC.AirshipTierCore.byId(this.airship.metaTierCore).getSpeedModifier() *100)  + 3);
+				speedIn = TextFormatting.BLACK + "-" + TextFormatting.AQUA + "+" + String.valueOf((int)(EnumsVC.AirshipTierFrame.byId(this.airship.metaTierFrame).getSpeedModifier() *100)  + 3);
 			}
 			
 			this.fontRenderer.drawString(References.localNameVC("vc.main.speed") + ": " + speedIn, 0, 0, 16777215);
@@ -276,10 +276,31 @@ public class GuiAirshipMenu extends GuiContainer {
 		
 		
 		
+		//Core
+		GlStateManager.pushMatrix();
+		{
+			GlStateManager.translate(19.5, 31.5, 0);
+			GlStateManager.scale(0.55, 0.55, 0.55);
+			
+			this.fontRenderer.drawString(References.localNameVC("vc.main.core"), 0, 0, 16777215);
+		}
+		GlStateManager.popMatrix();
+		GlStateManager.pushMatrix();
+		{
+			GlStateManager.translate(20, 40, 0);
+			GlStateManager.scale(0.75, 0.75, 0.75);
+			
+			if(this.airship.getMetaTierCore() > 0)
+			{
+				this.drawItemStack(new ItemStack(InitItemsVC.UPGRADE_CORE, 1, this.airship.getMetaTierCore()), 0, 0, "");
+			}
+		}
+		GlStateManager.popMatrix();
+		
 		//Frame
 		GlStateManager.pushMatrix();
 		{
-			GlStateManager.translate(18, 31.5, 0);
+			GlStateManager.translate(41, 31.5, 0);
 			GlStateManager.scale(0.55, 0.55, 0.55);
 			
 			this.fontRenderer.drawString(References.localNameVC("vc.main.frame"), 0, 0, 16777215);
@@ -287,7 +308,7 @@ public class GuiAirshipMenu extends GuiContainer {
 		GlStateManager.popMatrix();
 		GlStateManager.pushMatrix();
 		{
-			GlStateManager.translate(20, 40, 0);
+			GlStateManager.translate(43, 40, 0);
 			GlStateManager.scale(0.75, 0.75, 0.75);
 			
 			if(this.airship.getMetaTierFrame() > 0)
@@ -297,26 +318,6 @@ public class GuiAirshipMenu extends GuiContainer {
 		}
 		GlStateManager.popMatrix();
 		
-		//Core
-		GlStateManager.pushMatrix();
-		{
-			GlStateManager.translate(42.5, 31.5, 0);
-			GlStateManager.scale(0.55, 0.55, 0.55);
-			
-			this.fontRenderer.drawString(References.localNameVC("vc.main.core"), 0, 0, 16777215);
-		}
-		GlStateManager.popMatrix();
-		GlStateManager.pushMatrix();
-		{
-			GlStateManager.translate(43, 40, 0);
-			GlStateManager.scale(0.75, 0.75, 0.75);
-			
-			if(this.airship.getMetaTierCore() > 0)
-			{
-				this.drawItemStack(new ItemStack(InitItemsVC.UPGRADE_CORE, 1, this.airship.getMetaTierCore()), 0, 0, "");
-			}
-		}
-		GlStateManager.popMatrix();
 		
 		//Engine
 		GlStateManager.pushMatrix();
@@ -383,9 +384,9 @@ public class GuiAirshipMenu extends GuiContainer {
 		
 		
 		
-		//Logic for mouse-over fuel tooltip
-		if(mouseX >= this.guiLeft + 147 && mouseX <= this.guiLeft + 163
-		&& mouseY >= this.guiTop + 22 && mouseY <= this.guiTop + 38
+		//Logic for mouse-over Fuel tooltip
+		if(mouseX >= this.guiLeft + 146 && mouseX <= this.guiLeft + 163
+		&& mouseY >= this.guiTop + 21 && mouseY <= this.guiTop + 38
 		&& this.airship.inventory.getStackInSlot(0).isEmpty())
 		{
 			if(this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_LESSER.getMetadata()
@@ -402,47 +403,7 @@ public class GuiAirshipMenu extends GuiContainer {
 				
 				GlStateManager.pushMatrix();
 				{
-					GlStateManager.translate(mouseX - this.guiLeft - 20, mouseY - this.guiTop - 5, 0);
-					GlStateManager.scale(0.5, 0.5, 0.5);
-					
-					this.drawHoveringText(text, 0, 0);
-				}
-				GlStateManager.popMatrix();
-			}
-		}
-		
-		//Logic for mouse-over Frame tooltip
-		if(mouseX >= this.guiLeft + 15 && mouseX <= this.guiLeft + 36
-		&& mouseY >= this.guiTop + 30 && mouseY <= this.guiTop + 54)
-		{
-			List<String> text = new ArrayList<String>();
-			
-			if(this.isShiftKeyDown())
-			{
-				text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.frame.1"));
-				text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.frame.2"));
-				text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.frame.3"));
-				
-				FontRenderer fontrenderer = this.getFontRenderer();
-				
-				GlStateManager.pushMatrix();
-				{
-					GlStateManager.translate(mouseX - this.guiLeft - 42, mouseY - this.guiTop - 10, 0);
-					GlStateManager.scale(0.5, 0.5, 0.5);
-					
-					this.drawHoveringText(text, 0, 0);
-				}
-				GlStateManager.popMatrix();
-			}
-			else
-			{
-				text.add(TextFormatting.WHITE + References.localNameVC("vc.item.tt.shifthelper.0"));
-				
-				FontRenderer fontrenderer = this.getFontRenderer();
-				
-				GlStateManager.pushMatrix();
-				{
-					GlStateManager.translate(mouseX - this.guiLeft - 35, mouseY - this.guiTop - 0, 0);
+					GlStateManager.translate(mouseX - this.guiLeft - 20, mouseY - this.guiTop - 13, 0);
 					GlStateManager.scale(0.5, 0.5, 0.5);
 					
 					this.drawHoveringText(text, 0, 0);
@@ -452,7 +413,7 @@ public class GuiAirshipMenu extends GuiContainer {
 		}
 		
 		//Logic for mouse-over Core tooltip
-		if(mouseX >= 23 + this.guiLeft + 15 && mouseX <= 23 + this.guiLeft + 36
+		if(mouseX >= this.guiLeft + 15 && mouseX <= this.guiLeft + 36
 		&& mouseY >= this.guiTop + 30 && mouseY <= this.guiTop + 54)
 		{
 			List<String> text = new ArrayList<String>();
@@ -461,14 +422,13 @@ public class GuiAirshipMenu extends GuiContainer {
 			{
 				text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.core.1"));
 				text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.core.2"));
-				text.add(TextFormatting.LIGHT_PURPLE + "");
-				text.add(TextFormatting.WHITE + References.localNameVC("vc.gui.tt.basebonus") + ": " + TextFormatting.GREEN + "+" + this.airship.metaTierCore);
+				text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.core.3"));
 				
 				FontRenderer fontrenderer = this.getFontRenderer();
 				
 				GlStateManager.pushMatrix();
 				{
-					GlStateManager.translate(mouseX - this.guiLeft - 42, mouseY - this.guiTop - 15, 0);
+					GlStateManager.translate(mouseX - this.guiLeft - 42, mouseY - this.guiTop - 18, 0);
 					GlStateManager.scale(0.5, 0.5, 0.5);
 					
 					this.drawHoveringText(text, 0, 0);
@@ -483,7 +443,48 @@ public class GuiAirshipMenu extends GuiContainer {
 				
 				GlStateManager.pushMatrix();
 				{
-					GlStateManager.translate(mouseX - this.guiLeft - 35, mouseY - this.guiTop - 0, 0);
+					GlStateManager.translate(mouseX - this.guiLeft - 35, mouseY - this.guiTop - 6, 0);
+					GlStateManager.scale(0.5, 0.5, 0.5);
+					
+					this.drawHoveringText(text, 0, 0);
+				}
+				GlStateManager.popMatrix();
+			}
+		}
+		
+		//Logic for mouse-over Frame tooltip
+		if(mouseX >= 23 + this.guiLeft + 15 && mouseX <= 23 + this.guiLeft + 36
+		&& mouseY >= this.guiTop + 30 && mouseY <= this.guiTop + 54)
+		{
+			List<String> text = new ArrayList<String>();
+			
+			if(this.isShiftKeyDown())
+			{
+				text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.frame.1"));
+				text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.frame.2"));
+				text.add(TextFormatting.LIGHT_PURPLE + "");
+				text.add(TextFormatting.WHITE + References.localNameVC("vc.gui.tt.basebonus") + ": " + TextFormatting.GREEN + "+" + this.airship.metaTierFrame);
+				
+				FontRenderer fontrenderer = this.getFontRenderer();
+				
+				GlStateManager.pushMatrix();
+				{
+					GlStateManager.translate(mouseX - this.guiLeft - 42, mouseY - this.guiTop - 23, 0);
+					GlStateManager.scale(0.5, 0.5, 0.5);
+					
+					this.drawHoveringText(text, 0, 0);
+				}
+				GlStateManager.popMatrix();
+			}
+			else
+			{
+				text.add(TextFormatting.WHITE + References.localNameVC("vc.item.tt.shifthelper.0"));
+				
+				FontRenderer fontrenderer = this.getFontRenderer();
+				
+				GlStateManager.pushMatrix();
+				{
+					GlStateManager.translate(mouseX - this.guiLeft - 35, mouseY - this.guiTop - 6, 0);
 					GlStateManager.scale(0.5, 0.5, 0.5);
 					
 					this.drawHoveringText(text, 0, 0);
@@ -509,7 +510,7 @@ public class GuiAirshipMenu extends GuiContainer {
 				
 				GlStateManager.pushMatrix();
 				{
-					GlStateManager.translate(mouseX - this.guiLeft - 42, mouseY - this.guiTop - 15, 0);
+					GlStateManager.translate(mouseX - this.guiLeft - 42, mouseY - this.guiTop - 23, 0);
 					GlStateManager.scale(0.5, 0.5, 0.5);
 					
 					this.drawHoveringText(text, 0, 0);
@@ -524,7 +525,7 @@ public class GuiAirshipMenu extends GuiContainer {
 				
 				GlStateManager.pushMatrix();
 				{
-					GlStateManager.translate(mouseX - this.guiLeft - 35, mouseY - this.guiTop - 0, 0);
+					GlStateManager.translate(mouseX - this.guiLeft - 35, mouseY - this.guiTop - 6, 0);
 					GlStateManager.scale(0.5, 0.5, 0.5);
 					
 					this.drawHoveringText(text, 0, 0);
@@ -550,7 +551,7 @@ public class GuiAirshipMenu extends GuiContainer {
 				
 				GlStateManager.pushMatrix();
 				{
-					GlStateManager.translate(mouseX - this.guiLeft - 42, mouseY - this.guiTop - 15, 0);
+					GlStateManager.translate(mouseX - this.guiLeft - 42, mouseY - this.guiTop - 23, 0);
 					GlStateManager.scale(0.5, 0.5, 0.5);
 					
 					this.drawHoveringText(text, 0, 0);
@@ -565,7 +566,7 @@ public class GuiAirshipMenu extends GuiContainer {
 				
 				GlStateManager.pushMatrix();
 				{
-					GlStateManager.translate(mouseX - this.guiLeft - 35, mouseY - this.guiTop - 0, 0);
+					GlStateManager.translate(mouseX - this.guiLeft - 35, mouseY - this.guiTop - 6, 0);
 					GlStateManager.scale(0.5, 0.5, 0.5);
 					
 					this.drawHoveringText(text, 0, 0);

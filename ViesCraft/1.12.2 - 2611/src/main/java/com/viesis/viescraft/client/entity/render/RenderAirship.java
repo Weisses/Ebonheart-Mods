@@ -66,14 +66,14 @@ public class RenderAirship extends Render<EntityAirshipCore> {
     	
     	this.modelAirshipV1FrameOff.render(entity, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
     	
-    	if(entity.metaTierType == 3
-    			|| entity.metaTierType == 5)
-    	{
-    		this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/screens/module_type_" + EnumsVC.ModuleType.byId(entity.getModuleVariantSlot1()).getName() + ".png"));
-        	this.modelAirshipPanel.render(entity, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
-    	}
+    	//if(entity.metaTierType == 3
+    	//		|| entity.metaTierType == 5)
+    	//{
+    	//	this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/screens/module_type_" + EnumsVC.ModuleType.byId(entity.getModuleVariantSlot1()).getName() + ".png"));
+        //	this.modelAirshipPanel.render(entity, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
+    	//}
     	
-    	LogHelper.info("Type = " + entity.metaTierType);
+    	//LogHelper.info("Type = " + entity.metaTierType);
     	
         
         GlStateManager.popMatrix();

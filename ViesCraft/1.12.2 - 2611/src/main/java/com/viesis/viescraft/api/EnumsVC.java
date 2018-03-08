@@ -8,7 +8,10 @@ import net.minecraft.util.SoundEvent;
 public class EnumsVC {
 	
 	/**
-     * Core Tier enum - Dictates registry name, localized name, HP modifier. (corresponds to items metadata)
+     * Core Tier enum - Dictates registry name, localized name, HP modifier. 
+     * <pre>
+     * (Main metadata!)
+     * </pre>
      */
 	public static enum AirshipTierCore
     {

@@ -34,6 +34,6 @@ public class MessageHelperGuiUpgradeBalloonVC extends MessageBase<MessageHelperG
 	{
 		EntityAirshipBaseVC airship = (EntityAirshipBaseVC) player.getRidingEntity();
 		airship.metaTierBalloon = message.metaBalloon;
-		airship.inventory.setStackInSlot(4, null);
+		airship.inventory.extractItem(4, 1, false);
 	}
 }

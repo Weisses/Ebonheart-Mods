@@ -34,6 +34,6 @@ public class MessageHelperGuiUpgradeFrameVC extends MessageBase<MessageHelperGui
 	{
 		EntityAirshipBaseVC airship = (EntityAirshipBaseVC) player.getRidingEntity();
 		airship.metaTierFrame = message.metaFrame;
-		airship.inventory.setStackInSlot(1, null);
+		airship.inventory.extractItem(2, 1, false);
 	}
 }

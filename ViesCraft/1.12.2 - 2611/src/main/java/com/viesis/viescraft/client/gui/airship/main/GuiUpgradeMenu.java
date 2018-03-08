@@ -44,7 +44,7 @@ public class GuiUpgradeMenu extends GuiContainer {
 	
 	private IInventory playerInv;
 	private EntityAirshipBaseVC airship;
-	
+	private ResourceLocation texture = new ResourceLocation(References.MOD_ID + ":" + "textures/gui/container_airship_menu_upgrade.png");
 	public static int metaUpgradeInfo;
 	
 	public GuiUpgradeMenu(IInventory playerInv, EntityAirshipBaseVC airshipIn)
@@ -148,10 +148,10 @@ public class GuiUpgradeMenu extends GuiContainer {
 			{
 				this.metaUpgradeInfo = this.airship.inventory.getStackInSlot(1).getMetadata();
 				
-				if(this.metaUpgradeInfo > this.airship.getMetaTierFrame()
-				&& this.metaUpgradeInfo == (this.airship.getMetaTierFrame() + 1))
+				if(this.metaUpgradeInfo > this.airship.getMetaTierCore()
+				&& this.metaUpgradeInfo == (this.airship.getMetaTierCore() + 1))
 				{
-					NetworkHandler.sendToServer(new MessageHelperGuiUpgradeFrameVC());
+					NetworkHandler.sendToServer(new MessageHelperGuiUpgradeCoreVC());
 				}
 			}
 	    }
@@ -162,11 +162,11 @@ public class GuiUpgradeMenu extends GuiContainer {
 			{
 				this.metaUpgradeInfo = this.airship.inventory.getStackInSlot(2).getMetadata();
 				
-				if(this.airship.getMetaTierFrame() > this.airship.getMetaTierCore()
-				&& this.metaUpgradeInfo > this.airship.getMetaTierCore()
-				&& this.metaUpgradeInfo == (this.airship.getMetaTierCore() + 1))
+				if(this.airship.getMetaTierCore() > this.airship.getMetaTierFrame()
+				&& this.metaUpgradeInfo > this.airship.getMetaTierFrame()
+				&& this.metaUpgradeInfo == (this.airship.getMetaTierFrame() + 1))
 				{
-					NetworkHandler.sendToServer(new MessageHelperGuiUpgradeCoreVC());
+					NetworkHandler.sendToServer(new MessageHelperGuiUpgradeFrameVC());
 				}
 				
 			}
@@ -178,7 +178,7 @@ public class GuiUpgradeMenu extends GuiContainer {
 			{
 				this.metaUpgradeInfo = this.airship.inventory.getStackInSlot(3).getMetadata();
 				
-				if(this.airship.getMetaTierFrame() > this.airship.getMetaTierEngine()
+				if(this.airship.getMetaTierCore() > this.airship.getMetaTierEngine()
 				&& this.metaUpgradeInfo > this.airship.getMetaTierEngine()
 				&& this.metaUpgradeInfo == (this.airship.getMetaTierEngine() + 1))
 				{
@@ -194,7 +194,7 @@ public class GuiUpgradeMenu extends GuiContainer {
 			{
 				this.metaUpgradeInfo = this.airship.inventory.getStackInSlot(4).getMetadata();
 				
-				if(this.airship.getMetaTierFrame() > this.airship.getMetaTierBalloon()
+				if(this.airship.getMetaTierCore() > this.airship.getMetaTierBalloon()
 				&& this.metaUpgradeInfo > this.airship.getMetaTierBalloon()
 				&& this.metaUpgradeInfo == (this.airship.getMetaTierBalloon() + 1))
 				{
@@ -213,11 +213,11 @@ public class GuiUpgradeMenu extends GuiContainer {
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) 
 	{
 		GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
-		this.mc.getTextureManager().bindTexture(new ResourceLocation(References.MOD_ID + ":" + "textures/gui/container_airship_menu_upgrade.png"));
+		this.mc.getTextureManager().bindTexture(texture);
 		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
 		
 		//Draws the checkbox when things are maxed.
-		if((this.airship.getMetaTierFrame()) >= 5)
+		if((this.airship.getMetaTierCore()) >= 5)
 		{
 			this.drawTexturedModalRect(this.guiLeft + 23, this.guiTop + 57, 176, 0, 16, 16);
 		}
@@ -225,7 +225,7 @@ public class GuiUpgradeMenu extends GuiContainer {
 		{
 			this.drawTexturedModalRect(this.guiLeft + 23, this.guiTop + 83, 176, 16, 16, 20);
 		}
-		if((this.airship.getMetaTierCore()) >= 5)
+		if((this.airship.getMetaTierFrame()) >= 5)
 		{
 			this.drawTexturedModalRect(this.guiLeft + 61, this.guiTop + 57, 176, 0, 16, 16);
 		}
@@ -271,8 +271,8 @@ public class GuiUpgradeMenu extends GuiContainer {
 		{
 			this.metaUpgradeInfo = this.airship.inventory.getStackInSlot(1).getMetadata();
 			
-			if(this.metaUpgradeInfo > this.airship.getMetaTierFrame()
-					&& this.metaUpgradeInfo == (this.airship.getMetaTierFrame() + 1))
+			if(this.metaUpgradeInfo > this.airship.getMetaTierCore()
+					&& this.metaUpgradeInfo == (this.airship.getMetaTierCore() + 1))
 			{
 				GuiVC.buttonC1.enabled = true;
 				GuiVC.buttonC1.visible = true;
@@ -283,9 +283,9 @@ public class GuiUpgradeMenu extends GuiContainer {
 		{
 			this.metaUpgradeInfo = this.airship.inventory.getStackInSlot(2).getMetadata();
 			
-			if(this.airship.getMetaTierFrame() > this.airship.getMetaTierCore()
-			&& this.metaUpgradeInfo > this.airship.getMetaTierCore()
-			&& this.metaUpgradeInfo == (this.airship.getMetaTierCore() + 1))
+			if(this.airship.getMetaTierCore() > this.airship.getMetaTierFrame()
+			&& this.metaUpgradeInfo > this.airship.getMetaTierFrame()
+			&& this.metaUpgradeInfo == (this.airship.getMetaTierFrame() + 1))
 			{
 				GuiVC.buttonC2.enabled = true;
 				GuiVC.buttonC2.visible = true;
@@ -296,7 +296,7 @@ public class GuiUpgradeMenu extends GuiContainer {
 		{
 			this.metaUpgradeInfo = this.airship.inventory.getStackInSlot(3).getMetadata();
 			
-			if(this.airship.getMetaTierFrame() > this.airship.getMetaTierEngine()
+			if(this.airship.getMetaTierCore() > this.airship.getMetaTierEngine()
 			&& this.metaUpgradeInfo > this.airship.getMetaTierEngine()
 			&& this.metaUpgradeInfo == (this.airship.getMetaTierEngine() + 1))
 			{
@@ -309,7 +309,7 @@ public class GuiUpgradeMenu extends GuiContainer {
 		{
 			this.metaUpgradeInfo = this.airship.inventory.getStackInSlot(4).getMetadata();
 			
-			if(this.airship.getMetaTierFrame() > this.airship.getMetaTierBalloon()
+			if(this.airship.getMetaTierCore() > this.airship.getMetaTierBalloon()
 			&& this.metaUpgradeInfo > this.airship.getMetaTierBalloon()
 			&& this.metaUpgradeInfo == (this.airship.getMetaTierBalloon() + 1))
 			{
@@ -320,11 +320,11 @@ public class GuiUpgradeMenu extends GuiContainer {
 		}
     	
     	//Hides the button if airship is maxed
-    	if(this.airship.getMetaTierFrame() >= 5)
+    	if(this.airship.getMetaTierCore() >= 5)
     	{
     		GuiVC.buttonC1.visible = false;
     	}
-    	if(this.airship.getMetaTierCore() >= 5)
+    	if(this.airship.getMetaTierFrame() >= 5)
     	{
     		GuiVC.buttonC2.visible = false;
     	}
@@ -343,31 +343,10 @@ public class GuiUpgradeMenu extends GuiContainer {
 	{
 		this.fontRenderer.drawString(References.localNameVC("vc.main.upgrademenu"), 53, -10, 65535);
 		
-		//Frame
-		GlStateManager.pushMatrix();
-		{
-			GlStateManager.translate(20, 22.2, 0);
-			GlStateManager.scale(0.75, 0.75, 0.75);
-			
-			this.fontRenderer.drawString(References.localNameVC("vc.main.frame"), 0, 0, 16777215);
-		}
-		GlStateManager.popMatrix();
-		if(this.airship.getMetaTierFrame() > 0)
-		{
-			GlStateManager.pushMatrix();
-			{
-				GlStateManager.translate(21, 32, 0);
-				GlStateManager.scale(1.25, 1.25, 1.25);
-				
-				this.drawItemStack(new ItemStack(InitItemsVC.UPGRADE_FRAME, 1, this.airship.getMetaTierFrame()), 0, 0, "");
-			}
-			GlStateManager.popMatrix();
-		}
-		
 		//Core
 		GlStateManager.pushMatrix();
 		{
-			GlStateManager.translate(60, 22.2, 0);
+			GlStateManager.translate(22.5, 22.2, 0);
 			GlStateManager.scale(0.75, 0.75, 0.75);
 			
 			this.fontRenderer.drawString(References.localNameVC("vc.main.core"), 0, 0, 16777215);
@@ -377,14 +356,35 @@ public class GuiUpgradeMenu extends GuiContainer {
 		{
 			GlStateManager.pushMatrix();
 			{
-				GlStateManager.translate(59, 32, 0);
+				GlStateManager.translate(21, 32, 0);
 				GlStateManager.scale(1.25, 1.25, 1.25);
 				
 				this.drawItemStack(new ItemStack(InitItemsVC.UPGRADE_CORE, 1, this.airship.getMetaTierCore()), 0, 0, "");
 			}
 			GlStateManager.popMatrix();
 		}
+		
+		//Frame
+		GlStateManager.pushMatrix();
+		{
+			GlStateManager.translate(58, 22.2, 0);
+			GlStateManager.scale(0.75, 0.75, 0.75);
+			
+			this.fontRenderer.drawString(References.localNameVC("vc.main.frame"), 0, 0, 16777215);
+		}
+		GlStateManager.popMatrix();
+		if(this.airship.getMetaTierFrame() > 0)
+		{
+			GlStateManager.pushMatrix();
+			{
+				GlStateManager.translate(59, 32, 0);
+				GlStateManager.scale(1.25, 1.25, 1.25);
 				
+				this.drawItemStack(new ItemStack(InitItemsVC.UPGRADE_FRAME, 1, this.airship.getMetaTierFrame()), 0, 0, "");
+			}
+			GlStateManager.popMatrix();
+		}
+		
 		//Engine
 		GlStateManager.pushMatrix();
 		{
@@ -430,20 +430,20 @@ public class GuiUpgradeMenu extends GuiContainer {
 		int tooltipFrameX = 22;
 		int tooltipFrameY = 33;
 		
-		//Logic for mouse-over Frame tooltip
+		//Logic for mouse-over Core tooltip
 		if(mouseX >= this.guiLeft + tooltipFrameX + 0 && mouseX <= this.guiLeft + tooltipFrameX + 17
 		&& mouseY >= this.guiTop + tooltipFrameY + 0 && mouseY <= this.guiTop + tooltipFrameY + 17)
 		{
 			List<String> text = new ArrayList<String>();
-			text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.frame.1"));
-			text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.frame.2"));
-			text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.frame.3"));
+			text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.core.1"));
+			text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.core.2"));
+			text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.core.3"));
 			
 			FontRenderer fontrenderer = this.getFontRenderer();
 			
 			GlStateManager.pushMatrix();
 			{
-				GlStateManager.translate(mouseX - this.guiLeft - 42, mouseY - this.guiTop - 10, 0);
+				GlStateManager.translate(mouseX - this.guiLeft - 42, mouseY - this.guiTop - 18, 0);
 				GlStateManager.scale(0.5, 0.5, 0.5);
 				
 				this.drawHoveringText(text, 0, 0);
@@ -451,21 +451,21 @@ public class GuiUpgradeMenu extends GuiContainer {
 			GlStateManager.popMatrix();
 		}
 		
-		//Logic for mouse-over Core tooltip
+		//Logic for mouse-over Frame tooltip
 		if(mouseX >= this.guiLeft + tooltipFrameX + 38 + 0 && mouseX <= this.guiLeft + tooltipFrameX + 38 + 17
 		&& mouseY >= this.guiTop + tooltipFrameY + 0 && mouseY <= this.guiTop + tooltipFrameY + 17)
 		{
 			List<String> text = new ArrayList<String>();
-			text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.core.1"));
-			text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.core.2"));
+			text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.frame.1"));
+			text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.frame.2"));
 			text.add(TextFormatting.LIGHT_PURPLE + "");
-			text.add(TextFormatting.WHITE + References.localNameVC("vc.gui.tt.basebonus") + ": " + TextFormatting.GREEN + "+" + this.airship.metaTierCore);
+			text.add(TextFormatting.WHITE + References.localNameVC("vc.gui.tt.basebonus") + ": " + TextFormatting.GREEN + "+" + this.airship.metaTierFrame);
 			
 			FontRenderer fontrenderer = this.getFontRenderer();
 			
 			GlStateManager.pushMatrix();
 			{
-				GlStateManager.translate(mouseX - this.guiLeft - 42, mouseY - this.guiTop - 15, 0);
+				GlStateManager.translate(mouseX - this.guiLeft - 42, mouseY - this.guiTop - 23, 0);
 				GlStateManager.scale(0.5, 0.5, 0.5);
 				
 				this.drawHoveringText(text, 0, 0);
@@ -487,7 +487,7 @@ public class GuiUpgradeMenu extends GuiContainer {
 			
 			GlStateManager.pushMatrix();
 			{
-				GlStateManager.translate(mouseX - this.guiLeft - 42, mouseY - this.guiTop - 15, 0);
+				GlStateManager.translate(mouseX - this.guiLeft - 42, mouseY - this.guiTop - 23, 0);
 				GlStateManager.scale(0.5, 0.5, 0.5);
 				
 				this.drawHoveringText(text, 0, 0);
@@ -509,7 +509,7 @@ public class GuiUpgradeMenu extends GuiContainer {
 			
 			GlStateManager.pushMatrix();
 			{
-				GlStateManager.translate(mouseX - this.guiLeft - 42, mouseY - this.guiTop - 15, 0);
+				GlStateManager.translate(mouseX - this.guiLeft - 42, mouseY - this.guiTop - 23, 0);
 				GlStateManager.scale(0.5, 0.5, 0.5);
 				
 				this.drawHoveringText(text, 0, 0);

@@ -15,18 +15,17 @@ public class ContainerAirshipMenu extends ContainerVC {
 	private EntityAirshipBaseVC airship;
     
 	/**
-	 * AIRSHIP SLOTS: <br> <br>
+	 * SLOTS: <br> <br>
 	 *
 	 * Slot  0 = Fuel <br>
-	 * Slot  1 = Upgrade Frame <br>
-	 * Slot  2 = Upgrade Core <br>
+	 * Slot  1 = Upgrade Core <br>
+	 * Slot  2 = Upgrade Frame <br>
 	 * Slot  3 = Upgrade Engine <br>
 	 * Slot  4 = Upgrade Balloon <br>
 	 * Slot 11 = Module Slot1 <br>
 	 * Slot 12 = Module Slot2 <br>
-	 * Slot 20-28 = Lesser Storage <br>
-	 * Slot 20-37 = Normal Storage <br>
-	 * Slot 20-46 = Greater Storage <br>
+	 * Slot 20-28 = Inventory Small <br>
+	 * Slot 20-37 = Inventory Large <br>
 	 */
 	public ContainerAirshipMenu(IInventory playerInv, EntityAirshipBaseVC airshipIn) 
 	{

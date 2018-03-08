@@ -1032,8 +1032,6 @@ public class GuiModuleMenu extends GuiContainer {
         	this.buttonInfiniteFuel = 1;
         }
     	
-    	
-    	
     	super.updateScreen();
     }
 }

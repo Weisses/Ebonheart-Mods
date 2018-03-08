@@ -1,6 +1,6 @@
 package com.viesis.viescraft.common.entity.airshipcolors.slots;
 
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipV1Core;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
 import com.viesis.viescraft.init.InitItemsVC;
 
 import net.minecraft.init.Items;
@@ -23,7 +23,7 @@ public class FuelSlotVC extends SlotItemHandler {
         
 		if (item == InitItemsVC.VIESOLINE_PELLETS) return true;
         
-		return EntityAirshipV1Core.isItemFuel(stack) || isBucket(stack);
+		return EntityAirshipBaseVC.isItemFuel(stack) || isBucket(stack);
     }
 	
 	public int getItemStackLimit(ItemStack stack)

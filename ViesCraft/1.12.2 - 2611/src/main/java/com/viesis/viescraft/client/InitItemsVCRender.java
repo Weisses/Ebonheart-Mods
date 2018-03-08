@@ -52,16 +52,14 @@ public final class InitItemsVCRender extends ItemsVC {
 			registerRenderModuleType(MODULE_TYPE, meta.getMetadata());
 		}
 		
-		//registerRender(MODULE_CREATIVE);
+		for (EnumsVC.AirshipTierCore meta : EnumsVC.AirshipTierCore.values()) 
+		{
+			registerRenderTierCore(UPGRADE_CORE, meta.getMetadata());
+		}
 		
 		for (EnumsVC.AirshipTierFrame meta : EnumsVC.AirshipTierFrame.values()) 
 		{
 			registerRenderTierFrame(UPGRADE_FRAME, meta.getMetadata());
-		}
-		
-		for (EnumsVC.AirshipTierCore meta : EnumsVC.AirshipTierCore.values()) 
-		{
-			registerRenderTierCore(UPGRADE_CORE, meta.getMetadata());
 		}
 		
 		for (EnumsVC.AirshipTierEngine meta : EnumsVC.AirshipTierEngine.values()) 
@@ -79,7 +77,7 @@ public final class InitItemsVCRender extends ItemsVC {
 		//Airship
 		for (EnumsVC.AirshipTierCore meta : EnumsVC.AirshipTierCore.values()) 
 		{
-			registerRenderTierAirship(ITEM_AIRSHIP, meta.getMetadata());
+			registerRenderTierCore(ITEM_AIRSHIP, meta.getMetadata());
 		}
 		
 		registerRender(ITEM_AIRSHIP_CREATIVE);
@@ -113,7 +111,12 @@ public final class InitItemsVCRender extends ItemsVC {
 		ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(item.getRegistryName().toString(), "inventory"));
 	}
 	
-	private void registerRenderTierAirship(Item item, int meta)
+	/**
+	 * This applies to Airships and Cores
+	 * @param item
+	 * @param meta
+	 */
+	private void registerRenderTierCore(Item item, int meta)
 	{
 		String itemName = item.getRegistryName().toString() + "_" + EnumsVC.AirshipTierCore.byId(meta).getName().toString().toLowerCase().replaceAll("\\s+","");
 		itemsRegistered.add(item);
@@ -123,13 +126,6 @@ public final class InitItemsVCRender extends ItemsVC {
 	private void registerRenderTierFrame(Item item, int meta)
 	{
 		String itemName = item.getRegistryName().toString() + "_" + EnumsVC.AirshipTierFrame.byId(meta).getName().toString().toLowerCase().replaceAll("\\s+","");
-		itemsRegistered.add(item);
-		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(itemName, "inventory"));
-	}
-	
-	private void registerRenderTierCore(Item item, int meta)
-	{
-		String itemName = item.getRegistryName().toString() + "_" + EnumsVC.AirshipTierCore.byId(meta).getName().toString().toLowerCase().replaceAll("\\s+","");
 		itemsRegistered.add(item);
 		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(itemName, "inventory"));
 	}
