@@ -8,9 +8,9 @@ import net.minecraft.util.SoundEvent;
 public class EnumsVC {
 	
 	/**
-     * Frame Tier enum - Dictates registry name, localized name, HP modifier.
+     * Core Tier enum - Dictates registry name, localized name, HP modifier. (corresponds to items metadata)
      */
-	public static enum AirshipTierFrame
+	public static enum AirshipTierCore
     {
     	//STRING(meta, registry name, localized name, HP modifier)
 		BASE(0, "tierbase", References.localNameVC("vc.enum.tier.0"), 2.0D),
@@ -25,7 +25,7 @@ public class EnumsVC {
         private final String localizedName;
         private final double hp;
         
-        private AirshipTierFrame(int metadataIn, String nameIn, String localizedNameIn, double hpModifierIn)
+        private AirshipTierCore(int metadataIn, String nameIn, String localizedNameIn, double hpModifierIn)
         {
         	this.metadata = metadataIn;
             this.name = nameIn;
@@ -56,7 +56,7 @@ public class EnumsVC {
         /**
          * Get a tier type by it's enum ordinal
          */
-        public static EnumsVC.AirshipTierFrame byId(int id)
+        public static EnumsVC.AirshipTierCore byId(int id)
         {
             if (id < 0 || id >= values().length)
             {
@@ -66,7 +66,7 @@ public class EnumsVC {
             return values()[id];
         }
         
-        public static EnumsVC.AirshipTierFrame getTypeFromString(String nameIn)
+        public static EnumsVC.AirshipTierCore getTypeFromString(String nameIn)
         {
             for (int i = 0; i < values().length; ++i)
             {
@@ -81,9 +81,9 @@ public class EnumsVC {
     }
 	
 	/**
-     * Core Tier enum - Dictates registry name, localized name, speed modifier.
+     * Frame Tier enum - Dictates registry name, localized name, speed modifier.
      */
-	public static enum AirshipTierCore
+	public static enum AirshipTierFrame
     {
     	//STRING(meta, registry name, localized name, speed modifier)
 		BASE(0, "tierbase", References.localNameVC("vc.enum.tier.0"), 0.0F),
@@ -98,7 +98,7 @@ public class EnumsVC {
         private final String localizedName;
         private final float speed;
         
-        private AirshipTierCore(int metadataIn, String nameIn, String localizedNameIn, float speedModifierIn)
+        private AirshipTierFrame(int metadataIn, String nameIn, String localizedNameIn, float speedModifierIn)
         {
         	this.metadata = metadataIn;
             this.name = nameIn;
@@ -129,7 +129,7 @@ public class EnumsVC {
         /**
          * Get a tier type by it's enum ordinal
          */
-        public static EnumsVC.AirshipTierCore byId(int id)
+        public static EnumsVC.AirshipTierFrame byId(int id)
         {
             if (id < 0 || id >= values().length)
             {
@@ -139,7 +139,7 @@ public class EnumsVC {
             return values()[id];
         }
         
-        public static EnumsVC.AirshipTierCore getTypeFromString(String nameIn)
+        public static EnumsVC.AirshipTierFrame getTypeFromString(String nameIn)
         {
             for (int i = 0; i < values().length; ++i)
             {
@@ -298,8 +298,6 @@ public class EnumsVC {
             return values()[0];
         }
     }
-	
-	
 	
     /**
 	 * Module Type enum - Represents various Module types.

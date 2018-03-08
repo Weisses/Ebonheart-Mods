@@ -1,18 +1,5 @@
 package com.viesis.viescraft.common.entity.airshipcolors;
 
-import com.viesis.viescraft.api.EnumsVC;
-import com.viesis.viescraft.api.FuelVC;
-import com.viesis.viescraft.api.References;
-import com.viesis.viescraft.client.InitParticlesVCRender;
-import com.viesis.viescraft.configs.ViesCraftConfig;
-import com.viesis.viescraft.init.InitItemsVC;
-import com.viesis.viescraft.network.NetworkHandler;
-import com.viesis.viescraft.network.server.airship.main.MessageGuiAirshipMenu;
-import com.viesis.viescraft.network.server.airship.main.MessageGuiAirshipMenuMusic;
-import com.viesis.viescraft.network.server.airship.main.MessageGuiAirshipMenuStorageGreater;
-import com.viesis.viescraft.network.server.airship.main.MessageGuiAirshipMenuStorageLesser;
-import com.viesis.viescraft.network.server.airship.main.MessageGuiAirshipMenuStorageNormal;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
@@ -35,6 +22,19 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
+import com.viesis.viescraft.api.EnumsVC;
+import com.viesis.viescraft.api.FuelVC;
+import com.viesis.viescraft.api.References;
+import com.viesis.viescraft.client.InitParticlesVCRender;
+import com.viesis.viescraft.configs.ViesCraftConfig;
+import com.viesis.viescraft.init.InitItemsVC;
+import com.viesis.viescraft.network.NetworkHandler;
+import com.viesis.viescraft.network.server.airship.main.MessageGuiAirshipMenu;
+import com.viesis.viescraft.network.server.airship.main.MessageGuiAirshipMenuMusic;
+import com.viesis.viescraft.network.server.airship.main.MessageGuiAirshipMenuStorageGreater;
+import com.viesis.viescraft.network.server.airship.main.MessageGuiAirshipMenuStorageLesser;
+import com.viesis.viescraft.network.server.airship.main.MessageGuiAirshipMenuStorageNormal;
+
 public class EntityAirshipBaseVC extends EntityBaseVC {
 	
 	//Fuel system
@@ -44,10 +44,13 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
   	protected static final DataParameter<Integer> AIRSHIP_ITEMFUELSTACK_POWERED_SIZE = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
     
   	//Tier system
-  	protected static final DataParameter<Integer> AIRSHIP_TIER_FRAME = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
   	protected static final DataParameter<Integer> AIRSHIP_TIER_CORE = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+  	protected static final DataParameter<Integer> AIRSHIP_TIER_FRAME = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
   	protected static final DataParameter<Integer> AIRSHIP_TIER_ENGINE = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
   	protected static final DataParameter<Integer> AIRSHIP_TIER_BALLOON = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+  	
+    //Core system
+    protected static final DataParameter<Integer> AIRSHIP_CORE_VISUAL = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
     
     //Frame system
     protected static final DataParameter<Integer> AIRSHIP_FRAME_VISUAL = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
@@ -56,9 +59,6 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
     protected static final DataParameter<Integer> AIRSHIP_FRAME_COLOR_RED = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
     protected static final DataParameter<Integer> AIRSHIP_FRAME_COLOR_GREEN = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
     protected static final DataParameter<Integer> AIRSHIP_FRAME_COLOR_BLUE = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
-    
-    //Core system
-    protected static final DataParameter<Integer> AIRSHIP_CORE_VISUAL = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
     
     //Engine system
     protected static final DataParameter<Integer> AIRSHIP_ENGINE_VISUAL = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
@@ -131,14 +131,14 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
 	public int metaTierEngine;
 	public int metaTierBalloon;
 	
+	public int metaCoreVisual;
+	
 	public int metaFrameVisual;
 	public boolean metaFrameVisualTransparent;
 	public boolean metaFrameVisualColor;
 	public int metaFrameColorRed;
 	public int metaFrameColorGreen;
 	public int metaFrameColorBlue;
-	
-	public int metaCoreVisual;
 	
 	public int metaEngineVisual;
 	
@@ -213,9 +213,11 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
     
     public EntityAirshipBaseVC(World worldIn, double x, double y, double z, 
     		int coreTierIn, int frameTierIn, int engineTierIn, int balloonTierIn, 
-    		int moduleSlot1In,
+    		int moduleSlot1In, 
+    		int coreVisualIn, 
     		int frameVisualIn, boolean frameVisualTransparentIn, boolean frameVisualColorIn,
-    		int frameColorRedIn, int frameColorGreenIn, int frameColorBlueIn,
+    		int frameColorRedIn, int frameColorGreenIn, int frameColorBlueIn, 
+    		int engineVisualIn, 
     		int balloonVisualIn, boolean balloonVisualTransparentIn, boolean balloonVisualColorIn,
     		int balloonColorRedIn, int balloonColorGreenIn, int balloonColorBlueIn,
     		boolean learnedModuleAltitudeIn, int selectedModuleAltitudeIn, 
@@ -255,14 +257,14 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
         this.dataManager.register(AIRSHIP_TIER_ENGINE, Integer.valueOf(this.metaTierEngine));
         this.dataManager.register(AIRSHIP_TIER_BALLOON, Integer.valueOf(this.metaTierBalloon));
         
+        this.dataManager.register(AIRSHIP_CORE_VISUAL, Integer.valueOf(this.metaCoreVisual));
+        
         this.dataManager.register(AIRSHIP_FRAME_VISUAL, Integer.valueOf(this.metaFrameVisual));
         this.dataManager.register(AIRSHIP_FRAME_VISUAL_TRANSPARENT, Boolean.valueOf(this.metaFrameVisualTransparent));
         this.dataManager.register(AIRSHIP_FRAME_VISUAL_COLOR, Boolean.valueOf(this.metaFrameVisualColor));
         this.dataManager.register(AIRSHIP_FRAME_COLOR_RED, Integer.valueOf(this.metaFrameColorRed));
         this.dataManager.register(AIRSHIP_FRAME_COLOR_GREEN, Integer.valueOf(this.metaFrameColorGreen));
         this.dataManager.register(AIRSHIP_FRAME_COLOR_BLUE, Integer.valueOf(this.metaFrameColorBlue));
-        
-        this.dataManager.register(AIRSHIP_CORE_VISUAL, Integer.valueOf(this.metaCoreVisual));
         
         this.dataManager.register(AIRSHIP_ENGINE_VISUAL, Integer.valueOf(this.metaEngineVisual));
         
@@ -335,10 +337,12 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
     	
     	compound.setTag(rf.META_AIRSHIP_SLOTS_TAG, inventory.serializeNBT());
 
-    	compound.setInteger(rf.META_TIER_FRAME_TAG, this.metaTierFrame);
     	compound.setInteger(rf.META_TIER_CORE_TAG, this.metaTierCore);
+    	compound.setInteger(rf.META_TIER_FRAME_TAG, this.metaTierFrame);
     	compound.setInteger(rf.META_TIER_ENGINE_TAG, this.metaTierEngine);
     	compound.setInteger(rf.META_TIER_BALLOON_TAG, this.metaTierBalloon);
+    	
+    	compound.setInteger(rf.META_CORE_VISUAL_TAG, this.metaCoreVisual);
     	
     	compound.setInteger(rf.META_FRAME_VISUAL_TAG, this.metaFrameVisual);
     	compound.setBoolean(rf.META_FRAME_VISUAL_TRANSPARENT_TAG, this.metaFrameVisualTransparent);
@@ -346,6 +350,8 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
     	compound.setInteger(rf.META_FRAME_VISUAL_COLOR_RED_TAG, this.metaFrameColorRed);
     	compound.setInteger(rf.META_FRAME_VISUAL_COLOR_GREEN_TAG, this.metaFrameColorGreen);
     	compound.setInteger(rf.META_FRAME_VISUAL_COLOR_BLUE_TAG, this.metaFrameColorBlue);
+    	
+    	compound.setInteger(rf.META_ENGINE_VISUAL_TAG, this.metaEngineVisual);
     	
     	compound.setInteger(rf.META_BALLOON_VISUAL_TAG, this.metaBalloonVisual);
     	compound.setBoolean(rf.META_BALLOON_VISUAL_TRANSPARENT_TAG, this.metaBalloonVisualTransparent);
@@ -389,10 +395,12 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
     	
     	inventory.deserializeNBT(compound.getCompoundTag(rf.META_AIRSHIP_SLOTS_TAG));
 
-    	this.metaTierFrame = compound.getInteger(rf.META_TIER_FRAME_TAG);
     	this.metaTierCore = compound.getInteger(rf.META_TIER_CORE_TAG);
+    	this.metaTierFrame = compound.getInteger(rf.META_TIER_FRAME_TAG);
     	this.metaTierEngine = compound.getInteger(rf.META_TIER_ENGINE_TAG);
     	this.metaTierBalloon = compound.getInteger(rf.META_TIER_BALLOON_TAG);
+    	
+    	this.metaCoreVisual = compound.getInteger(rf.META_CORE_VISUAL_TAG);
     	
     	this.metaFrameVisual = compound.getInteger(rf.META_FRAME_VISUAL_TAG);
     	this.metaFrameVisualTransparent = compound.getBoolean(rf.META_FRAME_VISUAL_TRANSPARENT_TAG);
@@ -400,6 +408,8 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
     	this.metaFrameColorRed = compound.getInteger(rf.META_FRAME_VISUAL_COLOR_RED_TAG);
     	this.metaFrameColorGreen = compound.getInteger(rf.META_FRAME_VISUAL_COLOR_GREEN_TAG);
     	this.metaFrameColorBlue = compound.getInteger(rf.META_FRAME_VISUAL_COLOR_BLUE_TAG);
+    	
+    	this.metaEngineVisual = compound.getInteger(rf.META_ENGINE_VISUAL_TAG);
     	
     	this.metaBalloonVisual = compound.getInteger(rf.META_BALLOON_VISUAL_TAG);
     	this.metaBalloonVisualTransparent = compound.getBoolean(rf.META_BALLOON_VISUAL_TRANSPARENT_TAG);
@@ -650,8 +660,7 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
     			return 0;
     	}
     }
-    //======================================================================================
-
+    
     
     
     //==================================//
@@ -849,7 +858,9 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
         double d5 = -0.0005D;
         this.momentum = 0.05F;
         
-        if (this.previousStatus == EntityAirshipBaseVC.Status.IN_AIR && this.status != EntityAirshipBaseVC.Status.IN_AIR && this.status != EntityAirshipBaseVC.Status.ON_LAND)
+        if(this.previousStatus == EntityAirshipBaseVC.Status.IN_AIR 
+		&& this.status != EntityAirshipBaseVC.Status.IN_AIR 
+		&& this.status != EntityAirshipBaseVC.Status.ON_LAND)
         {
             this.waterLevel = this.getEntityBoundingBox().minY + (double)this.height;
             this.setPosition(this.posX, (double)(this.getWaterLevelAbove() - this.height) + 0.101D, this.posZ);
@@ -1001,7 +1012,7 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
         }
         
         //Handles how burn time is ticked down
-        if (this.isClientAirshipBurning())
+        if(this.isClientAirshipBurning())
         {
         	//Airship has Infinite Fuel Module installed
         	if(this.getModuleVariantSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_LESSER.getMetadata()
@@ -1022,7 +1033,7 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
         }
         
         //Handles when the airship is off
-        if (!this.isClientAirshipBurning())
+        if(!this.isClientAirshipBurning())
         {
         	//Airship has Infinite Fuel Module installed
         	if(this.getModuleVariantSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_LESSER.getMetadata()
@@ -1049,25 +1060,25 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
         }
         
         
-        if (!this.world.isRemote)
+        if(!this.world.isRemote)
         {
         	ItemStack fuelSlot = this.inventory.getStackInSlot(0);
         	
 	        //Core fuel slot logic
-	        if (this.isClientAirshipBurning() || !fuelSlot.isEmpty())
+	        if(this.isClientAirshipBurning() || !fuelSlot.isEmpty())
 	        {
-	            if (!this.isClientAirshipBurning()
+	            if(!this.isClientAirshipBurning()
 	            && this.getControllingPassenger() != null)
 	            {
 	                this.airshipBurnTime = getItemBurnTime(fuelSlot);
 	                this.airshipTotalBurnTime = getItemBurnTime(fuelSlot);
 	                
-	                if (this.isClientAirshipBurning())
+	                if(this.isClientAirshipBurning())
 	                {
 	                    flag1 = true;
 	                    
 	                    //Consumes the fuel item
-	                    if (!fuelSlot.isEmpty())
+	                    if(!fuelSlot.isEmpty())
 	                    {
 	                    	this.inventory.extractItem(0, 1, false);
 	                    }
@@ -1076,7 +1087,7 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
 	        }
         }
         
-        if (flag != this.isClientAirshipBurning())
+        if(flag != this.isClientAirshipBurning())
         {
             flag1 = true;
         }
@@ -1103,7 +1114,7 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
      */
     public static int getItemBurnTime(ItemStack stack)
     {
-        if (stack.isEmpty())
+        if(stack.isEmpty())
         {
             return 0;
         }
@@ -1115,35 +1126,35 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
             
             if(ViesCraftConfig.vanillaFuel)
     		{
-	            if (item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.AIR)
+	            if(item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.AIR)
 	            {
 	                Block block = Block.getBlockFromItem(item);
 	                
-	                if (block == Blocks.WOODEN_SLAB)
+	                if(block == Blocks.WOODEN_SLAB)
 	                {
 	                    return FuelVC.wooden_slab * 10;
 	                }
 	                
-	                if (block.getDefaultState().getMaterial() == Material.WOOD)
+	                if(block.getDefaultState().getMaterial() == Material.WOOD)
 	                {
 	                    return FuelVC.wood_block_material * 10;
 	                }
 	                
-	                if (block == Blocks.COAL_BLOCK)
+	                if(block == Blocks.COAL_BLOCK)
 	                {
 	                    return FuelVC.coal_block * 10;
 	                }
 	            }
 	            
-	            if (item == Items.STICK) return FuelVC.stick * 10;
-	            if (item == Item.getItemFromBlock(Blocks.SAPLING)) return FuelVC.sapling * 10;
-	            if (item == Items.COAL) return FuelVC.coal * 10;
-	            if (item == Items.BLAZE_ROD) return FuelVC.blaze_rod * 10;
+	            if(item == Items.STICK) return FuelVC.stick * 10;
+	            if(item == Item.getItemFromBlock(Blocks.SAPLING)) return FuelVC.sapling * 10;
+	            if(item == Items.COAL) return FuelVC.coal * 10;
+	            if(item == Items.BLAZE_ROD) return FuelVC.blaze_rod * 10;
 	            
-	            if (item == Items.LAVA_BUCKET) return 20000 * 10;
+	            if(item == Items.LAVA_BUCKET) return 20000 * 10;
     		}
             
-            if (item == InitItemsVC.VIESOLINE_PELLETS) return (ViesCraftConfig.viesolineBurnTime * 20) * 10;
+            if(item == InitItemsVC.VIESOLINE_PELLETS) return (ViesCraftConfig.viesolineBurnTime * 20) * 10;
             //if (item == InitItemsVC.airship_battery) return cap.getEnergyStored();
             
             if(ViesCraftConfig.outsideModFuel)
@@ -1174,7 +1185,7 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
     {
     	if(this.getControllingPassenger() != null)
     	{
-    		if (this.isClientAirshipBurning())
+    		if(this.isClientAirshipBurning())
             {
     			ItemStack itemFuel = this.inventory.getStackInSlot(0);
     			
@@ -1209,7 +1220,7 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
      */
     public void updateAirshipMeta()
     {
-        if (this.world.isRemote)
+        if(this.world.isRemote)
         {
         	this.airshipBurnTime = this.getPowered();
         	this.airshipTotalBurnTime = this.getTotalPowered();
@@ -1221,14 +1232,14 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
         	this.metaTierEngine = this.getMetaTierEngine();
         	this.metaTierBalloon = this.getMetaTierBalloon();
         	
+        	this.metaCoreVisual = this.getCoreVisual();
+        	
             this.metaFrameVisual = this.getFrameVisual();
             this.metaFrameVisualTransparent = this.getFrameVisualTransparent();
             this.metaFrameVisualColor = this.getFrameVisualColor();
             this.metaFrameColorRed = this.getFrameColorRed();
             this.metaFrameColorGreen = this.getFrameColorGreen();
             this.metaFrameColorBlue = this.getFrameColorBlue();
-            
-            this.metaCoreVisual = this.getCoreVisual();
             
             this.metaEngineVisual = this.getEngineVisual();
             
@@ -1274,14 +1285,14 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
         	this.setMetaTierEngine(this.metaTierEngine);
         	this.setMetaTierBalloon(this.metaTierBalloon);
         	
+            this.setCoreVisual(this.metaCoreVisual);
+            
             this.setFrameVisual(this.metaFrameVisual);
             this.setFrameVisualTransparent(this.metaFrameVisualTransparent);
             this.setFrameVisualColor(this.metaFrameVisualColor);
             this.setFrameColorRed(this.metaFrameColorRed);
             this.setFrameColorGreen(this.metaFrameColorGreen);
             this.setFrameColorBlue(this.metaFrameColorBlue);
-            
-            this.setCoreVisual(this.metaCoreVisual);
             
             this.setEngineVisual(this.metaEngineVisual);
             
@@ -1378,6 +1389,23 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
     //======================================================================================
     
     /**
+     * Sets the Visual Core.
+     */
+    public void setCoreVisual(int airshipVisualCore0)
+    {
+        this.dataManager.set(AIRSHIP_CORE_VISUAL, Integer.valueOf(airshipVisualCore0));
+    }
+    /**
+     * Gets the Visual Core.
+     */
+    public int getCoreVisual()
+    {
+        return ((Integer)this.dataManager.get(AIRSHIP_CORE_VISUAL)).intValue();
+    }
+    
+    //======================================================================================
+    
+    /**
      * Sets the Visual Frame.
      */
     public void setFrameVisual(int airshipVisualFrame0)
@@ -1461,24 +1489,6 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
     {
         return ((Integer)this.dataManager.get(AIRSHIP_FRAME_COLOR_BLUE)).intValue();
     }
-    
-    //======================================================================================
-    
-    /**
-     * Sets the Visual Core pattern.
-     */
-    public void setCoreVisual(int airshipVisualCore0)
-    {
-        this.dataManager.set(AIRSHIP_CORE_VISUAL, Integer.valueOf(airshipVisualCore0));
-    }
-    /**
-     * Gets the Visual Core pattern.
-     */
-    public int getCoreVisual()
-    {
-        return ((Integer)this.dataManager.get(AIRSHIP_CORE_VISUAL)).intValue();
-    }
-    
     
     //======================================================================================
     
@@ -1926,7 +1936,4 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
     {
         return ((Boolean)this.dataManager.get(MODULE_SLOT1_LEARNED_FUELINFINITE)).booleanValue();
     }
-    
-    
-    
 }

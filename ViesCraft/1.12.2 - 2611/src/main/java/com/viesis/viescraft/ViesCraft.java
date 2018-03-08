@@ -2,14 +2,6 @@ package com.viesis.viescraft;
 
 import java.io.File;
 
-import com.viesis.viescraft.api.References;
-import com.viesis.viescraft.api.creative.VCTabAirships;
-import com.viesis.viescraft.api.creative.VCTabBlocks;
-import com.viesis.viescraft.api.creative.VCTabItems;
-import com.viesis.viescraft.api.util.LogHelper;
-import com.viesis.viescraft.configs.ViesCraftConfig;
-import com.viesis.viescraft.proxy.CommonProxy;
-
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -17,6 +9,13 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+
+import com.viesis.viescraft.api.References;
+import com.viesis.viescraft.api.creative.VCTabBlocks;
+import com.viesis.viescraft.api.creative.VCTabItems;
+import com.viesis.viescraft.api.util.LogHelper;
+import com.viesis.viescraft.configs.ViesCraftConfig;
+import com.viesis.viescraft.proxy.CommonProxy;
 
 @Mod(modid = References.MOD_ID, name = References.MOD_NAME, version = References.MOD_VERSION, guiFactory = References.CONFIG_GUI)
 public class ViesCraft {
@@ -26,7 +25,6 @@ public class ViesCraft {
     
 	public static final VCTabItems tabViesCraftItems = new VCTabItems("tabViesCraftItems");
 	public static final VCTabBlocks tabViesCraftBlocks = new VCTabBlocks("tabViesCraftBlocks");
-	public static final VCTabAirships tabViesCraftAirships = new VCTabAirships("tabViesCraftAirships");
 	
 	private static File configDir;
 	

@@ -14,7 +14,7 @@ public class References {
 	public static final String MOD_ID = "vc";
 	public static final String MOD_ID_COLON = MOD_ID + ":";
 	public static final String MOD_NAME = "ViesCraft";
-	public static final String MOD_VERSION = "5.5.3";
+	public static final String MOD_VERSION = "6.0.0";
 	public static final String CONFIG_GUI = "com.viesis.viescraft.api.gui.VCGuiFactory";
 	public static final String CLIENT_PROXY_CLASS = "com.viesis.viescraft.proxy.ClientProxy";
 	public static final String SERVER_PROXY_CLASS = "com.viesis.viescraft.proxy.ServerProxy";
@@ -23,10 +23,12 @@ public class References {
 	
 	public static final String META_AIRSHIP_SLOTS_TAG = "Slots";
 	
-	public static final String META_TIER_FRAME_TAG = "TierFrame";
 	public static final String META_TIER_CORE_TAG = "TierCore";
+	public static final String META_TIER_FRAME_TAG = "TierFrame";
 	public static final String META_TIER_ENGINE_TAG = "TierEngine";
 	public static final String META_TIER_BALLOON_TAG = "TierBalloon";
+	
+	public static final String META_CORE_VISUAL_TAG = "CoreVisual";
 	
 	public static final String META_FRAME_VISUAL_TAG = "FrameVisual";
 	public static final String META_FRAME_VISUAL_TRANSPARENT_TAG = "FrameVisualTransparent";
@@ -34,6 +36,8 @@ public class References {
 	public static final String META_FRAME_VISUAL_COLOR_RED_TAG = "FrameVisualColorRed";
 	public static final String META_FRAME_VISUAL_COLOR_GREEN_TAG = "FrameVisualColorGreen";
 	public static final String META_FRAME_VISUAL_COLOR_BLUE_TAG = "FrameVisualColorBlue";
+	
+	public static final String META_ENGINE_VISUAL_TAG = "EngineVisual";
 	
 	public static final String META_BALLOON_VISUAL_TAG = "BalloonVisual";
 	public static final String META_BALLOON_VISUAL_TRANSPARENT_TAG = "BalloonVisualTransparent";
@@ -159,6 +163,8 @@ public class References {
 		return I18n.format(stringIn, new Object[0]);
 	}
 	
+	
+	//=========================================
 	
 	
 	/**

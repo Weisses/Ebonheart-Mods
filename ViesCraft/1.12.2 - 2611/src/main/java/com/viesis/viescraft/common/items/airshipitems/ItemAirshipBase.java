@@ -7,9 +7,6 @@ import java.util.stream.Stream;
 
 import javax.annotation.Nullable;
 
-import com.viesis.viescraft.api.EnumsVC;
-import com.viesis.viescraft.api.References;
-
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.EnumRarity;
@@ -22,6 +19,9 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import com.viesis.viescraft.api.EnumsVC;
+import com.viesis.viescraft.api.References;
+
 public class ItemAirshipBase extends Item {
     
     protected References rf;
@@ -29,8 +29,11 @@ public class ItemAirshipBase extends Item {
 	protected int metaModuleVariantSlot1;
 	
 	protected int metaTierCore;
+	protected int metaTierFrame;
 	protected int metaTierEngine;
 	protected int metaTierBalloon;
+	
+	protected int metaCoreVisual;
 	
 	protected int metaFrameVisual;
 	protected boolean metaFrameVisualTransparent;
@@ -38,6 +41,8 @@ public class ItemAirshipBase extends Item {
 	protected int metaFrameColorRed;
 	protected int metaFrameColorGreen;
 	protected int metaFrameColorBlue;
+	
+	protected int metaEngineVisual;
 	
 	protected int metaBalloonVisual;
 	protected boolean metaBalloonVisualTransparent;
@@ -223,7 +228,7 @@ public class ItemAirshipBase extends Item {
 		//Are there tags?
 		if(stack.hasTagCompound())
         {
-			float speedModCal = EnumsVC.AirshipTierCore.byId(stack.getTagCompound().getInteger("TierCore")).getSpeedModifier() * 100;
+			float speedModCal = EnumsVC.AirshipTierFrame.byId(stack.getTagCompound().getInteger("TierFrame")).getSpeedModifier() * 100;
 			String speedMod = df.format(speedModCal);
 			
 			String altMax = "";
@@ -392,18 +397,4 @@ public class ItemAirshipBase extends Item {
 			subItems.addAll(items);
 		}
 	}
-	/**
-	@SideOnly(Side.CLIENT)
-	@Override
-    public void getSubItems(Item itemIn, CreativeTabs tab, List<ItemStack> subItems)
-    {
-		
-    	for (EnumsVC.AirshipTierCore contents : EnumsVC.AirshipTierCore.values()) 
-    	{
-			int meta = contents.getMetadata();
-			ItemStack subItemStack = new ItemStack(itemIn, 1, meta);
-			subItems.add(subItemStack);
-    	}
-		
-    }*/
 }

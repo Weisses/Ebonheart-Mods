@@ -7,12 +7,14 @@ import net.minecraft.world.World;
 
 public class EntityItemAirshipCore extends EntityThrowable {
 	
-	protected int metaTypeFrame;
 	protected int metaTypeCore;
+	protected int metaTypeFrame;
 	protected int metaTypeEngine;
 	protected int metaTypeBalloon;
 	
 	protected int metaModuleVariantSlot1;
+	
+	protected int metaCoreVisual;
 	
 	protected int metaFrameVisual;
 	protected boolean metaFrameVisualTransparent;
@@ -20,6 +22,8 @@ public class EntityItemAirshipCore extends EntityThrowable {
 	protected int metaFrameColorRed;
 	protected int metaFrameColorGreen;
 	protected int metaFrameColorBlue;
+	
+	protected int metaEngineVisual;
 	
 	protected int metaBalloonVisual;
 	protected boolean metaBalloonVisualTransparent;

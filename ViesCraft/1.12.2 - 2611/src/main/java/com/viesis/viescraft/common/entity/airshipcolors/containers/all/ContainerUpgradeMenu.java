@@ -15,7 +15,6 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class ContainerUpgradeMenu extends ContainerVC {
 	
 	private EntityAirshipBaseVC airship;
-	private int airshipBurnTime;
     
 	/**
 	 * SLOTS: <br> <br>

@@ -84,9 +84,11 @@ public class EntityBaseVC extends Entity {
     
     public EntityBaseVC(World worldIn, double x, double y, double z, 
     		int coreTierIn, int frameTierIn, int engineTierIn, int balloonTierIn, 
-    		int moduleSlot1In,
+    		int moduleSlot1In, 
+    		int coreVisualIn, 
     		int frameVisualIn, boolean frameVisualTransparentIn, boolean frameVisualColorIn,
     		int frameColorRedIn, int frameColorGreenIn, int frameColorBlueIn,
+    		int engineVisualIn, 
     		int balloonVisualIn, boolean balloonVisualTransparentIn, boolean balloonVisualColorIn,
     		int balloonColorRedIn, int balloonColorGreenIn, int balloonColorBlueIn, 
     		boolean learnedModuleAltitudeIn, int selectedModuleAltitudeIn, 

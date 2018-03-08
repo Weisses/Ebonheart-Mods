@@ -76,42 +76,13 @@ public final class InitItemsVCRender extends ItemsVC {
 		
 		//==============================================
 		
-		//V1
+		//Airship
 		for (EnumsVC.AirshipTierCore meta : EnumsVC.AirshipTierCore.values()) 
 		{
-			registerRenderTierAirship(ITEM_V1_AIRSHIP, meta.getMetadata());
-		}
-		//V2
-		for (EnumsVC.AirshipTierCore meta : EnumsVC.AirshipTierCore.values()) 
-		{
-			registerRenderTierAirship(ITEM_V2_AIRSHIP, meta.getMetadata());
-		}
-		//V3
-		for (EnumsVC.AirshipTierCore meta : EnumsVC.AirshipTierCore.values()) 
-		{
-			registerRenderTierAirship(ITEM_V3_AIRSHIP, meta.getMetadata());
+			registerRenderTierAirship(ITEM_AIRSHIP, meta.getMetadata());
 		}
 		
-		//V4
-		for (EnumsVC.AirshipTierCore meta : EnumsVC.AirshipTierCore.values()) 
-		{
-			registerRenderTierAirship(ITEM_V4_AIRSHIP, meta.getMetadata());
-		}
-		//V5
-		//for (EnumsVC.AirshipTierCore meta : EnumsVC.AirshipTierCore.values()) 
-		//{
-			//registerRenderTier(item_v5_airship, meta.getMetadata());
-		//}
-		//V6
-		//for (EnumsVC.AirshipTierCore meta : EnumsVC.AirshipTierCore.values()) 
-		//{
-			//registerRenderTier(item_v6_airship, meta.getMetadata());
-		//}
-		
-		registerRender(ITEM_CREATIVE_V1_AIRSHIP);
-		registerRender(ITEM_CREATIVE_V2_AIRSHIP);
-		registerRender(ITEM_CREATIVE_V3_AIRSHIP);
-		registerRender(ITEM_CREATIVE_V4_AIRSHIP);
+		registerRender(ITEM_AIRSHIP_CREATIVE);
 		
 		//=====================================================================
 		
@@ -142,15 +113,9 @@ public final class InitItemsVCRender extends ItemsVC {
 		ModelLoader.setCustomModelResourceLocation(item, 0, new ModelResourceLocation(item.getRegistryName().toString(), "inventory"));
 	}
 	
-	
-	
-	
-	
-	
-	
 	private void registerRenderTierAirship(Item item, int meta)
 	{
-		String itemName = item.getRegistryName().toString() + "_" + EnumsVC.AirshipTierFrame.byId(meta).getName().toString().toLowerCase().replaceAll("\\s+","");
+		String itemName = item.getRegistryName().toString() + "_" + EnumsVC.AirshipTierCore.byId(meta).getName().toString().toLowerCase().replaceAll("\\s+","");
 		itemsRegistered.add(item);
 		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(itemName, "inventory"));
 	}

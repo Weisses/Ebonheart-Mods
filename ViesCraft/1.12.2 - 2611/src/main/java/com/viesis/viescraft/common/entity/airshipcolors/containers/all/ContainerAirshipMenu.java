@@ -1,19 +1,18 @@
 package com.viesis.viescraft.common.entity.airshipcolors.containers.all;
 
-import com.viesis.viescraft.api.EnumsVC;
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
-import com.viesis.viescraft.common.entity.airshipcolors.containers.ContainerVC;
-import com.viesis.viescraft.common.entity.airshipcolors.slots.FuelSlotVC;
-
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import com.viesis.viescraft.api.EnumsVC;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
+import com.viesis.viescraft.common.entity.airshipcolors.containers.ContainerVC;
+import com.viesis.viescraft.common.entity.airshipcolors.slots.FuelSlotVC;
+
 public class ContainerAirshipMenu extends ContainerVC {
 	
 	private EntityAirshipBaseVC airship;
-	private int airshipBurnTime;
     
 	/**
 	 * AIRSHIP SLOTS: <br> <br>
