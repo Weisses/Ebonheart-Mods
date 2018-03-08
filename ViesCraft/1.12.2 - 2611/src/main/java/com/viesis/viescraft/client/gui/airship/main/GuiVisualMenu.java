@@ -10,18 +10,18 @@ import com.viesis.viescraft.api.EnumsVC;
 import com.viesis.viescraft.api.GuiVC;
 import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.api.util.Keybinds;
-import com.viesis.viescraft.client.gui.GuiButtonGeneralVC;
 import com.viesis.viescraft.client.gui.GuiButtonMenuVC;
-import com.viesis.viescraft.client.gui.GuiButtonTransparentVC;
+import com.viesis.viescraft.client.gui.GuiButtonVisual1VC;
+import com.viesis.viescraft.client.gui.GuiButtonVisual2VC;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
 import com.viesis.viescraft.common.entity.airshipcolors.containers.all.ContainerAirshipAppearance;
 import com.viesis.viescraft.network.NetworkHandler;
 import com.viesis.viescraft.network.server.airship.MessageGuiUpgradeMenu;
 import com.viesis.viescraft.network.server.airship.main.MessageGuiAirshipMenu;
+import com.viesis.viescraft.network.server.airship.main.MessageGuiAirshipMenuMusic;
 import com.viesis.viescraft.network.server.airship.main.MessageGuiAirshipMenuStorageGreater;
 import com.viesis.viescraft.network.server.airship.main.MessageGuiAirshipMenuStorageLesser;
 import com.viesis.viescraft.network.server.airship.main.MessageGuiAirshipMenuStorageNormal;
-import com.viesis.viescraft.network.server.airship.main.MessageGuiAirshipMenuMusic;
 import com.viesis.viescraft.network.server.airship.main.MessageGuiModuleMenu;
 import com.viesis.viescraft.network.server.airship.main.MessageGuiVisualMenu;
 import com.viesis.viescraft.network.server.airship.visual.MessageGuiVisualMenuBalloon;
@@ -50,6 +50,7 @@ public class GuiVisualMenu extends GuiContainer {
 	public static boolean metaFrameTransparentInfo;
 	public static boolean metaEngineTransparentInfo;
 	public static boolean metaBalloonTransparentInfo;
+	private ResourceLocation texture = new ResourceLocation(References.MOD_ID + ":" + "textures/gui/container_airship_menu_visual.png");
 	
 	public GuiVisualMenu(IInventory playerInv, EntityAirshipBaseVC airshipIn)
 	{
@@ -72,28 +73,29 @@ public class GuiVisualMenu extends GuiContainer {
     	buttonList.clear();
     	Keyboard.enableRepeatEvents(true);
     	
-    	int startPlace = 134;
+    	int startPlaceTop = 91;
+    	int startPlaceBottom = 151;
     	
     	GuiVC.buttonM1 = new GuiButtonMenuVC(1, this.guiLeft - 32, this.guiTop + 10, 36, 14, "", 0);
     	GuiVC.buttonM2 = new GuiButtonMenuVC(2, this.guiLeft - 32, this.guiTop + 24, 36, 14, "", 1);
     	GuiVC.buttonM3 = new GuiButtonMenuVC(3, this.guiLeft - 32, this.guiTop + 38, 36, 14, "", 2);
     	GuiVC.buttonM4 = new GuiButtonMenuVC(4, this.guiLeft - 32, this.guiTop + 52, 36, 14, "", 3);
 		
-    	GuiVC.buttonCore1 = new GuiButtonTransparentVC(11, this.guiLeft + 92,  this.guiTop + startPlace - 50 + (14 * 0), 56, 14, "");
-    	GuiVC.buttonCore2 = new GuiButtonGeneralVC(12, this.guiLeft + 92,  this.guiTop + startPlace - 50 + (14 * 1), 70, 14, References.localNameVC("vc.main.core"));
-		GuiVC.buttonCore3 = new GuiButtonGeneralVC(13, this.guiLeft + 92,  this.guiTop + startPlace - 50 + (14 * 2), 70, 14, References.localNameVC("vc.main.corecolor"));
+    	GuiVC.buttonCore1 = new GuiButtonVisual2VC(11, this.guiLeft + 28,  this.guiTop + startPlaceTop + (14 * 0), 42, 14, "", 0);
+    	GuiVC.buttonCore2 = new GuiButtonVisual1VC(12, this.guiLeft + 28,  this.guiTop + startPlaceTop + (14 * 1), 42, 14, "", 0);
+		GuiVC.buttonCore3 = new GuiButtonVisual2VC(13, this.guiLeft + 28,  this.guiTop + startPlaceTop + (14 * 2), 42, 14, "", 1);
 		
-		GuiVC.buttonFrame1 = new GuiButtonTransparentVC(21, this.guiLeft + 14,  this.guiTop + startPlace - 50 + (14 * 0), 56, 14, "");
-		GuiVC.buttonFrame2 = new GuiButtonGeneralVC(22, this.guiLeft + 14, this.guiTop + startPlace - 50 + (14 * 1), 70, 14, References.localNameVC("vc.main.frame"));
-		GuiVC.buttonFrame3 = new GuiButtonGeneralVC(23, this.guiLeft + 14, this.guiTop + startPlace - 50 + (14 * 2), 70, 14, References.localNameVC("vc.main.framecolor"));
+		GuiVC.buttonFrame1 = new GuiButtonVisual2VC(21, this.guiLeft + 106, this.guiTop + startPlaceTop + (14 * 0), 42, 14, "", 0);
+		GuiVC.buttonFrame2 = new GuiButtonVisual1VC(22, this.guiLeft + 106, this.guiTop + startPlaceTop + (14 * 1), 42, 14, "", 1);
+		GuiVC.buttonFrame3 = new GuiButtonVisual2VC(23, this.guiLeft + 106, this.guiTop + startPlaceTop + (14 * 2), 42, 14, "", 1);
 		
-    	GuiVC.buttonEngine1 = new GuiButtonTransparentVC(31, this.guiLeft + 14,  this.guiTop + startPlace + (14 * 0), 56, 14, "");
-    	GuiVC.buttonEngine2 = new GuiButtonGeneralVC(31, this.guiLeft + 14,  this.guiTop + startPlace + (14 * 1), 70, 14, References.localNameVC("vc.main.engine"));
-		GuiVC.buttonEngine3 = new GuiButtonGeneralVC(32, this.guiLeft + 14,  this.guiTop + startPlace + (14 * 2), 70, 14, References.localNameVC("vc.main.enginecolor"));
+    	GuiVC.buttonEngine1 = new GuiButtonVisual2VC(31, this.guiLeft + 28,  this.guiTop + startPlaceBottom + (14 * 0), 42, 14, "", 0);
+    	GuiVC.buttonEngine2 = new GuiButtonVisual1VC(31, this.guiLeft + 28,  this.guiTop + startPlaceBottom + (14 * 1), 42, 14, "", 2);
+		GuiVC.buttonEngine3 = new GuiButtonVisual2VC(32, this.guiLeft + 28,  this.guiTop + startPlaceBottom + (14 * 2), 42, 14, "", 1);
 		
-		GuiVC.buttonBalloon1 = new GuiButtonTransparentVC(41, this.guiLeft + 92,  this.guiTop + startPlace + (14 * 0), 56, 14, "");
-		GuiVC.buttonBalloon2 = new GuiButtonGeneralVC(42, this.guiLeft + 92, this.guiTop + startPlace + (14 * 1), 70, 14, References.localNameVC("vc.main.balloon"));
-		GuiVC.buttonBalloon3 = new GuiButtonGeneralVC(43, this.guiLeft + 92, this.guiTop + startPlace + (14 * 2), 70, 14, References.localNameVC("vc.main.ballooncolor"));
+		GuiVC.buttonBalloon1 = new GuiButtonVisual2VC(41, this.guiLeft + 106, this.guiTop + startPlaceBottom + (14 * 0), 42, 14, "", 0);
+		GuiVC.buttonBalloon2 = new GuiButtonVisual1VC(42, this.guiLeft + 106, this.guiTop + startPlaceBottom + (14 * 1), 42, 14, "", 3);
+		GuiVC.buttonBalloon3 = new GuiButtonVisual2VC(43, this.guiLeft + 106, this.guiTop + startPlaceBottom + (14 * 2), 42, 14, "", 1);
 		
     	this.buttonList.add(GuiVC.buttonM1);
 		this.buttonList.add(GuiVC.buttonM2);
@@ -101,7 +103,7 @@ public class GuiVisualMenu extends GuiContainer {
 		this.buttonList.add(GuiVC.buttonM4);
 		
 		//this.buttonList.add(GuiVC.buttonCore1);
-		//this.buttonList.add(GuiVC.buttonCore2);
+		this.buttonList.add(GuiVC.buttonCore2);
 		//this.buttonList.add(GuiVC.buttonCore3);
 		
 		this.buttonList.add(GuiVC.buttonFrame1);
@@ -116,20 +118,15 @@ public class GuiVisualMenu extends GuiContainer {
 		this.buttonList.add(GuiVC.buttonBalloon2);
 		this.buttonList.add(GuiVC.buttonBalloon3);
 		
-		//this.buttonList.add(GuiVC.buttonT1);
-		//this.buttonList.add(GuiVC.buttonT2);
-		//this.buttonList.add(GuiVC.buttonT3);
-		//this.buttonList.add(GuiVC.buttonT4);
-		
 		
 		
 		GuiVC.buttonM3.enabled = false;
-		GuiVC.buttonFrame1.enabled = false;
-		GuiVC.buttonFrame2.enabled = false;
-		GuiVC.buttonFrame3.enabled = false;
 		GuiVC.buttonCore1.enabled = false;
 		GuiVC.buttonCore2.enabled = false;
 		GuiVC.buttonCore3.enabled = false;
+		GuiVC.buttonFrame1.enabled = false;
+		GuiVC.buttonFrame2.enabled = false;
+		GuiVC.buttonFrame3.enabled = false;
 		GuiVC.buttonEngine1.enabled = false;
 		GuiVC.buttonEngine2.enabled = false;
 		GuiVC.buttonEngine3.enabled = false;
@@ -137,14 +134,14 @@ public class GuiVisualMenu extends GuiContainer {
 		GuiVC.buttonBalloon2.enabled = false;
 		GuiVC.buttonBalloon3.enabled = false;
 		
-		
-		if(this.airship.getMetaTierFrame() > 0)
-        {
-        	GuiVC.buttonFrame2.enabled = true;
-        }
+		//Enables the Main Visual button.
         if(this.airship.getMetaTierCore() > 0)
         {
         	GuiVC.buttonCore2.enabled = true;
+        }
+        if(this.airship.getMetaTierFrame() > 0)
+        {
+        	GuiVC.buttonFrame2.enabled = true;
         }
         if(this.airship.getMetaTierEngine() > 0)
         {
@@ -155,15 +152,16 @@ public class GuiVisualMenu extends GuiContainer {
         	GuiVC.buttonBalloon2.enabled = true;
         }
         
-        if(this.airship.getMetaTierFrame() == 5)
-        {
-        	GuiVC.buttonFrame1.enabled = true;
-        	GuiVC.buttonFrame3.enabled = true;
-        }
+        //Enables the Transparent and Color buttons.
         if(this.airship.getMetaTierCore() == 5)
         {
         	GuiVC.buttonCore1.enabled = true;
         	GuiVC.buttonCore3.enabled = true;
+        }
+        if(this.airship.getMetaTierFrame() == 5)
+        {
+        	GuiVC.buttonFrame1.enabled = true;
+        	GuiVC.buttonFrame3.enabled = true;
         }
         if(this.airship.getMetaTierEngine() == 5)
         {
@@ -225,27 +223,13 @@ public class GuiVisualMenu extends GuiContainer {
 	    {
 			NetworkHandler.sendToServer(new MessageGuiModuleMenu());
 	    }
-
-		this.metaFrameTransparentInfo = this.airship.getFrameVisualTransparent();
+		
 		//this.metaCoreTransparentInfo = this.airship.getCoreVisualTransparent();
+		this.metaFrameTransparentInfo = this.airship.getFrameVisualTransparent();
 		//this.metaEngineTransparentInfo = this.airship.getEngineVisualTransparent();
 		this.metaBalloonTransparentInfo = this.airship.getBalloonVisualTransparent();
 		
-		//Frame
-		if (parButton.id == 21)
-	    {
-			this.metaFrameTransparentInfo = !this.metaFrameTransparentInfo;
-			
-			NetworkHandler.sendToServer(new MessageHelperGuiVisualMenuFrameTransparent());
-	    }
-		if (parButton.id == 22)
-	    {
-			NetworkHandler.sendToServer(new MessageGuiVisualMenuFrame());
-	    }
-		if (parButton.id == 23)
-	    {
-			NetworkHandler.sendToServer(new MessageGuiVisualMenuFrameColor());
-	    }
+
 		
 		//Core
 		if (parButton.id == 11)
@@ -261,6 +245,22 @@ public class GuiVisualMenu extends GuiContainer {
 		if (parButton.id == 13)
 	    {
 			//NetworkHandler.sendToServer(new MessageGuiVisualMenuCoreColor());
+	    }
+		
+		//Frame
+		if (parButton.id == 21)
+	    {
+			this.metaFrameTransparentInfo = !this.metaFrameTransparentInfo;
+			
+			NetworkHandler.sendToServer(new MessageHelperGuiVisualMenuFrameTransparent());
+	    }
+		if (parButton.id == 22)
+	    {
+			NetworkHandler.sendToServer(new MessageGuiVisualMenuFrame());
+	    }
+		if (parButton.id == 23)
+	    {
+			NetworkHandler.sendToServer(new MessageGuiVisualMenuFrameColor());
 	    }
 		
 		//Engine
@@ -306,28 +306,44 @@ public class GuiVisualMenu extends GuiContainer {
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) 
 	{
 		GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
-		this.mc.getTextureManager().bindTexture(new ResourceLocation(References.MOD_ID + ":" + "textures/gui/container_airship_menu_visual.png"));
+		this.mc.getTextureManager().bindTexture(texture);
 		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
 		
-		//Frame transparent 'On' button is green in gui
+		//Core 'On' button is green in gui
+		if(this.airship.getCoreVisual() > 0)
+		{
+			this.drawTexturedModalRect(this.guiLeft + 17, this.guiTop + 100, 177, 0, 10, 10);
+		}
+		//Frame 'On' button is green in gui
 		if(this.airship.getFrameVisualTransparent())
 		{
-			this.drawTexturedModalRect(this.guiLeft + 151, this.guiTop + 86, 177, 0, 10, 10);
+			this.drawTexturedModalRect(this.guiLeft + 95, this.guiTop + 86, 177, 0, 10, 10);
 		}
-		//Core transparent 'On' button is green in gui
-		//if(this.airship.getCoreVisualTransparent())
+		if(this.airship.getFrameVisual() > 0)
+		{
+			this.drawTexturedModalRect(this.guiLeft + 95, this.guiTop + 100, 177, 0, 10, 10);
+		}
+		if(this.airship.getFrameVisualColor())
+		{
+			this.drawTexturedModalRect(this.guiLeft + 95, this.guiTop + 114, 177, 0, 10, 10);
+		}
+		//Engine 'On' button is green in gui
+		//if(this.airship.getEngineVisual() > 0)
 		//{
-		//	this.drawTexturedModalRect(this.guiLeft + 73, this.guiTop + 136, 177, 0, 10, 10);
-		//}
-		//Engine transparent 'On' button is green in gui
-		//if(this.airship.getEngineVisualTransparent())
-		//{
-		//	this.drawTexturedModalRect(this.guiLeft + 73, this.guiTop + 136, 177, 0, 10, 10);
+		//	this.drawTexturedModalRect(this.guiLeft + 17, this.guiTop + 100, 177, 0, 10, 10);
 		//}
 		//Balloon transparent 'On' button is green in gui
 		if(this.airship.getBalloonVisualTransparent())
 		{
-			this.drawTexturedModalRect(this.guiLeft + 151, this.guiTop + 136, 177, 0, 10, 10);
+			this.drawTexturedModalRect(this.guiLeft + 95, this.guiTop + 136, 177, 0, 10, 10);
+		}
+		if(this.airship.getBalloonVisual() > 0)
+		{
+			this.drawTexturedModalRect(this.guiLeft + 95, this.guiTop + 150, 177, 0, 10, 10);
+		}
+		if(this.airship.getBalloonVisualColor())
+		{
+			this.drawTexturedModalRect(this.guiLeft + 95, this.guiTop + 164, 177, 0, 10, 10);
 		}
 				
 		this.drawRect(this.guiLeft + 49-12, this.guiTop - 17, this.guiLeft + 127+12, this.guiTop, Color.BLACK.getRGB());
@@ -343,7 +359,40 @@ public class GuiVisualMenu extends GuiContainer {
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
 	{
-		this.fontRenderer.drawString("Appearance Menu", 44, -10, 65521);
+		this.fontRenderer.drawString("Appearance Menu", 44, -10, Color.CYAN.getRGB());
+		
+		GlStateManager.pushMatrix();
+		{
+			GlStateManager.translate(39, 82, 0);
+	        GlStateManager.scale(0.85F, 0.85F, 0.85F);
+	        
+			this.fontRenderer.drawString("Core", 0, 0, Color.CYAN.getRGB());
+		}
+		GlStateManager.popMatrix();
+		GlStateManager.pushMatrix();
+		{
+			GlStateManager.translate(114.5, 82, 0);
+	        GlStateManager.scale(0.85F, 0.85F, 0.85F);
+	        
+			this.fontRenderer.drawString("Frame", 0, 0, Color.CYAN.getRGB());
+		}
+		GlStateManager.popMatrix();
+		GlStateManager.pushMatrix();
+		{
+			GlStateManager.translate(35.5, 142, 0);
+	        GlStateManager.scale(0.85F, 0.85F, 0.85F);
+	        
+			this.fontRenderer.drawString("Engine", 0, 0, Color.CYAN.getRGB());
+		}
+		GlStateManager.popMatrix();
+		GlStateManager.pushMatrix();
+		{
+			GlStateManager.translate(112, 142, 0);
+	        GlStateManager.scale(0.85F, 0.85F, 0.85F);
+	        
+			this.fontRenderer.drawString("Balloon", 0, 0, Color.CYAN.getRGB());
+		}
+		GlStateManager.popMatrix();
     }
 	
 	@Override

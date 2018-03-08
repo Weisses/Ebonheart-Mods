@@ -341,7 +341,7 @@ public class GuiUpgradeMenu extends GuiContainer {
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
 	{
-		this.fontRenderer.drawString(References.localNameVC("vc.main.upgrademenu"), 53, -10, 65535);
+		this.fontRenderer.drawString(References.localNameVC("vc.main.upgrademenu"), 53, -10, Color.CYAN.getRGB());
 		
 		//Core
 		GlStateManager.pushMatrix();

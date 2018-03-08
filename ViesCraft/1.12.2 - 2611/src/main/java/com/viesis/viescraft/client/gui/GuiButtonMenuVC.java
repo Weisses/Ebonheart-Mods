@@ -52,7 +52,7 @@ public class GuiButtonMenuVC extends GuiButton {
             
             GlStateManager.pushMatrix();
 			{
-				GlStateManager.translate(this.x+1, this.y+1, 0);
+				GlStateManager.translate(this.x + 1, this.y + 1, 0);
 				GlStateManager.scale(.25, .25, .25);
             
 				this.drawTexturedModalRect(0, 0, 0, 64 + (48 * this.buttonLocationY), 136, 48);

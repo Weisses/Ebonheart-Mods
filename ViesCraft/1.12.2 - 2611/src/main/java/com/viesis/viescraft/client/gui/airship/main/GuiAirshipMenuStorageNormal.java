@@ -192,7 +192,7 @@ public class GuiAirshipMenuStorageNormal extends GuiContainer {
 	{
 		GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
 		
-		this.fontRenderer.drawString(References.localNameVC("vc.main.mainmenu"), 64, -10, 65535);
+		this.fontRenderer.drawString(References.localNameVC("vc.main.mainmenu"), 64, -10, Color.CYAN.getRGB());
 		this.fontRenderer.drawString(References.localNameVC("vc.main.fuel"), 145, 10, 16777215);
 		
 		//Speed

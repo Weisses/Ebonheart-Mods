@@ -354,7 +354,7 @@ public class GuiModuleMenu extends GuiContainer {
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
 	{
-		this.fontRenderer.drawString(References.localNameVC("vc.main.modulemenu"), 58, -10, 65535);
+		this.fontRenderer.drawString(References.localNameVC("vc.main.modulemenu"), 58, -10, Color.CYAN.getRGB());
 		
 		//Altitude Icons
 		if(this.airship.getModuleLearnedAltitude())

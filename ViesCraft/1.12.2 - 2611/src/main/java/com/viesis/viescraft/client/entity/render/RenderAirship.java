@@ -92,6 +92,16 @@ public class RenderAirship extends Render<EntityAirshipCore> {
     	FMLClientHandler.instance().getClient().renderEngine.bindTexture(TEST_TEXTURE[1]);
     	this.modelAirshipV1FrameOff.render(entity, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
         
+    	
+
+        
+        //if(!this.getBalloonVisualColor())
+        //{
+        //	this.metaBalloonColorRed = 210;
+        //	this.metaBalloonColorGreen = 180;
+        //	this.metaBalloonColorBlue = 140;
+        //}
+        
     	this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/balloons/airship_visualballoon_" + EnumsVC.AirshipTierBalloon.byId(entity.getMetaTierBalloon()).getName() +".png"));
     	this.modelAirshipV1Color.render(entity, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
     	

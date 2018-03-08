@@ -1,18 +1,15 @@
 package com.viesis.viescraft.client.gui;
 
-import com.viesis.viescraft.api.References;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.util.ResourceLocation;
 
-public class GuiButtonTransparentVC extends GuiButton {
+public class GuiButtonVisualBaseVC extends GuiButton {
 	
-	protected static final ResourceLocation BUTTON_TEXTURES = new ResourceLocation(References.MOD_ID_COLON + "textures/gui/buttons_visual.png");
+	protected int buttonLocationY;
     
-	public GuiButtonTransparentVC(int buttonId, int x, int y, int widthIn, int heightIn, String buttonText) 
+	public GuiButtonVisualBaseVC(int buttonId, int x, int y, int widthIn, int heightIn, String buttonText, int buttonLocationYIn) 
 	{
 		super(buttonId, x, y, widthIn, heightIn, buttonText);
 		
@@ -26,6 +23,7 @@ public class GuiButtonTransparentVC extends GuiButton {
         this.width = widthIn;
         this.height = heightIn;
         this.displayString = buttonText;
+        this.buttonLocationY = buttonLocationYIn;
 	}
 	
 	@Override
@@ -34,8 +32,8 @@ public class GuiButtonTransparentVC extends GuiButton {
 		if (this.visible)
         {
 			FontRenderer fontrenderer = mc.fontRenderer;
-            mc.getTextureManager().bindTexture(BUTTON_TEXTURES);
-            GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+            
+			GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
             this.hovered = mouseX >= this.x && mouseY >= this.y && mouseX < this.x + this.width && mouseY < this.y + this.height;
             int i = this.getHoverState(this.hovered);
             GlStateManager.enableBlend();
@@ -50,10 +48,10 @@ public class GuiButtonTransparentVC extends GuiButton {
             
             GlStateManager.pushMatrix();
 			{
-				GlStateManager.translate(this.x + 1 + 10, this.y + 1, 0);
+				GlStateManager.translate(this.x + 4, this.y + 1, 0);
 				GlStateManager.scale(.25, .25, .25);
             
-				this.drawTexturedModalRect(0, 0, 0, 74, 136, 48);
+				this.drawTexturedModalRect(0, 0, 0, 64 + (48 * this.buttonLocationY), 136, 48);
 			}
 			GlStateManager.popMatrix();
 			
