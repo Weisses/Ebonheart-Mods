@@ -17,9 +17,9 @@ import com.viesis.viescraft.common.entity.airshipcolors.containers.all.Container
 import com.viesis.viescraft.network.NetworkHandler;
 import com.viesis.viescraft.network.server.airship.MessageGuiUpgradeMenu;
 import com.viesis.viescraft.network.server.airship.main.MessageGuiAirshipMenu;
+import com.viesis.viescraft.network.server.airship.main.MessageGuiAirshipMenuMusic;
 import com.viesis.viescraft.network.server.airship.main.MessageGuiAirshipMenuStorageGreater;
 import com.viesis.viescraft.network.server.airship.main.MessageGuiAirshipMenuStorageLesser;
-import com.viesis.viescraft.network.server.airship.main.MessageGuiAirshipMenuMusic;
 import com.viesis.viescraft.network.server.airship.main.MessageGuiModuleMenu;
 import com.viesis.viescraft.network.server.airship.main.MessageGuiVisualMenu;
 import com.viesis.viescraft.network.server.airship.visual.MessageHelperGuiVisualMenuBalloonColor;
@@ -52,6 +52,7 @@ public class GuiVisualMenuBalloonColor extends GuiContainer {
 	public static boolean isColored;
 	
 	private GuiButton buttonAccept;
+	private ResourceLocation texture = new ResourceLocation(References.MOD_ID + ":" + "textures/gui/container_airship_menu_visual_color.png");
 	
 	public GuiVisualMenuBalloonColor(IInventory playerInv, EntityAirshipBaseVC airshipIn)
 	{
@@ -75,33 +76,33 @@ public class GuiVisualMenuBalloonColor extends GuiContainer {
     	Keyboard.enableRepeatEvents(true);
     	int startPlace = 49;
     	
-        this.textRed = new GuiTextField(11, this.fontRenderer, this.guiLeft + 63, this.guiTop + 66, 28, 20);
+        this.textRed = new GuiTextField(11, this.fontRenderer, this.guiLeft + 63, this.guiTop + 57, 28, 20);
         textRed.setMaxStringLength(3);
         textRed.setText(String.valueOf(this.textRedNumber));
     	this.textRed.setFocused(false);
     	
-    	this.textGreen = new GuiTextField(12, this.fontRenderer, this.guiLeft + 63, this.guiTop + 110, 28, 20);
+    	this.textGreen = new GuiTextField(12, this.fontRenderer, this.guiLeft + 63, this.guiTop + 98, 28, 20);
         textGreen.setMaxStringLength(3);
         textGreen.setText(String.valueOf(this.textGreenNumber));
     	this.textGreen.setFocused(false);
     	
-    	this.textBlue = new GuiTextField(13, this.fontRenderer, this.guiLeft + 63, this.guiTop + 154, 28, 20);
+    	this.textBlue = new GuiTextField(13, this.fontRenderer, this.guiLeft + 63, this.guiTop + 139, 28, 20);
         textBlue.setMaxStringLength(3);
         textBlue.setText(String.valueOf(this.textBlueNumber));
     	this.textBlue.setFocused(false);
     	
         //=============================================
         
-    	GuiVC.buttonRed = new GuiButtonGeneralVC( 11, this.guiLeft + 13, this.guiTop + 68, 37, 14, References.localNameVC("vc.button.save"));
+    	GuiVC.buttonRed = new GuiButtonGeneralVC( 11, this.guiLeft + 13, this.guiTop + 60, 37, 14, References.localNameVC("vc.button.save"));
 		this.buttonList.add(GuiVC.buttonRed);
 		
-		GuiVC.buttonGreen = new GuiButtonGeneralVC( 12, this.guiLeft + 13, this.guiTop + 112, 37, 14, References.localNameVC("vc.button.save"));
+		GuiVC.buttonGreen = new GuiButtonGeneralVC( 12, this.guiLeft + 13, this.guiTop + 101, 37, 14, References.localNameVC("vc.button.save"));
 		this.buttonList.add(GuiVC.buttonGreen);
 		
-		GuiVC.buttonBlue = new GuiButtonGeneralVC( 13, this.guiLeft + 13, this.guiTop + 156, 37, 14, References.localNameVC("vc.button.save"));
+		GuiVC.buttonBlue = new GuiButtonGeneralVC( 13, this.guiLeft + 13, this.guiTop + 142, 37, 14, References.localNameVC("vc.button.save"));
 		this.buttonList.add(GuiVC.buttonBlue);
 		
-		GuiVC.buttonRemoveColor = new GuiButtonGeneralVC( 14, this.guiLeft + 13, this.guiTop + 34, 77, 14, References.localNameVC("vc.button.removecolor"));
+		GuiVC.buttonRemoveColor = new GuiButtonGeneralVC( 14, this.guiLeft + 13, this.guiTop + 177, 77, 14, References.localNameVC("vc.button.removecolor"));
 		this.buttonList.add(GuiVC.buttonRemoveColor);
 		
         //=============================================
@@ -316,17 +317,12 @@ public class GuiVisualMenuBalloonColor extends GuiContainer {
 		
 		if (parButton.id == 14)
 	    {
-			this.textRedNumber = 210;
+			this.textRedNumber = 200;
 			this.textGreenNumber = 180;
 			this.textBlueNumber = 140;
 			
-			this.isColored = true;
+			this.isColored = false;
 			NetworkHandler.sendToServer(new MessageHelperGuiVisualMenuBalloonColor());
-			
-			this.textRedNumber = 0;
-			this.textGreenNumber = 0;
-			this.textBlueNumber = 0;
-			
 	    }
 		
         this.buttonList.clear();
@@ -338,7 +334,7 @@ public class GuiVisualMenuBalloonColor extends GuiContainer {
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) 
 	{
 		GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
-		this.mc.getTextureManager().bindTexture(new ResourceLocation(References.MOD_ID + ":" + "textures/gui/container_airship_menu_visual_frame_color.png"));
+		this.mc.getTextureManager().bindTexture(texture);
 		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
 		
         float red = this.textRedNumber / 255.0f;
@@ -347,13 +343,13 @@ public class GuiVisualMenuBalloonColor extends GuiContainer {
         
         //Color Box made from the r/g/b values
         GlStateManager.color(red, green, blue, 1.0F);
-        this.drawTexturedModalRect(this.guiLeft + 106, this.guiTop + 148, 176, 0, 64, 25);
+        this.drawTexturedModalRect(this.guiLeft + 106, this.guiTop + 140, 176, 0, 64, 25);
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         
         //Color name of the Color Box made from the r/g/b values
   		GlStateManager.pushMatrix();
   		{
-  			GlStateManager.translate(this.guiLeft + 110, this.guiTop + 140.5, 0);
+  			GlStateManager.translate(this.guiLeft + 110, this.guiTop + 132.5, 0);
   			GlStateManager.scale(.65, .65, .65);
       		
   			if(this.airship.getBalloonVisualColor())
@@ -367,13 +363,13 @@ public class GuiVisualMenuBalloonColor extends GuiContainer {
 		}
 		GlStateManager.popMatrix();
         
-    	this.fontRenderer.drawString(References.localNameVC("vc.main.red"), this.guiLeft + 23, this.guiTop + 55, 16711680);
-		this.fontRenderer.drawString(References.localNameVC("vc.main.green"), this.guiLeft + 17, this.guiTop + 99, 32768);
-		this.fontRenderer.drawString(References.localNameVC("vc.main.blue"), this.guiLeft + 21, this.guiTop + 143, 255);
+    	this.fontRenderer.drawString(References.localNameVC("vc.main.red"), this.guiLeft + 23, this.guiTop + 48, 16711680);
+		this.fontRenderer.drawString(References.localNameVC("vc.main.green"), this.guiLeft + 17, this.guiTop + 89, 32768);
+		this.fontRenderer.drawString(References.localNameVC("vc.main.blue"), this.guiLeft + 21, this.guiTop + 130, 255);
 		
-    	this.fontRenderer.drawString("0-255", this.guiLeft + 62, this.guiTop + 55, 16777215);
-    	this.fontRenderer.drawString("0-255", this.guiLeft + 62, this.guiTop + 99, 16777215);
-    	this.fontRenderer.drawString("0-255", this.guiLeft + 62, this.guiTop + 143, 16777215);
+    	this.fontRenderer.drawString("0-255", this.guiLeft + 62, this.guiTop + 48, 16777215);
+    	this.fontRenderer.drawString("0-255", this.guiLeft + 62, this.guiTop + 89, 16777215);
+    	this.fontRenderer.drawString("0-255", this.guiLeft + 62, this.guiTop + 130, 16777215);
     	
     	this.textRed.drawTextBox();
     	this.textGreen.drawTextBox();
@@ -386,7 +382,7 @@ public class GuiVisualMenuBalloonColor extends GuiContainer {
 		int i = this.guiLeft;
         int j = this.guiTop;
 		
-        this.drawEntityOnScreen(i + 141, j + 126, 15, mouseX, mouseY, this.airship);
+        this.drawEntityOnScreen(i + 141, j + 118, 15, mouseX, mouseY, this.airship);
 	}
 	
 	@Override
@@ -477,10 +473,14 @@ public class GuiVisualMenuBalloonColor extends GuiContainer {
 	        
 	        RenderManager rendermanager = Minecraft.getMinecraft().getRenderManager();
 	        
-	        rendermanager.renderMultipass(entityIn, 0);
 	        rendermanager.setPlayerViewY(180.0F);
 	        rendermanager.setRenderShadow(false);
-	        rendermanager.renderEntity(entityIn, 0.0D, 0.0D, 0.0D, 0.0F, 1.0F, false);
+	        
+	        //This is the non-multipass rendering way to render an entity.
+	        //rendermanager.renderEntity(entityIn, 0.0D, 0.0D, 0.0D, 0.0F, 1.0F, false);
+	        
+	        rendermanager.renderEntityStatic(entityIn, 0, false);
+	        rendermanager.renderMultipass(entityIn, 0F);
 	        
 	        rendermanager.setRenderShadow(true);
 	        

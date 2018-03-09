@@ -193,7 +193,15 @@ public class GuiAirshipMenuStorageGreater extends GuiContainer {
 		GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
 		
 		this.fontRenderer.drawString(References.localNameVC("vc.main.mainmenu"), 64, -10, Color.CYAN.getRGB());
-		this.fontRenderer.drawString(References.localNameVC("vc.main.fuel"), 145, 10, 16777215);
+		
+		GlStateManager.pushMatrix();
+		{
+			GlStateManager.translate(147.5, 10.5, 0);
+			GlStateManager.scale(0.75, 0.75, 0.75);
+			
+			this.fontRenderer.drawString(References.localNameVC("vc.main.fuel"), 0, 0, Color.ORANGE.getRGB());
+		}
+		GlStateManager.popMatrix();
 		
 		//Speed
 		GlStateManager.pushMatrix();

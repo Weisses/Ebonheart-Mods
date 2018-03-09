@@ -18,6 +18,7 @@ import com.viesis.viescraft.client.gui.airship.visual.balloon.GuiVisualMenuBallo
 import com.viesis.viescraft.client.gui.airship.visual.balloon.GuiVisualMenuBalloonTier3Pg1;
 import com.viesis.viescraft.client.gui.airship.visual.balloon.GuiVisualMenuBalloonTier4Pg1;
 import com.viesis.viescraft.client.gui.airship.visual.balloon.GuiVisualMenuBalloonTier5Pg1;
+import com.viesis.viescraft.client.gui.airship.visual.core.GuiVisualMenuCore;
 import com.viesis.viescraft.client.gui.airship.visual.frame.GuiVisualMenuFrame;
 import com.viesis.viescraft.client.gui.airship.visual.frame.GuiVisualMenuFrameColor;
 import com.viesis.viescraft.client.gui.airship.visual.frame.GuiVisualMenuFrameTier1Pg1;
@@ -85,6 +86,8 @@ public class GuiHandler implements IGuiHandler {
 	public static final int GUI_APPEARANCE_MENU_BALLOON_TIER3_PG1 = 206;
 	public static final int GUI_APPEARANCE_MENU_BALLOON_TIER4_PG1 = 207;
 	public static final int GUI_APPEARANCE_MENU_BALLOON_TIER5_PG1 = 208;
+	
+	public static final int GUI_APPEARANCE_MENU_CORE = 302;
 	
 	public static final int GUI_MUSIC_PG1 = 31;
 	
@@ -166,6 +169,12 @@ public class GuiHandler implements IGuiHandler {
 		{
 			return new ContainerAirshipAppearance(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
 		}
+		
+		if (ID == GUI_APPEARANCE_MENU_CORE)
+		{
+			return new ContainerAirshipAppearance(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
+		}
+		
 		if (ID == GUI_APPEARANCE_MENU_FRAME)
 		{
 			return new ContainerAirshipAppearance(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
@@ -310,6 +319,12 @@ public class GuiHandler implements IGuiHandler {
 		{
 			return new GuiVisualMenu(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
 		}
+		
+		if (ID == GUI_APPEARANCE_MENU_CORE)
+		{
+			return new GuiVisualMenuCore(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
+		}
+		
 		if (ID == GUI_APPEARANCE_MENU_FRAME)
 		{
 			return new GuiVisualMenuFrame(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());

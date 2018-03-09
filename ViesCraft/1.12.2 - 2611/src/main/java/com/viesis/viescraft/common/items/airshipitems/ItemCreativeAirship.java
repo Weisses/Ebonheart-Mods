@@ -51,7 +51,7 @@ public class ItemCreativeAirship extends ItemCreativeAirshipBase {
 			    		255, 255, 255,
 			    		0,
 			    		0, false, false,
-			    		210, 180, 140,
+			    		200, 180, 140,
 			    		true, 3, true, 3, true, 3, 
 			    		true, 3, true, 3, true, 3, 
 			    		true, 3, true, 3);

@@ -10,6 +10,7 @@ import com.viesis.viescraft.api.EnumsVC;
 import com.viesis.viescraft.api.GuiVC;
 import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.api.util.Keybinds;
+import com.viesis.viescraft.client.gui.GuiButtonConfirmVC;
 import com.viesis.viescraft.client.gui.GuiButtonMenuVC;
 import com.viesis.viescraft.client.gui.GuiButtonVisual1VC;
 import com.viesis.viescraft.client.gui.GuiButtonVisual2VC;
@@ -26,10 +27,18 @@ import com.viesis.viescraft.network.server.airship.main.MessageGuiModuleMenu;
 import com.viesis.viescraft.network.server.airship.main.MessageGuiVisualMenu;
 import com.viesis.viescraft.network.server.airship.visual.MessageGuiVisualMenuBalloon;
 import com.viesis.viescraft.network.server.airship.visual.MessageGuiVisualMenuBalloonColor;
+import com.viesis.viescraft.network.server.airship.visual.MessageGuiVisualMenuCore;
 import com.viesis.viescraft.network.server.airship.visual.MessageGuiVisualMenuFrame;
 import com.viesis.viescraft.network.server.airship.visual.MessageGuiVisualMenuFrameColor;
 import com.viesis.viescraft.network.server.airship.visual.MessageHelperGuiVisualMenuBalloonTransparent;
 import com.viesis.viescraft.network.server.airship.visual.MessageHelperGuiVisualMenuFrameTransparent;
+import com.viesis.viescraft.network.server.airship.visual.undobuttons.MessageHelperGuiVisualMenuUndoBalloon1;
+import com.viesis.viescraft.network.server.airship.visual.undobuttons.MessageHelperGuiVisualMenuUndoBalloon2;
+import com.viesis.viescraft.network.server.airship.visual.undobuttons.MessageHelperGuiVisualMenuUndoBalloon3;
+import com.viesis.viescraft.network.server.airship.visual.undobuttons.MessageHelperGuiVisualMenuUndoCore2;
+import com.viesis.viescraft.network.server.airship.visual.undobuttons.MessageHelperGuiVisualMenuUndoFrame1;
+import com.viesis.viescraft.network.server.airship.visual.undobuttons.MessageHelperGuiVisualMenuUndoFrame2;
+import com.viesis.viescraft.network.server.airship.visual.undobuttons.MessageHelperGuiVisualMenuUndoFrame3;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
@@ -51,6 +60,16 @@ public class GuiVisualMenu extends GuiContainer {
 	public static boolean metaEngineTransparentInfo;
 	public static boolean metaBalloonTransparentInfo;
 	private ResourceLocation texture = new ResourceLocation(References.MOD_ID + ":" + "textures/gui/container_airship_menu_visual.png");
+	
+	public static int undoCore2;
+	
+	public static boolean undoFrame1;
+	public static int undoFrame2;
+	public static boolean undoFrame3;
+	
+	public static boolean undoBalloon1;
+	public static int undoBalloon2;
+	public static boolean undoBalloon3;
 	
 	public GuiVisualMenu(IInventory playerInv, EntityAirshipBaseVC airshipIn)
 	{
@@ -97,6 +116,22 @@ public class GuiVisualMenu extends GuiContainer {
 		GuiVC.buttonBalloon2 = new GuiButtonVisual1VC(42, this.guiLeft + 106, this.guiTop + startPlaceBottom + (14 * 1), 42, 14, "", 3);
 		GuiVC.buttonBalloon3 = new GuiButtonVisual2VC(43, this.guiLeft + 106, this.guiTop + startPlaceBottom + (14 * 2), 42, 14, "", 1);
 		
+		GuiVC.buttonA01 = new GuiButtonConfirmVC(51, this.guiLeft + 70, this.guiTop + startPlaceTop + (14 * 0), 14, 14, "");
+		GuiVC.buttonA02 = new GuiButtonConfirmVC(52, this.guiLeft + 70, this.guiTop + startPlaceTop + (14 * 1), 14, 14, "");
+		GuiVC.buttonA03 = new GuiButtonConfirmVC(53, this.guiLeft + 70, this.guiTop + startPlaceTop + (14 * 2), 14, 14, "");
+		
+		GuiVC.buttonA04 = new GuiButtonConfirmVC(54, this.guiLeft + 148, this.guiTop + startPlaceTop + (14 * 0), 14, 14, "");
+		GuiVC.buttonA05 = new GuiButtonConfirmVC(55, this.guiLeft + 148, this.guiTop + startPlaceTop + (14 * 1), 14, 14, "");
+		GuiVC.buttonA06 = new GuiButtonConfirmVC(56, this.guiLeft + 148, this.guiTop + startPlaceTop + (14 * 2), 14, 14, "");
+		
+		GuiVC.buttonA07 = new GuiButtonConfirmVC(57, this.guiLeft + 70, this.guiTop + startPlaceBottom + (14 * 0), 14, 14, "");
+		GuiVC.buttonA08 = new GuiButtonConfirmVC(58, this.guiLeft + 70, this.guiTop + startPlaceBottom + (14 * 1), 14, 14, "");
+		GuiVC.buttonA09 = new GuiButtonConfirmVC(59, this.guiLeft + 70, this.guiTop + startPlaceBottom + (14 * 2), 14, 14, "");
+		
+		GuiVC.buttonA10 = new GuiButtonConfirmVC(60, this.guiLeft + 148, this.guiTop + startPlaceBottom + (14 * 0), 14, 14, "");
+		GuiVC.buttonA11 = new GuiButtonConfirmVC(61, this.guiLeft + 148, this.guiTop + startPlaceBottom + (14 * 1), 14, 14, "");
+		GuiVC.buttonA12 = new GuiButtonConfirmVC(62, this.guiLeft + 148, this.guiTop + startPlaceBottom + (14 * 2), 14, 14, "");
+		
     	this.buttonList.add(GuiVC.buttonM1);
 		this.buttonList.add(GuiVC.buttonM2);
 		this.buttonList.add(GuiVC.buttonM3);
@@ -117,6 +152,22 @@ public class GuiVisualMenu extends GuiContainer {
 		this.buttonList.add(GuiVC.buttonBalloon1);
 		this.buttonList.add(GuiVC.buttonBalloon2);
 		this.buttonList.add(GuiVC.buttonBalloon3);
+		
+		//this.buttonList.add(GuiVC.buttonA01);
+		this.buttonList.add(GuiVC.buttonA02);
+		//this.buttonList.add(GuiVC.buttonA03);
+		
+		this.buttonList.add(GuiVC.buttonA04);
+		this.buttonList.add(GuiVC.buttonA05);
+		this.buttonList.add(GuiVC.buttonA06);
+		
+		//this.buttonList.add(GuiVC.buttonA07);
+		//this.buttonList.add(GuiVC.buttonA08);
+		//this.buttonList.add(GuiVC.buttonA09);
+		
+		this.buttonList.add(GuiVC.buttonA10);
+		this.buttonList.add(GuiVC.buttonA11);
+		this.buttonList.add(GuiVC.buttonA12);
 		
 		
 		
@@ -240,7 +291,7 @@ public class GuiVisualMenu extends GuiContainer {
 	    }
 		if (parButton.id == 12)
 	    {
-			//NetworkHandler.sendToServer(new MessageGuiVisualMenuCore());
+			NetworkHandler.sendToServer(new MessageGuiVisualMenuCore());
 	    }
 		if (parButton.id == 13)
 	    {
@@ -295,6 +346,38 @@ public class GuiVisualMenu extends GuiContainer {
 			NetworkHandler.sendToServer(new MessageGuiVisualMenuBalloonColor());
 	    }
 		
+		//Core - Undo Models
+		if (parButton.id == 52)
+	    {
+			NetworkHandler.sendToServer(new MessageHelperGuiVisualMenuUndoCore2());
+	    }
+		//Frame - Undo
+		if (parButton.id == 54)
+	    {
+			NetworkHandler.sendToServer(new MessageHelperGuiVisualMenuUndoFrame1());
+	    }
+		if (parButton.id == 55)
+	    {
+			NetworkHandler.sendToServer(new MessageHelperGuiVisualMenuUndoFrame2());
+	    }
+		if (parButton.id == 56)
+	    {
+			NetworkHandler.sendToServer(new MessageHelperGuiVisualMenuUndoFrame3());
+	    }
+		//Balloon - Undo
+		if (parButton.id == 60)
+	    {
+			NetworkHandler.sendToServer(new MessageHelperGuiVisualMenuUndoBalloon1());
+	    }
+		if (parButton.id == 61)
+	    {
+			NetworkHandler.sendToServer(new MessageHelperGuiVisualMenuUndoBalloon2());
+	    }
+		if (parButton.id == 62)
+	    {
+			NetworkHandler.sendToServer(new MessageHelperGuiVisualMenuUndoBalloon3());
+	    }
+		
 		
 		
         this.buttonList.clear();
@@ -312,20 +395,40 @@ public class GuiVisualMenu extends GuiContainer {
 		//Core 'On' button is green in gui
 		if(this.airship.getCoreVisual() > 0)
 		{
-			this.drawTexturedModalRect(this.guiLeft + 17, this.guiTop + 100, 177, 0, 10, 10);
+			this.drawTexturedModalRect(this.guiLeft + 17, this.guiTop + 107, 177, 0, 10, 10);
+			GuiVC.buttonA02.enabled = true;
+		}
+		else
+		{
+			GuiVC.buttonA02.enabled = false;
 		}
 		//Frame 'On' button is green in gui
 		if(this.airship.getFrameVisualTransparent())
 		{
-			this.drawTexturedModalRect(this.guiLeft + 95, this.guiTop + 86, 177, 0, 10, 10);
+			this.drawTexturedModalRect(this.guiLeft + 95, this.guiTop + 93, 177, 0, 10, 10);
+			GuiVC.buttonA04.enabled = true;
+		}
+		else
+		{
+			GuiVC.buttonA04.enabled = false;
 		}
 		if(this.airship.getFrameVisual() > 0)
 		{
-			this.drawTexturedModalRect(this.guiLeft + 95, this.guiTop + 100, 177, 0, 10, 10);
+			this.drawTexturedModalRect(this.guiLeft + 95, this.guiTop + 107, 177, 0, 10, 10);
+			GuiVC.buttonA05.enabled = true;
+		}
+		else
+		{
+			GuiVC.buttonA05.enabled = false;
 		}
 		if(this.airship.getFrameVisualColor())
 		{
-			this.drawTexturedModalRect(this.guiLeft + 95, this.guiTop + 114, 177, 0, 10, 10);
+			this.drawTexturedModalRect(this.guiLeft + 95, this.guiTop + 121, 177, 0, 10, 10);
+			GuiVC.buttonA06.enabled = true;
+		}
+		else
+		{
+			GuiVC.buttonA06.enabled = false;
 		}
 		//Engine 'On' button is green in gui
 		//if(this.airship.getEngineVisual() > 0)
@@ -335,15 +438,30 @@ public class GuiVisualMenu extends GuiContainer {
 		//Balloon transparent 'On' button is green in gui
 		if(this.airship.getBalloonVisualTransparent())
 		{
-			this.drawTexturedModalRect(this.guiLeft + 95, this.guiTop + 136, 177, 0, 10, 10);
+			this.drawTexturedModalRect(this.guiLeft + 95, this.guiTop + 153, 177, 0, 10, 10);
+			GuiVC.buttonA10.enabled = true;
+		}
+		else
+		{
+			GuiVC.buttonA10.enabled = false;
 		}
 		if(this.airship.getBalloonVisual() > 0)
 		{
-			this.drawTexturedModalRect(this.guiLeft + 95, this.guiTop + 150, 177, 0, 10, 10);
+			this.drawTexturedModalRect(this.guiLeft + 95, this.guiTop + 167, 177, 0, 10, 10);
+			GuiVC.buttonA11.enabled = true;
+		}
+		else
+		{
+			GuiVC.buttonA11.enabled = false;
 		}
 		if(this.airship.getBalloonVisualColor())
 		{
-			this.drawTexturedModalRect(this.guiLeft + 95, this.guiTop + 164, 177, 0, 10, 10);
+			this.drawTexturedModalRect(this.guiLeft + 95, this.guiTop + 181, 177, 0, 10, 10);
+			GuiVC.buttonA12.enabled = true;
+		}
+		else
+		{
+			GuiVC.buttonA12.enabled = false;
 		}
 				
 		this.drawRect(this.guiLeft + 49-12, this.guiTop - 17, this.guiLeft + 127+12, this.guiTop, Color.BLACK.getRGB());
@@ -353,12 +471,76 @@ public class GuiVisualMenu extends GuiContainer {
 		int i = this.guiLeft;
         int j = this.guiTop;
 		
-        this.drawEntityOnScreen(i + 89, j + 67, 13, mouseX, mouseY, this.airship);
+        this.drawEntityOnScreen(i + 128, j + 68, 13, mouseX, mouseY, this.airship);
+        
+        
 	}
 	
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
 	{
+		this.mc.getTextureManager().bindTexture(texture);
+		
+		//Undo buttons Core
+		GlStateManager.pushMatrix();
+		{
+			GlStateManager.translate(73, 108, 0);
+	        GlStateManager.scale(0.5F, 0.5F, 0.5F);
+	        
+	        this.drawTexturedModalRect(0, 0, 176, 10, 16, 16);
+		}
+		GlStateManager.popMatrix();
+		//Undo buttons Frame
+		GlStateManager.pushMatrix();
+		{
+			GlStateManager.translate(151, 94, 0);
+	        GlStateManager.scale(0.5F, 0.5F, 0.5F);
+	        
+	        this.drawTexturedModalRect(0, 0, 176, 10, 16, 16);
+		}
+		GlStateManager.popMatrix();
+		GlStateManager.pushMatrix();
+		{
+			GlStateManager.translate(151, 108, 0);
+	        GlStateManager.scale(0.5F, 0.5F, 0.5F);
+	        
+	        this.drawTexturedModalRect(0, 0, 176, 10, 16, 16);
+		}
+		GlStateManager.popMatrix();
+		GlStateManager.pushMatrix();
+		{
+			GlStateManager.translate(151, 122, 0);
+	        GlStateManager.scale(0.5F, 0.5F, 0.5F);
+	        
+	        this.drawTexturedModalRect(0, 0, 176, 10, 16, 16);
+		}
+		GlStateManager.popMatrix();
+		//Undo button Balloon
+		GlStateManager.pushMatrix();
+		{
+			GlStateManager.translate(151, 154, 0);
+	        GlStateManager.scale(0.5F, 0.5F, 0.5F);
+	        
+	        this.drawTexturedModalRect(0, 0, 176, 10, 16, 16);
+		}
+		GlStateManager.popMatrix();
+		GlStateManager.pushMatrix();
+		{
+			GlStateManager.translate(151, 168, 0);
+	        GlStateManager.scale(0.5F, 0.5F, 0.5F);
+	        
+	        this.drawTexturedModalRect(0, 0, 176, 10, 16, 16);
+		}
+		GlStateManager.popMatrix();
+		GlStateManager.pushMatrix();
+		{
+			GlStateManager.translate(151, 182, 0);
+	        GlStateManager.scale(0.5F, 0.5F, 0.5F);
+	        
+	        this.drawTexturedModalRect(0, 0, 176, 10, 16, 16);
+		}
+		GlStateManager.popMatrix();
+		
 		this.fontRenderer.drawString("Appearance Menu", 44, -10, Color.CYAN.getRGB());
 		
 		GlStateManager.pushMatrix();
@@ -366,7 +548,7 @@ public class GuiVisualMenu extends GuiContainer {
 			GlStateManager.translate(39, 82, 0);
 	        GlStateManager.scale(0.85F, 0.85F, 0.85F);
 	        
-			this.fontRenderer.drawString("Core", 0, 0, Color.CYAN.getRGB());
+			this.fontRenderer.drawString("Core", 0, 0, 11111111);
 		}
 		GlStateManager.popMatrix();
 		GlStateManager.pushMatrix();
@@ -374,7 +556,7 @@ public class GuiVisualMenu extends GuiContainer {
 			GlStateManager.translate(114.5, 82, 0);
 	        GlStateManager.scale(0.85F, 0.85F, 0.85F);
 	        
-			this.fontRenderer.drawString("Frame", 0, 0, Color.CYAN.getRGB());
+			this.fontRenderer.drawString("Frame", 0, 0, 11111111);
 		}
 		GlStateManager.popMatrix();
 		GlStateManager.pushMatrix();
@@ -382,7 +564,7 @@ public class GuiVisualMenu extends GuiContainer {
 			GlStateManager.translate(35.5, 142, 0);
 	        GlStateManager.scale(0.85F, 0.85F, 0.85F);
 	        
-			this.fontRenderer.drawString("Engine", 0, 0, Color.CYAN.getRGB());
+			this.fontRenderer.drawString("Engine", 0, 0, 11111111);
 		}
 		GlStateManager.popMatrix();
 		GlStateManager.pushMatrix();
@@ -390,7 +572,7 @@ public class GuiVisualMenu extends GuiContainer {
 			GlStateManager.translate(112, 142, 0);
 	        GlStateManager.scale(0.85F, 0.85F, 0.85F);
 	        
-			this.fontRenderer.drawString("Balloon", 0, 0, Color.CYAN.getRGB());
+			this.fontRenderer.drawString("Balloon", 0, 0, 11111111);
 		}
 		GlStateManager.popMatrix();
     }
@@ -455,10 +637,14 @@ public class GuiVisualMenu extends GuiContainer {
 	        
 	        RenderManager rendermanager = Minecraft.getMinecraft().getRenderManager();
 	        
-	        rendermanager.renderMultipass(entityIn, 0);
 	        rendermanager.setPlayerViewY(180.0F);
 	        rendermanager.setRenderShadow(false);
-	        rendermanager.renderEntity(entityIn, 0.0D, 0.0D, 0.0D, 0.0F, 1.0F, false);
+	        
+	        //This is the non-multipass rendering way to render an entity.
+	        //rendermanager.renderEntity(entityIn, 0.0D, 0.0D, 0.0D, 0.0F, 1.0F, false);
+	        
+	        rendermanager.renderEntityStatic(entityIn, 0, false);
+	        rendermanager.renderMultipass(entityIn, 0F);
 	        
 	        rendermanager.setRenderShadow(true);
 	        

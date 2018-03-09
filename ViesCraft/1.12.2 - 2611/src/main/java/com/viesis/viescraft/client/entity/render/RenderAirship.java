@@ -1,23 +1,35 @@
 package com.viesis.viescraft.client.entity.render;
 
+import com.viesis.viescraft.api.EnumsVC;
+import com.viesis.viescraft.api.References;
+import com.viesis.viescraft.client.entity.model.ModelAirshipPanel;
+import com.viesis.viescraft.client.entity.model.v1.ModelAirshipV1Color;
+import com.viesis.viescraft.client.entity.model.v1.ModelAirshipV1FrameOff;
+import com.viesis.viescraft.client.entity.model.v1.ModelAirshipV1FrameOn;
+import com.viesis.viescraft.client.entity.model.v2.ModelAirshipV2Color;
+import com.viesis.viescraft.client.entity.model.v2.ModelAirshipV2FrameOff;
+import com.viesis.viescraft.client.entity.model.v2.ModelAirshipV2FrameOn;
+import com.viesis.viescraft.client.entity.model.v3.ModelAirshipV3Color;
+import com.viesis.viescraft.client.entity.model.v3.ModelAirshipV3FrameOff;
+import com.viesis.viescraft.client.entity.model.v3.ModelAirshipV3FrameOn;
+import com.viesis.viescraft.client.entity.model.v4.ModelAirshipV4Color;
+import com.viesis.viescraft.client.entity.model.v4.ModelAirshipV4FrameOff;
+import com.viesis.viescraft.client.entity.model.v4.ModelAirshipV4FrameOn;
+import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipCore;
+
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.block.model.ItemCameraTransforms.TransformType;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import com.viesis.viescraft.api.EnumsVC;
-import com.viesis.viescraft.api.References;
-import com.viesis.viescraft.api.util.LogHelper;
-import com.viesis.viescraft.client.entity.model.ModelAirshipPanel;
-import com.viesis.viescraft.client.entity.model.v1.ModelAirshipV1Color;
-import com.viesis.viescraft.client.entity.model.v1.ModelAirshipV1FrameOff;
-import com.viesis.viescraft.client.entity.model.v1.ModelAirshipV1FrameOn;
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipCore;
 
 @SideOnly(Side.CLIENT)
 public class RenderAirship extends Render<EntityAirshipCore> {
@@ -28,6 +40,28 @@ public class RenderAirship extends Render<EntityAirshipCore> {
 	protected ModelBase modelAirshipV1FrameOn = new ModelAirshipV1FrameOn();
 	/** Instance of V1-Off Model for rendering. */
 	protected ModelBase modelAirshipV1FrameOff = new ModelAirshipV1FrameOff();
+	
+	/** Instance of Color Model for rendering. */
+	protected ModelBase modelAirshipV2Color = new ModelAirshipV2Color();
+	/** Instance of V2-On Model for rendering. */
+	protected ModelBase modelAirshipV2FrameOn = new ModelAirshipV2FrameOn();
+	/** Instance of V2-Off Model for rendering. */
+	protected ModelBase modelAirshipV2FrameOff = new ModelAirshipV2FrameOff();
+	
+	/** Instance of Color Model for rendering. */
+	protected ModelBase modelAirshipV3Color = new ModelAirshipV3Color();
+	/** Instance of V3-On Model for rendering. */
+	protected ModelBase modelAirshipV3FrameOn = new ModelAirshipV3FrameOn();
+	/** Instance of V3-Off Model for rendering. */
+	protected ModelBase modelAirshipV3FrameOff = new ModelAirshipV3FrameOff();
+	
+	/** Instance of Color Model for rendering. */
+	protected ModelBase modelAirshipV4Color = new ModelAirshipV4Color();
+	/** Instance of V4-On Model for rendering. */
+	protected ModelBase modelAirshipV4FrameOn = new ModelAirshipV4FrameOn();
+	/** Instance of V4-Off Model for rendering. */
+	protected ModelBase modelAirshipV4FrameOff = new ModelAirshipV4FrameOff();
+	
 	/** Instance of the Control Panel Screen Model for rendering. */
 	protected ModelBase modelAirshipPanel = new ModelAirshipPanel();
 	
@@ -41,7 +75,7 @@ public class RenderAirship extends Render<EntityAirshipCore> {
     
     public static final ResourceLocation[] TEST_TEXTURE = new ResourceLocation[] 
 	{
-		new ResourceLocation(References.MOD_ID, "textures/models/test/background_0.png"),
+		new ResourceLocation(References.MOD_ID, "textures/models/frames/visualframe_bg_plank_oak.png"),
 		new ResourceLocation(References.MOD_ID, "textures/models/test/overlay_0.png"),
 		
 	};
@@ -55,15 +89,17 @@ public class RenderAirship extends Render<EntityAirshipCore> {
     @Override
     public void doRender(EntityAirshipCore entity, double x, double y, double z, float entityYaw, float partialTicks)
     {
-        GlStateManager.pushMatrix();
+    	GlStateManager.pushMatrix();
         
         this.setupTranslation(x, y, z);
         this.setupRotation(entity, entityYaw, partialTicks);
         this.bindEntityTexture(entity);
         
+        float angle = (((float)entity.getEntityWorld().getTotalWorldTime() + partialTicks) / 20.0F) * (180F / (float)Math.PI);
+		
+        this.renderItemOnAirship(entity, 0, 0, 0, new ItemStack(Items.IRON_INGOT, 1), 0.5, 0.5, 0.5, angle, 1);
+    	
     	FMLClientHandler.instance().getClient().renderEngine.bindTexture(TEST_TEXTURE[0]);
-    	
-    	
     	this.modelAirshipV1FrameOff.render(entity, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
     	
     	//if(entity.metaTierType == 3
@@ -171,7 +207,59 @@ public class RenderAirship extends Render<EntityAirshipCore> {
     {
         return null;
     }
+    
+    /**
+     * Places an item on an airship model.
+     */
+    private void renderItemOnAirship(EntityAirshipCore airshipIn, double posXIn, double posYIn, double posZIn, 
+    		ItemStack itemstackIn, double scaleXIn, double scaleYIn, double scaleZIn, 
+    		float spinIn, int spinModIn)
+    {
+        ItemStack itemstack = itemstackIn;
+        
+        if(itemstack.isEmpty())
+		{
+			return;
+		}
+        
+        GlStateManager.pushMatrix();
+        
+        GlStateManager.scale(scaleXIn, scaleYIn, scaleZIn);
+        GlStateManager.translate(posXIn, posYIn, posZIn);
+        
+        /////Flips the model right side up.
+        GlStateManager.rotate(180.0F, 0.0F, 0.0F, 1.0F);
+        
+        //Spins item
+        GlStateManager.rotate(spinIn * spinModIn, 0F, 1F, 0F);
+        
+		Minecraft.getMinecraft().getRenderItem().renderItem(itemstack, TransformType.GROUND);
+		
+		GlStateManager.popMatrix();
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

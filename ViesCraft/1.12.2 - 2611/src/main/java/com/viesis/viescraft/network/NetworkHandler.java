@@ -20,10 +20,12 @@ import com.viesis.viescraft.network.server.airship.module.MessageHelperGuiModule
 import com.viesis.viescraft.network.server.airship.module.MessageHelperGuiModuleToggleSlot1;
 import com.viesis.viescraft.network.server.airship.visual.MessageGuiVisualMenuBalloon;
 import com.viesis.viescraft.network.server.airship.visual.MessageGuiVisualMenuBalloonColor;
+import com.viesis.viescraft.network.server.airship.visual.MessageGuiVisualMenuCore;
 import com.viesis.viescraft.network.server.airship.visual.MessageGuiVisualMenuFrame;
 import com.viesis.viescraft.network.server.airship.visual.MessageGuiVisualMenuFrameColor;
 import com.viesis.viescraft.network.server.airship.visual.MessageHelperGuiVisualMenuBalloonColor;
 import com.viesis.viescraft.network.server.airship.visual.MessageHelperGuiVisualMenuBalloonTransparent;
+import com.viesis.viescraft.network.server.airship.visual.MessageHelperGuiVisualMenuCore;
 import com.viesis.viescraft.network.server.airship.visual.MessageHelperGuiVisualMenuFrameColor;
 import com.viesis.viescraft.network.server.airship.visual.MessageHelperGuiVisualMenuFrameTransparent;
 import com.viesis.viescraft.network.server.airship.visual.balloon.MessageGuiVisualMenuBalloonTier1Pg1;
@@ -48,6 +50,13 @@ import com.viesis.viescraft.network.server.airship.visual.frame.MessageHelperGui
 import com.viesis.viescraft.network.server.airship.visual.frame.MessageHelperGuiVisualMenuFrameTier3Pg1;
 import com.viesis.viescraft.network.server.airship.visual.frame.MessageHelperGuiVisualMenuFrameTier4Pg1;
 import com.viesis.viescraft.network.server.airship.visual.frame.MessageHelperGuiVisualMenuFrameTier5Pg1;
+import com.viesis.viescraft.network.server.airship.visual.undobuttons.MessageHelperGuiVisualMenuUndoBalloon1;
+import com.viesis.viescraft.network.server.airship.visual.undobuttons.MessageHelperGuiVisualMenuUndoBalloon2;
+import com.viesis.viescraft.network.server.airship.visual.undobuttons.MessageHelperGuiVisualMenuUndoBalloon3;
+import com.viesis.viescraft.network.server.airship.visual.undobuttons.MessageHelperGuiVisualMenuUndoCore2;
+import com.viesis.viescraft.network.server.airship.visual.undobuttons.MessageHelperGuiVisualMenuUndoFrame1;
+import com.viesis.viescraft.network.server.airship.visual.undobuttons.MessageHelperGuiVisualMenuUndoFrame2;
+import com.viesis.viescraft.network.server.airship.visual.undobuttons.MessageHelperGuiVisualMenuUndoFrame3;
 import com.viesis.viescraft.network.server.song.MessageGuiMusicPg1;
 import com.viesis.viescraft.network.server.song.MessageHelperGuiMusicPg1;
 
@@ -84,6 +93,9 @@ public class NetworkHandler {
 		register(MessageHelperGuiUpgradeCoreVC.class, MessageHelperGuiUpgradeCoreVC.class, Side.SERVER);
 		register(MessageHelperGuiUpgradeEngineVC.class, MessageHelperGuiUpgradeEngineVC.class, Side.SERVER);
 		register(MessageHelperGuiUpgradeBalloonVC.class, MessageHelperGuiUpgradeBalloonVC.class, Side.SERVER);
+		
+		register(MessageGuiVisualMenuCore.class, MessageGuiVisualMenuCore.class, Side.SERVER);
+		register(MessageHelperGuiVisualMenuCore.class, MessageHelperGuiVisualMenuCore.class, Side.SERVER);
 		
 		register(MessageGuiVisualMenuFrame.class, MessageGuiVisualMenuFrame.class, Side.SERVER);
 		register(MessageGuiVisualMenuFrameColor.class, MessageGuiVisualMenuFrameColor.class, Side.SERVER);
@@ -125,6 +137,16 @@ public class NetworkHandler {
 		
 		register(MessageGuiMusicPg1.class, MessageGuiMusicPg1.class, Side.SERVER);
 		register(MessageHelperGuiMusicPg1.class, MessageHelperGuiMusicPg1.class, Side.SERVER);
+		
+		register(MessageHelperGuiVisualMenuUndoCore2.class, MessageHelperGuiVisualMenuUndoCore2.class, Side.SERVER);
+		
+		register(MessageHelperGuiVisualMenuUndoFrame1.class, MessageHelperGuiVisualMenuUndoFrame1.class, Side.SERVER);
+		register(MessageHelperGuiVisualMenuUndoFrame2.class, MessageHelperGuiVisualMenuUndoFrame2.class, Side.SERVER);
+		register(MessageHelperGuiVisualMenuUndoFrame3.class, MessageHelperGuiVisualMenuUndoFrame3.class, Side.SERVER);
+		
+		register(MessageHelperGuiVisualMenuUndoBalloon1.class, MessageHelperGuiVisualMenuUndoBalloon1.class, Side.SERVER);
+		register(MessageHelperGuiVisualMenuUndoBalloon2.class, MessageHelperGuiVisualMenuUndoBalloon2.class, Side.SERVER);
+		register(MessageHelperGuiVisualMenuUndoBalloon3.class, MessageHelperGuiVisualMenuUndoBalloon3.class, Side.SERVER);
 	}
 	
 	public static <REQ extends IMessage, REPLY extends IMessage> void register(Class<? extends IMessageHandler<REQ, REPLY>> message1, Class<REQ> message2, Side side)

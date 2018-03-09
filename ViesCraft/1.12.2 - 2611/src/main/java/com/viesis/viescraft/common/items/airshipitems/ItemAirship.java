@@ -53,9 +53,9 @@ public class ItemAirship extends ItemAirshipBase {
 		this.metaBalloonVisual = 0;
 		this.metaBalloonVisualTransparent = false;
 		this.metaBalloonVisualColor = false;
-		this.metaBalloonColorRed = 0;
-		this.metaBalloonColorGreen = 0;
-		this.metaBalloonColorBlue = 0;
+		this.metaBalloonColorRed = 200;
+		this.metaBalloonColorGreen = 180;
+		this.metaBalloonColorBlue = 140;
 		
 		this.learnedModuleAltitude = false;
 		this.selectedModuleAltitude = 0;

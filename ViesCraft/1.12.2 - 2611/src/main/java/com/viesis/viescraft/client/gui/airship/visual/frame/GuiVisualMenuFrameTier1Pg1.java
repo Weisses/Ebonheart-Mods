@@ -214,10 +214,14 @@ public class GuiVisualMenuFrameTier1Pg1 extends GuiContainer {
 	        
 	        RenderManager rendermanager = Minecraft.getMinecraft().getRenderManager();
 	        
-	        rendermanager.renderMultipass(entityIn, 0);
 	        rendermanager.setPlayerViewY(180.0F);
 	        rendermanager.setRenderShadow(false);
-	        rendermanager.renderEntity(entityIn, 0.0D, 0.0D, 0.0D, 0.0F, 1.0F, false);
+	        
+	        //This is the non-multipass rendering way to render an entity.
+	        //rendermanager.renderEntity(entityIn, 0.0D, 0.0D, 0.0D, 0.0F, 1.0F, false);
+	        
+	        rendermanager.renderEntityStatic(entityIn, 0, false);
+	        rendermanager.renderMultipass(entityIn, 0F);
 	        
 	        rendermanager.setRenderShadow(true);
 	        

@@ -62,6 +62,8 @@ vc.main.modulemenu=Module Menu
 vc.main.fuel=Fuel
 vc.main.speed=Speed
 vc.main.altitude=Altitude
+vc.main.framecolor=Frame Color
+vc.main.ballooncolor=Balloon Color
 vc.main.core=Core
 vc.main.frame=Frame
 vc.main.engine=Engine
@@ -73,6 +75,16 @@ vc.main.none=None
 vc.main.red=Red
 vc.main.green=Green
 vc.main.blue=Blue
+vc.main.models=Models
+vc.main.skins=Skins
+vc.main.particles=Particles
+vc.main.patterns=Patterns
+
+vc.main.viescraft=Viescraft
+vc.main.viesdenburg=Viesdenburg
+vc.main.viesigible=Viesigible
+vc.main.viesepelin=Viesepelin
+vc.main.viesakron=Viesakron
 
 vc.button.learn=Learn
 vc.button.choosemusic=Choose Music
