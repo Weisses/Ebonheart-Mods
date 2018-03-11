@@ -5,6 +5,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 
 import com.viesis.viescraft.ViesCraft;
+import com.viesis.viescraft.common.entity.EntityItemBombSmall;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipCore;
 import com.viesis.viescraft.common.entity.airshipitems.EntityItemAirship;
 
@@ -19,6 +20,10 @@ public class InitEntityVC {
 		//===========================================
 		
 		register("entity_airship", EntityAirshipCore.class, "entity.airship", 64, 1, true);
+		
+		//===========================================
+		
+		register("entity_item_bomb", EntityItemBombSmall.class, "entity.item.bomb", 64, 20, true);
 	}
 	
 	public static void registerEntityTEMP()
