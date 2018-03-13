@@ -110,6 +110,7 @@ public class ModelAirshipV1Frame extends ModelBase
     ModelRenderer ItemFrameRightBorderB;
     ModelRenderer ItemFrameRightBorderR;
     ModelRenderer ItemFrameRightBorderL;
+    ModelRenderer BombBay;
 
     public ModelAirshipV1Frame()
     {
@@ -534,6 +535,10 @@ public class ModelAirshipV1Frame extends ModelBase
         ItemFrameRightBorderL.setTextureSize( 256, 128 );
         ItemFrameRightBorderL.addBox( -0.5F, -6F, -0.5F, 1, 12, 1);
         ItemFrameRightBorderL.setRotationPoint( 16.5F, -36.5F, 6F );
+        BombBay = new ModelRenderer( this, 22, 26 );
+        BombBay.setTextureSize( 256, 128 );
+        BombBay.addBox( -4F, -0.5F, -4F, 8, 1, 8);
+        BombBay.setRotationPoint( 0F, 7F, 0F );
     }
 
    public void render(Entity par1Entity, float par2, float par3, float par4, float par5, float par6, float par7)
@@ -1057,6 +1062,11 @@ public class ModelAirshipV1Frame extends ModelBase
         ItemFrameRightBorderL.rotateAngleY = 0F;
         ItemFrameRightBorderL.rotateAngleZ = 0F;
         ItemFrameRightBorderL.renderWithRotation(par7);
+
+        BombBay.rotateAngleX = 0F;
+        BombBay.rotateAngleY = 0F;
+        BombBay.rotateAngleZ = 0F;
+        BombBay.renderWithRotation(par7);
 
     }
 
