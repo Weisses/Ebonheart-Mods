@@ -1,10 +1,6 @@
-package com.viesis.viescraft.client.entity.model.v1;
+package net.minecraft.src;
 
-import net.minecraft.client.model.ModelBase;
-import net.minecraft.client.model.ModelRenderer;
-import net.minecraft.entity.Entity;
-
-public class ModelAirshipV1Frame extends ModelBase
+public class ModelV1_Airship_Frame extends ModelBase
 {
     ModelRenderer BaseWoodChest;
     ModelRenderer Base_1a;
@@ -111,12 +107,12 @@ public class ModelAirshipV1Frame extends ModelBase
     ModelRenderer ItemFrameRightBorderR;
     ModelRenderer ItemFrameRightBorderL;
 
-    public ModelAirshipV1Frame()
+    public ModelV1_Airship_Frame()
     {
         this( 0.0f );
     }
 
-    public ModelAirshipV1Frame( float par1 )
+    public ModelV1_Airship_Frame( float par1 )
     {
         BaseWoodChest = new ModelRenderer( this, 150, 43 );
         BaseWoodChest.setTextureSize( 256, 128 );

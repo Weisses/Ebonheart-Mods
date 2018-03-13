@@ -6,7 +6,9 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms.TransformType;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
@@ -29,6 +31,7 @@ import com.viesis.viescraft.client.entity.model.v3.ModelAirshipV3Frame;
 import com.viesis.viescraft.client.entity.model.v4.ModelAirshipV4Balloon;
 import com.viesis.viescraft.client.entity.model.v4.ModelAirshipV4Frame;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipCore;
+import com.viesis.viescraft.init.InitBlocksVC;
 
 @SideOnly(Side.CLIENT)
 public class RenderAirship extends Render<EntityAirshipCore> {
@@ -312,12 +315,24 @@ public class RenderAirship extends Render<EntityAirshipCore> {
         
         
         
-        
-        
-    	//float angle = (((float)entity.getEntityWorld().getTotalWorldTime() + partialTicks) / 20.0F) * (180F / (float)Math.PI);
-        this.renderItemOnAirship(entity, 1, 0, 0, new ItemStack(Items.DIAMOND_SWORD, 1), 0.5, 0.5, 0.5, bladespin, 0);
+        //Front rotating item
+        this.renderItemOnAirship(entity, 0, 0.6, -4.5, new ItemStack(
+        		Item.getItemFromBlock(Blocks.COBBLESTONE)
+        		//Items.DIAMOND_SWORD
+        		, 1), 0.25, 0.25, 0.25, bladespin1, 2, 0F);
     	
         
+    	//Left item
+        this.renderItemOnAirship(entity, 1.05, -2.125, 0, new ItemStack(
+        		Item.getItemFromBlock(Blocks.COBBLESTONE)
+        		//Items.DIAMOND_SWORD
+        		, 1), 1, 1, 1, bladespin, 0, 270.0F);
+    	
+        //Right item
+        this.renderItemOnAirship(entity, -1.05, -2.125, 0, new ItemStack(
+        		Item.getItemFromBlock(Blocks.COBBLESTONE)
+        		//Items.DIAMOND_SWORD
+        		, 1), 1, 1, 1, bladespin, 0, 90.0F);
         
         GlStateManager.popMatrix();
         super.doRender(entity, x, y, z, entityYaw, partialTicks);
@@ -572,7 +587,7 @@ public class RenderAirship extends Render<EntityAirshipCore> {
      */
     private void renderItemOnAirship(EntityAirshipCore airshipIn, double posXIn, double posYIn, double posZIn, 
     		ItemStack itemstackIn, double scaleXIn, double scaleYIn, double scaleZIn, 
-    		float spinIn, int spinModIn)
+    		float spinIn, int spinModIn, float yTransformIn)
     {
         ItemStack itemstack = itemstackIn;
         
@@ -588,6 +603,8 @@ public class RenderAirship extends Render<EntityAirshipCore> {
         
         /////Flips the model right side up.
         GlStateManager.rotate(180.0F, 0.0F, 0.0F, 1.0F);
+        
+        GlStateManager.rotate(yTransformIn, 0.0F, 1.0F, 0.0F);
         
         //Spins item
         GlStateManager.rotate(spinIn * spinModIn, 0F, 1F, 0F);

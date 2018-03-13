@@ -1,10 +1,6 @@
-package com.viesis.viescraft.client.entity.model.v1;
+package net.minecraft.src;
 
-import net.minecraft.client.model.ModelBase;
-import net.minecraft.client.model.ModelRenderer;
-import net.minecraft.entity.Entity;
-
-public class ModelAirshipV1Balloon extends ModelBase
+public class ModelV1_Airship_Balloon extends ModelBase
 {
     ModelRenderer Balloon1;
     ModelRenderer Balloon2;
@@ -16,12 +12,12 @@ public class ModelAirshipV1Balloon extends ModelBase
     ModelRenderer BaseWoodFloor;
     ModelRenderer BaseWoodChest;
 
-    public ModelAirshipV1Balloon()
+    public ModelV1_Airship_Balloon()
     {
         this( 0.0f );
     }
 
-    public ModelAirshipV1Balloon( float par1 )
+    public ModelV1_Airship_Balloon( float par1 )
     {
         Balloon1 = new ModelRenderer( this, 0, 0 );
         Balloon1.setTextureSize( 512, 256 );
