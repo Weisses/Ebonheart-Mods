@@ -12,7 +12,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 
 import com.viesis.viescraft.ViesCraft;
-import com.viesis.viescraft.common.entity.airshipitems.EntityItemAirship;
+import com.viesis.viescraft.common.entity.EntityThrownAirship;
 import com.viesis.viescraft.common.items.ItemHelper;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 
@@ -43,7 +43,7 @@ public class ItemCreativeAirship extends ItemCreativeAirshipBase {
 			
 			if (!worldIn.isRemote)
 			{
-				EntityItemAirship entityairship = new EntityItemAirship(worldIn, playerIn, 
+				EntityThrownAirship entityairship = new EntityThrownAirship(worldIn, playerIn, 
 						5, 5, 5, 5,
 						0,
 						0,

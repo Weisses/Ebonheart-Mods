@@ -1,6 +1,6 @@
 package com.viesis.viescraft.common.utils.events;
 
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
+import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
 import com.viesis.viescraft.init.InitAchievementsVC;
 
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;

@@ -13,8 +13,8 @@ import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.api.util.Keybinds;
 import com.viesis.viescraft.client.gui.GuiButtonConfirmVC;
 import com.viesis.viescraft.client.gui.GuiButtonMenuVC;
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
-import com.viesis.viescraft.common.entity.airshipcolors.containers.all.ContainerUpgradeMenu;
+import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
+import com.viesis.viescraft.common.entity.airships.containers.all.ContainerUpgradeMenu;
 import com.viesis.viescraft.init.InitItemsVC;
 import com.viesis.viescraft.network.NetworkHandler;
 import com.viesis.viescraft.network.server.airship.MessageGuiUpgradeMenu;
@@ -30,7 +30,6 @@ import com.viesis.viescraft.network.server.airship.main.MessageGuiAirshipMenuSto
 import com.viesis.viescraft.network.server.airship.main.MessageGuiModuleMenu;
 import com.viesis.viescraft.network.server.airship.main.MessageGuiVisualMenu;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;

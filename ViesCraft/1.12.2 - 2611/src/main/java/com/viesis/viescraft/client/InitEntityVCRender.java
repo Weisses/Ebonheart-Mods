@@ -1,18 +1,25 @@
 package com.viesis.viescraft.client;
 
-import net.minecraftforge.fml.client.registry.RenderingRegistry;
-
 import com.viesis.viescraft.api.ItemsVC;
 import com.viesis.viescraft.client.entity.render.RenderAirship;
-import com.viesis.viescraft.client.entity.render.RenderItemAirship;
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipCore;
-import com.viesis.viescraft.common.entity.airshipitems.EntityItemAirship;
+import com.viesis.viescraft.client.entity.render.RenderBombBig;
+import com.viesis.viescraft.client.entity.render.RenderBombSmall;
+import com.viesis.viescraft.client.entity.render.RenderThrownAirship;
+import com.viesis.viescraft.common.entity.EntityBombBig;
+import com.viesis.viescraft.common.entity.EntityBombSmall;
+import com.viesis.viescraft.common.entity.EntityThrownAirship;
+import com.viesis.viescraft.common.entity.airships.EntityAirshipCore;
+
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 
 public final class InitEntityVCRender extends ItemsVC {
 	
 	public static void registerEntityRender()
 	{
-		RenderingRegistry.registerEntityRenderingHandler(EntityItemAirship.class, renderManager -> new RenderItemAirship(renderManager));
+		RenderingRegistry.registerEntityRenderingHandler(EntityBombSmall.class, renderManager -> new RenderBombSmall(renderManager));
+		RenderingRegistry.registerEntityRenderingHandler(EntityBombBig.class, renderManager -> new RenderBombBig(renderManager));
+		
+		RenderingRegistry.registerEntityRenderingHandler(EntityThrownAirship.class, renderManager -> new RenderThrownAirship(renderManager));
 		
 		//===========================================
 		

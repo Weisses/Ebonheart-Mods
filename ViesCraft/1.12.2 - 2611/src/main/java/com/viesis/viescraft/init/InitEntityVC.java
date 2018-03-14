@@ -1,13 +1,14 @@
 package com.viesis.viescraft.init;
 
+import com.viesis.viescraft.ViesCraft;
+import com.viesis.viescraft.common.entity.EntityBombBig;
+import com.viesis.viescraft.common.entity.EntityBombSmall;
+import com.viesis.viescraft.common.entity.EntityThrownAirship;
+import com.viesis.viescraft.common.entity.airships.EntityAirshipCore;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
-
-import com.viesis.viescraft.ViesCraft;
-import com.viesis.viescraft.common.entity.EntityItemBombSmall;
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipCore;
-import com.viesis.viescraft.common.entity.airshipitems.EntityItemAirship;
 
 public class InitEntityVC {
 	
@@ -15,7 +16,7 @@ public class InitEntityVC {
 	
 	public static void registerEntity()
 	{
-		register("entity_item_airship", EntityItemAirship.class, "entity.item.airship", 64, 20, true);
+		register("entity_thrown_airship", EntityThrownAirship.class, "entity.thrown.airship", 64, 20, true);
 		
 		//===========================================
 		
@@ -23,7 +24,8 @@ public class InitEntityVC {
 		
 		//===========================================
 		
-		register("entity_item_bomb", EntityItemBombSmall.class, "entity.item.bomb", 64, 20, true);
+		register("entity_bomb_small", EntityBombSmall.class, "entity.bomb.small", 64, 20, true);
+		register("entity_bomb_big", EntityBombBig.class, "entity.bomb.big", 64, 20, true);
 	}
 	
 	public static void registerEntityTEMP()

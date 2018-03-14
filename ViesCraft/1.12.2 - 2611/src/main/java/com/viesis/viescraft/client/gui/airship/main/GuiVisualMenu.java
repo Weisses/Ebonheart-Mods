@@ -14,8 +14,8 @@ import com.viesis.viescraft.client.gui.GuiButtonConfirmVC;
 import com.viesis.viescraft.client.gui.GuiButtonMenuVC;
 import com.viesis.viescraft.client.gui.GuiButtonVisual1VC;
 import com.viesis.viescraft.client.gui.GuiButtonVisual2VC;
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
-import com.viesis.viescraft.common.entity.airshipcolors.containers.all.ContainerAirshipAppearance;
+import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
+import com.viesis.viescraft.common.entity.airships.containers.all.ContainerAirshipAppearance;
 import com.viesis.viescraft.network.NetworkHandler;
 import com.viesis.viescraft.network.server.airship.MessageGuiUpgradeMenu;
 import com.viesis.viescraft.network.server.airship.main.MessageGuiAirshipMenu;
@@ -633,11 +633,15 @@ public class GuiVisualMenu extends GuiContainer {
 	        GlStateManager.rotate(45.0F, 0.0F, 1.0F, 0.0F);
 	        GlStateManager.rotate(30.0F, 1.0F, 0.0F, 0.0F);
 	        
+	        //Fixes the position to be at a right
+	        GlStateManager.rotate(entityIn.prevRotationYaw, 0.0F, 1.0F, 0.0F);
+	        
 	        RenderHelper.disableStandardItemLighting();
 	        
 	        RenderManager rendermanager = Minecraft.getMinecraft().getRenderManager();
 	        
 	        rendermanager.setPlayerViewY(180.0F);
+	        //rendermanager.setRenderPosition(20, 20, 100);
 	        rendermanager.setRenderShadow(false);
 	        
 	        //This is the non-multipass rendering way to render an entity.

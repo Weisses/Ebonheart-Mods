@@ -1,7 +1,7 @@
 package com.viesis.viescraft.network.server.airship.visual.frame;
 
 import com.viesis.viescraft.client.gui.airship.visual.frame.GuiVisualMenuFrameTier3Pg1;
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
+import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
 import com.viesis.viescraft.network.packet.MessageBase;
 
 import io.netty.buffer.ByteBuf;

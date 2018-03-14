@@ -1,6 +1,8 @@
 package com.viesis.viescraft.client;
 
 import com.viesis.viescraft.api.References;
+import com.viesis.viescraft.client.particle.EntityBombExplosionLargeFX;
+import com.viesis.viescraft.client.particle.EntityBombExplosionSmallFX;
 import com.viesis.viescraft.client.particle.EntityColorFlameFX;
 import com.viesis.viescraft.client.particle.EntityRunicFX;
 import com.viesis.viescraft.client.particle.EntityUnholyFX;
@@ -13,7 +15,7 @@ import net.minecraft.util.math.MathHelper;
 
 public class InitParticlesVCRender {
 	
-	public static void generateSmokeParticles(Entity entity)
+	public static void generateAirshipSmokeParticles(Entity entity)
 	{
 		entity.world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, 
 		entity.posX - (double)(MathHelper.sin(-entity.rotationYaw * 0.017453292F) * 00.82F), 
@@ -21,6 +23,67 @@ public class InitParticlesVCRender {
 		entity.posZ - (double)(MathHelper.cos(entity.rotationYaw * 0.017453292F) * 00.82F), 
 		0.0D, 0.0D, 0.0D, new int[0]);
 	}
+	
+	public static void generateBombFuseSmokeParticles(Entity entity)
+	{
+		entity.world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, 
+		entity.posX + (entity.world.rand.nextFloat() * 0.025D), 
+		entity.posY + 1.6D + (entity.world.rand.nextFloat() * 0.025D), 
+		entity.posZ + (entity.world.rand.nextFloat() * 0.025D), 
+		0.0D, 0.0D, 0.0D, new int[0]);
+	}
+	
+	public static void generateBombFuseFlameParticles(Entity entity)
+	{
+		entity.world.spawnParticle(EnumParticleTypes.FLAME, 
+		entity.posX + (entity.world.rand.nextFloat() * 0.025D), 
+		entity.posY + 1.6D + (entity.world.rand.nextFloat() * 0.025D), 
+		entity.posZ + (entity.world.rand.nextFloat() * 0.025D), 
+		0.0D, 0.0D, 0.0D, new int[0]);
+	}
+	
+	public static void generateBombExplosionSmallParticles(Entity theEntity)
+	{
+	    double motionX = theEntity.world.rand.nextGaussian() * 0.1D;
+	    double motionY = theEntity.world.rand.nextGaussian() * 0.1D;
+	    double motionZ = theEntity.world.rand.nextGaussian() * 0.1D;
+	    Particle particleExplosionSmall = new EntityBombExplosionSmallFX(
+	          theEntity.world, 
+	          theEntity.posX + theEntity.world.rand.nextFloat() * theEntity.width 
+	                * 2.0F - theEntity.width, 
+	          theEntity.posY + 0.5D + theEntity.world.rand.nextFloat() 
+	                * theEntity.height, 
+	          theEntity.posZ + theEntity.world.rand.nextFloat() * theEntity.width 
+	                * 2.0F - theEntity.width, 
+	          motionX, 
+	          motionY, 
+	          motionZ);
+	    Minecraft.getMinecraft().effectRenderer.addEffect(particleExplosionSmall);        
+	}
+	
+	public static void generateBombExplosionLargeParticles(Entity theEntity)
+	{
+	    double motionX = theEntity.world.rand.nextGaussian() * 0.15D;
+	    double motionY = theEntity.world.rand.nextGaussian() * 0.15D;
+	    double motionZ = theEntity.world.rand.nextGaussian() * 0.15D;
+	    Particle particleExplosionLarge = new EntityBombExplosionLargeFX(
+	          theEntity.world, 
+	          theEntity.posX + theEntity.world.rand.nextFloat() * theEntity.width 
+	                * 2.0F - theEntity.width, 
+	          theEntity.posY + 0.5D + theEntity.world.rand.nextFloat() 
+	                * theEntity.height, 
+	          theEntity.posZ + theEntity.world.rand.nextFloat() * theEntity.width 
+	                * 2.0F - theEntity.width, 
+	          motionX, 
+	          motionY, 
+	          motionZ);
+	    Minecraft.getMinecraft().effectRenderer.addEffect(particleExplosionLarge);        
+	}
+	
+	
+	
+	
+	
 	
 	public static void generateRunicParticles(Entity entity)
 	{
@@ -112,7 +175,7 @@ public class InitParticlesVCRender {
 	
 	//=======================================================
 	
-	public void generateUnholyParticles(Entity theEntity)
+	public static void generateUnholyParticles(Entity theEntity)
 	{
 	    double motionX = theEntity.world.rand.nextGaussian() * 0.02D;
 	    double motionY = theEntity.world.rand.nextGaussian() * 0.02D;

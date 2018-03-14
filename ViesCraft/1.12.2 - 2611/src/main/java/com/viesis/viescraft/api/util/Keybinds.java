@@ -16,6 +16,7 @@ public class Keybinds {
 	public static KeyBinding vcUp;
 	public static KeyBinding vcDown;
 	public static KeyBinding vcInventory;
+	public static KeyBinding vcDropBomb;
 	///public static KeyBinding vcModule;
 	
 	public static void init() 
@@ -27,6 +28,7 @@ public class Keybinds {
 		vcUp = new KeyBinding("vc.key.moveUp", Keyboard.KEY_SPACE, "vc.key.viescraft");
 		vcDown = new KeyBinding("vc.key.moveDown", Keyboard.KEY_X, "vc.key.viescraft");
 		vcInventory = new KeyBinding("vc.key.openInventory", Keyboard.KEY_R, "vc.key.viescraft");
+		vcDropBomb = new KeyBinding("vc.key.dropbomb", Keyboard.KEY_C, "vc.key.viescraft");
 		///vcModule = new KeyBinding("vc.key.useModule", Keyboard.KEY_C, "vc.key.viescraft");
 	    
 		//Register KeyBingings
@@ -37,6 +39,7 @@ public class Keybinds {
 		ClientRegistry.registerKeyBinding(vcUp);
 		ClientRegistry.registerKeyBinding(vcDown);
 		ClientRegistry.registerKeyBinding(vcInventory);
+		ClientRegistry.registerKeyBinding(vcDropBomb);
 		///ClientRegistry.registerKeyBinding(vcModule);
 	}
 }

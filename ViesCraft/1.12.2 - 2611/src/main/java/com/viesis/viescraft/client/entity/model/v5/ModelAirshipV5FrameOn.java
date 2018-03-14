@@ -953,7 +953,7 @@ public class ModelAirshipV5FrameOn extends ModelBase {
     	
 		if(randomTick < 20)
 		{
-			InitParticlesVCRender.generateSmokeParticles(entity);
+			//InitParticlesVCRender.generateSmokeParticles(entity);
 		}
 	}
 }

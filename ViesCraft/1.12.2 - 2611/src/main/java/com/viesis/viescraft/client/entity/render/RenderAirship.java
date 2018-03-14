@@ -9,6 +9,7 @@ import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
@@ -19,6 +20,7 @@ import org.lwjgl.opengl.GL11;
 
 import com.viesis.viescraft.api.EnumsVC;
 import com.viesis.viescraft.api.References;
+import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.client.InitParticlesVCRender;
 import com.viesis.viescraft.client.entity.model.ModelAirshipPanel;
 import com.viesis.viescraft.client.entity.model.ModelAirshipPropeller;
@@ -30,7 +32,7 @@ import com.viesis.viescraft.client.entity.model.v3.ModelAirshipV3Balloon;
 import com.viesis.viescraft.client.entity.model.v3.ModelAirshipV3Frame;
 import com.viesis.viescraft.client.entity.model.v4.ModelAirshipV4Balloon;
 import com.viesis.viescraft.client.entity.model.v4.ModelAirshipV4Frame;
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipCore;
+import com.viesis.viescraft.common.entity.airships.EntityAirshipCore;
 import com.viesis.viescraft.init.InitBlocksVC;
 
 @SideOnly(Side.CLIENT)
@@ -184,7 +186,7 @@ public class RenderAirship extends Render<EntityAirshipCore> {
     	        	
     	        	if(entity.getPowered() > 0)
     		        {
-    	        		GlStateManager.rotate(bladespin, 0F, 0F, 1F);
+    	        		GlStateManager.rotate(-bladespin, 0F, 0F, 1F);
     		        }
     	        	
     		        this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/frames/visualframe_bg_" + EnumsVC.VisualFrame.byId(entity.getFrameVisual()).getName() + ".png"));
@@ -308,10 +310,12 @@ public class RenderAirship extends Render<EntityAirshipCore> {
 			
 			if(randomTick < 20)
 			{
-				InitParticlesVCRender.generateSmokeParticles(entity);
+				if(!Minecraft.getMinecraft().isGamePaused())
+				{
+					InitParticlesVCRender.generateAirshipSmokeParticles(entity);
+				}
 			}
         }
-        
         
         
         
@@ -381,7 +385,7 @@ public class RenderAirship extends Render<EntityAirshipCore> {
     	        	
     	        	if(entity.getPowered() > 0)
     		        {
-    	        		GlStateManager.rotate(bladespin, 0F, 0F, 1F);
+    	        		GlStateManager.rotate(-bladespin, 0F, 0F, 1F);
     		        }
     	        	
     	        	this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/frames/visualframe_overlay_v" + entity.getCoreVisual() + ".png"));
@@ -591,26 +595,42 @@ public class RenderAirship extends Render<EntityAirshipCore> {
     {
         ItemStack itemstack = itemstackIn;
         
+        GlStateManager.pushMatrix();
+        
         if(itemstack.isEmpty())
 		{
 			return;
 		}
         
-        GlStateManager.pushMatrix();
+        if(itemstack.getItem() instanceof ItemBlock)
+        {
+        	GlStateManager.scale(scaleXIn, scaleYIn, scaleZIn);
+            GlStateManager.translate(posXIn, posYIn + 0.06, posZIn + 0.0005);
+            
+            //Flips the model right side up.
+            GlStateManager.rotate(180.0F, 0.0F, 0.0F, 1.0F);
+            //Flips on the Y axis
+            GlStateManager.rotate(yTransformIn, 0.0F, 1.0F, 0.0F);
+            //Spins item
+            GlStateManager.rotate(spinIn * spinModIn, 0F, 1F, 0F);
+            
+    		Minecraft.getMinecraft().getRenderItem().renderItem(itemstack, TransformType.GROUND);
+        }
+        else
+        {
+        	GlStateManager.scale(scaleXIn, scaleYIn, scaleZIn);
+            GlStateManager.translate(posXIn, posYIn, posZIn);
+            
+            //Flips the model right side up.
+            GlStateManager.rotate(180.0F, 0.0F, 0.0F, 1.0F);
+            //Flips on the Y axis
+            GlStateManager.rotate(yTransformIn, 0.0F, 1.0F, 0.0F);
+            //Spins item
+            GlStateManager.rotate(spinIn * spinModIn, 0F, 1F, 0F);
+            
+    		Minecraft.getMinecraft().getRenderItem().renderItem(itemstack, TransformType.GROUND);
+        }
         
-        GlStateManager.scale(scaleXIn, scaleYIn, scaleZIn);
-        GlStateManager.translate(posXIn, posYIn, posZIn);
-        
-        /////Flips the model right side up.
-        GlStateManager.rotate(180.0F, 0.0F, 0.0F, 1.0F);
-        
-        GlStateManager.rotate(yTransformIn, 0.0F, 1.0F, 0.0F);
-        
-        //Spins item
-        GlStateManager.rotate(spinIn * spinModIn, 0F, 1F, 0F);
-        
-		Minecraft.getMinecraft().getRenderItem().renderItem(itemstack, TransformType.GROUND);
-		
 		GlStateManager.popMatrix();
     }
 }

@@ -10,8 +10,8 @@ import com.viesis.viescraft.api.GuiVC;
 import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.api.util.Keybinds;
 import com.viesis.viescraft.client.gui.GuiButtonGeneralVC;
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
-import com.viesis.viescraft.common.entity.airshipcolors.containers.all.ContainerAirshipAppearance;
+import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
+import com.viesis.viescraft.common.entity.airships.containers.all.ContainerAirshipAppearance;
 import com.viesis.viescraft.init.InitItemsVC;
 import com.viesis.viescraft.network.NetworkHandler;
 import com.viesis.viescraft.network.server.airship.visual.MessageGuiVisualMenuBalloon;
@@ -202,6 +202,9 @@ public class GuiVisualMenuBalloonTier2Pg1 extends GuiContainer {
 	        GlStateManager.rotate(200.0F, 0.0F, 0.0F, 1.0F);
 	        GlStateManager.rotate(45.0F, 0.0F, 1.0F, 0.0F);
 	        GlStateManager.rotate(30.0F, 1.0F, 0.0F, 0.0F);
+	        
+	        //Fixes the position to be at a right
+	        GlStateManager.rotate(entityIn.prevRotationYaw, 0.0F, 1.0F, 0.0F);
 	        
 	        RenderHelper.disableStandardItemLighting();
 	        

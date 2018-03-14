@@ -2,7 +2,7 @@ package com.viesis.viescraft.client.sound;
 
 import com.viesis.viescraft.api.EnumsVC;
 import com.viesis.viescraft.api.util.LogHelper;
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
+import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.ISound;

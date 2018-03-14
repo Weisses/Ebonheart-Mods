@@ -4,7 +4,7 @@ import com.viesis.viescraft.api.EnumsVC;
 import com.viesis.viescraft.api.GuiVC;
 import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.client.gui.GuiButtonGeneralVC;
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
+import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
 import com.viesis.viescraft.network.NetworkHandler;
 import com.viesis.viescraft.network.server.airship.MessageGuiPlayMusic;
 import com.viesis.viescraft.network.server.song.MessageGuiMusicPg1;

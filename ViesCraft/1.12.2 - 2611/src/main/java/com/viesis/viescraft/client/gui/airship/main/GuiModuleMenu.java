@@ -12,8 +12,8 @@ import com.viesis.viescraft.api.util.Keybinds;
 import com.viesis.viescraft.client.gui.GuiButtonConfirmVC;
 import com.viesis.viescraft.client.gui.GuiButtonMenuVC;
 import com.viesis.viescraft.client.gui.GuiButtonModuleToggleVC;
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
-import com.viesis.viescraft.common.entity.airshipcolors.containers.all.ContainerAirshipModule;
+import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
+import com.viesis.viescraft.common.entity.airships.containers.all.ContainerAirshipModule;
 import com.viesis.viescraft.init.InitItemsVC;
 import com.viesis.viescraft.network.NetworkHandler;
 import com.viesis.viescraft.network.server.airship.MessageGuiUpgradeMenu;
@@ -30,7 +30,6 @@ import com.viesis.viescraft.network.server.airship.module.MessageHelperGuiModule
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;

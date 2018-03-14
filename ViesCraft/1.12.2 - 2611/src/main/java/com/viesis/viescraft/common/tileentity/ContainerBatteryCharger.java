@@ -1,8 +1,8 @@
 package com.viesis.viescraft.common.tileentity;
 
-import com.viesis.viescraft.common.entity.airshipcolors.containers.ContainerVC;
-import com.viesis.viescraft.common.entity.airshipcolors.slots.BatterySlotVC;
-import com.viesis.viescraft.common.entity.airshipcolors.slots.InventorySlotVC;
+import com.viesis.viescraft.common.entity.airships.containers.ContainerVC;
+import com.viesis.viescraft.common.entity.airships.slots.BatterySlotVC;
+import com.viesis.viescraft.common.entity.airships.slots.InventorySlotVC;
 import com.viesis.viescraft.init.InitBlocksVC;
 
 import net.minecraft.entity.player.EntityPlayer;

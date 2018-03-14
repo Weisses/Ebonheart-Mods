@@ -6,7 +6,7 @@ import java.util.stream.Stream;
 
 import com.viesis.viescraft.ViesCraft;
 import com.viesis.viescraft.api.EnumsVC;
-import com.viesis.viescraft.common.entity.airshipitems.EntityItemAirship;
+import com.viesis.viescraft.common.entity.EntityThrownAirship;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 
 import net.minecraft.creativetab.CreativeTabs;

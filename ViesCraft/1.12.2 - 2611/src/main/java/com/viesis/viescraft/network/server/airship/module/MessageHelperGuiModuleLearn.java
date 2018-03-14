@@ -2,7 +2,7 @@ package com.viesis.viescraft.network.server.airship.module;
 
 import com.viesis.viescraft.api.EnumsVC;
 import com.viesis.viescraft.client.gui.airship.main.GuiModuleMenu;
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
+import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
 import com.viesis.viescraft.network.packet.MessageBase;
 
 import io.netty.buffer.ByteBuf;

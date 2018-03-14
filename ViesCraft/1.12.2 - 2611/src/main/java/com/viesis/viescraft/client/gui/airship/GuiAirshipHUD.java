@@ -2,7 +2,7 @@ package com.viesis.viescraft.client.gui.airship;
 
 import com.viesis.viescraft.api.EnumsVC;
 import com.viesis.viescraft.api.References;
-import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipBaseVC;
+import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
