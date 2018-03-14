@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "vc:items/item_airship_battery"
+        "layer0": "vc:items/item_bomb_big"
     }
 }

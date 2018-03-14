@@ -30,7 +30,7 @@ public class ItemUpgradeCore extends Item {
 	
 	public ItemUpgradeCore() 
 	{
-		ItemHelper.setItemName(this, "upgrades/upgrade_airship_core");
+		ItemHelper.setItemName(this, "upgrades/item_upgrade_airship_core");
 		
 		this.setHasSubtypes(true);
         this.setMaxDamage(0);

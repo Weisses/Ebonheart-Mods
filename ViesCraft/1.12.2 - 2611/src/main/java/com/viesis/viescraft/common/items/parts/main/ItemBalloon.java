@@ -22,7 +22,7 @@ public class ItemBalloon extends Item {
 	
 	public ItemBalloon() 
 	{
-		ItemHelper.setItemName(this, "airship_balloon");
+		ItemHelper.setItemName(this, "item_airship_balloon");
 		this.setMaxStackSize(64);
 		this.setCreativeTab(ViesCraft.tabViesCraftItems);
 	}

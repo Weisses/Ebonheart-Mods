@@ -22,7 +22,7 @@ public class ItemIgnition extends Item {
 	
 	public ItemIgnition() 
 	{
-		ItemHelper.setItemName(this, "airship_ignition");
+		ItemHelper.setItemName(this, "item_airship_ignition");
 		this.setMaxStackSize(16);
 		this.setCreativeTab(ViesCraft.tabViesCraftItems);
 	}

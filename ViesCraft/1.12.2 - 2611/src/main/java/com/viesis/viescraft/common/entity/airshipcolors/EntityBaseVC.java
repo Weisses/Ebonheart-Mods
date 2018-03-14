@@ -634,6 +634,8 @@ public class EntityBaseVC extends Entity {
     @Override
     public boolean processInitialInteract(EntityPlayer player, EnumHand stack)
     {
+    	Keybinds.vcInventory.unPressAllKeys();
+    	
         if (player.isSneaking())
         {
             return false;

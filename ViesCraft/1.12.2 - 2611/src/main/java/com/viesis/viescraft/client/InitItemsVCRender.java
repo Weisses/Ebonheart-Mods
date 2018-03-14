@@ -52,6 +52,8 @@ public final class InitItemsVCRender extends ItemsVC {
 			registerRenderModuleType(MODULE_TYPE, meta.getMetadata());
 		}
 		
+		//=====================================================================
+		
 		for (EnumsVC.AirshipTierCore meta : EnumsVC.AirshipTierCore.values()) 
 		{
 			registerRenderTierCore(UPGRADE_CORE, meta.getMetadata());
@@ -81,6 +83,13 @@ public final class InitItemsVCRender extends ItemsVC {
 		}
 		
 		registerRender(ITEM_AIRSHIP_CREATIVE);
+		
+		//=====================================================================
+		
+		for (EnumsVC.Bombs meta : EnumsVC.Bombs.values()) 
+		{
+			registerRenderModuleType(BOMB, meta.getMetadata());
+		}
 		
 		//=====================================================================
 		
@@ -154,6 +163,13 @@ public final class InitItemsVCRender extends ItemsVC {
 	private void registerRenderAchievement(Item item, int meta)
 	{
 		String itemName = item.getRegistryName().toString() + "_" + EnumsVC.Achievement.byId(meta).getName().toString().toLowerCase().replaceAll("\\s+","");
+		itemsRegistered.add(item);
+		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(itemName, "inventory"));
+	}
+	
+	private void registerRenderBomb(Item item, int meta)
+	{
+		String itemName = item.getRegistryName().toString() + "_" + EnumsVC.Bombs.byId(meta).getName().toString().toLowerCase().replaceAll("\\s+","");
 		itemsRegistered.add(item);
 		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(itemName, "inventory"));
 	}

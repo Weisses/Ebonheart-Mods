@@ -22,7 +22,7 @@ public class ItemViesoline extends Item {
 	
 	public ItemViesoline() 
 	{
-		ItemHelper.setItemName(this, "viesoline_pellets");
+		ItemHelper.setItemName(this, "item_viesoline_pellets");
 		this.setMaxStackSize(64);
 		this.setCreativeTab(ViesCraft.tabViesCraftItems);
 	}

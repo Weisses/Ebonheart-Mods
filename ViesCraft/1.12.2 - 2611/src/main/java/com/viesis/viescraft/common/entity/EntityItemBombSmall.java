@@ -6,6 +6,7 @@ import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
+import com.viesis.viescraft.api.EnumsVC;
 import com.viesis.viescraft.common.entity.airshipcolors.EntityAirshipCore;
 
 public class EntityItemBombSmall extends EntityThrowable {
@@ -47,7 +48,8 @@ public class EntityItemBombSmall extends EntityThrowable {
 		{
 			if (!this.world.isRemote)
 	        {
-				this.world.createExplosion(this, this.posX, this.posY, this.posZ, (float)10F, true);
+				this.world.createExplosion(this, this.posX, this.posY, this.posZ, 
+						EnumsVC.Bombs.byId(1).getExplosionStrength(), true);
 				this.setDead();
 	        }
 		}

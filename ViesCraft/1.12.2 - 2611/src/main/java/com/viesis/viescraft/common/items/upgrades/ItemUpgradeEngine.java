@@ -31,7 +31,7 @@ public class ItemUpgradeEngine extends Item {
 	
 	public ItemUpgradeEngine() 
 	{
-		ItemHelper.setItemName(this, "upgrades/upgrade_airship_engine");
+		ItemHelper.setItemName(this, "upgrades/item_upgrade_airship_engine");
 		
 		this.setHasSubtypes(true);
         this.setMaxDamage(0);

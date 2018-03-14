@@ -340,7 +340,11 @@ public class EnumsVC {
     	
         INFINITE_FUEL_LESSER(22, "infinite_fuel_lesser", References.localNameVC("vc.item.enum.module.22")),
     	INFINITE_FUEL_NORMAL(23, "infinite_fuel_normal", References.localNameVC("vc.item.enum.module.23")),
-    	INFINITE_FUEL_GREATER(24, "infinite_fuel_greater", References.localNameVC("vc.item.enum.module.24"));
+    	INFINITE_FUEL_GREATER(24, "infinite_fuel_greater", References.localNameVC("vc.item.enum.module.24")),
+    	
+    	BOMB_LESSER(25, "bomb_lesser", References.localNameVC("vc.item.enum.module.25")),
+    	BOMB_NORMAL(26, "bomb_normal", References.localNameVC("vc.item.enum.module.26")),
+    	BOMB_GREATER(27, "bomb_greater", References.localNameVC("vc.item.enum.module.27"));
     	
         private final String name;
         private final int metadata;
@@ -849,6 +853,76 @@ public class EnumsVC {
         }
         
         public static EnumsVC.Achievement getTypeFromString(String nameIn)
+        {
+            for (int i = 0; i < values().length; ++i)
+            {
+                if (values()[i].getName().equals(nameIn))
+                {
+                    return values()[i];
+                }
+            }
+            
+            return values()[0];
+        }
+    }
+    
+    /**
+     * Bomb enum - Dictates registry name, localized name, explosion strength.
+     */
+	public static enum Bombs
+    {
+    	//STRING(meta, registry name, localized name, explosion strength)
+		CASING(0, "casing", References.localNameVC("vc.enum.bomb.0"), 0.0F),
+		SMALL(1, "small", References.localNameVC("vc.enum.bomb.1"), 4.0F),
+		BIG(2, "large", References.localNameVC("vc.enum.bomb.2"), 10.0F);
+		
+		private final int metadata;
+        private final String name;
+        private final String localizedName;
+        private final float explosionStrength;
+        
+        private Bombs(int metadataIn, String nameIn, String localizedNameIn, float explosionStrengthIn)
+        {
+        	this.metadata = metadataIn;
+            this.name = nameIn;
+            this.localizedName = localizedNameIn;
+            this.explosionStrength = explosionStrengthIn;
+        }
+        
+        public int getMetadata()
+        {
+            return this.metadata;
+        }
+        
+        public String getName()
+        {
+            return this.name;
+        }
+        
+        public String getLocalizedName()
+        {
+            return this.localizedName;
+        }
+        
+        public float getExplosionStrength()
+        {
+            return this.explosionStrength;
+        }
+        
+        /**
+         * Get a tier type by it's enum ordinal
+         */
+        public static EnumsVC.Bombs byId(int id)
+        {
+            if (id < 0 || id >= values().length)
+            {
+                id = 0;
+            }
+            
+            return values()[id];
+        }
+        
+        public static EnumsVC.Bombs getTypeFromString(String nameIn)
         {
             for (int i = 0; i < values().length; ++i)
             {

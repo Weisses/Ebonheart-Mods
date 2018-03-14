@@ -6,15 +6,14 @@ itemGroup.tabViesCraftItems=ViesCraft Items
 itemGroup.tabViesCraftAirships=ViesCraft Airships
 
 //-----Items-----
-item.vc:guidebook_main.name=The 'Vies' Craft, vol.1
+item.vc:item_guidebook_main.name=The 'Vies' Craft, vol.1
 item.vc:guidebook_controls.name=Taking Control, vol.2
 item.vc:guidebook_paint.name=Flaming Paint?!, vol.3
 item.vc:guidebook_socket.name=Modules & You, vol.4
-item.vc:viesoline_pellets.name=Viesoline Pellets
-item.vc:airship_balloon.name=Airship Balloon
-item.vc:airship_engine.name=Airship Engine
-item.vc:airship_ignition.name=Airship Core
-item.vc:item_airship_dismounter.name=Dismounter
+item.vc:item_viesoline_pellets.name=Viesoline Pellets
+item.vc:item_airship_balloon.name=Airship Balloon
+item.vc:item_airship_engine.name=Airship Engine
+item.vc:item_airship_ignition.name=Airship Core
 item.vc:item_dismounter_normal.name=Dismounter
 item.vc:item_dismounter_player.name=Dismounter (Player)
 vc.item.module.#=Module
@@ -629,6 +628,10 @@ vc.item.enum.song.15=Jungle
 vc.item.enum.song.16=Dire
 vc.item.enum.song.17=Storms
 vc.item.enum.song.18=Timescar
+
+vc.enum.bomb.0=Casing
+vc.enum.bomb.1=Small
+vc.enum.bomb.2=Big
 
 //-----Colors-----
 vc.item.color.1=Alice Blue

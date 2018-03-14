@@ -1,5 +1,6 @@
 package com.viesis.viescraft.api;
 
+import com.viesis.viescraft.common.items.ItemBomb;
 import com.viesis.viescraft.common.items.ItemDismounterNormal;
 import com.viesis.viescraft.common.items.ItemDismounterPlayer;
 import com.viesis.viescraft.common.items.ItemGuidebookMain;
@@ -23,8 +24,8 @@ import com.viesis.viescraft.common.items.upgrades.ItemUpgradeFrame;
 public class ItemsVC {
 	
 	public static final ItemGuidebookMain GUIDEBOOK_MAIN = new ItemGuidebookMain();
-	public static final ItemDismounterNormal ITEM_DISMOUNTER_NORMAL = new ItemDismounterNormal();
-	public static final ItemDismounterPlayer ITEM_DISMOUNTER_PLAYER = new ItemDismounterPlayer();
+	public static final ItemDismounterNormal DISMOUNTER_NORMAL = new ItemDismounterNormal();
+	public static final ItemDismounterPlayer DISMOUNTER_PLAYER = new ItemDismounterPlayer();
 	public static final ItemViesoline VIESOLINE_PELLETS = new ItemViesoline();
 	public static final ItemLogicChip LOGIC_CHIP = new ItemLogicChip();
 	public static final ItemFrame AIRSHIP_FRAME = new ItemFrame();
@@ -36,6 +37,8 @@ public class ItemsVC {
 	public static final ItemUpgradeFrame UPGRADE_FRAME = new ItemUpgradeFrame();
 	public static final ItemUpgradeEngine UPGRADE_ENGINE = new ItemUpgradeEngine();
 	public static final ItemUpgradeBalloon UPGRADE_BALLOON = new ItemUpgradeBalloon();
+	
+	public static final ItemBomb BOMB = new ItemBomb();
 	
 	public static final ItemModuleType MODULE_TYPE = new ItemModuleType();
 	public static final ItemModuleCreative MODULE_CREATIVE = new ItemModuleCreative();

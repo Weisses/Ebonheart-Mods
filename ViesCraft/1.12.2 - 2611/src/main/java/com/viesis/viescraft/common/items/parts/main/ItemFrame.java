@@ -24,7 +24,7 @@ public class ItemFrame extends Item {
 	
 	public ItemFrame() 
 	{
-		ItemHelper.setItemName(this, "airship_frame");
+		ItemHelper.setItemName(this, "item_airship_frame");
 		
 		this.setMaxStackSize(64);
 		this.setCreativeTab(ViesCraft.tabViesCraftItems);

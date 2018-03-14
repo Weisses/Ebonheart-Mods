@@ -31,7 +31,7 @@ public class ItemUpgradeBalloon extends Item {
 	
 	public ItemUpgradeBalloon() 
 	{
-		ItemHelper.setItemName(this, "upgrades/upgrade_airship_balloon");
+		ItemHelper.setItemName(this, "upgrades/item_upgrade_airship_balloon");
 		
 		this.setHasSubtypes(true);
         this.setMaxDamage(0);

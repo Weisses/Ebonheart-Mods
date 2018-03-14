@@ -42,8 +42,8 @@ public class InitItemsVC extends ItemsVC {
 			final Item[] items = {
 					GUIDEBOOK_MAIN,
 					
-					ITEM_DISMOUNTER_NORMAL,
-					ITEM_DISMOUNTER_PLAYER,
+					DISMOUNTER_NORMAL,
+					DISMOUNTER_PLAYER,
 					
 					VIESOLINE_PELLETS,
 					
@@ -58,6 +58,8 @@ public class InitItemsVC extends ItemsVC {
 					UPGRADE_CORE,
 					UPGRADE_ENGINE,
 					UPGRADE_BALLOON,
+					
+					BOMB,
 					
 					MODULE_TYPE,
 					MODULE_CREATIVE,

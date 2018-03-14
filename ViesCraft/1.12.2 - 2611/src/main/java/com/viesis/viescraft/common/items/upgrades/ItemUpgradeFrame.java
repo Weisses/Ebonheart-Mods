@@ -30,7 +30,7 @@ public class ItemUpgradeFrame extends Item {
 	
 	public ItemUpgradeFrame() 
 	{
-		ItemHelper.setItemName(this, "upgrades/upgrade_airship_frame");
+		ItemHelper.setItemName(this, "upgrades/item_upgrade_airship_frame");
 		
 		this.setHasSubtypes(true);
         this.setMaxDamage(0);
