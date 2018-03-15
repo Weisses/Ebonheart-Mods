@@ -1,10 +1,6 @@
-package com.viesis.viescraft.client.entity.model.bomb;
+package net.minecraft.src;
 
-import net.minecraft.client.model.ModelBase;
-import net.minecraft.client.model.ModelRenderer;
-import net.minecraft.entity.Entity;
-
-public class ModelBombBig extends ModelBase
+public class ModelBomb_Big extends ModelBase
 {
     ModelRenderer BombBase1a;
     ModelRenderer BombBase1b;
@@ -14,12 +10,12 @@ public class ModelBombBig extends ModelBase
     ModelRenderer FinL;
     ModelRenderer FinR;
 
-    public ModelBombBig()
+    public ModelBomb_Big()
     {
         this( 0.0f );
     }
 
-    public ModelBombBig( float par1 )
+    public ModelBomb_Big( float par1 )
     {
         BombBase1a = new ModelRenderer( this, 0, 24 );
         BombBase1a.setTextureSize( 64, 32 );
