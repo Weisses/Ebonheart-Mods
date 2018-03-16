@@ -23,6 +23,7 @@ import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.client.InitParticlesVCRender;
 import com.viesis.viescraft.client.entity.model.ModelAirshipPanel;
+import com.viesis.viescraft.client.entity.model.ModelAirshipPanelold;
 import com.viesis.viescraft.client.entity.model.ModelAirshipPropeller;
 import com.viesis.viescraft.client.entity.model.v1.ModelAirshipV1Balloon;
 import com.viesis.viescraft.client.entity.model.v1.ModelAirshipV1Frame;
@@ -261,7 +262,7 @@ public class RenderAirship extends Render<EntityAirshipCore> {
         
         
         //Draws the Main Control Panel Screen
-    	this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/screens/module_type_" + EnumsVC.ModuleType.byId(entity.getModuleVariantSlot1()).getName() + ".png"));
+    	this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/model_airship_panel.png"));
     	this.modelAirshipPanel.render(entity, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
     	
     	
