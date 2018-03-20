@@ -33,7 +33,7 @@ public class MessageHelperGuiUpgradeCoreVC extends MessageBase<MessageHelperGuiU
 	public void handleServerSide(MessageHelperGuiUpgradeCoreVC message, EntityPlayer player) 
 	{
 		EntityAirshipBaseVC airship = (EntityAirshipBaseVC) player.getRidingEntity();
-		airship.metaTierCore = message.metaCore;
+		airship.mainTierCore = message.metaCore;
 		airship.inventory.extractItem(1, 1, false);
 	}
 }

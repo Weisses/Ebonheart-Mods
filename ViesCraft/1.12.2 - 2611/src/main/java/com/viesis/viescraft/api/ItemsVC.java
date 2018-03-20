@@ -3,11 +3,11 @@ package com.viesis.viescraft.api;
 import com.viesis.viescraft.common.items.ItemBomb;
 import com.viesis.viescraft.common.items.ItemDismounterNormal;
 import com.viesis.viescraft.common.items.ItemDismounterPlayer;
+import com.viesis.viescraft.common.items.ItemEntityAirship;
 import com.viesis.viescraft.common.items.ItemGuidebookMain;
 import com.viesis.viescraft.common.items.achievements.ItemAchievement;
-import com.viesis.viescraft.common.items.achievements.ItemEntityAirship;
-import com.viesis.viescraft.common.items.airshipitems.ItemAirship;
-import com.viesis.viescraft.common.items.airshipitems.ItemCreativeAirship;
+import com.viesis.viescraft.common.items.airships.ItemAirship;
+import com.viesis.viescraft.common.items.airships.ItemCreativeAirship;
 import com.viesis.viescraft.common.items.parts.ItemModuleCreative;
 import com.viesis.viescraft.common.items.parts.ItemModuleType;
 import com.viesis.viescraft.common.items.parts.ItemViesoline;
@@ -16,6 +16,7 @@ import com.viesis.viescraft.common.items.parts.main.ItemEngine;
 import com.viesis.viescraft.common.items.parts.main.ItemFrame;
 import com.viesis.viescraft.common.items.parts.main.ItemIgnition;
 import com.viesis.viescraft.common.items.parts.main.ItemLogicChip;
+import com.viesis.viescraft.common.items.symbols.ItemDisplaySymbol;
 import com.viesis.viescraft.common.items.upgrades.ItemUpgradeBalloon;
 import com.viesis.viescraft.common.items.upgrades.ItemUpgradeCore;
 import com.viesis.viescraft.common.items.upgrades.ItemUpgradeEngine;
@@ -49,9 +50,12 @@ public class ItemsVC {
 	public static final ItemCreativeAirship ITEM_AIRSHIP_CREATIVE = new ItemCreativeAirship("airships/item_airship_creative");
 	
 	//================================
+	//Hidden Items
+	public static final ItemEntityAirship ITEM_ENTITY_AIRSHIP = new ItemEntityAirship();
 	
 	public static final ItemAchievement ACHIEVEMENT_AIRSHIP = new ItemAchievement();
-	public static final ItemEntityAirship ITEM_ENTITY_AIRSHIP = new ItemEntityAirship();
+	
+	public static final ItemDisplaySymbol ITEM_DISPLAY_SYMBOL = new ItemDisplaySymbol();
 	
 	//================================
 }

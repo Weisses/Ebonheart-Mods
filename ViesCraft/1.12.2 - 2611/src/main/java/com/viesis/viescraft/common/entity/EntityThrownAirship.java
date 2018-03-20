@@ -1,12 +1,14 @@
 package com.viesis.viescraft.common.entity;
 
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.init.SoundEvents;
-import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.world.World;
-
+import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.client.InitParticlesVCRender;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipCore;
+
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.init.SoundEvents;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.world.World;
 
 public class EntityThrownAirship extends EntityThrownAirshipCore {
 	
@@ -15,15 +17,28 @@ public class EntityThrownAirship extends EntityThrownAirshipCore {
         super(worldIn);
     }
     
-    public EntityThrownAirship(World worldIn, EntityLivingBase entity,
-    		int coreIn, int frameIn, int engineIn, int balloonIn, 
+    public EntityThrownAirship(World worldIn, EntityLivingBase entityIn, 
+    		int coreTierIn, int frameTierIn, int engineTierIn, int balloonTierIn, 
     		int moduleSlot1In, 
-    		int coreVisualIn, 
-    		int frameVisualIn, boolean frameVisualTransparentIn, boolean frameVisualColorIn,
-    		int frameColorRedIn, int frameColorGreenIn, int frameColorBlueIn,
-    		int engineVisualIn, 
-    		int balloonVisualIn, boolean balloonVisualTransparentIn, boolean balloonVisualColorIn,
-    		int balloonColorRedIn, int balloonColorGreenIn, int balloonColorBlueIn,
+    		int fuelIn, int fuelTotalIn, int redstoneIn, int redstoneTotalIn, 
+    		
+    		int coreModelVisualFrameIn, 
+    		int coreModelVisualEngineIn, 
+    		int coreModelVisualBalloonIn, 
+    		
+    		int frameSkinVisualIn, 
+    		boolean frameSkinVisualTransparentIn, 
+    		boolean frameSkinVisualColorIn,
+    		int frameSkinColorRedIn, int frameSkinColorGreenIn, int frameSkinColorBlueIn,
+    		
+    		int engineParticleVisualIn, 
+    		int engineDisplayTypeVisualIn, int engineDisplayIDVisualIn,
+    		
+    		int balloonPatternVisualIn, 
+    		boolean balloonPatternVisualTransparentIn, 
+    		boolean balloonPatternVisualColorIn,
+    		int balloonPatternColorRedIn, int balloonPatternColorGreenIn, int balloonPatternColorBlueIn, 
+    		
     		boolean learnedModuleAltitudeIn, int selectedModuleAltitudeIn, 
     		boolean learnedModuleSpeedIn, int selectedModuleSpeedIn, 
     		boolean learnedModuleStorageIn, int selectedModuleStorageIn, 
@@ -31,34 +46,48 @@ public class EntityThrownAirship extends EntityThrownAirshipCore {
     		boolean learnedModuleMusicIn, int selectedModuleMusicIn, 
     		boolean learnedModuleCruiseIn, int selectedModuleCruiseIn, 
     		boolean learnedModuleWaterIn, int selectedModuleWaterIn, 
-    		boolean learnedModuleFuelInfiniteIn, int selectedModuleFuelInfiniteIn)
+    		boolean learnedModuleFuelInfiniteIn, int selectedModuleFuelInfiniteIn,
+    		boolean learnedModuleBombIn, int selectedModuleBombIn,
+    		
+    		NBTTagCompound compoundIn, String customNameIn)
     {
-        super(worldIn, entity);
+        super(worldIn, entityIn);
         
-        this.metaTypeCore = coreIn;
-        this.metaTypeFrame = frameIn;
-        this.metaTypeEngine = engineIn;
-        this.metaTypeBalloon = balloonIn;
+        this.customName = customNameIn;
         
-        this.metaModuleVariantSlot1 = moduleSlot1In;
+        this.mainTierCore = coreTierIn;
+        this.mainTierFrame = frameTierIn;
+        this.mainTierEngine = engineTierIn;
+        this.mainTierBalloon = balloonTierIn;
         
-        this.metaCoreVisual = coreVisualIn;
+        this.moduleActiveSlot1 = moduleSlot1In;
         
-        this.metaFrameVisual = frameVisualIn;
-        this.metaFrameVisualTransparent = frameVisualTransparentIn;
-        this.metaFrameVisualColor = frameVisualColorIn;
-        this.metaFrameColorRed = frameColorRedIn;
-        this.metaFrameColorGreen = frameColorGreenIn;
-        this.metaFrameColorBlue = frameColorBlueIn;
+        this.storedFuel = fuelIn;
+        this.storedFuelTotal = fuelTotalIn;
+        this.storedRedstone = redstoneIn;
+        this.storedRedstoneTotal = redstoneTotalIn;
         
-        this.metaEngineVisual = engineVisualIn;
+        this.coreModelVisualFrame = coreModelVisualFrameIn;
+        this.coreModelVisualEngine = coreModelVisualEngineIn;
+        this.coreModelVisualBalloon = coreModelVisualBalloonIn;
         
-        this.metaBalloonVisual = balloonVisualIn;
-        this.metaBalloonVisualTransparent = balloonVisualTransparentIn;
-        this.metaBalloonVisualColor = balloonVisualColorIn;
-        this.metaBalloonColorRed = balloonColorRedIn;
-        this.metaBalloonColorGreen = balloonColorGreenIn;
-        this.metaBalloonColorBlue = balloonColorBlueIn;
+        this.frameSkinVisual = frameSkinVisualIn;
+        this.frameSkinVisualTransparent = frameSkinVisualTransparentIn;
+        this.frameSkinVisualColor = frameSkinVisualColorIn;
+        this.frameSkinColorRed = frameSkinColorRedIn;
+        this.frameSkinColorGreen = frameSkinColorGreenIn;
+        this.frameSkinColorBlue = frameSkinColorBlueIn;
+        
+        this.engineParticleVisual = engineParticleVisualIn;
+        this.engineDisplayTypeVisual = engineDisplayTypeVisualIn;
+        this.engineDisplayIDVisual = engineDisplayIDVisualIn;
+        
+        this.balloonPatternVisual = balloonPatternVisualIn;
+        this.balloonPatternVisualTransparent = balloonPatternVisualTransparentIn;
+        this.balloonPatternVisualColor = balloonPatternVisualColorIn;
+        this.balloonPatternColorRed = balloonPatternColorRedIn;
+        this.balloonPatternColorGreen = balloonPatternColorGreenIn;
+        this.balloonPatternColorBlue = balloonPatternColorBlueIn;
         
         this.learnedModuleAltitude = learnedModuleAltitudeIn;
         this.selectedModuleAltitude = selectedModuleAltitudeIn;
@@ -76,6 +105,10 @@ public class EntityThrownAirship extends EntityThrownAirshipCore {
         this.selectedModuleWater = selectedModuleWaterIn;
         this.learnedModuleFuelInfinite = learnedModuleFuelInfiniteIn;
         this.selectedModuleFuelInfinite = selectedModuleFuelInfiniteIn;
+        this.learnedModuleBomb = learnedModuleBombIn;
+        this.selectedModuleBomb = selectedModuleBombIn;
+        
+        this.storedInventory = compoundIn;
     }
     
     public EntityThrownAirship(World worldIn, double x, double y, double z)
@@ -90,22 +123,39 @@ public class EntityThrownAirship extends EntityThrownAirshipCore {
         {
         	this.playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 0.5F, 0.4F / .5F * 0.4F + 0.8F);
         	this.world.spawnEntity(new EntityAirshipCore(this.world, this.posX, this.posY + 0.5F, this.posZ, 
-    			this.metaTypeCore, this.metaTypeFrame, this.metaTypeEngine, this.metaTypeBalloon, 
-    			this.metaModuleVariantSlot1, 
-    			this.metaCoreVisual, 
-	    		this.metaFrameVisual, this.metaFrameVisualTransparent, this.metaFrameVisualColor,
-	    		this.metaFrameColorRed, this.metaFrameColorGreen, this.metaFrameColorBlue,
-	    		this.metaEngineVisual, 
-	    		this.metaBalloonVisual, this.metaBalloonVisualTransparent, this.metaBalloonVisualColor,
-	    		this.metaBalloonColorRed, this.metaBalloonColorGreen, this.metaBalloonColorBlue,
-	    		this.learnedModuleAltitude, this.selectedModuleAltitude, 
-	    		this.learnedModuleSpeed, this.selectedModuleSpeed, 
-	    		this.learnedModuleStorage, this.selectedModuleStorage, 
-	    		this.learnedModuleFuel, this.selectedModuleFuel, 
-	    		this.learnedModuleMusic, this.selectedModuleMusic, 
-	    		this.learnedModuleCruise, this.selectedModuleCruise, 
-	    		this.learnedModuleWater, this.selectedModuleWater, 
-	    		this.learnedModuleFuelInfinite, this.selectedModuleFuelInfinite));
+        			this.mainTierCore, this.mainTierFrame, this.mainTierEngine, this.mainTierBalloon, 
+		    		this.moduleActiveSlot1, 
+		    		this.storedFuel, this.storedFuelTotal, this.storedRedstone, this.storedRedstoneTotal, 
+		    		
+		    		this.coreModelVisualFrame, 
+		    		this.coreModelVisualEngine, 
+		    		this.coreModelVisualBalloon, 
+		    		
+		    		this.frameSkinVisual, 
+		    		this.frameSkinVisualTransparent, 
+		    		this.frameSkinVisualColor, 
+		    		this.frameSkinColorRed, this.frameSkinColorGreen, this.frameSkinColorBlue, 
+		    		
+		    		this.engineParticleVisual, 
+		    		this.engineDisplayTypeVisual, this.engineDisplayIDVisual, 
+		    		
+		    		this.balloonPatternVisual, 
+		    		this.balloonPatternVisualTransparent, 
+		    		this.balloonPatternVisualColor, 
+		    		this.balloonPatternColorRed, this.balloonPatternColorGreen, this.balloonPatternColorBlue, 
+		    		
+		    		this.learnedModuleAltitude, this.selectedModuleAltitude, 
+		    		this.learnedModuleSpeed, this.selectedModuleSpeed, 
+		    		this.learnedModuleStorage, this.selectedModuleStorage, 
+		    		this.learnedModuleFuel, this.selectedModuleFuel, 
+		    		this.learnedModuleMusic, this.selectedModuleMusic, 
+		    		this.learnedModuleCruise, this.selectedModuleCruise, 
+		    		this.learnedModuleWater, this.selectedModuleWater, 
+		    		this.learnedModuleFuelInfinite, this.selectedModuleFuelInfinite, 
+		    		this.learnedModuleBomb, this.selectedModuleBomb, 
+		    		
+		    		this.storedInventory, this.customName
+		    		));
             
         	this.setDead();
         }

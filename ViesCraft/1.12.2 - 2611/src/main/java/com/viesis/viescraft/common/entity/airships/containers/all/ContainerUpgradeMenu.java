@@ -34,22 +34,22 @@ public class ContainerUpgradeMenu extends ContainerVC {
 	{
 		this.airship = airshipIn;
         
-		if(this.airship.getMetaTierCore() < 5)
+		if(this.airship.getMainTierCore() < 5)
 		{
 			//Slot 1 - Upgrade Core
 			this.addSlotToContainer(new UpgradeCoreSlotVC(this.airship.inventory, 1, 23, 57));
 		}
-		if(this.airship.getMetaTierFrame() < 5)
+		if(this.airship.getMainTierFrame() < 5)
 		{
 			//Slot 2 - Upgrade Frame
 			this.addSlotToContainer(new UpgradeFrameSlotVC(this.airship.inventory, 2, 61, 57));
 		}
-		if(this.airship.getMetaTierEngine() < 5)
+		if(this.airship.getMainTierEngine() < 5)
 		{
 			//Slot 3 - Upgrade Engine
 			this.addSlotToContainer(new UpgradeEngineSlotVC(this.airship.inventory, 3, 99, 57));
 		}
-		if(this.airship.getMetaTierBalloon() < 5)
+		if(this.airship.getMainTierBalloon() < 5)
 		{
 			//Slot 4 - Upgrade Balloon
 			this.addSlotToContainer(new UpgradeBalloonSlotVC(this.airship.inventory, 4, 137, 57));

@@ -93,12 +93,17 @@ public final class InitItemsVCRender extends ItemsVC {
 		
 		//=====================================================================
 		
+		for (EnumsVC.DisplaySymbol meta : EnumsVC.DisplaySymbol.values()) 
+		{
+			registerRenderDisplaySymbol(ITEM_DISPLAY_SYMBOL, meta.getMetadata());
+		}
+		
+		registerRender(ITEM_ENTITY_AIRSHIP);
+		
 		for (EnumsVC.Achievement meta : EnumsVC.Achievement.values()) 
 		{
 			registerRenderAchievement(ACHIEVEMENT_AIRSHIP, meta.getMetadata());
 		}
-		
-		registerRender(ITEM_ENTITY_AIRSHIP);
 		
 		//=====================================================================
 		
@@ -127,49 +132,56 @@ public final class InitItemsVCRender extends ItemsVC {
 	 */
 	private void registerRenderTierCore(Item item, int meta)
 	{
-		String itemName = item.getRegistryName().toString() + "_" + EnumsVC.AirshipTierCore.byId(meta).getName().toString().toLowerCase().replaceAll("\\s+","");
+		String itemName = item.getRegistryName().toString() + "_" + EnumsVC.AirshipTierCore.byId(meta).getRegistryName().toString().toLowerCase().replaceAll("\\s+","");
 		itemsRegistered.add(item);
 		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(itemName, "inventory"));
 	}
 	
 	private void registerRenderTierFrame(Item item, int meta)
 	{
-		String itemName = item.getRegistryName().toString() + "_" + EnumsVC.AirshipTierFrame.byId(meta).getName().toString().toLowerCase().replaceAll("\\s+","");
+		String itemName = item.getRegistryName().toString() + "_" + EnumsVC.AirshipTierFrame.byId(meta).getRegistryName().toString().toLowerCase().replaceAll("\\s+","");
 		itemsRegistered.add(item);
 		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(itemName, "inventory"));
 	}
 	
 	private void registerRenderTierEngine(Item item, int meta)
 	{
-		String itemName = item.getRegistryName().toString() + "_" + EnumsVC.AirshipTierEngine.byId(meta).getName().toString().toLowerCase().replaceAll("\\s+","");
+		String itemName = item.getRegistryName().toString() + "_" + EnumsVC.AirshipTierEngine.byId(meta).getRegistryName().toString().toLowerCase().replaceAll("\\s+","");
 		itemsRegistered.add(item);
 		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(itemName, "inventory"));
 	}
 	
 	private void registerRenderTierBalloon(Item item, int meta)
 	{
-		String itemName = item.getRegistryName().toString() + "_" + EnumsVC.AirshipTierBalloon.byId(meta).getName().toString().toLowerCase().replaceAll("\\s+","");
+		String itemName = item.getRegistryName().toString() + "_" + EnumsVC.AirshipTierBalloon.byId(meta).getRegistryName().toString().toLowerCase().replaceAll("\\s+","");
 		itemsRegistered.add(item);
 		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(itemName, "inventory"));
 	}
 	
 	private void registerRenderModuleType(Item item, int meta)
 	{
-		String itemName = item.getRegistryName().toString() + "_" + EnumsVC.ModuleType.byId(meta).getName().toString().toLowerCase().replaceAll("\\s+","");
+		String itemName = item.getRegistryName().toString() + "_" + EnumsVC.ModuleType.byId(meta).getRegistryName().toString().toLowerCase().replaceAll("\\s+","");
+		itemsRegistered.add(item);
+		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(itemName, "inventory"));
+	}
+	
+	private void registerRenderDisplaySymbol(Item item, int meta)
+	{
+		String itemName = item.getRegistryName().toString() + "_" + EnumsVC.DisplaySymbol.byId(meta).getRegistryName().toString().toLowerCase().replaceAll("\\s+","");
 		itemsRegistered.add(item);
 		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(itemName, "inventory"));
 	}
 	
 	private void registerRenderAchievement(Item item, int meta)
 	{
-		String itemName = item.getRegistryName().toString() + "_" + EnumsVC.Achievement.byId(meta).getName().toString().toLowerCase().replaceAll("\\s+","");
+		String itemName = item.getRegistryName().toString() + "_" + EnumsVC.Achievement.byId(meta).getRegistryName().toString().toLowerCase().replaceAll("\\s+","");
 		itemsRegistered.add(item);
 		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(itemName, "inventory"));
 	}
 	
 	private void registerRenderBomb(Item item, int meta)
 	{
-		String itemName = item.getRegistryName().toString() + "_" + EnumsVC.Bombs.byId(meta).getName().toString().toLowerCase().replaceAll("\\s+","");
+		String itemName = item.getRegistryName().toString() + "_" + EnumsVC.Bombs.byId(meta).getRegistryName().toString().toLowerCase().replaceAll("\\s+","");
 		itemsRegistered.add(item);
 		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(itemName, "inventory"));
 	}

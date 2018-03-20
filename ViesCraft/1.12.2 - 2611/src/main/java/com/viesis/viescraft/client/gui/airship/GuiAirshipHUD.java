@@ -82,35 +82,35 @@ public class GuiAirshipHUD extends Gui {
 				
 				//Bottom lower fuel bar
 				//Creates a solid green bar
-				if(this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_LESSER.getMetadata()
-				|| this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_NORMAL.getMetadata()
-				|| this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_GREATER.getMetadata())
+				if(this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_LESSER.getMetadata()
+				|| this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_NORMAL.getMetadata()
+				|| this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_GREATER.getMetadata())
 				{
 					drawTexturedModalRect(hudX + 36, hudY + 31, 36, 72, hudX, 6);
 				}
 				else
 				{
-					int fuelbarwidth1 = (int)(((float) this.airship.getPowered() / (this.airship.getTotalPowered())) * 110);
+					int fuelbarwidth1 = (int)(((float) this.airship.getStoredFuel() / (this.airship.getStoredFuelTotal())) * 110);
 					
 					drawTexturedModalRect(hudX + 36, hudY + 31, 36, 59, fuelbarwidth1, 6);
 				}
 				
 				//Top bigger stack bar
 				//Creates a solid green bar
-				if(this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_LESSER.getMetadata()
-				|| this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_NORMAL.getMetadata()
-				|| this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_GREATER.getMetadata())
+				if(this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_LESSER.getMetadata()
+				|| this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_NORMAL.getMetadata()
+				|| this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_GREATER.getMetadata())
 				{
 					drawTexturedModalRect(hudX + 2, hudY + 14, 2, 66, 177, 6);
 				}
 				else
 				{
-					int fuelbarwidth2 = (int)(((float) this.airship.getItemFuelStackSizePowered() / 64) * 178);
+					int fuelbarwidth2 = (int)(((float) this.airship.getFuelItemStackSizePowered() / 64) * 178);
 					drawTexturedModalRect(hudX + 2, hudY + 14, 2, 53, fuelbarwidth2, 6);
 				}
 				
 				//Airship lights on
-				if(this.airship.getPowered() >= 1)
+				if(this.airship.getStoredFuel() >= 1)
 				{
 					drawTexturedModalRect(hudX + 16, hudY, 16, 44, 150, 7);
 				}
@@ -121,15 +121,15 @@ public class GuiAirshipHUD extends Gui {
 					GlStateManager.translate(hudX + 85, hudY + 2, 0);
 					GlStateManager.scale(1.5, 1.5, 1.5);
 					
-					if(this.airship.getModuleVariantSlot1() > 0)
+					if(this.airship.getModuleActiveSlot1() > 0)
 					{
-						this.drawModuleIcon(this.airship.getModuleVariantSlot1());
+						this.drawModuleIcon(this.airship.getModuleActiveSlot1());
 					}
 				}
 				GlStateManager.popMatrix();
 				
 				//Draw Yellow Border over Module Icon
-				if(this.airship.getModuleVariantSlot1() > 0)
+				if(this.airship.getModuleActiveSlot1() > 0)
 				{
 					this.drawTexturedModalRect(hudX + 83, hudY + 0, 0, 224, 16, 16);
 				}
@@ -256,9 +256,9 @@ public class GuiAirshipHUD extends Gui {
 	{
 		//Altitude Current
 		//Check if Altitude module is in.
-		if(this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.ALTITUDE_LESSER.getMetadata()
-		|| this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.ALTITUDE_NORMAL.getMetadata()
-		|| this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.ALTITUDE_GREATER.getMetadata())
+		if(this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.ALTITUDE_LESSER.getMetadata()
+		|| this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.ALTITUDE_NORMAL.getMetadata()
+		|| this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.ALTITUDE_GREATER.getMetadata())
 		{
 			GlStateManager.pushMatrix();
 			{
@@ -272,7 +272,7 @@ public class GuiAirshipHUD extends Gui {
 		else
 		{
 			//Makes Current Altitude color Red
-			if(this.airship.getPosition().getY() >= (int)EnumsVC.AirshipTierBalloon.byId(this.airship.getMetaTierBalloon()).getMaxAltitude() - 5)
+			if(this.airship.getPosition().getY() >= (int)EnumsVC.AirshipTierBalloon.byId(this.airship.getMainTierBalloon()).getMaxAltitude() - 5)
 			{
 				GlStateManager.pushMatrix();
 				{
@@ -284,7 +284,7 @@ public class GuiAirshipHUD extends Gui {
 				GlStateManager.popMatrix();
 			}
 			//Makes Current Altitude color Yellow
-			else if(this.airship.getPosition().getY() >= (int)EnumsVC.AirshipTierBalloon.byId(this.airship.getMetaTierBalloon()).getMaxAltitude() - 15)
+			else if(this.airship.getPosition().getY() >= (int)EnumsVC.AirshipTierBalloon.byId(this.airship.getMainTierBalloon()).getMaxAltitude() - 15)
 			{
 				GlStateManager.pushMatrix();
 				{
@@ -313,11 +313,11 @@ public class GuiAirshipHUD extends Gui {
 		
 		//Altitude Max
 		//Check if Altitude module is in.
-		if(this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.ALTITUDE_LESSER.getMetadata()
-		|| this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.ALTITUDE_NORMAL.getMetadata()
-		|| this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.ALTITUDE_GREATER.getMetadata())
+		if(this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.ALTITUDE_LESSER.getMetadata()
+		|| this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.ALTITUDE_NORMAL.getMetadata()
+		|| this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.ALTITUDE_GREATER.getMetadata())
 		{
-			if(this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.ALTITUDE_LESSER.getMetadata())
+			if(this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.ALTITUDE_LESSER.getMetadata())
 			{
 				GlStateManager.pushMatrix();
 				{
@@ -328,7 +328,7 @@ public class GuiAirshipHUD extends Gui {
 				}
 				GlStateManager.popMatrix();
 			}
-			else if(this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.ALTITUDE_NORMAL.getMetadata())
+			else if(this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.ALTITUDE_NORMAL.getMetadata())
 			{
 				GlStateManager.pushMatrix();
 				{
@@ -339,7 +339,7 @@ public class GuiAirshipHUD extends Gui {
 				}
 				GlStateManager.popMatrix();
 			}
-			else if(this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.ALTITUDE_GREATER.getMetadata())
+			else if(this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.ALTITUDE_GREATER.getMetadata())
 			{
 				GlStateManager.pushMatrix();
 				{
@@ -354,26 +354,26 @@ public class GuiAirshipHUD extends Gui {
 		else
 		{
 			//Makes Current Altitude color Red
-			if(this.airship.getPosition().getY() >= (int)EnumsVC.AirshipTierBalloon.byId(this.airship.getMetaTierBalloon()).getMaxAltitude() - 5)
+			if(this.airship.getPosition().getY() >= (int)EnumsVC.AirshipTierBalloon.byId(this.airship.getMainTierBalloon()).getMaxAltitude() - 5)
 			{
 				GlStateManager.pushMatrix();
 				{
 					GlStateManager.translate(hudXIn + 108.5, hudYIn + 6, 0);
 					GlStateManager.scale(0.75, 0.75, 0.75);
 					
-					this.drawCenteredString(fontRenderer, Integer.toString(EnumsVC.AirshipTierBalloon.byId(this.airship.getMetaTierBalloon()).getMaxAltitude()), 0, 0, 16711680);
+					this.drawCenteredString(fontRenderer, Integer.toString(EnumsVC.AirshipTierBalloon.byId(this.airship.getMainTierBalloon()).getMaxAltitude()), 0, 0, 16711680);
 				}
 				GlStateManager.popMatrix();
 			}
 			//Makes Current Altitude color Yellow
-			else if(this.airship.getPosition().getY() >= (int)EnumsVC.AirshipTierBalloon.byId(this.airship.getMetaTierBalloon()).getMaxAltitude() - 15)
+			else if(this.airship.getPosition().getY() >= (int)EnumsVC.AirshipTierBalloon.byId(this.airship.getMainTierBalloon()).getMaxAltitude() - 15)
 			{
 				GlStateManager.pushMatrix();
 				{
 					GlStateManager.translate(hudXIn + 108.5, hudYIn + 6, 0);
 					GlStateManager.scale(0.75, 0.75, 0.75);
 					
-					this.drawCenteredString(fontRenderer, Integer.toString(EnumsVC.AirshipTierBalloon.byId(this.airship.getMetaTierBalloon()).getMaxAltitude()), 0, 0, 16187136);
+					this.drawCenteredString(fontRenderer, Integer.toString(EnumsVC.AirshipTierBalloon.byId(this.airship.getMainTierBalloon()).getMaxAltitude()), 0, 0, 16187136);
 				}
 				GlStateManager.popMatrix();
 			}
@@ -385,7 +385,7 @@ public class GuiAirshipHUD extends Gui {
 					GlStateManager.translate(hudXIn + 108.5, hudYIn + 6, 0);
 					GlStateManager.scale(0.75, 0.75, 0.75);
 					
-					this.drawCenteredString(fontRenderer, Integer.toString(EnumsVC.AirshipTierBalloon.byId(this.airship.getMetaTierBalloon()).getMaxAltitude()), 0, 0, 196352);
+					this.drawCenteredString(fontRenderer, Integer.toString(EnumsVC.AirshipTierBalloon.byId(this.airship.getMainTierBalloon()).getMaxAltitude()), 0, 0, 196352);
 				}
 				GlStateManager.popMatrix();
 			}
@@ -404,11 +404,11 @@ public class GuiAirshipHUD extends Gui {
 		//Calculation from ticks to seconds.
 		if(this.airship.airshipFuelTick == 0)
 		{
-			timer = ((((this.airship.getPowered() / 10) + 18) + (this.airship.getItemFuelStackPowered() / 10)) / 20);
+			timer = ((((this.airship.getStoredFuel() / 10) + 18) + (this.airship.getFuelItemStackPowered() / 10)) / 20);
 		}
 		else
 		{
-			timer = ((((this.airship.getPowered() / this.airship.airshipFuelTick) + 18) + (this.airship.getItemFuelStackPowered() / this.airship.airshipFuelTick)) / 20);
+			timer = ((((this.airship.getStoredFuel() / this.airship.airshipFuelTick) + 18) + (this.airship.getFuelItemStackPowered() / this.airship.airshipFuelTick)) / 20);
 		}
 		
 		remainder = (timer % 3600);
@@ -421,9 +421,9 @@ public class GuiAirshipHUD extends Gui {
 		String mins = (minutes < 10 ? "0" : "") + minutes;
 		String secs = (seconds < 10 ? "0" : "") + seconds;
 		
-		if(this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_LESSER.getMetadata()
-		|| this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_NORMAL.getMetadata()
-		|| this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_GREATER.getMetadata())
+		if(this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_LESSER.getMetadata()
+		|| this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_NORMAL.getMetadata()
+		|| this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_GREATER.getMetadata())
 		{
 			//Time "infinite" to display
 			String s1 = "\u221e" + ":" + "\u221e" + ":" + "\u221e";

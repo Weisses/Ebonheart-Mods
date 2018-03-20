@@ -34,6 +34,6 @@ public class MessageHelperGuiVisualMenuBalloonTier1Pg1 extends MessageBase<Messa
 	public void handleServerSide(MessageHelperGuiVisualMenuBalloonTier1Pg1 message, EntityPlayer player) 
 	{
 		EntityAirshipBaseVC airship = (EntityAirshipBaseVC) player.getRidingEntity();
-		airship.metaBalloonVisual = message.metaBalloon;
+		airship.balloonPatternVisual = message.metaBalloon;
 	}
 }

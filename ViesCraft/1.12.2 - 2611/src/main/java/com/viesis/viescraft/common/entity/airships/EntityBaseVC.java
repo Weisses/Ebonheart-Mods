@@ -6,7 +6,6 @@ import javax.annotation.Nullable;
 
 import com.google.common.collect.Lists;
 import com.viesis.viescraft.api.util.Keybinds;
-import com.viesis.viescraft.api.util.LogHelper;
 
 import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.material.Material;
@@ -86,12 +85,25 @@ public class EntityBaseVC extends Entity {
     public EntityBaseVC(World worldIn, double x, double y, double z, 
     		int coreTierIn, int frameTierIn, int engineTierIn, int balloonTierIn, 
     		int moduleSlot1In, 
-    		int coreVisualIn, 
-    		int frameVisualIn, boolean frameVisualTransparentIn, boolean frameVisualColorIn,
-    		int frameColorRedIn, int frameColorGreenIn, int frameColorBlueIn,
-    		int engineVisualIn, 
-    		int balloonVisualIn, boolean balloonVisualTransparentIn, boolean balloonVisualColorIn,
-    		int balloonColorRedIn, int balloonColorGreenIn, int balloonColorBlueIn, 
+    		int fuelIn, int fuelTotalIn, int redstoneIn, int redstoneTotalIn,
+    		
+    		int coreModelVisualFrameIn, 
+    		int coreModelVisualEngineIn, 
+    		int coreModelVisualBalloonIn, 
+    		
+    		int frameSkinVisualIn, 
+    		boolean frameSkinVisualTransparentIn, 
+    		boolean frameSkinVisualColorIn,
+    		int frameSkinColorRedIn, int frameSkinColorGreenIn, int frameSkinColorBlueIn,
+    		
+    		int engineParticleVisualIn, 
+    		int engineDisplayTypeVisualIn, int engineDisplayIDVisualIn,
+    		
+    		int balloonPatternVisualIn, 
+    		boolean balloonPatternVisualTransparentIn, 
+    		boolean balloonPatternVisualColorIn,
+    		int balloonPatternColorRedIn, int balloonPatternColorGreenIn, int balloonPatternColorBlueIn, 
+    		
     		boolean learnedModuleAltitudeIn, int selectedModuleAltitudeIn, 
     		boolean learnedModuleSpeedIn, int selectedModuleSpeedIn, 
     		boolean learnedModuleStorageIn, int selectedModuleStorageIn, 
@@ -99,7 +111,10 @@ public class EntityBaseVC extends Entity {
     		boolean learnedModuleMusicIn, int selectedModuleMusicIn, 
     		boolean learnedModuleCruiseIn, int selectedModuleCruiseIn, 
     		boolean learnedModuleWaterIn, int selectedModuleWaterIn, 
-    		boolean learnedModuleFuelInfiniteIn, int selectedModuleFuelInfiniteIn)
+    		boolean learnedModuleFuelInfiniteIn, int selectedModuleFuelInfiniteIn,
+    		boolean learnedModuleBombIn, int selectedModuleBombIn,
+    		
+    		NBTTagCompound compoundIn, String customNameIn)
     {
         
     	this(worldIn);

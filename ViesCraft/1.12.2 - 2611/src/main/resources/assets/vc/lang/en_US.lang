@@ -89,6 +89,8 @@ vc.main.viesakron=Viesakron
 vc.button.learn=Learn
 vc.button.choosemusic=Choose Music
 vc.button.play=Play
+vc.button.stop=Stop
+vc.button.random=Random
 vc.button.save=Save
 vc.button.removecolor=Remove Color
 vc.button.done=Done
@@ -111,6 +113,8 @@ vc.gui.tt.engine.1=Engine affects an airship's
 vc.gui.tt.engine.2=fuel efficiency.
 vc.gui.tt.balloon.1=Balloon affects an airship's
 vc.gui.tt.balloon.2=maximum elevation.
+vc.gui.tt.maxed.1=This upgrade has
+vc.gui.tt.maxed.2=been maxed!
 
 vc.item.tt.shifthelper.0=Hold [Shift] for more info.
 
@@ -608,6 +612,9 @@ vc.item.enum.module.21=Greater Water Landing
 vc.item.enum.module.22=Lesser Infinite Fuel
 vc.item.enum.module.23=Infinite Fuel
 vc.item.enum.module.24=Greater Infinite Fuel
+vc.item.enum.module.25=Lesser Bombing
+vc.item.enum.module.26=Bombing
+vc.item.enum.module.27=Greater Bombing
 
 
 vc.item.enum.song.0=None
@@ -633,6 +640,13 @@ vc.item.enum.song.18=Timescar
 vc.enum.bomb.0=Casing
 vc.enum.bomb.1=Small
 vc.enum.bomb.2=Big
+
+vc.enum.displaysymbol.0=None
+vc.enum.displaysymbol.1=Item
+vc.enum.displaysymbol.2=Block
+vc.enum.displaysymbol.3=Entity
+vc.enum.displaysymbol.4=Head
+vc.enum.displaysymbol.5=Supporter
 
 //-----Colors-----
 vc.item.color.1=Alice Blue

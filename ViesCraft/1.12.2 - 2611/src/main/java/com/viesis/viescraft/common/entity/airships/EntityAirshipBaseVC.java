@@ -1,5 +1,18 @@
 package com.viesis.viescraft.common.entity.airships;
 
+import com.viesis.viescraft.api.EnumsVC;
+import com.viesis.viescraft.api.FuelVC;
+import com.viesis.viescraft.api.References;
+import com.viesis.viescraft.client.InitParticlesVCRender;
+import com.viesis.viescraft.configs.ViesCraftConfig;
+import com.viesis.viescraft.init.InitItemsVC;
+import com.viesis.viescraft.network.NetworkHandler;
+import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenu;
+import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenuMusic;
+import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenuStorageGreater;
+import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenuStorageLesser;
+import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenuStorageNormal;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
@@ -23,84 +36,74 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 
-import com.viesis.viescraft.api.EnumsVC;
-import com.viesis.viescraft.api.FuelVC;
-import com.viesis.viescraft.api.References;
-import com.viesis.viescraft.api.util.LogHelper;
-import com.viesis.viescraft.client.InitParticlesVCRender;
-import com.viesis.viescraft.configs.ViesCraftConfig;
-import com.viesis.viescraft.init.InitItemsVC;
-import com.viesis.viescraft.network.NetworkHandler;
-import com.viesis.viescraft.network.server.airship.main.MessageGuiAirshipMenu;
-import com.viesis.viescraft.network.server.airship.main.MessageGuiAirshipMenuMusic;
-import com.viesis.viescraft.network.server.airship.main.MessageGuiAirshipMenuStorageGreater;
-import com.viesis.viescraft.network.server.airship.main.MessageGuiAirshipMenuStorageLesser;
-import com.viesis.viescraft.network.server.airship.main.MessageGuiAirshipMenuStorageNormal;
-
 public class EntityAirshipBaseVC extends EntityBaseVC {
 	
+	protected static final DataParameter<String> CUSTOM_NAME_DM = EntityDataManager.<String>createKey(EntityAirshipBaseVC.class, DataSerializers.STRING);
+  	
 	//Fuel system
-  	protected static final DataParameter<Integer> AIRSHIP_POWERED = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
-  	protected static final DataParameter<Integer> AIRSHIP_POWERED_TOTAL = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
-  	protected static final DataParameter<Integer> AIRSHIP_ITEMFUELSTACK_POWERED = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
-  	protected static final DataParameter<Integer> AIRSHIP_ITEMFUELSTACK_POWERED_SIZE = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
-    
+  	protected static final DataParameter<Integer> STORED_FUEL_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+  	protected static final DataParameter<Integer> STORED_FUEL_TOTAL_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+  	protected static final DataParameter<Integer> FUEL_ITEMSTACK_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+  	protected static final DataParameter<Integer> FUEL_ITEMSTACK_SIZE_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+  	protected static final DataParameter<Integer> STORED_REDSTONE_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+  	protected static final DataParameter<Integer> STORED_REDSTONE_TOTAL_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+  	
   	//Tier system
-  	protected static final DataParameter<Integer> AIRSHIP_TIER_CORE = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
-  	protected static final DataParameter<Integer> AIRSHIP_TIER_FRAME = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
-  	protected static final DataParameter<Integer> AIRSHIP_TIER_ENGINE = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
-  	protected static final DataParameter<Integer> AIRSHIP_TIER_BALLOON = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+  	protected static final DataParameter<Integer> MAIN_TIER_CORE_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+  	protected static final DataParameter<Integer> MAIN_TIER_FRAME_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+  	protected static final DataParameter<Integer> MAIN_TIER_ENGINE_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+  	protected static final DataParameter<Integer> MAIN_TIER_BALLOON_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
   	
     //Core system
-    protected static final DataParameter<Integer> AIRSHIP_CORE_VISUAL = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+    protected static final DataParameter<Integer> CORE_MODEL_VISUAL_FRAME_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+    protected static final DataParameter<Integer> CORE_MODEL_VISUAL_ENGINE_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+    protected static final DataParameter<Integer> CORE_MODEL_VISUAL_BALLOON_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
     
     //Frame system
-    protected static final DataParameter<Integer> AIRSHIP_FRAME_VISUAL = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
-    protected static final DataParameter<Boolean> AIRSHIP_FRAME_VISUAL_TRANSPARENT = EntityDataManager.<Boolean>createKey(EntityAirshipBaseVC.class, DataSerializers.BOOLEAN);
-    protected static final DataParameter<Boolean> AIRSHIP_FRAME_VISUAL_COLOR = EntityDataManager.<Boolean>createKey(EntityAirshipBaseVC.class, DataSerializers.BOOLEAN);
-    protected static final DataParameter<Integer> AIRSHIP_FRAME_COLOR_RED = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
-    protected static final DataParameter<Integer> AIRSHIP_FRAME_COLOR_GREEN = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
-    protected static final DataParameter<Integer> AIRSHIP_FRAME_COLOR_BLUE = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+    protected static final DataParameter<Integer> FRAME_SKIN_VISUAL_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+    protected static final DataParameter<Boolean> FRAME_SKIN_VISUAL_TRANSPARENT_DM = EntityDataManager.<Boolean>createKey(EntityAirshipBaseVC.class, DataSerializers.BOOLEAN);
+    protected static final DataParameter<Boolean> FRAME_SKIN_VISUAL_COLOR_DM = EntityDataManager.<Boolean>createKey(EntityAirshipBaseVC.class, DataSerializers.BOOLEAN);
+    protected static final DataParameter<Integer> FRAME_SKIN_COLOR_RED_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+    protected static final DataParameter<Integer> FRAME_SKIN_COLOR_GREEN_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+    protected static final DataParameter<Integer> FRAME_SKIN_COLOR_BLUE_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
     
     //Engine system
-    protected static final DataParameter<Integer> AIRSHIP_ENGINE_VISUAL = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+    protected static final DataParameter<Integer> ENGINE_PARTICLE_VISUAL_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+    protected static final DataParameter<Integer> ENGINE_DISPLAY_TYPE_VISUAL_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+    protected static final DataParameter<Integer> ENGINE_DISPLAY_ID_VISUAL_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
     
     //Balloon system
-    protected static final DataParameter<Integer> AIRSHIP_BALLOON_VISUAL = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
-    protected static final DataParameter<Boolean> AIRSHIP_BALLOON_VISUAL_TRANSPARENT = EntityDataManager.<Boolean>createKey(EntityAirshipBaseVC.class, DataSerializers.BOOLEAN);
-    protected static final DataParameter<Boolean> AIRSHIP_BALLOON_VISUAL_COLOR = EntityDataManager.<Boolean>createKey(EntityAirshipBaseVC.class, DataSerializers.BOOLEAN);
-    protected static final DataParameter<Integer> AIRSHIP_BALLOON_COLOR_RED = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
-    protected static final DataParameter<Integer> AIRSHIP_BALLOON_COLOR_GREEN = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
-    protected static final DataParameter<Integer> AIRSHIP_BALLOON_COLOR_BLUE = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+    protected static final DataParameter<Integer> BALLOON_PATTERN_VISUAL_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+    protected static final DataParameter<Boolean> BALLOON_PATTERN_VISUAL_TRANSPARENT_DM = EntityDataManager.<Boolean>createKey(EntityAirshipBaseVC.class, DataSerializers.BOOLEAN);
+    protected static final DataParameter<Boolean> BALLOON_PATTERN_VISUAL_COLOR_DM = EntityDataManager.<Boolean>createKey(EntityAirshipBaseVC.class, DataSerializers.BOOLEAN);
+    protected static final DataParameter<Integer> BALLOON_PATTERN_COLOR_RED_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+    protected static final DataParameter<Integer> BALLOON_PATTERN_COLOR_GREEN_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+    protected static final DataParameter<Integer> BALLOON_PATTERN_COLOR_BLUE_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
     
     //Module system
-    protected static final DataParameter<Integer> MODULE_SLOT1_VARIANT = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
-	protected static final DataParameter<Integer> MODULE_JUKEBOX_SELECTED_SONG = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
-	protected static final DataParameter<Integer> MODULE_CRUISECONTROL_SELECTED_SPEED = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+    protected static final DataParameter<Integer> MODULE_ACTIVE_SLOT1_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
 	
-	protected static final DataParameter<Boolean> MODULE_SLOT1_LEARNED_ALTITUDE = EntityDataManager.<Boolean>createKey(EntityAirshipBaseVC.class, DataSerializers.BOOLEAN);
-	protected static final DataParameter<Integer> MODULE_SLOT1_SELECTED_ALTITUDE = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+    protected static final DataParameter<Integer> MODULE_JUKEBOX_SELECTED_SONG_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+	protected static final DataParameter<Integer> MODULE_CRUISECONTROL_SELECTED_SPEED_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
 	
-	protected static final DataParameter<Boolean> MODULE_SLOT1_LEARNED_SPEED = EntityDataManager.<Boolean>createKey(EntityAirshipBaseVC.class, DataSerializers.BOOLEAN);
-	protected static final DataParameter<Integer> MODULE_SLOT1_SELECTED_SPEED = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
-	
-	protected static final DataParameter<Boolean> MODULE_SLOT1_LEARNED_STORAGE = EntityDataManager.<Boolean>createKey(EntityAirshipBaseVC.class, DataSerializers.BOOLEAN);
-	protected static final DataParameter<Integer> MODULE_SLOT1_SELECTED_STORAGE = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
-	
-	protected static final DataParameter<Boolean> MODULE_SLOT1_LEARNED_FUEL = EntityDataManager.<Boolean>createKey(EntityAirshipBaseVC.class, DataSerializers.BOOLEAN);
-	protected static final DataParameter<Integer> MODULE_SLOT1_SELECTED_FUEL = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
-
-	protected static final DataParameter<Boolean> MODULE_SLOT1_LEARNED_MUSIC = EntityDataManager.<Boolean>createKey(EntityAirshipBaseVC.class, DataSerializers.BOOLEAN);
-	protected static final DataParameter<Integer> MODULE_SLOT1_SELECTED_MUSIC = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
-
-	protected static final DataParameter<Boolean> MODULE_SLOT1_LEARNED_CRUISE = EntityDataManager.<Boolean>createKey(EntityAirshipBaseVC.class, DataSerializers.BOOLEAN);
-	protected static final DataParameter<Integer> MODULE_SLOT1_SELECTED_CRUISE = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
-
-	protected static final DataParameter<Boolean> MODULE_SLOT1_LEARNED_WATER = EntityDataManager.<Boolean>createKey(EntityAirshipBaseVC.class, DataSerializers.BOOLEAN);
-	protected static final DataParameter<Integer> MODULE_SLOT1_SELECTED_WATER = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
-	
-	protected static final DataParameter<Boolean> MODULE_SLOT1_LEARNED_FUELINFINITE = EntityDataManager.<Boolean>createKey(EntityAirshipBaseVC.class, DataSerializers.BOOLEAN);
-	protected static final DataParameter<Integer> MODULE_SLOT1_SELECTED_FUELINFINITE = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+	protected static final DataParameter<Boolean> MODULE_LEARNED_ALTITUDE_DM = EntityDataManager.<Boolean>createKey(EntityAirshipBaseVC.class, DataSerializers.BOOLEAN);
+	protected static final DataParameter<Integer> MODULE_SELECTED_ALTITUDE_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+	protected static final DataParameter<Boolean> MODULE_LEARNED_SPEED_DM = EntityDataManager.<Boolean>createKey(EntityAirshipBaseVC.class, DataSerializers.BOOLEAN);
+	protected static final DataParameter<Integer> MODULE_SELECTED_SPEED_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+	protected static final DataParameter<Boolean> MODULE_LEARNED_STORAGE_DM = EntityDataManager.<Boolean>createKey(EntityAirshipBaseVC.class, DataSerializers.BOOLEAN);
+	protected static final DataParameter<Integer> MODULE_SELECTED_STORAGE_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+	protected static final DataParameter<Boolean> MODULE_LEARNED_FUEL_DM = EntityDataManager.<Boolean>createKey(EntityAirshipBaseVC.class, DataSerializers.BOOLEAN);
+	protected static final DataParameter<Integer> MODULE_SELECTED_FUEL_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+	protected static final DataParameter<Boolean> MODULE_LEARNED_MUSIC_DM = EntityDataManager.<Boolean>createKey(EntityAirshipBaseVC.class, DataSerializers.BOOLEAN);
+	protected static final DataParameter<Integer> MODULE_SELECTED_MUSIC_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+	protected static final DataParameter<Boolean> MODULE_LEARNED_CRUISE_DM = EntityDataManager.<Boolean>createKey(EntityAirshipBaseVC.class, DataSerializers.BOOLEAN);
+	protected static final DataParameter<Integer> MODULE_SELECTED_CRUISE_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+	protected static final DataParameter<Boolean> MODULE_LEARNED_WATER_DM = EntityDataManager.<Boolean>createKey(EntityAirshipBaseVC.class, DataSerializers.BOOLEAN);
+	protected static final DataParameter<Integer> MODULE_SELECTED_WATER_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+	protected static final DataParameter<Boolean> MODULE_LEARNED_FUELINFINITE_DM = EntityDataManager.<Boolean>createKey(EntityAirshipBaseVC.class, DataSerializers.BOOLEAN);
+	protected static final DataParameter<Integer> MODULE_SELECTED_FUELINFINITE_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+	protected static final DataParameter<Boolean> MODULE_LEARNED_BOMB_DM = EntityDataManager.<Boolean>createKey(EntityAirshipBaseVC.class, DataSerializers.BOOLEAN);
+	protected static final DataParameter<Integer> MODULE_SELECTED_BOMB_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
 	
 	
 	
@@ -114,42 +117,52 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
 	 * Slot  4 = Upgrade Balloon <br>
 	 * Slot 11 = Module Slot1 <br>
 	 * Slot 12 = Module Slot2 <br>
+	 * Slot 16 = Display Banner <br> 
 	 * Slot 20-28 = Inventory Small <br>
 	 * Slot 20-37 = Inventory Large <br>
 	 */
     public ItemStackHandler inventory;
     protected int size = 64;
     
+    public String customName = "Airship";
+	
 	//Fuel
-	public int airshipBurnTime;
-	public int airshipTotalBurnTime;
-	public int itemFuelStackSize;
-	public int itemFuelStack;
+	public int storedFuel;
+	public int storedFuelTotal;
+	public int fuelItemStack;
+	public int fuelItemStackSize;
+	public int storedRedstone;
+	public int storedRedstoneTotal;
+	
 	public int airshipFuelTick;
 	
     //Main setters/getters
-	public int metaTierCore;
-	public int metaTierFrame;
-	public int metaTierEngine;
-	public int metaTierBalloon;
+	public int mainTierCore;
+	public int mainTierFrame;
+	public int mainTierEngine;
+	public int mainTierBalloon;
 	
-	public int metaCoreVisual;
+	public int coreModelVisualFrame;
+	public int coreModelVisualEngine;
+	public int coreModelVisualBalloon;
 	
-	public int metaFrameVisual;
-	public boolean metaFrameVisualTransparent;
-	public boolean metaFrameVisualColor;
-	public int metaFrameColorRed;
-	public int metaFrameColorGreen;
-	public int metaFrameColorBlue;
+	public int frameSkinVisual;
+	public boolean frameSkinVisualTransparent;
+	public boolean frameSkinVisualColor;
+	public int frameSkinColorRed;
+	public int frameSkinColorGreen;
+	public int frameSkinColorBlue;
 	
-	public int metaEngineVisual;
+	public int engineParticleVisual;
+	public int engineDisplayTypeVisual;
+	public int engineDisplayIDVisual;
 	
-	public int metaBalloonVisual;
-	public boolean metaBalloonVisualTransparent;
-	public boolean metaBalloonVisualColor;
-	public int metaBalloonColorRed;
-	public int metaBalloonColorGreen;
-	public int metaBalloonColorBlue;
+	public int balloonPatternVisual;
+	public boolean balloonPatternVisualTransparent;
+	public boolean balloonPatternVisualColor;
+	public int balloonPatternColorRed;
+	public int balloonPatternColorGreen;
+	public int balloonPatternColorBlue;
 	
     //Movement logic
     public float AirshipSpeedTurn;
@@ -157,13 +170,12 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
     public float AirshipSpeedUp;
     public float AirshipSpeedDown;
     
-    public String customName;
-	protected boolean canDrop;
+    protected boolean canDrop;
 	
 	public float speedModifier;
 	
 	//Modules
-	public int metaModuleVariantSlot1;
+	public int moduleActiveSlot1;
 	
 	public int metaJukeboxSelectedSong;
     public int metaCruiseControlSelectedSpeed;
@@ -201,7 +213,11 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
 	public int selectedModuleFuelInfinite;
 	/** Learned Fuel Infinite */
 	public boolean learnedModuleFuelInfinite;
-    
+	/** Selected Bomb */
+	public int selectedModuleBomb;
+	/** Learned Bomb */
+	public boolean learnedModuleBomb;
+	
     References rf;
 	
 	
@@ -216,12 +232,25 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
     public EntityAirshipBaseVC(World worldIn, double x, double y, double z, 
     		int coreTierIn, int frameTierIn, int engineTierIn, int balloonTierIn, 
     		int moduleSlot1In, 
-    		int coreVisualIn, 
-    		int frameVisualIn, boolean frameVisualTransparentIn, boolean frameVisualColorIn,
-    		int frameColorRedIn, int frameColorGreenIn, int frameColorBlueIn, 
-    		int engineVisualIn, 
-    		int balloonVisualIn, boolean balloonVisualTransparentIn, boolean balloonVisualColorIn,
-    		int balloonColorRedIn, int balloonColorGreenIn, int balloonColorBlueIn,
+    		int fuelIn, int fuelTotalIn, int redstoneIn, int redstoneTotalIn,
+    		
+    		int coreModelVisualFrameIn, 
+    		int coreModelVisualEngineIn, 
+    		int coreModelVisualBalloonIn, 
+    		
+    		int frameSkinVisualIn, 
+    		boolean frameSkinVisualTransparentIn, 
+    		boolean frameSkinVisualColorIn,
+    		int frameSkinColorRedIn, int frameSkinColorGreenIn, int frameSkinColorBlueIn,
+    		
+    		int engineParticleVisualIn, 
+    		int engineDisplayTypeVisualIn, int engineDisplayIDVisualIn,
+    		
+    		int balloonPatternVisualIn, 
+    		boolean balloonPatternVisualTransparentIn, 
+    		boolean balloonPatternVisualColorIn,
+    		int balloonPatternColorRedIn, int balloonPatternColorGreenIn, int balloonPatternColorBlueIn, 
+    		
     		boolean learnedModuleAltitudeIn, int selectedModuleAltitudeIn, 
     		boolean learnedModuleSpeedIn, int selectedModuleSpeedIn, 
     		boolean learnedModuleStorageIn, int selectedModuleStorageIn, 
@@ -229,7 +258,10 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
     		boolean learnedModuleMusicIn, int selectedModuleMusicIn, 
     		boolean learnedModuleCruiseIn, int selectedModuleCruiseIn, 
     		boolean learnedModuleWaterIn, int selectedModuleWaterIn, 
-    		boolean learnedModuleFuelInfiniteIn, int selectedModuleFuelInfiniteIn)
+    		boolean learnedModuleFuelInfiniteIn, int selectedModuleFuelInfiniteIn,
+    		boolean learnedModuleBombIn, int selectedModuleBombIn,
+    		
+    		NBTTagCompound compoundIn, String customNameIn)
     {
         this(worldIn);
         this.setPosition(x, y, z);
@@ -240,8 +272,6 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
         this.prevPosX = x;
         this.prevPosY = y;
         this.prevPosZ = z;
-        
-        this.inventory = new ItemStackHandler(size);
     }
     
     @Override
@@ -249,57 +279,65 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
     {
     	super.entityInit();
     	
-		this.dataManager.register(AIRSHIP_POWERED, Integer.valueOf(this.airshipBurnTime));
-        this.dataManager.register(AIRSHIP_POWERED_TOTAL, Integer.valueOf(this.airshipTotalBurnTime));
-        this.dataManager.register(AIRSHIP_ITEMFUELSTACK_POWERED, Integer.valueOf(this.itemFuelStack));
-        this.dataManager.register(AIRSHIP_ITEMFUELSTACK_POWERED_SIZE, Integer.valueOf(this.itemFuelStackSize));
+    	this.dataManager.register(CUSTOM_NAME_DM, String.valueOf(this.customName));
         
-        this.dataManager.register(AIRSHIP_TIER_CORE, Integer.valueOf(this.metaTierCore));
-        this.dataManager.register(AIRSHIP_TIER_FRAME, Integer.valueOf(this.metaTierFrame));
-        this.dataManager.register(AIRSHIP_TIER_ENGINE, Integer.valueOf(this.metaTierEngine));
-        this.dataManager.register(AIRSHIP_TIER_BALLOON, Integer.valueOf(this.metaTierBalloon));
+		this.dataManager.register(STORED_FUEL_DM, Integer.valueOf(this.storedFuel));
+        this.dataManager.register(STORED_FUEL_TOTAL_DM, Integer.valueOf(this.storedFuelTotal));
+        this.dataManager.register(FUEL_ITEMSTACK_DM, Integer.valueOf(this.fuelItemStack));
+        this.dataManager.register(FUEL_ITEMSTACK_SIZE_DM, Integer.valueOf(this.fuelItemStackSize));
+        this.dataManager.register(STORED_REDSTONE_DM, Integer.valueOf(this.storedRedstone));
+        this.dataManager.register(STORED_REDSTONE_TOTAL_DM, Integer.valueOf(this.storedRedstoneTotal));
         
-        this.dataManager.register(AIRSHIP_CORE_VISUAL, Integer.valueOf(this.metaCoreVisual));
+        this.dataManager.register(MAIN_TIER_CORE_DM, Integer.valueOf(this.mainTierCore));
+        this.dataManager.register(MAIN_TIER_FRAME_DM, Integer.valueOf(this.mainTierFrame));
+        this.dataManager.register(MAIN_TIER_ENGINE_DM, Integer.valueOf(this.mainTierEngine));
+        this.dataManager.register(MAIN_TIER_BALLOON_DM, Integer.valueOf(this.mainTierBalloon));
         
-        this.dataManager.register(AIRSHIP_FRAME_VISUAL, Integer.valueOf(this.metaFrameVisual));
-        this.dataManager.register(AIRSHIP_FRAME_VISUAL_TRANSPARENT, Boolean.valueOf(this.metaFrameVisualTransparent));
-        this.dataManager.register(AIRSHIP_FRAME_VISUAL_COLOR, Boolean.valueOf(this.metaFrameVisualColor));
-        this.dataManager.register(AIRSHIP_FRAME_COLOR_RED, Integer.valueOf(this.metaFrameColorRed));
-        this.dataManager.register(AIRSHIP_FRAME_COLOR_GREEN, Integer.valueOf(this.metaFrameColorGreen));
-        this.dataManager.register(AIRSHIP_FRAME_COLOR_BLUE, Integer.valueOf(this.metaFrameColorBlue));
+        this.dataManager.register(CORE_MODEL_VISUAL_FRAME_DM, Integer.valueOf(this.coreModelVisualFrame));
+        this.dataManager.register(CORE_MODEL_VISUAL_ENGINE_DM, Integer.valueOf(this.coreModelVisualEngine));
+        this.dataManager.register(CORE_MODEL_VISUAL_BALLOON_DM, Integer.valueOf(this.coreModelVisualBalloon));
         
-        this.dataManager.register(AIRSHIP_ENGINE_VISUAL, Integer.valueOf(this.metaEngineVisual));
+        this.dataManager.register(FRAME_SKIN_VISUAL_DM, Integer.valueOf(this.frameSkinVisual));
+        this.dataManager.register(FRAME_SKIN_VISUAL_TRANSPARENT_DM, Boolean.valueOf(this.frameSkinVisualTransparent));
+        this.dataManager.register(FRAME_SKIN_VISUAL_COLOR_DM, Boolean.valueOf(this.frameSkinVisualColor));
+        this.dataManager.register(FRAME_SKIN_COLOR_RED_DM, Integer.valueOf(this.frameSkinColorRed));
+        this.dataManager.register(FRAME_SKIN_COLOR_GREEN_DM, Integer.valueOf(this.frameSkinColorGreen));
+        this.dataManager.register(FRAME_SKIN_COLOR_BLUE_DM, Integer.valueOf(this.frameSkinColorBlue));
         
-        this.dataManager.register(AIRSHIP_BALLOON_VISUAL, Integer.valueOf(this.metaBalloonVisual));
-        this.dataManager.register(AIRSHIP_BALLOON_VISUAL_TRANSPARENT, Boolean.valueOf(this.metaBalloonVisualTransparent));
-        this.dataManager.register(AIRSHIP_BALLOON_VISUAL_COLOR, Boolean.valueOf(this.metaBalloonVisualColor));
-        this.dataManager.register(AIRSHIP_BALLOON_COLOR_RED, Integer.valueOf(this.metaBalloonColorRed));
-        this.dataManager.register(AIRSHIP_BALLOON_COLOR_GREEN, Integer.valueOf(this.metaBalloonColorGreen));
-        this.dataManager.register(AIRSHIP_BALLOON_COLOR_BLUE, Integer.valueOf(this.metaBalloonColorBlue));
+        this.dataManager.register(ENGINE_PARTICLE_VISUAL_DM, Integer.valueOf(this.engineParticleVisual));
+        this.dataManager.register(ENGINE_DISPLAY_TYPE_VISUAL_DM, Integer.valueOf(this.engineDisplayTypeVisual));
+        this.dataManager.register(ENGINE_DISPLAY_ID_VISUAL_DM, Integer.valueOf(this.engineDisplayIDVisual));
         
-        this.dataManager.register(MODULE_SLOT1_VARIANT, Integer.valueOf(this.metaModuleVariantSlot1));
+        this.dataManager.register(BALLOON_PATTERN_VISUAL_DM, Integer.valueOf(this.balloonPatternVisual));
+        this.dataManager.register(BALLOON_PATTERN_VISUAL_TRANSPARENT_DM, Boolean.valueOf(this.balloonPatternVisualTransparent));
+        this.dataManager.register(BALLOON_PATTERN_VISUAL_COLOR_DM, Boolean.valueOf(this.balloonPatternVisualColor));
+        this.dataManager.register(BALLOON_PATTERN_COLOR_RED_DM, Integer.valueOf(this.balloonPatternColorRed));
+        this.dataManager.register(BALLOON_PATTERN_COLOR_GREEN_DM, Integer.valueOf(this.balloonPatternColorGreen));
+        this.dataManager.register(BALLOON_PATTERN_COLOR_BLUE_DM, Integer.valueOf(this.balloonPatternColorBlue));
         
-        this.dataManager.register(MODULE_JUKEBOX_SELECTED_SONG, Integer.valueOf(this.metaJukeboxSelectedSong));
-        this.dataManager.register(MODULE_CRUISECONTROL_SELECTED_SPEED, Integer.valueOf(this.metaCruiseControlSelectedSpeed));
+        this.dataManager.register(MODULE_ACTIVE_SLOT1_DM, Integer.valueOf(this.moduleActiveSlot1));
         
+        this.dataManager.register(MODULE_JUKEBOX_SELECTED_SONG_DM, Integer.valueOf(this.metaJukeboxSelectedSong));
+        this.dataManager.register(MODULE_CRUISECONTROL_SELECTED_SPEED_DM, Integer.valueOf(this.metaCruiseControlSelectedSpeed));
         
-        
-        this.dataManager.register(MODULE_SLOT1_SELECTED_ALTITUDE, Integer.valueOf(this.selectedModuleAltitude));
-        this.dataManager.register(MODULE_SLOT1_LEARNED_ALTITUDE, Boolean.valueOf(this.learnedModuleAltitude));
-        this.dataManager.register(MODULE_SLOT1_SELECTED_SPEED, Integer.valueOf(this.selectedModuleSpeed));
-        this.dataManager.register(MODULE_SLOT1_LEARNED_SPEED, Boolean.valueOf(this.learnedModuleSpeed));
-        this.dataManager.register(MODULE_SLOT1_SELECTED_STORAGE, Integer.valueOf(this.selectedModuleStorage));
-        this.dataManager.register(MODULE_SLOT1_LEARNED_STORAGE, Boolean.valueOf(this.learnedModuleStorage));
-        this.dataManager.register(MODULE_SLOT1_SELECTED_FUEL, Integer.valueOf(this.selectedModuleFuel));
-        this.dataManager.register(MODULE_SLOT1_LEARNED_FUEL, Boolean.valueOf(this.learnedModuleFuel));
-        this.dataManager.register(MODULE_SLOT1_SELECTED_MUSIC, Integer.valueOf(this.selectedModuleMusic));
-        this.dataManager.register(MODULE_SLOT1_LEARNED_MUSIC, Boolean.valueOf(this.learnedModuleMusic));
-        this.dataManager.register(MODULE_SLOT1_SELECTED_CRUISE, Integer.valueOf(this.selectedModuleCruise));
-        this.dataManager.register(MODULE_SLOT1_LEARNED_CRUISE, Boolean.valueOf(this.learnedModuleCruise));
-        this.dataManager.register(MODULE_SLOT1_SELECTED_WATER, Integer.valueOf(this.selectedModuleWater));
-        this.dataManager.register(MODULE_SLOT1_LEARNED_WATER, Boolean.valueOf(this.learnedModuleWater));
-        this.dataManager.register(MODULE_SLOT1_SELECTED_FUELINFINITE, Integer.valueOf(this.selectedModuleFuelInfinite));
-        this.dataManager.register(MODULE_SLOT1_LEARNED_FUELINFINITE, Boolean.valueOf(this.learnedModuleFuelInfinite));
+        this.dataManager.register(MODULE_SELECTED_ALTITUDE_DM, Integer.valueOf(this.selectedModuleAltitude));
+        this.dataManager.register(MODULE_LEARNED_ALTITUDE_DM, Boolean.valueOf(this.learnedModuleAltitude));
+        this.dataManager.register(MODULE_SELECTED_SPEED_DM, Integer.valueOf(this.selectedModuleSpeed));
+        this.dataManager.register(MODULE_LEARNED_SPEED_DM, Boolean.valueOf(this.learnedModuleSpeed));
+        this.dataManager.register(MODULE_SELECTED_STORAGE_DM, Integer.valueOf(this.selectedModuleStorage));
+        this.dataManager.register(MODULE_LEARNED_STORAGE_DM, Boolean.valueOf(this.learnedModuleStorage));
+        this.dataManager.register(MODULE_SELECTED_FUEL_DM, Integer.valueOf(this.selectedModuleFuel));
+        this.dataManager.register(MODULE_LEARNED_FUEL_DM, Boolean.valueOf(this.learnedModuleFuel));
+        this.dataManager.register(MODULE_SELECTED_MUSIC_DM, Integer.valueOf(this.selectedModuleMusic));
+        this.dataManager.register(MODULE_LEARNED_MUSIC_DM, Boolean.valueOf(this.learnedModuleMusic));
+        this.dataManager.register(MODULE_SELECTED_CRUISE_DM, Integer.valueOf(this.selectedModuleCruise));
+        this.dataManager.register(MODULE_LEARNED_CRUISE_DM, Boolean.valueOf(this.learnedModuleCruise));
+        this.dataManager.register(MODULE_SELECTED_WATER_DM, Integer.valueOf(this.selectedModuleWater));
+        this.dataManager.register(MODULE_LEARNED_WATER_DM, Boolean.valueOf(this.learnedModuleWater));
+        this.dataManager.register(MODULE_SELECTED_FUELINFINITE_DM, Integer.valueOf(this.selectedModuleFuelInfinite));
+        this.dataManager.register(MODULE_LEARNED_FUELINFINITE_DM, Boolean.valueOf(this.learnedModuleFuelInfinite));
+        this.dataManager.register(MODULE_SELECTED_BOMB_DM, Integer.valueOf(this.selectedModuleBomb));
+        this.dataManager.register(MODULE_LEARNED_BOMB_DM, Boolean.valueOf(this.learnedModuleBomb));
     }
 	
 	
@@ -337,55 +375,68 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
     {
     	super.writeToNBT(compound);
     	
-    	compound.setTag(rf.META_AIRSHIP_SLOTS_TAG, inventory.serializeNBT());
-
-    	compound.setInteger(rf.META_TIER_CORE_TAG, this.metaTierCore);
-    	compound.setInteger(rf.META_TIER_FRAME_TAG, this.metaTierFrame);
-    	compound.setInteger(rf.META_TIER_ENGINE_TAG, this.metaTierEngine);
-    	compound.setInteger(rf.META_TIER_BALLOON_TAG, this.metaTierBalloon);
+    	if (this.customName != null)
+        {
+    		compound.setString(rf.CUSTOM_NAME_TAG, this.customName);
+        }
     	
-    	compound.setInteger(rf.META_CORE_VISUAL_TAG, this.metaCoreVisual);
+    	compound.setTag(rf.AIRSHIP_SLOTS_TAG, this.inventory.serializeNBT());
     	
-    	compound.setInteger(rf.META_FRAME_VISUAL_TAG, this.metaFrameVisual);
-    	compound.setBoolean(rf.META_FRAME_VISUAL_TRANSPARENT_TAG, this.metaFrameVisualTransparent);
-    	compound.setBoolean(rf.META_FRAME_VISUAL_COLOR_TAG, this.metaFrameVisualColor);
-    	compound.setInteger(rf.META_FRAME_VISUAL_COLOR_RED_TAG, this.metaFrameColorRed);
-    	compound.setInteger(rf.META_FRAME_VISUAL_COLOR_GREEN_TAG, this.metaFrameColorGreen);
-    	compound.setInteger(rf.META_FRAME_VISUAL_COLOR_BLUE_TAG, this.metaFrameColorBlue);
+    	compound.setInteger(rf.MAIN_TIER_CORE_TAG, this.mainTierCore);
+    	compound.setInteger(rf.MAIN_TIER_FRAME_TAG, this.mainTierFrame);
+    	compound.setInteger(rf.MAIN_TIER_ENGINE_TAG, this.mainTierEngine);
+    	compound.setInteger(rf.MAIN_TIER_BALLOON_TAG, this.mainTierBalloon);
     	
-    	compound.setInteger(rf.META_ENGINE_VISUAL_TAG, this.metaEngineVisual);
+    	compound.setInteger(rf.CORE_MODEL_VISUAL_FRAME_TAG, this.coreModelVisualFrame);
+    	compound.setInteger(rf.CORE_MODEL_VISUAL_ENGINE_TAG, this.coreModelVisualEngine);
+    	compound.setInteger(rf.CORE_MODEL_VISUAL_BALLOON_TAG, this.coreModelVisualBalloon);
     	
-    	compound.setInteger(rf.META_BALLOON_VISUAL_TAG, this.metaBalloonVisual);
-    	compound.setBoolean(rf.META_BALLOON_VISUAL_TRANSPARENT_TAG, this.metaBalloonVisualTransparent);
-    	compound.setBoolean(rf.META_BALLOON_VISUAL_COLOR_TAG, this.metaBalloonVisualColor);
-    	compound.setInteger(rf.META_BALLOON_VISUAL_COLOR_RED_TAG, this.metaBalloonColorRed);
-    	compound.setInteger(rf.META_BALLOON_VISUAL_COLOR_GREEN_TAG, this.metaBalloonColorGreen);
-    	compound.setInteger(rf.META_BALLOON_VISUAL_COLOR_BLUE_TAG, this.metaBalloonColorBlue);
+    	compound.setInteger(rf.FRAME_SKIN_VISUAL_TAG, this.frameSkinVisual);
+    	compound.setBoolean(rf.FRAME_SKIN_VISUAL_TRANSPARENT_TAG, this.frameSkinVisualTransparent);
+    	compound.setBoolean(rf.FRAME_SKIN_VISUAL_COLOR_TAG, this.frameSkinVisualColor);
+    	compound.setInteger(rf.FRAME_SKIN_VISUAL_COLOR_RED_TAG, this.frameSkinColorRed);
+    	compound.setInteger(rf.FRAME_SKIN_VISUAL_COLOR_GREEN_TAG, this.frameSkinColorGreen);
+    	compound.setInteger(rf.FRAME_SKIN_VISUAL_COLOR_BLUE_TAG, this.frameSkinColorBlue);
     	
-    	compound.setInteger(rf.META_AIRSHIP_BURNTIME_TAG, this.airshipBurnTime);
-    	compound.setInteger(rf.META_AIRSHIP_BURNTIME_TOTAL_TAG, this.airshipTotalBurnTime);
-    	compound.setInteger(rf.META_ITEM_FUELSTACK_TAG, this.itemFuelStack);
-    	compound.setInteger(rf.META_ITEM_FUELSTACK_SIZE_TAG, this.itemFuelStackSize);
+    	compound.setInteger(rf.ENGINE_PARTICLE_VISUAL_TAG, this.engineParticleVisual);
+    	compound.setInteger(rf.ENGINE_DISPLAY_TYPE_VISUAL_TAG, this.engineDisplayTypeVisual);
+    	compound.setInteger(rf.ENGINE_DISPLAY_ID_VISUAL_TAG, this.engineDisplayIDVisual);
     	
-    	compound.setInteger(rf.META_MODULE_VARIANT_SLOT1_TAG, this.metaModuleVariantSlot1);
-		compound.setInteger(rf.META_JUKEBOX_SELECTED_SONG_TAG, this.metaJukeboxSelectedSong);
+    	compound.setInteger(rf.BALLOON_PATTERN_VISUAL_TAG, this.balloonPatternVisual);
+    	compound.setBoolean(rf.BALLOON_PATTERN_VISUAL_TRANSPARENT_TAG, this.balloonPatternVisualTransparent);
+    	compound.setBoolean(rf.BALLOON_PATTERN_VISUAL_COLOR_TAG, this.balloonPatternVisualColor);
+    	compound.setInteger(rf.BALLOON_PATTERN_VISUAL_COLOR_RED_TAG, this.balloonPatternColorRed);
+    	compound.setInteger(rf.BALLOON_PATTERN_VISUAL_COLOR_GREEN_TAG, this.balloonPatternColorGreen);
+    	compound.setInteger(rf.BALLOON_PATTERN_VISUAL_COLOR_BLUE_TAG, this.balloonPatternColorBlue);
+    	
+    	compound.setInteger(rf.STORED_FUEL_TAG, this.storedFuel);
+    	compound.setInteger(rf.STORED_FUEL_TOTAL_TAG, this.storedFuelTotal);
+    	compound.setInteger(rf.FUEL_ITEMSTACK_TAG, this.fuelItemStack);
+    	compound.setInteger(rf.FUEL_ITEMSTACK_SIZE_TAG, this.fuelItemStackSize);
+    	compound.setInteger(rf.STORED_REDSTONE_TAG, this.storedRedstone);
+    	compound.setInteger(rf.STORED_REDSTONE_TOTAL_TAG, this.storedRedstoneTotal);
+    	
+    	compound.setInteger(rf.MODULE_ACTIVE_SLOT1_TAG, this.moduleActiveSlot1);
+		compound.setInteger(rf.JUKEBOX_SELECTED_SONG_TAG, this.metaJukeboxSelectedSong);
 		
-		compound.setBoolean(rf.META_LEARNED_MODULE_ALTITUDE_TAG, this.learnedModuleAltitude);
-		compound.setInteger(rf.META_SELECTED_MODULE_ALTITUDE_TAG, this.selectedModuleAltitude);
-		compound.setBoolean(rf.META_LEARNED_MODULE_SPEED_TAG, this.learnedModuleSpeed);
-		compound.setInteger(rf.META_SELECTED_MODULE_SPEED_TAG, this.selectedModuleSpeed);
-		compound.setBoolean(rf.META_LEARNED_MODULE_STORAGE_TAG, this.learnedModuleStorage);
-		compound.setInteger(rf.META_SELECTED_MODULE_STORAGE_TAG, this.selectedModuleStorage);
-		compound.setBoolean(rf.META_LEARNED_MODULE_FUEL_TAG, this.learnedModuleFuel);
-		compound.setInteger(rf.META_SELECTED_MODULE_FUEL_TAG, this.selectedModuleFuel);
-		compound.setBoolean(rf.META_LEARNED_MODULE_MUSIC_TAG, this.learnedModuleMusic);
-		compound.setInteger(rf.META_SELECTED_MODULE_MUSIC_TAG, this.selectedModuleMusic);
-		compound.setBoolean(rf.META_LEARNED_MODULE_CRUISE_TAG, this.learnedModuleCruise);
-		compound.setInteger(rf.META_SELECTED_MODULE_CRUISE_TAG, this.selectedModuleCruise);
-		compound.setBoolean(rf.META_LEARNED_MODULE_WATER_TAG, this.learnedModuleWater);
-		compound.setInteger(rf.META_SELECTED_MODULE_WATER_TAG, this.selectedModuleWater);
-		compound.setBoolean(rf.META_LEARNED_MODULE_FUELINFINITE_TAG, this.learnedModuleFuelInfinite);
-		compound.setInteger(rf.META_SELECTED_MODULE_FUELINFINITE_TAG, this.selectedModuleFuelInfinite);
+		compound.setBoolean(rf.LEARNED_MODULE_ALTITUDE_TAG, this.learnedModuleAltitude);
+		compound.setInteger(rf.SELECTED_MODULE_ALTITUDE_TAG, this.selectedModuleAltitude);
+		compound.setBoolean(rf.LEARNED_MODULE_SPEED_TAG, this.learnedModuleSpeed);
+		compound.setInteger(rf.SELECTED_MODULE_SPEED_TAG, this.selectedModuleSpeed);
+		compound.setBoolean(rf.LEARNED_MODULE_STORAGE_TAG, this.learnedModuleStorage);
+		compound.setInteger(rf.SELECTED_MODULE_STORAGE_TAG, this.selectedModuleStorage);
+		compound.setBoolean(rf.LEARNED_MODULE_FUEL_TAG, this.learnedModuleFuel);
+		compound.setInteger(rf.SELECTED_MODULE_FUEL_TAG, this.selectedModuleFuel);
+		compound.setBoolean(rf.LEARNED_MODULE_MUSIC_TAG, this.learnedModuleMusic);
+		compound.setInteger(rf.SELECTED_MODULE_MUSIC_TAG, this.selectedModuleMusic);
+		compound.setBoolean(rf.LEARNED_MODULE_CRUISE_TAG, this.learnedModuleCruise);
+		compound.setInteger(rf.SELECTED_MODULE_CRUISE_TAG, this.selectedModuleCruise);
+		compound.setBoolean(rf.LEARNED_MODULE_WATER_TAG, this.learnedModuleWater);
+		compound.setInteger(rf.SELECTED_MODULE_WATER_TAG, this.selectedModuleWater);
+		compound.setBoolean(rf.LEARNED_MODULE_FUELINFINITE_TAG, this.learnedModuleFuelInfinite);
+		compound.setInteger(rf.SELECTED_MODULE_FUELINFINITE_TAG, this.selectedModuleFuelInfinite);
+		compound.setBoolean(rf.LEARNED_MODULE_BOMB_TAG, this.learnedModuleBomb);
+		compound.setInteger(rf.SELECTED_MODULE_BOMB_TAG, this.selectedModuleBomb);
 		
         return compound;
     }
@@ -395,55 +446,65 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
     {
     	super.readFromNBT(compound);
     	
-    	inventory.deserializeNBT(compound.getCompoundTag(rf.META_AIRSHIP_SLOTS_TAG));
-
-    	this.metaTierCore = compound.getInteger(rf.META_TIER_CORE_TAG);
-    	this.metaTierFrame = compound.getInteger(rf.META_TIER_FRAME_TAG);
-    	this.metaTierEngine = compound.getInteger(rf.META_TIER_ENGINE_TAG);
-    	this.metaTierBalloon = compound.getInteger(rf.META_TIER_BALLOON_TAG);
+    	this.customName = compound.getString(rf.CUSTOM_NAME_TAG);
     	
-    	this.metaCoreVisual = compound.getInteger(rf.META_CORE_VISUAL_TAG);
+    	this.inventory.deserializeNBT(compound.getCompoundTag(rf.AIRSHIP_SLOTS_TAG));
     	
-    	this.metaFrameVisual = compound.getInteger(rf.META_FRAME_VISUAL_TAG);
-    	this.metaFrameVisualTransparent = compound.getBoolean(rf.META_FRAME_VISUAL_TRANSPARENT_TAG);
-    	this.metaFrameVisualColor = compound.getBoolean(rf.META_FRAME_VISUAL_COLOR_TAG);
-    	this.metaFrameColorRed = compound.getInteger(rf.META_FRAME_VISUAL_COLOR_RED_TAG);
-    	this.metaFrameColorGreen = compound.getInteger(rf.META_FRAME_VISUAL_COLOR_GREEN_TAG);
-    	this.metaFrameColorBlue = compound.getInteger(rf.META_FRAME_VISUAL_COLOR_BLUE_TAG);
+    	this.mainTierCore = compound.getInteger(rf.MAIN_TIER_CORE_TAG);
+    	this.mainTierFrame = compound.getInteger(rf.MAIN_TIER_FRAME_TAG);
+    	this.mainTierEngine = compound.getInteger(rf.MAIN_TIER_ENGINE_TAG);
+    	this.mainTierBalloon = compound.getInteger(rf.MAIN_TIER_BALLOON_TAG);
     	
-    	this.metaEngineVisual = compound.getInteger(rf.META_ENGINE_VISUAL_TAG);
+    	this.coreModelVisualFrame = compound.getInteger(rf.CORE_MODEL_VISUAL_FRAME_TAG);
+    	this.coreModelVisualEngine = compound.getInteger(rf.CORE_MODEL_VISUAL_ENGINE_TAG);
+    	this.coreModelVisualBalloon = compound.getInteger(rf.CORE_MODEL_VISUAL_BALLOON_TAG);
     	
-    	this.metaBalloonVisual = compound.getInteger(rf.META_BALLOON_VISUAL_TAG);
-    	this.metaBalloonVisualTransparent = compound.getBoolean(rf.META_BALLOON_VISUAL_TRANSPARENT_TAG);
-    	this.metaBalloonVisualColor = compound.getBoolean(rf.META_BALLOON_VISUAL_COLOR_TAG);
-    	this.metaBalloonColorRed = compound.getInteger(rf.META_BALLOON_VISUAL_COLOR_RED_TAG);
-    	this.metaBalloonColorGreen = compound.getInteger(rf.META_BALLOON_VISUAL_COLOR_GREEN_TAG);
-    	this.metaBalloonColorBlue = compound.getInteger(rf.META_BALLOON_VISUAL_COLOR_BLUE_TAG);
+    	this.frameSkinVisual = compound.getInteger(rf.FRAME_SKIN_VISUAL_TAG);
+    	this.frameSkinVisualTransparent = compound.getBoolean(rf.FRAME_SKIN_VISUAL_TRANSPARENT_TAG);
+    	this.frameSkinVisualColor = compound.getBoolean(rf.FRAME_SKIN_VISUAL_COLOR_TAG);
+    	this.frameSkinColorRed = compound.getInteger(rf.FRAME_SKIN_VISUAL_COLOR_RED_TAG);
+    	this.frameSkinColorGreen = compound.getInteger(rf.FRAME_SKIN_VISUAL_COLOR_GREEN_TAG);
+    	this.frameSkinColorBlue = compound.getInteger(rf.FRAME_SKIN_VISUAL_COLOR_BLUE_TAG);
     	
-        this.airshipBurnTime = compound.getInteger(rf.META_AIRSHIP_BURNTIME_TAG);
-        this.airshipTotalBurnTime = compound.getInteger(rf.META_AIRSHIP_BURNTIME_TOTAL_TAG);
-        this.itemFuelStack = compound.getInteger(rf.META_ITEM_FUELSTACK_TAG);
-        this.itemFuelStackSize = compound.getInteger(rf.META_ITEM_FUELSTACK_SIZE_TAG);
+    	this.engineParticleVisual = compound.getInteger(rf.ENGINE_PARTICLE_VISUAL_TAG);
+    	this.engineDisplayTypeVisual = compound.getInteger(rf.ENGINE_DISPLAY_TYPE_VISUAL_TAG);
+    	this.engineDisplayIDVisual = compound.getInteger(rf.ENGINE_DISPLAY_ID_VISUAL_TAG);
+    	
+    	this.balloonPatternVisual = compound.getInteger(rf.BALLOON_PATTERN_VISUAL_TAG);
+    	this.balloonPatternVisualTransparent = compound.getBoolean(rf.BALLOON_PATTERN_VISUAL_TRANSPARENT_TAG);
+    	this.balloonPatternVisualColor = compound.getBoolean(rf.BALLOON_PATTERN_VISUAL_COLOR_TAG);
+    	this.balloonPatternColorRed = compound.getInteger(rf.BALLOON_PATTERN_VISUAL_COLOR_RED_TAG);
+    	this.balloonPatternColorGreen = compound.getInteger(rf.BALLOON_PATTERN_VISUAL_COLOR_GREEN_TAG);
+    	this.balloonPatternColorBlue = compound.getInteger(rf.BALLOON_PATTERN_VISUAL_COLOR_BLUE_TAG);
+    	
+        this.storedFuel = compound.getInteger(rf.STORED_FUEL_TAG);
+        this.storedFuelTotal = compound.getInteger(rf.STORED_FUEL_TOTAL_TAG);
+        this.fuelItemStack = compound.getInteger(rf.FUEL_ITEMSTACK_TAG);
+        this.fuelItemStackSize = compound.getInteger(rf.FUEL_ITEMSTACK_SIZE_TAG);
+        this.storedRedstone = compound.getInteger(rf.STORED_REDSTONE_TAG);
+        this.storedRedstoneTotal = compound.getInteger(rf.STORED_REDSTONE_TOTAL_TAG);
         
-        this.metaModuleVariantSlot1 = compound.getInteger(rf.META_MODULE_VARIANT_SLOT1_TAG);
-        this.metaJukeboxSelectedSong = compound.getInteger(rf.META_JUKEBOX_SELECTED_SONG_TAG);
+        this.moduleActiveSlot1 = compound.getInteger(rf.MODULE_ACTIVE_SLOT1_TAG);
+        this.metaJukeboxSelectedSong = compound.getInteger(rf.JUKEBOX_SELECTED_SONG_TAG);
         
-        this.learnedModuleAltitude = compound.getBoolean(rf.META_LEARNED_MODULE_ALTITUDE_TAG);
-        this.selectedModuleAltitude = compound.getInteger(rf.META_SELECTED_MODULE_ALTITUDE_TAG);
-        this.learnedModuleSpeed = compound.getBoolean(rf.META_LEARNED_MODULE_SPEED_TAG);
-        this.selectedModuleSpeed = compound.getInteger(rf.META_SELECTED_MODULE_SPEED_TAG);
-        this.learnedModuleStorage = compound.getBoolean(rf.META_LEARNED_MODULE_STORAGE_TAG);
-        this.selectedModuleStorage = compound.getInteger(rf.META_SELECTED_MODULE_STORAGE_TAG);
-        this.learnedModuleFuel = compound.getBoolean(rf.META_LEARNED_MODULE_FUEL_TAG);
-        this.selectedModuleFuel = compound.getInteger(rf.META_SELECTED_MODULE_FUEL_TAG);
-        this.learnedModuleMusic = compound.getBoolean(rf.META_LEARNED_MODULE_MUSIC_TAG);
-        this.selectedModuleMusic = compound.getInteger(rf.META_SELECTED_MODULE_MUSIC_TAG);
-        this.learnedModuleCruise = compound.getBoolean(rf.META_LEARNED_MODULE_CRUISE_TAG);
-        this.selectedModuleCruise = compound.getInteger(rf.META_SELECTED_MODULE_CRUISE_TAG);
-        this.learnedModuleWater = compound.getBoolean(rf.META_LEARNED_MODULE_WATER_TAG);
-        this.selectedModuleWater = compound.getInteger(rf.META_SELECTED_MODULE_WATER_TAG);
-        this.learnedModuleFuelInfinite = compound.getBoolean(rf.META_LEARNED_MODULE_FUELINFINITE_TAG);
-        this.selectedModuleFuelInfinite = compound.getInteger(rf.META_SELECTED_MODULE_FUELINFINITE_TAG);
+        this.learnedModuleAltitude = compound.getBoolean(rf.LEARNED_MODULE_ALTITUDE_TAG);
+        this.selectedModuleAltitude = compound.getInteger(rf.SELECTED_MODULE_ALTITUDE_TAG);
+        this.learnedModuleSpeed = compound.getBoolean(rf.LEARNED_MODULE_SPEED_TAG);
+        this.selectedModuleSpeed = compound.getInteger(rf.SELECTED_MODULE_SPEED_TAG);
+        this.learnedModuleStorage = compound.getBoolean(rf.LEARNED_MODULE_STORAGE_TAG);
+        this.selectedModuleStorage = compound.getInteger(rf.SELECTED_MODULE_STORAGE_TAG);
+        this.learnedModuleFuel = compound.getBoolean(rf.LEARNED_MODULE_FUEL_TAG);
+        this.selectedModuleFuel = compound.getInteger(rf.SELECTED_MODULE_FUEL_TAG);
+        this.learnedModuleMusic = compound.getBoolean(rf.LEARNED_MODULE_MUSIC_TAG);
+        this.selectedModuleMusic = compound.getInteger(rf.SELECTED_MODULE_MUSIC_TAG);
+        this.learnedModuleCruise = compound.getBoolean(rf.LEARNED_MODULE_CRUISE_TAG);
+        this.selectedModuleCruise = compound.getInteger(rf.SELECTED_MODULE_CRUISE_TAG);
+        this.learnedModuleWater = compound.getBoolean(rf.LEARNED_MODULE_WATER_TAG);
+        this.selectedModuleWater = compound.getInteger(rf.SELECTED_MODULE_WATER_TAG);
+        this.learnedModuleFuelInfinite = compound.getBoolean(rf.LEARNED_MODULE_FUELINFINITE_TAG);
+        this.selectedModuleFuelInfinite = compound.getInteger(rf.SELECTED_MODULE_FUELINFINITE_TAG);
+        this.learnedModuleBomb = compound.getBoolean(rf.LEARNED_MODULE_BOMB_TAG);
+        this.selectedModuleBomb = compound.getInteger(rf.SELECTED_MODULE_BOMB_TAG);
     }
 	
 	
@@ -488,35 +549,35 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
     	&& this.getControllingPassenger() != null)
 		{
 			//Lesser Storage
-        	if(this.getModuleVariantSlot1() == EnumsVC.ModuleType.STORAGE_LESSER.getMetadata())
+        	if(this.getModuleActiveSlot1() == EnumsVC.ModuleType.STORAGE_LESSER.getMetadata())
         	{
-        		NetworkHandler.sendToServer(new MessageGuiAirshipMenuStorageLesser());
+        		NetworkHandler.sendToServer(new MessageGuiMainMenuStorageLesser());
             	Minecraft.getMinecraft().setIngameFocus();
         	}
         	//Normal Storage
-        	else if(this.getModuleVariantSlot1() == EnumsVC.ModuleType.STORAGE_NORMAL.getMetadata())
+        	else if(this.getModuleActiveSlot1() == EnumsVC.ModuleType.STORAGE_NORMAL.getMetadata())
         	{
-        		NetworkHandler.sendToServer(new MessageGuiAirshipMenuStorageNormal());
+        		NetworkHandler.sendToServer(new MessageGuiMainMenuStorageNormal());
             	Minecraft.getMinecraft().setIngameFocus();
         	}
         	//Greater Storage
-        	else if(this.getModuleVariantSlot1() == EnumsVC.ModuleType.STORAGE_GREATER.getMetadata())
+        	else if(this.getModuleActiveSlot1() == EnumsVC.ModuleType.STORAGE_GREATER.getMetadata())
         	{
-        		NetworkHandler.sendToServer(new MessageGuiAirshipMenuStorageGreater());
+        		NetworkHandler.sendToServer(new MessageGuiMainMenuStorageGreater());
             	Minecraft.getMinecraft().setIngameFocus();
         	}
         	//Any Music
-        	else if(this.getModuleVariantSlot1() == EnumsVC.ModuleType.MUSIC_LESSER.getMetadata()
-    			 || this.getModuleVariantSlot1() == EnumsVC.ModuleType.MUSIC_NORMAL.getMetadata()
-    			 || this.getModuleVariantSlot1() == EnumsVC.ModuleType.MUSIC_GREATER.getMetadata())
+        	else if(this.getModuleActiveSlot1() == EnumsVC.ModuleType.MUSIC_LESSER.getMetadata()
+    			 || this.getModuleActiveSlot1() == EnumsVC.ModuleType.MUSIC_NORMAL.getMetadata()
+    			 || this.getModuleActiveSlot1() == EnumsVC.ModuleType.MUSIC_GREATER.getMetadata())
         	{
-        		NetworkHandler.sendToServer(new MessageGuiAirshipMenuMusic());
+        		NetworkHandler.sendToServer(new MessageGuiMainMenuMusic());
             	Minecraft.getMinecraft().setIngameFocus();
         	}
         	//Default for airship gui
         	else
         	{
-        		NetworkHandler.sendToServer(new MessageGuiAirshipMenu());
+        		NetworkHandler.sendToServer(new MessageGuiMainMenu());
             	Minecraft.getMinecraft().setIngameFocus();
         	}
         }
@@ -602,7 +663,7 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
     	Boolean maxHeightReached;
     	
     	int airshipHeight = this.getPosition().getY();
-    	if(airshipHeight > EnumsVC.AirshipTierBalloon.byId(this.getMetaTierBalloon()).getMaxAltitude())
+    	if(airshipHeight > EnumsVC.AirshipTierBalloon.byId(this.getMainTierBalloon()).getMaxAltitude())
     	{
     		maxHeightReached = true;
     	}
@@ -622,23 +683,23 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
     	this.airshipFuelTick = this.getBaseFuelTick();
     	
     	//Lesser Fuel 20%
-    	if(this.getModuleVariantSlot1() == EnumsVC.ModuleType.FUEL_LESSER.getMetadata())
+    	if(this.getModuleActiveSlot1() == EnumsVC.ModuleType.FUEL_LESSER.getMetadata())
     	{
     		this.airshipFuelTick = this.airshipFuelTick - (this.getBaseFuelPercent10() * 2);
     	}
     	//Normal Fuel 40%
-    	if(this.getModuleVariantSlot1() == EnumsVC.ModuleType.FUEL_NORMAL.getMetadata())
+    	if(this.getModuleActiveSlot1() == EnumsVC.ModuleType.FUEL_NORMAL.getMetadata())
     	{
     		this.airshipFuelTick = this.airshipFuelTick - (this.getBaseFuelPercent10() * 4);
     	}
     	//Greater Fuel 60%
-    	if(this.getModuleVariantSlot1() == EnumsVC.ModuleType.FUEL_GREATER.getMetadata())
+    	if(this.getModuleActiveSlot1() == EnumsVC.ModuleType.FUEL_GREATER.getMetadata())
     	{
     		this.airshipFuelTick = this.airshipFuelTick - (this.getBaseFuelPercent10() * 6);
     	}
     	////Major Speed & Large Inventory 50
-    	//if(this.getModuleVariantSlot1() == EnumsVC.ModuleType.SPEED_GREATER.getMetadata()
-    	//|| this.getModuleVariantSlot1() == EnumsVC.ModuleType.STORAGE_GREATER.getMetadata())
+    	//if(this.getModuleActiveSlot1() == EnumsVC.ModuleType.SPEED_GREATER.getMetadata()
+    	//|| this.getModuleActiveSlot1() == EnumsVC.ModuleType.STORAGE_GREATER.getMetadata())
     	//{
     	//	this.airshipFuelTick = this.airshipFuelTick + (this.getBaseFuelPercent10() * 5);
     	//}
@@ -648,14 +709,14 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
     
     protected int getBaseFuelTick()
     {
-    	this.airshipFuelTick = EnumsVC.AirshipTierEngine.byId(this.getMetaTierEngine()).getFuelPerTick();
+    	this.airshipFuelTick = EnumsVC.AirshipTierEngine.byId(this.getMainTierEngine()).getFuelPerTick();
     	
     	return this.airshipFuelTick;
     }
     
     protected int getBaseFuelPercent10()
     {
-    	switch(this.getMetaTierEngine())
+    	switch(this.getMainTierEngine())
     	{
 	    	case 0:
 	    		return 6;
@@ -682,7 +743,7 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
     
     protected String getNameColor()
 	{
-		switch (this.getMetaTierFrame())
+		switch (this.getMainTierFrame())
         {
 	        case 0:
 	        	return TextFormatting.GRAY + "";
@@ -709,10 +770,16 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
         switch (id)
         {
         	case 0:
-                this.airshipBurnTime = value;
+                this.storedFuel = value;
                 break;
             case 1:
-            	this.airshipTotalBurnTime = value;
+            	this.storedFuelTotal = value;
+                break;
+            case 2:
+                this.storedRedstone = value;
+                break;
+            case 3:
+            	this.storedRedstoneTotal = value;
                 break;
             default:
             	break;
@@ -724,9 +791,13 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
         switch (id)
         {
             case 0:
-                return this.airshipBurnTime;
+                return this.storedFuel;
             case 1:
-                return this.airshipTotalBurnTime;
+                return this.storedFuelTotal;
+            case 2:
+                return this.storedRedstone;
+            case 3:
+                return this.storedRedstoneTotal;
             default:
                 return 0;
         }
@@ -747,6 +818,7 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
     	if(this.isEntityInsideOpaqueBlock())
     	{
     		isGlitched = true;
+    		this.motionY += 0.0001;
     	}
     	
 		return isGlitched;
@@ -763,7 +835,7 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
 			{
 				if(!this.inventory.getStackInSlot(x).isEmpty())
 				{
-					this.inventory.setStackInSlot(x, null);
+					this.inventory.extractItem(x, this.inventory.getStackInSlot(x).getCount(), false);
 				}
 			}
 		}
@@ -774,7 +846,6 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
 				if(!this.inventory.getStackInSlot(x).isEmpty())
 				{
 					InventoryHelper.spawnItemStack(this.world, this.posX, this.posY, this.posZ, this.inventory.getStackInSlot(x));
-					//this.inventory.setStackInSlot(x, null);
 				}
 			}
 		}
@@ -791,7 +862,7 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
 			{
 				if(!this.inventory.getStackInSlot(x).isEmpty())
 				{
-					this.inventory.setStackInSlot(x, null);
+					this.inventory.extractItem(x, this.inventory.getStackInSlot(x).getCount(), false);
 				}
 			}
 		}
@@ -802,7 +873,6 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
 				if(!this.inventory.getStackInSlot(x).isEmpty())
 				{
 					InventoryHelper.spawnItemStack(this.world, this.posX, this.posY, this.posZ, this.inventory.getStackInSlot(x));
-					//this.inventory.setStackInSlot(x, null);
 				}
 			}
 		}
@@ -813,16 +883,16 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
      */
     protected void noInventoryModuleDropItems()
     {
-    	if(this.getModuleVariantSlot1() == EnumsVC.ModuleType.STORAGE_LESSER.getMetadata()
-		|| this.getModuleVariantSlot1() == EnumsVC.ModuleType.STORAGE_NORMAL.getMetadata()
-		|| this.getModuleVariantSlot1() == EnumsVC.ModuleType.STORAGE_GREATER.getMetadata())
+    	if(this.getModuleActiveSlot1() == EnumsVC.ModuleType.STORAGE_LESSER.getMetadata()
+		|| this.getModuleActiveSlot1() == EnumsVC.ModuleType.STORAGE_NORMAL.getMetadata()
+		|| this.getModuleActiveSlot1() == EnumsVC.ModuleType.STORAGE_GREATER.getMetadata())
     	{
     		canDrop = true;
     	}
     	
-    	if(this.getModuleVariantSlot1() != EnumsVC.ModuleType.STORAGE_LESSER.getMetadata()
-		&& this.getModuleVariantSlot1() != EnumsVC.ModuleType.STORAGE_NORMAL.getMetadata()
-		&& this.getModuleVariantSlot1() != EnumsVC.ModuleType.STORAGE_GREATER.getMetadata()
+    	if(this.getModuleActiveSlot1() != EnumsVC.ModuleType.STORAGE_LESSER.getMetadata()
+		&& this.getModuleActiveSlot1() != EnumsVC.ModuleType.STORAGE_NORMAL.getMetadata()
+		&& this.getModuleActiveSlot1() != EnumsVC.ModuleType.STORAGE_GREATER.getMetadata()
     	&& canDrop)
     	{
     		this.dropInventoryItemStorageOnly();
@@ -835,7 +905,7 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
     {
     	if (!this.world.isRemote)
     	{
-    		this.dropInventoryAll();
+    		//this.dropInventoryAll();
     		
     		this.playSound(SoundEvents.ENTITY_ENDEREYE_LAUNCH, 0.5F, 0.4F / .5F * 0.4F + 0.8F);
     		this.playSound(SoundEvents.ENTITY_SHEEP_SHEAR, 0.5F, 0.4F / .5F * 0.4F + 0.8F);
@@ -884,26 +954,26 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
         else
         {
             if(this.status == EntityAirshipBaseVC.Status.IN_WATER
-            && this.getModuleVariantSlot1() == EnumsVC.ModuleType.WATER_LESSER.getMetadata())
+            && this.getModuleActiveSlot1() == EnumsVC.ModuleType.WATER_LESSER.getMetadata())
             {
             	this.momentum = 0.45F;
             }
             else if(this.status == EntityAirshipBaseVC.Status.IN_WATER
-            && this.getModuleVariantSlot1() == EnumsVC.ModuleType.WATER_NORMAL.getMetadata())
+            && this.getModuleActiveSlot1() == EnumsVC.ModuleType.WATER_NORMAL.getMetadata())
             {
             	this.momentum = 0.67F;
             }
             else if(this.status == EntityAirshipBaseVC.Status.IN_WATER
-            && this.getModuleVariantSlot1() == EnumsVC.ModuleType.WATER_GREATER.getMetadata())
+            && this.getModuleActiveSlot1() == EnumsVC.ModuleType.WATER_GREATER.getMetadata())
             {
             	this.momentum = 0.9F;
             }
             else if(this.status == EntityAirshipBaseVC.Status.UNDER_FLOWING_WATER 
         	  || this.status == EntityAirshipBaseVC.Status.UNDER_WATER)
             {
-            	if(this.getModuleVariantSlot1() != EnumsVC.ModuleType.WATER_LESSER.getMetadata()
-        		|| this.getModuleVariantSlot1() != EnumsVC.ModuleType.WATER_NORMAL.getMetadata()
-        		|| this.getModuleVariantSlot1() != EnumsVC.ModuleType.WATER_GREATER.getMetadata())
+            	if(this.getModuleActiveSlot1() != EnumsVC.ModuleType.WATER_LESSER.getMetadata()
+        		|| this.getModuleActiveSlot1() != EnumsVC.ModuleType.WATER_NORMAL.getMetadata()
+        		|| this.getModuleActiveSlot1() != EnumsVC.ModuleType.WATER_GREATER.getMetadata())
             	{
             		this.waterPartsDrop();
             	}
@@ -927,7 +997,7 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
         		
             	this.motionY += d5;
             }
-            else if(isClientAirshipBurning())
+            else if(isFuelBurning())
         	{
             	this.motionY *= (double)this.momentum;
         	}
@@ -948,9 +1018,9 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
             
             
             
-            if(this.getModuleVariantSlot1() == EnumsVC.ModuleType.WATER_LESSER.getMetadata()
-    		|| this.getModuleVariantSlot1() == EnumsVC.ModuleType.WATER_NORMAL.getMetadata()
-    		|| this.getModuleVariantSlot1() == EnumsVC.ModuleType.WATER_GREATER.getMetadata())
+            if(this.getModuleActiveSlot1() == EnumsVC.ModuleType.WATER_LESSER.getMetadata()
+    		|| this.getModuleActiveSlot1() == EnumsVC.ModuleType.WATER_NORMAL.getMetadata()
+    		|| this.getModuleActiveSlot1() == EnumsVC.ModuleType.WATER_GREATER.getMetadata())
             {
             	if(this.status == EntityAirshipBaseVC.Status.UNDER_FLOWING_WATER 
 				|| this.status == EntityAirshipBaseVC.Status.UNDER_WATER)
@@ -964,11 +1034,11 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
             }
             
             //Max altitude Module
-            if(this.getModuleVariantSlot1() == EnumsVC.ModuleType.ALTITUDE_LESSER.getMetadata()
-    		|| this.getModuleVariantSlot1() == EnumsVC.ModuleType.ALTITUDE_NORMAL.getMetadata()
-    		|| this.getModuleVariantSlot1() == EnumsVC.ModuleType.ALTITUDE_GREATER.getMetadata())
+            if(this.getModuleActiveSlot1() == EnumsVC.ModuleType.ALTITUDE_LESSER.getMetadata()
+    		|| this.getModuleActiveSlot1() == EnumsVC.ModuleType.ALTITUDE_NORMAL.getMetadata()
+    		|| this.getModuleActiveSlot1() == EnumsVC.ModuleType.ALTITUDE_GREATER.getMetadata())
             {
-            	if(this.getModuleVariantSlot1() == EnumsVC.ModuleType.ALTITUDE_LESSER.getMetadata())
+            	if(this.getModuleActiveSlot1() == EnumsVC.ModuleType.ALTITUDE_LESSER.getMetadata())
             	{
             		//Lesser Altitude
                 	if(this.getPosition().getY() > 225)
@@ -976,7 +1046,7 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
     	            	this.motionY = -0.1D;
     	            }
             	}
-            	if(this.getModuleVariantSlot1() == EnumsVC.ModuleType.ALTITUDE_NORMAL.getMetadata())
+            	if(this.getModuleActiveSlot1() == EnumsVC.ModuleType.ALTITUDE_NORMAL.getMetadata())
             	{
             		//Altitude
                 	if(this.getPosition().getY() > 250)
@@ -984,7 +1054,7 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
     	            	this.motionY = -0.1D;
     	            }
             	}
-            	if(this.getModuleVariantSlot1() == EnumsVC.ModuleType.ALTITUDE_GREATER.getMetadata())
+            	if(this.getModuleActiveSlot1() == EnumsVC.ModuleType.ALTITUDE_GREATER.getMetadata())
             	{
             		//Greater Altitude
                 	if(this.getPosition().getY() > 500)
@@ -996,7 +1066,7 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
         	//Default Altitude logic.
             else
         	{
-            	if(this.getPosition().getY() > EnumsVC.AirshipTierBalloon.byId(this.metaTierBalloon).getMaxAltitude())
+            	if(this.getPosition().getY() > EnumsVC.AirshipTierBalloon.byId(this.mainTierBalloon).getMaxAltitude())
 	            {
             		this.motionY = -0.1D;
 	            }
@@ -1015,60 +1085,60 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
      */
 	public void fuelFlight()
     {
-    	boolean flag = this.isClientAirshipBurning();
+    	boolean flag = this.isFuelBurning();
         boolean flag1 = false;
         
         //Sets burn time to 0
-        if(this.airshipBurnTime <= this.getBaseFuelTick())
+        if(this.storedFuel <= this.getBaseFuelTick())
         {
-        	this.airshipBurnTime = 0;
+        	this.storedFuel = 0;
         }
         
         //Handles how burn time is ticked down
-        if(this.isClientAirshipBurning())
+        if(this.isFuelBurning())
         {
         	//Airship has Infinite Fuel Module installed
-        	if(this.getModuleVariantSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_LESSER.getMetadata()
-			|| this.getModuleVariantSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_NORMAL.getMetadata()
-			|| this.getModuleVariantSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_GREATER.getMetadata())
+        	if(this.getModuleActiveSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_LESSER.getMetadata()
+			|| this.getModuleActiveSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_NORMAL.getMetadata()
+			|| this.getModuleActiveSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_GREATER.getMetadata())
         	{
         		
         	}
         	else if(this.status == EntityAirshipBaseVC.Status.IN_WATER
-            && this.getModuleVariantSlot1() == EnumsVC.ModuleType.WATER_GREATER.getMetadata())
+            && this.getModuleActiveSlot1() == EnumsVC.ModuleType.WATER_GREATER.getMetadata())
             {
         		
             }
         	else 
         	{
-        		this.airshipBurnTime = this.airshipBurnTime - this.getAirshipFuelTick();
+        		this.storedFuel = this.storedFuel - this.getAirshipFuelTick();
         	}
         }
         
         //Handles when the airship is off
-        if(!this.isClientAirshipBurning())
+        if(!this.isFuelBurning())
         {
         	//Airship has Infinite Fuel Module installed
-        	if(this.getModuleVariantSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_LESSER.getMetadata()
-			|| this.getModuleVariantSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_NORMAL.getMetadata()
-			|| this.getModuleVariantSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_GREATER.getMetadata())
+        	if(this.getModuleActiveSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_LESSER.getMetadata()
+			|| this.getModuleActiveSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_NORMAL.getMetadata()
+			|| this.getModuleActiveSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_GREATER.getMetadata())
         	{
-        		this.airshipBurnTime = 1;
+        		this.storedFuel = 1;
         	}
         	//Greater Water no fuel
         	else if(this.status == EntityAirshipBaseVC.Status.IN_WATER
-            && this.getModuleVariantSlot1() == EnumsVC.ModuleType.WATER_GREATER.getMetadata())
+            && this.getModuleActiveSlot1() == EnumsVC.ModuleType.WATER_GREATER.getMetadata())
             {
-        		this.airshipBurnTime = 1;
+        		this.storedFuel = 1;
             }
         	//Airship has no controlling passenger
         	else if(this.getControllingPassenger() == null)
         	{
-        		this.airshipBurnTime = 0;
+        		this.storedFuel = 0;
         	}
         	else 
         	{
-        		this.airshipBurnTime = 0;
+        		this.storedFuel = 0;
         	}
         }
         
@@ -1078,15 +1148,15 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
         	ItemStack fuelSlot = this.inventory.getStackInSlot(0);
         	
 	        //Core fuel slot logic
-	        if(this.isClientAirshipBurning() || !fuelSlot.isEmpty())
+	        if(this.isFuelBurning() || !fuelSlot.isEmpty())
 	        {
-	            if(!this.isClientAirshipBurning()
+	            if(!this.isFuelBurning()
 	            && this.getControllingPassenger() != null)
 	            {
-	                this.airshipBurnTime = getItemBurnTime(fuelSlot);
-	                this.airshipTotalBurnTime = getItemBurnTime(fuelSlot);
+	                this.storedFuel = getItemBurnTime(fuelSlot);
+	                this.storedFuelTotal = getItemBurnTime(fuelSlot);
 	                
-	                if(this.isClientAirshipBurning())
+	                if(this.isFuelBurning())
 	                {
 	                    flag1 = true;
 	                    
@@ -1100,7 +1170,7 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
 	        }
         }
         
-        if(flag != this.isClientAirshipBurning())
+        if(flag != this.isFuelBurning())
         {
             flag1 = true;
         }
@@ -1109,11 +1179,11 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
     /**
      * Is Airship Engine On
      */
-    public boolean isClientAirshipBurning()
+    public boolean isFuelBurning()
     {
     	boolean hasFuel = false;
     	
-    	if(this.airshipBurnTime > 0)
+    	if(this.storedFuel > 0)
     	{
     		hasFuel = true;
     	}
@@ -1198,26 +1268,26 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
     {
     	if(this.getControllingPassenger() != null)
     	{
-    		if(this.isClientAirshipBurning())
+    		if(this.isFuelBurning())
             {
     			ItemStack itemFuel = this.inventory.getStackInSlot(0);
     			
     			if(!itemFuel.isEmpty())
     			{
-    				this.itemFuelStackSize = this.inventory.getStackInSlot(0).getCount();
+    				this.fuelItemStackSize = this.inventory.getStackInSlot(0).getCount();
     					
-    				this.itemFuelStack = this.itemFuelStackSize * this.getItemBurnTime(this.inventory.getStackInSlot(0));
+    				this.fuelItemStack = this.fuelItemStackSize * this.getItemBurnTime(this.inventory.getStackInSlot(0));
     			}
     			else
     			{
-    				this.itemFuelStack = 0;
-    				this.itemFuelStackSize = 0;
+    				this.fuelItemStack = 0;
+    				this.fuelItemStackSize = 0;
     			}
             }
     		else
     		{
-    			this.itemFuelStack = 0;
-    			this.itemFuelStackSize = 0;
+    			this.fuelItemStack = 0;
+    			this.fuelItemStackSize = 0;
     		}
     	}
     }
@@ -1235,35 +1305,43 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
     {
         if(this.world.isRemote)
         {
-        	this.airshipBurnTime = this.getPowered();
-        	this.airshipTotalBurnTime = this.getTotalPowered();
-        	this.itemFuelStack = this.getItemFuelStackPowered();
-			this.itemFuelStackSize = this.getItemFuelStackSizePowered();
-			
-        	this.metaTierCore = this.getMetaTierCore();
-        	this.metaTierFrame = this.getMetaTierFrame();
-        	this.metaTierEngine = this.getMetaTierEngine();
-        	this.metaTierBalloon = this.getMetaTierBalloon();
+        	this.customName = this.getCustomName();
         	
-        	this.metaCoreVisual = this.getCoreVisual();
+        	this.storedFuel = this.getStoredFuel();
+        	this.storedFuelTotal = this.getStoredFuelTotal();
+        	this.fuelItemStack = this.getFuelItemStackPowered();
+			this.fuelItemStackSize = this.getFuelItemStackSizePowered();
+			this.storedRedstone = this.getStoredRedstone();
+        	this.storedRedstoneTotal = this.getStoredRedstoneTotal();
         	
-            this.metaFrameVisual = this.getFrameVisual();
-            this.metaFrameVisualTransparent = this.getFrameVisualTransparent();
-            this.metaFrameVisualColor = this.getFrameVisualColor();
-            this.metaFrameColorRed = this.getFrameColorRed();
-            this.metaFrameColorGreen = this.getFrameColorGreen();
-            this.metaFrameColorBlue = this.getFrameColorBlue();
+        	this.mainTierCore = this.getMainTierCore();
+        	this.mainTierFrame = this.getMainTierFrame();
+        	this.mainTierEngine = this.getMainTierEngine();
+        	this.mainTierBalloon = this.getMainTierBalloon();
+        	
+        	this.coreModelVisualFrame = this.getCoreModelVisualFrame();
+        	this.coreModelVisualEngine = this.getCoreModelVisualEngine();
+        	this.coreModelVisualBalloon = this.getCoreModelVisualBalloon();
+        	
+            this.frameSkinVisual = this.getFrameSkinVisual();
+            this.frameSkinVisualTransparent = this.getFrameSkinVisualTransparent();
+            this.frameSkinVisualColor = this.getFrameSkinVisualColor();
+            this.frameSkinColorRed = this.getFrameSkinColorRed();
+            this.frameSkinColorGreen = this.getFrameSkinColorGreen();
+            this.frameSkinColorBlue = this.getFrameSkinColorBlue();
             
-            this.metaEngineVisual = this.getEngineVisual();
+            this.engineParticleVisual = this.getEngineParticleVisual();
+            this.engineDisplayTypeVisual = this.getEngineDisplayTypeVisual();
+            this.engineDisplayIDVisual = this.getEngineDisplayIDVisual();
             
-            this.metaBalloonVisual = this.getBalloonVisual();
-            this.metaBalloonVisualTransparent = this.getBalloonVisualTransparent();
-            this.metaBalloonVisualColor = this.getBalloonVisualColor();
-            this.metaBalloonColorRed = this.getBalloonColorRed();
-            this.metaBalloonColorGreen = this.getBalloonColorGreen();
-            this.metaBalloonColorBlue = this.getBalloonColorBlue();
+            this.balloonPatternVisual = this.getBalloonPatternVisual();
+            this.balloonPatternVisualTransparent = this.getBalloonPatternVisualTransparent();
+            this.balloonPatternVisualColor = this.getBalloonPatternVisualColor();
+            this.balloonPatternColorRed = this.getBalloonPatternColorRed();
+            this.balloonPatternColorGreen = this.getBalloonPatternColorGreen();
+            this.balloonPatternColorBlue = this.getBalloonPatternColorBlue();
             
-            this.metaModuleVariantSlot1 = this.getModuleVariantSlot1();
+            this.moduleActiveSlot1 = this.getModuleActiveSlot1();
             
             this.metaJukeboxSelectedSong = this.getJukeboxSelectedSong();
             this.metaCruiseControlSelectedSpeed = this.getCruiseControlSelectedSpeed();
@@ -1284,39 +1362,49 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
             this.selectedModuleWater = this.getModuleSelectedWater();
             this.learnedModuleFuelInfinite = this.getModuleLearnedFuelInfinite();
             this.selectedModuleFuelInfinite = this.getModuleSelectedFuelInfinite();
+            this.learnedModuleBomb = this.getModuleLearnedBomb();
+            this.selectedModuleBomb = this.getModuleSelectedBomb();
         }
     	
         if(!this.world.isRemote)
 		{
-        	this.setPowered(this.airshipBurnTime);
-        	this.setTotalPowered(this.airshipTotalBurnTime);
-        	this.setItemFuelStackPowered(this.itemFuelStack);
-			this.setItemFuelStackSizePowered(this.itemFuelStackSize);
-			
-        	this.setMetaTierCore(this.metaTierCore);
-        	this.setMetaTierFrame(this.metaTierFrame);
-        	this.setMetaTierEngine(this.metaTierEngine);
-        	this.setMetaTierBalloon(this.metaTierBalloon);
+        	this.setCustomName(this.customName);
         	
-            this.setCoreVisual(this.metaCoreVisual);
+        	this.setStoredFuel(this.storedFuel);
+        	this.setStoredFuelTotal(this.storedFuelTotal);
+        	this.setFuelItemStackPowered(this.fuelItemStack);
+			this.setFuelItemStackSizePowered(this.fuelItemStackSize);
+			this.setStoredRedstone(this.storedRedstone);
+        	this.setStoredRedstoneTotal(this.storedRedstoneTotal);
+        	
+        	this.setMainTierCore(this.mainTierCore);
+        	this.setMainTierFrame(this.mainTierFrame);
+        	this.setMainTierEngine(this.mainTierEngine);
+        	this.setMainTierBalloon(this.mainTierBalloon);
+        	
+            this.setCoreModelVisualFrame(this.coreModelVisualFrame);
+            this.setCoreModelVisualEngine(this.coreModelVisualEngine);
+            this.setCoreModelVisualBalloon(this.coreModelVisualBalloon);
             
-            this.setFrameVisual(this.metaFrameVisual);
-            this.setFrameVisualTransparent(this.metaFrameVisualTransparent);
-            this.setFrameVisualColor(this.metaFrameVisualColor);
-            this.setFrameColorRed(this.metaFrameColorRed);
-            this.setFrameColorGreen(this.metaFrameColorGreen);
-            this.setFrameColorBlue(this.metaFrameColorBlue);
+            this.setFrameSkinVisual(this.frameSkinVisual);
+            this.setFrameSkinVisualTransparent(this.frameSkinVisualTransparent);
+            this.setFrameSkinVisualColor(this.frameSkinVisualColor);
+            this.setFrameSkinColorRed(this.frameSkinColorRed);
+            this.setFrameSkinColorGreen(this.frameSkinColorGreen);
+            this.setFrameSkinColorBlue(this.frameSkinColorBlue);
             
-            this.setEngineVisual(this.metaEngineVisual);
+            this.setEngineParticleVisual(this.engineParticleVisual);
+            this.setEngineDisplayTypeVisual(this.engineDisplayTypeVisual);
+            this.setEngineDisplayIDVisual(this.engineDisplayIDVisual);
             
-            this.setBalloonVisual(this.metaBalloonVisual);
-            this.setBalloonVisualTransparent(this.metaBalloonVisualTransparent);
-            this.setBalloonVisualColor(this.metaBalloonVisualColor);
-            this.setBalloonColorRed(this.metaBalloonColorRed);
-            this.setBalloonColorGreen(this.metaBalloonColorGreen);
-            this.setBalloonColorBlue(this.metaBalloonColorBlue);
+            this.setBalloonPatternVisual(this.balloonPatternVisual);
+            this.setBalloonPatternVisualTransparent(this.balloonPatternVisualTransparent);
+            this.setBalloonPatternVisualColor(this.balloonPatternVisualColor);
+            this.setBalloonPatternColorRed(this.balloonPatternColorRed);
+            this.setBalloonPatternColorGreen(this.balloonPatternColorGreen);
+            this.setBalloonPatternColorBlue(this.balloonPatternColorBlue);
             
-            this.setModuleVariantSlot1(this.metaModuleVariantSlot1);
+            this.setModuleActiveSlot1(this.moduleActiveSlot1);
             
             this.setJukeboxSelectedSong(this.metaJukeboxSelectedSong);
             this.setCruiseControlSelectedSpeed(this.metaCruiseControlSelectedSpeed);
@@ -1337,384 +1425,495 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
             this.setModuleSelectedWater(this.selectedModuleWater);
             this.setModuleLearnedFuelInfinite(this.learnedModuleFuelInfinite);
             this.setModuleSelectedFuelInfinite(this.selectedModuleFuelInfinite);
+            this.setModuleLearnedBomb(this.learnedModuleBomb);
+            this.setModuleSelectedBomb(this.selectedModuleBomb);
 		}
     }
     
     //======================================================================================
     
     /**
-     * Sets the Core Tier.
+     * Sets the Custom Name.
      */
-    public void setMetaTierCore(int airshipTierCore0)
+    public void setCustomName(String stringIn)
     {
-        this.dataManager.set(AIRSHIP_TIER_CORE, Integer.valueOf(airshipTierCore0));
+        this.dataManager.set(CUSTOM_NAME_DM, String.valueOf(stringIn));
     }
     /**
-     * Gets the Core Tier.
+     * Gets the Custom Name.
      */
-    public int getMetaTierCore()
+    public String getCustomName()
     {
-        return ((Integer)this.dataManager.get(AIRSHIP_TIER_CORE)).intValue();
-    }
-    /**
-     * Sets the Frame Tier.
-     */
-    public void setMetaTierFrame(int airshipTierFrame0)
-    {
-        this.dataManager.set(AIRSHIP_TIER_FRAME, Integer.valueOf(airshipTierFrame0));
-    }
-    /**
-     * Gets the Frame Tier.
-     */
-    public int getMetaTierFrame()
-    {
-        return ((Integer)this.dataManager.get(AIRSHIP_TIER_FRAME)).intValue();
-    }
-    /**
-     * Sets the Engine Tier.
-     */
-    public void setMetaTierEngine(int airshipTierEngine0)
-    {
-        this.dataManager.set(AIRSHIP_TIER_ENGINE, Integer.valueOf(airshipTierEngine0));
-    }
-    /**
-     * Gets the Engine Tier.
-     */
-    public int getMetaTierEngine()
-    {
-        return ((Integer)this.dataManager.get(AIRSHIP_TIER_ENGINE)).intValue();
-    }
-    /**
-     * Sets the Balloon Tier.
-     */
-    public void setMetaTierBalloon(int airshipTierBalloon0)
-    {
-        this.dataManager.set(AIRSHIP_TIER_BALLOON, Integer.valueOf(airshipTierBalloon0));
-    }
-    /**
-     * Gets the Balloon Tier.
-     */
-    public int getMetaTierBalloon()
-    {
-        return ((Integer)this.dataManager.get(AIRSHIP_TIER_BALLOON)).intValue();
+        return ((String)this.dataManager.get(CUSTOM_NAME_DM));
     }
     
     //======================================================================================
     
     /**
-     * Sets the Visual Core.
+     * Sets the Main Core Tier.
      */
-    public void setCoreVisual(int airshipVisualCore0)
+    public void setMainTierCore(int intIn)
     {
-        this.dataManager.set(AIRSHIP_CORE_VISUAL, Integer.valueOf(airshipVisualCore0));
+        this.dataManager.set(MAIN_TIER_CORE_DM, Integer.valueOf(intIn));
     }
     /**
-     * Gets the Visual Core.
+     * Gets the Main Core Tier.
      */
-    public int getCoreVisual()
+    public int getMainTierCore()
     {
-        return ((Integer)this.dataManager.get(AIRSHIP_CORE_VISUAL)).intValue();
-    }
-    
-    //======================================================================================
-    
-    /**
-     * Sets the Visual Frame.
-     */
-    public void setFrameVisual(int airshipVisualFrame0)
-    {
-        this.dataManager.set(AIRSHIP_FRAME_VISUAL, Integer.valueOf(airshipVisualFrame0));
+        return ((Integer)this.dataManager.get(MAIN_TIER_CORE_DM)).intValue();
     }
     /**
-     * Gets the Visual Frame.
+     * Sets the Main Frame Tier.
      */
-    public int getFrameVisual()
+    public void setMainTierFrame(int intIn)
     {
-        return ((Integer)this.dataManager.get(AIRSHIP_FRAME_VISUAL)).intValue();
+        this.dataManager.set(MAIN_TIER_FRAME_DM, Integer.valueOf(intIn));
     }
     /**
-     * Sets the Frame Transparency.
+     * Gets the Main Frame Tier.
      */
-    public void setFrameVisualTransparent(boolean airshipFrameTransparent0)
+    public int getMainTierFrame()
     {
-        this.dataManager.set(AIRSHIP_FRAME_VISUAL_TRANSPARENT, Boolean.valueOf(airshipFrameTransparent0));
+        return ((Integer)this.dataManager.get(MAIN_TIER_FRAME_DM)).intValue();
     }
     /**
-     * Gets the Frame Transparency.
+     * Sets the Main Engine Tier.
      */
-    public boolean getFrameVisualTransparent()
+    public void setMainTierEngine(int intIn)
     {
-        return ((Boolean)this.dataManager.get(AIRSHIP_FRAME_VISUAL_TRANSPARENT)).booleanValue();
+        this.dataManager.set(MAIN_TIER_ENGINE_DM, Integer.valueOf(intIn));
     }
     /**
-     * Sets the Frame Color.
+     * Gets the Main Engine Tier.
      */
-    public void setFrameVisualColor(boolean airshipFrameColor0)
+    public int getMainTierEngine()
     {
-        this.dataManager.set(AIRSHIP_FRAME_VISUAL_COLOR, Boolean.valueOf(airshipFrameColor0));
+        return ((Integer)this.dataManager.get(MAIN_TIER_ENGINE_DM)).intValue();
     }
     /**
-     * Gets the Frame Color.
+     * Sets the Main Balloon Tier.
      */
-    public boolean getFrameVisualColor()
+    public void setMainTierBalloon(int intIn)
     {
-        return ((Boolean)this.dataManager.get(AIRSHIP_FRAME_VISUAL_COLOR)).booleanValue();
+        this.dataManager.set(MAIN_TIER_BALLOON_DM, Integer.valueOf(intIn));
     }
     /**
-     * Sets the Frame Color Red.
+     * Gets the Main Balloon Tier.
      */
-    public void setFrameColorRed(int airshipFrameRed0)
+    public int getMainTierBalloon()
     {
-        this.dataManager.set(AIRSHIP_FRAME_COLOR_RED, Integer.valueOf(airshipFrameRed0));
-    }
-    /**
-     * Gets the Frame Color Red.
-     */
-    public int getFrameColorRed()
-    {
-        return ((Integer)this.dataManager.get(AIRSHIP_FRAME_COLOR_RED)).intValue();
-    }
-    /**
-     * Sets the Frame Color Green.
-     */
-    public void setFrameColorGreen(int airshipFrameGreen0)
-    {
-        this.dataManager.set(AIRSHIP_FRAME_COLOR_GREEN, Integer.valueOf(airshipFrameGreen0));
-    }
-    /**
-     * Gets the Frame Color Green.
-     */
-    public int getFrameColorGreen()
-    {
-        return ((Integer)this.dataManager.get(AIRSHIP_FRAME_COLOR_GREEN)).intValue();
-    }
-    /**
-     * Sets the Frame Color Blue.
-     */
-    public void setFrameColorBlue(int airshipFrameBlue0)
-    {
-        this.dataManager.set(AIRSHIP_FRAME_COLOR_BLUE, Integer.valueOf(airshipFrameBlue0));
-    }
-    /**
-     * Gets the Frame Color Blue.
-     */
-    public int getFrameColorBlue()
-    {
-        return ((Integer)this.dataManager.get(AIRSHIP_FRAME_COLOR_BLUE)).intValue();
+        return ((Integer)this.dataManager.get(MAIN_TIER_BALLOON_DM)).intValue();
     }
     
     //======================================================================================
     
     /**
-     * Sets the Visual Engine pattern.
+     * Sets the Visual Core Model Frame. (Currently used for the whole model)
      */
-    public void setEngineVisual(int airshipVisualEngine0)
+    public void setCoreModelVisualFrame(int intIn)
     {
-        this.dataManager.set(AIRSHIP_ENGINE_VISUAL, Integer.valueOf(airshipVisualEngine0));
+        this.dataManager.set(CORE_MODEL_VISUAL_FRAME_DM, Integer.valueOf(intIn));
     }
     /**
-     * Gets the Visual Engine pattern.
+     * Gets the Visual Core Model Frame.
      */
-    public int getEngineVisual()
+    public int getCoreModelVisualFrame()
     {
-        return ((Integer)this.dataManager.get(AIRSHIP_ENGINE_VISUAL)).intValue();
+        return ((Integer)this.dataManager.get(CORE_MODEL_VISUAL_FRAME_DM)).intValue();
+    }
+    
+    /**
+     * Sets the Visual Core Model Engine.
+     */
+    public void setCoreModelVisualEngine(int intIn)
+    {
+        this.dataManager.set(CORE_MODEL_VISUAL_ENGINE_DM, Integer.valueOf(intIn));
+    }
+    /**
+     * Gets the Visual Core Model Engine.
+     */
+    public int getCoreModelVisualEngine()
+    {
+        return ((Integer)this.dataManager.get(CORE_MODEL_VISUAL_ENGINE_DM)).intValue();
+    }
+    
+    /**
+     * Sets the Visual Core Model Balloon.
+     */
+    public void setCoreModelVisualBalloon(int intIn)
+    {
+        this.dataManager.set(CORE_MODEL_VISUAL_BALLOON_DM, Integer.valueOf(intIn));
+    }
+    /**
+     * Gets the Visual Core Model Balloon.
+     */
+    public int getCoreModelVisualBalloon()
+    {
+        return ((Integer)this.dataManager.get(CORE_MODEL_VISUAL_BALLOON_DM)).intValue();
+    }
+    //======================================================================================
+    
+    /**
+     * Sets the Visual Frame Skin.
+     */
+    public void setFrameSkinVisual(int intIn)
+    {
+        this.dataManager.set(FRAME_SKIN_VISUAL_DM, Integer.valueOf(intIn));
+    }
+    /**
+     * Gets the Visual Frame Skin.
+     */
+    public int getFrameSkinVisual()
+    {
+        return ((Integer)this.dataManager.get(FRAME_SKIN_VISUAL_DM)).intValue();
+    }
+    /**
+     * Sets the Visual Frame Skin Transparency.
+     */
+    public void setFrameSkinVisualTransparent(boolean booleanIn)
+    {
+        this.dataManager.set(FRAME_SKIN_VISUAL_TRANSPARENT_DM, Boolean.valueOf(booleanIn));
+    }
+    /**
+     * Gets the Visual Frame Skin Transparency.
+     */
+    public boolean getFrameSkinVisualTransparent()
+    {
+        return ((Boolean)this.dataManager.get(FRAME_SKIN_VISUAL_TRANSPARENT_DM)).booleanValue();
+    }
+    /**
+     * Sets the Visual Frame Skin Color.
+     */
+    public void setFrameSkinVisualColor(boolean booleanIn)
+    {
+        this.dataManager.set(FRAME_SKIN_VISUAL_COLOR_DM, Boolean.valueOf(booleanIn));
+    }
+    /**
+     * Gets the Visual Frame Skin Color.
+     */
+    public boolean getFrameSkinVisualColor()
+    {
+        return ((Boolean)this.dataManager.get(FRAME_SKIN_VISUAL_COLOR_DM)).booleanValue();
+    }
+    
+    /**
+     * Sets the Visual Frame Skin Color Red.
+     */
+    public void setFrameSkinColorRed(int intIn)
+    {
+        this.dataManager.set(FRAME_SKIN_COLOR_RED_DM, Integer.valueOf(intIn));
+    }
+    /**
+     * Gets the Visual Frame Skin Color Red.
+     */
+    public int getFrameSkinColorRed()
+    {
+        return ((Integer)this.dataManager.get(FRAME_SKIN_COLOR_RED_DM)).intValue();
+    }
+    /**
+     * Sets the Visual Frame Skin Color Green.
+     */
+    public void setFrameSkinColorGreen(int intIn)
+    {
+        this.dataManager.set(FRAME_SKIN_COLOR_GREEN_DM, Integer.valueOf(intIn));
+    }
+    /**
+     * Gets the Visual Frame Skin Color Green.
+     */
+    public int getFrameSkinColorGreen()
+    {
+        return ((Integer)this.dataManager.get(FRAME_SKIN_COLOR_GREEN_DM)).intValue();
+    }
+    /**
+     * Sets the Visual Frame Skin Color Blue.
+     */
+    public void setFrameSkinColorBlue(int intIn)
+    {
+        this.dataManager.set(FRAME_SKIN_COLOR_BLUE_DM, Integer.valueOf(intIn));
+    }
+    /**
+     * Gets the Visual Frame Skin Color Blue.
+     */
+    public int getFrameSkinColorBlue()
+    {
+        return ((Integer)this.dataManager.get(FRAME_SKIN_COLOR_BLUE_DM)).intValue();
     }
     
     //======================================================================================
     
     /**
-     * Sets the Visual Balloon pattern.
+     * Sets the Visual Engine Particle.
      */
-    public void setBalloonVisual(int airshipVisualBalloon0)
+    public void setEngineParticleVisual(int intIn)
     {
-        this.dataManager.set(AIRSHIP_BALLOON_VISUAL, Integer.valueOf(airshipVisualBalloon0));
+        this.dataManager.set(ENGINE_PARTICLE_VISUAL_DM, Integer.valueOf(intIn));
     }
     /**
-     * Gets the Visual Balloon pattern.
+     * Gets the Visual Engine Particle.
      */
-    public int getBalloonVisual()
+    public int getEngineParticleVisual()
     {
-        return ((Integer)this.dataManager.get(AIRSHIP_BALLOON_VISUAL)).intValue();
+        return ((Integer)this.dataManager.get(ENGINE_PARTICLE_VISUAL_DM)).intValue();
     }
     /**
-     * Sets the Balloon Transparency.
+     * Sets the Visual Engine Display Type.
      */
-    public void setBalloonVisualTransparent(boolean airshipBalloonTransparent0)
+    public void setEngineDisplayTypeVisual(int intIn)
     {
-        this.dataManager.set(AIRSHIP_BALLOON_VISUAL_TRANSPARENT, Boolean.valueOf(airshipBalloonTransparent0));
+        this.dataManager.set(ENGINE_DISPLAY_TYPE_VISUAL_DM, Integer.valueOf(intIn));
     }
     /**
-     * Gets the Balloon Transparency.
+     * Gets the Visual Engine Display Type.
      */
-    public boolean getBalloonVisualTransparent()
+    public int getEngineDisplayTypeVisual()
     {
-        return ((Boolean)this.dataManager.get(AIRSHIP_BALLOON_VISUAL_TRANSPARENT)).booleanValue();
+        return ((Integer)this.dataManager.get(ENGINE_DISPLAY_TYPE_VISUAL_DM)).intValue();
     }
     /**
-     * Sets the Balloon Color.
+     * Sets the Visual Engine Display ID.
      */
-    public void setBalloonVisualColor(boolean airshipBalloonColor0)
+    public void setEngineDisplayIDVisual(int intIn)
     {
-        this.dataManager.set(AIRSHIP_BALLOON_VISUAL_COLOR, Boolean.valueOf(airshipBalloonColor0));
+        this.dataManager.set(ENGINE_DISPLAY_ID_VISUAL_DM, Integer.valueOf(intIn));
     }
     /**
-     * Gets the Balloon Color.
+     * Gets the Visual Engine Display ID.
      */
-    public boolean getBalloonVisualColor()
+    public int getEngineDisplayIDVisual()
     {
-        return ((Boolean)this.dataManager.get(AIRSHIP_BALLOON_VISUAL_COLOR)).booleanValue();
-    }
-    /**
-     * Sets the Balloon Color Red.
-     */
-    public void setBalloonColorRed(int airshipBalloonRed0)
-    {
-        this.dataManager.set(AIRSHIP_BALLOON_COLOR_RED, Integer.valueOf(airshipBalloonRed0));
-    }
-    /**
-     * Gets the Balloon Color Red.
-     */
-    public int getBalloonColorRed()
-    {
-        return ((Integer)this.dataManager.get(AIRSHIP_BALLOON_COLOR_RED)).intValue();
-    }
-    /**
-     * Sets the Balloon Color Green.
-     */
-    public void setBalloonColorGreen(int airshipBalloonGreen0)
-    {
-        this.dataManager.set(AIRSHIP_BALLOON_COLOR_GREEN, Integer.valueOf(airshipBalloonGreen0));
-    }
-    /**
-     * Gets the Balloon Color Green.
-     */
-    public int getBalloonColorGreen()
-    {
-        return ((Integer)this.dataManager.get(AIRSHIP_BALLOON_COLOR_GREEN)).intValue();
-    }
-    /**
-     * Sets the Balloon Color Blue.
-     */
-    public void setBalloonColorBlue(int airshipBalloonBlue0)
-    {
-        this.dataManager.set(AIRSHIP_BALLOON_COLOR_BLUE, Integer.valueOf(airshipBalloonBlue0));
-    }
-    /**
-     * Gets the Balloon Color Blue.
-     */
-    public int getBalloonColorBlue()
-    {
-        return ((Integer)this.dataManager.get(AIRSHIP_BALLOON_COLOR_BLUE)).intValue();
+        return ((Integer)this.dataManager.get(ENGINE_DISPLAY_ID_VISUAL_DM)).intValue();
     }
     
     //======================================================================================
     
     /**
-     * Sets the Slot1 Module Variant.
+     * Sets the Visual Balloon Pattern.
      */
-    public void setModuleVariantSlot1(int modulesVariantSlot1)
+    public void setBalloonPatternVisual(int intIn)
     {
-        this.dataManager.set(MODULE_SLOT1_VARIANT, Integer.valueOf(modulesVariantSlot1));
+        this.dataManager.set(BALLOON_PATTERN_VISUAL_DM, Integer.valueOf(intIn));
     }
     /**
-     * Gets the Slot1 Module Variant.
+     * Gets the Visual Balloon Pattern.
      */
-    public int getModuleVariantSlot1()
+    public int getBalloonPatternVisual()
     {
-        return ((Integer)this.dataManager.get(MODULE_SLOT1_VARIANT)).intValue();
+        return ((Integer)this.dataManager.get(BALLOON_PATTERN_VISUAL_DM)).intValue();
+    }
+    /**
+     * Sets the Visual Balloon Pattern Transparency.
+     */
+    public void setBalloonPatternVisualTransparent(boolean booleanIn)
+    {
+        this.dataManager.set(BALLOON_PATTERN_VISUAL_TRANSPARENT_DM, Boolean.valueOf(booleanIn));
+    }
+    /**
+     * Gets the Visual Balloon Pattern Transparency.
+     */
+    public boolean getBalloonPatternVisualTransparent()
+    {
+        return ((Boolean)this.dataManager.get(BALLOON_PATTERN_VISUAL_TRANSPARENT_DM)).booleanValue();
+    }
+    /**
+     * Sets the Visual Balloon Pattern Color.
+     */
+    public void setBalloonPatternVisualColor(boolean booleanIn)
+    {
+        this.dataManager.set(BALLOON_PATTERN_VISUAL_COLOR_DM, Boolean.valueOf(booleanIn));
+    }
+    /**
+     * Gets the Visual Balloon Pattern Color.
+     */
+    public boolean getBalloonPatternVisualColor()
+    {
+        return ((Boolean)this.dataManager.get(BALLOON_PATTERN_VISUAL_COLOR_DM)).booleanValue();
     }
     
     /**
-     * Sets the jukebox selected song.
+     * Sets the Visual Balloon Pattern Color Red.
      */
-    public void setJukeboxSelectedSong(int jukeboxSelectedSong0)
+    public void setBalloonPatternColorRed(int intIn)
     {
-        this.dataManager.set(MODULE_JUKEBOX_SELECTED_SONG, Integer.valueOf(jukeboxSelectedSong0));
+        this.dataManager.set(BALLOON_PATTERN_COLOR_RED_DM, Integer.valueOf(intIn));
     }
     /**
-     * Gets the jukebox selected song.
+     * Gets the Visual Balloon Pattern Color Red.
+     */
+    public int getBalloonPatternColorRed()
+    {
+        return ((Integer)this.dataManager.get(BALLOON_PATTERN_COLOR_RED_DM)).intValue();
+    }
+    /**
+     * Sets the Visual Balloon Pattern Color Green.
+     */
+    public void setBalloonPatternColorGreen(int intIn)
+    {
+        this.dataManager.set(BALLOON_PATTERN_COLOR_GREEN_DM, Integer.valueOf(intIn));
+    }
+    /**
+     * Gets the Visual Balloon Pattern Color Green.
+     */
+    public int getBalloonPatternColorGreen()
+    {
+        return ((Integer)this.dataManager.get(BALLOON_PATTERN_COLOR_GREEN_DM)).intValue();
+    }
+    /**
+     * Sets the Visual Balloon Pattern Color Blue.
+     */
+    public void setBalloonPatternColorBlue(int intIn)
+    {
+        this.dataManager.set(BALLOON_PATTERN_COLOR_BLUE_DM, Integer.valueOf(intIn));
+    }
+    /**
+     * Gets the Visual Balloon Pattern Color Blue.
+     */
+    public int getBalloonPatternColorBlue()
+    {
+        return ((Integer)this.dataManager.get(BALLOON_PATTERN_COLOR_BLUE_DM)).intValue();
+    }
+    
+    //======================================================================================
+    
+    /**
+     * Sets the Active Slot1 Module.
+     */
+    public void setModuleActiveSlot1(int intIn)
+    {
+        this.dataManager.set(MODULE_ACTIVE_SLOT1_DM, Integer.valueOf(intIn));
+    }
+    /**
+     * Gets the Active Slot1 Module.
+     */
+    public int getModuleActiveSlot1()
+    {
+        return ((Integer)this.dataManager.get(MODULE_ACTIVE_SLOT1_DM)).intValue();
+    }
+    
+    //======================================================================================
+    
+    /**
+     * Sets the Jukebox selected song.
+     */
+    public void setJukeboxSelectedSong(int intIn)
+    {
+        this.dataManager.set(MODULE_JUKEBOX_SELECTED_SONG_DM, Integer.valueOf(intIn));
+    }
+    /**
+     * Gets the Jukebox selected song.
      */
 	public int getJukeboxSelectedSong()
     {
-        return ((Integer)this.dataManager.get(MODULE_JUKEBOX_SELECTED_SONG)).intValue();
+        return ((Integer)this.dataManager.get(MODULE_JUKEBOX_SELECTED_SONG_DM)).intValue();
     }
 	
 	/**
      * Sets the Cruise Control selected speed.
      */
-    public void setCruiseControlSelectedSpeed(int cruiseControlSelectedSpeed0)
+    public void setCruiseControlSelectedSpeed(int intIn)
     {
-        this.dataManager.set(MODULE_CRUISECONTROL_SELECTED_SPEED, Integer.valueOf(cruiseControlSelectedSpeed0));
+        this.dataManager.set(MODULE_CRUISECONTROL_SELECTED_SPEED_DM, Integer.valueOf(intIn));
     }
     /**
      * Gets the Cruise Control selected speed.
      */
     public int getCruiseControlSelectedSpeed()
     {
-        return ((Integer)this.dataManager.get(MODULE_CRUISECONTROL_SELECTED_SPEED)).intValue();
+        return ((Integer)this.dataManager.get(MODULE_CRUISECONTROL_SELECTED_SPEED_DM)).intValue();
     }
     
     //======================================================================================
     
 	/**
-     * Sets the Airship Burn Time.
+     * Sets the Stored Fuel.
      */
-    public void setPowered(int airshipBurnTime1)
+    public void setStoredFuel(int intIn)
     {
-        this.dataManager.set(AIRSHIP_POWERED, Integer.valueOf(airshipBurnTime1));
+        this.dataManager.set(STORED_FUEL_DM, Integer.valueOf(intIn));
     }
     /**
-     * Gets the Airship Burn Time.
+     * Gets the Stored Fuel.
      */
-    public int getPowered()
+    public int getStoredFuel()
     {
-        return ((Integer)this.dataManager.get(AIRSHIP_POWERED)).intValue();
-    }
-    
-    /**
-     * Sets the Airship Total Burn Time.
-     */
-    public void setTotalPowered(int airshipTotalBurnTime1)
-    {
-        this.dataManager.set(AIRSHIP_POWERED_TOTAL, Integer.valueOf(airshipTotalBurnTime1));
-    }
-    /**
-     * Gets the Airship Total Burn Time.
-     */
-    public int getTotalPowered()
-    {
-        return ((Integer)this.dataManager.get(AIRSHIP_POWERED_TOTAL)).intValue();
+        return ((Integer)this.dataManager.get(STORED_FUEL_DM)).intValue();
     }
     
     /**
-     * Sets the Item Fuel Stack.
+     * Sets the Stored Fuel Total.
      */
-    public void setItemFuelStackPowered(int itemFuelStack1)
+    public void setStoredFuelTotal(int intIn)
     {
-        this.dataManager.set(AIRSHIP_ITEMFUELSTACK_POWERED, Integer.valueOf(itemFuelStack1));
+        this.dataManager.set(STORED_FUEL_TOTAL_DM, Integer.valueOf(intIn));
     }
     /**
-     * Gets the Item Fuel Stack.
+     * Gets the Stored Fuel Total.
      */
-    public int getItemFuelStackPowered()
+    public int getStoredFuelTotal()
     {
-        return ((Integer)this.dataManager.get(AIRSHIP_ITEMFUELSTACK_POWERED)).intValue();
+        return ((Integer)this.dataManager.get(STORED_FUEL_TOTAL_DM)).intValue();
+    }
+    
+    /**
+     * Sets the Fuel ItemStack.
+     */
+    public void setFuelItemStackPowered(int intIn)
+    {
+        this.dataManager.set(FUEL_ITEMSTACK_DM, Integer.valueOf(intIn));
+    }
+    /**
+     * Gets the Fuel ItemStack.
+     */
+    public int getFuelItemStackPowered()
+    {
+        return ((Integer)this.dataManager.get(FUEL_ITEMSTACK_DM)).intValue();
     }
     
 	/**
-     * Sets the Item Fuel Stack Size.
+     * Sets the Fuel ItemStack Size.
      */
-    public void setItemFuelStackSizePowered(int itemFuelStackSize1)
+    public void setFuelItemStackSizePowered(int intIn)
     {
-        this.dataManager.set(AIRSHIP_ITEMFUELSTACK_POWERED_SIZE, Integer.valueOf(itemFuelStackSize1));
+        this.dataManager.set(FUEL_ITEMSTACK_SIZE_DM, Integer.valueOf(intIn));
     }
     /**
-     * Gets the Item Fuel Stack Size.
+     * Gets the Fuel ItemStack Size.
      */
-    public int getItemFuelStackSizePowered()
+    public int getFuelItemStackSizePowered()
     {
-        return ((Integer)this.dataManager.get(AIRSHIP_ITEMFUELSTACK_POWERED_SIZE)).intValue();
+        return ((Integer)this.dataManager.get(FUEL_ITEMSTACK_SIZE_DM)).intValue();
     }
+    
+    /**
+     * Sets the Stored Redstone.
+     */
+    public void setStoredRedstone(int intIn)
+    {
+        this.dataManager.set(STORED_REDSTONE_DM, Integer.valueOf(intIn));
+    }
+    /**
+     * Gets the Stored Redstone.
+     */
+    public int getStoredRedstone()
+    {
+        return ((Integer)this.dataManager.get(STORED_REDSTONE_DM)).intValue();
+    }
+    
+    /**
+     * Sets the Stored Redstone Total.
+     */
+    public void setStoredRedstoneTotal(int intIn)
+    {
+        this.dataManager.set(STORED_REDSTONE_TOTAL_DM, Integer.valueOf(intIn));
+    }
+    /**
+     * Gets the Stored Redstone Total.
+     */
+    public int getStoredRedstoneTotal()
+    {
+        return ((Integer)this.dataManager.get(STORED_REDSTONE_TOTAL_DM)).intValue();
+    }
+    
     
     //======================================================================================
     
@@ -1723,28 +1922,28 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
      */
     public void setModuleSelectedAltitude(int moduleSelectedAltitude)
     {
-        this.dataManager.set(MODULE_SLOT1_SELECTED_ALTITUDE, Integer.valueOf(moduleSelectedAltitude));
+        this.dataManager.set(MODULE_SELECTED_ALTITUDE_DM, Integer.valueOf(moduleSelectedAltitude));
     }
     /**
      * Gets the Int of Module Altitude.
      */
     public int getModuleSelectedAltitude()
     {
-        return ((Integer)this.dataManager.get(MODULE_SLOT1_SELECTED_ALTITUDE)).intValue();
+        return ((Integer)this.dataManager.get(MODULE_SELECTED_ALTITUDE_DM)).intValue();
     }
     /**
      * Sets the Learned boolean of Module Altitude.
      */
     public void setModuleLearnedAltitude(boolean moduleLearnedAltitude)
     {
-        this.dataManager.set(MODULE_SLOT1_LEARNED_ALTITUDE, Boolean.valueOf(moduleLearnedAltitude));
+        this.dataManager.set(MODULE_LEARNED_ALTITUDE_DM, Boolean.valueOf(moduleLearnedAltitude));
     }
     /**
      * Gets the Learned boolean of Module Altitude.
      */
     public boolean getModuleLearnedAltitude()
     {
-        return ((Boolean)this.dataManager.get(MODULE_SLOT1_LEARNED_ALTITUDE)).booleanValue();
+        return ((Boolean)this.dataManager.get(MODULE_LEARNED_ALTITUDE_DM)).booleanValue();
     }
 
 	/**
@@ -1752,28 +1951,28 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
      */
     public void setModuleSelectedSpeed(int moduleSelectedSpeed)
     {
-        this.dataManager.set(MODULE_SLOT1_SELECTED_SPEED, Integer.valueOf(moduleSelectedSpeed));
+        this.dataManager.set(MODULE_SELECTED_SPEED_DM, Integer.valueOf(moduleSelectedSpeed));
     }
     /**
      * Gets the Int of Module Speed.
      */
     public int getModuleSelectedSpeed()
     {
-        return ((Integer)this.dataManager.get(MODULE_SLOT1_SELECTED_SPEED)).intValue();
+        return ((Integer)this.dataManager.get(MODULE_SELECTED_SPEED_DM)).intValue();
     }
     /**
      * Sets the Learned boolean of Module Speed.
      */
     public void setModuleLearnedSpeed(boolean moduleLearnedSpeed)
     {
-        this.dataManager.set(MODULE_SLOT1_LEARNED_SPEED, Boolean.valueOf(moduleLearnedSpeed));
+        this.dataManager.set(MODULE_LEARNED_SPEED_DM, Boolean.valueOf(moduleLearnedSpeed));
     }
     /**
      * Gets the Learned boolean of Module Speed.
      */
     public boolean getModuleLearnedSpeed()
     {
-        return ((Boolean)this.dataManager.get(MODULE_SLOT1_LEARNED_SPEED)).booleanValue();
+        return ((Boolean)this.dataManager.get(MODULE_LEARNED_SPEED_DM)).booleanValue();
     }
     
     /**
@@ -1781,28 +1980,28 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
      */
     public void setModuleSelectedStorage(int moduleSelectedStorage)
     {
-        this.dataManager.set(MODULE_SLOT1_SELECTED_STORAGE, Integer.valueOf(moduleSelectedStorage));
+        this.dataManager.set(MODULE_SELECTED_STORAGE_DM, Integer.valueOf(moduleSelectedStorage));
     }
     /**
      * Gets the Int of Module Storage.
      */
     public int getModuleSelectedStorage()
     {
-        return ((Integer)this.dataManager.get(MODULE_SLOT1_SELECTED_STORAGE)).intValue();
+        return ((Integer)this.dataManager.get(MODULE_SELECTED_STORAGE_DM)).intValue();
     }
     /**
      * Sets the Learned boolean of Module Storage.
      */
     public void setModuleLearnedStorage(boolean moduleLearnedStorage)
     {
-        this.dataManager.set(MODULE_SLOT1_LEARNED_STORAGE, Boolean.valueOf(moduleLearnedStorage));
+        this.dataManager.set(MODULE_LEARNED_STORAGE_DM, Boolean.valueOf(moduleLearnedStorage));
     }
     /**
      * Gets the Learned boolean of Module Storage.
      */
     public boolean getModuleLearnedStorage()
     {
-        return ((Boolean)this.dataManager.get(MODULE_SLOT1_LEARNED_STORAGE)).booleanValue();
+        return ((Boolean)this.dataManager.get(MODULE_LEARNED_STORAGE_DM)).booleanValue();
     }
     
     /**
@@ -1810,28 +2009,28 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
      */
     public void setModuleSelectedFuel(int moduleSelectedFuel)
     {
-        this.dataManager.set(MODULE_SLOT1_SELECTED_FUEL, Integer.valueOf(moduleSelectedFuel));
+        this.dataManager.set(MODULE_SELECTED_FUEL_DM, Integer.valueOf(moduleSelectedFuel));
     }
     /**
      * Gets the Int of Module Fuel.
      */
     public int getModuleSelectedFuel()
     {
-        return ((Integer)this.dataManager.get(MODULE_SLOT1_SELECTED_FUEL)).intValue();
+        return ((Integer)this.dataManager.get(MODULE_SELECTED_FUEL_DM)).intValue();
     }
     /**
      * Sets the Learned boolean of Module Fuel.
      */
     public void setModuleLearnedFuel(boolean moduleLearnedFuel)
     {
-        this.dataManager.set(MODULE_SLOT1_LEARNED_FUEL, Boolean.valueOf(moduleLearnedFuel));
+        this.dataManager.set(MODULE_LEARNED_FUEL_DM, Boolean.valueOf(moduleLearnedFuel));
     }
     /**
      * Gets the Learned boolean of Module Fuel.
      */
     public boolean getModuleLearnedFuel()
     {
-        return ((Boolean)this.dataManager.get(MODULE_SLOT1_LEARNED_FUEL)).booleanValue();
+        return ((Boolean)this.dataManager.get(MODULE_LEARNED_FUEL_DM)).booleanValue();
     }
     
     /**
@@ -1839,28 +2038,28 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
      */
     public void setModuleSelectedMusic(int moduleSelectedMusic)
     {
-        this.dataManager.set(MODULE_SLOT1_SELECTED_MUSIC, Integer.valueOf(moduleSelectedMusic));
+        this.dataManager.set(MODULE_SELECTED_MUSIC_DM, Integer.valueOf(moduleSelectedMusic));
     }
     /**
      * Gets the Int of Module Music.
      */
     public int getModuleSelectedMusic()
     {
-        return ((Integer)this.dataManager.get(MODULE_SLOT1_SELECTED_MUSIC)).intValue();
+        return ((Integer)this.dataManager.get(MODULE_SELECTED_MUSIC_DM)).intValue();
     }
     /**
      * Sets the Learned boolean of Module Music.
      */
     public void setModuleLearnedMusic(boolean moduleLearnedMusic)
     {
-        this.dataManager.set(MODULE_SLOT1_LEARNED_MUSIC, Boolean.valueOf(moduleLearnedMusic));
+        this.dataManager.set(MODULE_LEARNED_MUSIC_DM, Boolean.valueOf(moduleLearnedMusic));
     }
     /**
      * Gets the Learned boolean of Module Music.
      */
     public boolean getModuleLearnedMusic()
     {
-        return ((Boolean)this.dataManager.get(MODULE_SLOT1_LEARNED_MUSIC)).booleanValue();
+        return ((Boolean)this.dataManager.get(MODULE_LEARNED_MUSIC_DM)).booleanValue();
     }
     
     /**
@@ -1868,28 +2067,28 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
      */
     public void setModuleSelectedCruise(int moduleSelectedCruise)
     {
-        this.dataManager.set(MODULE_SLOT1_SELECTED_CRUISE, Integer.valueOf(moduleSelectedCruise));
+        this.dataManager.set(MODULE_SELECTED_CRUISE_DM, Integer.valueOf(moduleSelectedCruise));
     }
     /**
      * Gets the Int of Module Cruise.
      */
     public int getModuleSelectedCruise()
     {
-        return ((Integer)this.dataManager.get(MODULE_SLOT1_SELECTED_CRUISE)).intValue();
+        return ((Integer)this.dataManager.get(MODULE_SELECTED_CRUISE_DM)).intValue();
     }
     /**
      * Sets the Learned boolean of Module Cruise.
      */
     public void setModuleLearnedCruise(boolean moduleLearnedCruise)
     {
-        this.dataManager.set(MODULE_SLOT1_LEARNED_CRUISE, Boolean.valueOf(moduleLearnedCruise));
+        this.dataManager.set(MODULE_LEARNED_CRUISE_DM, Boolean.valueOf(moduleLearnedCruise));
     }
     /**
      * Gets the Learned boolean of Module Cruise.
      */
     public boolean getModuleLearnedCruise()
     {
-        return ((Boolean)this.dataManager.get(MODULE_SLOT1_LEARNED_CRUISE)).booleanValue();
+        return ((Boolean)this.dataManager.get(MODULE_LEARNED_CRUISE_DM)).booleanValue();
     }
     
     /**
@@ -1897,28 +2096,28 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
      */
     public void setModuleSelectedWater(int moduleSelectedWater)
     {
-        this.dataManager.set(MODULE_SLOT1_SELECTED_WATER, Integer.valueOf(moduleSelectedWater));
+        this.dataManager.set(MODULE_SELECTED_WATER_DM, Integer.valueOf(moduleSelectedWater));
     }
     /**
      * Gets the Int of Module Water.
      */
     public int getModuleSelectedWater()
     {
-        return ((Integer)this.dataManager.get(MODULE_SLOT1_SELECTED_WATER)).intValue();
+        return ((Integer)this.dataManager.get(MODULE_SELECTED_WATER_DM)).intValue();
     }
     /**
      * Sets the Learned boolean of Module Water.
      */
     public void setModuleLearnedWater(boolean moduleLearnedWater)
     {
-        this.dataManager.set(MODULE_SLOT1_LEARNED_WATER, Boolean.valueOf(moduleLearnedWater));
+        this.dataManager.set(MODULE_LEARNED_WATER_DM, Boolean.valueOf(moduleLearnedWater));
     }
     /**
      * Gets the Learned boolean of Module Water.
      */
     public boolean getModuleLearnedWater()
     {
-        return ((Boolean)this.dataManager.get(MODULE_SLOT1_LEARNED_WATER)).booleanValue();
+        return ((Boolean)this.dataManager.get(MODULE_LEARNED_WATER_DM)).booleanValue();
     }
     
     /**
@@ -1926,27 +2125,56 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
      */
     public void setModuleSelectedFuelInfinite(int moduleSelectedFuelInfinite)
     {
-        this.dataManager.set(MODULE_SLOT1_SELECTED_FUELINFINITE, Integer.valueOf(moduleSelectedFuelInfinite));
+        this.dataManager.set(MODULE_SELECTED_FUELINFINITE_DM, Integer.valueOf(moduleSelectedFuelInfinite));
     }
     /**
      * Gets the Int of Module FuelInfinite.
      */
     public int getModuleSelectedFuelInfinite()
     {
-        return ((Integer)this.dataManager.get(MODULE_SLOT1_SELECTED_FUELINFINITE)).intValue();
+        return ((Integer)this.dataManager.get(MODULE_SELECTED_FUELINFINITE_DM)).intValue();
     }
     /**
      * Sets the Learned boolean of Module FuelInfinite.
      */
     public void setModuleLearnedFuelInfinite(boolean moduleLearnedFuelInfinite)
     {
-        this.dataManager.set(MODULE_SLOT1_LEARNED_FUELINFINITE, Boolean.valueOf(moduleLearnedFuelInfinite));
+        this.dataManager.set(MODULE_LEARNED_FUELINFINITE_DM, Boolean.valueOf(moduleLearnedFuelInfinite));
     }
     /**
      * Gets the Learned boolean of Module FuelInfinite.
      */
     public boolean getModuleLearnedFuelInfinite()
     {
-        return ((Boolean)this.dataManager.get(MODULE_SLOT1_LEARNED_FUELINFINITE)).booleanValue();
+        return ((Boolean)this.dataManager.get(MODULE_LEARNED_FUELINFINITE_DM)).booleanValue();
+    }
+    
+    /**
+     * Sets the Int of Module Bomb.
+     */
+    public void setModuleSelectedBomb(int moduleSelectedBomb)
+    {
+        this.dataManager.set(MODULE_SELECTED_BOMB_DM, Integer.valueOf(moduleSelectedBomb));
+    }
+    /**
+     * Gets the Int of Module Bomb.
+     */
+    public int getModuleSelectedBomb()
+    {
+        return ((Integer)this.dataManager.get(MODULE_SELECTED_BOMB_DM)).intValue();
+    }
+    /**
+     * Sets the Learned boolean of Module Bomb.
+     */
+    public void setModuleLearnedBomb(boolean moduleLearnedBomb)
+    {
+        this.dataManager.set(MODULE_LEARNED_BOMB_DM, Boolean.valueOf(moduleLearnedBomb));
+    }
+    /**
+     * Gets the Learned boolean of Module Bomb.
+     */
+    public boolean getModuleLearnedBomb()
+    {
+        return ((Boolean)this.dataManager.get(MODULE_LEARNED_BOMB_DM)).booleanValue();
     }
 }

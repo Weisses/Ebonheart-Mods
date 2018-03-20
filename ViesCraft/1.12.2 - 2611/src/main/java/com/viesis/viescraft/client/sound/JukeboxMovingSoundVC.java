@@ -47,9 +47,9 @@ public class JukeboxMovingSoundVC extends MovingSound {
         	this.donePlaying = true;
     		Minecraft.getMinecraft().gameSettings.setSoundLevel(SoundCategory.MUSIC, 1.0F);
         }
-    	else if(this.airship.getModuleVariantSlot1() != EnumsVC.ModuleType.MUSIC_LESSER.getMetadata()
-			 && this.airship.getModuleVariantSlot1() != EnumsVC.ModuleType.MUSIC_NORMAL.getMetadata()
-			 && this.airship.getModuleVariantSlot1() != EnumsVC.ModuleType.MUSIC_GREATER.getMetadata())
+    	else if(this.airship.getModuleActiveSlot1() != EnumsVC.ModuleType.MUSIC_LESSER.getMetadata()
+			 && this.airship.getModuleActiveSlot1() != EnumsVC.ModuleType.MUSIC_NORMAL.getMetadata()
+			 && this.airship.getModuleActiveSlot1() != EnumsVC.ModuleType.MUSIC_GREATER.getMetadata())
 		{
     		this.donePlaying = true;
     		Minecraft.getMinecraft().gameSettings.setSoundLevel(SoundCategory.MUSIC, 1.0F);

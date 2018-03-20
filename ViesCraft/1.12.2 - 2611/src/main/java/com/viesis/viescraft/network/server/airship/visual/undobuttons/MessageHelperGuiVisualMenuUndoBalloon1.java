@@ -1,6 +1,6 @@
 package com.viesis.viescraft.network.server.airship.visual.undobuttons;
 
-import com.viesis.viescraft.client.gui.airship.main.GuiVisualMenu;
+import com.viesis.viescraft.client.gui.airship.main.GuiCustomizeMenu;
 import com.viesis.viescraft.client.gui.airship.visual.balloon.GuiVisualMenuBalloonTier1Pg1;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
 import com.viesis.viescraft.network.packet.MessageBase;
@@ -21,7 +21,7 @@ public class MessageHelperGuiVisualMenuUndoBalloon1 extends MessageBase<MessageH
 	@Override
 	public void toBytes(ByteBuf buf) 
 	{
-		buf.writeBoolean(GuiVisualMenu.undoBalloon1);
+		buf.writeBoolean(GuiCustomizeMenu.undoBalloon1);
 	}
 	
 	@Override
@@ -34,6 +34,6 @@ public class MessageHelperGuiVisualMenuUndoBalloon1 extends MessageBase<MessageH
 	public void handleServerSide(MessageHelperGuiVisualMenuUndoBalloon1 message, EntityPlayer player) 
 	{
 		EntityAirshipBaseVC airship = (EntityAirshipBaseVC) player.getRidingEntity();
-		airship.metaBalloonVisualTransparent = message.metaBalloon;
+		airship.balloonPatternVisualTransparent = message.metaBalloon;
 	}
 }

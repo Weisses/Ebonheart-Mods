@@ -42,10 +42,10 @@ public class MessageHelperGuiVisualMenuBalloonColor extends MessageBase<MessageH
 	public void handleServerSide(MessageHelperGuiVisualMenuBalloonColor message, EntityPlayer player) 
 	{
 		EntityAirshipBaseVC airship = (EntityAirshipBaseVC) player.getRidingEntity();
-		airship.metaBalloonColorRed = message.metaBalloonRed;
-		airship.metaBalloonColorGreen = message.metaBalloonGreen;
-		airship.metaBalloonColorBlue = message.metaBalloonBlue;
+		airship.balloonPatternColorRed = message.metaBalloonRed;
+		airship.balloonPatternColorGreen = message.metaBalloonGreen;
+		airship.balloonPatternColorBlue = message.metaBalloonBlue;
 		
-		airship.metaBalloonVisualColor = message.metaBalloonColor;
+		airship.balloonPatternVisualColor = message.metaBalloonColor;
 	}
 }

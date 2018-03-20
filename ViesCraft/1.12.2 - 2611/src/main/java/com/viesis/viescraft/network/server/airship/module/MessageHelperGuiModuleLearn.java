@@ -35,7 +35,7 @@ public class MessageHelperGuiModuleLearn extends MessageBase<MessageHelperGuiMod
 	{
 		EntityAirshipBaseVC airship = (EntityAirshipBaseVC) player.getRidingEntity();
 		
-		airship.metaModuleVariantSlot1 = 0;
+		airship.moduleActiveSlot1 = 0;
 		
 		if(message.metaLearnModule == EnumsVC.ModuleType.ALTITUDE_LESSER.getMetadata())
 		{

@@ -34,6 +34,6 @@ public class MessageHelperGuiVisualMenuFrameTier3Pg1 extends MessageBase<Message
 	public void handleServerSide(MessageHelperGuiVisualMenuFrameTier3Pg1 message, EntityPlayer player) 
 	{
 		EntityAirshipBaseVC airship = (EntityAirshipBaseVC) player.getRidingEntity();
-		airship.metaFrameVisual = message.metaFrame;
+		airship.frameSkinVisual = message.metaFrame;
 	}
 }

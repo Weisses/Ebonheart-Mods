@@ -70,6 +70,7 @@ public class InitItemsVC extends ItemsVC {
 					ACHIEVEMENT_AIRSHIP,
 					ITEM_ENTITY_AIRSHIP,
 					
+					ITEM_DISPLAY_SYMBOL
 					//================================
 			};
 

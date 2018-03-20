@@ -13,15 +13,15 @@ import com.viesis.viescraft.api.util.Keybinds;
 import com.viesis.viescraft.client.gui.GuiButtonGeneralVC;
 import com.viesis.viescraft.client.gui.GuiButtonMenuVC;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
-import com.viesis.viescraft.common.entity.airships.containers.all.ContainerAirshipAppearance;
+import com.viesis.viescraft.common.entity.airships.containers.all.ContainerCustomizeMenu;
 import com.viesis.viescraft.network.NetworkHandler;
 import com.viesis.viescraft.network.server.airship.MessageGuiUpgradeMenu;
-import com.viesis.viescraft.network.server.airship.main.MessageGuiAirshipMenu;
-import com.viesis.viescraft.network.server.airship.main.MessageGuiAirshipMenuMusic;
-import com.viesis.viescraft.network.server.airship.main.MessageGuiAirshipMenuStorageGreater;
-import com.viesis.viescraft.network.server.airship.main.MessageGuiAirshipMenuStorageLesser;
+import com.viesis.viescraft.network.server.airship.customize.MessageGuiCustomizeMenu;
+import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenu;
+import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenuMusic;
+import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenuStorageGreater;
+import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenuStorageLesser;
 import com.viesis.viescraft.network.server.airship.main.MessageGuiModuleMenu;
-import com.viesis.viescraft.network.server.airship.main.MessageGuiVisualMenu;
 import com.viesis.viescraft.network.server.airship.visual.MessageHelperGuiVisualMenuFrameColor;
 
 import net.minecraft.client.Minecraft;
@@ -56,7 +56,7 @@ public class GuiVisualMenuFrameColor extends GuiContainer {
 	
 	public GuiVisualMenuFrameColor(IInventory playerInv, EntityAirshipBaseVC airshipIn)
 	{
-		super(new ContainerAirshipAppearance(playerInv, airshipIn));
+		super(new ContainerCustomizeMenu(playerInv, airshipIn));
 		
 		this.playerInv = playerInv;
 		this.airship = airshipIn;
@@ -107,11 +107,11 @@ public class GuiVisualMenuFrameColor extends GuiContainer {
 		
         //=============================================
         
-    	GuiVC.buttonM1 = new GuiButtonMenuVC(1, this.guiLeft - 32, this.guiTop + 10, 36, 14, "", 0);
-    	GuiVC.buttonM2 = new GuiButtonMenuVC(2, this.guiLeft - 32, this.guiTop + 24, 36, 14, "", 1);
-    	GuiVC.buttonM3 = new GuiButtonMenuVC(3, this.guiLeft - 32, this.guiTop + 38, 36, 14, "", 2);
-    	GuiVC.buttonM4 = new GuiButtonMenuVC(4, this.guiLeft - 32, this.guiTop + 52, 36, 14, "", 3);
-    	
+		GuiVC.buttonM1 = new GuiButtonMenuVC(1, this.guiLeft - 35, this.guiTop + 7 + (16 * 0), 36, 14, "", 0);
+    	GuiVC.buttonM2 = new GuiButtonMenuVC(2, this.guiLeft - 35, this.guiTop + 7 + (16 * 1), 36, 14, "", 1);
+    	GuiVC.buttonM3 = new GuiButtonMenuVC(3, this.guiLeft - 35, this.guiTop + 7 + (16 * 2), 36, 14, "", 2);
+    	GuiVC.buttonM4 = new GuiButtonMenuVC(4, this.guiLeft - 35, this.guiTop + 7 + (16 * 3), 36, 14, "", 3);
+		
     	GuiVC.button505 = new GuiButtonGeneralVC(505, this.guiLeft + 125, this.guiTop + 177, 40, 14, References.localNameVC("vc.button.back"));
     	
     	this.buttonList.add(GuiVC.buttonM1);
@@ -133,24 +133,24 @@ public class GuiVisualMenuFrameColor extends GuiContainer {
 		if (parButton.id == 1)
 	    {
 			//If airship has small inv module installed
-        	if(this.airship.getModuleVariantSlot1() == 3)
+        	if(this.airship.getModuleActiveSlot1() == 3)
         	{
-        		NetworkHandler.sendToServer(new MessageGuiAirshipMenuStorageLesser());
+        		NetworkHandler.sendToServer(new MessageGuiMainMenuStorageLesser());
         	}
         	//If airship has large inv module installed
-        	else if(this.airship.getModuleVariantSlot1() == 4)
+        	else if(this.airship.getModuleActiveSlot1() == 4)
         	{
-        		NetworkHandler.sendToServer(new MessageGuiAirshipMenuStorageGreater());
+        		NetworkHandler.sendToServer(new MessageGuiMainMenuStorageGreater());
         	}
         	//If airship has jukebox module installed
-        	else if(this.airship.getModuleVariantSlot1() == 10)
+        	else if(this.airship.getModuleActiveSlot1() == 10)
         	{
-        		NetworkHandler.sendToServer(new MessageGuiAirshipMenuMusic());
+        		NetworkHandler.sendToServer(new MessageGuiMainMenuMusic());
         	}
         	//Default for airship gui
         	else
         	{
-        		NetworkHandler.sendToServer(new MessageGuiAirshipMenu());
+        		NetworkHandler.sendToServer(new MessageGuiMainMenu());
         	}
 	    }
 		if (parButton.id == 2)
@@ -159,7 +159,7 @@ public class GuiVisualMenuFrameColor extends GuiContainer {
 	    }
 		if (parButton.id == 3)
 	    {
-			NetworkHandler.sendToServer(new MessageGuiVisualMenu());
+			NetworkHandler.sendToServer(new MessageGuiCustomizeMenu());
 	    }
 		if (parButton.id == 4)
 	    {
@@ -168,7 +168,7 @@ public class GuiVisualMenuFrameColor extends GuiContainer {
 		
 		if (parButton.id == 505)
 	    {
-			NetworkHandler.sendToServer(new MessageGuiVisualMenu());
+			NetworkHandler.sendToServer(new MessageGuiCustomizeMenu());
 	    }
 		
 		if (parButton.id == 11)
@@ -352,7 +352,7 @@ public class GuiVisualMenuFrameColor extends GuiContainer {
   			GlStateManager.translate(this.guiLeft + 110, this.guiTop + 132.5, 0);
   			GlStateManager.scale(.65, .65, .65);
       		
-  			if(this.airship.getFrameVisualColor())
+  			if(this.airship.getFrameSkinVisualColor())
   			{
   				this.fontRenderer.drawString("- " + ColorHelperVC.getColorNameFromRgb(this.textRedNumber, this.textGreenNumber, this.textBlueNumber), 0, 0, 16777215);
   			}

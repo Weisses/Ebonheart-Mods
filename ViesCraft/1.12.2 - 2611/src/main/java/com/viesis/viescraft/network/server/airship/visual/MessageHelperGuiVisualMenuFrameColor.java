@@ -1,6 +1,6 @@
 package com.viesis.viescraft.network.server.airship.visual;
 
-import com.viesis.viescraft.client.gui.airship.main.GuiVisualMenu;
+import com.viesis.viescraft.client.gui.airship.main.GuiCustomizeMenu;
 import com.viesis.viescraft.client.gui.airship.visual.frame.GuiVisualMenuFrameColor;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
 import com.viesis.viescraft.network.packet.MessageBase;
@@ -43,10 +43,10 @@ public class MessageHelperGuiVisualMenuFrameColor extends MessageBase<MessageHel
 	public void handleServerSide(MessageHelperGuiVisualMenuFrameColor message, EntityPlayer player) 
 	{
 		EntityAirshipBaseVC airship = (EntityAirshipBaseVC) player.getRidingEntity();
-		airship.metaFrameColorRed = message.metaFrameRed;
-		airship.metaFrameColorGreen = message.metaFrameGreen;
-		airship.metaFrameColorBlue = message.metaFrameBlue;
+		airship.frameSkinColorRed = message.metaFrameRed;
+		airship.frameSkinColorGreen = message.metaFrameGreen;
+		airship.frameSkinColorBlue = message.metaFrameBlue;
 		
-		airship.metaFrameVisualColor = message.metaFrameColor;
+		airship.frameSkinVisualColor = message.metaFrameColor;
 	}
 }

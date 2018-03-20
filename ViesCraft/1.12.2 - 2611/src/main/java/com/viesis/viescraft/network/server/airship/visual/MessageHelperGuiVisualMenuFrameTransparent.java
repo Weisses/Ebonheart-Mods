@@ -1,6 +1,6 @@
 package com.viesis.viescraft.network.server.airship.visual;
 
-import com.viesis.viescraft.client.gui.airship.main.GuiVisualMenu;
+import com.viesis.viescraft.client.gui.airship.main.GuiCustomizeMenu;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
 import com.viesis.viescraft.network.packet.MessageBase;
 
@@ -20,7 +20,7 @@ public class MessageHelperGuiVisualMenuFrameTransparent extends MessageBase<Mess
 	@Override
 	public void toBytes(ByteBuf buf) 
 	{
-		buf.writeBoolean(GuiVisualMenu.metaFrameTransparentInfo);
+		buf.writeBoolean(GuiCustomizeMenu.metaFrameTransparentInfo);
 	}
 	
 	@Override
@@ -33,6 +33,6 @@ public class MessageHelperGuiVisualMenuFrameTransparent extends MessageBase<Mess
 	public void handleServerSide(MessageHelperGuiVisualMenuFrameTransparent message, EntityPlayer player) 
 	{
 		EntityAirshipBaseVC airship = (EntityAirshipBaseVC) player.getRidingEntity();
-		airship.metaFrameVisualTransparent = message.metaFrameTransparent;
+		airship.frameSkinVisualTransparent = message.metaFrameTransparent;
 	}
 }

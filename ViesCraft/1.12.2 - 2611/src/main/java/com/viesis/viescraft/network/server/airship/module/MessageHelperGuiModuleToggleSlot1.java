@@ -34,6 +34,6 @@ public class MessageHelperGuiModuleToggleSlot1 extends MessageBase<MessageHelper
 	{
 		EntityAirshipBaseVC airship = (EntityAirshipBaseVC) player.getRidingEntity();
 		
-		airship.metaModuleVariantSlot1 = message.metaToggleModule;
+		airship.moduleActiveSlot1 = message.metaToggleModule;
 	}
 }

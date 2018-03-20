@@ -11,7 +11,7 @@ import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.api.util.Keybinds;
 import com.viesis.viescraft.client.gui.GuiButtonGeneralVC;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
-import com.viesis.viescraft.common.entity.airships.containers.all.ContainerAirshipAppearance;
+import com.viesis.viescraft.common.entity.airships.containers.all.ContainerCustomizeMenu;
 import com.viesis.viescraft.init.InitItemsVC;
 import com.viesis.viescraft.network.NetworkHandler;
 import com.viesis.viescraft.network.server.airship.visual.MessageGuiVisualMenuFrame;
@@ -36,7 +36,7 @@ public class GuiVisualMenuFrameTier5Pg1 extends GuiContainer {
 	
 	public GuiVisualMenuFrameTier5Pg1(IInventory playerInv, EntityAirshipBaseVC airshipIn)
 	{
-		super(new ContainerAirshipAppearance(playerInv, airshipIn));
+		super(new ContainerCustomizeMenu(playerInv, airshipIn));
 		
 		this.playerInv = playerInv;
 		this.airship = airshipIn;

@@ -30,7 +30,7 @@ public class ItemAchievement extends Item {
 	@Override
 	public String getItemStackDisplayName(ItemStack stack)
     {
-		return ("Icon - " + EnumsVC.Achievement.byId(this.getMetadata(stack)).getName());
+		return ("Icon - " + EnumsVC.Achievement.byId(this.getMetadata(stack)).getRegistryName());
     }
 	
 	@SideOnly(Side.CLIENT)

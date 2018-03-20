@@ -21,55 +21,65 @@ public class References {
 	
 	public static Random random = new Random();
 	
-	public static final String META_AIRSHIP_SLOTS_TAG = "Slots";
+	public static final String CUSTOM_NAME_TAG = "CustomName";
 	
-	public static final String META_TIER_CORE_TAG = "TierCore";
-	public static final String META_TIER_FRAME_TAG = "TierFrame";
-	public static final String META_TIER_ENGINE_TAG = "TierEngine";
-	public static final String META_TIER_BALLOON_TAG = "TierBalloon";
+	public static final String AIRSHIP_SLOTS_TAG = "Slots";
 	
-	public static final String META_CORE_VISUAL_TAG = "CoreVisual";
+	public static final String MAIN_TIER_CORE_TAG = "TierCore";
+	public static final String MAIN_TIER_FRAME_TAG = "TierFrame";
+	public static final String MAIN_TIER_ENGINE_TAG = "TierEngine";
+	public static final String MAIN_TIER_BALLOON_TAG = "TierBalloon";
 	
-	public static final String META_FRAME_VISUAL_TAG = "FrameVisual";
-	public static final String META_FRAME_VISUAL_TRANSPARENT_TAG = "FrameVisualTransparent";
-	public static final String META_FRAME_VISUAL_COLOR_TAG = "FrameVisualColor";
-	public static final String META_FRAME_VISUAL_COLOR_RED_TAG = "FrameVisualColorRed";
-	public static final String META_FRAME_VISUAL_COLOR_GREEN_TAG = "FrameVisualColorGreen";
-	public static final String META_FRAME_VISUAL_COLOR_BLUE_TAG = "FrameVisualColorBlue";
+	public static final String CORE_MODEL_VISUAL_FRAME_TAG = "CoreModelVisualFrame";
+	public static final String CORE_MODEL_VISUAL_ENGINE_TAG = "CoreModelVisualEngine";
+	public static final String CORE_MODEL_VISUAL_BALLOON_TAG = "CoreModelVisualBalloon";
 	
-	public static final String META_ENGINE_VISUAL_TAG = "EngineVisual";
+	public static final String FRAME_SKIN_VISUAL_TAG = "FrameSkinVisual";
+	public static final String FRAME_SKIN_VISUAL_TRANSPARENT_TAG = "FrameSkinVisualTransparent";
+	public static final String FRAME_SKIN_VISUAL_COLOR_TAG = "FrameSkinVisualColor";
+	public static final String FRAME_SKIN_VISUAL_COLOR_RED_TAG = "FrameSkinVisualColorRed";
+	public static final String FRAME_SKIN_VISUAL_COLOR_GREEN_TAG = "FrameSkinVisualColorGreen";
+	public static final String FRAME_SKIN_VISUAL_COLOR_BLUE_TAG = "FrameSkinVisualColorBlue";
 	
-	public static final String META_BALLOON_VISUAL_TAG = "BalloonVisual";
-	public static final String META_BALLOON_VISUAL_TRANSPARENT_TAG = "BalloonVisualTransparent";
-	public static final String META_BALLOON_VISUAL_COLOR_TAG = "BalloonVisualColor";
-	public static final String META_BALLOON_VISUAL_COLOR_RED_TAG = "BalloonVisualColorRed";
-	public static final String META_BALLOON_VISUAL_COLOR_GREEN_TAG = "BalloonVisualColorGreen";
-	public static final String META_BALLOON_VISUAL_COLOR_BLUE_TAG = "BalloonVisualColorBlue";
+	public static final String ENGINE_PARTICLE_VISUAL_TAG = "EngineParticleVisual";
+	public static final String ENGINE_DISPLAY_TYPE_VISUAL_TAG = "EngineDisplayTypeVisual";
+	public static final String ENGINE_DISPLAY_ID_VISUAL_TAG = "EngineDisplayIDVisual";
 	
-	public static final String META_AIRSHIP_BURNTIME_TAG = "BurnTime";
-	public static final String META_AIRSHIP_BURNTIME_TOTAL_TAG = "BurnTimeTotal";
-	public static final String META_ITEM_FUELSTACK_TAG = "FuelStackTime";
-	public static final String META_ITEM_FUELSTACK_SIZE_TAG = "FuelStackTimeSize";
+	public static final String BALLOON_PATTERN_VISUAL_TAG = "BalloonPatternVisual";
+	public static final String BALLOON_PATTERN_VISUAL_TRANSPARENT_TAG = "BalloonPatternVisualTransparent";
+	public static final String BALLOON_PATTERN_VISUAL_COLOR_TAG = "BalloonPatternVisualColor";
+	public static final String BALLOON_PATTERN_VISUAL_COLOR_RED_TAG = "BalloonPatternVisualColorRed";
+	public static final String BALLOON_PATTERN_VISUAL_COLOR_GREEN_TAG = "BalloonPatternVisualColorGreen";
+	public static final String BALLOON_PATTERN_VISUAL_COLOR_BLUE_TAG = "BalloonPatternVisualColorBlue";
 	
-	public static final String META_MODULE_VARIANT_SLOT1_TAG = "ModuleVariantSlot1";
-	public static final String META_JUKEBOX_SELECTED_SONG_TAG = "JukeboxSelectedSong";
+	public static final String STORED_FUEL_TAG = "StoredFuel";
+	public static final String STORED_FUEL_TOTAL_TAG = "StoredFuelTotal";
+	public static final String FUEL_ITEMSTACK_TAG = "FuelItemStack";
+	public static final String FUEL_ITEMSTACK_SIZE_TAG = "FuelItemStackSize";
+	public static final String STORED_REDSTONE_TAG = "StoredRedstone";
+	public static final String STORED_REDSTONE_TOTAL_TAG = "StoredRestoneTotal";
 	
-	public static final String META_LEARNED_MODULE_ALTITUDE_TAG = "LearnedModuleAltitude";
-	public static final String META_SELECTED_MODULE_ALTITUDE_TAG = "SelectedModuleAltitude";
-	public static final String META_LEARNED_MODULE_SPEED_TAG = "LearnedModuleSpeed";
-	public static final String META_SELECTED_MODULE_SPEED_TAG = "SelectedModuleSpeed";
-	public static final String META_LEARNED_MODULE_STORAGE_TAG = "LearnedModuleStorage";
-	public static final String META_SELECTED_MODULE_STORAGE_TAG = "SelectedModuleStorage";
-	public static final String META_LEARNED_MODULE_FUEL_TAG = "LearnedModuleFuel";
-	public static final String META_SELECTED_MODULE_FUEL_TAG = "SelectedModuleFuel";
-	public static final String META_LEARNED_MODULE_MUSIC_TAG = "LearnedModuleMusic";
-	public static final String META_SELECTED_MODULE_MUSIC_TAG = "SelectedModuleMusic";
-	public static final String META_LEARNED_MODULE_CRUISE_TAG = "LearnedModuleCruise";
-	public static final String META_SELECTED_MODULE_CRUISE_TAG = "SelectedModuleCruise";
-	public static final String META_LEARNED_MODULE_WATER_TAG = "LearnedModuleWater";
-	public static final String META_SELECTED_MODULE_WATER_TAG = "SelectedModuleWater";
-	public static final String META_LEARNED_MODULE_FUELINFINITE_TAG = "LearnedModuleFuelInfinite";
-	public static final String META_SELECTED_MODULE_FUELINFINITE_TAG = "SelectedModuleFuelInfinite";
+	public static final String MODULE_ACTIVE_SLOT1_TAG = "ModuleActiveSlot1";
+	public static final String JUKEBOX_SELECTED_SONG_TAG = "JukeboxSelectedSong";
+	
+	public static final String LEARNED_MODULE_ALTITUDE_TAG = "LearnedModuleAltitude";
+	public static final String SELECTED_MODULE_ALTITUDE_TAG = "SelectedModuleAltitude";
+	public static final String LEARNED_MODULE_SPEED_TAG = "LearnedModuleSpeed";
+	public static final String SELECTED_MODULE_SPEED_TAG = "SelectedModuleSpeed";
+	public static final String LEARNED_MODULE_STORAGE_TAG = "LearnedModuleStorage";
+	public static final String SELECTED_MODULE_STORAGE_TAG = "SelectedModuleStorage";
+	public static final String LEARNED_MODULE_FUEL_TAG = "LearnedModuleFuel";
+	public static final String SELECTED_MODULE_FUEL_TAG = "SelectedModuleFuel";
+	public static final String LEARNED_MODULE_MUSIC_TAG = "LearnedModuleMusic";
+	public static final String SELECTED_MODULE_MUSIC_TAG = "SelectedModuleMusic";
+	public static final String LEARNED_MODULE_CRUISE_TAG = "LearnedModuleCruise";
+	public static final String SELECTED_MODULE_CRUISE_TAG = "SelectedModuleCruise";
+	public static final String LEARNED_MODULE_WATER_TAG = "LearnedModuleWater";
+	public static final String SELECTED_MODULE_WATER_TAG = "SelectedModuleWater";
+	public static final String LEARNED_MODULE_FUELINFINITE_TAG = "LearnedModuleFuelInfinite";
+	public static final String SELECTED_MODULE_FUELINFINITE_TAG = "SelectedModuleFuelInfinite";
+	public static final String LEARNED_MODULE_BOMB_TAG = "LearnedModuleBomb";
+	public static final String SELECTED_MODULE_BOMB_TAG = "SelectedModuleBomb";
 	
 	public static net.minecraft.util.text.translation.I18n Old_I18n;
 	

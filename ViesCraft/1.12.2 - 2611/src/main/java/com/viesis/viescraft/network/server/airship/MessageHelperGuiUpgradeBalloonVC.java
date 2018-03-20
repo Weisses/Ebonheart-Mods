@@ -33,7 +33,7 @@ public class MessageHelperGuiUpgradeBalloonVC extends MessageBase<MessageHelperG
 	public void handleServerSide(MessageHelperGuiUpgradeBalloonVC message, EntityPlayer player) 
 	{
 		EntityAirshipBaseVC airship = (EntityAirshipBaseVC) player.getRidingEntity();
-		airship.metaTierBalloon = message.metaBalloon;
+		airship.mainTierBalloon = message.metaBalloon;
 		airship.inventory.extractItem(4, 1, false);
 	}
 }

@@ -12,16 +12,16 @@ import com.viesis.viescraft.api.util.Keybinds;
 import com.viesis.viescraft.client.gui.GuiButtonGeneralVC;
 import com.viesis.viescraft.client.gui.GuiButtonMenuVC;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
-import com.viesis.viescraft.common.entity.airships.containers.all.ContainerAirshipAppearance;
+import com.viesis.viescraft.common.entity.airships.containers.all.ContainerCustomizeMenu;
 import com.viesis.viescraft.init.InitItemsVC;
 import com.viesis.viescraft.network.NetworkHandler;
 import com.viesis.viescraft.network.server.airship.MessageGuiUpgradeMenu;
-import com.viesis.viescraft.network.server.airship.main.MessageGuiAirshipMenu;
-import com.viesis.viescraft.network.server.airship.main.MessageGuiAirshipMenuMusic;
-import com.viesis.viescraft.network.server.airship.main.MessageGuiAirshipMenuStorageGreater;
-import com.viesis.viescraft.network.server.airship.main.MessageGuiAirshipMenuStorageLesser;
+import com.viesis.viescraft.network.server.airship.customize.MessageGuiCustomizeMenu;
+import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenu;
+import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenuMusic;
+import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenuStorageGreater;
+import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenuStorageLesser;
 import com.viesis.viescraft.network.server.airship.main.MessageGuiModuleMenu;
-import com.viesis.viescraft.network.server.airship.main.MessageGuiVisualMenu;
 import com.viesis.viescraft.network.server.airship.visual.balloon.MessageGuiVisualMenuBalloonTier1Pg1;
 import com.viesis.viescraft.network.server.airship.visual.balloon.MessageGuiVisualMenuBalloonTier2Pg1;
 import com.viesis.viescraft.network.server.airship.visual.balloon.MessageGuiVisualMenuBalloonTier3Pg1;
@@ -46,7 +46,7 @@ public class GuiVisualMenuBalloon extends GuiContainer {
 	
 	public GuiVisualMenuBalloon(IInventory playerInv, EntityAirshipBaseVC airshipIn)
 	{
-		super(new ContainerAirshipAppearance(playerInv, airshipIn));
+		super(new ContainerCustomizeMenu(playerInv, airshipIn));
 		
 		this.playerInv = playerInv;
 		this.airship = airshipIn;
@@ -66,11 +66,11 @@ public class GuiVisualMenuBalloon extends GuiContainer {
     	Keyboard.enableRepeatEvents(true);
     	int startPlace = 49;
     	
-    	GuiVC.buttonM1 = new GuiButtonMenuVC(1, this.guiLeft - 32, this.guiTop + 10, 36, 14, "", 0);
-    	GuiVC.buttonM2 = new GuiButtonMenuVC(2, this.guiLeft - 32, this.guiTop + 24, 36, 14, "", 1);
-    	GuiVC.buttonM3 = new GuiButtonMenuVC(3, this.guiLeft - 32, this.guiTop + 38, 36, 14, "", 2);
-    	GuiVC.buttonM4 = new GuiButtonMenuVC(4, this.guiLeft - 32, this.guiTop + 52, 36, 14, "", 3);
-    	
+    	GuiVC.buttonM1 = new GuiButtonMenuVC(1, this.guiLeft - 35, this.guiTop + 7 + (16 * 0), 36, 14, "", 0);
+    	GuiVC.buttonM2 = new GuiButtonMenuVC(2, this.guiLeft - 35, this.guiTop + 7 + (16 * 1), 36, 14, "", 1);
+    	GuiVC.buttonM3 = new GuiButtonMenuVC(3, this.guiLeft - 35, this.guiTop + 7 + (16 * 2), 36, 14, "", 2);
+    	GuiVC.buttonM4 = new GuiButtonMenuVC(4, this.guiLeft - 35, this.guiTop + 7 + (16 * 3), 36, 14, "", 3);
+		
     	GuiVC.button505 = new GuiButtonGeneralVC(505, this.guiLeft + 125, this.guiTop + 177, 40, 14, References.localNameVC("vc.button.back"));
     	
     	GuiVC.buttonT1 = new GuiButtonGeneralVC(11, this.guiLeft + 32, this.guiTop + startPlace + (19 * 0), 68, 14, References.localNameVC("vc.enum.tier.1"));
@@ -100,23 +100,23 @@ public class GuiVisualMenuBalloon extends GuiContainer {
 		GuiVC.buttonT4.visible = false;
 		GuiVC.buttonT5.visible = false;
 		
-		if(this.airship.getMetaTierBalloon() > 0)
+		if(this.airship.getMainTierBalloon() > 0)
         {
 			GuiVC.buttonT1.visible = true;
         }
-        if(this.airship.getMetaTierBalloon() > 1)
+        if(this.airship.getMainTierBalloon() > 1)
         {
         	GuiVC.buttonT2.visible = true;
         }
-        if(this.airship.getMetaTierBalloon() > 2)
+        if(this.airship.getMainTierBalloon() > 2)
         {
         	GuiVC.buttonT3.visible = true;
         }
-        if(this.airship.getMetaTierBalloon() > 3)
+        if(this.airship.getMainTierBalloon() > 3)
         {
         	GuiVC.buttonT4.visible = true;
         }
-        if(this.airship.getMetaTierBalloon() > 4)
+        if(this.airship.getMainTierBalloon() > 4)
         {
         	GuiVC.buttonT5.visible = true;
         }
@@ -131,24 +131,24 @@ public class GuiVisualMenuBalloon extends GuiContainer {
 		if (parButton.id == 1)
 	    {
 			//If airship has small inv module installed
-        	if(this.airship.getModuleVariantSlot1() == 3)
+        	if(this.airship.getModuleActiveSlot1() == 3)
         	{
-        		NetworkHandler.sendToServer(new MessageGuiAirshipMenuStorageLesser());
+        		NetworkHandler.sendToServer(new MessageGuiMainMenuStorageLesser());
         	}
         	//If airship has large inv module installed
-        	else if(this.airship.getModuleVariantSlot1() == 4)
+        	else if(this.airship.getModuleActiveSlot1() == 4)
         	{
-        		NetworkHandler.sendToServer(new MessageGuiAirshipMenuStorageGreater());
+        		NetworkHandler.sendToServer(new MessageGuiMainMenuStorageGreater());
         	}
         	//If airship has jukebox module installed
-        	else if(this.airship.getModuleVariantSlot1() == 10)
+        	else if(this.airship.getModuleActiveSlot1() == 10)
         	{
-        		NetworkHandler.sendToServer(new MessageGuiAirshipMenuMusic());
+        		NetworkHandler.sendToServer(new MessageGuiMainMenuMusic());
         	}
         	//Default for airship gui
         	else
         	{
-        		NetworkHandler.sendToServer(new MessageGuiAirshipMenu());
+        		NetworkHandler.sendToServer(new MessageGuiMainMenu());
         	}
 	    }
 		if (parButton.id == 2)
@@ -157,7 +157,7 @@ public class GuiVisualMenuBalloon extends GuiContainer {
 	    }
 		if (parButton.id == 3)
 	    {
-			NetworkHandler.sendToServer(new MessageGuiVisualMenu());
+			NetworkHandler.sendToServer(new MessageGuiCustomizeMenu());
 	    }
 		if (parButton.id == 4)
 	    {
@@ -166,7 +166,7 @@ public class GuiVisualMenuBalloon extends GuiContainer {
 		
 		if (parButton.id == 505)
 	    {
-			NetworkHandler.sendToServer(new MessageGuiVisualMenu());
+			NetworkHandler.sendToServer(new MessageGuiCustomizeMenu());
 	    }
 		
 		if (parButton.id == 11)
@@ -203,7 +203,7 @@ public class GuiVisualMenuBalloon extends GuiContainer {
 		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
 		
 		//Appearance 'On' button is green in gui
-		if(this.airship.metaBalloonVisualTransparent == true)
+		if(this.airship.balloonPatternVisualTransparent == true)
 		{
 			this.drawTexturedModalRect(this.guiLeft + 136, this.guiTop + 36, 177, 85, 8, 8);
 		}
@@ -228,23 +228,23 @@ public class GuiVisualMenuBalloon extends GuiContainer {
 		int i = this.guiLeft;
         int j = this.guiTop;
 		
-        if(this.airship.getMetaTierBalloon() > 0)
+        if(this.airship.getMainTierBalloon() > 0)
         {
         	this.drawItemStack(new ItemStack(InitItemsVC.UPGRADE_BALLOON, 1, 1), 7, 48, "");
         }
-        if(this.airship.getMetaTierBalloon() > 1)
+        if(this.airship.getMainTierBalloon() > 1)
         {
         	this.drawItemStack(new ItemStack(InitItemsVC.UPGRADE_BALLOON, 1, 2), 7, 48 + (19 * 1), "");
         }
-        if(this.airship.getMetaTierBalloon() > 2)
+        if(this.airship.getMainTierBalloon() > 2)
         {
         	this.drawItemStack(new ItemStack(InitItemsVC.UPGRADE_BALLOON, 1, 3), 7, 48 + (19 * 2), "");
         }
-        if(this.airship.getMetaTierBalloon() > 3)
+        if(this.airship.getMainTierBalloon() > 3)
         {
         	this.drawItemStack(new ItemStack(InitItemsVC.UPGRADE_BALLOON, 1, 4), 7, 48 + (19 * 3), "");
         }
-        if(this.airship.getMetaTierBalloon() > 4)
+        if(this.airship.getMainTierBalloon() > 4)
         {
         	this.drawItemStack(new ItemStack(InitItemsVC.UPGRADE_BALLOON, 1, 5), 7, 48 + (19 * 4), "");
         }

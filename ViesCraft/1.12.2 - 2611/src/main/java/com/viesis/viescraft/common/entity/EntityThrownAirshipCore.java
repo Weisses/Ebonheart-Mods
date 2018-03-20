@@ -2,69 +2,89 @@ package com.viesis.viescraft.common.entity;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
 public class EntityThrownAirshipCore extends EntityThrowable {
 	
-	protected int metaTypeCore;
-	protected int metaTypeFrame;
-	protected int metaTypeEngine;
-	protected int metaTypeBalloon;
+	protected String customName;
 	
-	protected int metaModuleVariantSlot1;
+	protected int storedFuel;
+	protected int storedFuelTotal;
+	protected int fuelItemStack;
+	protected int fuelItemStackSize;
+	protected int storedRedstone;
+	protected int storedRedstoneTotal;
 	
-	protected int metaCoreVisual;
+	protected int mainTierCore;
+	protected int mainTierFrame;
+	protected int mainTierEngine;
+	protected int mainTierBalloon;
+
+	protected int coreModelVisualFrame;
+	protected int coreModelVisualEngine;
+	protected int coreModelVisualBalloon;
 	
-	protected int metaFrameVisual;
-	protected boolean metaFrameVisualTransparent;
-	protected boolean metaFrameVisualColor;
-	protected int metaFrameColorRed;
-	protected int metaFrameColorGreen;
-	protected int metaFrameColorBlue;
+	protected int frameSkinVisual;
+	protected boolean frameSkinVisualTransparent;
+	protected boolean frameSkinVisualColor;
+	protected int frameSkinColorRed;
+	protected int frameSkinColorGreen;
+	protected int frameSkinColorBlue;
 	
-	protected int metaEngineVisual;
+	protected int engineParticleVisual;
+	protected int engineDisplayTypeVisual;
+	protected int engineDisplayIDVisual;
 	
-	protected int metaBalloonVisual;
-	protected boolean metaBalloonVisualTransparent;
-	protected boolean metaBalloonVisualColor;
-	protected int metaBalloonColorRed;
-	protected int metaBalloonColorGreen;
-	protected int metaBalloonColorBlue;
+	protected int balloonPatternVisual;
+	protected boolean balloonPatternVisualTransparent;
+	protected boolean balloonPatternVisualColor;
+	protected int balloonPatternColorRed;
+	protected int balloonPatternColorGreen;
+	protected int balloonPatternColorBlue;
+	
+	protected int moduleActiveSlot1;
 	
 	//Modules
 	/** Selected Altitude */
-	public int selectedModuleAltitude;
+	protected int selectedModuleAltitude;
 	/** Learned Altitude */
-	public boolean learnedModuleAltitude;
+	protected boolean learnedModuleAltitude;
 	/** Selected Speed */
-	public int selectedModuleSpeed;
+	protected int selectedModuleSpeed;
 	/** Learned Speed */
-	public boolean learnedModuleSpeed;
+	protected boolean learnedModuleSpeed;
 	/** Selected Storage */
-	public int selectedModuleStorage;
+	protected int selectedModuleStorage;
 	/** Learned Storage */
-	public boolean learnedModuleStorage;
+	protected boolean learnedModuleStorage;
 	/** Selected Fuel */
-	public int selectedModuleFuel;
+	protected int selectedModuleFuel;
 	/** Learned Fuel */
-	public boolean learnedModuleFuel;
+	protected boolean learnedModuleFuel;
 	/** Selected Music */
-	public int selectedModuleMusic;
+	protected int selectedModuleMusic;
 	/** Learned Music */
-	public boolean learnedModuleMusic;
+	protected boolean learnedModuleMusic;
 	/** Selected Cruise */
-	public int selectedModuleCruise;
+	protected int selectedModuleCruise;
 	/** Learned Cruise */
-	public boolean learnedModuleCruise;
+	protected boolean learnedModuleCruise;
 	/** Selected Water */
-	public int selectedModuleWater;
+	protected int selectedModuleWater;
 	/** Learned Water */
-	public boolean learnedModuleWater;
+	protected boolean learnedModuleWater;
 	/** Selected Fuel Infinite */
-	public int selectedModuleFuelInfinite;
+	protected int selectedModuleFuelInfinite;
 	/** Learned Fuel Infinite */
-	public boolean learnedModuleFuelInfinite;
+	protected boolean learnedModuleFuelInfinite;
+	/** Selected Bomb */
+	protected int selectedModuleBomb;
+	/** Learned Bomb */
+	protected boolean learnedModuleBomb;
+	
+	protected NBTTagCompound storedInventory;
 	
     public EntityThrownAirshipCore(World worldIn)
     {

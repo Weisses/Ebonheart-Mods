@@ -10,19 +10,20 @@ import com.viesis.viescraft.api.GuiVC;
 import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.api.util.Keybinds;
 import com.viesis.viescraft.client.gui.GuiButtonGeneralVC;
+import com.viesis.viescraft.client.gui.GuiContainerVC;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
-import com.viesis.viescraft.common.entity.airships.containers.all.ContainerAirshipAppearance;
+import com.viesis.viescraft.common.entity.airships.containers.all.ContainerCustomizeMenu;
 import com.viesis.viescraft.network.NetworkHandler;
-import com.viesis.viescraft.network.server.airship.main.MessageGuiAirshipMenuMusic;
+import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenuMusic;
 import com.viesis.viescraft.network.server.song.MessageHelperGuiMusicPg1;
 
 import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.TextFormatting;
 
-public class GuiAirshipMusicPg1 extends GuiContainer {
+public class GuiAirshipMusicPg1 extends GuiContainerVC {
 	
 	private IInventory playerInv;
 	private EntityAirshipBaseVC airship;
@@ -30,7 +31,7 @@ public class GuiAirshipMusicPg1 extends GuiContainer {
 	
 	public GuiAirshipMusicPg1(IInventory playerInv, EntityAirshipBaseVC airshipIn)
 	{
-		super(new ContainerAirshipAppearance(playerInv, airshipIn));
+		super(new ContainerCustomizeMenu(playerInv, airshipIn));
 		
 		this.playerInv = playerInv;
 		this.airship = airshipIn;
@@ -114,7 +115,7 @@ public class GuiAirshipMusicPg1 extends GuiContainer {
     {
 		if (parButton.id == 501)
 	    {
-			NetworkHandler.sendToServer(new MessageGuiAirshipMenuMusic());
+			NetworkHandler.sendToServer(new MessageGuiMainMenuMusic());
 	    }
 		
 		if (parButton.id <= 450)
@@ -138,6 +139,20 @@ public class GuiAirshipMusicPg1 extends GuiContainer {
 		this.drawRect(this.guiLeft + 29, this.guiTop - 17, this.guiLeft + 147, this.guiTop, Color.BLACK.getRGB());
 		this.drawRect(this.guiLeft + 30, this.guiTop - 16, this.guiLeft + 146, this.guiTop, Color.LIGHT_GRAY.getRGB());
 		this.drawRect(this.guiLeft + 32, this.guiTop - 14, this.guiLeft + 144, this.guiTop, Color.BLACK.getRGB());
+		
+		GlStateManager.pushMatrix();
+		{
+			GlStateManager.translate(this.guiLeft + 117, this.guiTop + -9, 0);
+			GlStateManager.scale(.75, 0.75, 0.75);
+			
+			this.drawCenteredString(fontRenderer, 
+					this.
+					//stringToRainbow(EnumsVC.AirshipSong.byId(this.airship.metaJukeboxSelectedSong).getRegistryName(), false)
+					stringToGolden(EnumsVC.AirshipSong.byId(this.airship.metaJukeboxSelectedSong).getRegistryName(), 0, false, TextFormatting.GREEN)
+					//
+			, 0, 0, 255);
+		}
+		GlStateManager.popMatrix();
 		
 		GuiVC.buttonR07.visible = false;
 		GuiVC.buttonR08.visible = false;
@@ -184,7 +199,7 @@ public class GuiAirshipMusicPg1 extends GuiContainer {
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
 	{
 		this.fontRenderer.drawString(References.localNameVC("vc.main.selected") + " :", 41, -10, 11111111);
-		this.fontRenderer.drawString(EnumsVC.AirshipSong.byId(this.airship.metaJukeboxSelectedSong).getName(), 93, -10, 4587264);
+		//this.fontRenderer.drawString(EnumsVC.AirshipSong.byId(this.airship.metaJukeboxSelectedSong).getName(), 93, -10, 4587264);
 	}
 	
 	@Override
@@ -202,8 +217,6 @@ public class GuiAirshipMusicPg1 extends GuiContainer {
 	public void updateScreen()
     {
         super.updateScreen();
-        
-        
         
         if (!this.mc.player.isEntityAlive() || this.mc.player.isDead
         || !this.mc.player.isRiding())

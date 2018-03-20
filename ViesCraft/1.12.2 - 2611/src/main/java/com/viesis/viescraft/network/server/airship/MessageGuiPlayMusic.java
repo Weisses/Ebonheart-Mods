@@ -1,6 +1,7 @@
 package com.viesis.viescraft.network.server.airship;
 
-import com.viesis.viescraft.client.gui.airship.main.GuiAirshipMenuMusic;
+import com.viesis.viescraft.api.util.LogHelper;
+import com.viesis.viescraft.client.gui.airship.main.GuiMainMenuMusic;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
 import com.viesis.viescraft.network.NetworkHandler;
 import com.viesis.viescraft.network.packet.MessageBase;
@@ -13,17 +14,20 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 public class MessageGuiPlayMusic extends MessageBase<MessageGuiPlayMusic> implements IMessage {
 	
 	static int airshipId;
+	static int selectedSong;
 	
 	@Override
 	public void fromBytes(ByteBuf buf) 
 	{
 		airshipId = buf.readInt();
+		selectedSong = buf.readInt();
 	}
 	
 	@Override
 	public void toBytes(ByteBuf buf) 
 	{
-		buf.writeInt(GuiAirshipMenuMusic.airshipId);
+		buf.writeInt(GuiMainMenuMusic.airshipId);
+		buf.writeInt(GuiMainMenuMusic.selectedSong);
 	}
 	
 	@Override

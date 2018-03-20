@@ -12,30 +12,30 @@ import com.viesis.viescraft.api.util.Keybinds;
 import com.viesis.viescraft.client.gui.GuiButtonConfirmVC;
 import com.viesis.viescraft.client.gui.GuiButtonMenuVC;
 import com.viesis.viescraft.client.gui.GuiButtonModuleToggleVC;
+import com.viesis.viescraft.client.gui.GuiContainerVC;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
-import com.viesis.viescraft.common.entity.airships.containers.all.ContainerAirshipModule;
+import com.viesis.viescraft.common.entity.airships.containers.all.ContainerMainModule;
 import com.viesis.viescraft.init.InitItemsVC;
 import com.viesis.viescraft.network.NetworkHandler;
 import com.viesis.viescraft.network.server.airship.MessageGuiUpgradeMenu;
-import com.viesis.viescraft.network.server.airship.main.MessageGuiAirshipMenu;
-import com.viesis.viescraft.network.server.airship.main.MessageGuiAirshipMenuMusic;
-import com.viesis.viescraft.network.server.airship.main.MessageGuiAirshipMenuStorageGreater;
-import com.viesis.viescraft.network.server.airship.main.MessageGuiAirshipMenuStorageLesser;
-import com.viesis.viescraft.network.server.airship.main.MessageGuiAirshipMenuStorageNormal;
+import com.viesis.viescraft.network.server.airship.customize.MessageGuiCustomizeMenu;
+import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenu;
+import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenuMusic;
+import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenuStorageGreater;
+import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenuStorageLesser;
+import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenuStorageNormal;
 import com.viesis.viescraft.network.server.airship.main.MessageGuiModuleMenu;
-import com.viesis.viescraft.network.server.airship.main.MessageGuiVisualMenu;
 import com.viesis.viescraft.network.server.airship.module.MessageHelperGuiModuleLearn;
 import com.viesis.viescraft.network.server.airship.module.MessageHelperGuiModuleToggleSlot1;
 
 import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
 
-public class GuiModuleMenu extends GuiContainer {
+public class GuiModuleMenu extends GuiContainerVC {
 	
 	private IInventory playerInv;
 	private EntityAirshipBaseVC airship;
@@ -55,7 +55,7 @@ public class GuiModuleMenu extends GuiContainer {
 	
 	public GuiModuleMenu(IInventory playerInv, EntityAirshipBaseVC airshipIn)
 	{
-		super(new ContainerAirshipModule(playerInv, airshipIn));
+		super(new ContainerMainModule(playerInv, airshipIn));
 		
 		this.playerInv = playerInv;
 		this.airship = airshipIn;
@@ -76,11 +76,11 @@ public class GuiModuleMenu extends GuiContainer {
     	
     	this.buttonColor();
         
-    	GuiVC.buttonM1 = new GuiButtonMenuVC(101, this.guiLeft - 32, this.guiTop + 10, 36, 14, "", 0);
-    	GuiVC.buttonM2 = new GuiButtonMenuVC(102, this.guiLeft - 32, this.guiTop + 24, 36, 14, "", 1);
-    	GuiVC.buttonM3 = new GuiButtonMenuVC(103, this.guiLeft - 32, this.guiTop + 38, 36, 14, "", 2);
-    	GuiVC.buttonM4 = new GuiButtonMenuVC(104, this.guiLeft - 32, this.guiTop + 52, 36, 14, "", 3);
-    	
+    	GuiVC.buttonM1 = new GuiButtonMenuVC(101, this.guiLeft - 35, this.guiTop + 7 + (16 * 0), 36, 14, "", 0);
+    	GuiVC.buttonM2 = new GuiButtonMenuVC(102, this.guiLeft - 35, this.guiTop + 7 + (16 * 1), 36, 14, "", 1);
+    	GuiVC.buttonM3 = new GuiButtonMenuVC(103, this.guiLeft - 35, this.guiTop + 7 + (16 * 2), 36, 14, "", 2);
+    	GuiVC.buttonM4 = new GuiButtonMenuVC(104, this.guiLeft - 35, this.guiTop + 7 + (16 * 3), 36, 14, "", 3);
+		
     	GuiVC.buttonModuleAltitudeLesser = new GuiButtonModuleToggleVC(EnumsVC.ModuleType.ALTITUDE_LESSER.getMetadata(), this.guiLeft + 28 + (26 * 0), this.guiTop + 16 + (19 * 0), 14, 14, "", this.buttonAltitude);
     	GuiVC.buttonModuleAltitudeNormal = new GuiButtonModuleToggleVC(EnumsVC.ModuleType.ALTITUDE_NORMAL.getMetadata(), this.guiLeft + 28 + (26 * 0), this.guiTop + 16 + (19 * 0), 14, 14, "", this.buttonAltitude);
     	GuiVC.buttonModuleAltitudeGreater = new GuiButtonModuleToggleVC(EnumsVC.ModuleType.ALTITUDE_GREATER.getMetadata(), this.guiLeft + 28 + (26 * 0), this.guiTop + 16 + (19 * 0), 14, 14, "", this.buttonAltitude);
@@ -190,31 +190,31 @@ public class GuiModuleMenu extends GuiContainer {
 		if (parButton.id == 101)
 	    {
 			//Lesser Storage
-        	if(this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.STORAGE_LESSER.getMetadata())
+        	if(this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.STORAGE_LESSER.getMetadata())
         	{
-        		NetworkHandler.sendToServer(new MessageGuiAirshipMenuStorageLesser());
+        		NetworkHandler.sendToServer(new MessageGuiMainMenuStorageLesser());
         	}
         	//Normal Storage
-        	else if(this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.STORAGE_NORMAL.getMetadata())
+        	else if(this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.STORAGE_NORMAL.getMetadata())
         	{
-        		NetworkHandler.sendToServer(new MessageGuiAirshipMenuStorageNormal());
+        		NetworkHandler.sendToServer(new MessageGuiMainMenuStorageNormal());
         	}
         	//Greater Storage
-        	else if(this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.STORAGE_GREATER.getMetadata())
+        	else if(this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.STORAGE_GREATER.getMetadata())
         	{
-        		NetworkHandler.sendToServer(new MessageGuiAirshipMenuStorageGreater());
+        		NetworkHandler.sendToServer(new MessageGuiMainMenuStorageGreater());
         	}
         	//Any Music
-        	else if(this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.MUSIC_LESSER.getMetadata()
-    			 || this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.MUSIC_NORMAL.getMetadata()
-    			 || this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.MUSIC_GREATER.getMetadata())
+        	else if(this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.MUSIC_LESSER.getMetadata()
+    			 || this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.MUSIC_NORMAL.getMetadata()
+    			 || this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.MUSIC_GREATER.getMetadata())
         	{
-        		NetworkHandler.sendToServer(new MessageGuiAirshipMenuMusic());
+        		NetworkHandler.sendToServer(new MessageGuiMainMenuMusic());
         	}
         	//Default for airship gui
         	else
         	{
-        		NetworkHandler.sendToServer(new MessageGuiAirshipMenu());
+        		NetworkHandler.sendToServer(new MessageGuiMainMenu());
         	}
 	    }
 		if (parButton.id == 102)
@@ -223,7 +223,7 @@ public class GuiModuleMenu extends GuiContainer {
 	    }
 		if (parButton.id == 103)
 	    {
-			NetworkHandler.sendToServer(new MessageGuiVisualMenu());
+			NetworkHandler.sendToServer(new MessageGuiCustomizeMenu());
 	    }
 		if (parButton.id == 104)
 	    {
@@ -238,12 +238,12 @@ public class GuiModuleMenu extends GuiContainer {
 			{
 				this.toggleModule = 0;
 				//this.allButtonsRed();
-				this.airship.setModuleVariantSlot1(0);
+				this.airship.setModuleActiveSlot1(0);
 			}
 			else
 			{
 				this.toggleModule = parButton.id;
-				this.airship.setModuleVariantSlot1(parButton.id);
+				this.airship.setModuleActiveSlot1(parButton.id);
 			}
 			
 			NetworkHandler.sendToServer(new MessageHelperGuiModuleToggleSlot1());
@@ -265,7 +265,7 @@ public class GuiModuleMenu extends GuiContainer {
 				}
 				
 				NetworkHandler.sendToServer(new MessageHelperGuiModuleLearn());
-				this.airship.metaModuleVariantSlot1 = 0;
+				this.airship.moduleActiveSlot1 = 0;
 				this.airship.inventory.extractItem(11, 1, false);
 			}
 	    }
@@ -281,7 +281,7 @@ public class GuiModuleMenu extends GuiContainer {
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) 
 	{
 		GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
-		this.mc.getTextureManager().bindTexture(new ResourceLocation(References.MOD_ID + ":" + "textures/gui/container_airship_module.png"));
+		this.mc.getTextureManager().bindTexture(new ResourceLocation(References.MOD_ID + ":" + "textures/gui/container_gui_module_menu.png"));
 		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
 		
 		//On indicator if any Module is in learn slot
@@ -292,9 +292,9 @@ public class GuiModuleMenu extends GuiContainer {
 		}
 		
 		//If any Module installed
-		if(this.airship.getModuleVariantSlot1() > 0)
+		if(this.airship.getModuleActiveSlot1() > 0)
 		{
-			String nameIn = EnumsVC.ModuleType.byId(this.airship.getModuleVariantSlot1()).getLocalizedName();
+			String nameIn = EnumsVC.ModuleType.byId(this.airship.getModuleActiveSlot1()).getLocalizedName();
 			
 			//Module name
 			GlStateManager.pushMatrix();
@@ -312,7 +312,7 @@ public class GuiModuleMenu extends GuiContainer {
 				GlStateManager.translate(this.guiLeft + 53.25, this.guiTop + 90, 0);
 				GlStateManager.scale(0.38, 0.38, 0.38);
 				
-				this.drawCenteredString(fontRenderer, TextFormatting.GREEN + References.localNameVC("vc.item.tt.moduletype.#." + this.airship.getModuleVariantSlot1() + ".pros1"), 0, 0, 0);
+				this.drawCenteredString(fontRenderer, TextFormatting.GREEN + References.localNameVC("vc.item.tt.moduletype.#." + this.airship.getModuleActiveSlot1() + ".pros1"), 0, 0, 0);
 			}
 			GlStateManager.popMatrix();
 			//Pros2
@@ -321,7 +321,7 @@ public class GuiModuleMenu extends GuiContainer {
 				GlStateManager.translate(this.guiLeft + 53.25, this.guiTop + 95, 0);
 				GlStateManager.scale(0.38, 0.38, 0.38);
 				
-				this.drawCenteredString(fontRenderer, TextFormatting.GREEN + References.localNameVC("vc.item.tt.moduletype.#." + this.airship.getModuleVariantSlot1() + ".pros2"), 0, 0, 0);
+				this.drawCenteredString(fontRenderer, TextFormatting.GREEN + References.localNameVC("vc.item.tt.moduletype.#." + this.airship.getModuleActiveSlot1() + ".pros2"), 0, 0, 0);
 			}
 			GlStateManager.popMatrix();
 			
@@ -331,7 +331,7 @@ public class GuiModuleMenu extends GuiContainer {
 				GlStateManager.translate(this.guiLeft + 53.25, this.guiTop + 102, 0);
 				GlStateManager.scale(0.38, 0.38, 0.38);
 				
-				this.drawCenteredString(fontRenderer, TextFormatting.RED + References.localNameVC("vc.item.tt.moduletype.#." + this.airship.getModuleVariantSlot1() + ".cons1"), 0, 0, 0);
+				this.drawCenteredString(fontRenderer, TextFormatting.RED + References.localNameVC("vc.item.tt.moduletype.#." + this.airship.getModuleActiveSlot1() + ".cons1"), 0, 0, 0);
 			}
 			GlStateManager.popMatrix();
 			//Cons2
@@ -340,7 +340,7 @@ public class GuiModuleMenu extends GuiContainer {
 				GlStateManager.translate(this.guiLeft + 53.25, this.guiTop + 107, 0);
 				GlStateManager.scale(0.38, 0.38, 0.38);
 				
-				this.drawCenteredString(fontRenderer, TextFormatting.RED + References.localNameVC("vc.item.tt.moduletype.#." + this.airship.getModuleVariantSlot1() + ".cons2"), 0, 0, 0);
+				this.drawCenteredString(fontRenderer, TextFormatting.RED + References.localNameVC("vc.item.tt.moduletype.#." + this.airship.getModuleActiveSlot1() + ".cons2"), 0, 0, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -982,51 +982,51 @@ public class GuiModuleMenu extends GuiContainer {
     {
     	this.allButtonsRed();
         
-    	if(this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.ALTITUDE_LESSER.getMetadata()
-		|| this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.ALTITUDE_NORMAL.getMetadata()
-		|| this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.ALTITUDE_GREATER.getMetadata())
+    	if(this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.ALTITUDE_LESSER.getMetadata()
+		|| this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.ALTITUDE_NORMAL.getMetadata()
+		|| this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.ALTITUDE_GREATER.getMetadata())
         {
         	this.buttonAltitude = 1;
         }
-    	if(this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.SPEED_LESSER.getMetadata()
-		|| this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.SPEED_NORMAL.getMetadata()
-		|| this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.SPEED_GREATER.getMetadata())
+    	if(this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.SPEED_LESSER.getMetadata()
+		|| this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.SPEED_NORMAL.getMetadata()
+		|| this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.SPEED_GREATER.getMetadata())
         {
         	this.buttonSpeed = 1;
         }
-    	if(this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.STORAGE_LESSER.getMetadata()
-		|| this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.STORAGE_NORMAL.getMetadata()
-		|| this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.STORAGE_GREATER.getMetadata())
+    	if(this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.STORAGE_LESSER.getMetadata()
+		|| this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.STORAGE_NORMAL.getMetadata()
+		|| this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.STORAGE_GREATER.getMetadata())
         {
         	this.buttonStorage = 1;
         }
-    	if(this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.FUEL_LESSER.getMetadata()
-		|| this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.FUEL_NORMAL.getMetadata()
-		|| this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.FUEL_GREATER.getMetadata())
+    	if(this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.FUEL_LESSER.getMetadata()
+		|| this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.FUEL_NORMAL.getMetadata()
+		|| this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.FUEL_GREATER.getMetadata())
         {
         	this.buttonFuel = 1;
         }
-    	if(this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.MUSIC_LESSER.getMetadata()
-		|| this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.MUSIC_NORMAL.getMetadata()
-		|| this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.MUSIC_GREATER.getMetadata())
+    	if(this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.MUSIC_LESSER.getMetadata()
+		|| this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.MUSIC_NORMAL.getMetadata()
+		|| this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.MUSIC_GREATER.getMetadata())
         {
         	this.buttonMusic = 1;
         }
-    	if(this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.CRUISE_LESSER.getMetadata()
-		|| this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.CRUISE_NORMAL.getMetadata()
-		|| this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.CRUISE_GREATER.getMetadata())
+    	if(this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.CRUISE_LESSER.getMetadata()
+		|| this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.CRUISE_NORMAL.getMetadata()
+		|| this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.CRUISE_GREATER.getMetadata())
         {
         	this.buttonCruise = 1;
         }
-    	if(this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.WATER_LESSER.getMetadata()
-		|| this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.WATER_NORMAL.getMetadata()
-		|| this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.WATER_GREATER.getMetadata())
+    	if(this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.WATER_LESSER.getMetadata()
+		|| this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.WATER_NORMAL.getMetadata()
+		|| this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.WATER_GREATER.getMetadata())
         {
         	this.buttonWater = 1;
         }
-    	if(this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_LESSER.getMetadata()
-		|| this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_NORMAL.getMetadata()
-		|| this.airship.getModuleVariantSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_GREATER.getMetadata())
+    	if(this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_LESSER.getMetadata()
+		|| this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_NORMAL.getMetadata()
+		|| this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_GREATER.getMetadata())
         {
         	this.buttonInfiniteFuel = 1;
         }

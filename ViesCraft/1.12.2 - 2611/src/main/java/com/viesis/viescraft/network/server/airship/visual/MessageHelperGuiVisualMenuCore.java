@@ -34,6 +34,6 @@ public class MessageHelperGuiVisualMenuCore extends MessageBase<MessageHelperGui
 	public void handleServerSide(MessageHelperGuiVisualMenuCore message, EntityPlayer player) 
 	{
 		EntityAirshipBaseVC airship = (EntityAirshipBaseVC) player.getRidingEntity();
-		airship.metaCoreVisual = message.metaCore;
+		airship.coreModelVisualFrame = message.metaCore;
 	}
 }

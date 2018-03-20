@@ -27,6 +27,10 @@ public class GuiVC {
 	public static GuiButton buttonM5;
 	/** Play Music */
 	public static GuiButton buttonM6;
+	/** Stop Music */
+	public static GuiButton buttonM7;
+	/** Play Random */
+	public static GuiButton buttonM8;
 	
 	/** Done/Accept/Exit */
 	public static GuiButton button501;
