@@ -62,6 +62,8 @@ vc.main.modulemenu=Module Menu
 vc.main.fuel=Fuel
 vc.main.speed=Speed
 vc.main.altitude=Altitude
+vc.main.transparent=Transparent
+vc.main.setcolor=Set Color
 vc.main.framecolor=Frame Color
 vc.main.ballooncolor=Balloon Color
 vc.main.core=Core
@@ -79,6 +81,7 @@ vc.main.models=Models
 vc.main.skins=Skins
 vc.main.particles=Particles
 vc.main.patterns=Patterns
+vc.main.preview=Preview
 
 vc.main.viescraft=Viescraft
 vc.main.viesdenburg=Viesdenburg
@@ -97,6 +100,8 @@ vc.button.done=Done
 vc.button.back=Back
 vc.button.next=Next
 vc.button.reset=Reset
+vc.button.apply=Apply
+vc.button.default=Default
 
 vc.hud.nofuel=No Fuel
 

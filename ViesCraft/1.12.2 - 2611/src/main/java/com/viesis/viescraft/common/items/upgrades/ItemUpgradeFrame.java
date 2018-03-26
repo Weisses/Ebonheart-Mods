@@ -71,7 +71,7 @@ public class ItemUpgradeFrame extends Item {
 				//Airship Speed
 				tooltip.add(TextFormatting.DARK_GREEN + "||" + TextFormatting.BLACK + "---------l" + TextFormatting.BLUE + I18n.format("vc.item.tt.airship.14", new Object[0]) + TextFormatting.DARK_BLUE + " : " 
 						+ TextFormatting.GRAY + "(" + stringColorMain
-						+ EnumsVC.AirshipTierFrame.byId(this.getMetadata(stack)).getLocalizedName()
+						+ EnumsVC.MainTierFrame.byId(this.getMetadata(stack)).getLocalizedName()
 						+ TextFormatting.GRAY + ")"
 						+ TextFormatting.BLACK + "-------il" + TextFormatting.DARK_GREEN + "||");
 				
@@ -107,7 +107,7 @@ public class ItemUpgradeFrame extends Item {
 				//Airship Speed
 				tooltip.add(TextFormatting.DARK_GREEN + "||" + TextFormatting.BLACK + "---------l" + TextFormatting.BLUE + I18n.format("vc.item.tt.airship.14", new Object[0]) + TextFormatting.DARK_BLUE + " : " 
 						+ TextFormatting.GRAY + "(" + stringColorMain  
-						+ EnumsVC.AirshipTierFrame.byId(this.getMetadata(stack)).getLocalizedName()
+						+ EnumsVC.MainTierFrame.byId(this.getMetadata(stack)).getLocalizedName()
 						+ TextFormatting.GRAY + ")"
 						+ TextFormatting.BLACK + "-------il" + TextFormatting.DARK_GREEN + "||");
 				
@@ -153,7 +153,7 @@ public class ItemUpgradeFrame extends Item {
 				//Airship Speed
 				tooltip.add(TextFormatting.DARK_GREEN + "||" + TextFormatting.BLACK + "---------l" + TextFormatting.BLUE + I18n.format("vc.item.tt.airship.14", new Object[0]) + TextFormatting.DARK_BLUE + " : " 
 						+ TextFormatting.GRAY + "(" + stringColorMain  
-						+ EnumsVC.AirshipTierFrame.byId(this.getMetadata(stack)).getLocalizedName()
+						+ EnumsVC.MainTierFrame.byId(this.getMetadata(stack)).getLocalizedName()
 						+ TextFormatting.GRAY + ")"
 						+ TextFormatting.BLACK + "-------il" + TextFormatting.DARK_GREEN + "||");
 				
@@ -235,31 +235,31 @@ public class ItemUpgradeFrame extends Item {
 				return colorName = TextFormatting.WHITE 
 				+ "Frame Upgrade "
 				+ TextFormatting.GRAY + "("
-				+ TextFormatting.WHITE + EnumsVC.AirshipTierFrame.byId(this.getMetadata(stack)).getLocalizedName()
+				+ TextFormatting.WHITE + EnumsVC.MainTierFrame.byId(this.getMetadata(stack)).getLocalizedName()
 				+ TextFormatting.GRAY + ")";
 			case 2:
 				return colorName = TextFormatting.YELLOW 
 				+ "Frame Upgrade "
 				+ TextFormatting.GRAY + "("
-				+ TextFormatting.YELLOW + EnumsVC.AirshipTierFrame.byId(this.getMetadata(stack)).getLocalizedName()
+				+ TextFormatting.YELLOW + EnumsVC.MainTierFrame.byId(this.getMetadata(stack)).getLocalizedName()
 				+ TextFormatting.GRAY + ")";
 			case 3:
 				return colorName = TextFormatting.AQUA 
 				+ "Frame Upgrade "
 				+ TextFormatting.GRAY + "("
-				+ TextFormatting.AQUA + EnumsVC.AirshipTierFrame.byId(this.getMetadata(stack)).getLocalizedName()
+				+ TextFormatting.AQUA + EnumsVC.MainTierFrame.byId(this.getMetadata(stack)).getLocalizedName()
 				+ TextFormatting.GRAY + ")";
 			case 4:
 				return colorName = TextFormatting.LIGHT_PURPLE 
 				+ "Frame Upgrade "
 				+ TextFormatting.GRAY + "("
-				+ TextFormatting.LIGHT_PURPLE + EnumsVC.AirshipTierFrame.byId(this.getMetadata(stack)).getLocalizedName()
+				+ TextFormatting.LIGHT_PURPLE + EnumsVC.MainTierFrame.byId(this.getMetadata(stack)).getLocalizedName()
 				+ TextFormatting.GRAY + ")";
 			case 5:
 				return colorName = TextFormatting.RED 
 				+ "Frame Upgrade "
 				+ TextFormatting.GRAY + "("
-				+ TextFormatting.RED + EnumsVC.AirshipTierFrame.byId(this.getMetadata(stack)).getLocalizedName()
+				+ TextFormatting.RED + EnumsVC.MainTierFrame.byId(this.getMetadata(stack)).getLocalizedName()
 				+ TextFormatting.GRAY + ")";
 		}
 		
@@ -272,7 +272,7 @@ public class ItemUpgradeFrame extends Item {
 	{
 		if (isInCreativeTab(tab)) 
 		{
-			final List<ItemStack> items = Stream.of(EnumsVC.AirshipTierFrame.values())
+			final List<ItemStack> items = Stream.of(EnumsVC.MainTierFrame.values())
 					.map(enumType -> new ItemStack(this, 1, enumType.getMetadata()))
 					.collect(Collectors.toList());
 

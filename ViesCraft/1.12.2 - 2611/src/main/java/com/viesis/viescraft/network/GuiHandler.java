@@ -4,6 +4,22 @@ import com.viesis.viescraft.client.gui.GuiTileEntityAirshipWorkbench;
 import com.viesis.viescraft.client.gui.GuiTileEntityBatteryCharger;
 import com.viesis.viescraft.client.gui.airship.customize.GuiCustomizeMenuChangeName;
 import com.viesis.viescraft.client.gui.airship.customize.GuiCustomizeMenuOptionsRedstone;
+import com.viesis.viescraft.client.gui.airship.customize.balloon.GuiCustomizeMenuBalloonColor;
+import com.viesis.viescraft.client.gui.airship.customize.balloon.GuiCustomizeMenuBalloonMain;
+import com.viesis.viescraft.client.gui.airship.customize.balloon.sub.GuiCustomizeMenuBalloonTier1Pg1;
+import com.viesis.viescraft.client.gui.airship.customize.balloon.sub.GuiCustomizeMenuBalloonTier1Pg2;
+import com.viesis.viescraft.client.gui.airship.customize.balloon.sub.GuiCustomizeMenuBalloonTier2Pg1;
+import com.viesis.viescraft.client.gui.airship.customize.balloon.sub.GuiCustomizeMenuBalloonTier3Pg1;
+import com.viesis.viescraft.client.gui.airship.customize.balloon.sub.GuiCustomizeMenuBalloonTier4Pg1;
+import com.viesis.viescraft.client.gui.airship.customize.balloon.sub.GuiCustomizeMenuBalloonTier5Pg1;
+import com.viesis.viescraft.client.gui.airship.customize.frame.GuiCustomizeMenuFrameColor;
+import com.viesis.viescraft.client.gui.airship.customize.frame.GuiCustomizeMenuFrameMain;
+import com.viesis.viescraft.client.gui.airship.customize.frame.sub.GuiCustomizeMenuFrameTier1Pg1;
+import com.viesis.viescraft.client.gui.airship.customize.frame.sub.GuiCustomizeMenuFrameTier1Pg2;
+import com.viesis.viescraft.client.gui.airship.customize.frame.sub.GuiCustomizeMenuFrameTier2Pg1;
+import com.viesis.viescraft.client.gui.airship.customize.frame.sub.GuiCustomizeMenuFrameTier3Pg1;
+import com.viesis.viescraft.client.gui.airship.customize.frame.sub.GuiCustomizeMenuFrameTier4Pg1;
+import com.viesis.viescraft.client.gui.airship.customize.frame.sub.GuiCustomizeMenuFrameTier5Pg1;
 import com.viesis.viescraft.client.gui.airship.main.GuiCustomizeMenu;
 import com.viesis.viescraft.client.gui.airship.main.GuiMainMenu;
 import com.viesis.viescraft.client.gui.airship.main.GuiMainMenuMusic;
@@ -13,26 +29,12 @@ import com.viesis.viescraft.client.gui.airship.main.GuiMainMenuStorageNormal;
 import com.viesis.viescraft.client.gui.airship.main.GuiModuleMenu;
 import com.viesis.viescraft.client.gui.airship.main.GuiUpgradeMenu;
 import com.viesis.viescraft.client.gui.airship.music.GuiAirshipMusicPg1;
-import com.viesis.viescraft.client.gui.airship.visual.balloon.GuiVisualMenuBalloon;
-import com.viesis.viescraft.client.gui.airship.visual.balloon.GuiVisualMenuBalloonColor;
-import com.viesis.viescraft.client.gui.airship.visual.balloon.GuiVisualMenuBalloonTier1Pg1;
-import com.viesis.viescraft.client.gui.airship.visual.balloon.GuiVisualMenuBalloonTier2Pg1;
-import com.viesis.viescraft.client.gui.airship.visual.balloon.GuiVisualMenuBalloonTier3Pg1;
-import com.viesis.viescraft.client.gui.airship.visual.balloon.GuiVisualMenuBalloonTier4Pg1;
-import com.viesis.viescraft.client.gui.airship.visual.balloon.GuiVisualMenuBalloonTier5Pg1;
 import com.viesis.viescraft.client.gui.airship.visual.core.GuiVisualMenuCore;
-import com.viesis.viescraft.client.gui.airship.visual.frame.GuiVisualMenuFrame;
-import com.viesis.viescraft.client.gui.airship.visual.frame.GuiVisualMenuFrameColor;
-import com.viesis.viescraft.client.gui.airship.visual.frame.GuiVisualMenuFrameTier1Pg1;
-import com.viesis.viescraft.client.gui.airship.visual.frame.GuiVisualMenuFrameTier1Pg2;
-import com.viesis.viescraft.client.gui.airship.visual.frame.GuiVisualMenuFrameTier2Pg1;
-import com.viesis.viescraft.client.gui.airship.visual.frame.GuiVisualMenuFrameTier3Pg1;
-import com.viesis.viescraft.client.gui.airship.visual.frame.GuiVisualMenuFrameTier4Pg1;
-import com.viesis.viescraft.client.gui.airship.visual.frame.GuiVisualMenuFrameTier5Pg1;
 import com.viesis.viescraft.client.gui.pouch.GuiPouchAll;
 import com.viesis.viescraft.client.gui.pouch.GuiPouchModule;
 import com.viesis.viescraft.client.gui.pouch.InventoryPouch;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
+import com.viesis.viescraft.common.entity.airships.EntityAirshipCore;
 import com.viesis.viescraft.common.entity.airships.containers.all.ContainerCustomizeMenu;
 import com.viesis.viescraft.common.entity.airships.containers.all.ContainerCustomizeOptionsRedstone;
 import com.viesis.viescraft.common.entity.airships.containers.all.ContainerMainMenu;
@@ -89,6 +91,7 @@ public class GuiHandler implements IGuiHandler {
 	public static final int GUI_APPEARANCE_MENU_BALLOON = 202;
 	public static final int GUI_APPEARANCE_MENU_BALLOON_COLOR = 209;
 	public static final int GUI_APPEARANCE_MENU_BALLOON_TIER1_PG1 = 203;
+	public static final int GUI_APPEARANCE_MENU_BALLOON_TIER1_PG2 = 204;
 	public static final int GUI_APPEARANCE_MENU_BALLOON_TIER2_PG1 = 205;
 	public static final int GUI_APPEARANCE_MENU_BALLOON_TIER3_PG1 = 206;
 	public static final int GUI_APPEARANCE_MENU_BALLOON_TIER4_PG1 = 207;
@@ -185,6 +188,8 @@ public class GuiHandler implements IGuiHandler {
 			return new ContainerCustomizeMenu(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
 		}
 		
+		
+		
 		if (ID == GUI_APPEARANCE_MENU_FRAME)
 		{
 			return new ContainerCustomizeMenu(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
@@ -218,6 +223,8 @@ public class GuiHandler implements IGuiHandler {
 			return new ContainerCustomizeMenu(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
 		}
 		
+		
+		
 		if (ID == GUI_APPEARANCE_MENU_BALLOON)
 		{
 			return new ContainerCustomizeMenu(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
@@ -227,6 +234,10 @@ public class GuiHandler implements IGuiHandler {
 			return new ContainerCustomizeMenu(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
 		}
 		if (ID == GUI_APPEARANCE_MENU_BALLOON_TIER1_PG1)
+		{
+			return new ContainerCustomizeMenu(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
+		}
+		if (ID == GUI_APPEARANCE_MENU_BALLOON_TIER1_PG2)
 		{
 			return new ContainerCustomizeMenu(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
 		}
@@ -246,6 +257,8 @@ public class GuiHandler implements IGuiHandler {
 		{
 			return new ContainerCustomizeMenu(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
 		}
+		
+		
 		
 		//Airship Module Container
 		if (ID == GUI_MODULE_MENU)
@@ -355,65 +368,71 @@ public class GuiHandler implements IGuiHandler {
 		
 		if (ID == GUI_APPEARANCE_MENU_FRAME)
 		{
-			return new GuiVisualMenuFrame(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
+			return new GuiCustomizeMenuFrameMain(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
 		}
 		if (ID == GUI_APPEARANCE_MENU_FRAME_COLOR)
 		{
-			return new GuiVisualMenuFrameColor(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
+			return new GuiCustomizeMenuFrameColor(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
 		}
 		if (ID == GUI_APPEARANCE_MENU_FRAME_TIER1_PG1)
 		{
-			return new GuiVisualMenuFrameTier1Pg1(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
+			return new GuiCustomizeMenuFrameTier1Pg1(player.inventory, (EntityAirshipCore)player.getRidingEntity());
 		}
 		if (ID == GUI_APPEARANCE_MENU_FRAME_TIER1_PG2)
 		{
-			return new GuiVisualMenuFrameTier1Pg2(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
+			return new GuiCustomizeMenuFrameTier1Pg2(player.inventory, (EntityAirshipCore)player.getRidingEntity());
 		}
 		if (ID == GUI_APPEARANCE_MENU_FRAME_TIER2_PG1)
 		{
-			return new GuiVisualMenuFrameTier2Pg1(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
+			return new GuiCustomizeMenuFrameTier2Pg1(player.inventory, (EntityAirshipCore)player.getRidingEntity());
 		}
 		if (ID == GUI_APPEARANCE_MENU_FRAME_TIER3_PG1)
 		{
-			return new GuiVisualMenuFrameTier3Pg1(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
+			return new GuiCustomizeMenuFrameTier3Pg1(player.inventory, (EntityAirshipCore)player.getRidingEntity());
 		}
 		if (ID == GUI_APPEARANCE_MENU_FRAME_TIER4_PG1)
 		{
-			return new GuiVisualMenuFrameTier4Pg1(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
+			return new GuiCustomizeMenuFrameTier4Pg1(player.inventory, (EntityAirshipCore)player.getRidingEntity());
 		}
 		if (ID == GUI_APPEARANCE_MENU_FRAME_TIER5_PG1)
 		{
-			return new GuiVisualMenuFrameTier5Pg1(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
+			return new GuiCustomizeMenuFrameTier5Pg1(player.inventory, (EntityAirshipCore)player.getRidingEntity());
 		}
-
+		
 		if (ID == GUI_APPEARANCE_MENU_BALLOON)
 		{
-			return new GuiVisualMenuBalloon(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
+			return new GuiCustomizeMenuBalloonMain(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
 		}
 		if (ID == GUI_APPEARANCE_MENU_BALLOON_COLOR)
 		{
-			return new GuiVisualMenuBalloonColor(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
+			return new GuiCustomizeMenuBalloonColor(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
 		}
 		if (ID == GUI_APPEARANCE_MENU_BALLOON_TIER1_PG1)
 		{
-			return new GuiVisualMenuBalloonTier1Pg1(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
+			return new GuiCustomizeMenuBalloonTier1Pg1(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
+		}
+		if (ID == GUI_APPEARANCE_MENU_BALLOON_TIER1_PG2)
+		{
+			return new GuiCustomizeMenuBalloonTier1Pg2(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
 		}
 		if (ID == GUI_APPEARANCE_MENU_BALLOON_TIER2_PG1)
 		{
-			return new GuiVisualMenuBalloonTier2Pg1(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
+			return new GuiCustomizeMenuBalloonTier2Pg1(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
 		}
 		if (ID == GUI_APPEARANCE_MENU_BALLOON_TIER3_PG1)
 		{
-			return new GuiVisualMenuBalloonTier3Pg1(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
+			return new GuiCustomizeMenuBalloonTier3Pg1(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
 		}
 		if (ID == GUI_APPEARANCE_MENU_BALLOON_TIER4_PG1)
 		{
-			return new GuiVisualMenuBalloonTier4Pg1(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
+			return new GuiCustomizeMenuBalloonTier4Pg1(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
 		}
 		if (ID == GUI_APPEARANCE_MENU_BALLOON_TIER5_PG1)
 		{
-			return new GuiVisualMenuBalloonTier5Pg1(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
+			return new GuiCustomizeMenuBalloonTier5Pg1(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
 		}
+		
+		
 		
 		//Airship Music GUI
 		if (ID == GUI_MUSIC_PG1)

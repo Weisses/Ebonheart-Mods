@@ -45,7 +45,7 @@ public class ItemUpgradeEngine extends Item {
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
     {
 		DecimalFormat df = new DecimalFormat("###.#");
-		float speedModCal = EnumsVC.AirshipTierEngine.byId(this.getMetadata(stack)).getFuelPerTick();
+		float speedModCal = EnumsVC.MainTierEngine.byId(this.getMetadata(stack)).getFuelPerTick();
 		String speedMod = df.format(speedModCal);
 		
 		GameSettings gameSettingsIn = Minecraft.getMinecraft().gameSettings;
@@ -76,7 +76,7 @@ public class ItemUpgradeEngine extends Item {
 				//Airship Fuel
 				tooltip.add(TextFormatting.DARK_GREEN + "||" + TextFormatting.BLACK + "---------iiiiii" + TextFormatting.BLUE + I18n.format("vc.item.tt.airship.13", new Object[0]) + TextFormatting.DARK_BLUE + " : " 
 						+ TextFormatting.GRAY + "(" + stringColorMain + "-" 
-						+ df.format(EnumsVC.AirshipTierEngine.byId(this.getMetadata(stack)).getFuelPerTick())
+						+ df.format(EnumsVC.MainTierEngine.byId(this.getMetadata(stack)).getFuelPerTick())
 						+ TextFormatting.GRAY + ")"
 						+ TextFormatting.BLACK + "---------il" + TextFormatting.DARK_GREEN + "||");
 				
@@ -109,7 +109,7 @@ public class ItemUpgradeEngine extends Item {
 				//Airship Fuel
 				tooltip.add(TextFormatting.DARK_GREEN + "||" + TextFormatting.BLACK + "---------iiiiii" + TextFormatting.BLUE + I18n.format("vc.item.tt.airship.13", new Object[0]) + TextFormatting.DARK_BLUE + " : " 
 						+ TextFormatting.GRAY + "(" + stringColorMain + "-" 
-						+ df.format(EnumsVC.AirshipTierEngine.byId(this.getMetadata(stack)).getFuelPerTick())
+						+ df.format(EnumsVC.MainTierEngine.byId(this.getMetadata(stack)).getFuelPerTick())
 						+ TextFormatting.GRAY + ")"
 						+ TextFormatting.BLACK + "---------il" + TextFormatting.DARK_GREEN + "||");
 				
@@ -187,31 +187,31 @@ public class ItemUpgradeEngine extends Item {
 				return colorName = TextFormatting.WHITE 
 				+ "Engine Upgrade "
 				+ TextFormatting.GRAY + "("
-				+ TextFormatting.WHITE + EnumsVC.AirshipTierEngine.byId(this.getMetadata(stack)).getLocalizedName()
+				+ TextFormatting.WHITE + EnumsVC.MainTierEngine.byId(this.getMetadata(stack)).getLocalizedName()
 				+ TextFormatting.GRAY + ")";
 			case 2:
 				return colorName = TextFormatting.YELLOW 
 				+ "Engine Upgrade "
 				+ TextFormatting.GRAY + "("
-				+ TextFormatting.YELLOW + EnumsVC.AirshipTierEngine.byId(this.getMetadata(stack)).getLocalizedName()
+				+ TextFormatting.YELLOW + EnumsVC.MainTierEngine.byId(this.getMetadata(stack)).getLocalizedName()
 				+ TextFormatting.GRAY + ")";
 			case 3:
 				return colorName = TextFormatting.AQUA 
 				+ "Engine Upgrade "
 				+ TextFormatting.GRAY + "("
-				+ TextFormatting.AQUA + EnumsVC.AirshipTierEngine.byId(this.getMetadata(stack)).getLocalizedName()
+				+ TextFormatting.AQUA + EnumsVC.MainTierEngine.byId(this.getMetadata(stack)).getLocalizedName()
 				+ TextFormatting.GRAY + ")";
 			case 4:
 				return colorName = TextFormatting.LIGHT_PURPLE 
 				+ "Engine Upgrade "
 				+ TextFormatting.GRAY + "("
-				+ TextFormatting.LIGHT_PURPLE + EnumsVC.AirshipTierEngine.byId(this.getMetadata(stack)).getLocalizedName()
+				+ TextFormatting.LIGHT_PURPLE + EnumsVC.MainTierEngine.byId(this.getMetadata(stack)).getLocalizedName()
 				+ TextFormatting.GRAY + ")";
 			case 5:
 				return colorName = TextFormatting.RED 
 				+ "Engine Upgrade "
 				+ TextFormatting.GRAY + "("
-				+ TextFormatting.RED + EnumsVC.AirshipTierEngine.byId(this.getMetadata(stack)).getLocalizedName()
+				+ TextFormatting.RED + EnumsVC.MainTierEngine.byId(this.getMetadata(stack)).getLocalizedName()
 				+ TextFormatting.GRAY + ")";
 		}
 		
@@ -224,7 +224,7 @@ public class ItemUpgradeEngine extends Item {
 	{
 		if (isInCreativeTab(tab)) 
 		{
-			final List<ItemStack> items = Stream.of(EnumsVC.AirshipTierEngine.values())
+			final List<ItemStack> items = Stream.of(EnumsVC.MainTierEngine.values())
 					.map(enumType -> new ItemStack(this, 1, enumType.getMetadata()))
 					.collect(Collectors.toList());
 

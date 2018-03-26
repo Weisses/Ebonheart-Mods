@@ -20,23 +20,15 @@ import com.viesis.viescraft.network.server.airship.MessageGuiUpgradeMenu;
 import com.viesis.viescraft.network.server.airship.customize.MessageGuiCustomizeMenu;
 import com.viesis.viescraft.network.server.airship.customize.MessageGuiCustomizeMenuChangeName;
 import com.viesis.viescraft.network.server.airship.customize.MessageGuiCustomizeMenuOptionsRedstone;
+import com.viesis.viescraft.network.server.airship.customize.balloon.MessageGuiCustomizeMenuBalloonMain;
+import com.viesis.viescraft.network.server.airship.customize.frame.MessageGuiCustomizeMenuFrameMain;
 import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenu;
 import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenuMusic;
 import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenuStorageGreater;
 import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenuStorageLesser;
 import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenuStorageNormal;
 import com.viesis.viescraft.network.server.airship.main.MessageGuiModuleMenu;
-import com.viesis.viescraft.network.server.airship.visual.MessageGuiVisualMenuBalloon;
-import com.viesis.viescraft.network.server.airship.visual.MessageGuiVisualMenuBalloonColor;
-import com.viesis.viescraft.network.server.airship.visual.MessageGuiVisualMenuCore;
-import com.viesis.viescraft.network.server.airship.visual.MessageGuiVisualMenuFrame;
-import com.viesis.viescraft.network.server.airship.visual.undobuttons.MessageHelperGuiVisualMenuUndoBalloon1;
-import com.viesis.viescraft.network.server.airship.visual.undobuttons.MessageHelperGuiVisualMenuUndoBalloon2;
-import com.viesis.viescraft.network.server.airship.visual.undobuttons.MessageHelperGuiVisualMenuUndoBalloon3;
-import com.viesis.viescraft.network.server.airship.visual.undobuttons.MessageHelperGuiVisualMenuUndoCore2;
-import com.viesis.viescraft.network.server.airship.visual.undobuttons.MessageHelperGuiVisualMenuUndoFrame1;
-import com.viesis.viescraft.network.server.airship.visual.undobuttons.MessageHelperGuiVisualMenuUndoFrame2;
-import com.viesis.viescraft.network.server.airship.visual.undobuttons.MessageHelperGuiVisualMenuUndoFrame3;
+import com.viesis.viescraft.network.server.airship.visual.MessageGuiCustomizeMenuCore;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
@@ -54,24 +46,8 @@ public class GuiCustomizeMenu extends GuiContainerVC {
 	private IInventory playerInv;
 	private EntityAirshipBaseVC airship;
 	
-	//private GuiTextField textName;
-	//public static int textNameStorage;
+	private ResourceLocation texture = new ResourceLocation(References.MOD_ID + ":" + "textures/gui/container_gui_customize_menu_1.png");
 	
-	//public static boolean metaCoreTransparentInfo;
-	//public static boolean metaFrameTransparentInfo;
-	//public static boolean metaEngineTransparentInfo;
-	//public static boolean metaBalloonTransparentInfo;
-	private ResourceLocation texture = new ResourceLocation(References.MOD_ID + ":" + "textures/gui/container_gui_customize_menu.png");
-	
-	//public static int undoCore2;
-	
-	//public static boolean undoFrame1;
-	//public static int undoFrame2;
-	//public static boolean undoFrame3;
-	
-	//public static boolean undoBalloon1;
-	//public static int undoBalloon2;
-	//public static boolean undoBalloon3;
 	
 	public GuiCustomizeMenu(IInventory playerInv, EntityAirshipBaseVC airshipIn)
 	{
@@ -107,14 +83,14 @@ public class GuiCustomizeMenu extends GuiContainerVC {
     	GuiVC.buttonM3 = new GuiButtonMenuVC(3, this.guiLeft - 35, this.guiTop + 7 + (16 * 2), 36, 14, "", 2);
     	GuiVC.buttonM4 = new GuiButtonMenuVC(4, this.guiLeft - 35, this.guiTop + 7 + (16 * 3), 36, 14, "", 3);
 		
-    	GuiVC.buttonA21 = new GuiButtonGeneralVC(21, this.guiLeft + 28, this.guiTop + 143, 42, 14, "Options");
-		GuiVC.buttonA22 = new GuiButtonGeneralVC(22, this.guiLeft + 106, this.guiTop + 143, 42, 14, "Options");
-		GuiVC.buttonA23 = new GuiButtonGeneralVC(23, this.guiLeft + 28, this.guiTop + 179, 42, 14, "Options");
-		GuiVC.buttonA24 = new GuiButtonGeneralVC(24, this.guiLeft + 106, this.guiTop + 179, 42, 14, "Options");
+    	GuiVC.buttonA21 = new GuiButtonGeneralVC(21, this.guiLeft + 28, this.guiTop + 143, 42, 14, "Options", 0);
+		GuiVC.buttonA22 = new GuiButtonGeneralVC(22, this.guiLeft + 106, this.guiTop + 143, 42, 14, "Options", 0);
+		GuiVC.buttonA23 = new GuiButtonGeneralVC(23, this.guiLeft + 28, this.guiTop + 179, 42, 14, "Options", 0);
+		GuiVC.buttonA24 = new GuiButtonGeneralVC(24, this.guiLeft + 106, this.guiTop + 179, 42, 14, "Options", 0);
 		
-		GuiVC.buttonA11 = new GuiButtonGeneralVC(11, this.guiLeft + 22, this.guiTop + 47, 54, 14, "Change Name");
+		GuiVC.buttonA11 = new GuiButtonGeneralVC(11, this.guiLeft + 22, this.guiTop + 47, 54, 14, "Change Name", 0);
 		
-		GuiVC.buttonA12 = new GuiButtonGeneralVC(12, this.guiLeft + 67, this.guiTop + 109, 42, 14, "Options");
+		GuiVC.buttonA12 = new GuiButtonGeneralVC(12, this.guiLeft + 67, this.guiTop + 109, 42, 14, "Options", 0);
 		
     	this.buttonList.add(GuiVC.buttonM1);
 		this.buttonList.add(GuiVC.buttonM2);
@@ -194,22 +170,23 @@ public class GuiCustomizeMenu extends GuiContainerVC {
 			NetworkHandler.sendToServer(new MessageGuiCustomizeMenuOptionsRedstone());
 	    }
 		
-		//Frame
+		
+		
 		if (parButton.id == 21)
 	    {
-			NetworkHandler.sendToServer(new MessageGuiVisualMenuCore());
+			NetworkHandler.sendToServer(new MessageGuiCustomizeMenuCore());
 	    }
 		if (parButton.id == 22)
 	    {
-			NetworkHandler.sendToServer(new MessageGuiVisualMenuFrame());
+			NetworkHandler.sendToServer(new MessageGuiCustomizeMenuFrameMain());
 	    }
 		if (parButton.id == 23)
 	    {
-			//NetworkHandler.sendToServer(new MessageGuiVisualMenuEngine());
+			//NetworkHandler.sendToServer(new MessageGuiCustomizeMenuEngineMain());
 	    }
 		if (parButton.id == 24)
 	    {
-			NetworkHandler.sendToServer(new MessageGuiVisualMenuBalloon());
+			NetworkHandler.sendToServer(new MessageGuiCustomizeMenuBalloonMain());
 	    }
 		
 		
@@ -226,7 +203,7 @@ public class GuiCustomizeMenu extends GuiContainerVC {
 		this.mc.getTextureManager().bindTexture(texture);
 		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
 		
-		int k = this.getRedstoneLeftScaled(107);
+		int k = this.getRedstoneLeftScaled(108);
 		
 		this.drawTexturedModalRect(this.guiLeft + 33, this.guiTop + 93, 0, 203, 1 + k, 8);
 		

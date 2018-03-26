@@ -8,12 +8,12 @@ import net.minecraft.util.SoundEvent;
 public class EnumsVC {
 	
 	/**
-     * Core Tier enum - Dictates registry name, localized name, HP modifier. 
+     * Main Core Tier enum - Dictates registry name, localized name, HP modifier. 
      * <pre>
      * (Main metadata!)
      * </pre>
      */
-	public static enum AirshipTierCore
+	public static enum MainTierCore
     {
     	//STRING(meta, registry name, localized name, HP modifier)
 		BASE(0, "tierbase", References.localNameVC("vc.enum.tier.0"), 2.0D),
@@ -28,7 +28,7 @@ public class EnumsVC {
         private final String localizedName;
         private final double hp;
         
-        private AirshipTierCore(int metadataIn, String registryNameIn, String localizedNameIn, double hpModifierIn)
+        private MainTierCore(int metadataIn, String registryNameIn, String localizedNameIn, double hpModifierIn)
         {
         	this.metadata = metadataIn;
             this.registryName = registryNameIn;
@@ -59,7 +59,7 @@ public class EnumsVC {
         /**
          * Get type by it's enum ordinal
          */
-        public static EnumsVC.AirshipTierCore byId(int id)
+        public static EnumsVC.MainTierCore byId(int id)
         {
             if (id < 0 || id >= values().length)
             {
@@ -69,7 +69,7 @@ public class EnumsVC {
             return values()[id];
         }
         
-        public static EnumsVC.AirshipTierCore getTypeFromString(String nameIn)
+        public static EnumsVC.MainTierCore getTypeFromString(String nameIn)
         {
             for (int i = 0; i < values().length; ++i)
             {
@@ -84,9 +84,9 @@ public class EnumsVC {
     }
 	
 	/**
-     * Frame Tier enum - Dictates registry name, localized name, speed modifier.
+     * Main Frame Tier enum - Dictates registry name, localized name, speed modifier.
      */
-	public static enum AirshipTierFrame
+	public static enum MainTierFrame
     {
     	//STRING(meta, registry name, localized name, speed modifier)
 		BASE(0, "tierbase", References.localNameVC("vc.enum.tier.0"), 0.0F),
@@ -101,7 +101,7 @@ public class EnumsVC {
         private final String localizedName;
         private final float speed;
         
-        private AirshipTierFrame(int metadataIn, String registryNameIn, String localizedNameIn, float speedModifierIn)
+        private MainTierFrame(int metadataIn, String registryNameIn, String localizedNameIn, float speedModifierIn)
         {
         	this.metadata = metadataIn;
             this.registryName = registryNameIn;
@@ -132,7 +132,7 @@ public class EnumsVC {
         /**
          * Get type by it's enum ordinal
          */
-        public static EnumsVC.AirshipTierFrame byId(int id)
+        public static EnumsVC.MainTierFrame byId(int id)
         {
             if (id < 0 || id >= values().length)
             {
@@ -142,7 +142,7 @@ public class EnumsVC {
             return values()[id];
         }
         
-        public static EnumsVC.AirshipTierFrame getTypeFromString(String nameIn)
+        public static EnumsVC.MainTierFrame getTypeFromString(String nameIn)
         {
             for (int i = 0; i < values().length; ++i)
             {
@@ -157,9 +157,9 @@ public class EnumsVC {
     }
 	
 	/**
-     * Engine Tier enum - Dictates registry name, localized name, fuel per tick.
+     * Main Engine Tier enum - Dictates registry name, localized name, fuel per tick.
      */
-	public static enum AirshipTierEngine
+	public static enum MainTierEngine
     {
     	//STRING(meta, registry name, localized name, fuel per tick)
 		BASE(0, "tierbase", References.localNameVC("vc.enum.tier.0"), 60),
@@ -174,7 +174,7 @@ public class EnumsVC {
         private final String localizedName;
         private final int fuel;
         
-        private AirshipTierEngine(int metadataIn, String registryNameIn, String localizedNameIn, int fuelPerTickIn)
+        private MainTierEngine(int metadataIn, String registryNameIn, String localizedNameIn, int fuelPerTickIn)
         {
         	this.metadata = metadataIn;
             this.registryName = registryNameIn;
@@ -205,7 +205,7 @@ public class EnumsVC {
         /**
          * Get type by it's enum ordinal
          */
-        public static EnumsVC.AirshipTierEngine byId(int id)
+        public static EnumsVC.MainTierEngine byId(int id)
         {
             if (id < 0 || id >= values().length)
             {
@@ -215,7 +215,7 @@ public class EnumsVC {
             return values()[id];
         }
         
-        public static EnumsVC.AirshipTierEngine getTypeFromString(String nameIn)
+        public static EnumsVC.MainTierEngine getTypeFromString(String nameIn)
         {
             for (int i = 0; i < values().length; ++i)
             {
@@ -230,9 +230,9 @@ public class EnumsVC {
     }
 	
 	/**
-     * Balloon Tier enum - Dictates registry name, localized name, max altitude.
+     * Main Balloon Tier enum - Dictates registry name, localized name, max altitude.
      */
-	public static enum AirshipTierBalloon
+	public static enum MainTierBalloon
     {
     	//STRING(meta, registry name, localized name, max altitude)
 		BASE(0, "tierbase", References.localNameVC("vc.enum.tier.0"), 75),
@@ -247,7 +247,7 @@ public class EnumsVC {
         private final String localizedName;
         private final int altitude;
         
-        private AirshipTierBalloon(int metadataIn, String registryNameIn, String localizedNameIn, int maxAltutideIn)
+        private MainTierBalloon(int metadataIn, String registryNameIn, String localizedNameIn, int maxAltutideIn)
         {
         	this.metadata = metadataIn;
             this.registryName = registryNameIn;
@@ -278,7 +278,7 @@ public class EnumsVC {
         /**
          * Get type by it's enum ordinal
          */
-        public static EnumsVC.AirshipTierBalloon byId(int id)
+        public static EnumsVC.MainTierBalloon byId(int id)
         {
             if (id < 0 || id >= values().length)
             {
@@ -288,7 +288,7 @@ public class EnumsVC {
             return values()[id];
         }
         
-        public static EnumsVC.AirshipTierBalloon getTypeFromString(String nameIn)
+        public static EnumsVC.MainTierBalloon getTypeFromString(String nameIn)
         {
             for (int i = 0; i < values().length; ++i)
             {
@@ -472,9 +472,9 @@ public class EnumsVC {
 	
     
     /**
-	 * Visual Frame Skin enum - Represents various visual frame skin types.
+	 * Visual Frame Skin Background enum - Represents various visual frame skin types.
 	 */
-    public static enum VisualFrameSkin
+    public static enum VisualFrameSkinBackground
     {
     	//STRING(meta, registry name, localized name)
     	NONE(0, "none", References.localNameVC("vc.enum.visualframe.0")),
@@ -570,7 +570,7 @@ public class EnumsVC {
         private final String registryName;
         private final String localizedName;
         
-        private VisualFrameSkin(int metadataIn, String registryNameIn, String localizedNameIn)
+        private VisualFrameSkinBackground(int metadataIn, String registryNameIn, String localizedNameIn)
         {
         	this.metadata = metadataIn;
             this.registryName = registryNameIn;
@@ -595,7 +595,7 @@ public class EnumsVC {
         /**
          * Get type by it's enum ordinal
          */
-        public static EnumsVC.VisualFrameSkin byId(int id)
+        public static EnumsVC.VisualFrameSkinBackground byId(int id)
         {
             if (id < 0 || id >= values().length)
             {
@@ -605,7 +605,7 @@ public class EnumsVC {
             return values()[id];
         }
         
-        public static EnumsVC.VisualFrameSkin getTypeFromString(String nameIn)
+        public static EnumsVC.VisualFrameSkinBackground getTypeFromString(String nameIn)
         {
             for (int i = 0; i < values().length; ++i)
             {
@@ -618,6 +618,13 @@ public class EnumsVC {
             return values()[0];
         }
     }
+    
+    
+    
+    
+    
+    
+    
     
     /**
 	 * Visual Balloon Pattern enum - Represents various visual balloon pattern types.
@@ -934,9 +941,13 @@ public class EnumsVC {
         HEAD(4, "generic_head", References.localNameVC("vc.enum.displaysymbol.4")),
         HEADSUPPORTER(5, "generic_head_supporter", References.localNameVC("vc.enum.displaysymbol.5"));
         
-    	/**
-        VIESCRAFTLOGO(1, "create_ignition", References.localNameVC("vc.enum.visualballoon.0")),
         
+        /**
+    	LOGOVIESCRAFT(6, "generic_head_supporter", References.localNameVC("vc.enum.displaysymbol.5")),
+    	LOGOMINECRAFT(7, "generic_head_supporter", References.localNameVC("vc.enum.displaysymbol.5")),
+        
+    	
+    	
     	EARTH(1, "create_ignition", References.localNameVC("vc.enum.visualballoon.0")),
         WIND(2, "create", References.localNameVC("vc.enum.visualballoon.0")),
         WATER(3, "create_color", References.localNameVC("vc.enum.visualballoon.0")),
@@ -947,19 +958,20 @@ public class EnumsVC {
         HOLY(7, "lava", References.localNameVC("vc.enum.visualballoon.0")),
         UNHOLY(7, "lava", References.localNameVC("vc.enum.visualballoon.0")),
         
+        
+        
         SHIELD(7, "lava", References.localNameVC("vc.enum.visualballoon.0")),
         HAMMER(7, "lava", References.localNameVC("vc.enum.visualballoon.0")),
         FIST(7, "lava", References.localNameVC("vc.enum.visualballoon.0")),
-        YGGDRASIL(7, "lava", References.localNameVC("vc.enum.visualballoon.0")),
         SUN(7, "lava", References.localNameVC("vc.enum.visualballoon.0")),
         MOON(7, "lava", References.localNameVC("vc.enum.visualballoon.0")),
-        LAVA(7, "lava", References.localNameVC("vc.enum.visualballoon.0")),
-
-        //Hammer-mjolnir,
-        // 
-        //tree-yggdrasil
         
-        Celtic(7, "lava", References.localNameVC("vc.enum.visualballoon.0")),
+        
+        
+        CELTIC(7, "lava", References.localNameVC("vc.enum.visualballoon.0")),
+        YGGDRASIL(7, "lava", References.localNameVC("vc.enum.visualballoon.0")),
+        MJOLLNIR(7, "lava", References.localNameVC("vc.enum.visualballoon.0")),
+        
         
         FOX(7, "lava", References.localNameVC("vc.enum.visualballoon.0")),
         BEAR(7, "lava", References.localNameVC("vc.enum.visualballoon.0")),
@@ -1021,4 +1033,130 @@ public class EnumsVC {
         }
     }
     
+    /**
+	 * Entity Head Display Symbol enum - Represents various Airship Entity Head types.
+	 */
+    public static enum EntityHead
+    {
+    	//STRING(meta, registry name, localized name)
+        NONE(0, "none", References.localNameVC("vc.enum.entityhead.0")),
+        STEVE(1, "entityhead_steve", References.localNameVC("vc.enum.entityhead.1")),
+        ALEX(2, "entityhead_alex", References.localNameVC("vc.enum.entityhead.2")),
+        HEROBRINE(3, "entityhead_herobrine", References.localNameVC("vc.enum.entityhead.3"));
+        
+    	private final int metadata;
+        private final String registryName;
+        private final String localizedName;
+        
+        private EntityHead(int metadataIn, String registryNameIn, String localizedNameIn)
+        {
+        	this.metadata = metadataIn;
+            this.registryName = registryNameIn;
+            this.localizedName = localizedNameIn;
+        }
+        
+        public int getMetadata()
+        {
+            return this.metadata;
+        }
+        
+        public String getRegistryName()
+        {
+            return this.registryName;
+        }
+        
+        public String getLocalizedName()
+        {
+            return this.localizedName;
+        }
+        
+        /**
+         * Get type by it's enum ordinal
+         */
+        public static EnumsVC.EntityHead byId(int id)
+        {
+            if (id < 0 || id >= values().length)
+            {
+                id = 0;
+            }
+            
+            return values()[id];
+        }
+        
+        public static EnumsVC.EntityHead getTypeFromString(String nameIn)
+        {
+            for (int i = 0; i < values().length; ++i)
+            {
+                if (values()[i].getRegistryName().equals(nameIn))
+                {
+                    return values()[i];
+                }
+            }
+            
+            return values()[0];
+        }
+    }
+    
+    /**
+	 * Patreon Head Display Symbol enum - Represents various Airship Patreon Head types.
+	 */
+    public static enum PatreonHead
+    {
+    	//STRING(meta, registry name, localized name)
+        NONE(0, "none", "none"),
+        VIES(1, "patreonhead_vies", "Vies"),
+        NEMANOR(2, "patreonhead_nemanor", "Nemanor");
+        
+    	private final int metadata;
+        private final String registryName;
+        private final String localizedName;
+        
+        private PatreonHead(int metadataIn, String registryNameIn, String localizedNameIn)
+        {
+        	this.metadata = metadataIn;
+            this.registryName = registryNameIn;
+            this.localizedName = localizedNameIn;
+        }
+        
+        public int getMetadata()
+        {
+            return this.metadata;
+        }
+        
+        public String getRegistryName()
+        {
+            return this.registryName;
+        }
+        
+        public String getLocalizedName()
+        {
+            return this.localizedName;
+        }
+        
+        /**
+         * Get type by it's enum ordinal
+         */
+        public static EnumsVC.PatreonHead byId(int id)
+        {
+            if (id < 0 || id >= values().length)
+            {
+                id = 0;
+            }
+            
+            return values()[id];
+        }
+        
+        public static EnumsVC.PatreonHead getTypeFromString(String nameIn)
+        {
+            for (int i = 0; i < values().length; ++i)
+            {
+                if (values()[i].getRegistryName().equals(nameIn))
+                {
+                    return values()[i];
+                }
+            }
+            
+            return values()[0];
+        }
+    }
 }

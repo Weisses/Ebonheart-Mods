@@ -527,7 +527,7 @@ public class GuiUpgradeMenu extends GuiContainerVC {
 			text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.engine.1"));
 			text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.engine.2"));
 			text.add(TextFormatting.LIGHT_PURPLE + "");
-			text.add(TextFormatting.WHITE + References.localNameVC("vc.gui.tt.basebonus") + ": " + TextFormatting.RED + "-" + (EnumsVC.AirshipTierEngine.byId(this.airship.mainTierEngine).getFuelPerTick()));
+			text.add(TextFormatting.WHITE + References.localNameVC("vc.gui.tt.basebonus") + ": " + TextFormatting.RED + "-" + (EnumsVC.MainTierEngine.byId(this.airship.mainTierEngine).getFuelPerTick()));
 			
 			FontRenderer fontrenderer = this.getFontRenderer();
 			
@@ -572,7 +572,7 @@ public class GuiUpgradeMenu extends GuiContainerVC {
 			text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.balloon.1"));
 			text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.balloon.2"));
 			text.add(TextFormatting.LIGHT_PURPLE + "");
-			text.add(TextFormatting.WHITE + References.localNameVC("vc.gui.tt.basebonus") + ": " + TextFormatting.GREEN + (EnumsVC.AirshipTierBalloon.byId(this.airship.mainTierCore).getMaxAltitude()));
+			text.add(TextFormatting.WHITE + References.localNameVC("vc.gui.tt.basebonus") + ": " + TextFormatting.GREEN + (EnumsVC.MainTierBalloon.byId(this.airship.mainTierCore).getMaxAltitude()));
 			
 			FontRenderer fontrenderer = this.getFontRenderer();
 			

@@ -1,31 +1,15 @@
 package com.viesis.viescraft.client.entity.render;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.ModelBase;
-import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.block.model.ItemCameraTransforms.TransformType;
-import net.minecraft.client.renderer.entity.Render;
-import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.MathHelper;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
-
 import org.lwjgl.opengl.GL11;
 
 import com.viesis.viescraft.api.EnumsVC;
 import com.viesis.viescraft.api.ItemsVC;
 import com.viesis.viescraft.api.References;
-import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.client.InitParticlesVCRender;
 import com.viesis.viescraft.client.entity.model.ModelAirshipPanel;
-import com.viesis.viescraft.client.entity.model.ModelAirshipPanelold;
 import com.viesis.viescraft.client.entity.model.ModelAirshipPropeller;
+import com.viesis.viescraft.client.entity.model.frame.ModelFrame0;
+import com.viesis.viescraft.client.entity.model.frame.ModelFrame1;
 import com.viesis.viescraft.client.entity.model.v1.ModelAirshipV1Balloon;
 import com.viesis.viescraft.client.entity.model.v1.ModelAirshipV1Frame;
 import com.viesis.viescraft.client.entity.model.v2.ModelAirshipV2Balloon;
@@ -35,10 +19,42 @@ import com.viesis.viescraft.client.entity.model.v3.ModelAirshipV3Frame;
 import com.viesis.viescraft.client.entity.model.v4.ModelAirshipV4Balloon;
 import com.viesis.viescraft.client.entity.model.v4.ModelAirshipV4Frame;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipCore;
-import com.viesis.viescraft.init.InitBlocksVC;
+
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.model.ModelBase;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.block.model.ItemCameraTransforms.TransformType;
+import net.minecraft.client.renderer.entity.Render;
+import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.MathHelper;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class RenderAirship extends Render<EntityAirshipCore> {
+	
+	/** Instance of Frame Model 0 for rendering. */
+	protected ModelBase modelFrame0 = new ModelFrame0();
+	/** Instance of Frame Model 0 for rendering. */
+	protected ModelBase modelFrame1 = new ModelFrame1();
+	
+	/** Instance of V1 Balloon Model for rendering. */
+	protected ModelBase modelAirshipV0Balloon = new ModelAirshipV1Balloon();
+	
+
+	/** Instance of Panel Screen Model for rendering. */
+	protected ModelBase modelAirshipPanel = new ModelAirshipPanel();
+	
+	/** Instance of Propeller Model for rendering. */
+	protected ModelBase modelAirshipPropeller = new ModelAirshipPropeller();
+	
+	
+	
 	
 	/** Instance of V1 Balloon Model for rendering. */
 	protected ModelBase modelAirshipV1Balloon = new ModelAirshipV1Balloon();
@@ -60,15 +76,12 @@ public class RenderAirship extends Render<EntityAirshipCore> {
 	/** Instance of V4 Frame Model for rendering. */
 	protected ModelBase modelAirshipV4Frame = new ModelAirshipV4Frame();
 	
-	/** Instance of Panel Screen Model for rendering. */
-	protected ModelBase modelAirshipPanel = new ModelAirshipPanel();
 	
-	/** Instance of Propeller Model for rendering. */
-	protected ModelBase modelAirshipPropeller = new ModelAirshipPropeller();
+	private ModelBase currentModelFrame;
+	private ModelBase currentModelEngine;
 	
-	private ModelBase modelFrame;
+	
 	private ModelBase modelBalloon;
-    
 	private int moduleNumber;
 	
     public RenderAirship(RenderManager renderManagerIn)
@@ -95,217 +108,16 @@ public class RenderAirship extends Render<EntityAirshipCore> {
         float bladespin1 = (((float)entity.getEntityWorld().getTotalWorldTime() + partialTicks) / 20.0F) * (180F / (float)Math.PI);
         float bladespin = bladespin1 * 9;
         
-        //Get Colors
-        float frameRed;
-        float frameGreen;
-        float frameBlue;
-        float balloonRed;
-        float balloonGreen;
-        float balloonBlue;
+        this.getCurrentModelFrame(entity);
         
-        //Frame Colors
-        if(entity.getFrameSkinColorRed() <= 30)
-        {
-        	frameRed = 30 / 255.0F;
-        }
-        else
-        {
-        	frameRed = entity.getFrameSkinColorRed() / 255.0F;
-        }
-        if(entity.getFrameSkinColorBlue() <= 30)
-        {
-        	frameBlue = 30 / 255.0F;
-        }
-        else
-        {
-        	frameBlue = entity.getFrameSkinColorBlue() / 255.0F;
-        }
-        if(entity.getFrameSkinColorGreen() <= 30)
-        {
-        	frameGreen = 30 / 255.0F;
-        }
-        else
-        {
-        	frameGreen = entity.getFrameSkinColorGreen() / 255.0F;
-        }
+    	this.selectedModelMainFrame(entity, partialTicks);
+    	//this.selectedModelMainBalloon(entity, partialTicks);
         
-        //Balloon Colors
-        if(entity.getBalloonPatternColorRed() <= 30)
-        {
-        	balloonRed = 30 / 255.0F;
-        }
-        else
-        {
-        	balloonRed = entity.getBalloonPatternColorRed() / 255.0F;
-        }
-        if(entity.getBalloonPatternColorBlue() <= 30)
-        {
-        	balloonBlue = 30 / 255.0F;
-        }
-        else
-        {
-        	balloonBlue = entity.getBalloonPatternColorBlue() / 255.0F;
-        }
-        if(entity.getBalloonPatternColorGreen() <= 30)
-        {
-        	balloonGreen = 30 / 255.0F;
-        }
-        else
-        {
-        	balloonGreen = entity.getBalloonPatternColorGreen() / 255.0F;
-        }
-        
-        
-        
-        //Changes models based on airship Core meta
-        if(entity.getCoreModelVisualFrame() == 1)
-        {
-        	modelFrame = this.modelAirshipV1Frame;
-        	modelBalloon = this.modelAirshipV1Balloon;
-        	
-        	//Propellers
-            if(entity.getCoreModelVisualFrame() == 1)
-            {
-            	//Right Propeller
-            	GlStateManager.pushMatrix();
-    	        {
-    	        	GlStateManager.translate(-0.874, 0.064, 0);
-    	        	
-    	        	if(entity.getStoredFuel() > 0)
-    		        {
-    	        		GlStateManager.rotate(bladespin, 0F, 0F, 1F);
-    		        }
-    	        	
-    		        this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/frames/visualframe_bg_" + EnumsVC.VisualFrameSkin.byId(entity.getFrameSkinVisual()).getRegistryName() + ".png"));
-    		        modelAirshipPropeller.render(entity, partialTicks, 0F, 0F, 0F, 0F, 0.0625F);
-    	        }
-    	        GlStateManager.popMatrix();
-    	        
-            	//Left Propeller
-    	        GlStateManager.pushMatrix();
-    	        {
-    	        	GlStateManager.translate(0.874, 0.064, 0);
-    	        	
-    	        	if(entity.getStoredFuel() > 0)
-    		        {
-    	        		GlStateManager.rotate(-bladespin, 0F, 0F, 1F);
-    		        }
-    	        	
-    		        this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/frames/visualframe_bg_" + EnumsVC.VisualFrameSkin.byId(entity.getFrameSkinVisual()).getRegistryName() + ".png"));
-    		        modelAirshipPropeller.render(entity, partialTicks, 0F, 0F, 0F, 0F, 0.0625F);
-    	        }
-    	        GlStateManager.popMatrix();
-            }
-        }
-        else if(entity.getCoreModelVisualFrame() == 2)
-        {
-        	modelFrame = this.modelAirshipV2Frame;
-        	modelBalloon = this.modelAirshipV2Balloon;
-        }
-        else if(entity.getCoreModelVisualFrame() == 3)
-        {
-        	modelFrame = this.modelAirshipV3Frame;
-        	modelBalloon = this.modelAirshipV3Balloon;
-        }
-        else if(entity.getCoreModelVisualFrame() == 4)
-        {
-        	modelFrame = this.modelAirshipV4Frame;
-        	modelBalloon = this.modelAirshipV4Balloon;
-        }
-        else
-        {
-        	modelFrame = this.modelAirshipV1Frame;
-        	modelBalloon = this.modelAirshipV1Balloon;
-        }
-        
-        
-        
+    	this.selectedModelControlPanel(entity, partialTicks);
     	
         
-        //Frame Logic
-        if(entity.getFrameSkinVisualTransparent())
-        {
-        	GlStateManager.enableBlend();
-        	GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-        }
-        if(entity.getFrameSkinVisualColor())
-        {
-        	GlStateManager.color(frameRed, frameGreen, frameBlue, 1F);
-        	
-        	if(entity.getFrameSkinVisual() == 0)
-        	{
-        		this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/frames/visualframe_bg_" + EnumsVC.AirshipTierCore.byId(entity.getMainTierCore()).getRegistryName() + ".png"));
-        	}
-        	else
-        	{
-        		this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/frames/visualframe_bg_" + EnumsVC.VisualFrameSkin.byId(entity.getFrameSkinVisual()).getRegistryName() + ".png"));
-        	}
-        	
-        	modelFrame.render(entity, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
-	        
-	        GlStateManager.color(1F, 1F, 1F, 1F);
-        }
-        else
-        {
-        	if(entity.getFrameSkinVisual() == 0)
-        	{
-        		this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/frames/visualframe_bg_" + EnumsVC.AirshipTierCore.byId(entity.getMainTierCore()).getRegistryName() + ".png"));
-        	}
-        	else
-        	{
-        		this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/frames/visualframe_bg_" + EnumsVC.VisualFrameSkin.byId(entity.getFrameSkinVisual()).getRegistryName() + ".png"));
-        	}
-        	
-        	modelFrame.render(entity, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
-        }
-        GlStateManager.disableBlend();
         
-        
-        
-        //Draws the Main Control Panel Screen
-    	this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/model_airship_panel.png"));
-    	this.modelAirshipPanel.render(entity, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
-    	
-    	
-    	
-        //Balloon Logic
-        if(entity.getBalloonPatternVisualTransparent())
-        {
-        	GlStateManager.enableBlend();
-        	GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-        }
-        if(entity.getBalloonPatternVisualColor())
-        {
-        	GlStateManager.color(balloonRed, balloonGreen, balloonBlue, 1F);
-        	
-	        if(entity.getBalloonPatternVisual() == 0)
-        	{
-        		this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/balloons/visualballoon_bg_" + EnumsVC.AirshipTierCore.byId(entity.getMainTierCore()).getRegistryName() + ".png"));
-        	}
-        	else
-        	{
-        		this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/balloons/visualballoon_bg_" + EnumsVC.VisualBalloonPattern.byId(entity.getBalloonPatternVisual()).getRegistryName() + ".png"));
-        	}
-        	
-        	modelBalloon.render(entity, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
-	        
-	        GlStateManager.color(1F, 1F, 1F, 1F);
-        }
-        else
-        {
-        	if(entity.getBalloonPatternVisual() == 0)
-        	{
-        		this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/balloons/visualballoon_bg_" + EnumsVC.AirshipTierCore.byId(entity.getMainTierCore()).getRegistryName() + ".png"));
-        	}
-        	else
-        	{
-        		this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/balloons/visualballoon_bg_" + EnumsVC.VisualBalloonPattern.byId(entity.getBalloonPatternVisual()).getRegistryName() + ".png"));
-        	}
-        	
-        	modelBalloon.render(entity, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
-        }
-        GlStateManager.disableBlend();
-        
+    	//Airship smoke particles while on
         if(entity.getStoredFuel() > 0)
         {
 	        int randomTick = References.random.nextInt(100) + 1;
@@ -318,68 +130,6 @@ public class RenderAirship extends Render<EntityAirshipCore> {
 				}
 			}
         }
-        
-        
-        //Control panel item renderer
-        if(entity.getMainTierCore() != 0)
-        {
-	        //Core Upgrade
-	        this.renderItemOnPanel(entity, 0.93, -0.26, -6.28, new ItemStack(ItemsVC.UPGRADE_CORE, 1, entity.getMainTierCore()));
-        }
-        if(entity.getMainTierFrame() != 0)
-        {
-	        //Frame Upgrade
-	        this.renderItemOnPanel(entity, 0.315, -0.26, -6.28, new ItemStack(ItemsVC.UPGRADE_FRAME, 1, entity.getMainTierFrame()));
-        }
-        if(entity.getMainTierEngine() != 0)
-        {
-	        //Engine Upgrade
-	        this.renderItemOnPanel(entity, -0.315, -0.26, -6.28, new ItemStack(ItemsVC.UPGRADE_ENGINE, 1, entity.getMainTierEngine()));
-        }
-        if(entity.getMainTierBalloon() != 0)
-        {
-	        //Balloon Upgrade
-	        this.renderItemOnPanel(entity, -0.93, -0.26, -6.28, new ItemStack(ItemsVC.UPGRADE_BALLOON, 1, entity.getMainTierBalloon()));
-        }
-        
-        
-        
-        if(!entity.inventory.getStackInSlot(0).isEmpty())
-        {
-	        //Fuel
-	        this.renderItemOnPanel(entity, 0.93, 0.43, -5.59, entity.inventory.getStackInSlot(0));
-        }
-        //L2
-        //this.renderItemOnPanel(entity, 0.315, 0.43, -5.59, new ItemStack(Items.COAL, 1, 1));
-        //L3
-        //this.renderItemOnPanel(entity, -0.315, 0.43, -5.59, new ItemStack(Items.COAL, 1, 1));
-        if(entity.getModuleActiveSlot1() != 0)
-        {
-        	//Module
-        	this.renderItemOnPanel(entity, -0.93, 0.43, -5.59, new ItemStack(ItemsVC.MODULE_TYPE, 1, entity.getModuleActiveSlot1()));
-        }
-        
-        
-        
-        //Front rotating item
-        this.renderItemOnDisplay(entity, 0, 0.6, -4.5, new ItemStack(
-        		Item.getItemFromBlock(Blocks.COBBLESTONE)
-        		//Items.DIAMOND_SWORD
-        		, 1), 0.25, 0.25, 0.25, bladespin1, 2, 0F);
-    	
-        
-    	//Left item
-        this.renderItemOnDisplay(entity, 1.05, -2.125, 0, new ItemStack(
-        		Item.getItemFromBlock(Blocks.COBBLESTONE)
-        		//Items.DIAMOND_SWORD
-        		, 1), 1, 1, 1, bladespin, 0, 270.0F);
-    	
-        //Right item
-        this.renderItemOnDisplay(entity, -1.05, -2.125, 0, new ItemStack(
-        		Item.getItemFromBlock(Blocks.COBBLESTONE)
-        		//Items.DIAMOND_SWORD
-        		, 1), 1, 1, 1, bladespin, 0, 90.0F);
-        
         
         GlStateManager.popMatrix();
         super.doRender(entity, x, y, z, entityYaw, partialTicks);
@@ -397,171 +147,11 @@ public class RenderAirship extends Render<EntityAirshipCore> {
         float bladespin1 = (((float)entity.getEntityWorld().getTotalWorldTime() + partialTicks) / 20.0F) * (180F / (float)Math.PI);
         float bladespin = bladespin1 * 9;
         
-        //Changes models based on airship Core meta
-        if(entity.getCoreModelVisualFrame() == 1)
-        {
-        	modelFrame = this.modelAirshipV1Frame;
-        	modelBalloon = this.modelAirshipV1Balloon;
-        	
-        	//Propellers
-            if(entity.getCoreModelVisualFrame() == 1)
-            {
-            	//Right Propeller
-            	GlStateManager.pushMatrix();
-    	        {
-    	        	GlStateManager.translate(-0.874, 0.064, 0);
-    	        	
-    	        	if(entity.getStoredFuel() > 0)
-    		        {
-    	        		GlStateManager.rotate(bladespin, 0F, 0F, 1F);
-    		        }
-    	        	
-    		        this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/frames/visualframe_overlay_v" + entity.getCoreModelVisualFrame() + ".png"));
-    		        modelAirshipPropeller.render(entity, partialTicks, 0F, 0F, 0F, 0F, 0.0625F);
-    	        }
-    	        GlStateManager.popMatrix();
-    	        
-            	//Left Propeller
-    	        GlStateManager.pushMatrix();
-    	        {
-    	        	GlStateManager.translate(0.874, 0.064, 0);
-    	        	
-    	        	if(entity.getStoredFuel() > 0)
-    		        {
-    	        		GlStateManager.rotate(-bladespin, 0F, 0F, 1F);
-    		        }
-    	        	
-    	        	this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/frames/visualframe_overlay_v" + entity.getCoreModelVisualFrame() + ".png"));
-    		        modelAirshipPropeller.render(entity, partialTicks, 0F, 0F, 0F, 0F, 0.0625F);
-    	        }
-    	        GlStateManager.popMatrix();
-            }
-        }
-        else if(entity.getCoreModelVisualFrame() == 2)
-        {
-        	modelFrame = this.modelAirshipV2Frame;
-        	modelBalloon = this.modelAirshipV2Balloon;
-        }
-        else if(entity.getCoreModelVisualFrame() == 3)
-        {
-        	modelFrame = this.modelAirshipV3Frame;
-        	modelBalloon = this.modelAirshipV3Balloon;
-        }
-        else if(entity.getCoreModelVisualFrame() == 4)
-        {
-        	modelFrame = this.modelAirshipV4Frame;
-        	modelBalloon = this.modelAirshipV4Balloon;
-        }
-        else
-        {
-        	modelFrame = this.modelAirshipV1Frame;
-        	modelBalloon = this.modelAirshipV1Balloon;
-        }
+        this.getCurrentModelFrame(entity);
         
+        this.selectedModelMultiFrame(entity, partialTicks);
+    	//this.selectedModelMultiBalloon(entity, partialTicks);
         
-        
-        //Frame Logic
-        if(entity.getFrameSkinVisualTransparent())
-        {
-        	GlStateManager.enableBlend();
-        	GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-        }
-        
-        this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/frames/visualframe_overlay_v" + entity.getCoreModelVisualFrame() + ".png"));
-    	modelFrame.render(entity, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
-	    
-        GlStateManager.disableBlend();
-        
-        /**
-        //Draws the Main Control Panel Screen
-    	this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/screens/module_type_" + EnumsVC.ModuleType.byId(entity.getModuleActiveSlot1()).getName() + ".png"));
-    	this.modelAirshipPanel.render(entity, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
-    	
-        //Balloon Logic
-        if(entity.getBalloonVisualTransparent())
-        {
-        	GlStateManager.enableBlend();
-        	GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-        }
-        
-        if(entity.getBalloonVisualColor())
-        {
-        	GlStateManager.color(balloonRed, balloonGreen, balloonBlue, 1F);
-        	
-	        if(entity.getStoredFuel() > 0)
-	        {
-	        	if(entity.getBalloonVisual() == 0)
-	        	{
-	        		this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/balloons/visualballoon_bg_" + EnumsVC.AirshipTierCore.byId(entity.getMainTierCore()).getName() + ".png"));
-	        	}
-	        	else
-	        	{
-	        		this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/balloons/visualballoon_bg_" + EnumsVC.VisualBalloon.byId(entity.getBalloonVisual()).getName() + ".png"));
-	        	}
-	        	
-	        	modelColor.render(entity, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
-	        }
-	        else
-	        {
-	        	if(entity.getBalloonVisual() == 0)
-	        	{
-	        		this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/balloons/visualballoon_bg_" + EnumsVC.AirshipTierCore.byId(entity.getMainTierCore()).getName() + ".png"));
-	        	}
-	        	else
-	        	{
-	        		this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/balloons/visualballoon_bg_" + EnumsVC.VisualBalloon.byId(entity.getBalloonVisual()).getName() + ".png"));
-	        	}
-	        	
-	        	modelColor.render(entity, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
-	        }
-	        
-	        GlStateManager.color(1F, 1F, 1F, 1F);
-        }
-        else
-        {
-        	if(entity.getStoredFuel() > 0)
-	        {
-	        	if(entity.getBalloonVisual() == 0)
-	        	{
-	        		this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/balloons/visualballoon_bg_" + EnumsVC.AirshipTierCore.byId(entity.getMainTierCore()).getName() + ".png"));
-	        	}
-	        	else
-	        	{
-	        		this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/balloons/visualballoon_bg_" + EnumsVC.VisualBalloon.byId(entity.getBalloonVisual()).getName() + ".png"));
-	        	}
-	        	
-	        	modelColor.render(entity, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
-	        }
-	        else
-	        {
-	        	if(entity.getBalloonVisual() == 0)
-	        	{
-	        		this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/balloons/visualballoon_bg_" + EnumsVC.AirshipTierCore.byId(entity.getMainTierCore()).getName() + ".png"));
-	        	}
-	        	else
-	        	{
-	        		this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/balloons/visualballoon_bg_" + EnumsVC.VisualBalloon.byId(entity.getBalloonVisual()).getName() + ".png"));
-	        	}
-	        	
-	        	modelColor.render(entity, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
-	        }
-        }
-        GlStateManager.disableBlend();
-        */
-        
-        
-        
-        
-        //if(!this.getBalloonVisualColor())
-        //{
-        //	this.metaBalloonColorRed = 200;
-        //	this.metaBalloonColorGreen = 180;
-        //	this.metaBalloonColorBlue = 140;
-        //}
-        
-    	//this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/balloons/airship_visualballoon_" + EnumsVC.AirshipTierBalloon.byId(entity.getMetaTierBalloon()).getName() +".png"));
-    	//this.modelAirshipV1Color.render(entity, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
-    	
         GlStateManager.popMatrix();
         super.doRender(entity, x, y, z, entityYaw, partialTicks);
         
@@ -713,6 +303,328 @@ public class RenderAirship extends Render<EntityAirshipCore> {
         }
         
 		GlStateManager.popMatrix();
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /**
+     * This is the Frame Model for the Main Render Method.
+     */
+    private void selectedModelMainFrame(EntityAirshipCore airshipIn, float partialTicks)
+    {
+    	//Get Colors
+        float frameRed;
+        float frameGreen;
+        float frameBlue;
+        
+        //Frame Colors
+        if(airshipIn.getFrameSkinColorRed() <= 30)
+        {
+        	frameRed = 30 / 255.0F;
+        }
+        else
+        {
+        	frameRed = airshipIn.getFrameSkinColorRed() / 255.0F;
+        }
+        if(airshipIn.getFrameSkinColorBlue() <= 30)
+        {
+        	frameBlue = 30 / 255.0F;
+        }
+        else
+        {
+        	frameBlue = airshipIn.getFrameSkinColorBlue() / 255.0F;
+        }
+        if(airshipIn.getFrameSkinColorGreen() <= 30)
+        {
+        	frameGreen = 30 / 255.0F;
+        }
+        else
+        {
+        	frameGreen = airshipIn.getFrameSkinColorGreen() / 255.0F;
+        }
+        
+        //Frame Logic
+        if(airshipIn.getFrameSkinTransparent())
+        {
+        	GlStateManager.enableBlend();
+        	GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+        }
+        
+        GlStateManager.color(frameRed, frameGreen, frameBlue, 1F);
+        
+    	this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/frames/bg_" + EnumsVC.VisualFrameSkinBackground.byId(airshipIn.frameSkinTexture).getRegistryName() + ".png"));
+    	currentModelFrame.render(airshipIn, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
+    	
+    	GlStateManager.color(1F, 1F, 1F, 1F);
+        GlStateManager.disableBlend();
+    }
+    
+    /**
+     * This is the Frame Model for the Multipass Render Method.
+     */
+    private void selectedModelMultiFrame(EntityAirshipCore airshipIn, float partialTicks)
+    {
+    	//Frame Logic
+        if(airshipIn.getFrameSkinTransparent())
+        {
+        	GlStateManager.enableBlend();
+        	GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+        }
+        
+        this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/frames/overlay_" + airshipIn.getCoreModelVisualFrame() + ".png"));
+        currentModelFrame.render(airshipIn, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
+	    
+        GlStateManager.disableBlend();
+    }
+    
+    
+    
+    /**
+     * This is the Balloon Model for the Main Render Method.
+     */
+    private void selectedModelMainBalloon(EntityAirshipCore airshipIn, float partialTicks)
+    {
+    	//Get Colors
+        float balloonRed;
+        float balloonGreen;
+        float balloonBlue;
+        
+        //Balloon Colors
+        if(airshipIn.getBalloonPatternColorRed() <= 30)
+        {
+        	balloonRed = 30 / 255.0F;
+        }
+        else
+        {
+        	balloonRed = airshipIn.getBalloonPatternColorRed() / 255.0F;
+        }
+        if(airshipIn.getBalloonPatternColorBlue() <= 30)
+        {
+        	balloonBlue = 30 / 255.0F;
+        }
+        else
+        {
+        	balloonBlue = airshipIn.getBalloonPatternColorBlue() / 255.0F;
+        }
+        if(airshipIn.getBalloonPatternColorGreen() <= 30)
+        {
+        	balloonGreen = 30 / 255.0F;
+        }
+        else
+        {
+        	balloonGreen = airshipIn.getBalloonPatternColorGreen() / 255.0F;
+        }
+        
+        //Balloon Logic
+        if(airshipIn.getBalloonPatternTransparent())
+        {
+        	GlStateManager.enableBlend();
+        	GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+        }
+        GlStateManager.color(balloonRed, balloonGreen, balloonBlue, 1F);
+    	
+    	if(airshipIn.getBalloonPatternTexture() == 0)
+    	{
+    		this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/balloons/visualballoon_bg_" + EnumsVC.MainTierCore.byId(airshipIn.getMainTierCore()).getRegistryName() + ".png"));
+    	}
+    	else
+    	{
+    		this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/balloons/visualballoon_bg_" + EnumsVC.VisualBalloonPattern.byId(airshipIn.getBalloonPatternTexture()).getRegistryName() + ".png"));
+    	}
+    	
+    	modelBalloon.render(airshipIn, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
+        
+        GlStateManager.color(1F, 1F, 1F, 1F);
+        GlStateManager.disableBlend();
+    }
+    
+    /**
+     * This is the Balloon Model for the Multipass Render Method.
+     */
+    private void selectedModelMultiBalloon(EntityAirshipCore airshipIn, float partialTicks)
+    {
+    	//Balloon Logic
+        if(airshipIn.getBalloonPatternTransparent())
+        {
+        	GlStateManager.enableBlend();
+        	GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+        }
+        
+        this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/balloons/visualballoon_overlay_v" + airshipIn.getCoreModelVisualBalloon() + ".png"));
+    	modelBalloon.render(airshipIn, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
+	    
+        GlStateManager.disableBlend();
+    }
+    
+    /**
+     * This is the Control Panel Model for the Main Render Method.
+     */
+    private void selectedModelControlPanel(EntityAirshipCore airshipIn, float partialTicks)
+    {
+    	//Draws the Main Control Panel Screen
+    	this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/model_airship_panel.png"));
+    	this.modelAirshipPanel.render(airshipIn, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
+    	
+        //Control panel item renderer
+        if(airshipIn.getMainTierCore() != 0)
+        {
+	        //Core Upgrade
+	        this.renderItemOnPanel(airshipIn, 0.93, -0.26, -6.28, new ItemStack(ItemsVC.UPGRADE_CORE, 1, airshipIn.getMainTierCore()));
+        }
+        if(airshipIn.getMainTierFrame() != 0)
+        {
+	        //Frame Upgrade
+	        this.renderItemOnPanel(airshipIn, 0.315, -0.26, -6.28, new ItemStack(ItemsVC.UPGRADE_FRAME, 1, airshipIn.getMainTierFrame()));
+        }
+        if(airshipIn.getMainTierEngine() != 0)
+        {
+	        //Engine Upgrade
+	        this.renderItemOnPanel(airshipIn, -0.315, -0.26, -6.28, new ItemStack(ItemsVC.UPGRADE_ENGINE, 1, airshipIn.getMainTierEngine()));
+        }
+        if(airshipIn.getMainTierBalloon() != 0)
+        {
+	        //Balloon Upgrade
+	        this.renderItemOnPanel(airshipIn, -0.93, -0.26, -6.28, new ItemStack(ItemsVC.UPGRADE_BALLOON, 1, airshipIn.getMainTierBalloon()));
+        }
+        
+        
+        
+        if(!airshipIn.inventory.getStackInSlot(0).isEmpty())
+        {
+	        //Fuel
+	        this.renderItemOnPanel(airshipIn, 0.93, 0.43, -5.59, airshipIn.inventory.getStackInSlot(0));
+        }
+        //L2
+        //this.renderItemOnPanel(entity, 0.315, 0.43, -5.59, new ItemStack(Items.COAL, 1, 1));
+        //L3
+        //this.renderItemOnPanel(entity, -0.315, 0.43, -5.59, new ItemStack(Items.COAL, 1, 1));
+        if(airshipIn.getModuleActiveSlot1() != 0)
+        {
+        	//Module
+        	this.renderItemOnPanel(airshipIn, -0.93, 0.43, -5.59, new ItemStack(ItemsVC.MODULE_TYPE, 1, airshipIn.getModuleActiveSlot1()));
+        }
+        
+        
+        
+        float bladespin = (((float)airshipIn.getEntityWorld().getTotalWorldTime() + partialTicks) / 20.0F) * (180F / (float)Math.PI);
+        
+        //Front rotating item
+        this.renderItemOnDisplay(airshipIn, 0, 0.6, -4.5, new ItemStack(
+        		Item.getItemFromBlock(Blocks.COBBLESTONE)
+        		//Items.DIAMOND_SWORD
+        		, 1), 0.25, 0.25, 0.25, bladespin, 2, 0F);
+    	
+        
+    	//Left item
+        this.renderItemOnDisplay(airshipIn, 1.05, -2.125, 0, new ItemStack(
+        		Item.getItemFromBlock(Blocks.COBBLESTONE)
+        		//Items.DIAMOND_SWORD
+        		, 1), 1, 1, 1, 0, 0, 270.0F);
+    	
+        //Right item
+        this.renderItemOnDisplay(airshipIn, -1.05, -2.125, 0, new ItemStack(
+        		Item.getItemFromBlock(Blocks.COBBLESTONE)
+        		//Items.DIAMOND_SWORD
+        		, 1), 1, 1, 1, 0, 0, 90.0F);
+        
+        
+    }
+    
+    
+    
+    
+    private ModelBase getCurrentModelFrame(EntityAirshipCore airshipIn)
+    {
+    	switch(airshipIn.getCoreModelVisualFrame())
+    	{
+	    	case 0:
+	    		return currentModelFrame = this.modelFrame0;
+	    	case 1:
+	    		return currentModelFrame = this.modelFrame1;
+	    	case 2:
+	    		return currentModelFrame = this.modelAirshipV1Frame;
+	    	case 3:
+	    		return currentModelFrame = this.modelAirshipV1Frame;
+	    	case 4:
+	    		return currentModelFrame = this.modelAirshipV1Frame;
+	    	default:
+	    		return currentModelFrame = this.modelAirshipV1Frame;
+    	}
+    	
+    	
+    	/**
+    	//Changes models based on airship Core meta
+        if(entity.getCoreModelVisualFrame() == 1)
+        {
+        	modelFrame = this.modelAirshipV1Frame;
+        	modelBalloon = this.modelAirshipV1Balloon;
+        	
+        	//Propellers
+            if(entity.getCoreModelVisualFrame() == 1)
+            {
+            	//Right Propeller
+            	GlStateManager.pushMatrix();
+    	        {
+    	        	GlStateManager.translate(-0.874, 0.064, 0);
+    	        	
+    	        	if(entity.getStoredFuel() > 0)
+    		        {
+    	        		GlStateManager.rotate(bladespin, 0F, 0F, 1F);
+    		        }
+    	        	
+    		        this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/frames/visualframe_bg_" + EnumsVC.VisualFrameSkin.byId(entity.getFrameSkinVisual()).getRegistryName() + ".png"));
+    		        modelAirshipPropeller.render(entity, partialTicks, 0F, 0F, 0F, 0F, 0.0625F);
+    	        }
+    	        GlStateManager.popMatrix();
+    	        
+            	//Left Propeller
+    	        GlStateManager.pushMatrix();
+    	        {
+    	        	GlStateManager.translate(0.874, 0.064, 0);
+    	        	
+    	        	if(entity.getStoredFuel() > 0)
+    		        {
+    	        		GlStateManager.rotate(-bladespin, 0F, 0F, 1F);
+    		        }
+    	        	
+    		        this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/frames/visualframe_bg_" + EnumsVC.VisualFrameSkin.byId(entity.getFrameSkinVisual()).getRegistryName() + ".png"));
+    		        modelAirshipPropeller.render(entity, partialTicks, 0F, 0F, 0F, 0F, 0.0625F);
+    	        }
+    	        GlStateManager.popMatrix();
+            }
+        }
+        else if(entity.getCoreModelVisualFrame() == 2)
+        {
+        	modelFrame = this.modelAirshipV2Frame;
+        	modelBalloon = this.modelAirshipV2Balloon;
+        }
+        else if(entity.getCoreModelVisualFrame() == 3)
+        {
+        	modelFrame = this.modelAirshipV3Frame;
+        	modelBalloon = this.modelAirshipV3Balloon;
+        }
+        else if(entity.getCoreModelVisualFrame() == 4)
+        {
+        	modelFrame = this.modelAirshipV4Frame;
+        	modelBalloon = this.modelAirshipV4Balloon;
+        }
+        else
+        {
+        	modelFrame = this.modelAirshipV0Frame;
+        	modelBalloon = this.modelAirshipV0Balloon;
+        }
+        */
+        
     }
 }
 

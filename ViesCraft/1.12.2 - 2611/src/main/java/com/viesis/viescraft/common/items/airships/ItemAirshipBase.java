@@ -39,9 +39,8 @@ public class ItemAirshipBase extends Item {
 	protected int coreModelVisualEngine;
 	protected int coreModelVisualBalloon;
 	
-	protected int frameSkinVisual;
-	protected boolean frameSkinVisualTransparent;
-	protected boolean frameSkinVisualColor;
+	protected int frameSkinTexture;
+	protected boolean frameSkinTransparent;
 	protected int frameSkinColorRed;
 	protected int frameSkinColorGreen;
 	protected int frameSkinColorBlue;
@@ -50,9 +49,8 @@ public class ItemAirshipBase extends Item {
 	protected int engineDisplayTypeVisual;
 	protected int engineDisplayIDVisual;
 	
-	protected int balloonPatternVisual;
-	protected boolean balloonPatternVisualTransparent;
-	protected boolean balloonPatternVisualColor;
+	protected int balloonPatternTexture;
+	protected boolean balloonPatternTransparent;
 	protected int balloonPatternColorRed;
 	protected int balloonPatternColorGreen;
 	protected int balloonPatternColorBlue;
@@ -155,7 +153,7 @@ public class ItemAirshipBase extends Item {
 	{
 		if (isInCreativeTab(tab)) 
 		{
-			final List<ItemStack> items = Stream.of(EnumsVC.AirshipTierCore.values())
+			final List<ItemStack> items = Stream.of(EnumsVC.MainTierCore.values())
 					.map(enumType -> new ItemStack(this, 1, enumType.getMetadata()))
 					.collect(Collectors.toList());
 

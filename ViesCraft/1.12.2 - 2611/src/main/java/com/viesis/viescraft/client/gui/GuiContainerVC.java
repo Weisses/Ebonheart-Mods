@@ -1,11 +1,32 @@
 package com.viesis.viescraft.client.gui;
 
+import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
+import com.viesis.viescraft.common.entity.airships.EntityAirshipCore;
+
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.inventory.Container;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.util.text.TextFormatting;
 
 public class GuiContainerVC extends GuiContainer {
+	
+	public static int textRedNumber;
+	public static int textGreenNumber;
+	public static int textBlueNumber;
+	
+	public static boolean frameTransparentInfo;
+	public static boolean balloonTransparentInfo;
+	
+	public static String textNameStorage;
+	
+	public static int storedRedstone;
+	
+	public static int metaInfo;
+	
+	public IInventory playerInv;
+	public EntityAirshipCore airship;
 	
 	public GuiContainerVC(Container inventorySlotsIn) 
 	{
@@ -91,4 +112,9 @@ public class GuiContainerVC extends GuiContainer {
 	   }
 	   return outputString+TextFormatting.WHITE;
 	}
+    
+    protected FontRenderer getFontRenderer()
+    {
+        return this.mc.fontRenderer;
+    }
 }

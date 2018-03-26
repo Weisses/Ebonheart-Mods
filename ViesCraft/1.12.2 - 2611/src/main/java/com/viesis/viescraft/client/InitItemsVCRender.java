@@ -54,22 +54,22 @@ public final class InitItemsVCRender extends ItemsVC {
 		
 		//=====================================================================
 		
-		for (EnumsVC.AirshipTierCore meta : EnumsVC.AirshipTierCore.values()) 
+		for (EnumsVC.MainTierCore meta : EnumsVC.MainTierCore.values()) 
 		{
 			registerRenderTierCore(UPGRADE_CORE, meta.getMetadata());
 		}
 		
-		for (EnumsVC.AirshipTierFrame meta : EnumsVC.AirshipTierFrame.values()) 
+		for (EnumsVC.MainTierFrame meta : EnumsVC.MainTierFrame.values()) 
 		{
 			registerRenderTierFrame(UPGRADE_FRAME, meta.getMetadata());
 		}
 		
-		for (EnumsVC.AirshipTierEngine meta : EnumsVC.AirshipTierEngine.values()) 
+		for (EnumsVC.MainTierEngine meta : EnumsVC.MainTierEngine.values()) 
 		{
 			registerRenderTierEngine(UPGRADE_ENGINE, meta.getMetadata());
 		}
 		
-		for (EnumsVC.AirshipTierBalloon meta : EnumsVC.AirshipTierBalloon.values()) 
+		for (EnumsVC.MainTierBalloon meta : EnumsVC.MainTierBalloon.values()) 
 		{
 			registerRenderTierBalloon(UPGRADE_BALLOON, meta.getMetadata());
 		}
@@ -77,7 +77,7 @@ public final class InitItemsVCRender extends ItemsVC {
 		//==============================================
 		
 		//Airship
-		for (EnumsVC.AirshipTierCore meta : EnumsVC.AirshipTierCore.values()) 
+		for (EnumsVC.MainTierCore meta : EnumsVC.MainTierCore.values()) 
 		{
 			registerRenderTierCore(ITEM_AIRSHIP, meta.getMetadata());
 		}
@@ -132,28 +132,28 @@ public final class InitItemsVCRender extends ItemsVC {
 	 */
 	private void registerRenderTierCore(Item item, int meta)
 	{
-		String itemName = item.getRegistryName().toString() + "_" + EnumsVC.AirshipTierCore.byId(meta).getRegistryName().toString().toLowerCase().replaceAll("\\s+","");
+		String itemName = item.getRegistryName().toString() + "_" + EnumsVC.MainTierCore.byId(meta).getRegistryName().toString().toLowerCase().replaceAll("\\s+","");
 		itemsRegistered.add(item);
 		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(itemName, "inventory"));
 	}
 	
 	private void registerRenderTierFrame(Item item, int meta)
 	{
-		String itemName = item.getRegistryName().toString() + "_" + EnumsVC.AirshipTierFrame.byId(meta).getRegistryName().toString().toLowerCase().replaceAll("\\s+","");
+		String itemName = item.getRegistryName().toString() + "_" + EnumsVC.MainTierFrame.byId(meta).getRegistryName().toString().toLowerCase().replaceAll("\\s+","");
 		itemsRegistered.add(item);
 		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(itemName, "inventory"));
 	}
 	
 	private void registerRenderTierEngine(Item item, int meta)
 	{
-		String itemName = item.getRegistryName().toString() + "_" + EnumsVC.AirshipTierEngine.byId(meta).getRegistryName().toString().toLowerCase().replaceAll("\\s+","");
+		String itemName = item.getRegistryName().toString() + "_" + EnumsVC.MainTierEngine.byId(meta).getRegistryName().toString().toLowerCase().replaceAll("\\s+","");
 		itemsRegistered.add(item);
 		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(itemName, "inventory"));
 	}
 	
 	private void registerRenderTierBalloon(Item item, int meta)
 	{
-		String itemName = item.getRegistryName().toString() + "_" + EnumsVC.AirshipTierBalloon.byId(meta).getRegistryName().toString().toLowerCase().replaceAll("\\s+","");
+		String itemName = item.getRegistryName().toString() + "_" + EnumsVC.MainTierBalloon.byId(meta).getRegistryName().toString().toLowerCase().replaceAll("\\s+","");
 		itemsRegistered.add(item);
 		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(itemName, "inventory"));
 	}

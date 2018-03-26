@@ -36,7 +36,6 @@ public class GuiCustomizeMenuOptionsRedstone extends GuiContainerVC {
 	
 	private IInventory playerInv;
 	private EntityAirshipBaseVC airship;
-	public static int storedRedstone;
 	
 	private ResourceLocation texture = new ResourceLocation(References.MOD_ID + ":" + "textures/gui/container_gui_customize_menu_options_redstone.png");
 	
@@ -67,8 +66,8 @@ public class GuiCustomizeMenuOptionsRedstone extends GuiContainerVC {
     	GuiVC.buttonM3 = new GuiButtonMenuVC(3, this.guiLeft - 35, this.guiTop + 7 + (16 * 2), 36, 14, "", 2);
     	GuiVC.buttonM4 = new GuiButtonMenuVC(4, this.guiLeft - 35, this.guiTop + 7 + (16 * 3), 36, 14, "", 3);
 		
-    	GuiVC.buttonA12 = new GuiButtonGeneralVC(12, this.guiLeft + 31, this.guiTop + 65, 42, 14, "Consume");
-		GuiVC.buttonA13 = new GuiButtonGeneralVC(13, this.guiLeft + 103, this.guiTop + 65, 42, 14, "Back");
+    	GuiVC.buttonA12 = new GuiButtonGeneralVC(12, this.guiLeft + 31, this.guiTop + 65, 42, 14, "Consume", 1);
+		GuiVC.buttonA13 = new GuiButtonGeneralVC(13, this.guiLeft + 103, this.guiTop + 65, 42, 14, "Back", 2);
 		
     	this.buttonList.add(GuiVC.buttonM1);
 		this.buttonList.add(GuiVC.buttonM2);
@@ -174,7 +173,7 @@ public class GuiCustomizeMenuOptionsRedstone extends GuiContainerVC {
 		this.mc.getTextureManager().bindTexture(texture);
 		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
 		
-		int k = this.getRedstoneLeftScaled(107);
+		int k = this.getRedstoneLeftScaled(108);
 		
 		this.drawTexturedModalRect(this.guiLeft + 33, this.guiTop + 20, 0, 166, 1 + k, 8);
 		
@@ -234,6 +233,16 @@ public class GuiCustomizeMenuOptionsRedstone extends GuiContainerVC {
 	        this.drawCenteredString(fontRenderer, Integer.toString(this.airship.getStoredRedstoneTotal()), 0, 0, redstoneColor.getRGB());
 		}
 		GlStateManager.popMatrix();
+		
+		if(this.airship.inventory.getStackInSlot(16).isEmpty()
+				|| this.airship.getStoredRedstone() == 500)
+		{
+			GuiVC.buttonA12.enabled = false;
+		}
+		else
+		{
+			GuiVC.buttonA12.enabled = true;
+		}
 	}
 	
 	private int getRedstoneLeftScaled(int pixels)

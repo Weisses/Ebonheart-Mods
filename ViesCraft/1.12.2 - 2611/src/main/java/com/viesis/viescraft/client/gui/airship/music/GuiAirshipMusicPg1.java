@@ -53,33 +53,33 @@ public class GuiAirshipMusicPg1 extends GuiContainerVC {
     	
     	GuiVC.button501 = new GuiButton(501, this.guiLeft + 40, this.guiTop + 156, 96, 20, References.localNameVC("vc.button.done"));
     	
-    	GuiVC.buttonR01 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORD11.getMetadata(), this.guiLeft + 16, this.guiTop + startPlace + (14 * 0), 62, 14, References.localNameVC("vc.item.enum.song.1"));
-		GuiVC.buttonR02 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORD13.getMetadata(), this.guiLeft + 16, this.guiTop + startPlace + (14 * 1), 62, 14, References.localNameVC("vc.item.enum.song.2"));
-    	GuiVC.buttonR03 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDBLOCKS.getMetadata(), this.guiLeft + 16, this.guiTop + startPlace + (14 * 2), 62, 14, References.localNameVC("vc.item.enum.song.3"));
+    	GuiVC.buttonR01 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORD11.getMetadata(), this.guiLeft + 16, this.guiTop + startPlace + (14 * 0), 62, 14, References.localNameVC("vc.item.enum.song.1"), 0);
+		GuiVC.buttonR02 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORD13.getMetadata(), this.guiLeft + 16, this.guiTop + startPlace + (14 * 1), 62, 14, References.localNameVC("vc.item.enum.song.2"), 0);
+    	GuiVC.buttonR03 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDBLOCKS.getMetadata(), this.guiLeft + 16, this.guiTop + startPlace + (14 * 2), 62, 14, References.localNameVC("vc.item.enum.song.3"), 0);
 
-		GuiVC.buttonR04 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDSTRAD.getMetadata(), this.guiLeft + 98, this.guiTop + startPlace + (14 * 0), 62, 14, References.localNameVC("vc.item.enum.song.7"));
-		GuiVC.buttonR05 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDCHIRP.getMetadata(), this.guiLeft + 98, this.guiTop + startPlace + (14 * 1), 62, 14, References.localNameVC("vc.item.enum.song.8"));
-		GuiVC.buttonR06 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDFAR.getMetadata(), this.guiLeft + 98, this.guiTop + startPlace + (14 * 2), 62, 14, References.localNameVC("vc.item.enum.song.9"));
+		GuiVC.buttonR04 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDSTRAD.getMetadata(), this.guiLeft + 98, this.guiTop + startPlace + (14 * 0), 62, 14, References.localNameVC("vc.item.enum.song.7"), 0);
+		GuiVC.buttonR05 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDCHIRP.getMetadata(), this.guiLeft + 98, this.guiTop + startPlace + (14 * 1), 62, 14, References.localNameVC("vc.item.enum.song.8"), 0);
+		GuiVC.buttonR06 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDFAR.getMetadata(), this.guiLeft + 98, this.guiTop + startPlace + (14 * 2), 62, 14, References.localNameVC("vc.item.enum.song.9"), 0);
 		
 		//======================================
 		
-    	GuiVC.buttonR07 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDMELLOHI.getMetadata(), this.guiLeft + 16, this.guiTop + startPlace + (14 * 3), 62, 14, References.localNameVC("vc.item.enum.song.4"));
-		GuiVC.buttonR08 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDCAT.getMetadata(), this.guiLeft + 16, this.guiTop + startPlace + (14 * 4), 62, 14, References.localNameVC("vc.item.enum.song.5"));
-		GuiVC.buttonR09 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDSTAL.getMetadata(), this.guiLeft + 16, this.guiTop + startPlace + (14 * 5), 62, 14, References.localNameVC("vc.item.enum.song.6"));
+    	GuiVC.buttonR07 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDMELLOHI.getMetadata(), this.guiLeft + 16, this.guiTop + startPlace + (14 * 3), 62, 14, References.localNameVC("vc.item.enum.song.4"), 0);
+		GuiVC.buttonR08 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDCAT.getMetadata(), this.guiLeft + 16, this.guiTop + startPlace + (14 * 4), 62, 14, References.localNameVC("vc.item.enum.song.5"), 0);
+		GuiVC.buttonR09 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDSTAL.getMetadata(), this.guiLeft + 16, this.guiTop + startPlace + (14 * 5), 62, 14, References.localNameVC("vc.item.enum.song.6"), 0);
 
-		GuiVC.buttonR10 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDMALL.getMetadata(), this.guiLeft + 98, this.guiTop + startPlace + (14 * 3), 62, 14, References.localNameVC("vc.item.enum.song.10"));
-		GuiVC.buttonR11 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDWAIT.getMetadata(), this.guiLeft + 98, this.guiTop + startPlace + (14 * 4), 62, 14, References.localNameVC("vc.item.enum.song.11"));
-		GuiVC.buttonR12 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDWARD.getMetadata(), this.guiLeft + 98, this.guiTop + startPlace + (14 * 5), 62, 14, References.localNameVC("vc.item.enum.song.12"));
+		GuiVC.buttonR10 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDMALL.getMetadata(), this.guiLeft + 98, this.guiTop + startPlace + (14 * 3), 62, 14, References.localNameVC("vc.item.enum.song.10"), 0);
+		GuiVC.buttonR11 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDWAIT.getMetadata(), this.guiLeft + 98, this.guiTop + startPlace + (14 * 4), 62, 14, References.localNameVC("vc.item.enum.song.11"), 0);
+		GuiVC.buttonR12 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDWARD.getMetadata(), this.guiLeft + 98, this.guiTop + startPlace + (14 * 5), 62, 14, References.localNameVC("vc.item.enum.song.12"), 0);
 		
 		//======================================
 		
-		GuiVC.buttonR13 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDBRAMBLE.getMetadata(), this.guiLeft + 16, this.guiTop + startPlace + (14 * 6), 62, 14, References.localNameVC("vc.item.enum.song.13"));
-		GuiVC.buttonR14 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDCASTLE.getMetadata(), this.guiLeft + 16, this.guiTop + startPlace + (14 * 7), 62, 14, References.localNameVC("vc.item.enum.song.14"));
-		GuiVC.buttonR15 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDJUNGLE.getMetadata(), this.guiLeft + 16, this.guiTop + startPlace + (14 * 8), 62, 14, References.localNameVC("vc.item.enum.song.15"));
+		GuiVC.buttonR13 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDBRAMBLE.getMetadata(), this.guiLeft + 16, this.guiTop + startPlace + (14 * 6), 62, 14, References.localNameVC("vc.item.enum.song.13"), 0);
+		GuiVC.buttonR14 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDCASTLE.getMetadata(), this.guiLeft + 16, this.guiTop + startPlace + (14 * 7), 62, 14, References.localNameVC("vc.item.enum.song.14"), 0);
+		GuiVC.buttonR15 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDJUNGLE.getMetadata(), this.guiLeft + 16, this.guiTop + startPlace + (14 * 8), 62, 14, References.localNameVC("vc.item.enum.song.15"), 0);
 		
-		GuiVC.buttonR16 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDDIRE.getMetadata(), this.guiLeft + 98, this.guiTop + startPlace + (14 * 6), 62, 14, References.localNameVC("vc.item.enum.song.16"));
-		GuiVC.buttonR17 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDSTORMS.getMetadata(), this.guiLeft + 98, this.guiTop + startPlace + (14 * 7), 62, 14, References.localNameVC("vc.item.enum.song.17"));
-		GuiVC.buttonR18 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDTIMESCAR.getMetadata(), this.guiLeft + 98, this.guiTop + startPlace + (14 * 8), 62, 14, References.localNameVC("vc.item.enum.song.18"));
+		GuiVC.buttonR16 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDDIRE.getMetadata(), this.guiLeft + 98, this.guiTop + startPlace + (14 * 6), 62, 14, References.localNameVC("vc.item.enum.song.16"), 0);
+		GuiVC.buttonR17 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDSTORMS.getMetadata(), this.guiLeft + 98, this.guiTop + startPlace + (14 * 7), 62, 14, References.localNameVC("vc.item.enum.song.17"), 0);
+		GuiVC.buttonR18 = new GuiButtonGeneralVC(EnumsVC.AirshipSong.RECORDTIMESCAR.getMetadata(), this.guiLeft + 98, this.guiTop + startPlace + (14 * 8), 62, 14, References.localNameVC("vc.item.enum.song.18"), 0);
     	
 		
 		

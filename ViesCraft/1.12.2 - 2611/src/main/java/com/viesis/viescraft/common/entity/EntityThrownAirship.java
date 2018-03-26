@@ -26,17 +26,15 @@ public class EntityThrownAirship extends EntityThrownAirshipCore {
     		int coreModelVisualEngineIn, 
     		int coreModelVisualBalloonIn, 
     		
-    		int frameSkinVisualIn, 
-    		boolean frameSkinVisualTransparentIn, 
-    		boolean frameSkinVisualColorIn,
+    		int frameSkinTextureIn, 
+    		boolean frameSkinTransparentIn, 
     		int frameSkinColorRedIn, int frameSkinColorGreenIn, int frameSkinColorBlueIn,
     		
     		int engineParticleVisualIn, 
     		int engineDisplayTypeVisualIn, int engineDisplayIDVisualIn,
     		
-    		int balloonPatternVisualIn, 
-    		boolean balloonPatternVisualTransparentIn, 
-    		boolean balloonPatternVisualColorIn,
+    		int balloonPatternTextureIn, 
+    		boolean balloonPatternTransparentIn, 
     		int balloonPatternColorRedIn, int balloonPatternColorGreenIn, int balloonPatternColorBlueIn, 
     		
     		boolean learnedModuleAltitudeIn, int selectedModuleAltitudeIn, 
@@ -71,9 +69,8 @@ public class EntityThrownAirship extends EntityThrownAirshipCore {
         this.coreModelVisualEngine = coreModelVisualEngineIn;
         this.coreModelVisualBalloon = coreModelVisualBalloonIn;
         
-        this.frameSkinVisual = frameSkinVisualIn;
-        this.frameSkinVisualTransparent = frameSkinVisualTransparentIn;
-        this.frameSkinVisualColor = frameSkinVisualColorIn;
+        this.frameSkinTexture = frameSkinTextureIn;
+        this.frameSkinTransparent = frameSkinTransparentIn;
         this.frameSkinColorRed = frameSkinColorRedIn;
         this.frameSkinColorGreen = frameSkinColorGreenIn;
         this.frameSkinColorBlue = frameSkinColorBlueIn;
@@ -82,9 +79,8 @@ public class EntityThrownAirship extends EntityThrownAirshipCore {
         this.engineDisplayTypeVisual = engineDisplayTypeVisualIn;
         this.engineDisplayIDVisual = engineDisplayIDVisualIn;
         
-        this.balloonPatternVisual = balloonPatternVisualIn;
-        this.balloonPatternVisualTransparent = balloonPatternVisualTransparentIn;
-        this.balloonPatternVisualColor = balloonPatternVisualColorIn;
+        this.balloonPatternTexture = balloonPatternTextureIn;
+        this.balloonPatternTransparent = balloonPatternTransparentIn;
         this.balloonPatternColorRed = balloonPatternColorRedIn;
         this.balloonPatternColorGreen = balloonPatternColorGreenIn;
         this.balloonPatternColorBlue = balloonPatternColorBlueIn;
@@ -131,17 +127,15 @@ public class EntityThrownAirship extends EntityThrownAirshipCore {
 		    		this.coreModelVisualEngine, 
 		    		this.coreModelVisualBalloon, 
 		    		
-		    		this.frameSkinVisual, 
-		    		this.frameSkinVisualTransparent, 
-		    		this.frameSkinVisualColor, 
+		    		this.frameSkinTexture, 
+		    		this.frameSkinTransparent, 
 		    		this.frameSkinColorRed, this.frameSkinColorGreen, this.frameSkinColorBlue, 
 		    		
 		    		this.engineParticleVisual, 
 		    		this.engineDisplayTypeVisual, this.engineDisplayIDVisual, 
 		    		
-		    		this.balloonPatternVisual, 
-		    		this.balloonPatternVisualTransparent, 
-		    		this.balloonPatternVisualColor, 
+		    		this.balloonPatternTexture, 
+		    		this.balloonPatternTransparent, 
 		    		this.balloonPatternColorRed, this.balloonPatternColorGreen, this.balloonPatternColorBlue, 
 		    		
 		    		this.learnedModuleAltitude, this.selectedModuleAltitude, 

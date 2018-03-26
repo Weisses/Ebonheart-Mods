@@ -2,6 +2,8 @@ package com.viesis.viescraft.client.gui.airship.customize;
 
 import java.awt.Color;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.lwjgl.input.Keyboard;
 
@@ -26,11 +28,13 @@ import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenuStorag
 import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenuStorageNormal;
 import com.viesis.viescraft.network.server.airship.main.MessageGuiModuleMenu;
 
+import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.TextFormatting;
 
 public class GuiCustomizeMenuChangeName extends GuiContainerVC {
 	
@@ -38,9 +42,6 @@ public class GuiCustomizeMenuChangeName extends GuiContainerVC {
 	private EntityAirshipBaseVC airship;
 	
 	private GuiTextField textName;
-	public static String textNameStorage;
-	
-	public static int undoCore;
 	
 	private ResourceLocation texture = new ResourceLocation(References.MOD_ID + ":" + "textures/gui/container_gui_customize_menu_change_name.png");
 	
@@ -76,8 +77,8 @@ public class GuiCustomizeMenuChangeName extends GuiContainerVC {
     	GuiVC.buttonM3 = new GuiButtonMenuVC(3, this.guiLeft - 35, this.guiTop + 7 + (16 * 2), 36, 14, "", 2);
     	GuiVC.buttonM4 = new GuiButtonMenuVC(4, this.guiLeft - 35, this.guiTop + 7 + (16 * 3), 36, 14, "", 3);
 		
-    	GuiVC.buttonA12 = new GuiButtonGeneralVC(12, this.guiLeft + 31, this.guiTop + 53, 42, 14, "Apply");
-		GuiVC.buttonA13 = new GuiButtonGeneralVC(13, this.guiLeft + 103, this.guiTop + 53, 42, 14, "Back");
+    	GuiVC.buttonA12 = new GuiButtonGeneralVC(12, this.guiLeft + 31, this.guiTop + 53, 42, 14, "Apply", 0);
+		GuiVC.buttonA13 = new GuiButtonGeneralVC(13, this.guiLeft + 103, this.guiTop + 53, 42, 14, "Back", 2);
 		
 		GuiVC.buttonA20 = new GuiButtonConfirmVC(20, this.guiLeft + 148, this.guiTop + 33, 14, 14, "");
 		
@@ -212,6 +213,60 @@ public class GuiCustomizeMenuChangeName extends GuiContainerVC {
 		{
 			GuiVC.buttonA20.enabled = false;
 		}
+        
+        GlStateManager.pushMatrix();
+		{
+			GlStateManager.translate(this.guiLeft + 132 - 44, this.guiTop + 115 - 29, 0);
+	        GlStateManager.scale(0.5F, 0.5F, 0.5F);
+	        
+	        this.drawCenteredString(fontRenderer, this.stringToGolden("Stored Redstone", 1, false, TextFormatting.RED), 0, 0, 111111);
+		}
+		GlStateManager.popMatrix();
+		
+		Color redstoneColor = Color.RED;
+		
+		if(this.airship.storedRedstone >= 500)
+		{
+			redstoneColor = Color.CYAN;
+		}
+		else if(this.airship.storedRedstone >= 375)
+		{
+			redstoneColor = Color.GREEN;
+		}
+		else if(this.airship.storedRedstone >= 250)
+		{
+			redstoneColor = Color.YELLOW;
+		}
+		else if(this.airship.storedRedstone >= 125)
+		{
+			redstoneColor = Color.ORANGE;
+		}
+		
+		GlStateManager.pushMatrix();
+		{
+			GlStateManager.translate(this.guiLeft + 77+48 - 44, this.guiTop + 102 + 19.5 - 29, 0);
+	        GlStateManager.scale(0.5F, 0.5F, 0.5F);
+	        
+	        this.drawCenteredString(fontRenderer, Integer.toString(this.airship.getStoredRedstone()), 0, 0, redstoneColor.getRGB());
+		}
+		GlStateManager.popMatrix();
+        GlStateManager.pushMatrix();
+		{
+			GlStateManager.translate(this.guiLeft + 88.25+44 - 44, this.guiTop + 102 + 19.5 - 29, 0);
+	        GlStateManager.scale(0.5F, 0.5F, 0.5F);
+	        
+	        this.drawCenteredString(fontRenderer, "/", 0, 0, redstoneColor.getRGB());
+		}
+		GlStateManager.popMatrix();
+		GlStateManager.pushMatrix();
+		{
+			GlStateManager.translate(this.guiLeft + 100+40 - 44, this.guiTop + 102 + 19.5 - 29, 0);
+	        GlStateManager.scale(0.5F, 0.5F, 0.5F);
+	        
+	        this.drawCenteredString(fontRenderer, Integer.toString(this.airship.getStoredRedstoneTotal()), 0, 0, redstoneColor.getRGB());
+		}
+		GlStateManager.popMatrix();
+		
 	}
 	
 	@Override
@@ -239,6 +294,28 @@ public class GuiCustomizeMenuChangeName extends GuiContainerVC {
 			this.drawCenteredString(fontRenderer, this.airship.getCustomName(), 0, 0, 11111111);
 		}
 		GlStateManager.popMatrix();
+		
+		//Logic for mouse-over Core tooltip
+		if(mouseX >= this.guiLeft + 31 && mouseX <= this.guiLeft + 72
+		&& mouseY >= this.guiTop + 53 && mouseY <= this.guiTop + 67)
+		{
+			List<String> text = new ArrayList<String>();
+			
+			text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("Renaming airships costs"));
+			text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("10 Redstone."));
+			//text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.core.3"));
+			
+			FontRenderer fontrenderer = this.getFontRenderer();
+			
+			GlStateManager.pushMatrix();
+			{
+				GlStateManager.translate(mouseX - this.guiLeft - 34, mouseY - this.guiTop - 13, 0);
+				GlStateManager.scale(0.5, 0.5, 0.5);
+				
+				this.drawHoveringText(text, 0, 0);
+			}
+			GlStateManager.popMatrix();
+		}
     }
 	
 	@Override

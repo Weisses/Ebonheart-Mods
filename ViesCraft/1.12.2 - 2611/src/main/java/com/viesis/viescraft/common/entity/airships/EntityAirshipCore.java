@@ -44,17 +44,15 @@ public class EntityAirshipCore extends EntityAirshipBaseVC {
     		int coreModelVisualEngineIn, 
     		int coreModelVisualBalloonIn, 
     		
-    		int frameSkinVisualIn, 
-    		boolean frameSkinVisualTransparentIn, 
-    		boolean frameSkinVisualColorIn,
+    		int frameSkinTextureIn, 
+    		boolean frameSkinTransparentIn, 
     		int frameSkinColorRedIn, int frameSkinColorGreenIn, int frameSkinColorBlueIn,
     		
     		int engineParticleVisualIn, 
     		int engineDisplayTypeVisualIn, int engineDisplayIDVisualIn,
     		
-    		int balloonPatternVisualIn, 
-    		boolean balloonPatternVisualTransparentIn, 
-    		boolean balloonPatternVisualColorIn,
+    		int balloonPatternTextureIn, 
+    		boolean balloonPatternTransparentIn, 
     		int balloonPatternColorRedIn, int balloonPatternColorGreenIn, int balloonPatternColorBlueIn, 
     		
     		boolean learnedModuleAltitudeIn, int selectedModuleAltitudeIn, 
@@ -88,9 +86,8 @@ public class EntityAirshipCore extends EntityAirshipBaseVC {
         this.coreModelVisualEngine = coreModelVisualEngineIn;
         this.coreModelVisualBalloon = coreModelVisualBalloonIn;
         
-        this.frameSkinVisual = frameSkinVisualIn;
-        this.frameSkinVisualTransparent = frameSkinVisualTransparentIn;
-        this.frameSkinVisualColor = frameSkinVisualColorIn;
+        this.frameSkinTexture = frameSkinTextureIn;
+        this.frameSkinTransparent = frameSkinTransparentIn;
         this.frameSkinColorRed = frameSkinColorRedIn;
         this.frameSkinColorGreen = frameSkinColorGreenIn;
         this.frameSkinColorBlue = frameSkinColorBlueIn;
@@ -99,9 +96,8 @@ public class EntityAirshipCore extends EntityAirshipBaseVC {
         this.engineDisplayTypeVisual = engineDisplayTypeVisualIn;
         this.engineDisplayIDVisual = engineDisplayIDVisualIn;
         
-        this.balloonPatternVisual = balloonPatternVisualIn;
-        this.balloonPatternVisualTransparent = balloonPatternVisualTransparentIn;
-        this.balloonPatternVisualColor = balloonPatternVisualColorIn;
+        this.balloonPatternTexture = balloonPatternTextureIn;
+        this.balloonPatternTransparent = balloonPatternTransparentIn;
         this.balloonPatternColorRed = balloonPatternColorRedIn;
         this.balloonPatternColorGreen = balloonPatternColorGreenIn;
         this.balloonPatternColorBlue = balloonPatternColorBlueIn;
@@ -164,23 +160,21 @@ public class EntityAirshipCore extends EntityAirshipBaseVC {
     	stack.getTagCompound().setInteger(rf.CORE_MODEL_VISUAL_ENGINE_TAG, this.coreModelVisualEngine);
     	stack.getTagCompound().setInteger(rf.CORE_MODEL_VISUAL_BALLOON_TAG, this.coreModelVisualBalloon);
     	
-    	stack.getTagCompound().setInteger(rf.FRAME_SKIN_VISUAL_TAG, this.frameSkinVisual);
-    	stack.getTagCompound().setBoolean(rf.FRAME_SKIN_VISUAL_TRANSPARENT_TAG, this.frameSkinVisualTransparent);
-    	stack.getTagCompound().setBoolean(rf.FRAME_SKIN_VISUAL_COLOR_TAG, this.frameSkinVisualColor);
-    	stack.getTagCompound().setInteger(rf.FRAME_SKIN_VISUAL_COLOR_RED_TAG, this.frameSkinColorRed);
-    	stack.getTagCompound().setInteger(rf.FRAME_SKIN_VISUAL_COLOR_GREEN_TAG, this.frameSkinColorGreen);
-    	stack.getTagCompound().setInteger(rf.FRAME_SKIN_VISUAL_COLOR_BLUE_TAG, this.frameSkinColorBlue);
+    	stack.getTagCompound().setInteger(rf.FRAME_SKIN_TEXTURE_TAG, this.frameSkinTexture);
+    	stack.getTagCompound().setBoolean(rf.FRAME_SKIN_TRANSPARENT_TAG, this.frameSkinTransparent);
+    	stack.getTagCompound().setInteger(rf.FRAME_SKIN_COLOR_RED_TAG, this.frameSkinColorRed);
+    	stack.getTagCompound().setInteger(rf.FRAME_SKIN_COLOR_GREEN_TAG, this.frameSkinColorGreen);
+    	stack.getTagCompound().setInteger(rf.FRAME_SKIN_COLOR_BLUE_TAG, this.frameSkinColorBlue);
     	
     	stack.getTagCompound().setInteger(rf.ENGINE_PARTICLE_VISUAL_TAG, this.engineParticleVisual);
     	stack.getTagCompound().setInteger(rf.ENGINE_DISPLAY_TYPE_VISUAL_TAG, this.engineDisplayTypeVisual);
     	stack.getTagCompound().setInteger(rf.ENGINE_DISPLAY_ID_VISUAL_TAG, this.engineDisplayIDVisual);
     	
-    	stack.getTagCompound().setInteger(rf.BALLOON_PATTERN_VISUAL_TAG, this.balloonPatternVisual);
-    	stack.getTagCompound().setBoolean(rf.BALLOON_PATTERN_VISUAL_TRANSPARENT_TAG, this.balloonPatternVisualTransparent);
-    	stack.getTagCompound().setBoolean(rf.BALLOON_PATTERN_VISUAL_COLOR_TAG, this.balloonPatternVisualColor);
-    	stack.getTagCompound().setInteger(rf.BALLOON_PATTERN_VISUAL_COLOR_RED_TAG, this.balloonPatternColorRed);
-    	stack.getTagCompound().setInteger(rf.BALLOON_PATTERN_VISUAL_COLOR_GREEN_TAG, this.balloonPatternColorGreen);
-    	stack.getTagCompound().setInteger(rf.BALLOON_PATTERN_VISUAL_COLOR_BLUE_TAG, this.balloonPatternColorBlue);
+    	stack.getTagCompound().setInteger(rf.BALLOON_PATTERN_TEXTURE_TAG, this.balloonPatternTexture);
+    	stack.getTagCompound().setBoolean(rf.BALLOON_PATTERN_TRANSPARENT_TAG, this.balloonPatternTransparent);
+    	stack.getTagCompound().setInteger(rf.BALLOON_PATTERN_COLOR_RED_TAG, this.balloonPatternColorRed);
+    	stack.getTagCompound().setInteger(rf.BALLOON_PATTERN_COLOR_GREEN_TAG, this.balloonPatternColorGreen);
+    	stack.getTagCompound().setInteger(rf.BALLOON_PATTERN_COLOR_BLUE_TAG, this.balloonPatternColorBlue);
     	
     	stack.getTagCompound().setInteger(rf.STORED_FUEL_TAG, this.storedFuel);
     	stack.getTagCompound().setInteger(rf.STORED_FUEL_TOTAL_TAG, this.storedFuelTotal);
@@ -223,7 +217,7 @@ public class EntityAirshipCore extends EntityAirshipBaseVC {
 	@Override
 	public String getName() 
 	{
-		String tier_name = this.getNameColor() //+ //EnumsVC.AirshipTierCore.byId(this.getMetaTierCore()).getLocalizedName()
+		String tier_name = this.getNameColor() //+ //EnumsVC.MainTierCore.byId(this.getMetaTierCore()).getLocalizedName()
 				;
 		String visualframe_name = "";
 		String visualballoon_name = "";
@@ -358,24 +352,24 @@ public class EntityAirshipCore extends EntityAirshipBaseVC {
             	{
             		if(this.getModuleActiveSlot1() == EnumsVC.ModuleType.SPEED_LESSER.getMetadata())
                     {
-            			this.deltaRotation -= (finalAirshipSpeedTurn + (EnumsVC.AirshipTierFrame.byId(this.mainTierFrame).getSpeedModifier() + this.speedModifier * 4));
+            			this.deltaRotation -= (finalAirshipSpeedTurn + (EnumsVC.MainTierFrame.byId(this.mainTierFrame).getSpeedModifier() + this.speedModifier * 4));
                     }
             		else if(this.getModuleActiveSlot1() == EnumsVC.ModuleType.SPEED_NORMAL.getMetadata())
                     {
-            			this.deltaRotation -= (finalAirshipSpeedTurn + (EnumsVC.AirshipTierFrame.byId(this.mainTierFrame).getSpeedModifier() + this.speedModifier * 8));
+            			this.deltaRotation -= (finalAirshipSpeedTurn + (EnumsVC.MainTierFrame.byId(this.mainTierFrame).getSpeedModifier() + this.speedModifier * 8));
                     }
             		else if(this.getModuleActiveSlot1() == EnumsVC.ModuleType.SPEED_GREATER.getMetadata())
                     {
-            			this.deltaRotation -= (finalAirshipSpeedTurn + (EnumsVC.AirshipTierFrame.byId(this.mainTierFrame).getSpeedModifier() + this.speedModifier * 12));
+            			this.deltaRotation -= (finalAirshipSpeedTurn + (EnumsVC.MainTierFrame.byId(this.mainTierFrame).getSpeedModifier() + this.speedModifier * 12));
                     }
             		else
             		{
-            			this.deltaRotation -= (finalAirshipSpeedTurn + (EnumsVC.AirshipTierFrame.byId(this.mainTierFrame).getSpeedModifier() * 2));
+            			this.deltaRotation -= (finalAirshipSpeedTurn + (EnumsVC.MainTierFrame.byId(this.mainTierFrame).getSpeedModifier() * 2));
             		}
             	}
             	else
             	{
-            		this.deltaRotation -= (finalAirshipSpeedTurn + (EnumsVC.AirshipTierFrame.byId(this.mainTierFrame).getSpeedModifier() * 4)) * 0.5F;
+            		this.deltaRotation -= (finalAirshipSpeedTurn + (EnumsVC.MainTierFrame.byId(this.mainTierFrame).getSpeedModifier() * 4)) * 0.5F;
             	}
             }
             
@@ -386,24 +380,24 @@ public class EntityAirshipCore extends EntityAirshipBaseVC {
             	{
             		if(this.getModuleActiveSlot1() == EnumsVC.ModuleType.SPEED_LESSER.getMetadata())
                     {
-            			this.deltaRotation += (finalAirshipSpeedTurn + (EnumsVC.AirshipTierFrame.byId(this.mainTierFrame).getSpeedModifier() + this.speedModifier * 4));
+            			this.deltaRotation += (finalAirshipSpeedTurn + (EnumsVC.MainTierFrame.byId(this.mainTierFrame).getSpeedModifier() + this.speedModifier * 4));
                     }
             		else if(this.getModuleActiveSlot1() == EnumsVC.ModuleType.SPEED_NORMAL.getMetadata())
                     {
-            			this.deltaRotation += (finalAirshipSpeedTurn + (EnumsVC.AirshipTierFrame.byId(this.mainTierFrame).getSpeedModifier() + this.speedModifier * 8));
+            			this.deltaRotation += (finalAirshipSpeedTurn + (EnumsVC.MainTierFrame.byId(this.mainTierFrame).getSpeedModifier() + this.speedModifier * 8));
                     }
             		else if(this.getModuleActiveSlot1() == EnumsVC.ModuleType.SPEED_GREATER.getMetadata())
                     {
-            			this.deltaRotation += (finalAirshipSpeedTurn + (EnumsVC.AirshipTierFrame.byId(this.mainTierFrame).getSpeedModifier() + this.speedModifier * 12));
+            			this.deltaRotation += (finalAirshipSpeedTurn + (EnumsVC.MainTierFrame.byId(this.mainTierFrame).getSpeedModifier() + this.speedModifier * 12));
                     }
             		else
             		{
-            			this.deltaRotation += (finalAirshipSpeedTurn + (EnumsVC.AirshipTierFrame.byId(this.mainTierFrame).getSpeedModifier() * 2));
+            			this.deltaRotation += (finalAirshipSpeedTurn + (EnumsVC.MainTierFrame.byId(this.mainTierFrame).getSpeedModifier() * 2));
             		}
             	}
             	else
             	{
-            		this.deltaRotation += (finalAirshipSpeedTurn + (EnumsVC.AirshipTierFrame.byId(this.mainTierFrame).getSpeedModifier() * 4)) * 0.5F;
+            		this.deltaRotation += (finalAirshipSpeedTurn + (EnumsVC.MainTierFrame.byId(this.mainTierFrame).getSpeedModifier() * 4)) * 0.5F;
             	}
             }
             
@@ -449,7 +443,7 @@ public class EntityAirshipCore extends EntityAirshipBaseVC {
 	            {
 	            	if(isFuelBurning())
 	        		{
-	        			f += finalAirshipSpeedForward + EnumsVC.AirshipTierFrame.byId(this.mainTierFrame).getSpeedModifier() + this.speedModifier;
+	        			f += finalAirshipSpeedForward + EnumsVC.MainTierFrame.byId(this.mainTierFrame).getSpeedModifier() + this.speedModifier;
 	        		}
 	            	else
 	            	{
@@ -479,7 +473,7 @@ public class EntityAirshipCore extends EntityAirshipBaseVC {
 	            	
 		            if(isFuelBurning())
 	        		{
-	        			f -= (finalAirshipSpeedForward + EnumsVC.AirshipTierFrame.byId(this.mainTierFrame).getSpeedModifier() + this.speedModifier) * 0.5;
+	        			f -= (finalAirshipSpeedForward + EnumsVC.MainTierFrame.byId(this.mainTierFrame).getSpeedModifier() + this.speedModifier) * 0.5;
 	        		}
 	            	else
 	            	{
@@ -493,7 +487,7 @@ public class EntityAirshipCore extends EntityAirshipBaseVC {
 	            {
 	            	if(isFuelBurning())
 	        		{
-	        			f -= (finalAirshipSpeedForward + EnumsVC.AirshipTierFrame.byId(this.mainTierFrame).getSpeedModifier() + this.speedModifier) * 0.5;
+	        			f -= (finalAirshipSpeedForward + EnumsVC.MainTierFrame.byId(this.mainTierFrame).getSpeedModifier() + this.speedModifier) * 0.5;
 	        		}
 	            	else
 	            	{
@@ -516,13 +510,13 @@ public class EntityAirshipCore extends EntityAirshipBaseVC {
 		            		f += 0F;
 		            		break;
 		            	case 1:
-		            		f += (finalAirshipSpeedForward + EnumsVC.AirshipTierFrame.byId(this.mainTierFrame).getSpeedModifier() + this.speedModifier) / 4;
+		            		f += (finalAirshipSpeedForward + EnumsVC.MainTierFrame.byId(this.mainTierFrame).getSpeedModifier() + this.speedModifier) / 4;
 		            		break;
 		            	case 2:
-		            		f += (finalAirshipSpeedForward + EnumsVC.AirshipTierFrame.byId(this.mainTierFrame).getSpeedModifier() + this.speedModifier) / 2;
+		            		f += (finalAirshipSpeedForward + EnumsVC.MainTierFrame.byId(this.mainTierFrame).getSpeedModifier() + this.speedModifier) / 2;
 		            		break;
 		            	case 3:
-		            		f += finalAirshipSpeedForward + EnumsVC.AirshipTierFrame.byId(this.mainTierFrame).getSpeedModifier() + this.speedModifier;
+		            		f += finalAirshipSpeedForward + EnumsVC.MainTierFrame.byId(this.mainTierFrame).getSpeedModifier() + this.speedModifier;
 		            		break;
 	            	}
         		}
@@ -539,19 +533,19 @@ public class EntityAirshipCore extends EntityAirshipBaseVC {
         		{
         			if(this.getModuleActiveSlot1() == EnumsVC.ModuleType.ALTITUDE_LESSER.getMetadata())
                     {
-        				f1 += finalAirshipSpeedUp + (EnumsVC.AirshipTierFrame.byId(this.mainTierFrame).getSpeedModifier() / 14);
+        				f1 += finalAirshipSpeedUp + (EnumsVC.MainTierFrame.byId(this.mainTierFrame).getSpeedModifier() / 14);
                     }
                 	else if(this.getModuleActiveSlot1() == EnumsVC.ModuleType.ALTITUDE_NORMAL.getMetadata())
                     {
-                		f1 += finalAirshipSpeedUp + (EnumsVC.AirshipTierFrame.byId(this.mainTierFrame).getSpeedModifier() / 8);
+                		f1 += finalAirshipSpeedUp + (EnumsVC.MainTierFrame.byId(this.mainTierFrame).getSpeedModifier() / 8);
                     }
                 	else if(this.getModuleActiveSlot1() == EnumsVC.ModuleType.ALTITUDE_GREATER.getMetadata())
                     {
-                		f1 += finalAirshipSpeedUp + (EnumsVC.AirshipTierFrame.byId(this.mainTierFrame).getSpeedModifier() / 4);
+                		f1 += finalAirshipSpeedUp + (EnumsVC.MainTierFrame.byId(this.mainTierFrame).getSpeedModifier() / 4);
                     }
                 	else if(!this.airshipHeightLimit())
 	    			{
-                		f1 += finalAirshipSpeedUp + (EnumsVC.AirshipTierFrame.byId(this.mainTierFrame).getSpeedModifier() / 32);
+                		f1 += finalAirshipSpeedUp + (EnumsVC.MainTierFrame.byId(this.mainTierFrame).getSpeedModifier() / 32);
 	    			}
         		}
             }
@@ -559,7 +553,7 @@ public class EntityAirshipCore extends EntityAirshipBaseVC {
             //Moving down
             if (this.downInputDown)
             {
-                f1 -= finalAirshipSpeedDown + (EnumsVC.AirshipTierFrame.byId(this.mainTierFrame).getSpeedModifier() / 4) + (this.speedModifier / 4);
+                f1 -= finalAirshipSpeedDown + (EnumsVC.MainTierFrame.byId(this.mainTierFrame).getSpeedModifier() / 4) + (this.speedModifier / 4);
             }
             
             this.motionX += (double)(MathHelper.sin(-this.rotationYaw * 0.017453292F) * f);
@@ -608,24 +602,24 @@ public class EntityAirshipCore extends EntityAirshipBaseVC {
 			}
 			if(moduleNumber == EnumsVC.ModuleType.STORAGE_LESSER.getMetadata())
 			{
-				this.speedModifier = -((finalAirshipSpeedForward + EnumsVC.AirshipTierFrame.byId(this.mainTierFrame).getSpeedModifier()) * 0.30F);
+				this.speedModifier = -((finalAirshipSpeedForward + EnumsVC.MainTierFrame.byId(this.mainTierFrame).getSpeedModifier()) * 0.30F);
 			}
 			if(moduleNumber == EnumsVC.ModuleType.STORAGE_NORMAL.getMetadata())
 			{
-				this.speedModifier = -((finalAirshipSpeedForward + EnumsVC.AirshipTierFrame.byId(this.mainTierFrame).getSpeedModifier()) * 0.30F);
+				this.speedModifier = -((finalAirshipSpeedForward + EnumsVC.MainTierFrame.byId(this.mainTierFrame).getSpeedModifier()) * 0.30F);
 			}
 			if(moduleNumber == EnumsVC.ModuleType.STORAGE_GREATER.getMetadata())
 			{
-				this.speedModifier = -((finalAirshipSpeedForward + EnumsVC.AirshipTierFrame.byId(this.mainTierFrame).getSpeedModifier()) * 0.30F);
+				this.speedModifier = -((finalAirshipSpeedForward + EnumsVC.MainTierFrame.byId(this.mainTierFrame).getSpeedModifier()) * 0.30F);
 			}
 			
 			if(moduleNumber == EnumsVC.ModuleType.CRUISE_LESSER.getMetadata())
 			{
-				this.speedModifier = -((finalAirshipSpeedForward + EnumsVC.AirshipTierFrame.byId(this.mainTierFrame).getSpeedModifier()) * 0.66F);
+				this.speedModifier = -((finalAirshipSpeedForward + EnumsVC.MainTierFrame.byId(this.mainTierFrame).getSpeedModifier()) * 0.66F);
 			}
 			if(moduleNumber == EnumsVC.ModuleType.CRUISE_NORMAL.getMetadata())
 			{
-				this.speedModifier = -((finalAirshipSpeedForward + EnumsVC.AirshipTierFrame.byId(this.mainTierFrame).getSpeedModifier()) * 0.33F);
+				this.speedModifier = -((finalAirshipSpeedForward + EnumsVC.MainTierFrame.byId(this.mainTierFrame).getSpeedModifier()) * 0.33F);
 			}
 			if(moduleNumber == EnumsVC.ModuleType.CRUISE_GREATER.getMetadata())
 			{
@@ -634,15 +628,15 @@ public class EntityAirshipCore extends EntityAirshipBaseVC {
 			
 			if(moduleNumber == EnumsVC.ModuleType.INFINITE_FUEL_LESSER.getMetadata())
 			{
-				this.speedModifier = -((finalAirshipSpeedForward + EnumsVC.AirshipTierFrame.byId(this.mainTierFrame).getSpeedModifier()) * 0.90F);
+				this.speedModifier = -((finalAirshipSpeedForward + EnumsVC.MainTierFrame.byId(this.mainTierFrame).getSpeedModifier()) * 0.90F);
 			}
 			if(moduleNumber == EnumsVC.ModuleType.INFINITE_FUEL_NORMAL.getMetadata())
 			{
-				this.speedModifier = -((finalAirshipSpeedForward + EnumsVC.AirshipTierFrame.byId(this.mainTierFrame).getSpeedModifier()) * 0.80F);
+				this.speedModifier = -((finalAirshipSpeedForward + EnumsVC.MainTierFrame.byId(this.mainTierFrame).getSpeedModifier()) * 0.80F);
 			}
 			if(moduleNumber == EnumsVC.ModuleType.INFINITE_FUEL_GREATER.getMetadata())
 			{
-				this.speedModifier = -((finalAirshipSpeedForward + EnumsVC.AirshipTierFrame.byId(this.mainTierFrame).getSpeedModifier()) * 0.70F);
+				this.speedModifier = -((finalAirshipSpeedForward + EnumsVC.MainTierFrame.byId(this.mainTierFrame).getSpeedModifier()) * 0.70F);
 			}
 		}
     }

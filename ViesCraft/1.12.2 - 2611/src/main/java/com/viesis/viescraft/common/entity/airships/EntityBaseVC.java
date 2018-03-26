@@ -91,17 +91,15 @@ public class EntityBaseVC extends Entity {
     		int coreModelVisualEngineIn, 
     		int coreModelVisualBalloonIn, 
     		
-    		int frameSkinVisualIn, 
-    		boolean frameSkinVisualTransparentIn, 
-    		boolean frameSkinVisualColorIn,
+    		int frameSkinTextureIn, 
+    		boolean frameSkinTransparentIn, 
     		int frameSkinColorRedIn, int frameSkinColorGreenIn, int frameSkinColorBlueIn,
     		
     		int engineParticleVisualIn, 
     		int engineDisplayTypeVisualIn, int engineDisplayIDVisualIn,
     		
-    		int balloonPatternVisualIn, 
-    		boolean balloonPatternVisualTransparentIn, 
-    		boolean balloonPatternVisualColorIn,
+    		int balloonPatternTextureIn, 
+    		boolean balloonPatternTransparentIn, 
     		int balloonPatternColorRedIn, int balloonPatternColorGreenIn, int balloonPatternColorBlueIn, 
     		
     		boolean learnedModuleAltitudeIn, int selectedModuleAltitudeIn, 

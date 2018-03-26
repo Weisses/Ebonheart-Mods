@@ -11,10 +11,11 @@ import net.minecraft.util.ResourceLocation;
 public class GuiButtonGeneralVC extends GuiButton {
 	
 	protected static final ResourceLocation BUTTON_TEXTURES = new ResourceLocation(References.MOD_ID_COLON + "textures/gui/buttons_general.png");
+    protected int texture;
     
-	public GuiButtonGeneralVC(int buttonId, int x, int y, int widthIn, int heightIn, String buttonText) 
+	public GuiButtonGeneralVC(int buttonId, int x, int y, int widthIn, int heightIn, String buttonTextIn, int textureIn) 
 	{
-		super(buttonId, x, y, widthIn, heightIn, buttonText);
+		super(buttonId, x, y, widthIn, heightIn, buttonTextIn);
 		
 		this.width = 200;
         this.height = 20;
@@ -25,7 +26,8 @@ public class GuiButtonGeneralVC extends GuiButton {
         this.y = y;
         this.width = widthIn;
         this.height = heightIn;
-        this.displayString = buttonText;
+        this.displayString = buttonTextIn;
+        this.texture = textureIn;
 	}
 	
 	@Override
@@ -43,9 +45,9 @@ public class GuiButtonGeneralVC extends GuiButton {
             GlStateManager.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA);
             
             //First half of the button
-            this.drawTexturedModalRect(this.x, this.y, 0, 0 + i * 20, this.width / 2, this.height);
+            this.drawTexturedModalRect(this.x, this.y, 0, (this.texture * 54) + 0 + i * 20, this.width / 2, this.height);
             //Second half of the button
-            this.drawTexturedModalRect(this.x + this.width / 2, this.y, 200 - this.width / 2, 0 + i * 20, this.width / 2, this.height);
+            this.drawTexturedModalRect(this.x + this.width / 2, this.y, 200 - this.width / 2, (this.texture * 54) + 0 + i * 20, this.width / 2, this.height);
             //Test overlay
             
             //GlStateManager.pushMatrix();

@@ -209,19 +209,19 @@ public class GuiMainMenuStorageGreater extends GuiContainerVC {
 			GlStateManager.translate(71.5 + 4, 11.25, 0);
 			GlStateManager.scale(0.55, 0.55, 0.55);
 			
-			String speedIn = TextFormatting.BLACK + "-" + TextFormatting.GREEN + "+" + String.valueOf((int)(EnumsVC.AirshipTierFrame.byId(this.airship.mainTierFrame).getSpeedModifier() *100));
+			String speedIn = TextFormatting.BLACK + "-" + TextFormatting.GREEN + "+" + String.valueOf((int)(EnumsVC.MainTierFrame.byId(this.airship.mainTierFrame).getSpeedModifier() *100));
 			
 			if(this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.SPEED_LESSER.getMetadata())
 			{
-				speedIn = TextFormatting.BLACK + "-" + TextFormatting.AQUA + "+" + String.valueOf((int)(EnumsVC.AirshipTierFrame.byId(this.airship.mainTierFrame).getSpeedModifier() *100)  + 1);
+				speedIn = TextFormatting.BLACK + "-" + TextFormatting.AQUA + "+" + String.valueOf((int)(EnumsVC.MainTierFrame.byId(this.airship.mainTierFrame).getSpeedModifier() *100)  + 1);
 			}
 			else if(this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.SPEED_NORMAL.getMetadata())
 			{
-				speedIn = TextFormatting.BLACK + "-" + TextFormatting.AQUA + "+" + String.valueOf((int)(EnumsVC.AirshipTierFrame.byId(this.airship.mainTierFrame).getSpeedModifier() *100)  + 2);
+				speedIn = TextFormatting.BLACK + "-" + TextFormatting.AQUA + "+" + String.valueOf((int)(EnumsVC.MainTierFrame.byId(this.airship.mainTierFrame).getSpeedModifier() *100)  + 2);
 			}
 			else if(this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.SPEED_GREATER.getMetadata())
 			{
-				speedIn = TextFormatting.BLACK + "-" + TextFormatting.AQUA + "+" + String.valueOf((int)(EnumsVC.AirshipTierFrame.byId(this.airship.mainTierFrame).getSpeedModifier() *100)  + 3);
+				speedIn = TextFormatting.BLACK + "-" + TextFormatting.AQUA + "+" + String.valueOf((int)(EnumsVC.MainTierFrame.byId(this.airship.mainTierFrame).getSpeedModifier() *100)  + 3);
 			}
 			
 			this.fontRenderer.drawString(References.localNameVC("vc.main.speed") + ": " + speedIn, 0, 0, 16777215);
@@ -258,7 +258,7 @@ public class GuiMainMenuStorageGreater extends GuiContainerVC {
 			GlStateManager.translate(71.5 + 0.1, 22.75, 0);
 			GlStateManager.scale(0.55, 0.55, 0.55);
 			
-			String altitudeIn = TextFormatting.GREEN + String.valueOf((int)EnumsVC.AirshipTierBalloon.byId(this.airship.mainTierBalloon).getMaxAltitude());
+			String altitudeIn = TextFormatting.GREEN + String.valueOf((int)EnumsVC.MainTierBalloon.byId(this.airship.mainTierBalloon).getMaxAltitude());
 			
 			if(this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.ALTITUDE_LESSER.getMetadata())
 			{
@@ -274,7 +274,7 @@ public class GuiMainMenuStorageGreater extends GuiContainerVC {
 			}
 			else if(this.airship.getMainTierBalloon() == 0)
 			{
-				altitudeIn = TextFormatting.BLACK + "-" + TextFormatting.GREEN + String.valueOf((int)EnumsVC.AirshipTierBalloon.byId(this.airship.mainTierBalloon).getMaxAltitude());
+				altitudeIn = TextFormatting.BLACK + "-" + TextFormatting.GREEN + String.valueOf((int)EnumsVC.MainTierBalloon.byId(this.airship.mainTierBalloon).getMaxAltitude());
 			}
 			
 			this.fontRenderer.drawString(References.localNameVC("vc.main.altitude") + ": " + altitudeIn, 0, 0, 16777215);
@@ -512,7 +512,7 @@ public class GuiMainMenuStorageGreater extends GuiContainerVC {
 				text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.engine.1"));
 				text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.engine.2"));
 				text.add(TextFormatting.LIGHT_PURPLE + "");
-				text.add(TextFormatting.WHITE + References.localNameVC("vc.gui.tt.basebonus") + ": " + TextFormatting.RED + "-" + (EnumsVC.AirshipTierEngine.byId(this.airship.mainTierEngine).getFuelPerTick()));
+				text.add(TextFormatting.WHITE + References.localNameVC("vc.gui.tt.basebonus") + ": " + TextFormatting.RED + "-" + (EnumsVC.MainTierEngine.byId(this.airship.mainTierEngine).getFuelPerTick()));
 				
 				FontRenderer fontrenderer = this.getFontRenderer();
 				
@@ -553,7 +553,7 @@ public class GuiMainMenuStorageGreater extends GuiContainerVC {
 				text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.balloon.1"));
 				text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.balloon.2"));
 				text.add(TextFormatting.LIGHT_PURPLE + "");
-				text.add(TextFormatting.WHITE + References.localNameVC("vc.gui.tt.basebonus") + ": " + TextFormatting.GREEN + (EnumsVC.AirshipTierBalloon.byId(this.airship.mainTierBalloon).getMaxAltitude()));
+				text.add(TextFormatting.WHITE + References.localNameVC("vc.gui.tt.basebonus") + ": " + TextFormatting.GREEN + (EnumsVC.MainTierBalloon.byId(this.airship.mainTierBalloon).getMaxAltitude()));
 				
 				FontRenderer fontrenderer = this.getFontRenderer();
 				

@@ -61,20 +61,18 @@ public class ItemAirship extends ItemAirshipBase {
 		this.coreModelVisualEngine = 0;
 		this.coreModelVisualBalloon = 0;
 		
-		this.frameSkinVisual = 0;
-		this.frameSkinVisualTransparent = false;
-		this.frameSkinVisualColor = false;
-		this.frameSkinColorRed = 0;
-		this.frameSkinColorGreen = 0;
-		this.frameSkinColorBlue = 0;
+		this.frameSkinTexture = 0;
+		this.frameSkinTransparent = false;
+		this.frameSkinColorRed = 255;
+		this.frameSkinColorGreen = 255;
+		this.frameSkinColorBlue = 255;
 		
 		this.engineParticleVisual = 0;
 		this.engineDisplayTypeVisual = 0;
 		this.engineDisplayIDVisual = 0;
 		
-		this.balloonPatternVisual = 0;
-		this.balloonPatternVisualTransparent = false;
-		this.balloonPatternVisualColor = false;
+		this.balloonPatternTexture = 0;
+		this.balloonPatternTransparent = false;
 		this.balloonPatternColorRed = 200;
 		this.balloonPatternColorGreen = 180;
 		this.balloonPatternColorBlue = 140;
@@ -124,23 +122,21 @@ public class ItemAirship extends ItemAirshipBase {
         		this.coreModelVisualEngine = itemstack.getTagCompound().getInteger(rf.CORE_MODEL_VISUAL_ENGINE_TAG);
         		this.coreModelVisualBalloon = itemstack.getTagCompound().getInteger(rf.CORE_MODEL_VISUAL_BALLOON_TAG);
         		
-        		this.frameSkinVisual = itemstack.getTagCompound().getInteger(rf.FRAME_SKIN_VISUAL_TAG);
-        		this.frameSkinVisualTransparent = itemstack.getTagCompound().getBoolean(rf.FRAME_SKIN_VISUAL_TRANSPARENT_TAG);
-        		this.frameSkinVisualColor = itemstack.getTagCompound().getBoolean(rf.FRAME_SKIN_VISUAL_COLOR_TAG);
-        		this.frameSkinColorRed = itemstack.getTagCompound().getInteger(rf.FRAME_SKIN_VISUAL_COLOR_RED_TAG);
-        		this.frameSkinColorGreen = itemstack.getTagCompound().getInteger(rf.FRAME_SKIN_VISUAL_COLOR_GREEN_TAG);
-        		this.frameSkinColorBlue = itemstack.getTagCompound().getInteger(rf.FRAME_SKIN_VISUAL_COLOR_BLUE_TAG);
+        		this.frameSkinTexture = itemstack.getTagCompound().getInteger(rf.FRAME_SKIN_TEXTURE_TAG);
+        		this.frameSkinTransparent = itemstack.getTagCompound().getBoolean(rf.FRAME_SKIN_TRANSPARENT_TAG);
+        		this.frameSkinColorRed = itemstack.getTagCompound().getInteger(rf.FRAME_SKIN_COLOR_RED_TAG);
+        		this.frameSkinColorGreen = itemstack.getTagCompound().getInteger(rf.FRAME_SKIN_COLOR_GREEN_TAG);
+        		this.frameSkinColorBlue = itemstack.getTagCompound().getInteger(rf.FRAME_SKIN_COLOR_BLUE_TAG);
         		
         		this.engineParticleVisual = itemstack.getTagCompound().getInteger(rf.ENGINE_PARTICLE_VISUAL_TAG);
         		this.engineDisplayTypeVisual = itemstack.getTagCompound().getInteger(rf.ENGINE_DISPLAY_TYPE_VISUAL_TAG);
         		this.engineDisplayIDVisual = itemstack.getTagCompound().getInteger(rf.ENGINE_DISPLAY_ID_VISUAL_TAG);
         		
-        		this.balloonPatternVisual = itemstack.getTagCompound().getInteger(rf.BALLOON_PATTERN_VISUAL_TAG);
-        		this.balloonPatternVisualTransparent = itemstack.getTagCompound().getBoolean(rf.BALLOON_PATTERN_VISUAL_TRANSPARENT_TAG);
-        		this.balloonPatternVisualColor = itemstack.getTagCompound().getBoolean(rf.BALLOON_PATTERN_VISUAL_COLOR_TAG);
-        		this.balloonPatternColorRed = itemstack.getTagCompound().getInteger(rf.BALLOON_PATTERN_VISUAL_COLOR_RED_TAG);
-        		this.balloonPatternColorGreen = itemstack.getTagCompound().getInteger(rf.BALLOON_PATTERN_VISUAL_COLOR_GREEN_TAG);
-        		this.balloonPatternColorBlue = itemstack.getTagCompound().getInteger(rf.BALLOON_PATTERN_VISUAL_COLOR_BLUE_TAG);
+        		this.balloonPatternTexture = itemstack.getTagCompound().getInteger(rf.BALLOON_PATTERN_TEXTURE_TAG);
+        		this.balloonPatternTransparent = itemstack.getTagCompound().getBoolean(rf.BALLOON_PATTERN_TRANSPARENT_TAG);
+        		this.balloonPatternColorRed = itemstack.getTagCompound().getInteger(rf.BALLOON_PATTERN_COLOR_RED_TAG);
+        		this.balloonPatternColorGreen = itemstack.getTagCompound().getInteger(rf.BALLOON_PATTERN_COLOR_GREEN_TAG);
+        		this.balloonPatternColorBlue = itemstack.getTagCompound().getInteger(rf.BALLOON_PATTERN_COLOR_BLUE_TAG);
         		
         		this.moduleActiveSlot1 = itemstack.getTagCompound().getInteger(rf.MODULE_ACTIVE_SLOT1_TAG);
         		
@@ -184,17 +180,15 @@ public class ItemAirship extends ItemAirshipBase {
 	    		this.coreModelVisualEngine, 
 	    		this.coreModelVisualBalloon, 
 	    		
-	    		this.frameSkinVisual, 
-	    		this.frameSkinVisualTransparent, 
-	    		this.frameSkinVisualColor, 
+	    		this.frameSkinTexture, 
+	    		this.frameSkinTransparent, 
 	    		this.frameSkinColorRed, this.frameSkinColorGreen, this.frameSkinColorBlue, 
 	    		
 	    		this.engineParticleVisual, 
 	    		this.engineDisplayTypeVisual, this.engineDisplayIDVisual, 
 	    		
-	    		this.balloonPatternVisual, 
-	    		this.balloonPatternVisualTransparent, 
-	    		this.balloonPatternVisualColor, 
+	    		this.balloonPatternTexture, 
+	    		this.balloonPatternTransparent, 
 	    		this.balloonPatternColorRed, this.balloonPatternColorGreen, this.balloonPatternColorBlue, 
 	    		
 	    		this.learnedModuleAltitude, this.selectedModuleAltitude, 
@@ -338,7 +332,7 @@ public class ItemAirship extends ItemAirshipBase {
 					+ TextFormatting.DARK_GRAY + I18n.translateToLocal("vc.item.tt.airship.8") + TextFormatting.BLACK + "--ill"
 					+ TextFormatting.DARK_GREEN + "|"
 					+ TextFormatting.BLACK + "--i" + TextFormatting.BLUE + I18n.translateToLocal("vc.item.tt.airship.14") + TextFormatting.BLACK + "i" + TextFormatting.DARK_BLUE + ":" + TextFormatting.BLACK + "i"
-					+ TextFormatting.GRAY + "(" + this.getPrimaryLabelColor(mainTierFrameInfo) + EnumsVC.AirshipTierFrame.byId(mainTierFrameInfo).getLocalizedName() + TextFormatting.GRAY + ")"+ TextFormatting.BLACK + "l" 
+					+ TextFormatting.GRAY + "(" + this.getPrimaryLabelColor(mainTierFrameInfo) + EnumsVC.MainTierFrame.byId(mainTierFrameInfo).getLocalizedName() + TextFormatting.GRAY + ")"+ TextFormatting.BLACK + "l" 
 					+ TextFormatting.DARK_GREEN + "|");
 		}
 		//Core < 0 || Frame = 0
@@ -347,7 +341,7 @@ public class ItemAirship extends ItemAirshipBase {
 		{
 			tooltip.add(TextFormatting.DARK_GREEN + "|" 
 					+ TextFormatting.BLACK + "-iiiiil" + TextFormatting.BLUE + I18n.translateToLocal("vc.item.tt.airship.4") + TextFormatting.BLACK + "i" + TextFormatting.DARK_BLUE + ":" + TextFormatting.BLACK + "i"
-					+ TextFormatting.GRAY + "(" + this.getPrimaryLabelColor(stack.getMetadata()) + EnumsVC.AirshipTierCore.byId(stack.getMetadata()).getLocalizedName() + TextFormatting.GRAY + ")" + TextFormatting.BLACK + "ii" 
+					+ TextFormatting.GRAY + "(" + this.getPrimaryLabelColor(stack.getMetadata()) + EnumsVC.MainTierCore.byId(stack.getMetadata()).getLocalizedName() + TextFormatting.GRAY + ")" + TextFormatting.BLACK + "ii" 
 					+ TextFormatting.DARK_GREEN + "|"
 					+ TextFormatting.BLACK + "iiiill" + TextFormatting.BLUE + I18n.translateToLocal("vc.item.tt.airship.14") + TextFormatting.BLACK + "i" + TextFormatting.DARK_BLUE + ":" + TextFormatting.BLACK + "i"
 					+ TextFormatting.DARK_GRAY + I18n.translateToLocal("vc.item.tt.airship.8") + TextFormatting.BLACK + "--iil" 
@@ -359,10 +353,10 @@ public class ItemAirship extends ItemAirshipBase {
 		{
 			tooltip.add(TextFormatting.DARK_GREEN + "|" 
 					+ TextFormatting.BLACK + "-iiiiil" + TextFormatting.BLUE + I18n.translateToLocal("vc.item.tt.airship.4") + TextFormatting.BLACK + "i" + TextFormatting.DARK_BLUE + ":" + TextFormatting.BLACK + "i"
-					+ TextFormatting.GRAY + "(" + this.getPrimaryLabelColor(stack.getMetadata()) + EnumsVC.AirshipTierCore.byId(stack.getMetadata()).getLocalizedName() + TextFormatting.GRAY + ")" + TextFormatting.BLACK + "ii" 
+					+ TextFormatting.GRAY + "(" + this.getPrimaryLabelColor(stack.getMetadata()) + EnumsVC.MainTierCore.byId(stack.getMetadata()).getLocalizedName() + TextFormatting.GRAY + ")" + TextFormatting.BLACK + "ii" 
 					+ TextFormatting.DARK_GREEN + "|"
 					+ TextFormatting.BLACK + "--i" + TextFormatting.BLUE + I18n.translateToLocal("vc.item.tt.airship.14") + TextFormatting.BLACK + "i" + TextFormatting.DARK_BLUE + ":" + TextFormatting.BLACK + "i"
-					+ TextFormatting.GRAY + "(" + this.getPrimaryLabelColor(mainTierFrameInfo) + EnumsVC.AirshipTierFrame.byId(mainTierFrameInfo).getLocalizedName() + TextFormatting.GRAY + ")"+ TextFormatting.BLACK + "l" 
+					+ TextFormatting.GRAY + "(" + this.getPrimaryLabelColor(mainTierFrameInfo) + EnumsVC.MainTierFrame.byId(mainTierFrameInfo).getLocalizedName() + TextFormatting.GRAY + ")"+ TextFormatting.BLACK + "l" 
 					+ TextFormatting.DARK_GREEN + "|");
 		}
 		
@@ -387,7 +381,7 @@ public class ItemAirship extends ItemAirshipBase {
 					+ TextFormatting.DARK_GRAY + I18n.translateToLocal("vc.item.tt.airship.8") + TextFormatting.BLACK + "---i" 
 					+ TextFormatting.DARK_GREEN + "|"
 					+ TextFormatting.BLACK + "iiii" + TextFormatting.BLUE + I18n.translateToLocal("vc.item.tt.airship.6") + TextFormatting.BLACK + "i" + TextFormatting.DARK_BLUE + ":" + TextFormatting.BLACK + "i"
-					+ TextFormatting.GRAY + "(" + this.getPrimaryLabelColor(mainTierBalloonInfo) + EnumsVC.AirshipTierBalloon.byId(mainTierBalloonInfo).getLocalizedName() + TextFormatting.GRAY + ")" + TextFormatting.BLACK + "l" 
+					+ TextFormatting.GRAY + "(" + this.getPrimaryLabelColor(mainTierBalloonInfo) + EnumsVC.MainTierBalloon.byId(mainTierBalloonInfo).getLocalizedName() + TextFormatting.GRAY + ")" + TextFormatting.BLACK + "l" 
 					+ TextFormatting.DARK_GREEN + "|");
 		}
 		//Engine < 0 || Balloon = 0
@@ -396,7 +390,7 @@ public class ItemAirship extends ItemAirshipBase {
 		{
 			tooltip.add(TextFormatting.DARK_GREEN + "|" 
 					+ TextFormatting.BLACK + "iiiil" + TextFormatting.BLUE + I18n.translateToLocal("vc.item.tt.airship.5") + TextFormatting.BLACK + "i" + TextFormatting.DARK_BLUE + ":" + TextFormatting.BLACK + "i"
-					+ TextFormatting.GRAY + "(" + this.getPrimaryLabelColor(mainTierEngineInfo) + EnumsVC.AirshipTierEngine.byId(mainTierEngineInfo).getLocalizedName() + TextFormatting.GRAY + ")" + TextFormatting.BLACK + "ii" 
+					+ TextFormatting.GRAY + "(" + this.getPrimaryLabelColor(mainTierEngineInfo) + EnumsVC.MainTierEngine.byId(mainTierEngineInfo).getLocalizedName() + TextFormatting.GRAY + ")" + TextFormatting.BLACK + "ii" 
 					+ TextFormatting.DARK_GREEN + "|"
 					+ TextFormatting.BLACK + "iiii" + TextFormatting.BLUE + I18n.translateToLocal("vc.item.tt.airship.6") + TextFormatting.BLACK + "i" + TextFormatting.DARK_BLUE + ":" + TextFormatting.BLACK + "i"
 					+ TextFormatting.DARK_GRAY + I18n.translateToLocal("vc.item.tt.airship.8") + TextFormatting.BLACK + "--iil" 
@@ -408,10 +402,10 @@ public class ItemAirship extends ItemAirshipBase {
 		{
 			tooltip.add(TextFormatting.DARK_GREEN + "|" 
 					+ TextFormatting.BLACK + "iiiil" + TextFormatting.BLUE + I18n.translateToLocal("vc.item.tt.airship.5") + TextFormatting.BLACK + "i" + TextFormatting.DARK_BLUE + ":" + TextFormatting.BLACK + "i"
-					+ TextFormatting.GRAY + "(" + this.getPrimaryLabelColor(mainTierEngineInfo) + EnumsVC.AirshipTierEngine.byId(mainTierEngineInfo).getLocalizedName() + TextFormatting.GRAY + ")" + TextFormatting.BLACK + "ii" 
+					+ TextFormatting.GRAY + "(" + this.getPrimaryLabelColor(mainTierEngineInfo) + EnumsVC.MainTierEngine.byId(mainTierEngineInfo).getLocalizedName() + TextFormatting.GRAY + ")" + TextFormatting.BLACK + "ii" 
 					+ TextFormatting.DARK_GREEN + "|"
 					+ TextFormatting.BLACK + "iiii" + TextFormatting.BLUE + I18n.translateToLocal("vc.item.tt.airship.6") + TextFormatting.BLACK + "i" + TextFormatting.DARK_BLUE + ":" + TextFormatting.BLACK + "i"
-					+ TextFormatting.GRAY + "(" + this.getPrimaryLabelColor(mainTierBalloonInfo) + EnumsVC.AirshipTierBalloon.byId(mainTierBalloonInfo).getLocalizedName() + TextFormatting.GRAY + ")" + TextFormatting.BLACK + "l" 
+					+ TextFormatting.GRAY + "(" + this.getPrimaryLabelColor(mainTierBalloonInfo) + EnumsVC.MainTierBalloon.byId(mainTierBalloonInfo).getLocalizedName() + TextFormatting.GRAY + ")" + TextFormatting.BLACK + "l" 
 					+ TextFormatting.DARK_GREEN + "|");
 		}
 		
@@ -426,14 +420,14 @@ public class ItemAirship extends ItemAirshipBase {
 				+ TextFormatting.DARK_GREEN + "|");
 		
 		
-		float speedModCal = EnumsVC.AirshipTierFrame.byId(mainTierFrameInfo).getSpeedModifier() * 100;
+		float speedModCal = EnumsVC.MainTierFrame.byId(mainTierFrameInfo).getSpeedModifier() * 100;
 		String speedMod = df.format(speedModCal);
 		
 		String altMax = "";
 		
 		if(mainTierBalloonInfo == 0)
 		{
-			altMax = TextFormatting.BLACK + "-" + this.getPrimaryLabelColor(mainTierBalloonInfo) + df.format(EnumsVC.AirshipTierBalloon.byId(mainTierBalloonInfo).getMaxAltitude());
+			altMax = TextFormatting.BLACK + "-" + this.getPrimaryLabelColor(mainTierBalloonInfo) + df.format(EnumsVC.MainTierBalloon.byId(mainTierBalloonInfo).getMaxAltitude());
 		}
 		else if(mainTierBalloonInfo >= 5)
 		{
@@ -441,7 +435,7 @@ public class ItemAirship extends ItemAirshipBase {
 		}
 		else
 		{
-			altMax = this.getPrimaryLabelColor(mainTierBalloonInfo) + df.format(EnumsVC.AirshipTierBalloon.byId(mainTierBalloonInfo).getMaxAltitude());
+			altMax = this.getPrimaryLabelColor(mainTierBalloonInfo) + df.format(EnumsVC.MainTierBalloon.byId(mainTierBalloonInfo).getMaxAltitude());
 		}
 		
 		//----- || Airship Speed
@@ -459,7 +453,7 @@ public class ItemAirship extends ItemAirshipBase {
 			//Airship Fuel and Altitude
 			tooltip.add(TextFormatting.DARK_GREEN + "|" 
 					+ TextFormatting.BLACK + "iiiil" + TextFormatting.BLACK + "-il" + TextFormatting.BLUE + I18n.translateToLocal("vc.item.tt.airship.13") + TextFormatting.BLACK + "i" + TextFormatting.DARK_BLUE + ":" + TextFormatting.BLACK + "i"
-					+ TextFormatting.GRAY + "(" + this.getPrimaryLabelColor(mainTierEngineInfo) + "-" + df.format(EnumsVC.AirshipTierEngine.byId(mainTierEngineInfo).getFuelPerTick()) + TextFormatting.GRAY + ")" + TextFormatting.BLACK + "--ii" 
+					+ TextFormatting.GRAY + "(" + this.getPrimaryLabelColor(mainTierEngineInfo) + "-" + df.format(EnumsVC.MainTierEngine.byId(mainTierEngineInfo).getFuelPerTick()) + TextFormatting.GRAY + ")" + TextFormatting.BLACK + "--ii" 
 					+ TextFormatting.DARK_GREEN + "|"
 					+ TextFormatting.BLACK + "iiil" + TextFormatting.BLUE + I18n.translateToLocal("vc.item.tt.airship.12") + TextFormatting.BLACK + "i" + TextFormatting.DARK_BLUE + ":" + TextFormatting.BLACK + "i"
 					+ TextFormatting.GRAY + "(" + TextFormatting.RED + " \u221e " + TextFormatting.GRAY + ")" + TextFormatting.BLACK + "iiiiill" 
@@ -470,7 +464,7 @@ public class ItemAirship extends ItemAirshipBase {
 			//Airship Fuel and Altitude
 			tooltip.add(TextFormatting.DARK_GREEN + "|" 
 					+ TextFormatting.BLACK + "iiiil" + TextFormatting.BLACK + "-il" + TextFormatting.BLUE + I18n.translateToLocal("vc.item.tt.airship.13") + TextFormatting.BLACK + "i" + TextFormatting.DARK_BLUE + ":" + TextFormatting.BLACK + "i"
-					+ TextFormatting.GRAY + "(" + this.getPrimaryLabelColor(mainTierEngineInfo) + "-" + df.format(EnumsVC.AirshipTierEngine.byId(mainTierEngineInfo).getFuelPerTick()) + TextFormatting.GRAY + ")" + TextFormatting.BLACK + "--ii" 
+					+ TextFormatting.GRAY + "(" + this.getPrimaryLabelColor(mainTierEngineInfo) + "-" + df.format(EnumsVC.MainTierEngine.byId(mainTierEngineInfo).getFuelPerTick()) + TextFormatting.GRAY + ")" + TextFormatting.BLACK + "--ii" 
 					+ TextFormatting.DARK_GREEN + "|"
 					+ TextFormatting.BLACK + "iiil" + TextFormatting.BLUE + I18n.translateToLocal("vc.item.tt.airship.12") + TextFormatting.BLACK + "i" + TextFormatting.DARK_BLUE + ":" + TextFormatting.BLACK + "i" 
 					+ TextFormatting.GRAY + "(" + altMax + TextFormatting.GRAY + ")" + TextFormatting.BLACK + "-iiil" 

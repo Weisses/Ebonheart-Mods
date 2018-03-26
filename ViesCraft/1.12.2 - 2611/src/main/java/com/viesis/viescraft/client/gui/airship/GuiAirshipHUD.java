@@ -272,7 +272,7 @@ public class GuiAirshipHUD extends Gui {
 		else
 		{
 			//Makes Current Altitude color Red
-			if(this.airship.getPosition().getY() >= (int)EnumsVC.AirshipTierBalloon.byId(this.airship.getMainTierBalloon()).getMaxAltitude() - 5)
+			if(this.airship.getPosition().getY() >= (int)EnumsVC.MainTierBalloon.byId(this.airship.getMainTierBalloon()).getMaxAltitude() - 5)
 			{
 				GlStateManager.pushMatrix();
 				{
@@ -284,7 +284,7 @@ public class GuiAirshipHUD extends Gui {
 				GlStateManager.popMatrix();
 			}
 			//Makes Current Altitude color Yellow
-			else if(this.airship.getPosition().getY() >= (int)EnumsVC.AirshipTierBalloon.byId(this.airship.getMainTierBalloon()).getMaxAltitude() - 15)
+			else if(this.airship.getPosition().getY() >= (int)EnumsVC.MainTierBalloon.byId(this.airship.getMainTierBalloon()).getMaxAltitude() - 15)
 			{
 				GlStateManager.pushMatrix();
 				{
@@ -354,26 +354,26 @@ public class GuiAirshipHUD extends Gui {
 		else
 		{
 			//Makes Current Altitude color Red
-			if(this.airship.getPosition().getY() >= (int)EnumsVC.AirshipTierBalloon.byId(this.airship.getMainTierBalloon()).getMaxAltitude() - 5)
+			if(this.airship.getPosition().getY() >= (int)EnumsVC.MainTierBalloon.byId(this.airship.getMainTierBalloon()).getMaxAltitude() - 5)
 			{
 				GlStateManager.pushMatrix();
 				{
 					GlStateManager.translate(hudXIn + 108.5, hudYIn + 6, 0);
 					GlStateManager.scale(0.75, 0.75, 0.75);
 					
-					this.drawCenteredString(fontRenderer, Integer.toString(EnumsVC.AirshipTierBalloon.byId(this.airship.getMainTierBalloon()).getMaxAltitude()), 0, 0, 16711680);
+					this.drawCenteredString(fontRenderer, Integer.toString(EnumsVC.MainTierBalloon.byId(this.airship.getMainTierBalloon()).getMaxAltitude()), 0, 0, 16711680);
 				}
 				GlStateManager.popMatrix();
 			}
 			//Makes Current Altitude color Yellow
-			else if(this.airship.getPosition().getY() >= (int)EnumsVC.AirshipTierBalloon.byId(this.airship.getMainTierBalloon()).getMaxAltitude() - 15)
+			else if(this.airship.getPosition().getY() >= (int)EnumsVC.MainTierBalloon.byId(this.airship.getMainTierBalloon()).getMaxAltitude() - 15)
 			{
 				GlStateManager.pushMatrix();
 				{
 					GlStateManager.translate(hudXIn + 108.5, hudYIn + 6, 0);
 					GlStateManager.scale(0.75, 0.75, 0.75);
 					
-					this.drawCenteredString(fontRenderer, Integer.toString(EnumsVC.AirshipTierBalloon.byId(this.airship.getMainTierBalloon()).getMaxAltitude()), 0, 0, 16187136);
+					this.drawCenteredString(fontRenderer, Integer.toString(EnumsVC.MainTierBalloon.byId(this.airship.getMainTierBalloon()).getMaxAltitude()), 0, 0, 16187136);
 				}
 				GlStateManager.popMatrix();
 			}
@@ -385,7 +385,7 @@ public class GuiAirshipHUD extends Gui {
 					GlStateManager.translate(hudXIn + 108.5, hudYIn + 6, 0);
 					GlStateManager.scale(0.75, 0.75, 0.75);
 					
-					this.drawCenteredString(fontRenderer, Integer.toString(EnumsVC.AirshipTierBalloon.byId(this.airship.getMainTierBalloon()).getMaxAltitude()), 0, 0, 196352);
+					this.drawCenteredString(fontRenderer, Integer.toString(EnumsVC.MainTierBalloon.byId(this.airship.getMainTierBalloon()).getMaxAltitude()), 0, 0, 196352);
 				}
 				GlStateManager.popMatrix();
 			}

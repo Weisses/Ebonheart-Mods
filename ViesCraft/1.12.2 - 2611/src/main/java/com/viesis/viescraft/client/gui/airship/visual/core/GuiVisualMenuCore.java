@@ -22,7 +22,7 @@ import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenuMusic;
 import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenuStorageGreater;
 import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenuStorageLesser;
 import com.viesis.viescraft.network.server.airship.main.MessageGuiModuleMenu;
-import com.viesis.viescraft.network.server.airship.visual.MessageHelperGuiVisualMenuCore;
+import com.viesis.viescraft.network.server.airship.visual.MessageHelperGuiCustomizeMenuCore;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
@@ -69,13 +69,13 @@ public class GuiVisualMenuCore extends GuiContainer {
     	GuiVC.buttonM3 = new GuiButtonMenuVC(3, this.guiLeft - 35, this.guiTop + 7 + (16 * 2), 36, 14, "", 2);
     	GuiVC.buttonM4 = new GuiButtonMenuVC(4, this.guiLeft - 35, this.guiTop + 7 + (16 * 3), 36, 14, "", 3);
 		
-    	GuiVC.button505 = new GuiButtonGeneralVC(505, this.guiLeft + 125, this.guiTop + 177, 40, 14, References.localNameVC("vc.button.back"));
+    	GuiVC.button505 = new GuiButtonGeneralVC(505, this.guiLeft + 125, this.guiTop + 177, 40, 14, References.localNameVC("vc.button.back"), 0);
     	
-    	GuiVC.buttonT1 = new GuiButtonGeneralVC(11, this.guiLeft + 32, this.guiTop + startPlace + (19 * 0), 68, 14, References.localNameVC("vc.main.viescraft"));
-		GuiVC.buttonT2 = new GuiButtonGeneralVC(12, this.guiLeft + 32, this.guiTop + startPlace + (19 * 1), 68, 14, References.localNameVC("vc.main.viesdenburg"));
-		GuiVC.buttonT3 = new GuiButtonGeneralVC(13, this.guiLeft + 32, this.guiTop + startPlace + (19 * 2), 68, 14, References.localNameVC("vc.main.viesigible"));
-		GuiVC.buttonT4 = new GuiButtonGeneralVC(14, this.guiLeft + 32, this.guiTop + startPlace + (19 * 3), 68, 14, References.localNameVC("vc.main.viesepelin"));
-		GuiVC.buttonT5 = new GuiButtonGeneralVC(15, this.guiLeft + 32, this.guiTop + startPlace + (19 * 4), 68, 14, References.localNameVC("vc.main.viesakron"));
+    	GuiVC.buttonT1 = new GuiButtonGeneralVC(11, this.guiLeft + 32, this.guiTop + startPlace + (19 * 0), 68, 14, References.localNameVC("vc.main.viescraft"), 0);
+		GuiVC.buttonT2 = new GuiButtonGeneralVC(12, this.guiLeft + 32, this.guiTop + startPlace + (19 * 1), 68, 14, References.localNameVC("vc.main.viesdenburg"), 0);
+		GuiVC.buttonT3 = new GuiButtonGeneralVC(13, this.guiLeft + 32, this.guiTop + startPlace + (19 * 2), 68, 14, References.localNameVC("vc.main.viesigible"), 0);
+		GuiVC.buttonT4 = new GuiButtonGeneralVC(14, this.guiLeft + 32, this.guiTop + startPlace + (19 * 3), 68, 14, References.localNameVC("vc.main.viesepelin"), 0);
+		GuiVC.buttonT5 = new GuiButtonGeneralVC(15, this.guiLeft + 32, this.guiTop + startPlace + (19 * 4), 68, 14, References.localNameVC("vc.main.viesakron"), 0);
 		
     	this.buttonList.add(GuiVC.buttonM1);
 		this.buttonList.add(GuiVC.buttonM2);
@@ -170,27 +170,27 @@ public class GuiVisualMenuCore extends GuiContainer {
 		if (parButton.id == 11)
 	    {
 			this.metaCore = 0;
-			NetworkHandler.sendToServer(new MessageHelperGuiVisualMenuCore());
+			NetworkHandler.sendToServer(new MessageHelperGuiCustomizeMenuCore());
 	    }
 		if (parButton.id == 12)
 	    {
 			this.metaCore = 1;
-			NetworkHandler.sendToServer(new MessageHelperGuiVisualMenuCore());
+			NetworkHandler.sendToServer(new MessageHelperGuiCustomizeMenuCore());
 	    }
 		if (parButton.id == 13)
 	    {
 			this.metaCore = 2;
-			NetworkHandler.sendToServer(new MessageHelperGuiVisualMenuCore());
+			NetworkHandler.sendToServer(new MessageHelperGuiCustomizeMenuCore());
 	    }
 		if (parButton.id == 14)
 	    {
 			this.metaCore = 3;
-			NetworkHandler.sendToServer(new MessageHelperGuiVisualMenuCore());
+			NetworkHandler.sendToServer(new MessageHelperGuiCustomizeMenuCore());
 	    }
 		if (parButton.id == 15)
 	    {
 			this.metaCore = 4;
-			NetworkHandler.sendToServer(new MessageHelperGuiVisualMenuCore());
+			NetworkHandler.sendToServer(new MessageHelperGuiCustomizeMenuCore());
 	    }
 		
         this.buttonList.clear();

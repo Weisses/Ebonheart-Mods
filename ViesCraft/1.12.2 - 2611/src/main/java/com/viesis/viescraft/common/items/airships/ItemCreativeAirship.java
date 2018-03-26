@@ -60,10 +60,10 @@ public class ItemCreativeAirship extends ItemCreativeAirshipBase {
 						0,
 						0, 0, 0, 1000,
 						0, 0, 0,
-			    		0, false, false,
+			    		0, false,
 			    		255, 255, 255,
 			    		0, 0, 0,
-			    		0, false, false,
+			    		0, false,
 			    		200, 180, 140,
 			    		true, 3, 
 			    		true, 3, 
@@ -138,19 +138,19 @@ public class ItemCreativeAirship extends ItemCreativeAirshipBase {
 		//Core = 0 || Frame < 0
 		tooltip.add(TextFormatting.DARK_GREEN + "|" 
 				+ TextFormatting.BLACK + "-iiiiil" + TextFormatting.BLUE + I18n.translateToLocal("vc.item.tt.airship.4") + TextFormatting.BLACK + "i" + TextFormatting.DARK_BLUE + ":" + TextFormatting.BLACK + "i"
-				+ TextFormatting.GRAY + "(" + this.getPrimaryLabelColor(mainTierCoreInfo) + EnumsVC.AirshipTierCore.byId(mainTierCoreInfo).getLocalizedName() + TextFormatting.GRAY + ")" + TextFormatting.BLACK + "ii" 
+				+ TextFormatting.GRAY + "(" + this.getPrimaryLabelColor(mainTierCoreInfo) + EnumsVC.MainTierCore.byId(mainTierCoreInfo).getLocalizedName() + TextFormatting.GRAY + ")" + TextFormatting.BLACK + "ii" 
 				+ TextFormatting.DARK_GREEN + "|"
 				+ TextFormatting.BLACK + "--i" + TextFormatting.BLUE + I18n.translateToLocal("vc.item.tt.airship.14") + TextFormatting.BLACK + "i" + TextFormatting.DARK_BLUE + ":" + TextFormatting.BLACK + "i"
-				+ TextFormatting.GRAY + "(" + this.getPrimaryLabelColor(mainTierFrameInfo) + EnumsVC.AirshipTierFrame.byId(mainTierFrameInfo).getLocalizedName() + TextFormatting.GRAY + ")"+ TextFormatting.BLACK + "l" 
+				+ TextFormatting.GRAY + "(" + this.getPrimaryLabelColor(mainTierFrameInfo) + EnumsVC.MainTierFrame.byId(mainTierFrameInfo).getLocalizedName() + TextFormatting.GRAY + ")"+ TextFormatting.BLACK + "l" 
 				+ TextFormatting.DARK_GREEN + "|");
 		
 		//Engine < 0 || Balloon < 0
 		tooltip.add(TextFormatting.DARK_GREEN + "|" 
 				+ TextFormatting.BLACK + "iiiil" + TextFormatting.BLUE + I18n.translateToLocal("vc.item.tt.airship.5") + TextFormatting.BLACK + "i" + TextFormatting.DARK_BLUE + ":" + TextFormatting.BLACK + "i"
-				+ TextFormatting.GRAY + "(" + this.getPrimaryLabelColor(mainTierEngineInfo) + EnumsVC.AirshipTierEngine.byId(mainTierEngineInfo).getLocalizedName() + TextFormatting.GRAY + ")" + TextFormatting.BLACK + "ii" 
+				+ TextFormatting.GRAY + "(" + this.getPrimaryLabelColor(mainTierEngineInfo) + EnumsVC.MainTierEngine.byId(mainTierEngineInfo).getLocalizedName() + TextFormatting.GRAY + ")" + TextFormatting.BLACK + "ii" 
 				+ TextFormatting.DARK_GREEN + "|"
 				+ TextFormatting.BLACK + "iiii" + TextFormatting.BLUE + I18n.translateToLocal("vc.item.tt.airship.6") + TextFormatting.BLACK + "i" + TextFormatting.DARK_BLUE + ":" + TextFormatting.BLACK + "i"
-				+ TextFormatting.GRAY + "(" + this.getPrimaryLabelColor(mainTierBalloonInfo) + EnumsVC.AirshipTierBalloon.byId(mainTierBalloonInfo).getLocalizedName() + TextFormatting.GRAY + ")" + TextFormatting.BLACK + "l" 
+				+ TextFormatting.GRAY + "(" + this.getPrimaryLabelColor(mainTierBalloonInfo) + EnumsVC.MainTierBalloon.byId(mainTierBalloonInfo).getLocalizedName() + TextFormatting.GRAY + ")" + TextFormatting.BLACK + "l" 
 				+ TextFormatting.DARK_GREEN + "|");
 		
 		tooltip.add(TextFormatting.DARK_GREEN + "|"
@@ -163,14 +163,14 @@ public class ItemCreativeAirship extends ItemCreativeAirshipBase {
 				+ TextFormatting.BLACK + "ii"
 				+ TextFormatting.DARK_GREEN + "|");
 		
-		float speedModCal = EnumsVC.AirshipTierFrame.byId(mainTierFrameInfo).getSpeedModifier() * 100;
+		float speedModCal = EnumsVC.MainTierFrame.byId(mainTierFrameInfo).getSpeedModifier() * 100;
 		String speedMod = df.format(speedModCal);
 		
 		String altMax = "";
 		
 		if(mainTierBalloonInfo == 0)
 		{
-			altMax = TextFormatting.BLACK + "-" + this.getPrimaryLabelColor(mainTierBalloonInfo) + df.format(EnumsVC.AirshipTierBalloon.byId(mainTierBalloonInfo).getMaxAltitude());
+			altMax = TextFormatting.BLACK + "-" + this.getPrimaryLabelColor(mainTierBalloonInfo) + df.format(EnumsVC.MainTierBalloon.byId(mainTierBalloonInfo).getMaxAltitude());
 		}
 		else if(mainTierBalloonInfo >= 5)
 		{
@@ -178,7 +178,7 @@ public class ItemCreativeAirship extends ItemCreativeAirshipBase {
 		}
 		else
 		{
-			altMax = this.getPrimaryLabelColor(mainTierBalloonInfo) + df.format(EnumsVC.AirshipTierBalloon.byId(mainTierBalloonInfo).getMaxAltitude());
+			altMax = this.getPrimaryLabelColor(mainTierBalloonInfo) + df.format(EnumsVC.MainTierBalloon.byId(mainTierBalloonInfo).getMaxAltitude());
 		}
 		
 		//----- || Airship Speed
@@ -196,7 +196,7 @@ public class ItemCreativeAirship extends ItemCreativeAirshipBase {
 			//Airship Fuel and Altitude
 			tooltip.add(TextFormatting.DARK_GREEN + "|" 
 					+ TextFormatting.BLACK + "iiiil" + TextFormatting.BLACK + "-il" + TextFormatting.BLUE + I18n.translateToLocal("vc.item.tt.airship.13") + TextFormatting.BLACK + "i" + TextFormatting.DARK_BLUE + ":" + TextFormatting.BLACK + "i"
-					+ TextFormatting.GRAY + "(" + this.getPrimaryLabelColor(mainTierEngineInfo) + "-" + df.format(EnumsVC.AirshipTierEngine.byId(mainTierEngineInfo).getFuelPerTick()) + TextFormatting.GRAY + ")" + TextFormatting.BLACK + "--ii" 
+					+ TextFormatting.GRAY + "(" + this.getPrimaryLabelColor(mainTierEngineInfo) + "-" + df.format(EnumsVC.MainTierEngine.byId(mainTierEngineInfo).getFuelPerTick()) + TextFormatting.GRAY + ")" + TextFormatting.BLACK + "--ii" 
 					+ TextFormatting.DARK_GREEN + "|"
 					+ TextFormatting.BLACK + "iiil" + TextFormatting.BLUE + I18n.translateToLocal("vc.item.tt.airship.12") + TextFormatting.BLACK + "i" + TextFormatting.DARK_BLUE + ":" + TextFormatting.BLACK + "i"
 					+ TextFormatting.GRAY + "(" + TextFormatting.RED + " \u221e " + TextFormatting.GRAY + ")" + TextFormatting.BLACK + "iiiiill" 
@@ -207,7 +207,7 @@ public class ItemCreativeAirship extends ItemCreativeAirshipBase {
 			//Airship Fuel and Altitude
 			tooltip.add(TextFormatting.DARK_GREEN + "|" 
 					+ TextFormatting.BLACK + "iiiil" + TextFormatting.BLACK + "-il" + TextFormatting.BLUE + I18n.translateToLocal("vc.item.tt.airship.13") + TextFormatting.BLACK + "i" + TextFormatting.DARK_BLUE + ":" + TextFormatting.BLACK + "i"
-					+ TextFormatting.GRAY + "(" + this.getPrimaryLabelColor(mainTierEngineInfo) + "-" + df.format(EnumsVC.AirshipTierEngine.byId(mainTierEngineInfo).getFuelPerTick()) + TextFormatting.GRAY + ")" + TextFormatting.BLACK + "--ii" 
+					+ TextFormatting.GRAY + "(" + this.getPrimaryLabelColor(mainTierEngineInfo) + "-" + df.format(EnumsVC.MainTierEngine.byId(mainTierEngineInfo).getFuelPerTick()) + TextFormatting.GRAY + ")" + TextFormatting.BLACK + "--ii" 
 					+ TextFormatting.DARK_GREEN + "|"
 					+ TextFormatting.BLACK + "iiil" + TextFormatting.BLUE + I18n.translateToLocal("vc.item.tt.airship.12") + TextFormatting.BLACK + "i" + TextFormatting.DARK_BLUE + ":" + TextFormatting.BLACK + "i" 
 					+ TextFormatting.GRAY + "(" + altMax + TextFormatting.GRAY + ")" + TextFormatting.BLACK + "-iiil" 

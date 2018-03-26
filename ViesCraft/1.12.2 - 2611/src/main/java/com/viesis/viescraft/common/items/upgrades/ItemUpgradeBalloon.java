@@ -45,7 +45,7 @@ public class ItemUpgradeBalloon extends Item {
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
     {
 		DecimalFormat df = new DecimalFormat("###.#");
-		float speedModCal = EnumsVC.AirshipTierBalloon.byId(this.getMetadata(stack)).getMaxAltitude();
+		float speedModCal = EnumsVC.MainTierBalloon.byId(this.getMetadata(stack)).getMaxAltitude();
 		String speedMod = df.format(speedModCal);
 		
 		GameSettings gameSettingsIn = Minecraft.getMinecraft().gameSettings;
@@ -76,7 +76,7 @@ public class ItemUpgradeBalloon extends Item {
 				//Airship Speed
 				tooltip.add(TextFormatting.DARK_GREEN + "||" + TextFormatting.BLACK + "--------ii" + TextFormatting.BLUE + I18n.format("vc.item.tt.airship.12", new Object[0]) + TextFormatting.DARK_BLUE + " : " 
 						+ TextFormatting.GRAY + "(" + stringColorMain
-						+ df.format(EnumsVC.AirshipTierBalloon.byId(this.getMetadata(stack)).getMaxAltitude())
+						+ df.format(EnumsVC.MainTierBalloon.byId(this.getMetadata(stack)).getMaxAltitude())
 						+ TextFormatting.GRAY + ")"
 						+ TextFormatting.BLACK + "---------il" + TextFormatting.DARK_GREEN + "||");
 				
@@ -113,7 +113,7 @@ public class ItemUpgradeBalloon extends Item {
 				//Airship Speed
 				tooltip.add(TextFormatting.DARK_GREEN + "||" + TextFormatting.BLACK + "--------ii" + TextFormatting.BLUE + I18n.format("vc.item.tt.airship.12", new Object[0]) + TextFormatting.DARK_BLUE + " : " 
 						+ TextFormatting.GRAY + "(" + stringColorMain 
-						+ df.format(EnumsVC.AirshipTierBalloon.byId(this.getMetadata(stack)).getMaxAltitude())
+						+ df.format(EnumsVC.MainTierBalloon.byId(this.getMetadata(stack)).getMaxAltitude())
 						+ TextFormatting.GRAY + ")"
 						+ TextFormatting.BLACK + "--------iiiil" + TextFormatting.DARK_GREEN + "||");
 				
@@ -158,7 +158,7 @@ public class ItemUpgradeBalloon extends Item {
 				//Airship Speed
 				tooltip.add(TextFormatting.DARK_GREEN + "||" + TextFormatting.BLACK + "--------ii" + TextFormatting.BLUE + I18n.format("vc.item.tt.airship.12", new Object[0]) + TextFormatting.DARK_BLUE + " : " 
 						+ TextFormatting.GRAY + "(" + stringColorMain
-						+ df.format(EnumsVC.AirshipTierBalloon.byId(this.getMetadata(stack)).getMaxAltitude())
+						+ df.format(EnumsVC.MainTierBalloon.byId(this.getMetadata(stack)).getMaxAltitude())
 						+ TextFormatting.GRAY + ")"
 						+ TextFormatting.BLACK + "---------il" + TextFormatting.DARK_GREEN + "||");
 				
@@ -240,31 +240,31 @@ public class ItemUpgradeBalloon extends Item {
 				return colorName = TextFormatting.WHITE 
 				+ "Balloon Upgrade "
 				+ TextFormatting.GRAY + "("
-				+ TextFormatting.WHITE + EnumsVC.AirshipTierBalloon.byId(this.getMetadata(stack)).getLocalizedName()
+				+ TextFormatting.WHITE + EnumsVC.MainTierBalloon.byId(this.getMetadata(stack)).getLocalizedName()
 				+ TextFormatting.GRAY + ")";
 			case 2:
 				return colorName = TextFormatting.YELLOW 
 				+ "Balloon Upgrade "
 				+ TextFormatting.GRAY + "("
-				+ TextFormatting.YELLOW + EnumsVC.AirshipTierBalloon.byId(this.getMetadata(stack)).getLocalizedName()
+				+ TextFormatting.YELLOW + EnumsVC.MainTierBalloon.byId(this.getMetadata(stack)).getLocalizedName()
 				+ TextFormatting.GRAY + ")";
 			case 3:
 				return colorName = TextFormatting.AQUA 
 				+ "Balloon Upgrade "
 				+ TextFormatting.GRAY + "("
-				+ TextFormatting.AQUA + EnumsVC.AirshipTierBalloon.byId(this.getMetadata(stack)).getLocalizedName()
+				+ TextFormatting.AQUA + EnumsVC.MainTierBalloon.byId(this.getMetadata(stack)).getLocalizedName()
 				+ TextFormatting.GRAY + ")";
 			case 4:
 				return colorName = TextFormatting.LIGHT_PURPLE 
 				+ "Balloon Upgrade "
 				+ TextFormatting.GRAY + "("
-				+ TextFormatting.LIGHT_PURPLE + EnumsVC.AirshipTierBalloon.byId(this.getMetadata(stack)).getLocalizedName()
+				+ TextFormatting.LIGHT_PURPLE + EnumsVC.MainTierBalloon.byId(this.getMetadata(stack)).getLocalizedName()
 				+ TextFormatting.GRAY + ")";
 			case 5:
 				return colorName = TextFormatting.RED 
 				+ "Balloon Upgrade "
 				+ TextFormatting.GRAY + "("
-				+ TextFormatting.RED + EnumsVC.AirshipTierBalloon.byId(this.getMetadata(stack)).getLocalizedName()
+				+ TextFormatting.RED + EnumsVC.MainTierBalloon.byId(this.getMetadata(stack)).getLocalizedName()
 				+ TextFormatting.GRAY + ")";
 		}
 		
@@ -277,7 +277,7 @@ public class ItemUpgradeBalloon extends Item {
 	{
 		if (isInCreativeTab(tab)) 
 		{
-			final List<ItemStack> items = Stream.of(EnumsVC.AirshipTierBalloon.values())
+			final List<ItemStack> items = Stream.of(EnumsVC.MainTierBalloon.values())
 					.map(enumType -> new ItemStack(this, 1, enumType.getMetadata()))
 					.collect(Collectors.toList());
 

@@ -35,7 +35,7 @@ public class ItemFrame extends Item {
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
     {
 		DecimalFormat df = new DecimalFormat("###.#");
-		float speedModCal = EnumsVC.AirshipTierFrame.byId(this.getMetadata(stack)).getSpeedModifier() * 100;
+		float speedModCal = EnumsVC.MainTierFrame.byId(this.getMetadata(stack)).getSpeedModifier() * 100;
 		String speedMod = df.format(speedModCal);
 		
 		TextFormatting stringColorMain = TextFormatting.WHITE;

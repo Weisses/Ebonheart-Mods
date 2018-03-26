@@ -34,23 +34,21 @@ public class References {
 	public static final String CORE_MODEL_VISUAL_ENGINE_TAG = "CoreModelVisualEngine";
 	public static final String CORE_MODEL_VISUAL_BALLOON_TAG = "CoreModelVisualBalloon";
 	
-	public static final String FRAME_SKIN_VISUAL_TAG = "FrameSkinVisual";
-	public static final String FRAME_SKIN_VISUAL_TRANSPARENT_TAG = "FrameSkinVisualTransparent";
-	public static final String FRAME_SKIN_VISUAL_COLOR_TAG = "FrameSkinVisualColor";
-	public static final String FRAME_SKIN_VISUAL_COLOR_RED_TAG = "FrameSkinVisualColorRed";
-	public static final String FRAME_SKIN_VISUAL_COLOR_GREEN_TAG = "FrameSkinVisualColorGreen";
-	public static final String FRAME_SKIN_VISUAL_COLOR_BLUE_TAG = "FrameSkinVisualColorBlue";
+	public static final String FRAME_SKIN_TEXTURE_TAG = "FrameSkinTexture";
+	public static final String FRAME_SKIN_TRANSPARENT_TAG = "FrameSkinTransparent";
+	public static final String FRAME_SKIN_COLOR_RED_TAG = "FrameSkinColorRed";
+	public static final String FRAME_SKIN_COLOR_GREEN_TAG = "FrameSkinColorGreen";
+	public static final String FRAME_SKIN_COLOR_BLUE_TAG = "FrameSkinColorBlue";
 	
 	public static final String ENGINE_PARTICLE_VISUAL_TAG = "EngineParticleVisual";
 	public static final String ENGINE_DISPLAY_TYPE_VISUAL_TAG = "EngineDisplayTypeVisual";
 	public static final String ENGINE_DISPLAY_ID_VISUAL_TAG = "EngineDisplayIDVisual";
 	
-	public static final String BALLOON_PATTERN_VISUAL_TAG = "BalloonPatternVisual";
-	public static final String BALLOON_PATTERN_VISUAL_TRANSPARENT_TAG = "BalloonPatternVisualTransparent";
-	public static final String BALLOON_PATTERN_VISUAL_COLOR_TAG = "BalloonPatternVisualColor";
-	public static final String BALLOON_PATTERN_VISUAL_COLOR_RED_TAG = "BalloonPatternVisualColorRed";
-	public static final String BALLOON_PATTERN_VISUAL_COLOR_GREEN_TAG = "BalloonPatternVisualColorGreen";
-	public static final String BALLOON_PATTERN_VISUAL_COLOR_BLUE_TAG = "BalloonPatternVisualColorBlue";
+	public static final String BALLOON_PATTERN_TEXTURE_TAG = "BalloonPatternTexture";
+	public static final String BALLOON_PATTERN_TRANSPARENT_TAG = "BalloonPatternTransparent";
+	public static final String BALLOON_PATTERN_COLOR_RED_TAG = "BalloonPatternColorRed";
+	public static final String BALLOON_PATTERN_COLOR_GREEN_TAG = "BalloonPatternColorGreen";
+	public static final String BALLOON_PATTERN_COLOR_BLUE_TAG = "BalloonPatternColorBlue";
 	
 	public static final String STORED_FUEL_TAG = "StoredFuel";
 	public static final String STORED_FUEL_TOTAL_TAG = "StoredFuelTotal";
