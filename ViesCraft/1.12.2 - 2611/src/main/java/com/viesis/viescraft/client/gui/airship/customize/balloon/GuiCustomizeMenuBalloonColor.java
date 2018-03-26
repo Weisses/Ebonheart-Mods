@@ -88,16 +88,16 @@ public class GuiCustomizeMenuBalloonColor extends GuiContainerVC {
     	
         //=============================================
         
-    	GuiVC.buttonRed = new GuiButtonGeneralVC( 11, this.guiLeft + 13, this.guiTop + 60, 37, 14, References.localNameVC("vc.button.save"), 0);
+    	GuiVC.buttonRed = new GuiButtonGeneralVC( 11, this.guiLeft + 13, this.guiTop + 60, 37, 14, References.localNameVC("vc.button.save"), 3);
 		this.buttonList.add(GuiVC.buttonRed);
 		
-		GuiVC.buttonGreen = new GuiButtonGeneralVC( 12, this.guiLeft + 13, this.guiTop + 101, 37, 14, References.localNameVC("vc.button.save"), 0);
+		GuiVC.buttonGreen = new GuiButtonGeneralVC( 12, this.guiLeft + 13, this.guiTop + 101, 37, 14, References.localNameVC("vc.button.save"), 3);
 		this.buttonList.add(GuiVC.buttonGreen);
 		
-		GuiVC.buttonBlue = new GuiButtonGeneralVC( 13, this.guiLeft + 13, this.guiTop + 142, 37, 14, References.localNameVC("vc.button.save"), 0);
+		GuiVC.buttonBlue = new GuiButtonGeneralVC( 13, this.guiLeft + 13, this.guiTop + 142, 37, 14, References.localNameVC("vc.button.save"), 3);
 		this.buttonList.add(GuiVC.buttonBlue);
 		
-		GuiVC.buttonRemoveColor = new GuiButtonGeneralVC( 14, this.guiLeft + 13, this.guiTop + 177, 77, 14, References.localNameVC("vc.button.removecolor"), 0);
+		GuiVC.buttonRemoveColor = new GuiButtonGeneralVC( 14, this.guiLeft + 13, this.guiTop + 177, 77, 14, References.localNameVC("vc.button.defaultcolor"), 1);
 		this.buttonList.add(GuiVC.buttonRemoveColor);
 		
         //=============================================
@@ -309,9 +309,9 @@ public class GuiCustomizeMenuBalloonColor extends GuiContainerVC {
 		
 		if (parButton.id == 14)
 	    {
-			this.textRedNumber = 0;
-			this.textGreenNumber = 0;
-			this.textBlueNumber = 0;
+			this.textRedNumber = 200;
+			this.textGreenNumber = 180;
+			this.textBlueNumber = 140;
 			
 			NetworkHandler.sendToServer(new MessageHelperGuiCustomizeMenuBalloonColor());
 	    }

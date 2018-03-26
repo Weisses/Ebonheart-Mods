@@ -93,7 +93,7 @@ public final class InitItemsVCRender extends ItemsVC {
 		
 		//=====================================================================
 		
-		for (EnumsVC.DisplaySymbol meta : EnumsVC.DisplaySymbol.values()) 
+		for (EnumsVC.MainDisplaySymbol meta : EnumsVC.MainDisplaySymbol.values()) 
 		{
 			registerRenderDisplaySymbol(ITEM_DISPLAY_SYMBOL, meta.getMetadata());
 		}
@@ -167,7 +167,7 @@ public final class InitItemsVCRender extends ItemsVC {
 	
 	private void registerRenderDisplaySymbol(Item item, int meta)
 	{
-		String itemName = item.getRegistryName().toString() + "_" + EnumsVC.DisplaySymbol.byId(meta).getRegistryName().toString().toLowerCase().replaceAll("\\s+","");
+		String itemName = item.getRegistryName().toString() + "_" + EnumsVC.MainDisplaySymbol.byId(meta).getRegistryName().toString().toLowerCase().replaceAll("\\s+","");
 		itemsRegistered.add(item);
 		ModelLoader.setCustomModelResourceLocation(item, meta, new ModelResourceLocation(itemName, "inventory"));
 	}

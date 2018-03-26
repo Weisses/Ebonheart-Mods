@@ -931,7 +931,7 @@ public class EnumsVC {
     /**
 	 * Display Symbol enum - Represents various Airship Display Symbol types.
 	 */
-    public static enum DisplaySymbol
+    public static enum MainDisplaySymbol
     {
     	//STRING(meta, registry name, localized name, explosion strength)
         NONE(0, "none", References.localNameVC("vc.enum.displaysymbol.0")),
@@ -984,7 +984,7 @@ public class EnumsVC {
         private final String registryName;
         private final String localizedName;
         
-        private DisplaySymbol(int metadataIn, String registryNameIn, String localizedNameIn)
+        private MainDisplaySymbol(int metadataIn, String registryNameIn, String localizedNameIn)
         {
         	this.metadata = metadataIn;
             this.registryName = registryNameIn;
@@ -1009,7 +1009,7 @@ public class EnumsVC {
         /**
          * Get type by it's enum ordinal
          */
-        public static EnumsVC.DisplaySymbol byId(int id)
+        public static EnumsVC.MainDisplaySymbol byId(int id)
         {
             if (id < 0 || id >= values().length)
             {
@@ -1019,7 +1019,7 @@ public class EnumsVC {
             return values()[id];
         }
         
-        public static EnumsVC.DisplaySymbol getTypeFromString(String nameIn)
+        public static EnumsVC.MainDisplaySymbol getTypeFromString(String nameIn)
         {
             for (int i = 0; i < values().length; ++i)
             {

@@ -7,7 +7,6 @@ import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.client.gui.GuiButtonGeneralVC;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipCore;
 
-import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.inventory.IInventory;
 
 public class GuiCustomizeMenuFrameTier1Pg1 extends GuiCustomizeMenuFrameTierVC {
@@ -65,14 +64,5 @@ public class GuiCustomizeMenuFrameTier1Pg1 extends GuiCustomizeMenuFrameTierVC {
 		this.buttonList.add(GuiVC.buttonA10);
 		this.buttonList.add(GuiVC.buttonA11);
 		this.buttonList.add(GuiVC.buttonA12);
-    }
-	
-	@Override
-	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
-	{
-		super.drawGuiContainerForegroundLayer(mouseX, mouseY);
-		
-		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-		
     }
 }

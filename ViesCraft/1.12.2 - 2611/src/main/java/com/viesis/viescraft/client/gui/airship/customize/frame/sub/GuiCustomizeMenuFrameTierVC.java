@@ -17,6 +17,7 @@ import com.viesis.viescraft.common.entity.airships.EntityAirshipCore;
 import com.viesis.viescraft.common.entity.airships.containers.all.ContainerCustomizeMenu;
 import com.viesis.viescraft.network.NetworkHandler;
 import com.viesis.viescraft.network.server.airship.customize.frame.MessageGuiCustomizeMenuFrameMain;
+import com.viesis.viescraft.network.server.airship.customize.frame.sub.MessageGuiCustomizeMenuFrameTier1Pg1;
 import com.viesis.viescraft.network.server.airship.customize.frame.sub.MessageGuiCustomizeMenuFrameTier1Pg2;
 import com.viesis.viescraft.network.server.airship.customize.frame.sub.MessageHelperGuiCustomizeMenuFrameTier;
 
@@ -26,13 +27,10 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.entity.Entity;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraftforge.items.ItemStackHandler;
 
 public class GuiCustomizeMenuFrameTierVC extends GuiContainerVC {
 	
@@ -65,6 +63,10 @@ public class GuiCustomizeMenuFrameTierVC extends GuiContainerVC {
 		if (parButton.id == 503)
 	    {
 			NetworkHandler.sendToServer(new MessageGuiCustomizeMenuFrameTier1Pg2());
+	    }
+		if (parButton.id == 504)
+	    {
+			NetworkHandler.sendToServer(new MessageGuiCustomizeMenuFrameTier1Pg1());
 	    }
 		if (parButton.id == 505)
 	    {

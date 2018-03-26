@@ -31,7 +31,7 @@ public class ItemDisplaySymbol extends Item {
 	@Override
 	public String getItemStackDisplayName(ItemStack stack)
     {
-		return ("Symbol - " + EnumsVC.DisplaySymbol.byId(this.getMetadata(stack)).getLocalizedName());
+		return ("Symbol - " + EnumsVC.MainDisplaySymbol.byId(this.getMetadata(stack)).getLocalizedName());
     }
 	
 	@SideOnly(Side.CLIENT)
@@ -40,7 +40,7 @@ public class ItemDisplaySymbol extends Item {
 	{
 		if (isInCreativeTab(tab)) 
 		{
-			final List<ItemStack> items = Stream.of(EnumsVC.DisplaySymbol.values())
+			final List<ItemStack> items = Stream.of(EnumsVC.MainDisplaySymbol.values())
 					.map(enumType -> new ItemStack(this, 1, enumType.getMetadata()))
 					.collect(Collectors.toList());
 

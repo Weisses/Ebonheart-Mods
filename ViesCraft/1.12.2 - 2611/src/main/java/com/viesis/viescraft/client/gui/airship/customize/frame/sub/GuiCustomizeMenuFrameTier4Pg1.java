@@ -7,7 +7,6 @@ import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.client.gui.GuiButtonGeneralVC;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipCore;
 
-import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.inventory.IInventory;
 
 public class GuiCustomizeMenuFrameTier4Pg1 extends GuiCustomizeMenuFrameTierVC {
@@ -28,8 +27,9 @@ public class GuiCustomizeMenuFrameTier4Pg1 extends GuiCustomizeMenuFrameTierVC {
     	buttonList.clear();
     	Keyboard.enableRepeatEvents(true);
     	
-		GuiVC.button502 = new GuiButtonGeneralVC(502, this.guiLeft + 110, this.guiTop + 143, 48, 14, References.localNameVC("vc.button.reset"), 0);
+		GuiVC.button502 = new GuiButtonGeneralVC(502, this.guiLeft + 110, this.guiTop + 143, 48, 14, References.localNameVC("vc.button.default"), 1);
 		GuiVC.button505 = new GuiButtonGeneralVC(505, this.guiLeft + 125, this.guiTop + 177, 40, 14, References.localNameVC("vc.button.back"), 2);
+		GuiVC.button501 = new GuiButtonGeneralVC(501, this.guiLeft + 110, this.guiTop + 125, 48, 14, References.localNameVC("vc.button.apply"), 1);
     	
     	GuiVC.buttonA43 = new GuiButtonGeneralVC(43, this.guiLeft + startPlaceLeft, this.guiTop + startPlaceTop + (14 * 0), 76, 14, References.localNameVC("vc.enum.visualframe.43"), 0);
 		GuiVC.buttonA44 = new GuiButtonGeneralVC(44, this.guiLeft + startPlaceLeft, this.guiTop + startPlaceTop + (14 * 1), 76, 14, References.localNameVC("vc.enum.visualframe.44"), 0);
@@ -47,6 +47,7 @@ public class GuiCustomizeMenuFrameTier4Pg1 extends GuiCustomizeMenuFrameTierVC {
 		
 		this.buttonList.add(GuiVC.button502);
 		this.buttonList.add(GuiVC.button505);
+		this.buttonList.add(GuiVC.button501);
 		
 		this.buttonList.add(GuiVC.buttonA43);
 		this.buttonList.add(GuiVC.buttonA44);
@@ -61,15 +62,5 @@ public class GuiCustomizeMenuFrameTier4Pg1 extends GuiCustomizeMenuFrameTierVC {
 		this.buttonList.add(GuiVC.buttonA52);
 		this.buttonList.add(GuiVC.buttonA53);
 		this.buttonList.add(GuiVC.buttonA54);
-    }
-	
-	@Override
-	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
-	{
-		super.drawGuiContainerForegroundLayer(mouseX, mouseY);
-		
-		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-		
-		this.fontRenderer.drawString(References.localNameVC("vc.enum.tier.4"), 120, 26, 16777215);
     }
 }
