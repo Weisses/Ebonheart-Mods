@@ -35,7 +35,9 @@ public class MessageHelperGuiCustomizeMenuFrameTier extends MessageBase<MessageH
 	public void handleServerSide(MessageHelperGuiCustomizeMenuFrameTier message, EntityPlayer player) 
 	{
 		EntityAirshipBaseVC airship = (EntityAirshipBaseVC) player.getRidingEntity();
-		if(airship.getStoredRedstone() >= CostsVC.FRAME_SKIN_TEXTURE_COST)
+		if(airship.getStoredRedstone() >= CostsVC.FRAME_SKIN_TEXTURE_COST
+		&& message.metaFrame != 0
+		&& message.metaFrame != airship.frameSkinTexture)
 		{
 			airship.frameSkinTexture = message.metaFrame;
 			airship.storedRedstone = airship.storedRedstone - CostsVC.FRAME_SKIN_TEXTURE_COST;

@@ -33,8 +33,8 @@ public class MessageGuiCustomizeMenuBalloonColorUndo extends MessageBase<Message
 	{
 		EntityAirshipBaseVC airship = (EntityAirshipBaseVC) player.getRidingEntity();
 		
-		airship.frameSkinColorRed = 200;
-		airship.frameSkinColorGreen = 180;
-		airship.frameSkinColorBlue = 140;
+		airship.balloonPatternColorRed = 200;
+		airship.balloonPatternColorGreen = 180;
+		airship.balloonPatternColorBlue = 140;
 	}
 }

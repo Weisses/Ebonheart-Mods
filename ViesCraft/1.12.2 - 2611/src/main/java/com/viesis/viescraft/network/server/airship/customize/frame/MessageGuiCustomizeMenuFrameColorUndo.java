@@ -33,8 +33,8 @@ public class MessageGuiCustomizeMenuFrameColorUndo extends MessageBase<MessageGu
 	{
 		EntityAirshipBaseVC airship = (EntityAirshipBaseVC) player.getRidingEntity();
 		
-		airship.frameSkinColorRed = 200;
-		airship.frameSkinColorGreen = 180;
-		airship.frameSkinColorBlue = 140;
+		airship.frameSkinColorRed = 255;
+		airship.frameSkinColorGreen = 255;
+		airship.frameSkinColorBlue = 255;
 	}
 }

@@ -409,27 +409,27 @@ public class GuiHandler implements IGuiHandler {
 		}
 		if (ID == GUI_APPEARANCE_MENU_BALLOON_TIER1_PG1)
 		{
-			return new GuiCustomizeMenuBalloonTier1Pg1(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
+			return new GuiCustomizeMenuBalloonTier1Pg1(player.inventory, (EntityAirshipCore)player.getRidingEntity());
 		}
 		if (ID == GUI_APPEARANCE_MENU_BALLOON_TIER1_PG2)
 		{
-			return new GuiCustomizeMenuBalloonTier1Pg2(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
+			return new GuiCustomizeMenuBalloonTier1Pg2(player.inventory, (EntityAirshipCore)player.getRidingEntity());
 		}
 		if (ID == GUI_APPEARANCE_MENU_BALLOON_TIER2_PG1)
 		{
-			return new GuiCustomizeMenuBalloonTier2Pg1(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
+			return new GuiCustomizeMenuBalloonTier2Pg1(player.inventory, (EntityAirshipCore)player.getRidingEntity());
 		}
 		if (ID == GUI_APPEARANCE_MENU_BALLOON_TIER3_PG1)
 		{
-			return new GuiCustomizeMenuBalloonTier3Pg1(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
+			return new GuiCustomizeMenuBalloonTier3Pg1(player.inventory, (EntityAirshipCore)player.getRidingEntity());
 		}
 		if (ID == GUI_APPEARANCE_MENU_BALLOON_TIER4_PG1)
 		{
-			return new GuiCustomizeMenuBalloonTier4Pg1(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
+			return new GuiCustomizeMenuBalloonTier4Pg1(player.inventory, (EntityAirshipCore)player.getRidingEntity());
 		}
 		if (ID == GUI_APPEARANCE_MENU_BALLOON_TIER5_PG1)
 		{
-			return new GuiCustomizeMenuBalloonTier5Pg1(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
+			return new GuiCustomizeMenuBalloonTier5Pg1(player.inventory, (EntityAirshipCore)player.getRidingEntity());
 		}
 		
 		
