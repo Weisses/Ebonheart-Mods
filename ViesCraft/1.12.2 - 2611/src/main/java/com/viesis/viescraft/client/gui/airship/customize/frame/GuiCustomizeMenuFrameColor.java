@@ -20,6 +20,7 @@ import com.viesis.viescraft.network.server.airship.MessageGuiUpgradeMenu;
 import com.viesis.viescraft.network.server.airship.customize.MessageGuiCustomizeMenu;
 import com.viesis.viescraft.network.server.airship.customize.frame.MessageGuiCustomizeMenuFrameMain;
 import com.viesis.viescraft.network.server.airship.customize.frame.MessageHelperGuiCustomizeMenuFrameColor;
+import com.viesis.viescraft.network.server.airship.customize.frame.MessageHelperGuiCustomizeMenuFrameColorDefault;
 import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenu;
 import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenuMusic;
 import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenuStorageGreater;
@@ -36,6 +37,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.TextFormatting;
 
 public class GuiCustomizeMenuFrameColor extends GuiContainerVC {
 	
@@ -57,6 +59,10 @@ public class GuiCustomizeMenuFrameColor extends GuiContainerVC {
 		this.airship = airshipIn;
 		this.xSize = 176;
 		this.ySize = 202;
+		
+		this.textRedNumber = this.airship.frameSkinColorRed;
+		this.textGreenNumber = this.airship.frameSkinColorGreen;
+		this.textBlueNumber = this.airship.frameSkinColorBlue;
 	}
 	
 	/**
@@ -71,12 +77,12 @@ public class GuiCustomizeMenuFrameColor extends GuiContainerVC {
     	Keyboard.enableRepeatEvents(true);
     	int startPlace = 49;
     	
-        this.textRed = new GuiTextField(11, this.fontRenderer, this.guiLeft + 63, this.guiTop + 57, 28, 20);
+        this.textRed = new GuiTextField(11, this.fontRenderer, this.guiLeft + 63, this.guiTop + 57-6, 28, 20);
         textRed.setMaxStringLength(3);
         textRed.setText(String.valueOf(this.textRedNumber));
     	this.textRed.setFocused(false);
     	
-    	this.textGreen = new GuiTextField(12, this.fontRenderer, this.guiLeft + 63, this.guiTop + 98, 28, 20);
+    	this.textGreen = new GuiTextField(12, this.fontRenderer, this.guiLeft + 63, this.guiTop + 98-3, 28, 20);
         textGreen.setMaxStringLength(3);
         textGreen.setText(String.valueOf(this.textGreenNumber));
     	this.textGreen.setFocused(false);
@@ -88,10 +94,10 @@ public class GuiCustomizeMenuFrameColor extends GuiContainerVC {
     	
         //=============================================
         
-    	GuiVC.buttonRed = new GuiButtonGeneralVC( 11, this.guiLeft + 13, this.guiTop + 60, 37, 14, References.localNameVC("vc.button.save"), 3);
+    	GuiVC.buttonRed = new GuiButtonGeneralVC( 11, this.guiLeft + 13, this.guiTop + 60-6, 37, 14, References.localNameVC("vc.button.save"), 3);
 		this.buttonList.add(GuiVC.buttonRed);
 		
-		GuiVC.buttonGreen = new GuiButtonGeneralVC( 12, this.guiLeft + 13, this.guiTop + 101, 37, 14, References.localNameVC("vc.button.save"), 3);
+		GuiVC.buttonGreen = new GuiButtonGeneralVC( 12, this.guiLeft + 13, this.guiTop + 101-3, 37, 14, References.localNameVC("vc.button.save"), 3);
 		this.buttonList.add(GuiVC.buttonGreen);
 		
 		GuiVC.buttonBlue = new GuiButtonGeneralVC( 13, this.guiLeft + 13, this.guiTop + 142, 37, 14, References.localNameVC("vc.button.save"), 3);
@@ -313,7 +319,7 @@ public class GuiCustomizeMenuFrameColor extends GuiContainerVC {
 			this.textGreenNumber = 255;
 			this.textBlueNumber = 255;
 			
-			NetworkHandler.sendToServer(new MessageHelperGuiCustomizeMenuFrameColor());
+			NetworkHandler.sendToServer(new MessageHelperGuiCustomizeMenuFrameColorDefault());
 	    }
 		
         this.buttonList.clear();
@@ -347,12 +353,12 @@ public class GuiCustomizeMenuFrameColor extends GuiContainerVC {
 		}
 		GlStateManager.popMatrix();
         
-    	this.fontRenderer.drawString(References.localNameVC("vc.main.red"), this.guiLeft + 23, this.guiTop + 48, 16711680);
-		this.fontRenderer.drawString(References.localNameVC("vc.main.green"), this.guiLeft + 17, this.guiTop + 89, 32768);
+    	this.fontRenderer.drawString(References.localNameVC("vc.main.red"), this.guiLeft + 23, this.guiTop + 48-6, 16711680);
+		this.fontRenderer.drawString(References.localNameVC("vc.main.green"), this.guiLeft + 17, this.guiTop + 89-3, 32768);
 		this.fontRenderer.drawString(References.localNameVC("vc.main.blue"), this.guiLeft + 21, this.guiTop + 130, 255);
 		
-    	this.fontRenderer.drawString("0-255", this.guiLeft + 62, this.guiTop + 48, 16777215);
-    	this.fontRenderer.drawString("0-255", this.guiLeft + 62, this.guiTop + 89, 16777215);
+    	this.fontRenderer.drawString("0-255", this.guiLeft + 62, this.guiTop + 48-6, 16777215);
+    	this.fontRenderer.drawString("0-255", this.guiLeft + 62, this.guiTop + 89-3, 16777215);
     	this.fontRenderer.drawString("0-255", this.guiLeft + 62, this.guiTop + 130, 16777215);
     	
     	this.textRed.drawTextBox();
@@ -363,17 +369,67 @@ public class GuiCustomizeMenuFrameColor extends GuiContainerVC {
 		this.drawRect(this.guiLeft + 50, this.guiTop - 16, this.guiLeft + 126, this.guiTop, Color.LIGHT_GRAY.getRGB());
 		this.drawRect(this.guiLeft + 52, this.guiTop - 14, this.guiLeft + 124, this.guiTop, Color.BLACK.getRGB());
 		
-		int i = this.guiLeft;
-        int j = this.guiTop;
+        this.drawEntityOnScreen(this.guiLeft + 138, this.guiTop + 100, 13, mouseX, mouseY, this.airship);
+        
+        GlStateManager.pushMatrix();
+		{
+			GlStateManager.translate(this.guiLeft + 134+3, this.guiTop + 107+7.5, 0);
+	        GlStateManager.scale(0.5F, 0.5F, 0.5F);
+	        
+	        this.drawCenteredString(fontRenderer, this.stringToGolden("Stored Redstone", 1, false, TextFormatting.RED), 0, 0, 111111);
+		}
+		GlStateManager.popMatrix();
 		
-        this.drawEntityOnScreen(i + 141, j + 118, 13, mouseX, mouseY, this.airship);
+		Color redstoneColor = Color.RED;
+		
+		if(this.airship.storedRedstone >= 500)
+		{
+			redstoneColor = Color.CYAN;
+		}
+		else if(this.airship.storedRedstone >= 375)
+		{
+			redstoneColor = Color.GREEN;
+		}
+		else if(this.airship.storedRedstone >= 250)
+		{
+			redstoneColor = Color.YELLOW;
+		}
+		else if(this.airship.storedRedstone >= 125)
+		{
+			redstoneColor = Color.ORANGE;
+		}
+		
+		GlStateManager.pushMatrix();
+		{
+			GlStateManager.translate(this.guiLeft + 127+3, this.guiTop + 113.5+8, 0);
+	        GlStateManager.scale(0.5F, 0.5F, 0.5F);
+	        
+	        this.drawCenteredString(fontRenderer, Integer.toString(this.airship.getStoredRedstone()), 0, 0, redstoneColor.getRGB());
+		}
+		GlStateManager.popMatrix();
+        GlStateManager.pushMatrix();
+		{
+			GlStateManager.translate(this.guiLeft + 134.25+3, this.guiTop + 113.5+8, 0);
+	        GlStateManager.scale(0.5F, 0.5F, 0.5F);
+	        
+	        this.drawCenteredString(fontRenderer, "/", 0, 0, redstoneColor.getRGB());
+		}
+		GlStateManager.popMatrix();
+		GlStateManager.pushMatrix();
+		{
+			GlStateManager.translate(this.guiLeft + 142+3, this.guiTop + 113.5+8, 0);
+	        GlStateManager.scale(0.5F, 0.5F, 0.5F);
+	        
+	        this.drawCenteredString(fontRenderer, Integer.toString(this.airship.getStoredRedstoneTotal()), 0, 0, redstoneColor.getRGB());
+		}
+		GlStateManager.popMatrix();
 	}
 	
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
 	{
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-		this.fontRenderer.drawString(References.localNameVC("vc.main.framecolor"), 58, 18, 11111111);
+		this.fontRenderer.drawString(References.localNameVC("vc.main.framecolor"), 58, 16, 11111111);
 		this.fontRenderer.drawString(References.localNameVC("vc.main.appearance"), 58, -10, 65521);
     }
 	

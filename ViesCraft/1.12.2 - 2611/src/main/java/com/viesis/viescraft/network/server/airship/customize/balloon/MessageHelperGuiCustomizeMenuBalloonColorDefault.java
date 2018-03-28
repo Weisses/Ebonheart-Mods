@@ -8,7 +8,7 @@ import com.viesis.viescraft.network.packet.MessageBase;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayer;
 
-public class MessageHelperGuiCustomizeMenuBalloonColor extends MessageBase<MessageHelperGuiCustomizeMenuBalloonColor> {
+public class MessageHelperGuiCustomizeMenuBalloonColorDefault extends MessageBase<MessageHelperGuiCustomizeMenuBalloonColorDefault> {
 	
 	private int metaBalloonRed;
 	private int metaBalloonGreen;
@@ -31,32 +31,18 @@ public class MessageHelperGuiCustomizeMenuBalloonColor extends MessageBase<Messa
 	}
 	
 	@Override
-	public void handleClientSide(MessageHelperGuiCustomizeMenuBalloonColor message, EntityPlayer player) 
+	public void handleClientSide(MessageHelperGuiCustomizeMenuBalloonColorDefault message, EntityPlayer player) 
 	{
 		
 	}
 	
 	@Override
-	public void handleServerSide(MessageHelperGuiCustomizeMenuBalloonColor message, EntityPlayer player) 
+	public void handleServerSide(MessageHelperGuiCustomizeMenuBalloonColorDefault message, EntityPlayer player) 
 	{
 		EntityAirshipBaseVC airship = (EntityAirshipBaseVC) player.getRidingEntity();
 		
-		if(airship.balloonPatternColorRed == message.metaBalloonRed
-		&& airship.balloonPatternColorGreen == message.metaBalloonGreen
-		&& airship.balloonPatternColorBlue == message.metaBalloonBlue)
-		{
-			
-		}
-		else
-		{
-			if(airship.getStoredRedstone() >= CostsVC.BALLOON_PATTERN_COLOR_COST)
-			{
-				airship.balloonPatternColorRed = message.metaBalloonRed;
-				airship.balloonPatternColorGreen = message.metaBalloonGreen;
-				airship.balloonPatternColorBlue = message.metaBalloonBlue;
-				
-				airship.storedRedstone = airship.storedRedstone - CostsVC.BALLOON_PATTERN_COLOR_COST;
-			}
-		}
+		airship.balloonPatternColorRed = message.metaBalloonRed;
+		airship.balloonPatternColorGreen = message.metaBalloonGreen;
+		airship.balloonPatternColorBlue = message.metaBalloonBlue;
 	}
 }

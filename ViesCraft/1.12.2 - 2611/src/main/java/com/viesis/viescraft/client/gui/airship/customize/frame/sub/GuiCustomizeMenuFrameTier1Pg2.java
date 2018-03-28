@@ -51,4 +51,66 @@ public class GuiCustomizeMenuFrameTier1Pg2 extends GuiCustomizeMenuFrameTierVC {
 		this.buttonList.add(GuiVC.buttonA17);
 		this.buttonList.add(GuiVC.buttonA18);
     }
+    
+    @Override
+	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) 
+	{
+    	super.drawGuiContainerBackgroundLayer(partialTicks, mouseX, mouseY);
+    	
+    	this.grayOutSelectedButton();
+	}
+    
+    
+    private void grayOutSelectedButton()
+    {
+    	if(this.airship.frameSkinTexture == 13)
+    	{
+    		GuiVC.buttonA13.enabled = false;
+    	}
+    	else
+    	{
+    		GuiVC.buttonA13.enabled = true;
+    	}
+    	if(this.airship.frameSkinTexture == 14)
+    	{
+    		GuiVC.buttonA14.enabled = false;
+    	}
+    	else
+    	{
+    		GuiVC.buttonA14.enabled = true;
+    	}
+    	if(this.airship.frameSkinTexture == 15)
+    	{
+    		GuiVC.buttonA15.enabled = false;
+    	}
+    	else
+    	{
+    		GuiVC.buttonA15.enabled = true;
+    	}
+    	if(this.airship.frameSkinTexture == 16)
+    	{
+    		GuiVC.buttonA16.enabled = false;
+    	}
+    	else
+    	{
+    		GuiVC.buttonA16.enabled = true;
+    	}
+    	if(this.airship.frameSkinTexture == 17)
+    	{
+    		GuiVC.buttonA17.enabled = false;
+    	}
+    	else
+    	{
+    		GuiVC.buttonA17.enabled = true;
+    	}
+    	if(this.airship.frameSkinTexture == 18)
+    	{
+    		GuiVC.buttonA18.enabled = false;
+    	}
+    	else
+    	{
+    		GuiVC.buttonA18.enabled = true;
+    	}
+    	
+    }
 }

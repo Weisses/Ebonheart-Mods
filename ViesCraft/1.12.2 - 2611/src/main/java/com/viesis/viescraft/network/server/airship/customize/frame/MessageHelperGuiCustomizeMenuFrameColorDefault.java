@@ -8,7 +8,7 @@ import com.viesis.viescraft.network.packet.MessageBase;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayer;
 
-public class MessageHelperGuiCustomizeMenuFrameColor extends MessageBase<MessageHelperGuiCustomizeMenuFrameColor> {
+public class MessageHelperGuiCustomizeMenuFrameColorDefault extends MessageBase<MessageHelperGuiCustomizeMenuFrameColorDefault> {
 	
 	private int metaFrameRed;
 	private int metaFrameGreen;
@@ -31,32 +31,18 @@ public class MessageHelperGuiCustomizeMenuFrameColor extends MessageBase<Message
 	}
 	
 	@Override
-	public void handleClientSide(MessageHelperGuiCustomizeMenuFrameColor message, EntityPlayer player) 
+	public void handleClientSide(MessageHelperGuiCustomizeMenuFrameColorDefault message, EntityPlayer player) 
 	{
 		
 	}
 	
 	@Override
-	public void handleServerSide(MessageHelperGuiCustomizeMenuFrameColor message, EntityPlayer player) 
+	public void handleServerSide(MessageHelperGuiCustomizeMenuFrameColorDefault message, EntityPlayer player) 
 	{
 		EntityAirshipBaseVC airship = (EntityAirshipBaseVC) player.getRidingEntity();
 		
-		if(airship.frameSkinColorRed == message.metaFrameRed
-		&& airship.frameSkinColorGreen == message.metaFrameGreen
-		&& airship.frameSkinColorBlue == message.metaFrameBlue)
-		{
-			
-		}
-		else
-		{
-			if(airship.getStoredRedstone() >= CostsVC.FRAME_SKIN_COLOR_COST)
-			{
-				airship.frameSkinColorRed = message.metaFrameRed;
-				airship.frameSkinColorGreen = message.metaFrameGreen;
-				airship.frameSkinColorBlue = message.metaFrameBlue;
-				
-				airship.storedRedstone = airship.storedRedstone - CostsVC.FRAME_SKIN_COLOR_COST;
-			}
-		}
+		airship.frameSkinColorRed = message.metaFrameRed;
+		airship.frameSkinColorGreen = message.metaFrameGreen;
+		airship.frameSkinColorBlue = message.metaFrameBlue;
 	}
 }

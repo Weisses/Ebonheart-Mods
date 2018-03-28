@@ -154,9 +154,18 @@ public class GuiCustomizeMenuFrameTierVC extends GuiContainerVC {
 		}
 		GlStateManager.popMatrix();
 		
-		if(this.airship.storedRedstone >= CostsVC.FRAME_SKIN_TEXTURE_COST)
+		if(airship.getStoredRedstone() >= CostsVC.FRAME_SKIN_TEXTURE_COST
+		&& metaInfo != 0
+		&& metaInfo != airship.frameSkinTexture)
 		{
-			GuiVC.button501.enabled = true;
+			if(this.airship.storedRedstone >= CostsVC.FRAME_SKIN_TEXTURE_COST)
+			{
+				GuiVC.button501.enabled = true;
+			}
+			else
+			{
+				GuiVC.button501.enabled = false;
+			}
 		}
 		else
 		{

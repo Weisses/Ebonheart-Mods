@@ -22,6 +22,7 @@ import com.viesis.viescraft.network.server.airship.customize.balloon.MessageGuiC
 import com.viesis.viescraft.network.server.airship.customize.balloon.MessageGuiCustomizeMenuBalloonColorUndo;
 import com.viesis.viescraft.network.server.airship.customize.balloon.MessageGuiCustomizeMenuBalloonMain;
 import com.viesis.viescraft.network.server.airship.customize.balloon.MessageHelperGuiCustomizeMenuBalloonColor;
+import com.viesis.viescraft.network.server.airship.customize.balloon.MessageHelperGuiCustomizeMenuBalloonColorDefault;
 import com.viesis.viescraft.network.server.airship.customize.balloon.MessageHelperGuiCustomizeMenuBalloonTransparent;
 import com.viesis.viescraft.network.server.airship.customize.balloon.sub.MessageGuiCustomizeMenuBalloonTier1Pg1;
 import com.viesis.viescraft.network.server.airship.customize.balloon.sub.MessageGuiCustomizeMenuBalloonTier1Pg2;
@@ -34,6 +35,7 @@ import com.viesis.viescraft.network.server.airship.customize.frame.MessageGuiCus
 import com.viesis.viescraft.network.server.airship.customize.frame.MessageGuiCustomizeMenuFrameColorUndo;
 import com.viesis.viescraft.network.server.airship.customize.frame.MessageGuiCustomizeMenuFrameMain;
 import com.viesis.viescraft.network.server.airship.customize.frame.MessageHelperGuiCustomizeMenuFrameColor;
+import com.viesis.viescraft.network.server.airship.customize.frame.MessageHelperGuiCustomizeMenuFrameColorDefault;
 import com.viesis.viescraft.network.server.airship.customize.frame.MessageHelperGuiCustomizeMenuFrameTransparent;
 import com.viesis.viescraft.network.server.airship.customize.frame.sub.MessageGuiCustomizeMenuFrameTier1Pg1;
 import com.viesis.viescraft.network.server.airship.customize.frame.sub.MessageGuiCustomizeMenuFrameTier1Pg2;
@@ -95,6 +97,7 @@ public class NetworkHandler {
 		register(MessageGuiCustomizeMenuFrameColor.class, MessageGuiCustomizeMenuFrameColor.class, Side.SERVER);
 		register(MessageGuiCustomizeMenuFrameColorUndo.class, MessageGuiCustomizeMenuFrameColorUndo.class, Side.SERVER);
 		register(MessageHelperGuiCustomizeMenuFrameColor.class, MessageHelperGuiCustomizeMenuFrameColor.class, Side.SERVER);
+		register(MessageHelperGuiCustomizeMenuFrameColorDefault.class, MessageHelperGuiCustomizeMenuFrameColorDefault.class, Side.SERVER);
 		
 		register(MessageGuiCustomizeMenuFrameTier1Pg1.class, MessageGuiCustomizeMenuFrameTier1Pg1.class, Side.SERVER);
 		register(MessageGuiCustomizeMenuFrameTier1Pg2.class, MessageGuiCustomizeMenuFrameTier1Pg2.class, Side.SERVER);
@@ -109,6 +112,7 @@ public class NetworkHandler {
 		register(MessageGuiCustomizeMenuBalloonColor.class, MessageGuiCustomizeMenuBalloonColor.class, Side.SERVER);
 		register(MessageGuiCustomizeMenuBalloonColorUndo.class, MessageGuiCustomizeMenuBalloonColorUndo.class, Side.SERVER);
 		register(MessageHelperGuiCustomizeMenuBalloonColor.class, MessageHelperGuiCustomizeMenuBalloonColor.class, Side.SERVER);
+		register(MessageHelperGuiCustomizeMenuBalloonColorDefault.class, MessageHelperGuiCustomizeMenuBalloonColorDefault.class, Side.SERVER);
 		
 		register(MessageGuiCustomizeMenuBalloonTier1Pg1.class, MessageGuiCustomizeMenuBalloonTier1Pg1.class, Side.SERVER);
 		register(MessageGuiCustomizeMenuBalloonTier1Pg2.class, MessageGuiCustomizeMenuBalloonTier1Pg2.class, Side.SERVER);

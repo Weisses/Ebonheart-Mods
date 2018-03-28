@@ -77,7 +77,7 @@ public class GuiCustomizeMenuChangeName extends GuiContainerVC {
     	GuiVC.buttonM3 = new GuiButtonMenuVC(3, this.guiLeft - 35, this.guiTop + 7 + (16 * 2), 36, 14, "", 2);
     	GuiVC.buttonM4 = new GuiButtonMenuVC(4, this.guiLeft - 35, this.guiTop + 7 + (16 * 3), 36, 14, "", 3);
 		
-    	GuiVC.buttonA12 = new GuiButtonGeneralVC(12, this.guiLeft + 31, this.guiTop + 53, 42, 14, "Apply", 0);
+    	GuiVC.buttonA12 = new GuiButtonGeneralVC(12, this.guiLeft + 31, this.guiTop + 53, 42, 14, "Apply", 1);
 		GuiVC.buttonA13 = new GuiButtonGeneralVC(13, this.guiLeft + 103, this.guiTop + 53, 42, 14, "Back", 2);
 		
 		GuiVC.buttonA20 = new GuiButtonConfirmVC(20, this.guiLeft + 148, this.guiTop + 33, 14, 14, "");

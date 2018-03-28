@@ -1,5 +1,6 @@
 package com.viesis.viescraft.network.server.airship.customize;
 
+import com.viesis.viescraft.api.CostsVC;
 import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.client.gui.airship.customize.GuiCustomizeMenuChangeName;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
@@ -35,6 +36,12 @@ public class MessageHelperGuiCustomizeMenuChangeName extends MessageBase<Message
 	public void handleServerSide(MessageHelperGuiCustomizeMenuChangeName message, EntityPlayer player) 
 	{
 		EntityAirshipBaseVC airship = (EntityAirshipBaseVC) player.getRidingEntity();
-		airship.customName = message.customName;
+		
+		if(airship.getStoredRedstone() >= CostsVC.RENAME_COST)
+		{
+			airship.customName = message.customName;
+			
+			airship.storedRedstone = airship.storedRedstone - CostsVC.RENAME_COST;
+		}
 	}
 }

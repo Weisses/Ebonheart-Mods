@@ -59,4 +59,136 @@ public class GuiCustomizeMenuFrameTier5Pg1 extends GuiCustomizeMenuFrameTierVC {
 		this.buttonList.add(GuiVC.buttonA63);
 		this.buttonList.add(GuiVC.buttonA64);
     }
+    
+    @Override
+	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) 
+	{
+    	super.drawGuiContainerBackgroundLayer(partialTicks, mouseX, mouseY);
+    	
+    	this.grayOutSelectedButton();
+	}
+    
+    private void grayOutSelectedButton()
+    {
+    	if(this.airship.frameSkinTexture == 55)
+    	{
+    		GuiVC.buttonA55.enabled = false;
+    	}
+    	else
+    	{
+    		GuiVC.buttonA55.enabled = true;
+    	}
+    	if(this.airship.frameSkinTexture == 56)
+    	{
+    		GuiVC.buttonA56.enabled = false;
+    	}
+    	else
+    	{
+    		GuiVC.buttonA56.enabled = true;
+    	}
+    	if(this.airship.frameSkinTexture == 57)
+    	{
+    		GuiVC.buttonA57.enabled = false;
+    	}
+    	else
+    	{
+    		GuiVC.buttonA57.enabled = true;
+    	}
+    	if(this.airship.frameSkinTexture == 58)
+    	{
+    		GuiVC.buttonA58.enabled = false;
+    	}
+    	else
+    	{
+    		GuiVC.buttonA58.enabled = true;
+    	}
+    	if(this.airship.frameSkinTexture == 59)
+    	{
+    		GuiVC.buttonA59.enabled = false;
+    	}
+    	else
+    	{
+    		GuiVC.buttonA59.enabled = true;
+    	}
+    	if(this.airship.frameSkinTexture == 60)
+    	{
+    		GuiVC.buttonA60.enabled = false;
+    	}
+    	else
+    	{
+    		GuiVC.buttonA60.enabled = true;
+    	}
+    	if(this.airship.frameSkinTexture == 61)
+    	{
+    		GuiVC.buttonA61.enabled = false;
+    	}
+    	else
+    	{
+    		GuiVC.buttonA61.enabled = true;
+    	}
+    	if(this.airship.frameSkinTexture == 62)
+    	{
+    		GuiVC.buttonA62.enabled = false;
+    	}
+    	else
+    	{
+    		GuiVC.buttonA62.enabled = true;
+    	}
+    	if(this.airship.frameSkinTexture == 63)
+    	{
+    		GuiVC.buttonA63.enabled = false;
+    	}
+    	else
+    	{
+    		GuiVC.buttonA63.enabled = true;
+    	}
+    	if(this.airship.frameSkinTexture == 64)
+    	{
+    		GuiVC.buttonA64.enabled = false;
+    	}
+    	else
+    	{
+    		GuiVC.buttonA64.enabled = true;
+    	}/**
+    	if(this.airship.frameSkinTexture == 65)
+    	{
+    		GuiVC.buttonA65.enabled = false;
+    	}
+    	else
+    	{
+    		GuiVC.buttonA65.enabled = true;
+    	}
+    	if(this.airship.frameSkinTexture == 66)
+    	{
+    		GuiVC.buttonA66.enabled = false;
+    	}
+    	else
+    	{
+    		GuiVC.buttonA66.enabled = true;
+    	}
+    	if(this.airship.frameSkinTexture == 67)
+    	{
+    		GuiVC.buttonA67.enabled = false;
+    	}
+    	else
+    	{
+    		GuiVC.buttonA67.enabled = true;
+    	}
+    	if(this.airship.frameSkinTexture == 68)
+    	{
+    		GuiVC.buttonA68.enabled = false;
+    	}
+    	else
+    	{
+    		GuiVC.buttonA68.enabled = true;
+    	}
+    	if(this.airship.frameSkinTexture == 69)
+    	{
+    		GuiVC.buttonA69.enabled = false;
+    	}
+    	else
+    	{
+    		GuiVC.buttonA69.enabled = true;
+    	}*/
+    }
 }

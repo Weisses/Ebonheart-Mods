@@ -63,4 +63,115 @@ public class GuiCustomizeMenuFrameTier2Pg1 extends GuiCustomizeMenuFrameTierVC {
 		this.buttonList.add(GuiVC.buttonA29);
 		this.buttonList.add(GuiVC.buttonA30);
     }
+    
+    @Override
+	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) 
+	{
+    	super.drawGuiContainerBackgroundLayer(partialTicks, mouseX, mouseY);
+    	
+    	this.grayOutSelectedButton();
+	}
+    
+    
+    private void grayOutSelectedButton()
+    {
+    	if(this.airship.frameSkinTexture == 19)
+    	{
+    		GuiVC.buttonA19.enabled = false;
+    	}
+    	else
+    	{
+    		GuiVC.buttonA19.enabled = true;
+    	}
+
+    	if(this.airship.frameSkinTexture == 20)
+    	{
+    		GuiVC.buttonA20.enabled = false;
+    	}
+    	else
+    	{
+    		GuiVC.buttonA20.enabled = true;
+    	}
+    	if(this.airship.frameSkinTexture == 21)
+    	{
+    		GuiVC.buttonA21.enabled = false;
+    	}
+    	else
+    	{
+    		GuiVC.buttonA21.enabled = true;
+    	}
+    	if(this.airship.frameSkinTexture == 22)
+    	{
+    		GuiVC.buttonA22.enabled = false;
+    	}
+    	else
+    	{
+    		GuiVC.buttonA22.enabled = true;
+    	}
+    	if(this.airship.frameSkinTexture == 23)
+    	{
+    		GuiVC.buttonA23.enabled = false;
+    	}
+    	else
+    	{
+    		GuiVC.buttonA23.enabled = true;
+    	}
+    	if(this.airship.frameSkinTexture == 24)
+    	{
+    		GuiVC.buttonA24.enabled = false;
+    	}
+    	else
+    	{
+    		GuiVC.buttonA24.enabled = true;
+    	}
+    	if(this.airship.frameSkinTexture == 25)
+    	{
+    		GuiVC.buttonA25.enabled = false;
+    	}
+    	else
+    	{
+    		GuiVC.buttonA25.enabled = true;
+    	}
+    	if(this.airship.frameSkinTexture == 26)
+    	{
+    		GuiVC.buttonA26.enabled = false;
+    	}
+    	else
+    	{
+    		GuiVC.buttonA26.enabled = true;
+    	}
+    	if(this.airship.frameSkinTexture == 27)
+    	{
+    		GuiVC.buttonA27.enabled = false;
+    	}
+    	else
+    	{
+    		GuiVC.buttonA27.enabled = true;
+    	}
+    	if(this.airship.frameSkinTexture == 28)
+    	{
+    		GuiVC.buttonA28.enabled = false;
+    	}
+    	else
+    	{
+    		GuiVC.buttonA28.enabled = true;
+    	}
+    	if(this.airship.frameSkinTexture == 29)
+    	{
+    		GuiVC.buttonA29.enabled = false;
+    	}
+    	else
+    	{
+    		GuiVC.buttonA29.enabled = true;
+    	}
+
+    	if(this.airship.frameSkinTexture == 30)
+    	{
+    		GuiVC.buttonA30.enabled = false;
+    	}
+    	else
+    	{
+    		GuiVC.buttonA30.enabled = true;
+    	}
+    }
 }
