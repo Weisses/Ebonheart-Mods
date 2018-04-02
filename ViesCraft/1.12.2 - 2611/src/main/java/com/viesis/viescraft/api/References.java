@@ -90,7 +90,7 @@ public class References {
     }
 	
 	/**
-	 * Check if February 14st is within 10 days before and 3 days after.
+	 * Check if February 14th is within 10 days before and 3 days after.
 	 */
 	public static boolean isDateAroundValentinesDay(Calendar calendarIn)
     {
@@ -98,11 +98,43 @@ public class References {
     }
 	
 	/**
-	 * Check if October 31st is within 20 days before and 3 days after.
+	 * Check if April 7th is within 8 days before and 7 days after.
+	 */
+	public static boolean isDateAroundEaster(Calendar calendarIn)
+    {
+        return calendarIn.get(2) + 1 == 3 && calendarIn.get(5) >= 29 || calendarIn.get(2) + 1 == 4 && calendarIn.get(5) <= 14;
+    }
+	
+	/**
+	 * Check if July 4th is within 10 days before and 3 days after.
+	 */
+	public static boolean isDateAroundIndependenceDay(Calendar calendarIn)
+    {
+        return calendarIn.get(2) + 1 == 5 && calendarIn.get(5) >= 27 || calendarIn.get(2) + 1 == 6 && calendarIn.get(5) <= 7;
+    }
+	
+	/**
+	 * Check if October 31st is within 10 days before and 3 days after.
 	 */
 	public static boolean isDateAroundHalloween(Calendar calendarIn)
     {
         return calendarIn.get(2) + 1 == 10 && calendarIn.get(5) >= 20 || calendarIn.get(2) + 1 == 11 && calendarIn.get(5) <= 3;
+    }
+	
+	/**
+	 * Check if November 28th is within 10 days before and 3 days after.
+	 */
+	public static boolean isDateAroundThanksgiving(Calendar calendarIn)
+    {
+        return calendarIn.get(2) + 1 == 11 && calendarIn.get(5) >= 18 || calendarIn.get(2) + 1 == 11 && calendarIn.get(5) <= 30;
+    }
+	
+	/**
+	 * Check if December 25th is within 10 days before and 3 days after.
+	 */
+	public static boolean isDateAroundChristmas(Calendar calendarIn)
+    {
+        return calendarIn.get(2) + 1 == 12 && calendarIn.get(5) >= 15 || calendarIn.get(2) + 1 == 12 && calendarIn.get(5) <= 28;
     }
 	
 	/**
