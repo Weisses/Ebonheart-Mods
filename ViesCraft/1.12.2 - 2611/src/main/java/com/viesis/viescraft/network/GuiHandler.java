@@ -12,6 +12,9 @@ import com.viesis.viescraft.client.gui.airship.customize.balloon.sub.GuiCustomiz
 import com.viesis.viescraft.client.gui.airship.customize.balloon.sub.GuiCustomizeMenuBalloonTier3Pg1;
 import com.viesis.viescraft.client.gui.airship.customize.balloon.sub.GuiCustomizeMenuBalloonTier4Pg1;
 import com.viesis.viescraft.client.gui.airship.customize.balloon.sub.GuiCustomizeMenuBalloonTier5Pg1;
+import com.viesis.viescraft.client.gui.airship.customize.engine.GuiCustomizeMenuEngineMain;
+import com.viesis.viescraft.client.gui.airship.customize.engine.sub.GuiCustomizeMenuEngineDisplayBlockPg1;
+import com.viesis.viescraft.client.gui.airship.customize.engine.sub.GuiCustomizeMenuEngineDisplaySymbolPg1;
 import com.viesis.viescraft.client.gui.airship.customize.frame.GuiCustomizeMenuFrameColor;
 import com.viesis.viescraft.client.gui.airship.customize.frame.GuiCustomizeMenuFrameMain;
 import com.viesis.viescraft.client.gui.airship.customize.frame.sub.GuiCustomizeMenuFrameTier1Pg1;
@@ -88,6 +91,13 @@ public class GuiHandler implements IGuiHandler {
 	public static final int GUI_APPEARANCE_MENU_FRAME_TIER4_PG1 = 107;
 	public static final int GUI_APPEARANCE_MENU_FRAME_TIER5_PG1 = 108;
 	
+	public static final int GUI_APPEARANCE_MENU_ENGINE = 302;
+	public static final int GUI_APPEARANCE_MENU_ENGINE_SYMBOLS_PG1 = 303;
+	public static final int GUI_APPEARANCE_MENU_ENGINE_BLOCKS = 304;
+	public static final int GUI_APPEARANCE_MENU_ENGINE_ITEMS = 305;
+	public static final int GUI_APPEARANCE_MENU_ENGINE_HEADS = 306;
+	public static final int GUI_APPEARANCE_MENU_ENGINE_SUPPORTER_HEADS = 307;
+	
 	public static final int GUI_APPEARANCE_MENU_BALLOON = 202;
 	public static final int GUI_APPEARANCE_MENU_BALLOON_COLOR = 209;
 	public static final int GUI_APPEARANCE_MENU_BALLOON_TIER1_PG1 = 203;
@@ -97,7 +107,7 @@ public class GuiHandler implements IGuiHandler {
 	public static final int GUI_APPEARANCE_MENU_BALLOON_TIER4_PG1 = 207;
 	public static final int GUI_APPEARANCE_MENU_BALLOON_TIER5_PG1 = 208;
 	
-	public static final int GUI_APPEARANCE_MENU_CORE = 302;
+	public static final int GUI_APPEARANCE_MENU_CORE = 402;
 	
 	public static final int GUI_MUSIC_PG1 = 31;
 	
@@ -221,6 +231,33 @@ public class GuiHandler implements IGuiHandler {
 		if (ID == GUI_APPEARANCE_MENU_FRAME_TIER5_PG1)
 		{
 			return new ContainerCustomizeMenu(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
+		}
+		
+		
+		
+		if (ID == GUI_APPEARANCE_MENU_ENGINE)
+		{
+			return new ContainerCustomizeMenu(player.inventory, (EntityAirshipCore)player.getRidingEntity());
+		}
+		if (ID == GUI_APPEARANCE_MENU_ENGINE_SYMBOLS_PG1)
+		{
+			return new ContainerCustomizeMenu(player.inventory, (EntityAirshipCore)player.getRidingEntity());
+		}
+		if (ID == GUI_APPEARANCE_MENU_ENGINE_BLOCKS)
+		{
+			return new ContainerCustomizeMenu(player.inventory, (EntityAirshipCore)player.getRidingEntity());
+		}
+		if (ID == GUI_APPEARANCE_MENU_ENGINE_ITEMS)
+		{
+			return new ContainerCustomizeMenu(player.inventory, (EntityAirshipCore)player.getRidingEntity());
+		}
+		if (ID == GUI_APPEARANCE_MENU_ENGINE_HEADS)
+		{
+			return new ContainerCustomizeMenu(player.inventory, (EntityAirshipCore)player.getRidingEntity());
+		}
+		if (ID == GUI_APPEARANCE_MENU_ENGINE_SUPPORTER_HEADS)
+		{
+			return new ContainerCustomizeMenu(player.inventory, (EntityAirshipCore)player.getRidingEntity());
 		}
 		
 		
@@ -398,6 +435,34 @@ public class GuiHandler implements IGuiHandler {
 		{
 			return new GuiCustomizeMenuFrameTier5Pg1(player.inventory, (EntityAirshipCore)player.getRidingEntity());
 		}
+		
+		
+		
+		if (ID == GUI_APPEARANCE_MENU_ENGINE)
+		{
+			return new GuiCustomizeMenuEngineMain(player.inventory, (EntityAirshipCore)player.getRidingEntity());
+		}
+		if (ID == GUI_APPEARANCE_MENU_ENGINE_SYMBOLS_PG1)
+		{
+			return new GuiCustomizeMenuEngineDisplaySymbolPg1(player.inventory, (EntityAirshipCore)player.getRidingEntity());
+		}
+		if (ID == GUI_APPEARANCE_MENU_ENGINE_BLOCKS)
+		{
+			return new GuiCustomizeMenuEngineDisplayBlockPg1(player.inventory, (EntityAirshipCore)player.getRidingEntity());
+		}
+		if (ID == GUI_APPEARANCE_MENU_ENGINE_ITEMS)
+		{
+			return new ContainerCustomizeMenu(player.inventory, (EntityAirshipCore)player.getRidingEntity());
+		}
+		if (ID == GUI_APPEARANCE_MENU_ENGINE_HEADS)
+		{
+			return new ContainerCustomizeMenu(player.inventory, (EntityAirshipCore)player.getRidingEntity());
+		}
+		if (ID == GUI_APPEARANCE_MENU_ENGINE_SUPPORTER_HEADS)
+		{
+			return new ContainerCustomizeMenu(player.inventory, (EntityAirshipCore)player.getRidingEntity());
+		}
+		
 		
 		if (ID == GUI_APPEARANCE_MENU_BALLOON)
 		{

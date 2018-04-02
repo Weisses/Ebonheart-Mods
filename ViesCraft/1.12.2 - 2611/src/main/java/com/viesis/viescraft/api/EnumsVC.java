@@ -935,28 +935,59 @@ public class EnumsVC {
     {
     	//STRING(meta, registry name, localized name, explosion strength)
         NONE(0, "none", References.localNameVC("vc.enum.displaysymbol.0")),
-        ITEM(1, "generic_item", References.localNameVC("vc.enum.displaysymbol.1")),
-        BLOCK(2, "generic_block", References.localNameVC("vc.enum.displaysymbol.2")),
-        ENTITY(3, "generic_entity", References.localNameVC("vc.enum.displaysymbol.3")),
-        HEAD(4, "generic_head", References.localNameVC("vc.enum.displaysymbol.4")),
-        HEADSUPPORTER(5, "generic_head_supporter", References.localNameVC("vc.enum.displaysymbol.5"));
+        BLOCK(1, "category_block", References.localNameVC("vc.enum.displaysymbol.1")),
+        ITEM(2, "category_item", References.localNameVC("vc.enum.displaysymbol.2")),
+        HEAD(3, "category_head", References.localNameVC("vc.enum.displaysymbol.3")),
+        HEADSUPPORTER(4, "category_supporter_head", References.localNameVC("vc.enum.displaysymbol.4")),
+        HOLIDAY(5, "category_holiday", References.localNameVC("vc.enum.displaysymbol.5")),
+        UNUSED1(6, "category_2", References.localNameVC("vc.enum.displaysymbol.5")),
+        UNUSED2(7, "category_3", References.localNameVC("vc.enum.displaysymbol.5")),
+        UNUSED3(8, "category_4", References.localNameVC("vc.enum.displaysymbol.5")),
+        UNUSED4(9, "category_5", References.localNameVC("vc.enum.displaysymbol.5")),
         
         
-        /**
-    	LOGOVIESCRAFT(6, "generic_head_supporter", References.localNameVC("vc.enum.displaysymbol.5")),
-    	LOGOMINECRAFT(7, "generic_head_supporter", References.localNameVC("vc.enum.displaysymbol.5")),
         
+    	LOGOVIESCRAFT(10, "logo_viescraft", References.localNameVC("vc.enum.displaysymbol.6")),
+    	LOGOFORGE(11, "logo_forge", References.localNameVC("vc.enum.displaysymbol.7")),
+    	LOGOMINECRAFT(12, "logo_minecraft", References.localNameVC("vc.enum.displaysymbol.8")),
+    	COINSTACK(13, "general_coinstack", References.localNameVC("vc.enum.visualballoon.9")),
+    	SCROLL(14, "general_scroll", References.localNameVC("vc.enum.visualballoon.10")),
+    	WRENCH(15, "general_wrench", References.localNameVC("vc.enum.visualballoon.11")),
+    	KEY(16, "general_key", References.localNameVC("vc.enum.visualballoon.12")),
+    	PADLOCK(17, "general_padlock", References.localNameVC("vc.enum.visualballoon.13")),
+        BELL(18, "general_bell", References.localNameVC("vc.enum.visualballoon.14")),
+        ANCHOR(19, "general_anchor", References.localNameVC("vc.enum.visualballoon.15")),
+    	BARREL(20, "general_barrel", References.localNameVC("vc.enum.visualballoon.16")),
+    	GEARS(21, "general_gears", References.localNameVC("vc.enum.visualballoon.17"));
     	
     	
-    	EARTH(1, "create_ignition", References.localNameVC("vc.enum.visualballoon.0")),
-        WIND(2, "create", References.localNameVC("vc.enum.visualballoon.0")),
-        WATER(3, "create_color", References.localNameVC("vc.enum.visualballoon.0")),
-        FIRE(4, "create_module", References.localNameVC("vc.enum.visualballoon.0")),
-        LIGHTNING(5, "airborn", References.localNameVC("vc.enum.visualballoon.0")),
-        NATURE(6, "water", References.localNameVC("vc.enum.visualballoon.0")),
-        ICE(7, "lava", References.localNameVC("vc.enum.visualballoon.0")),
-        HOLY(7, "lava", References.localNameVC("vc.enum.visualballoon.0")),
-        UNHOLY(7, "lava", References.localNameVC("vc.enum.visualballoon.0")),
+    	
+    	/**
+    	DOG(9, "animal_dog", References.localNameVC("vc.enum.visualballoon.9")),
+    	CAT(10, "animal_cat", References.localNameVC("vc.enum.visualballoon.10")),
+    	FOX(11, "animal_squirrel", References.localNameVC("vc.enum.visualballoon.11")),
+    	BEAR(12, "animal_bear", References.localNameVC("vc.enum.visualballoon.12")),
+    	LION(13, "animal_lion", References.localNameVC("vc.enum.visualballoon.13")),
+        WOLF(14, "animal_fox", References.localNameVC("vc.enum.visualballoon.14")),
+        SHARK(15, "animal_wolf", References.localNameVC("vc.enum.visualballoon.15")),
+    	FISH(9, "animal_dog", References.localNameVC("vc.enum.visualballoon.9")),
+    	OCTOPUS(9, "animal_dog", References.localNameVC("vc.enum.visualballoon.9")),
+    	PHOENIX(16, "animal_phoenix", References.localNameVC("vc.enum.visualballoon.16")),
+        DRAGON(17, "animal_dragon", References.localNameVC("vc.enum.visualballoon.17"));
+    	
+    	
+    	EARTH(18, "element_earth", References.localNameVC("vc.enum.visualballoon.18")),
+        WIND(19, "element_wind", References.localNameVC("vc.enum.visualballoon.19")),
+        WATER(20, "element_water", References.localNameVC("vc.enum.visualballoon.20")),
+        FIRE(21, "element_fire", References.localNameVC("vc.enum.visualballoon.21")),
+        NATURE(22, "element_nature", References.localNameVC("vc.enum.visualballoon.22")),
+        LIGHTNING(23, "element_lightning", References.localNameVC("vc.enum.visualballoon.23")),
+        ICE(24, "element_ice", References.localNameVC("vc.enum.visualballoon.24")),
+        POISON(25, "element_poison", References.localNameVC("vc.enum.visualballoon.25")),
+        ARCANE(26, "element_arcane", References.localNameVC("vc.enum.visualballoon.26")),
+        VOID(27, "element_void", References.localNameVC("vc.enum.visualballoon.27")),
+        HOLY(28, "element_holy", References.localNameVC("vc.enum.visualballoon.28")),
+        UNHOLY(29, "element_unholy", References.localNameVC("vc.enum.visualballoon.29")),
         
         
         
@@ -970,15 +1001,12 @@ public class EnumsVC {
         
         CELTIC(7, "lava", References.localNameVC("vc.enum.visualballoon.0")),
         YGGDRASIL(7, "lava", References.localNameVC("vc.enum.visualballoon.0")),
-        MJOLLNIR(7, "lava", References.localNameVC("vc.enum.visualballoon.0")),
+        MJOLLNIR(7, "lava", References.localNameVC("vc.enum.visualballoon.0"));
         
-        
-        FOX(7, "lava", References.localNameVC("vc.enum.visualballoon.0")),
-        BEAR(7, "lava", References.localNameVC("vc.enum.visualballoon.0")),
-        LION(7, "lava", References.localNameVC("vc.enum.visualballoon.0")),
-        WOLF(7, "lava", References.localNameVC("vc.enum.visualballoon.0")),
-    	PHOENIX(7, "lava", References.localNameVC("vc.enum.visualballoon.0")),
-        DRAGON(7, "lava", References.localNameVC("vc.enum.visualballoon.0"));
+        JACKOLANTERN(15, "animal_wolf", References.localNameVC("vc.enum.visualballoon.15")),
+    	THANKSGIVINGTURKEY(16, "animal_phoenix", References.localNameVC("vc.enum.visualballoon.16")),
+        CHRISTMASTREE(17, "animal_dragon", References.localNameVC("vc.enum.visualballoon.17"));
+    	
         */
     	private final int metadata;
         private final String registryName;

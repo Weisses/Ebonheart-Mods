@@ -492,6 +492,77 @@ vc.enum.visualframe.64=Ender
 vc.enum.visualframe.65=
 vc.enum.visualframe.66=
 
+
+
+vc.enum.displaysymbol.1=Category - Block
+vc.enum.displaysymbol.2=Category - Item
+vc.enum.displaysymbol.3=Category - Entity
+vc.enum.displaysymbol.4=Category - Head
+vc.enum.displaysymbol.5=Category - Supporter Head
+vc.enum.displaysymbol.6=ViesCraft Logo
+vc.enum.displaysymbol.7=Forge Logo
+vc.enum.displaysymbol.8=Minecraft Logo
+vc.enum.displaysymbol.9=Coin Stack
+vc.enum.displaysymbol.10=Scroll
+vc.enum.displaysymbol.11=Wrench
+vc.enum.displaysymbol.12=Key
+vc.enum.displaysymbol.13=Padlock
+vc.enum.displaysymbol.14=Bell
+vc.enum.displaysymbol.15=Anchor
+vc.enum.displaysymbol.16=Barrel
+vc.enum.displaysymbol.17=Gears
+vc.enum.visualballoon.18=
+vc.enum.visualballoon.19=
+vc.enum.visualballoon.20=
+vc.enum.visualballoon.21=
+vc.enum.visualballoon.22=
+vc.enum.visualballoon.23=
+vc.enum.visualballoon.24=
+vc.enum.visualballoon.25=
+vc.enum.visualballoon.26=
+vc.enum.visualballoon.27=
+vc.enum.visualballoon.28=
+vc.enum.visualballoon.29=
+vc.enum.visualballoon.30=
+vc.enum.visualballoon.31=
+vc.enum.visualballoon.32=
+vc.enum.visualballoon.33=
+vc.enum.visualballoon.34=
+vc.enum.visualballoon.35=
+vc.enum.visualballoon.36=
+vc.enum.visualballoon.37=
+vc.enum.visualballoon.38=
+vc.enum.visualballoon.39=
+vc.enum.visualballoon.40=
+vc.enum.visualballoon.41=
+vc.enum.visualballoon.42=
+vc.enum.visualballoon.43=
+vc.enum.visualballoon.44=
+vc.enum.visualballoon.45=
+vc.enum.visualballoon.46=
+vc.enum.visualballoon.47=
+vc.enum.visualballoon.48=
+vc.enum.visualballoon.49=
+vc.enum.visualballoon.50=
+vc.enum.visualballoon.51=
+vc.enum.visualballoon.52=
+vc.enum.visualballoon.53=
+vc.enum.visualballoon.54=
+vc.enum.visualballoon.55=
+vc.enum.visualballoon.56=
+vc.enum.visualballoon.57=
+vc.enum.visualballoon.58=
+vc.enum.visualballoon.59=
+vc.enum.visualballoon.60=
+vc.enum.visualballoon.61=
+vc.enum.visualballoon.62=
+vc.enum.visualballoon.63=
+vc.enum.visualballoon.64=
+vc.enum.visualballoon.64=
+vc.enum.visualballoon.64=
+
+
+
 vc.enum.visualballoon.1=Speckled
 vc.enum.visualballoon.2=Colorized
 vc.enum.visualballoon.3=Inverted
@@ -647,11 +718,11 @@ vc.enum.bomb.1=Small
 vc.enum.bomb.2=Big
 
 vc.enum.displaysymbol.0=None
-vc.enum.displaysymbol.1=Item
-vc.enum.displaysymbol.2=Block
-vc.enum.displaysymbol.3=Entity
-vc.enum.displaysymbol.4=Head
-vc.enum.displaysymbol.5=Supporter
+vc.enum.displaysymbol.1=Block
+vc.enum.displaysymbol.2=Item
+vc.enum.displaysymbol.3=Head
+vc.enum.displaysymbol.4=Supporter Head
+vc.enum.displaysymbol.5=Holiday
 
 //-----Colors-----
 vc.item.color.1=Alice Blue

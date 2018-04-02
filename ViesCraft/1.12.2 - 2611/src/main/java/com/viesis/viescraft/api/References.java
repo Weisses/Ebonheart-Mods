@@ -82,9 +82,25 @@ public class References {
 	public static net.minecraft.util.text.translation.I18n Old_I18n;
 	
 	/**
+	 * Check if January 1st is within 3 days before and 3 days after.
+	 */
+	public static boolean isDateAroundNewYears(Calendar calendarIn)
+    {
+        return calendarIn.get(2) + 1 == 12 && calendarIn.get(5) >= 29 || calendarIn.get(2) + 1 == 1 && calendarIn.get(5) <= 4;
+    }
+	
+	/**
+	 * Check if February 14st is within 10 days before and 3 days after.
+	 */
+	public static boolean isDateAroundValentinesDay(Calendar calendarIn)
+    {
+        return calendarIn.get(2) + 1 == 2 && calendarIn.get(5) >= 4 || calendarIn.get(2) + 1 == 2 && calendarIn.get(5) <= 17;
+    }
+	
+	/**
 	 * Check if October 31st is within 20 days before and 3 days after.
 	 */
-	public boolean isDateAroundHalloween(Calendar calendarIn)
+	public static boolean isDateAroundHalloween(Calendar calendarIn)
     {
         return calendarIn.get(2) + 1 == 10 && calendarIn.get(5) >= 20 || calendarIn.get(2) + 1 == 11 && calendarIn.get(5) <= 3;
     }

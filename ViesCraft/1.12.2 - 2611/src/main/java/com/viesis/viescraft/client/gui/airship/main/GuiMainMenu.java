@@ -606,21 +606,6 @@ public class GuiMainMenu extends GuiContainerVC {
             this.mc.player.closeScreen();
         }
     }
-	
-	/**
-     * Draws an ItemStack.
-     */
-    private void drawItemStack(ItemStack stack, int x, int y, String altText)
-    {
-        GlStateManager.translate(0.0F, 0.0F, 32.0F);
-        this.zLevel = 200.0F;
-        this.itemRender.zLevel = 200.0F;
-        net.minecraft.client.gui.FontRenderer font = stack.getItem().getFontRenderer(stack);
-        if (font == null) font = fontRenderer;
-        this.itemRender.renderItemAndEffectIntoGUI(stack, x, y);
-        this.zLevel = 0.0F;
-        this.itemRender.zLevel = 0.0F;
-    }
     
     public FontRenderer getFontRenderer()
     {

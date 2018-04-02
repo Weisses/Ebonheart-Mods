@@ -21,6 +21,7 @@ import com.viesis.viescraft.network.server.airship.customize.MessageGuiCustomize
 import com.viesis.viescraft.network.server.airship.customize.MessageGuiCustomizeMenuChangeName;
 import com.viesis.viescraft.network.server.airship.customize.MessageGuiCustomizeMenuOptionsRedstone;
 import com.viesis.viescraft.network.server.airship.customize.balloon.MessageGuiCustomizeMenuBalloonMain;
+import com.viesis.viescraft.network.server.airship.customize.engine.MessageGuiCustomizeMenuEngineMain;
 import com.viesis.viescraft.network.server.airship.customize.frame.MessageGuiCustomizeMenuFrameMain;
 import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenu;
 import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenuMusic;
@@ -182,7 +183,7 @@ public class GuiCustomizeMenu extends GuiContainerVC {
 	    }
 		if (parButton.id == 23)
 	    {
-			//NetworkHandler.sendToServer(new MessageGuiCustomizeMenuEngineMain());
+			NetworkHandler.sendToServer(new MessageGuiCustomizeMenuEngineMain());
 	    }
 		if (parButton.id == 24)
 	    {
@@ -371,21 +372,6 @@ public class GuiCustomizeMenu extends GuiContainerVC {
         super.mouseClicked(x, y, btn);
         
         //this.textName.mouseClicked(x, y, btn);
-    }
-	
-	/**
-     * Draws an ItemStack.
-     */
-    private void drawItemStack(ItemStack stack, int x, int y, String altText)
-    {
-        GlStateManager.translate(0.0F, 0.0F, 32.0F);
-        this.zLevel = 200.0F;
-        this.itemRender.zLevel = 200.0F;
-        net.minecraft.client.gui.FontRenderer font = stack.getItem().getFontRenderer(stack);
-        if (font == null) font = fontRenderer;
-        this.itemRender.renderItemAndEffectIntoGUI(stack, x, y);
-        this.zLevel = 0.0F;
-        this.itemRender.zLevel = 0.0F;
     }
     
     /**

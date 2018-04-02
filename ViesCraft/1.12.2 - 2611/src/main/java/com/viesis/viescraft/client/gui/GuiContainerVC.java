@@ -1,13 +1,20 @@
 package com.viesis.viescraft.client.gui;
 
+import org.lwjgl.opengl.GL11;
+
 import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipCore;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.RenderHelper;
+import net.minecraft.client.renderer.block.model.ItemCameraTransforms.TransformType;
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.text.TextFormatting;
 
 public class GuiContainerVC extends GuiContainer {
@@ -116,5 +123,96 @@ public class GuiContainerVC extends GuiContainer {
     protected FontRenderer getFontRenderer()
     {
         return this.mc.fontRenderer;
+    }
+	
+	/**
+     * Draws an ItemStack.
+     */
+    protected void drawItemStack(ItemStack stack, int x, int y, String altText)
+    {
+        GlStateManager.translate(0.0F, 0.0F, 32.0F);
+        this.zLevel = 200.0F;
+        this.itemRender.zLevel = 200.0F;
+        net.minecraft.client.gui.FontRenderer font = stack.getItem().getFontRenderer(stack);
+        if (font == null) font = fontRenderer;
+        this.itemRender.renderItemAndEffectIntoGUI(stack, x, y);
+        this.zLevel = 0.0F;
+        this.itemRender.zLevel = 0.0F;
+    }
+	
+	/**
+     * Draws a Rotating ItemStack.
+     */
+    protected void drawRotatingItemStack(ItemStack stack, int posXIn, int posYIn//, boolean isBlockIn
+    		)
+    {
+    	GlStateManager.pushMatrix();
+		{
+			float itemSpin = (((float)Minecraft.getMinecraft().player.getEntityWorld().getTotalWorldTime() + 1) / 20.0F) * (180F / (float)Math.PI);
+	        
+	        GlStateManager.translate(posXIn, posYIn, 50F);
+	        GlStateManager.scale(50, 50, 0);
+	        
+	        //Flips/rotates the model right side up.
+            GlStateManager.rotate(180.0F, 0.0F, 0.0F, 1.0F);
+            GlStateManager.rotate(180.0F, 0.0F, 1.0F, 0.0F);
+            
+            //if(isBlockIn)
+            //{
+            //	GlStateManager.rotate(25.0F, 1.0F, 0.0F, 0.0F);
+            //}
+            
+	        //Spins Item
+	        GlStateManager.rotate(itemSpin * 1, 0F, 1F, 0F);
+            
+	        Minecraft.getMinecraft().getRenderItem().renderItem(stack, TransformType.GROUND);
+		}
+		GlStateManager.popMatrix();
+    }
+    
+    /**
+     * Draws an entity on the screen looking toward the cursor.
+     */
+    protected static void drawEntityOnScreen(int posX, int posY, int scale, float mouseX, float mouseY, EntityAirshipBaseVC entityIn)
+    {
+    	GlStateManager.pushMatrix();
+		{
+			GL11.glEnable(GL11.GL_CULL_FACE);
+	        GL11.glCullFace(GL11.GL_FRONT);
+	        
+	        GlStateManager.translate(posX, posY, 100.0F);
+	        GlStateManager.scale((float)(scale), (float)scale, (float)scale);
+	        
+	        /////Flips the model right side up.
+	        GlStateManager.rotate(200.0F, 0.0F, 0.0F, 1.0F);
+	        GlStateManager.rotate(45.0F, 0.0F, 1.0F, 0.0F);
+	        GlStateManager.rotate(30.0F, 1.0F, 0.0F, 0.0F);
+	        
+	        //Fixes the position to be at a right
+	        GlStateManager.rotate(entityIn.prevRotationYaw, 0.0F, 1.0F, 0.0F);
+	        
+	        RenderHelper.disableStandardItemLighting();
+	        
+	        RenderManager rendermanager = Minecraft.getMinecraft().getRenderManager();
+	        
+	        rendermanager.setPlayerViewY(180.0F);
+	        rendermanager.setRenderShadow(false);
+	        
+	        //This is the non-multipass rendering way to render an entity.
+	        //rendermanager.renderEntity(entityIn, 0.0D, 0.0D, 0.0D, 0.0F, 1.0F, false);
+	        
+	        int currentSkin = entityIn.balloonPatternTexture;
+	        entityIn.balloonPatternTexture = metaInfo;
+	        
+	        rendermanager.renderEntityStatic(entityIn, 0, false);
+	        rendermanager.renderMultipass(entityIn, 0F);
+	        
+	        entityIn.balloonPatternTexture = currentSkin;
+	        rendermanager.setRenderShadow(true);
+	        
+	        GL11.glCullFace(GL11.GL_BACK);
+	        GL11.glDisable(GL11.GL_CULL_FACE);
+		}
+		GlStateManager.popMatrix();
     }
 }
