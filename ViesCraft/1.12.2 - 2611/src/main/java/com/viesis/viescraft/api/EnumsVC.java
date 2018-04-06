@@ -477,7 +477,7 @@ public class EnumsVC {
     public static enum VisualFrameSkinBackground
     {
     	//STRING(meta, registry name, localized name)
-    	NONE(0, "none", References.localNameVC("vc.enum.visualframe.0")),
+    	DEFAULT(0, "default", References.localNameVC("vc.enum.visualframe.0")),
     	
     	//Common
     	//Tier 1 - 18
@@ -564,7 +564,17 @@ public class EnumsVC {
     	LAVA(63, "lava", References.localNameVC("vc.enum.visualframe.63")), 
     	ENDER(64, "ender", References.localNameVC("vc.enum.visualframe.64")), 
     	ENDER1(65, "ender1", References.localNameVC("vc.enum.visualframe.65")), 
-    	ENDER2(66, "ender2", References.localNameVC("vc.enum.visualframe.66")); 
+    	ENDER2(66, "ender2", References.localNameVC("vc.enum.visualframe.66"))//,
+    	
+    	//Holiday
+    	//New Years
+    	//MYTHIC(61, "mythic", References.localNameVC("vc.enum.visualframe.61")),
+    	//WATER(62, "water", References.localNameVC("vc.enum.visualframe.62")), 
+    	//LAVA(63, "lava", References.localNameVC("vc.enum.visualframe.63")), 
+    	//ENDER(64, "ender", References.localNameVC("vc.enum.visualframe.64")), 
+    	//ENDER1(65, "ender1", References.localNameVC("vc.enum.visualframe.65")), 
+    	//ENDER2(66, "ender2", References.localNameVC("vc.enum.visualframe.66"))
+    	;
     	
     	private final int metadata;
         private final String registryName;
@@ -632,11 +642,11 @@ public class EnumsVC {
     public static enum VisualBalloonPattern
     {
     	//STRING(meta, registry name, localized name)
-    	NONE(0, "none", References.localNameVC("vc.enum.visualballoon.0")),
+    	DEFAULT(0, "default", References.localNameVC("vc.enum.visualballoon.0")),
     	
     	//Common
     	//Tier 1 - 18
-    	SPECKLED(1, "speckled", References.localNameVC("vc.enum.visualballoon.1")),
+    	BASKETWEAVE(1, "basketweave", References.localNameVC("vc.enum.visualballoon.1")),
     	SPECKLEDCOLORIZED(2, "speckled_colorized", References.localNameVC("vc.enum.visualballoon.2")),
     	SPECKLEDCOLORIZEDINVERTED(3, "speckled_colorized_inverted", References.localNameVC("vc.enum.visualballoon.3")),
     	CHECKER(4, "checker", References.localNameVC("vc.enum.visualballoon.4")),

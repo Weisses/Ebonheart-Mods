@@ -4,7 +4,7 @@ import org.lwjgl.input.Keyboard;
 
 import com.viesis.viescraft.api.GuiVC;
 import com.viesis.viescraft.api.References;
-import com.viesis.viescraft.client.gui.GuiButtonGeneralVC;
+import com.viesis.viescraft.client.gui.GuiButtonGeneral1VC;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipCore;
 
 import net.minecraft.inventory.IInventory;

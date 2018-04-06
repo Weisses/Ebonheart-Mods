@@ -5,7 +5,7 @@ import org.lwjgl.opengl.GL11;
 
 import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.api.util.Keybinds;
-import com.viesis.viescraft.client.gui.GuiButtonGeneralVC;
+import com.viesis.viescraft.client.gui.GuiButtonGeneral1VC;
 import com.viesis.viescraft.client.gui.GuiButtonGuideBookVC;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 

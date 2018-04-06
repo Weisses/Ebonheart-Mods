@@ -113,11 +113,11 @@ public class ModelFrame0 extends ModelBase
         Skid_Brace_Right_Back = new ModelRenderer( this, 26, 103 );
         Skid_Brace_Right_Back.setTextureSize( 256, 128 );
         Skid_Brace_Right_Back.addBox( -1F, 0F, -1F, 2, 3, 2);
-        Skid_Brace_Right_Back.setRotationPoint( -6F, 6F, 6F );
+        Skid_Brace_Right_Back.setRotationPoint( -6F, 6F, 7F );
         Skid_Bottom_Right = new ModelRenderer( this, 11, 85 );
         Skid_Bottom_Right.setTextureSize( 256, 128 );
         Skid_Bottom_Right.addBox( -2F, 0F, 0F, 4, 1, 24);
-        Skid_Bottom_Right.setRotationPoint( -6F, 9F, -12.5F );
+        Skid_Bottom_Right.setRotationPoint( -6F, 9F, -12F );
         Skid_Brace_Left_Front = new ModelRenderer( this, 26, 103 );
         Skid_Brace_Left_Front.setTextureSize( 256, 128 );
         Skid_Brace_Left_Front.addBox( -1F, 0F, -1F, 2, 3, 2);
@@ -125,11 +125,11 @@ public class ModelFrame0 extends ModelBase
         Skid_Brace_Left_Back = new ModelRenderer( this, 26, 103 );
         Skid_Brace_Left_Back.setTextureSize( 256, 128 );
         Skid_Brace_Left_Back.addBox( -1F, 0F, -1F, 2, 3, 2);
-        Skid_Brace_Left_Back.setRotationPoint( 6F, 6F, 6F );
+        Skid_Brace_Left_Back.setRotationPoint( 6F, 6F, 7F );
         Skid_Bottom_Left = new ModelRenderer( this, 11, 85 );
         Skid_Bottom_Left.setTextureSize( 256, 128 );
         Skid_Bottom_Left.addBox( -2F, 0F, 0F, 4, 1, 24);
-        Skid_Bottom_Left.setRotationPoint( 6F, 9F, -12.5F );
+        Skid_Bottom_Left.setRotationPoint( 6F, 9F, -12F );
     }
 
    public void render(Entity par1Entity, float par2, float par3, float par4, float par5, float par6, float par7)

@@ -9,7 +9,7 @@ import org.lwjgl.opengl.GL11;
 import com.viesis.viescraft.api.GuiVC;
 import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.api.util.Keybinds;
-import com.viesis.viescraft.client.gui.GuiButtonGeneralVC;
+import com.viesis.viescraft.client.gui.GuiButtonGeneral1VC;
 import com.viesis.viescraft.client.gui.GuiButtonMenuVC;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
 import com.viesis.viescraft.common.entity.airships.containers.all.ContainerCustomizeMenu;
@@ -69,13 +69,13 @@ public class GuiVisualMenuCore extends GuiContainer {
     	GuiVC.buttonM3 = new GuiButtonMenuVC(3, this.guiLeft - 35, this.guiTop + 7 + (16 * 2), 36, 14, "", 2);
     	GuiVC.buttonM4 = new GuiButtonMenuVC(4, this.guiLeft - 35, this.guiTop + 7 + (16 * 3), 36, 14, "", 3);
 		
-    	GuiVC.button505 = new GuiButtonGeneralVC(505, this.guiLeft + 125, this.guiTop + 177, 40, 14, References.localNameVC("vc.button.back"), 0);
+    	GuiVC.button505 = new GuiButtonGeneral1VC(505, this.guiLeft + 125, this.guiTop + 177, 40, 14, References.localNameVC("vc.button.back"), 0);
     	
-    	GuiVC.buttonT1 = new GuiButtonGeneralVC(11, this.guiLeft + 32, this.guiTop + startPlace + (19 * 0), 68, 14, References.localNameVC("vc.main.viescraft"), 0);
-		GuiVC.buttonT2 = new GuiButtonGeneralVC(12, this.guiLeft + 32, this.guiTop + startPlace + (19 * 1), 68, 14, References.localNameVC("vc.main.viesdenburg"), 0);
-		GuiVC.buttonT3 = new GuiButtonGeneralVC(13, this.guiLeft + 32, this.guiTop + startPlace + (19 * 2), 68, 14, References.localNameVC("vc.main.viesigible"), 0);
-		GuiVC.buttonT4 = new GuiButtonGeneralVC(14, this.guiLeft + 32, this.guiTop + startPlace + (19 * 3), 68, 14, References.localNameVC("vc.main.viesepelin"), 0);
-		GuiVC.buttonT5 = new GuiButtonGeneralVC(15, this.guiLeft + 32, this.guiTop + startPlace + (19 * 4), 68, 14, References.localNameVC("vc.main.viesakron"), 0);
+    	GuiVC.buttonT1 = new GuiButtonGeneral1VC(11, this.guiLeft + 32, this.guiTop + startPlace + (19 * 0), 68, 14, References.localNameVC("vc.main.viescraft"), 0);
+		GuiVC.buttonT2 = new GuiButtonGeneral1VC(12, this.guiLeft + 32, this.guiTop + startPlace + (19 * 1), 68, 14, References.localNameVC("vc.main.viesdenburg"), 0);
+		GuiVC.buttonT3 = new GuiButtonGeneral1VC(13, this.guiLeft + 32, this.guiTop + startPlace + (19 * 2), 68, 14, References.localNameVC("vc.main.viesigible"), 0);
+		GuiVC.buttonT4 = new GuiButtonGeneral1VC(14, this.guiLeft + 32, this.guiTop + startPlace + (19 * 3), 68, 14, References.localNameVC("vc.main.viesepelin"), 0);
+		GuiVC.buttonT5 = new GuiButtonGeneral1VC(15, this.guiLeft + 32, this.guiTop + startPlace + (19 * 4), 68, 14, References.localNameVC("vc.main.viesakron"), 0);
 		
     	this.buttonList.add(GuiVC.buttonM1);
 		this.buttonList.add(GuiVC.buttonM2);

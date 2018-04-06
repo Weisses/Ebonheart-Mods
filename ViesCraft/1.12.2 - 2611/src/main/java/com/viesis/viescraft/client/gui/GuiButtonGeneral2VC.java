@@ -8,12 +8,12 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
 
-public class GuiButtonGeneralVC extends GuiButton {
+public class GuiButtonGeneral2VC extends GuiButton {
 	
-	protected static final ResourceLocation BUTTON_TEXTURES = new ResourceLocation(References.MOD_ID_COLON + "textures/gui/buttons_general.png");
+	protected static final ResourceLocation BUTTON_TEXTURES = new ResourceLocation(References.MOD_ID_COLON + "textures/gui/buttons_general2.png");
     protected int texture;
     
-	public GuiButtonGeneralVC(int buttonId, int x, int y, int widthIn, int heightIn, String buttonTextIn, int textureIn) 
+	public GuiButtonGeneral2VC(int buttonId, int x, int y, int widthIn, int heightIn, String buttonTextIn, int textureIn) 
 	{
 		super(buttonId, x, y, widthIn, heightIn, buttonTextIn);
 		

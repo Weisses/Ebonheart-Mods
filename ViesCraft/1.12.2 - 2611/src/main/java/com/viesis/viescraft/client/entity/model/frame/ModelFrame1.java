@@ -7,7 +7,7 @@ import net.minecraft.entity.Entity;
 public class ModelFrame1 extends ModelBase
 {
     ModelRenderer Floor_Latch;
-    ModelRenderer Floor_Top;
+    //ModelRenderer Floor_Top;
     ModelRenderer Floor_Bottom;
     ModelRenderer Bomb_Bay;
     ModelRenderer Seat_Driver;
@@ -193,10 +193,10 @@ public class ModelFrame1 extends ModelBase
         Floor_Latch.setTextureSize( 256, 128 );
         Floor_Latch.addBox( 0F, 0F, 0F, 10, 2, 8);
         Floor_Latch.setRotationPoint( -5F, 4F, 3F );
-        Floor_Top = new ModelRenderer( this, 47, 27 );
-        Floor_Top.setTextureSize( 256, 128 );
-        Floor_Top.addBox( 0F, 0.5F, 0F, 14, 1, 24);
-        Floor_Top.setRotationPoint( -7F, 4.5F, -12F );
+        //Floor_Top = new ModelRenderer( this, 47, 27 );
+        //Floor_Top.setTextureSize( 256, 128 );
+        //Floor_Top.addBox( 0F, 0.5F, 0F, 14, 1, 24);
+        //Floor_Top.setRotationPoint( -7F, 4.5F, -12F );
         Floor_Bottom = new ModelRenderer( this, 0, 0 );
         Floor_Bottom.setTextureSize( 256, 128 );
         Floor_Bottom.addBox( 0F, 0.5F, -0.5F, 14, 1, 25);
@@ -898,10 +898,10 @@ public class ModelFrame1 extends ModelBase
         Floor_Latch.rotateAngleZ = 0F;
         Floor_Latch.renderWithRotation(par7);
 
-        Floor_Top.rotateAngleX = 0F;
-        Floor_Top.rotateAngleY = 0F;
-        Floor_Top.rotateAngleZ = 0F;
-        Floor_Top.renderWithRotation(par7);
+        //Floor_Top.rotateAngleX = 0F;
+        //Floor_Top.rotateAngleY = 0F;
+        //Floor_Top.rotateAngleZ = 0F;
+        //Floor_Top.renderWithRotation(par7);
 
         Floor_Bottom.rotateAngleX = 0F;
         Floor_Bottom.rotateAngleY = 0F;

@@ -2,9 +2,9 @@ package com.viesis.viescraft.api;
 
 public class CostsVC {
 	
-	public static int FRAME_MODEL_COST = 100;
-	public static int ENGINE_MODEL_COST = 100;
-	public static int BALLOON_MODEL_COST = 100;
+	public static int CORE_MODEL_FRAME_COST = 100;
+	public static int CORE_MODEL_ENGINE_COST = 100;
+	public static int CORE_MODEL_BALLOON_COST = 100;
 	
 	public static int RENAME_COST = 10;
 	

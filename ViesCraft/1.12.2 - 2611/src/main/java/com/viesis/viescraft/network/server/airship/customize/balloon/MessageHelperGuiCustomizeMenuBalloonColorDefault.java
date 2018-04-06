@@ -10,24 +10,16 @@ import net.minecraft.entity.player.EntityPlayer;
 
 public class MessageHelperGuiCustomizeMenuBalloonColorDefault extends MessageBase<MessageHelperGuiCustomizeMenuBalloonColorDefault> {
 	
-	private int metaBalloonRed;
-	private int metaBalloonGreen;
-	private int metaBalloonBlue;
-	
 	@Override
 	public void fromBytes(ByteBuf buf) 
 	{
-		metaBalloonRed = buf.readInt();
-		metaBalloonGreen = buf.readInt();
-		metaBalloonBlue = buf.readInt();
+		
 	}
 	
 	@Override
 	public void toBytes(ByteBuf buf) 
 	{
-		buf.writeInt(GuiCustomizeMenuBalloonColor.textRedNumber);
-		buf.writeInt(GuiCustomizeMenuBalloonColor.textGreenNumber);
-		buf.writeInt(GuiCustomizeMenuBalloonColor.textBlueNumber);
+		
 	}
 	
 	@Override
@@ -41,8 +33,8 @@ public class MessageHelperGuiCustomizeMenuBalloonColorDefault extends MessageBas
 	{
 		EntityAirshipBaseVC airship = (EntityAirshipBaseVC) player.getRidingEntity();
 		
-		airship.balloonPatternColorRed = message.metaBalloonRed;
-		airship.balloonPatternColorGreen = message.metaBalloonGreen;
-		airship.balloonPatternColorBlue = message.metaBalloonBlue;
+		airship.balloonPatternColorRed = 200;
+		airship.balloonPatternColorGreen = 180;
+		airship.balloonPatternColorBlue = 140;
 	}
 }

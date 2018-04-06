@@ -10,7 +10,7 @@ import com.viesis.viescraft.api.EnumsVC;
 import com.viesis.viescraft.api.GuiVC;
 import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.api.util.Keybinds;
-import com.viesis.viescraft.client.gui.GuiButtonGeneralVC;
+import com.viesis.viescraft.client.gui.GuiButtonGeneral1VC;
 import com.viesis.viescraft.client.gui.GuiButtonMenuVC;
 import com.viesis.viescraft.client.gui.GuiContainerVC;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
@@ -21,6 +21,7 @@ import com.viesis.viescraft.network.server.airship.customize.MessageGuiCustomize
 import com.viesis.viescraft.network.server.airship.customize.MessageGuiCustomizeMenuChangeName;
 import com.viesis.viescraft.network.server.airship.customize.MessageGuiCustomizeMenuOptionsRedstone;
 import com.viesis.viescraft.network.server.airship.customize.balloon.MessageGuiCustomizeMenuBalloonMain;
+import com.viesis.viescraft.network.server.airship.customize.core.MessageGuiCustomizeMenuCoreMain;
 import com.viesis.viescraft.network.server.airship.customize.engine.MessageGuiCustomizeMenuEngineMain;
 import com.viesis.viescraft.network.server.airship.customize.frame.MessageGuiCustomizeMenuFrameMain;
 import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenu;
@@ -29,7 +30,6 @@ import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenuStorag
 import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenuStorageLesser;
 import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenuStorageNormal;
 import com.viesis.viescraft.network.server.airship.main.MessageGuiModuleMenu;
-import com.viesis.viescraft.network.server.airship.visual.MessageGuiCustomizeMenuCore;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
@@ -38,7 +38,6 @@ import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
 
@@ -84,14 +83,14 @@ public class GuiCustomizeMenu extends GuiContainerVC {
     	GuiVC.buttonM3 = new GuiButtonMenuVC(3, this.guiLeft - 35, this.guiTop + 7 + (16 * 2), 36, 14, "", 2);
     	GuiVC.buttonM4 = new GuiButtonMenuVC(4, this.guiLeft - 35, this.guiTop + 7 + (16 * 3), 36, 14, "", 3);
 		
-    	GuiVC.buttonA21 = new GuiButtonGeneralVC(21, this.guiLeft + 28, this.guiTop + 143, 42, 14, "Options", 0);
-		GuiVC.buttonA22 = new GuiButtonGeneralVC(22, this.guiLeft + 106, this.guiTop + 143, 42, 14, "Options", 0);
-		GuiVC.buttonA23 = new GuiButtonGeneralVC(23, this.guiLeft + 28, this.guiTop + 179, 42, 14, "Options", 0);
-		GuiVC.buttonA24 = new GuiButtonGeneralVC(24, this.guiLeft + 106, this.guiTop + 179, 42, 14, "Options", 0);
+    	GuiVC.buttonA21 = new GuiButtonGeneral1VC(21, this.guiLeft + 28, this.guiTop + 143, 42, 14, "Options", 0);
+		GuiVC.buttonA22 = new GuiButtonGeneral1VC(22, this.guiLeft + 106, this.guiTop + 143, 42, 14, "Options", 0);
+		GuiVC.buttonA23 = new GuiButtonGeneral1VC(23, this.guiLeft + 28, this.guiTop + 179, 42, 14, "Options", 0);
+		GuiVC.buttonA24 = new GuiButtonGeneral1VC(24, this.guiLeft + 106, this.guiTop + 179, 42, 14, "Options", 0);
 		
-		GuiVC.buttonA11 = new GuiButtonGeneralVC(11, this.guiLeft + 22, this.guiTop + 47, 54, 14, "Change Name", 0);
+		GuiVC.buttonA11 = new GuiButtonGeneral1VC(11, this.guiLeft + 22, this.guiTop + 47, 54, 14, "Change Name", 0);
 		
-		GuiVC.buttonA12 = new GuiButtonGeneralVC(12, this.guiLeft + 67, this.guiTop + 109, 42, 14, "Options", 0);
+		GuiVC.buttonA12 = new GuiButtonGeneral1VC(12, this.guiLeft + 67, this.guiTop + 109, 42, 14, "Options", 0);
 		
     	this.buttonList.add(GuiVC.buttonM1);
 		this.buttonList.add(GuiVC.buttonM2);
@@ -175,7 +174,7 @@ public class GuiCustomizeMenu extends GuiContainerVC {
 		
 		if (parButton.id == 21)
 	    {
-			NetworkHandler.sendToServer(new MessageGuiCustomizeMenuCore());
+			NetworkHandler.sendToServer(new MessageGuiCustomizeMenuCoreMain());
 	    }
 		if (parButton.id == 22)
 	    {
@@ -219,7 +218,7 @@ public class GuiCustomizeMenu extends GuiContainerVC {
 			GlStateManager.translate(this.guiLeft + 88, this.guiTop + 84.5, 0);
 	        GlStateManager.scale(0.75F, 0.75F, 0.75F);
 	        
-	        this.drawCenteredString(fontRenderer, this.stringToGolden("Stored Redstone", 1, false, TextFormatting.RED), 0, 0, 111111);
+	        this.drawCenteredString(fontRenderer, this.stringToFlashGolden("Stored Redstone", 1, false, TextFormatting.RED), 0, 0, 111111);
 		}
 		GlStateManager.popMatrix();
 		

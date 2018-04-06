@@ -30,6 +30,6 @@ public class MessageGuiCustomizeMenuFrameMain extends MessageBase<MessageGuiCust
 	@Override
 	public void handleServerSide(MessageGuiCustomizeMenuFrameMain message, EntityPlayer player) 
 	{
-		player.openGui(ViesCraft.instance, GuiHandler.GUI_APPEARANCE_MENU_FRAME, player.world, player.getPosition().getX(), player.getPosition().getY(), player.getPosition().getZ());
+		player.openGui(ViesCraft.instance, GuiHandler.GUI_APPEARANCE_MENU_FRAME_MAIN, player.world, player.getPosition().getX(), player.getPosition().getY(), player.getPosition().getZ());
 	}
 }

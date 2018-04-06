@@ -31,6 +31,13 @@ import com.viesis.viescraft.network.server.airship.customize.balloon.sub.Message
 import com.viesis.viescraft.network.server.airship.customize.balloon.sub.MessageGuiCustomizeMenuBalloonTier4Pg1;
 import com.viesis.viescraft.network.server.airship.customize.balloon.sub.MessageGuiCustomizeMenuBalloonTier5Pg1;
 import com.viesis.viescraft.network.server.airship.customize.balloon.sub.MessageHelperGuiCustomizeMenuBalloonTier;
+import com.viesis.viescraft.network.server.airship.customize.core.MessageGuiCustomizeMenuCoreMain;
+import com.viesis.viescraft.network.server.airship.customize.core.sub.MessageGuiCustomizeMenuCoreModelBalloonPg1;
+import com.viesis.viescraft.network.server.airship.customize.core.sub.MessageGuiCustomizeMenuCoreModelEnginePg1;
+import com.viesis.viescraft.network.server.airship.customize.core.sub.MessageGuiCustomizeMenuCoreModelFramePg1;
+import com.viesis.viescraft.network.server.airship.customize.core.sub.MessageHelperGuiCustomizeMenuCoreModelBalloon;
+import com.viesis.viescraft.network.server.airship.customize.core.sub.MessageHelperGuiCustomizeMenuCoreModelEngine;
+import com.viesis.viescraft.network.server.airship.customize.core.sub.MessageHelperGuiCustomizeMenuCoreModelFrame;
 import com.viesis.viescraft.network.server.airship.customize.engine.MessageGuiCustomizeMenuEngineMain;
 import com.viesis.viescraft.network.server.airship.customize.engine.sub.MessageGuiCustomizeMenuEngineDisplayBlocksPg1;
 import com.viesis.viescraft.network.server.airship.customize.engine.sub.MessageGuiCustomizeMenuEngineDisplaySymbolsPg1;
@@ -95,6 +102,15 @@ public class NetworkHandler {
 		register(MessageHelperGuiCustomizeMenuUndo.class, MessageHelperGuiCustomizeMenuUndo.class, Side.SERVER);
 		register(MessageGuiCustomizeMenuOptionsRedstone.class, MessageGuiCustomizeMenuOptionsRedstone.class, Side.SERVER);
 		register(MessageHelperGuiCustomizeMenuOptionsRedstone.class, MessageHelperGuiCustomizeMenuOptionsRedstone.class, Side.SERVER);
+		
+		register(MessageGuiCustomizeMenuCoreMain.class, MessageGuiCustomizeMenuCoreMain.class, Side.SERVER);
+		register(MessageGuiCustomizeMenuCoreModelFramePg1.class, MessageGuiCustomizeMenuCoreModelFramePg1.class, Side.SERVER);
+		register(MessageGuiCustomizeMenuCoreModelEnginePg1.class, MessageGuiCustomizeMenuCoreModelEnginePg1.class, Side.SERVER);
+		register(MessageGuiCustomizeMenuCoreModelBalloonPg1.class, MessageGuiCustomizeMenuCoreModelBalloonPg1.class, Side.SERVER);
+		register(MessageHelperGuiCustomizeMenuCoreModelFrame.class, MessageHelperGuiCustomizeMenuCoreModelFrame.class, Side.SERVER);
+		register(MessageHelperGuiCustomizeMenuCoreModelEngine.class, MessageHelperGuiCustomizeMenuCoreModelEngine.class, Side.SERVER);
+		register(MessageHelperGuiCustomizeMenuCoreModelBalloon.class, MessageHelperGuiCustomizeMenuCoreModelBalloon.class, Side.SERVER);
+		
 		
 		register(MessageGuiCustomizeMenuFrameMain.class, MessageGuiCustomizeMenuFrameMain.class, Side.SERVER);
 		register(MessageHelperGuiCustomizeMenuFrameTransparent.class, MessageHelperGuiCustomizeMenuFrameTransparent.class, Side.SERVER);

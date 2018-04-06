@@ -1,16 +1,16 @@
 package com.viesis.viescraft.client.gui.airship.customize.frame;
 
 import java.awt.Color;
-import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.lwjgl.input.Keyboard;
-import org.lwjgl.opengl.GL11;
 
+import com.viesis.viescraft.api.CostsVC;
 import com.viesis.viescraft.api.GuiVC;
 import com.viesis.viescraft.api.References;
-import com.viesis.viescraft.api.util.Keybinds;
-import com.viesis.viescraft.client.gui.GuiButtonConfirmVC;
-import com.viesis.viescraft.client.gui.GuiButtonGeneralVC;
+import com.viesis.viescraft.client.gui.GuiButtonGeneral1VC;
+import com.viesis.viescraft.client.gui.GuiButtonGeneral2VC;
 import com.viesis.viescraft.client.gui.GuiButtonMenuVC;
 import com.viesis.viescraft.client.gui.GuiContainerVC;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
@@ -20,7 +20,7 @@ import com.viesis.viescraft.network.NetworkHandler;
 import com.viesis.viescraft.network.server.airship.MessageGuiUpgradeMenu;
 import com.viesis.viescraft.network.server.airship.customize.MessageGuiCustomizeMenu;
 import com.viesis.viescraft.network.server.airship.customize.frame.MessageGuiCustomizeMenuFrameColor;
-import com.viesis.viescraft.network.server.airship.customize.frame.MessageGuiCustomizeMenuFrameColorUndo;
+import com.viesis.viescraft.network.server.airship.customize.frame.MessageHelperGuiCustomizeMenuFrameColorDefault;
 import com.viesis.viescraft.network.server.airship.customize.frame.MessageHelperGuiCustomizeMenuFrameTransparent;
 import com.viesis.viescraft.network.server.airship.customize.frame.sub.MessageGuiCustomizeMenuFrameTier1Pg1;
 import com.viesis.viescraft.network.server.airship.customize.frame.sub.MessageGuiCustomizeMenuFrameTier2Pg1;
@@ -33,12 +33,9 @@ import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenuStorag
 import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenuStorageLesser;
 import com.viesis.viescraft.network.server.airship.main.MessageGuiModuleMenu;
 
-import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.RenderHelper;
-import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.entity.Entity;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -78,19 +75,19 @@ public class GuiCustomizeMenuFrameMain extends GuiContainerVC {
     	GuiVC.buttonM3 = new GuiButtonMenuVC(3, this.guiLeft - 35, this.guiTop + 7 + (16 * 2), 36, 14, "", 2);
     	GuiVC.buttonM4 = new GuiButtonMenuVC(4, this.guiLeft - 35, this.guiTop + 7 + (16 * 3), 36, 14, "", 3);
 		
-    	GuiVC.button505 = new GuiButtonGeneralVC(505, this.guiLeft + 125, this.guiTop + 177, 40, 14, References.localNameVC("vc.button.back"), 2);
+    	GuiVC.button505 = new GuiButtonGeneral1VC(505, this.guiLeft + 125, this.guiTop + 177, 40, 14, References.localNameVC("vc.button.back"), 2);
     	
-    	GuiVC.buttonT1 = new GuiButtonGeneralVC(11, this.guiLeft + 17, this.guiTop + startPlace - 4 + (15 * 0), 69, 14, References.localNameVC("vc.main.skins") + " - " + References.localNameVC("vc.enum.tier.1"), 0);
-		GuiVC.buttonT2 = new GuiButtonGeneralVC(12, this.guiLeft + 17, this.guiTop + startPlace - 4 + (15 * 1), 69, 14, References.localNameVC("vc.main.skins") + " - " + References.localNameVC("vc.enum.tier.2"), 0);
-		GuiVC.buttonT3 = new GuiButtonGeneralVC(13, this.guiLeft + 17, this.guiTop + startPlace - 4 + (15 * 2), 69, 14, References.localNameVC("vc.main.skins") + " - " + References.localNameVC("vc.enum.tier.3"), 0);
-		GuiVC.buttonT4 = new GuiButtonGeneralVC(14, this.guiLeft + 17, this.guiTop + startPlace - 4 + (15 * 3), 69, 14, References.localNameVC("vc.main.skins") + " - " + References.localNameVC("vc.enum.tier.4"), 0);
-		GuiVC.buttonT5 = new GuiButtonGeneralVC(15, this.guiLeft + 17, this.guiTop + startPlace - 4 + (15 * 4), 69, 14, References.localNameVC("vc.main.skins") + " - " + References.localNameVC("vc.enum.tier.5"), 0);
+    	GuiVC.buttonT1 = new GuiButtonGeneral1VC(11, this.guiLeft + 17, this.guiTop + startPlace - 4 + (15 * 0), 69, 14, References.localNameVC("vc.main.skins") + " - " + References.localNameVC("vc.enum.tier.1"), 0);
+		GuiVC.buttonT2 = new GuiButtonGeneral1VC(12, this.guiLeft + 17, this.guiTop + startPlace - 4 + (15 * 1), 69, 14, References.localNameVC("vc.main.skins") + " - " + References.localNameVC("vc.enum.tier.2"), 0);
+		GuiVC.buttonT3 = new GuiButtonGeneral1VC(13, this.guiLeft + 17, this.guiTop + startPlace - 4 + (15 * 2), 69, 14, References.localNameVC("vc.main.skins") + " - " + References.localNameVC("vc.enum.tier.3"), 0);
+		GuiVC.buttonT4 = new GuiButtonGeneral1VC(14, this.guiLeft + 17, this.guiTop + startPlace - 4 + (15 * 3), 69, 14, References.localNameVC("vc.main.skins") + " - " + References.localNameVC("vc.enum.tier.4"), 0);
+		GuiVC.buttonT5 = new GuiButtonGeneral1VC(15, this.guiLeft + 17, this.guiTop + startPlace - 4 + (15 * 4), 69, 14, References.localNameVC("vc.main.skins") + " - " + References.localNameVC("vc.enum.tier.5"), 0);
 		
-		GuiVC.buttonA16 = new GuiButtonGeneralVC(16, this.guiLeft + 21, this.guiTop + startPlace + 117, 60, 14, References.localNameVC("vc.main.setcolor"), 0);
-		GuiVC.buttonA17 = new GuiButtonGeneralVC(17, this.guiLeft + 21, this.guiTop + startPlace + 137, 60, 14, References.localNameVC("vc.main.transparent"), 0);
+		GuiVC.buttonA16 = new GuiButtonGeneral1VC(16, this.guiLeft + 21, this.guiTop + startPlace + 117, 60, 14, References.localNameVC("vc.main.setcolor"), 0);
+		GuiVC.buttonA17 = new GuiButtonGeneral1VC(17, this.guiLeft + 21, this.guiTop + startPlace + 137, 60, 14, References.localNameVC("vc.main.transparent"), 0);
 		
-		GuiVC.buttonA18 = new GuiButtonConfirmVC(18, this.guiLeft + 81, this.guiTop + startPlace + 117, 14, 14, "");
-		GuiVC.buttonA19 = new GuiButtonConfirmVC(19, this.guiLeft + 81, this.guiTop + startPlace + 137, 14, 14, "");
+		GuiVC.buttonA18 = new GuiButtonGeneral2VC(18, this.guiLeft + 81, this.guiTop + startPlace + 117, 14, 14, "", 1);
+		GuiVC.buttonA19 = new GuiButtonGeneral2VC(19, this.guiLeft + 81, this.guiTop + startPlace + 137, 14, 14, "", 1);
 		
     	this.buttonList.add(GuiVC.buttonM1);
 		this.buttonList.add(GuiVC.buttonM2);
@@ -195,6 +192,7 @@ public class GuiCustomizeMenuFrameMain extends GuiContainerVC {
 			NetworkHandler.sendToServer(new MessageGuiModuleMenu());
 	    }
 		
+		//Back to main customize gui menu
 		if (parButton.id == 505)
 	    {
 			NetworkHandler.sendToServer(new MessageGuiCustomizeMenu());
@@ -221,24 +219,23 @@ public class GuiCustomizeMenuFrameMain extends GuiContainerVC {
 			NetworkHandler.sendToServer(new MessageGuiCustomizeMenuFrameTier5Pg1());
 	    }
 		
+		//Frame Color
 		if (parButton.id == 16)
 	    {
 			NetworkHandler.sendToServer(new MessageGuiCustomizeMenuFrameColor());
 	    }
-		if (parButton.id == 17)
+		if (parButton.id == 18)
 	    {
+			NetworkHandler.sendToServer(new MessageHelperGuiCustomizeMenuFrameColorDefault());
+	    }
+		
+		//Frame Transparency
+		if(parButton.id == 17)
+		{
 			this.frameTransparentInfo = !this.frameTransparentInfo;
 			
 			NetworkHandler.sendToServer(new MessageHelperGuiCustomizeMenuFrameTransparent());
-	    }
-		
-		
-		
-		if(parButton.id == 18)
-		{
-			NetworkHandler.sendToServer(new MessageGuiCustomizeMenuFrameColorUndo());
 		}
-		
 		if(parButton.id == 19)
 		{
 			this.frameTransparentInfo = !this.frameTransparentInfo;
@@ -258,27 +255,16 @@ public class GuiCustomizeMenuFrameMain extends GuiContainerVC {
 		this.mc.getTextureManager().bindTexture(TEXTURE);
 		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
 		
-		//Appearance 'On' button is green in gui
-		if(this.airship.frameSkinTransparent == true)
-		{
-			this.drawTexturedModalRect(this.guiLeft + 136, this.guiTop + 36, 177, 85, 8, 8);
-		}
-		
 		this.drawRect(this.guiLeft + 49, this.guiTop - 17, this.guiLeft + 127, this.guiTop, Color.BLACK.getRGB());
 		this.drawRect(this.guiLeft + 50, this.guiTop - 16, this.guiLeft + 126, this.guiTop, Color.LIGHT_GRAY.getRGB());
 		this.drawRect(this.guiLeft + 52, this.guiTop - 14, this.guiLeft + 124, this.guiTop, Color.BLACK.getRGB());
 		
-		int i = this.guiLeft;
-        int j = this.guiTop;
-		
-        this.drawEntityOnScreen(i + 134, j + 100, 13, mouseX, mouseY, this.airship);
-        
         GlStateManager.pushMatrix();
 		{
 			GlStateManager.translate(this.guiLeft + 132, this.guiTop + 115, 0);
 	        GlStateManager.scale(0.5F, 0.5F, 0.5F);
 	        
-	        this.drawCenteredString(fontRenderer, this.stringToGolden("Stored Redstone", 1, false, TextFormatting.RED), 0, 0, 111111);
+	        this.drawCenteredString(fontRenderer, this.stringToFlashGolden("Stored Redstone", 1, false, TextFormatting.RED), 0, 0, 111111);
 		}
 		GlStateManager.popMatrix();
 		
@@ -336,8 +322,19 @@ public class GuiCustomizeMenuFrameMain extends GuiContainerVC {
 			GuiVC.buttonA17.enabled = true;
 			GuiVC.buttonA19.enabled = false;
 		}
+    	
+		if(airship.frameSkinColorRed == 255
+		&& airship.frameSkinColorGreen == 255
+		&& airship.frameSkinColorBlue == 255)
+		{
+			GuiVC.buttonA18.enabled = false;
+		}
+		else
+		{
+			GuiVC.buttonA18.enabled = true;
+		}
 		
-		
+		this.drawEntityOnScreen(this.guiLeft + 134, this.guiTop + 100, 13, mouseX, mouseY, this.airship);
 	}
 	
 	@Override
@@ -348,8 +345,7 @@ public class GuiCustomizeMenuFrameMain extends GuiContainerVC {
 		this.fontRenderer.drawString(References.localNameVC("vc.main.appearance"), 58, -10, 65521);
 		this.mc.getTextureManager().bindTexture(TEXTURE);
 		
-		int i = this.guiLeft;
-        int j = this.guiTop;
+		
 		
         if(this.airship.getMainTierFrame() > 0)
         {
@@ -389,70 +385,97 @@ public class GuiCustomizeMenuFrameMain extends GuiContainerVC {
 	        this.drawTexturedModalRect(0, 0, 176, 0, 16, 16);
 		}
 		GlStateManager.popMatrix();
-    }
-	
-	@Override
-	protected void keyTyped(char typedChar, int keyCode) throws IOException
-    {
-		if (keyCode == 1 
-        ||	keyCode == Keybinds.vcInventory.getKeyCode()
-        || this.mc.gameSettings.keyBindInventory.isActiveAndMatches(keyCode))
-        {
-            this.mc.player.closeScreen();
-        }
-    }
-	
-	@Override
-	public void updateScreen()
-    {
-        super.updateScreen();
-
-        if (!this.mc.player.isEntityAlive() || this.mc.player.isDead
-        || !this.mc.player.isRiding())
-        {
-            this.mc.player.closeScreen();
-        }
-    }
-    
-    /**
-     * Draws an entity on the screen looking toward the cursor.
-     */
-    public static void drawEntityOnScreen(int posX, int posY, int scale, float mouseX, float mouseY, Entity entityIn)
-    {
-    	GlStateManager.pushMatrix();
+		
+		if(GuiVC.buttonA16.enabled)
 		{
-			GL11.glEnable(GL11.GL_CULL_FACE);
-	        GL11.glCullFace(GL11.GL_FRONT);
-	        
-	        GlStateManager.translate(posX, posY, 100.0F);
-	        GlStateManager.scale((float)(scale), (float)scale, (float)scale);
-	        
-	        /////Flips the model right side up.
-	        GlStateManager.rotate(200.0F, 0.0F, 0.0F, 1.0F);
-	        GlStateManager.rotate(45.0F, 0.0F, 1.0F, 0.0F);
-	        GlStateManager.rotate(30.0F, 1.0F, 0.0F, 0.0F);
-	        
-	        //Fixes the position to be at a right
-	        GlStateManager.rotate(entityIn.prevRotationYaw, 0.0F, 1.0F, 0.0F);
-	        
-	        RenderHelper.disableStandardItemLighting();
-	        
-	        RenderManager rendermanager = Minecraft.getMinecraft().getRenderManager();
-	        
-	        rendermanager.setPlayerViewY(180.0F);
-	        rendermanager.setRenderShadow(false);
-	        
-	        //This is the non-multipass rendering way to render an entity.
-	        //rendermanager.renderEntity(entityIn, 0.0D, 0.0D, 0.0D, 0.0F, 1.0F, false);
-	        
-	        rendermanager.renderEntityStatic(entityIn, 0, false);
-	        rendermanager.renderMultipass(entityIn, 0F);
-	        
-	        rendermanager.setRenderShadow(true);
-	        
-	        GL11.glCullFace(GL11.GL_BACK);
-	        GL11.glDisable(GL11.GL_CULL_FACE);
+			//Logic for mouse-over Color Cost tooltip
+			if(mouseX >= this.guiLeft + 21 && mouseX <= this.guiLeft + 80
+			&& mouseY >= this.guiTop + 160 && mouseY <= this.guiTop + 173)
+			{
+				List<String> text = new ArrayList<String>();
+				
+				text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("Costs " + CostsVC.FRAME_SKIN_COLOR_COST + " Redstone"));
+				
+				FontRenderer fontrenderer = this.getFontRenderer();
+				
+				GlStateManager.pushMatrix();
+				{
+					GlStateManager.translate(mouseX - this.guiLeft - 28, mouseY - this.guiTop - 8, 0);
+					GlStateManager.scale(0.5, 0.5, 0.5);
+					
+					this.drawHoveringText(text, 0, 0);
+				}
+				GlStateManager.popMatrix();
+			}
 		}
-		GlStateManager.popMatrix();
+		
+		if(GuiVC.buttonA17.enabled)
+		{
+			//Logic for mouse-over Transparency Cost tooltip
+			if(mouseX >= this.guiLeft + 21 && mouseX <= this.guiLeft + 80
+			&& mouseY >= this.guiTop + 180 && mouseY <= this.guiTop + 193)
+			{
+				List<String> text = new ArrayList<String>();
+				
+				text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("Costs " + CostsVC.FRAME_SKIN_TRANSPARENCY_COST + " Redstone"));
+				
+				FontRenderer fontrenderer = this.getFontRenderer();
+				
+				GlStateManager.pushMatrix();
+				{
+					GlStateManager.translate(mouseX - this.guiLeft - 28, mouseY - this.guiTop - 8, 0);
+					GlStateManager.scale(0.5, 0.5, 0.5);
+					
+					this.drawHoveringText(text, 0, 0);
+				}
+				GlStateManager.popMatrix();
+			}
+		}
+		
+		if(GuiVC.buttonA18.enabled)
+		{
+			//Logic for mouse-over 0 Cost tooltip
+			if(mouseX >= this.guiLeft + 81 && mouseX <= this.guiLeft + 94
+			&& mouseY >= this.guiTop + 160 && mouseY <= this.guiTop + 173)
+			{
+				List<String> text = new ArrayList<String>();
+				
+				text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("Costs 0 Redstone"));
+				
+				FontRenderer fontrenderer = this.getFontRenderer();
+				
+				GlStateManager.pushMatrix();
+				{
+					GlStateManager.translate(mouseX - this.guiLeft - 28, mouseY - this.guiTop - 8, 0);
+					GlStateManager.scale(0.5, 0.5, 0.5);
+					
+					this.drawHoveringText(text, 0, 0);
+				}
+				GlStateManager.popMatrix();
+			}
+		}
+		
+		if(GuiVC.buttonA19.enabled)
+		{
+			//Logic for mouse-over 0 Cost tooltip
+			if(mouseX >= this.guiLeft + 81 && mouseX <= this.guiLeft + 94
+			&& mouseY >= this.guiTop + 180 && mouseY <= this.guiTop + 193)
+			{
+				List<String> text = new ArrayList<String>();
+				
+				text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("Costs 0 Redstone"));
+				
+				FontRenderer fontrenderer = this.getFontRenderer();
+				
+				GlStateManager.pushMatrix();
+				{
+					GlStateManager.translate(mouseX - this.guiLeft - 28, mouseY - this.guiTop - 8, 0);
+					GlStateManager.scale(0.5, 0.5, 0.5);
+					
+					this.drawHoveringText(text, 0, 0);
+				}
+				GlStateManager.popMatrix();
+			}
+		}
     }
 }

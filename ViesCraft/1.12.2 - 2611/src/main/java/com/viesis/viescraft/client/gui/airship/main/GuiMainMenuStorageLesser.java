@@ -199,7 +199,7 @@ public class GuiMainMenuStorageLesser extends GuiContainerVC {
 			GlStateManager.translate(147.5, 10.5, 0);
 			GlStateManager.scale(0.75, 0.75, 0.75);
 			
-			this.fontRenderer.drawString(this.stringToGolden(References.localNameVC("vc.main.fuel"), 0, false, TextFormatting.GOLD), 0, 0, Color.ORANGE.getRGB());
+			this.fontRenderer.drawString(this.stringToFlashGolden(References.localNameVC("vc.main.fuel"), 0, false, TextFormatting.GOLD), 0, 0, Color.ORANGE.getRGB());
 		}
 		GlStateManager.popMatrix();
 		

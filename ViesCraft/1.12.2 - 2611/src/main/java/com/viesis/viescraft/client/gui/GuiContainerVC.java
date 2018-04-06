@@ -1,7 +1,10 @@
 package com.viesis.viescraft.client.gui;
 
+import java.io.IOException;
+
 import org.lwjgl.opengl.GL11;
 
+import com.viesis.viescraft.api.util.Keybinds;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipCore;
 
@@ -46,10 +49,33 @@ public class GuiContainerVC extends GuiContainer {
 		
 	}
 	
+	@Override
+	protected void keyTyped(char typedChar, int keyCode) throws IOException
+    {
+		if (keyCode == 1 
+        ||	keyCode == Keybinds.vcInventory.getKeyCode()
+        || this.mc.gameSettings.keyBindInventory.isActiveAndMatches(keyCode))
+        {
+            this.mc.player.closeScreen();
+        }
+    }
+	
+	@Override
+	public void updateScreen()
+    {
+        super.updateScreen();
+
+        if (!this.mc.player.isEntityAlive() || this.mc.player.isDead
+        || !this.mc.player.isRiding())
+        {
+            this.mc.player.closeScreen();
+        }
+    }
+	
 	/**
 	 * Makes the inserted string flash.
 	 */
-	protected static String stringToGolden(String parString, int parShineLocation, boolean parReturnToBlack, TextFormatting colorIn)
+	protected static String stringToFlashGolden(String parString, int parShineLocation, boolean parReturnToBlack, TextFormatting colorIn)
 	{
 	   int stringLength = parString.length();
 	   
@@ -100,9 +126,11 @@ public class GuiContainerVC extends GuiContainer {
 	   TextFormatting[] colorChar = 
 	      {
 	         TextFormatting.RED,
+	         TextFormatting.DARK_RED,
 	         TextFormatting.GOLD,
 	         TextFormatting.YELLOW,
 	         TextFormatting.GREEN,
+	         TextFormatting.DARK_GREEN,
 	         TextFormatting.AQUA,
 	         TextFormatting.BLUE,
 	         TextFormatting.LIGHT_PURPLE,
@@ -143,8 +171,7 @@ public class GuiContainerVC extends GuiContainer {
 	/**
      * Draws a Rotating ItemStack.
      */
-    protected void drawRotatingItemStack(ItemStack stack, int posXIn, int posYIn//, boolean isBlockIn
-    		)
+    protected void drawRotatingItemStack(ItemStack stack, int posXIn, int posYIn)
     {
     	GlStateManager.pushMatrix();
 		{
@@ -173,7 +200,7 @@ public class GuiContainerVC extends GuiContainer {
     /**
      * Draws an entity on the screen looking toward the cursor.
      */
-    protected static void drawEntityOnScreen(int posX, int posY, int scale, float mouseX, float mouseY, EntityAirshipBaseVC entityIn)
+    protected void drawEntityOnScreen(int posX, int posY, int scale, float mouseX, float mouseY, EntityAirshipBaseVC entityIn)
     {
     	GlStateManager.pushMatrix();
 		{
@@ -201,13 +228,9 @@ public class GuiContainerVC extends GuiContainer {
 	        //This is the non-multipass rendering way to render an entity.
 	        //rendermanager.renderEntity(entityIn, 0.0D, 0.0D, 0.0D, 0.0F, 1.0F, false);
 	        
-	        int currentSkin = entityIn.balloonPatternTexture;
-	        entityIn.balloonPatternTexture = metaInfo;
-	        
 	        rendermanager.renderEntityStatic(entityIn, 0, false);
 	        rendermanager.renderMultipass(entityIn, 0F);
 	        
-	        entityIn.balloonPatternTexture = currentSkin;
 	        rendermanager.setRenderShadow(true);
 	        
 	        GL11.glCullFace(GL11.GL_BACK);

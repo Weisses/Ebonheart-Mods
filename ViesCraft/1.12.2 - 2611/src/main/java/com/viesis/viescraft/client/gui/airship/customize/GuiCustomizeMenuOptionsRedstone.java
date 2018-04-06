@@ -10,7 +10,7 @@ import com.viesis.viescraft.api.GuiVC;
 import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.api.util.Keybinds;
 import com.viesis.viescraft.api.util.LogHelper;
-import com.viesis.viescraft.client.gui.GuiButtonGeneralVC;
+import com.viesis.viescraft.client.gui.GuiButtonGeneral1VC;
 import com.viesis.viescraft.client.gui.GuiButtonMenuVC;
 import com.viesis.viescraft.client.gui.GuiContainerVC;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
@@ -66,8 +66,8 @@ public class GuiCustomizeMenuOptionsRedstone extends GuiContainerVC {
     	GuiVC.buttonM3 = new GuiButtonMenuVC(3, this.guiLeft - 35, this.guiTop + 7 + (16 * 2), 36, 14, "", 2);
     	GuiVC.buttonM4 = new GuiButtonMenuVC(4, this.guiLeft - 35, this.guiTop + 7 + (16 * 3), 36, 14, "", 3);
 		
-    	GuiVC.buttonA12 = new GuiButtonGeneralVC(12, this.guiLeft + 31, this.guiTop + 65, 42, 14, "Consume", 1);
-		GuiVC.buttonA13 = new GuiButtonGeneralVC(13, this.guiLeft + 103, this.guiTop + 65, 42, 14, "Back", 2);
+    	GuiVC.buttonA12 = new GuiButtonGeneral1VC(12, this.guiLeft + 31, this.guiTop + 65, 42, 14, "Consume", 1);
+		GuiVC.buttonA13 = new GuiButtonGeneral1VC(13, this.guiLeft + 103, this.guiTop + 65, 42, 14, "Back", 2);
 		
     	this.buttonList.add(GuiVC.buttonM1);
 		this.buttonList.add(GuiVC.buttonM2);
@@ -186,7 +186,7 @@ public class GuiCustomizeMenuOptionsRedstone extends GuiContainerVC {
 			GlStateManager.translate(this.guiLeft + 88, this.guiTop + 12.5, 0);
 	        GlStateManager.scale(0.75F, 0.75F, 0.75F);
 	        
-	        this.drawCenteredString(fontRenderer, this.stringToGolden("Stored Redstone", 1, false, TextFormatting.RED), 0, 0, 111111);
+	        this.drawCenteredString(fontRenderer, this.stringToFlashGolden("Stored Redstone", 1, false, TextFormatting.RED), 0, 0, 111111);
 		}
 		GlStateManager.popMatrix();
 		

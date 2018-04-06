@@ -7,7 +7,7 @@ import net.minecraft.entity.Entity;
 public class ModelFrame0 extends ModelBase
 {
     ModelRenderer Floor_Latch;
-    ModelRenderer Floor_Top;
+    //ModelRenderer Floor_Top;
     ModelRenderer Floor_Bottom;
     ModelRenderer Bomb_Bay;
     ModelRenderer Seat_Driver;
@@ -42,10 +42,10 @@ public class ModelFrame0 extends ModelBase
         Floor_Latch.setTextureSize( 256, 128 );
         Floor_Latch.addBox( 0F, 0F, 0F, 10, 2, 8);
         Floor_Latch.setRotationPoint( -5F, 4F, 3F );
-        Floor_Top = new ModelRenderer( this, 47, 27 );
-        Floor_Top.setTextureSize( 256, 128 );
-        Floor_Top.addBox( 0F, 0.5F, 0F, 14, 1, 24);
-        Floor_Top.setRotationPoint( -7F, 4.5F, -12F );
+        //Floor_Top = new ModelRenderer( this, 47, 27 );
+        //Floor_Top.setTextureSize( 256, 128 );
+        //Floor_Top.addBox( 0F, 0.5F, 0F, 14, 1, 24);
+        //Floor_Top.setRotationPoint( -7F, 4.5F, -12F );
         Floor_Bottom = new ModelRenderer( this, 0, 0 );
         Floor_Bottom.setTextureSize( 256, 128 );
         Floor_Bottom.addBox( 0F, 0.5F, -0.5F, 14, 1, 25);
@@ -117,11 +117,11 @@ public class ModelFrame0 extends ModelBase
         Skid_Brace_Right_Back = new ModelRenderer( this, 26, 103 );
         Skid_Brace_Right_Back.setTextureSize( 256, 128 );
         Skid_Brace_Right_Back.addBox( -1F, 0F, -1F, 2, 3, 2);
-        Skid_Brace_Right_Back.setRotationPoint( -6F, 6F, 6F );
+        Skid_Brace_Right_Back.setRotationPoint( -6F, 6F, 7F );
         Skid_Bottom_Right = new ModelRenderer( this, 11, 85 );
         Skid_Bottom_Right.setTextureSize( 256, 128 );
-        Skid_Bottom_Right.addBox( -1.5F, 0F, 0F, 3, 1, 24);
-        Skid_Bottom_Right.setRotationPoint( -6F, 9F, -12.5F );
+        Skid_Bottom_Right.addBox( -2F, 0F, 0F, 4, 1, 24);
+        Skid_Bottom_Right.setRotationPoint( -6F, 9F, -12F );
         Skid_Brace_Left_Front = new ModelRenderer( this, 26, 103 );
         Skid_Brace_Left_Front.setTextureSize( 256, 128 );
         Skid_Brace_Left_Front.addBox( -1F, 0F, -1F, 2, 3, 2);
@@ -129,11 +129,11 @@ public class ModelFrame0 extends ModelBase
         Skid_Brace_Left_Back = new ModelRenderer( this, 26, 103 );
         Skid_Brace_Left_Back.setTextureSize( 256, 128 );
         Skid_Brace_Left_Back.addBox( -1F, 0F, -1F, 2, 3, 2);
-        Skid_Brace_Left_Back.setRotationPoint( 6F, 6F, 6F );
+        Skid_Brace_Left_Back.setRotationPoint( 6F, 6F, 7F );
         Skid_Bottom_Left = new ModelRenderer( this, 11, 85 );
         Skid_Bottom_Left.setTextureSize( 256, 128 );
-        Skid_Bottom_Left.addBox( -1.5F, 0F, 0F, 3, 1, 24);
-        Skid_Bottom_Left.setRotationPoint( 6F, 9F, -12.5F );
+        Skid_Bottom_Left.addBox( -2F, 0F, 0F, 4, 1, 24);
+        Skid_Bottom_Left.setRotationPoint( 6F, 9F, -12F );
     }
 
    public void render(Entity par1Entity, float par2, float par3, float par4, float par5, float par6, float par7)
@@ -143,10 +143,10 @@ public class ModelFrame0 extends ModelBase
         Floor_Latch.rotateAngleZ = 0F;
         Floor_Latch.renderWithRotation(par7);
 
-        Floor_Top.rotateAngleX = 0F;
-        Floor_Top.rotateAngleY = 0F;
-        Floor_Top.rotateAngleZ = 0F;
-        Floor_Top.renderWithRotation(par7);
+        //Floor_Top.rotateAngleX = 0F;
+        //Floor_Top.rotateAngleY = 0F;
+        //Floor_Top.rotateAngleZ = 0F;
+        //Floor_Top.renderWithRotation(par7);
 
         Floor_Bottom.rotateAngleX = 0F;
         Floor_Bottom.rotateAngleY = 0F;

@@ -4,7 +4,7 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
 import com.viesis.viescraft.api.References;
-import com.viesis.viescraft.client.gui.GuiButtonGeneralVC;
+import com.viesis.viescraft.client.gui.GuiButtonGeneral1VC;
 import com.viesis.viescraft.client.gui.GuiButtonGuideBookVC;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 
@@ -208,7 +208,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
         this.guiTop = (this.height - this.ySize) / 2;
         int startY = 77;
         
-        buttonDone = new GuiButtonGeneralVC(0, this.guiLeft + 60, 184, 57, 14, I18n.format("gui.done", new Object[0]), 0);
+        buttonDone = new GuiButtonGeneral1VC(0, this.guiLeft + 60, 184, 57, 14, I18n.format("gui.done", new Object[0]), 0);
         
         buttonMainTab1 = new GuiButtonGuideBookVC(101, this.guiLeft - 84, 32, 57, 14, I18n.format("Basic Assembly", new Object[0]), 0.5F, 0.5F, 0.5F, 0);
         buttonMainTab2 = new GuiButtonGuideBookVC(102, this.guiLeft - 84, 32 + (14 * 1), 57, 14, I18n.format("Airship Interaction", new Object[0]), 0.5F, 0.5F, 0.5F, 0);
@@ -218,78 +218,78 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
         
         
         
-        buttonRecipeLogicChip = new GuiButtonGeneralVC(1, this.guiLeft - 16, startY + (14 * 0), 78, 14, I18n.format("Logic Chip", new Object[0]), 0);
-        buttonRecipeWorkbench = new GuiButtonGeneralVC(2, this.guiLeft - 16, startY + (14 * 1), 78, 14, I18n.format("Workbench", new Object[0]), 0);
-        buttonRecipeBalloon = new GuiButtonGeneralVC(3, this.guiLeft - 16, startY + (14 * 2), 78, 14, I18n.format("Balloon", new Object[0]), 0);
-        buttonRecipeFrame = new GuiButtonGeneralVC(4, this.guiLeft - 16, startY + (14 * 3), 78, 14, I18n.format("Frame", new Object[0]), 0);
-        buttonRecipeEngine = new GuiButtonGeneralVC(5, this.guiLeft - 16, startY + (14 * 4), 78, 14, I18n.format("Engine", new Object[0]), 0);
-        buttonRecipeIgnition = new GuiButtonGeneralVC(6, this.guiLeft - 16, startY + (14 * 5), 78, 14, I18n.format("Ignition", new Object[0]), 0);
+        buttonRecipeLogicChip = new GuiButtonGeneral1VC(1, this.guiLeft - 16, startY + (14 * 0), 78, 14, I18n.format("Logic Chip", new Object[0]), 0);
+        buttonRecipeWorkbench = new GuiButtonGeneral1VC(2, this.guiLeft - 16, startY + (14 * 1), 78, 14, I18n.format("Workbench", new Object[0]), 0);
+        buttonRecipeBalloon = new GuiButtonGeneral1VC(3, this.guiLeft - 16, startY + (14 * 2), 78, 14, I18n.format("Balloon", new Object[0]), 0);
+        buttonRecipeFrame = new GuiButtonGeneral1VC(4, this.guiLeft - 16, startY + (14 * 3), 78, 14, I18n.format("Frame", new Object[0]), 0);
+        buttonRecipeEngine = new GuiButtonGeneral1VC(5, this.guiLeft - 16, startY + (14 * 4), 78, 14, I18n.format("Engine", new Object[0]), 0);
+        buttonRecipeIgnition = new GuiButtonGeneral1VC(6, this.guiLeft - 16, startY + (14 * 5), 78, 14, I18n.format("Ignition", new Object[0]), 0);
         
-        buttonRecipeAirshipV1 = new GuiButtonGeneralVC(5, this.guiLeft - 16, startY + (14 * 2), 78, 14, I18n.format(ViesCraftConfig.v1AirshipName, new Object[0]), 0);
-        buttonRecipeAirshipV2 = new GuiButtonGeneralVC(6, this.guiLeft - 16, startY + (14 * 3), 78, 14, I18n.format(ViesCraftConfig.v2AirshipName, new Object[0]), 0);
-        buttonRecipeAirshipV3 = new GuiButtonGeneralVC(7, this.guiLeft - 16, startY + (14 * 4), 78, 14, I18n.format(ViesCraftConfig.v3AirshipName, new Object[0]), 0);
-        buttonRecipeAirshipV4 = new GuiButtonGeneralVC(8, this.guiLeft - 16, startY + (14 * 5), 78, 14, ViesCraftConfig.v4AirshipName, 0);
+        buttonRecipeAirshipV1 = new GuiButtonGeneral1VC(5, this.guiLeft - 16, startY + (14 * 2), 78, 14, I18n.format(ViesCraftConfig.v1AirshipName, new Object[0]), 0);
+        buttonRecipeAirshipV2 = new GuiButtonGeneral1VC(6, this.guiLeft - 16, startY + (14 * 3), 78, 14, I18n.format(ViesCraftConfig.v2AirshipName, new Object[0]), 0);
+        buttonRecipeAirshipV3 = new GuiButtonGeneral1VC(7, this.guiLeft - 16, startY + (14 * 4), 78, 14, I18n.format(ViesCraftConfig.v3AirshipName, new Object[0]), 0);
+        buttonRecipeAirshipV4 = new GuiButtonGeneral1VC(8, this.guiLeft - 16, startY + (14 * 5), 78, 14, ViesCraftConfig.v4AirshipName, 0);
         
-        buttonRecipeViesolinePellets = new GuiButtonGeneralVC(9, this.guiLeft - 16, startY + (14 * 3), 78, 14, I18n.format("Viesoline Pellets", new Object[0]), 0);
-        buttonRecipeDismounter = new GuiButtonGeneralVC(10, this.guiLeft - 16, startY + (14 * 4), 78, 14, I18n.format("Dismounter", new Object[0]), 0);
-        buttonRecipeDismounterPlayer = new GuiButtonGeneralVC(11, this.guiLeft - 16, startY + (14 * 5), 78, 14, "Player Dismounter", 0);
+        buttonRecipeViesolinePellets = new GuiButtonGeneral1VC(9, this.guiLeft - 16, startY + (14 * 3), 78, 14, I18n.format("Viesoline Pellets", new Object[0]), 0);
+        buttonRecipeDismounter = new GuiButtonGeneral1VC(10, this.guiLeft - 16, startY + (14 * 4), 78, 14, I18n.format("Dismounter", new Object[0]), 0);
+        buttonRecipeDismounterPlayer = new GuiButtonGeneral1VC(11, this.guiLeft - 16, startY + (14 * 5), 78, 14, "Player Dismounter", 0);
         
-        buttonRecipeUpgradeFrame0 = new GuiButtonGeneralVC(20, this.guiLeft - 16, startY + (14 * 0), 78, 14, "Frame Casing", 0);
-        buttonRecipeUpgradeFrame1 = new GuiButtonGeneralVC(21, this.guiLeft - 16, startY + (14 * 1), 78, 14, "Frame Upgrade 1", 0);
-        buttonRecipeUpgradeFrame2 = new GuiButtonGeneralVC(22, this.guiLeft - 16, startY + (14 * 2), 78, 14, "Frame Upgrade 2", 0);
-        buttonRecipeUpgradeFrame3 = new GuiButtonGeneralVC(23, this.guiLeft - 16, startY + (14 * 3), 78, 14, "Frame Upgrade 3", 0);
-        buttonRecipeUpgradeFrame4 = new GuiButtonGeneralVC(24, this.guiLeft - 16, startY + (14 * 4), 78, 14, "Frame Upgrade 4", 0);
-        buttonRecipeUpgradeFrame5 = new GuiButtonGeneralVC(25, this.guiLeft - 16, startY + (14 * 5), 78, 14, "Frame Upgrade 5", 0);
+        buttonRecipeUpgradeFrame0 = new GuiButtonGeneral1VC(20, this.guiLeft - 16, startY + (14 * 0), 78, 14, "Frame Casing", 0);
+        buttonRecipeUpgradeFrame1 = new GuiButtonGeneral1VC(21, this.guiLeft - 16, startY + (14 * 1), 78, 14, "Frame Upgrade 1", 0);
+        buttonRecipeUpgradeFrame2 = new GuiButtonGeneral1VC(22, this.guiLeft - 16, startY + (14 * 2), 78, 14, "Frame Upgrade 2", 0);
+        buttonRecipeUpgradeFrame3 = new GuiButtonGeneral1VC(23, this.guiLeft - 16, startY + (14 * 3), 78, 14, "Frame Upgrade 3", 0);
+        buttonRecipeUpgradeFrame4 = new GuiButtonGeneral1VC(24, this.guiLeft - 16, startY + (14 * 4), 78, 14, "Frame Upgrade 4", 0);
+        buttonRecipeUpgradeFrame5 = new GuiButtonGeneral1VC(25, this.guiLeft - 16, startY + (14 * 5), 78, 14, "Frame Upgrade 5", 0);
 
-        buttonRecipeUpgradeCore0 = new GuiButtonGeneralVC(30, this.guiLeft - 16, startY + (14 * 0), 78, 14, "Core Shard", 0);
-        buttonRecipeUpgradeCore1 = new GuiButtonGeneralVC(31, this.guiLeft - 16, startY + (14 * 1), 78, 14, "Core Upgrade 1", 0);
-        buttonRecipeUpgradeCore2 = new GuiButtonGeneralVC(32, this.guiLeft - 16, startY + (14 * 2), 78, 14, "Core Upgrade 2", 0);
-        buttonRecipeUpgradeCore3 = new GuiButtonGeneralVC(33, this.guiLeft - 16, startY + (14 * 3), 78, 14, "Core Upgrade 3", 0);
-        buttonRecipeUpgradeCore4 = new GuiButtonGeneralVC(34, this.guiLeft - 16, startY + (14 * 4), 78, 14, "Core Upgrade 4", 0);
-        buttonRecipeUpgradeCore5 = new GuiButtonGeneralVC(35, this.guiLeft - 16, startY + (14 * 5), 78, 14, "Core Upgrade 5", 0);
+        buttonRecipeUpgradeCore0 = new GuiButtonGeneral1VC(30, this.guiLeft - 16, startY + (14 * 0), 78, 14, "Core Shard", 0);
+        buttonRecipeUpgradeCore1 = new GuiButtonGeneral1VC(31, this.guiLeft - 16, startY + (14 * 1), 78, 14, "Core Upgrade 1", 0);
+        buttonRecipeUpgradeCore2 = new GuiButtonGeneral1VC(32, this.guiLeft - 16, startY + (14 * 2), 78, 14, "Core Upgrade 2", 0);
+        buttonRecipeUpgradeCore3 = new GuiButtonGeneral1VC(33, this.guiLeft - 16, startY + (14 * 3), 78, 14, "Core Upgrade 3", 0);
+        buttonRecipeUpgradeCore4 = new GuiButtonGeneral1VC(34, this.guiLeft - 16, startY + (14 * 4), 78, 14, "Core Upgrade 4", 0);
+        buttonRecipeUpgradeCore5 = new GuiButtonGeneral1VC(35, this.guiLeft - 16, startY + (14 * 5), 78, 14, "Core Upgrade 5", 0);
 
-        buttonRecipeUpgradeEngine0 = new GuiButtonGeneralVC(40, this.guiLeft - 16, startY + (14 * 0), 78, 14, "Engine Fragment", 0);
-        buttonRecipeUpgradeEngine1 = new GuiButtonGeneralVC(41, this.guiLeft - 16, startY + (14 * 1), 78, 14, "Engine Upgrade 1", 0);
-        buttonRecipeUpgradeEngine2 = new GuiButtonGeneralVC(42, this.guiLeft - 16, startY + (14 * 2), 78, 14, "Engine Upgrade 2", 0);
-        buttonRecipeUpgradeEngine3 = new GuiButtonGeneralVC(43, this.guiLeft - 16, startY + (14 * 3), 78, 14, "Engine Upgrade 3", 0);
-        buttonRecipeUpgradeEngine4 = new GuiButtonGeneralVC(44, this.guiLeft - 16, startY + (14 * 4), 78, 14, "Engine Upgrade 4", 0);
-        buttonRecipeUpgradeEngine5 = new GuiButtonGeneralVC(45, this.guiLeft - 16, startY + (14 * 5), 78, 14, "Engine Upgrade 5", 0);
+        buttonRecipeUpgradeEngine0 = new GuiButtonGeneral1VC(40, this.guiLeft - 16, startY + (14 * 0), 78, 14, "Engine Fragment", 0);
+        buttonRecipeUpgradeEngine1 = new GuiButtonGeneral1VC(41, this.guiLeft - 16, startY + (14 * 1), 78, 14, "Engine Upgrade 1", 0);
+        buttonRecipeUpgradeEngine2 = new GuiButtonGeneral1VC(42, this.guiLeft - 16, startY + (14 * 2), 78, 14, "Engine Upgrade 2", 0);
+        buttonRecipeUpgradeEngine3 = new GuiButtonGeneral1VC(43, this.guiLeft - 16, startY + (14 * 3), 78, 14, "Engine Upgrade 3", 0);
+        buttonRecipeUpgradeEngine4 = new GuiButtonGeneral1VC(44, this.guiLeft - 16, startY + (14 * 4), 78, 14, "Engine Upgrade 4", 0);
+        buttonRecipeUpgradeEngine5 = new GuiButtonGeneral1VC(45, this.guiLeft - 16, startY + (14 * 5), 78, 14, "Engine Upgrade 5", 0);
 
-        buttonRecipeUpgradeBalloon0 = new GuiButtonGeneralVC(50, this.guiLeft - 16, startY + (14 * 0), 78, 14, "Balloon Remnant", 0);
-        buttonRecipeUpgradeBalloon1 = new GuiButtonGeneralVC(51, this.guiLeft - 16, startY + (14 * 1), 78, 14, "Balloon Upgrade 1", 0);
-        buttonRecipeUpgradeBalloon2 = new GuiButtonGeneralVC(52, this.guiLeft - 16, startY + (14 * 2), 78, 14, "Balloon Upgrade 2", 0);
-        buttonRecipeUpgradeBalloon3 = new GuiButtonGeneralVC(53, this.guiLeft - 16, startY + (14 * 3), 78, 14, "Balloon Upgrade 3", 0);
-        buttonRecipeUpgradeBalloon4 = new GuiButtonGeneralVC(54, this.guiLeft - 16, startY + (14 * 4), 78, 14, "Balloon Upgrade 4", 0);
-        buttonRecipeUpgradeBalloon5 = new GuiButtonGeneralVC(55, this.guiLeft - 16, startY + (14 * 5), 78, 14, "Balloon Upgrade 5", 0);
+        buttonRecipeUpgradeBalloon0 = new GuiButtonGeneral1VC(50, this.guiLeft - 16, startY + (14 * 0), 78, 14, "Balloon Remnant", 0);
+        buttonRecipeUpgradeBalloon1 = new GuiButtonGeneral1VC(51, this.guiLeft - 16, startY + (14 * 1), 78, 14, "Balloon Upgrade 1", 0);
+        buttonRecipeUpgradeBalloon2 = new GuiButtonGeneral1VC(52, this.guiLeft - 16, startY + (14 * 2), 78, 14, "Balloon Upgrade 2", 0);
+        buttonRecipeUpgradeBalloon3 = new GuiButtonGeneral1VC(53, this.guiLeft - 16, startY + (14 * 3), 78, 14, "Balloon Upgrade 3", 0);
+        buttonRecipeUpgradeBalloon4 = new GuiButtonGeneral1VC(54, this.guiLeft - 16, startY + (14 * 4), 78, 14, "Balloon Upgrade 4", 0);
+        buttonRecipeUpgradeBalloon5 = new GuiButtonGeneral1VC(55, this.guiLeft - 16, startY + (14 * 5), 78, 14, "Balloon Upgrade 5", 0);
         
-        buttonRecipeModuleChip = new GuiButtonGeneralVC(61, this.guiLeft - 16, startY + (14 * 0) - 28, 78, 14, "Module Chip", 0);
-        buttonRecipeModuleAltitudeL = new GuiButtonGeneralVC(62, this.guiLeft - 16, startY + (14 * 0), 78, 14, "Lesser Altitude", 0);
-        buttonRecipeModuleAltitudeN = new GuiButtonGeneralVC(63, this.guiLeft - 16, startY + (14 * 1), 78, 14, "Altitude", 0);
-        buttonRecipeModuleAltitudeG = new GuiButtonGeneralVC(64, this.guiLeft - 16, startY + (14 * 2), 78, 14, "Greater Altitude", 0);
-        buttonRecipeModuleSpeedL = new GuiButtonGeneralVC(65, this.guiLeft - 16, startY + (14 * 3), 78, 14, "Lesser Speed", 0);
-        buttonRecipeModuleSpeedN = new GuiButtonGeneralVC(66, this.guiLeft - 16, startY + (14 * 4), 78, 14, "Speed", 0);
-        buttonRecipeModuleSpeedG = new GuiButtonGeneralVC(67, this.guiLeft - 16, startY + (14 * 5), 78, 14, "Greater Speed", 0);
+        buttonRecipeModuleChip = new GuiButtonGeneral1VC(61, this.guiLeft - 16, startY + (14 * 0) - 28, 78, 14, "Module Chip", 0);
+        buttonRecipeModuleAltitudeL = new GuiButtonGeneral1VC(62, this.guiLeft - 16, startY + (14 * 0), 78, 14, "Lesser Altitude", 0);
+        buttonRecipeModuleAltitudeN = new GuiButtonGeneral1VC(63, this.guiLeft - 16, startY + (14 * 1), 78, 14, "Altitude", 0);
+        buttonRecipeModuleAltitudeG = new GuiButtonGeneral1VC(64, this.guiLeft - 16, startY + (14 * 2), 78, 14, "Greater Altitude", 0);
+        buttonRecipeModuleSpeedL = new GuiButtonGeneral1VC(65, this.guiLeft - 16, startY + (14 * 3), 78, 14, "Lesser Speed", 0);
+        buttonRecipeModuleSpeedN = new GuiButtonGeneral1VC(66, this.guiLeft - 16, startY + (14 * 4), 78, 14, "Speed", 0);
+        buttonRecipeModuleSpeedG = new GuiButtonGeneral1VC(67, this.guiLeft - 16, startY + (14 * 5), 78, 14, "Greater Speed", 0);
         
-        buttonRecipeModuleStorageL = new GuiButtonGeneralVC(62, this.guiLeft - 16, startY + (14 * 0), 78, 14, "Lesser Storage", 0);
-        buttonRecipeModuleStorageN = new GuiButtonGeneralVC(63, this.guiLeft - 16, startY + (14 * 1), 78, 14, "Storage", 0);
-        buttonRecipeModuleStorageG = new GuiButtonGeneralVC(64, this.guiLeft - 16, startY + (14 * 2), 78, 14, "Greater Storage", 0);
-        buttonRecipeModuleFuelL = new GuiButtonGeneralVC(65, this.guiLeft - 16, startY + (14 * 3), 78, 14, "Lesser Fuel", 0);
-        buttonRecipeModuleFuelN = new GuiButtonGeneralVC(66, this.guiLeft - 16, startY + (14 * 4), 78, 14, "Fuel", 0);
-        buttonRecipeModuleFuelG = new GuiButtonGeneralVC(67, this.guiLeft - 16, startY + (14 * 5), 78, 14, "Greater Fuel", 0);
+        buttonRecipeModuleStorageL = new GuiButtonGeneral1VC(62, this.guiLeft - 16, startY + (14 * 0), 78, 14, "Lesser Storage", 0);
+        buttonRecipeModuleStorageN = new GuiButtonGeneral1VC(63, this.guiLeft - 16, startY + (14 * 1), 78, 14, "Storage", 0);
+        buttonRecipeModuleStorageG = new GuiButtonGeneral1VC(64, this.guiLeft - 16, startY + (14 * 2), 78, 14, "Greater Storage", 0);
+        buttonRecipeModuleFuelL = new GuiButtonGeneral1VC(65, this.guiLeft - 16, startY + (14 * 3), 78, 14, "Lesser Fuel", 0);
+        buttonRecipeModuleFuelN = new GuiButtonGeneral1VC(66, this.guiLeft - 16, startY + (14 * 4), 78, 14, "Fuel", 0);
+        buttonRecipeModuleFuelG = new GuiButtonGeneral1VC(67, this.guiLeft - 16, startY + (14 * 5), 78, 14, "Greater Fuel", 0);
         
-        buttonRecipeModuleMusicL = new GuiButtonGeneralVC(62, this.guiLeft - 16, startY + (14 * 0), 78, 14, "Lesser Music", 0);
-        buttonRecipeModuleMusicN = new GuiButtonGeneralVC(63, this.guiLeft - 16, startY + (14 * 1), 78, 14, "Music", 0);
-        buttonRecipeModuleMusicG = new GuiButtonGeneralVC(64, this.guiLeft - 16, startY + (14 * 2), 78, 14, "Greater Music", 0);
-        buttonRecipeModuleCruiseL = new GuiButtonGeneralVC(65, this.guiLeft - 16, startY + (14 * 3), 78, 14, "Lesser Cruise", 0);
-        buttonRecipeModuleCruiseN = new GuiButtonGeneralVC(66, this.guiLeft - 16, startY + (14 * 4), 78, 14, "Cruise", 0);
-        buttonRecipeModuleCruiseG = new GuiButtonGeneralVC(67, this.guiLeft - 16, startY + (14 * 5), 78, 14, "Greater Cruise", 0);
+        buttonRecipeModuleMusicL = new GuiButtonGeneral1VC(62, this.guiLeft - 16, startY + (14 * 0), 78, 14, "Lesser Music", 0);
+        buttonRecipeModuleMusicN = new GuiButtonGeneral1VC(63, this.guiLeft - 16, startY + (14 * 1), 78, 14, "Music", 0);
+        buttonRecipeModuleMusicG = new GuiButtonGeneral1VC(64, this.guiLeft - 16, startY + (14 * 2), 78, 14, "Greater Music", 0);
+        buttonRecipeModuleCruiseL = new GuiButtonGeneral1VC(65, this.guiLeft - 16, startY + (14 * 3), 78, 14, "Lesser Cruise", 0);
+        buttonRecipeModuleCruiseN = new GuiButtonGeneral1VC(66, this.guiLeft - 16, startY + (14 * 4), 78, 14, "Cruise", 0);
+        buttonRecipeModuleCruiseG = new GuiButtonGeneral1VC(67, this.guiLeft - 16, startY + (14 * 5), 78, 14, "Greater Cruise", 0);
         
-        buttonRecipeModuleWaterL = new GuiButtonGeneralVC(62, this.guiLeft - 16, startY + (14 * 0), 78, 14, "Lesser Water", 0);
-        buttonRecipeModuleWaterN = new GuiButtonGeneralVC(63, this.guiLeft - 16, startY + (14 * 1), 78, 14, "Water", 0);
-        buttonRecipeModuleWaterG = new GuiButtonGeneralVC(64, this.guiLeft - 16, startY + (14 * 2), 78, 14, "Greater Water", 0);
-        buttonRecipeModuleInfiniteFuelL = new GuiButtonGeneralVC(65, this.guiLeft - 16, startY + (14 * 3), 78, 14, "Lesser Inf. Fuel", 0);
-        buttonRecipeModuleInfiniteFuelN = new GuiButtonGeneralVC(66, this.guiLeft - 16, startY + (14 * 4), 78, 14, "Infinite Fuel", 0);
-        buttonRecipeModuleInfiniteFuelG = new GuiButtonGeneralVC(67, this.guiLeft - 16, startY + (14 * 5), 78, 14, "Greater Inf. Fuel", 0);
+        buttonRecipeModuleWaterL = new GuiButtonGeneral1VC(62, this.guiLeft - 16, startY + (14 * 0), 78, 14, "Lesser Water", 0);
+        buttonRecipeModuleWaterN = new GuiButtonGeneral1VC(63, this.guiLeft - 16, startY + (14 * 1), 78, 14, "Water", 0);
+        buttonRecipeModuleWaterG = new GuiButtonGeneral1VC(64, this.guiLeft - 16, startY + (14 * 2), 78, 14, "Greater Water", 0);
+        buttonRecipeModuleInfiniteFuelL = new GuiButtonGeneral1VC(65, this.guiLeft - 16, startY + (14 * 3), 78, 14, "Lesser Inf. Fuel", 0);
+        buttonRecipeModuleInfiniteFuelN = new GuiButtonGeneral1VC(66, this.guiLeft - 16, startY + (14 * 4), 78, 14, "Infinite Fuel", 0);
+        buttonRecipeModuleInfiniteFuelG = new GuiButtonGeneral1VC(67, this.guiLeft - 16, startY + (14 * 5), 78, 14, "Greater Inf. Fuel", 0);
         
         
         

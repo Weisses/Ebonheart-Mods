@@ -1,19 +1,15 @@
 package com.viesis.viescraft.client.gui.airship.customize.engine;
 
 import java.awt.Color;
-import java.io.IOException;
-import java.util.Date;
 import java.util.Calendar;
 
 import org.lwjgl.input.Keyboard;
-import org.lwjgl.opengl.GL11;
 
 import com.viesis.viescraft.api.GuiVC;
 import com.viesis.viescraft.api.ItemsVC;
 import com.viesis.viescraft.api.References;
-import com.viesis.viescraft.api.util.Keybinds;
-import com.viesis.viescraft.api.util.LogHelper;
-import com.viesis.viescraft.client.gui.GuiButtonGeneralVC;
+import com.viesis.viescraft.client.gui.GuiButtonGeneral1VC;
+import com.viesis.viescraft.client.gui.GuiButtonGeneral2VC;
 import com.viesis.viescraft.client.gui.GuiButtonMenuVC;
 import com.viesis.viescraft.client.gui.GuiContainerVC;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
@@ -32,9 +28,6 @@ import com.viesis.viescraft.network.server.airship.main.MessageGuiModuleMenu;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.RenderHelper;
-import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.entity.Entity;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -69,40 +62,40 @@ public class GuiCustomizeMenuEngineMain extends GuiContainerVC {
     	
     	buttonList.clear();
     	Keyboard.enableRepeatEvents(true);
-    	int startPlace = 47+48;
+    	int startPlace = 95;
     	
     	GuiVC.buttonM1 = new GuiButtonMenuVC(1, this.guiLeft - 35, this.guiTop + 7 + (16 * 0), 36, 14, "", 0);
     	GuiVC.buttonM2 = new GuiButtonMenuVC(2, this.guiLeft - 35, this.guiTop + 7 + (16 * 1), 36, 14, "", 1);
     	GuiVC.buttonM3 = new GuiButtonMenuVC(3, this.guiLeft - 35, this.guiTop + 7 + (16 * 2), 36, 14, "", 2);
     	GuiVC.buttonM4 = new GuiButtonMenuVC(4, this.guiLeft - 35, this.guiTop + 7 + (16 * 3), 36, 14, "", 3);
 		
-    	GuiVC.button505 = new GuiButtonGeneralVC(505, this.guiLeft + 125, this.guiTop + 177, 40, 14, References.localNameVC("vc.button.back"), 2);
+    	GuiVC.button505 = new GuiButtonGeneral1VC(505, this.guiLeft + 125, this.guiTop + 177, 40, 14, References.localNameVC("vc.button.back"), 2);
     	
-    	GuiVC.buttonT1 = new GuiButtonGeneralVC(11, this.guiLeft + 17, this.guiTop + startPlace - 4 + (15 * 0), 69, 14, References.localNameVC("Symbols"), 0);
-		GuiVC.buttonT2 = new GuiButtonGeneralVC(12, this.guiLeft + 17, this.guiTop + startPlace - 4 + (15 * 1), 69, 14, References.localNameVC("Blocks"), 0);
-		GuiVC.buttonT3 = new GuiButtonGeneralVC(13, this.guiLeft + 17, this.guiTop + startPlace - 4 + (15 * 2), 69, 14, References.localNameVC("Items"), 0);
-		GuiVC.buttonT4 = new GuiButtonGeneralVC(14, this.guiLeft + 17, this.guiTop + startPlace - 4 + (15 * 3), 69, 14, References.localNameVC("Heads"), 0);
-		GuiVC.buttonT5 = new GuiButtonGeneralVC(15, this.guiLeft + 17, this.guiTop + startPlace - 4 + (15 * 4), 69, 14, References.localNameVC("Supporter Heads"), 0);
+    	GuiVC.buttonT1 = new GuiButtonGeneral1VC(11, this.guiLeft + 17, this.guiTop + startPlace - 4 + (15 * 0), 69, 14, References.localNameVC("Symbols"), 0);
+		GuiVC.buttonT2 = new GuiButtonGeneral1VC(12, this.guiLeft + 17, this.guiTop + startPlace - 4 + (15 * 1), 69, 14, References.localNameVC("Blocks"), 0);
+		GuiVC.buttonT3 = new GuiButtonGeneral1VC(13, this.guiLeft + 17, this.guiTop + startPlace - 4 + (15 * 2), 69, 14, References.localNameVC("Items"), 0);
+		GuiVC.buttonT4 = new GuiButtonGeneral1VC(14, this.guiLeft + 17, this.guiTop + startPlace - 4 + (15 * 3), 69, 14, References.localNameVC("Heads"), 0);
+		GuiVC.buttonT5 = new GuiButtonGeneral1VC(15, this.guiLeft + 17, this.guiTop + startPlace - 4 + (15 * 4), 69, 14, References.localNameVC("Supporter Heads"), 0);
 		
 		//Holidays
-		GuiVC.button11 = new GuiButtonGeneralVC(111, this.guiLeft - 67, this.guiTop + startPlace - 4 + (14 * 0), 69, 14, References.localNameVC(this.stringToRainbow("New Years",false)), 3);
-		GuiVC.button12 = new GuiButtonGeneralVC(112, this.guiLeft - 67, this.guiTop + startPlace - 4 + (14 * 0), 69, 14, References.localNameVC(this.stringToRainbow("Valentine's Day",false)), 3);
-		GuiVC.button13 = new GuiButtonGeneralVC(113, this.guiLeft - 67, this.guiTop + startPlace - 4 + (14 * 0), 69, 14, References.localNameVC(this.stringToRainbow("Easter",false)), 3);
-		GuiVC.button14 = new GuiButtonGeneralVC(114, this.guiLeft - 67, this.guiTop + startPlace - 4 + (14 * 0), 69, 14, References.localNameVC(this.stringToRainbow("4th of July",false)), 3);
-		GuiVC.button15 = new GuiButtonGeneralVC(115, this.guiLeft - 67, this.guiTop + startPlace - 4 + (14 * 0), 69, 14, References.localNameVC(this.stringToRainbow("Halloween",false)), 3);
-		GuiVC.button16 = new GuiButtonGeneralVC(116, this.guiLeft - 67, this.guiTop + startPlace - 4 + (14 * 0), 69, 14, References.localNameVC(this.stringToRainbow("Thanksgiving",false)), 3);
-		GuiVC.button17 = new GuiButtonGeneralVC(117, this.guiLeft - 67, this.guiTop + startPlace - 4 + (14 * 0), 69, 14, References.localNameVC(this.stringToRainbow("Christmas",false)), 3);
+		GuiVC.button11 = new GuiButtonGeneral2VC(111, this.guiLeft - 67, this.guiTop + startPlace - 4 + (14 * 0), 69, 14, References.localNameVC(this.stringToRainbow("  New Years  ", false)), 3);
+		GuiVC.button12 = new GuiButtonGeneral2VC(112, this.guiLeft - 67, this.guiTop + startPlace - 4 + (14 * 0), 69, 14, References.localNameVC(this.stringToRainbow("Valentine's Day", false)), 3);
+		GuiVC.button13 = new GuiButtonGeneral2VC(113, this.guiLeft - 67, this.guiTop + startPlace - 4 + (14 * 0), 69, 14, References.localNameVC(this.stringToRainbow("    Easter    ", false)), 3);
+		GuiVC.button14 = new GuiButtonGeneral2VC(114, this.guiLeft - 67, this.guiTop + startPlace - 4 + (14 * 0), 69, 14, References.localNameVC(this.stringToRainbow("     4th of July     ", false)), 3);
+		GuiVC.button15 = new GuiButtonGeneral2VC(115, this.guiLeft - 67, this.guiTop + startPlace - 4 + (14 * 0), 69, 14, References.localNameVC(this.stringToRainbow("   Halloween   ", false)), 3);
+		GuiVC.button16 = new GuiButtonGeneral2VC(116, this.guiLeft - 67, this.guiTop + startPlace - 4 + (14 * 0), 69, 14, References.localNameVC(this.stringToRainbow("      Thanksgiving      ", false)), 3);
+		GuiVC.button17 = new GuiButtonGeneral2VC(117, this.guiLeft - 67, this.guiTop + startPlace - 4 + (14 * 0), 69, 14, References.localNameVC(this.stringToRainbow(" Christmas ", false)), 3);
 		
 		//Creative
-		GuiVC.button01 = new GuiButtonGeneralVC(101, this.guiLeft - 67, this.guiTop + startPlace - 4 + (14 * 0), 69, 14, References.localNameVC(this.stringToRainbow("New Years",false)), 3);
-		GuiVC.button02 = new GuiButtonGeneralVC(102, this.guiLeft - 67, this.guiTop + startPlace - 4 + (14 * 1), 69, 14, References.localNameVC(this.stringToRainbow("Valentine's Day",false)), 3);
-		GuiVC.button03 = new GuiButtonGeneralVC(103, this.guiLeft - 67, this.guiTop + startPlace - 4 + (14 * 2), 69, 14, References.localNameVC(this.stringToRainbow("Easter",false)), 3);
-		GuiVC.button04 = new GuiButtonGeneralVC(104, this.guiLeft - 67, this.guiTop + startPlace - 4 + (14 * 3), 69, 14, References.localNameVC(this.stringToRainbow("4th of July",false)), 3);
-		GuiVC.button05 = new GuiButtonGeneralVC(105, this.guiLeft - 67, this.guiTop + startPlace - 4 + (14 * 4), 69, 14, References.localNameVC(this.stringToRainbow("Halloween",false)), 3);
-		GuiVC.button06 = new GuiButtonGeneralVC(106, this.guiLeft - 67, this.guiTop + startPlace - 4 + (14 * 5), 69, 14, References.localNameVC(this.stringToRainbow("Thanksgiving",false)), 3);
-		GuiVC.button07 = new GuiButtonGeneralVC(107, this.guiLeft - 67, this.guiTop + startPlace - 4 + (14 * 6), 69, 14, References.localNameVC(this.stringToRainbow("Christmas",false)), 3);
+		GuiVC.button01 = new GuiButtonGeneral2VC(101, this.guiLeft - 67, this.guiTop + startPlace - 4 + (14 * 0), 69, 14, References.localNameVC(this.stringToRainbow("  New Years  ", false)), 3);
+		GuiVC.button02 = new GuiButtonGeneral2VC(102, this.guiLeft - 67, this.guiTop + startPlace - 4 + (14 * 1), 69, 14, References.localNameVC(this.stringToRainbow("Valentine's Day", false)), 3);
+		GuiVC.button03 = new GuiButtonGeneral2VC(103, this.guiLeft - 67, this.guiTop + startPlace - 4 + (14 * 2), 69, 14, References.localNameVC(this.stringToRainbow("    Easter    ", false)), 3);
+		GuiVC.button04 = new GuiButtonGeneral2VC(104, this.guiLeft - 67, this.guiTop + startPlace - 4 + (14 * 3), 69, 14, References.localNameVC(this.stringToRainbow("     4th of July     ", false)), 3);
+		GuiVC.button05 = new GuiButtonGeneral2VC(105, this.guiLeft - 67, this.guiTop + startPlace - 4 + (14 * 4), 69, 14, References.localNameVC(this.stringToRainbow("   Halloween   ", false)), 3);
+		GuiVC.button06 = new GuiButtonGeneral2VC(106, this.guiLeft - 67, this.guiTop + startPlace - 4 + (14 * 5), 69, 14, References.localNameVC(this.stringToRainbow("      Thanksgiving      ", false)), 3);
+		GuiVC.button07 = new GuiButtonGeneral2VC(107, this.guiLeft - 67, this.guiTop + startPlace - 4 + (14 * 6), 69, 14, References.localNameVC(this.stringToRainbow(" Christmas ", false)), 3);
 		
-		GuiVC.buttonA16 = new GuiButtonGeneralVC(16, this.guiLeft + 21, this.guiTop + 177, 60, 14, References.localNameVC("Particles"), 0);
+		GuiVC.buttonA16 = new GuiButtonGeneral1VC(16, this.guiLeft + 21, this.guiTop + 177, 60, 14, References.localNameVC("Particles"), 0);
 		
     	this.buttonList.add(GuiVC.buttonM1);
 		this.buttonList.add(GuiVC.buttonM2);
@@ -122,12 +115,6 @@ public class GuiCustomizeMenuEngineMain extends GuiContainerVC {
 		
 		GuiVC.buttonM3.enabled = false;
 		
-		GuiVC.buttonT1.visible = false;
-		GuiVC.buttonT2.visible = false;
-		GuiVC.buttonT3.visible = false;
-		GuiVC.buttonT4.visible = false;
-		GuiVC.buttonT5.visible = false;
-		
 		if(Minecraft.getMinecraft().player.isCreative())
 		{
 			this.buttonList.add(GuiVC.button01);
@@ -145,28 +132,6 @@ public class GuiCustomizeMenuEngineMain extends GuiContainerVC {
 				this.buttonList.add(GuiVC.button15);
 			}
 		}
-		
-		//if(this.airship.getMainTierFrame() > 0)
-        //{
-			GuiVC.buttonT1.visible = true;
-        //}
-        //if(this.airship.getMainTierFrame() > 1)
-        //{
-        	GuiVC.buttonT2.visible = true;
-        //}
-        //if(this.airship.getMainTierFrame() > 2)
-        //{
-        	GuiVC.buttonT3.visible = true;
-        //}
-        //if(this.airship.getMainTierFrame() > 3)
-        //{
-        	GuiVC.buttonT4.visible = true;
-        //}
-        //if(this.airship.getMainTierFrame() > 4)
-        ///{
-        	GuiVC.buttonT5.visible = true;
-        //}
-        
     }
     
     /**
@@ -211,6 +176,7 @@ public class GuiCustomizeMenuEngineMain extends GuiContainerVC {
 			NetworkHandler.sendToServer(new MessageGuiModuleMenu());
 	    }
 		
+		//Back to main customize gui menu
 		if (parButton.id == 505)
 	    {
 			NetworkHandler.sendToServer(new MessageGuiCustomizeMenu());
@@ -241,10 +207,6 @@ public class GuiCustomizeMenuEngineMain extends GuiContainerVC {
 			//NetworkHandler.sendToServer(new MessageGuiCustomizeMenuFrameColor());
 	    }
 		
-		
-		
-		
-		
         this.buttonList.clear();
         this.initGui();
         this.updateScreen();
@@ -257,27 +219,16 @@ public class GuiCustomizeMenuEngineMain extends GuiContainerVC {
 		this.mc.getTextureManager().bindTexture(TEXTURE);
 		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
 		
-		//Appearance 'On' button is green in gui
-		if(this.airship.frameSkinTransparent == true)
-		{
-			this.drawTexturedModalRect(this.guiLeft + 136, this.guiTop + 36, 177, 85, 8, 8);
-		}
-		
 		this.drawRect(this.guiLeft + 49, this.guiTop - 17, this.guiLeft + 127, this.guiTop, Color.BLACK.getRGB());
 		this.drawRect(this.guiLeft + 50, this.guiTop - 16, this.guiLeft + 126, this.guiTop, Color.LIGHT_GRAY.getRGB());
 		this.drawRect(this.guiLeft + 52, this.guiTop - 14, this.guiLeft + 124, this.guiTop, Color.BLACK.getRGB());
 		
-		int i = this.guiLeft;
-        int j = this.guiTop;
-		
-        this.drawEntityOnScreen(i + 134, j + 100, 13, mouseX, mouseY, this.airship);
-        
         GlStateManager.pushMatrix();
 		{
 			GlStateManager.translate(this.guiLeft + 132, this.guiTop + 115, 0);
 	        GlStateManager.scale(0.5F, 0.5F, 0.5F);
 	        
-	        this.drawCenteredString(fontRenderer, this.stringToGolden("Stored Redstone", 1, false, TextFormatting.RED), 0, 0, 111111);
+	        this.drawCenteredString(fontRenderer, this.stringToFlashGolden("Stored Redstone", 1, false, TextFormatting.RED), 0, 0, 111111);
 		}
 		GlStateManager.popMatrix();
 		
@@ -327,6 +278,7 @@ public class GuiCustomizeMenuEngineMain extends GuiContainerVC {
 		
 		this.drawRotatingItemStack(new ItemStack(ItemsVC.ITEM_DISPLAY_SYMBOL, 1, metaInfo), this.guiLeft + 51, this.guiTop + 80);
 		
+		this.drawEntityOnScreen(this.guiLeft + 134, this.guiTop + 100, 13, mouseX, mouseY, this.airship);
 	}
 	
 	@Override
@@ -365,70 +317,5 @@ public class GuiCustomizeMenuEngineMain extends GuiContainerVC {
 		}
 		GlStateManager.popMatrix();
 		
-    }
-	
-	@Override
-	protected void keyTyped(char typedChar, int keyCode) throws IOException
-    {
-		if (keyCode == 1 
-        ||	keyCode == Keybinds.vcInventory.getKeyCode()
-        || this.mc.gameSettings.keyBindInventory.isActiveAndMatches(keyCode))
-        {
-            this.mc.player.closeScreen();
-        }
-    }
-	
-	@Override
-	public void updateScreen()
-    {
-        super.updateScreen();
-
-        if (!this.mc.player.isEntityAlive() || this.mc.player.isDead
-        || !this.mc.player.isRiding())
-        {
-            this.mc.player.closeScreen();
-        }
-    }
-    
-    /**
-     * Draws an entity on the screen looking toward the cursor.
-     */
-    public static void drawEntityOnScreen(int posX, int posY, int scale, float mouseX, float mouseY, Entity entityIn)
-    {
-    	GlStateManager.pushMatrix();
-		{
-			GL11.glEnable(GL11.GL_CULL_FACE);
-	        GL11.glCullFace(GL11.GL_FRONT);
-	        
-	        GlStateManager.translate(posX, posY, 100.0F);
-	        GlStateManager.scale((float)(scale), (float)scale, (float)scale);
-	        
-	        /////Flips the model right side up.
-	        GlStateManager.rotate(200.0F, 0.0F, 0.0F, 1.0F);
-	        GlStateManager.rotate(45.0F, 0.0F, 1.0F, 0.0F);
-	        GlStateManager.rotate(30.0F, 1.0F, 0.0F, 0.0F);
-	        
-	        //Fixes the position to be at a right
-	        GlStateManager.rotate(entityIn.prevRotationYaw, 0.0F, 1.0F, 0.0F);
-	        
-	        RenderHelper.disableStandardItemLighting();
-	        
-	        RenderManager rendermanager = Minecraft.getMinecraft().getRenderManager();
-	        
-	        rendermanager.setPlayerViewY(180.0F);
-	        rendermanager.setRenderShadow(false);
-	        
-	        //This is the non-multipass rendering way to render an entity.
-	        //rendermanager.renderEntity(entityIn, 0.0D, 0.0D, 0.0D, 0.0F, 1.0F, false);
-	        
-	        rendermanager.renderEntityStatic(entityIn, 0, false);
-	        rendermanager.renderMultipass(entityIn, 0F);
-	        
-	        rendermanager.setRenderShadow(true);
-	        
-	        GL11.glCullFace(GL11.GL_BACK);
-	        GL11.glDisable(GL11.GL_CULL_FACE);
-		}
-		GlStateManager.popMatrix();
     }
 }

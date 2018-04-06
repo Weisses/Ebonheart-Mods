@@ -30,6 +30,6 @@ public class MessageGuiCustomizeMenuBalloonMain extends MessageBase<MessageGuiCu
 	@Override
 	public void handleServerSide(MessageGuiCustomizeMenuBalloonMain message, EntityPlayer player) 
 	{
-		player.openGui(ViesCraft.instance, GuiHandler.GUI_APPEARANCE_MENU_BALLOON, player.world, player.getPosition().getX(), player.getPosition().getY(), player.getPosition().getZ());
+		player.openGui(ViesCraft.instance, GuiHandler.GUI_APPEARANCE_MENU_BALLOON_MAIN, player.world, player.getPosition().getX(), player.getPosition().getY(), player.getPosition().getZ());
 	}
 }
