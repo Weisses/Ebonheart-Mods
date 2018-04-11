@@ -38,8 +38,6 @@ public class GuiCustomizeMenuCoreModelVC extends GuiContainerVC {
 		this.airship = airshipIn;
 		this.xSize = 176;
 		this.ySize = 202;
-		
-		this.metaInfo = this.airship.frameSkinTexture;
 	}
 	
 	/**
@@ -89,7 +87,7 @@ public class GuiCustomizeMenuCoreModelVC extends GuiContainerVC {
 		this.drawRect(this.guiLeft + 50, this.guiTop - 16, this.guiLeft + 126, this.guiTop, Color.LIGHT_GRAY.getRGB());
 		this.drawRect(this.guiLeft + 52, this.guiTop - 14, this.guiLeft + 124, this.guiTop, Color.BLACK.getRGB());
 		
-        this.drawEntityOnScreen(this.guiLeft + 135, this.guiTop + 110-18, 13, mouseX, mouseY, this.airship);
+        this.drawEntityOnScreen(this.guiLeft + 135, this.guiTop + 110-18, 13, this.airship);
         
         GlStateManager.pushMatrix();
 		{

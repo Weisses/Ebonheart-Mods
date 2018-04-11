@@ -3,6 +3,7 @@ package com.viesis.viescraft.client.gui.airship.customize.core.sub;
 import org.lwjgl.input.Keyboard;
 
 import com.viesis.viescraft.api.GuiVC;
+import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipCore;
 import com.viesis.viescraft.network.NetworkHandler;
@@ -17,6 +18,8 @@ public class GuiCustomizeMenuCoreModelFramePg1 extends GuiCustomizeMenuCoreModel
 	public GuiCustomizeMenuCoreModelFramePg1(IInventory playerInv, EntityAirshipCore airshipIn)
 	{
 		super(playerInv, airshipIn);
+		
+		this.metaInfo = this.airship.coreModelVisualFrame;
 	}
 	
 	/**
@@ -136,13 +139,14 @@ public class GuiCustomizeMenuCoreModelFramePg1 extends GuiCustomizeMenuCoreModel
     /**
      * Draws an entity on the screen looking toward the cursor.
      */
-    protected void drawEntityOnScreen(int posX, int posY, int scale, float mouseX, float mouseY, EntityAirshipBaseVC entityIn)
+    @Override
+    protected void drawEntityOnScreen(int posX, int posY, int scale, EntityAirshipBaseVC entityIn)
     {
     	int current = entityIn.coreModelVisualFrame;
-        entityIn.coreModelVisualFrame = metaInfo;
+        entityIn.coreModelVisualFrame = this.metaInfo;
         
-        super.drawEntityOnScreen(posX, posY, scale, mouseX, mouseY, entityIn);
-    	
+        super.drawEntityOnScreen(posX, posY, scale, entityIn);
+        
 		entityIn.coreModelVisualFrame = current;
     }
 }

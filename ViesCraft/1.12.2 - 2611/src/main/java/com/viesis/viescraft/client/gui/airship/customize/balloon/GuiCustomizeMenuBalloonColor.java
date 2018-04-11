@@ -2,6 +2,8 @@ package com.viesis.viescraft.client.gui.airship.customize.balloon;
 
 import java.awt.Color;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.lwjgl.input.Keyboard;
 
@@ -9,6 +11,7 @@ import com.viesis.viescraft.api.ColorHelperVC;
 import com.viesis.viescraft.api.GuiVC;
 import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.client.gui.GuiButtonGeneral1VC;
+import com.viesis.viescraft.client.gui.GuiButtonGeneral2VC;
 import com.viesis.viescraft.client.gui.GuiButtonMenuVC;
 import com.viesis.viescraft.client.gui.GuiContainerVC;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
@@ -25,6 +28,7 @@ import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenuStorag
 import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenuStorageLesser;
 import com.viesis.viescraft.network.server.airship.main.MessageGuiModuleMenu;
 
+import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.client.renderer.GlStateManager;
@@ -41,7 +45,6 @@ public class GuiCustomizeMenuBalloonColor extends GuiContainerVC {
 	private GuiTextField textGreen;
 	private GuiTextField textBlue;
 	
-	private GuiButton buttonAccept;
 	private ResourceLocation texture = new ResourceLocation(References.MOD_ID + ":" + "textures/gui/container_gui_customize_menu_color.png");
 	
 	public GuiCustomizeMenuBalloonColor(IInventory playerInv, EntityAirshipBaseVC airshipIn)
@@ -68,21 +71,21 @@ public class GuiCustomizeMenuBalloonColor extends GuiContainerVC {
     	
     	buttonList.clear();
     	Keyboard.enableRepeatEvents(true);
-    	int startPlace = 49;
+    	int buttonStart = 107;
     	
-        this.textRed = new GuiTextField(11, this.fontRenderer, this.guiLeft + 63, this.guiTop + 57-6, 28, 20);
+        this.textRed = new GuiTextField(11, this.fontRenderer, this.guiLeft + 8, this.guiTop + 65, 26, 18);
         textRed.setMaxStringLength(3);
         textRed.setText(String.valueOf(this.textRedNumber));
     	this.textRed.setFocused(false);
     	this.textRed.setTextColor(Color.RED.getRGB());
     	
-    	this.textGreen = new GuiTextField(12, this.fontRenderer, this.guiLeft + 63, this.guiTop + 98-3, 28, 20);
+    	this.textGreen = new GuiTextField(12, this.fontRenderer, this.guiLeft + 41, this.guiTop + 65, 26, 18);
         textGreen.setMaxStringLength(3);
         textGreen.setText(String.valueOf(this.textGreenNumber));
     	this.textGreen.setFocused(false);
     	this.textGreen.setTextColor(Color.GREEN.getRGB());
     	
-    	this.textBlue = new GuiTextField(13, this.fontRenderer, this.guiLeft + 63, this.guiTop + 139, 28, 20);
+    	this.textBlue = new GuiTextField(13, this.fontRenderer, this.guiLeft + 74, this.guiTop + 65, 26, 18);
         textBlue.setMaxStringLength(3);
         textBlue.setText(String.valueOf(this.textBlueNumber));
     	this.textBlue.setFocused(false);
@@ -90,17 +93,11 @@ public class GuiCustomizeMenuBalloonColor extends GuiContainerVC {
     	
         //=============================================
         
-    	GuiVC.buttonRed = new GuiButtonGeneral1VC( 11, this.guiLeft + 13, this.guiTop + 60-6, 37, 14, References.localNameVC("vc.button.save"), 3);
-		this.buttonList.add(GuiVC.buttonRed);
+		GuiVC.button501 = new GuiButtonGeneral1VC(501, this.guiLeft + 13, this.guiTop + 177, 48, 14, References.localNameVC("vc.button.apply"), 1);
+		this.buttonList.add(GuiVC.button501);
 		
-		GuiVC.buttonGreen = new GuiButtonGeneral1VC( 12, this.guiLeft + 13, this.guiTop + 101-3, 37, 14, References.localNameVC("vc.button.save"), 3);
-		this.buttonList.add(GuiVC.buttonGreen);
-		
-		GuiVC.buttonBlue = new GuiButtonGeneral1VC( 13, this.guiLeft + 13, this.guiTop + 142, 37, 14, References.localNameVC("vc.button.save"), 3);
-		this.buttonList.add(GuiVC.buttonBlue);
-		
-		GuiVC.buttonRemoveColor = new GuiButtonGeneral1VC( 14, this.guiLeft + 13, this.guiTop + 177, 77, 14, References.localNameVC("vc.button.defaultcolor"), 1);
-		this.buttonList.add(GuiVC.buttonRemoveColor);
+		GuiVC.button502 = new GuiButtonGeneral2VC(502, this.guiLeft + 63, this.guiTop + 177, 48, 14, References.localNameVC("vc.button.default"), 1);
+		this.buttonList.add(GuiVC.button502);
 		
         //=============================================
         
@@ -111,12 +108,41 @@ public class GuiCustomizeMenuBalloonColor extends GuiContainerVC {
 		
     	GuiVC.button505 = new GuiButtonGeneral1VC(505, this.guiLeft + 125, this.guiTop + 177, 40, 14, References.localNameVC("vc.button.back"), 2);
     	
+    	GuiVC.button01 = new GuiButtonGeneral1VC(201, this.guiLeft + 6, this.guiTop + buttonStart, 32, 14, References.localNameVC("Red"), 0);
+    	GuiVC.button02 = new GuiButtonGeneral1VC(202, this.guiLeft + 38, this.guiTop + buttonStart, 32, 14, References.localNameVC("Green"), 0);
+    	GuiVC.button03 = new GuiButtonGeneral1VC(203, this.guiLeft + 70, this.guiTop + buttonStart, 32, 14, References.localNameVC("Blue"), 0);
+    	
+    	GuiVC.button04 = new GuiButtonGeneral1VC(204, this.guiLeft + 6, this.guiTop + buttonStart + (14 * 1), 32, 14, References.localNameVC("Yellow"), 0);
+    	GuiVC.button05 = new GuiButtonGeneral1VC(205, this.guiLeft + 38, this.guiTop + buttonStart + (14 * 1), 32, 14, References.localNameVC("Magenta"), 0);
+    	GuiVC.button06 = new GuiButtonGeneral1VC(206, this.guiLeft + 70, this.guiTop + buttonStart + (14 * 1), 32, 14, References.localNameVC("Cyan"), 0);
+    	
+    	GuiVC.button07 = new GuiButtonGeneral1VC(207, this.guiLeft + 6, this.guiTop + buttonStart + (14 * 2), 32, 14, References.localNameVC("Orange"), 0);
+    	GuiVC.button08 = new GuiButtonGeneral1VC(208, this.guiLeft + 38, this.guiTop + buttonStart + (14 * 2), 32, 14, References.localNameVC("Purple"), 0);
+    	GuiVC.button09 = new GuiButtonGeneral1VC(209, this.guiLeft + 70, this.guiTop + buttonStart + (14 * 2), 32, 14, References.localNameVC("Teal"), 0);
+    	
+    	GuiVC.button10 = new GuiButtonGeneral1VC(210, this.guiLeft + 6, this.guiTop + buttonStart + (14 * 3), 32, 14, References.localNameVC("Crimson"), 0);
+    	GuiVC.button11 = new GuiButtonGeneral1VC(211, this.guiLeft + 38, this.guiTop + buttonStart + (14 * 3), 32, 14, References.localNameVC("Gold"), 0);
+    	GuiVC.button12 = new GuiButtonGeneral1VC(212, this.guiLeft + 70, this.guiTop + buttonStart + (14 * 3), 32, 14, References.localNameVC("Violet"), 0);
+    	
     	this.buttonList.add(GuiVC.buttonM1);
 		this.buttonList.add(GuiVC.buttonM2);
 		this.buttonList.add(GuiVC.buttonM3);
 		this.buttonList.add(GuiVC.buttonM4);
 		
 		this.buttonList.add(GuiVC.button505);
+		
+		this.buttonList.add(GuiVC.button01);
+		this.buttonList.add(GuiVC.button02);
+		this.buttonList.add(GuiVC.button03);
+		this.buttonList.add(GuiVC.button04);
+		this.buttonList.add(GuiVC.button05);
+		this.buttonList.add(GuiVC.button06);
+		this.buttonList.add(GuiVC.button07);
+		this.buttonList.add(GuiVC.button08);
+		this.buttonList.add(GuiVC.button09);
+		this.buttonList.add(GuiVC.button10);
+		this.buttonList.add(GuiVC.button11);
+		this.buttonList.add(GuiVC.button12);
 		
 		GuiVC.buttonM3.enabled = false;
     }
@@ -169,26 +195,91 @@ public class GuiCustomizeMenuBalloonColor extends GuiContainerVC {
 			NetworkHandler.sendToServer(new MessageGuiCustomizeMenuBalloonMain());
 	    }
 		
-		if (parButton.id == 11)
-	    {
-			NetworkHandler.sendToServer(new MessageHelperGuiCustomizeMenuBalloonColor());
-	    }
-		if (parButton.id == 12)
-	    {
-			NetworkHandler.sendToServer(new MessageHelperGuiCustomizeMenuBalloonColor());
-	    }
-		if (parButton.id == 13)
+		if (parButton.id == 501)
 	    {
 			NetworkHandler.sendToServer(new MessageHelperGuiCustomizeMenuBalloonColor());
 	    }
 		
-		if (parButton.id == 14)
+		if (parButton.id == 502)
 	    {
 			this.textRedNumber = 200;
 			this.textGreenNumber = 180;
 			this.textBlueNumber = 140;
 			
 			NetworkHandler.sendToServer(new MessageHelperGuiCustomizeMenuBalloonColorDefault());
+	    }
+		
+		if (parButton.id == 201)
+	    {
+			this.textRedNumber = 255;
+			this.textGreenNumber = 0;
+			this.textBlueNumber = 0;
+	    }
+		if (parButton.id == 202)
+	    {
+			this.textRedNumber = 0;
+			this.textGreenNumber = 255;
+			this.textBlueNumber = 0;
+	    }
+		if (parButton.id == 203)
+	    {
+			this.textRedNumber = 0;
+			this.textGreenNumber = 0;
+			this.textBlueNumber = 255;
+	    }
+		if (parButton.id == 204)
+	    {
+			this.textRedNumber = 255;
+			this.textGreenNumber = 255;
+			this.textBlueNumber = 0;
+	    }
+		if (parButton.id == 205)
+	    {
+			this.textRedNumber = 255;
+			this.textGreenNumber = 0;
+			this.textBlueNumber = 255;
+	    }
+		if (parButton.id == 206)
+	    {
+			this.textRedNumber = 0;
+			this.textGreenNumber = 255;
+			this.textBlueNumber = 255;
+	    }
+		if (parButton.id == 207)
+	    {
+			this.textRedNumber = 255;
+			this.textGreenNumber = 165;
+			this.textBlueNumber = 0;
+	    }
+		if (parButton.id == 208)
+	    {
+			this.textRedNumber = 128;
+			this.textGreenNumber = 0;
+			this.textBlueNumber = 128;
+	    }
+		if (parButton.id == 209)
+	    {
+			this.textRedNumber = 0;
+			this.textGreenNumber = 128;
+			this.textBlueNumber = 128;
+	    }
+		if (parButton.id == 210)
+	    {
+			this.textRedNumber = 220;
+			this.textGreenNumber = 20;
+			this.textBlueNumber = 60;
+	    }
+		if (parButton.id == 211)
+	    {
+			this.textRedNumber = 255;
+			this.textGreenNumber = 215;
+			this.textBlueNumber = 0;
+	    }
+		if (parButton.id == 212)
+	    {
+			this.textRedNumber = 238;
+			this.textGreenNumber = 130;
+			this.textBlueNumber = 238;
 	    }
 		
         this.buttonList.clear();
@@ -215,20 +306,62 @@ public class GuiCustomizeMenuBalloonColor extends GuiContainerVC {
         //Color name of the Color Box made from the r/g/b values
   		GlStateManager.pushMatrix();
   		{
-  			GlStateManager.translate(this.guiLeft + 110, this.guiTop + 132.5, 0);
+  			GlStateManager.translate(this.guiLeft + 137, this.guiTop + 132.5, 0);
   			GlStateManager.scale(.65, .65, .65);
       		
-  			this.fontRenderer.drawString("- " + ColorHelperVC.getColorNameFromRgb(this.textRedNumber, this.textGreenNumber, this.textBlueNumber), 0, 0, 16777215);
+  			this.drawCenteredString(fontRenderer, ColorHelperVC.getColorNameFromRgb(this.textRedNumber, this.textGreenNumber, this.textBlueNumber), 0, 0, Color.WHITE.getRGB());
 		}
 		GlStateManager.popMatrix();
         
-    	this.fontRenderer.drawString(References.localNameVC("vc.main.red"), this.guiLeft + 23, this.guiTop + 48-6, Color.RED.getRGB());
-		this.fontRenderer.drawString(References.localNameVC("vc.main.green"), this.guiLeft + 17, this.guiTop + 89-3, Color.GREEN.getRGB());
-		this.fontRenderer.drawString(References.localNameVC("vc.main.blue"), this.guiLeft + 21, this.guiTop + 130, Color.BLUE.getRGB());
+		GlStateManager.pushMatrix();
+  		{
+  			GlStateManager.translate(this.guiLeft + 21.5, this.guiTop + 41.5, 0);
+  			GlStateManager.scale(0.75F, 0.75F, 0.75F);
+      		
+  			this.drawCenteredString(fontRenderer, References.localNameVC("vc.main.red"), 0, 0, Color.RED.getRGB());
+		}
+		GlStateManager.popMatrix();
+		GlStateManager.pushMatrix();
+  		{
+  			GlStateManager.translate(this.guiLeft + 54.5, this.guiTop + 41.5, 0);
+  			GlStateManager.scale(0.75F, 0.75F, 0.75F);
+      		
+  			this.drawCenteredString(fontRenderer, References.localNameVC("vc.main.green"), 0, 0, Color.GREEN.getRGB());
+		}
+		GlStateManager.popMatrix();;
+		GlStateManager.pushMatrix();
+  		{
+  			GlStateManager.translate(this.guiLeft + 87.5, this.guiTop + 41.5, 0);
+  			GlStateManager.scale(0.75F, 0.75F, 0.75F);
+      		
+  			this.drawCenteredString(fontRenderer, References.localNameVC("vc.main.blue"), 0, 0, Color.BLUE.getRGB());
+		}
+		GlStateManager.popMatrix();
 		
-    	this.fontRenderer.drawString("0-255", this.guiLeft + 62, this.guiTop + 48-6, Color.RED.getRGB());
-    	this.fontRenderer.drawString("0-255", this.guiLeft + 62, this.guiTop + 89-3, Color.GREEN.getRGB());
-    	this.fontRenderer.drawString("0-255", this.guiLeft + 62, this.guiTop + 130, Color.BLUE.getRGB());
+		GlStateManager.pushMatrix();
+  		{
+  			GlStateManager.translate(this.guiLeft + 21.5, this.guiTop + 55, 0);
+  			GlStateManager.scale(0.75F, 0.75F, 0.75F);
+      		
+  			this.drawCenteredString(fontRenderer, "0-255", 0, 0, Color.WHITE.getRGB());
+		}
+		GlStateManager.popMatrix();
+		GlStateManager.pushMatrix();
+  		{
+  			GlStateManager.translate(this.guiLeft + 54.5, this.guiTop + 55, 0);
+  			GlStateManager.scale(0.75F, 0.75F, 0.75F);
+      		
+  			this.drawCenteredString(fontRenderer, "0-255", 0, 0, Color.WHITE.getRGB());
+		}
+		GlStateManager.popMatrix();;
+		GlStateManager.pushMatrix();
+  		{
+  			GlStateManager.translate(this.guiLeft + 87.5, this.guiTop + 55, 0);
+  			GlStateManager.scale(0.75F, 0.75F, 0.75F);
+      		
+  			this.drawCenteredString(fontRenderer, "0-255", 0, 0, Color.WHITE.getRGB());
+		}
+		GlStateManager.popMatrix();
     	
     	this.textRed.drawTextBox();
     	this.textGreen.drawTextBox();
@@ -291,7 +424,7 @@ public class GuiCustomizeMenuBalloonColor extends GuiContainerVC {
 		}
 		GlStateManager.popMatrix();
 		
-        this.drawEntityOnScreen(this.guiLeft + 138, this.guiTop + 100, 13, mouseX, mouseY, this.airship);
+        this.drawEntityOnScreen(this.guiLeft + 138, this.guiTop + 100, 13, this.airship);
 	}
 	
 	@Override
@@ -300,6 +433,26 @@ public class GuiCustomizeMenuBalloonColor extends GuiContainerVC {
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 		this.fontRenderer.drawString(References.localNameVC("vc.main.ballooncolor"), 55, 16, 11111111);
 		this.fontRenderer.drawString(References.localNameVC("vc.main.appearance"), 58, -10, 65521);
+		
+		//Logic for mouse-over Reset tooltip
+		if(mouseX >= this.guiLeft + 110 && mouseX <= this.guiLeft + 157
+		&& mouseY >= this.guiTop + 143 && mouseY <= this.guiTop + 156)
+		{
+			List<String> text = new ArrayList<String>();
+			
+			text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("Default skin, costs nothing!"));
+			
+			FontRenderer fontrenderer = this.getFontRenderer();
+			
+			GlStateManager.pushMatrix();
+			{
+				GlStateManager.translate(mouseX - this.guiLeft - 38, mouseY - this.guiTop - 8, 0);
+				GlStateManager.scale(0.5, 0.5, 0.5);
+				
+				this.drawHoveringText(text, 0, 0);
+			}
+			GlStateManager.popMatrix();
+		}
     }
 	
 	@Override
@@ -392,17 +545,18 @@ public class GuiCustomizeMenuBalloonColor extends GuiContainerVC {
     /**
      * Draws an entity on the screen looking toward the cursor.
      */
-    protected void drawEntityOnScreen(int posX, int posY, int scale, float mouseX, float mouseY, EntityAirshipBaseVC entityIn)
+	@Override
+    protected void drawEntityOnScreen(int posX, int posY, int scale, EntityAirshipBaseVC entityIn)
     {
     	int currentR = entityIn.balloonPatternColorRed;
     	int currentG = entityIn.balloonPatternColorGreen;
     	int currentB = entityIn.balloonPatternColorBlue;
     	
-        entityIn.balloonPatternColorRed = textRedNumber;
-        entityIn.balloonPatternColorGreen = textGreenNumber;
-        entityIn.balloonPatternColorBlue = textBlueNumber;
+        entityIn.balloonPatternColorRed = this.textRedNumber;
+        entityIn.balloonPatternColorGreen = this.textGreenNumber;
+        entityIn.balloonPatternColorBlue = this.textBlueNumber;
         
-        super.drawEntityOnScreen(posX, posY, scale, mouseX, mouseY, entityIn);
+        super.drawEntityOnScreen(posX, posY, scale, entityIn);
     	
         entityIn.balloonPatternColorRed = currentR;
         entityIn.balloonPatternColorGreen = currentG;

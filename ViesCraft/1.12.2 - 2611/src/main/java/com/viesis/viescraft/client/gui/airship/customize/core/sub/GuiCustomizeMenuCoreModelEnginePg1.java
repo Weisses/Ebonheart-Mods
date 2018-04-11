@@ -17,6 +17,8 @@ public class GuiCustomizeMenuCoreModelEnginePg1 extends GuiCustomizeMenuCoreMode
 	public GuiCustomizeMenuCoreModelEnginePg1(IInventory playerInv, EntityAirshipCore airshipIn)
 	{
 		super(playerInv, airshipIn);
+		
+		this.metaInfo = this.airship.coreModelVisualEngine;
 	}
 	
 	/**
@@ -136,12 +138,13 @@ public class GuiCustomizeMenuCoreModelEnginePg1 extends GuiCustomizeMenuCoreMode
     /**
      * Draws an entity on the screen looking toward the cursor.
      */
-    protected void drawEntityOnScreen(int posX, int posY, int scale, float mouseX, float mouseY, EntityAirshipBaseVC entityIn)
+    @Override
+    protected void drawEntityOnScreen(int posX, int posY, int scale, EntityAirshipBaseVC entityIn)
     {
     	int current = entityIn.coreModelVisualEngine;
         entityIn.coreModelVisualEngine = metaInfo;
         
-        super.drawEntityOnScreen(posX, posY, scale, mouseX, mouseY, entityIn);
+        super.drawEntityOnScreen(posX, posY, scale, entityIn);
     	
 		entityIn.coreModelVisualEngine = current;
     }

@@ -278,7 +278,7 @@ public class GuiCustomizeMenuEngineMain extends GuiContainerVC {
 		
 		this.drawRotatingItemStack(new ItemStack(ItemsVC.ITEM_DISPLAY_SYMBOL, 1, metaInfo), this.guiLeft + 51, this.guiTop + 80);
 		
-		this.drawEntityOnScreen(this.guiLeft + 134, this.guiTop + 100, 13, mouseX, mouseY, this.airship);
+		this.drawEntityOnScreen(this.guiLeft + 134, this.guiTop + 100, 13, this.airship);
 	}
 	
 	@Override

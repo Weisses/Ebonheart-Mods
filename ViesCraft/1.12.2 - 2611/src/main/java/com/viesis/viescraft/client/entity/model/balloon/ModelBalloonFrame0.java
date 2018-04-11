@@ -4,16 +4,16 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
-public class ModelBalloonF0 extends ModelBase
+public class ModelBalloonFrame0 extends ModelBase
 {
     ModelRenderer Floor_Top;
     
-    public ModelBalloonF0()
+    public ModelBalloonFrame0()
     {
         this( 0.0f );
     }
 
-    public ModelBalloonF0( float par1 )
+    public ModelBalloonFrame0( float par1 )
     {
         Floor_Top = new ModelRenderer( this, 47, 27 );
         Floor_Top.setTextureSize( 256, 128 );

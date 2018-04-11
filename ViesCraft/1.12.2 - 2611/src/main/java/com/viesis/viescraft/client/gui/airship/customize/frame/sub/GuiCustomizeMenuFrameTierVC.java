@@ -197,7 +197,7 @@ public class GuiCustomizeMenuFrameTierVC extends GuiContainerVC {
 		this.drawRect(this.guiLeft + 50, this.guiTop - 16, this.guiLeft + 126, this.guiTop, Color.LIGHT_GRAY.getRGB());
 		this.drawRect(this.guiLeft + 52, this.guiTop - 14, this.guiLeft + 124, this.guiTop, Color.BLACK.getRGB());
 		
-        this.drawEntityOnScreen(this.guiLeft + 135, this.guiTop + 110-18, 13, mouseX, mouseY, this.airship);
+        this.drawEntityOnScreen(this.guiLeft + 135, this.guiTop + 110-18, 13, this.airship);
         
         GlStateManager.pushMatrix();
 		{
@@ -284,7 +284,7 @@ public class GuiCustomizeMenuFrameTierVC extends GuiContainerVC {
 		{
 			List<String> text = new ArrayList<String>();
 			
-			text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("Costs " + CostsVC.FRAME_SKIN_TEXTURE_COST + " Redstone"));
+			text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("Costs " + CostsVC.FRAME_SKIN_TEXTURE_COST + " Redstone if applied."));
 			//text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.core.2"));
 			//text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.core.3"));
 			
@@ -298,6 +298,34 @@ public class GuiCustomizeMenuFrameTierVC extends GuiContainerVC {
 				this.drawHoveringText(text, 0, 0);
 			}
 			GlStateManager.popMatrix();
+		}
+		
+		if(airship.getStoredRedstone() >= CostsVC.FRAME_SKIN_TEXTURE_COST
+		&& metaInfo != 0
+		&& metaInfo != airship.frameSkinTexture)
+		{
+			if(this.airship.storedRedstone >= CostsVC.FRAME_SKIN_TEXTURE_COST)
+			{
+				//Logic for mouse-over Cost tooltip
+				if(mouseX >= this.guiLeft + 110 && mouseX <= this.guiLeft + 157
+				&& mouseY >= this.guiTop + 125 && mouseY <= this.guiTop + 138)
+				{
+					List<String> text = new ArrayList<String>();
+					
+					text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("Costs " + CostsVC.FRAME_SKIN_TEXTURE_COST + " Redstone."));
+					
+					FontRenderer fontrenderer = this.getFontRenderer();
+					
+					GlStateManager.pushMatrix();
+					{
+						GlStateManager.translate(mouseX - this.guiLeft - 30, mouseY - this.guiTop - 8, 0);
+						GlStateManager.scale(0.5, 0.5, 0.5);
+						
+						this.drawHoveringText(text, 0, 0);
+					}
+					GlStateManager.popMatrix();
+				}
+			}
 		}
 		
 		//Logic for mouse-over Reset tooltip
@@ -326,12 +354,13 @@ public class GuiCustomizeMenuFrameTierVC extends GuiContainerVC {
     /**
      * Draws an entity on the screen looking toward the cursor.
      */
-    protected void drawEntityOnScreen(int posX, int posY, int scale, float mouseX, float mouseY, EntityAirshipBaseVC entityIn)
+	@Override
+    protected void drawEntityOnScreen(int posX, int posY, int scale, EntityAirshipBaseVC entityIn)
     {
     	int current = entityIn.frameSkinTexture;
         entityIn.frameSkinTexture = metaInfo;
         
-        super.drawEntityOnScreen(posX, posY, scale, mouseX, mouseY, entityIn);
+        super.drawEntityOnScreen(posX, posY, scale, entityIn);
     	
 		entityIn.frameSkinTexture = current;
     }

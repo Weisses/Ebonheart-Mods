@@ -8,12 +8,36 @@ import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.client.InitParticlesVCRender;
 import com.viesis.viescraft.client.entity.model.ModelAirshipPanel;
 import com.viesis.viescraft.client.entity.model.ModelAirshipPropeller;
-import com.viesis.viescraft.client.entity.model.balloon.ModelBalloonB0;
-import com.viesis.viescraft.client.entity.model.balloon.ModelBalloonB1;
-import com.viesis.viescraft.client.entity.model.balloon.ModelBalloonF0;
-import com.viesis.viescraft.client.entity.model.balloon.ModelBalloonF1;
+import com.viesis.viescraft.client.entity.model.balloon.ModelBalloonBalloon0;
+import com.viesis.viescraft.client.entity.model.balloon.ModelBalloonBalloon1;
+import com.viesis.viescraft.client.entity.model.balloon.ModelBalloonBalloon2;
+import com.viesis.viescraft.client.entity.model.balloon.ModelBalloonBalloon3;
+import com.viesis.viescraft.client.entity.model.balloon.ModelBalloonBalloon4;
+import com.viesis.viescraft.client.entity.model.balloon.ModelBalloonDisplaySymbol0;
+import com.viesis.viescraft.client.entity.model.balloon.ModelBalloonDisplaySymbol1;
+import com.viesis.viescraft.client.entity.model.balloon.ModelBalloonDisplaySymbol2;
+import com.viesis.viescraft.client.entity.model.balloon.ModelBalloonDisplaySymbol3;
+import com.viesis.viescraft.client.entity.model.balloon.ModelBalloonDisplaySymbol4;
+import com.viesis.viescraft.client.entity.model.balloon.ModelBalloonFrame0;
+import com.viesis.viescraft.client.entity.model.balloon.ModelBalloonFrame1;
+import com.viesis.viescraft.client.entity.model.balloon.ModelBalloonFrame2;
+import com.viesis.viescraft.client.entity.model.balloon.ModelBalloonFrame3;
+import com.viesis.viescraft.client.entity.model.balloon.ModelBalloonFrame4;
+import com.viesis.viescraft.client.entity.model.engine.ModelEngineE0;
+import com.viesis.viescraft.client.entity.model.engine.ModelEngineE1;
+import com.viesis.viescraft.client.entity.model.engine.ModelEngineE2;
+import com.viesis.viescraft.client.entity.model.engine.ModelEngineE3;
+import com.viesis.viescraft.client.entity.model.engine.ModelEngineE4;
+import com.viesis.viescraft.client.entity.model.engine.ModelEngineF0;
+import com.viesis.viescraft.client.entity.model.engine.ModelEngineF1;
+import com.viesis.viescraft.client.entity.model.engine.ModelEngineF2;
+import com.viesis.viescraft.client.entity.model.engine.ModelEngineF3;
+import com.viesis.viescraft.client.entity.model.engine.ModelEngineF4;
 import com.viesis.viescraft.client.entity.model.frame.ModelFrame0;
 import com.viesis.viescraft.client.entity.model.frame.ModelFrame1;
+import com.viesis.viescraft.client.entity.model.frame.ModelFrame2;
+import com.viesis.viescraft.client.entity.model.frame.ModelFrame3;
+import com.viesis.viescraft.client.entity.model.frame.ModelFrame4;
 import com.viesis.viescraft.client.entity.model.v1.ModelAirshipV1Balloon;
 import com.viesis.viescraft.client.entity.model.v1.ModelAirshipV1Frame;
 import com.viesis.viescraft.client.entity.model.v2.ModelAirshipV2Balloon;
@@ -45,16 +69,47 @@ public class RenderAirship extends Render<EntityAirshipCore> {
 	//Frames
 	protected ModelBase modelFrame0 = new ModelFrame0();
 	protected ModelBase modelFrame1 = new ModelFrame1();
+	protected ModelBase modelFrame2 = new ModelFrame2();
+	protected ModelBase modelFrame3 = new ModelFrame3();
+	protected ModelBase modelFrame4 = new ModelFrame4();
 	
-	
+	//Engines
+	protected ModelBase modelEngineF0 = new ModelEngineF0();
+	protected ModelBase modelEngineE0 = new ModelEngineE0();
+	protected ModelBase modelEngineF1 = new ModelEngineF1();
+	protected ModelBase modelEngineE1 = new ModelEngineE1();
+	protected ModelBase modelEngineF2 = new ModelEngineF2();
+	protected ModelBase modelEngineE2 = new ModelEngineE2();
+	protected ModelBase modelEngineF3 = new ModelEngineF3();
+	protected ModelBase modelEngineE3 = new ModelEngineE3();
+	protected ModelBase modelEngineF4 = new ModelEngineF4();
+	protected ModelBase modelEngineE4 = new ModelEngineE4();
 	
 	//Default Balloon
-	protected ModelBase modelBalloonF0 = new ModelBalloonF0();
-	protected ModelBase modelBalloonB0 = new ModelBalloonB0();
+	protected ModelBase modelBalloonF0 = new ModelBalloonFrame0();
+	protected ModelBase modelBalloonB0 = new ModelBalloonBalloon0();
+	protected ModelBase modelBalloonDS0 = new ModelBalloonDisplaySymbol0();
 		
 	//Viesdenburg Balloon
-	protected ModelBase modelBalloonF1 = new ModelBalloonF1();
-	protected ModelBase modelBalloonB1 = new ModelBalloonB1();
+	protected ModelBase modelBalloonF1 = new ModelBalloonFrame1();
+	protected ModelBase modelBalloonB1 = new ModelBalloonBalloon1();
+	protected ModelBase modelBalloonDS1 = new ModelBalloonDisplaySymbol1();
+	
+	//Viesigible Balloon
+	protected ModelBase modelBalloonF2 = new ModelBalloonFrame2();
+	protected ModelBase modelBalloonB2 = new ModelBalloonBalloon2();
+	protected ModelBase modelBalloonDS2 = new ModelBalloonDisplaySymbol2();
+	
+	//Vieseplin Balloon
+	protected ModelBase modelBalloonF3 = new ModelBalloonFrame3();
+	protected ModelBase modelBalloonB3 = new ModelBalloonBalloon3();
+	protected ModelBase modelBalloonDS3 = new ModelBalloonDisplaySymbol3();
+	
+	//Viesakron Balloon
+	protected ModelBase modelBalloonF4 = new ModelBalloonFrame4();
+	protected ModelBase modelBalloonB4 = new ModelBalloonBalloon4();
+	protected ModelBase modelBalloonDS4 = new ModelBalloonDisplaySymbol4();
+	
 	
 	
 	
@@ -91,10 +146,13 @@ public class RenderAirship extends Render<EntityAirshipCore> {
 	
 	private ModelBase currentModelFrame;
 	
+	private ModelBase currentModelEngineF;
+	private ModelBase currentModelEngineE;
+	
 	private ModelBase currentModelBalloonF;
 	private ModelBase currentModelBalloonB;
+	private ModelBase currentModelBalloonDS;
 	
-	private ModelBase currentModelEngine;
 	
 	
 	private ModelBase modelBalloon;
@@ -122,11 +180,19 @@ public class RenderAirship extends Render<EntityAirshipCore> {
         this.bindEntityTexture(entity);
         
         this.getCurrentModelFrame(entity);
+        this.getCurrentModelEngineF(entity);
+        this.getCurrentModelEngineE(entity);
         this.getCurrentModelBalloonF(entity);
+        this.getCurrentModelBalloonDS(entity);
         this.getCurrentModelBalloonB(entity);
         
     	this.selectedModelMainFrame(entity, partialTicks);
+    	
+    	this.selectedModelMainEngineF(entity, partialTicks);
+    	this.selectedModelMainEngineE(entity, partialTicks);
+    	
     	this.selectedModelMainBalloonF(entity, partialTicks);
+    	this.selectedModelMainBalloonDS(entity, partialTicks);
     	this.selectedModelMainBalloonB(entity, partialTicks);
         
     	this.selectedModelControlPanel(entity, partialTicks);
@@ -161,12 +227,14 @@ public class RenderAirship extends Render<EntityAirshipCore> {
         this.bindEntityTexture(entity);
         
         this.getCurrentModelFrame(entity);
+        this.getCurrentModelEngineF(entity);
+        this.getCurrentModelEngineE(entity);
         this.getCurrentModelBalloonF(entity);
         this.getCurrentModelBalloonB(entity);
         
         this.selectedModelMultiFrame(entity, partialTicks);
     	this.selectedModelMultiBalloonF(entity, partialTicks);
-    	//this.selectedModelMultiBalloonB(entity, partialTicks);
+    	this.selectedModelMultiBalloonB(entity, partialTicks);
         
         GlStateManager.popMatrix();
         super.doRender(entity, x, y, z, entityYaw, partialTicks);
@@ -403,7 +471,151 @@ public class RenderAirship extends Render<EntityAirshipCore> {
         GlStateManager.disableBlend();
     }
     
+    //==================================================
     
+    /**
+     * This is the Engine Frame Model for the Main Render Method.
+     */
+    private void selectedModelMainEngineF(EntityAirshipCore airshipIn, float partialTicks)
+    {
+    	//Get Colors
+        float frameRed;
+        float frameGreen;
+        float frameBlue;
+        
+        //Frame Colors
+        if(airshipIn.getFrameSkinColorRed() <= 30)
+        {
+        	frameRed = 30 / 255.0F;
+        }
+        else
+        {
+        	frameRed = airshipIn.getFrameSkinColorRed() / 255.0F;
+        }
+        if(airshipIn.getFrameSkinColorBlue() <= 30)
+        {
+        	frameBlue = 30 / 255.0F;
+        }
+        else
+        {
+        	frameBlue = airshipIn.getFrameSkinColorBlue() / 255.0F;
+        }
+        if(airshipIn.getFrameSkinColorGreen() <= 30)
+        {
+        	frameGreen = 30 / 255.0F;
+        }
+        else
+        {
+        	frameGreen = airshipIn.getFrameSkinColorGreen() / 255.0F;
+        }
+        
+        //Frame Logic
+        if(airshipIn.getFrameSkinTransparent())
+        {
+        	GlStateManager.enableBlend();
+        	GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+        }
+        
+        GlStateManager.color(frameRed, frameGreen, frameBlue, 1F);
+        
+    	this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/frames/bg_" + EnumsVC.VisualFrameSkinBackground.byId(airshipIn.frameSkinTexture).getRegistryName() + ".png"));
+    	currentModelEngineF.render(airshipIn, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
+    	
+    	GlStateManager.color(1F, 1F, 1F, 1F);
+        GlStateManager.disableBlend();
+    }
+    
+    /**
+     * This is the Balloon Frame Model for the Multipass Render Method.
+     */
+    private void selectedModelMultiEngineF(EntityAirshipCore airshipIn, float partialTicks)
+    {
+    	//Frame Logic
+        if(airshipIn.getFrameSkinTransparent())
+        {
+        	GlStateManager.enableBlend();
+        	GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+        }
+        
+        this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/engines/overlay_engine_" + airshipIn.getCoreModelVisualBalloon() + ".png"));
+        currentModelEngineF.render(airshipIn, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
+	    
+        GlStateManager.disableBlend();
+    }
+    
+    
+    
+    /**
+     * This is the Engine Model for the Main Render Method.
+     */
+    private void selectedModelMainEngineE(EntityAirshipCore airshipIn, float partialTicks)
+    {
+    	//Get Colors
+        float balloonRed;
+        float balloonGreen;
+        float balloonBlue;
+        
+        //Balloon Colors
+        if(airshipIn.getBalloonPatternColorRed() <= 30)
+        {
+        	balloonRed = 30 / 255.0F;
+        }
+        else
+        {
+        	balloonRed = airshipIn.getBalloonPatternColorRed() / 255.0F;
+        }
+        if(airshipIn.getBalloonPatternColorBlue() <= 30)
+        {
+        	balloonBlue = 30 / 255.0F;
+        }
+        else
+        {
+        	balloonBlue = airshipIn.getBalloonPatternColorBlue() / 255.0F;
+        }
+        if(airshipIn.getBalloonPatternColorGreen() <= 30)
+        {
+        	balloonGreen = 30 / 255.0F;
+        }
+        else
+        {
+        	balloonGreen = airshipIn.getBalloonPatternColorGreen() / 255.0F;
+        }
+        
+        //Balloon Logic
+        if(airshipIn.getBalloonPatternTransparent())
+        {
+        	GlStateManager.enableBlend();
+        	GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+        }
+        
+        GlStateManager.color(balloonRed, balloonGreen, balloonBlue, 1F);
+    	
+    	this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/engines/bg_" + EnumsVC.VisualBalloonPattern.byId(airshipIn.getBalloonPatternTexture()).getRegistryName() + ".png"));
+    	currentModelEngineE.render(airshipIn, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
+        
+        GlStateManager.color(1F, 1F, 1F, 1F);
+        GlStateManager.disableBlend();
+    }
+    
+    /**
+     * This is the Engine Model for the Multipass Render Method.
+     */
+    private void selectedModelMultiEngineE(EntityAirshipCore airshipIn, float partialTicks)
+    {
+    	//Balloon Logic
+        if(airshipIn.getBalloonPatternTransparent())
+        {
+        	GlStateManager.enableBlend();
+        	GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+        }
+        
+        this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/engines/overlay_" + EnumsVC.VisualBalloonPattern.byId(airshipIn.getBalloonPatternTexture()).getRegistryName() + ".png"));
+        currentModelEngineE.render(airshipIn, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
+	    
+        GlStateManager.disableBlend();
+    }
+    
+    //==================================================
     
     /**
      * This is the Balloon Frame Model for the Main Render Method.
@@ -452,6 +664,58 @@ public class RenderAirship extends Render<EntityAirshipCore> {
         
     	this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/frames/bg_" + EnumsVC.VisualFrameSkinBackground.byId(airshipIn.frameSkinTexture).getRegistryName() + ".png"));
     	currentModelBalloonF.render(airshipIn, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
+    	
+    	GlStateManager.color(1F, 1F, 1F, 1F);
+        GlStateManager.disableBlend();
+    }
+    
+    /**
+     * This is the Balloon Display Symbol Model for the Main Render Method.
+     */
+    private void selectedModelMainBalloonDS(EntityAirshipCore airshipIn, float partialTicks)
+    {
+    	//Get Colors
+        float frameRed;
+        float frameGreen;
+        float frameBlue;
+        
+        //Frame Colors
+        if(airshipIn.getFrameSkinColorRed() <= 30)
+        {
+        	frameRed = 30 / 255.0F;
+        }
+        else
+        {
+        	frameRed = airshipIn.getFrameSkinColorRed() / 255.0F;
+        }
+        if(airshipIn.getFrameSkinColorBlue() <= 30)
+        {
+        	frameBlue = 30 / 255.0F;
+        }
+        else
+        {
+        	frameBlue = airshipIn.getFrameSkinColorBlue() / 255.0F;
+        }
+        if(airshipIn.getFrameSkinColorGreen() <= 30)
+        {
+        	frameGreen = 30 / 255.0F;
+        }
+        else
+        {
+        	frameGreen = airshipIn.getFrameSkinColorGreen() / 255.0F;
+        }
+        
+        //Frame Logic
+        if(airshipIn.getFrameSkinTransparent())
+        {
+        	GlStateManager.enableBlend();
+        	GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+        }
+        
+        GlStateManager.color(frameRed, frameGreen, frameBlue, 1F);
+        
+    	this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/frames/bg_" + EnumsVC.VisualFrameSkinBackground.byId(airshipIn.frameSkinTexture).getRegistryName() + ".png"));
+    	currentModelBalloonDS.render(airshipIn, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
     	
     	GlStateManager.color(1F, 1F, 1F, 1F);
         GlStateManager.disableBlend();
@@ -541,7 +805,7 @@ public class RenderAirship extends Render<EntityAirshipCore> {
         	GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
         }
         
-        this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/balloons/overlay_" + EnumsVC.VisualBalloonPattern.byId(airshipIn.getBalloonPatternTexture()).getRegistryName() + ".png"));
+        this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/balloons/overlay.png"));
         currentModelBalloonB.render(airshipIn, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
 	    
         GlStateManager.disableBlend();
@@ -627,55 +891,110 @@ public class RenderAirship extends Render<EntityAirshipCore> {
     
     private ModelBase getCurrentModelFrame(EntityAirshipCore airshipIn)
     {
-    	switch(airshipIn.getCoreModelVisualFrame())
+    	switch(airshipIn.coreModelVisualFrame)
     	{
 	    	case 0:
 	    		return currentModelFrame = this.modelFrame0;
 	    	case 1:
 	    		return currentModelFrame = this.modelFrame1;
-	    	//case 2:
-	    	//	return currentModelFrame = this.modelFrame2;
-	    	//case 3:
-	    	//	return currentModelFrame = this.modelFrame3;
-	    	//case 4:
-	    	//	return currentModelFrame = this.modelFrame4;
+	    	case 2:
+	    		return currentModelFrame = this.modelFrame2;
+	    	case 3:
+	    		return currentModelFrame = this.modelFrame3;
+	    	case 4:
+	    		return currentModelFrame = this.modelFrame4;
 	    	default:
 	    		return currentModelFrame = this.modelFrame0;
     	}
     }
     
+    private ModelBase getCurrentModelEngineF(EntityAirshipCore airshipIn)
+    {
+    	switch(airshipIn.coreModelVisualEngine)
+    	{
+	    	case 0:
+	    		return currentModelEngineF = this.modelEngineF0;
+	    	case 1:
+	    		return currentModelEngineF = this.modelEngineF1;
+	    	case 2:
+	    		return currentModelEngineF = this.modelEngineF2;
+	    	case 3:
+	    		return currentModelEngineF = this.modelEngineF3;
+	    	case 4:
+	    		return currentModelEngineF = this.modelEngineF4;
+	    	default:
+	    		return currentModelEngineF = this.modelEngineF0;
+    	}
+    }
+    private ModelBase getCurrentModelEngineE(EntityAirshipCore airshipIn)
+    {
+    	switch(airshipIn.coreModelVisualEngine)
+    	{
+	    	case 0:
+	    		return currentModelEngineE = this.modelEngineE0;
+	    	case 1:
+	    		return currentModelEngineE = this.modelEngineE1;
+	    	case 2:
+	    		return currentModelEngineE = this.modelEngineE2;
+	    	case 3:
+	    		return currentModelEngineE = this.modelEngineE3;
+	    	case 4:
+	    		return currentModelEngineE = this.modelEngineE4;
+	    	default:
+	    		return currentModelEngineE = this.modelEngineE0;
+    	}
+    }
+    
     private ModelBase getCurrentModelBalloonF(EntityAirshipCore airshipIn)
     {
-    	switch(airshipIn.getCoreModelVisualBalloon())
+    	switch(airshipIn.coreModelVisualBalloon)
     	{
 	    	case 0:
 	    		return currentModelBalloonF = this.modelBalloonF0;
 	    	case 1:
 	    		return currentModelBalloonF = this.modelBalloonF1;
-	    	//case 2:
-	    	//	return currentModelBalloonF = this.modelBalloonF2;
-	    	//case 3:
-	    	//	return currentModelBalloonF = this.modelBalloonF3;
-	    	//case 4:
-	    	//	return currentModelBalloonF = this.modelBalloonF4;
+	    	case 2:
+	    		return currentModelBalloonF = this.modelBalloonF2;
+	    	case 3:
+	    		return currentModelBalloonF = this.modelBalloonF3;
+	    	case 4:
+	    		return currentModelBalloonF = this.modelBalloonF4;
 	    	default:
 	    		return currentModelBalloonF = this.modelBalloonF0;
     	}
     }
+    private ModelBase getCurrentModelBalloonDS(EntityAirshipCore airshipIn)
+    {
+    	switch(airshipIn.coreModelVisualBalloon)
+    	{
+	    	case 0:
+	    		return currentModelBalloonDS = this.modelBalloonDS0;
+	    	case 1:
+	    		return currentModelBalloonDS = this.modelBalloonDS1;
+	    	case 2:
+	    		return currentModelBalloonDS = this.modelBalloonDS2;
+	    	case 3:
+	    		return currentModelBalloonDS = this.modelBalloonDS3;
+	    	case 4:
+	    		return currentModelBalloonDS = this.modelBalloonDS4;
+	    	default:
+	    		return currentModelBalloonDS = this.modelBalloonDS0;
+    	}
+    }
     private ModelBase getCurrentModelBalloonB(EntityAirshipCore airshipIn)
     {
-    	switch(airshipIn.getCoreModelVisualBalloon())
+    	switch(airshipIn.coreModelVisualBalloon)
     	{
 	    	case 0:
 	    		return currentModelBalloonB = this.modelBalloonB0;
 	    	case 1:
 	    		return currentModelBalloonB = this.modelBalloonB1;
-	    	//case 2:
-	    	//	return currentModelBalloonB = this.modelBalloonB2;
-	    	//case 3:
-	    	//	return currentModelBalloonB = this.modelBalloonB3;
-	    	//case 4:
-	    	//	return currentModelBalloonB = this.modelBalloonB4;
+	    	case 2:
+	    		return currentModelBalloonB = this.modelBalloonB2;
+	    	case 3:
+	    		return currentModelBalloonB = this.modelBalloonB3;
+	    	case 4:
+	    		return currentModelBalloonB = this.modelBalloonB4;
 	    	default:
 	    		return currentModelBalloonB = this.modelBalloonB0;
     	}

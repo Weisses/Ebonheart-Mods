@@ -1,19 +1,19 @@
-package com.viesis.viescraft.client.entity.model.balloon;
+package com.viesis.viescraft.client.entity.model.engine;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
-public class ModelBalloonB0 extends ModelBase
+public class ModelEngineF1 extends ModelBase
 {
     
 
-    public ModelBalloonB0()
+    public ModelEngineF1()
     {
         this( 0.0f );
     }
 
-    public ModelBalloonB0( float par1 )
+    public ModelEngineF1( float par1 )
     {
         
     }

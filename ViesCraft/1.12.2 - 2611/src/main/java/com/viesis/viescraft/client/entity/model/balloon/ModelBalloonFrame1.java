@@ -4,9 +4,8 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
-public class ModelBalloonF1 extends ModelBase
+public class ModelBalloonFrame1 extends ModelBase
 {
-    //ModelRenderer Floor_Top;
     ModelRenderer Anchor_1a;
     ModelRenderer Anchor_1b;
     ModelRenderer Anchor_1c;
@@ -52,43 +51,29 @@ public class ModelBalloonF1 extends ModelBase
     ModelRenderer BalloonFrameB3c;
     ModelRenderer BalloonFrameB3d;
     ModelRenderer BalloonFrameB3e;
-    ModelRenderer ItemFrameLeftInside;
-    ModelRenderer ItemFrameLeftBorderT;
-    ModelRenderer ItemFrameLeftBorderB;
-    ModelRenderer ItemFrameLeftBorderR;
-    ModelRenderer ItemFrameLeftBorderL;
-    ModelRenderer ItemFrameRightInside;
-    ModelRenderer ItemFrameRightBorderT;
-    ModelRenderer ItemFrameRightBorderB;
-    ModelRenderer ItemFrameRightBorderR;
-    ModelRenderer ItemFrameRightBorderL;
 
-    public ModelBalloonF1()
+    public ModelBalloonFrame1()
     {
         this( 0.0f );
     }
 
-    public ModelBalloonF1( float par1 )
+    public ModelBalloonFrame1( float par1 )
     {
-        //Floor_Top = new ModelRenderer( this, 47, 27 );
-        //Floor_Top.setTextureSize( 256, 128 );
-        //Floor_Top.addBox( 0F, 0.5F, 0F, 14, 1, 24);
-        //Floor_Top.setRotationPoint( -7F, 4.5F, -12F );
         Anchor_1a = new ModelRenderer( this, 0, 0 );
         Anchor_1a.setTextureSize( 256, 128 );
-        Anchor_1a.addBox( 0.5F, 0F, 0F, 2, 2, 2);
+        Anchor_1a.addBox( 0F, 0F, 0F, 3, 2, 2);
         Anchor_1a.setRotationPoint( 7F, 0F, -10F );
         Anchor_1b = new ModelRenderer( this, 0, 0 );
         Anchor_1b.setTextureSize( 256, 128 );
-        Anchor_1b.addBox( 0.5F, 0F, 0F, 2, 2, 2);
+        Anchor_1b.addBox( 0F, 0F, 0F, 3, 2, 2);
         Anchor_1b.setRotationPoint( -10F, 0F, -10F );
         Anchor_1c = new ModelRenderer( this, 0, 0 );
         Anchor_1c.setTextureSize( 256, 128 );
-        Anchor_1c.addBox( 0.5F, 0F, 0F, 2, 2, 2);
+        Anchor_1c.addBox( 0F, 0F, 0F, 3, 2, 2);
         Anchor_1c.setRotationPoint( -10F, 0F, 8F );
         Anchor_1d = new ModelRenderer( this, 0, 0 );
         Anchor_1d.setTextureSize( 256, 128 );
-        Anchor_1d.addBox( 0.5F, 0F, 0F, 2, 2, 2);
+        Anchor_1d.addBox( 0F, 0F, 0F, 3, 2, 2);
         Anchor_1d.setRotationPoint( 7F, 0F, 8F );
         Anchor_2a = new ModelRenderer( this, 64, 0 );
         Anchor_2a.setTextureSize( 256, 128 );
@@ -254,55 +239,10 @@ public class ModelBalloonF1 extends ModelBase
         BalloonFrameB3e.setTextureSize( 256, 128 );
         BalloonFrameB3e.addBox( -3F, -3F, -1F, 6, 6, 2);
         BalloonFrameB3e.setRotationPoint( 0F, -36F, 22F );
-        ItemFrameLeftInside = new ModelRenderer( this, 49, 106 );
-        ItemFrameLeftInside.setTextureSize( 256, 128 );
-        ItemFrameLeftInside.addBox( 0F, -5.5F, -5.5F, 0, 11, 11);
-        ItemFrameLeftInside.setRotationPoint( -16.5F, -36F, 0F );
-        ItemFrameLeftBorderT = new ModelRenderer( this, 148, 104 );
-        ItemFrameLeftBorderT.setTextureSize( 256, 128 );
-        ItemFrameLeftBorderT.addBox( -0.5F, -0.5F, -6F, 1, 1, 12);
-        ItemFrameLeftBorderT.setRotationPoint( -16.5F, -42F, -0.5F );
-        ItemFrameLeftBorderB = new ModelRenderer( this, 146, 103 );
-        ItemFrameLeftBorderB.setTextureSize( 256, 128 );
-        ItemFrameLeftBorderB.addBox( -0.5F, -0.5F, -6F, 1, 1, 12);
-        ItemFrameLeftBorderB.setRotationPoint( -16.5F, -30F, 0.5F );
-        ItemFrameLeftBorderR = new ModelRenderer( this, 158, 115 );
-        ItemFrameLeftBorderR.setTextureSize( 256, 128 );
-        ItemFrameLeftBorderR.addBox( -0.5F, -6F, -0.5F, 1, 12, 1);
-        ItemFrameLeftBorderR.setRotationPoint( -16.5F, -35.5F, -6F );
-        ItemFrameLeftBorderL = new ModelRenderer( this, 162, 115 );
-        ItemFrameLeftBorderL.setTextureSize( 256, 128 );
-        ItemFrameLeftBorderL.addBox( -0.5F, -6F, -0.5F, 1, 12, 1);
-        ItemFrameLeftBorderL.setRotationPoint( -16.5F, -36.5F, 6F );
-        ItemFrameRightInside = new ModelRenderer( this, 49, 106 );
-        ItemFrameRightInside.setTextureSize( 256, 128 );
-        ItemFrameRightInside.addBox( 0F, -5.5F, -5.5F, 0, 11, 11);
-        ItemFrameRightInside.setRotationPoint( 16.5F, -36F, 0F );
-        ItemFrameRightBorderT = new ModelRenderer( this, 148, 104 );
-        ItemFrameRightBorderT.setTextureSize( 256, 128 );
-        ItemFrameRightBorderT.addBox( -0.5F, -0.5F, -6F, 1, 1, 12);
-        ItemFrameRightBorderT.setRotationPoint( 16.5F, -42F, -0.5F );
-        ItemFrameRightBorderB = new ModelRenderer( this, 146, 103 );
-        ItemFrameRightBorderB.setTextureSize( 256, 128 );
-        ItemFrameRightBorderB.addBox( -0.5F, -0.5F, -6F, 1, 1, 12);
-        ItemFrameRightBorderB.setRotationPoint( 16.5F, -30F, 0.5F );
-        ItemFrameRightBorderR = new ModelRenderer( this, 158, 115 );
-        ItemFrameRightBorderR.setTextureSize( 256, 128 );
-        ItemFrameRightBorderR.addBox( -0.5F, -6F, -0.5F, 1, 12, 1);
-        ItemFrameRightBorderR.setRotationPoint( 16.5F, -35.5F, -6F );
-        ItemFrameRightBorderL = new ModelRenderer( this, 162, 115 );
-        ItemFrameRightBorderL.setTextureSize( 256, 128 );
-        ItemFrameRightBorderL.addBox( -0.5F, -6F, -0.5F, 1, 12, 1);
-        ItemFrameRightBorderL.setRotationPoint( 16.5F, -36.5F, 6F );
     }
 
    public void render(Entity par1Entity, float par2, float par3, float par4, float par5, float par6, float par7)
    {
-        //Floor_Top.rotateAngleX = 0F;
-        //Floor_Top.rotateAngleY = 0F;
-        //Floor_Top.rotateAngleZ = 0F;
-        //Floor_Top.renderWithRotation(par7);
-
         Anchor_1a.rotateAngleX = 0F;
         Anchor_1a.rotateAngleY = 0F;
         Anchor_1a.rotateAngleZ = 0F;
@@ -527,56 +467,6 @@ public class ModelBalloonF1 extends ModelBase
         BalloonFrameB3e.rotateAngleY = 0F;
         BalloonFrameB3e.rotateAngleZ = 0F;
         BalloonFrameB3e.renderWithRotation(par7);
-
-        ItemFrameLeftInside.rotateAngleX = 0F;
-        ItemFrameLeftInside.rotateAngleY = 0F;
-        ItemFrameLeftInside.rotateAngleZ = 0F;
-        ItemFrameLeftInside.renderWithRotation(par7);
-
-        ItemFrameLeftBorderT.rotateAngleX = 0F;
-        ItemFrameLeftBorderT.rotateAngleY = 0F;
-        ItemFrameLeftBorderT.rotateAngleZ = 0F;
-        ItemFrameLeftBorderT.renderWithRotation(par7);
-
-        ItemFrameLeftBorderB.rotateAngleX = 0F;
-        ItemFrameLeftBorderB.rotateAngleY = 0F;
-        ItemFrameLeftBorderB.rotateAngleZ = 0F;
-        ItemFrameLeftBorderB.renderWithRotation(par7);
-
-        ItemFrameLeftBorderR.rotateAngleX = 0F;
-        ItemFrameLeftBorderR.rotateAngleY = 0F;
-        ItemFrameLeftBorderR.rotateAngleZ = 0F;
-        ItemFrameLeftBorderR.renderWithRotation(par7);
-
-        ItemFrameLeftBorderL.rotateAngleX = 0F;
-        ItemFrameLeftBorderL.rotateAngleY = 0F;
-        ItemFrameLeftBorderL.rotateAngleZ = 0F;
-        ItemFrameLeftBorderL.renderWithRotation(par7);
-
-        ItemFrameRightInside.rotateAngleX = 0F;
-        ItemFrameRightInside.rotateAngleY = 0F;
-        ItemFrameRightInside.rotateAngleZ = 0F;
-        ItemFrameRightInside.renderWithRotation(par7);
-
-        ItemFrameRightBorderT.rotateAngleX = 0F;
-        ItemFrameRightBorderT.rotateAngleY = 0F;
-        ItemFrameRightBorderT.rotateAngleZ = 0F;
-        ItemFrameRightBorderT.renderWithRotation(par7);
-
-        ItemFrameRightBorderB.rotateAngleX = 0F;
-        ItemFrameRightBorderB.rotateAngleY = 0F;
-        ItemFrameRightBorderB.rotateAngleZ = 0F;
-        ItemFrameRightBorderB.renderWithRotation(par7);
-
-        ItemFrameRightBorderR.rotateAngleX = 0F;
-        ItemFrameRightBorderR.rotateAngleY = 0F;
-        ItemFrameRightBorderR.rotateAngleZ = 0F;
-        ItemFrameRightBorderR.renderWithRotation(par7);
-
-        ItemFrameRightBorderL.rotateAngleX = 0F;
-        ItemFrameRightBorderL.rotateAngleY = 0F;
-        ItemFrameRightBorderL.rotateAngleZ = 0F;
-        ItemFrameRightBorderL.renderWithRotation(par7);
 
     }
 

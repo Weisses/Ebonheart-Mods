@@ -291,7 +291,7 @@ public class GuiCustomizeMenuBalloonTierVC extends GuiContainerVC {
 		{
 			List<String> text = new ArrayList<String>();
 			
-			text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("Costs " + CostsVC.FRAME_SKIN_TEXTURE_COST + " Redstone"));
+			text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("Costs " + CostsVC.BALLOON_PATTERN_TEXTURE_COST + " Redstone if applied."));
 			//text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.core.2"));
 			//text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.core.3"));
 			
@@ -305,6 +305,34 @@ public class GuiCustomizeMenuBalloonTierVC extends GuiContainerVC {
 				this.drawHoveringText(text, 0, 0);
 			}
 			GlStateManager.popMatrix();
+		}
+		
+		if(airship.getStoredRedstone() >= CostsVC.BALLOON_PATTERN_TEXTURE_COST
+		&& metaInfo != 0
+		&& metaInfo != airship.balloonPatternTexture)
+		{
+			if(this.airship.storedRedstone >= CostsVC.BALLOON_PATTERN_TEXTURE_COST)
+			{
+				//Logic for mouse-over Cost tooltip
+				if(mouseX >= this.guiLeft + 110 && mouseX <= this.guiLeft + 157
+				&& mouseY >= this.guiTop + 125 && mouseY <= this.guiTop + 138)
+				{
+					List<String> text = new ArrayList<String>();
+					
+					text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("Costs " + CostsVC.BALLOON_PATTERN_TEXTURE_COST + " Redstone."));
+					
+					FontRenderer fontrenderer = this.getFontRenderer();
+					
+					GlStateManager.pushMatrix();
+					{
+						GlStateManager.translate(mouseX - this.guiLeft - 30, mouseY - this.guiTop - 8, 0);
+						GlStateManager.scale(0.5, 0.5, 0.5);
+						
+						this.drawHoveringText(text, 0, 0);
+					}
+					GlStateManager.popMatrix();
+				}
+			}
 		}
 		
 		//Logic for mouse-over Reset tooltip
@@ -338,7 +366,7 @@ public class GuiCustomizeMenuBalloonTierVC extends GuiContainerVC {
     	int current = entityIn.balloonPatternTexture;
         entityIn.balloonPatternTexture = metaInfo;
         
-        super.drawEntityOnScreen(posX, posY, scale, mouseX, mouseY, entityIn);
+        super.drawEntityOnScreen(posX, posY, scale, entityIn);
     	
 		entityIn.balloonPatternTexture = current;
     }

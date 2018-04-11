@@ -213,7 +213,7 @@ public class GuiCustomizeMenuCoreMain extends GuiContainerVC {
 		}
 		GlStateManager.popMatrix();
 		
-		this.drawEntityOnScreen(this.guiLeft + 134, this.guiTop + 100, 13, mouseX, mouseY, this.airship);
+		this.drawEntityOnScreen(this.guiLeft + 134, this.guiTop + 100, 13, this.airship);
 	}
 	
 	@Override
