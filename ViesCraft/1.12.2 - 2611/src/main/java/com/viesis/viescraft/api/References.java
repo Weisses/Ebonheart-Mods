@@ -42,7 +42,11 @@ public class References {
 	
 	public static final String ENGINE_PARTICLE_VISUAL_TAG = "EngineParticleVisual";
 	public static final String ENGINE_DISPLAY_TYPE_VISUAL_TAG = "EngineDisplayTypeVisual";
-	public static final String ENGINE_DISPLAY_ID_VISUAL_TAG = "EngineDisplayIDVisual";
+	public static final String ENGINE_DISPLAY_ITEMSTACK_VISUAL_TAG = "EngineDisplayItemstackVisual";
+	public static final String ENGINE_DISPLAY_ITEMSTACK_META_VISUAL_TAG = "EngineDisplayItemstackMetaVisual";
+	public static final String ENGINE_DISPLAY_HEAD_VISUAL_TAG = "EngineDisplayHeadVisual";
+	public static final String ENGINE_DISPLAY_SUPPORTER_HEAD_VISUAL_TAG = "EngineDisplaySupporterHeadVisual";
+	public static final String ENGINE_DISPLAY_HOLIDAY_VISUAL_TAG = "EngineDisplayHolidayVisual";
 	
 	public static final String BALLOON_PATTERN_TEXTURE_TAG = "BalloonPatternTexture";
 	public static final String BALLOON_PATTERN_TRANSPARENT_TAG = "BalloonPatternTransparent";

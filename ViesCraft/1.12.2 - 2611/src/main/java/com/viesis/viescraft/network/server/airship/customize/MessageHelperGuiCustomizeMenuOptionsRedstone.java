@@ -1,7 +1,7 @@
 package com.viesis.viescraft.network.server.airship.customize;
 
 import com.viesis.viescraft.api.util.LogHelper;
-import com.viesis.viescraft.client.gui.airship.customize.GuiCustomizeMenuOptionsRedstone;
+import com.viesis.viescraft.client.gui.airship.redstone.GuiCustomizeMenuRedstone;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
 import com.viesis.viescraft.network.packet.MessageBase;
 
@@ -22,7 +22,7 @@ public class MessageHelperGuiCustomizeMenuOptionsRedstone extends MessageBase<Me
 	@Override
 	public void toBytes(ByteBuf buf) 
 	{
-		buf.writeInt(GuiCustomizeMenuOptionsRedstone.storedRedstone);
+		buf.writeInt(GuiCustomizeMenuRedstone.storedRedstone);
 	}
 	
 	@Override

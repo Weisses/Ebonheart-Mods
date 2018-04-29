@@ -50,7 +50,7 @@ public class ItemAirship extends ItemAirshipBase {
 		this.fuelItemStackSize = 0;
 		this.fuelItemStack = 0;
 		this.storedRedstone = 0;
-		this.storedRedstoneTotal = 500;
+		this.storedRedstoneTotal = 50;
 		
 		this.mainTierCore = 0;
 		this.mainTierFrame = 0;
@@ -69,7 +69,11 @@ public class ItemAirship extends ItemAirshipBase {
 		
 		this.engineParticleVisual = 0;
 		this.engineDisplayTypeVisual = 0;
-		this.engineDisplayIDVisual = 0;
+		this.engineDisplayItemstackVisual = 0;
+		this.engineDisplayItemstackMetaVisual = 0;
+		this.engineDisplayHeadVisual = 0;
+		this.engineDisplaySupporterHeadVisual = 0;
+		this.engineDisplayHolidayVisual = 0;
 		
 		this.balloonPatternTexture = 0;
 		this.balloonPatternTransparent = false;
@@ -130,7 +134,11 @@ public class ItemAirship extends ItemAirshipBase {
         		
         		this.engineParticleVisual = itemstack.getTagCompound().getInteger(rf.ENGINE_PARTICLE_VISUAL_TAG);
         		this.engineDisplayTypeVisual = itemstack.getTagCompound().getInteger(rf.ENGINE_DISPLAY_TYPE_VISUAL_TAG);
-        		this.engineDisplayIDVisual = itemstack.getTagCompound().getInteger(rf.ENGINE_DISPLAY_ID_VISUAL_TAG);
+        		this.engineDisplayItemstackVisual = itemstack.getTagCompound().getInteger(rf.ENGINE_DISPLAY_ITEMSTACK_VISUAL_TAG);
+        		this.engineDisplayItemstackMetaVisual = itemstack.getTagCompound().getInteger(rf.ENGINE_DISPLAY_ITEMSTACK_META_VISUAL_TAG);
+        		this.engineDisplayHeadVisual = itemstack.getTagCompound().getInteger(rf.ENGINE_DISPLAY_HEAD_VISUAL_TAG);
+        		this.engineDisplaySupporterHeadVisual = itemstack.getTagCompound().getInteger(rf.ENGINE_DISPLAY_SUPPORTER_HEAD_VISUAL_TAG);
+        		this.engineDisplayHolidayVisual = itemstack.getTagCompound().getInteger(rf.ENGINE_DISPLAY_HOLIDAY_VISUAL_TAG);
         		
         		this.balloonPatternTexture = itemstack.getTagCompound().getInteger(rf.BALLOON_PATTERN_TEXTURE_TAG);
         		this.balloonPatternTransparent = itemstack.getTagCompound().getBoolean(rf.BALLOON_PATTERN_TRANSPARENT_TAG);
@@ -185,7 +193,11 @@ public class ItemAirship extends ItemAirshipBase {
 	    		this.frameSkinColorRed, this.frameSkinColorGreen, this.frameSkinColorBlue, 
 	    		
 	    		this.engineParticleVisual, 
-	    		this.engineDisplayTypeVisual, this.engineDisplayIDVisual, 
+	    		this.engineDisplayTypeVisual, 
+	    		this.engineDisplayItemstackVisual, this.engineDisplayItemstackMetaVisual,
+	    		this.engineDisplayHeadVisual, 
+	    		this.engineDisplaySupporterHeadVisual, 
+	    		this.engineDisplayHolidayVisual, 
 	    		
 	    		this.balloonPatternTexture, 
 	    		this.balloonPatternTransparent, 

@@ -3,6 +3,7 @@ package com.viesis.viescraft.common.entity.airships;
 import com.viesis.viescraft.api.EnumsVC;
 import com.viesis.viescraft.api.FuelVC;
 import com.viesis.viescraft.api.References;
+import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.client.InitParticlesVCRender;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 import com.viesis.viescraft.init.InitItemsVC;
@@ -69,7 +70,11 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
     //Engine system
     protected static final DataParameter<Integer> ENGINE_PARTICLE_VISUAL_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
     protected static final DataParameter<Integer> ENGINE_DISPLAY_TYPE_VISUAL_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
-    protected static final DataParameter<Integer> ENGINE_DISPLAY_ID_VISUAL_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+    protected static final DataParameter<Integer> ENGINE_DISPLAY_ITEMSTACK_VISUAL_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+    protected static final DataParameter<Integer> ENGINE_DISPLAY_ITEMSTACK_META_VISUAL_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+    protected static final DataParameter<Integer> ENGINE_DISPLAY_HEAD_VISUAL_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+    protected static final DataParameter<Integer> ENGINE_DISPLAY_SUPPORTER_HEAD_VISUAL_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+    protected static final DataParameter<Integer> ENGINE_DISPLAY_HOLIDAY_VISUAL_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
     
     //Balloon system
     protected static final DataParameter<Integer> BALLOON_PATTERN_TEXTURE_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
@@ -152,7 +157,11 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
 	
 	public int engineParticleVisual;
 	public int engineDisplayTypeVisual;
-	public int engineDisplayIDVisual;
+	public int engineDisplayItemstackVisual;
+	public int engineDisplayItemstackMetaVisual;
+	public int engineDisplayHeadVisual;
+	public int engineDisplaySupporterHeadVisual;
+	public int engineDisplayHolidayVisual;
 	
 	public int balloonPatternTexture;
 	public boolean balloonPatternTransparent;
@@ -239,7 +248,11 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
     		int frameSkinColorRedIn, int frameSkinColorGreenIn, int frameSkinColorBlueIn,
     		
     		int engineParticleVisualIn, 
-    		int engineDisplayTypeVisualIn, int engineDisplayIDVisualIn,
+    		int engineDisplayTypeVisualIn, 
+    		int engineDisplayItemStackVisualIn, int engineDisplayItemStackMetaVisualIn,
+    		int engineDisplayHeadVisualIn, 
+    		int engineDisplaySupporterHeadVisualIn, 
+    		int engineDisplayHolidayVisualIn, 
     		
     		int balloonPatternTextureIn, 
     		boolean balloonPatternTransparentIn, 
@@ -299,7 +312,11 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
         
         this.dataManager.register(ENGINE_PARTICLE_VISUAL_DM, Integer.valueOf(this.engineParticleVisual));
         this.dataManager.register(ENGINE_DISPLAY_TYPE_VISUAL_DM, Integer.valueOf(this.engineDisplayTypeVisual));
-        this.dataManager.register(ENGINE_DISPLAY_ID_VISUAL_DM, Integer.valueOf(this.engineDisplayIDVisual));
+        this.dataManager.register(ENGINE_DISPLAY_ITEMSTACK_VISUAL_DM, Integer.valueOf(this.engineDisplayItemstackVisual));
+        this.dataManager.register(ENGINE_DISPLAY_ITEMSTACK_META_VISUAL_DM, Integer.valueOf(this.engineDisplayItemstackMetaVisual));
+        this.dataManager.register(ENGINE_DISPLAY_HEAD_VISUAL_DM, Integer.valueOf(this.engineDisplayHeadVisual));
+        this.dataManager.register(ENGINE_DISPLAY_SUPPORTER_HEAD_VISUAL_DM, Integer.valueOf(this.engineDisplaySupporterHeadVisual));
+        this.dataManager.register(ENGINE_DISPLAY_HOLIDAY_VISUAL_DM, Integer.valueOf(this.engineDisplayHolidayVisual));
         
         this.dataManager.register(BALLOON_PATTERN_TEXTURE_DM, Integer.valueOf(this.balloonPatternTexture));
         this.dataManager.register(BALLOON_PATTERN_TRANSPARENT_DM, Boolean.valueOf(this.balloonPatternTransparent));
@@ -391,7 +408,11 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
     	
     	compound.setInteger(rf.ENGINE_PARTICLE_VISUAL_TAG, this.engineParticleVisual);
     	compound.setInteger(rf.ENGINE_DISPLAY_TYPE_VISUAL_TAG, this.engineDisplayTypeVisual);
-    	compound.setInteger(rf.ENGINE_DISPLAY_ID_VISUAL_TAG, this.engineDisplayIDVisual);
+    	compound.setInteger(rf.ENGINE_DISPLAY_ITEMSTACK_VISUAL_TAG, this.engineDisplayItemstackVisual);
+    	compound.setInteger(rf.ENGINE_DISPLAY_ITEMSTACK_META_VISUAL_TAG, this.engineDisplayItemstackMetaVisual);
+    	compound.setInteger(rf.ENGINE_DISPLAY_HEAD_VISUAL_TAG, this.engineDisplayHeadVisual);
+    	compound.setInteger(rf.ENGINE_DISPLAY_SUPPORTER_HEAD_VISUAL_TAG, this.engineDisplaySupporterHeadVisual);
+    	compound.setInteger(rf.ENGINE_DISPLAY_HOLIDAY_VISUAL_TAG, this.engineDisplayHolidayVisual);
     	
     	compound.setInteger(rf.BALLOON_PATTERN_TEXTURE_TAG, this.balloonPatternTexture);
     	compound.setBoolean(rf.BALLOON_PATTERN_TRANSPARENT_TAG, this.balloonPatternTransparent);
@@ -457,7 +478,11 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
     	
     	this.engineParticleVisual = compound.getInteger(rf.ENGINE_PARTICLE_VISUAL_TAG);
     	this.engineDisplayTypeVisual = compound.getInteger(rf.ENGINE_DISPLAY_TYPE_VISUAL_TAG);
-    	this.engineDisplayIDVisual = compound.getInteger(rf.ENGINE_DISPLAY_ID_VISUAL_TAG);
+    	this.engineDisplayItemstackVisual = compound.getInteger(rf.ENGINE_DISPLAY_ITEMSTACK_VISUAL_TAG);
+    	this.engineDisplayItemstackMetaVisual = compound.getInteger(rf.ENGINE_DISPLAY_ITEMSTACK_META_VISUAL_TAG);
+    	this.engineDisplayHeadVisual = compound.getInteger(rf.ENGINE_DISPLAY_HEAD_VISUAL_TAG);
+    	this.engineDisplaySupporterHeadVisual = compound.getInteger(rf.ENGINE_DISPLAY_SUPPORTER_HEAD_VISUAL_TAG);
+    	this.engineDisplayHolidayVisual = compound.getInteger(rf.ENGINE_DISPLAY_HOLIDAY_VISUAL_TAG);
     	
     	this.balloonPatternTexture = compound.getInteger(rf.BALLOON_PATTERN_TEXTURE_TAG);
     	this.balloonPatternTransparent = compound.getBoolean(rf.BALLOON_PATTERN_TRANSPARENT_TAG);
@@ -722,7 +747,6 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
     			return 0;
     	}
     }
-    
     
     
     //==================================//
@@ -1319,7 +1343,11 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
             
             this.engineParticleVisual = this.getEngineParticleVisual();
             this.engineDisplayTypeVisual = this.getEngineDisplayTypeVisual();
-            this.engineDisplayIDVisual = this.getEngineDisplayIDVisual();
+            this.engineDisplayItemstackVisual = this.getEngineDisplayItemstackVisual();
+            this.engineDisplayItemstackMetaVisual = this.getEngineDisplayItemstackMetaVisual();
+            this.engineDisplayHeadVisual = this.getEngineDisplayHeadVisual();
+            this.engineDisplaySupporterHeadVisual = this.getEngineDisplaySupporterHeadVisual();
+            this.engineDisplayHolidayVisual = this.getEngineDisplayHolidayVisual();
             
             this.balloonPatternTexture = this.getBalloonPatternTexture();
             this.balloonPatternTransparent = this.getBalloonPatternTransparent();
@@ -1380,7 +1408,11 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
             
             this.setEngineParticleVisual(this.engineParticleVisual);
             this.setEngineDisplayTypeVisual(this.engineDisplayTypeVisual);
-            this.setEngineDisplayIDVisual(this.engineDisplayIDVisual);
+            this.setEngineDisplayItemstackVisual(this.engineDisplayItemstackVisual);
+            this.setEngineDisplayItemstackMetaVisual(this.engineDisplayItemstackMetaVisual);
+            this.setEngineDisplayHeadVisual(this.engineDisplayHeadVisual);
+            this.setEngineDisplaySupporterHeadVisual(this.engineDisplaySupporterHeadVisual);
+            this.setEngineDisplayHolidayVisual(this.engineDisplayHolidayVisual);
             
             this.setBalloonPatternTexture(this.balloonPatternTexture);
             this.setBalloonPatternTransparent(this.balloonPatternTransparent);
@@ -1641,18 +1673,74 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
         return ((Integer)this.dataManager.get(ENGINE_DISPLAY_TYPE_VISUAL_DM)).intValue();
     }
     /**
-     * Sets the Visual Engine Display ID.
+     * Sets the Visual Engine Display Itemstack.
      */
-    public void setEngineDisplayIDVisual(int intIn)
+    public void setEngineDisplayItemstackVisual(int intIn)
     {
-        this.dataManager.set(ENGINE_DISPLAY_ID_VISUAL_DM, Integer.valueOf(intIn));
+        this.dataManager.set(ENGINE_DISPLAY_ITEMSTACK_VISUAL_DM, Integer.valueOf(intIn));
     }
     /**
-     * Gets the Visual Engine Display ID.
+     * Gets the Visual Engine Display Itemstack.
      */
-    public int getEngineDisplayIDVisual()
+    public int getEngineDisplayItemstackVisual()
     {
-        return ((Integer)this.dataManager.get(ENGINE_DISPLAY_ID_VISUAL_DM)).intValue();
+        return ((Integer)this.dataManager.get(ENGINE_DISPLAY_ITEMSTACK_VISUAL_DM)).intValue();
+    }
+    /**
+     * Sets the Visual Engine Display Itemstack Meta.
+     */
+    public void setEngineDisplayItemstackMetaVisual(int intIn)
+    {
+        this.dataManager.set(ENGINE_DISPLAY_ITEMSTACK_META_VISUAL_DM, Integer.valueOf(intIn));
+    }
+    /**
+     * Gets the Visual Engine Display Itemstack Meta.
+     */
+    public int getEngineDisplayItemstackMetaVisual()
+    {
+        return ((Integer)this.dataManager.get(ENGINE_DISPLAY_ITEMSTACK_META_VISUAL_DM)).intValue();
+    }
+    /**
+     * Sets the Visual Engine Display Head.
+     */
+    public void setEngineDisplayHeadVisual(int intIn)
+    {
+        this.dataManager.set(ENGINE_DISPLAY_HEAD_VISUAL_DM, Integer.valueOf(intIn));
+    }
+    /**
+     * Gets the Visual Engine Display Head.
+     */
+    public int getEngineDisplayHeadVisual()
+    {
+        return ((Integer)this.dataManager.get(ENGINE_DISPLAY_HEAD_VISUAL_DM)).intValue();
+    }
+    /**
+     * Sets the Visual Engine Display Supporter Head.
+     */
+    public void setEngineDisplaySupporterHeadVisual(int intIn)
+    {
+        this.dataManager.set(ENGINE_DISPLAY_SUPPORTER_HEAD_VISUAL_DM, Integer.valueOf(intIn));
+    }
+    /**
+     * Gets the Visual Engine Display Supporter Head.
+     */
+    public int getEngineDisplaySupporterHeadVisual()
+    {
+        return ((Integer)this.dataManager.get(ENGINE_DISPLAY_SUPPORTER_HEAD_VISUAL_DM)).intValue();
+    }
+    /**
+     * Sets the Visual Engine Display Holiday.
+     */
+    public void setEngineDisplayHolidayVisual(int intIn)
+    {
+        this.dataManager.set(ENGINE_DISPLAY_HOLIDAY_VISUAL_DM, Integer.valueOf(intIn));
+    }
+    /**
+     * Gets the Visual Engine Display Holiday.
+     */
+    public int getEngineDisplayHolidayVisual()
+    {
+        return ((Integer)this.dataManager.get(ENGINE_DISPLAY_HOLIDAY_VISUAL_DM)).intValue();
     }
     
     //======================================================================================

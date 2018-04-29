@@ -14,13 +14,15 @@ public class GuiVC {
 	public static GuiButton buttonC4;
 	
 	/** Main Menu */
-	public static GuiButton buttonM1;
+	public static GuiButton buttonMM1;
 	/** Upgrade */
-	public static GuiButton buttonM2;
+	public static GuiButton buttonMM2;
 	/** Visual */
-	public static GuiButton buttonM3;
+	public static GuiButton buttonMM3;
 	/** Module */
-	public static GuiButton buttonM4;
+	public static GuiButton buttonMM4;
+	/** Redstone */
+	public static GuiButton buttonMM5;
 	
 	
 	/** Choose Music */
@@ -83,6 +85,9 @@ public class GuiVC {
 	
 	/** Module Learn */
 	public static GuiButton buttonModuleLearn;
+
+	/** Module Reset */
+	public static GuiButton buttonModuleReset;
 	
 	/** Tier 1 */
 	public static GuiButton buttonT1;
@@ -137,62 +142,43 @@ public class GuiVC {
 	public static GuiButton buttonR18;
 	
 	
+
+	public static GuiButton buttonModuleLesserAltitude;
+	public static GuiButton buttonModuleNormalAltitude;
+	public static GuiButton buttonModuleGreaterAltitude;
 	
-	/** Module Lesser Altitude */
-	public static GuiButton buttonModuleAltitudeLesser;
-	/** Module Normal Altitude */
-	public static GuiButton buttonModuleAltitudeNormal;
-	/** Module Greater Altitude */
-	public static GuiButton buttonModuleAltitudeGreater;
-	
-	/** Module Lesser Speed */
-	public static GuiButton buttonModuleSpeedLesser;
-	/** Module Normal Speed */
-	public static GuiButton buttonModuleSpeedNormal;
-	/** Module Greater Speed */
-	public static GuiButton buttonModuleSpeedGreater;
-	
-	/** Module Lesser Storage */
-	public static GuiButton buttonModuleStorageLesser;
-	/** Module Normal Storage */
-	public static GuiButton buttonModuleStorageNormal;
-	/** Module Greater Storage */
-	public static GuiButton buttonModuleStorageGreater;
-	
-	/** Module Lesser Fuel */
-	public static GuiButton buttonModuleFuelLesser;
-	/** Module Normal Fuel */
-	public static GuiButton buttonModuleFuelNormal;
-	/** Module Greater Fuel */
-	public static GuiButton buttonModuleFuelGreater;
-	
-	/** Module Lesser Music */
-	public static GuiButton buttonModuleMusicLesser;
-	/** Module Normal Music */
-	public static GuiButton buttonModuleMusicNormal;
-	/** Module Greater Music */
-	public static GuiButton buttonModuleMusicGreater;
-	
-	/** Module Lesser Cruise */
-	public static GuiButton buttonModuleCruiseLesser;
-	/** Module Normal Cruise */
-	public static GuiButton buttonModuleCruiseNormal;
-	/** Module Greater Cruise */
-	public static GuiButton buttonModuleCruiseGreater;
-	
-	/** Module Lesser Water */
-	public static GuiButton buttonModuleWaterLesser;
-	/** Module Normal Water */
-	public static GuiButton buttonModuleWaterNormal;
-	/** Module Greater Water */
-	public static GuiButton buttonModuleWaterGreater;
-	
-	/** Module Lesser Infinite Fuel */
-	public static GuiButton buttonModuleInfiniteFuelLesser;
-	/** Module Normal Infinite Fuel */
-	public static GuiButton buttonModuleInfiniteFuelNormal;
-	/** Module Greater Infinite Fuel */
-	public static GuiButton buttonModuleInfiniteFuelGreater;
+
+	public static GuiButton buttonModuleLesserSpeed;
+	public static GuiButton buttonModuleNormalSpeed;
+	public static GuiButton buttonModuleGreaterSpeed;
+
+	public static GuiButton buttonModuleLesserStorage;
+	public static GuiButton buttonModuleNormalStorage;
+	public static GuiButton buttonModuleGreaterStorage;
+
+	public static GuiButton buttonModuleLesserFuel;
+	public static GuiButton buttonModuleNormalFuel;
+	public static GuiButton buttonModuleGreaterFuel;
+
+	public static GuiButton buttonModuleLesserMusic;
+	public static GuiButton buttonModuleNormalMusic;
+	public static GuiButton buttonModuleGreaterMusic;
+
+	public static GuiButton buttonModuleLesserCruise;
+	public static GuiButton buttonModuleNormalCruise;
+	public static GuiButton buttonModuleGreaterCruise;
+
+	public static GuiButton buttonModuleLesserWater;
+	public static GuiButton buttonModuleNormalWater;
+	public static GuiButton buttonModuleGreaterWater;
+
+	public static GuiButton buttonModuleLesserInfiniteFuel;
+	public static GuiButton buttonModuleNormalInfiniteFuel;
+	public static GuiButton buttonModuleGreaterInfiniteFuel;
+
+	public static GuiButton buttonModuleLesserBomb;
+	public static GuiButton buttonModuleNormalBomb;
+	public static GuiButton buttonModuleGreaterBomb;
 	
 	
 	
@@ -655,4 +641,55 @@ public class GuiVC {
 	public static GuiButton buttonEDH46;
 	public static GuiButton buttonEDH47;
 	public static GuiButton buttonEDH48;
+	public static GuiButton buttonEDH49;
+	public static GuiButton buttonEDH50;
+	public static GuiButton buttonEDH51;
+	public static GuiButton buttonEDH52;
+	public static GuiButton buttonEDH53;
+	public static GuiButton buttonEDH54;
+	public static GuiButton buttonEDH55;
+	public static GuiButton buttonEDH56;
+	public static GuiButton buttonEDH57;
+	public static GuiButton buttonEDH58;
+	public static GuiButton buttonEDH59;
+	public static GuiButton buttonEDH60;
+	public static GuiButton buttonEDH61;
+	public static GuiButton buttonEDH62;
+	public static GuiButton buttonEDH63;
+	public static GuiButton buttonEDH64;
+	public static GuiButton buttonEDH65;
+	public static GuiButton buttonEDH66;
+	public static GuiButton buttonEDH67;
+	public static GuiButton buttonEDH68;
+	public static GuiButton buttonEDH69;
+	public static GuiButton buttonEDH70;
+	public static GuiButton buttonEDH71;
+	public static GuiButton buttonEDH72;
+	public static GuiButton buttonEDH73;
+	public static GuiButton buttonEDH74;
+	public static GuiButton buttonEDH75;
+	public static GuiButton buttonEDH76;
+	public static GuiButton buttonEDH77;
+	public static GuiButton buttonEDH78;
+	public static GuiButton buttonEDH79;
+	public static GuiButton buttonEDH80;
+	public static GuiButton buttonEDH81;
+	public static GuiButton buttonEDH82;
+	public static GuiButton buttonEDH83;
+	public static GuiButton buttonEDH84;
+	public static GuiButton buttonEDH85;
+	public static GuiButton buttonEDH86;
+	public static GuiButton buttonEDH87;
+	public static GuiButton buttonEDH88;
+	public static GuiButton buttonEDH89;
+	public static GuiButton buttonEDH90;
+	public static GuiButton buttonEDH91;
+	public static GuiButton buttonEDH92;
+	public static GuiButton buttonEDH93;
+	public static GuiButton buttonEDH94;
+	public static GuiButton buttonEDH95;
+	public static GuiButton buttonEDH96;
+	public static GuiButton buttonEDH97;
+	public static GuiButton buttonEDH98;
+	public static GuiButton buttonEDH99;
 }

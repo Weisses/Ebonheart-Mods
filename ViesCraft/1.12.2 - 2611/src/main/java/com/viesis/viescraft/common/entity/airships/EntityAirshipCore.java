@@ -49,7 +49,11 @@ public class EntityAirshipCore extends EntityAirshipBaseVC {
     		int frameSkinColorRedIn, int frameSkinColorGreenIn, int frameSkinColorBlueIn,
     		
     		int engineParticleVisualIn, 
-    		int engineDisplayTypeVisualIn, int engineDisplayIDVisualIn,
+    		int engineDisplayTypeVisualIn, 
+    		int engineDisplayItemStackVisualIn, int engineDisplayItemStackMetaVisualIn,
+    		int engineDisplayHeadVisualIn, 
+    		int engineDisplaySupporterHeadVisualIn, 
+    		int engineDisplayHolidayVisualIn, 
     		
     		int balloonPatternTextureIn, 
     		boolean balloonPatternTransparentIn, 
@@ -94,7 +98,11 @@ public class EntityAirshipCore extends EntityAirshipBaseVC {
         
         this.engineParticleVisual = engineParticleVisualIn;
         this.engineDisplayTypeVisual = engineDisplayTypeVisualIn;
-        this.engineDisplayIDVisual = engineDisplayIDVisualIn;
+        this.engineDisplayItemstackVisual = engineDisplayItemStackVisualIn;
+        this.engineDisplayItemstackMetaVisual = engineDisplayItemStackMetaVisualIn;
+        this.engineDisplayHeadVisual = engineDisplayHeadVisualIn;
+        this.engineDisplaySupporterHeadVisual = engineDisplaySupporterHeadVisualIn;
+        this.engineDisplayHolidayVisual = engineDisplayHolidayVisualIn;
         
         this.balloonPatternTexture = balloonPatternTextureIn;
         this.balloonPatternTransparent = balloonPatternTransparentIn;
@@ -168,7 +176,11 @@ public class EntityAirshipCore extends EntityAirshipBaseVC {
     	
     	stack.getTagCompound().setInteger(rf.ENGINE_PARTICLE_VISUAL_TAG, this.engineParticleVisual);
     	stack.getTagCompound().setInteger(rf.ENGINE_DISPLAY_TYPE_VISUAL_TAG, this.engineDisplayTypeVisual);
-    	stack.getTagCompound().setInteger(rf.ENGINE_DISPLAY_ID_VISUAL_TAG, this.engineDisplayIDVisual);
+    	stack.getTagCompound().setInteger(rf.ENGINE_DISPLAY_ITEMSTACK_VISUAL_TAG, this.engineDisplayItemstackVisual);
+    	stack.getTagCompound().setInteger(rf.ENGINE_DISPLAY_ITEMSTACK_META_VISUAL_TAG, this.engineDisplayItemstackMetaVisual);
+    	stack.getTagCompound().setInteger(rf.ENGINE_DISPLAY_HEAD_VISUAL_TAG, this.engineDisplayHeadVisual);
+    	stack.getTagCompound().setInteger(rf.ENGINE_DISPLAY_SUPPORTER_HEAD_VISUAL_TAG, this.engineDisplaySupporterHeadVisual);
+    	stack.getTagCompound().setInteger(rf.ENGINE_DISPLAY_HOLIDAY_VISUAL_TAG, this.engineDisplayHolidayVisual);
     	
     	stack.getTagCompound().setInteger(rf.BALLOON_PATTERN_TEXTURE_TAG, this.balloonPatternTexture);
     	stack.getTagCompound().setBoolean(rf.BALLOON_PATTERN_TRANSPARENT_TAG, this.balloonPatternTransparent);

@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "vc:upgrades/item_upgrade_airship_balloon",
+  "pattern": [
+    "FLF",
+    "L#L",
+    "FLF"
+  ],
+  "key": {
+    "F": {
+      "item": "vc:upgrades/item_upgrade_airship_balloon",
+      "data": 0
+    },
+    "L": {
+      "item": "vc:item_logic_chip"
+    },
+    "#": {
+      "item": "vc:upgrades/item_upgrade_airship_balloon",
+      "data": 4
+    }
+  },
+  "result": {
+    "item": "vc:upgrades/item_upgrade_airship_balloon",
+    "data": 5,
+    "count": 1
+  }
+}

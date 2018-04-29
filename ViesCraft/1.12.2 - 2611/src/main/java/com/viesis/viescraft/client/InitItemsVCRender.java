@@ -88,7 +88,7 @@ public final class InitItemsVCRender extends ItemsVC {
 		
 		for (EnumsVC.Bombs meta : EnumsVC.Bombs.values()) 
 		{
-			registerRenderModuleType(BOMB, meta.getMetadata());
+			registerRenderBomb(BOMB, meta.getMetadata());
 		}
 		
 		//=====================================================================

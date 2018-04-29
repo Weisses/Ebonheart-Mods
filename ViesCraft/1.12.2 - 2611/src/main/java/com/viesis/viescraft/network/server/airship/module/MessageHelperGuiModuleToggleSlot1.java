@@ -1,6 +1,6 @@
 package com.viesis.viescraft.network.server.airship.module;
 
-import com.viesis.viescraft.client.gui.airship.main.GuiModuleMenu;
+import com.viesis.viescraft.client.gui.airship.module.GuiModuleMenu;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
 import com.viesis.viescraft.network.packet.MessageBase;
 

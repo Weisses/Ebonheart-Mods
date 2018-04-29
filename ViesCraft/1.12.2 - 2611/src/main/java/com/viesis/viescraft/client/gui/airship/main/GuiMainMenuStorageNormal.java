@@ -17,9 +17,9 @@ import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
 import com.viesis.viescraft.common.entity.airships.containers.all.ContainerMainMenuStorageNormal;
 import com.viesis.viescraft.init.InitItemsVC;
 import com.viesis.viescraft.network.NetworkHandler;
-import com.viesis.viescraft.network.server.airship.MessageGuiUpgradeMenu;
 import com.viesis.viescraft.network.server.airship.customize.MessageGuiCustomizeMenu;
-import com.viesis.viescraft.network.server.airship.main.MessageGuiModuleMenu;
+import com.viesis.viescraft.network.server.airship.module.MessageGuiModuleMenu;
+import com.viesis.viescraft.network.server.airship.upgrade.MessageGuiUpgradeMenu;
 
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;

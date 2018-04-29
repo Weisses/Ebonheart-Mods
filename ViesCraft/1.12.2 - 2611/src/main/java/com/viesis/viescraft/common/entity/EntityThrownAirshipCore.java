@@ -34,7 +34,11 @@ public class EntityThrownAirshipCore extends EntityThrowable {
 	
 	protected int engineParticleVisual;
 	protected int engineDisplayTypeVisual;
-	protected int engineDisplayIDVisual;
+	protected int engineDisplayItemstackVisual;
+	protected int engineDisplayItemstackMetaVisual;
+	protected int engineDisplayHeadVisual;
+	protected int engineDisplaySupporterHeadVisual;
+	protected int engineDisplayHolidayVisual;
 	
 	protected int balloonPatternTexture;
 	protected boolean balloonPatternTransparent;

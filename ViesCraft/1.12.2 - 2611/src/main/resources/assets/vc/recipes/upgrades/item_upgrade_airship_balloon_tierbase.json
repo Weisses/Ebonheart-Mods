@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "vc:upgrades/item_upgrade_airship_balloon",
+  "pattern": [
+    "###",
+    "LGL",
+    "#I#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:leather"
+    },
+    "L": {
+      "item": "vc:item_logic_chip"
+    },
+    "G": {
+      "item": "minecraft:gold_ingot"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "vc:upgrades/item_upgrade_airship_balloon",
+    "data": 0,
+    "count": 1
+  }
+}

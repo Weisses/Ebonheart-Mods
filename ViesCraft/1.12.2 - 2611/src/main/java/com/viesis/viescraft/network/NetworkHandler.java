@@ -7,14 +7,8 @@ import com.viesis.viescraft.network.server.airship.MessageGuiPlayMusicArea;
 import com.viesis.viescraft.network.server.airship.MessageGuiRandomMusic;
 import com.viesis.viescraft.network.server.airship.MessageGuiStopMusic;
 import com.viesis.viescraft.network.server.airship.MessageGuiStopMusicArea;
-import com.viesis.viescraft.network.server.airship.MessageGuiUpgradeMenu;
-import com.viesis.viescraft.network.server.airship.MessageHelperGuiUpgradeBalloonVC;
-import com.viesis.viescraft.network.server.airship.MessageHelperGuiUpgradeCoreVC;
-import com.viesis.viescraft.network.server.airship.MessageHelperGuiUpgradeEngineVC;
-import com.viesis.viescraft.network.server.airship.MessageHelperGuiUpgradeFrameVC;
 import com.viesis.viescraft.network.server.airship.customize.MessageGuiCustomizeMenu;
 import com.viesis.viescraft.network.server.airship.customize.MessageGuiCustomizeMenuChangeName;
-import com.viesis.viescraft.network.server.airship.customize.MessageGuiCustomizeMenuOptionsRedstone;
 import com.viesis.viescraft.network.server.airship.customize.MessageHelperGuiCustomizeMenuChangeName;
 import com.viesis.viescraft.network.server.airship.customize.MessageHelperGuiCustomizeMenuOptionsRedstone;
 import com.viesis.viescraft.network.server.airship.customize.MessageHelperGuiCustomizeMenuUndo;
@@ -39,9 +33,18 @@ import com.viesis.viescraft.network.server.airship.customize.core.sub.MessageHel
 import com.viesis.viescraft.network.server.airship.customize.core.sub.MessageHelperGuiCustomizeMenuCoreModelEngine;
 import com.viesis.viescraft.network.server.airship.customize.core.sub.MessageHelperGuiCustomizeMenuCoreModelFrame;
 import com.viesis.viescraft.network.server.airship.customize.engine.MessageGuiCustomizeMenuEngineMain;
-import com.viesis.viescraft.network.server.airship.customize.engine.sub.MessageGuiCustomizeMenuEngineDisplayBlocksPg1;
-import com.viesis.viescraft.network.server.airship.customize.engine.sub.MessageGuiCustomizeMenuEngineDisplaySymbolsPg1;
-import com.viesis.viescraft.network.server.airship.customize.engine.sub.MessageHelperGuiCustomizeMenuEngineDisplaySymbols;
+import com.viesis.viescraft.network.server.airship.customize.engine.sub.MessageGuiCustomizeMenuEngineDisplayBlockItemPg1;
+import com.viesis.viescraft.network.server.airship.customize.engine.sub.MessageGuiCustomizeMenuEngineDisplayHeadPg1;
+import com.viesis.viescraft.network.server.airship.customize.engine.sub.MessageGuiCustomizeMenuEngineDisplaySupporterHeadPg1;
+import com.viesis.viescraft.network.server.airship.customize.engine.sub.MessageGuiCustomizeMenuEngineDisplaySymbolPg1;
+import com.viesis.viescraft.network.server.airship.customize.engine.sub.MessageHelperGuiCustomizeMenuEngineDisplayBlockItem;
+import com.viesis.viescraft.network.server.airship.customize.engine.sub.MessageHelperGuiCustomizeMenuEngineDisplayBlockItemDefault;
+import com.viesis.viescraft.network.server.airship.customize.engine.sub.MessageHelperGuiCustomizeMenuEngineDisplayHead;
+import com.viesis.viescraft.network.server.airship.customize.engine.sub.MessageHelperGuiCustomizeMenuEngineDisplayHeadDefault;
+import com.viesis.viescraft.network.server.airship.customize.engine.sub.MessageHelperGuiCustomizeMenuEngineDisplaySupporterHead;
+import com.viesis.viescraft.network.server.airship.customize.engine.sub.MessageHelperGuiCustomizeMenuEngineDisplaySupporterHeadDefault;
+import com.viesis.viescraft.network.server.airship.customize.engine.sub.MessageHelperGuiCustomizeMenuEngineDisplaySymbol;
+import com.viesis.viescraft.network.server.airship.customize.engine.sub.MessageHelperGuiCustomizeMenuEngineDisplaySymbolDefault;
 import com.viesis.viescraft.network.server.airship.customize.frame.MessageGuiCustomizeMenuFrameColor;
 import com.viesis.viescraft.network.server.airship.customize.frame.MessageGuiCustomizeMenuFrameColorUndo;
 import com.viesis.viescraft.network.server.airship.customize.frame.MessageGuiCustomizeMenuFrameMain;
@@ -56,15 +59,20 @@ import com.viesis.viescraft.network.server.airship.customize.frame.sub.MessageGu
 import com.viesis.viescraft.network.server.airship.customize.frame.sub.MessageGuiCustomizeMenuFrameTier5Pg1;
 import com.viesis.viescraft.network.server.airship.customize.frame.sub.MessageHelperGuiCustomizeMenuFrameTier;
 import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenu;
+import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenuBomb;
 import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenuMusic;
 import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenuStorageGreater;
 import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenuStorageLesser;
 import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenuStorageNormal;
-import com.viesis.viescraft.network.server.airship.main.MessageGuiModuleMenu;
+import com.viesis.viescraft.network.server.airship.module.MessageGuiModuleMenu;
 import com.viesis.viescraft.network.server.airship.module.MessageHelperGuiModuleLearn;
 import com.viesis.viescraft.network.server.airship.module.MessageHelperGuiModuleToggleSlot1;
-import com.viesis.viescraft.network.server.airship.visual.MessageGuiCustomizeMenuCore;
-import com.viesis.viescraft.network.server.airship.visual.MessageHelperGuiCustomizeMenuCore;
+import com.viesis.viescraft.network.server.airship.redstone.MessageGuiRedstoneMenu;
+import com.viesis.viescraft.network.server.airship.upgrade.MessageGuiUpgradeMenu;
+import com.viesis.viescraft.network.server.airship.upgrade.MessageHelperGuiUpgradeBalloonVC;
+import com.viesis.viescraft.network.server.airship.upgrade.MessageHelperGuiUpgradeCoreVC;
+import com.viesis.viescraft.network.server.airship.upgrade.MessageHelperGuiUpgradeEngineVC;
+import com.viesis.viescraft.network.server.airship.upgrade.MessageHelperGuiUpgradeFrameVC;
 import com.viesis.viescraft.network.server.song.MessageGuiMusicPg1;
 import com.viesis.viescraft.network.server.song.MessageHelperGuiMusicPg1;
 
@@ -92,6 +100,7 @@ public class NetworkHandler {
 		register(MessageGuiMainMenuStorageNormal.class, MessageGuiMainMenuStorageNormal.class, Side.SERVER);
 		register(MessageGuiMainMenuStorageGreater.class, MessageGuiMainMenuStorageGreater.class, Side.SERVER);
 		register(MessageGuiMainMenuMusic.class, MessageGuiMainMenuMusic.class, Side.SERVER);
+		register(MessageGuiMainMenuBomb.class, MessageGuiMainMenuBomb.class, Side.SERVER);
 		
 		register(MessageGuiUpgradeMenu.class, MessageGuiUpgradeMenu.class, Side.SERVER);
 		register(MessageGuiCustomizeMenu.class, MessageGuiCustomizeMenu.class, Side.SERVER);
@@ -100,7 +109,7 @@ public class NetworkHandler {
 		register(MessageGuiCustomizeMenuChangeName.class, MessageGuiCustomizeMenuChangeName.class, Side.SERVER);
 		register(MessageHelperGuiCustomizeMenuChangeName.class, MessageHelperGuiCustomizeMenuChangeName.class, Side.SERVER);
 		register(MessageHelperGuiCustomizeMenuUndo.class, MessageHelperGuiCustomizeMenuUndo.class, Side.SERVER);
-		register(MessageGuiCustomizeMenuOptionsRedstone.class, MessageGuiCustomizeMenuOptionsRedstone.class, Side.SERVER);
+		register(MessageGuiRedstoneMenu.class, MessageGuiRedstoneMenu.class, Side.SERVER);
 		register(MessageHelperGuiCustomizeMenuOptionsRedstone.class, MessageHelperGuiCustomizeMenuOptionsRedstone.class, Side.SERVER);
 		
 		register(MessageGuiCustomizeMenuCoreMain.class, MessageGuiCustomizeMenuCoreMain.class, Side.SERVER);
@@ -131,9 +140,22 @@ public class NetworkHandler {
 		
 		
 		register(MessageGuiCustomizeMenuEngineMain.class, MessageGuiCustomizeMenuEngineMain.class, Side.SERVER);
-		register(MessageGuiCustomizeMenuEngineDisplaySymbolsPg1.class, MessageGuiCustomizeMenuEngineDisplaySymbolsPg1.class, Side.SERVER);
-		register(MessageHelperGuiCustomizeMenuEngineDisplaySymbols.class, MessageHelperGuiCustomizeMenuEngineDisplaySymbols.class, Side.SERVER);
-		register(MessageGuiCustomizeMenuEngineDisplayBlocksPg1.class, MessageGuiCustomizeMenuEngineDisplayBlocksPg1.class, Side.SERVER);
+		register(MessageGuiCustomizeMenuEngineDisplaySymbolPg1.class, MessageGuiCustomizeMenuEngineDisplaySymbolPg1.class, Side.SERVER);
+		register(MessageHelperGuiCustomizeMenuEngineDisplaySymbol.class, MessageHelperGuiCustomizeMenuEngineDisplaySymbol.class, Side.SERVER);
+		register(MessageHelperGuiCustomizeMenuEngineDisplaySymbolDefault.class, MessageHelperGuiCustomizeMenuEngineDisplaySymbolDefault.class, Side.SERVER);
+		
+		register(MessageGuiCustomizeMenuEngineDisplayBlockItemPg1.class, MessageGuiCustomizeMenuEngineDisplayBlockItemPg1.class, Side.SERVER);
+		register(MessageHelperGuiCustomizeMenuEngineDisplayBlockItem.class, MessageHelperGuiCustomizeMenuEngineDisplayBlockItem.class, Side.SERVER);
+		register(MessageHelperGuiCustomizeMenuEngineDisplayBlockItemDefault.class, MessageHelperGuiCustomizeMenuEngineDisplayBlockItemDefault.class, Side.SERVER);
+		
+		register(MessageGuiCustomizeMenuEngineDisplayHeadPg1.class, MessageGuiCustomizeMenuEngineDisplayHeadPg1.class, Side.SERVER);
+		register(MessageHelperGuiCustomizeMenuEngineDisplayHead.class, MessageHelperGuiCustomizeMenuEngineDisplayHead.class, Side.SERVER);
+		register(MessageHelperGuiCustomizeMenuEngineDisplayHeadDefault.class, MessageHelperGuiCustomizeMenuEngineDisplayHeadDefault.class, Side.SERVER);
+		
+		register(MessageGuiCustomizeMenuEngineDisplaySupporterHeadPg1.class, MessageGuiCustomizeMenuEngineDisplaySupporterHeadPg1.class, Side.SERVER);
+		register(MessageHelperGuiCustomizeMenuEngineDisplaySupporterHead.class, MessageHelperGuiCustomizeMenuEngineDisplaySupporterHead.class, Side.SERVER);
+		register(MessageHelperGuiCustomizeMenuEngineDisplaySupporterHeadDefault.class, MessageHelperGuiCustomizeMenuEngineDisplaySupporterHeadDefault.class, Side.SERVER);
+		
 		
 		
 		
@@ -161,8 +183,6 @@ public class NetworkHandler {
 		register(MessageHelperGuiUpgradeEngineVC.class, MessageHelperGuiUpgradeEngineVC.class, Side.SERVER);
 		register(MessageHelperGuiUpgradeBalloonVC.class, MessageHelperGuiUpgradeBalloonVC.class, Side.SERVER);
 		
-		register(MessageGuiCustomizeMenuCore.class, MessageGuiCustomizeMenuCore.class, Side.SERVER);
-		register(MessageHelperGuiCustomizeMenuCore.class, MessageHelperGuiCustomizeMenuCore.class, Side.SERVER);
 		
 		
 		

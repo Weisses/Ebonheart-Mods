@@ -11,20 +11,6 @@ public class ContainerMainModule extends ContainerVC {
 	
 	private EntityAirshipBaseVC airship;
 	
-	/**
-	 * SLOTS: <br> <br>
-	 *
-	 * Slot  0 = Fuel <br>
-	 * Slot  1 = Upgrade Core <br>
-	 * Slot  2 = Upgrade Frame <br>
-	 * Slot  3 = Upgrade Engine <br>
-	 * Slot  4 = Upgrade Balloon <br>
-	 * Slot 11 = Module Slot1 <br>
-	 * Slot 12 = Module Slot2 <br>
-	 * Slot 16 = Item to Display <br>
-	 * Slot 20-28 = Inventory Small <br>
-	 * Slot 20-37 = Inventory Large <br>
-	 */
 	public ContainerMainModule(IInventory playerInv, EntityAirshipBaseVC airshipIn) 
 	{
 		this.airship = airshipIn;
@@ -34,7 +20,7 @@ public class ContainerMainModule extends ContainerVC {
 		{
 			for (int x = 0; x < 1; ++x) 
 			{
-				this.addSlotToContainer(new ModuleSlotVC(this.airship.inventory, 11, 97, 88));
+				this.addSlotToContainer(new ModuleSlotVC(this.airship.inventory, 11, 109, 93));
 			}
 		}
 		

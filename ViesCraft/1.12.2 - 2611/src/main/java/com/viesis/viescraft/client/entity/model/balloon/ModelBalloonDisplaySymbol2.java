@@ -16,6 +16,8 @@ public class ModelBalloonDisplaySymbol2 extends ModelBase
     ModelRenderer ItemFrameRightBorderB;
     ModelRenderer ItemFrameRightBorderR;
     ModelRenderer ItemFrameRightBorderL;
+    ModelRenderer DisplayStand;
+    ModelRenderer DisplayStandTop;
 
     public ModelBalloonDisplaySymbol2()
     {
@@ -24,46 +26,54 @@ public class ModelBalloonDisplaySymbol2 extends ModelBase
 
     public ModelBalloonDisplaySymbol2( float par1 )
     {
-        ItemFrameLeftInside = new ModelRenderer( this, 49, 106 );
-        ItemFrameLeftInside.setTextureSize( 256, 128 );
-        ItemFrameLeftInside.addBox( 0F, -5.5F, -5.5F, 0, 11, 11);
+        ItemFrameLeftInside = new ModelRenderer( this, 0, 114 );
+        ItemFrameLeftInside.setTextureSize( 128, 128 );
+        ItemFrameLeftInside.addBox( 0F, -3.5F, -3.5F, 0, 7, 7);
         ItemFrameLeftInside.setRotationPoint( -23F, -2F, 0F );
-        ItemFrameLeftBorderT = new ModelRenderer( this, 148, 104 );
-        ItemFrameLeftBorderT.setTextureSize( 256, 128 );
-        ItemFrameLeftBorderT.addBox( -0.5F, -0.5F, -6F, 1, 1, 12);
-        ItemFrameLeftBorderT.setRotationPoint( -23F, -8F, -0.5F );
-        ItemFrameLeftBorderB = new ModelRenderer( this, 146, 103 );
-        ItemFrameLeftBorderB.setTextureSize( 256, 128 );
-        ItemFrameLeftBorderB.addBox( -0.5F, -0.5F, -6F, 1, 1, 12);
-        ItemFrameLeftBorderB.setRotationPoint( -23F, 4F, 0.5F );
-        ItemFrameLeftBorderR = new ModelRenderer( this, 158, 115 );
-        ItemFrameLeftBorderR.setTextureSize( 256, 128 );
-        ItemFrameLeftBorderR.addBox( -0.5F, -6F, -0.5F, 1, 12, 1);
-        ItemFrameLeftBorderR.setRotationPoint( -23F, -1.5F, -6F );
-        ItemFrameLeftBorderL = new ModelRenderer( this, 162, 115 );
-        ItemFrameLeftBorderL.setTextureSize( 256, 128 );
-        ItemFrameLeftBorderL.addBox( -0.5F, -6F, -0.5F, 1, 12, 1);
-        ItemFrameLeftBorderL.setRotationPoint( -23F, -2.5F, 6F );
-        ItemFrameRightInside = new ModelRenderer( this, 49, 106 );
-        ItemFrameRightInside.setTextureSize( 256, 128 );
-        ItemFrameRightInside.addBox( 0F, -5.5F, -5.5F, 0, 11, 11);
+        ItemFrameLeftBorderT = new ModelRenderer( this, 110, 119 );
+        ItemFrameLeftBorderT.setTextureSize( 128, 128 );
+        ItemFrameLeftBorderT.addBox( -0.5F, -0.5F, -4F, 1, 1, 8);
+        ItemFrameLeftBorderT.setRotationPoint( -23F, -6F, -0.5F );
+        ItemFrameLeftBorderB = new ModelRenderer( this, 110, 119 );
+        ItemFrameLeftBorderB.setTextureSize( 128, 128 );
+        ItemFrameLeftBorderB.addBox( -0.5F, -0.5F, -4F, 1, 1, 8);
+        ItemFrameLeftBorderB.setRotationPoint( -23F, 2F, 0.5F );
+        ItemFrameLeftBorderR = new ModelRenderer( this, 124, 119 );
+        ItemFrameLeftBorderR.setTextureSize( 128, 128 );
+        ItemFrameLeftBorderR.addBox( -0.5F, -4F, -0.5F, 1, 8, 1);
+        ItemFrameLeftBorderR.setRotationPoint( -23F, -1.5F, -4F );
+        ItemFrameLeftBorderL = new ModelRenderer( this, 124, 119 );
+        ItemFrameLeftBorderL.setTextureSize( 128, 128 );
+        ItemFrameLeftBorderL.addBox( -0.5F, -4F, -0.5F, 1, 8, 1);
+        ItemFrameLeftBorderL.setRotationPoint( -23F, -2.5F, 4F );
+        ItemFrameRightInside = new ModelRenderer( this, 0, 114 );
+        ItemFrameRightInside.setTextureSize( 128, 128 );
+        ItemFrameRightInside.addBox( 0F, -3.5F, -3.5F, 0, 7, 7);
         ItemFrameRightInside.setRotationPoint( 23F, -2F, 0F );
-        ItemFrameRightBorderT = new ModelRenderer( this, 148, 104 );
-        ItemFrameRightBorderT.setTextureSize( 256, 128 );
-        ItemFrameRightBorderT.addBox( -0.5F, -0.5F, -6F, 1, 1, 12);
-        ItemFrameRightBorderT.setRotationPoint( 23F, -8F, -0.5F );
-        ItemFrameRightBorderB = new ModelRenderer( this, 146, 103 );
-        ItemFrameRightBorderB.setTextureSize( 256, 128 );
-        ItemFrameRightBorderB.addBox( -0.5F, -0.5F, -6F, 1, 1, 12);
-        ItemFrameRightBorderB.setRotationPoint( 23F, 4F, 0.5F );
-        ItemFrameRightBorderR = new ModelRenderer( this, 158, 115 );
-        ItemFrameRightBorderR.setTextureSize( 256, 128 );
-        ItemFrameRightBorderR.addBox( -0.5F, -6F, -0.5F, 1, 12, 1);
-        ItemFrameRightBorderR.setRotationPoint( 23F, -1.5F, -6F );
-        ItemFrameRightBorderL = new ModelRenderer( this, 162, 115 );
-        ItemFrameRightBorderL.setTextureSize( 256, 128 );
-        ItemFrameRightBorderL.addBox( -0.5F, -6F, -0.5F, 1, 12, 1);
-        ItemFrameRightBorderL.setRotationPoint( 23F, -2.5F, 6F );
+        ItemFrameRightBorderT = new ModelRenderer( this, 110, 119 );
+        ItemFrameRightBorderT.setTextureSize( 128, 128 );
+        ItemFrameRightBorderT.addBox( -0.5F, -0.5F, -4F, 1, 1, 8);
+        ItemFrameRightBorderT.setRotationPoint( 23F, -6F, -0.5F );
+        ItemFrameRightBorderB = new ModelRenderer( this, 110, 119 );
+        ItemFrameRightBorderB.setTextureSize( 128, 128 );
+        ItemFrameRightBorderB.addBox( -0.5F, -0.5F, -4F, 1, 1, 8);
+        ItemFrameRightBorderB.setRotationPoint( 23F, 2F, 0.5F );
+        ItemFrameRightBorderR = new ModelRenderer( this, 124, 119 );
+        ItemFrameRightBorderR.setTextureSize( 128, 128 );
+        ItemFrameRightBorderR.addBox( -0.5F, -4F, -0.5F, 1, 8, 1);
+        ItemFrameRightBorderR.setRotationPoint( 23F, -1.5F, -4F );
+        ItemFrameRightBorderL = new ModelRenderer( this, 124, 119 );
+        ItemFrameRightBorderL.setTextureSize( 128, 128 );
+        ItemFrameRightBorderL.addBox( -0.5F, -4F, -0.5F, 1, 8, 1);
+        ItemFrameRightBorderL.setRotationPoint( 23F, -2.5F, 4F );
+        DisplayStand = new ModelRenderer( this, 10, 119 );
+        DisplayStand.setTextureSize( 128, 128 );
+        DisplayStand.addBox( -0.5F, -0.5F, -0.5F, 1, 1, 1);
+        DisplayStand.setRotationPoint( -6F, 0F, -13F );
+        DisplayStandTop = new ModelRenderer( this, 0, 115 );
+        DisplayStandTop.setTextureSize( 128, 128 );
+        DisplayStandTop.addBox( -1F, -2F, -1F, 2, 4, 2);
+        DisplayStandTop.setRotationPoint( -6F, 2F, -13F );
     }
 
    public void render(Entity par1Entity, float par2, float par3, float par4, float par5, float par6, float par7)
@@ -117,6 +127,16 @@ public class ModelBalloonDisplaySymbol2 extends ModelBase
         ItemFrameRightBorderL.rotateAngleY = 0F;
         ItemFrameRightBorderL.rotateAngleZ = 0F;
         ItemFrameRightBorderL.renderWithRotation(par7);
+
+        DisplayStand.rotateAngleX = 0F;
+        DisplayStand.rotateAngleY = 0F;
+        DisplayStand.rotateAngleZ = 0F;
+        DisplayStand.renderWithRotation(par7);
+
+        DisplayStandTop.rotateAngleX = 0F;
+        DisplayStandTop.rotateAngleY = 0F;
+        DisplayStandTop.rotateAngleZ = 0F;
+        DisplayStandTop.renderWithRotation(par7);
 
     }
 

@@ -10,23 +10,15 @@ import org.lwjgl.input.Keyboard;
 import com.viesis.viescraft.api.ColorHelperVC;
 import com.viesis.viescraft.api.GuiVC;
 import com.viesis.viescraft.api.References;
-import com.viesis.viescraft.client.gui.GuiButtonGeneral1VC;
-import com.viesis.viescraft.client.gui.GuiButtonGeneral2VC;
-import com.viesis.viescraft.client.gui.GuiButtonMenuVC;
 import com.viesis.viescraft.client.gui.GuiContainerVC;
+import com.viesis.viescraft.client.gui.buttons.GuiButtonGeneral1VC;
+import com.viesis.viescraft.client.gui.buttons.GuiButtonGeneral2VC;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
 import com.viesis.viescraft.common.entity.airships.containers.all.ContainerCustomizeMenu;
 import com.viesis.viescraft.network.NetworkHandler;
-import com.viesis.viescraft.network.server.airship.MessageGuiUpgradeMenu;
-import com.viesis.viescraft.network.server.airship.customize.MessageGuiCustomizeMenu;
 import com.viesis.viescraft.network.server.airship.customize.balloon.MessageGuiCustomizeMenuBalloonMain;
 import com.viesis.viescraft.network.server.airship.customize.balloon.MessageHelperGuiCustomizeMenuBalloonColor;
 import com.viesis.viescraft.network.server.airship.customize.balloon.MessageHelperGuiCustomizeMenuBalloonColorDefault;
-import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenu;
-import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenuMusic;
-import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenuStorageGreater;
-import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenuStorageLesser;
-import com.viesis.viescraft.network.server.airship.main.MessageGuiModuleMenu;
 
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
@@ -38,23 +30,15 @@ import net.minecraft.util.text.TextFormatting;
 
 public class GuiCustomizeMenuBalloonColor extends GuiContainerVC {
 	
-	private IInventory playerInv;
-	private EntityAirshipBaseVC airship;
-
 	private GuiTextField textRed;
 	private GuiTextField textGreen;
 	private GuiTextField textBlue;
 	
-	private ResourceLocation texture = new ResourceLocation(References.MOD_ID + ":" + "textures/gui/container_gui_customize_menu_color.png");
+	private final ResourceLocation texture = new ResourceLocation(References.MOD_ID + ":" + "textures/gui/container_gui_customize_menu_color.png");
 	
 	public GuiCustomizeMenuBalloonColor(IInventory playerInv, EntityAirshipBaseVC airshipIn)
 	{
-		super(new ContainerCustomizeMenu(playerInv, airshipIn));
-		
-		this.playerInv = playerInv;
-		this.airship = airshipIn;
-		this.xSize = 176;
-		this.ySize = 202;
+		super(new ContainerCustomizeMenu(playerInv, airshipIn), playerInv, airshipIn);
 		
 		this.textRedNumber = this.airship.balloonPatternColorRed;
 		this.textGreenNumber = this.airship.balloonPatternColorGreen;
@@ -101,12 +85,7 @@ public class GuiCustomizeMenuBalloonColor extends GuiContainerVC {
 		
         //=============================================
         
-		GuiVC.buttonM1 = new GuiButtonMenuVC(1, this.guiLeft - 35, this.guiTop + 7 + (16 * 0), 36, 14, "", 0);
-    	GuiVC.buttonM2 = new GuiButtonMenuVC(2, this.guiLeft - 35, this.guiTop + 7 + (16 * 1), 36, 14, "", 1);
-    	GuiVC.buttonM3 = new GuiButtonMenuVC(3, this.guiLeft - 35, this.guiTop + 7 + (16 * 2), 36, 14, "", 2);
-    	GuiVC.buttonM4 = new GuiButtonMenuVC(4, this.guiLeft - 35, this.guiTop + 7 + (16 * 3), 36, 14, "", 3);
-		
-    	GuiVC.button505 = new GuiButtonGeneral1VC(505, this.guiLeft + 125, this.guiTop + 177, 40, 14, References.localNameVC("vc.button.back"), 2);
+		GuiVC.button505 = new GuiButtonGeneral1VC(505, this.guiLeft + 125, this.guiTop + 177, 40, 14, References.localNameVC("vc.button.back"), 2);
     	
     	GuiVC.button01 = new GuiButtonGeneral1VC(201, this.guiLeft + 6, this.guiTop + buttonStart, 32, 14, References.localNameVC("Red"), 0);
     	GuiVC.button02 = new GuiButtonGeneral1VC(202, this.guiLeft + 38, this.guiTop + buttonStart, 32, 14, References.localNameVC("Green"), 0);
@@ -124,10 +103,11 @@ public class GuiCustomizeMenuBalloonColor extends GuiContainerVC {
     	GuiVC.button11 = new GuiButtonGeneral1VC(211, this.guiLeft + 38, this.guiTop + buttonStart + (14 * 3), 32, 14, References.localNameVC("Gold"), 0);
     	GuiVC.button12 = new GuiButtonGeneral1VC(212, this.guiLeft + 70, this.guiTop + buttonStart + (14 * 3), 32, 14, References.localNameVC("Violet"), 0);
     	
-    	this.buttonList.add(GuiVC.buttonM1);
-		this.buttonList.add(GuiVC.buttonM2);
-		this.buttonList.add(GuiVC.buttonM3);
-		this.buttonList.add(GuiVC.buttonM4);
+    	this.buttonList.add(GuiVC.buttonMM1);
+		this.buttonList.add(GuiVC.buttonMM2);
+		this.buttonList.add(GuiVC.buttonMM3);
+		this.buttonList.add(GuiVC.buttonMM4);
+		this.buttonList.add(GuiVC.buttonMM5);
 		
 		this.buttonList.add(GuiVC.button505);
 		
@@ -144,7 +124,7 @@ public class GuiCustomizeMenuBalloonColor extends GuiContainerVC {
 		this.buttonList.add(GuiVC.button11);
 		this.buttonList.add(GuiVC.button12);
 		
-		GuiVC.buttonM3.enabled = false;
+		GuiVC.buttonMM3.enabled = false;
     }
     
     /**
@@ -153,41 +133,7 @@ public class GuiCustomizeMenuBalloonColor extends GuiContainerVC {
 	@Override
     protected void actionPerformed(GuiButton parButton) 
     {
-		if (parButton.id == 1)
-	    {
-			//If airship has small inv module installed
-        	if(this.airship.getModuleActiveSlot1() == 3)
-        	{
-        		NetworkHandler.sendToServer(new MessageGuiMainMenuStorageLesser());
-        	}
-        	//If airship has large inv module installed
-        	else if(this.airship.getModuleActiveSlot1() == 4)
-        	{
-        		NetworkHandler.sendToServer(new MessageGuiMainMenuStorageGreater());
-        	}
-        	//If airship has jukebox module installed
-        	else if(this.airship.getModuleActiveSlot1() == 10)
-        	{
-        		NetworkHandler.sendToServer(new MessageGuiMainMenuMusic());
-        	}
-        	//Default for airship gui
-        	else
-        	{
-        		NetworkHandler.sendToServer(new MessageGuiMainMenu());
-        	}
-	    }
-		if (parButton.id == 2)
-	    {
-			NetworkHandler.sendToServer(new MessageGuiUpgradeMenu());
-	    }
-		if (parButton.id == 3)
-	    {
-			NetworkHandler.sendToServer(new MessageGuiCustomizeMenu());
-	    }
-		if (parButton.id == 4)
-	    {
-			NetworkHandler.sendToServer(new MessageGuiModuleMenu());
-	    }
+		super.actionPerformed(parButton);
 		
 		//Back to main customize gui menu
 		if (parButton.id == 505)
@@ -290,6 +236,8 @@ public class GuiCustomizeMenuBalloonColor extends GuiContainerVC {
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) 
 	{
+		super.drawGuiContainerBackgroundLayer(partialTicks, mouseX, mouseY);
+		
 		GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
 		this.mc.getTextureManager().bindTexture(texture);
 		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
@@ -367,6 +315,7 @@ public class GuiCustomizeMenuBalloonColor extends GuiContainerVC {
     	this.textGreen.drawTextBox();
     	this.textBlue.drawTextBox();
     	
+    	//Draws the top menu texture extension for the label
 		this.drawRect(this.guiLeft + 49, this.guiTop - 17, this.guiLeft + 127, this.guiTop, Color.BLACK.getRGB());
 		this.drawRect(this.guiLeft + 50, this.guiTop - 16, this.guiLeft + 126, this.guiTop, Color.LIGHT_GRAY.getRGB());
 		this.drawRect(this.guiLeft + 52, this.guiTop - 14, this.guiLeft + 124, this.guiTop, Color.BLACK.getRGB());
@@ -430,6 +379,8 @@ public class GuiCustomizeMenuBalloonColor extends GuiContainerVC {
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
 	{
+		super.drawGuiContainerForegroundLayer(mouseX, mouseY);
+		
 		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 		this.fontRenderer.drawString(References.localNameVC("vc.main.ballooncolor"), 55, 16, 11111111);
 		this.fontRenderer.drawString(References.localNameVC("vc.main.appearance"), 58, -10, 65521);

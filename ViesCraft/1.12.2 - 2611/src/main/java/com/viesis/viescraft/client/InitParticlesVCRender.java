@@ -15,12 +15,12 @@ import net.minecraft.util.math.MathHelper;
 
 public class InitParticlesVCRender {
 	
-	public static void generateAirshipSmokeParticles(Entity entity)
+	public static void generateAirshipSmokeParticles(Entity entity, double xIn, double yIn, double zIn)
 	{
 		entity.world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, 
-		entity.posX - (double)(MathHelper.sin(-entity.rotationYaw * 0.017453292F) * 00.82F), 
-		entity.posY + 0.95D + (entity.world.rand.nextFloat() * 0.025D), 
-		entity.posZ - (double)(MathHelper.cos(entity.rotationYaw * 0.017453292F) * 00.82F), 
+		entity.posX - (double)(MathHelper.sin(-entity.rotationYaw * 0.017453292F) * 00.82F) + xIn, 
+		entity.posY + 0.95D + (entity.world.rand.nextFloat() * 0.025D) + yIn, 
+		entity.posZ - (double)(MathHelper.cos(entity.rotationYaw * 0.017453292F) * 00.82F) + zIn, 
 		0.0D, 0.0D, 0.0D, new int[0]);
 	}
 	

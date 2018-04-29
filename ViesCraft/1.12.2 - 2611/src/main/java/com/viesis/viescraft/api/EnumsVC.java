@@ -15,25 +15,25 @@ public class EnumsVC {
      */
 	public static enum MainTierCore
     {
-    	//STRING(meta, registry name, localized name, HP modifier)
-		BASE(0, "tierbase", References.localNameVC("vc.enum.tier.0"), 2.0D),
-		ONE(1, "tier1", References.localNameVC("vc.enum.tier.1"), 4.0D),
-		TWO(2, "tier2", References.localNameVC("vc.enum.tier.2"), 6.0D),
-		THREE(3, "tier3", References.localNameVC("vc.enum.tier.3"), 8.0D),
-		FOUR(4, "tier4", References.localNameVC("vc.enum.tier.4"), 10.0D),
-		FIVE(5, "tier5", References.localNameVC("vc.enum.tier.5"), 12.0D);
+    	//STRING(meta, registry name, localized name, Stored Redstone)
+		BASE(0, "tierbase", References.localNameVC("vc.enum.tier.0"), 50),
+		ONE(1, "tier1", References.localNameVC("vc.enum.tier.1"), 100),
+		TWO(2, "tier2", References.localNameVC("vc.enum.tier.2"), 200),
+		THREE(3, "tier3", References.localNameVC("vc.enum.tier.3"), 300),
+		FOUR(4, "tier4", References.localNameVC("vc.enum.tier.4"), 400),
+		FIVE(5, "tier5", References.localNameVC("vc.enum.tier.5"), 500);
 		
 		private final int metadata;
         private final String registryName;
         private final String localizedName;
-        private final double hp;
+        private final int storedRedstone;
         
-        private MainTierCore(int metadataIn, String registryNameIn, String localizedNameIn, double hpModifierIn)
+        private MainTierCore(int metadataIn, String registryNameIn, String localizedNameIn, int storedRedstoneIn)
         {
         	this.metadata = metadataIn;
             this.registryName = registryNameIn;
             this.localizedName = localizedNameIn;
-            this.hp = hpModifierIn;
+            this.storedRedstone = storedRedstoneIn;
         }
         
         public int getMetadata()
@@ -51,9 +51,9 @@ public class EnumsVC {
             return this.localizedName;
         }
         
-        public double getHPModifier()
+        public int getStoredRedstone()
         {
-            return this.hp;
+            return this.storedRedstone;
         }
         
         /**
@@ -806,7 +806,7 @@ public class EnumsVC {
     	//STRING(meta, registry name, localized name, explosion strength)
 		CASING(0, "casing", References.localNameVC("vc.enum.bomb.0"), 0.0F),
 		SMALL(1, "small", References.localNameVC("vc.enum.bomb.1"), 4.0F),
-		BIG(2, "large", References.localNameVC("vc.enum.bomb.2"), 10.0F);
+		BIG(2, "big", References.localNameVC("vc.enum.bomb.2"), 10.0F);
 		
 		private final int metadata;
         private final String registryName;
@@ -945,77 +945,78 @@ public class EnumsVC {
     {
     	//STRING(meta, registry name, localized name, explosion strength)
         NONE(0, "none", References.localNameVC("vc.enum.displaysymbol.0")),
-        BLOCK(1, "category_block", References.localNameVC("vc.enum.displaysymbol.1")),
-        ITEM(2, "category_item", References.localNameVC("vc.enum.displaysymbol.2")),
-        HEAD(3, "category_head", References.localNameVC("vc.enum.displaysymbol.3")),
-        HEADSUPPORTER(4, "category_supporter_head", References.localNameVC("vc.enum.displaysymbol.4")),
-        HOLIDAY(5, "category_holiday", References.localNameVC("vc.enum.displaysymbol.5")),
-        UNUSED1(6, "category_2", References.localNameVC("vc.enum.displaysymbol.5")),
-        UNUSED2(7, "category_3", References.localNameVC("vc.enum.displaysymbol.5")),
-        UNUSED3(8, "category_4", References.localNameVC("vc.enum.displaysymbol.5")),
-        UNUSED4(9, "category_5", References.localNameVC("vc.enum.displaysymbol.5")),
+        
+        BLOCKITEM(1, "category_blockitem", References.localNameVC("vc.enum.displaysymbol.1")),
+        HEAD(2, "category_head", References.localNameVC("vc.enum.displaysymbol.2")),
+        HEADSUPPORTER(3, "category_supporter_head", References.localNameVC("vc.enum.displaysymbol.3")),
+        HOLIDAY(4, "category_holiday", References.localNameVC("vc.enum.displaysymbol.4")),
+        UNUSED0(5, "category_1", References.localNameVC("vc.enum.displaysymbol.5")),
+        UNUSED1(6, "category_2", References.localNameVC("vc.enum.displaysymbol.6")),
+        UNUSED2(7, "category_3", References.localNameVC("vc.enum.displaysymbol.7")),
+        UNUSED3(8, "category_4", References.localNameVC("vc.enum.displaysymbol.8")),
+        UNUSED4(9, "category_5", References.localNameVC("vc.enum.displaysymbol.9")),
         
         
         
-    	LOGOVIESCRAFT(10, "logo_viescraft", References.localNameVC("vc.enum.displaysymbol.6")),
-    	LOGOFORGE(11, "logo_forge", References.localNameVC("vc.enum.displaysymbol.7")),
-    	LOGOMINECRAFT(12, "logo_minecraft", References.localNameVC("vc.enum.displaysymbol.8")),
-    	COINSTACK(13, "general_coinstack", References.localNameVC("vc.enum.visualballoon.9")),
-    	SCROLL(14, "general_scroll", References.localNameVC("vc.enum.visualballoon.10")),
-    	WRENCH(15, "general_wrench", References.localNameVC("vc.enum.visualballoon.11")),
-    	KEY(16, "general_key", References.localNameVC("vc.enum.visualballoon.12")),
-    	PADLOCK(17, "general_padlock", References.localNameVC("vc.enum.visualballoon.13")),
-        BELL(18, "general_bell", References.localNameVC("vc.enum.visualballoon.14")),
-        ANCHOR(19, "general_anchor", References.localNameVC("vc.enum.visualballoon.15")),
-    	BARREL(20, "general_barrel", References.localNameVC("vc.enum.visualballoon.16")),
-    	GEARS(21, "general_gears", References.localNameVC("vc.enum.visualballoon.17"));
+    	LOGOVIESCRAFT(10, "10", References.localNameVC("vc.enum.displaysymbol.10")),
+    	LOGOFORGE(11, "11", References.localNameVC("vc.enum.displaysymbol.11")),
+    	LOGOMINECRAFT(12, "12", References.localNameVC("vc.enum.displaysymbol.12")),
+    	COINSTACK(13, "13", References.localNameVC("vc.enum.displaysymbol.13")),
+    	SCROLL(14, "14", References.localNameVC("vc.enum.displaysymbol.14")),
+    	WRENCH(15, "15", References.localNameVC("vc.enum.displaysymbol.15")),
+    	KEY(16, "16", References.localNameVC("vc.enum.displaysymbol.16")),
+    	PADLOCK(17, "17", References.localNameVC("vc.enum.displaysymbol.17")),
+        BELL(18, "18", References.localNameVC("vc.enum.displaysymbol.18")),
+        ANCHOR(19, "19", References.localNameVC("vc.enum.displaysymbol.19")),
+    	BARREL(20, "20", References.localNameVC("vc.enum.displaysymbol.20")),
+    	GEARS(21, "21", References.localNameVC("vc.enum.displaysymbol.21"));
     	
     	
     	
     	/**
-    	DOG(9, "animal_dog", References.localNameVC("vc.enum.visualballoon.9")),
-    	CAT(10, "animal_cat", References.localNameVC("vc.enum.visualballoon.10")),
-    	FOX(11, "animal_squirrel", References.localNameVC("vc.enum.visualballoon.11")),
-    	BEAR(12, "animal_bear", References.localNameVC("vc.enum.visualballoon.12")),
-    	LION(13, "animal_lion", References.localNameVC("vc.enum.visualballoon.13")),
-        WOLF(14, "animal_fox", References.localNameVC("vc.enum.visualballoon.14")),
-        SHARK(15, "animal_wolf", References.localNameVC("vc.enum.visualballoon.15")),
-    	FISH(9, "animal_dog", References.localNameVC("vc.enum.visualballoon.9")),
-    	OCTOPUS(9, "animal_dog", References.localNameVC("vc.enum.visualballoon.9")),
-    	PHOENIX(16, "animal_phoenix", References.localNameVC("vc.enum.visualballoon.16")),
-        DRAGON(17, "animal_dragon", References.localNameVC("vc.enum.visualballoon.17"));
+    	DOG(9, "animal_dog", References.localNameVC("vc.enum.displaysymbol.9")),
+    	CAT(10, "animal_cat", References.localNameVC("vc.enum.displaysymbol.10")),
+    	FOX(11, "animal_squirrel", References.localNameVC("vc.enum.displaysymbol.11")),
+    	BEAR(12, "animal_bear", References.localNameVC("vc.enum.displaysymbol.12")),
+    	LION(13, "animal_lion", References.localNameVC("vc.enum.displaysymbol.13")),
+        WOLF(14, "animal_fox", References.localNameVC("vc.enum.displaysymbol.14")),
+        SHARK(15, "animal_wolf", References.localNameVC("vc.enum.displaysymbol.15")),
+    	FISH(9, "animal_dog", References.localNameVC("vc.enum.displaysymbol.9")),
+    	OCTOPUS(9, "animal_dog", References.localNameVC("vc.enum.displaysymbol.9")),
+    	PHOENIX(16, "animal_phoenix", References.localNameVC("vc.enum.displaysymbol.16")),
+        DRAGON(17, "animal_dragon", References.localNameVC("vc.enum.displaysymbol.17"));
     	
     	
-    	EARTH(18, "element_earth", References.localNameVC("vc.enum.visualballoon.18")),
-        WIND(19, "element_wind", References.localNameVC("vc.enum.visualballoon.19")),
-        WATER(20, "element_water", References.localNameVC("vc.enum.visualballoon.20")),
-        FIRE(21, "element_fire", References.localNameVC("vc.enum.visualballoon.21")),
-        NATURE(22, "element_nature", References.localNameVC("vc.enum.visualballoon.22")),
-        LIGHTNING(23, "element_lightning", References.localNameVC("vc.enum.visualballoon.23")),
-        ICE(24, "element_ice", References.localNameVC("vc.enum.visualballoon.24")),
-        POISON(25, "element_poison", References.localNameVC("vc.enum.visualballoon.25")),
-        ARCANE(26, "element_arcane", References.localNameVC("vc.enum.visualballoon.26")),
-        VOID(27, "element_void", References.localNameVC("vc.enum.visualballoon.27")),
-        HOLY(28, "element_holy", References.localNameVC("vc.enum.visualballoon.28")),
-        UNHOLY(29, "element_unholy", References.localNameVC("vc.enum.visualballoon.29")),
+    	EARTH(18, "element_earth", References.localNameVC("vc.enum.displaysymbol.18")),
+        WIND(19, "element_wind", References.localNameVC("vc.enum.displaysymbol.19")),
+        WATER(20, "element_water", References.localNameVC("vc.enum.displaysymbol.20")),
+        FIRE(21, "element_fire", References.localNameVC("vc.enum.displaysymbol.21")),
+        NATURE(22, "element_nature", References.localNameVC("vc.enum.displaysymbol.22")),
+        LIGHTNING(23, "element_lightning", References.localNameVC("vc.enum.displaysymbol.23")),
+        ICE(24, "element_ice", References.localNameVC("vc.enum.displaysymbol.24")),
+        POISON(25, "element_poison", References.localNameVC("vc.enum.displaysymbol.25")),
+        ARCANE(26, "element_arcane", References.localNameVC("vc.enum.displaysymbol.26")),
+        VOID(27, "element_void", References.localNameVC("vc.enum.displaysymbol.27")),
+        HOLY(28, "element_holy", References.localNameVC("vc.enum.displaysymbol.28")),
+        UNHOLY(29, "element_unholy", References.localNameVC("vc.enum.displaysymbol.29")),
         
         
         
-        SHIELD(7, "lava", References.localNameVC("vc.enum.visualballoon.0")),
-        HAMMER(7, "lava", References.localNameVC("vc.enum.visualballoon.0")),
-        FIST(7, "lava", References.localNameVC("vc.enum.visualballoon.0")),
-        SUN(7, "lava", References.localNameVC("vc.enum.visualballoon.0")),
-        MOON(7, "lava", References.localNameVC("vc.enum.visualballoon.0")),
+        SHIELD(7, "lava", References.localNameVC("vc.enum.displaysymbol.0")),
+        HAMMER(7, "lava", References.localNameVC("vc.enum.displaysymbol.0")),
+        FIST(7, "lava", References.localNameVC("vc.enum.displaysymbol.0")),
+        SUN(7, "lava", References.localNameVC("vc.enum.displaysymbol.0")),
+        MOON(7, "lava", References.localNameVC("vc.enum.displaysymbol.0")),
         
         
         
-        CELTIC(7, "lava", References.localNameVC("vc.enum.visualballoon.0")),
-        YGGDRASIL(7, "lava", References.localNameVC("vc.enum.visualballoon.0")),
-        MJOLLNIR(7, "lava", References.localNameVC("vc.enum.visualballoon.0"));
+        CELTIC(7, "lava", References.localNameVC("vc.enum.displaysymbol.0")),
+        YGGDRASIL(7, "lava", References.localNameVC("vc.enum.displaysymbol.0")),
+        MJOLLNIR(7, "lava", References.localNameVC("vc.enum.displaysymbol.0"));
         
-        JACKOLANTERN(15, "animal_wolf", References.localNameVC("vc.enum.visualballoon.15")),
-    	THANKSGIVINGTURKEY(16, "animal_phoenix", References.localNameVC("vc.enum.visualballoon.16")),
-        CHRISTMASTREE(17, "animal_dragon", References.localNameVC("vc.enum.visualballoon.17"));
+        JACKOLANTERN(15, "animal_wolf", References.localNameVC("vc.enum.displaysymbol.15")),
+    	THANKSGIVINGTURKEY(16, "animal_phoenix", References.localNameVC("vc.enum.displaysymbol.16")),
+        CHRISTMASTREE(17, "animal_dragon", References.localNameVC("vc.enum.displaysymbol.17"));
     	
         */
     	private final int metadata;
@@ -1078,9 +1079,19 @@ public class EnumsVC {
     {
     	//STRING(meta, registry name, localized name)
         NONE(0, "none", References.localNameVC("vc.enum.entityhead.0")),
-        STEVE(1, "entityhead_steve", References.localNameVC("vc.enum.entityhead.1")),
-        ALEX(2, "entityhead_alex", References.localNameVC("vc.enum.entityhead.2")),
-        HEROBRINE(3, "entityhead_herobrine", References.localNameVC("vc.enum.entityhead.3"));
+        
+        STEVE(1, "1", References.localNameVC("vc.enum.entityhead.1")),
+        ALEX(2, "2", References.localNameVC("vc.enum.entityhead.2")),
+        CHICKEN(3, "3", References.localNameVC("vc.enum.entityhead.3")),
+        PIG(4, "4", References.localNameVC("vc.enum.entityhead.4")),
+    	COW(5, "5", References.localNameVC("vc.enum.entityhead.5")),
+    	ZOMBIE(6, "6", References.localNameVC("vc.enum.entityhead.6")),
+    	SKELETON(7, "7", References.localNameVC("vc.enum.entityhead.7")),
+    	SPIDER(8, "8", References.localNameVC("vc.enum.entityhead.8")),
+    	CREEPER(9, "9", References.localNameVC("vc.enum.entityhead.9")),
+    	WITHERSKELETON(10, "10", References.localNameVC("vc.enum.entityhead.10")),
+    	DRAGON(11, "11", References.localNameVC("vc.enum.entityhead.11")),
+    	HEROBRINE(12, "12", References.localNameVC("vc.enum.entityhead.12"));
         
     	private final int metadata;
         private final String registryName;
@@ -1197,4 +1208,166 @@ public class EnumsVC {
             return values()[0];
         }
     }
+    
+    /**
+	 * Holiday Display Symbol enum - Represents various Airship Holiday Display types.
+	 */
+    public static enum MainHolidaySymbol
+    {
+    	//STRING(meta, registry name, localized name)
+        NONE(0, "none", References.localNameVC("vc.enum.holidaysymbol.0")),
+        
+        //New Years
+        YEAR2018(1, "1", References.localNameVC("vc.enum.holidaysymbol.1")),
+        YEAR2019(2, "2", References.localNameVC("vc.enum.holidaysymbol.2")),
+        H3(3, "3", References.localNameVC("vc.enum.holidaysymbol.3")),
+        H4(4, "4", References.localNameVC("vc.enum.holidaysymbol.4")),
+    	H5(5, "5", References.localNameVC("vc.enum.holidaysymbol.5")),
+    	H6(6, "6", References.localNameVC("vc.enum.holidaysymbol.6")),
+    	H7(7, "7", References.localNameVC("vc.enum.holidaysymbol.7")),
+    	H8(8, "8", References.localNameVC("vc.enum.holidaysymbol.8")),
+    	H9(9, "9", References.localNameVC("vc.enum.holidaysymbol.9")),
+    	H10(10, "10", References.localNameVC("vc.enum.holidaysymbol.10")),
+    	H11(11, "11", References.localNameVC("vc.enum.holidaysymbol.11")),
+    	H12(12, "12", References.localNameVC("vc.enum.holidaysymbol.12")),
+    	
+    	//Valentine's Day
+    	ROSE(13, "13", References.localNameVC("vc.enum.holidaysymbol.13")),
+        TEDDYBEAR(14, "14", References.localNameVC("vc.enum.holidaysymbol.14")),
+    	CUPID(15, "15", References.localNameVC("vc.enum.holidaysymbol.15")),
+    	RING(16, "16", References.localNameVC("vc.enum.holidaysymbol.16")),
+    	CARD(17, "17", References.localNameVC("vc.enum.holidaysymbol.17")),
+    	PRESENTHEART(18, "18", References.localNameVC("vc.enum.holidaysymbol.18")),
+    	HEARTMUSIC(19, "19", References.localNameVC("vc.enum.holidaysymbol.19")),
+    	HEARTLOCK(20, "20", References.localNameVC("vc.enum.holidaysymbol.20")),
+    	HEARTBROKEN(21, "21", References.localNameVC("vc.enum.holidaysymbol.21")),
+    	HEART1(22, "22", References.localNameVC("vc.enum.holidaysymbol.22")),
+    	HEART2(23, "23", References.localNameVC("vc.enum.holidaysymbol.23")),
+        HEART3(24, "24", References.localNameVC("vc.enum.holidaysymbol.24")),
+        
+        //Easter
+    	EGG1(25, "25", References.localNameVC("vc.enum.holidaysymbol.25")),
+    	EGG2(26, "26", References.localNameVC("vc.enum.holidaysymbol.26")),
+    	EGG3(27, "27", References.localNameVC("vc.enum.holidaysymbol.27")),
+    	EGG4(28, "28", References.localNameVC("vc.enum.holidaysymbol.28")),
+    	BASKETEGG(29, "29", References.localNameVC("vc.enum.holidaysymbol.29")),
+    	FLOWER(30, "30", References.localNameVC("vc.enum.holidaysymbol.30")),
+    	BUTTERFLY(31, "31", References.localNameVC("vc.enum.holidaysymbol.31")),
+    	CHICK1(32, "32", References.localNameVC("vc.enum.holidaysymbol.32")),
+    	CHICK2(33, "33", References.localNameVC("vc.enum.holidaysymbol.33")),
+        BUNNY1(34, "34", References.localNameVC("vc.enum.holidaysymbol.34")),
+    	BUNNY2(35, "35", References.localNameVC("vc.enum.holidaysymbol.35")),
+    	BUNNY3(36, "36", References.localNameVC("vc.enum.holidaysymbol.36")),
+    	
+    	//4th of July
+    	CRACKEDBELL(37, "37", References.localNameVC("vc.enum.holidaysymbol.37")),
+    	TOPHATUSA(38, "38", References.localNameVC("vc.enum.holidaysymbol.38")),
+    	MEDAL(39, "39", References.localNameVC("vc.enum.holidaysymbol.39")),
+    	FLAGUSA(40, "40", References.localNameVC("vc.enum.holidaysymbol.40")),
+    	REPUBLICAN(41, "41", References.localNameVC("vc.enum.holidaysymbol.41")),
+    	DEMOCRAT(42, "42", References.localNameVC("vc.enum.holidaysymbol.42")),
+    	ROCKET1(43, "43", References.localNameVC("vc.enum.holidaysymbol.43")),
+        ROCKET2(44, "44", References.localNameVC("vc.enum.holidaysymbol.44")),
+        FIREWORK1(45, "45", References.localNameVC("vc.enum.holidaysymbol.45")),
+    	FIREWORK2(46, "46", References.localNameVC("vc.enum.holidaysymbol.46")),
+    	FIREWORK3(47, "47", References.localNameVC("vc.enum.holidaysymbol.47")),
+    	LIBERTYTORCH(48, "48", References.localNameVC("vc.enum.holidaysymbol.48")),
+    	
+    	//Halloween
+    	JACKOLANTERN(49, "49", References.localNameVC("vc.enum.holidaysymbol.49")),
+    	BLACKCAT(50, "50", References.localNameVC("vc.enum.holidaysymbol.50")),
+    	BAT(51, "51", References.localNameVC("vc.enum.holidaysymbol.51")),
+    	SPIDER(52, "52", References.localNameVC("vc.enum.holidaysymbol.52")),
+    	CAULDRON(53, "53", References.localNameVC("vc.enum.holidaysymbol.53")),
+        NIGHTSKYMOON(54, "54", References.localNameVC("vc.enum.holidaysymbol.54")),
+    	TOMBSTONE(55, "55", References.localNameVC("vc.enum.holidaysymbol.55")),
+    	SCYTHE(56, "56", References.localNameVC("vc.enum.holidaysymbol.56")),
+    	JACK(57, "57", References.localNameVC("vc.enum.holidaysymbol.57")),
+    	SALLY(58, "58", References.localNameVC("vc.enum.holidaysymbol.58")),
+    	ZERO(59, "59", References.localNameVC("vc.enum.holidaysymbol.59")),
+    	BOOGEYMAN(60, "60", References.localNameVC("vc.enum.holidaysymbol.60")),
+    	
+    	//Thanksgiving
+    	PILGRIMHAT(61, "61", References.localNameVC("vc.enum.holidaysymbol.61")),
+    	INDIANHAT(62, "62", References.localNameVC("vc.enum.holidaysymbol.62")),
+    	BOAT(63, "63", References.localNameVC("vc.enum.holidaysymbol.63")),
+    	MAPLELEAF(64, "64", References.localNameVC("vc.enum.holidaysymbol.64")),
+    	MAPLELEAVES(65, "65", References.localNameVC("vc.enum.holidaysymbol.65")),
+    	SUNFLOWER(66, "66", References.localNameVC("vc.enum.holidaysymbol.66")),
+    	CORNSTALK(67, "67", References.localNameVC("vc.enum.holidaysymbol.67")),
+    	WHEAT(68, "68", References.localNameVC("vc.enum.holidaysymbol.68")),
+    	PIESLICE(69, "69", References.localNameVC("vc.enum.holidaysymbol.69")),
+    	PIEWHOLE(70, "70", References.localNameVC("vc.enum.holidaysymbol.70")),
+    	TURKEY(71, "71", References.localNameVC("vc.enum.holidaysymbol.71")),
+    	BASKET(72, "72", References.localNameVC("vc.enum.holidaysymbol.72")),
+    	
+    	//Christmas
+    	PRESENTSMALL(73, "73", References.localNameVC("vc.enum.holidaysymbol.73")),
+        PRESENTLARGE(74, "74", References.localNameVC("vc.enum.holidaysymbol.74")),
+    	CANDYCANE(75, "75", References.localNameVC("vc.enum.holidaysymbol.75")),
+    	SNOWFLAKE(76, "76", References.localNameVC("vc.enum.holidaysymbol.76")),
+    	ORNAMENT(77, "77", References.localNameVC("vc.enum.holidaysymbol.77")),
+    	MISTLETOE(78, "78", References.localNameVC("vc.enum.holidaysymbol.78")),
+    	WREATH(79, "79", References.localNameVC("vc.enum.holidaysymbol.79")),
+    	STOCKING(80, "80", References.localNameVC("vc.enum.holidaysymbol.80")),
+    	CHRISTMASTREE(81, "81", References.localNameVC("vc.enum.holidaysymbol.81")),
+    	REINDEER(82, "82", References.localNameVC("vc.enum.holidaysymbol.82")),
+    	SLEIGH(83, "83", References.localNameVC("vc.enum.holidaysymbol.83")),
+        SANTA(84, "84", References.localNameVC("vc.enum.holidaysymbol.84"));
+    	
+    	
+        
+    	private final int metadata;
+        private final String registryName;
+        private final String localizedName;
+        
+        private MainHolidaySymbol(int metadataIn, String registryNameIn, String localizedNameIn)
+        {
+        	this.metadata = metadataIn;
+            this.registryName = registryNameIn;
+            this.localizedName = localizedNameIn;
+        }
+        
+        public int getMetadata()
+        {
+            return this.metadata;
+        }
+        
+        public String getRegistryName()
+        {
+            return this.registryName;
+        }
+        
+        public String getLocalizedName()
+        {
+            return this.localizedName;
+        }
+        
+        /**
+         * Get type by it's enum ordinal
+         */
+        public static EnumsVC.MainHolidaySymbol byId(int id)
+        {
+            if (id < 0 || id >= values().length)
+            {
+                id = 0;
+            }
+            
+            return values()[id];
+        }
+        
+        public static EnumsVC.MainHolidaySymbol getTypeFromString(String nameIn)
+        {
+            for (int i = 0; i < values().length; ++i)
+            {
+                if (values()[i].getRegistryName().equals(nameIn))
+                {
+                    return values()[i];
+                }
+            }
+            
+            return values()[0];
+        }
+    }
+    
 }

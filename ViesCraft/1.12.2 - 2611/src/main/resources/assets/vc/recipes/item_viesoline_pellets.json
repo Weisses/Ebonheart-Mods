@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "RCR",
+    "CRC",
+    "RCR"
+  ],
+  "key": {
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "C": {
+      "item": "minecraft:coal",
+      "data": 32767
+    }
+  },
+  "result": {
+    "item": "vc:item_viesoline_pellets",
+    "count": 8
+  }
+}

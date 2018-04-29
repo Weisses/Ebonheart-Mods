@@ -18,4 +18,6 @@ public class CostsVC {
 	public static int BALLOON_PATTERN_TEXTURE_COST = 20;
 	public static int BALLOON_PATTERN_TRANSPARENCY_COST = 25;
 	public static int BALLOON_PATTERN_COLOR_COST = 30;
+	
+	public static int MODULE_CHANGE_COST = 15;
 }

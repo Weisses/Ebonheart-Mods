@@ -2,8 +2,8 @@ package com.viesis.viescraft.network;
 
 import com.viesis.viescraft.client.gui.GuiTileEntityAirshipWorkbench;
 import com.viesis.viescraft.client.gui.GuiTileEntityBatteryCharger;
+import com.viesis.viescraft.client.gui.airship.customize.GuiCustomizeMenu;
 import com.viesis.viescraft.client.gui.airship.customize.GuiCustomizeMenuChangeName;
-import com.viesis.viescraft.client.gui.airship.customize.GuiCustomizeMenuOptionsRedstone;
 import com.viesis.viescraft.client.gui.airship.customize.balloon.GuiCustomizeMenuBalloonColor;
 import com.viesis.viescraft.client.gui.airship.customize.balloon.GuiCustomizeMenuBalloonMain;
 import com.viesis.viescraft.client.gui.airship.customize.balloon.sub.GuiCustomizeMenuBalloonTier1Pg1;
@@ -17,7 +17,9 @@ import com.viesis.viescraft.client.gui.airship.customize.core.sub.GuiCustomizeMe
 import com.viesis.viescraft.client.gui.airship.customize.core.sub.GuiCustomizeMenuCoreModelEnginePg1;
 import com.viesis.viescraft.client.gui.airship.customize.core.sub.GuiCustomizeMenuCoreModelFramePg1;
 import com.viesis.viescraft.client.gui.airship.customize.engine.GuiCustomizeMenuEngineMain;
-import com.viesis.viescraft.client.gui.airship.customize.engine.sub.GuiCustomizeMenuEngineDisplayBlockPg1;
+import com.viesis.viescraft.client.gui.airship.customize.engine.sub.GuiCustomizeMenuEngineDisplayBlockItemPg1;
+import com.viesis.viescraft.client.gui.airship.customize.engine.sub.GuiCustomizeMenuEngineDisplayHeadPg1;
+import com.viesis.viescraft.client.gui.airship.customize.engine.sub.GuiCustomizeMenuEngineDisplaySupporterHeadPg1;
 import com.viesis.viescraft.client.gui.airship.customize.engine.sub.GuiCustomizeMenuEngineDisplaySymbolPg1;
 import com.viesis.viescraft.client.gui.airship.customize.frame.GuiCustomizeMenuFrameColor;
 import com.viesis.viescraft.client.gui.airship.customize.frame.GuiCustomizeMenuFrameMain;
@@ -27,23 +29,26 @@ import com.viesis.viescraft.client.gui.airship.customize.frame.sub.GuiCustomizeM
 import com.viesis.viescraft.client.gui.airship.customize.frame.sub.GuiCustomizeMenuFrameTier3Pg1;
 import com.viesis.viescraft.client.gui.airship.customize.frame.sub.GuiCustomizeMenuFrameTier4Pg1;
 import com.viesis.viescraft.client.gui.airship.customize.frame.sub.GuiCustomizeMenuFrameTier5Pg1;
-import com.viesis.viescraft.client.gui.airship.main.GuiCustomizeMenu;
 import com.viesis.viescraft.client.gui.airship.main.GuiMainMenu;
+import com.viesis.viescraft.client.gui.airship.main.GuiMainMenuBomb;
 import com.viesis.viescraft.client.gui.airship.main.GuiMainMenuMusic;
 import com.viesis.viescraft.client.gui.airship.main.GuiMainMenuStorageGreater;
 import com.viesis.viescraft.client.gui.airship.main.GuiMainMenuStorageLesser;
 import com.viesis.viescraft.client.gui.airship.main.GuiMainMenuStorageNormal;
-import com.viesis.viescraft.client.gui.airship.main.GuiModuleMenu;
-import com.viesis.viescraft.client.gui.airship.main.GuiUpgradeMenu;
+import com.viesis.viescraft.client.gui.airship.module.GuiModuleMenu;
 import com.viesis.viescraft.client.gui.airship.music.GuiAirshipMusicPg1;
+import com.viesis.viescraft.client.gui.airship.redstone.GuiCustomizeMenuRedstone;
+import com.viesis.viescraft.client.gui.airship.upgrade.GuiUpgradeMenu;
 import com.viesis.viescraft.client.gui.pouch.GuiPouchAll;
 import com.viesis.viescraft.client.gui.pouch.GuiPouchModule;
 import com.viesis.viescraft.client.gui.pouch.InventoryPouch;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipCore;
+import com.viesis.viescraft.common.entity.airships.containers.all.ContainerCustomizeEngineBlock;
 import com.viesis.viescraft.common.entity.airships.containers.all.ContainerCustomizeMenu;
-import com.viesis.viescraft.common.entity.airships.containers.all.ContainerCustomizeOptionsRedstone;
-import com.viesis.viescraft.common.entity.airships.containers.all.ContainerMainMenu;
+import com.viesis.viescraft.common.entity.airships.containers.all.ContainerMenuRedstone;
+import com.viesis.viescraft.common.entity.airships.containers.all.ContainerMenuMain;
+import com.viesis.viescraft.common.entity.airships.containers.all.ContainerMainMenuBomb;
 import com.viesis.viescraft.common.entity.airships.containers.all.ContainerMainMenuStorageGreater;
 import com.viesis.viescraft.common.entity.airships.containers.all.ContainerMainMenuStorageLesser;
 import com.viesis.viescraft.common.entity.airships.containers.all.ContainerMainMenuStorageNormal;
@@ -76,6 +81,7 @@ public class GuiHandler implements IGuiHandler {
 	public static final int GUI_MAIN_MENU_STORAGE_LESSER = 12;
 	public static final int GUI_MAIN_MENU_STORAGE_NORMAL = 13;
 	public static final int GUI_MAIN_MENU_STORAGE_GREATER = 14;
+	public static final int GUI_MAIN_MENU_BOMB = 22;
 	public static final int GUI_MAIN_MENU_MUSIC = 15;
 	public static final int GUI_UPGRADE_MENU = 16;
 	public static final int GUI_CUSTOMIZE_MENU = 17;
@@ -83,7 +89,7 @@ public class GuiHandler implements IGuiHandler {
 	
 	
 	public static final int GUI_CUSTOMIZE_MENU_CHANGE_NAME = 171;
-	public static final int GUI_CUSTOMIZE_MENU_OPTIONS_REDSTONE = 172;
+	public static final int GUI_CUSTOMIZE_MENU_REDSTONE = 172;
 	
 	public static final int GUI_APPEARANCE_MENU_CORE_MAIN = 402;
 	public static final int GUI_APPEARANCE_MENU_CORE_MODEL_FRAME_PG1 = 403;
@@ -101,8 +107,7 @@ public class GuiHandler implements IGuiHandler {
 	
 	public static final int GUI_APPEARANCE_MENU_ENGINE_MAIN = 302;
 	public static final int GUI_APPEARANCE_MENU_ENGINE_SYMBOLS_PG1 = 303;
-	public static final int GUI_APPEARANCE_MENU_ENGINE_BLOCKS = 304;
-	public static final int GUI_APPEARANCE_MENU_ENGINE_ITEMS = 305;
+	public static final int GUI_APPEARANCE_MENU_ENGINE_BLOCKITEM = 304;
 	public static final int GUI_APPEARANCE_MENU_ENGINE_HEADS = 306;
 	public static final int GUI_APPEARANCE_MENU_ENGINE_SUPPORTER_HEADS = 307;
 	
@@ -153,7 +158,7 @@ public class GuiHandler implements IGuiHandler {
 		//Airship Container with no module
 		if (ID == GUI_MAIN_MENU)
 		{
-			return new ContainerMainMenu(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
+			return new ContainerMenuMain(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
 		}
 		//Airship Lesser Storage Container
 		if (ID == GUI_MAIN_MENU_STORAGE_LESSER)
@@ -170,10 +175,15 @@ public class GuiHandler implements IGuiHandler {
 		{
 			return new ContainerMainMenuStorageGreater(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
 		}
+		//Airship Lesser Bomb Container
+		if (ID == GUI_MAIN_MENU_BOMB)
+		{
+			return new ContainerMainMenuBomb(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
+		}
 		//Airship Music Container
 		if (ID == GUI_MAIN_MENU_MUSIC)
 		{
-			return new ContainerMainMenu(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
+			return new ContainerMenuMain(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
 		}
 		
 		//Airship Upgrade Container
@@ -193,9 +203,9 @@ public class GuiHandler implements IGuiHandler {
 			return new ContainerCustomizeMenu(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
 		}
 		//Airship Appearance Change Name Containers
-		if(ID == GUI_CUSTOMIZE_MENU_OPTIONS_REDSTONE)
+		if(ID == GUI_CUSTOMIZE_MENU_REDSTONE)
 		{
-			return new ContainerCustomizeOptionsRedstone(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
+			return new ContainerMenuRedstone(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
 		}
 		
 		
@@ -260,13 +270,9 @@ public class GuiHandler implements IGuiHandler {
 		{
 			return new ContainerCustomizeMenu(player.inventory, (EntityAirshipCore)player.getRidingEntity());
 		}
-		if (ID == GUI_APPEARANCE_MENU_ENGINE_BLOCKS)
+		if (ID == GUI_APPEARANCE_MENU_ENGINE_BLOCKITEM)
 		{
-			return new ContainerCustomizeMenu(player.inventory, (EntityAirshipCore)player.getRidingEntity());
-		}
-		if (ID == GUI_APPEARANCE_MENU_ENGINE_ITEMS)
-		{
-			return new ContainerCustomizeMenu(player.inventory, (EntityAirshipCore)player.getRidingEntity());
+			return new ContainerCustomizeEngineBlock(player.inventory, (EntityAirshipCore)player.getRidingEntity());
 		}
 		if (ID == GUI_APPEARANCE_MENU_ENGINE_HEADS)
 		{
@@ -385,6 +391,12 @@ public class GuiHandler implements IGuiHandler {
 			return new GuiMainMenuStorageGreater(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
 		}
 		
+		//Airship GUI with Lesser Bomb Module
+		if (ID == GUI_MAIN_MENU_BOMB)
+		{
+			return new GuiMainMenuBomb(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
+		}
+		
 		//Airship GUI with Music Module
 		if (ID == GUI_MAIN_MENU_MUSIC)
 		{
@@ -408,9 +420,9 @@ public class GuiHandler implements IGuiHandler {
 			return new GuiCustomizeMenuChangeName(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
 		}
 		//Airship Appearance Change Name GUI
-		if (ID == GUI_CUSTOMIZE_MENU_OPTIONS_REDSTONE)
+		if (ID == GUI_CUSTOMIZE_MENU_REDSTONE)
 		{
-			return new GuiCustomizeMenuOptionsRedstone(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
+			return new GuiCustomizeMenuRedstone(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
 		}
 		
 		
@@ -475,21 +487,17 @@ public class GuiHandler implements IGuiHandler {
 		{
 			return new GuiCustomizeMenuEngineDisplaySymbolPg1(player.inventory, (EntityAirshipCore)player.getRidingEntity());
 		}
-		if (ID == GUI_APPEARANCE_MENU_ENGINE_BLOCKS)
+		if (ID == GUI_APPEARANCE_MENU_ENGINE_BLOCKITEM)
 		{
-			return new GuiCustomizeMenuEngineDisplayBlockPg1(player.inventory, (EntityAirshipCore)player.getRidingEntity());
-		}
-		if (ID == GUI_APPEARANCE_MENU_ENGINE_ITEMS)
-		{
-			return new ContainerCustomizeMenu(player.inventory, (EntityAirshipCore)player.getRidingEntity());
+			return new GuiCustomizeMenuEngineDisplayBlockItemPg1(player.inventory, (EntityAirshipCore)player.getRidingEntity());
 		}
 		if (ID == GUI_APPEARANCE_MENU_ENGINE_HEADS)
 		{
-			return new ContainerCustomizeMenu(player.inventory, (EntityAirshipCore)player.getRidingEntity());
+			return new GuiCustomizeMenuEngineDisplayHeadPg1(player.inventory, (EntityAirshipCore)player.getRidingEntity());
 		}
 		if (ID == GUI_APPEARANCE_MENU_ENGINE_SUPPORTER_HEADS)
 		{
-			return new ContainerCustomizeMenu(player.inventory, (EntityAirshipCore)player.getRidingEntity());
+			return new GuiCustomizeMenuEngineDisplaySupporterHeadPg1(player.inventory, (EntityAirshipCore)player.getRidingEntity());
 		}
 		
 		

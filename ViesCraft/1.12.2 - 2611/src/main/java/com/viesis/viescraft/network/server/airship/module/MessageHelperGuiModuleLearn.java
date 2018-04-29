@@ -1,7 +1,7 @@
 package com.viesis.viescraft.network.server.airship.module;
 
 import com.viesis.viescraft.api.EnumsVC;
-import com.viesis.viescraft.client.gui.airship.main.GuiModuleMenu;
+import com.viesis.viescraft.client.gui.airship.module.GuiModuleMenu;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
 import com.viesis.viescraft.network.packet.MessageBase;
 
@@ -188,11 +188,30 @@ public class MessageHelperGuiModuleLearn extends MessageBase<MessageHelperGuiMod
 			airship.selectedModuleFuelInfinite = 3;
 			airship.inventory.extractItem(11, 1, false);
 		}
+
+		if(message.metaLearnModule == EnumsVC.ModuleType.BOMB_LESSER.getMetadata())
+		{
+			airship.learnedModuleBomb = true;
+			airship.selectedModuleBomb = 1;
+			airship.inventory.extractItem(11, 1, false);
+		}
+		if(message.metaLearnModule == EnumsVC.ModuleType.BOMB_NORMAL.getMetadata())
+		{
+			airship.learnedModuleBomb = true;
+			airship.selectedModuleBomb = 2;
+			airship.inventory.extractItem(11, 1, false);
+		}
+		if(message.metaLearnModule == EnumsVC.ModuleType.BOMB_GREATER.getMetadata())
+		{
+			airship.learnedModuleBomb = true;
+			airship.selectedModuleBomb = 3;
+			airship.inventory.extractItem(11, 1, false);
+		}
 		
 		
 		
 		//All active
-		if(message.metaLearnModule == 50)
+		if(message.metaLearnModule == 550)
 		{
 			airship.learnedModuleAltitude = true;
 			airship.selectedModuleAltitude = 3;
@@ -210,6 +229,8 @@ public class MessageHelperGuiModuleLearn extends MessageBase<MessageHelperGuiMod
 			airship.selectedModuleWater = 3;
 			airship.learnedModuleFuelInfinite = true;
 			airship.selectedModuleFuelInfinite = 3;
+			airship.learnedModuleBomb = true;
+			airship.selectedModuleBomb = 3;
 			
 			airship.inventory.extractItem(11, 1, false);
 		}

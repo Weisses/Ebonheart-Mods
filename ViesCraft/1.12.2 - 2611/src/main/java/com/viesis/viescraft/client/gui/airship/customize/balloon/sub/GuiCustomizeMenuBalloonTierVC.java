@@ -9,9 +9,9 @@ import org.lwjgl.input.Keyboard;
 import com.viesis.viescraft.api.CostsVC;
 import com.viesis.viescraft.api.GuiVC;
 import com.viesis.viescraft.api.References;
-import com.viesis.viescraft.client.gui.GuiButtonGeneral1VC;
-import com.viesis.viescraft.client.gui.GuiButtonGeneral2VC;
 import com.viesis.viescraft.client.gui.GuiContainerVC;
+import com.viesis.viescraft.client.gui.buttons.GuiButtonGeneral1VC;
+import com.viesis.viescraft.client.gui.buttons.GuiButtonGeneral2VC;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipCore;
 import com.viesis.viescraft.common.entity.airships.containers.all.ContainerCustomizeMenu;
@@ -32,17 +32,12 @@ public class GuiCustomizeMenuBalloonTierVC extends GuiContainerVC {
 	
 	private ResourceLocation TEXTURE = new ResourceLocation(References.MOD_ID + ":" + "textures/gui/container_gui_customize_menu_3.png");
 	
-	public int startPlaceLeft = 12;
-	public int startPlaceTop = 22;
+	private int startPlaceLeft = 12;
+	private int startPlaceTop = 22;
 	
 	public GuiCustomizeMenuBalloonTierVC(IInventory playerInv, EntityAirshipCore airshipIn)
 	{
-		super(new ContainerCustomizeMenu(playerInv, airshipIn));
-		
-		this.playerInv = playerInv;
-		this.airship = airshipIn;
-		this.xSize = 176;
-		this.ySize = 202;
+		super(new ContainerCustomizeMenu(playerInv, airshipIn), playerInv, airshipIn);
 		
 		this.metaInfo = this.airship.balloonPatternTexture;
 	}
@@ -161,6 +156,8 @@ public class GuiCustomizeMenuBalloonTierVC extends GuiContainerVC {
 	@Override
     protected void actionPerformed(GuiButton parButton) 
     {
+		super.actionPerformed(parButton);
+		
 		if (parButton.id == 501)
 	    {
 			NetworkHandler.sendToServer(new MessageHelperGuiCustomizeMenuBalloonTier());
@@ -196,69 +193,18 @@ public class GuiCustomizeMenuBalloonTierVC extends GuiContainerVC {
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) 
 	{
-		GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
+		super.drawGuiContainerBackgroundLayer(partialTicks, mouseX, mouseY);
+		
 		this.mc.getTextureManager().bindTexture(TEXTURE);
 		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
 		
+		//Draws the top menu extension for the main label
 		this.drawRect(this.guiLeft + 49, this.guiTop - 17, this.guiLeft + 127, this.guiTop, Color.BLACK.getRGB());
 		this.drawRect(this.guiLeft + 50, this.guiTop - 16, this.guiLeft + 126, this.guiTop, Color.LIGHT_GRAY.getRGB());
 		this.drawRect(this.guiLeft + 52, this.guiTop - 14, this.guiLeft + 124, this.guiTop, Color.BLACK.getRGB());
 		
         this.drawEntityOnScreen(this.guiLeft + 135, this.guiTop + 110-18, 13, mouseX, mouseY, this.airship);
         
-        GlStateManager.pushMatrix();
-		{
-			GlStateManager.translate(this.guiLeft + 134, this.guiTop + 107, 0);
-	        GlStateManager.scale(0.5F, 0.5F, 0.5F);
-	        
-	        this.drawCenteredString(fontRenderer, this.stringToFlashGolden("Stored Redstone", 1, false, TextFormatting.RED), 0, 0, 111111);
-		}
-		GlStateManager.popMatrix();
-		
-		Color redstoneColor = Color.RED;
-		
-		if(this.airship.storedRedstone >= 500)
-		{
-			redstoneColor = Color.CYAN;
-		}
-		else if(this.airship.storedRedstone >= 375)
-		{
-			redstoneColor = Color.GREEN;
-		}
-		else if(this.airship.storedRedstone >= 250)
-		{
-			redstoneColor = Color.YELLOW;
-		}
-		else if(this.airship.storedRedstone >= 125)
-		{
-			redstoneColor = Color.ORANGE;
-		}
-		
-		GlStateManager.pushMatrix();
-		{
-			GlStateManager.translate(this.guiLeft + 127, this.guiTop + 113.5, 0);
-	        GlStateManager.scale(0.5F, 0.5F, 0.5F);
-	        
-	        this.drawCenteredString(fontRenderer, Integer.toString(this.airship.getStoredRedstone()), 0, 0, redstoneColor.getRGB());
-		}
-		GlStateManager.popMatrix();
-        GlStateManager.pushMatrix();
-		{
-			GlStateManager.translate(this.guiLeft + 134.25, this.guiTop + 113.5, 0);
-	        GlStateManager.scale(0.5F, 0.5F, 0.5F);
-	        
-	        this.drawCenteredString(fontRenderer, "/", 0, 0, redstoneColor.getRGB());
-		}
-		GlStateManager.popMatrix();
-		GlStateManager.pushMatrix();
-		{
-			GlStateManager.translate(this.guiLeft + 142, this.guiTop + 113.5, 0);
-	        GlStateManager.scale(0.5F, 0.5F, 0.5F);
-	        
-	        this.drawCenteredString(fontRenderer, Integer.toString(this.airship.getStoredRedstoneTotal()), 0, 0, redstoneColor.getRGB());
-		}
-		GlStateManager.popMatrix();
-		
 		if(airship.getStoredRedstone() >= CostsVC.BALLOON_PATTERN_TEXTURE_COST
 		&& metaInfo != 0
 		&& metaInfo != airship.balloonPatternTexture)
@@ -281,7 +227,8 @@ public class GuiCustomizeMenuBalloonTierVC extends GuiContainerVC {
 	@Override
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
 	{
-		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+		super.drawGuiContainerForegroundLayer(mouseX, mouseY);
+		
 		this.fontRenderer.drawString(References.localNameVC("vc.main.appearance"), 58, -10, 65521);
 		this.fontRenderer.drawString(References.localNameVC("vc.main.preview"), 115, 17, Color.BLACK.getRGB());
 		

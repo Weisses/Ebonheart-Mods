@@ -25,6 +25,12 @@ public class GuiCustomizeMenuFrameTier4Pg1 extends GuiCustomizeMenuFrameTierVC {
     	buttonList.clear();
     	Keyboard.enableRepeatEvents(true);
     	
+    	this.buttonList.add(GuiVC.buttonMM1);
+		this.buttonList.add(GuiVC.buttonMM2);
+		this.buttonList.add(GuiVC.buttonMM3);
+		this.buttonList.add(GuiVC.buttonMM4);
+		this.buttonList.add(GuiVC.buttonMM5);
+    	
     	this.buttonList.add(GuiVC.button501);
 		this.buttonList.add(GuiVC.button502);
 		//this.buttonList.add(GuiVC.button503);
@@ -44,6 +50,8 @@ public class GuiCustomizeMenuFrameTier4Pg1 extends GuiCustomizeMenuFrameTierVC {
 		this.buttonList.add(GuiVC.button52);
 		this.buttonList.add(GuiVC.button53);
 		this.buttonList.add(GuiVC.button54);
+		
+		GuiVC.buttonMM3.enabled = false;
     }
     
     @Override

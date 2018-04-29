@@ -2,9 +2,10 @@ package com.viesis.viescraft.client.gui.airship.customize.engine.sub;
 
 import org.lwjgl.input.Keyboard;
 
+import com.viesis.viescraft.api.CostsVC;
 import com.viesis.viescraft.api.GuiVC;
 import com.viesis.viescraft.api.References;
-import com.viesis.viescraft.client.gui.GuiButtonGeneral1VC;
+import com.viesis.viescraft.client.gui.buttons.GuiButtonGeneral1VC;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipCore;
 
 import net.minecraft.inventory.IInventory;
@@ -27,24 +28,32 @@ public class GuiCustomizeMenuEngineDisplaySymbolPg1 extends GuiCustomizeMenuEngi
     	buttonList.clear();
     	Keyboard.enableRepeatEvents(true);
     	
+    	this.buttonList.add(GuiVC.buttonMM1);
+		this.buttonList.add(GuiVC.buttonMM2);
+		this.buttonList.add(GuiVC.buttonMM3);
+		this.buttonList.add(GuiVC.buttonMM4);
+		this.buttonList.add(GuiVC.buttonMM5);
+    	
     	this.buttonList.add(GuiVC.button502);
 		//this.buttonList.add(GuiVC.button503);
 		this.buttonList.add(GuiVC.button505);
 		this.buttonList.add(GuiVC.button501);
 		
-		this.buttonList.add(GuiVC.button06);
-		this.buttonList.add(GuiVC.button07);
-		this.buttonList.add(GuiVC.button08);
-		this.buttonList.add(GuiVC.button09);
 		this.buttonList.add(GuiVC.button10);
 		this.buttonList.add(GuiVC.button11);
-
 		this.buttonList.add(GuiVC.button12);
 		this.buttonList.add(GuiVC.button13);
 		this.buttonList.add(GuiVC.button14);
 		this.buttonList.add(GuiVC.button15);
+		
 		this.buttonList.add(GuiVC.button16);
 		this.buttonList.add(GuiVC.button17);
+		this.buttonList.add(GuiVC.button18);
+		this.buttonList.add(GuiVC.button19);
+		this.buttonList.add(GuiVC.button20);
+		this.buttonList.add(GuiVC.button21);
+		
+		GuiVC.buttonMM3.enabled = false;
     }
     
     @Override
@@ -53,107 +62,115 @@ public class GuiCustomizeMenuEngineDisplaySymbolPg1 extends GuiCustomizeMenuEngi
     	super.drawGuiContainerBackgroundLayer(partialTicks, mouseX, mouseY);
     	
     	this.grayOutSelectedButton();
+    	
+		if(airship.getStoredRedstone() >= CostsVC.ENGINE_DISPLAY_SYMBOL_COST
+		&& this.metaInfo != this.airship.engineDisplayTypeVisual)
+		{
+			GuiVC.button501.enabled = true;
+		}
+		else
+		{
+			GuiVC.button501.enabled = false;
+		}
 	}
     
     private void grayOutSelectedButton()
     {
-    	/**
-    	if(this.airship.frameSkinTexture == 1)
+    	if(this.metaInfo == 10)
     	{
-    		GuiVC.buttonB01.enabled = false;
+    		GuiVC.button10.enabled = false;
     	}
     	else
     	{
-    		GuiVC.buttonB01.enabled = true;
+    		GuiVC.button10.enabled = true;
     	}
-    	if(this.airship.frameSkinTexture == 2)
+    	if(this.metaInfo == 11)
     	{
-    		GuiVC.buttonB02.enabled = false;
+    		GuiVC.button11.enabled = false;
     	}
     	else
     	{
-    		GuiVC.buttonB02.enabled = true;
+    		GuiVC.button11.enabled = true;
     	}
-    	if(this.airship.frameSkinTexture == 3)
+    	if(this.metaInfo == 12)
     	{
-    		GuiVC.buttonB03.enabled = false;
+    		GuiVC.button12.enabled = false;
     	}
     	else
     	{
-    		GuiVC.buttonB03.enabled = true;
+    		GuiVC.button12.enabled = true;
     	}
-    	if(this.airship.frameSkinTexture == 4)
+    	if(this.metaInfo == 13)
     	{
-    		GuiVC.buttonB04.enabled = false;
+    		GuiVC.button13.enabled = false;
     	}
     	else
     	{
-    		GuiVC.buttonB04.enabled = true;
+    		GuiVC.button13.enabled = true;
     	}
-    	if(this.airship.frameSkinTexture == 5)
+    	if(this.metaInfo == 14)
     	{
-    		GuiVC.buttonB05.enabled = false;
+    		GuiVC.button14.enabled = false;
     	}
     	else
     	{
-    		GuiVC.buttonB05.enabled = true;
+    		GuiVC.button14.enabled = true;
     	}
-    	if(this.airship.frameSkinTexture == 6)
+    	if(this.metaInfo == 15)
     	{
-    		GuiVC.buttonB06.enabled = false;
+    		GuiVC.button15.enabled = false;
     	}
     	else
     	{
-    		GuiVC.buttonB06.enabled = true;
+    		GuiVC.button15.enabled = true;
     	}
-    	if(this.airship.frameSkinTexture == 7)
+    	if(this.metaInfo == 16)
     	{
-    		GuiVC.buttonB07.enabled = false;
+    		GuiVC.button16.enabled = false;
     	}
     	else
     	{
-    		GuiVC.buttonB07.enabled = true;
+    		GuiVC.button16.enabled = true;
     	}
-    	if(this.airship.frameSkinTexture == 8)
+    	if(this.metaInfo == 17)
     	{
-    		GuiVC.buttonB08.enabled = false;
+    		GuiVC.button17.enabled = false;
     	}
     	else
     	{
-    		GuiVC.buttonB08.enabled = true;
+    		GuiVC.button17.enabled = true;
     	}
-    	if(this.airship.frameSkinTexture == 9)
+    	if(this.metaInfo == 18)
     	{
-    		GuiVC.buttonB09.enabled = false;
+    		GuiVC.button18.enabled = false;
     	}
     	else
     	{
-    		GuiVC.buttonB09.enabled = true;
+    		GuiVC.button18.enabled = true;
     	}
-    	if(this.airship.frameSkinTexture == 10)
+    	if(this.metaInfo == 19)
     	{
-    		GuiVC.buttonB10.enabled = false;
+    		GuiVC.button19.enabled = false;
     	}
     	else
     	{
-    		GuiVC.buttonB10.enabled = true;
+    		GuiVC.button19.enabled = true;
     	}
-    	if(this.airship.frameSkinTexture == 11)
+    	if(this.metaInfo == 20)
     	{
-    		GuiVC.buttonB11.enabled = false;
+    		GuiVC.button20.enabled = false;
     	}
     	else
     	{
-    		GuiVC.buttonB11.enabled = true;
+    		GuiVC.button20.enabled = true;
     	}
-    	if(this.airship.frameSkinTexture == 12)
+    	if(this.metaInfo == 21)
     	{
-    		GuiVC.buttonB12.enabled = false;
+    		GuiVC.button21.enabled = false;
     	}
     	else
     	{
-    		GuiVC.buttonB12.enabled = true;
+    		GuiVC.button21.enabled = true;
     	}
-    	*/
     }
 }

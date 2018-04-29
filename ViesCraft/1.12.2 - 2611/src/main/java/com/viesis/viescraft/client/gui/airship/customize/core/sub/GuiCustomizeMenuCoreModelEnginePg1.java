@@ -2,6 +2,7 @@ package com.viesis.viescraft.client.gui.airship.customize.core.sub;
 
 import org.lwjgl.input.Keyboard;
 
+import com.viesis.viescraft.api.CostsVC;
 import com.viesis.viescraft.api.GuiVC;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipCore;
@@ -32,6 +33,12 @@ public class GuiCustomizeMenuCoreModelEnginePg1 extends GuiCustomizeMenuCoreMode
     	buttonList.clear();
     	Keyboard.enableRepeatEvents(true);
     	
+    	this.buttonList.add(GuiVC.buttonMM1);
+		this.buttonList.add(GuiVC.buttonMM2);
+		this.buttonList.add(GuiVC.buttonMM3);
+		this.buttonList.add(GuiVC.buttonMM4);
+		this.buttonList.add(GuiVC.buttonMM5);
+		
 		this.buttonList.add(GuiVC.button501);
 		this.buttonList.add(GuiVC.button502);
 		//this.buttonList.add(GuiVC.button503);
@@ -41,8 +48,10 @@ public class GuiCustomizeMenuCoreModelEnginePg1 extends GuiCustomizeMenuCoreMode
 		this.buttonList.add(GuiVC.buttonB00);
 		this.buttonList.add(GuiVC.buttonB01);
 		this.buttonList.add(GuiVC.buttonB02);
-		this.buttonList.add(GuiVC.buttonB03);
-		this.buttonList.add(GuiVC.buttonB04);
+		//this.buttonList.add(GuiVC.buttonB03);
+		//this.buttonList.add(GuiVC.buttonB04);
+		
+		GuiVC.buttonMM3.enabled = false;
     }
     
     /**
@@ -51,6 +60,8 @@ public class GuiCustomizeMenuCoreModelEnginePg1 extends GuiCustomizeMenuCoreMode
 	@Override
     protected void actionPerformed(GuiButton parButton) 
     {
+		super.actionPerformed(parButton);
+		
 		if (parButton.id == 501)
 	    {
 			NetworkHandler.sendToServer(new MessageHelperGuiCustomizeMenuCoreModelEngine());
@@ -89,6 +100,16 @@ public class GuiCustomizeMenuCoreModelEnginePg1 extends GuiCustomizeMenuCoreMode
     	super.drawGuiContainerBackgroundLayer(partialTicks, mouseX, mouseY);
     	
     	this.grayOutSelectedButton();
+    	
+		if(airship.getStoredRedstone() >= CostsVC.CORE_MODEL_ENGINE_COST
+		&& this.metaInfo != this.airship.coreModelVisualEngine)
+		{
+			GuiVC.button501.enabled = true;
+		}
+		else
+		{
+			GuiVC.button501.enabled = false;
+		}
 	}
     
     private void grayOutSelectedButton()

@@ -10,7 +10,7 @@ import net.minecraft.util.ResourceLocation;
 
 public class GuiButtonModuleToggleVC extends GuiButton {
 	
-	protected static final ResourceLocation BUTTON_TEXTURES = new ResourceLocation(References.MOD_ID_COLON + "textures/gui/buttons_general.png");
+	protected static final ResourceLocation BUTTON_TEXTURES = new ResourceLocation(References.MOD_ID_COLON + "textures/gui/buttons_general1.png");
     protected int buttonLocationY;
     
 	public GuiButtonModuleToggleVC(int buttonId, int x, int y, int widthIn, int heightIn, String buttonText, int buttonLocationYIn) 

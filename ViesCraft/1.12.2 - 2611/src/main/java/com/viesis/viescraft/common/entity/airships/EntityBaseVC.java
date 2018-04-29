@@ -96,7 +96,12 @@ public class EntityBaseVC extends Entity {
     		int frameSkinColorRedIn, int frameSkinColorGreenIn, int frameSkinColorBlueIn,
     		
     		int engineParticleVisualIn, 
-    		int engineDisplayTypeVisualIn, int engineDisplayIDVisualIn,
+    		int engineDisplayTypeVisualIn, 
+    		int engineDisplayItemStackVisualIn, int engineDisplayItemStackMetaVisualIn,
+    		int engineDisplayHeadVisualIn, 
+    		int engineDisplaySupporterHeadVisualIn, 
+    		int engineDisplayHolidayVisualIn, 
+
     		
     		int balloonPatternTextureIn, 
     		boolean balloonPatternTransparentIn, 

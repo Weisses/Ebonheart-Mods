@@ -31,7 +31,11 @@ public class EntityThrownAirship extends EntityThrownAirshipCore {
     		int frameSkinColorRedIn, int frameSkinColorGreenIn, int frameSkinColorBlueIn,
     		
     		int engineParticleVisualIn, 
-    		int engineDisplayTypeVisualIn, int engineDisplayIDVisualIn,
+    		int engineDisplayTypeVisualIn, 
+    		int engineDisplayItemStackVisualIn, int engineDisplayItemStackMetaVisualIn,
+    		int engineDisplayHeadVisualIn, 
+    		int engineDisplaySupporterHeadVisualIn, 
+    		int engineDisplayHolidayVisualIn, 
     		
     		int balloonPatternTextureIn, 
     		boolean balloonPatternTransparentIn, 
@@ -77,7 +81,11 @@ public class EntityThrownAirship extends EntityThrownAirshipCore {
         
         this.engineParticleVisual = engineParticleVisualIn;
         this.engineDisplayTypeVisual = engineDisplayTypeVisualIn;
-        this.engineDisplayIDVisual = engineDisplayIDVisualIn;
+        this.engineDisplayItemstackVisual = engineDisplayItemStackVisualIn;
+        this.engineDisplayItemstackMetaVisual = engineDisplayItemStackMetaVisualIn;
+        this.engineDisplayHeadVisual = engineDisplayHeadVisualIn;
+        this.engineDisplaySupporterHeadVisual = engineDisplaySupporterHeadVisualIn;
+        this.engineDisplayHolidayVisual = engineDisplayHolidayVisualIn;
         
         this.balloonPatternTexture = balloonPatternTextureIn;
         this.balloonPatternTransparent = balloonPatternTransparentIn;
@@ -132,7 +140,11 @@ public class EntityThrownAirship extends EntityThrownAirshipCore {
 		    		this.frameSkinColorRed, this.frameSkinColorGreen, this.frameSkinColorBlue, 
 		    		
 		    		this.engineParticleVisual, 
-		    		this.engineDisplayTypeVisual, this.engineDisplayIDVisual, 
+		    		this.engineDisplayTypeVisual, 
+		    		this.engineDisplayItemstackVisual, this.engineDisplayItemstackMetaVisual, 
+		    		this.engineDisplayHeadVisual, 
+		    		this.engineDisplaySupporterHeadVisual, 
+		    		this.engineDisplayHolidayVisual, 
 		    		
 		    		this.balloonPatternTexture, 
 		    		this.balloonPatternTransparent, 
