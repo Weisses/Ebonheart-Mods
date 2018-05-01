@@ -124,59 +124,6 @@ public class GuiCustomizeMenuEngineDisplayBlockItemVC extends GuiContainerVC {
 		this.drawRect(this.guiLeft + 50, this.guiTop - 16, this.guiLeft + 126, this.guiTop, Color.LIGHT_GRAY.getRGB());
 		this.drawRect(this.guiLeft + 52, this.guiTop - 14, this.guiLeft + 124, this.guiTop, Color.BLACK.getRGB());
 		
-        GlStateManager.pushMatrix();
-		{
-			GlStateManager.translate(this.guiLeft + 134, this.guiTop + 107, 0);
-	        GlStateManager.scale(0.5F, 0.5F, 0.5F);
-	        
-	        this.drawCenteredString(fontRenderer, this.stringToFlashGolden("Stored Redstone", 1, false, TextFormatting.RED), 0, 0, 111111);
-		}
-		GlStateManager.popMatrix();
-		
-		Color redstoneColor = Color.RED;
-		
-		if(this.airship.storedRedstone >= 500)
-		{
-			redstoneColor = Color.CYAN;
-		}
-		else if(this.airship.storedRedstone >= 375)
-		{
-			redstoneColor = Color.GREEN;
-		}
-		else if(this.airship.storedRedstone >= 250)
-		{
-			redstoneColor = Color.YELLOW;
-		}
-		else if(this.airship.storedRedstone >= 125)
-		{
-			redstoneColor = Color.ORANGE;
-		}
-		
-		GlStateManager.pushMatrix();
-		{
-			GlStateManager.translate(this.guiLeft + 127, this.guiTop + 113.5, 0);
-	        GlStateManager.scale(0.5F, 0.5F, 0.5F);
-	        
-	        this.drawCenteredString(fontRenderer, Integer.toString(this.airship.getStoredRedstone()), 0, 0, redstoneColor.getRGB());
-		}
-		GlStateManager.popMatrix();
-        GlStateManager.pushMatrix();
-		{
-			GlStateManager.translate(this.guiLeft + 134.25, this.guiTop + 113.5, 0);
-	        GlStateManager.scale(0.5F, 0.5F, 0.5F);
-	        
-	        this.drawCenteredString(fontRenderer, "/", 0, 0, redstoneColor.getRGB());
-		}
-		GlStateManager.popMatrix();
-		GlStateManager.pushMatrix();
-		{
-			GlStateManager.translate(this.guiLeft + 142, this.guiTop + 113.5, 0);
-	        GlStateManager.scale(0.5F, 0.5F, 0.5F);
-	        
-	        this.drawCenteredString(fontRenderer, Integer.toString(this.airship.getStoredRedstoneTotal()), 0, 0, redstoneColor.getRGB());
-		}
-		GlStateManager.popMatrix();
-		
 		if(!this.airship.inventory.getStackInSlot(18).isEmpty())
 		{
 			itemstackInfo = Item.getIdFromItem(this.airship.inventory.getStackInSlot(18).getItem());
@@ -222,6 +169,26 @@ public class GuiCustomizeMenuEngineDisplayBlockItemVC extends GuiContainerVC {
 		}
 	
 		this.drawRotatingItemStack(new ItemStack(Item.getItemById(itemstackInfo), 1, itemstackMetaInfo), this.guiLeft + 134, this.guiTop + 70);
+		
+        GlStateManager.pushMatrix();
+		{
+			GlStateManager.translate(this.guiLeft + 134, this.guiTop + 105.5, 0);
+	        GlStateManager.scale(0.5F, 0.5F, 0.5F);
+	        
+	        this.drawCenteredString(fontRenderer, this.stringToFlashGolden(References.localNameVC("vc.main.cost"), 1, false, TextFormatting.RED), 0, 0, 111111);
+		}
+		GlStateManager.popMatrix();
+		
+		Color redstoneColor = Color.WHITE;
+		
+        GlStateManager.pushMatrix();
+		{
+			GlStateManager.translate(this.guiLeft + 88.25 + 46, this.guiTop + 77+34, 0);
+	        GlStateManager.scale(0.75F, 0.75F, 0.75F);
+	        
+	        this.drawCenteredString(fontRenderer, Integer.toString(CostsVC.ENGINE_DISPLAY_SYMBOL_COST), 0, 0, redstoneColor.getRGB());
+		}
+		GlStateManager.popMatrix();
 	}
 	
 	@Override

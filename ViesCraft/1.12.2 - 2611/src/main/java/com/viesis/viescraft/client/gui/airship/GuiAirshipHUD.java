@@ -250,6 +250,19 @@ public class GuiAirshipHUD extends Gui {
 		{
 			this.drawTexturedModalRect(0, 0, 184, 248, 8, 8);
 		}
+		
+		if(metaIn == EnumsVC.ModuleType.BOMB_LESSER.getMetadata())
+		{
+			this.drawTexturedModalRect(0, 0, 192, 248, 8, 8);
+		}
+		if(metaIn == EnumsVC.ModuleType.BOMB_NORMAL.getMetadata())
+		{
+			this.drawTexturedModalRect(0, 0, 200, 248, 8, 8);
+		}
+		if(metaIn == EnumsVC.ModuleType.BOMB_GREATER.getMetadata())
+		{
+			this.drawTexturedModalRect(0, 0, 208, 248, 8, 8);
+		}
 	}
 	
 	private void renderHUDAltitude(int hudXIn, int hudYIn)

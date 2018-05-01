@@ -84,7 +84,10 @@ vc.main.patterns=Patterns
 vc.main.preview=Preview
 vc.main.available=Available
 vc.main.cost=Cost
+vc.main.costs=Costs
 vc.main.redstone=Redstone
+vc.main.engine.cost.1=if applied.
+vc.main.default=Costs nothing!
 
 vc.main.viescraft=Viescraft
 vc.main.viesdenburg=Viesdenburg
@@ -136,6 +139,8 @@ vc.gui.tt.balloon.2=maximum elevation.
 vc.gui.tt.maxed.1=This upgrade has
 vc.gui.tt.maxed.2=been maxed!
 vc.gui.tt.module1.1=Current module
+
+
 
 vc.item.tt.shifthelper.0=Hold [Shift] for more info.
 

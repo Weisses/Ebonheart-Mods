@@ -84,6 +84,26 @@ public class GuiCustomizeMenuCoreModelVC extends GuiContainerVC {
 		this.drawRect(this.guiLeft + 52, this.guiTop - 14, this.guiLeft + 124, this.guiTop, Color.BLACK.getRGB());
 		
         this.drawEntityOnScreen(this.guiLeft + 135, this.guiTop + 110-18, 13, this.airship);
+        
+        GlStateManager.pushMatrix();
+		{
+			GlStateManager.translate(this.guiLeft + 134, this.guiTop + 105.5, 0);
+	        GlStateManager.scale(0.5F, 0.5F, 0.5F);
+	        
+	        this.drawCenteredString(fontRenderer, this.stringToFlashGolden(References.localNameVC("vc.main.cost"), 1, false, TextFormatting.RED), 0, 0, 111111);
+		}
+		GlStateManager.popMatrix();
+		
+		Color redstoneColor = Color.WHITE;
+		
+        GlStateManager.pushMatrix();
+		{
+			GlStateManager.translate(this.guiLeft + 88.25 + 46, this.guiTop + 77+34, 0);
+	        GlStateManager.scale(0.75F, 0.75F, 0.75F);
+	        
+	        this.drawCenteredString(fontRenderer, Integer.toString(CostsVC.CORE_MODEL_FRAME_COST), 0, 0, redstoneColor.getRGB());
+		}
+		GlStateManager.popMatrix();
 	}
 	
 	@Override
@@ -100,9 +120,9 @@ public class GuiCustomizeMenuCoreModelVC extends GuiContainerVC {
 		{
 			List<String> text = new ArrayList<String>();
 			
-			text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("Costs " + CostsVC.FRAME_SKIN_TEXTURE_COST + " Redstone"));
-			//text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.core.2"));
-			//text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.core.3"));
+			text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.main.costs")
+					+ " " + CostsVC.CORE_MODEL_FRAME_COST 
+					+ " " + References.localNameVC("vc.main.engine.cost.1"));
 			
 			FontRenderer fontrenderer = this.getFontRenderer();
 			

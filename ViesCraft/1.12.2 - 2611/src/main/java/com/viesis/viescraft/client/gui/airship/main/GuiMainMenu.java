@@ -505,7 +505,7 @@ public class GuiMainMenu extends GuiContainerVC {
 				text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.core.1"));
 				text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.core.2"));
 				text.add(TextFormatting.LIGHT_PURPLE + "");
-				text.add(TextFormatting.WHITE + References.localNameVC("vc.gui.tt.basebonus") + ": " + TextFormatting.GREEN + this.airship.storedRedstoneTotal);
+				text.add(TextFormatting.WHITE + References.localNameVC("vc.gui.tt.basebonus") + ": " + TextFormatting.GREEN + EnumsVC.MainTierCore.byId(this.airship.mainTierCore).getStoredRedstone());
 				
 				FontRenderer fontrenderer = this.getFontRenderer();
 				

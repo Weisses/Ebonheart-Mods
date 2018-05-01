@@ -97,8 +97,7 @@ public class GuiUpgradeMenu extends GuiContainerVC {
 			{
 				this.metaInfo = this.airship.inventory.getStackInSlot(2).getMetadata();
 				
-				if(this.airship.getMainTierCore() > this.airship.getMainTierFrame()
-				&& this.metaInfo > this.airship.getMainTierFrame()
+				if(this.metaInfo > this.airship.getMainTierFrame()
 				&& this.metaInfo == (this.airship.getMainTierFrame() + 1))
 				{
 					NetworkHandler.sendToServer(new MessageHelperGuiUpgradeFrameVC());
@@ -113,8 +112,7 @@ public class GuiUpgradeMenu extends GuiContainerVC {
 			{
 				this.metaInfo = this.airship.inventory.getStackInSlot(3).getMetadata();
 				
-				if(this.airship.getMainTierCore() > this.airship.getMainTierEngine()
-				&& this.metaInfo > this.airship.getMainTierEngine()
+				if(this.metaInfo > this.airship.getMainTierEngine()
 				&& this.metaInfo == (this.airship.getMainTierEngine() + 1))
 				{
 					NetworkHandler.sendToServer(new MessageHelperGuiUpgradeEngineVC());
@@ -129,8 +127,7 @@ public class GuiUpgradeMenu extends GuiContainerVC {
 			{
 				this.metaInfo = this.airship.inventory.getStackInSlot(4).getMetadata();
 				
-				if(this.airship.getMainTierCore() > this.airship.getMainTierBalloon()
-				&& this.metaInfo > this.airship.getMainTierBalloon()
+				if(this.metaInfo > this.airship.getMainTierBalloon()
 				&& this.metaInfo == (this.airship.getMainTierBalloon() + 1))
 				{
 					NetworkHandler.sendToServer(new MessageHelperGuiUpgradeBalloonVC());
@@ -219,8 +216,7 @@ public class GuiUpgradeMenu extends GuiContainerVC {
 		{
 			this.metaInfo = this.airship.inventory.getStackInSlot(2).getMetadata();
 			
-			if(this.airship.getMainTierCore() > this.airship.getMainTierFrame()
-			&& this.metaInfo > this.airship.getMainTierFrame()
+			if(this.metaInfo > this.airship.getMainTierFrame()
 			&& this.metaInfo == (this.airship.getMainTierFrame() + 1))
 			{
 				GuiVC.buttonC2.enabled = true;
@@ -232,8 +228,7 @@ public class GuiUpgradeMenu extends GuiContainerVC {
 		{
 			this.metaInfo = this.airship.inventory.getStackInSlot(3).getMetadata();
 			
-			if(this.airship.getMainTierCore() > this.airship.getMainTierEngine()
-			&& this.metaInfo > this.airship.getMainTierEngine()
+			if(this.metaInfo > this.airship.getMainTierEngine()
 			&& this.metaInfo == (this.airship.getMainTierEngine() + 1))
 			{
 				GuiVC.buttonC3.enabled = true;
@@ -245,8 +240,7 @@ public class GuiUpgradeMenu extends GuiContainerVC {
 		{
 			this.metaInfo = this.airship.inventory.getStackInSlot(4).getMetadata();
 			
-			if(this.airship.getMainTierCore() > this.airship.getMainTierBalloon()
-			&& this.metaInfo > this.airship.getMainTierBalloon()
+			if(this.metaInfo > this.airship.getMainTierBalloon()
 			&& this.metaInfo == (this.airship.getMainTierBalloon() + 1))
 			{
 				GuiVC.buttonC4.enabled = true;
@@ -377,7 +371,7 @@ public class GuiUpgradeMenu extends GuiContainerVC {
 			text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.core.1"));
 			text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.core.2"));
 			text.add(TextFormatting.LIGHT_PURPLE + "");
-			text.add(TextFormatting.WHITE + References.localNameVC("vc.gui.tt.basebonus") + ": " + TextFormatting.GREEN + this.airship.getStoredRedstoneTotal());
+			text.add(TextFormatting.WHITE + References.localNameVC("vc.gui.tt.basebonus") + ": " + TextFormatting.GREEN + EnumsVC.MainTierCore.byId(this.airship.mainTierCore).getStoredRedstone());
 			
 			FontRenderer fontrenderer = this.getFontRenderer();
 			
@@ -512,7 +506,7 @@ public class GuiUpgradeMenu extends GuiContainerVC {
 			text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.balloon.1"));
 			text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.gui.tt.balloon.2"));
 			text.add(TextFormatting.LIGHT_PURPLE + "");
-			text.add(TextFormatting.WHITE + References.localNameVC("vc.gui.tt.basebonus") + ": " + TextFormatting.GREEN + (EnumsVC.MainTierBalloon.byId(this.airship.mainTierCore).getMaxAltitude()));
+			text.add(TextFormatting.WHITE + References.localNameVC("vc.gui.tt.basebonus") + ": " + TextFormatting.GREEN + (EnumsVC.MainTierBalloon.byId(this.airship.mainTierBalloon).getMaxAltitude()));
 			
 			FontRenderer fontrenderer = this.getFontRenderer();
 			

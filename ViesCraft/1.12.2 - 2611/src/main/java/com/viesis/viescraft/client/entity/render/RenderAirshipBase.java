@@ -1,5 +1,7 @@
 package com.viesis.viescraft.client.entity.render;
 
+import org.lwjgl.input.Keyboard;
+
 import com.viesis.viescraft.api.EnumsVC;
 import com.viesis.viescraft.api.ItemsVC;
 import com.viesis.viescraft.api.References;
@@ -38,10 +40,12 @@ import com.viesis.viescraft.client.entity.model.head.ModelSpiderHead;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipCore;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelDragonHead;
 import net.minecraft.client.model.ModelHumanoidHead;
 import net.minecraft.client.model.ModelSkeletonHead;
+import net.minecraft.client.renderer.EntityRenderer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms.TransformType;
 import net.minecraft.client.renderer.entity.Render;
@@ -51,6 +55,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -1237,5 +1242,33 @@ public class RenderAirshipBase extends Render<EntityAirshipCore> {
         this.getCurrentModelBalloonF(entity);
         this.getCurrentModelBalloonDS(entity);
         this.getCurrentModelBalloonB(entity);
+    }
+    
+    protected TextFormatting getPrimaryLabelColor(int stack)
+	{
+		TextFormatting stringColorLabel;
+		
+		switch(stack)
+		{
+			case 0:
+				return stringColorLabel = TextFormatting.GRAY;
+			case 1:
+				return stringColorLabel = TextFormatting.WHITE;
+			case 2:
+				return stringColorLabel = TextFormatting.YELLOW;
+			case 3:
+				return stringColorLabel = TextFormatting.AQUA;
+			case 4:
+				return stringColorLabel = TextFormatting.LIGHT_PURPLE;
+			case 5:
+				return stringColorLabel = TextFormatting.RED;
+			default:
+				return stringColorLabel = TextFormatting.GRAY;
+		}
+	}
+    
+    protected FontRenderer getFontRenderer()
+    {
+        return Minecraft.getMinecraft().fontRenderer;
     }
 }

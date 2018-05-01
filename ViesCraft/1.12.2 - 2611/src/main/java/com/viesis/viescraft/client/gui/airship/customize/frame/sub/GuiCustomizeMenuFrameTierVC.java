@@ -30,7 +30,7 @@ import net.minecraft.util.text.TextFormatting;
 
 public class GuiCustomizeMenuFrameTierVC extends GuiContainerVC {
 	
-	private ResourceLocation TEXTURE = new ResourceLocation(References.MOD_ID + ":" + "textures/gui/container_gui_customize_menu_3.png");
+	private final ResourceLocation TEXTURE = new ResourceLocation(References.MOD_ID + ":" + "textures/gui/container_gui_customize_menu_3.png");
 	
 	public int startPlaceLeft = 12;
 	public int startPlaceTop = 22;
@@ -141,8 +141,6 @@ public class GuiCustomizeMenuFrameTierVC extends GuiContainerVC {
 		GuiVC.button64 = new GuiButtonGeneral1VC(64, this.guiLeft + startPlaceLeft, this.guiTop + startPlaceTop + (14 * 9), 76, 14, References.localNameVC("vc.enum.visualframe.64"), 0);
 		GuiVC.button65 = new GuiButtonGeneral1VC(65, this.guiLeft + startPlaceLeft, this.guiTop + startPlaceTop + (14 * 10), 76, 14, References.localNameVC("vc.enum.visualframe.65"), 0);
 		GuiVC.button66 = new GuiButtonGeneral1VC(66, this.guiLeft + startPlaceLeft, this.guiTop + startPlaceTop + (14 * 11), 76, 14, References.localNameVC("vc.enum.visualframe.66"), 0);
-    	
-		GuiVC.buttonMM3.enabled = false;
     }
     
     /**
@@ -218,6 +216,26 @@ public class GuiCustomizeMenuFrameTierVC extends GuiContainerVC {
 		{
 			GuiVC.button501.enabled = false;
 		}
+		
+        GlStateManager.pushMatrix();
+		{
+			GlStateManager.translate(this.guiLeft + 134, this.guiTop + 105.5, 0);
+	        GlStateManager.scale(0.5F, 0.5F, 0.5F);
+	        
+	        this.drawCenteredString(fontRenderer, this.stringToFlashGolden(References.localNameVC("vc.main.cost"), 1, false, TextFormatting.RED), 0, 0, 111111);
+		}
+		GlStateManager.popMatrix();
+		
+		Color redstoneColor = Color.WHITE;
+		
+        GlStateManager.pushMatrix();
+		{
+			GlStateManager.translate(this.guiLeft + 88.25 + 46, this.guiTop + 77+34, 0);
+	        GlStateManager.scale(0.75F, 0.75F, 0.75F);
+	        
+	        this.drawCenteredString(fontRenderer, Integer.toString(CostsVC.FRAME_SKIN_TEXTURE_COST), 0, 0, redstoneColor.getRGB());
+		}
+		GlStateManager.popMatrix();
 	}
 	
 	@Override

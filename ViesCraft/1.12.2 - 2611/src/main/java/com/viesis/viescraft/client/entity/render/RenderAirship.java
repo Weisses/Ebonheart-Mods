@@ -10,13 +10,18 @@ import com.viesis.viescraft.client.InitParticlesVCRender;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipCore;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.renderer.EntityRenderer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms.TransformType;
 import net.minecraft.client.renderer.entity.RenderManager;
+import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
+import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -78,7 +83,94 @@ public class RenderAirship extends RenderAirshipBase {
 			}
         }
         
+        
+        
+        if(entity.isBeingRidden())
+        {
+        	
+        }
+        else
+        {
+        	//Render airship name
+        	if(entity.getName() != null)
+        	{
+        		GlStateManager.pushMatrix();
+	    		{
+	    			GlStateManager.rotate(180, 1, 0, 0);
+	    	        
+	    			EntityRenderer.drawNameplate(this.getFontRenderer(), this.getPrimaryLabelColor(entity.getMainTierCore()) + "" + TextFormatting.BOLD + "" + entity.getCustomName(), 0F, 0.8875F, 0F, 0, Minecraft.getMinecraft().player.getRotationYawHead(), 0F, false, false);
+	    		}
+	    		GlStateManager.popMatrix();
+        	}
+        	
+        	
+    		if(entity.getModuleActiveSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_LESSER.getMetadata()
+			|| entity.getModuleActiveSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_NORMAL.getMetadata()
+			|| entity.getModuleActiveSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_GREATER.getMetadata())
+    		{
+    			
+    		}
+    		else
+    		{
+				//Render airship fuel bar
+	        	GlStateManager.pushMatrix();
+	    		{
+	    			int percentTen = entity.getStoredFuelTotal() / 10;
+	        		
+	    			GlStateManager.scale(0.5F, 0.5F, 0.5F);
+	    			GlStateManager.rotate(180, 1, 0, 0);
+	    			
+	    			if(entity.getStoredFuel() == 0)
+	    			{
+	    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.DARK_RED + "          " + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, Minecraft.getMinecraft().player.getRotationYawHead(), 0F, false, false);
+	    			}
+	    			else if(entity.getStoredFuel() >= (percentTen * 9))
+	    			{
+	    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.AQUA + "||||||||||||||||||||" + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, Minecraft.getMinecraft().player.getRotationYawHead(), 0F, false, false);
+	    			}
+	    			else if(entity.getStoredFuel() >= (percentTen * 8))
+	    			{
+	    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.AQUA + "|||||||||||||||||| " + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, Minecraft.getMinecraft().player.getRotationYawHead(), 0F, false, false);
+	    			}
+	    			else if(entity.getStoredFuel() >= (percentTen * 7))
+	    			{
+	    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.GREEN + "||||||||||||||||  " + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, Minecraft.getMinecraft().player.getRotationYawHead(), 0F, false, false);
+	    			}
+	    			else if(entity.getStoredFuel() >= (percentTen * 6))
+	    			{
+	    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.GREEN + "||||||||||||||   " + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, Minecraft.getMinecraft().player.getRotationYawHead(), 0F, false, false);
+	    			}
+	    			else if(entity.getStoredFuel() >= (percentTen * 5))
+	    			{
+	    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.YELLOW + "||||||||||||    " + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, Minecraft.getMinecraft().player.getRotationYawHead(), 0F, false, false);
+	    			}
+	    			else if(entity.getStoredFuel() >= (percentTen * 4))
+	    			{
+	    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.YELLOW + "||||||||||     " + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, Minecraft.getMinecraft().player.getRotationYawHead(), 0F, false, false);
+	    			}
+	    			else if(entity.getStoredFuel() >= (percentTen * 3))
+	    			{
+	    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.GOLD + "||||||||      " + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, Minecraft.getMinecraft().player.getRotationYawHead(), 0F, false, false);
+	    			}
+	    			else if(entity.getStoredFuel() >= (percentTen * 2))
+	    			{
+	    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.GOLD + "||||||       " + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, Minecraft.getMinecraft().player.getRotationYawHead(), 0F, false, false);
+	    			}
+	    			else if(entity.getStoredFuel() >= (percentTen * 1))
+	    			{
+	    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.DARK_RED + "||||        " + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, Minecraft.getMinecraft().player.getRotationYawHead(), 0F, false, false);
+	    			}
+	    			else if(entity.getStoredFuel() >= (percentTen * 0) + 1)
+	    			{
+	    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.DARK_RED + "||         " + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, Minecraft.getMinecraft().player.getRotationYawHead(), 0F, false, false);
+	    			}
+	    		}
+	    		GlStateManager.popMatrix();
+    		}
+    		
+        }
         GlStateManager.popMatrix();
+        
         super.doRender(entity, x, y, z, entityYaw, partialTicks);
     }
     

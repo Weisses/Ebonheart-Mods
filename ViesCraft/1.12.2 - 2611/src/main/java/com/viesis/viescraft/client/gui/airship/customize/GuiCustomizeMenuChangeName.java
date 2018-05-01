@@ -10,6 +10,8 @@ import org.lwjgl.input.Keyboard;
 import com.viesis.viescraft.api.CostsVC;
 import com.viesis.viescraft.api.GuiVC;
 import com.viesis.viescraft.api.References;
+import com.viesis.viescraft.api.util.Keybinds;
+import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.client.gui.GuiContainerVC;
 import com.viesis.viescraft.client.gui.buttons.GuiButtonGeneral1VC;
 import com.viesis.viescraft.client.gui.buttons.GuiButtonGeneral2VC;
@@ -52,13 +54,13 @@ public class GuiCustomizeMenuChangeName extends GuiContainerVC {
     	buttonList.clear();
     	Keyboard.enableRepeatEvents(true);
     	
-    	this.textName = new GuiTextField(11, this.fontRenderer, this.guiLeft + 39, this.guiTop + 33+4, 98, 14);
-        this.textName.setMaxStringLength(15);
+    	this.textName = new GuiTextField(11, this.fontRenderer, this.guiLeft + 37, this.guiTop + 33+4, 102, 14);
+        this.textName.setMaxStringLength(16);
         this.textName.setText(String.valueOf(this.textNameStorage));
     	this.textName.setFocused(false);
     	
-    	GuiVC.buttonA12 = new GuiButtonGeneral1VC(12, this.guiLeft + 30, this.guiTop + 58+15, 42, 14, "Apply", 1);
-		GuiVC.buttonA13 = new GuiButtonGeneral1VC(13, this.guiLeft + 104, this.guiTop + 58+15, 42, 14, "Back", 2);
+    	GuiVC.buttonA12 = new GuiButtonGeneral1VC(12, this.guiLeft + 22, this.guiTop + 58+12, 42, 14, "Apply", 1);
+		GuiVC.buttonA13 = new GuiButtonGeneral1VC(13, this.guiLeft + 112, this.guiTop + 58+12, 42, 14, "Back", 2);
 		
 		GuiVC.buttonA20 = new GuiButtonGeneral2VC(20, this.guiLeft + 148, this.guiTop + 33+4, 14, 14, "", 1);
 		
@@ -154,40 +156,29 @@ public class GuiCustomizeMenuChangeName extends GuiContainerVC {
 			GuiVC.buttonA20.enabled = false;
 		}
         
+        if(!this.airship.customName.equals(this.textName.getText()))
+        {
+        	GuiVC.buttonA12.enabled = true;
+        }
+		else
+		{
+			GuiVC.buttonA12.enabled = false;
+		}
+        
         GlStateManager.pushMatrix();
 		{
-			GlStateManager.translate(this.guiLeft + 88, this.guiTop + 74, 0);
+			GlStateManager.translate(this.guiLeft + 88, this.guiTop + 72, 0);
 	        GlStateManager.scale(0.5F, 0.5F, 0.5F);
 	        
 	        this.drawCenteredString(fontRenderer, this.stringToFlashGolden(References.localNameVC("vc.main.cost"), 1, false, TextFormatting.RED), 0, 0, 111111);
 		}
 		GlStateManager.popMatrix();
-		
-		Color redstoneColor = Color.WHITE;
-		
-		/**if(this.airship.storedRedstone >= 500)
+		GlStateManager.pushMatrix();
 		{
-			redstoneColor = Color.CYAN;
-		}
-		else if(this.airship.storedRedstone >= 375)
-		{
-			redstoneColor = Color.GREEN;
-		}
-		else if(this.airship.storedRedstone >= 250)
-		{
-			redstoneColor = Color.YELLOW;
-		}
-		else if(this.airship.storedRedstone >= 125)
-		{
-			redstoneColor = Color.ORANGE;
-		}*/
-		
-        GlStateManager.pushMatrix();
-		{
-			GlStateManager.translate(this.guiLeft + 88.25, this.guiTop + 81, 0);
+			GlStateManager.translate(this.guiLeft + 88.25, this.guiTop + 77, 0);
 	        GlStateManager.scale(0.75F, 0.75F, 0.75F);
 	        
-	        this.drawCenteredString(fontRenderer, Integer.toString(CostsVC.RENAME_COST), 0, 0, redstoneColor.getRGB());
+	        this.drawCenteredString(fontRenderer, Integer.toString(CostsVC.RENAME_COST), 0, 0, Color.WHITE.getRGB());
 		}
 		GlStateManager.popMatrix();
 	}
@@ -208,11 +199,12 @@ public class GuiCustomizeMenuChangeName extends GuiContainerVC {
 	        this.drawTexturedModalRect(0, 0, 176, 0, 16, 16);
 		}
 		GlStateManager.popMatrix();
+		
 		this.fontRenderer.drawString("Customize Menu", 50, -10, Color.CYAN.getRGB());
 		
 		GlStateManager.pushMatrix();
 		{
-			GlStateManager.translate(88.5, 14, 0);
+			GlStateManager.translate(88.5, 14.5, 0);
 	        GlStateManager.scale(1.25F, 1.25F, 1.25F);
 	        
 			this.drawCenteredString(fontRenderer, this.airship.getCustomName(), 0, 0, 11111111);
@@ -225,14 +217,33 @@ public class GuiCustomizeMenuChangeName extends GuiContainerVC {
 		{
 			List<String> text = new ArrayList<String>();
 			
-			text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("Renaming airships costs"));
-			text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("10 Redstone."));
+			text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.main.costs")+ " " + CostsVC.RENAME_COST + " " + References.localNameVC("vc.main.engine.cost.1"));
 			
 			FontRenderer fontrenderer = this.getFontRenderer();
 			
 			GlStateManager.pushMatrix();
 			{
-				GlStateManager.translate(mouseX - this.guiLeft - 34, mouseY - this.guiTop - 13, 0);
+				GlStateManager.translate(mouseX - this.guiLeft - 30, mouseY - this.guiTop - 8, 0);
+				GlStateManager.scale(0.5, 0.5, 0.5);
+				
+				this.drawHoveringText(text, 0, 0);
+			}
+			GlStateManager.popMatrix();
+		}
+		
+		//Logic for mouse-over Default tooltip
+		if(mouseX >= this.guiLeft + 148 && mouseX <= this.guiLeft + 161
+		&& mouseY >= this.guiTop + 37 && mouseY <= this.guiTop + 50)
+		{
+			List<String> text = new ArrayList<String>();
+			
+			text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.main.default"));
+			
+			FontRenderer fontrenderer = this.getFontRenderer();
+			
+			GlStateManager.pushMatrix();
+			{
+				GlStateManager.translate(mouseX - this.guiLeft - 23, mouseY - this.guiTop - 8, 0);
 				GlStateManager.scale(0.5, 0.5, 0.5);
 				
 				this.drawHoveringText(text, 0, 0);
@@ -244,7 +255,7 @@ public class GuiCustomizeMenuChangeName extends GuiContainerVC {
 	@Override
 	public void updateScreen()
     {
-        super.updateScreen();
+		super.updateScreen();
         
         this.textName.updateCursorCounter();
     }
@@ -252,8 +263,14 @@ public class GuiCustomizeMenuChangeName extends GuiContainerVC {
 	@Override
 	protected void mouseClicked(int x, int y, int btn) throws IOException 
 	{
-        super.mouseClicked(x, y, btn);
+		super.mouseClicked(x, y, btn);
         
         this.textName.mouseClicked(x, y, btn);
+    }
+	
+	@Override
+	protected void keyTyped(char typedChar, int keyCode) throws IOException
+    {
+		this.textName.textboxKeyTyped(typedChar, keyCode);
     }
 }

@@ -197,7 +197,7 @@ public class GuiCustomizeMenu extends GuiContainerVC {
 		
 		GlStateManager.pushMatrix();
 		{
-			GlStateManager.translate(49, 26, 0);
+			GlStateManager.translate(49.5, 26, 0);
 	        GlStateManager.scale(0.75F, 0.75F, 0.75F);
 	        
 			this.drawCenteredString(fontRenderer, this.airship.getCustomName(), 0, 0, 11111111);

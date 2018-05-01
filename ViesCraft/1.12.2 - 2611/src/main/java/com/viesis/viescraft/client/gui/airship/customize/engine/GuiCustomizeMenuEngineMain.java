@@ -65,22 +65,22 @@ public class GuiCustomizeMenuEngineMain extends GuiContainerVC {
 		GuiVC.buttonT4 = new GuiButtonGeneral1VC(15, this.guiLeft + 17, this.guiTop + startPlace - 4 + (15 * 3), 69, 14, References.localNameVC("vc.button.supporterheads"), 0);
 		
 		//Holidays
-		GuiVC.button11 = new GuiButtonGeneral2VC(111, this.guiLeft - 67, this.guiTop + startPlace - 4 + (14 * 0), 69, 14, this.stringToRainbow(References.localNameVC("vc.button.newyears"), false), 3);
-		GuiVC.button12 = new GuiButtonGeneral2VC(112, this.guiLeft - 67, this.guiTop + startPlace - 4 + (14 * 0), 69, 14, this.stringToRainbow(References.localNameVC("vc.button.valentinesday"), false), 3);
-		GuiVC.button13 = new GuiButtonGeneral2VC(113, this.guiLeft - 67, this.guiTop + startPlace - 4 + (14 * 0), 69, 14, this.stringToRainbow(References.localNameVC("vc.button.easter"), false), 3);
-		GuiVC.button14 = new GuiButtonGeneral2VC(114, this.guiLeft - 67, this.guiTop + startPlace - 4 + (14 * 0), 69, 14, this.stringToRainbow(References.localNameVC("vc.button.4thofjuly"), false), 3);
-		GuiVC.button15 = new GuiButtonGeneral2VC(115, this.guiLeft - 67, this.guiTop + startPlace - 4 + (14 * 0), 69, 14, this.stringToRainbow(References.localNameVC("vc.button.halloween"), false), 3);
-		GuiVC.button16 = new GuiButtonGeneral2VC(116, this.guiLeft - 67, this.guiTop + startPlace - 4 + (14 * 0), 69, 14, this.stringToRainbow(References.localNameVC("vc.button.thanksgiving"), false), 3);
-		GuiVC.button17 = new GuiButtonGeneral2VC(117, this.guiLeft - 67, this.guiTop + startPlace - 4 + (14 * 0), 69, 14, this.stringToRainbow(References.localNameVC("vc.button.christmas"), false), 3);
+		GuiVC.button11 = new GuiButtonGeneral2VC(111, this.guiLeft + 17, this.guiTop + startPlace - 4 + (15 * 4), 69, 14, this.stringToRainbow(References.localNameVC("vc.button.newyears"), false), 3);
+		GuiVC.button12 = new GuiButtonGeneral2VC(112, this.guiLeft + 17, this.guiTop + startPlace - 4 + (15 * 4), 69, 14, this.stringToRainbow(References.localNameVC("vc.button.valentinesday"), false), 3);
+		GuiVC.button13 = new GuiButtonGeneral2VC(113, this.guiLeft + 17, this.guiTop + startPlace - 4 + (15 * 4), 69, 14, this.stringToRainbow(References.localNameVC("vc.button.easter"), false), 3);
+		GuiVC.button14 = new GuiButtonGeneral2VC(114, this.guiLeft + 17, this.guiTop + startPlace - 4 + (15 * 4), 69, 14, this.stringToRainbow(References.localNameVC("vc.button.4thofjuly"), false), 3);
+		GuiVC.button15 = new GuiButtonGeneral2VC(115, this.guiLeft + 17, this.guiTop + startPlace - 4 + (15 * 4), 69, 14, this.stringToRainbow(References.localNameVC("vc.button.halloween"), false), 3);
+		GuiVC.button16 = new GuiButtonGeneral2VC(116, this.guiLeft + 17, this.guiTop + startPlace - 4 + (15 * 4), 69, 14, this.stringToRainbow(References.localNameVC("vc.button.thanksgiving"), false), 3);
+		GuiVC.button17 = new GuiButtonGeneral2VC(117, this.guiLeft + 17, this.guiTop + startPlace - 4 + (15 * 4), 69, 14, this.stringToRainbow(References.localNameVC("vc.button.christmas"), false), 3);
 		
 		//Creative
-		GuiVC.button01 = new GuiButtonGeneral2VC(101, this.guiLeft - 67, this.guiTop + startPlace - 4 + (14 * 0), 69, 14, this.stringToRainbow(References.localNameVC("vc.button.newyears"), false), 3);
-		GuiVC.button02 = new GuiButtonGeneral2VC(102, this.guiLeft - 67, this.guiTop + startPlace - 4 + (14 * 1), 69, 14, this.stringToRainbow(References.localNameVC("vc.button.valentinesday"), false), 3);
-		GuiVC.button03 = new GuiButtonGeneral2VC(103, this.guiLeft - 67, this.guiTop + startPlace - 4 + (14 * 2), 69, 14, this.stringToRainbow(References.localNameVC("vc.button.easter"), false), 3);
-		GuiVC.button04 = new GuiButtonGeneral2VC(104, this.guiLeft - 67, this.guiTop + startPlace - 4 + (14 * 3), 69, 14, this.stringToRainbow(References.localNameVC("vc.button.4thofjuly"), false), 3);
-		GuiVC.button05 = new GuiButtonGeneral2VC(105, this.guiLeft - 67, this.guiTop + startPlace - 4 + (14 * 4), 69, 14, this.stringToRainbow(References.localNameVC("vc.button.halloween"), false), 3);
-		GuiVC.button06 = new GuiButtonGeneral2VC(106, this.guiLeft - 67, this.guiTop + startPlace - 4 + (14 * 5), 69, 14, this.stringToRainbow(References.localNameVC("vc.button.thanksgiving"), false), 3);
-		GuiVC.button07 = new GuiButtonGeneral2VC(107, this.guiLeft - 67, this.guiTop + startPlace - 4 + (14 * 6), 69, 14, this.stringToRainbow(References.localNameVC("vc.button.christmas"), false), 3);
+		GuiVC.button01 = new GuiButtonGeneral2VC(101, this.guiLeft - 67-37, this.guiTop + startPlace - 5 + (14 * 0), 69, 14, this.stringToRainbow(References.localNameVC("vc.button.newyears"), false), 3);
+		GuiVC.button02 = new GuiButtonGeneral2VC(102, this.guiLeft - 67-37, this.guiTop + startPlace - 5 + (14 * 1), 69, 14, this.stringToRainbow(References.localNameVC("vc.button.valentinesday"), false), 3);
+		GuiVC.button03 = new GuiButtonGeneral2VC(103, this.guiLeft - 67-37, this.guiTop + startPlace - 5 + (14 * 2), 69, 14, this.stringToRainbow(References.localNameVC("vc.button.easter"), false), 3);
+		GuiVC.button04 = new GuiButtonGeneral2VC(104, this.guiLeft - 67-37, this.guiTop + startPlace - 5 + (14 * 3), 69, 14, this.stringToRainbow(References.localNameVC("vc.button.4thofjuly"), false), 3);
+		GuiVC.button05 = new GuiButtonGeneral2VC(105, this.guiLeft - 67-37, this.guiTop + startPlace - 5 + (14 * 4), 69, 14, this.stringToRainbow(References.localNameVC("vc.button.halloween"), false), 3);
+		GuiVC.button06 = new GuiButtonGeneral2VC(106, this.guiLeft - 67-37, this.guiTop + startPlace - 5 + (14 * 5), 69, 14, this.stringToRainbow(References.localNameVC("vc.button.thanksgiving"), false), 3);
+		GuiVC.button07 = new GuiButtonGeneral2VC(107, this.guiLeft - 67-37, this.guiTop + startPlace - 5 + (14 * 6), 69, 14, this.stringToRainbow(References.localNameVC("vc.button.christmas"), false), 3);
 		
 		GuiVC.buttonA16 = new GuiButtonGeneral1VC(16, this.guiLeft + 21, this.guiTop + 177, 60, 14, References.localNameVC("vc.button.particles"), 0);
 		
@@ -96,8 +96,6 @@ public class GuiCustomizeMenuEngineMain extends GuiContainerVC {
 		this.buttonList.add(GuiVC.buttonT2);
 		this.buttonList.add(GuiVC.buttonT3);
 		this.buttonList.add(GuiVC.buttonT4);
-		
-		//this.buttonList.add(GuiVC.buttonA16);
 		
 		GuiVC.buttonMM3.enabled = false;
 		

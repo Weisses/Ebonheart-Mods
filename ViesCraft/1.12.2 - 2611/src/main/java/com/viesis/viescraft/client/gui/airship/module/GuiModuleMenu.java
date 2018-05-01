@@ -1,12 +1,16 @@
 package com.viesis.viescraft.client.gui.airship.module;
 
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.lwjgl.input.Keyboard;
 
+import com.viesis.viescraft.api.CostsVC;
 import com.viesis.viescraft.api.EnumsVC;
 import com.viesis.viescraft.api.GuiVC;
 import com.viesis.viescraft.api.References;
+import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.client.gui.GuiContainerVC;
 import com.viesis.viescraft.client.gui.buttons.GuiButtonGeneral1VC;
 import com.viesis.viescraft.client.gui.buttons.GuiButtonGeneral2VC;
@@ -17,6 +21,7 @@ import com.viesis.viescraft.network.NetworkHandler;
 import com.viesis.viescraft.network.server.airship.module.MessageHelperGuiModuleLearn;
 import com.viesis.viescraft.network.server.airship.module.MessageHelperGuiModuleToggleSlot1;
 
+import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.inventory.IInventory;
@@ -245,64 +250,351 @@ public class GuiModuleMenu extends GuiContainerVC {
 			this.drawTexturedModalRect(this.guiLeft + 108, this.guiTop + 92, 176, 0, 18, 18);
 		}
 		
-		//If any Module installed
-		if(this.airship.getModuleActiveSlot1() > 0)
+		String nameIn = "";
+		String pros1 = "";
+		String pros2 = "";
+		String cons1 = "";
+		String cons2 = "";
+		
+		//Logic for mouse-over Altitude tooltip
+		if(mouseX >= this.guiLeft + 11 + (20 * 1) && mouseX <= this.guiLeft + 24 + (20 * 1)
+		&& mouseY >= this.guiTop + 11 + (20 * 0) && mouseY <= this.guiTop + 24 + (20 * 0))
 		{
-			String nameIn = EnumsVC.ModuleType.byId(this.airship.getModuleActiveSlot1()).getLocalizedName();
-			
-			//Module name
-			GlStateManager.pushMatrix();
+			if(this.airship.selectedModuleAltitude == 1)
 			{
-				GlStateManager.translate(this.guiLeft + 52, this.guiTop + 77, 0);
-				GlStateManager.scale(0.45, 0.45, 0.45);
-				
-				this.drawCenteredString(fontRenderer, TextFormatting.LIGHT_PURPLE + "" + TextFormatting.UNDERLINE + "" + TextFormatting.BOLD + nameIn, 0, 0, 0);
+				nameIn = EnumsVC.ModuleType.ALTITUDE_LESSER.getLocalizedName();
+				pros1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.ALTITUDE_LESSER.getMetadata() + ".pros1");
+				pros2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.ALTITUDE_LESSER.getMetadata() + ".pros2");
+				pros1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.ALTITUDE_LESSER.getMetadata() + ".pros1");
+				pros2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.ALTITUDE_LESSER.getMetadata() + ".pros2");
 			}
-			GlStateManager.popMatrix();
-			
-			//Pros1
-			GlStateManager.pushMatrix();
+			if(this.airship.selectedModuleAltitude == 2)
 			{
-				GlStateManager.translate(this.guiLeft + 52, this.guiTop + 88, 0);
-				GlStateManager.scale(0.4, 0.4, 0.4);
-				
-				this.drawCenteredString(fontRenderer, TextFormatting.GREEN + References.localNameVC("vc.item.tt.moduletype.#." + this.airship.getModuleActiveSlot1() + ".pros1"), 0, 0, 0);
+				nameIn = EnumsVC.ModuleType.ALTITUDE_NORMAL.getLocalizedName();
+				pros1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.ALTITUDE_NORMAL.getMetadata() + ".pros1");
+				pros2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.ALTITUDE_NORMAL.getMetadata() + ".pros2");
+				cons1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.ALTITUDE_NORMAL.getMetadata() + ".cons1");
+				cons2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.ALTITUDE_NORMAL.getMetadata() + ".cons2");
 			}
-			GlStateManager.popMatrix();
-			//Pros2
-			GlStateManager.pushMatrix();
+			if(this.airship.selectedModuleAltitude == 3)
 			{
-				GlStateManager.translate(this.guiLeft + 52, this.guiTop + 93, 0);
-				GlStateManager.scale(0.4, 0.4, 0.4);
-				
-				this.drawCenteredString(fontRenderer, TextFormatting.GREEN + References.localNameVC("vc.item.tt.moduletype.#." + this.airship.getModuleActiveSlot1() + ".pros2"), 0, 0, 0);
+				nameIn = EnumsVC.ModuleType.ALTITUDE_GREATER.getLocalizedName();
+				pros1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.ALTITUDE_GREATER.getMetadata() + ".pros1");
+				pros2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.ALTITUDE_GREATER.getMetadata() + ".pros2");
+				cons1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.ALTITUDE_GREATER.getMetadata() + ".cons1");
+				cons2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.ALTITUDE_GREATER.getMetadata() + ".cons2");
 			}
-			GlStateManager.popMatrix();
-			
-			//Cons1
-			GlStateManager.pushMatrix();
-			{
-				GlStateManager.translate(this.guiLeft + 52, this.guiTop + 103, 0);
-				GlStateManager.scale(0.4, 0.4, 0.4);
-				
-				this.drawCenteredString(fontRenderer, TextFormatting.RED + References.localNameVC("vc.item.tt.moduletype.#." + this.airship.getModuleActiveSlot1() + ".cons1"), 0, 0, 0);
-			}
-			GlStateManager.popMatrix();
-			//Cons2
-			GlStateManager.pushMatrix();
-			{
-				GlStateManager.translate(this.guiLeft + 52, this.guiTop + 108, 0);
-				GlStateManager.scale(0.4, 0.4, 0.4);
-				
-				this.drawCenteredString(fontRenderer, TextFormatting.RED + References.localNameVC("vc.item.tt.moduletype.#." + this.airship.getModuleActiveSlot1() + ".cons2"), 0, 0, 0);
-			}
-			GlStateManager.popMatrix();
 		}
+		
+		//Logic for mouse-over Speed tooltip
+		if(mouseX >= this.guiLeft + 11 + (20 * 2) && mouseX <= this.guiLeft + 24 + (20 * 2)
+		&& mouseY >= this.guiTop + 11 + (20 * 0) && mouseY <= this.guiTop + 24 + (20 * 0))
+		{
+			if(this.airship.selectedModuleSpeed == 1)
+			{
+				nameIn = EnumsVC.ModuleType.SPEED_LESSER.getLocalizedName();
+				pros1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.SPEED_LESSER.getMetadata() + ".pros1");
+				pros2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.SPEED_LESSER.getMetadata() + ".pros2");
+				pros1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.SPEED_LESSER.getMetadata() + ".pros1");
+				pros2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.SPEED_LESSER.getMetadata() + ".pros2");
+			}
+			if(this.airship.selectedModuleSpeed == 2)
+			{
+				nameIn = EnumsVC.ModuleType.SPEED_NORMAL.getLocalizedName();
+				pros1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.SPEED_NORMAL.getMetadata() + ".pros1");
+				pros2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.SPEED_NORMAL.getMetadata() + ".pros2");
+				cons1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.SPEED_NORMAL.getMetadata() + ".cons1");
+				cons2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.SPEED_NORMAL.getMetadata() + ".cons2");
+			}
+			if(this.airship.selectedModuleSpeed == 3)
+			{
+				nameIn = EnumsVC.ModuleType.SPEED_GREATER.getLocalizedName();
+				pros1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.SPEED_GREATER.getMetadata() + ".pros1");
+				pros2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.SPEED_GREATER.getMetadata() + ".pros2");
+				cons1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.SPEED_GREATER.getMetadata() + ".cons1");
+				cons2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.SPEED_GREATER.getMetadata() + ".cons2");
+			}
+		}
+		
+		//Logic for mouse-over Storage tooltip
+		if(mouseX >= this.guiLeft + 11 + (20 * 3) && mouseX <= this.guiLeft + 24 + (20 * 3)
+		&& mouseY >= this.guiTop + 11 + (20 * 0) && mouseY <= this.guiTop + 24 + (20 * 0))
+		{
+			if(this.airship.selectedModuleStorage == 1)
+			{
+				nameIn = EnumsVC.ModuleType.STORAGE_LESSER.getLocalizedName();
+				pros1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.STORAGE_LESSER.getMetadata() + ".pros1");
+				pros2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.STORAGE_LESSER.getMetadata() + ".pros2");
+				pros1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.STORAGE_LESSER.getMetadata() + ".pros1");
+				pros2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.STORAGE_LESSER.getMetadata() + ".pros2");
+			}
+			if(this.airship.selectedModuleStorage == 2)
+			{
+				nameIn = EnumsVC.ModuleType.STORAGE_NORMAL.getLocalizedName();
+				pros1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.STORAGE_NORMAL.getMetadata() + ".pros1");
+				pros2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.STORAGE_NORMAL.getMetadata() + ".pros2");
+				cons1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.STORAGE_NORMAL.getMetadata() + ".cons1");
+				cons2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.STORAGE_NORMAL.getMetadata() + ".cons2");
+			}
+			if(this.airship.selectedModuleStorage == 3)
+			{
+				nameIn = EnumsVC.ModuleType.STORAGE_GREATER.getLocalizedName();
+				pros1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.STORAGE_GREATER.getMetadata() + ".pros1");
+				pros2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.STORAGE_GREATER.getMetadata() + ".pros2");
+				cons1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.STORAGE_GREATER.getMetadata() + ".cons1");
+				cons2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.STORAGE_GREATER.getMetadata() + ".cons2");
+			}
+		}
+		
+		//Logic for mouse-over Fuel tooltip
+		if(mouseX >= this.guiLeft + 11 + (20 * 4) && mouseX <= this.guiLeft + 24 + (20 * 4)
+		&& mouseY >= this.guiTop + 11 + (20 * 0) && mouseY <= this.guiTop + 24 + (20 * 0))
+		{
+			if(this.airship.selectedModuleFuel == 1)
+			{
+				nameIn = EnumsVC.ModuleType.FUEL_LESSER.getLocalizedName();
+				pros1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.FUEL_LESSER.getMetadata() + ".pros1");
+				pros2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.FUEL_LESSER.getMetadata() + ".pros2");
+				pros1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.FUEL_LESSER.getMetadata() + ".pros1");
+				pros2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.FUEL_LESSER.getMetadata() + ".pros2");
+			}
+			if(this.airship.selectedModuleFuel == 2)
+			{
+				nameIn = EnumsVC.ModuleType.FUEL_NORMAL.getLocalizedName();
+				pros1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.FUEL_NORMAL.getMetadata() + ".pros1");
+				pros2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.FUEL_NORMAL.getMetadata() + ".pros2");
+				cons1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.FUEL_NORMAL.getMetadata() + ".cons1");
+				cons2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.FUEL_NORMAL.getMetadata() + ".cons2");
+			}
+			if(this.airship.selectedModuleFuel == 3)
+			{
+				nameIn = EnumsVC.ModuleType.FUEL_GREATER.getLocalizedName();
+				pros1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.FUEL_GREATER.getMetadata() + ".pros1");
+				pros2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.FUEL_GREATER.getMetadata() + ".pros2");
+				cons1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.FUEL_GREATER.getMetadata() + ".cons1");
+				cons2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.FUEL_GREATER.getMetadata() + ".cons2");
+			}
+		}
+		
+		//Logic for mouse-over Music tooltip
+		if(mouseX >= this.guiLeft + 11 + (20 * 5) && mouseX <= this.guiLeft + 24 + (20 * 5)
+		&& mouseY >= this.guiTop + 11 + (20 * 0) && mouseY <= this.guiTop + 24 + (20 * 0))
+		{
+			if(this.airship.selectedModuleMusic == 1)
+			{
+				nameIn = EnumsVC.ModuleType.MUSIC_LESSER.getLocalizedName();
+				pros1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.MUSIC_LESSER.getMetadata() + ".pros1");
+				pros2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.MUSIC_LESSER.getMetadata() + ".pros2");
+				pros1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.MUSIC_LESSER.getMetadata() + ".pros1");
+				pros2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.MUSIC_LESSER.getMetadata() + ".pros2");
+			}
+			if(this.airship.selectedModuleMusic == 2)
+			{
+				nameIn = EnumsVC.ModuleType.MUSIC_NORMAL.getLocalizedName();
+				pros1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.MUSIC_NORMAL.getMetadata() + ".pros1");
+				pros2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.MUSIC_NORMAL.getMetadata() + ".pros2");
+				cons1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.MUSIC_NORMAL.getMetadata() + ".cons1");
+				cons2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.MUSIC_NORMAL.getMetadata() + ".cons2");
+			}
+			if(this.airship.selectedModuleMusic == 3)
+			{
+				nameIn = EnumsVC.ModuleType.MUSIC_GREATER.getLocalizedName();
+				pros1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.MUSIC_GREATER.getMetadata() + ".pros1");
+				pros2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.MUSIC_GREATER.getMetadata() + ".pros2");
+				cons1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.MUSIC_GREATER.getMetadata() + ".cons1");
+				cons2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.MUSIC_GREATER.getMetadata() + ".cons2");
+			}
+		}
+		
+		//Logic for mouse-over Cruise tooltip
+		if(mouseX >= this.guiLeft + 11 + (20 * 6) && mouseX <= this.guiLeft + 24 + (20 * 6)
+		&& mouseY >= this.guiTop + 11 + (20 * 0) && mouseY <= this.guiTop + 24 + (20 * 0))
+		{
+			if(this.airship.selectedModuleCruise == 1)
+			{
+				nameIn = EnumsVC.ModuleType.CRUISE_LESSER.getLocalizedName();
+				pros1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.CRUISE_LESSER.getMetadata() + ".pros1");
+				pros2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.CRUISE_LESSER.getMetadata() + ".pros2");
+				pros1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.CRUISE_LESSER.getMetadata() + ".pros1");
+				pros2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.CRUISE_LESSER.getMetadata() + ".pros2");
+			}
+			if(this.airship.selectedModuleCruise == 2)
+			{
+				nameIn = EnumsVC.ModuleType.CRUISE_NORMAL.getLocalizedName();
+				pros1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.CRUISE_NORMAL.getMetadata() + ".pros1");
+				pros2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.CRUISE_NORMAL.getMetadata() + ".pros2");
+				cons1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.CRUISE_NORMAL.getMetadata() + ".cons1");
+				cons2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.CRUISE_NORMAL.getMetadata() + ".cons2");
+			}
+			if(this.airship.selectedModuleCruise == 3)
+			{
+				nameIn = EnumsVC.ModuleType.CRUISE_GREATER.getLocalizedName();
+				pros1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.CRUISE_GREATER.getMetadata() + ".pros1");
+				pros2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.CRUISE_GREATER.getMetadata() + ".pros2");
+				cons1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.CRUISE_GREATER.getMetadata() + ".cons1");
+				cons2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.CRUISE_GREATER.getMetadata() + ".cons2");
+			}
+		}
+		
+		//Logic for mouse-over Water tooltip
+		if(mouseX >= this.guiLeft + 11 + (20 * 7) && mouseX <= this.guiLeft + 24 + (20 * 7)
+		&& mouseY >= this.guiTop + 11 + (20 * 0) && mouseY <= this.guiTop + 24 + (20 * 0))
+		{
+			if(this.airship.selectedModuleWater == 1)
+			{
+				nameIn = EnumsVC.ModuleType.WATER_LESSER.getLocalizedName();
+				pros1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.WATER_LESSER.getMetadata() + ".pros1");
+				pros2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.WATER_LESSER.getMetadata() + ".pros2");
+				pros1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.WATER_LESSER.getMetadata() + ".pros1");
+				pros2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.WATER_LESSER.getMetadata() + ".pros2");
+			}
+			if(this.airship.selectedModuleWater == 2)
+			{
+				nameIn = EnumsVC.ModuleType.WATER_NORMAL.getLocalizedName();
+				pros1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.WATER_NORMAL.getMetadata() + ".pros1");
+				pros2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.WATER_NORMAL.getMetadata() + ".pros2");
+				cons1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.WATER_NORMAL.getMetadata() + ".cons1");
+				cons2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.WATER_NORMAL.getMetadata() + ".cons2");
+			}
+			if(this.airship.selectedModuleWater == 3)
+			{
+				nameIn = EnumsVC.ModuleType.WATER_GREATER.getLocalizedName();
+				pros1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.WATER_GREATER.getMetadata() + ".pros1");
+				pros2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.WATER_GREATER.getMetadata() + ".pros2");
+				cons1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.WATER_GREATER.getMetadata() + ".cons1");
+				cons2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.WATER_GREATER.getMetadata() + ".cons2");
+			}
+		}
+		
+		//Logic for mouse-over Fuel Infinite tooltip
+		if(mouseX >= this.guiLeft + 11 + (20 * 0) && mouseX <= this.guiLeft + 24 + (20 * 0)
+		&& mouseY >= this.guiTop + 11 + (20 * 1) && mouseY <= this.guiTop + 24 + (20 * 1))
+		{
+			if(this.airship.selectedModuleFuelInfinite == 1)
+			{
+				nameIn = EnumsVC.ModuleType.INFINITE_FUEL_LESSER.getLocalizedName();
+				pros1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.INFINITE_FUEL_LESSER.getMetadata() + ".pros1");
+				pros2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.INFINITE_FUEL_LESSER.getMetadata() + ".pros2");
+				pros1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.INFINITE_FUEL_LESSER.getMetadata() + ".pros1");
+				pros2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.INFINITE_FUEL_LESSER.getMetadata() + ".pros2");
+			}
+			if(this.airship.selectedModuleFuelInfinite == 2)
+			{
+				nameIn = EnumsVC.ModuleType.INFINITE_FUEL_NORMAL.getLocalizedName();
+				pros1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.INFINITE_FUEL_NORMAL.getMetadata() + ".pros1");
+				pros2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.INFINITE_FUEL_NORMAL.getMetadata() + ".pros2");
+				cons1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.INFINITE_FUEL_NORMAL.getMetadata() + ".cons1");
+				cons2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.INFINITE_FUEL_NORMAL.getMetadata() + ".cons2");
+			}
+			if(this.airship.selectedModuleFuelInfinite == 3)
+			{
+				nameIn = EnumsVC.ModuleType.INFINITE_FUEL_GREATER.getLocalizedName();
+				pros1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.INFINITE_FUEL_GREATER.getMetadata() + ".pros1");
+				pros2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.INFINITE_FUEL_GREATER.getMetadata() + ".pros2");
+				cons1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.INFINITE_FUEL_GREATER.getMetadata() + ".cons1");
+				cons2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.INFINITE_FUEL_GREATER.getMetadata() + ".cons2");
+			}
+		}
+		
+		//Logic for mouse-over Bomb tooltip
+		if(mouseX >= this.guiLeft + 11 + (20 * 1) && mouseX <= this.guiLeft + 24 + (20 * 1)
+		&& mouseY >= this.guiTop + 11 + (20 * 1) && mouseY <= this.guiTop + 24 + (20 * 1))
+		{
+			if(this.airship.selectedModuleBomb == 1)
+			{
+				nameIn = EnumsVC.ModuleType.BOMB_LESSER.getLocalizedName();
+				pros1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.BOMB_LESSER.getMetadata() + ".pros1");
+				pros2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.BOMB_LESSER.getMetadata() + ".pros2");
+				pros1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.BOMB_LESSER.getMetadata() + ".pros1");
+				pros2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.BOMB_LESSER.getMetadata() + ".pros2");
+			}
+			if(this.airship.selectedModuleBomb == 2)
+			{
+				nameIn = EnumsVC.ModuleType.BOMB_NORMAL.getLocalizedName();
+				pros1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.BOMB_NORMAL.getMetadata() + ".pros1");
+				pros2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.BOMB_NORMAL.getMetadata() + ".pros2");
+				cons1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.BOMB_NORMAL.getMetadata() + ".cons1");
+				cons2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.BOMB_NORMAL.getMetadata() + ".cons2");
+			}
+			if(this.airship.selectedModuleBomb == 3)
+			{
+				nameIn = EnumsVC.ModuleType.BOMB_GREATER.getLocalizedName();
+				pros1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.BOMB_GREATER.getMetadata() + ".pros1");
+				pros2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.BOMB_GREATER.getMetadata() + ".pros2");
+				cons1 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.BOMB_GREATER.getMetadata() + ".cons1");
+				cons2 = References.localNameVC("vc.item.tt.moduletype.#." + EnumsVC.ModuleType.BOMB_GREATER.getMetadata() + ".cons2");
+			}
+		}
+		
+		
+		
+		//Module name
+		GlStateManager.pushMatrix();
+		{
+			GlStateManager.translate(this.guiLeft + 52, this.guiTop + 77, 0);
+			GlStateManager.scale(0.45, 0.45, 0.45);
+			
+			this.drawCenteredString(fontRenderer, TextFormatting.LIGHT_PURPLE + "" + TextFormatting.UNDERLINE + "" + TextFormatting.BOLD + nameIn, 0, 0, 0);
+		}
+		GlStateManager.popMatrix();
+		//Pros1
+		GlStateManager.pushMatrix();
+		{
+			GlStateManager.translate(this.guiLeft + 52, this.guiTop + 88, 0);
+			GlStateManager.scale(0.4, 0.4, 0.4);
+			
+			this.drawCenteredString(fontRenderer, TextFormatting.GREEN + pros1, 0, 0, 0);
+		}
+		GlStateManager.popMatrix();
+		//Pros2
+		GlStateManager.pushMatrix();
+		{
+			GlStateManager.translate(this.guiLeft + 52, this.guiTop + 93, 0);
+			GlStateManager.scale(0.4, 0.4, 0.4);
+			
+			this.drawCenteredString(fontRenderer, TextFormatting.GREEN + pros2, 0, 0, 0);
+		}
+		GlStateManager.popMatrix();
+		//Cons1
+		GlStateManager.pushMatrix();
+		{
+			GlStateManager.translate(this.guiLeft + 52, this.guiTop + 103, 0);
+			GlStateManager.scale(0.4, 0.4, 0.4);
+			
+			this.drawCenteredString(fontRenderer, TextFormatting.RED + cons1, 0, 0, 0);
+		}
+		GlStateManager.popMatrix();
+		//Cons2
+		GlStateManager.pushMatrix();
+		{
+			GlStateManager.translate(this.guiLeft + 52, this.guiTop + 108, 0);
+			GlStateManager.scale(0.4, 0.4, 0.4);
+			
+			this.drawCenteredString(fontRenderer, TextFormatting.RED + cons2, 0, 0, 0);
+		}
+		GlStateManager.popMatrix();
 		
 		//Draws the top menu extension for the main label
 		this.drawRect(this.guiLeft + 49-1, this.guiTop - 17, this.guiLeft + 127+1, this.guiTop, Color.BLACK.getRGB());
 		this.drawRect(this.guiLeft + 50-1, this.guiTop - 16, this.guiLeft + 126+1, this.guiTop, Color.LIGHT_GRAY.getRGB());
 		this.drawRect(this.guiLeft + 52-1, this.guiTop - 14, this.guiLeft + 124+1, this.guiTop, Color.BLACK.getRGB());
+        
+        GlStateManager.pushMatrix();
+		{
+			GlStateManager.translate(this.guiLeft + 88+50.25, this.guiTop + 72-16.25, 0);
+	        GlStateManager.scale(0.5F, 0.5F, 0.5F);
+	        
+	        this.drawCenteredString(fontRenderer, this.stringToFlashGolden(References.localNameVC("vc.main.cost"), 1, false, TextFormatting.RED), 0, 0, 111111);
+		}
+		GlStateManager.popMatrix();
+		GlStateManager.pushMatrix();
+		{
+			GlStateManager.translate(this.guiLeft + 88+50.25, this.guiTop + 77-16.25, 0);
+	        GlStateManager.scale(0.75F, 0.75F, 0.75F);
+	        
+	        this.drawCenteredString(fontRenderer, Integer.toString(CostsVC.RENAME_COST), 0, 0, Color.WHITE.getRGB());
+		}
+		GlStateManager.popMatrix();
     }
 	
 	@Override
@@ -536,6 +828,26 @@ public class GuiModuleMenu extends GuiContainerVC {
 				{
 					this.drawItemStack(new ItemStack(InitItemsVC.MODULE_TYPE, 1, EnumsVC.ModuleType.BOMB_GREATER.getMetadata()), 0, 0, "");
 				}
+			}
+			GlStateManager.popMatrix();
+		}
+		
+		//Logic for mouse-over Default tooltip
+		if(mouseX >= this.guiLeft + 11 + (20 * 0) && mouseX <= this.guiLeft + 24 + (20 * 0)
+		&& mouseY >= this.guiTop + 11 + (20 * 0) && mouseY <= this.guiTop + 24 + (20 * 0))
+		{
+			List<String> text = new ArrayList<String>();
+			
+			text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("vc.main.default"));
+			
+			FontRenderer fontrenderer = this.getFontRenderer();
+			
+			GlStateManager.pushMatrix();
+			{
+				GlStateManager.translate(mouseX - this.guiLeft - 23, mouseY - this.guiTop - 8, 0);
+				GlStateManager.scale(0.5, 0.5, 0.5);
+				
+				this.drawHoveringText(text, 0, 0);
 			}
 			GlStateManager.popMatrix();
 		}

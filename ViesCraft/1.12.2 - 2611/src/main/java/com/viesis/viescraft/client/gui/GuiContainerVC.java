@@ -82,11 +82,11 @@ public class GuiContainerVC extends GuiContainer {
     	buttonList.clear();
     	Keyboard.enableRepeatEvents(true);
     	
-    	GuiVC.buttonMM1 = new GuiButtonMenuMainVC(1001, this.guiLeft - 35, this.guiTop + 7 + (16 * 0), 36, 14, "", 0);
-    	GuiVC.buttonMM2 = new GuiButtonMenuUpgradeVC(1002, this.guiLeft - 35, this.guiTop + 7 + (16 * 1), 36, 14, "", 0);
-    	GuiVC.buttonMM3 = new GuiButtonMenuCustomizeVC(1003, this.guiLeft - 35, this.guiTop + 7 + (16 * 2), 36, 14, "", 0);
-    	GuiVC.buttonMM4 = new GuiButtonMenuModuleVC(1004, this.guiLeft - 35, this.guiTop + 7 + (16 * 3), 36, 14, "", 0);
-    	GuiVC.buttonMM5 = new GuiButtonMenuRedstoneVC(1005, this.guiLeft - 35, this.guiTop + 7 + (16 * 6), 36, 14, "", 0);
+    	GuiVC.buttonMM1 = new GuiButtonMenuMainVC(1001, this.guiLeft - 35, this.guiTop + 8 + (16 * 0), 36, 14, "", 0);
+    	GuiVC.buttonMM2 = new GuiButtonMenuUpgradeVC(1002, this.guiLeft - 35, this.guiTop + 8 + (16 * 1), 36, 14, "", 0);
+    	GuiVC.buttonMM3 = new GuiButtonMenuCustomizeVC(1003, this.guiLeft - 35, this.guiTop + 8 + (16 * 2), 36, 14, "", 0);
+    	GuiVC.buttonMM4 = new GuiButtonMenuModuleVC(1004, this.guiLeft - 35, this.guiTop + 8 + (16 * 3), 36, 14, "", 0);
+    	GuiVC.buttonMM5 = new GuiButtonMenuRedstoneVC(1005, this.guiLeft - 35, this.guiTop + 8 + (16 * 6), 36, 14, "", 0);
     }
     
     /**

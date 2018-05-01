@@ -231,8 +231,16 @@ public class ItemAirship extends ItemAirshipBase {
 	public String getItemStackDisplayName(ItemStack stack)
     {
 		String colorName = TextFormatting.WHITE + "Airship";
-		String preName = TextFormatting.WHITE + "ViesCraft";
+		//String preName = TextFormatting.WHITE + "ViesCraft";
 		
+		this.customName = "Airship";
+		if(stack.hasTagCompound())
+    	{
+    		this.customName = stack.getTagCompound().getString(rf.CUSTOM_NAME_TAG);
+    	}
+		
+		
+		/**
 		if(this.coreModelVisualFrame == 0)
 		{
 			preName = TextFormatting.GREEN + "*" 
@@ -262,34 +270,35 @@ public class ItemAirship extends ItemAirshipBase {
 			preName = TextFormatting.GREEN + "*" 
 					+ TextFormatting.WHITE + ViesCraftConfig.v4AirshipName
 					+ TextFormatting.GREEN + "*" ;
-		}
+		}*/
 		
 		if(stack.getMetadata() == 0)
 		{
-			colorName = TextFormatting.GRAY + "" + TextFormatting.BOLD + "Airship";
+			colorName = TextFormatting.GRAY + "" + TextFormatting.BOLD + this.customName;
 		}
 		if(stack.getMetadata() == 1)
 		{
-			colorName = TextFormatting.WHITE + "" + TextFormatting.BOLD + "Airship";
+			colorName = TextFormatting.WHITE + "" + TextFormatting.BOLD + this.customName;
 		}
 		if(stack.getMetadata() == 2)
 		{
-			colorName = TextFormatting.YELLOW + "" + TextFormatting.BOLD + "Airship";
+			colorName = TextFormatting.YELLOW + "" + TextFormatting.BOLD + this.customName;
 		}
 		if(stack.getMetadata() == 3)
 		{
-			colorName = TextFormatting.AQUA + "" + TextFormatting.BOLD + "Airship";
+			colorName = TextFormatting.AQUA + "" + TextFormatting.BOLD + this.customName;
 		}
 		if(stack.getMetadata() == 4)
 		{
-			colorName = TextFormatting.LIGHT_PURPLE + "" + TextFormatting.BOLD + "Airship";
+			colorName = TextFormatting.LIGHT_PURPLE + "" + TextFormatting.BOLD + this.customName;
 		}
 		if(stack.getMetadata() == 5)
 		{
-			colorName = TextFormatting.RED + "" + TextFormatting.BOLD + "Airship";
+			colorName = TextFormatting.RED + "" + TextFormatting.BOLD + this.customName;
 		}
 		
-		String airshipName = preName + " " + colorName;
+		String airshipName = //preName + " " + 
+				colorName;
 		
 		return airshipName;
     }
