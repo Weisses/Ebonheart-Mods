@@ -12,7 +12,7 @@ import com.viesis.viescraft.client.gui.buttons.GuiButtonGeneral1VC;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
 import com.viesis.viescraft.common.entity.airships.containers.all.ContainerCustomizeMenu;
 import com.viesis.viescraft.network.NetworkHandler;
-import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenuMusic;
+import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenu;
 import com.viesis.viescraft.network.server.song.MessageHelperGuiMusicPg1;
 
 import net.minecraft.client.gui.GuiButton;
@@ -74,6 +74,11 @@ public class GuiAirshipMusicPg1 extends GuiContainerVC {
 		GuiVC.buttonR18 = new GuiButtonGeneral1VC(EnumsVC.AirshipSong.RECORDTIMESCAR.getMetadata(), this.guiLeft + 98, this.guiTop + startPlace + (14 * 8), 62, 14, References.localNameVC("vc.item.enum.song.18"), 0);
     	
 		
+    	this.buttonList.add(GuiVC.buttonMM1);
+		this.buttonList.add(GuiVC.buttonMM2);
+		this.buttonList.add(GuiVC.buttonMM3);
+		this.buttonList.add(GuiVC.buttonMM4);
+		this.buttonList.add(GuiVC.buttonMM5);
 		
 		this.buttonList.add(GuiVC.button501);
 		
@@ -105,9 +110,11 @@ public class GuiAirshipMusicPg1 extends GuiContainerVC {
 	@Override
     protected void actionPerformed(GuiButton parButton) 
     {
+		super.actionPerformed(parButton);
+		
 		if (parButton.id == 501)
 	    {
-			NetworkHandler.sendToServer(new MessageGuiMainMenuMusic());
+			NetworkHandler.sendToServer(new MessageGuiMainMenu());
 	    }
 		
 		if (parButton.id <= 450)

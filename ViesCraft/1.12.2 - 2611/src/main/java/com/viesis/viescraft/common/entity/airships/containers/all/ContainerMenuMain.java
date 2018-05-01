@@ -4,6 +4,7 @@ import com.viesis.viescraft.api.EnumsVC;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
 import com.viesis.viescraft.common.entity.airships.containers.ContainerVC;
 import com.viesis.viescraft.common.entity.airships.slots.FuelSlotVC;
+import com.viesis.viescraft.common.entity.airships.slots.InventorySlotVC;
 
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
@@ -26,6 +27,72 @@ public class ContainerMenuMain extends ContainerVC {
 		else
 		{
 			this.addSlotToContainer(new FuelSlotVC(this.airship.inventory, 0, 147, 22));
+		}
+		
+		//Storage Lesser
+		if(this.airship.moduleActiveSlot1 == EnumsVC.ModuleType.STORAGE_LESSER.getMetadata())
+		{
+			//Slot 20-29 - Inventory Small
+			for (int y = 0; y < 3; ++y) 
+			{
+				for (int x = 0; x < 3; ++x) 
+				{
+					this.addSlotToContainer(new InventorySlotVC(this.airship.inventory, (x + y * 3) + 20, 62 + x * 18, 62 + y * 18));
+				}
+			}
+		}
+		
+		//Storage Normal
+		if(this.airship.moduleActiveSlot1 == EnumsVC.ModuleType.STORAGE_NORMAL.getMetadata())
+		{
+			//Slot 20-37 = Inventory Large
+			for (int y = 0; y < 3; ++y) 
+			{
+				for (int x = 0; x < 3; ++x) 
+				{
+					this.addSlotToContainer(new InventorySlotVC(this.airship.inventory, (x + y * 3) + 20, 35 + x * 18, 62 + y * 18));
+					this.addSlotToContainer(new InventorySlotVC(this.airship.inventory, ((x + y * 3) + 20) + 9, 89 + x * 18, 62 + y * 18));
+				}
+			}
+		}
+		
+		//Storage Greater
+		if(this.airship.moduleActiveSlot1 == EnumsVC.ModuleType.STORAGE_GREATER.getMetadata())
+		{
+			//Slot 20-37 = Inventory Large
+			for (int y = 0; y < 3; ++y) 
+			{
+				for (int x = 0; x < 3; ++x) 
+				{
+					this.addSlotToContainer(new InventorySlotVC(this.airship.inventory, (x + y * 3) + 20, 8 + x * 18, 62 + y * 18));
+					this.addSlotToContainer(new InventorySlotVC(this.airship.inventory, ((x + y * 3) + 20) + 9, 62 + x * 18, 62 + y * 18));
+					this.addSlotToContainer(new InventorySlotVC(this.airship.inventory, ((x + y * 3) + 20) + 18, 116 + x * 18, 62 + y * 18));
+				}
+			}
+		}
+		
+		
+		//Bombing
+		if(this.airship.moduleActiveSlot1 == EnumsVC.ModuleType.BOMB_LESSER.getMetadata()
+		|| this.airship.moduleActiveSlot1 == EnumsVC.ModuleType.BOMB_NORMAL.getMetadata()
+		|| this.airship.moduleActiveSlot1 == EnumsVC.ModuleType.BOMB_GREATER.getMetadata())
+		{
+			//Bomb Slots
+			if(this.airship.selectedModuleBomb == 1)
+			{
+				this.addSlotToContainer(new InventorySlotVC(this.airship.inventory, 51, 62 + (18 * 2), 89));
+			}
+			if(this.airship.selectedModuleBomb == 2)
+			{
+				this.addSlotToContainer(new InventorySlotVC(this.airship.inventory, 51, 71 + (18 * 1), 89));
+				this.addSlotToContainer(new InventorySlotVC(this.airship.inventory, 52, 71 + (18 * 2), 89));
+			}
+			if(this.airship.selectedModuleBomb == 3)
+			{
+				this.addSlotToContainer(new InventorySlotVC(this.airship.inventory, 51, 62 + (18 * 1), 89));
+				this.addSlotToContainer(new InventorySlotVC(this.airship.inventory, 52, 62 + (18 * 2), 89));
+				this.addSlotToContainer(new InventorySlotVC(this.airship.inventory, 53, 62 + (18 * 3), 89));
+			}
 		}
 		
 		// Player Hotbar, Slot 0-8, Slot IDs 36-44

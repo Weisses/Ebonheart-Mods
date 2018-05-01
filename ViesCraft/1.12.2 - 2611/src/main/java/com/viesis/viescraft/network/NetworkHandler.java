@@ -59,11 +59,6 @@ import com.viesis.viescraft.network.server.airship.customize.frame.sub.MessageGu
 import com.viesis.viescraft.network.server.airship.customize.frame.sub.MessageGuiCustomizeMenuFrameTier5Pg1;
 import com.viesis.viescraft.network.server.airship.customize.frame.sub.MessageHelperGuiCustomizeMenuFrameTier;
 import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenu;
-import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenuBomb;
-import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenuMusic;
-import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenuStorageGreater;
-import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenuStorageLesser;
-import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenuStorageNormal;
 import com.viesis.viescraft.network.server.airship.module.MessageGuiModuleMenu;
 import com.viesis.viescraft.network.server.airship.module.MessageHelperGuiModuleLearn;
 import com.viesis.viescraft.network.server.airship.module.MessageHelperGuiModuleToggleSlot1;
@@ -96,11 +91,6 @@ public class NetworkHandler {
 		register(MessageConfig.class, MessageConfig.class, Side.SERVER);
 		
 		register(MessageGuiMainMenu.class, MessageGuiMainMenu.class, Side.SERVER);
-		register(MessageGuiMainMenuStorageLesser.class, MessageGuiMainMenuStorageLesser.class, Side.SERVER);
-		register(MessageGuiMainMenuStorageNormal.class, MessageGuiMainMenuStorageNormal.class, Side.SERVER);
-		register(MessageGuiMainMenuStorageGreater.class, MessageGuiMainMenuStorageGreater.class, Side.SERVER);
-		register(MessageGuiMainMenuMusic.class, MessageGuiMainMenuMusic.class, Side.SERVER);
-		register(MessageGuiMainMenuBomb.class, MessageGuiMainMenuBomb.class, Side.SERVER);
 		
 		register(MessageGuiUpgradeMenu.class, MessageGuiUpgradeMenu.class, Side.SERVER);
 		register(MessageGuiCustomizeMenu.class, MessageGuiCustomizeMenu.class, Side.SERVER);

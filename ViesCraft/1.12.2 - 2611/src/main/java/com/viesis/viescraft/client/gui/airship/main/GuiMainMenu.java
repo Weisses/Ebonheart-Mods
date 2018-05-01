@@ -10,9 +10,15 @@ import com.viesis.viescraft.api.EnumsVC;
 import com.viesis.viescraft.api.GuiVC;
 import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.client.gui.GuiContainerVC;
+import com.viesis.viescraft.client.gui.buttons.GuiButtonGeneral1VC;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
 import com.viesis.viescraft.common.entity.airships.containers.all.ContainerMenuMain;
 import com.viesis.viescraft.init.InitItemsVC;
+import com.viesis.viescraft.network.NetworkHandler;
+import com.viesis.viescraft.network.server.airship.MessageGuiPlayMusic;
+import com.viesis.viescraft.network.server.airship.MessageGuiRandomMusic;
+import com.viesis.viescraft.network.server.airship.MessageGuiStopMusic;
+import com.viesis.viescraft.network.server.song.MessageGuiMusicPg1;
 
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
@@ -24,7 +30,15 @@ import net.minecraft.util.text.TextFormatting;
 
 public class GuiMainMenu extends GuiContainerVC {
 	
+	public static int airshipId;
+	public static int selectedSong;
+	
 	private final ResourceLocation TEXTURE = new ResourceLocation(References.MOD_ID + ":" + "textures/gui/container_gui_menu_main.png");
+	private final ResourceLocation TEXTURE_STORAGE_LESSER = new ResourceLocation(References.MOD_ID + ":" + "textures/gui/container_gui_menu_main_storage_lesser.png");
+	private final ResourceLocation TEXTURE_STORAGE_NORMAL = new ResourceLocation(References.MOD_ID + ":" + "textures/gui/container_gui_menu_main_storage_normal.png");
+	private final ResourceLocation TEXTURE_STORAGE_GREATER = new ResourceLocation(References.MOD_ID + ":" + "textures/gui/container_gui_menu_main_storage_greater.png");
+	private final ResourceLocation TEXTURE_MUSIC = new ResourceLocation(References.MOD_ID + ":" + "textures/gui/container_gui_menu_main_music.png");
+	private final ResourceLocation TEXTURE_BOMB = new ResourceLocation(References.MOD_ID + ":" + "textures/gui/container_gui_menu_main_bomb.png");
 	
 	public GuiMainMenu(IInventory playerInv, EntityAirshipBaseVC airshipIn)
 	{
@@ -39,11 +53,35 @@ public class GuiMainMenu extends GuiContainerVC {
     	buttonList.clear();
     	Keyboard.enableRepeatEvents(true);
     	
+    	GuiVC.buttonA00 = new GuiButtonGeneral1VC(600, this.guiLeft + 45, this.guiTop + 90 + (16 * 0), 14, 14, "", 3);
+    	
+    	GuiVC.buttonM5 = new GuiButtonGeneral1VC(5, this.guiLeft + 49, this.guiTop + 62 , 78, 14, References.localNameVC("vc.button.choosemusic"), 0);
+    	GuiVC.buttonM6 = new GuiButtonGeneral1VC(6, this.guiLeft + 35, this.guiTop + 100, 35, 14, References.localNameVC("vc.button.play"), 0);
+    	GuiVC.buttonM7 = new GuiButtonGeneral1VC(7, this.guiLeft + 71, this.guiTop + 100, 35, 14, References.localNameVC("vc.button.stop"), 0);
+    	GuiVC.buttonM8 = new GuiButtonGeneral1VC(8, this.guiLeft + 107, this.guiTop + 100, 35, 14, References.localNameVC("vc.button.random"), 0);
+		
     	this.buttonList.add(GuiVC.buttonMM1);
 		this.buttonList.add(GuiVC.buttonMM2);
 		this.buttonList.add(GuiVC.buttonMM3);
 		this.buttonList.add(GuiVC.buttonMM4);
 		this.buttonList.add(GuiVC.buttonMM5);
+		
+		if(this.airship.moduleActiveSlot1 == EnumsVC.ModuleType.MUSIC_LESSER.getMetadata()
+		|| this.airship.moduleActiveSlot1 == EnumsVC.ModuleType.MUSIC_NORMAL.getMetadata()
+		|| this.airship.moduleActiveSlot1 == EnumsVC.ModuleType.MUSIC_GREATER.getMetadata())
+		{
+			this.buttonList.add(GuiVC.buttonM5);
+			this.buttonList.add(GuiVC.buttonM6);
+			this.buttonList.add(GuiVC.buttonM7);
+			this.buttonList.add(GuiVC.buttonM8);
+		}
+		
+		if(this.airship.moduleActiveSlot1 == EnumsVC.ModuleType.BOMB_LESSER.getMetadata()
+		|| this.airship.moduleActiveSlot1 == EnumsVC.ModuleType.BOMB_NORMAL.getMetadata()
+		|| this.airship.moduleActiveSlot1 == EnumsVC.ModuleType.BOMB_GREATER.getMetadata())
+		{
+			this.buttonList.add(GuiVC.buttonA00);
+		}
 		
 		GuiVC.buttonMM1.enabled = false;
     }
@@ -52,6 +90,40 @@ public class GuiMainMenu extends GuiContainerVC {
     protected void actionPerformed(GuiButton parButton) 
     {
 		super.actionPerformed(parButton);
+		
+		if (parButton.id == 5)
+	    {
+			NetworkHandler.sendToServer(new MessageGuiMusicPg1());
+	    }
+		
+		if (parButton.id == 6)
+	    {
+			airshipId = this.airship.getEntityId();
+			NetworkHandler.sendToServer(new MessageGuiPlayMusic());
+	    }
+		if (parButton.id == 7)
+	    {
+			airshipId = this.airship.getEntityId();
+			NetworkHandler.sendToServer(new MessageGuiStopMusic());
+	    }
+		if (parButton.id == 8)
+	    {
+			if(this.airship.selectedModuleMusic == 1)
+			{
+				this.selectedSong = References.random.nextInt(6) + 1;
+			}
+			if(this.airship.selectedModuleMusic == 2)
+			{
+				this.selectedSong = References.random.nextInt(12) + 1;
+			}
+			if(this.airship.selectedModuleMusic == 3)
+			{
+				this.selectedSong = References.random.nextInt(18) + 1;
+			}
+			
+			airshipId = this.airship.getEntityId();
+			NetworkHandler.sendToServer(new MessageGuiRandomMusic());
+	    }
 		
         this.buttonList.clear();
         this.initGui();
@@ -65,7 +137,53 @@ public class GuiMainMenu extends GuiContainerVC {
 		
 		GlStateManager.color(1.0f, 1.0f, 1.0f, 1.0f);
 		this.mc.getTextureManager().bindTexture(TEXTURE);
+		
+		if(this.airship.moduleActiveSlot1 == EnumsVC.ModuleType.STORAGE_LESSER.getMetadata())
+		{
+			this.mc.getTextureManager().bindTexture(TEXTURE_STORAGE_LESSER);
+		}
+		if(this.airship.moduleActiveSlot1 == EnumsVC.ModuleType.STORAGE_NORMAL.getMetadata())
+		{
+			this.mc.getTextureManager().bindTexture(TEXTURE_STORAGE_NORMAL);
+		}
+		if(this.airship.moduleActiveSlot1 == EnumsVC.ModuleType.STORAGE_GREATER.getMetadata())
+		{
+			this.mc.getTextureManager().bindTexture(TEXTURE_STORAGE_GREATER);
+		}
+		
+		if(this.airship.moduleActiveSlot1 == EnumsVC.ModuleType.MUSIC_LESSER.getMetadata()
+		|| this.airship.moduleActiveSlot1 == EnumsVC.ModuleType.MUSIC_NORMAL.getMetadata()
+		|| this.airship.moduleActiveSlot1 == EnumsVC.ModuleType.MUSIC_GREATER.getMetadata())
+		{
+			this.mc.getTextureManager().bindTexture(TEXTURE_MUSIC);
+		}
+		
+		if(this.airship.moduleActiveSlot1 == EnumsVC.ModuleType.BOMB_LESSER.getMetadata()
+		|| this.airship.moduleActiveSlot1 == EnumsVC.ModuleType.BOMB_NORMAL.getMetadata()
+		|| this.airship.moduleActiveSlot1 == EnumsVC.ModuleType.BOMB_GREATER.getMetadata())
+		{
+			this.mc.getTextureManager().bindTexture(TEXTURE_BOMB);
+		}
+		
 		this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
+		
+		if(this.airship.moduleActiveSlot1 == EnumsVC.ModuleType.BOMB_LESSER.getMetadata()
+		|| this.airship.moduleActiveSlot1 == EnumsVC.ModuleType.BOMB_NORMAL.getMetadata()
+		|| this.airship.moduleActiveSlot1 == EnumsVC.ModuleType.BOMB_GREATER.getMetadata())
+		{
+			//Draws the inventory slots for bomb modules.
+			if(this.airship.selectedModuleBomb == 2)
+			{
+				this.drawTexturedModalRect(this.guiLeft + 88, this.guiTop + 88, 97, 88, 18, 18);
+				this.drawTexturedModalRect(this.guiLeft + 88 + (18 * 1), this.guiTop + 88, 97, 88, 18, 18);
+			}
+			else if(this.airship.selectedModuleBomb == 3)
+			{
+				this.drawTexturedModalRect(this.guiLeft + 79 + (18 * 0), this.guiTop + 88, 97, 88, 18, 18);
+				this.drawTexturedModalRect(this.guiLeft + 79 + (18 * 1), this.guiTop + 88, 97, 88, 18, 18);
+				this.drawTexturedModalRect(this.guiLeft + 79 + (18 * 2), this.guiTop + 88, 97, 88, 18, 18);
+			}
+		}
 		
 		//Draw "on" indicators
 		if (this.airship.getStoredFuel() > 0)
@@ -139,6 +257,20 @@ public class GuiMainMenu extends GuiContainerVC {
 		if(this.airship.getMainTierBalloon() > 0)
 		{
 			this.drawRect(this.guiLeft + 13 + (24 * 3), this.guiTop + 43, this.guiLeft + 23 + (24 * 3), this.guiTop + 53, Color.GRAY.getRGB());
+		}
+		if(this.airship.moduleActiveSlot1 == EnumsVC.ModuleType.MUSIC_LESSER.getMetadata()
+		|| this.airship.moduleActiveSlot1 == EnumsVC.ModuleType.MUSIC_NORMAL.getMetadata()
+		|| this.airship.moduleActiveSlot1 == EnumsVC.ModuleType.MUSIC_GREATER.getMetadata())
+		{
+			//Selected song
+			GlStateManager.pushMatrix();
+			{
+				GlStateManager.translate(this.guiLeft + 88, this.guiTop + 84, 0);
+				GlStateManager.scale(1.00, 1.00, 1.00);
+				
+				this.drawCenteredString(fontRenderer, EnumsVC.AirshipSong.byId(this.airship.metaJukeboxSelectedSong).getRegistryName(), 0, 0, 255);
+			}
+			GlStateManager.popMatrix();
 		}
     }
 	

@@ -30,11 +30,6 @@ import com.viesis.viescraft.client.gui.airship.customize.frame.sub.GuiCustomizeM
 import com.viesis.viescraft.client.gui.airship.customize.frame.sub.GuiCustomizeMenuFrameTier4Pg1;
 import com.viesis.viescraft.client.gui.airship.customize.frame.sub.GuiCustomizeMenuFrameTier5Pg1;
 import com.viesis.viescraft.client.gui.airship.main.GuiMainMenu;
-import com.viesis.viescraft.client.gui.airship.main.GuiMainMenuBomb;
-import com.viesis.viescraft.client.gui.airship.main.GuiMainMenuMusic;
-import com.viesis.viescraft.client.gui.airship.main.GuiMainMenuStorageGreater;
-import com.viesis.viescraft.client.gui.airship.main.GuiMainMenuStorageLesser;
-import com.viesis.viescraft.client.gui.airship.main.GuiMainMenuStorageNormal;
 import com.viesis.viescraft.client.gui.airship.module.GuiModuleMenu;
 import com.viesis.viescraft.client.gui.airship.music.GuiAirshipMusicPg1;
 import com.viesis.viescraft.client.gui.airship.redstone.GuiCustomizeMenuRedstone;
@@ -46,13 +41,9 @@ import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipCore;
 import com.viesis.viescraft.common.entity.airships.containers.all.ContainerCustomizeEngineBlock;
 import com.viesis.viescraft.common.entity.airships.containers.all.ContainerCustomizeMenu;
-import com.viesis.viescraft.common.entity.airships.containers.all.ContainerMenuRedstone;
-import com.viesis.viescraft.common.entity.airships.containers.all.ContainerMenuMain;
-import com.viesis.viescraft.common.entity.airships.containers.all.ContainerMainMenuBomb;
-import com.viesis.viescraft.common.entity.airships.containers.all.ContainerMainMenuStorageGreater;
-import com.viesis.viescraft.common.entity.airships.containers.all.ContainerMainMenuStorageLesser;
-import com.viesis.viescraft.common.entity.airships.containers.all.ContainerMainMenuStorageNormal;
 import com.viesis.viescraft.common.entity.airships.containers.all.ContainerMainModule;
+import com.viesis.viescraft.common.entity.airships.containers.all.ContainerMenuMain;
+import com.viesis.viescraft.common.entity.airships.containers.all.ContainerMenuRedstone;
 import com.viesis.viescraft.common.entity.airships.containers.all.ContainerUpgradeMenu;
 import com.viesis.viescraft.common.items.parts.pouch.ContainerPouchAll;
 import com.viesis.viescraft.common.items.parts.pouch.ContainerPouchModule;
@@ -78,11 +69,6 @@ public class GuiHandler implements IGuiHandler {
 	public static final int GUI_ITEM_POUCH_ALL = 53;
 	
 	public static final int GUI_MAIN_MENU = 11;
-	public static final int GUI_MAIN_MENU_STORAGE_LESSER = 12;
-	public static final int GUI_MAIN_MENU_STORAGE_NORMAL = 13;
-	public static final int GUI_MAIN_MENU_STORAGE_GREATER = 14;
-	public static final int GUI_MAIN_MENU_BOMB = 22;
-	public static final int GUI_MAIN_MENU_MUSIC = 15;
 	public static final int GUI_UPGRADE_MENU = 16;
 	public static final int GUI_CUSTOMIZE_MENU = 17;
 	public static final int GUI_MODULE_MENU = 18;
@@ -157,31 +143,6 @@ public class GuiHandler implements IGuiHandler {
 		
 		//Airship Container with no module
 		if (ID == GUI_MAIN_MENU)
-		{
-			return new ContainerMenuMain(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
-		}
-		//Airship Lesser Storage Container
-		if (ID == GUI_MAIN_MENU_STORAGE_LESSER)
-		{
-			return new ContainerMainMenuStorageLesser(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
-		}
-		//Airship Normal Storage Container
-		if (ID == GUI_MAIN_MENU_STORAGE_NORMAL)
-		{
-			return new ContainerMainMenuStorageNormal(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
-		}
-		//Airship Greater Storage Container
-		if (ID == GUI_MAIN_MENU_STORAGE_GREATER)
-		{
-			return new ContainerMainMenuStorageGreater(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
-		}
-		//Airship Lesser Bomb Container
-		if (ID == GUI_MAIN_MENU_BOMB)
-		{
-			return new ContainerMainMenuBomb(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
-		}
-		//Airship Music Container
-		if (ID == GUI_MAIN_MENU_MUSIC)
 		{
 			return new ContainerMenuMain(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
 		}
@@ -373,35 +334,7 @@ public class GuiHandler implements IGuiHandler {
 			return new GuiModuleMenu(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
 		}
 		
-		//Airship GUI with Lesser Storage Module
-		if (ID == GUI_MAIN_MENU_STORAGE_LESSER)
-		{
-			return new GuiMainMenuStorageLesser(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
-		}
 		
-		//Airship GUI with Normal Storage Module
-		if (ID == GUI_MAIN_MENU_STORAGE_NORMAL)
-		{
-			return new GuiMainMenuStorageNormal(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
-		}
-		
-		//Airship GUI with Greater Storage Module
-		if (ID == GUI_MAIN_MENU_STORAGE_GREATER)
-		{
-			return new GuiMainMenuStorageGreater(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
-		}
-		
-		//Airship GUI with Lesser Bomb Module
-		if (ID == GUI_MAIN_MENU_BOMB)
-		{
-			return new GuiMainMenuBomb(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
-		}
-		
-		//Airship GUI with Music Module
-		if (ID == GUI_MAIN_MENU_MUSIC)
-		{
-			return new GuiMainMenuMusic(player.inventory, (EntityAirshipBaseVC)player.getRidingEntity());
-		}
 		
 		//Airship Upgrade GUI
 		if (ID == GUI_UPGRADE_MENU)

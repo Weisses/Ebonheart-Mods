@@ -3,16 +3,11 @@ package com.viesis.viescraft.common.entity.airships;
 import com.viesis.viescraft.api.EnumsVC;
 import com.viesis.viescraft.api.FuelVC;
 import com.viesis.viescraft.api.References;
-import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.client.InitParticlesVCRender;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 import com.viesis.viescraft.init.InitItemsVC;
 import com.viesis.viescraft.network.NetworkHandler;
 import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenu;
-import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenuMusic;
-import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenuStorageGreater;
-import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenuStorageLesser;
-import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenuStorageNormal;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -561,38 +556,8 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
     	if(this.openInputDown 
     	&& this.getControllingPassenger() != null)
 		{
-			//Lesser Storage
-        	if(this.getModuleActiveSlot1() == EnumsVC.ModuleType.STORAGE_LESSER.getMetadata())
-        	{
-        		NetworkHandler.sendToServer(new MessageGuiMainMenuStorageLesser());
-            	Minecraft.getMinecraft().setIngameFocus();
-        	}
-        	//Normal Storage
-        	else if(this.getModuleActiveSlot1() == EnumsVC.ModuleType.STORAGE_NORMAL.getMetadata())
-        	{
-        		NetworkHandler.sendToServer(new MessageGuiMainMenuStorageNormal());
-            	Minecraft.getMinecraft().setIngameFocus();
-        	}
-        	//Greater Storage
-        	else if(this.getModuleActiveSlot1() == EnumsVC.ModuleType.STORAGE_GREATER.getMetadata())
-        	{
-        		NetworkHandler.sendToServer(new MessageGuiMainMenuStorageGreater());
-            	Minecraft.getMinecraft().setIngameFocus();
-        	}
-        	//Any Music
-        	else if(this.getModuleActiveSlot1() == EnumsVC.ModuleType.MUSIC_LESSER.getMetadata()
-    			 || this.getModuleActiveSlot1() == EnumsVC.ModuleType.MUSIC_NORMAL.getMetadata()
-    			 || this.getModuleActiveSlot1() == EnumsVC.ModuleType.MUSIC_GREATER.getMetadata())
-        	{
-        		NetworkHandler.sendToServer(new MessageGuiMainMenuMusic());
-            	Minecraft.getMinecraft().setIngameFocus();
-        	}
-        	//Default for airship gui
-        	else
-        	{
-        		NetworkHandler.sendToServer(new MessageGuiMainMenu());
-            	Minecraft.getMinecraft().setIngameFocus();
-        	}
+    		NetworkHandler.sendToServer(new MessageGuiMainMenu());
+        	Minecraft.getMinecraft().setIngameFocus();
         }
     }
     

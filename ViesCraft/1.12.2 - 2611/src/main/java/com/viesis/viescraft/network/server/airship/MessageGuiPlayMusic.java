@@ -1,7 +1,6 @@
 package com.viesis.viescraft.network.server.airship;
 
-import com.viesis.viescraft.api.util.LogHelper;
-import com.viesis.viescraft.client.gui.airship.main.GuiMainMenuMusic;
+import com.viesis.viescraft.client.gui.airship.main.GuiMainMenu;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
 import com.viesis.viescraft.network.NetworkHandler;
 import com.viesis.viescraft.network.packet.MessageBase;
@@ -26,8 +25,8 @@ public class MessageGuiPlayMusic extends MessageBase<MessageGuiPlayMusic> implem
 	@Override
 	public void toBytes(ByteBuf buf) 
 	{
-		buf.writeInt(GuiMainMenuMusic.airshipId);
-		buf.writeInt(GuiMainMenuMusic.selectedSong);
+		buf.writeInt(GuiMainMenu.airshipId);
+		buf.writeInt(GuiMainMenu.selectedSong);
 	}
 	
 	@Override
