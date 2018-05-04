@@ -17,7 +17,6 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -57,134 +56,59 @@ public class ItemUpgradeBalloon extends Item {
 		
 		if(stack.getMetadata() == 0)
 		{
-			tooltip.add(I18n.format("vc.item.tt.upgradeballoon.0.1", new Object[0]));
-			tooltip.add(I18n.format("vc.item.tt.upgradeballoon.0.2", new Object[0]));
+			tooltip.add(References.localNameVC("vc.item.tt.upgradeballoon.0.1"));
+			tooltip.add(References.localNameVC("vc.item.tt.upgradeballoon.0.2"));
 			tooltip.add("");
-			tooltip.add(I18n.format("vc.item.tt.upgradeballoon.0.3", new Object[0]));
+			tooltip.add(References.localNameVC("vc.item.tt.upgradeballoon.0.3"));
 		}
 		else if(gameSettingsIn.isKeyDown(gameSettingsIn.keyBindSneak))
 		{
 			if(stack.getMetadata() == 1)
 			{
-				//Make your airships move faster!
-				//Works in any airship version.
-				tooltip.add(TextFormatting.BLACK + "---l" + stringColorText + I18n.format("vc.item.tt.upgradeballoon.#.1", new Object[0]));
-				tooltip.add(TextFormatting.BLACK + "---iii" + stringColorText + I18n.format("vc.item.tt.upgradeballoon.#.2", new Object[0]));
-				
-				tooltip.add(TextFormatting.DARK_GREEN + "================================");
-				
-				//Airship Speed
-				tooltip.add(TextFormatting.DARK_GREEN + "||" + TextFormatting.BLACK + "--------ii" + TextFormatting.BLUE + I18n.format("vc.item.tt.airship.12", new Object[0]) + TextFormatting.DARK_BLUE + " : " 
-						+ TextFormatting.GRAY + "(" + stringColorMain
-						+ df.format(EnumsVC.MainTierBalloon.byId(this.getMetadata(stack)).getMaxAltitude())
-						+ TextFormatting.GRAY + ")"
-						+ TextFormatting.BLACK + "---------il" + TextFormatting.DARK_GREEN + "||");
-				
-				//Bonus-Visuals
-				tooltip.add(TextFormatting.DARK_GREEN + "||" + TextFormatting.BLACK + "---ii" + TextFormatting.BLUE + I18n.format("vc.item.tt.upgradeballoon.#.11", new Object[0])
-						+ TextFormatting.BLACK + "---l" + TextFormatting.DARK_GREEN + "||");
-				
-				tooltip.add(TextFormatting.DARK_GREEN + "================================");
-				
-				//tooltip.add("");
-				
-				//Used in the airship's "Upgrade" menu.
-				tooltip.add(TextFormatting.BLACK + "il" + stringColorText + I18n.format("vc.item.tt.upgradeballoon.#.4", new Object[0])
-				+ TextFormatting.DARK_BLUE + " \"" 
-				+ TextFormatting.BLUE + I18n.format("vc.item.tt.upgradeballoon.#.5", new Object[0]) 
-				+ TextFormatting.DARK_BLUE + "\" "
-				+ stringColorText + I18n.format("vc.item.tt.upgradeballoon.#.6", new Object[0]));
-				
+				//Make an airship move faster.
+				tooltip.add(stringColorText + References.localNameVC("vc.item.tt.upgradeballoon.#.1"));
 				tooltip.add("");
-				//Base Upgrade
-				tooltip.add(TextFormatting.BLACK + "-------iil" + TextFormatting.DARK_BLUE + "-=" + TextFormatting.BLUE + I18n.format("vc.item.tt.upgradeballoon.#.10", new Object[0]) + TextFormatting.DARK_BLUE + "=-");
-				//Balloon Tier can't exceed Frame Tier.
-				tooltip.add(TextFormatting.BLACK + "l" + TextFormatting.DARK_RED + I18n.format("vc.item.tt.upgradeballoon.#.9", new Object[0]));
+				//This is the base upgrade.
+				tooltip.add(stringColorText + References.localNameVC("vc.item.tt.upgrade.#.4"));
+				//Use in the airship's Upgrade menu.
+				tooltip.add(stringColorText + References.localNameVC("vc.item.tt.upgrade.#.1"));
+				tooltip.add("");
+				//Unlocks:
+				tooltip.add(TextFormatting.GREEN + References.localNameVC("vc.main.unlocks") + ":");
+				//New balloon skins each Tier.
+				tooltip.add(TextFormatting.GREEN + "- " + TextFormatting.BLUE + References.localNameVC("vc.item.tt.upgradeballoon.#.2"));
 			}
 			else if(stack.getMetadata() == 5)
 			{
-				//Make your airships move faster!
-				//Works in any airship version.
-				tooltip.add(TextFormatting.BLACK + "---l" + stringColorText + I18n.format("vc.item.tt.upgradeballoon.#.1", new Object[0]));
-				tooltip.add(TextFormatting.BLACK + "---iii" + stringColorText + I18n.format("vc.item.tt.upgradeballoon.#.2", new Object[0]));
-				
-				tooltip.add(TextFormatting.DARK_GREEN + "================================");
-				
-				//Airship Speed
-				tooltip.add(TextFormatting.DARK_GREEN + "||" + TextFormatting.BLACK + "--------ii" + TextFormatting.BLUE + I18n.format("vc.item.tt.airship.12", new Object[0]) + TextFormatting.DARK_BLUE + " : " 
-						+ TextFormatting.GRAY + "(" + stringColorMain 
-						+ df.format(EnumsVC.MainTierBalloon.byId(this.getMetadata(stack)).getMaxAltitude())
-						+ TextFormatting.GRAY + ")"
-						+ TextFormatting.BLACK + "--------iiiil" + TextFormatting.DARK_GREEN + "||");
-				
-				//Bonus-Visuals
-				tooltip.add(TextFormatting.DARK_GREEN + "||" + TextFormatting.BLACK + "---ii" + TextFormatting.BLUE + I18n.format("vc.item.tt.upgradeballoon.#.11", new Object[0])
-				+ TextFormatting.BLACK + "---l" + TextFormatting.DARK_GREEN + "||");
-				
-				tooltip.add(TextFormatting.DARK_GREEN + "||" + TextFormatting.DARK_GREEN + "------------" + TextFormatting.BLACK + "il" + TextFormatting.GREEN + I18n.format("vc.item.tt.upgradeballoon.#.12", new Object[0])
-					+ TextFormatting.BLACK +  "il" + TextFormatting.DARK_GREEN + "------------" + TextFormatting.DARK_GREEN + "||");
-		
-				tooltip.add(TextFormatting.DARK_GREEN + "||" + TextFormatting.BLACK + "iii" + TextFormatting.BLUE + I18n.format("vc.item.tt.upgradeballoon.#.13", new Object[0])
-					+ TextFormatting.BLACK + "iil" + TextFormatting.DARK_GREEN + "||");
-		
-				tooltip.add(TextFormatting.DARK_GREEN + "================================");
-				
-				//tooltip.add("");
-				
-				//Used in the airship's "Upgrade" menu.
-				tooltip.add(TextFormatting.BLACK + "il" + stringColorText + I18n.format("vc.item.tt.upgradeballoon.#.4", new Object[0])
-				+ TextFormatting.DARK_BLUE + " \"" 
-				+ TextFormatting.BLUE + I18n.format("vc.item.tt.upgradeballoon.#.5", new Object[0]) 
-				+ TextFormatting.DARK_BLUE + "\" "
-				+ stringColorText + I18n.format("vc.item.tt.upgradeballoon.#.6", new Object[0]));
-				
+				//Make an airship move faster.
+				tooltip.add(stringColorText + References.localNameVC("vc.item.tt.upgradeballoon.#.1"));
 				tooltip.add("");
-				//Must upgrade from a Tier # balloon.
-				tooltip.add(TextFormatting.BLACK + "iil" + TextFormatting.DARK_RED + I18n.format("vc.item.tt.upgradeballoon.#.7", new Object[0])
-				+ " " + (stack.getMetadata() - 1) + " "
-				+ I18n.format("vc.item.tt.upgradeballoon.#.8", new Object[0]));
-				//Balloon Tier can't exceed Frame Tier.
-				tooltip.add(TextFormatting.BLACK + "l" + TextFormatting.DARK_RED + I18n.format("vc.item.tt.upgradeballoon.#.9", new Object[0]));
+				//Airship must me Tier # to apply.
+				tooltip.add(stringColorText + References.localNameVC("vc.item.tt.upgrade.#.2") + " " + (stack.getMetadata() - 1) + " " + References.localNameVC("vc.item.tt.upgrade.#.3"));
+				//Used in the airship's Upgrade menu.
+				tooltip.add(stringColorText + References.localNameVC("vc.item.tt.upgrade.#.1"));
+				tooltip.add("");
+				//Unlocks:
+				tooltip.add(TextFormatting.GREEN + References.localNameVC("vc.main.unlocks") + ":");
+				//New balloon skins each Tier.
+				tooltip.add(TextFormatting.GREEN + "- " + TextFormatting.BLUE + References.localNameVC("vc.item.tt.upgradeballoon.#.2"));
+				//Transparency + Coloring options.
+				tooltip.add(TextFormatting.GREEN + "- " + TextFormatting.BLUE + References.localNameVC("vc.item.tt.upgradeballoon.#.3"));
 			}
 			else
 			{
-				//Make your airships move faster!
-				//Works in any airship version.
-				tooltip.add(TextFormatting.BLACK + "---l" + stringColorText + I18n.format("vc.item.tt.upgradeballoon.#.1", new Object[0]));
-				tooltip.add(TextFormatting.BLACK + "---iii" + stringColorText + I18n.format("vc.item.tt.upgradeballoon.#.2", new Object[0]));
-				
-				tooltip.add(TextFormatting.DARK_GREEN + "================================");
-				
-				//Airship Speed
-				tooltip.add(TextFormatting.DARK_GREEN + "||" + TextFormatting.BLACK + "--------ii" + TextFormatting.BLUE + I18n.format("vc.item.tt.airship.12", new Object[0]) + TextFormatting.DARK_BLUE + " : " 
-						+ TextFormatting.GRAY + "(" + stringColorMain
-						+ df.format(EnumsVC.MainTierBalloon.byId(this.getMetadata(stack)).getMaxAltitude())
-						+ TextFormatting.GRAY + ")"
-						+ TextFormatting.BLACK + "---------il" + TextFormatting.DARK_GREEN + "||");
-				
-				//Bonus-Visuals
-				tooltip.add(TextFormatting.DARK_GREEN + "||" + TextFormatting.BLACK + "---ii" + TextFormatting.BLUE + I18n.format("vc.item.tt.upgradeballoon.#.11", new Object[0])
-				+ TextFormatting.BLACK + "---l" + TextFormatting.DARK_GREEN + "||");
-				
-				tooltip.add(TextFormatting.DARK_GREEN + "================================");
-				
-				//tooltip.add("");
-				
-				//Used in the airship's "Upgrade" menu.
-				tooltip.add(TextFormatting.BLACK + "il" + stringColorText + I18n.format("vc.item.tt.upgradeballoon.#.4", new Object[0])
-				+ TextFormatting.DARK_BLUE + " \"" 
-				+ TextFormatting.BLUE + I18n.format("vc.item.tt.upgradeballoon.#.5", new Object[0]) 
-				+ TextFormatting.DARK_BLUE + "\" "
-				+ stringColorText + I18n.format("vc.item.tt.upgradeballoon.#.6", new Object[0]));
-				
+				//Make an airship move faster.
+				tooltip.add(stringColorText + References.localNameVC("vc.item.tt.upgradeballoon.#.1"));
 				tooltip.add("");
-				
-				//Must upgrade from a Tier # balloon.
-				tooltip.add(TextFormatting.BLACK + "iil" + TextFormatting.DARK_RED + I18n.format("vc.item.tt.upgradeballoon.#.7", new Object[0])
-				+ " " + (stack.getMetadata() - 1) + " "
-				+ I18n.format("vc.item.tt.upgradeballoon.#.8", new Object[0]));
-				//Balloon Tier can't exceed Frame Tier.
-				tooltip.add(TextFormatting.BLACK + "l" + TextFormatting.DARK_RED + I18n.format("vc.item.tt.upgradeballoon.#.9", new Object[0]));
+				//Airship must me Tier # to apply.
+				tooltip.add(stringColorText + References.localNameVC("vc.item.tt.upgrade.#.2") + " " + (stack.getMetadata() - 1) + " " + References.localNameVC("vc.item.tt.upgrade.#.3"));
+				//Used in the airship's Upgrade menu.
+				tooltip.add(stringColorText + References.localNameVC("vc.item.tt.upgrade.#.1"));
+				tooltip.add("");
+				//Unlocks:
+				tooltip.add(TextFormatting.GREEN + References.localNameVC("vc.main.unlocks") + ":");
+				//New balloon skins each Tier.
+				tooltip.add(TextFormatting.GREEN + "- " + TextFormatting.BLUE + References.localNameVC("vc.item.tt.upgradeballoon.#.2"));
 			}
 		}
 		else
@@ -228,41 +152,40 @@ public class ItemUpgradeBalloon extends Item {
 	@Override
 	public String getItemStackDisplayName(ItemStack stack)
     {
-        
-		String colorName = "";
+        String colorName = "";
 		
 		switch(stack.getMetadata())
 		{
 			case 0:
 				return colorName = TextFormatting.WHITE 
-				+ "Balloon Remnant";
+				+ References.localNameVC("item.vc:item_balloon_remnant.name");
 			case 1:
 				return colorName = TextFormatting.WHITE 
-				+ "Balloon Upgrade "
+				+ References.localNameVC("item.vc:item_balloon_upgrade.name") + " "
 				+ TextFormatting.GRAY + "("
 				+ TextFormatting.WHITE + EnumsVC.MainTierBalloon.byId(this.getMetadata(stack)).getLocalizedName()
 				+ TextFormatting.GRAY + ")";
 			case 2:
 				return colorName = TextFormatting.YELLOW 
-				+ "Balloon Upgrade "
+				+ References.localNameVC("item.vc:item_balloon_upgrade.name") + " "
 				+ TextFormatting.GRAY + "("
 				+ TextFormatting.YELLOW + EnumsVC.MainTierBalloon.byId(this.getMetadata(stack)).getLocalizedName()
 				+ TextFormatting.GRAY + ")";
 			case 3:
 				return colorName = TextFormatting.AQUA 
-				+ "Balloon Upgrade "
+				+ References.localNameVC("item.vc:item_balloon_upgrade.name") + " "
 				+ TextFormatting.GRAY + "("
 				+ TextFormatting.AQUA + EnumsVC.MainTierBalloon.byId(this.getMetadata(stack)).getLocalizedName()
 				+ TextFormatting.GRAY + ")";
 			case 4:
 				return colorName = TextFormatting.LIGHT_PURPLE 
-				+ "Balloon Upgrade "
+				+ References.localNameVC("item.vc:item_balloon_upgrade.name") + " "
 				+ TextFormatting.GRAY + "("
 				+ TextFormatting.LIGHT_PURPLE + EnumsVC.MainTierBalloon.byId(this.getMetadata(stack)).getLocalizedName()
 				+ TextFormatting.GRAY + ")";
 			case 5:
 				return colorName = TextFormatting.RED 
-				+ "Balloon Upgrade "
+				+ References.localNameVC("item.vc:item_balloon_upgrade.name") + " "
 				+ TextFormatting.GRAY + "("
 				+ TextFormatting.RED + EnumsVC.MainTierBalloon.byId(this.getMetadata(stack)).getLocalizedName()
 				+ TextFormatting.GRAY + ")";

@@ -29,8 +29,8 @@ public class ItemsVC {
 	public static final ItemDismounterPlayer DISMOUNTER_PLAYER = new ItemDismounterPlayer();
 	public static final ItemViesoline VIESOLINE_PELLETS = new ItemViesoline();
 	public static final ItemLogicChip LOGIC_CHIP = new ItemLogicChip();
-	public static final ItemFrame AIRSHIP_FRAME = new ItemFrame();
 	public static final ItemIgnition AIRSHIP_IGNITION = new ItemIgnition();
+	public static final ItemFrame AIRSHIP_FRAME = new ItemFrame();
 	public static final ItemEngine AIRSHIP_ENGINE = new ItemEngine();
 	public static final ItemBalloon AIRSHIP_BALLOON = new ItemBalloon();
 	

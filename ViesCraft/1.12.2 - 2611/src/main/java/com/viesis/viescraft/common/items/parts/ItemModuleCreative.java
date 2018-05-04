@@ -7,6 +7,7 @@ import javax.annotation.Nullable;
 
 import com.viesis.viescraft.ViesCraft;
 import com.viesis.viescraft.api.EnumsVC;
+import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.common.items.ItemHelper;
 
 import net.minecraft.client.util.ITooltipFlag;
@@ -34,16 +35,11 @@ public class ItemModuleCreative extends Item {
 	@Override
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
     {
-		DecimalFormat df = new DecimalFormat("###.#");
-		float speedModCal = EnumsVC.MainTierFrame.byId(this.getMetadata(stack)).getSpeedModifier() * 100;
-		String speedMod = df.format(speedModCal);
-		
-		TextFormatting stringColorMain = TextFormatting.WHITE;
 		TextFormatting stringColorText = TextFormatting.DARK_RED;
 		
 		tooltip.add(TextFormatting.DARK_GREEN + "================================");
-		tooltip.add(TextFormatting.BLACK + "---i" + stringColorText + I18n.translateToLocal("vc.item.tt.modulecreative.1"));
-		tooltip.add(stringColorText + I18n.translateToLocal("vc.item.tt.modulecreative.2"));
+		tooltip.add(stringColorText + References.localNameVC("vc.item.tt.modulecreative.1"));
+		tooltip.add(stringColorText + References.localNameVC("vc.item.tt.modulecreative.2"));
 		tooltip.add(TextFormatting.DARK_GREEN + "================================");
 	}
 	
@@ -56,7 +52,7 @@ public class ItemModuleCreative extends Item {
 	@Override
 	public String getItemStackDisplayName(ItemStack stack)
     {
-		String colorName = TextFormatting.GOLD + "" + TextFormatting.BOLD +  "Module Upgrade";
+		String colorName = TextFormatting.GOLD + "" + TextFormatting.BOLD +  References.localNameVC("item.vc:item_module_creative.name");
 		
 		return colorName 
 				+ TextFormatting.DARK_RED + "" + TextFormatting.BOLD

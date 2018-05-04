@@ -52,17 +52,16 @@ public class EntityBombBig extends EntityThrowable {
     @Override
 	protected void onImpact(RayTraceResult result)
 	{
-		if(result.entityHit instanceof EntityAirshipCore
-		||	result.entityHit instanceof EntityPlayer)
+    	if(result.entityHit instanceof EntityAirshipCore
+		|| result.entityHit instanceof EntityPlayer)
 		{
 			
 		}
 		else
 		{
-			if (!this.world.isRemote)
+			if(!this.world.isRemote)
 	        {
-				this.world.createExplosion(this, this.posX, this.posY, this.posZ, 
-						EnumsVC.Bombs.byId(2).getExplosionStrength(), true);
+				this.world.createExplosion(this, this.posX, this.posY, this.posZ, EnumsVC.Bombs.byId(2).getExplosionStrength(), true);
 				this.setDead();
 	        }
 			else

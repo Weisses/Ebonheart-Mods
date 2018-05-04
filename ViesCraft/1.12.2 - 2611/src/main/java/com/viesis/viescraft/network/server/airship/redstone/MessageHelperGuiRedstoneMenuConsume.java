@@ -1,4 +1,4 @@
-package com.viesis.viescraft.network.server.airship.customize;
+package com.viesis.viescraft.network.server.airship.redstone;
 
 import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.client.gui.airship.redstone.GuiCustomizeMenuRedstone;
@@ -9,7 +9,7 @@ import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
 
-public class MessageHelperGuiCustomizeMenuOptionsRedstone extends MessageBase<MessageHelperGuiCustomizeMenuOptionsRedstone> {
+public class MessageHelperGuiRedstoneMenuConsume extends MessageBase<MessageHelperGuiRedstoneMenuConsume> {
 	
 	private int storedRedstone;
 	
@@ -26,13 +26,13 @@ public class MessageHelperGuiCustomizeMenuOptionsRedstone extends MessageBase<Me
 	}
 	
 	@Override
-	public void handleClientSide(MessageHelperGuiCustomizeMenuOptionsRedstone message, EntityPlayer player) 
+	public void handleClientSide(MessageHelperGuiRedstoneMenuConsume message, EntityPlayer player) 
 	{
 		
 	}
 	
 	@Override
-	public void handleServerSide(MessageHelperGuiCustomizeMenuOptionsRedstone message, EntityPlayer player) 
+	public void handleServerSide(MessageHelperGuiRedstoneMenuConsume message, EntityPlayer player) 
 	{
 		EntityAirshipBaseVC airship = (EntityAirshipBaseVC) player.getRidingEntity();
 		

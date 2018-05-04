@@ -49,13 +49,13 @@ public class InitItemsVC extends ItemsVC {
 					
 					LOGIC_CHIP,
 					
-					AIRSHIP_FRAME,
 					AIRSHIP_IGNITION,
+					AIRSHIP_FRAME,
 					AIRSHIP_ENGINE,
 					AIRSHIP_BALLOON,
 					
-					UPGRADE_FRAME,
 					UPGRADE_CORE,
+					UPGRADE_FRAME,
 					UPGRADE_ENGINE,
 					UPGRADE_BALLOON,
 					

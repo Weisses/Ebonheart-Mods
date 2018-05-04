@@ -1,5 +1,6 @@
 package com.viesis.viescraft.common.utils.events;
 
+import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
 import com.viesis.viescraft.init.InitAchievementsVC;
 
@@ -11,6 +12,8 @@ public class EventHandlerAchievement {
 	@SubscribeEvent
     public void onPlayerTick(TickEvent.PlayerTickEvent event) 
     {
+		//LogHelper.info("Update");
+		//event.player.dismountEntity(instanceof EntityAirshipCore);
 		//if(event.player.world.)
     }
 	

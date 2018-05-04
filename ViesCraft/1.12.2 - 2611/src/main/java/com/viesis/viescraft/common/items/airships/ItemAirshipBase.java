@@ -30,6 +30,10 @@ public class ItemAirshipBase extends Item {
 	protected int storedRedstone;
 	protected int storedRedstoneTotal;
 	
+    protected int storedBombType1;
+    protected int storedBombType2;
+    protected int storedBombType3;
+	
 	protected int mainTierCore;
 	protected int mainTierFrame;
 	protected int mainTierEngine;

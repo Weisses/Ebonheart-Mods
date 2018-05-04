@@ -89,6 +89,8 @@ public class GuiVC {
 	/** Module Reset */
 	public static GuiButton buttonModuleReset;
 	
+	public static GuiButton buttonArmed;
+	
 	/** Tier 1 */
 	public static GuiButton buttonT1;
 	/** Tier 2 */

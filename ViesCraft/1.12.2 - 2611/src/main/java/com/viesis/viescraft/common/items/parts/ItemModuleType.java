@@ -44,8 +44,7 @@ public class ItemModuleType extends Item {
     {
 		GameSettings gameSettingsIn = Minecraft.getMinecraft().gameSettings;
 		
-		TextFormatting stringColorMain = References.mainColorTooltip(stack);
-		TextFormatting stringColorText = References.textColorTooltip(stack);
+		TextFormatting stringColorText = this.getCustomRarityText(stack);
 		
 		String line1 = "";
 		String line2 = "";
@@ -56,61 +55,75 @@ public class ItemModuleType extends Item {
 		
 		if(stack.getMetadata() == 0)
 		{
-			line1 = I18n.format("vc.item.tt.moduletype.0.1");
-			line2 = I18n.format("vc.item.tt.moduletype.0.2");
+			line1 = References.localNameVC("vc.item.tt.moduletype.0.1");
+			line2 = References.localNameVC("vc.item.tt.moduletype.0.2");
 		}
 		else if(stack.getMetadata() >= 1)
 		{
-			line3 = I18n.format("vc.item.tt.moduletype.#." + stack.getMetadata() + ".pros1");
-			line4 = I18n.format("vc.item.tt.moduletype.#." + stack.getMetadata() + ".pros2");
-			line5 = I18n.format("vc.item.tt.moduletype.#." + stack.getMetadata() + ".cons1");
-			line6 = I18n.format("vc.item.tt.moduletype.#." + stack.getMetadata() + ".cons2");
+			line3 = References.localNameVC("vc.item.tt.moduletype.#." + stack.getMetadata() + ".pros1");
+			line4 = References.localNameVC("vc.item.tt.moduletype.#." + stack.getMetadata() + ".pros2");
+			line5 = References.localNameVC("vc.item.tt.moduletype.#." + stack.getMetadata() + ".cons1");
+			line6 = References.localNameVC("vc.item.tt.moduletype.#." + stack.getMetadata() + ".cons2");
 		}
+		
+		tooltip.add(TextFormatting.DARK_GREEN + "================================");
 		
 		if(stack.getMetadata() == 0)
 		{
-			tooltip.add(TextFormatting.DARK_GREEN + "================================");
-			
-			tooltip.add(TextFormatting.DARK_AQUA + line1);
-			tooltip.add(TextFormatting.DARK_AQUA + line2);
-			
+			tooltip.add(stringColorText + line1);
+			tooltip.add(stringColorText + line2);
 			tooltip.add(TextFormatting.DARK_GREEN + "================================");
 		}
 		else if(gameSettingsIn.isKeyDown(gameSettingsIn.keyBindSneak))
 		{
-			tooltip.add(TextFormatting.DARK_GREEN + "================================");
+			//Designed to enhance an airship.
+			tooltip.add(stringColorText + References.localNameVC("vc.item.tt.moduletype.#.05"));
+			tooltip.add("");
 			
-			//-----Toggled Effects-------
-			tooltip.add(TextFormatting.DARK_GREEN + "||" + "--------" + TextFormatting.BLACK + "l" 
-					+ TextFormatting.BLUE + I18n.format("vc.item.tt.moduletype.#.01", new Object[0])
-					+ TextFormatting.BLACK + "ii" + TextFormatting.DARK_GREEN + "--------" + "||");
+			if(stack.getMetadata() == 1
+			|| stack.getMetadata() == 4
+			|| stack.getMetadata() == 7
+			|| stack.getMetadata() == 10
+			|| stack.getMetadata() == 13
+			|| stack.getMetadata() == 16
+			|| stack.getMetadata() == 19
+			|| stack.getMetadata() == 22
+			|| stack.getMetadata() == 25)
+			{
+				//This is the base upgrade.
+				tooltip.add(stringColorText + References.localNameVC("vc.item.tt.upgrade.#.4"));
+			}
+			else
+			{
+				//Must have 'ModuleString' to apply.
+				tooltip.add(stringColorText + References.localNameVC("vc.item.tt.moduletype.#.06") + " " 
+				+ EnumsVC.ModuleType.byId((stack.getMetadata() - 1)).getLocalizedName()+ " " +References.localNameVC("vc.item.tt.moduletype.#.07"));
+			}
 			
-			tooltip.add(TextFormatting.DARK_GREEN + "================================");
+			//Use in the airship's "Module" menu.
+			tooltip.add(stringColorText + References.localNameVC("vc.item.tt.moduletype.#.04"));
 			
+			tooltip.add("");
+			
+			//Toggled Effects
+			tooltip.add(TextFormatting.GREEN + References.localNameVC("vc.item.tt.moduletype.#.01") + ":");
 			
 			//-=Pros=-
-			tooltip.add(TextFormatting.DARK_AQUA + line3);
-			tooltip.add(TextFormatting.DARK_AQUA + line4);
+			tooltip.add(TextFormatting.GREEN + "+ " + TextFormatting.BLUE + line3);
+			tooltip.add(TextFormatting.GREEN + "+ " + TextFormatting.BLUE + line4);
+			
+			//tooltip.add("");
 			
 			//-=Cons=-
-			tooltip.add(TextFormatting.DARK_RED + line5);	
-			tooltip.add(TextFormatting.DARK_RED + line6);	
-			
-			tooltip.add(TextFormatting.DARK_GREEN + "================================");
-			
-			//Used in the airship's "Upgrade" menu.
-					tooltip.add(TextFormatting.BLACK + "iiil" + stringColorText + I18n.format("vc.item.tt.moduletype.#.04", new Object[0])
-					+ TextFormatting.DARK_BLUE + " \"" 
-					+ TextFormatting.BLUE + I18n.format("vc.item.tt.moduletype.#.05", new Object[0]) 
-					+ TextFormatting.DARK_BLUE + "\" "
-					+ stringColorText + I18n.format("vc.item.tt.moduletype.#.06", new Object[0]));
-					
+			tooltip.add(TextFormatting.GREEN + "- " + TextFormatting.RED + line5);	
+			tooltip.add(TextFormatting.GREEN + "- " + TextFormatting.RED + line6);	
 			
 			tooltip.add(TextFormatting.DARK_GREEN + "================================");
 		}
 		else
 		{
-			tooltip.add(TextFormatting.GREEN + I18n.format("vc.item.tt.shifthelper.0", new Object[0]));
+			tooltip.add(TextFormatting.GREEN + References.localNameVC("vc.item.tt.shifthelper.0"));
+			tooltip.add(TextFormatting.DARK_GREEN + "================================");
 		}
 	}
 	
@@ -138,16 +151,17 @@ public class ItemModuleType extends Item {
 	public String getItemStackDisplayName(ItemStack stack)
     {
 		String itemName;
+		TextFormatting stringColorMain = this.getCustomRarityMain(stack);
 		
 		if(stack.getMetadata() == 0)
         {
-        	itemName = References.Old_I18n.translateToLocalFormatted("Module Chip", new Object[0]);
+        	itemName = stringColorMain + References.localNameVC("item.vc:item_module_chip.name");
         }
         else
         {
-        	itemName = EnumsVC.ModuleType.byId(this.getMetadata(stack)).getLocalizedName() 
+        	itemName = stringColorMain + EnumsVC.ModuleType.byId(this.getMetadata(stack)).getLocalizedName() 
         			+ " " + TextFormatting.GRAY + "("
-        			+ TextFormatting.DARK_RED + References.Old_I18n.translateToLocalFormatted("vc.item.module.#", new Object[0])
+        			+ TextFormatting.DARK_RED + References.localNameVC("vc.item.module.#")
         			+ TextFormatting.GRAY + ")";
         }
 		
@@ -166,5 +180,135 @@ public class ItemModuleType extends Item {
 
 			subItems.addAll(items);
 		}
+	}
+	
+	public TextFormatting getCustomRarityText(ItemStack stack)
+	{
+		switch (this.getMetadata(stack))
+        {
+			case 0:
+				return TextFormatting.GRAY;
+			case 1:
+				return TextFormatting.GOLD;
+			case 2:
+				return TextFormatting.DARK_AQUA;
+			case 3:
+				return TextFormatting.DARK_PURPLE;
+			case 4:
+				return TextFormatting.GOLD;
+			case 5:
+				return TextFormatting.DARK_AQUA;
+			case 6:
+				return TextFormatting.DARK_PURPLE;
+			case 7:
+				return TextFormatting.GOLD;
+			case 8:
+				return TextFormatting.DARK_AQUA;
+			case 9:
+				return TextFormatting.DARK_PURPLE;
+			case 10:
+				return TextFormatting.GOLD;
+			case 11:
+				return TextFormatting.DARK_AQUA;
+			case 12:
+				return TextFormatting.DARK_PURPLE;
+			case 13:
+				return TextFormatting.GOLD;
+			case 14:
+				return TextFormatting.DARK_AQUA;
+			case 15:
+				return TextFormatting.DARK_PURPLE;
+			case 16:
+				return TextFormatting.GOLD;
+			case 17:
+				return TextFormatting.DARK_AQUA;
+			case 18:
+				return TextFormatting.DARK_PURPLE;
+			case 19:
+				return TextFormatting.GOLD;
+			case 20:
+				return TextFormatting.DARK_AQUA;
+			case 21:
+				return TextFormatting.DARK_PURPLE;
+			case 22:
+				return TextFormatting.GOLD;
+			case 23:
+				return TextFormatting.DARK_AQUA;
+			case 24:
+				return TextFormatting.DARK_PURPLE;
+			case 25:
+				return TextFormatting.GOLD;
+			case 26:
+				return TextFormatting.DARK_AQUA;
+			case 27:
+				return TextFormatting.DARK_PURPLE;
+			default:
+            	return TextFormatting.WHITE;
+        }
+	}
+	
+	public TextFormatting getCustomRarityMain(ItemStack stack)
+	{
+		switch (this.getMetadata(stack))
+        {
+			case 0:
+				return TextFormatting.WHITE;
+			case 1:
+				return TextFormatting.YELLOW;
+			case 2:
+				return TextFormatting.AQUA;
+			case 3:
+				return TextFormatting.LIGHT_PURPLE;
+			case 4:
+				return TextFormatting.YELLOW;
+			case 5:
+				return TextFormatting.AQUA;
+			case 6:
+				return TextFormatting.LIGHT_PURPLE;
+			case 7:
+				return TextFormatting.YELLOW;
+			case 8:
+				return TextFormatting.AQUA;
+			case 9:
+				return TextFormatting.LIGHT_PURPLE;
+			case 10:
+				return TextFormatting.YELLOW;
+			case 11:
+				return TextFormatting.AQUA;
+			case 12:
+				return TextFormatting.LIGHT_PURPLE;
+			case 13:
+				return TextFormatting.YELLOW;
+			case 14:
+				return TextFormatting.AQUA;
+			case 15:
+				return TextFormatting.LIGHT_PURPLE;
+			case 16:
+				return TextFormatting.YELLOW;
+			case 17:
+				return TextFormatting.AQUA;
+			case 18:
+				return TextFormatting.LIGHT_PURPLE;
+			case 19:
+				return TextFormatting.YELLOW;
+			case 20:
+				return TextFormatting.AQUA;
+			case 21:
+				return TextFormatting.LIGHT_PURPLE;
+			case 22:
+				return TextFormatting.YELLOW;
+			case 23:
+				return TextFormatting.AQUA;
+			case 24:
+				return TextFormatting.LIGHT_PURPLE;
+			case 25:
+				return TextFormatting.YELLOW;
+			case 26:
+				return TextFormatting.AQUA;
+			case 27:
+				return TextFormatting.LIGHT_PURPLE;
+			default:
+            	return TextFormatting.WHITE;
+        }
 	}
 }

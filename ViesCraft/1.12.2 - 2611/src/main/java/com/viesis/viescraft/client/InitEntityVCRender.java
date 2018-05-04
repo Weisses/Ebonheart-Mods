@@ -3,9 +3,11 @@ package com.viesis.viescraft.client;
 import com.viesis.viescraft.api.ItemsVC;
 import com.viesis.viescraft.client.entity.render.RenderAirship;
 import com.viesis.viescraft.client.entity.render.RenderBombBig;
+import com.viesis.viescraft.client.entity.render.RenderBombScatter;
 import com.viesis.viescraft.client.entity.render.RenderBombSmall;
 import com.viesis.viescraft.client.entity.render.RenderThrownAirship;
 import com.viesis.viescraft.common.entity.EntityBombBig;
+import com.viesis.viescraft.common.entity.EntityBombScatter;
 import com.viesis.viescraft.common.entity.EntityBombSmall;
 import com.viesis.viescraft.common.entity.EntityThrownAirship;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipCore;
@@ -18,6 +20,7 @@ public final class InitEntityVCRender extends ItemsVC {
 	{
 		RenderingRegistry.registerEntityRenderingHandler(EntityBombSmall.class, renderManager -> new RenderBombSmall(renderManager));
 		RenderingRegistry.registerEntityRenderingHandler(EntityBombBig.class, renderManager -> new RenderBombBig(renderManager));
+		RenderingRegistry.registerEntityRenderingHandler(EntityBombScatter.class, renderManager -> new RenderBombScatter(renderManager));
 		
 		RenderingRegistry.registerEntityRenderingHandler(EntityThrownAirship.class, renderManager -> new RenderThrownAirship(renderManager));
 		

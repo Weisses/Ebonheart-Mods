@@ -1,7 +1,9 @@
 package com.viesis.viescraft.network.server.airship.module;
 
+import com.viesis.viescraft.api.CostsVC;
 import com.viesis.viescraft.client.gui.airship.module.GuiModuleMenu;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
+import com.viesis.viescraft.network.NetworkHandler;
 import com.viesis.viescraft.network.packet.MessageBase;
 
 import io.netty.buffer.ByteBuf;
@@ -34,6 +36,18 @@ public class MessageHelperGuiModuleToggleSlot1 extends MessageBase<MessageHelper
 	{
 		EntityAirshipBaseVC airship = (EntityAirshipBaseVC) player.getRidingEntity();
 		
-		airship.moduleActiveSlot1 = message.metaToggleModule;
+		if(airship.getStoredRedstone() >= CostsVC.MODULE_CHANGE_COST
+		&& message.metaToggleModule != 0)	
+		{
+			airship.moduleActiveSlot1 = message.metaToggleModule;
+			airship.storedRedstone = airship.storedRedstone - CostsVC.MODULE_CHANGE_COST;
+    	}
+		
+		if(message.metaToggleModule == 0)	
+		{
+			airship.moduleActiveSlot1 = message.metaToggleModule;
+    	}
+		
+		airship.bombArmedToggle = false;
 	}
 }

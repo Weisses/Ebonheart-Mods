@@ -5,6 +5,7 @@ import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
 import com.viesis.viescraft.common.entity.airships.containers.ContainerVC;
 import com.viesis.viescraft.common.entity.airships.slots.FuelSlotVC;
 import com.viesis.viescraft.common.entity.airships.slots.InventorySlotVC;
+import com.viesis.viescraft.common.entity.airships.slots.ModuleBombSlotVC;
 
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
@@ -78,21 +79,7 @@ public class ContainerMenuMain extends ContainerVC {
 		|| this.airship.moduleActiveSlot1 == EnumsVC.ModuleType.BOMB_GREATER.getMetadata())
 		{
 			//Bomb Slots
-			if(this.airship.selectedModuleBomb == 1)
-			{
-				this.addSlotToContainer(new InventorySlotVC(this.airship.inventory, 51, 62 + (18 * 2), 89));
-			}
-			if(this.airship.selectedModuleBomb == 2)
-			{
-				this.addSlotToContainer(new InventorySlotVC(this.airship.inventory, 51, 71 + (18 * 1), 89));
-				this.addSlotToContainer(new InventorySlotVC(this.airship.inventory, 52, 71 + (18 * 2), 89));
-			}
-			if(this.airship.selectedModuleBomb == 3)
-			{
-				this.addSlotToContainer(new InventorySlotVC(this.airship.inventory, 51, 62 + (18 * 1), 89));
-				this.addSlotToContainer(new InventorySlotVC(this.airship.inventory, 52, 62 + (18 * 2), 89));
-				this.addSlotToContainer(new InventorySlotVC(this.airship.inventory, 53, 62 + (18 * 3), 89));
-			}
+			this.addSlotToContainer(new ModuleBombSlotVC(this.airship.inventory, 51, 53, 89));
 		}
 		
 		// Player Hotbar, Slot 0-8, Slot IDs 36-44

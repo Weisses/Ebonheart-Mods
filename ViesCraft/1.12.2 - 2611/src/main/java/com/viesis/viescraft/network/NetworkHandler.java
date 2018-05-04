@@ -2,6 +2,9 @@ package com.viesis.viescraft.network;
 
 import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.network.client.MessageConfig;
+import com.viesis.viescraft.network.server.airship.MessageDropBombBig;
+import com.viesis.viescraft.network.server.airship.MessageDropBombScatter;
+import com.viesis.viescraft.network.server.airship.MessageDropBombSmall;
 import com.viesis.viescraft.network.server.airship.MessageGuiPlayMusic;
 import com.viesis.viescraft.network.server.airship.MessageGuiPlayMusicArea;
 import com.viesis.viescraft.network.server.airship.MessageGuiRandomMusic;
@@ -10,7 +13,6 @@ import com.viesis.viescraft.network.server.airship.MessageGuiStopMusicArea;
 import com.viesis.viescraft.network.server.airship.customize.MessageGuiCustomizeMenu;
 import com.viesis.viescraft.network.server.airship.customize.MessageGuiCustomizeMenuChangeName;
 import com.viesis.viescraft.network.server.airship.customize.MessageHelperGuiCustomizeMenuChangeName;
-import com.viesis.viescraft.network.server.airship.customize.MessageHelperGuiCustomizeMenuOptionsRedstone;
 import com.viesis.viescraft.network.server.airship.customize.MessageHelperGuiCustomizeMenuUndo;
 import com.viesis.viescraft.network.server.airship.customize.balloon.MessageGuiCustomizeMenuBalloonColor;
 import com.viesis.viescraft.network.server.airship.customize.balloon.MessageGuiCustomizeMenuBalloonColorUndo;
@@ -59,10 +61,16 @@ import com.viesis.viescraft.network.server.airship.customize.frame.sub.MessageGu
 import com.viesis.viescraft.network.server.airship.customize.frame.sub.MessageGuiCustomizeMenuFrameTier5Pg1;
 import com.viesis.viescraft.network.server.airship.customize.frame.sub.MessageHelperGuiCustomizeMenuFrameTier;
 import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenu;
+import com.viesis.viescraft.network.server.airship.main.MessageHelperGuiMainMenuConsumeBomb1;
+import com.viesis.viescraft.network.server.airship.main.MessageHelperGuiMainMenuConsumeBomb2;
+import com.viesis.viescraft.network.server.airship.main.MessageHelperGuiMainMenuConsumeBomb3;
 import com.viesis.viescraft.network.server.airship.module.MessageGuiModuleMenu;
+import com.viesis.viescraft.network.server.airship.module.MessageHelperGuiModuleBombActive;
+import com.viesis.viescraft.network.server.airship.module.MessageHelperGuiModuleBombArmed;
 import com.viesis.viescraft.network.server.airship.module.MessageHelperGuiModuleLearn;
 import com.viesis.viescraft.network.server.airship.module.MessageHelperGuiModuleToggleSlot1;
 import com.viesis.viescraft.network.server.airship.redstone.MessageGuiRedstoneMenu;
+import com.viesis.viescraft.network.server.airship.redstone.MessageHelperGuiRedstoneMenuConsume;
 import com.viesis.viescraft.network.server.airship.upgrade.MessageGuiUpgradeMenu;
 import com.viesis.viescraft.network.server.airship.upgrade.MessageHelperGuiUpgradeBalloonVC;
 import com.viesis.viescraft.network.server.airship.upgrade.MessageHelperGuiUpgradeCoreVC;
@@ -100,7 +108,7 @@ public class NetworkHandler {
 		register(MessageHelperGuiCustomizeMenuChangeName.class, MessageHelperGuiCustomizeMenuChangeName.class, Side.SERVER);
 		register(MessageHelperGuiCustomizeMenuUndo.class, MessageHelperGuiCustomizeMenuUndo.class, Side.SERVER);
 		register(MessageGuiRedstoneMenu.class, MessageGuiRedstoneMenu.class, Side.SERVER);
-		register(MessageHelperGuiCustomizeMenuOptionsRedstone.class, MessageHelperGuiCustomizeMenuOptionsRedstone.class, Side.SERVER);
+		register(MessageHelperGuiRedstoneMenuConsume.class, MessageHelperGuiRedstoneMenuConsume.class, Side.SERVER);
 		
 		register(MessageGuiCustomizeMenuCoreMain.class, MessageGuiCustomizeMenuCoreMain.class, Side.SERVER);
 		register(MessageGuiCustomizeMenuCoreModelFramePg1.class, MessageGuiCustomizeMenuCoreModelFramePg1.class, Side.SERVER);
@@ -194,7 +202,15 @@ public class NetworkHandler {
 		register(MessageGuiMusicPg1.class, MessageGuiMusicPg1.class, Side.SERVER);
 		register(MessageHelperGuiMusicPg1.class, MessageHelperGuiMusicPg1.class, Side.SERVER);
 		
+		register(MessageHelperGuiModuleBombArmed.class, MessageHelperGuiModuleBombArmed.class, Side.SERVER);
+		register(MessageDropBombSmall.class, MessageDropBombSmall.class, Side.SERVER);
+		register(MessageDropBombBig.class, MessageDropBombBig.class, Side.SERVER);
+		register(MessageDropBombScatter.class, MessageDropBombScatter.class, Side.SERVER);
+		register(MessageHelperGuiModuleBombActive.class, MessageHelperGuiModuleBombActive.class, Side.SERVER);
 		
+		register(MessageHelperGuiMainMenuConsumeBomb1.class, MessageHelperGuiMainMenuConsumeBomb1.class, Side.SERVER);
+		register(MessageHelperGuiMainMenuConsumeBomb2.class, MessageHelperGuiMainMenuConsumeBomb2.class, Side.SERVER);
+		register(MessageHelperGuiMainMenuConsumeBomb3.class, MessageHelperGuiMainMenuConsumeBomb3.class, Side.SERVER);
 		
 	}
 	

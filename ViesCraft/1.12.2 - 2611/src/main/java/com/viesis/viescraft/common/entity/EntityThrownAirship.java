@@ -21,6 +21,7 @@ public class EntityThrownAirship extends EntityThrownAirshipCore {
     		int coreTierIn, int frameTierIn, int engineTierIn, int balloonTierIn, 
     		int moduleSlot1In, 
     		int fuelIn, int fuelTotalIn, int redstoneIn, int redstoneTotalIn, 
+    		int bombType1, int bombType2, int bombType3,
     		
     		int coreModelVisualFrameIn, 
     		int coreModelVisualEngineIn, 
@@ -68,6 +69,10 @@ public class EntityThrownAirship extends EntityThrownAirshipCore {
         this.storedFuelTotal = fuelTotalIn;
         this.storedRedstone = redstoneIn;
         this.storedRedstoneTotal = redstoneTotalIn;
+        
+        this.storedBombType1 = bombType1;
+        this.storedBombType2 = bombType2;
+        this.storedBombType3 = bombType3;
         
         this.coreModelVisualFrame = coreModelVisualFrameIn;
         this.coreModelVisualEngine = coreModelVisualEngineIn;
@@ -130,6 +135,7 @@ public class EntityThrownAirship extends EntityThrownAirshipCore {
         			this.mainTierCore, this.mainTierFrame, this.mainTierEngine, this.mainTierBalloon, 
 		    		this.moduleActiveSlot1, 
 		    		this.storedFuel, this.storedFuelTotal, this.storedRedstone, this.storedRedstoneTotal, 
+		    		this.storedBombType1, this.storedBombType2, this.storedBombType3,
 		    		
 		    		this.coreModelVisualFrame, 
 		    		this.coreModelVisualEngine, 

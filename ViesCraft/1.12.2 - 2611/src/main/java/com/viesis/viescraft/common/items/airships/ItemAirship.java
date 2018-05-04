@@ -52,6 +52,10 @@ public class ItemAirship extends ItemAirshipBase {
 		this.storedRedstone = 0;
 		this.storedRedstoneTotal = 50;
 		
+		this.storedBombType1 = 0;
+        this.storedBombType2 = 0;
+        this.storedBombType3 = 0;
+        
 		this.mainTierCore = 0;
 		this.mainTierFrame = 0;
 		this.mainTierEngine = 0;
@@ -116,6 +120,10 @@ public class ItemAirship extends ItemAirshipBase {
         		this.fuelItemStackSize = itemstack.getTagCompound().getInteger(rf.FUEL_ITEMSTACK_SIZE_TAG);
         		this.storedRedstone = itemstack.getTagCompound().getInteger(rf.STORED_REDSTONE_TAG);
         		this.storedRedstoneTotal = itemstack.getTagCompound().getInteger(rf.STORED_REDSTONE_TOTAL_TAG);
+        		
+        		this.storedBombType1 = itemstack.getTagCompound().getInteger(rf.BOMB_TYPE_1_TAG);
+        		this.storedBombType2 = itemstack.getTagCompound().getInteger(rf.BOMB_TYPE_2_TAG);
+        		this.storedBombType3 = itemstack.getTagCompound().getInteger(rf.BOMB_TYPE_3_TAG);
         		
         		this.mainTierCore = itemstack.getTagCompound().getInteger(rf.MAIN_TIER_CORE_TAG);
         		this.mainTierFrame = itemstack.getTagCompound().getInteger(rf.MAIN_TIER_FRAME_TAG);
@@ -183,6 +191,7 @@ public class ItemAirship extends ItemAirshipBase {
 				this.getMetadata(itemstack), this.mainTierFrame, this.mainTierEngine, this.mainTierBalloon, 
 	    		this.moduleActiveSlot1, 
 	    		this.storedFuel, this.storedFuelTotal, this.storedRedstone, this.storedRedstoneTotal, 
+	    		this.storedBombType1, this.storedBombType2, this.storedBombType3,
 	    		
 	    		this.coreModelVisualFrame, 
 	    		this.coreModelVisualEngine, 
@@ -234,6 +243,7 @@ public class ItemAirship extends ItemAirshipBase {
 		//String preName = TextFormatting.WHITE + "ViesCraft";
 		
 		this.customName = "Airship";
+		
 		if(stack.hasTagCompound())
     	{
     		this.customName = stack.getTagCompound().getString(rf.CUSTOM_NAME_TAG);

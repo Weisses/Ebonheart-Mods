@@ -4,6 +4,10 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import com.viesis.viescraft.ViesCraft;
+import com.viesis.viescraft.api.References;
+import com.viesis.viescraft.client.gui.guidebooks.GuiGuidebookMain;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
@@ -16,9 +20,6 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import com.viesis.viescraft.ViesCraft;
-import com.viesis.viescraft.client.gui.guidebooks.GuiGuidebookMain;
 
 public class ItemGuidebookMain extends Item {
 	
@@ -47,6 +48,6 @@ public class ItemGuidebookMain extends Item {
 	@Override
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
     {
-		tooltip.add(TextFormatting.GRAY + "by Viesis");
+		tooltip.add(TextFormatting.GRAY + References.localNameVC("vc.main.by") + " " + "Vies");
 	}
 }

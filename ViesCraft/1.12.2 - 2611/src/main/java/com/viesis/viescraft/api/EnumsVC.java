@@ -806,7 +806,8 @@ public class EnumsVC {
     	//STRING(meta, registry name, localized name, explosion strength)
 		CASING(0, "casing", References.localNameVC("vc.enum.bomb.0"), 0.0F),
 		SMALL(1, "small", References.localNameVC("vc.enum.bomb.1"), 4.0F),
-		BIG(2, "big", References.localNameVC("vc.enum.bomb.2"), 10.0F);
+		BIG(2, "big", References.localNameVC("vc.enum.bomb.2"), 8.0F),
+		SCATTER(3, "scatter", References.localNameVC("vc.enum.bomb.3"), 0.3F);
 		
 		private final int metadata;
         private final String registryName;

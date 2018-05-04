@@ -3,6 +3,7 @@ package com.viesis.viescraft.common.entity.airships;
 import com.viesis.viescraft.api.EnumsVC;
 import com.viesis.viescraft.api.FuelVC;
 import com.viesis.viescraft.api.References;
+import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.client.InitParticlesVCRender;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 import com.viesis.viescraft.init.InitItemsVC;
@@ -83,6 +84,11 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
 	
     protected static final DataParameter<Integer> MODULE_JUKEBOX_SELECTED_SONG_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
 	protected static final DataParameter<Integer> MODULE_CRUISECONTROL_SELECTED_SPEED_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+	protected static final DataParameter<Boolean> MODULE_BOMB_ARMED_DM = EntityDataManager.<Boolean>createKey(EntityAirshipBaseVC.class, DataSerializers.BOOLEAN);
+	protected static final DataParameter<Integer> BOMB_TYPE_1_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+	protected static final DataParameter<Integer> BOMB_TYPE_2_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+	protected static final DataParameter<Integer> BOMB_TYPE_3_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
+	protected static final DataParameter<Integer> BOMB_TYPE_ACTIVE_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
 	
 	protected static final DataParameter<Boolean> MODULE_LEARNED_ALTITUDE_DM = EntityDataManager.<Boolean>createKey(EntityAirshipBaseVC.class, DataSerializers.BOOLEAN);
 	protected static final DataParameter<Integer> MODULE_SELECTED_ALTITUDE_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
@@ -106,18 +112,20 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
 	
 	
 	/**
-	 * AIRSHIP SLOTS: <br> <br>
+	 * SLOTS: <br> <br>
 	 *
 	 * Slot  0 = Fuel <br>
-	 * Slot  1 = Upgrade Frame <br>
-	 * Slot  2 = Upgrade Core <br>
+	 * Slot  1 = Upgrade Core <br>
+	 * Slot  2 = Upgrade Frame <br>
 	 * Slot  3 = Upgrade Engine <br>
 	 * Slot  4 = Upgrade Balloon <br>
 	 * Slot 11 = Module Slot1 <br>
 	 * Slot 12 = Module Slot2 <br>
-	 * Slot 16 = Display Banner <br> 
+	 * Slot 16 = Redstone Slot <br>
+	 * Slot 18 = Block/Item to Display <br>
 	 * Slot 20-28 = Inventory Small <br>
 	 * Slot 20-37 = Inventory Large <br>
+	 * Slot 51 = Bomb Slot1 <br>
 	 */
     public ItemStackHandler inventory;
     protected int size = 64;
@@ -170,7 +178,7 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
     public float AirshipSpeedUp;
     public float AirshipSpeedDown;
     
-    protected boolean canDrop;
+    protected boolean canDropInventory;
 	
 	public float speedModifier;
 	
@@ -180,6 +188,11 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
 	public int metaJukeboxSelectedSong;
     public int metaCruiseControlSelectedSpeed;
     public boolean cruiseControlToggle;
+    public boolean bombArmedToggle;
+    public int storedBombType1;
+    public int storedBombType2;
+    public int storedBombType3;
+    public int bombTypeActive;
     
 	/** Selected Altitude */
 	public int selectedModuleAltitude;
@@ -233,6 +246,7 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
     		int coreTierIn, int frameTierIn, int engineTierIn, int balloonTierIn, 
     		int moduleSlot1In, 
     		int fuelIn, int fuelTotalIn, int redstoneIn, int redstoneTotalIn,
+    		int bombType1, int bombType2, int bombType3,
     		
     		int coreModelVisualFrameIn, 
     		int coreModelVisualEngineIn, 
@@ -323,6 +337,11 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
         
         this.dataManager.register(MODULE_JUKEBOX_SELECTED_SONG_DM, Integer.valueOf(this.metaJukeboxSelectedSong));
         this.dataManager.register(MODULE_CRUISECONTROL_SELECTED_SPEED_DM, Integer.valueOf(this.metaCruiseControlSelectedSpeed));
+        this.dataManager.register(MODULE_BOMB_ARMED_DM, Boolean.valueOf(this.bombArmedToggle));
+        this.dataManager.register(BOMB_TYPE_1_DM, Integer.valueOf(this.storedBombType1));
+        this.dataManager.register(BOMB_TYPE_2_DM, Integer.valueOf(this.storedBombType2));
+        this.dataManager.register(BOMB_TYPE_3_DM, Integer.valueOf(this.storedBombType3));
+        this.dataManager.register(BOMB_TYPE_ACTIVE_DM, Integer.valueOf(this.bombTypeActive));
         
         this.dataManager.register(MODULE_SELECTED_ALTITUDE_DM, Integer.valueOf(this.selectedModuleAltitude));
         this.dataManager.register(MODULE_LEARNED_ALTITUDE_DM, Boolean.valueOf(this.learnedModuleAltitude));
@@ -424,6 +443,11 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
     	
     	compound.setInteger(rf.MODULE_ACTIVE_SLOT1_TAG, this.moduleActiveSlot1);
 		compound.setInteger(rf.JUKEBOX_SELECTED_SONG_TAG, this.metaJukeboxSelectedSong);
+		compound.setBoolean(rf.BOMB_ARMED_TAG, this.bombArmedToggle);
+		compound.setInteger(rf.BOMB_TYPE_1_TAG, this.storedBombType1);
+		compound.setInteger(rf.BOMB_TYPE_2_TAG, this.storedBombType2);
+		compound.setInteger(rf.BOMB_TYPE_3_TAG, this.storedBombType3);
+		compound.setInteger(rf.BOMB_TYPE_ACTIVE_TAG, this.bombTypeActive);
 		
 		compound.setBoolean(rf.LEARNED_MODULE_ALTITUDE_TAG, this.learnedModuleAltitude);
 		compound.setInteger(rf.SELECTED_MODULE_ALTITUDE_TAG, this.selectedModuleAltitude);
@@ -494,6 +518,11 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
         
         this.moduleActiveSlot1 = compound.getInteger(rf.MODULE_ACTIVE_SLOT1_TAG);
         this.metaJukeboxSelectedSong = compound.getInteger(rf.JUKEBOX_SELECTED_SONG_TAG);
+        this.bombArmedToggle = compound.getBoolean(rf.BOMB_ARMED_TAG);
+        this.storedBombType1 = compound.getInteger(rf.BOMB_TYPE_1_TAG);
+        this.storedBombType2 = compound.getInteger(rf.BOMB_TYPE_2_TAG);
+        this.storedBombType3 = compound.getInteger(rf.BOMB_TYPE_3_TAG);
+        this.bombTypeActive = compound.getInteger(rf.BOMB_TYPE_ACTIVE_TAG);
         
         this.learnedModuleAltitude = compound.getBoolean(rf.LEARNED_MODULE_ALTITUDE_TAG);
         this.selectedModuleAltitude = compound.getInteger(rf.SELECTED_MODULE_ALTITUDE_TAG);
@@ -713,6 +742,24 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
     	}
     }
     
+    /**
+     * Airship bomb drop cooldown.
+     */
+	protected void bombDropCooldown()
+	{
+		if(this.bombDropTimer < 30.0F
+		&& !this.canDropBomb)
+		{
+			++this.bombDropTimer;
+		}
+		else
+		{
+			this.canDropBomb = true;
+			this.bombDropTimer = 0.0F;
+		}
+	}
+    
+    
     
     //==================================//
     // TODO          Misc               //
@@ -864,16 +911,16 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
 		|| this.getModuleActiveSlot1() == EnumsVC.ModuleType.STORAGE_NORMAL.getMetadata()
 		|| this.getModuleActiveSlot1() == EnumsVC.ModuleType.STORAGE_GREATER.getMetadata())
     	{
-    		canDrop = true;
+    		canDropInventory = true;
     	}
     	
     	if(this.getModuleActiveSlot1() != EnumsVC.ModuleType.STORAGE_LESSER.getMetadata()
 		&& this.getModuleActiveSlot1() != EnumsVC.ModuleType.STORAGE_NORMAL.getMetadata()
 		&& this.getModuleActiveSlot1() != EnumsVC.ModuleType.STORAGE_GREATER.getMetadata()
-    	&& canDrop)
+    	&& canDropInventory)
     	{
     		this.dropInventoryItemStorageOnly();
-    		canDrop = false;
+    		canDropInventory = false;
     	}
     }
     
@@ -1324,6 +1371,11 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
             
             this.metaJukeboxSelectedSong = this.getJukeboxSelectedSong();
             this.metaCruiseControlSelectedSpeed = this.getCruiseControlSelectedSpeed();
+            this.bombArmedToggle = this.getBombArmed();
+            this.storedBombType1 = this.getStoredBombType1();
+            this.storedBombType2 = this.getStoredBombType2();
+            this.storedBombType3 = this.getStoredBombType3();
+            this.bombTypeActive = this.getBombTypeActive();
             
             this.learnedModuleAltitude = this.getModuleLearnedAltitude();
             this.selectedModuleAltitude = this.getModuleSelectedAltitude();
@@ -1389,6 +1441,11 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
             
             this.setJukeboxSelectedSong(this.metaJukeboxSelectedSong);
             this.setCruiseControlSelectedSpeed(this.metaCruiseControlSelectedSpeed);
+            this.setBombArmed(this.bombArmedToggle);
+            this.setStoredBombType1(this.storedBombType1);
+            this.setStoredBombType2(this.storedBombType2);
+            this.setStoredBombType3(this.storedBombType3);
+            this.setBombTypeActive(this.bombTypeActive);
             
             this.setModuleLearnedAltitude(this.learnedModuleAltitude);
             this.setModuleSelectedAltitude(this.selectedModuleAltitude);
@@ -1829,6 +1886,78 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
     public int getCruiseControlSelectedSpeed()
     {
         return ((Integer)this.dataManager.get(MODULE_CRUISECONTROL_SELECTED_SPEED_DM)).intValue();
+    }
+	
+	/**
+     * Sets the Bomb Module to armed.
+     */
+    public void setBombArmed(boolean booleanIn)
+    {
+        this.dataManager.set(MODULE_BOMB_ARMED_DM, Boolean.valueOf(booleanIn));
+    }
+    /**
+     * Gets the Bomb Module to armed.
+     */
+    public boolean getBombArmed()
+    {
+        return ((Boolean)this.dataManager.get(MODULE_BOMB_ARMED_DM)).booleanValue();
+    }
+    
+	/**
+     * Sets the Stored Bomb Type 1 amount.
+     */
+    public void setStoredBombType1(int intIn)
+    {
+        this.dataManager.set(BOMB_TYPE_1_DM, Integer.valueOf(intIn));
+    }
+    /**
+     * Gets the Stored Bomb Type 1 amount.
+     */
+    public int getStoredBombType1()
+    {
+        return ((Integer)this.dataManager.get(BOMB_TYPE_1_DM)).intValue();
+    }
+	/**
+     * Sets the Stored Bomb Type 2 amount.
+     */
+    public void setStoredBombType2(int intIn)
+    {
+        this.dataManager.set(BOMB_TYPE_2_DM, Integer.valueOf(intIn));
+    }
+    /**
+     * Gets the Stored Bomb Type 2 amount.
+     */
+    public int getStoredBombType2()
+    {
+        return ((Integer)this.dataManager.get(BOMB_TYPE_2_DM)).intValue();
+    }
+	/**
+     * Sets the Stored Bomb Type 3 amount.
+     */
+    public void setStoredBombType3(int intIn)
+    {
+        this.dataManager.set(BOMB_TYPE_3_DM, Integer.valueOf(intIn));
+    }
+    /**
+     * Gets the Stored Bomb Type 3 amount.
+     */
+    public int getStoredBombType3()
+    {
+        return ((Integer)this.dataManager.get(BOMB_TYPE_3_DM)).intValue();
+    }
+	/**
+     * Sets the Bomb Type Active.
+     */
+    public void setBombTypeActive(int intIn)
+    {
+        this.dataManager.set(BOMB_TYPE_ACTIVE_DM, Integer.valueOf(intIn));
+    }
+    /**
+     * Gets the Bomb Type Active.
+     */
+    public int getBombTypeActive()
+    {
+        return ((Integer)this.dataManager.get(BOMB_TYPE_ACTIVE_DM)).intValue();
     }
     
     //======================================================================================

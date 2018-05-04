@@ -59,6 +59,7 @@ public class ItemCreativeAirship extends ItemCreativeAirshipBase {
 						5, 5, 5, 5,
 						0,
 						0, 0, 500, 500,
+						64, 16, 8,
 						0, 0, 0,
 			    		0, false,
 			    		255, 255, 255,
@@ -74,7 +75,7 @@ public class ItemCreativeAirship extends ItemCreativeAirshipBase {
 			    		true, 3, 
 			    		true, 3, 
 			    		true, 3, 
-			    		this.storedInventory, "Airship");
+			    		this.storedInventory, "Creative");
 				
 				entityairship.shoot(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, -20.0F, 0.7F, 1.0F);
 				worldIn.spawnEntity(entityairship);

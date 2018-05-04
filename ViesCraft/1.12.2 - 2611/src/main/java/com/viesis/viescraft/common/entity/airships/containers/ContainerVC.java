@@ -22,8 +22,6 @@ public class ContainerVC extends Container {
 	 * Slot 20-28 = Inventory Small <br>
 	 * Slot 20-37 = Inventory Large <br>
 	 * Slot 51 = Bomb Slot1 <br>
-	 * Slot 52 = Bomb Slot2 <br>
-	 * Slot 53 = Bomb Slot3 <br>
 	 */
 	public ContainerVC() 
 	{

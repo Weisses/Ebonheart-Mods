@@ -11,7 +11,7 @@ import com.viesis.viescraft.client.gui.buttons.GuiButtonGeneral1VC;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
 import com.viesis.viescraft.common.entity.airships.containers.all.ContainerMenuRedstone;
 import com.viesis.viescraft.network.NetworkHandler;
-import com.viesis.viescraft.network.server.airship.customize.MessageHelperGuiCustomizeMenuOptionsRedstone;
+import com.viesis.viescraft.network.server.airship.redstone.MessageHelperGuiRedstoneMenuConsume;
 
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
@@ -75,13 +75,13 @@ public class GuiCustomizeMenuRedstone extends GuiContainerVC {
 				}
 				else if(this.airship.storedRedstoneTotal >= (this.storedRedstone + this.airship.storedRedstone))
 				{
-					NetworkHandler.sendToServer(new MessageHelperGuiCustomizeMenuOptionsRedstone());
+					NetworkHandler.sendToServer(new MessageHelperGuiRedstoneMenuConsume());
 				}
 				else if(this.airship.storedRedstoneTotal < (this.storedRedstone + this.airship.storedRedstone))
 				{
 					this.storedRedstone = this.airship.storedRedstoneTotal - this.airship.storedRedstone;
 					
-					NetworkHandler.sendToServer(new MessageHelperGuiCustomizeMenuOptionsRedstone());
+					NetworkHandler.sendToServer(new MessageHelperGuiRedstoneMenuConsume());
 				}
 			}
 	    }

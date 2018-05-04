@@ -6,6 +6,7 @@ import javax.annotation.Nullable;
 
 import com.google.common.collect.Lists;
 import com.viesis.viescraft.api.util.Keybinds;
+import com.viesis.viescraft.api.util.LogHelper;
 
 import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.material.Material;
@@ -71,6 +72,10 @@ public class EntityBaseVC extends Entity {
     protected boolean upInputDown;
     protected boolean downInputDown;
     protected boolean openInputDown;
+    protected boolean dropBombInputDown;
+    
+    protected float bombDropTimer;
+    public boolean canDropBomb;
     
     public EntityBaseVC(World worldIn)
     {
@@ -79,13 +84,14 @@ public class EntityBaseVC extends Entity {
         this.ignoreFrustumCheck = true;
         this.preventEntitySpawning = true;
         
-        this.setSize(0.9F, 0.3F);
+        this.setSize(0.9F, 0.4F);
     }
     
     public EntityBaseVC(World worldIn, double x, double y, double z, 
     		int coreTierIn, int frameTierIn, int engineTierIn, int balloonTierIn, 
     		int moduleSlot1In, 
     		int fuelIn, int fuelTotalIn, int redstoneIn, int redstoneTotalIn,
+    		int bombType1, int bombType2, int bombType3,
     		
     		int coreModelVisualFrameIn, 
     		int coreModelVisualEngineIn, 
@@ -218,9 +224,14 @@ public class EntityBaseVC extends Entity {
     }
     
     
+    
     @Override
     public boolean attackEntityFrom(DamageSource source, float amount)
     {
+    	if(source.isProjectile())
+    	{
+    		return false;
+    	}
     	if (this.isEntityInvulnerable(source))
         {
             return false;
@@ -773,6 +784,7 @@ public class EntityBaseVC extends Entity {
         this.upInputDown = Keybinds.vcUp.isKeyDown();
         this.downInputDown = Keybinds.vcDown.isKeyDown();
         this.openInputDown = Keybinds.vcInventory.isPressed();
+        this.dropBombInputDown = Keybinds.vcDropBomb.isPressed();
     }
     
     

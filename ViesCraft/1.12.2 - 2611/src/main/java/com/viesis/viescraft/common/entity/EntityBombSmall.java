@@ -59,10 +59,9 @@ public class EntityBombSmall extends EntityThrowable {
 		}
 		else
 		{
-			if (!this.world.isRemote)
+			if(!this.world.isRemote)
 	        {
-				this.world.createExplosion(this, this.posX, this.posY, this.posZ, 
-						EnumsVC.Bombs.byId(1).getExplosionStrength(), true);
+				this.world.createExplosion(this, this.posX, this.posY, this.posZ, EnumsVC.Bombs.byId(1).getExplosionStrength(), true);
 				this.setDead();
 	        }
 			else

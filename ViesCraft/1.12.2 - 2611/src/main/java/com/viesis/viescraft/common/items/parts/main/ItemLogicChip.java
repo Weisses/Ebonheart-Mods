@@ -7,6 +7,7 @@ import javax.annotation.Nullable;
 
 import com.viesis.viescraft.ViesCraft;
 import com.viesis.viescraft.api.EnumsVC;
+import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.common.items.ItemHelper;
 
 import net.minecraft.client.util.ITooltipFlag;
@@ -42,8 +43,8 @@ public class ItemLogicChip extends Item {
 		TextFormatting stringColorText = TextFormatting.GRAY;
 		
 		tooltip.add(TextFormatting.DARK_GREEN + "================================");
-		tooltip.add(I18n.translateToLocal("vc.item.tt.logicchip.1"));
-		tooltip.add(I18n.translateToLocal("vc.item.tt.logicchip.2"));
+		tooltip.add(References.localNameVC("vc.item.tt.logicchip.1"));
+		tooltip.add(References.localNameVC("vc.item.tt.logicchip.2"));
 		tooltip.add(TextFormatting.DARK_GREEN + "================================");
 	}
 	
@@ -86,7 +87,7 @@ public class ItemLogicChip extends Item {
 	@Override
 	public String getItemStackDisplayName(ItemStack stack)
     {
-        String colorName = TextFormatting.WHITE + "Logic Chip";
+        String colorName = TextFormatting.WHITE + References.localNameVC("item.vc:item_logic_chip.name");
 		
 		return colorName;
     }

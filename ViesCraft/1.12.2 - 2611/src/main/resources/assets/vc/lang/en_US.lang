@@ -7,21 +7,31 @@ itemGroup.tabViesCraftAirships=ViesCraft Airships
 
 //-----Items-----
 item.vc:item_guidebook_main.name=The 'Vies' Craft, vol.1
-item.vc:guidebook_controls.name=Taking Control, vol.2
-item.vc:guidebook_paint.name=Flaming Paint?!, vol.3
-item.vc:guidebook_socket.name=Modules & You, vol.4
 item.vc:item_viesoline_pellets.name=Viesoline Pellets
-item.vc:item_airship_balloon.name=Airship Balloon
-item.vc:item_airship_engine.name=Airship Engine
+item.vc:item_logic_chip.name=Logic Chip
 item.vc:item_airship_ignition.name=Airship Core
+item.vc:item_airship_frame.name=Airship Frame
+item.vc:item_airship_engine.name=Airship Engine
+item.vc:item_airship_balloon.name=Airship Balloon
+
+item.vc:item_upgrade_tier.name=Upgrade Tier
+item.vc:item_core_shard.name=Core Shard
+item.vc:item_core_upgrade.name=Core Upgrade
+item.vc:item_frame_casing.name=Frame Casing
+item.vc:item_frame_upgrade.name=Frame Upgrade
+item.vc:item_engine_fragment.name=Engine Fragment
+item.vc:item_engine_upgrade.name=Engine Upgrade
+item.vc:item_balloon_remnant.name=Balloon Remnant
+item.vc:item_balloon_upgrade.name=Balloon Upgrade
+
+item.vc:item_bomb_casing.name=Bomb Casing
+item.vc:item_bomb_small.name=Small Bomb
+item.vc:item_bomb_big.name=Big Bomb
+item.vc:item_bomb_scatter.name=Scatter Bomb
 item.vc:item_dismounter_normal.name=Dismounter
-item.vc:item_dismounter_player.name=Dismounter (Player)
+item.vc:item_module_chip.name=Module Chip
 vc.item.module.#=Module
-item.vc:item_pouch_module.name=Module Vies-Bag
-item.vc:item_pouch_all.name=Vies-Bag
-vc.item.core=Airship Core
-vc.item.pattern=Balloon Pattern
-vc.item.colorizer=Balloon Colorizer
+item.vc:item_module_creative.name=Module Upgrade
 
 //-----Blocks-----
 tile.vc:airship_workbench.name=Airship Workbench
@@ -53,12 +63,13 @@ vc.key.moveRight=Turn Right
 vc.key.moveUp=Ascend
 vc.key.moveDown=Descend
 vc.key.openInventory=Open Airship Gui
-vc.key.dropbomb=Drop Bomb
+vc.key.dropbomb=Drop Bomb (Module)
 
 //-----Main words-----
 vc.main.mainmenu=Main Menu
 vc.main.upgrademenu=Upgrade Menu
 vc.main.modulemenu=Module Menu
+vc.main.redstone=Redstone
 vc.main.fuel=Fuel
 vc.main.speed=Speed
 vc.main.altitude=Altitude
@@ -85,7 +96,11 @@ vc.main.preview=Preview
 vc.main.available=Available
 vc.main.cost=Cost
 vc.main.costs=Costs
-vc.main.redstone=Redstone
+vc.main.unlocks=Unlocks
+vc.main.armed=Armed
+vc.main.unarmed=Unarmed
+vc.main.player=Player
+vc.main.by=by
 vc.main.engine.cost.1=if applied.
 vc.main.default=Costs nothing!
 
@@ -156,81 +171,62 @@ vc.item.tt.engine.1=A special, light-weight engine designed
 vc.item.tt.engine.2=for all airships.
 vc.item.tt.ignition.1=Converts fuel into energy that all
 vc.item.tt.ignition.2=airships can safely use.
-vc.item.tt.dismounternormal.1=[Left-Click]
-vc.item.tt.dismounternormal.2=on a mounted entity to
-vc.item.tt.dismounternormal.3=safely dismount it.
-vc.item.tt.dismounternormal.4=Does no damage, may cause laughter.
-vc.item.tt.dismounterplayer.1=[Left-Click]
-vc.item.tt.dismounterplayer.2=on a mounted entity or
-vc.item.tt.dismounterplayer.3=player to safely dismount it.
-vc.item.tt.dismounterplayer.4=Does no damage, may cause laughter.
+
+vc.item.tt.dismounter.1=[Left-Click]
+vc.item.tt.dismounter.2=Does no damage, may cause laughter.
+vc.item.tt.dismounternormal.1=on a mounted entity to
+vc.item.tt.dismounternormal.2=safely dismount it.
+vc.item.tt.dismounterplayer.1=on a mounted entity or
+vc.item.tt.dismounterplayer.2=player to safely dismount it.
 
 vc.item.tt.logicchip.1=A basic component used in making
 vc.item.tt.logicchip.2=various airship parts.
 
-vc.item.tt.upgradeframe.0.1=This casing has been upgraded with
-vc.item.tt.upgradeframe.0.2=gold suitable for airship expansion.
-vc.item.tt.upgradeframe.0.3=Used in all Frame Tier upgrades.
-vc.item.tt.upgradeframe.#.1=Allow airships to get other upgrades!
-vc.item.tt.upgradeframe.#.2=Works in any airship version.
-vc.item.tt.upgradeframe.#.4=Use in the airship's
-vc.item.tt.upgradeframe.#.5=Upgrade
-vc.item.tt.upgradeframe.#.6=menu.
-vc.item.tt.upgradeframe.#.7=Must upgrade from a Tier
-vc.item.tt.upgradeframe.#.8=Core.
-vc.item.tt.upgradeframe.#.9=Core Tier can't exceed Frame Tier.
-vc.item.tt.upgradeframe.#.10=Base Upgrade
-vc.item.tt.upgradeframe.#.11=Unlocks new frame visuals!
-vc.item.tt.upgradeframe.#.12=Bonus
-vc.item.tt.upgradeframe.#.13=Unlocks Transparency + Coloring!
+vc.item.tt.upgrade.#.1=Use in the airship's Upgrade menu.
+vc.item.tt.upgrade.#.2=Airship must be Tier
+vc.item.tt.upgrade.#.3=to apply.
+vc.item.tt.upgrade.#.4=This is the base upgrade.
 
 vc.item.tt.upgradecore.0.1=This shard is densely packed with
 vc.item.tt.upgradecore.0.2=a few logic chips.
 vc.item.tt.upgradecore.0.3=Used in all Core Tier upgrades.
-vc.item.tt.upgradecore.#.1=Make your airships move faster!
-vc.item.tt.upgradecore.#.2=Works in any airship version.
-vc.item.tt.upgradecore.#.4=Use in the airship's
-vc.item.tt.upgradecore.#.5=Upgrade
-vc.item.tt.upgradecore.#.6=menu.
-vc.item.tt.upgradecore.#.7=Must upgrade from a Tier
-vc.item.tt.upgradecore.#.8=Core.
-vc.item.tt.upgradecore.#.9=Core Tier can't exceed Frame Tier.
-vc.item.tt.upgradecore.#.10=Base Upgrade
-vc.item.tt.upgradecore.#.11=Unlocks new core visuals!
-vc.item.tt.upgradecore.#.12=Bonus
-vc.item.tt.upgradecore.#.13=Unlocks Transparency + Coloring!
+vc.item.tt.upgradecore.#.1=Make an airship hold more Redstone.
+vc.item.tt.upgradecore.#.2=New airship models each Tier.
+vc.item.tt.upgradecore.#.3=Coming soon!
+
+vc.item.tt.upgradeframe.0.1=This casing has been upgraded with
+vc.item.tt.upgradeframe.0.2=gold suitable for airship expansion.
+vc.item.tt.upgradeframe.0.3=Used in all Frame Tier upgrades.
+vc.item.tt.upgradeframe.#.1=Make an airship move faster.
+vc.item.tt.upgradeframe.#.2=New frame skins each Tier.
+vc.item.tt.upgradeframe.#.3=Transparency + Coloring options.
 
 vc.item.tt.upgradeengine.0.1=A fragment of a super-charged
 vc.item.tt.upgradeengine.0.2=blaze rod encrusted engine.
 vc.item.tt.upgradeengine.0.3=Used in all Engine Tier upgrades.
-vc.item.tt.upgradeengine.#.1=Make your airships burn less fuel!
-vc.item.tt.upgradeengine.#.2=Works in any airship version.
-vc.item.tt.upgradeengine.#.4=Use in the airship's
-vc.item.tt.upgradeengine.#.5=Upgrade
-vc.item.tt.upgradeengine.#.6=menu.
-vc.item.tt.upgradeengine.#.7=Must upgrade from a Tier
-vc.item.tt.upgradeengine.#.8=Engine.
-vc.item.tt.upgradeengine.#.9=Engine Tier can't exceed Frame Tier.
-vc.item.tt.upgradeengine.#.10=Base Upgrade
-vc.item.tt.upgradeengine.#.11=Unlocks new engine visuals!
-vc.item.tt.upgradeengine.#.12=Bonus
-vc.item.tt.upgradeengine.#.13=Unlocks Transparency + Coloring!
+vc.item.tt.upgradeengine.#.1=Make an airship more fuel efficient.
+vc.item.tt.upgradeengine.#.2=New display symbols each Tier.
+vc.item.tt.upgradeengine.#.3=Particle options.
 
 vc.item.tt.upgradeballoon.0.1=This remnant has been infused with
 vc.item.tt.upgradeballoon.0.2=a light-weight treated leather.
 vc.item.tt.upgradeballoon.0.3=Used in all Balloon Tier upgrades.
-vc.item.tt.upgradeballoon.#.1=Make your airships fly higher!
-vc.item.tt.upgradeballoon.#.2=Works in any airship version.
-vc.item.tt.upgradeballoon.#.4=Use in the airship's
-vc.item.tt.upgradeballoon.#.5=Upgrade
-vc.item.tt.upgradeballoon.#.6=menu.
-vc.item.tt.upgradeballoon.#.7=Must upgrade from a Tier
-vc.item.tt.upgradeballoon.#.8=Balloon.
-vc.item.tt.upgradeballoon.#.9=Balloon Tier can't exceed Frame Tier.
-vc.item.tt.upgradeballoon.#.10=Base Upgrade
-vc.item.tt.upgradeballoon.#.11=Unlocks new balloon visuals!
-vc.item.tt.upgradeballoon.#.12=Bonus
-vc.item.tt.upgradeballoon.#.13=Unlocks Transparency + Coloring!
+vc.item.tt.upgradeballoon.#.1=Make an airship fly higher.
+vc.item.tt.upgradeballoon.#.2=New balloon patterns each Tier.
+vc.item.tt.upgradeballoon.#.3=Transparency + Coloring options.
+
+vc.item.tt.bomb.0.1=This casing is composed of
+vc.item.tt.bomb.0.2=woven filaments.
+vc.item.tt.bomb.0.3=Used in making bombs.
+vc.item.tt.bomb.1.1=This bomb has the same strength
+vc.item.tt.bomb.1.2=as exploding TNT.
+vc.item.tt.bomb.1.3=Used with the Bombing Module.
+vc.item.tt.bomb.2.1=This bomb packs 2x the strength
+vc.item.tt.bomb.2.2=as exploding TNT.
+vc.item.tt.bomb.2.3=Used with the Bombing Module.
+vc.item.tt.bomb.3.1=Warning! This bomb can be very
+vc.item.tt.bomb.3.2=erratic upon detonation.
+vc.item.tt.bomb.3.3=Used with the Bombing Module.
 
 
 vc.item.tt.moduletype.0.1=A base module chip formatted for
@@ -238,9 +234,10 @@ vc.item.tt.moduletype.0.2=airship interfaces.
 vc.item.tt.moduletype.#.01=Toggled Effects
 vc.item.tt.moduletype.#.02=Pros
 vc.item.tt.moduletype.#.03=Cons
-vc.item.tt.moduletype.#.04=Use in the airship's
-vc.item.tt.moduletype.#.05=Module
-vc.item.tt.moduletype.#.06=menu.
+vc.item.tt.moduletype.#.04=Use in the airship's Module menu.
+vc.item.tt.moduletype.#.05=Designed to enhance an airship.
+vc.item.tt.moduletype.#.06=Must have
+vc.item.tt.moduletype.#.07=to apply.
 
 vc.item.tt.moduletype.#.1.pros1=Max altitude increased to 225.
 vc.item.tt.moduletype.#.1.pros2=Elevate at a slightly faster speed.
@@ -348,50 +345,19 @@ vc.item.tt.moduletype.#.24.cons2=
 
 vc.item.tt.moduletype.#.25.pros1=Drop bombs onto targets below.
 vc.item.tt.moduletype.#.25.pros2=
-vc.item.tt.moduletype.#.25.cons1=90 percent speed decrease.
+vc.item.tt.moduletype.#.25.cons1=75 percent speed decrease.
 vc.item.tt.moduletype.#.25.cons2=
 vc.item.tt.moduletype.#.26.pros1=Drop bombs onto targets below.
 vc.item.tt.moduletype.#.26.pros2=
-vc.item.tt.moduletype.#.26.cons1=80 percent speed decrease.
+vc.item.tt.moduletype.#.26.cons1=50 percent speed decrease.
 vc.item.tt.moduletype.#.26.cons2=
 vc.item.tt.moduletype.#.27.pros1=Drop bombs onto targets below.
 vc.item.tt.moduletype.#.27.pros2=
-vc.item.tt.moduletype.#.27.cons1=70 percent speed decrease.
+vc.item.tt.moduletype.#.27.cons1=25 percent speed decrease.
 vc.item.tt.moduletype.#.27.cons2=
 
-
-
 vc.item.tt.modulecreative.1=Adds all modules to an airship.
-vc.item.tt.modulecreative.2=
-
-
-
-vc.item.tt.module.#=Effects while socketed:
-vc.item.tt.module.1.1=Pro - Speed Modifier: +1.0
-vc.item.tt.module.1.2=Con - None.
-vc.item.tt.module.2.1=Pro - Speed Modifier: +2.0
-vc.item.tt.module.2.2=Con - Fuel burns x2 faster.
-vc.item.tt.module.3.1=Pro - 9 slot inventory.
-vc.item.tt.module.3.2=Con - Speed Modifier:
-vc.item.tt.module.4.1=Pro - 18 slot inventory.
-vc.item.tt.module.4.2=Con - Speed Modifier:
-vc.item.tt.module.4.3=Con - Fuel burns x2 faster.
-vc.item.tt.module.5.1=Pro - Fly without fuel.
-vc.item.tt.module.5.2=Con - Speed Modifier:
-vc.item.tt.module.6.1=Pro - Land on water.
-vc.item.tt.module.6.2=Con - None.
-vc.item.tt.module.7.1=Pro - Unlimited max altitude.
-vc.item.tt.module.7.2=Con - None.
-vc.item.tt.module.8.1=Pro - Fuel lasts 25% longer.
-vc.item.tt.module.8.2=Con - None.
-vc.item.tt.module.9.1=Pro - Fuel lasts 50% longer.
-vc.item.tt.module.9.2=Con - Speed Modifier:
-vc.item.tt.module.10.1=Pro - Play music in area.
-vc.item.tt.module.10.2=Con - None.
-vc.item.tt.module.11.1=Pro - Auto-Forward at varied speeds.
-vc.item.tt.module.11.2=Con - None.
-
-
+vc.item.tt.modulecreative.2=Use in the airship's Module menu.
 
 vc.item.tt.pattern.1=[Shift + Left-Click]
 vc.item.tt.pattern.2=on an
@@ -739,7 +705,6 @@ vc.item.enum.balloon.24=Tools
 vc.item.enum.balloon.25=Colorized Tools
 vc.item.enum.balloon.26=Phantom Tools
 
-vc.item.enum.module.outdated=OUTDATED MODULE
 vc.item.enum.module.0=Module Base
 vc.item.enum.module.1=Lesser Altitude
 vc.item.enum.module.2=Altitude
@@ -769,7 +734,6 @@ vc.item.enum.module.25=Lesser Bombing
 vc.item.enum.module.26=Bombing
 vc.item.enum.module.27=Greater Bombing
 
-
 vc.item.enum.song.0=None
 vc.item.enum.song.1=11
 vc.item.enum.song.2=13
@@ -793,8 +757,6 @@ vc.item.enum.song.18=Timescar
 vc.enum.bomb.0=Casing
 vc.enum.bomb.1=Small
 vc.enum.bomb.2=Big
-
-
 
 //-----Colors-----
 vc.item.color.1=Alice Blue
@@ -937,3 +899,7 @@ vc.item.color.137=White
 vc.item.color.138=White Smoke
 vc.item.color.139=Yellow
 vc.item.color.140=Yellow Green
+
+//-----Unused-----
+item.vc:item_pouch_module.name=Module Vies-Bag
+item.vc:item_pouch_all.name=Vies-Bag

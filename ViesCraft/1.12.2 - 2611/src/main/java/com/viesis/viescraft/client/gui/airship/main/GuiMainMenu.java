@@ -9,8 +9,10 @@ import org.lwjgl.input.Keyboard;
 import com.viesis.viescraft.api.EnumsVC;
 import com.viesis.viescraft.api.GuiVC;
 import com.viesis.viescraft.api.References;
+import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.client.gui.GuiContainerVC;
 import com.viesis.viescraft.client.gui.buttons.GuiButtonGeneral1VC;
+import com.viesis.viescraft.client.gui.buttons.GuiButtonGeneral2VC;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
 import com.viesis.viescraft.common.entity.airships.containers.all.ContainerMenuMain;
 import com.viesis.viescraft.init.InitItemsVC;
@@ -18,6 +20,11 @@ import com.viesis.viescraft.network.NetworkHandler;
 import com.viesis.viescraft.network.server.airship.MessageGuiPlayMusic;
 import com.viesis.viescraft.network.server.airship.MessageGuiRandomMusic;
 import com.viesis.viescraft.network.server.airship.MessageGuiStopMusic;
+import com.viesis.viescraft.network.server.airship.main.MessageHelperGuiMainMenuConsumeBomb1;
+import com.viesis.viescraft.network.server.airship.main.MessageHelperGuiMainMenuConsumeBomb2;
+import com.viesis.viescraft.network.server.airship.main.MessageHelperGuiMainMenuConsumeBomb3;
+import com.viesis.viescraft.network.server.airship.module.MessageHelperGuiModuleBombActive;
+import com.viesis.viescraft.network.server.airship.module.MessageHelperGuiModuleBombArmed;
 import com.viesis.viescraft.network.server.song.MessageGuiMusicPg1;
 
 import net.minecraft.client.gui.FontRenderer;
@@ -32,6 +39,12 @@ public class GuiMainMenu extends GuiContainerVC {
 	
 	public static int airshipId;
 	public static int selectedSong;
+	public static boolean isArmed;
+	public static int storedBombType1;
+	public static int storedBombType2;
+	public static int storedBombType3;
+	public static int bombTypeActive;
+	public static int bombslotCount;
 	
 	private final ResourceLocation TEXTURE = new ResourceLocation(References.MOD_ID + ":" + "textures/gui/container_gui_menu_main.png");
 	private final ResourceLocation TEXTURE_STORAGE_LESSER = new ResourceLocation(References.MOD_ID + ":" + "textures/gui/container_gui_menu_main_storage_lesser.png");
@@ -53,7 +66,13 @@ public class GuiMainMenu extends GuiContainerVC {
     	buttonList.clear();
     	Keyboard.enableRepeatEvents(true);
     	
-    	GuiVC.buttonA00 = new GuiButtonGeneral1VC(600, this.guiLeft + 45, this.guiTop + 90 + (16 * 0), 14, 14, "", 3);
+    	GuiVC.buttonA01 = new GuiButtonGeneral2VC(601, this.guiLeft + 99 + (18 * 0), this.guiTop + 97 + (16 * 0), 14, 14, "", 3);
+    	GuiVC.buttonA02 = new GuiButtonGeneral2VC(602, this.guiLeft + 99 + (18 * 1), this.guiTop + 97 + (16 * 0), 14, 14, "", 3);
+    	GuiVC.buttonA03 = new GuiButtonGeneral2VC(603, this.guiLeft + 99 + (18 * 2), this.guiTop + 97 + (16 * 0), 14, 14, "", 3);
+    	
+    	GuiVC.buttonArmed = new GuiButtonGeneral2VC(600, this.guiLeft + 93, this.guiTop + 62 + (16 * 0), 14, 14, "", 0);
+    	
+    	GuiVC.button501 = new GuiButtonGeneral1VC(501, this.guiLeft + 44, this.guiTop + 66 + (16 * 0), 34, 14, "Consume", 1);
     	
     	GuiVC.buttonM5 = new GuiButtonGeneral1VC(5, this.guiLeft + 49, this.guiTop + 62 , 78, 14, References.localNameVC("vc.button.choosemusic"), 0);
     	GuiVC.buttonM6 = new GuiButtonGeneral1VC(6, this.guiLeft + 35, this.guiTop + 100, 35, 14, References.localNameVC("vc.button.play"), 0);
@@ -80,7 +99,11 @@ public class GuiMainMenu extends GuiContainerVC {
 		|| this.airship.moduleActiveSlot1 == EnumsVC.ModuleType.BOMB_NORMAL.getMetadata()
 		|| this.airship.moduleActiveSlot1 == EnumsVC.ModuleType.BOMB_GREATER.getMetadata())
 		{
-			this.buttonList.add(GuiVC.buttonA00);
+			this.buttonList.add(GuiVC.buttonArmed);
+			this.buttonList.add(GuiVC.buttonA01);
+			this.buttonList.add(GuiVC.buttonA02);
+			this.buttonList.add(GuiVC.buttonA03);
+			this.buttonList.add(GuiVC.button501);
 		}
 		
 		GuiVC.buttonMM1.enabled = false;
@@ -123,6 +146,93 @@ public class GuiMainMenu extends GuiContainerVC {
 			
 			airshipId = this.airship.getEntityId();
 			NetworkHandler.sendToServer(new MessageGuiRandomMusic());
+	    }
+		
+		if (parButton.id == 600)
+	    {
+			this.isArmed = !this.airship.bombArmedToggle;
+			NetworkHandler.sendToServer(new MessageHelperGuiModuleBombArmed());
+	    }
+		if (parButton.id == 601)
+	    {
+			this.bombTypeActive = 1;
+			NetworkHandler.sendToServer(new MessageHelperGuiModuleBombActive());
+	    }
+		if (parButton.id == 602)
+	    {
+			this.bombTypeActive = 2;
+			NetworkHandler.sendToServer(new MessageHelperGuiModuleBombActive());
+	    }
+		if (parButton.id == 603)
+	    {
+			this.bombTypeActive = 3;
+			NetworkHandler.sendToServer(new MessageHelperGuiModuleBombActive());
+	    }
+		
+		//Comsume
+		if (parButton.id == 501)
+	    {
+			ItemStack bombslot = this.airship.inventory.getStackInSlot(51);
+			
+			if(!bombslot.isEmpty())
+			{
+				bombslotCount = bombslot.getCount();
+				
+				//Small
+				if(bombslot.getMetadata() == 1)
+				{
+					if(this.airship.storedBombType1 == 64)
+					{
+						
+					}
+					else if(64 >= (bombslotCount + this.airship.storedBombType1))
+					{
+						NetworkHandler.sendToServer(new MessageHelperGuiMainMenuConsumeBomb1());
+					}
+					else if(64 < (bombslotCount + this.airship.storedBombType1))
+					{
+						bombslotCount = 64 - this.airship.storedBombType1;
+						
+						NetworkHandler.sendToServer(new MessageHelperGuiMainMenuConsumeBomb1());
+					}
+				}
+				//Big
+				if(bombslot.getMetadata() == 2)
+				{
+					if(this.airship.storedBombType2 == 16)
+					{
+						
+					}
+					else if(16 >= (bombslotCount + this.airship.storedBombType2))
+					{
+						NetworkHandler.sendToServer(new MessageHelperGuiMainMenuConsumeBomb2());
+					}
+					else if(16 < (bombslotCount + this.airship.storedBombType2))
+					{
+						bombslotCount = 16 - this.airship.storedBombType2;
+						
+						NetworkHandler.sendToServer(new MessageHelperGuiMainMenuConsumeBomb2());
+					}
+				}
+				//Scatter
+				if(bombslot.getMetadata() == 3)
+				{
+					if(this.airship.storedBombType2 == 8)
+					{
+						
+					}
+					else if(8 >= (bombslotCount + this.airship.storedBombType3))
+					{
+						NetworkHandler.sendToServer(new MessageHelperGuiMainMenuConsumeBomb3());
+					}
+					else if(8 < (bombslotCount + this.airship.storedBombType3))
+					{
+						bombslotCount = 8 - this.airship.storedBombType3;
+						
+						NetworkHandler.sendToServer(new MessageHelperGuiMainMenuConsumeBomb3());
+					}
+				}
+			}
 	    }
 		
         this.buttonList.clear();
@@ -172,16 +282,103 @@ public class GuiMainMenu extends GuiContainerVC {
 		|| this.airship.moduleActiveSlot1 == EnumsVC.ModuleType.BOMB_GREATER.getMetadata())
 		{
 			//Draws the inventory slots for bomb modules.
-			if(this.airship.selectedModuleBomb == 2)
+			//if(this.airship.selectedModuleBomb == 2)
+			//{
+			//	this.drawTexturedModalRect(this.guiLeft + 88, this.guiTop + 88, 97, 88, 18, 18);
+			//	this.drawTexturedModalRect(this.guiLeft + 88 + (18 * 1), this.guiTop + 88, 97, 88, 18, 18);
+			//}
+			//else if(this.airship.selectedModuleBomb == 3)
+			//{
+			//	this.drawTexturedModalRect(this.guiLeft + 79 + (18 * 0), this.guiTop + 88, 97, 88, 18, 18);
+			//	this.drawTexturedModalRect(this.guiLeft + 79 + (18 * 1), this.guiTop + 88, 97, 88, 18, 18);
+			//	this.drawTexturedModalRect(this.guiLeft + 79 + (18 * 2), this.guiTop + 88, 97, 88, 18, 18);
+			//}
+			
+			if(this.airship.bombArmedToggle)
 			{
-				this.drawTexturedModalRect(this.guiLeft + 88, this.guiTop + 88, 97, 88, 18, 18);
-				this.drawTexturedModalRect(this.guiLeft + 88 + (18 * 1), this.guiTop + 88, 97, 88, 18, 18);
+				GlStateManager.pushMatrix();
+				{
+					GlStateManager.translate(this.guiLeft + 108, this.guiTop + 62, 0);
+					GlStateManager.scale(0.5F, 0.5F, 0.5F);
+					this.drawTexturedModalRect(0, 0, 195, 0, 28, 28);
+				}
+				GlStateManager.popMatrix();
 			}
-			else if(this.airship.selectedModuleBomb == 3)
+			
+			if(this.airship.bombTypeActive == 1)
 			{
-				this.drawTexturedModalRect(this.guiLeft + 79 + (18 * 0), this.guiTop + 88, 97, 88, 18, 18);
-				this.drawTexturedModalRect(this.guiLeft + 79 + (18 * 1), this.guiTop + 88, 97, 88, 18, 18);
-				this.drawTexturedModalRect(this.guiLeft + 79 + (18 * 2), this.guiTop + 88, 97, 88, 18, 18);
+				GuiVC.buttonA01.enabled = false;
+				GuiVC.buttonA02.enabled = true;
+				GuiVC.buttonA03.enabled = true;
+			}
+			else if(this.airship.bombTypeActive == 2)
+			{
+				GuiVC.buttonA01.enabled = true;
+				GuiVC.buttonA02.enabled = false;
+				GuiVC.buttonA03.enabled = true;
+			}
+			else if(this.airship.bombTypeActive == 3)
+			{
+				GuiVC.buttonA01.enabled = true;
+				GuiVC.buttonA02.enabled = true;
+				GuiVC.buttonA03.enabled = false;
+			}
+			else
+			{
+				GuiVC.buttonA01.enabled = true;
+				GuiVC.buttonA02.enabled = true;
+				GuiVC.buttonA03.enabled = true;
+			}
+			
+			ItemStack bombslot = this.airship.inventory.getStackInSlot(51);
+			
+			if(!bombslot.isEmpty())
+			{
+				GuiVC.button501.enabled = true;
+				
+				if(this.airship.storedBombType1 >= 64
+				&& this.airship.storedBombType1 >= 16
+				&& this.airship.storedBombType1 >= 8)
+				{
+					GuiVC.button501.enabled = false;
+				}
+				if(bombslot.getMetadata() == 1)
+				{
+					if(this.airship.storedBombType1 >= 64)
+					{
+						GuiVC.button501.enabled = false;
+					}
+					else
+					{
+						GuiVC.button501.enabled = true;
+					}
+				}
+				if(bombslot.getMetadata() == 2)
+				{
+					if(this.airship.storedBombType2 >= 16)
+					{
+						GuiVC.button501.enabled = false;
+					}
+					else
+					{
+						GuiVC.button501.enabled = true;
+					}
+				}
+				if(bombslot.getMetadata() == 3)
+				{
+					if(this.airship.storedBombType3 >= 8)
+					{
+						GuiVC.button501.enabled = false;
+					}
+					else
+					{
+						GuiVC.button501.enabled = true;
+					}
+				}
+			}
+			else
+			{
+				GuiVC.button501.enabled = false;
 			}
 		}
 		
@@ -258,6 +455,7 @@ public class GuiMainMenu extends GuiContainerVC {
 		{
 			this.drawRect(this.guiLeft + 13 + (24 * 3), this.guiTop + 43, this.guiLeft + 23 + (24 * 3), this.guiTop + 53, Color.GRAY.getRGB());
 		}
+		
 		if(this.airship.moduleActiveSlot1 == EnumsVC.ModuleType.MUSIC_LESSER.getMetadata()
 		|| this.airship.moduleActiveSlot1 == EnumsVC.ModuleType.MUSIC_NORMAL.getMetadata()
 		|| this.airship.moduleActiveSlot1 == EnumsVC.ModuleType.MUSIC_GREATER.getMetadata())
@@ -272,6 +470,9 @@ public class GuiMainMenu extends GuiContainerVC {
 			}
 			GlStateManager.popMatrix();
 		}
+		
+		
+		
     }
 	
 	/**
@@ -293,6 +494,21 @@ public class GuiMainMenu extends GuiContainerVC {
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
 	{
 		super.drawGuiContainerForegroundLayer(mouseX, mouseY);
+		
+		if(this.airship.moduleActiveSlot1 == EnumsVC.ModuleType.BOMB_LESSER.getMetadata()
+		|| this.airship.moduleActiveSlot1 == EnumsVC.ModuleType.BOMB_NORMAL.getMetadata()
+		|| this.airship.moduleActiveSlot1 == EnumsVC.ModuleType.BOMB_GREATER.getMetadata())
+		{
+			this.mc.getTextureManager().bindTexture(TEXTURE_BOMB);
+			
+			GlStateManager.pushMatrix();
+			{
+				GlStateManager.translate(96.5, 65.5, 0);
+				GlStateManager.scale(0.25F, 0.25F, 0.25F);
+				this.drawTexturedModalRect(0, 0, 195, 0, 28, 28);
+			}
+			GlStateManager.popMatrix();
+		}
 		
 		this.fontRenderer.drawString(References.localNameVC("vc.main.mainmenu"), 64, -10, Color.CYAN.getRGB());
 		
@@ -347,6 +563,25 @@ public class GuiMainMenu extends GuiContainerVC {
 			
 			String speedIn = TextFormatting.BLACK + "-" + TextFormatting.GREEN + "+" + String.valueOf((int)(EnumsVC.MainTierFrame.byId(this.airship.mainTierFrame).getSpeedModifier() *100));
 			
+			if(this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.STORAGE_LESSER.getMetadata()
+			|| this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.STORAGE_NORMAL.getMetadata()
+			|| this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.STORAGE_GREATER.getMetadata()
+			|| this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.CRUISE_LESSER.getMetadata()
+			|| this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.CRUISE_NORMAL.getMetadata()
+			|| this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.CRUISE_GREATER.getMetadata()
+			|| this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_LESSER.getMetadata()
+			|| this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_NORMAL.getMetadata()
+			|| this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_GREATER.getMetadata()
+			|| this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.BOMB_LESSER.getMetadata()
+			|| this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.BOMB_NORMAL.getMetadata()
+			|| this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.BOMB_GREATER.getMetadata())
+			{
+				speedIn = TextFormatting.BLACK + "-" + TextFormatting.RED + "+" + String.valueOf((int)(EnumsVC.MainTierFrame.byId(this.airship.mainTierFrame).getSpeedModifier() *100));
+				
+			}
+				
+				
+				
 			if(this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.SPEED_LESSER.getMetadata())
 			{
 				speedIn = TextFormatting.BLACK + "-" + TextFormatting.AQUA + "+" + String.valueOf((int)(EnumsVC.MainTierFrame.byId(this.airship.mainTierFrame).getSpeedModifier() *100)  + 1);
@@ -547,6 +782,156 @@ public class GuiMainMenu extends GuiContainerVC {
 			}
 		}
 		GlStateManager.popMatrix();
+		
+		//TODO
+		
+		if(this.airship.moduleActiveSlot1 == EnumsVC.ModuleType.BOMB_LESSER.getMetadata()
+		|| this.airship.moduleActiveSlot1 == EnumsVC.ModuleType.BOMB_NORMAL.getMetadata()
+		|| this.airship.moduleActiveSlot1 == EnumsVC.ModuleType.BOMB_GREATER.getMetadata())
+		{
+			
+			
+			
+			GlStateManager.pushMatrix();
+			{
+				GlStateManager.translate(106 + (18 * 0), 92, 0);
+				GlStateManager.scale(0.350, 0.350, 0.350);
+				
+				this.drawCenteredString(fontRenderer, "Small", 0, 0, Color.WHITE.getRGB());
+			}
+			GlStateManager.popMatrix();
+			GlStateManager.pushMatrix();
+			{
+				GlStateManager.translate(106 + (18 * 1), 92, 0);
+				GlStateManager.scale(0.350, 0.350, 0.350);
+				
+				this.drawCenteredString(fontRenderer, "Big", 0, 0, Color.WHITE.getRGB());
+			}
+			GlStateManager.popMatrix();
+			GlStateManager.pushMatrix();
+			{
+				GlStateManager.translate(106 + (18 * 2), 92, 0);
+				GlStateManager.scale(0.350, 0.350, 0.350);
+				
+				this.drawCenteredString(fontRenderer, "Scatter", 0, 0, Color.WHITE.getRGB());
+			}
+			GlStateManager.popMatrix();
+			
+			//Small Bomb
+			GlStateManager.pushMatrix();
+			{
+				GlStateManager.translate(102 + (18 * 0), 100, 0);
+				GlStateManager.scale(0.5, 0.5, 0.5);
+				this.drawItemStack(new ItemStack(InitItemsVC.ITEM_DISPLAY_SYMBOL, 1, 0), 0, 0, "");
+				this.drawItemStack(new ItemStack(InitItemsVC.BOMB, 1, 1), 0, 0, "");
+			}
+			GlStateManager.popMatrix();
+			//Big Bomb
+			GlStateManager.pushMatrix();
+			{
+				GlStateManager.translate(102 + (18 * 1), 100, 0);
+				GlStateManager.scale(0.5, 0.5, 0.5);
+				this.drawItemStack(new ItemStack(InitItemsVC.ITEM_DISPLAY_SYMBOL, 1, 0), 0, 0, "");
+				this.drawItemStack(new ItemStack(InitItemsVC.BOMB, 1, 2), 0, 0, "");
+			}
+			GlStateManager.popMatrix();
+			//Scatter Bomb
+			GlStateManager.pushMatrix();
+			{
+				GlStateManager.translate(102 + (18 * 2), 100, 0);
+				GlStateManager.scale(0.5, 0.5, 0.5);
+				this.drawItemStack(new ItemStack(InitItemsVC.ITEM_DISPLAY_SYMBOL, 1, 0), 0, 0, "");
+				this.drawItemStack(new ItemStack(InitItemsVC.BOMB, 1, 3), 0, 0, "");
+			}
+			GlStateManager.popMatrix();
+			
+			//Small Bomb
+			GlStateManager.pushMatrix();
+			{
+				GlStateManager.translate(9.75, 64 + (18 * 0), 0);
+				GlStateManager.scale(0.75, 0.75, 0.75);
+				
+				this.drawItemStack(new ItemStack(InitItemsVC.BOMB, 1, 1), 0, 0, "");
+			}
+			GlStateManager.popMatrix();
+			GlStateManager.pushMatrix();
+			{
+				GlStateManager.translate(25, 67 + (18 * 0), 0);
+				GlStateManager.scale(0.75, 0.75, 0.75);
+				
+				this.fontRenderer.drawString("=", 0, 0, Color.WHITE.getRGB(), false);
+			}
+			GlStateManager.popMatrix();
+			GlStateManager.pushMatrix();
+			{
+				GlStateManager.translate(31, 67 + (18 * 0), 0);
+				GlStateManager.scale(0.75, 0.75, 0.75);
+				
+				this.fontRenderer.drawString(Integer.toString(this.airship.storedBombType1), 0, 0, Color.WHITE.getRGB(), false);
+			}
+			GlStateManager.popMatrix();
+			
+			//Big Bomb
+			GlStateManager.pushMatrix();
+			{
+				GlStateManager.translate(10.25, 64 + (18 * 1), 0);
+				GlStateManager.scale(0.7, 0.7, 0.7);
+				
+				this.drawItemStack(new ItemStack(InitItemsVC.BOMB, 1, 2), 0, 0, "");
+			}
+			GlStateManager.popMatrix();
+			GlStateManager.pushMatrix();
+			{
+				GlStateManager.translate(25, 67 + (18 * 1), 0);
+				GlStateManager.scale(0.75, 0.75, 0.75);
+				
+				this.fontRenderer.drawString("=", 0, 0, Color.WHITE.getRGB(), false);
+			}
+			GlStateManager.popMatrix();
+			GlStateManager.pushMatrix();
+			{
+				GlStateManager.translate(31, 67 + (18 * 1), 0);
+				GlStateManager.scale(0.75, 0.75, 0.75);
+				
+				this.fontRenderer.drawString(Integer.toString(this.airship.storedBombType2), 0, 0, Color.WHITE.getRGB(), false);
+			}
+			GlStateManager.popMatrix();
+			
+			//Scatter Bomb
+			GlStateManager.pushMatrix();
+			{
+				GlStateManager.translate(10.25, 64 + (18 * 2), 0);
+				GlStateManager.scale(0.7, 0.7, 0.7);
+				
+				this.drawItemStack(new ItemStack(InitItemsVC.BOMB, 1, 3), 0, 0, "");
+			}
+			GlStateManager.popMatrix();
+			GlStateManager.pushMatrix();
+			{
+				GlStateManager.translate(25, 67 + (18 * 2), 0);
+				GlStateManager.scale(0.75, 0.75, 0.75);
+				
+				this.fontRenderer.drawString("=", 0, 0, Color.WHITE.getRGB(), false);
+			}
+			GlStateManager.popMatrix();
+			GlStateManager.pushMatrix();
+			{
+				GlStateManager.translate(33, 67 + (18 * 2), 0);
+				GlStateManager.scale(0.75, 0.75, 0.75);
+				
+				this.fontRenderer.drawString(Integer.toString(this.airship.storedBombType3), 0, 0, Color.WHITE.getRGB(), false);
+			}
+			GlStateManager.popMatrix();
+			
+			if(this.airship.bombArmedToggle)
+			{
+				this.drawCenteredString(fontRenderer, this.stringToFlashGolden(References.localNameVC("vc.main.armed"), 0, false, TextFormatting.DARK_RED), 139, 65, Color.WHITE.getRGB());
+			}
+			else
+			{
+				this.drawCenteredString(fontRenderer, References.localNameVC("vc.main.unarmed"), 131, 65, Color.GREEN.getRGB());
+			}
+		}
 		
 		
 		

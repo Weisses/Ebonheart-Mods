@@ -78,7 +78,7 @@ public class RenderAirship extends RenderAirshipBase {
 			{
 				if(!Minecraft.getMinecraft().isGamePaused())
 				{
-					this.renderEngineSmokeParticles(entity, entity.getCoreModelVisualEngine());
+					//this.renderEngineSmokeParticles(entity, entity.getCoreModelVisualEngine());
 				}
 			}
         }
@@ -91,14 +91,28 @@ public class RenderAirship extends RenderAirshipBase {
         }
         else
         {
+        	this.renderEntityName(entity, entity.posX, entity.posY + 1, entity.posZ, "========", 2);
+			
         	//Render airship name
         	if(entity.getName() != null)
         	{
         		GlStateManager.pushMatrix();
 	    		{
+	    			GlStateManager.scale(0.5F, 0.5F, 0.5F);
 	    			GlStateManager.rotate(180, 1, 0, 0);
-	    	        
-	    			EntityRenderer.drawNameplate(this.getFontRenderer(), this.getPrimaryLabelColor(entity.getMainTierCore()) + "" + TextFormatting.BOLD + "" + entity.getCustomName(), 0F, 0.8875F, 0F, 0, Minecraft.getMinecraft().player.getRotationYawHead(), 0F, false, false);
+	    	        this.renderEntityName(entity, entity.posX, entity.posY + 1, entity.posZ, "====", 2);
+	    			//this.renderName(entity, 0, 0, 0);
+	    			
+	    			//this.name
+	    			//entity
+	    	        //.renderLivingLabel();
+	    			
+	    	        EntityRenderer.drawNameplate(this.getFontRenderer(), this.getPrimaryLabelColor(entity.getMainTierCore()) + "" + entity.getCustomName(), 0F, 1.35F, 0F, 
+	    	        		0, 
+	    	        		entity.getRotationYawHead(),//.rotationYaw,//0F 
+	    	        		//Minecraft.getMinecraft().player.getRotationYawHead()
+	    	        		0F, 
+	    	        		false, false);
 	    		}
 	    		GlStateManager.popMatrix();
         	}
@@ -379,7 +393,7 @@ public class RenderAirship extends RenderAirshipBase {
         	GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
         }
         
-        this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/frames/overlay_" + airshipIn.getCoreModelVisualFrame() + ".png"));
+        this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/frames/overlay.png"));
         currentModelFrame.render(airshipIn, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
 	    
         GlStateManager.disableBlend();
@@ -939,7 +953,7 @@ public class RenderAirship extends RenderAirshipBase {
 	        GlStateManager.enableRescaleNormal();
 	        GlStateManager.enableAlpha();
 	        
-	        this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/frames/overlay_0.png"));
+	        this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/frames/overlay.png"));
         	
 	        boolean powered = airshipIn.getStoredFuel() > 0;
 	        float baseitemSpin = (((float)Minecraft.getMinecraft().player.getEntityWorld().getTotalWorldTime() + 1) / 20.0F) * (180F / (float)Math.PI);

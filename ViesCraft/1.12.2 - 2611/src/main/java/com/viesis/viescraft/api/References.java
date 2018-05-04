@@ -63,6 +63,11 @@ public class References {
 	
 	public static final String MODULE_ACTIVE_SLOT1_TAG = "ModuleActiveSlot1";
 	public static final String JUKEBOX_SELECTED_SONG_TAG = "JukeboxSelectedSong";
+	public static final String BOMB_ARMED_TAG = "BombArmed";
+	public static final String BOMB_TYPE_1_TAG = "BombType1";
+	public static final String BOMB_TYPE_2_TAG = "BombType2";
+	public static final String BOMB_TYPE_3_TAG = "BombType3";
+	public static final String BOMB_TYPE_ACTIVE_TAG = "BombTypeActive";
 	
 	public static final String LEARNED_MODULE_ALTITUDE_TAG = "LearnedModuleAltitude";
 	public static final String SELECTED_MODULE_ALTITUDE_TAG = "SelectedModuleAltitude";

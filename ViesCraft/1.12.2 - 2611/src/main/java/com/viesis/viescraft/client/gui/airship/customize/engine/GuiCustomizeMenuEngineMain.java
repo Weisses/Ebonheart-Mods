@@ -111,9 +111,33 @@ public class GuiCustomizeMenuEngineMain extends GuiContainerVC {
 		}
 		else
 		{
+			if(References.isDateAroundNewYears(Calendar.getInstance()))
+			{
+				this.buttonList.add(GuiVC.button11);
+			}
+			if(References.isDateAroundValentinesDay(Calendar.getInstance()))
+			{
+				this.buttonList.add(GuiVC.button12);
+			}
+			if(References.isDateAroundEaster(Calendar.getInstance()))
+			{
+				this.buttonList.add(GuiVC.button13);
+			}
+			if(References.isDateAroundIndependenceDay(Calendar.getInstance()))
+			{
+				this.buttonList.add(GuiVC.button14);
+			}
 			if(References.isDateAroundHalloween(Calendar.getInstance()))
 			{
 				this.buttonList.add(GuiVC.button15);
+			}
+			if(References.isDateAroundThanksgiving(Calendar.getInstance()))
+			{
+				this.buttonList.add(GuiVC.button16);
+			}
+			if(References.isDateAroundChristmas(Calendar.getInstance()))
+			{
+				this.buttonList.add(GuiVC.button17);
 			}
 		}
     }

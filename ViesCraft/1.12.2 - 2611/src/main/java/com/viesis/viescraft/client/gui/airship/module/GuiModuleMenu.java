@@ -90,8 +90,6 @@ public class GuiModuleMenu extends GuiContainerVC {
     	GuiVC.buttonModuleNormalBomb = new GuiButtonGeneral2VC(EnumsVC.ModuleType.BOMB_NORMAL.getMetadata(), this.guiLeft + 11 + (20 * 1), this.guiTop + 11 + (20 * 1), 14, 14, "", 3);
     	GuiVC.buttonModuleGreaterBomb = new GuiButtonGeneral2VC(EnumsVC.ModuleType.BOMB_GREATER.getMetadata(), this.guiLeft + 11 + (20 * 1), this.guiTop + 11 + (20 * 1), 14, 14, "", 3);
     	
-    	
-    	
     	GuiVC.buttonModuleLearn = new GuiButtonGeneral1VC(550, this.guiLeft + 128, this.guiTop + 94, 36, 14, References.localNameVC("vc.button.learn"), 1);
 		
     	
@@ -247,8 +245,10 @@ public class GuiModuleMenu extends GuiContainerVC {
 		if(!this.airship.inventory.getStackInSlot(11).isEmpty())
 		{
 			//Draws the box overlay around module slot
-			this.drawTexturedModalRect(this.guiLeft + 108, this.guiTop + 92, 176, 0, 18, 18);
+			this.drawTexturedModalRect(this.guiLeft + 108, this.guiTop + 92, 176, 18, 18, 18);
 		}
+		
+		
 		
 		String nameIn = "";
 		String pros1 = "";
@@ -592,9 +592,48 @@ public class GuiModuleMenu extends GuiContainerVC {
 			GlStateManager.translate(this.guiLeft + 88+50.25, this.guiTop + 77-16.25, 0);
 	        GlStateManager.scale(0.75F, 0.75F, 0.75F);
 	        
-	        this.drawCenteredString(fontRenderer, Integer.toString(CostsVC.RENAME_COST), 0, 0, Color.WHITE.getRGB());
+	        this.drawCenteredString(fontRenderer, Integer.toString(CostsVC.MODULE_CHANGE_COST), 0, 0, Color.WHITE.getRGB());
 		}
 		GlStateManager.popMatrix();
+		
+		if(this.airship.getStoredRedstone() < CostsVC.MODULE_CHANGE_COST)
+		{
+			GuiVC.buttonModuleLesserAltitude.visible = false;
+			GuiVC.buttonModuleNormalAltitude.visible = false;
+			GuiVC.buttonModuleGreaterAltitude.visible = false;
+			
+			GuiVC.buttonModuleLesserSpeed.visible = false;
+			GuiVC.buttonModuleNormalSpeed.visible = false;
+			GuiVC.buttonModuleGreaterSpeed.visible = false;
+			
+			GuiVC.buttonModuleLesserStorage.visible = false;
+			GuiVC.buttonModuleNormalStorage.visible = false;
+			GuiVC.buttonModuleGreaterStorage.visible = false;
+			
+			GuiVC.buttonModuleLesserFuel.visible = false;
+			GuiVC.buttonModuleNormalFuel.visible = false;
+			GuiVC.buttonModuleGreaterFuel.visible = false;
+			
+			GuiVC.buttonModuleLesserMusic.visible = false;
+			GuiVC.buttonModuleNormalMusic.visible = false;
+			GuiVC.buttonModuleGreaterMusic.visible = false;
+			
+			GuiVC.buttonModuleLesserCruise.visible = false;
+			GuiVC.buttonModuleNormalCruise.visible = false;
+			GuiVC.buttonModuleGreaterCruise.visible = false;
+			
+			GuiVC.buttonModuleLesserWater.visible = false;
+			GuiVC.buttonModuleNormalWater.visible = false;
+			GuiVC.buttonModuleGreaterWater.visible = false;
+			
+			GuiVC.buttonModuleLesserInfiniteFuel.visible = false;
+			GuiVC.buttonModuleNormalInfiniteFuel.visible = false;
+			GuiVC.buttonModuleGreaterInfiniteFuel.visible = false;
+			
+			GuiVC.buttonModuleLesserBomb.visible = false;
+			GuiVC.buttonModuleNormalBomb.visible = false;
+			GuiVC.buttonModuleGreaterBomb.visible = false;
+		}
     }
 	
 	@Override
@@ -613,6 +652,46 @@ public class GuiModuleMenu extends GuiContainerVC {
 	        this.drawTexturedModalRect(27, 27, 176, 0, 18, 18);
 		}
 		GlStateManager.popMatrix();
+		
+		if(this.airship.getStoredRedstone() < CostsVC.MODULE_CHANGE_COST)
+		{
+			if(this.airship.learnedModuleAltitude)
+			{
+				this.drawTexturedModalRect(11 + (20 * 1), 11 + (20 * 0), 176, 36, 18, 18);
+			}
+			if(this.airship.learnedModuleSpeed)
+			{
+				this.drawTexturedModalRect(11 + (20 * 2), 11 + (20 * 0), 176, 36, 18, 18);
+			}
+			if(this.airship.learnedModuleStorage)
+			{
+				this.drawTexturedModalRect(11 + (20 * 3), 11 + (20 * 0), 176, 36, 18, 18);
+			}
+			if(this.airship.learnedModuleFuel)
+			{
+				this.drawTexturedModalRect(11 + (20 * 4), 11 + (20 * 0), 176, 36, 18, 18);
+			}
+			if(this.airship.learnedModuleMusic)
+			{
+				this.drawTexturedModalRect(11 + (20 * 5), 11 + (20 * 0), 176, 36, 18, 18);
+			}
+			if(this.airship.learnedModuleCruise)
+			{
+				this.drawTexturedModalRect(11 + (20 * 6), 11 + (20 * 0), 176, 36, 18, 18);
+			}
+			if(this.airship.learnedModuleWater)
+			{
+				this.drawTexturedModalRect(11 + (20 * 7), 11 + (20 * 0), 176, 36, 18, 18);
+			}
+			if(this.airship.learnedModuleFuelInfinite)
+			{
+				this.drawTexturedModalRect(11 + (20 * 0), 11 + (20 * 1), 176, 36, 18, 18);
+			}
+			if(this.airship.learnedModuleBomb)
+			{
+				this.drawTexturedModalRect(11 + (20 * 1), 11 + (20 * 1), 176, 36, 18, 18);
+			}
+		}
 		
 		this.fontRenderer.drawString(References.localNameVC("vc.main.modulemenu"), 58, -10, Color.CYAN.getRGB());
 		

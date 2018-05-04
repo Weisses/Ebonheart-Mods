@@ -1,7 +1,5 @@
 package com.viesis.viescraft.client.entity.render;
 
-import org.lwjgl.input.Keyboard;
-
 import com.viesis.viescraft.api.EnumsVC;
 import com.viesis.viescraft.api.ItemsVC;
 import com.viesis.viescraft.api.References;
@@ -45,7 +43,6 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelDragonHead;
 import net.minecraft.client.model.ModelHumanoidHead;
 import net.minecraft.client.model.ModelSkeletonHead;
-import net.minecraft.client.renderer.EntityRenderer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms.TransformType;
 import net.minecraft.client.renderer.entity.Render;
@@ -1096,8 +1093,6 @@ public class RenderAirshipBase extends Render<EntityAirshipCore> {
 	 */
     protected void renderEngineSmokeParticles(EntityAirshipCore entity, int locationIn)
     {
-    	
-    	
     	GlStateManager.pushMatrix();
         
 	        GlStateManager.disableCull();
@@ -1108,20 +1103,20 @@ public class RenderAirshipBase extends Render<EntityAirshipCore> {
 	        //Default
 	        if(locationIn == 0)
 	        {
-	        	InitParticlesVCRender.generateAirshipSmokeParticles(entity, 0D, -0.15D, -0.075D);
+	        	//InitParticlesVCRender.generateAirshipSmokeParticles0(entity, 0.0D, -0.15D, 0.0D);
 	        }
 	        //Viesdenburg
 	        if(locationIn == 1)
 	        {
-	        	InitParticlesVCRender.generateAirshipSmokeParticles(entity, 0D, 0.02D, 0D);
+	        	//InitParticlesVCRender.generateAirshipSmokeParticles1(entity, 0.0D, 0.02D, 0D);
 	        }
 	        //Viesigible
 	        if(locationIn == 2)
 	        {
 	        	//Left
-	        	InitParticlesVCRender.generateAirshipSmokeParticles(entity, 0.25D, 0.02D, -0.1D);
+	        	//InitParticlesVCRender.generateAirshipSmokeParticles2a(entity, 0.0D, -0.02D, 0.0D);
 	        	//Right
-	        	InitParticlesVCRender.generateAirshipSmokeParticles(entity, -0.25D, 0.02D, -0.1D);
+	        	//InitParticlesVCRender.generateAirshipSmokeParticles2b(entity, 0.0D, -0.02D, 0.0D);
 	        }
 	        //Vieseplin
 	        if(locationIn == 3)

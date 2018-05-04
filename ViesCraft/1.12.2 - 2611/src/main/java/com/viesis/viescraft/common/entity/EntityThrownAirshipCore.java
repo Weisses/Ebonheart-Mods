@@ -17,6 +17,10 @@ public class EntityThrownAirshipCore extends EntityThrowable {
 	protected int storedRedstone;
 	protected int storedRedstoneTotal;
 	
+    public int storedBombType1;
+    public int storedBombType2;
+    public int storedBombType3;
+	
 	protected int mainTierCore;
 	protected int mainTierFrame;
 	protected int mainTierEngine;

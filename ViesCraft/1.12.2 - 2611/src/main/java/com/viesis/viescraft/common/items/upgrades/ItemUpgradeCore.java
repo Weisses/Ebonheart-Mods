@@ -56,81 +56,59 @@ public class ItemUpgradeCore extends Item {
 		
 		if(stack.getMetadata() == 0)
 		{
-			tooltip.add(I18n.format("vc.item.tt.upgradecore.0.1", new Object[0]));
-			tooltip.add(I18n.format("vc.item.tt.upgradecore.0.2", new Object[0]));
+			tooltip.add(References.localNameVC("vc.item.tt.upgradecore.0.1"));
+			tooltip.add(References.localNameVC("vc.item.tt.upgradecore.0.2"));
 			tooltip.add("");
-			tooltip.add(I18n.format("vc.item.tt.upgradecore.0.3", new Object[0]));
+			tooltip.add(References.localNameVC("vc.item.tt.upgradecore.0.3"));
 		}
 		else if(gameSettingsIn.isKeyDown(gameSettingsIn.keyBindSneak))
 		{
 			if(stack.getMetadata() == 1)
 			{
-				//Make your airships move faster!
-				//Works in any airship version.
-				tooltip.add(TextFormatting.BLACK + "--ii" + stringColorText + I18n.format("vc.item.tt.upgradecore.#.1", new Object[0]));
-				tooltip.add(TextFormatting.BLACK + "---iii" + stringColorText + I18n.format("vc.item.tt.upgradecore.#.2", new Object[0]));
-				
-				tooltip.add(TextFormatting.DARK_GREEN + "================================");
-				
-				//Airship Speed
-				tooltip.add(TextFormatting.DARK_GREEN + "||" + TextFormatting.BLACK + "---------l" + TextFormatting.BLUE + I18n.format("vc.item.tt.airship.11", new Object[0]) + TextFormatting.DARK_BLUE + " : " 
-						+ TextFormatting.GRAY + "(" + stringColorMain + "+" 
-						+ df.format(EnumsVC.MainTierFrame.byId(this.getMetadata(stack)).getSpeedModifier() * 100)
-						+ TextFormatting.GRAY + ")"
-						+ TextFormatting.BLACK + "----------il" + TextFormatting.DARK_GREEN + "||");
-				
-				tooltip.add(TextFormatting.DARK_GREEN + "================================");
-				
-				//tooltip.add("");
-				
-				//Used in the airship's "Upgrade" menu.
-				tooltip.add(TextFormatting.BLACK + "il" + stringColorText + I18n.format("vc.item.tt.upgradecore.#.4", new Object[0])
-				+ TextFormatting.DARK_BLUE + " \"" 
-				+ TextFormatting.BLUE + I18n.format("vc.item.tt.upgradecore.#.5", new Object[0]) 
-				+ TextFormatting.DARK_BLUE + "\" "
-				+ stringColorText + I18n.format("vc.item.tt.upgradecore.#.6", new Object[0]));
-				
+				//Make an airship hold more Redstone.
+				tooltip.add(stringColorText + References.localNameVC("vc.item.tt.upgradecore.#.1"));
 				tooltip.add("");
-				//Base Upgrade
-				tooltip.add(TextFormatting.BLACK + "-------iil" + TextFormatting.DARK_BLUE + "-=" + TextFormatting.BLUE + I18n.format("vc.item.tt.upgradeframe.#.10", new Object[0]) + TextFormatting.DARK_BLUE + "=-");
-				//Core Tier can't exceed Frame Tier.
-				tooltip.add(TextFormatting.BLACK + "-l" + TextFormatting.DARK_RED + I18n.format("vc.item.tt.upgradecore.#.9", new Object[0]));
+				//This is the base upgrade.
+				tooltip.add(stringColorText + References.localNameVC("vc.item.tt.upgrade.#.4"));
+				//Use in the airship's Upgrade menu.
+				tooltip.add(stringColorText + References.localNameVC("vc.item.tt.upgrade.#.1"));
+				tooltip.add("");
+				//Unlocks:
+				tooltip.add(TextFormatting.GREEN + References.localNameVC("vc.main.unlocks") + ":");
+				//New Frame, Engine, and Balloon models.
+				tooltip.add(TextFormatting.GREEN + "- " + TextFormatting.BLUE + References.localNameVC("vc.item.tt.upgradecore.#.2"));
+			}
+			else if(stack.getMetadata() == 5)
+			{
+				//Make an airship hold more Redstone.
+				tooltip.add(stringColorText + References.localNameVC("vc.item.tt.upgradecore.#.1"));
+				tooltip.add("");
+				//Airship must me Tier # to apply.
+				tooltip.add(stringColorText + References.localNameVC("vc.item.tt.upgrade.#.2") + " " + (stack.getMetadata() - 1) + " " + References.localNameVC("vc.item.tt.upgrade.#.3"));
+				//Use in the airship's Upgrade menu.
+				tooltip.add(stringColorText + References.localNameVC("vc.item.tt.upgrade.#.1"));
+				tooltip.add("");
+				//Unlocks:
+				tooltip.add(TextFormatting.GREEN + References.localNameVC("vc.main.unlocks") + ":");
+				//New Frame, Engine, and Balloon models.
+				tooltip.add(TextFormatting.GREEN + "- " + TextFormatting.BLUE + References.localNameVC("vc.item.tt.upgradecore.#.2"));
+				//Transparency + Coloring options.
+				tooltip.add(TextFormatting.GREEN + "- " + TextFormatting.BLUE + References.localNameVC("vc.item.tt.upgradecore.#.3"));
 			}
 			else
 			{
-				//Make your airships move faster!
-				//Works in any airship version.
-				tooltip.add(TextFormatting.BLACK + "--ii" + stringColorText + I18n.format("vc.item.tt.upgradecore.#.1", new Object[0]));
-				tooltip.add(TextFormatting.BLACK + "---iii" + stringColorText + I18n.format("vc.item.tt.upgradecore.#.2", new Object[0]));
-				
-				tooltip.add(TextFormatting.DARK_GREEN + "================================");
-				
-				//Airship Speed
-				tooltip.add(TextFormatting.DARK_GREEN + "||" + TextFormatting.BLACK + "---------l" + TextFormatting.BLUE + I18n.format("vc.item.tt.airship.11", new Object[0]) + TextFormatting.DARK_BLUE + " : " 
-						+ TextFormatting.GRAY + "(" + stringColorMain + "+" 
-						+ df.format(EnumsVC.MainTierFrame.byId(this.getMetadata(stack)).getSpeedModifier() * 100)
-						+ TextFormatting.GRAY + ")"
-						+ TextFormatting.BLACK + "----------il" + TextFormatting.DARK_GREEN + "||");
-				
-				tooltip.add(TextFormatting.DARK_GREEN + "================================");
-				
-				//tooltip.add("");
-				
-				//Used in the airship's "Upgrade" menu.
-				tooltip.add(TextFormatting.BLACK + "il" + stringColorText + I18n.format("vc.item.tt.upgradecore.#.4", new Object[0])
-				+ TextFormatting.DARK_BLUE + " \"" 
-				+ TextFormatting.BLUE + I18n.format("vc.item.tt.upgradecore.#.5", new Object[0]) 
-				+ TextFormatting.DARK_BLUE + "\" "
-				+ stringColorText + I18n.format("vc.item.tt.upgradecore.#.6", new Object[0]));
-				
+				//Make an airship hold more Redstone.
+				tooltip.add(stringColorText + References.localNameVC("vc.item.tt.upgradecore.#.1"));
 				tooltip.add("");
-				
-				//Must upgrade from a Tier # core.
-				tooltip.add(TextFormatting.BLACK + "-iil" + TextFormatting.DARK_RED + I18n.format("vc.item.tt.upgradecore.#.7", new Object[0])
-				+ " " + (stack.getMetadata() - 1) + " "
-				+ I18n.format("vc.item.tt.upgradecore.#.8", new Object[0]));
-				//Core Tier can't exceed Frame Tier.
-				tooltip.add(TextFormatting.BLACK + "-l" + TextFormatting.DARK_RED + I18n.format("vc.item.tt.upgradecore.#.9", new Object[0]));
+				//Airship must me Tier # to apply.
+				tooltip.add(stringColorText + References.localNameVC("vc.item.tt.upgrade.#.2") + " " + (stack.getMetadata() - 1) + " " + References.localNameVC("vc.item.tt.upgrade.#.3"));
+				//Use in the airship's Upgrade menu.
+				tooltip.add(stringColorText + References.localNameVC("vc.item.tt.upgrade.#.1"));
+				tooltip.add("");
+				//Unlocks:
+				tooltip.add(TextFormatting.GREEN + References.localNameVC("vc.main.unlocks") + ":");
+				//New Frame, Engine, and Balloon models.
+				tooltip.add(TextFormatting.GREEN + "- " + TextFormatting.BLUE + References.localNameVC("vc.item.tt.upgradecore.#.2"));
 			}
 		}
 		else
@@ -174,40 +152,40 @@ public class ItemUpgradeCore extends Item {
 	@Override
 	public String getItemStackDisplayName(ItemStack stack)
     {
-        String colorName = TextFormatting.WHITE + "Upgrade Tier";
+        String colorName = "";
 		
 		switch(stack.getMetadata())
 		{
 			case 0:
 				return colorName = TextFormatting.WHITE 
-				+ "Core Shard";
+				+ References.localNameVC("item.vc:item_core_shard.name");
 			case 1:
 				return colorName = TextFormatting.WHITE 
-				+ "Core Upgrade "
+				+ References.localNameVC("item.vc:item_core_upgrade.name") + " "
 				+ TextFormatting.GRAY + "("
 				+ TextFormatting.WHITE + EnumsVC.MainTierCore.byId(this.getMetadata(stack)).getLocalizedName()
 				+ TextFormatting.GRAY + ")";
 			case 2:
 				return colorName = TextFormatting.YELLOW 
-				+ "Core Upgrade "
+				+ References.localNameVC("item.vc:item_core_upgrade.name") + " "
 				+ TextFormatting.GRAY + "("
 				+ TextFormatting.YELLOW + EnumsVC.MainTierCore.byId(this.getMetadata(stack)).getLocalizedName()
 				+ TextFormatting.GRAY + ")";
 			case 3:
 				return colorName = TextFormatting.AQUA 
-				+ "Core Upgrade "
+				+ References.localNameVC("item.vc:item_core_upgrade.name") + " "
 				+ TextFormatting.GRAY + "("
 				+ TextFormatting.AQUA + EnumsVC.MainTierCore.byId(this.getMetadata(stack)).getLocalizedName()
 				+ TextFormatting.GRAY + ")";
 			case 4:
 				return colorName = TextFormatting.LIGHT_PURPLE 
-				+ "Core Upgrade "
+				+ References.localNameVC("item.vc:item_core_upgrade.name") + " "
 				+ TextFormatting.GRAY + "("
 				+ TextFormatting.LIGHT_PURPLE + EnumsVC.MainTierCore.byId(this.getMetadata(stack)).getLocalizedName()
 				+ TextFormatting.GRAY + ")";
 			case 5:
 				return colorName = TextFormatting.RED 
-				+ "Core Upgrade "
+				+ References.localNameVC("item.vc:item_core_upgrade.name") + " "
 				+ TextFormatting.GRAY + "("
 				+ TextFormatting.RED + EnumsVC.MainTierCore.byId(this.getMetadata(stack)).getLocalizedName()
 				+ TextFormatting.GRAY + ")";
@@ -230,3 +208,34 @@ public class ItemUpgradeCore extends Item {
 		}
 	}
 }
+
+/**
+@Override
+public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity)
+{
+	//ItemStack itemstack = player.getHeldItemMainhand();
+    
+	if (entity instanceof EntityAirshipBaseVC)
+    {
+		if(player.isSneaking())
+		{
+			EntityAirshipBaseVC airship = (EntityAirshipBaseVC) entity;
+			
+			if(airship.metaAirshipTier < this.getMetadata(stack))
+			{
+				airship.metaAirshipTier = this.getMetadata(stack);
+				player.addStat(InitAchievementsVC.airship_create_color);
+				
+				if (!player.capabilities.isCreativeMode)
+                {
+					player.inventory.decrStackSize(player.inventory.currentItem, 1);
+                }
+				return true;
+			}
+			return true;
+		}
+		return true;
+    }
+    return false;
+}
+*/

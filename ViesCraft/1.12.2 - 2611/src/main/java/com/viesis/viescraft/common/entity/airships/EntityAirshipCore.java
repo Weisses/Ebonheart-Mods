@@ -7,13 +7,16 @@ import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.client.InitSoundEventsVC;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 import com.viesis.viescraft.init.InitItemsVC;
+import com.viesis.viescraft.network.NetworkHandler;
+import com.viesis.viescraft.network.server.airship.MessageDropBombBig;
+import com.viesis.viescraft.network.server.airship.MessageDropBombScatter;
+import com.viesis.viescraft.network.server.airship.MessageDropBombSmall;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.MoverType;
 import net.minecraft.entity.passive.EntityWaterMob;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EntitySelectors;
@@ -30,6 +33,8 @@ public class EntityAirshipCore extends EntityAirshipBaseVC {
     float finalAirshipSpeedUp = 0.004F * (ViesCraftConfig.v1AirshipSpeed / 100);
     float finalAirshipSpeedDown = 0.004F * (ViesCraftConfig.v1AirshipSpeed / 100);
     
+    int bombDropTimer;
+    
 	public EntityAirshipCore(World worldIn)
     {
         super(worldIn);
@@ -39,6 +44,7 @@ public class EntityAirshipCore extends EntityAirshipBaseVC {
     		int coreTierIn, int frameTierIn, int engineTierIn, int balloonTierIn, 
     		int moduleSlot1In, 
     		int fuelIn, int fuelTotalIn, int redstoneIn, int redstoneTotalIn,
+    		int bombType1, int bombType2, int bombType3,
     		
     		int coreModelVisualFrameIn, 
     		int coreModelVisualEngineIn, 
@@ -86,6 +92,11 @@ public class EntityAirshipCore extends EntityAirshipBaseVC {
         this.storedRedstone = redstoneIn;
         this.storedRedstoneTotal = redstoneTotalIn;
         
+        this.storedBombType1 = bombType1;
+        this.storedBombType2 = bombType2;
+        this.storedBombType3 = bombType3;
+        this.bombTypeActive = 1;
+        
         this.coreModelVisualFrame = coreModelVisualFrameIn;
         this.coreModelVisualEngine = coreModelVisualEngineIn;
         this.coreModelVisualBalloon = coreModelVisualBalloonIn;
@@ -109,6 +120,7 @@ public class EntityAirshipCore extends EntityAirshipBaseVC {
         this.balloonPatternColorRed = balloonPatternColorRedIn;
         this.balloonPatternColorGreen = balloonPatternColorGreenIn;
         this.balloonPatternColorBlue = balloonPatternColorBlueIn;
+        
         
         this.learnedModuleAltitude = learnedModuleAltitudeIn;
         this.selectedModuleAltitude = selectedModuleAltitudeIn;
@@ -195,6 +207,10 @@ public class EntityAirshipCore extends EntityAirshipBaseVC {
     	stack.getTagCompound().setInteger(rf.STORED_REDSTONE_TAG, this.storedRedstone);
     	stack.getTagCompound().setInteger(rf.STORED_REDSTONE_TOTAL_TAG, this.storedRedstoneTotal);
     	
+    	stack.getTagCompound().setInteger(rf.BOMB_TYPE_1_TAG, this.storedBombType1);
+    	stack.getTagCompound().setInteger(rf.BOMB_TYPE_2_TAG, this.storedBombType2);
+    	stack.getTagCompound().setInteger(rf.BOMB_TYPE_3_TAG, this.storedBombType3);
+    	
     	stack.getTagCompound().setInteger(rf.MODULE_ACTIVE_SLOT1_TAG, this.moduleActiveSlot1);
     	
 		stack.getTagCompound().setBoolean(rf.LEARNED_MODULE_ALTITUDE_TAG, this.learnedModuleAltitude);
@@ -229,25 +245,33 @@ public class EntityAirshipCore extends EntityAirshipBaseVC {
 	@Override
 	public String getName() 
 	{
-		String tier_name = this.getNameColor() //+ //EnumsVC.MainTierCore.byId(this.getMetaTierCore()).getLocalizedName()
-				;
-		String visualframe_name = "";
-		String visualballoon_name = "";
-		/**
-		if(this.getCoreVisual() > 0)
-		{
-			visualframe_name = "\"" + EnumsVC.VisualFrame.byId(this.metaFrameVisual).getLocalizedName() + "\" ";
-		}
+		String airship_name = this.getPrimaryLabelColor(this.getMainTierCore()) + "" + this.getCustomName();
 		
-		if(this.getBalloonVisual() > 0)
-		{
-			visualballoon_name = "\"" + EnumsVC.VisualBalloon.byId(this.metaBalloonVisual).getLocalizedName() + "\" ";
-		}
-		*/
 		return this.hasCustomName() ? this.customName : 
-			this.getNameColor() + ViesCraftConfig.v1AirshipName + " " + TextFormatting.GRAY + "(" + tier_name + TextFormatting.GRAY +")";
+			airship_name;
 	}
-	
+	protected TextFormatting getPrimaryLabelColor(int stack)
+	{
+		TextFormatting stringColorLabel;
+		
+		switch(stack)
+		{
+			case 0:
+				return stringColorLabel = TextFormatting.GRAY;
+			case 1:
+				return stringColorLabel = TextFormatting.WHITE;
+			case 2:
+				return stringColorLabel = TextFormatting.YELLOW;
+			case 3:
+				return stringColorLabel = TextFormatting.AQUA;
+			case 4:
+				return stringColorLabel = TextFormatting.LIGHT_PURPLE;
+			case 5:
+				return stringColorLabel = TextFormatting.RED;
+			default:
+				return stringColorLabel = TextFormatting.GRAY;
+		}
+	}
 	
 	
 	
@@ -266,7 +290,14 @@ public class EntityAirshipCore extends EntityAirshipBaseVC {
         	this.waterDamage();
         }
         
-        this.prevPosX = this.posX;
+    	if(this.getModuleActiveSlot1() != EnumsVC.ModuleType.BOMB_LESSER.getMetadata()
+		|| this.getModuleActiveSlot1() != EnumsVC.ModuleType.BOMB_NORMAL.getMetadata()
+		|| this.getModuleActiveSlot1() != EnumsVC.ModuleType.BOMB_GREATER.getMetadata())
+        {
+        	this.bombDropCooldown();
+        }
+    	
+    	this.prevPosX = this.posX;
         this.prevPosY = this.posY;
         this.prevPosZ = this.posZ;
         super.onUpdate();
@@ -278,6 +309,7 @@ public class EntityAirshipCore extends EntityAirshipBaseVC {
         {
         	this.updateMotion();
         	this.controlAirship();
+        	this.dropBomb();
         	
         	if (this.world.isRemote)
             {
@@ -650,6 +682,53 @@ public class EntityAirshipCore extends EntityAirshipBaseVC {
 			{
 				this.speedModifier = -((finalAirshipSpeedForward + EnumsVC.MainTierFrame.byId(this.mainTierFrame).getSpeedModifier()) * 0.70F);
 			}
+			
+			if(moduleNumber == EnumsVC.ModuleType.BOMB_LESSER.getMetadata())
+			{
+				this.speedModifier = -((finalAirshipSpeedForward + EnumsVC.MainTierFrame.byId(this.mainTierFrame).getSpeedModifier()) * 0.75F);
+			}
+			if(moduleNumber == EnumsVC.ModuleType.BOMB_NORMAL.getMetadata())
+			{
+				this.speedModifier = -((finalAirshipSpeedForward + EnumsVC.MainTierFrame.byId(this.mainTierFrame).getSpeedModifier()) * 0.50F);
+			}
+			if(moduleNumber == EnumsVC.ModuleType.BOMB_GREATER.getMetadata())
+			{
+				this.speedModifier = -((finalAirshipSpeedForward + EnumsVC.MainTierFrame.byId(this.mainTierFrame).getSpeedModifier()) * 0.25F);
+			}
 		}
+    }
+    
+    public void dropBomb()
+    {
+    	if(this.moduleActiveSlot1 == EnumsVC.ModuleType.BOMB_LESSER.getMetadata()
+		|| this.moduleActiveSlot1 == EnumsVC.ModuleType.BOMB_NORMAL.getMetadata()
+		|| this.moduleActiveSlot1 == EnumsVC.ModuleType.BOMB_GREATER.getMetadata())
+    	{
+    		if(this.bombArmedToggle
+			&& this.dropBombInputDown)
+    		{
+    			if(this.bombTypeActive == 1
+    			&& this.storedBombType1 != 0
+    			&& this.canDropBomb)
+    			{
+    				NetworkHandler.sendToServer(new MessageDropBombSmall());
+    				this.canDropBomb = false;
+    			}
+    			if(this.bombTypeActive == 2
+    			&& this.storedBombType2 != 0
+    			&& this.canDropBomb)
+    			{
+    				NetworkHandler.sendToServer(new MessageDropBombBig());
+    				this.canDropBomb = false;
+    			}
+    			if(this.bombTypeActive == 3
+    			&& this.storedBombType3 != 0
+    			&& this.canDropBomb)
+    			{
+    				NetworkHandler.sendToServer(new MessageDropBombScatter());
+    				this.canDropBomb = false;
+    			}
+    		}
+    	}
     }
 }
