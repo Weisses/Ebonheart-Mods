@@ -66,6 +66,7 @@ vc.key.openInventory=Open Airship Gui
 vc.key.dropbomb=Drop Bomb (Module)
 
 //-----Main words-----
+vc.main.airship=Airship
 vc.main.mainmenu=Main Menu
 vc.main.upgrademenu=Upgrade Menu
 vc.main.modulemenu=Module Menu
@@ -77,6 +78,8 @@ vc.main.transparent=Transparent
 vc.main.setcolor=Set Color
 vc.main.framecolor=Frame Color
 vc.main.ballooncolor=Balloon Color
+vc.main.storedredstone=Stored Redstone
+vc.main.current=Current
 vc.main.core=Core
 vc.main.frame=Frame
 vc.main.engine=Engine
@@ -359,56 +362,9 @@ vc.item.tt.moduletype.#.27.cons2=
 vc.item.tt.modulecreative.1=Adds all modules to an airship.
 vc.item.tt.modulecreative.2=Use in the airship's Module menu.
 
-vc.item.tt.pattern.1=[Shift + Left-Click]
-vc.item.tt.pattern.2=on an
-vc.item.tt.pattern.3=airship to change the balloon pattern.
-vc.item.tt.module.0.1=A basic chip used to make
-vc.item.tt.module.0.2=
-vc.item.tt.module.#=Effects while socketed:
-vc.item.tt.module.1.1=Pro - Speed Modifier: +1.0
-vc.item.tt.module.1.2=Con - None.
-vc.item.tt.module.2.1=Pro - Speed Modifier: +2.0
-vc.item.tt.module.2.2=Con - Fuel burns x2 faster.
-vc.item.tt.module.3.1=Pro - 9 slot inventory.
-vc.item.tt.module.3.2=Con - Speed Modifier:
-vc.item.tt.module.4.1=Pro - 18 slot inventory.
-vc.item.tt.module.4.2=Con - Speed Modifier:
-vc.item.tt.module.4.3=Con - Fuel burns x2 faster.
-vc.item.tt.module.5.1=Pro - Fly without fuel.
-vc.item.tt.module.5.2=Con - Speed Modifier:
-vc.item.tt.module.6.1=Pro - Land on water.
-vc.item.tt.module.6.2=Con - None.
-vc.item.tt.module.7.1=Pro - Unlimited max altitude.
-vc.item.tt.module.7.2=Con - None.
-vc.item.tt.module.8.1=Pro - Fuel lasts 25% longer.
-vc.item.tt.module.8.2=Con - None.
-vc.item.tt.module.9.1=Pro - Fuel lasts 50% longer.
-vc.item.tt.module.9.2=Con - Speed Modifier:
-vc.item.tt.module.10.1=Pro - Play music in area.
-vc.item.tt.module.10.2=Con - None.
-vc.item.tt.module.11.1=Pro - Auto-Forward at varied speeds.
-vc.item.tt.module.11.2=Con - None.
-
-
 vc.item.tt.airship.1=[Hold Shift + Right-Click]
 vc.item.tt.airship.2=to throw this
 vc.item.tt.airship.3=item and unleash the airship within.
-vc.item.tt.airship.14=Frame
-vc.item.tt.airship.4=Core
-vc.item.tt.airship.5=Engine
-vc.item.tt.airship.6=Balloon
-vc.item.tt.airship.7=Color
-vc.item.tt.airship.8=None
-vc.item.tt.airship.9=Visual Frame
-vc.item.tt.airship.10=Visual Balloon
-vc.item.tt.airship.11=Speed
-vc.item.tt.airship.12=Max Alt
-vc.item.tt.airship.13=Fuel
-
-vc.item.tt.pouchmodule.1=This bag could hold anything, even
-vc.item.tt.pouchmodule.2=a boat?! Nope just modules...
-vc.item.tt.pouchall.1=This bag really could hold
-vc.item.tt.pouchall.2=anything, even a boat!
 
 //-----Enums-----
 vc.enum.tier.0=Base
@@ -903,3 +859,7 @@ vc.item.color.140=Yellow Green
 //-----Unused-----
 item.vc:item_pouch_module.name=Module Vies-Bag
 item.vc:item_pouch_all.name=Vies-Bag
+vc.item.tt.pouchmodule.1=This bag could hold anything, even
+vc.item.tt.pouchmodule.2=a boat?! Nope just modules...
+vc.item.tt.pouchall.1=This bag really could hold
+vc.item.tt.pouchall.2=anything, even a boat!

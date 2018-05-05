@@ -113,7 +113,7 @@ public class ItemUpgradeBalloon extends Item {
 		}
 		else
 		{
-			tooltip.add(TextFormatting.GREEN + I18n.format("vc.item.tt.shifthelper.0", new Object[0]));
+			tooltip.add(TextFormatting.GREEN + References.localNameVC("vc.item.tt.shifthelper.0"));
 		}
 		
 		tooltip.add(TextFormatting.DARK_GREEN + "================================");

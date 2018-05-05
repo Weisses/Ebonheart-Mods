@@ -10,6 +10,7 @@ import com.viesis.viescraft.client.InitParticlesVCRender;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipCore;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.EntityRenderer;
 import net.minecraft.client.renderer.GlStateManager;
@@ -91,7 +92,11 @@ public class RenderAirship extends RenderAirshipBase {
         }
         else
         {
-        	this.renderEntityName(entity, entity.posX, entity.posY + 1, entity.posZ, "========", 2);
+        	EntityPlayerSP playerIn = Minecraft.getMinecraft().player;
+        	float prevAirshipYaw = playerIn.rotationYaw;
+        	float nameplateYaw = (prevAirshipYaw%360) - entity.rotationYaw;
+        	
+        	//this.renderEntityName(entity, entity.posX, entity.posY + 1, entity.posZ, "========", 2);
 			
         	//Render airship name
         	if(entity.getName() != null)
@@ -100,23 +105,11 @@ public class RenderAirship extends RenderAirshipBase {
 	    		{
 	    			GlStateManager.scale(0.5F, 0.5F, 0.5F);
 	    			GlStateManager.rotate(180, 1, 0, 0);
-	    	        this.renderEntityName(entity, entity.posX, entity.posY + 1, entity.posZ, "====", 2);
-	    			//this.renderName(entity, 0, 0, 0);
 	    			
-	    			//this.name
-	    			//entity
-	    	        //.renderLivingLabel();
-	    			
-	    	        EntityRenderer.drawNameplate(this.getFontRenderer(), this.getPrimaryLabelColor(entity.getMainTierCore()) + "" + entity.getCustomName(), 0F, 1.35F, 0F, 
-	    	        		0, 
-	    	        		entity.getRotationYawHead(),//.rotationYaw,//0F 
-	    	        		//Minecraft.getMinecraft().player.getRotationYawHead()
-	    	        		0F, 
-	    	        		false, false);
+	    			EntityRenderer.drawNameplate(this.getFontRenderer(), this.getPrimaryLabelColor(entity.getMainTierCore()) + entity.customName, 0F, 1.35F, 0F, 0, nameplateYaw, 0F, false, false);
 	    		}
 	    		GlStateManager.popMatrix();
         	}
-        	
         	
     		if(entity.getModuleActiveSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_LESSER.getMetadata()
 			|| entity.getModuleActiveSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_NORMAL.getMetadata()
@@ -136,47 +129,47 @@ public class RenderAirship extends RenderAirshipBase {
 	    			
 	    			if(entity.getStoredFuel() == 0)
 	    			{
-	    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.DARK_RED + "          " + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, Minecraft.getMinecraft().player.getRotationYawHead(), 0F, false, false);
+	    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.DARK_RED + "          " + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, nameplateYaw, 0F, false, false);
 	    			}
 	    			else if(entity.getStoredFuel() >= (percentTen * 9))
 	    			{
-	    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.AQUA + "||||||||||||||||||||" + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, Minecraft.getMinecraft().player.getRotationYawHead(), 0F, false, false);
+	    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.AQUA + "||||||||||||||||||||" + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, nameplateYaw, 0F, false, false);
 	    			}
 	    			else if(entity.getStoredFuel() >= (percentTen * 8))
 	    			{
-	    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.AQUA + "|||||||||||||||||| " + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, Minecraft.getMinecraft().player.getRotationYawHead(), 0F, false, false);
+	    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.AQUA + "|||||||||||||||||| " + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, nameplateYaw, 0F, false, false);
 	    			}
 	    			else if(entity.getStoredFuel() >= (percentTen * 7))
 	    			{
-	    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.GREEN + "||||||||||||||||  " + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, Minecraft.getMinecraft().player.getRotationYawHead(), 0F, false, false);
+	    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.GREEN + "||||||||||||||||  " + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, nameplateYaw, 0F, false, false);
 	    			}
 	    			else if(entity.getStoredFuel() >= (percentTen * 6))
 	    			{
-	    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.GREEN + "||||||||||||||   " + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, Minecraft.getMinecraft().player.getRotationYawHead(), 0F, false, false);
+	    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.GREEN + "||||||||||||||   " + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, nameplateYaw, 0F, false, false);
 	    			}
 	    			else if(entity.getStoredFuel() >= (percentTen * 5))
 	    			{
-	    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.YELLOW + "||||||||||||    " + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, Minecraft.getMinecraft().player.getRotationYawHead(), 0F, false, false);
+	    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.YELLOW + "||||||||||||    " + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, nameplateYaw, 0F, false, false);
 	    			}
 	    			else if(entity.getStoredFuel() >= (percentTen * 4))
 	    			{
-	    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.YELLOW + "||||||||||     " + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, Minecraft.getMinecraft().player.getRotationYawHead(), 0F, false, false);
+	    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.YELLOW + "||||||||||     " + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, nameplateYaw, 0F, false, false);
 	    			}
 	    			else if(entity.getStoredFuel() >= (percentTen * 3))
 	    			{
-	    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.GOLD + "||||||||      " + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, Minecraft.getMinecraft().player.getRotationYawHead(), 0F, false, false);
+	    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.GOLD + "||||||||      " + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, nameplateYaw, 0F, false, false);
 	    			}
 	    			else if(entity.getStoredFuel() >= (percentTen * 2))
 	    			{
-	    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.GOLD + "||||||       " + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, Minecraft.getMinecraft().player.getRotationYawHead(), 0F, false, false);
+	    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.GOLD + "||||||       " + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, nameplateYaw, 0F, false, false);
 	    			}
 	    			else if(entity.getStoredFuel() >= (percentTen * 1))
 	    			{
-	    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.DARK_RED + "||||        " + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, Minecraft.getMinecraft().player.getRotationYawHead(), 0F, false, false);
+	    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.DARK_RED + "||||        " + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, nameplateYaw, 0F, false, false);
 	    			}
 	    			else if(entity.getStoredFuel() >= (percentTen * 0) + 1)
 	    			{
-	    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.DARK_RED + "||         " + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, Minecraft.getMinecraft().player.getRotationYawHead(), 0F, false, false);
+	    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.DARK_RED + "||         " + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, nameplateYaw, 0F, false, false);
 	    			}
 	    		}
 	    		GlStateManager.popMatrix();

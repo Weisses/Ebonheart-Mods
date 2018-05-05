@@ -133,6 +133,29 @@ public class ItemAirshipBase extends Item {
 		}
 	}
 	
+	protected TextFormatting getSecondaryLabelColor(int stack)
+	{
+		TextFormatting stringColorLabel;
+		
+		switch(stack)
+		{
+			case 0:
+				return stringColorLabel = TextFormatting.GRAY;
+			case 1:
+				return stringColorLabel = TextFormatting.GRAY;
+			case 2:
+				return stringColorLabel = TextFormatting.GOLD;
+			case 3:
+				return stringColorLabel = TextFormatting.DARK_AQUA;
+			case 4:
+				return stringColorLabel = TextFormatting.DARK_PURPLE;
+			case 5:
+				return stringColorLabel = TextFormatting.DARK_RED;
+			default:
+				return stringColorLabel = TextFormatting.GRAY;
+		}
+	}
+	
 	@Override
 	public EnumRarity getRarity(ItemStack stack)
     {

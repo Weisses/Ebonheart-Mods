@@ -46,4 +46,11 @@ public class ItemCreativeAirshipBase extends Item {
 		
 		return stringColorLabel;
 	}
+	
+	protected TextFormatting getSecondaryLabelColor(int stack)
+	{
+		TextFormatting stringColorLabel = TextFormatting.DARK_RED;
+		
+		return stringColorLabel;
+	}
 }

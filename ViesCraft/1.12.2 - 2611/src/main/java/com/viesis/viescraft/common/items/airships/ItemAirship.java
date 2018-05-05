@@ -1,5 +1,7 @@
 package com.viesis.viescraft.common.items.airships;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -23,6 +25,7 @@ import javax.annotation.Nullable;
 
 import com.viesis.viescraft.ViesCraft;
 import com.viesis.viescraft.api.EnumsVC;
+import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.common.entity.EntityThrownAirship;
 import com.viesis.viescraft.common.items.ItemHelper;
@@ -239,8 +242,7 @@ public class ItemAirship extends ItemAirshipBase {
 	@Override
 	public String getItemStackDisplayName(ItemStack stack)
     {
-		String colorName = TextFormatting.WHITE + "Airship";
-		//String preName = TextFormatting.WHITE + "ViesCraft";
+		String colorName = " ";
 		
 		this.customName = "Airship";
 		
@@ -249,257 +251,107 @@ public class ItemAirship extends ItemAirshipBase {
     		this.customName = stack.getTagCompound().getString(rf.CUSTOM_NAME_TAG);
     	}
 		
-		
-		/**
-		if(this.coreModelVisualFrame == 0)
-		{
-			preName = TextFormatting.GREEN + "*" 
-					+ TextFormatting.WHITE + "ViesCraft"
-					+ TextFormatting.GREEN + "*" ;
-		}
-		if(this.coreModelVisualFrame == 1)
-		{
-			preName = TextFormatting.GREEN + "*" 
-					+ TextFormatting.WHITE + ViesCraftConfig.v1AirshipName
-					+ TextFormatting.GREEN + "*" ;
-		}
-		if(this.coreModelVisualFrame == 2)
-		{
-			preName = TextFormatting.GREEN + "*" 
-					+ TextFormatting.WHITE + ViesCraftConfig.v2AirshipName
-					+ TextFormatting.GREEN + "*" ;
-		}
-		if(this.coreModelVisualFrame == 3)
-		{
-			preName = TextFormatting.GREEN + "*" 
-					+ TextFormatting.WHITE + ViesCraftConfig.v3AirshipName
-					+ TextFormatting.GREEN + "*" ;
-		}
-		if(this.coreModelVisualFrame == 4)
-		{
-			preName = TextFormatting.GREEN + "*" 
-					+ TextFormatting.WHITE + ViesCraftConfig.v4AirshipName
-					+ TextFormatting.GREEN + "*" ;
-		}*/
-		
 		if(stack.getMetadata() == 0)
 		{
-			colorName = TextFormatting.GRAY + "" + TextFormatting.BOLD + this.customName;
+			colorName = TextFormatting.GRAY + this.customName;
 		}
 		if(stack.getMetadata() == 1)
 		{
-			colorName = TextFormatting.WHITE + "" + TextFormatting.BOLD + this.customName;
+			colorName = TextFormatting.WHITE + this.customName;
 		}
 		if(stack.getMetadata() == 2)
 		{
-			colorName = TextFormatting.YELLOW + "" + TextFormatting.BOLD + this.customName;
+			colorName = TextFormatting.YELLOW + this.customName;
 		}
 		if(stack.getMetadata() == 3)
 		{
-			colorName = TextFormatting.AQUA + "" + TextFormatting.BOLD + this.customName;
+			colorName = TextFormatting.AQUA + this.customName;
 		}
 		if(stack.getMetadata() == 4)
 		{
-			colorName = TextFormatting.LIGHT_PURPLE + "" + TextFormatting.BOLD + this.customName;
+			colorName = TextFormatting.LIGHT_PURPLE + this.customName;
 		}
 		if(stack.getMetadata() == 5)
 		{
-			colorName = TextFormatting.RED + "" + TextFormatting.BOLD + this.customName;
+			colorName = TextFormatting.RED + this.customName;
 		}
 		
-		String airshipName = //preName + " " + 
-				colorName;
-		
-		return airshipName;
+		return this.getPrimaryLabelColor(stack.getMetadata()) + References.localNameVC("vc.main.airship") + TextFormatting.GREEN + " - \'" + colorName + TextFormatting.GREEN + "\'";
     }
 	
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn)
     {
-		DecimalFormat df = new DecimalFormat("###.#");
+		GameSettings gameSettingsIn = Minecraft.getMinecraft().gameSettings;
 		
-		int mainTierCoreInfo = 0;
+		int mainTierCoreInfo = stack.getMetadata();
 		int mainTierFrameInfo = 0;
 		int mainTierEngineInfo = 0;
 		int mainTierBalloonInfo = 0;
 		
+		int currentRedstoneInfo = 0;
+		int currentModuleSlot1Info = 0;
+		
 		if(stack.hasTagCompound())
     	{
-			mainTierCoreInfo = stack.getTagCompound().getInteger(rf.MAIN_TIER_CORE_TAG);
-    		mainTierFrameInfo = stack.getTagCompound().getInteger(rf.MAIN_TIER_FRAME_TAG);
+			mainTierFrameInfo = stack.getTagCompound().getInteger(rf.MAIN_TIER_FRAME_TAG);
     		mainTierEngineInfo = stack.getTagCompound().getInteger(rf.MAIN_TIER_ENGINE_TAG);
     		mainTierBalloonInfo = stack.getTagCompound().getInteger(rf.MAIN_TIER_BALLOON_TAG);
+    		currentRedstoneInfo = stack.getTagCompound().getInteger(rf.STORED_REDSTONE_TAG);
+    		currentModuleSlot1Info = stack.getTagCompound().getInteger(rf.MODULE_ACTIVE_SLOT1_TAG);
     	}
 		
 		tooltip.add(TextFormatting.DARK_GREEN + "================================");
 		
 		//[Hold Shift + Right-Click] to throw this
+		tooltip.add(TextFormatting.GREEN + References.localNameVC("vc.item.tt.airship.1") + this.getSecondaryLabelColor(stack.getMetadata()) + " " + References.localNameVC("vc.item.tt.airship.2"));
 		//item and unleash the airship within.
-		tooltip.add(TextFormatting.GREEN + I18n.translateToLocal("vc.item.tt.airship.1") + this.getPrimaryLabelColor(stack.getMetadata()) + " " + I18n.translateToLocal("vc.item.tt.airship.2"));
-		tooltip.add(this.getPrimaryLabelColor(stack.getMetadata()) + I18n.translateToLocal("vc.item.tt.airship.3"));
+		tooltip.add(this.getSecondaryLabelColor(stack.getMetadata()) + References.localNameVC("vc.item.tt.airship.3"));
 		
-		tooltip.add(TextFormatting.DARK_GREEN + "================================");
-		
-		//Core = 0 || Frame = 0
-		if(stack.getMetadata() == 0
-		&& mainTierFrameInfo == 0)
+		if(gameSettingsIn.isKeyDown(gameSettingsIn.keyBindSneak))
 		{
-			tooltip.add(TextFormatting.DARK_GREEN + "|" 
-					+ TextFormatting.BLACK + "-iiiiil" + TextFormatting.BLUE + I18n.translateToLocal("vc.item.tt.airship.4") + TextFormatting.BLACK + "i" + TextFormatting.DARK_BLUE + ":" + TextFormatting.BLACK + "i"
-					+ TextFormatting.DARK_GRAY + I18n.translateToLocal("vc.item.tt.airship.8") + TextFormatting.BLACK + "--ill"
-					+ TextFormatting.DARK_GREEN + "|"
-					+ TextFormatting.BLACK + "iiiill" + TextFormatting.BLUE + I18n.translateToLocal("vc.item.tt.airship.14") +  TextFormatting.BLACK + "i" + TextFormatting.DARK_BLUE + ":" + TextFormatting.BLACK + "i"
-					+ TextFormatting.DARK_GRAY + I18n.translateToLocal("vc.item.tt.airship.8") + TextFormatting.BLACK + "--iil"
-					+ TextFormatting.DARK_GREEN + "|");
-		}
-		//Can't be used!!!
-		//Core = 0 || Frame < 0
-		else if(stack.getMetadata() == 0
-			 && mainTierFrameInfo != 0)
-		{
-			tooltip.add(TextFormatting.DARK_GREEN + "|" 
-					+ TextFormatting.BLACK + "-iiiiil" + TextFormatting.BLUE + I18n.translateToLocal("vc.item.tt.airship.4") + TextFormatting.BLACK + "i" + TextFormatting.DARK_BLUE + ":" + TextFormatting.BLACK + "i"
-					+ TextFormatting.DARK_GRAY + I18n.translateToLocal("vc.item.tt.airship.8") + TextFormatting.BLACK + "--ill"
-					+ TextFormatting.DARK_GREEN + "|"
-					+ TextFormatting.BLACK + "--i" + TextFormatting.BLUE + I18n.translateToLocal("vc.item.tt.airship.14") + TextFormatting.BLACK + "i" + TextFormatting.DARK_BLUE + ":" + TextFormatting.BLACK + "i"
-					+ TextFormatting.GRAY + "(" + this.getPrimaryLabelColor(mainTierFrameInfo) + EnumsVC.MainTierFrame.byId(mainTierFrameInfo).getLocalizedName() + TextFormatting.GRAY + ")"+ TextFormatting.BLACK + "l" 
-					+ TextFormatting.DARK_GREEN + "|");
-		}
-		//Core < 0 || Frame = 0
-		else if(stack.getMetadata() != 0
-			 && mainTierFrameInfo == 0)
-		{
-			tooltip.add(TextFormatting.DARK_GREEN + "|" 
-					+ TextFormatting.BLACK + "-iiiiil" + TextFormatting.BLUE + I18n.translateToLocal("vc.item.tt.airship.4") + TextFormatting.BLACK + "i" + TextFormatting.DARK_BLUE + ":" + TextFormatting.BLACK + "i"
-					+ TextFormatting.GRAY + "(" + this.getPrimaryLabelColor(stack.getMetadata()) + EnumsVC.MainTierCore.byId(stack.getMetadata()).getLocalizedName() + TextFormatting.GRAY + ")" + TextFormatting.BLACK + "ii" 
-					+ TextFormatting.DARK_GREEN + "|"
-					+ TextFormatting.BLACK + "iiiill" + TextFormatting.BLUE + I18n.translateToLocal("vc.item.tt.airship.14") + TextFormatting.BLACK + "i" + TextFormatting.DARK_BLUE + ":" + TextFormatting.BLACK + "i"
-					+ TextFormatting.DARK_GRAY + I18n.translateToLocal("vc.item.tt.airship.8") + TextFormatting.BLACK + "--iil" 
-					+ TextFormatting.DARK_GREEN + "|");
-		}
-		//Core < 0 || Frame < 0
-		else if(stack.getMetadata() != 0
-			 && mainTierFrameInfo != 0)
-		{
-			tooltip.add(TextFormatting.DARK_GREEN + "|" 
-					+ TextFormatting.BLACK + "-iiiiil" + TextFormatting.BLUE + I18n.translateToLocal("vc.item.tt.airship.4") + TextFormatting.BLACK + "i" + TextFormatting.DARK_BLUE + ":" + TextFormatting.BLACK + "i"
-					+ TextFormatting.GRAY + "(" + this.getPrimaryLabelColor(stack.getMetadata()) + EnumsVC.MainTierCore.byId(stack.getMetadata()).getLocalizedName() + TextFormatting.GRAY + ")" + TextFormatting.BLACK + "ii" 
-					+ TextFormatting.DARK_GREEN + "|"
-					+ TextFormatting.BLACK + "--i" + TextFormatting.BLUE + I18n.translateToLocal("vc.item.tt.airship.14") + TextFormatting.BLACK + "i" + TextFormatting.DARK_BLUE + ":" + TextFormatting.BLACK + "i"
-					+ TextFormatting.GRAY + "(" + this.getPrimaryLabelColor(mainTierFrameInfo) + EnumsVC.MainTierFrame.byId(mainTierFrameInfo).getLocalizedName() + TextFormatting.GRAY + ")"+ TextFormatting.BLACK + "l" 
-					+ TextFormatting.DARK_GREEN + "|");
-		}
-		
-		//Engine = 0 || Balloon = 0
-		if(mainTierEngineInfo == 0
-	    && mainTierBalloonInfo == 0)
-		{
-			tooltip.add(TextFormatting.DARK_GREEN + "|" 
-					+ TextFormatting.BLACK + "iiiil" + TextFormatting.BLUE + I18n.translateToLocal("vc.item.tt.airship.5") + TextFormatting.BLACK + "i" + TextFormatting.DARK_BLUE + ":" + TextFormatting.BLACK + "i"
-					+ TextFormatting.DARK_GRAY + I18n.translateToLocal("vc.item.tt.airship.8") + TextFormatting.BLACK + "---i" 
-					+ TextFormatting.DARK_GREEN + "|"
-					+ TextFormatting.BLACK + "iiii" + TextFormatting.BLUE + I18n.translateToLocal("vc.item.tt.airship.6") + TextFormatting.BLACK + "i" + TextFormatting.DARK_BLUE + ":" + TextFormatting.BLACK + "i"
-					+ TextFormatting.DARK_GRAY + I18n.translateToLocal("vc.item.tt.airship.8") + TextFormatting.BLACK + "--iil" 
-					+ TextFormatting.DARK_GREEN + "|");
-		}
-		//Engine = 0 || Balloon < 0
-		else if(mainTierEngineInfo == 0
-			 && mainTierBalloonInfo != 0)
-		{
-			tooltip.add(TextFormatting.DARK_GREEN + "|" 
-					+ TextFormatting.BLACK + "iiiil" + TextFormatting.BLUE + I18n.translateToLocal("vc.item.tt.airship.5") + TextFormatting.BLACK + "i" + TextFormatting.DARK_BLUE + ":" + TextFormatting.BLACK + "i"
-					+ TextFormatting.DARK_GRAY + I18n.translateToLocal("vc.item.tt.airship.8") + TextFormatting.BLACK + "---i" 
-					+ TextFormatting.DARK_GREEN + "|"
-					+ TextFormatting.BLACK + "iiii" + TextFormatting.BLUE + I18n.translateToLocal("vc.item.tt.airship.6") + TextFormatting.BLACK + "i" + TextFormatting.DARK_BLUE + ":" + TextFormatting.BLACK + "i"
-					+ TextFormatting.GRAY + "(" + this.getPrimaryLabelColor(mainTierBalloonInfo) + EnumsVC.MainTierBalloon.byId(mainTierBalloonInfo).getLocalizedName() + TextFormatting.GRAY + ")" + TextFormatting.BLACK + "l" 
-					+ TextFormatting.DARK_GREEN + "|");
-		}
-		//Engine < 0 || Balloon = 0
-		else if(mainTierEngineInfo != 0
-		     && mainTierBalloonInfo == 0)
-		{
-			tooltip.add(TextFormatting.DARK_GREEN + "|" 
-					+ TextFormatting.BLACK + "iiiil" + TextFormatting.BLUE + I18n.translateToLocal("vc.item.tt.airship.5") + TextFormatting.BLACK + "i" + TextFormatting.DARK_BLUE + ":" + TextFormatting.BLACK + "i"
-					+ TextFormatting.GRAY + "(" + this.getPrimaryLabelColor(mainTierEngineInfo) + EnumsVC.MainTierEngine.byId(mainTierEngineInfo).getLocalizedName() + TextFormatting.GRAY + ")" + TextFormatting.BLACK + "ii" 
-					+ TextFormatting.DARK_GREEN + "|"
-					+ TextFormatting.BLACK + "iiii" + TextFormatting.BLUE + I18n.translateToLocal("vc.item.tt.airship.6") + TextFormatting.BLACK + "i" + TextFormatting.DARK_BLUE + ":" + TextFormatting.BLACK + "i"
-					+ TextFormatting.DARK_GRAY + I18n.translateToLocal("vc.item.tt.airship.8") + TextFormatting.BLACK + "--iil" 
-					+ TextFormatting.DARK_GREEN + "|");
-		}
-		//Engine < 0 || Balloon < 0
-		else if(mainTierEngineInfo != 0
-		     && mainTierBalloonInfo != 0)
-		{
-			tooltip.add(TextFormatting.DARK_GREEN + "|" 
-					+ TextFormatting.BLACK + "iiiil" + TextFormatting.BLUE + I18n.translateToLocal("vc.item.tt.airship.5") + TextFormatting.BLACK + "i" + TextFormatting.DARK_BLUE + ":" + TextFormatting.BLACK + "i"
-					+ TextFormatting.GRAY + "(" + this.getPrimaryLabelColor(mainTierEngineInfo) + EnumsVC.MainTierEngine.byId(mainTierEngineInfo).getLocalizedName() + TextFormatting.GRAY + ")" + TextFormatting.BLACK + "ii" 
-					+ TextFormatting.DARK_GREEN + "|"
-					+ TextFormatting.BLACK + "iiii" + TextFormatting.BLUE + I18n.translateToLocal("vc.item.tt.airship.6") + TextFormatting.BLACK + "i" + TextFormatting.DARK_BLUE + ":" + TextFormatting.BLACK + "i"
-					+ TextFormatting.GRAY + "(" + this.getPrimaryLabelColor(mainTierBalloonInfo) + EnumsVC.MainTierBalloon.byId(mainTierBalloonInfo).getLocalizedName() + TextFormatting.GRAY + ")" + TextFormatting.BLACK + "l" 
-					+ TextFormatting.DARK_GREEN + "|");
-		}
-		
-		tooltip.add(TextFormatting.DARK_GREEN + "|"
-				+ TextFormatting.BLACK + "ii"
-				+ TextFormatting.DARK_GREEN + "--------------"
-				+ TextFormatting.BLACK + "il"
-				+ TextFormatting.DARK_GREEN + "|"
-				+ TextFormatting.BLACK + "il"
-				+ TextFormatting.DARK_GREEN + "--------------"
-				+ TextFormatting.BLACK + "ii"
-				+ TextFormatting.DARK_GREEN + "|");
-		
-		
-		float speedModCal = EnumsVC.MainTierFrame.byId(mainTierFrameInfo).getSpeedModifier() * 100;
-		String speedMod = df.format(speedModCal);
-		
-		String altMax = "";
-		
-		if(mainTierBalloonInfo == 0)
-		{
-			altMax = TextFormatting.BLACK + "-" + this.getPrimaryLabelColor(mainTierBalloonInfo) + df.format(EnumsVC.MainTierBalloon.byId(mainTierBalloonInfo).getMaxAltitude());
-		}
-		else if(mainTierBalloonInfo >= 5)
-		{
-			altMax = TextFormatting.BLACK + "il" + this.getPrimaryLabelColor(mainTierBalloonInfo) + "\u221e" + TextFormatting.BLACK + "ii";
+			tooltip.add(TextFormatting.DARK_GREEN + "================================");
+			//Core : 
+			tooltip.add(TextFormatting.BLUE + References.localNameVC("vc.main.core") + TextFormatting.DARK_BLUE + " : " + TextFormatting.GRAY + "(" + this.getPrimaryLabelColor(mainTierCoreInfo) + EnumsVC.MainTierCore.byId(mainTierCoreInfo).getLocalizedName() + TextFormatting.GRAY + ")"
+					+ TextFormatting.GREEN + " - "+ TextFormatting.BLUE + References.localNameVC("vc.main.redstone") + TextFormatting.DARK_BLUE + " : "
+					+ this.getPrimaryLabelColor(mainTierCoreInfo) + EnumsVC.MainTierCore.byId(mainTierCoreInfo).getStoredRedstone());
+			//Frame : 
+			tooltip.add(TextFormatting.BLUE + References.localNameVC("vc.main.frame") + TextFormatting.DARK_BLUE + " : " + TextFormatting.GRAY + "(" + this.getPrimaryLabelColor(mainTierFrameInfo) + EnumsVC.MainTierFrame.byId(mainTierFrameInfo).getLocalizedName() + TextFormatting.GRAY + ")"
+					+ TextFormatting.GREEN + " - "+ TextFormatting.BLUE + References.localNameVC("vc.main.speed") + TextFormatting.DARK_BLUE + " : "
+					+ this.getPrimaryLabelColor(mainTierFrameInfo) + "+" + mainTierFrameInfo);
+			//Engine : 
+			tooltip.add(TextFormatting.BLUE + References.localNameVC("vc.main.engine") + TextFormatting.DARK_BLUE + " : " + TextFormatting.GRAY + "(" + this.getPrimaryLabelColor(mainTierEngineInfo) + EnumsVC.MainTierEngine.byId(mainTierEngineInfo).getLocalizedName() + TextFormatting.GRAY + ")"
+					+ TextFormatting.GREEN + " - "+ TextFormatting.BLUE + References.localNameVC("vc.main.fuel") + TextFormatting.DARK_BLUE + " : "
+					+ this.getPrimaryLabelColor(mainTierEngineInfo) + EnumsVC.MainTierEngine.byId(mainTierEngineInfo).getFuelPerTick());
+			//Balloon : 
+			tooltip.add(TextFormatting.BLUE + References.localNameVC("vc.main.balloon") + TextFormatting.DARK_BLUE + " : " + TextFormatting.GRAY + "(" + this.getPrimaryLabelColor(mainTierBalloonInfo) + EnumsVC.MainTierBalloon.byId(mainTierBalloonInfo).getLocalizedName() + TextFormatting.GRAY + ")"
+					+ TextFormatting.GREEN + " - "+ TextFormatting.BLUE + References.localNameVC("vc.main.altitude") + TextFormatting.DARK_BLUE + " : " + this.getPrimaryLabelColor(mainTierBalloonInfo) + EnumsVC.MainTierBalloon.byId(mainTierBalloonInfo).getMaxAltitude());
+			
+			tooltip.add("");
+			//Stored Redstone : 
+			if(currentRedstoneInfo == 0)
+			{
+				tooltip.add(TextFormatting.BLUE + References.localNameVC("vc.main.storedredstone") + TextFormatting.DARK_BLUE + " : " + TextFormatting.GRAY + currentRedstoneInfo);
+			}
+			else
+			{
+				tooltip.add(TextFormatting.BLUE + References.localNameVC("vc.main.storedredstone") + TextFormatting.DARK_BLUE + " : " + TextFormatting.GREEN + currentRedstoneInfo);
+			}
+			//Current Module : 
+			if(currentModuleSlot1Info == 0)
+			{
+				tooltip.add(TextFormatting.BLUE + References.localNameVC("vc.main.current") + " " + References.localNameVC("vc.item.module.#") + TextFormatting.DARK_BLUE + " : " + this.getPrimaryLabelColor(currentRedstoneInfo) + "None");
+			}
+			else
+			{
+				tooltip.add(TextFormatting.BLUE + References.localNameVC("vc.main.current") + " " + References.localNameVC("vc.item.module.#") + TextFormatting.DARK_BLUE + " : " + this.getPrimaryLabelColor(currentRedstoneInfo) + TextFormatting.GREEN + EnumsVC.ModuleType.byId(currentModuleSlot1Info).getLocalizedName());
+			}
 		}
 		else
 		{
-			altMax = this.getPrimaryLabelColor(mainTierBalloonInfo) + df.format(EnumsVC.MainTierBalloon.byId(mainTierBalloonInfo).getMaxAltitude());
-		}
-		
-		//----- || Airship Speed
-		tooltip.add(TextFormatting.DARK_GREEN + "|"
-				//+ TextFormatting.BLACK + "iiii" + TextFormatting.BLACK + "il" + TextFormatting.BLUE + I18n.translateToLocal("Rarity") + TextFormatting.BLACK + "i" + TextFormatting.DARK_BLUE + ":" + TextFormatting.BLACK + "i"
-				//+ TextFormatting.YELLOW + "Uncommon"
-				+ TextFormatting.BLACK + "---------------l" 
-				+ TextFormatting.DARK_GREEN + "|" 
-				+ TextFormatting.BLACK + "iiill" + TextFormatting.BLACK + "i" + TextFormatting.BLUE + I18n.translateToLocal("vc.item.tt.airship.11") + TextFormatting.BLACK + "i" + TextFormatting.DARK_BLUE + ":" + TextFormatting.BLACK + "i"
-				+ TextFormatting.GRAY + "(" + TextFormatting.BLACK + "-" + this.getPrimaryLabelColor(mainTierFrameInfo) + "+" + speedMod + TextFormatting.GRAY + ")" + TextFormatting.BLACK + "--l"
-				+ TextFormatting.DARK_GREEN + "|");
-		
-		if(mainTierBalloonInfo == 5)
-		{
-			//Airship Fuel and Altitude
-			tooltip.add(TextFormatting.DARK_GREEN + "|" 
-					+ TextFormatting.BLACK + "iiiil" + TextFormatting.BLACK + "-il" + TextFormatting.BLUE + I18n.translateToLocal("vc.item.tt.airship.13") + TextFormatting.BLACK + "i" + TextFormatting.DARK_BLUE + ":" + TextFormatting.BLACK + "i"
-					+ TextFormatting.GRAY + "(" + this.getPrimaryLabelColor(mainTierEngineInfo) + "-" + df.format(EnumsVC.MainTierEngine.byId(mainTierEngineInfo).getFuelPerTick()) + TextFormatting.GRAY + ")" + TextFormatting.BLACK + "--ii" 
-					+ TextFormatting.DARK_GREEN + "|"
-					+ TextFormatting.BLACK + "iiil" + TextFormatting.BLUE + I18n.translateToLocal("vc.item.tt.airship.12") + TextFormatting.BLACK + "i" + TextFormatting.DARK_BLUE + ":" + TextFormatting.BLACK + "i"
-					+ TextFormatting.GRAY + "(" + TextFormatting.RED + " \u221e " + TextFormatting.GRAY + ")" + TextFormatting.BLACK + "iiiiill" 
-					+ TextFormatting.DARK_GREEN + "|");
-		}
-		else
-		{
-			//Airship Fuel and Altitude
-			tooltip.add(TextFormatting.DARK_GREEN + "|" 
-					+ TextFormatting.BLACK + "iiiil" + TextFormatting.BLACK + "-il" + TextFormatting.BLUE + I18n.translateToLocal("vc.item.tt.airship.13") + TextFormatting.BLACK + "i" + TextFormatting.DARK_BLUE + ":" + TextFormatting.BLACK + "i"
-					+ TextFormatting.GRAY + "(" + this.getPrimaryLabelColor(mainTierEngineInfo) + "-" + df.format(EnumsVC.MainTierEngine.byId(mainTierEngineInfo).getFuelPerTick()) + TextFormatting.GRAY + ")" + TextFormatting.BLACK + "--ii" 
-					+ TextFormatting.DARK_GREEN + "|"
-					+ TextFormatting.BLACK + "iiil" + TextFormatting.BLUE + I18n.translateToLocal("vc.item.tt.airship.12") + TextFormatting.BLACK + "i" + TextFormatting.DARK_BLUE + ":" + TextFormatting.BLACK + "i" 
-					+ TextFormatting.GRAY + "(" + altMax + TextFormatting.GRAY + ")" + TextFormatting.BLACK + "-iiil" 
-					+ TextFormatting.DARK_GREEN + "|");
+			tooltip.add(TextFormatting.DARK_GREEN + "================================");
+			tooltip.add(TextFormatting.GREEN + References.localNameVC("vc.item.tt.shifthelper.0"));
 		}
 		
 		tooltip.add(TextFormatting.DARK_GREEN + "================================");

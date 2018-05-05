@@ -2,8 +2,6 @@ package com.viesis.viescraft.common.items;
 
 import net.minecraft.item.Item;
 
-import com.viesis.viescraft.ViesCraft;
-
 public class ItemHelper extends Item {
 	
 	public ItemHelper(String itemName) 

@@ -272,5 +272,10 @@ public class GuiCustomizeMenuChangeName extends GuiContainerVC {
 	protected void keyTyped(char typedChar, int keyCode) throws IOException
     {
 		this.textName.textboxKeyTyped(typedChar, keyCode);
+		
+		if (keyCode == 1)
+        {
+			NetworkHandler.sendToServer(new MessageGuiCustomizeMenu());
+        }
     }
 }
