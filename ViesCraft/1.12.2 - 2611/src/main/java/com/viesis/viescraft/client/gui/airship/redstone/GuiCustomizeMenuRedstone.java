@@ -8,7 +8,7 @@ import com.viesis.viescraft.api.GuiVC;
 import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.client.gui.GuiContainerVC;
 import com.viesis.viescraft.client.gui.buttons.GuiButtonGeneral1VC;
-import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
+import com.viesis.viescraft.common.entity.airships.EntityAirshipCore;
 import com.viesis.viescraft.common.entity.airships.containers.all.ContainerMenuRedstone;
 import com.viesis.viescraft.network.NetworkHandler;
 import com.viesis.viescraft.network.server.airship.redstone.MessageHelperGuiRedstoneMenuConsume;
@@ -23,7 +23,7 @@ public class GuiCustomizeMenuRedstone extends GuiContainerVC {
 	
 	private final ResourceLocation TEXTURE = new ResourceLocation(References.MOD_ID + ":" + "textures/gui/container_gui_menu_redstone.png");
 	
-	public GuiCustomizeMenuRedstone(IInventory playerInv, EntityAirshipBaseVC airshipIn)
+	public GuiCustomizeMenuRedstone(IInventory playerInv, EntityAirshipCore airshipIn)
 	{
 		super(new ContainerMenuRedstone(playerInv, airshipIn), playerInv, airshipIn);
 		

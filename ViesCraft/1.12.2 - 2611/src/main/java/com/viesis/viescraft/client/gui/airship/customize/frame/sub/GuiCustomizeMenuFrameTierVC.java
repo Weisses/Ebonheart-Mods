@@ -12,7 +12,7 @@ import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.client.gui.GuiContainerVC;
 import com.viesis.viescraft.client.gui.buttons.GuiButtonGeneral1VC;
 import com.viesis.viescraft.client.gui.buttons.GuiButtonGeneral2VC;
-import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
+import com.viesis.viescraft.common.entity.airships.EntityAirshipCore;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipCore;
 import com.viesis.viescraft.common.entity.airships.containers.all.ContainerCustomizeMenu;
 import com.viesis.viescraft.network.NetworkHandler;
@@ -39,7 +39,7 @@ public class GuiCustomizeMenuFrameTierVC extends GuiContainerVC {
 	{
 		super(new ContainerCustomizeMenu(playerInv, airshipIn), playerInv, airshipIn);
 		
-		this.metaInfo = this.airship.frameSkinTexture;
+		this.metaFrameInfo = this.airship.frameSkinTexture;
 	}
 	
 	/**
@@ -157,7 +157,7 @@ public class GuiCustomizeMenuFrameTierVC extends GuiContainerVC {
 	    }
 		if (parButton.id == 502)
 	    {
-			this.metaInfo = 0;
+			this.metaFrameInfo = 0;
 			NetworkHandler.sendToServer(new MessageHelperGuiCustomizeMenuFrameTier());
 	    }
 		if (parButton.id == 503)
@@ -175,7 +175,7 @@ public class GuiCustomizeMenuFrameTierVC extends GuiContainerVC {
 		
 		if (parButton.id <= 450)
 	    {
-			this.metaInfo = parButton.id;
+			this.metaFrameInfo = parButton.id;
 	    }
 		
         this.buttonList.clear();
@@ -197,11 +197,9 @@ public class GuiCustomizeMenuFrameTierVC extends GuiContainerVC {
 		this.drawRect(this.guiLeft + 50, this.guiTop - 16, this.guiLeft + 126, this.guiTop, Color.LIGHT_GRAY.getRGB());
 		this.drawRect(this.guiLeft + 52, this.guiTop - 14, this.guiLeft + 124, this.guiTop, Color.BLACK.getRGB());
 		
-        this.drawEntityOnScreen(this.guiLeft + 135, this.guiTop + 110-18, 13, this.airship);
-        
-		if(airship.getStoredRedstone() >= CostsVC.FRAME_SKIN_TEXTURE_COST
-		&& metaInfo != 0
-		&& metaInfo != airship.frameSkinTexture)
+		if(this.airship.getStoredRedstone() >= CostsVC.FRAME_SKIN_TEXTURE_COST
+		&& this.metaFrameInfo != 0
+		&& this.metaFrameInfo != this.airship.frameSkinTexture)
 		{
 			if(this.airship.storedRedstone >= CostsVC.FRAME_SKIN_TEXTURE_COST)
 			{
@@ -236,6 +234,8 @@ public class GuiCustomizeMenuFrameTierVC extends GuiContainerVC {
 	        this.drawCenteredString(fontRenderer, Integer.toString(CostsVC.FRAME_SKIN_TEXTURE_COST), 0, 0, redstoneColor.getRGB());
 		}
 		GlStateManager.popMatrix();
+		
+        this.drawEntityOnScreen(this.guiLeft + 135, this.guiTop + 110-18, 13, this.airship);
 	}
 	
 	@Override
@@ -269,9 +269,9 @@ public class GuiCustomizeMenuFrameTierVC extends GuiContainerVC {
 			GlStateManager.popMatrix();
 		}
 		
-		if(airship.getStoredRedstone() >= CostsVC.FRAME_SKIN_TEXTURE_COST
-		&& metaInfo != 0
-		&& metaInfo != airship.frameSkinTexture)
+		if(this.airship.getStoredRedstone() >= CostsVC.FRAME_SKIN_TEXTURE_COST
+		&& this.metaFrameInfo != 0
+		&& this.metaFrameInfo != this.airship.frameSkinTexture)
 		{
 			if(this.airship.storedRedstone >= CostsVC.FRAME_SKIN_TEXTURE_COST)
 			{
@@ -320,17 +320,14 @@ public class GuiCustomizeMenuFrameTierVC extends GuiContainerVC {
 		}
     }
 	
-    /**
-     * Draws an entity on the screen looking toward the cursor.
-     */
-	@Override
-    protected void drawEntityOnScreen(int posX, int posY, int scale, EntityAirshipBaseVC entityIn)
+    @Override
+    protected void drawEntityOnScreen(int posX, int posY, int scale, EntityAirshipCore entityIn)
     {
-    	int current = entityIn.frameSkinTexture;
-        entityIn.frameSkinTexture = metaInfo;
+    	int currentFrame = entityIn.frameSkinTexture;
+        entityIn.frameSkinTexture = this.metaFrameInfo;
         
         super.drawEntityOnScreen(posX, posY, scale, entityIn);
     	
-		entityIn.frameSkinTexture = current;
+		entityIn.frameSkinTexture = currentFrame;
     }
 }

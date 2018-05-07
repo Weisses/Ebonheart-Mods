@@ -1,6 +1,6 @@
 package com.viesis.viescraft.common.entity.airships.containers.all;
 
-import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
+import com.viesis.viescraft.common.entity.airships.EntityAirshipCore;
 import com.viesis.viescraft.common.entity.airships.containers.ContainerVC;
 import com.viesis.viescraft.common.entity.airships.slots.ModuleSlotVC;
 
@@ -9,9 +9,9 @@ import net.minecraft.inventory.Slot;
 
 public class ContainerMainModule extends ContainerVC {
 	
-	private EntityAirshipBaseVC airship;
+	private EntityAirshipCore airship;
 	
-	public ContainerMainModule(IInventory playerInv, EntityAirshipBaseVC airshipIn) 
+	public ContainerMainModule(IInventory playerInv, EntityAirshipCore airshipIn) 
 	{
 		this.airship = airshipIn;
 		

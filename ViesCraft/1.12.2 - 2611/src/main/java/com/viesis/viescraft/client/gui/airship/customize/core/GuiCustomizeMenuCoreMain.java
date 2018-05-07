@@ -8,7 +8,7 @@ import com.viesis.viescraft.api.GuiVC;
 import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.client.gui.GuiContainerVC;
 import com.viesis.viescraft.client.gui.buttons.GuiButtonGeneral1VC;
-import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
+import com.viesis.viescraft.common.entity.airships.EntityAirshipCore;
 import com.viesis.viescraft.common.entity.airships.containers.all.ContainerCustomizeMenu;
 import com.viesis.viescraft.network.NetworkHandler;
 import com.viesis.viescraft.network.server.airship.customize.MessageGuiCustomizeMenu;
@@ -25,7 +25,7 @@ public class GuiCustomizeMenuCoreMain extends GuiContainerVC {
 	
 	private static final ResourceLocation TEXTURE = new ResourceLocation(References.MOD_ID + ":" + "textures/gui/container_gui_customize_menu_5.png");
 	
-	public GuiCustomizeMenuCoreMain(IInventory playerInv, EntityAirshipBaseVC airshipIn)
+	public GuiCustomizeMenuCoreMain(IInventory playerInv, EntityAirshipCore airshipIn)
 	{
 		super(new ContainerCustomizeMenu(playerInv, airshipIn), playerInv, airshipIn);
 	}

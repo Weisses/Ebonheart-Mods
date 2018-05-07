@@ -4,7 +4,7 @@ import org.lwjgl.input.Keyboard;
 
 import com.viesis.viescraft.api.CostsVC;
 import com.viesis.viescraft.api.GuiVC;
-import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
+import com.viesis.viescraft.common.entity.airships.EntityAirshipCore;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipCore;
 import com.viesis.viescraft.network.NetworkHandler;
 import com.viesis.viescraft.network.server.airship.customize.core.MessageGuiCustomizeMenuCoreMain;
@@ -160,7 +160,7 @@ public class GuiCustomizeMenuCoreModelBalloonPg1 extends GuiCustomizeMenuCoreMod
      * Draws an entity on the screen looking toward the cursor.
      */
     @Override
-    protected void drawEntityOnScreen(int posX, int posY, int scale, EntityAirshipBaseVC entityIn)
+    protected void drawEntityOnScreen(int posX, int posY, int scale, EntityAirshipCore entityIn)
     {
     	int current = entityIn.coreModelVisualBalloon;
         entityIn.coreModelVisualBalloon = metaInfo;

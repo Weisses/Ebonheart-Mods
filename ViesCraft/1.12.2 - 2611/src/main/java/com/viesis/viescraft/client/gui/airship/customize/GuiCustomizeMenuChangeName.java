@@ -15,7 +15,7 @@ import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.client.gui.GuiContainerVC;
 import com.viesis.viescraft.client.gui.buttons.GuiButtonGeneral1VC;
 import com.viesis.viescraft.client.gui.buttons.GuiButtonGeneral2VC;
-import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
+import com.viesis.viescraft.common.entity.airships.EntityAirshipCore;
 import com.viesis.viescraft.common.entity.airships.containers.all.ContainerCustomizeMenu;
 import com.viesis.viescraft.network.NetworkHandler;
 import com.viesis.viescraft.network.server.airship.customize.MessageGuiCustomizeMenu;
@@ -36,7 +36,7 @@ public class GuiCustomizeMenuChangeName extends GuiContainerVC {
 	
 	private ResourceLocation texture = new ResourceLocation(References.MOD_ID + ":" + "textures/gui/container_gui_customize_menu_change_name.png");
 	
-	public GuiCustomizeMenuChangeName(IInventory playerInv, EntityAirshipBaseVC airshipIn)
+	public GuiCustomizeMenuChangeName(IInventory playerInv, EntityAirshipCore airshipIn)
 	{
 		super(new ContainerCustomizeMenu(playerInv, airshipIn), playerInv, airshipIn);
 		

@@ -1,6 +1,6 @@
 package com.viesis.viescraft.common.entity.airships.containers.all;
 
-import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
+import com.viesis.viescraft.common.entity.airships.EntityAirshipCore;
 import com.viesis.viescraft.common.entity.airships.containers.ContainerVC;
 import com.viesis.viescraft.common.entity.airships.slots.UpgradeBalloonSlotVC;
 import com.viesis.viescraft.common.entity.airships.slots.UpgradeCoreSlotVC;
@@ -14,9 +14,9 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ContainerUpgradeMenu extends ContainerVC {
 	
-	private EntityAirshipBaseVC airship;
+	private EntityAirshipCore airship;
     
-	public ContainerUpgradeMenu(IInventory playerInv, EntityAirshipBaseVC airshipIn) 
+	public ContainerUpgradeMenu(IInventory playerInv, EntityAirshipCore airshipIn) 
 	{
 		this.airship = airshipIn;
         

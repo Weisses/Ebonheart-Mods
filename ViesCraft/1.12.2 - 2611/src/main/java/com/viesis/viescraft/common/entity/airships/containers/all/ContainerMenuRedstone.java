@@ -1,6 +1,6 @@
 package com.viesis.viescraft.common.entity.airships.containers.all;
 
-import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
+import com.viesis.viescraft.common.entity.airships.EntityAirshipCore;
 import com.viesis.viescraft.common.entity.airships.containers.ContainerVC;
 import com.viesis.viescraft.common.entity.airships.slots.RedstoneSlotVC;
 
@@ -9,9 +9,9 @@ import net.minecraft.inventory.Slot;
 
 public class ContainerMenuRedstone extends ContainerVC {
 	
-	private EntityAirshipBaseVC airship;
+	private EntityAirshipCore airship;
     
-	public ContainerMenuRedstone(IInventory playerInv, EntityAirshipBaseVC airshipIn) 
+	public ContainerMenuRedstone(IInventory playerInv, EntityAirshipCore airshipIn) 
 	{
 		this.airship = airshipIn;
         

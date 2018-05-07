@@ -13,7 +13,7 @@ import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.client.gui.GuiContainerVC;
 import com.viesis.viescraft.client.gui.buttons.GuiButtonGeneral1VC;
 import com.viesis.viescraft.client.gui.buttons.GuiButtonGeneral2VC;
-import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
+import com.viesis.viescraft.common.entity.airships.EntityAirshipCore;
 import com.viesis.viescraft.common.entity.airships.containers.all.ContainerMenuMain;
 import com.viesis.viescraft.init.InitItemsVC;
 import com.viesis.viescraft.network.NetworkHandler;
@@ -53,7 +53,7 @@ public class GuiMainMenu extends GuiContainerVC {
 	private final ResourceLocation TEXTURE_MUSIC = new ResourceLocation(References.MOD_ID + ":" + "textures/gui/container_gui_menu_main_music.png");
 	private final ResourceLocation TEXTURE_BOMB = new ResourceLocation(References.MOD_ID + ":" + "textures/gui/container_gui_menu_main_bomb.png");
 	
-	public GuiMainMenu(IInventory playerInv, EntityAirshipBaseVC airshipIn)
+	public GuiMainMenu(IInventory playerInv, EntityAirshipCore airshipIn)
 	{
 		super(new ContainerMenuMain(playerInv, airshipIn), playerInv, airshipIn);
 	}

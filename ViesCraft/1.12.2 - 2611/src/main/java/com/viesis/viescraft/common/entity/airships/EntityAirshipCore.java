@@ -28,10 +28,10 @@ import net.minecraftforge.items.ItemStackHandler;
 
 public class EntityAirshipCore extends EntityAirshipBaseVC {
 	
-    float finalAirshipSpeedTurn = 0.18F * (ViesCraftConfig.v1AirshipSpeed / 100);
-    float finalAirshipSpeedForward = (0.01F * (ViesCraftConfig.v1AirshipSpeed / 100));
-    float finalAirshipSpeedUp = 0.004F * (ViesCraftConfig.v1AirshipSpeed / 100);
-    float finalAirshipSpeedDown = 0.004F * (ViesCraftConfig.v1AirshipSpeed / 100);
+    float finalAirshipSpeedTurn = 0.18F;
+    float finalAirshipSpeedForward = 0.01F;
+    float finalAirshipSpeedUp = 0.004F;
+    float finalAirshipSpeedDown = 0.004F;
     
     int bombDropTimer;
     

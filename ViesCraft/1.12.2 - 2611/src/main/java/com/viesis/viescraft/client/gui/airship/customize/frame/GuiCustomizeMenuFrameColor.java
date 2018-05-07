@@ -14,7 +14,7 @@ import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.client.gui.GuiContainerVC;
 import com.viesis.viescraft.client.gui.buttons.GuiButtonGeneral1VC;
 import com.viesis.viescraft.client.gui.buttons.GuiButtonGeneral2VC;
-import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
+import com.viesis.viescraft.common.entity.airships.EntityAirshipCore;
 import com.viesis.viescraft.common.entity.airships.containers.all.ContainerCustomizeMenu;
 import com.viesis.viescraft.network.NetworkHandler;
 import com.viesis.viescraft.network.server.airship.customize.frame.MessageGuiCustomizeMenuFrameMain;
@@ -37,7 +37,7 @@ public class GuiCustomizeMenuFrameColor extends GuiContainerVC {
 	
 	private ResourceLocation texture = new ResourceLocation(References.MOD_ID + ":" + "textures/gui/container_gui_customize_menu_color.png");
 	
-	public GuiCustomizeMenuFrameColor(IInventory playerInv, EntityAirshipBaseVC airshipIn)
+	public GuiCustomizeMenuFrameColor(IInventory playerInv, EntityAirshipCore airshipIn)
 	{
 		super(new ContainerCustomizeMenu(playerInv, airshipIn), playerInv, airshipIn);
 		
@@ -465,7 +465,7 @@ public class GuiCustomizeMenuFrameColor extends GuiContainerVC {
      * Draws an entity on the screen looking toward the cursor.
      */
 	@Override
-    protected void drawEntityOnScreen(int posX, int posY, int scale, EntityAirshipBaseVC entityIn)
+    protected void drawEntityOnScreen(int posX, int posY, int scale, EntityAirshipCore entityIn)
     {
     	int currentR = entityIn.frameSkinColorRed;
     	int currentG = entityIn.frameSkinColorGreen;

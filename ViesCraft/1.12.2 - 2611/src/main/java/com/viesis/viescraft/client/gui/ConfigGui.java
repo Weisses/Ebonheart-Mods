@@ -35,6 +35,7 @@ public class ConfigGui extends GuiConfig {
 		}
 		
 		ViesCraftConfig.config.save();
+		ViesCraftConfig.config.load();
 		LogHelper.info("Configuration saved.");
 	}
 }

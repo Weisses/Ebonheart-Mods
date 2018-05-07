@@ -33,6 +33,21 @@ public class InitParticlesVCRender {
 		0.0D, 0.0D, 0.0D, new int[0]);
 	}
 	
+	public static void generateAirshipSmokeParticles2(Entity entityIn, double xIn, double yIn, double zIn)
+	{
+		entityIn.world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, 
+		entityIn.posX - (double)(MathHelper.sin((-entityIn.rotationYaw - 15) * 0.017453292F) * 00.96F) + xIn, 
+		entityIn.posY + 0.98D + (entityIn.world.rand.nextFloat() * 0.025D) + yIn, 
+		entityIn.posZ - (double)(MathHelper.cos((entityIn.rotationYaw + 15) * 0.017453292F) * 00.96F) + zIn, 
+		0.0D, 0.0D, 0.0D, new int[0]);
+		
+		entityIn.world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, 
+		entityIn.posX - (double)(MathHelper.sin((-entityIn.rotationYaw - 345) * 0.017453292F) * 00.96F) + xIn, 
+		entityIn.posY + 0.98D + (entityIn.world.rand.nextFloat() * 0.025D) + yIn, 
+		entityIn.posZ - (double)(MathHelper.cos((entityIn.rotationYaw + 345) * 0.017453292F) * 00.96F) + zIn, 
+		0.0D, 0.0D, 0.0D, new int[0]);
+	}
+	
 	
 	
 	

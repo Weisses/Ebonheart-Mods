@@ -225,10 +225,13 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
         buttonRecipeEngine = new GuiButtonGeneral1VC(5, this.guiLeft - 16, startY + (14 * 4), 78, 14, I18n.format("Engine", new Object[0]), 0);
         buttonRecipeIgnition = new GuiButtonGeneral1VC(6, this.guiLeft - 16, startY + (14 * 5), 78, 14, I18n.format("Ignition", new Object[0]), 0);
         
-        buttonRecipeAirshipV1 = new GuiButtonGeneral1VC(5, this.guiLeft - 16, startY + (14 * 2), 78, 14, I18n.format(ViesCraftConfig.v1AirshipName, new Object[0]), 0);
-        buttonRecipeAirshipV2 = new GuiButtonGeneral1VC(6, this.guiLeft - 16, startY + (14 * 3), 78, 14, I18n.format(ViesCraftConfig.v2AirshipName, new Object[0]), 0);
-        buttonRecipeAirshipV3 = new GuiButtonGeneral1VC(7, this.guiLeft - 16, startY + (14 * 4), 78, 14, I18n.format(ViesCraftConfig.v3AirshipName, new Object[0]), 0);
-        buttonRecipeAirshipV4 = new GuiButtonGeneral1VC(8, this.guiLeft - 16, startY + (14 * 5), 78, 14, ViesCraftConfig.v4AirshipName, 0);
+        buttonRecipeAirshipV1 = new GuiButtonGeneral1VC(5, this.guiLeft - 16, startY + (14 * 2), 78, 14, "Viesdenburg", 0);
+        buttonRecipeAirshipV2 = new GuiButtonGeneral1VC(6, this.guiLeft - 16, startY + (14 * 3), 78, 14, "Viesigible", 0);
+        buttonRecipeAirshipV3 = new GuiButtonGeneral1VC(7, this.guiLeft - 16, startY + (14 * 4), 78, 14, "Viesepelin", 0);
+        buttonRecipeAirshipV4 = new GuiButtonGeneral1VC(8, this.guiLeft - 16, startY + (14 * 5), 78, 14, "Viesakron", 0);
+
+        //buttonRecipeAirshipV4 = new GuiButtonGeneral1VC(8, this.guiLeft - 16, startY + (14 * 5), 78, 14, "Viesindus", 0);
+        //buttonRecipeAirshipV4 = new GuiButtonGeneral1VC(8, this.guiLeft - 16, startY + (14 * 5), 78, 14, "Viesamune", 0);
         
         buttonRecipeViesolinePellets = new GuiButtonGeneral1VC(9, this.guiLeft - 16, startY + (14 * 3), 78, 14, I18n.format("Viesoline Pellets", new Object[0]), 0);
         buttonRecipeDismounter = new GuiButtonGeneral1VC(10, this.guiLeft - 16, startY + (14 * 4), 78, 14, I18n.format("Dismounter", new Object[0]), 0);

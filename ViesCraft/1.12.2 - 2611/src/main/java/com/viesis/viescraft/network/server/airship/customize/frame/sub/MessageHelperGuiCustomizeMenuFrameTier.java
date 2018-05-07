@@ -22,7 +22,7 @@ public class MessageHelperGuiCustomizeMenuFrameTier extends MessageBase<MessageH
 	@Override
 	public void toBytes(ByteBuf buf) 
 	{
-		buf.writeInt(GuiContainerVC.metaInfo);
+		buf.writeInt(GuiContainerVC.metaFrameInfo);
 	}
 	
 	@Override

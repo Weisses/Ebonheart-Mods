@@ -12,7 +12,6 @@ import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.client.gui.GuiContainerVC;
 import com.viesis.viescraft.client.gui.buttons.GuiButtonGeneral1VC;
 import com.viesis.viescraft.client.gui.buttons.GuiButtonGeneral2VC;
-import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipCore;
 import com.viesis.viescraft.common.entity.airships.containers.all.ContainerCustomizeMenu;
 import com.viesis.viescraft.network.NetworkHandler;
@@ -39,7 +38,7 @@ public class GuiCustomizeMenuBalloonTierVC extends GuiContainerVC {
 	{
 		super(new ContainerCustomizeMenu(playerInv, airshipIn), playerInv, airshipIn);
 		
-		this.metaInfo = this.airship.balloonPatternTexture;
+		this.metaBalloonInfo = this.airship.balloonPatternTexture;
 	}
 	
 	/**
@@ -81,13 +80,6 @@ public class GuiCustomizeMenuBalloonTierVC extends GuiContainerVC {
 		GuiVC.button16 = new GuiButtonGeneral1VC( 4, this.guiLeft + startPlaceLeft, this.guiTop + startPlaceTop + (14 * 3), 76, 14, References.localNameVC("vc.enum.visualballoon.4"), 0);
 		GuiVC.button17 = new GuiButtonGeneral1VC( 5, this.guiLeft + startPlaceLeft, this.guiTop + startPlaceTop + (14 * 4), 76, 14, References.localNameVC("vc.enum.visualballoon.5"), 0);
 		GuiVC.button18 = new GuiButtonGeneral1VC( 6, this.guiLeft + startPlaceLeft, this.guiTop + startPlaceTop + (14 * 5), 76, 14, References.localNameVC("vc.enum.visualballoon.6"), 0);
-		
-		GuiVC.button07 = new GuiButtonGeneral1VC( 7, this.guiLeft + startPlaceLeft, this.guiTop + startPlaceTop + (14 * 6), 76, 14, References.localNameVC("vc.enum.visualballoon.7"), 0);
-		GuiVC.button08 = new GuiButtonGeneral1VC( 8, this.guiLeft + startPlaceLeft, this.guiTop + startPlaceTop + (14 * 7), 76, 14, References.localNameVC("vc.enum.visualballoon.8"), 0);
-		GuiVC.button09 = new GuiButtonGeneral1VC( 9, this.guiLeft + startPlaceLeft, this.guiTop + startPlaceTop + (14 * 8), 76, 14, References.localNameVC("vc.enum.visualballoon.9"), 0);
-		GuiVC.button10 = new GuiButtonGeneral1VC(10, this.guiLeft + startPlaceLeft, this.guiTop + startPlaceTop + (14 * 9), 76, 14, References.localNameVC("vc.enum.visualballoon.10"), 0);
-		GuiVC.button11 = new GuiButtonGeneral1VC(11, this.guiLeft + startPlaceLeft, this.guiTop + startPlaceTop + (14 * 10), 76, 14, References.localNameVC("vc.enum.visualballoon.11"), 0);
-		GuiVC.button12 = new GuiButtonGeneral1VC(12, this.guiLeft + startPlaceLeft, this.guiTop + startPlaceTop + (14 * 11), 76, 14, References.localNameVC("vc.enum.visualballoon.12"), 0);
 		
 		//Tier2 Pg1
     	GuiVC.button19 = new GuiButtonGeneral1VC(19, this.guiLeft + startPlaceLeft, this.guiTop + startPlaceTop + (14 * 0), 76, 14, References.localNameVC("vc.enum.visualballoon.19"), 0);
@@ -164,7 +156,7 @@ public class GuiCustomizeMenuBalloonTierVC extends GuiContainerVC {
 	    }
 		if (parButton.id == 502)
 	    {
-			this.metaInfo = 0;
+			this.metaBalloonInfo = 0;
 			NetworkHandler.sendToServer(new MessageHelperGuiCustomizeMenuBalloonTier());
 	    }
 		if (parButton.id == 503)
@@ -182,7 +174,7 @@ public class GuiCustomizeMenuBalloonTierVC extends GuiContainerVC {
 		
 		if (parButton.id <= 450)
 	    {
-			this.metaInfo = parButton.id;
+			this.metaBalloonInfo = parButton.id;
 	    }
 		
         this.buttonList.clear();
@@ -204,11 +196,9 @@ public class GuiCustomizeMenuBalloonTierVC extends GuiContainerVC {
 		this.drawRect(this.guiLeft + 50, this.guiTop - 16, this.guiLeft + 126, this.guiTop, Color.LIGHT_GRAY.getRGB());
 		this.drawRect(this.guiLeft + 52, this.guiTop - 14, this.guiLeft + 124, this.guiTop, Color.BLACK.getRGB());
 		
-        this.drawEntityOnScreen(this.guiLeft + 135, this.guiTop + 110-18, 13, mouseX, mouseY, this.airship);
-        
-		if(airship.getStoredRedstone() >= CostsVC.BALLOON_PATTERN_TEXTURE_COST
-		&& metaInfo != 0
-		&& metaInfo != airship.balloonPatternTexture)
+		if(this.airship.getStoredRedstone() >= CostsVC.BALLOON_PATTERN_TEXTURE_COST
+		&& this.metaBalloonInfo != 0
+		&& this.metaBalloonInfo != this.airship.balloonPatternTexture)
 		{
 			if(this.airship.storedRedstone >= CostsVC.BALLOON_PATTERN_TEXTURE_COST)
 			{
@@ -243,6 +233,8 @@ public class GuiCustomizeMenuBalloonTierVC extends GuiContainerVC {
 	        this.drawCenteredString(fontRenderer, Integer.toString(CostsVC.FRAME_SKIN_TEXTURE_COST), 0, 0, redstoneColor.getRGB());
 		}
 		GlStateManager.popMatrix();
+		
+        this.drawEntityOnScreen(this.guiLeft + 135, this.guiTop + 110-18, 13, this.airship);
 	}
 	
 	@Override
@@ -250,6 +242,7 @@ public class GuiCustomizeMenuBalloonTierVC extends GuiContainerVC {
 	{
 		super.drawGuiContainerForegroundLayer(mouseX, mouseY);
 		
+		GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 		this.fontRenderer.drawString(References.localNameVC("vc.main.appearance"), 58, -10, 65521);
 		this.fontRenderer.drawString(References.localNameVC("vc.main.preview"), 115, 17, Color.BLACK.getRGB());
 		
@@ -275,9 +268,9 @@ public class GuiCustomizeMenuBalloonTierVC extends GuiContainerVC {
 			GlStateManager.popMatrix();
 		}
 		
-		if(airship.getStoredRedstone() >= CostsVC.BALLOON_PATTERN_TEXTURE_COST
-		&& metaInfo != 0
-		&& metaInfo != airship.balloonPatternTexture)
+		if(this.airship.getStoredRedstone() >= CostsVC.BALLOON_PATTERN_TEXTURE_COST
+		&& this.metaBalloonInfo != 0
+		&& this.metaBalloonInfo != this.airship.balloonPatternTexture)
 		{
 			if(this.airship.storedRedstone >= CostsVC.BALLOON_PATTERN_TEXTURE_COST)
 			{
@@ -326,16 +319,14 @@ public class GuiCustomizeMenuBalloonTierVC extends GuiContainerVC {
 		}
     }
 	
-    /**
-     * Draws an entity on the screen looking toward the cursor.
-     */
-    protected void drawEntityOnScreen(int posX, int posY, int scale, float mouseX, float mouseY, EntityAirshipBaseVC entityIn)
+	@Override
+    protected void drawEntityOnScreen(int posX, int posY, int scale, EntityAirshipCore entityIn)
     {
-    	int current = entityIn.balloonPatternTexture;
-        entityIn.balloonPatternTexture = metaInfo;
+    	int currentBalloon = entityIn.balloonPatternTexture;
+        entityIn.balloonPatternTexture = this.metaBalloonInfo;
         
         super.drawEntityOnScreen(posX, posY, scale, entityIn);
     	
-		entityIn.balloonPatternTexture = current;
+		entityIn.balloonPatternTexture = currentBalloon;
     }
 }

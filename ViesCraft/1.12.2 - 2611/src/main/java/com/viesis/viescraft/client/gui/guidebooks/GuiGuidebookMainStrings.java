@@ -226,19 +226,19 @@ public class GuiGuidebookMainStrings extends GuiScreen {
 			+ "airship types to choose from: "
 			+ "\n\n"
 			+ "The \u00A75\u00A7l\u00A7o"
-			+ ViesCraftConfig.v1AirshipName
+			+ "Viesdenburg"
 			+ "\u00A7r\u00A70. "
 			+ "\n"
 			+ "The \u00A75\u00A7l\u00A7o"
-			+ ViesCraftConfig.v2AirshipName
+			+ "Viesigible"
 			+ "\u00A7r\u00A70. "
 			+ "\n"
 			+ "The \u00A75\u00A7l\u00A7o"
-			+ ViesCraftConfig.v3AirshipName
+			+ "Viesepelin"
 			+ "\u00A7r\u00A70. "
 			+ "\n"
 			+ "The \u00A75\u00A7l\u00A7o"
-			+ ViesCraftConfig.v4AirshipName
+			+ "Viesakron"
 			+ "\u00A7r\u00A70. "
 			+ "\n\n"
 			+ "\u00A7o(Names can be changed in the config.)\u00A7r"
@@ -255,7 +255,7 @@ public class GuiGuidebookMainStrings extends GuiScreen {
       stringPageTextRightTooltip[7] = 
     		  "V1 Airship Recipe:"
             + "\n\n"
-        	+ "             \u00A7l\u00A7n" + ViesCraftConfig.v1AirshipName + " (V1)\u00A7r"
+        	//+ "             \u00A7l\u00A7n" + ViesCraftConfig.v1AirshipName + " (V1)\u00A7r"
     		+ "\n\n"
     		+ "   This is the classic airship style for classy people."
     		+ "\n\n\n\n"
@@ -277,7 +277,7 @@ public class GuiGuidebookMainStrings extends GuiScreen {
 	  stringPageTextRightTooltip[8] = 
     		  "V2 Airship Recipe:"
             + "\n\n"
-        	+ "               \u00A7l\u00A7n" + ViesCraftConfig.v2AirshipName + " (V2)\u00A7r"
+        	//+ "               \u00A7l\u00A7n" + ViesCraftConfig.v2AirshipName + " (V2)\u00A7r"
     		+ "\n\n"
     		+ "   This is a unique twist on the airship design."
     		+ "\n\n\n\n"
@@ -299,7 +299,7 @@ public class GuiGuidebookMainStrings extends GuiScreen {
 	  stringPageTextRightTooltip[9] = 
     		  "V3 Airship Recipe:"
             + "\n\n"
-        	+ "              \u00A7l\u00A7n" + ViesCraftConfig.v3AirshipName + " (V3)\u00A7r"
+        	//+ "              \u00A7l\u00A7n" + ViesCraftConfig.v3AirshipName + " (V3)\u00A7r"
     		+ "\n\n"
     		+ "   An airship made for enthusiasts, by airship enthusiasts."
     		+ "\n\n\n\n"
@@ -321,7 +321,7 @@ public class GuiGuidebookMainStrings extends GuiScreen {
 	  stringPageTextRightTooltip[10] = 
     		  "V4 Airship Recipe:"
             + "\n\n"
-        	+ "              \u00A7l\u00A7n" + ViesCraftConfig.v4AirshipName + " (V4)\u00A7r"
+        	//+ "              \u00A7l\u00A7n" + ViesCraftConfig.v4AirshipName + " (V4)\u00A7r"
     		+ "\n\n"
     		+ "   Steampunk airship ingenuity at its finest. Modeled after V1 airships."
     		+ "\n\n\n\n"

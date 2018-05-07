@@ -9,7 +9,7 @@ import com.viesis.viescraft.api.GuiVC;
 import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.client.gui.GuiContainerVC;
 import com.viesis.viescraft.client.gui.buttons.GuiButtonGeneral1VC;
-import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
+import com.viesis.viescraft.common.entity.airships.EntityAirshipCore;
 import com.viesis.viescraft.common.entity.airships.containers.all.ContainerCustomizeMenu;
 import com.viesis.viescraft.network.NetworkHandler;
 import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenu;
@@ -23,7 +23,7 @@ import net.minecraft.util.text.TextFormatting;
 
 public class GuiAirshipMusicPg1 extends GuiContainerVC {
 	
-	public GuiAirshipMusicPg1(IInventory playerInv, EntityAirshipBaseVC airshipIn)
+	public GuiAirshipMusicPg1(IInventory playerInv, EntityAirshipCore airshipIn)
 	{
 		super(new ContainerCustomizeMenu(playerInv, airshipIn), playerInv, airshipIn);
 		

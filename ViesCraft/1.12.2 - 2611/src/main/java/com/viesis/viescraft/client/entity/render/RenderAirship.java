@@ -8,6 +8,7 @@ import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.client.InitParticlesVCRender;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipCore;
+import com.viesis.viescraft.configs.ViesCraftConfig;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
@@ -20,6 +21,7 @@ import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.scoreboard.Scoreboard;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextFormatting;
@@ -44,7 +46,51 @@ public class RenderAirship extends RenderAirshipBase {
     public void doRender(EntityAirshipCore entity, double x, double y, double z, float entityYaw, float partialTicks)
     {
     	GlStateManager.pushMatrix();
-
+    	
+    	/**
+    	Scoreboard scoreboard = Minecraft.getMinecraft().player.getWorldScoreboard();
+    	
+    	if(scoreboard != null)
+    	{
+    		if(scoreboard.getTeam("VCAirshipTier0") == null) 
+    		{
+    			scoreboard.createTeam("VCAirshipTier0");
+    			scoreboard.getTeam("VCAirshipTier0").setColor(TextFormatting.GRAY);
+    		}
+    		if(scoreboard.getTeam("VCAirshipTier1") == null) 
+    		{
+    			scoreboard.createTeam("VCAirshipTier1");
+    			scoreboard.getTeam("VCAirshipTier1").setColor(TextFormatting.WHITE);
+    		}
+    		if(scoreboard.getTeam("VCAirshipTier2") == null) 
+    		{
+    			scoreboard.createTeam("VCAirshipTier2");
+    			scoreboard.getTeam("VCAirshipTier2").setColor(TextFormatting.GOLD);
+    		}
+    		if(scoreboard.getTeam("VCAirshipTier3") == null) 
+    		{
+    			scoreboard.createTeam("VCAirshipTier3");
+    			scoreboard.getTeam("VCAirshipTier3").setColor(TextFormatting.AQUA);
+    		}
+    		if(scoreboard.getTeam("VCAirshipTier4") == null) 
+    		{
+    			scoreboard.createTeam("VCAirshipTier4");
+    			scoreboard.getTeam("VCAirshipTier4").setColor(TextFormatting.LIGHT_PURPLE);
+    		}
+    		if(scoreboard.getTeam("VCAirshipTier5") == null) 
+    		{
+    			scoreboard.createTeam("VCAirshipTier5");
+    			scoreboard.getTeam("VCAirshipTier5").setColor(TextFormatting.RED);
+    		}
+    	}
+    	
+    	scoreboard.addPlayerToTeam(entity.getCachedUniqueIdString(), "VCAirshipTier" + entity.getMainTierCore());
+    	
+    	
+    	LogHelper.info(entity.getTeam().getName());
+		*/	
+    			
+    			
         GL11.glEnable(GL11.GL_CULL_FACE);
         
         this.setupTranslation(x, y, z);
@@ -70,112 +116,111 @@ public class RenderAirship extends RenderAirshipBase {
     	//Renders the Display Symbol
     	this.renderEngineDisplaySymbol(entity, partialTicks);
     	
-    	//Airship smoke particles while on
-        if(entity.getStoredFuel() > 0)
-        {
-	        int randomTick = References.random.nextInt(100) + 1;
-			
-			if(randomTick < 20)
-			{
-				if(!Minecraft.getMinecraft().isGamePaused())
-				{
-					//this.renderEngineSmokeParticles(entity, entity.getCoreModelVisualEngine());
-				}
-			}
-        }
-        
-        
-        
-        if(entity.isBeingRidden())
-        {
-        	
-        }
-        else
-        {
-        	EntityPlayerSP playerIn = Minecraft.getMinecraft().player;
-        	float prevAirshipYaw = playerIn.rotationYaw;
-        	float nameplateYaw = (prevAirshipYaw%360) - entity.rotationYaw;
-        	
-        	//this.renderEntityName(entity, entity.posX, entity.posY + 1, entity.posZ, "========", 2);
-			
-        	//Render airship name
-        	if(entity.getName() != null)
-        	{
-        		GlStateManager.pushMatrix();
-	    		{
-	    			GlStateManager.scale(0.5F, 0.5F, 0.5F);
-	    			GlStateManager.rotate(180, 1, 0, 0);
-	    			
-	    			EntityRenderer.drawNameplate(this.getFontRenderer(), this.getPrimaryLabelColor(entity.getMainTierCore()) + entity.customName, 0F, 1.35F, 0F, 0, nameplateYaw, 0F, false, false);
-	    		}
-	    		GlStateManager.popMatrix();
-        	}
-        	
-    		if(entity.getModuleActiveSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_LESSER.getMetadata()
-			|| entity.getModuleActiveSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_NORMAL.getMetadata()
-			|| entity.getModuleActiveSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_GREATER.getMetadata())
-    		{
-    			
-    		}
-    		else
-    		{
-				//Render airship fuel bar
-	        	GlStateManager.pushMatrix();
-	    		{
-	    			int percentTen = entity.getStoredFuelTotal() / 10;
-	        		
-	    			GlStateManager.scale(0.5F, 0.5F, 0.5F);
-	    			GlStateManager.rotate(180, 1, 0, 0);
-	    			
-	    			if(entity.getStoredFuel() == 0)
-	    			{
-	    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.DARK_RED + "          " + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, nameplateYaw, 0F, false, false);
-	    			}
-	    			else if(entity.getStoredFuel() >= (percentTen * 9))
-	    			{
-	    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.AQUA + "||||||||||||||||||||" + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, nameplateYaw, 0F, false, false);
-	    			}
-	    			else if(entity.getStoredFuel() >= (percentTen * 8))
-	    			{
-	    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.AQUA + "|||||||||||||||||| " + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, nameplateYaw, 0F, false, false);
-	    			}
-	    			else if(entity.getStoredFuel() >= (percentTen * 7))
-	    			{
-	    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.GREEN + "||||||||||||||||  " + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, nameplateYaw, 0F, false, false);
-	    			}
-	    			else if(entity.getStoredFuel() >= (percentTen * 6))
-	    			{
-	    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.GREEN + "||||||||||||||   " + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, nameplateYaw, 0F, false, false);
-	    			}
-	    			else if(entity.getStoredFuel() >= (percentTen * 5))
-	    			{
-	    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.YELLOW + "||||||||||||    " + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, nameplateYaw, 0F, false, false);
-	    			}
-	    			else if(entity.getStoredFuel() >= (percentTen * 4))
-	    			{
-	    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.YELLOW + "||||||||||     " + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, nameplateYaw, 0F, false, false);
-	    			}
-	    			else if(entity.getStoredFuel() >= (percentTen * 3))
-	    			{
-	    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.GOLD + "||||||||      " + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, nameplateYaw, 0F, false, false);
-	    			}
-	    			else if(entity.getStoredFuel() >= (percentTen * 2))
-	    			{
-	    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.GOLD + "||||||       " + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, nameplateYaw, 0F, false, false);
-	    			}
-	    			else if(entity.getStoredFuel() >= (percentTen * 1))
-	    			{
-	    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.DARK_RED + "||||        " + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, nameplateYaw, 0F, false, false);
-	    			}
-	    			else if(entity.getStoredFuel() >= (percentTen * 0) + 1)
-	    			{
-	    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.DARK_RED + "||         " + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, nameplateYaw, 0F, false, false);
-	    			}
-	    		}
-	    		GlStateManager.popMatrix();
-    		}
+    	//this.renderEngineSmokeParticles(entity, entity.coreModelVisualEngine);
+    	
+    	//if(Minecraft.getMinecraft().objectMouseOver.entityHit == entity)
+    	//{
+    	//	entity.setGlowing(true);
+    	//}
+    	//else
+    	//{
+    	//	entity.setGlowing(false);
+    	//}
+    	
+    	if(ViesCraftConfig.renderNameplates)
+    	{
     		
-        }
+	        if(entity.isBeingRidden())
+	        {
+	        	
+	        }
+	        else
+	        {
+	        	EntityPlayerSP playerIn = Minecraft.getMinecraft().player;
+	        	float prevAirshipYaw = playerIn.rotationYaw;
+	        	float nameplateYaw = (prevAirshipYaw%360) - entity.rotationYaw;
+	        	
+	        	//Render airship name
+	        	if(entity.getName() != null)
+	        	{
+	        		GlStateManager.pushMatrix();
+		    		{
+		    			GlStateManager.scale(0.5F, 0.5F, 0.5F);
+		    			GlStateManager.rotate(180, 1, 0, 0);
+		    			
+		    			EntityRenderer.drawNameplate(this.getFontRenderer(), this.getPrimaryLabelColor(entity.getMainTierCore()) + entity.customName, 0F, 1.35F, 0F, 0, nameplateYaw, 0F, false, false);
+		    		}
+		    		GlStateManager.popMatrix();
+	        	}
+	        	
+	    		if(entity.getModuleActiveSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_LESSER.getMetadata()
+				|| entity.getModuleActiveSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_NORMAL.getMetadata()
+				|| entity.getModuleActiveSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_GREATER.getMetadata())
+	    		{
+	    			
+	    		}
+	    		else
+	    		{
+					//Render airship fuel bar
+		        	GlStateManager.pushMatrix();
+		    		{
+		    			int percentTen = entity.getStoredFuelTotal() / 10;
+		        		
+		    			GlStateManager.scale(0.5F, 0.5F, 0.5F);
+		    			GlStateManager.rotate(180, 1, 0, 0);
+		    			
+		    			if(entity.getStoredFuel() == 0)
+		    			{
+		    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.DARK_RED + "          " + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, nameplateYaw, 0F, false, false);
+		    			}
+		    			else if(entity.getStoredFuel() >= (percentTen * 9))
+		    			{
+		    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.AQUA + "||||||||||||||||||||" + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, nameplateYaw, 0F, false, false);
+		    			}
+		    			else if(entity.getStoredFuel() >= (percentTen * 8))
+		    			{
+		    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.AQUA + "|||||||||||||||||| " + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, nameplateYaw, 0F, false, false);
+		    			}
+		    			else if(entity.getStoredFuel() >= (percentTen * 7))
+		    			{
+		    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.GREEN + "||||||||||||||||  " + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, nameplateYaw, 0F, false, false);
+		    			}
+		    			else if(entity.getStoredFuel() >= (percentTen * 6))
+		    			{
+		    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.GREEN + "||||||||||||||   " + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, nameplateYaw, 0F, false, false);
+		    			}
+		    			else if(entity.getStoredFuel() >= (percentTen * 5))
+		    			{
+		    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.YELLOW + "||||||||||||    " + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, nameplateYaw, 0F, false, false);
+		    			}
+		    			else if(entity.getStoredFuel() >= (percentTen * 4))
+		    			{
+		    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.YELLOW + "||||||||||     " + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, nameplateYaw, 0F, false, false);
+		    			}
+		    			else if(entity.getStoredFuel() >= (percentTen * 3))
+		    			{
+		    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.GOLD + "||||||||      " + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, nameplateYaw, 0F, false, false);
+		    			}
+		    			else if(entity.getStoredFuel() >= (percentTen * 2))
+		    			{
+		    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.GOLD + "||||||       " + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, nameplateYaw, 0F, false, false);
+		    			}
+		    			else if(entity.getStoredFuel() >= (percentTen * 1))
+		    			{
+		    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.DARK_RED + "||||        " + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, nameplateYaw, 0F, false, false);
+		    			}
+		    			else if(entity.getStoredFuel() >= (percentTen * 0) + 1)
+		    			{
+		    				EntityRenderer.drawNameplate(this.getFontRenderer(), TextFormatting.WHITE + "[" + TextFormatting.DARK_RED + "||         " + TextFormatting.WHITE + "]", 0F, 1.125F, 0F, 0, nameplateYaw, 0F, false, false);
+		    			}
+		    		}
+		    		GlStateManager.popMatrix();
+	    		}
+	        }
+    	}
+    	
+    	
+    	
         GlStateManager.popMatrix();
         
         super.doRender(entity, x, y, z, entityYaw, partialTicks);
@@ -333,29 +378,29 @@ public class RenderAirship extends RenderAirshipBase {
         float frameBlue;
         
         //Frame Colors
-        if(airshipIn.getFrameSkinColorRed() <= 30)
+        if(airshipIn.frameSkinColorRed <= 30)
         {
         	frameRed = 30 / 255.0F;
         }
         else
         {
-        	frameRed = airshipIn.getFrameSkinColorRed() / 255.0F;
+        	frameRed = airshipIn.frameSkinColorRed / 255.0F;
         }
-        if(airshipIn.getFrameSkinColorBlue() <= 30)
+        if(airshipIn.frameSkinColorBlue <= 30)
         {
         	frameBlue = 30 / 255.0F;
         }
         else
         {
-        	frameBlue = airshipIn.getFrameSkinColorBlue() / 255.0F;
+        	frameBlue = airshipIn.frameSkinColorBlue / 255.0F;
         }
-        if(airshipIn.getFrameSkinColorGreen() <= 30)
+        if(airshipIn.frameSkinColorGreen <= 30)
         {
         	frameGreen = 30 / 255.0F;
         }
         else
         {
-        	frameGreen = airshipIn.getFrameSkinColorGreen() / 255.0F;
+        	frameGreen = airshipIn.frameSkinColorGreen / 255.0F;
         }
         
         //Frame Logic
@@ -407,29 +452,29 @@ public class RenderAirship extends RenderAirshipBase {
         float frameBlue;
         
         //Frame Colors
-        if(airshipIn.getFrameSkinColorRed() <= 30)
+        if(airshipIn.frameSkinColorRed <= 30)
         {
         	frameRed = 30 / 255.0F;
         }
         else
         {
-        	frameRed = airshipIn.getFrameSkinColorRed() / 255.0F;
+        	frameRed = airshipIn.frameSkinColorRed / 255.0F;
         }
-        if(airshipIn.getFrameSkinColorBlue() <= 30)
+        if(airshipIn.frameSkinColorBlue <= 30)
         {
         	frameBlue = 30 / 255.0F;
         }
         else
         {
-        	frameBlue = airshipIn.getFrameSkinColorBlue() / 255.0F;
+        	frameBlue = airshipIn.frameSkinColorBlue / 255.0F;
         }
-        if(airshipIn.getFrameSkinColorGreen() <= 30)
+        if(airshipIn.frameSkinColorGreen <= 30)
         {
         	frameGreen = 30 / 255.0F;
         }
         else
         {
-        	frameGreen = airshipIn.getFrameSkinColorGreen() / 255.0F;
+        	frameGreen = airshipIn.frameSkinColorGreen / 255.0F;
         }
         
         //Frame Logic
@@ -479,29 +524,29 @@ public class RenderAirship extends RenderAirshipBase {
         float frameBlue;
         
         //Frame Colors
-        if(airshipIn.getFrameSkinColorRed() <= 30)
+        if(airshipIn.frameSkinColorRed <= 30)
         {
         	frameRed = 30 / 255.0F;
         }
         else
         {
-        	frameRed = airshipIn.getFrameSkinColorRed() / 255.0F;
+        	frameRed = airshipIn.frameSkinColorRed / 255.0F;
         }
-        if(airshipIn.getFrameSkinColorBlue() <= 30)
+        if(airshipIn.frameSkinColorBlue <= 30)
         {
         	frameBlue = 30 / 255.0F;
         }
         else
         {
-        	frameBlue = airshipIn.getFrameSkinColorBlue() / 255.0F;
+        	frameBlue = airshipIn.frameSkinColorBlue / 255.0F;
         }
-        if(airshipIn.getFrameSkinColorGreen() <= 30)
+        if(airshipIn.frameSkinColorGreen <= 30)
         {
         	frameGreen = 30 / 255.0F;
         }
         else
         {
-        	frameGreen = airshipIn.getFrameSkinColorGreen() / 255.0F;
+        	frameGreen = airshipIn.frameSkinColorGreen / 255.0F;
         }
         
         //Frame Logic
@@ -549,29 +594,29 @@ public class RenderAirship extends RenderAirshipBase {
         float frameBlue;
         
         //Frame Colors
-        if(airshipIn.getFrameSkinColorRed() <= 30)
+        if(airshipIn.frameSkinColorRed <= 30)
         {
         	frameRed = 30 / 255.0F;
         }
         else
         {
-        	frameRed = airshipIn.getFrameSkinColorRed() / 255.0F;
+        	frameRed = airshipIn.frameSkinColorRed / 255.0F;
         }
-        if(airshipIn.getFrameSkinColorBlue() <= 30)
+        if(airshipIn.frameSkinColorBlue <= 30)
         {
         	frameBlue = 30 / 255.0F;
         }
         else
         {
-        	frameBlue = airshipIn.getFrameSkinColorBlue() / 255.0F;
+        	frameBlue = airshipIn.frameSkinColorBlue / 255.0F;
         }
-        if(airshipIn.getFrameSkinColorGreen() <= 30)
+        if(airshipIn.frameSkinColorGreen <= 30)
         {
         	frameGreen = 30 / 255.0F;
         }
         else
         {
-        	frameGreen = airshipIn.getFrameSkinColorGreen() / 255.0F;
+        	frameGreen = airshipIn.frameSkinColorGreen / 255.0F;
         }
         
         //Frame Logic
@@ -621,29 +666,29 @@ public class RenderAirship extends RenderAirshipBase {
         float balloonBlue;
         
         //Balloon Colors
-        if(airshipIn.getBalloonPatternColorRed() <= 30)
+        if(airshipIn.balloonPatternColorRed <= 30)
         {
         	balloonRed = 30 / 255.0F;
         }
         else
         {
-        	balloonRed = airshipIn.getBalloonPatternColorRed() / 255.0F;
+        	balloonRed = airshipIn.balloonPatternColorRed / 255.0F;
         }
-        if(airshipIn.getBalloonPatternColorBlue() <= 30)
+        if(airshipIn.balloonPatternColorBlue <= 30)
         {
         	balloonBlue = 30 / 255.0F;
         }
         else
         {
-        	balloonBlue = airshipIn.getBalloonPatternColorBlue() / 255.0F;
+        	balloonBlue = airshipIn.balloonPatternColorBlue / 255.0F;
         }
-        if(airshipIn.getBalloonPatternColorGreen() <= 30)
+        if(airshipIn.balloonPatternColorGreen <= 30)
         {
         	balloonGreen = 30 / 255.0F;
         }
         else
         {
-        	balloonGreen = airshipIn.getBalloonPatternColorGreen() / 255.0F;
+        	balloonGreen = airshipIn.balloonPatternColorGreen / 255.0F;
         }
         
         //Balloon Logic
@@ -655,7 +700,7 @@ public class RenderAirship extends RenderAirshipBase {
         
         GlStateManager.color(balloonRed, balloonGreen, balloonBlue, 1F);
     	
-    	this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/balloons/bg_" + EnumsVC.VisualBalloonPattern.byId(airshipIn.getBalloonPatternTexture()).getRegistryName() + ".png"));
+    	this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/balloons/bg_" + EnumsVC.VisualBalloonPattern.byId(airshipIn.balloonPatternTexture).getRegistryName() + ".png"));
     	currentModelBalloonB.render(airshipIn, 0.0F, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
         
         GlStateManager.color(1F, 1F, 1F, 1F);

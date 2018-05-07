@@ -33,7 +33,7 @@ public class ModelEngine0 extends ModelBase
 
    public void render(Entity par1Entity, float par2, float par3, float par4, float par5, float par6, float par7)
    {
-	   EntityAirshipCore test = (EntityAirshipCore) par1Entity;
+	   EntityAirshipCore airshipIn = (EntityAirshipCore) par1Entity;
 	   
 	    Engine_Chassis.rotateAngleX = 0F;
         Engine_Chassis.rotateAngleY = 0F;
@@ -46,7 +46,7 @@ public class ModelEngine0 extends ModelBase
         Engine_Smokestack.renderWithRotation(par7);
         
         //Airship smoke particles while on
-        if(test.getStoredFuel() > 0)
+        if(airshipIn.getStoredFuel() > 0)
         {
 	        int randomTick = References.random.nextInt(100) + 1;
 			
@@ -54,7 +54,7 @@ public class ModelEngine0 extends ModelBase
 			{
 				if(!Minecraft.getMinecraft().isGamePaused())
 				{
-					InitParticlesVCRender.generateAirshipSmokeParticles0(par1Entity, 0, -0.15, 0);
+					InitParticlesVCRender.generateAirshipSmokeParticles0(par1Entity, 0, -0.14, 0);
 				}
 			}
         }

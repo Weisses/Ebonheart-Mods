@@ -1,7 +1,7 @@
 package com.viesis.viescraft.common.entity.airships.containers.all;
 
 import com.viesis.viescraft.api.EnumsVC;
-import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
+import com.viesis.viescraft.common.entity.airships.EntityAirshipCore;
 import com.viesis.viescraft.common.entity.airships.containers.ContainerVC;
 import com.viesis.viescraft.common.entity.airships.slots.FuelSlotVC;
 import com.viesis.viescraft.common.entity.airships.slots.InventorySlotVC;
@@ -12,9 +12,9 @@ import net.minecraft.inventory.Slot;
 
 public class ContainerMenuMain extends ContainerVC {
 	
-	private EntityAirshipBaseVC airship;
+	private EntityAirshipCore airship;
     
-	public ContainerMenuMain(IInventory playerInv, EntityAirshipBaseVC airshipIn) 
+	public ContainerMenuMain(IInventory playerInv, EntityAirshipCore airshipIn) 
 	{
 		this.airship = airshipIn;
         

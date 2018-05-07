@@ -1,5 +1,10 @@
 package com.viesis.viescraft.client.entity.model.engine;
 
+import com.viesis.viescraft.api.References;
+import com.viesis.viescraft.client.InitParticlesVCRender;
+import com.viesis.viescraft.common.entity.airships.EntityAirshipCore;
+
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
@@ -53,6 +58,8 @@ public class ModelEngine2 extends ModelBase
 
    public void render(Entity par1Entity, float par2, float par3, float par4, float par5, float par6, float par7)
    {
+	   EntityAirshipCore airshipIn = (EntityAirshipCore) par1Entity;
+	   
         Engine_Pipe.rotateAngleX = 0F;
         Engine_Pipe.rotateAngleY = 0F;
         Engine_Pipe.rotateAngleZ = 0F;
@@ -87,7 +94,19 @@ public class ModelEngine2 extends ModelBase
         Engine_RightSmallBox.rotateAngleY = 0F;
         Engine_RightSmallBox.rotateAngleZ = 0F;
         Engine_RightSmallBox.renderWithRotation(par7);
-
+        
+        //Airship smoke particles while on
+        if(airshipIn.getStoredFuel() > 0)
+        {
+	        int randomTick = References.random.nextInt(100) + 1;
+			
+			if(randomTick < 20)
+			{
+				if(!Minecraft.getMinecraft().isGamePaused())
+				{
+					InitParticlesVCRender.generateAirshipSmokeParticles2(par1Entity, 0, 0, 0);
+				}
+			}
+        }
     }
-
 }

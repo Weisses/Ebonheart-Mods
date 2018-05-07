@@ -15,6 +15,7 @@ import com.viesis.viescraft.client.gui.buttons.GuiButtonMenuModuleVC;
 import com.viesis.viescraft.client.gui.buttons.GuiButtonMenuRedstoneVC;
 import com.viesis.viescraft.client.gui.buttons.GuiButtonMenuUpgradeVC;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
+import com.viesis.viescraft.common.entity.airships.EntityAirshipCore;
 import com.viesis.viescraft.network.NetworkHandler;
 import com.viesis.viescraft.network.server.airship.customize.MessageGuiCustomizeMenu;
 import com.viesis.viescraft.network.server.airship.main.MessageGuiMainMenu;
@@ -57,10 +58,13 @@ public class GuiContainerVC extends GuiContainer {
 	public static int supporterHeadInfo;
 	public static int holidayInfo;
 	
-	protected IInventory playerInv;
-	protected EntityAirshipBaseVC airship;
+	public static int metaFrameInfo;
+	public static int metaBalloonInfo;
 	
-	public GuiContainerVC(Container inventorySlotsIn, IInventory playerInvIn, EntityAirshipBaseVC airshipIn) 
+	protected IInventory playerInv;
+	protected EntityAirshipCore airship;
+	
+	public GuiContainerVC(Container inventorySlotsIn, IInventory playerInvIn, EntityAirshipCore airshipIn) 
 	{
 		super(inventorySlotsIn);
 
@@ -95,36 +99,6 @@ public class GuiContainerVC extends GuiContainer {
 	@Override
     protected void actionPerformed(GuiButton parButton) 
     {
-		//if (parButton.id == 1)
-	    //{
-			//Lesser Storage
-        //	if(this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.STORAGE_LESSER.getMetadata())
-        //	{
-        //		NetworkHandler.sendToServer(new MessageGuiMainMenuStorageLesser());
-        //	}
-        	//Normal Storage
-        //	else if(this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.STORAGE_NORMAL.getMetadata())
-        //	{
-        //		NetworkHandler.sendToServer(new MessageGuiMainMenuStorageNormal());
-        //	}
-        	//Greater Storage
-        //	else if(this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.STORAGE_GREATER.getMetadata())
-        //	{
-        //		NetworkHandler.sendToServer(new MessageGuiMainMenuStorageGreater());
-        //	}
-        	//Any Music
-        //	else if(this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.MUSIC_LESSER.getMetadata()
-    	//		 || this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.MUSIC_NORMAL.getMetadata()
-    	//		 || this.airship.getModuleActiveSlot1() == EnumsVC.ModuleType.MUSIC_GREATER.getMetadata())
-        //	{
-        //		NetworkHandler.sendToServer(new MessageGuiMainMenuMusic());
-        //	}
-        	//Default for airship gui
-        //	else
-        //	{
-        //		NetworkHandler.sendToServer(new MessageGuiMainMenu());
-        //	}
-	    //}
 		if (parButton.id == 1001)
 	    {
 			NetworkHandler.sendToServer(new MessageGuiMainMenu());
@@ -334,12 +308,6 @@ public class GuiContainerVC extends GuiContainer {
 	            GlStateManager.rotate(180.0F, 0.0F, 1.0F, 0.0F);
 	        }
 			
-	        
-            
-            
-            
-	        
-            
 	        Minecraft.getMinecraft().getRenderItem().renderItem(stack, TransformType.GROUND);
 		}
 		GlStateManager.popMatrix();
@@ -403,33 +371,6 @@ public class GuiContainerVC extends GuiContainer {
 			    	this.drawTexturedModalRect(0, 0, 128, 0, 32, 32);
 			        break;
 			}
-		
-    	
-
-			
-	        
-	        /////Flips the model right side up.
-	        //GlStateManager.rotate(200.0F, 0.0F, 0.0F, 1.0F);
-	        //GlStateManager.rotate(45.0F, 0.0F, 1.0F, 0.0F);
-	        //GlStateManager.rotate(30.0F, 1.0F, 0.0F, 0.0F);
-	        
-	        //Fixes the position to be at a right
-	        //GlStateManager.rotate(entityIn.prevRotationYaw, 0.0F, 1.0F, 0.0F);
-	        
-	        RenderHelper.disableStandardItemLighting();
-	        
-	        //RenderManager rendermanager = Minecraft.getMinecraft().getRenderManager();
-	        
-	        //rendermanager.setPlayerViewY(180.0F);
-	        //rendermanager.setRenderShadow(false);
-	        
-	        //This is the non-multipass rendering way to render an entity.
-	        //rendermanager.renderEntity(entityIn, 0.0D, 0.0D, 0.0D, 0.0F, 1.0F, false);
-	        
-	        //rendermanager.renderEntityStatic(entityIn, 0, false);
-	        //rendermanager.renderMultipass(entityIn, 0F);
-	        
-	        //rendermanager.setRenderShadow(true);
 		}
 		GlStateManager.popMatrix();
     }
@@ -492,33 +433,6 @@ public class GuiContainerVC extends GuiContainer {
 			    	this.drawTexturedModalRect(0, 0, 128, 0, 32, 32);
 			        break;
 			}
-		
-    	
-
-			
-	        
-	        /////Flips the model right side up.
-	        //GlStateManager.rotate(200.0F, 0.0F, 0.0F, 1.0F);
-	        //GlStateManager.rotate(45.0F, 0.0F, 1.0F, 0.0F);
-	        //GlStateManager.rotate(30.0F, 1.0F, 0.0F, 0.0F);
-	        
-	        //Fixes the position to be at a right
-	        //GlStateManager.rotate(entityIn.prevRotationYaw, 0.0F, 1.0F, 0.0F);
-	        
-	        RenderHelper.disableStandardItemLighting();
-	        
-	        //RenderManager rendermanager = Minecraft.getMinecraft().getRenderManager();
-	        
-	        //rendermanager.setPlayerViewY(180.0F);
-	        //rendermanager.setRenderShadow(false);
-	        
-	        //This is the non-multipass rendering way to render an entity.
-	        //rendermanager.renderEntity(entityIn, 0.0D, 0.0D, 0.0D, 0.0F, 1.0F, false);
-	        
-	        //rendermanager.renderEntityStatic(entityIn, 0, false);
-	        //rendermanager.renderMultipass(entityIn, 0F);
-	        
-	        //rendermanager.setRenderShadow(true);
 		}
 		GlStateManager.popMatrix();
     }
@@ -526,7 +440,7 @@ public class GuiContainerVC extends GuiContainer {
     /**
      * Draws an entity on the screen looking toward the cursor.
      */
-    protected void drawEntityOnScreen(int posX, int posY, int scale, EntityAirshipBaseVC entityIn)
+    protected void drawEntityOnScreen(int posX, int posY, int scale, EntityAirshipCore entityIn)
     {
     	GlStateManager.pushMatrix();
 		{

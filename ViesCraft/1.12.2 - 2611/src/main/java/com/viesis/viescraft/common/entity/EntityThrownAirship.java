@@ -131,7 +131,7 @@ public class EntityThrownAirship extends EntityThrownAirshipCore {
         if(!this.world.isRemote)
         {
         	this.playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 0.5F, 0.4F / .5F * 0.4F + 0.8F);
-        	this.world.spawnEntity(new EntityAirshipCore(this.world, this.posX, this.posY + 0.5F, this.posZ, 
+        	EntityAirshipCore spawnAirship = new EntityAirshipCore(this.world, this.posX, this.posY + 0.5F, this.posZ, 
         			this.mainTierCore, this.mainTierFrame, this.mainTierEngine, this.mainTierBalloon, 
 		    		this.moduleActiveSlot1, 
 		    		this.storedFuel, this.storedFuelTotal, this.storedRedstone, this.storedRedstoneTotal, 
@@ -167,8 +167,10 @@ public class EntityThrownAirship extends EntityThrownAirshipCore {
 		    		this.learnedModuleBomb, this.selectedModuleBomb, 
 		    		
 		    		this.storedInventory, this.customName
-		    		));
-            
+		    		);
+        	spawnAirship.rotationYaw = this.getThrower().rotationYawHead;
+        	this.world.spawnEntity(spawnAirship);
+        	
         	this.setDead();
         }
         else

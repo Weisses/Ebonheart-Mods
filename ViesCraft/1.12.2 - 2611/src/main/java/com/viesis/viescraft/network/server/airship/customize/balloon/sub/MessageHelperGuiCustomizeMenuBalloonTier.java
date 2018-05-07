@@ -22,7 +22,7 @@ public class MessageHelperGuiCustomizeMenuBalloonTier extends MessageBase<Messag
 	@Override
 	public void toBytes(ByteBuf buf) 
 	{
-		buf.writeInt(GuiContainerVC.metaInfo);
+		buf.writeInt(GuiContainerVC.metaBalloonInfo);
 	}
 	
 	@Override

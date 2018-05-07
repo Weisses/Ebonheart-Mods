@@ -847,7 +847,7 @@ public class RenderAirshipBase extends Render<EntityAirshipCore> {
 	        
         GlStateManager.popMatrix();
     }
-    
+    //TODO Supporter Heads add here!
 	/**
 	 * Renders a supporter head.
 	 */
@@ -1088,7 +1088,7 @@ public class RenderAirshipBase extends Render<EntityAirshipCore> {
         */
     }
     
-	/**
+    /**
 	 * Renders a supporter head.
 	 */
     protected void renderEngineSmokeParticles(EntityAirshipCore entity, int locationIn)
@@ -1113,7 +1113,12 @@ public class RenderAirshipBase extends Render<EntityAirshipCore> {
 	        //Viesigible
 	        if(locationIn == 2)
 	        {
-	        	//Left
+	        	
+	            //Left
+	        	//InitParticlesVCRender.generateAirshipSmokeParticles2(entity, 0, 0, 0);
+	            
+	            
+	        	
 	        	//InitParticlesVCRender.generateAirshipSmokeParticles2a(entity, 0.0D, -0.02D, 0.0D);
 	        	//Right
 	        	//InitParticlesVCRender.generateAirshipSmokeParticles2b(entity, 0.0D, -0.02D, 0.0D);
@@ -1131,7 +1136,6 @@ public class RenderAirshipBase extends Render<EntityAirshipCore> {
 	        
         GlStateManager.popMatrix();
     }
-    
     
     
     
@@ -1266,4 +1270,6 @@ public class RenderAirshipBase extends Render<EntityAirshipCore> {
     {
         return Minecraft.getMinecraft().fontRenderer;
     }
+    
+    
 }
