@@ -653,9 +653,9 @@ public class EnumsVC {
     	CHECKERCOLORED(5, "checker_colored", References.localNameVC("vc.enum.visualballoon.5")),
     	CHECKERCOLOREDINVERTED(6, "checker_colored_inverted", References.localNameVC("vc.enum.visualballoon.6")),
         
-        A1(7, "", References.localNameVC("vc.enum.visualballoon.7")),
-        A1COLORED(8, "_colored", References.localNameVC("vc.enum.visualballoon.8")),
-        A1COLOREDINVERTED(9, "_colored_inverted", References.localNameVC("vc.enum.visualballoon.9")),
+        CRUMPLED(7, "crumpled", References.localNameVC("vc.enum.visualballoon.7")),
+        CRUMPLEDCOLORED(8, "crumpled_colored", References.localNameVC("vc.enum.visualballoon.8")),
+        CRUMPLEDCOLOREDINVERTED(9, "crumpled_colored_inverted", References.localNameVC("vc.enum.visualballoon.9")),
         A2(10, " ", References.localNameVC("vc.enum.visualballoon.10")),
         A2COLORED(11, "_colored", References.localNameVC("vc.enum.visualballoon.11")),
         A2COLOREDINVERTED(12, "_colored_inverted", References.localNameVC("vc.enum.visualballoon.12")),

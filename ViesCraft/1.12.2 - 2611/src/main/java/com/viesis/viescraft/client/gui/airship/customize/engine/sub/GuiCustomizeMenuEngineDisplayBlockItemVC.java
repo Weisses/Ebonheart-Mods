@@ -8,6 +8,7 @@ import org.lwjgl.input.Keyboard;
 
 import com.viesis.viescraft.api.CostsVC;
 import com.viesis.viescraft.api.GuiVC;
+import com.viesis.viescraft.api.ItemsVC;
 import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.client.gui.GuiContainerVC;
 import com.viesis.viescraft.client.gui.buttons.GuiButtonGeneral1VC;
@@ -25,6 +26,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.CooldownTracker;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.TextFormatting;
 
