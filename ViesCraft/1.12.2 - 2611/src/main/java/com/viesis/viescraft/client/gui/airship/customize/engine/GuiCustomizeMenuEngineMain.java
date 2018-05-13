@@ -17,6 +17,7 @@ import com.viesis.viescraft.network.NetworkHandler;
 import com.viesis.viescraft.network.server.airship.customize.MessageGuiCustomizeMenu;
 import com.viesis.viescraft.network.server.airship.customize.engine.sub.MessageGuiCustomizeMenuEngineDisplayBlockItemPg1;
 import com.viesis.viescraft.network.server.airship.customize.engine.sub.MessageGuiCustomizeMenuEngineDisplayHeadPg1;
+import com.viesis.viescraft.network.server.airship.customize.engine.sub.MessageGuiCustomizeMenuEngineDisplayParticlePg1;
 import com.viesis.viescraft.network.server.airship.customize.engine.sub.MessageGuiCustomizeMenuEngineDisplaySupporterHeadPg1;
 import com.viesis.viescraft.network.server.airship.customize.engine.sub.MessageGuiCustomizeMenuEngineDisplaySymbolPg1;
 
@@ -27,7 +28,6 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.text.TextFormatting;
 
 public class GuiCustomizeMenuEngineMain extends GuiContainerVC {
 	
@@ -96,6 +96,8 @@ public class GuiCustomizeMenuEngineMain extends GuiContainerVC {
 		this.buttonList.add(GuiVC.buttonT2);
 		this.buttonList.add(GuiVC.buttonT3);
 		this.buttonList.add(GuiVC.buttonT4);
+		
+		this.buttonList.add(GuiVC.buttonA16);
 		
 		GuiVC.buttonMM3.enabled = false;
 		
@@ -178,7 +180,7 @@ public class GuiCustomizeMenuEngineMain extends GuiContainerVC {
 	    }
 		if (parButton.id == 16)
 	    {
-			//NetworkHandler.sendToServer(new MessageGuiCustomizeMenuFrameColor());
+			NetworkHandler.sendToServer(new MessageGuiCustomizeMenuEngineDisplayParticlePg1());
 	    }
 		
         this.buttonList.clear();

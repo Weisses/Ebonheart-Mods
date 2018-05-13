@@ -72,7 +72,7 @@ public class GuiMainMenu extends GuiContainerVC {
     	
     	GuiVC.buttonArmed = new GuiButtonGeneral2VC(600, this.guiLeft + 93, this.guiTop + 62 + (16 * 0), 14, 14, "", 0);
     	
-    	GuiVC.button501 = new GuiButtonGeneral1VC(501, this.guiLeft + 44, this.guiTop + 66 + (16 * 0), 34, 14, "Consume", 1);
+    	GuiVC.button501 = new GuiButtonGeneral1VC(501, this.guiLeft + 44, this.guiTop + 66 + (16 * 0), 34, 14, References.localNameVC("vc.button.apply"), 1);
     	
     	GuiVC.buttonM5 = new GuiButtonGeneral1VC(5, this.guiLeft + 49, this.guiTop + 62 , 78, 14, References.localNameVC("vc.button.choosemusic"), 0);
     	GuiVC.buttonM6 = new GuiButtonGeneral1VC(6, this.guiLeft + 35, this.guiTop + 100, 35, 14, References.localNameVC("vc.button.play"), 0);

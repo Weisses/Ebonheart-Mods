@@ -37,12 +37,15 @@ import com.viesis.viescraft.network.server.airship.customize.core.sub.MessageHel
 import com.viesis.viescraft.network.server.airship.customize.engine.MessageGuiCustomizeMenuEngineMain;
 import com.viesis.viescraft.network.server.airship.customize.engine.sub.MessageGuiCustomizeMenuEngineDisplayBlockItemPg1;
 import com.viesis.viescraft.network.server.airship.customize.engine.sub.MessageGuiCustomizeMenuEngineDisplayHeadPg1;
+import com.viesis.viescraft.network.server.airship.customize.engine.sub.MessageGuiCustomizeMenuEngineDisplayParticlePg1;
 import com.viesis.viescraft.network.server.airship.customize.engine.sub.MessageGuiCustomizeMenuEngineDisplaySupporterHeadPg1;
 import com.viesis.viescraft.network.server.airship.customize.engine.sub.MessageGuiCustomizeMenuEngineDisplaySymbolPg1;
 import com.viesis.viescraft.network.server.airship.customize.engine.sub.MessageHelperGuiCustomizeMenuEngineDisplayBlockItem;
 import com.viesis.viescraft.network.server.airship.customize.engine.sub.MessageHelperGuiCustomizeMenuEngineDisplayBlockItemDefault;
 import com.viesis.viescraft.network.server.airship.customize.engine.sub.MessageHelperGuiCustomizeMenuEngineDisplayHead;
 import com.viesis.viescraft.network.server.airship.customize.engine.sub.MessageHelperGuiCustomizeMenuEngineDisplayHeadDefault;
+import com.viesis.viescraft.network.server.airship.customize.engine.sub.MessageHelperGuiCustomizeMenuEngineDisplayParticle;
+import com.viesis.viescraft.network.server.airship.customize.engine.sub.MessageHelperGuiCustomizeMenuEngineDisplayParticleDefault;
 import com.viesis.viescraft.network.server.airship.customize.engine.sub.MessageHelperGuiCustomizeMenuEngineDisplaySupporterHead;
 import com.viesis.viescraft.network.server.airship.customize.engine.sub.MessageHelperGuiCustomizeMenuEngineDisplaySupporterHeadDefault;
 import com.viesis.viescraft.network.server.airship.customize.engine.sub.MessageHelperGuiCustomizeMenuEngineDisplaySymbol;
@@ -154,6 +157,9 @@ public class NetworkHandler {
 		register(MessageHelperGuiCustomizeMenuEngineDisplaySupporterHead.class, MessageHelperGuiCustomizeMenuEngineDisplaySupporterHead.class, Side.SERVER);
 		register(MessageHelperGuiCustomizeMenuEngineDisplaySupporterHeadDefault.class, MessageHelperGuiCustomizeMenuEngineDisplaySupporterHeadDefault.class, Side.SERVER);
 		
+		register(MessageGuiCustomizeMenuEngineDisplayParticlePg1.class, MessageGuiCustomizeMenuEngineDisplayParticlePg1.class, Side.SERVER);
+		register(MessageHelperGuiCustomizeMenuEngineDisplayParticle.class, MessageHelperGuiCustomizeMenuEngineDisplayParticle.class, Side.SERVER);
+		register(MessageHelperGuiCustomizeMenuEngineDisplayParticleDefault.class, MessageHelperGuiCustomizeMenuEngineDisplayParticleDefault.class, Side.SERVER);
 		
 		
 		

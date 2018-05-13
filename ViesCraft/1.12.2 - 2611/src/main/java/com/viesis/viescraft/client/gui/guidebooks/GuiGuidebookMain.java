@@ -4,8 +4,8 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
 import com.viesis.viescraft.api.References;
-import com.viesis.viescraft.client.gui.GuiButtonGuideBookVC;
 import com.viesis.viescraft.client.gui.buttons.GuiButtonGeneral1VC;
+import com.viesis.viescraft.client.gui.buttons.GuiButtonGuideBookVC;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 
 import net.minecraft.client.Minecraft;
@@ -46,6 +46,8 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
     private GuiButton buttonMainTab4;
     /** Misc Information */
     private GuiButton buttonMainTab5;
+    /** Redstone Information */
+    private GuiButton buttonMainTab6;
     
     private GuiButton buttonRecipeLogicChip;
     private GuiButton buttonRecipeWorkbench;
@@ -62,13 +64,11 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
     private GuiButton buttonRecipeViesolinePellets;
     private GuiButton buttonRecipeDismounter;
     private GuiButton buttonRecipeDismounterPlayer;
-    
-    private GuiButton buttonRecipeUpgradeFrame0;
-    private GuiButton buttonRecipeUpgradeFrame1;
-    private GuiButton buttonRecipeUpgradeFrame2;
-    private GuiButton buttonRecipeUpgradeFrame3;
-    private GuiButton buttonRecipeUpgradeFrame4;
-    private GuiButton buttonRecipeUpgradeFrame5;
+
+    private GuiButton buttonRecipeBombCasing;
+    private GuiButton buttonRecipeBombSmall;
+    private GuiButton buttonRecipeBombBig;
+    private GuiButton buttonRecipeBombScatter;
 
     private GuiButton buttonRecipeUpgradeCore0;
     private GuiButton buttonRecipeUpgradeCore1;
@@ -76,6 +76,13 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
     private GuiButton buttonRecipeUpgradeCore3;
     private GuiButton buttonRecipeUpgradeCore4;
     private GuiButton buttonRecipeUpgradeCore5;
+
+    private GuiButton buttonRecipeUpgradeFrame0;
+    private GuiButton buttonRecipeUpgradeFrame1;
+    private GuiButton buttonRecipeUpgradeFrame2;
+    private GuiButton buttonRecipeUpgradeFrame3;
+    private GuiButton buttonRecipeUpgradeFrame4;
+    private GuiButton buttonRecipeUpgradeFrame5;
 
     private GuiButton buttonRecipeUpgradeEngine0;
     private GuiButton buttonRecipeUpgradeEngine1;
@@ -116,6 +123,9 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
     private GuiButton buttonRecipeModuleInfiniteFuelL;
     private GuiButton buttonRecipeModuleInfiniteFuelN;
     private GuiButton buttonRecipeModuleInfiniteFuelG;
+    private GuiButton buttonRecipeModuleBombL;
+    private GuiButton buttonRecipeModuleBombN;
+    private GuiButton buttonRecipeModuleBombG;
     
     
     
@@ -134,13 +144,11 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
     private boolean recipeViesolinePellets;
     private boolean recipeDismounter;
     private boolean recipeDismounterPlayer;
-
-    private boolean recipeUpgradeFrame0;
-    private boolean recipeUpgradeFrame1;
-    private boolean recipeUpgradeFrame2;
-    private boolean recipeUpgradeFrame3;
-    private boolean recipeUpgradeFrame4;
-    private boolean recipeUpgradeFrame5;
+    
+    private boolean recipeBombCasing;
+    private boolean recipeBombSmall;
+    private boolean recipeBombBig;
+    private boolean recipeBombScatter;
 
     private boolean recipeUpgradeCore0;
     private boolean recipeUpgradeCore1;
@@ -148,6 +156,13 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
     private boolean recipeUpgradeCore3;
     private boolean recipeUpgradeCore4;
     private boolean recipeUpgradeCore5;
+
+    private boolean recipeUpgradeFrame0;
+    private boolean recipeUpgradeFrame1;
+    private boolean recipeUpgradeFrame2;
+    private boolean recipeUpgradeFrame3;
+    private boolean recipeUpgradeFrame4;
+    private boolean recipeUpgradeFrame5;
 
     private boolean recipeUpgradeEngine0;
     private boolean recipeUpgradeEngine1;
@@ -188,6 +203,9 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
     private boolean recipeModuleInfiniteFuelL;
     private boolean recipeModuleInfiniteFuelN;
     private boolean recipeModuleInfiniteFuelG;
+    private boolean recipeModuleBombL;
+    private boolean recipeModuleBombN;
+    private boolean recipeModuleBombG;
     
     public GuiGuidebookMain()
     {
@@ -210,11 +228,12 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
         
         buttonDone = new GuiButtonGeneral1VC(0, this.guiLeft + 60, 184, 57, 14, I18n.format("gui.done", new Object[0]), 0);
         
-        buttonMainTab1 = new GuiButtonGuideBookVC(101, this.guiLeft - 84, 32, 57, 14, I18n.format("Basic Assembly", new Object[0]), 0.5F, 0.5F, 0.5F, 0);
-        buttonMainTab2 = new GuiButtonGuideBookVC(102, this.guiLeft - 84, 32 + (14 * 1), 57, 14, I18n.format("Airship Interaction", new Object[0]), 0.5F, 0.5F, 0.5F, 0);
-        buttonMainTab3 = new GuiButtonGuideBookVC(103, this.guiLeft - 84, 32 + (14 * 2), 57, 14, I18n.format("Upgrade System", new Object[0]), 0.5F, 0.5F, 0.5F, 0);
-        buttonMainTab4 = new GuiButtonGuideBookVC(104, this.guiLeft - 84, 32 + (14 * 3), 57, 14, I18n.format("Module System", new Object[0]), 0.5F, 0.5F, 0.5F, 0);
-        buttonMainTab5 = new GuiButtonGuideBookVC(105, this.guiLeft - 84, 32 + (14 * 4), 57, 14, I18n.format("Airship Behavior", new Object[0]), 0.5F, 0.5F, 0.5F, 0);
+        buttonMainTab1 = new GuiButtonGuideBookVC(101, this.guiLeft - 84, 32, 57, 14, I18n.format("vc.button.guidebook.tab1", new Object[0]), 0.5F, 0.5F, 0.5F, 0);
+        buttonMainTab2 = new GuiButtonGuideBookVC(102, this.guiLeft - 84, 32 + (14 * 1), 57, 14, I18n.format("vc.button.guidebook.tab2", new Object[0]), 0.5F, 0.5F, 0.5F, 0);
+        buttonMainTab3 = new GuiButtonGuideBookVC(103, this.guiLeft - 84, 32 + (14 * 2), 57, 14, I18n.format("vc.button.guidebook.tab3", new Object[0]), 0.5F, 0.5F, 0.5F, 0);
+        buttonMainTab4 = new GuiButtonGuideBookVC(104, this.guiLeft - 84, 32 + (14 * 3), 57, 14, I18n.format("vc.button.guidebook.tab4", new Object[0]), 0.5F, 0.5F, 0.5F, 0);
+        buttonMainTab5 = new GuiButtonGuideBookVC(105, this.guiLeft - 84, 32 + (14 * 4), 57, 14, I18n.format("vc.button.guidebook.tab5", new Object[0]), 0.5F, 0.5F, 0.5F, 0);
+        buttonMainTab6 = new GuiButtonGuideBookVC(106, this.guiLeft - 84, 32 + (14 * 5), 57, 14, I18n.format("vc.button.guidebook.tab6", new Object[0]), 0.5F, 0.5F, 0.5F, 0);
         
         
         
@@ -225,24 +244,24 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
         buttonRecipeEngine = new GuiButtonGeneral1VC(5, this.guiLeft - 16, startY + (14 * 4), 78, 14, I18n.format("Engine", new Object[0]), 0);
         buttonRecipeIgnition = new GuiButtonGeneral1VC(6, this.guiLeft - 16, startY + (14 * 5), 78, 14, I18n.format("Ignition", new Object[0]), 0);
         
-        buttonRecipeAirshipV1 = new GuiButtonGeneral1VC(5, this.guiLeft - 16, startY + (14 * 2), 78, 14, "Viesdenburg", 0);
-        buttonRecipeAirshipV2 = new GuiButtonGeneral1VC(6, this.guiLeft - 16, startY + (14 * 3), 78, 14, "Viesigible", 0);
-        buttonRecipeAirshipV3 = new GuiButtonGeneral1VC(7, this.guiLeft - 16, startY + (14 * 4), 78, 14, "Viesepelin", 0);
-        buttonRecipeAirshipV4 = new GuiButtonGeneral1VC(8, this.guiLeft - 16, startY + (14 * 5), 78, 14, "Viesakron", 0);
+        //buttonRecipeAirshipV1 = new GuiButtonGeneral1VC(5, this.guiLeft - 16, startY + (14 * 2), 78, 14, "Viesdenburg", 0);
+        //buttonRecipeAirshipV2 = new GuiButtonGeneral1VC(6, this.guiLeft - 16, startY + (14 * 3), 78, 14, "Viesigible", 0);
+        //buttonRecipeAirshipV3 = new GuiButtonGeneral1VC(7, this.guiLeft - 16, startY + (14 * 4), 78, 14, "Viesepelin", 0);
+        //buttonRecipeAirshipV4 = new GuiButtonGeneral1VC(8, this.guiLeft - 16, startY + (14 * 5), 78, 14, "Viesakron", 0);
 
         //buttonRecipeAirshipV4 = new GuiButtonGeneral1VC(8, this.guiLeft - 16, startY + (14 * 5), 78, 14, "Viesindus", 0);
         //buttonRecipeAirshipV4 = new GuiButtonGeneral1VC(8, this.guiLeft - 16, startY + (14 * 5), 78, 14, "Viesamune", 0);
         
-        buttonRecipeViesolinePellets = new GuiButtonGeneral1VC(9, this.guiLeft - 16, startY + (14 * 3), 78, 14, I18n.format("Viesoline Pellets", new Object[0]), 0);
-        buttonRecipeDismounter = new GuiButtonGeneral1VC(10, this.guiLeft - 16, startY + (14 * 4), 78, 14, I18n.format("Dismounter", new Object[0]), 0);
-        buttonRecipeDismounterPlayer = new GuiButtonGeneral1VC(11, this.guiLeft - 16, startY + (14 * 5), 78, 14, "Player Dismounter", 0);
+        buttonRecipeViesolinePellets = new GuiButtonGeneral1VC(9, this.guiLeft - 16, startY - (14 * 1), 78, 14, I18n.format("Viesoline Pellets", new Object[0]), 0);
+        buttonRecipeDismounter = new GuiButtonGeneral1VC(10, this.guiLeft - 16, startY + (14 * 0), 78, 14, I18n.format("Dismounter", new Object[0]), 0);
+        buttonRecipeDismounterPlayer = new GuiButtonGeneral1VC(11, this.guiLeft - 16, startY + (14 * 1), 78, 14, "Player Dismounter", 0);
         
-        buttonRecipeUpgradeFrame0 = new GuiButtonGeneral1VC(20, this.guiLeft - 16, startY + (14 * 0), 78, 14, "Frame Casing", 0);
-        buttonRecipeUpgradeFrame1 = new GuiButtonGeneral1VC(21, this.guiLeft - 16, startY + (14 * 1), 78, 14, "Frame Upgrade 1", 0);
-        buttonRecipeUpgradeFrame2 = new GuiButtonGeneral1VC(22, this.guiLeft - 16, startY + (14 * 2), 78, 14, "Frame Upgrade 2", 0);
-        buttonRecipeUpgradeFrame3 = new GuiButtonGeneral1VC(23, this.guiLeft - 16, startY + (14 * 3), 78, 14, "Frame Upgrade 3", 0);
-        buttonRecipeUpgradeFrame4 = new GuiButtonGeneral1VC(24, this.guiLeft - 16, startY + (14 * 4), 78, 14, "Frame Upgrade 4", 0);
-        buttonRecipeUpgradeFrame5 = new GuiButtonGeneral1VC(25, this.guiLeft - 16, startY + (14 * 5), 78, 14, "Frame Upgrade 5", 0);
+        buttonRecipeBombCasing = new GuiButtonGeneral1VC(11, this.guiLeft - 16, startY + (14 * 2), 78, 14, "Bomb Casing", 0);
+        buttonRecipeBombSmall = new GuiButtonGeneral1VC(11, this.guiLeft - 16, startY + (14 * 3), 78, 14, "Bomb Small", 0);
+        buttonRecipeBombBig = new GuiButtonGeneral1VC(11, this.guiLeft - 16, startY + (14 * 4), 78, 14, "Bomb Big", 0);
+        buttonRecipeBombScatter = new GuiButtonGeneral1VC(11, this.guiLeft - 16, startY + (14 * 5), 78, 14, "Bomb Scatter", 0);
+        
+        
 
         buttonRecipeUpgradeCore0 = new GuiButtonGeneral1VC(30, this.guiLeft - 16, startY + (14 * 0), 78, 14, "Core Shard", 0);
         buttonRecipeUpgradeCore1 = new GuiButtonGeneral1VC(31, this.guiLeft - 16, startY + (14 * 1), 78, 14, "Core Upgrade 1", 0);
@@ -250,6 +269,13 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
         buttonRecipeUpgradeCore3 = new GuiButtonGeneral1VC(33, this.guiLeft - 16, startY + (14 * 3), 78, 14, "Core Upgrade 3", 0);
         buttonRecipeUpgradeCore4 = new GuiButtonGeneral1VC(34, this.guiLeft - 16, startY + (14 * 4), 78, 14, "Core Upgrade 4", 0);
         buttonRecipeUpgradeCore5 = new GuiButtonGeneral1VC(35, this.guiLeft - 16, startY + (14 * 5), 78, 14, "Core Upgrade 5", 0);
+
+        buttonRecipeUpgradeFrame0 = new GuiButtonGeneral1VC(20, this.guiLeft - 16, startY + (14 * 0), 78, 14, "Frame Casing", 0);
+        buttonRecipeUpgradeFrame1 = new GuiButtonGeneral1VC(21, this.guiLeft - 16, startY + (14 * 1), 78, 14, "Frame Upgrade 1", 0);
+        buttonRecipeUpgradeFrame2 = new GuiButtonGeneral1VC(22, this.guiLeft - 16, startY + (14 * 2), 78, 14, "Frame Upgrade 2", 0);
+        buttonRecipeUpgradeFrame3 = new GuiButtonGeneral1VC(23, this.guiLeft - 16, startY + (14 * 3), 78, 14, "Frame Upgrade 3", 0);
+        buttonRecipeUpgradeFrame4 = new GuiButtonGeneral1VC(24, this.guiLeft - 16, startY + (14 * 4), 78, 14, "Frame Upgrade 4", 0);
+        buttonRecipeUpgradeFrame5 = new GuiButtonGeneral1VC(25, this.guiLeft - 16, startY + (14 * 5), 78, 14, "Frame Upgrade 5", 0);
 
         buttonRecipeUpgradeEngine0 = new GuiButtonGeneral1VC(40, this.guiLeft - 16, startY + (14 * 0), 78, 14, "Engine Fragment", 0);
         buttonRecipeUpgradeEngine1 = new GuiButtonGeneral1VC(41, this.guiLeft - 16, startY + (14 * 1), 78, 14, "Engine Upgrade 1", 0);
@@ -294,6 +320,9 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
         buttonRecipeModuleInfiniteFuelN = new GuiButtonGeneral1VC(66, this.guiLeft - 16, startY + (14 * 4), 78, 14, "Infinite Fuel", 0);
         buttonRecipeModuleInfiniteFuelG = new GuiButtonGeneral1VC(67, this.guiLeft - 16, startY + (14 * 5), 78, 14, "Greater Inf. Fuel", 0);
         
+        buttonRecipeModuleBombL = new GuiButtonGeneral1VC(62, this.guiLeft - 16, startY + (14 * 0), 78, 14, "Lesser Bombing", 0);
+        buttonRecipeModuleBombN = new GuiButtonGeneral1VC(63, this.guiLeft - 16, startY + (14 * 1), 78, 14, "Bombing", 0);
+        buttonRecipeModuleBombG = new GuiButtonGeneral1VC(64, this.guiLeft - 16, startY + (14 * 2), 78, 14, "Greater Bombing", 0);
         
         
         buttonList.add(buttonDone);
@@ -303,6 +332,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
         buttonList.add(buttonMainTab3);
         buttonList.add(buttonMainTab4);
         buttonList.add(buttonMainTab5);
+        buttonList.add(buttonMainTab6);
         
         buttonList.add(buttonRecipeLogicChip);
         buttonList.add(buttonRecipeWorkbench);
@@ -311,21 +341,19 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
         buttonList.add(buttonRecipeEngine);
         buttonList.add(buttonRecipeIgnition);
         
-        buttonList.add(buttonRecipeAirshipV1);
-        buttonList.add(buttonRecipeAirshipV2);
-        buttonList.add(buttonRecipeAirshipV3);
-        buttonList.add(buttonRecipeAirshipV4);
+        //buttonList.add(buttonRecipeAirshipV1);
+        //buttonList.add(buttonRecipeAirshipV2);
+        //buttonList.add(buttonRecipeAirshipV3);
+        //buttonList.add(buttonRecipeAirshipV4);
         
         buttonList.add(buttonRecipeViesolinePellets);
         buttonList.add(buttonRecipeDismounter);
         buttonList.add(buttonRecipeDismounterPlayer);
         
-        buttonList.add(buttonRecipeUpgradeFrame0);
-        buttonList.add(buttonRecipeUpgradeFrame1);
-        buttonList.add(buttonRecipeUpgradeFrame2);
-        buttonList.add(buttonRecipeUpgradeFrame3);
-        buttonList.add(buttonRecipeUpgradeFrame4);
-        buttonList.add(buttonRecipeUpgradeFrame5);
+        buttonList.add(buttonRecipeBombCasing);
+        buttonList.add(buttonRecipeBombSmall);
+        buttonList.add(buttonRecipeBombBig);
+        buttonList.add(buttonRecipeBombScatter);
 
         buttonList.add(buttonRecipeUpgradeCore0);
         buttonList.add(buttonRecipeUpgradeCore1);
@@ -333,6 +361,13 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
         buttonList.add(buttonRecipeUpgradeCore3);
         buttonList.add(buttonRecipeUpgradeCore4);
         buttonList.add(buttonRecipeUpgradeCore5);
+
+        buttonList.add(buttonRecipeUpgradeFrame0);
+        buttonList.add(buttonRecipeUpgradeFrame1);
+        buttonList.add(buttonRecipeUpgradeFrame2);
+        buttonList.add(buttonRecipeUpgradeFrame3);
+        buttonList.add(buttonRecipeUpgradeFrame4);
+        buttonList.add(buttonRecipeUpgradeFrame5);
 
         buttonList.add(buttonRecipeUpgradeEngine0);
         buttonList.add(buttonRecipeUpgradeEngine1);
@@ -373,6 +408,9 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
         buttonList.add(buttonRecipeModuleInfiniteFuelL);
         buttonList.add(buttonRecipeModuleInfiniteFuelN);
         buttonList.add(buttonRecipeModuleInfiniteFuelG);
+        buttonList.add(buttonRecipeModuleBombL);
+        buttonList.add(buttonRecipeModuleBombN);
+        buttonList.add(buttonRecipeModuleBombG);
         
         
         
@@ -383,21 +421,19 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
         buttonRecipeEngine.visible = false;
         buttonRecipeIgnition.visible = false;
         
-        buttonRecipeAirshipV1.visible = false;
-        buttonRecipeAirshipV2.visible = false;
-        buttonRecipeAirshipV3.visible = false;
-        buttonRecipeAirshipV4.visible = false;
+        //buttonRecipeAirshipV1.visible = false;
+        //buttonRecipeAirshipV2.visible = false;
+        //buttonRecipeAirshipV3.visible = false;
+        //buttonRecipeAirshipV4.visible = false;
         
         buttonRecipeViesolinePellets.visible = false;
         buttonRecipeDismounter.visible = false;
         buttonRecipeDismounterPlayer.visible = false;
         
-        buttonRecipeUpgradeFrame0.visible = false;
-        buttonRecipeUpgradeFrame1.visible = false;
-        buttonRecipeUpgradeFrame2.visible = false;
-        buttonRecipeUpgradeFrame3.visible = false;
-        buttonRecipeUpgradeFrame4.visible = false;
-        buttonRecipeUpgradeFrame5.visible = false;
+        buttonRecipeBombCasing.visible = false;
+        buttonRecipeBombSmall.visible = false;
+        buttonRecipeBombBig.visible = false;
+        buttonRecipeBombScatter.visible = false;
 
         buttonRecipeUpgradeCore0.visible = false;
         buttonRecipeUpgradeCore1.visible = false;
@@ -405,6 +441,13 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
         buttonRecipeUpgradeCore3.visible = false;
         buttonRecipeUpgradeCore4.visible = false;
         buttonRecipeUpgradeCore5.visible = false;
+
+        buttonRecipeUpgradeFrame0.visible = false;
+        buttonRecipeUpgradeFrame1.visible = false;
+        buttonRecipeUpgradeFrame2.visible = false;
+        buttonRecipeUpgradeFrame3.visible = false;
+        buttonRecipeUpgradeFrame4.visible = false;
+        buttonRecipeUpgradeFrame5.visible = false;
 
         buttonRecipeUpgradeEngine0.visible = false;
         buttonRecipeUpgradeEngine1.visible = false;
@@ -445,6 +488,9 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
         buttonRecipeModuleInfiniteFuelL.visible = false;
         buttonRecipeModuleInfiniteFuelN.visible = false;
         buttonRecipeModuleInfiniteFuelG.visible = false;
+        buttonRecipeModuleBombL.visible = false;
+        buttonRecipeModuleBombN.visible = false;
+        buttonRecipeModuleBombG.visible = false;
         
         
         
@@ -459,7 +505,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
     @Override
     public void updateScreen() 
     {
-    	buttonNextPage.visible = (currPage < 17);
+    	buttonNextPage.visible = (currPage < 19);
         buttonPreviousPage.visible = currPage > 0;
         
         buttonRecipeLogicChip.visible = (currPage == 1);
@@ -469,28 +515,33 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
         buttonRecipeEngine.visible = (currPage == 1);
         buttonRecipeIgnition.visible = (currPage == 1);
         
-        buttonRecipeAirshipV1.visible = (currPage == 2);
-        buttonRecipeAirshipV2.visible = (currPage == 2);
-        buttonRecipeAirshipV3.visible = (currPage == 2);
-        buttonRecipeAirshipV4.visible = (currPage == 2);
+        //buttonRecipeAirshipV1.visible = (currPage == 2);
+        //buttonRecipeAirshipV2.visible = (currPage == 2);
+        //buttonRecipeAirshipV3.visible = (currPage == 2);
+        //buttonRecipeAirshipV4.visible = (currPage == 2);
          
         buttonRecipeViesolinePellets.visible = (currPage == 3);
         buttonRecipeDismounter.visible = (currPage == 3);
         buttonRecipeDismounterPlayer.visible = (currPage == 3);
-        
-        buttonRecipeUpgradeFrame0.visible = (currPage == 8);
-        buttonRecipeUpgradeFrame1.visible = (currPage == 8);
-        buttonRecipeUpgradeFrame2.visible = (currPage == 8);
-        buttonRecipeUpgradeFrame3.visible = (currPage == 8);
-        buttonRecipeUpgradeFrame4.visible = (currPage == 8);
-        buttonRecipeUpgradeFrame5.visible = (currPage == 8);
 
-        buttonRecipeUpgradeCore0.visible = (currPage == 9);
-        buttonRecipeUpgradeCore1.visible = (currPage == 9);
-        buttonRecipeUpgradeCore2.visible = (currPage == 9);
-        buttonRecipeUpgradeCore3.visible = (currPage == 9);
-        buttonRecipeUpgradeCore4.visible = (currPage == 9);
-        buttonRecipeUpgradeCore5.visible = (currPage == 9);
+        buttonRecipeBombCasing.visible = (currPage == 3);
+        buttonRecipeBombSmall.visible = (currPage == 3);
+        buttonRecipeBombBig.visible = (currPage == 3);
+        buttonRecipeBombScatter.visible = (currPage == 3);
+        
+        buttonRecipeUpgradeCore0.visible = (currPage == 8);
+        buttonRecipeUpgradeCore1.visible = (currPage == 8);
+        buttonRecipeUpgradeCore2.visible = (currPage == 8);
+        buttonRecipeUpgradeCore3.visible = (currPage == 8);
+        buttonRecipeUpgradeCore4.visible = (currPage == 8);
+        buttonRecipeUpgradeCore5.visible = (currPage == 8);
+
+        buttonRecipeUpgradeFrame0.visible = (currPage == 9);
+        buttonRecipeUpgradeFrame1.visible = (currPage == 9);
+        buttonRecipeUpgradeFrame2.visible = (currPage == 9);
+        buttonRecipeUpgradeFrame3.visible = (currPage == 9);
+        buttonRecipeUpgradeFrame4.visible = (currPage == 9);
+        buttonRecipeUpgradeFrame5.visible = (currPage == 9);
 
         buttonRecipeUpgradeEngine0.visible = (currPage == 10);
         buttonRecipeUpgradeEngine1.visible = (currPage == 10);
@@ -535,7 +586,9 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
         buttonRecipeModuleInfiniteFuelN.visible = (currPage == 16);
         buttonRecipeModuleInfiniteFuelG.visible = (currPage == 16);
         
-        
+        buttonRecipeModuleBombL.visible = (currPage == 17);
+        buttonRecipeModuleBombN.visible = (currPage == 17);
+        buttonRecipeModuleBombG.visible = (currPage == 17);
         
         if(currPage == 1 
 		|| currPage == 2 
@@ -576,7 +629,8 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 		|| currPage == 13 
 		|| currPage == 14 
 		|| currPage == 15 
-		|| currPage == 16)
+		|| currPage == 16 
+		|| currPage == 17)
 	    {
 	    	buttonMainTab4.enabled = false;
 	    }
@@ -585,13 +639,22 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 	    	buttonMainTab4.enabled = true;
 	    }
 	    
-	    if(currPage == 17)
+	    if(currPage == 18)
 	    {
 	    	buttonMainTab5.enabled = false;
 	    }
 	    else
 	    {
 	    	buttonMainTab5.enabled = true;
+	    }
+	    
+	    if(currPage == 19)
+	    {
+	    	buttonMainTab6.enabled = false;
+	    }
+	    else
+	    {
+	    	buttonMainTab6.enabled = true;
 	    }
     }
  
@@ -707,6 +770,16 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				fontRenderer.drawString("Page 35", 0, 0, 1);
 				fontRenderer.drawString("Page 36", 241, 0, 1);
 			}
+			if(Integer.valueOf(currPage) == 18)
+			{
+				fontRenderer.drawString("Page 37", 0, 0, 1);
+				fontRenderer.drawString("Page 38", 241, 0, 1);
+			}
+			if(Integer.valueOf(currPage) == 19)
+			{
+				fontRenderer.drawString("Page 39", 0, 0, 1);
+				fontRenderer.drawString("Page 40", 241, 0, 1);
+			}
 		}
 		GlStateManager.popMatrix();
 		
@@ -719,6 +792,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 			GlStateManager.translate(0, 0, 0);
 			
 			fontRenderer.drawSplitString(stringPageTextLeft[currPage], 0, 0, 196, 0);
+			fontRenderer.drawSplitString(stringPageTextLeftButtons[currPage], 0, 0, 196, 0);
 		}
 		GlStateManager.popMatrix();
 		
@@ -739,7 +813,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.translate(offsetFromScreenLeft + 20, 32, 0);
 				GlStateManager.scale(0.75, 0.75, 0.75);
 				drawCenteredString(fontRenderer, References.MOD_VERSION, 64, 144, 13565952);
-				fontRenderer.drawSplitString(stringPageTextLeftTitle[currPage], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextLeftTitle[currPage], 16, 90, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -765,23 +839,19 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 		this.getRecipeMisc(offsetFromScreenLeft);
 		
 		
-		
+		//TODO Core Recipe Section
+		this.mc.getTextureManager().bindTexture(new ResourceLocation(References.MOD_ID + ":" + "textures/gui/guides/main/recipesCore.png"));
+		this.getRecipeCore(offsetFromScreenLeft);
+				
+				
 		//TODO Frame Recipe Section
 		this.mc.getTextureManager().bindTexture(new ResourceLocation(References.MOD_ID + ":" + "textures/gui/guides/main/recipesFrame.png"));
 		this.getRecipeFrame(offsetFromScreenLeft);
 		
 		
-		
-		//TODO Core Recipe Section
-		this.mc.getTextureManager().bindTexture(new ResourceLocation(References.MOD_ID + ":" + "textures/gui/guides/main/recipesCore.png"));
-		this.getRecipeCore(offsetFromScreenLeft);
-		
-		
-		
 		//TODO Engine Recipe Section
 		this.mc.getTextureManager().bindTexture(new ResourceLocation(References.MOD_ID + ":" + "textures/gui/guides/main/recipesEngine.png"));
 		this.getRecipeEngine(offsetFromScreenLeft);
-		
 		
 		
 		//TODO Balloon Recipe Section
@@ -801,6 +871,9 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 		
 		//TODO Module4 Recipe Section
 		this.getRecipeModule4(offsetFromScreenLeft);
+		
+		//TODO Module5 Recipe Section
+		this.getRecipeModule5(offsetFromScreenLeft);
     }
     
     /**
@@ -834,20 +907,25 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 		this.recipeViesolinePellets = false;
 		this.recipeDismounter = false;
 		this.recipeDismounterPlayer = false;
-		
-		this.recipeUpgradeFrame0 = false;
-		this.recipeUpgradeFrame1 = false;
-		this.recipeUpgradeFrame2 = false;
-		this.recipeUpgradeFrame3 = false;
-		this.recipeUpgradeFrame4 = false;
-		this.recipeUpgradeFrame5 = false;
 
+		this.recipeBombCasing = false;
+		this.recipeBombSmall = false;
+		this.recipeBombBig = false;
+		this.recipeBombScatter = false;
+		
 		this.recipeUpgradeCore0 = false;
 		this.recipeUpgradeCore1 = false;
 		this.recipeUpgradeCore2 = false;
 		this.recipeUpgradeCore3 = false;
 		this.recipeUpgradeCore4 = false;
 		this.recipeUpgradeCore5 = false;
+
+		this.recipeUpgradeFrame0 = false;
+		this.recipeUpgradeFrame1 = false;
+		this.recipeUpgradeFrame2 = false;
+		this.recipeUpgradeFrame3 = false;
+		this.recipeUpgradeFrame4 = false;
+		this.recipeUpgradeFrame5 = false;
 
 		this.recipeUpgradeEngine0 = false;
 		this.recipeUpgradeEngine1 = false;
@@ -888,6 +966,9 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
         this.recipeModuleInfiniteFuelL = false;
         this.recipeModuleInfiniteFuelN = false;
         this.recipeModuleInfiniteFuelG = false;
+        this.recipeModuleBombL = false;
+        this.recipeModuleBombN = false;
+        this.recipeModuleBombG = false;
 		
 		
 		
@@ -917,7 +998,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
     	}
     	
     	
-    	
+    	/*
     	if (parButton == buttonRecipeAirshipV1)
     	{
     		this.recipeAirshipV1 = true;
@@ -933,7 +1014,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
     	if (parButton == buttonRecipeAirshipV4)
     	{
     		this.recipeAirshipV4 = true;
-    	}
+    	}*/
     	
     	
     	
@@ -950,32 +1031,24 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
     		this.recipeDismounterPlayer = true;
     	}
     	
+
+    	if (parButton == buttonRecipeBombCasing)
+    	{
+    		this.recipeBombCasing = true;
+    	}
+    	if (parButton == buttonRecipeBombSmall)
+    	{
+    		this.recipeBombSmall = true;
+    	}
+    	if (parButton == buttonRecipeBombBig)
+    	{
+    		this.recipeBombBig = true;
+    	}
+    	if (parButton == buttonRecipeBombScatter)
+    	{
+    		this.recipeBombScatter = true;
+    	}
     	
-    	
-    	if (parButton == buttonRecipeUpgradeFrame0)
-    	{
-    		this.recipeUpgradeFrame0 = true;
-    	}
-    	if (parButton == buttonRecipeUpgradeFrame1)
-    	{
-    		this.recipeUpgradeFrame1 = true;
-    	}
-    	if (parButton == buttonRecipeUpgradeFrame2)
-    	{
-    		this.recipeUpgradeFrame2 = true;
-    	}
-    	if (parButton == buttonRecipeUpgradeFrame3)
-    	{
-    		this.recipeUpgradeFrame3 = true;
-    	}
-    	if (parButton == buttonRecipeUpgradeFrame4)
-    	{
-    		this.recipeUpgradeFrame4 = true;
-    	}
-    	if (parButton == buttonRecipeUpgradeFrame5)
-    	{
-    		this.recipeUpgradeFrame5 = true;
-    	}
     	
     	
     	
@@ -1002,6 +1075,33 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
     	if (parButton == buttonRecipeUpgradeCore5)
     	{
     		this.recipeUpgradeCore5 = true;
+    	}
+
+    	
+    	
+    	if (parButton == buttonRecipeUpgradeFrame0)
+    	{
+    		this.recipeUpgradeFrame0 = true;
+    	}
+    	if (parButton == buttonRecipeUpgradeFrame1)
+    	{
+    		this.recipeUpgradeFrame1 = true;
+    	}
+    	if (parButton == buttonRecipeUpgradeFrame2)
+    	{
+    		this.recipeUpgradeFrame2 = true;
+    	}
+    	if (parButton == buttonRecipeUpgradeFrame3)
+    	{
+    		this.recipeUpgradeFrame3 = true;
+    	}
+    	if (parButton == buttonRecipeUpgradeFrame4)
+    	{
+    		this.recipeUpgradeFrame4 = true;
+    	}
+    	if (parButton == buttonRecipeUpgradeFrame5)
+    	{
+    		this.recipeUpgradeFrame5 = true;
     	}
     	
     	
@@ -1163,6 +1263,18 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
     	{
     		this.recipeModuleInfiniteFuelG = true;
     	}
+    	if (parButton == buttonRecipeModuleBombL)
+    	{
+    		this.recipeModuleBombL = true;
+    	}
+    	if (parButton == buttonRecipeModuleBombN)
+    	{
+    		this.recipeModuleBombN = true;
+    	}
+    	if (parButton == buttonRecipeModuleBombG)
+    	{
+    		this.recipeModuleBombG = true;
+    	}
     	
     	
     	
@@ -1191,7 +1303,12 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 
     	if(parButton == buttonMainTab5)
     	{
-    		currPage = 17;
+    		currPage = 18;
+    	}
+
+    	if(parButton == buttonMainTab6)
+    	{
+    		currPage = 19;
     	}
     	
     	
@@ -1214,7 +1331,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
     		}
     		if(currPage == 2)
     		{
-	        	this.buttonRecipeAirshipV1.enabled = false;
+	        	//this.buttonRecipeAirshipV1.enabled = false;
 	        	this.recipeAirshipV1 = true;
     		}
     		if(currPage == 3)
@@ -1224,14 +1341,15 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
     		}
     		if(currPage == 8)
     		{
-	        	this.buttonRecipeUpgradeFrame0.enabled = false;
-	        	this.recipeUpgradeFrame0 = true;
-    		}
-    		if(currPage == 9)
-    		{
 	        	this.buttonRecipeUpgradeCore0.enabled = false;
 	        	this.recipeUpgradeCore0 = true;
     		}
+    		if(currPage == 9)
+    		{
+	        	this.buttonRecipeUpgradeFrame0.enabled = false;
+	        	this.recipeUpgradeFrame0 = true;
+    		}
+    		
     		if(currPage == 10)
     		{
 	        	this.buttonRecipeUpgradeEngine0.enabled = false;
@@ -1261,6 +1379,11 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
     		{
 	        	this.buttonRecipeModuleWaterL.enabled = false;
 	        	this.recipeModuleWaterL = true;
+    		}
+    		if(currPage == 17)
+    		{
+	        	this.buttonRecipeModuleBombL.enabled = false;
+	        	this.recipeModuleBombL = true;
     		}
         }
         else if (parButton == buttonPreviousPage)
@@ -1277,7 +1400,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
     		}
     		if(currPage == 2)
     		{
-	        	this.buttonRecipeAirshipV1.enabled = false;
+	        	//this.buttonRecipeAirshipV1.enabled = false;
 	        	this.recipeAirshipV1 = true;
     		}
     		if(currPage == 3)
@@ -1285,15 +1408,16 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 	        	this.buttonRecipeViesolinePellets.enabled = false;
 	        	this.recipeViesolinePellets = true;
     		}
+    		
     		if(currPage == 8)
-    		{
-	        	this.buttonRecipeUpgradeFrame0.enabled = false;
-	        	this.recipeUpgradeFrame0 = true;
-    		}
-    		if(currPage == 9)
     		{
 	        	this.buttonRecipeUpgradeCore0.enabled = false;
 	        	this.recipeUpgradeCore0 = true;
+    		}
+    		if(currPage == 9)
+    		{
+	        	this.buttonRecipeUpgradeFrame0.enabled = false;
+	        	this.recipeUpgradeFrame0 = true;
     		}
     		if(currPage == 10)
     		{
@@ -1325,6 +1449,11 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 	        	this.buttonRecipeModuleWaterL.enabled = false;
 	        	this.recipeModuleWaterL = true;
     		}
+    		if(currPage == 17)
+    		{
+	        	this.buttonRecipeModuleBombL.enabled = false;
+	        	this.recipeModuleBombL = true;
+    		}
         }
     	
     	
@@ -1336,21 +1465,20 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 		this.buttonRecipeEngine.enabled = true;
 		this.buttonRecipeIgnition.enabled = true;
 		
-		this.buttonRecipeAirshipV1.enabled = true;
-		this.buttonRecipeAirshipV2.enabled = true;
-		this.buttonRecipeAirshipV3.enabled = true;
-		this.buttonRecipeAirshipV4.enabled = true;
+		//this.buttonRecipeAirshipV1.enabled = true;
+		//this.buttonRecipeAirshipV2.enabled = true;
+		//this.buttonRecipeAirshipV3.enabled = true;
+		//this.buttonRecipeAirshipV4.enabled = true;
 		
 		this.buttonRecipeViesolinePellets.enabled = true;
 		this.buttonRecipeDismounter.enabled = true;
 		this.buttonRecipeDismounterPlayer.enabled = true;
 		
-		this.buttonRecipeUpgradeFrame0.enabled = true;
-		this.buttonRecipeUpgradeFrame1.enabled = true;
-		this.buttonRecipeUpgradeFrame2.enabled = true;
-		this.buttonRecipeUpgradeFrame3.enabled = true;
-		this.buttonRecipeUpgradeFrame4.enabled = true;
-		this.buttonRecipeUpgradeFrame5.enabled = true;
+
+		this.buttonRecipeBombCasing.enabled = true;
+		this.buttonRecipeBombSmall.enabled = true;
+		this.buttonRecipeBombBig.enabled = true;
+		this.buttonRecipeBombScatter.enabled = true;
 
 		this.buttonRecipeUpgradeCore0.enabled = true;
 		this.buttonRecipeUpgradeCore1.enabled = true;
@@ -1358,6 +1486,13 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 		this.buttonRecipeUpgradeCore3.enabled = true;
 		this.buttonRecipeUpgradeCore4.enabled = true;
 		this.buttonRecipeUpgradeCore5.enabled = true;
+
+		this.buttonRecipeUpgradeFrame0.enabled = true;
+		this.buttonRecipeUpgradeFrame1.enabled = true;
+		this.buttonRecipeUpgradeFrame2.enabled = true;
+		this.buttonRecipeUpgradeFrame3.enabled = true;
+		this.buttonRecipeUpgradeFrame4.enabled = true;
+		this.buttonRecipeUpgradeFrame5.enabled = true;
 
 		this.buttonRecipeUpgradeEngine0.enabled = true;
 		this.buttonRecipeUpgradeEngine1.enabled = true;
@@ -1398,6 +1533,9 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
         this.buttonRecipeModuleInfiniteFuelL.enabled = true;
         this.buttonRecipeModuleInfiniteFuelN.enabled = true;
         this.buttonRecipeModuleInfiniteFuelG.enabled = true;
+        this.buttonRecipeModuleBombL.enabled = true;
+        this.buttonRecipeModuleBombN.enabled = true;
+        this.buttonRecipeModuleBombG.enabled = true;
 		
 		
 		
@@ -1426,7 +1564,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
     		this.buttonRecipeIgnition.enabled = false;
     	}
 		
-		if(this.recipeAirshipV1)
+		/*if(this.recipeAirshipV1)
     	{
     		this.buttonRecipeAirshipV1.enabled = false;
     	}
@@ -1441,7 +1579,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 		if(this.recipeAirshipV4)
     	{
     		this.buttonRecipeAirshipV4.enabled = false;
-    	}
+    	}*/
 		
 		
 		if(this.recipeViesolinePellets)
@@ -1456,6 +1594,54 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
     	{
     		this.buttonRecipeDismounterPlayer.enabled = false;
     	}
+		
+
+		if(this.recipeBombCasing)
+    	{
+    		this.buttonRecipeBombCasing.enabled = false;
+    	}
+		if(this.recipeBombSmall)
+    	{
+    		this.buttonRecipeBombSmall.enabled = false;
+    	}
+		if(this.recipeBombBig)
+    	{
+    		this.buttonRecipeBombBig.enabled = false;
+    	}
+		if(this.recipeBombScatter)
+    	{
+    		this.buttonRecipeBombScatter.enabled = false;
+    	}
+		
+		
+		
+		
+		if(this.recipeUpgradeCore0)
+    	{
+    		this.buttonRecipeUpgradeCore0.enabled = false;
+    	}
+		if(this.recipeUpgradeCore1)
+    	{
+    		this.buttonRecipeUpgradeCore1.enabled = false;
+    	}
+		if(this.recipeUpgradeCore2)
+    	{
+    		this.buttonRecipeUpgradeCore2.enabled = false;
+    	}
+		if(this.recipeUpgradeCore3)
+    	{
+    		this.buttonRecipeUpgradeCore3.enabled = false;
+    	}
+		if(this.recipeUpgradeCore4)
+    	{
+    		this.buttonRecipeUpgradeCore4.enabled = false;
+    	}
+		if(this.recipeUpgradeCore5)
+    	{
+    		this.buttonRecipeUpgradeCore5.enabled = false;
+    	}
+
+		
 		
 		if(this.recipeUpgradeFrame0)
     	{
@@ -1482,30 +1668,6 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
     		this.buttonRecipeUpgradeFrame5.enabled = false;
     	}
 		
-		if(this.recipeUpgradeCore0)
-    	{
-    		this.buttonRecipeUpgradeCore0.enabled = false;
-    	}
-		if(this.recipeUpgradeCore1)
-    	{
-    		this.buttonRecipeUpgradeCore1.enabled = false;
-    	}
-		if(this.recipeUpgradeCore2)
-    	{
-    		this.buttonRecipeUpgradeCore2.enabled = false;
-    	}
-		if(this.recipeUpgradeCore3)
-    	{
-    		this.buttonRecipeUpgradeCore3.enabled = false;
-    	}
-		if(this.recipeUpgradeCore4)
-    	{
-    		this.buttonRecipeUpgradeCore4.enabled = false;
-    	}
-		if(this.recipeUpgradeCore5)
-    	{
-    		this.buttonRecipeUpgradeCore5.enabled = false;
-    	}
 		
 		if(this.recipeUpgradeEngine0)
     	{
@@ -1660,6 +1822,19 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
     	{
     		this.buttonRecipeModuleInfiniteFuelG.enabled = false;
     	}
+
+		if(this.recipeModuleBombL)
+    	{
+    		this.buttonRecipeModuleBombL.enabled = false;
+    	}
+		if(this.recipeModuleBombN)
+    	{
+    		this.buttonRecipeModuleBombN.enabled = false;
+    	}
+		if(this.recipeModuleBombG)
+    	{
+    		this.buttonRecipeModuleBombG.enabled = false;
+    	}
    }
 
     /**
@@ -1723,9 +1898,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
                 }
                 
                 //Draws the arrows for the next/prev pages
-                drawTexturedModalRect(x, y, 
-                      textureX, textureY, 
-                      23, 13);
+                drawTexturedModalRect(x, y, textureX, textureY, 23, 13);
             }
         }
     }
@@ -1757,6 +1930,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[1], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[1], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -1781,6 +1955,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[2], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[2], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -1805,6 +1980,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[3], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[3], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -1829,6 +2005,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[4], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[4], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -1853,6 +2030,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[5], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[5], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -1877,6 +2055,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[6], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[6], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -1891,12 +2070,12 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 			this.drawTexturedModalRect(this.guiLeft + 102, 106, 0, 0 + (54 * 0), 92, 54);
 			
 			//Draw Green Arrow
-			GlStateManager.pushMatrix();
-			{
-				GlStateManager.translate(this.guiLeft + 64, 77 + (14 * 2), 0);
-				this.drawTexturedModalRect(0, 0, 242, 0 + (13 * 0), 14, 13);
-			}
-			GlStateManager.popMatrix();
+			//GlStateManager.pushMatrix();
+			//{
+			//	GlStateManager.translate(this.guiLeft + 64, 77 + (14 * 2), 0);
+			//	this.drawTexturedModalRect(0, 0, 242, 0 + (13 * 0), 14, 13);
+			//}
+			//GlStateManager.popMatrix();
 			
 			//Draw Info text on the right page
 			GlStateManager.pushMatrix();
@@ -1905,10 +2084,11 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[7], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[7], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
-		
+		/**
 		//AirshipV2
 		if(this.recipeAirshipV2)
 		{
@@ -1982,7 +2162,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[10], 0, 0, 196, 0);
 			}
 			GlStateManager.popMatrix();
-		}
+		}*/
     }
     
     private void getRecipeMisc(int offsetFromScreenLeftIn)
@@ -1992,6 +2172,114 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 		{
 			//Draw recipe
 			this.drawTexturedModalRect(this.guiLeft + 102, 106, 0, 0 + (54 * 0), 92, 54);
+			
+			//Draw Green Arrow
+			GlStateManager.pushMatrix();
+			{
+				GlStateManager.translate(this.guiLeft + 64, 77 - (14 * 1), 0);
+				this.drawTexturedModalRect(0, 0, 242, 0 + (13 * 0), 14, 13);
+			}
+			GlStateManager.popMatrix();
+			
+			//Draw Info text on the right page
+			GlStateManager.pushMatrix();
+			{
+				GlStateManager.translate(offsetFromScreenLeftIn + 138, 32, 0);
+				GlStateManager.scale(.5, .5, .5);
+				
+				fontRenderer.drawSplitString(stringPageTextRightTooltip[11], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[11], 0, 108, 196, 0);
+			}
+			GlStateManager.popMatrix();
+		}
+		
+		//Dismounter
+		if(this.recipeDismounter)
+		{
+			//Draw recipe
+			this.drawTexturedModalRect(this.guiLeft + 102, 106, 0, 0 + (54 * 1), 92, 54);
+			
+			//Draw Green Arrow
+			GlStateManager.pushMatrix();
+			{
+				GlStateManager.translate(this.guiLeft + 64, 77 + (14 * 0), 0);
+				this.drawTexturedModalRect(0, 0, 242, 0 + (13 * 0), 14, 13);
+			}
+			GlStateManager.popMatrix();
+			
+			//Draw Info text on the right page
+			GlStateManager.pushMatrix();
+			{
+				GlStateManager.translate(offsetFromScreenLeftIn + 138, 32, 0);
+				GlStateManager.scale(.5, .5, .5);
+				
+				fontRenderer.drawSplitString(stringPageTextRightTooltip[12], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[12], 0, 108, 196, 0);
+			}
+			GlStateManager.popMatrix();
+		}
+		
+		//Dismounter Player
+		if(this.recipeDismounterPlayer)
+		{
+			//Draw recipe
+			this.drawTexturedModalRect(this.guiLeft + 102, 106, 0, 0 + (54 * 2), 92, 54);
+			
+			//Draw Green Arrow
+			GlStateManager.pushMatrix();
+			{
+				GlStateManager.translate(this.guiLeft + 64, 77 + (14 * 1), 0);
+				this.drawTexturedModalRect(0, 0, 242, 0 + (13 * 0), 14, 13);
+			}
+			GlStateManager.popMatrix();
+			
+			//Draw Info text on the right page
+			GlStateManager.pushMatrix();
+			{
+				GlStateManager.translate(offsetFromScreenLeftIn + 138, 32, 0);
+				GlStateManager.scale(.5, .5, .5);
+				
+				fontRenderer.drawSplitString(stringPageTextRightTooltip[13], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[13], 0, 108, 196, 0);
+			}
+			GlStateManager.popMatrix();
+		}
+		
+		
+		
+		
+		//TODO
+		//Bomb Casing
+		if(this.recipeBombCasing)
+		{
+			//Draw recipe
+			this.drawTexturedModalRect(this.guiLeft + 102, 106, 0, 0 + (54 * 3), 92, 54);
+			
+			//Draw Green Arrow
+			GlStateManager.pushMatrix();
+			{
+				GlStateManager.translate(this.guiLeft + 64, 77 + (14 * 2), 0);
+				this.drawTexturedModalRect(0, 0, 242, 0 + (13 * 0), 14, 13);
+			}
+			GlStateManager.popMatrix();
+			
+			//Draw Info text on the right page
+			GlStateManager.pushMatrix();
+			{
+				GlStateManager.translate(offsetFromScreenLeftIn + 138, 32, 0);
+				GlStateManager.scale(.5, .5, .5);
+				
+				fontRenderer.drawSplitString(stringPageTextRightTooltip[71], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[71], 0, 108, 196, 0);
+			}
+			GlStateManager.popMatrix();
+		}
+		
+		//Bomb Small
+		if(this.recipeBombSmall)
+		{
+			//Draw recipe
+			this.drawTexturedModalRect(this.guiLeft + 102, 106, 0 + (92 * 1), 0 + (54 * 0), 92, 54);
 			
 			//Draw Green Arrow
 			GlStateManager.pushMatrix();
@@ -2007,16 +2295,17 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.translate(offsetFromScreenLeftIn + 138, 32, 0);
 				GlStateManager.scale(.5, .5, .5);
 				
-				fontRenderer.drawSplitString(stringPageTextRightTooltip[11], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltip[72], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[72], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
 		
-		//Dismounter
-		if(this.recipeDismounter)
+		//Bomb Big
+		if(this.recipeBombBig)
 		{
 			//Draw recipe
-			this.drawTexturedModalRect(this.guiLeft + 102, 106, 0, 0 + (54 * 1), 92, 54);
+			this.drawTexturedModalRect(this.guiLeft + 102, 106, 0 + (92 * 1), 0 + (54 * 1), 92, 54);
 			
 			//Draw Green Arrow
 			GlStateManager.pushMatrix();
@@ -2032,16 +2321,16 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.translate(offsetFromScreenLeftIn + 138, 32, 0);
 				GlStateManager.scale(.5, .5, .5);
 				
-				fontRenderer.drawSplitString(stringPageTextRightTooltip[12], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltip[73], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[73], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
-		
-		//Dismounter Player
-		if(this.recipeDismounterPlayer)
+		//Bomb Scatter
+		if(this.recipeBombScatter)
 		{
 			//Draw recipe
-			this.drawTexturedModalRect(this.guiLeft + 102, 106, 0, 0 + (54 * 2), 92, 54);
+			this.drawTexturedModalRect(this.guiLeft + 102, 106, 0 + (92 * 1), 0 + (54 * 2), 92, 54);
 			
 			//Draw Green Arrow
 			GlStateManager.pushMatrix();
@@ -2057,10 +2346,12 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.translate(offsetFromScreenLeftIn + 138, 32, 0);
 				GlStateManager.scale(.5, .5, .5);
 				
-				fontRenderer.drawSplitString(stringPageTextRightTooltip[13], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltip[74], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[74], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
+		
     }
     
     private void getRecipeFrame(int offsetFromScreenLeftIn)
@@ -2086,6 +2377,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[14], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[14], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -2111,6 +2403,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[15], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[15], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -2136,6 +2429,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[16], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[16], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -2161,6 +2455,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[17], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[17], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -2186,6 +2481,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[18], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[18], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -2211,6 +2507,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[19], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[19], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -2239,6 +2536,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[20], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[20], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -2264,6 +2562,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[21], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[21], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -2289,6 +2588,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[22], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[22], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -2314,6 +2614,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[23], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[23], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -2339,6 +2640,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[24], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[24], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -2364,6 +2666,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[25], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[25], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -2392,6 +2695,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[26], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[26], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -2417,6 +2721,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[27], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[27], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -2442,6 +2747,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[28], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[28], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -2467,6 +2773,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[29], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[29], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -2492,6 +2799,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[30], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[30], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -2517,6 +2825,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[31], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[31], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -2545,6 +2854,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[32], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[32], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -2570,6 +2880,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[33], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[33], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -2595,6 +2906,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[34], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[34], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -2620,6 +2932,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[35], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[35], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -2645,6 +2958,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[36], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[36], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -2670,6 +2984,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[37], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[37], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -2700,6 +3015,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[38], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[38], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -2725,6 +3041,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[39], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[39], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -2750,6 +3067,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[40], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[40], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -2775,6 +3093,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[41], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[41], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -2800,6 +3119,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[42], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[42], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -2825,6 +3145,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[43], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[43], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -2850,6 +3171,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[44], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[44], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -2880,6 +3202,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[45], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[45], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -2905,6 +3228,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[46], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[46], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -2930,6 +3254,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[47], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[47], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -2955,6 +3280,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[48], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[48], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -2980,6 +3306,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[49], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[49], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -3005,6 +3332,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[50], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[50], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -3035,6 +3363,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[51], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[51], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -3060,6 +3389,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[52], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[52], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -3085,6 +3415,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[53], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[53], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -3110,6 +3441,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[54], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[54], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -3135,6 +3467,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[55], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[55], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -3160,6 +3493,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[56], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[56], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -3190,6 +3524,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[57], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[57], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -3215,6 +3550,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[58], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[58], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -3240,6 +3576,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[59], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[59], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -3265,6 +3602,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[60], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[60], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -3290,6 +3628,7 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[61], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[61], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
@@ -3315,8 +3654,170 @@ public class GuiGuidebookMain extends GuiGuidebookMainStrings {
 				GlStateManager.scale(.5, .5, .5);
 				
 				fontRenderer.drawSplitString(stringPageTextRightTooltip[62], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[62], 0, 108, 196, 0);
 			}
 			GlStateManager.popMatrix();
 		}
+    }
+	
+    private void getRecipeModule5(int offsetFromScreenLeftIn)
+    {
+    	this.mc.getTextureManager().bindTexture(new ResourceLocation(References.MOD_ID + ":" + "textures/gui/guides/main/recipesmodule5.png"));
+		
+		//Lesser Bomb
+		if(this.recipeModuleBombL)
+		{
+			//Draw recipe
+			this.drawTexturedModalRect(this.guiLeft + 102, 106, 0, 0 + (54 * 0), 92, 54);
+			
+			//Draw Green Arrow
+			GlStateManager.pushMatrix();
+			{
+				GlStateManager.translate(this.guiLeft + 64, 77 + (14 * 0), 0);
+				this.drawTexturedModalRect(0, 0, 242, 0 + (13 * 0), 14, 13);
+			}
+			GlStateManager.popMatrix();
+			
+			//Draw Info text on the right page
+			GlStateManager.pushMatrix();
+			{
+				GlStateManager.translate(offsetFromScreenLeftIn + 138, 32, 0);
+				GlStateManager.scale(.5, .5, .5);
+				
+				fontRenderer.drawSplitString(stringPageTextRightTooltip[63], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[63], 0, 108, 196, 0);
+			}
+			GlStateManager.popMatrix();
+		}
+		
+		//Bomb
+		if(this.recipeModuleBombN)
+		{
+			//Draw recipe
+			this.drawTexturedModalRect(this.guiLeft + 102, 106, 0, 0 + (54 * 1), 92, 54);
+			
+			//Draw Green Arrow
+			GlStateManager.pushMatrix();
+			{
+				GlStateManager.translate(this.guiLeft + 64, 77 + (14 * 1), 0);
+				this.drawTexturedModalRect(0, 0, 242, 0 + (13 * 0), 14, 13);
+			}
+			GlStateManager.popMatrix();
+			
+			//Draw Info text on the right page
+			GlStateManager.pushMatrix();
+			{
+				GlStateManager.translate(offsetFromScreenLeftIn + 138, 32, 0);
+				GlStateManager.scale(.5, .5, .5);
+				
+				fontRenderer.drawSplitString(stringPageTextRightTooltip[64], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[64], 0, 108, 196, 0);
+			}
+			GlStateManager.popMatrix();
+		}
+		
+		//Greater Bomb
+		if(this.recipeModuleBombG)
+		{
+			//Draw recipe
+			this.drawTexturedModalRect(this.guiLeft + 102, 106, 0, 0 + (54 * 2), 92, 54);
+			
+			//Draw Green Arrow
+			GlStateManager.pushMatrix();
+			{
+				GlStateManager.translate(this.guiLeft + 64, 77 + (14 * 2), 0);
+				this.drawTexturedModalRect(0, 0, 242, 0 + (13 * 0), 14, 13);
+			}
+			GlStateManager.popMatrix();
+			
+			//Draw Info text on the right page
+			GlStateManager.pushMatrix();
+			{
+				GlStateManager.translate(offsetFromScreenLeftIn + 138, 32, 0);
+				GlStateManager.scale(.5, .5, .5);
+				
+				fontRenderer.drawSplitString(stringPageTextRightTooltip[65], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[65], 0, 108, 196, 0);
+			}
+			GlStateManager.popMatrix();
+		}
+		/**
+		//Lesser InfiniteFuel
+		if(this.recipeModuleInfiniteFuelL)
+		{
+			//Draw recipe
+			this.drawTexturedModalRect(this.guiLeft + 102, 106, 0 + (92 * 0), 0 + (54 * 3), 92, 54);
+			
+			//Draw Green Arrow
+			GlStateManager.pushMatrix();
+			{
+				GlStateManager.translate(this.guiLeft + 64, 77 + (14 * 3), 0);
+				this.drawTexturedModalRect(0, 0, 242, 0 + (13 * 0), 14, 13);
+			}
+			GlStateManager.popMatrix();
+			
+			//Draw Info text on the right page
+			GlStateManager.pushMatrix();
+			{
+				GlStateManager.translate(offsetFromScreenLeftIn + 138, 32, 0);
+				GlStateManager.scale(.5, .5, .5);
+				
+				fontRenderer.drawSplitString(stringPageTextRightTooltip[60], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[60], 0, 108, 196, 0);
+			}
+			GlStateManager.popMatrix();
+		}
+		
+		//InfiniteFuel
+		if(this.recipeModuleInfiniteFuelN)
+		{
+			//Draw recipe
+			this.drawTexturedModalRect(this.guiLeft + 102, 106, 0 + (92 * 1), 0 + (54 * 0), 92, 54);
+			
+			//Draw Green Arrow
+			GlStateManager.pushMatrix();
+			{
+				GlStateManager.translate(this.guiLeft + 64, 77 + (14 * 4), 0);
+				this.drawTexturedModalRect(0, 0, 242, 0 + (13 * 0), 14, 13);
+			}
+			GlStateManager.popMatrix();
+			
+			//Draw Info text on the right page
+			GlStateManager.pushMatrix();
+			{
+				GlStateManager.translate(offsetFromScreenLeftIn + 138, 32, 0);
+				GlStateManager.scale(.5, .5, .5);
+				
+				fontRenderer.drawSplitString(stringPageTextRightTooltip[61], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[61], 0, 108, 196, 0);
+			}
+			GlStateManager.popMatrix();
+		}
+		
+		//Greater InfiniteFuel
+		if(this.recipeModuleInfiniteFuelG)
+		{
+			//Draw recipe
+			this.drawTexturedModalRect(this.guiLeft + 102, 106, 0 + (92 * 1), 0 + (54 * 1), 92, 54);
+			
+			//Draw Green Arrow
+			GlStateManager.pushMatrix();
+			{
+				GlStateManager.translate(this.guiLeft + 64, 77 + (14 * 5), 0);
+				this.drawTexturedModalRect(0, 0, 242, 0 + (13 * 0), 14, 13);
+			}
+			GlStateManager.popMatrix();
+			
+			//Draw Info text on the right page
+			GlStateManager.pushMatrix();
+			{
+				GlStateManager.translate(offsetFromScreenLeftIn + 138, 32, 0);
+				GlStateManager.scale(.5, .5, .5);
+				
+				fontRenderer.drawSplitString(stringPageTextRightTooltip[62], 0, 0, 196, 0);
+				fontRenderer.drawSplitString(stringPageTextRightTooltipIngredient[62], 0, 108, 196, 0);
+			}
+			GlStateManager.popMatrix();
+		}*/
     }
 }

@@ -54,6 +54,9 @@ public class GuiCustomizeMenuBalloonTier1Pg1 extends GuiCustomizeMenuBalloonTier
 		GuiVC.buttonMM3.enabled = false;
 		
 		//TO REMOVE WHEN TEXTURES ARE MADE
+		GuiVC.button07.visible = false;
+		GuiVC.button08.visible = false;
+		GuiVC.button09.visible = false;
 		GuiVC.button10.visible = false;
 		GuiVC.button11.visible = false;
 		GuiVC.button12.visible = false;

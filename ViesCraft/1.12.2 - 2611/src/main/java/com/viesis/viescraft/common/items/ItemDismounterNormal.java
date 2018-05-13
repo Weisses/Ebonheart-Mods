@@ -74,12 +74,4 @@ public class ItemDismounterNormal extends Item {
     {
 		return EnumRarity.COMMON;
     }
-	
-	@Override
-	public String getItemStackDisplayName(ItemStack stack)
-    {
-        String colorName = TextFormatting.WHITE + References.localNameVC("item.vc:item_dismounter_normal.name");
-        
-        return colorName;
-    }
 }

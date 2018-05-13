@@ -54,12 +54,12 @@ public class GuiCustomizeMenu extends GuiContainerVC {
     	int startPlaceTop = 91;
     	int startPlaceBottom = 151;
     	
-    	GuiVC.buttonA21 = new GuiButtonGeneral1VC(21, this.guiLeft + 28, this.guiTop + 143, 42, 14, "Options", 0);
-		GuiVC.buttonA22 = new GuiButtonGeneral1VC(22, this.guiLeft + 106, this.guiTop + 143, 42, 14, "Options", 0);
-		GuiVC.buttonA23 = new GuiButtonGeneral1VC(23, this.guiLeft + 28, this.guiTop + 179, 42, 14, "Options", 0);
-		GuiVC.buttonA24 = new GuiButtonGeneral1VC(24, this.guiLeft + 106, this.guiTop + 179, 42, 14, "Options", 0);
+    	GuiVC.buttonA21 = new GuiButtonGeneral1VC(21, this.guiLeft + 28, this.guiTop + 143, 42, 14, References.localNameVC("vc.main.options"), 0);
+		GuiVC.buttonA22 = new GuiButtonGeneral1VC(22, this.guiLeft + 106, this.guiTop + 143, 42, 14, References.localNameVC("vc.main.options"), 0);
+		GuiVC.buttonA23 = new GuiButtonGeneral1VC(23, this.guiLeft + 28, this.guiTop + 179, 42, 14, References.localNameVC("vc.main.options"), 0);
+		GuiVC.buttonA24 = new GuiButtonGeneral1VC(24, this.guiLeft + 106, this.guiTop + 179, 42, 14, References.localNameVC("vc.main.options"), 0);
 		
-		GuiVC.buttonA11 = new GuiButtonGeneral1VC(11, this.guiLeft + 22, this.guiTop + 44, 54, 14, "Change Name", 0);
+		GuiVC.buttonA11 = new GuiButtonGeneral1VC(11, this.guiLeft + 22, this.guiTop + 44, 54, 14, References.localNameVC("vc.main.changename"), 0);
 		
     	this.buttonList.add(GuiVC.buttonMM1);
 		this.buttonList.add(GuiVC.buttonMM2);

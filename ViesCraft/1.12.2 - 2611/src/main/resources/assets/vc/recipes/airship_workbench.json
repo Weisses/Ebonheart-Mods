@@ -1,30 +1,13 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "ICI", 
-    "GFG", 
-    "#L#"
-  ],
-  "key": {
-    "I": {
-      "item": "minecraft:iron_ingot"
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "vc:item_logic_chip"
     },
-    "C": {
+    {
       "item": "minecraft:crafting_table"
-    },
-    "G": {
-      "item": "minecraft:gold_ingot"
-    },
-    "F": {
-      "item": "minecraft:fire_charge"
-    },
-    "#": {
-      "item": "minecraft:iron_block"
-    },
-    "L": {
-      "item": "minecraft:lapis_block"
     }
-  },
+  ],
   "result": {
     "item": "vc:airship_workbench",
     "count": 1

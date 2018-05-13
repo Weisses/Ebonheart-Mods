@@ -96,7 +96,7 @@ public class ItemCreativeAirship extends ItemCreativeAirshipBase {
     {
 		String colorName = TextFormatting.GOLD + "Creative";
 		
-		return TextFormatting.GOLD + References.localNameVC("vc.main.airship") + TextFormatting.GREEN + " - " + colorName + " " 
+		return TextFormatting.GOLD + References.Old_I18n.translateToLocalFormatted("vc.main.airship") + TextFormatting.GREEN + " - " + colorName + " " 
 				+ TextFormatting.DARK_RED + "" + TextFormatting.BOLD
 				+ " ("
 				+ TextFormatting.BLUE

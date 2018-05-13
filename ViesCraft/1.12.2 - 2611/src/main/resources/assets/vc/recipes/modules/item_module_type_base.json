@@ -1,19 +1,13 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "group": "vc:upgrades/upgrade_airship_frame",
-  "pattern": [
-    "LLL",
-    "L#L",
-    "LLL"
-  ],
-  "key": {
-    "#": {
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
       "item": "vc:item_logic_chip"
     },
-    "L": {
+    {
       "item": "minecraft:emerald"
     }
-  },
+  ],
   "result": {
     "item": "vc:modules/item_module_type",
     "data": 0,

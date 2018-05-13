@@ -1,5 +1,15 @@
 package com.viesis.viescraft.common.items.airships;
 
+import java.util.List;
+
+import javax.annotation.Nullable;
+
+import com.viesis.viescraft.ViesCraft;
+import com.viesis.viescraft.api.EnumsVC;
+import com.viesis.viescraft.api.References;
+import com.viesis.viescraft.common.entity.EntityThrownAirship;
+import com.viesis.viescraft.common.items.ItemHelper;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.util.ITooltipFlag;
@@ -13,23 +23,9 @@ import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.text.TextFormatting;
-import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-
-import java.text.DecimalFormat;
-import java.util.List;
-
-import javax.annotation.Nullable;
-
-import com.viesis.viescraft.ViesCraft;
-import com.viesis.viescraft.api.EnumsVC;
-import com.viesis.viescraft.api.References;
-import com.viesis.viescraft.api.util.LogHelper;
-import com.viesis.viescraft.common.entity.EntityThrownAirship;
-import com.viesis.viescraft.common.items.ItemHelper;
-import com.viesis.viescraft.configs.ViesCraftConfig;
 
 public class ItemAirship extends ItemAirshipBase {
 	
@@ -276,7 +272,7 @@ public class ItemAirship extends ItemAirshipBase {
 			colorName = TextFormatting.RED + this.customName;
 		}
 		
-		return this.getPrimaryLabelColor(stack.getMetadata()) + References.localNameVC("vc.main.airship") + TextFormatting.GREEN + " - \'" + colorName + TextFormatting.GREEN + "\'";
+		return this.getPrimaryLabelColor(stack.getMetadata()) + References.Old_I18n.translateToLocalFormatted("vc.main.airship") + TextFormatting.GREEN + " - \'" + colorName + TextFormatting.GREEN + "\'";
     }
 	
 	@SideOnly(Side.CLIENT)

@@ -3,13 +3,10 @@
   "group": "vc:modules/item_module_type",
   "pattern": [
     "BSB",
-    "Q#Q",
+    "QBQ",
     "MPM"
   ],
   "key": {
-    "#": {
-      "item": "minecraft:fire_charge"
-    },
     "S": {
       "item": "minecraft:stone_pressure_plate"
     },

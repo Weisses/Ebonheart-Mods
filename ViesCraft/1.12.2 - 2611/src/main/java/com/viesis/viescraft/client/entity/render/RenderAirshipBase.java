@@ -6,6 +6,7 @@ import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.client.InitParticlesVCRender;
 import com.viesis.viescraft.client.entity.model.ModelAirshipPanel;
 import com.viesis.viescraft.client.entity.model.ModelAirshipPropeller;
+import com.viesis.viescraft.client.entity.model.ModelViewWindow;
 import com.viesis.viescraft.client.entity.model.balloon.ModelBalloonBalloon0;
 import com.viesis.viescraft.client.entity.model.balloon.ModelBalloonBalloon1;
 import com.viesis.viescraft.client.entity.model.balloon.ModelBalloonBalloon2;
@@ -99,6 +100,11 @@ public class RenderAirshipBase extends Render<EntityAirshipCore> {
   	protected ModelBase modelBalloonDS4 = new ModelBalloonDisplaySymbol4();
   	
   	
+  	
+  	/** Instance of View Window Model for rendering. 
+  	 * NOT USED YET
+  	 * */
+  	protected ModelBase modelViewWindow = new ModelViewWindow();
 
   	/** Instance of Panel Screen Model for rendering. */
   	protected ModelBase modelAirshipPanel = new ModelAirshipPanel();
@@ -134,6 +140,7 @@ public class RenderAirshipBase extends Render<EntityAirshipCore> {
     private static final ResourceLocation SUPPORTER_VIES_TEXTURES = new ResourceLocation(References.MOD_ID + ":" + "textures/models/heads/supporters/vies.png");
     private static final ResourceLocation SUPPORTER_SOULFORGE7_TEXTURES = new ResourceLocation(References.MOD_ID + ":" + "textures/models/heads/supporters/soulforge7.png");
     private static final ResourceLocation SUPPORTER_NEMANOR_TEXTURES = new ResourceLocation(References.MOD_ID + ":" + "textures/models/heads/supporters/nemanor.png");
+    private static final ResourceLocation SUPPORTER_VELOURVAULTSUIT_TEXTURES = new ResourceLocation(References.MOD_ID + ":" + "textures/models/heads/supporters/velourvaultsuit.png");
     
     
     
@@ -847,6 +854,7 @@ public class RenderAirshipBase extends Render<EntityAirshipCore> {
 	        
         GlStateManager.popMatrix();
     }
+    
     //TODO Supporter Heads add here!
 	/**
 	 * Renders a supporter head.
@@ -870,6 +878,9 @@ public class RenderAirshipBase extends Render<EntityAirshipCore> {
 		        break;
 		    case 3:
 		        this.bindTexture(SUPPORTER_NEMANOR_TEXTURES);
+		        break;
+		    case 4:
+		        this.bindTexture(SUPPORTER_VELOURVAULTSUIT_TEXTURES);
 		        break;
 		}
 
@@ -1051,93 +1062,59 @@ public class RenderAirshipBase extends Render<EntityAirshipCore> {
     	}
     	else if(airshipIn.getEngineDisplayTypeVisual() == 4)
     	{
-    		
-    		
     		//this.renderItemOnDisplaySpin//((float)0, (float)1, (float)1, 2);//.engineDisplayHeadVisual);
     	}
     	else if(airshipIn.getEngineDisplayTypeVisual() >= 10)
     	{
     		this.renderSymbol(airshipIn, new ItemStack(ItemsVC.ITEM_DISPLAY_SYMBOL, 1, EnumsVC.MainDisplaySymbol.byId(airshipIn.engineDisplayTypeVisual).getMetadata()), airshipIn.getCoreModelVisualBalloon());
     	}
-    	
-    	
-    	
-    	
-    	
-    	
-    	//Front rotating item
-        /**this.renderItemOnDisplay(airshipIn, 0, 0.6, -4.5, new ItemStack(
-        		
-        		
-        		Item.getItemFromBlock(Blocks.COBBLESTONE)
-        		//Items.DIAMOND_SWORD
-        		, 1), 0.25, 0.25, 0.25, bladespin, 2, 0F);
-    	
-        
-    	//Left item
-        this.renderItemOnDisplay(airshipIn, 1.05, -2.125, 0, new ItemStack(
-        		Item.getItemFromBlock(Blocks.COBBLESTONE)
-        		//Items.DIAMOND_SWORD
-        		, 1), 1, 1, 1, 0, 0, 270.0F);
-    	
-        //Right item
-        this.renderItemOnDisplay(airshipIn, -1.05, -2.125, 0, new ItemStack(
-        		Item.getItemFromBlock(Blocks.COBBLESTONE)
-        		//Items.DIAMOND_SWORD
-        		, 1), 1, 1, 1, 0, 0, 90.0F);
-        */
     }
     
     /**
 	 * Renders a supporter head.
 	 */
-    protected void renderEngineSmokeParticles(EntityAirshipCore entity, int locationIn)
+    protected void renderEngineParticles(EntityAirshipCore entity, int particleActive)
     {
     	GlStateManager.pushMatrix();
-        
-	        GlStateManager.disableCull();
-	        
-	        GlStateManager.enableRescaleNormal();
-	        GlStateManager.enableAlpha();
-	        
-	        //Default
-	        if(locationIn == 0)
-	        {
-	        	//InitParticlesVCRender.generateAirshipSmokeParticles0(entity, 0.0D, -0.15D, 0.0D);
-	        }
-	        //Viesdenburg
-	        if(locationIn == 1)
-	        {
-	        	//InitParticlesVCRender.generateAirshipSmokeParticles1(entity, 0.0D, 0.02D, 0D);
-	        }
-	        //Viesigible
-	        if(locationIn == 2)
-	        {
-	        	
-	            //Left
-	        	//InitParticlesVCRender.generateAirshipSmokeParticles2(entity, 0, 0, 0);
-	            
-	            
-	        	
-	        	//InitParticlesVCRender.generateAirshipSmokeParticles2a(entity, 0.0D, -0.02D, 0.0D);
-	        	//Right
-	        	//InitParticlesVCRender.generateAirshipSmokeParticles2b(entity, 0.0D, -0.02D, 0.0D);
-	        }
-	        //Vieseplin
-	        if(locationIn == 3)
+    	
+    	if(!Minecraft.getMinecraft().isGamePaused())
+		{
+	    	int randomTick = References.random.nextInt(100) + 1;
+	    	
+	        //Default = No particle
+	        if(particleActive == 0)
 	        {
 	        	
 	        }
-	        //Viesakron
-	        if(locationIn == 4)
+	        //Runes
+	        if(particleActive == 1)
 	        {
-	        	
+	        	InitParticlesVCRender.generateParticleRunesNormal(entity);
 	        }
-	        
+	        //Rainbow Runes
+	        if(particleActive == 2)
+	        {
+	        	InitParticlesVCRender.generateParticleRunesRainbow(entity);
+	        }
+	        //Flames
+	        if(particleActive == 3)
+	        {
+	        	if(randomTick < 20)
+				{
+	        		InitParticlesVCRender.generateParticleFlamesNormal(entity);
+				}
+	        }
+	        //Rainbow Flames
+	        if(particleActive == 4)
+	        {
+	        	if(randomTick < 20)
+				{
+	        		InitParticlesVCRender.generateParticleFlamesColor(entity);
+				}
+	        }
+    	}
         GlStateManager.popMatrix();
     }
-    
-    
     
     
     
@@ -1270,6 +1247,4 @@ public class RenderAirshipBase extends Render<EntityAirshipCore> {
     {
         return Minecraft.getMinecraft().fontRenderer;
     }
-    
-    
 }

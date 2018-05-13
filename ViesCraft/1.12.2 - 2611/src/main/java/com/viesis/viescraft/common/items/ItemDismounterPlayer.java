@@ -73,16 +73,4 @@ public class ItemDismounterPlayer extends Item {
     {
 		return EnumRarity.COMMON;
     }
-	
-	@Override
-	public String getItemStackDisplayName(ItemStack stack)
-    {
-        String colorName = TextFormatting.WHITE + References.localNameVC("item.vc:item_dismounter_normal.name") + " " 
-        		+ TextFormatting.GRAY + "("
-        		+ TextFormatting.RED + References.localNameVC("vc.main.player")
-        		+ TextFormatting.GRAY + ")"
-        		;
-        
-        return colorName;
-    }
 }

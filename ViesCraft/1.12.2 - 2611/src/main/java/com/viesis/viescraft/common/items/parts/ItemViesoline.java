@@ -36,6 +36,7 @@ public class ItemViesoline extends Item {
 		tooltip.add(TextFormatting.DARK_GREEN + "================================");
 	}
 	
+	@Override
 	public EnumRarity getRarity(ItemStack stack)
     {
         return EnumRarity.UNCOMMON;

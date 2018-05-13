@@ -14,7 +14,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class GuiGuidebookControls extends GuiScreen {
+public class OLDGuiGuidebookControls extends GuiScreen {
 	
     private final int bookImageHeight = 192;
     private final int bookImageWidth = 192;
@@ -27,7 +27,7 @@ public class GuiGuidebookControls extends GuiScreen {
     private NextPageButton buttonNextPage;
     private NextPageButton buttonPreviousPage;
     
-    public GuiGuidebookControls()
+    public OLDGuiGuidebookControls()
     {
     	bookPageTextures[0] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/controls/page_0.png");
         bookPageTextures[1] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/controls/page_1.png");

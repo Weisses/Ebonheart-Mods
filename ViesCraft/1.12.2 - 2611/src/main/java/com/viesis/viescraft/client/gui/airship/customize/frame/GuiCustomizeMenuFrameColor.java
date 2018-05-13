@@ -88,21 +88,33 @@ public class GuiCustomizeMenuFrameColor extends GuiContainerVC {
         
 		GuiVC.button505 = new GuiButtonGeneral1VC(505, this.guiLeft + 125, this.guiTop + 177, 40, 14, References.localNameVC("vc.button.back"), 2);
     	
-    	GuiVC.button01 = new GuiButtonGeneral1VC(201, this.guiLeft + 6, this.guiTop + buttonStart, 32, 14, References.localNameVC("Red"), 0);
-    	GuiVC.button02 = new GuiButtonGeneral1VC(202, this.guiLeft + 38, this.guiTop + buttonStart, 32, 14, References.localNameVC("Green"), 0);
-    	GuiVC.button03 = new GuiButtonGeneral1VC(203, this.guiLeft + 70, this.guiTop + buttonStart, 32, 14, References.localNameVC("Blue"), 0);
+		//Red
+    	GuiVC.button01 = new GuiButtonGeneral1VC(201, this.guiLeft + 6, this.guiTop + buttonStart, 32, 14, References.localNameVC("vc.item.color.114"), 0);
+    	//Green
+    	GuiVC.button02 = new GuiButtonGeneral1VC(202, this.guiLeft + 38, this.guiTop + buttonStart, 32, 14, References.localNameVC("vc.item.color.77"), 0);
+    	//Blue
+    	GuiVC.button03 = new GuiButtonGeneral1VC(203, this.guiLeft + 70, this.guiTop + buttonStart, 32, 14, References.localNameVC("vc.item.color.10"), 0);
     	
-    	GuiVC.button04 = new GuiButtonGeneral1VC(204, this.guiLeft + 6, this.guiTop + buttonStart + (14 * 1), 32, 14, References.localNameVC("Yellow"), 0);
-    	GuiVC.button05 = new GuiButtonGeneral1VC(205, this.guiLeft + 38, this.guiTop + buttonStart + (14 * 1), 32, 14, References.localNameVC("Magenta"), 0);
-    	GuiVC.button06 = new GuiButtonGeneral1VC(206, this.guiLeft + 70, this.guiTop + buttonStart + (14 * 1), 32, 14, References.localNameVC("Cyan"), 0);
+    	//Yellow
+    	GuiVC.button04 = new GuiButtonGeneral1VC(204, this.guiLeft + 6, this.guiTop + buttonStart + (14 * 1), 32, 14, References.localNameVC("vc.item.color.139"), 0);
+    	//Magenta
+    	GuiVC.button05 = new GuiButtonGeneral1VC(205, this.guiLeft + 38, this.guiTop + buttonStart + (14 * 1), 32, 14, References.localNameVC("vc.item.color.46"), 0);
+    	//Cyan
+    	GuiVC.button06 = new GuiButtonGeneral1VC(206, this.guiLeft + 70, this.guiTop + buttonStart + (14 * 1), 32, 14, References.localNameVC("vc.item.color.3"), 0);
     	
-    	GuiVC.button07 = new GuiButtonGeneral1VC(207, this.guiLeft + 6, this.guiTop + buttonStart + (14 * 2), 32, 14, References.localNameVC("Orange"), 0);
-    	GuiVC.button08 = new GuiButtonGeneral1VC(208, this.guiLeft + 38, this.guiTop + buttonStart + (14 * 2), 32, 14, References.localNameVC("Purple"), 0);
-    	GuiVC.button09 = new GuiButtonGeneral1VC(209, this.guiLeft + 70, this.guiTop + buttonStart + (14 * 2), 32, 14, References.localNameVC("Teal"), 0);
+    	//Orange
+    	GuiVC.button07 = new GuiButtonGeneral1VC(207, this.guiLeft + 6, this.guiTop + buttonStart + (14 * 2), 32, 14, References.localNameVC("vc.item.color.100"), 0);
+    	//Purple
+    	GuiVC.button08 = new GuiButtonGeneral1VC(208, this.guiLeft + 38, this.guiTop + buttonStart + (14 * 2), 32, 14, References.localNameVC("vc.item.color.113"), 0);
+    	//Teal
+    	GuiVC.button09 = new GuiButtonGeneral1VC(209, this.guiLeft + 70, this.guiTop + buttonStart + (14 * 2), 32, 14, References.localNameVC("vc.item.color.131"), 0);
     	
-    	GuiVC.button10 = new GuiButtonGeneral1VC(210, this.guiLeft + 6, this.guiTop + buttonStart + (14 * 3), 32, 14, References.localNameVC("Crimson"), 0);
-    	GuiVC.button11 = new GuiButtonGeneral1VC(211, this.guiLeft + 38, this.guiTop + buttonStart + (14 * 3), 32, 14, References.localNameVC("Gold"), 0);
-    	GuiVC.button12 = new GuiButtonGeneral1VC(212, this.guiLeft + 70, this.guiTop + buttonStart + (14 * 3), 32, 14, References.localNameVC("Violet"), 0);
+    	//Crimson
+    	GuiVC.button10 = new GuiButtonGeneral1VC(210, this.guiLeft + 6, this.guiTop + buttonStart + (14 * 3), 32, 14, References.localNameVC("vc.item.color.20"), 0);
+    	//Gold
+    	GuiVC.button11 = new GuiButtonGeneral1VC(211, this.guiLeft + 38, this.guiTop + buttonStart + (14 * 3), 32, 14, References.localNameVC("vc.item.color.49"), 0);
+    	//Violet
+    	GuiVC.button12 = new GuiButtonGeneral1VC(212, this.guiLeft + 70, this.guiTop + buttonStart + (14 * 3), 32, 14, References.localNameVC("vc.item.color.135"), 0);
     	
     	this.buttonList.add(GuiVC.buttonMM1);
 		this.buttonList.add(GuiVC.buttonMM2);
@@ -342,6 +354,15 @@ public class GuiCustomizeMenuFrameColor extends GuiContainerVC {
 	        this.drawCenteredString(fontRenderer, Integer.toString(CostsVC.FRAME_SKIN_COLOR_COST), 0, 0, redstoneColor.getRGB());
 		}
 		GlStateManager.popMatrix();
+		
+		if(this.airship.storedRedstone >= CostsVC.FRAME_SKIN_COLOR_COST)
+		{
+			GuiVC.button501.enabled = true;
+		}
+		else
+		{
+			GuiVC.button501.enabled = false;
+		}
 	}
 	
 	@Override

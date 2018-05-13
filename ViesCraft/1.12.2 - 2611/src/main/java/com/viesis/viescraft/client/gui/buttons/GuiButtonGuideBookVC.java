@@ -1,4 +1,4 @@
-package com.viesis.viescraft.client.gui;
+package com.viesis.viescraft.client.gui.buttons;
 
 import com.viesis.viescraft.api.References;
 
@@ -8,11 +8,15 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
 
-public class GuiButtonAppearanceVC extends GuiButton {
+public class GuiButtonGuideBookVC extends GuiButton {
 	
-	protected static final ResourceLocation BUTTON_TEXTURES = new ResourceLocation(References.MOD_ID_COLON + "textures/gui/widgets_appearance.png");
+	protected static final ResourceLocation BUTTON_TEXTURES = new ResourceLocation(References.MOD_ID_COLON + "textures/gui/buttons_guidebook.png");
+    protected float scaleX;
+    protected float scaleY;
+    protected float scaleZ;
+    protected int buttonLocationY;
     
-	public GuiButtonAppearanceVC(int buttonId, int x, int y, int widthIn, int heightIn, String buttonText) 
+	public GuiButtonGuideBookVC(int buttonId, int x, int y, int widthIn, int heightIn, String buttonText, float scaleXIn, float scaleYIn, float scaleZIn, int buttonLocationYIn) 
 	{
 		super(buttonId, x, y, widthIn, heightIn, buttonText);
 		
@@ -26,6 +30,10 @@ public class GuiButtonAppearanceVC extends GuiButton {
         this.width = widthIn;
         this.height = heightIn;
         this.displayString = buttonText;
+        this.scaleX = scaleXIn;
+        this.scaleY = scaleYIn;
+        this.scaleZ = scaleZIn;
+        this.buttonLocationY = buttonLocationYIn;
 	}
 	
 	@Override
@@ -53,7 +61,7 @@ public class GuiButtonAppearanceVC extends GuiButton {
 				GlStateManager.translate(this.x+1, this.y+1, 0);
 				GlStateManager.scale(.25, .25, .25);
             
-				this.drawTexturedModalRect(0, 0, 0, 74, 136, 48);
+				this.drawTexturedModalRect(0, 0, 0, 64 + (48 * this.buttonLocationY), 136, 48);
 			}
 			GlStateManager.popMatrix();
 			
@@ -73,8 +81,15 @@ public class GuiButtonAppearanceVC extends GuiButton {
             {
                 j = 16777120;
             }
-
-            this.drawCenteredString(fontrenderer, this.displayString, this.x + this.width / 2, this.y + (this.height - 8) / 2, j);
+            
+            GlStateManager.pushMatrix();
+			{
+				GlStateManager.translate(this.x + this.width / 2, this.y + (this.height - 4) / 2, 0); //-6 was a -8 by default
+				GlStateManager.scale(this.scaleX, this.scaleY, this.scaleZ);
+            
+				this.drawCenteredString(fontrenderer, this.displayString, 0, 0, j);
+			}
+			GlStateManager.popMatrix();
         }
 	}
 }

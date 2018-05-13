@@ -58,13 +58,13 @@ public class CommonProxy {
 	
 	public void postInit(FMLPostInitializationEvent event) 
 	{
-		ResourceLocation group = null;
+		//ResourceLocation group = null;
 		
-		GameRegistry.addShapedRecipe(new ResourceLocation(References.MOD_ID + ":recipes/airship_balloon"), 
-				group, 
-				new ItemStack(InitItemsVC.AIRSHIP_BALLOON, 1), 
-				new Object[]{"LLL", "L#L", "LLL", 'L', Items.LEATHER, '#', Items.STRING}
-		);
+		//GameRegistry.addShapedRecipe(new ResourceLocation(References.MOD_ID + ":recipes/airship_balloon"), 
+		//		group, 
+		//		new ItemStack(InitItemsVC.AIRSHIP_BALLOON, 1), 
+		//		new Object[]{"LLL", "L#L", "LLL", 'L', Items.LEATHER, '#', Items.STRING}
+		//);
 		
 		//GameRegistry.addShapelessRecipe(new ItemStack(InitItemsVC.viesoline_pellets), new ItemStack(Items.COAL), new ItemStack(Items.REDSTONE));
 		

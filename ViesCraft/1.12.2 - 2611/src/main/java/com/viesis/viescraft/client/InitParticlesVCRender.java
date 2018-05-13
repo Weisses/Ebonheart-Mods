@@ -4,7 +4,8 @@ import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.client.particle.EntityBombExplosionLargeFX;
 import com.viesis.viescraft.client.particle.EntityBombExplosionSmallFX;
 import com.viesis.viescraft.client.particle.EntityColorFlameFX;
-import com.viesis.viescraft.client.particle.EntityRunicFX;
+import com.viesis.viescraft.client.particle.EntityRunicRainbowFX;
+import com.viesis.viescraft.client.particle.EntityRunicWhiteFX;
 import com.viesis.viescraft.client.particle.EntityUnholyFX;
 
 import net.minecraft.client.Minecraft;
@@ -15,6 +16,7 @@ import net.minecraft.util.math.MathHelper;
 
 public class InitParticlesVCRender {
 	
+	//Airship Engine Smoke
 	public static void generateAirshipSmokeParticles0(Entity entityIn, double xIn, double yIn, double zIn)
 	{
 		entityIn.world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, 
@@ -23,7 +25,6 @@ public class InitParticlesVCRender {
 		entityIn.posZ - (double)(MathHelper.cos(entityIn.rotationYaw * 0.017453292F) * 00.90F) + zIn, 
 		0.0D, 0.0D, 0.0D, new int[0]);
 	}
-	
 	public static void generateAirshipSmokeParticles1(Entity entityIn, double xIn, double yIn, double zIn)
 	{
 		entityIn.world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, 
@@ -32,7 +33,6 @@ public class InitParticlesVCRender {
 		entityIn.posZ - (double)(MathHelper.cos(entityIn.rotationYaw * 0.017453292F) * 00.82F) + zIn, 
 		0.0D, 0.0D, 0.0D, new int[0]);
 	}
-	
 	public static void generateAirshipSmokeParticles2(Entity entityIn, double xIn, double yIn, double zIn)
 	{
 		entityIn.world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, 
@@ -48,13 +48,9 @@ public class InitParticlesVCRender {
 		0.0D, 0.0D, 0.0D, new int[0]);
 	}
 	
-	
-	
-	
-	
-	
 	//============================================
 	
+	//Bomb Particles
 	public static void generateBombFuseSmokeParticles(Entity entityIn)
 	{
 		entityIn.world.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, 
@@ -102,17 +98,14 @@ public class InitParticlesVCRender {
 	
 	//============================================
 	
-	
-	
-	
-	public static void generateRunicParticles(Entity entity)
+	//Engine Particle System
+	public static void generateParticleRunesNormal(Entity entity)
 	{
 	    double motionX = entity.world.rand.nextGaussian() * 0.03D;
 	    double motionY = entity.world.rand.nextGaussian() * 0.03D;
 	    double motionZ = entity.world.rand.nextGaussian() * 0.03D;
 	    
-	    Particle particleRunic = new EntityRunicFX(
-	          entity.world, 
+	    Particle particleRunic = new EntityRunicWhiteFX(entity.world, 
 	          entity.posX + entity.world.rand.nextFloat() * entity.width * 2.0F - entity.width, 
 	          entity.posY + 0.3D + entity.world.rand.nextFloat() * entity.height, 
 	          entity.posZ + entity.world.rand.nextFloat() * entity.width * 2.0F - entity.width, 
@@ -121,7 +114,22 @@ public class InitParticlesVCRender {
 	    Minecraft.getMinecraft().effectRenderer.addEffect(particleRunic);        
 	}
 	
-	public static void generateFlameParticles(Entity entity)
+	public static void generateParticleRunesRainbow(Entity entity)
+	{
+	    double motionX = entity.world.rand.nextGaussian() * 0.03D;
+	    double motionY = entity.world.rand.nextGaussian() * 0.03D;
+	    double motionZ = entity.world.rand.nextGaussian() * 0.03D;
+	    
+	    Particle particleRunic = new EntityRunicRainbowFX(entity.world, 
+	          entity.posX + entity.world.rand.nextFloat() * entity.width * 2.0F - entity.width, 
+	          entity.posY + 0.3D + entity.world.rand.nextFloat() * entity.height, 
+	          entity.posZ + entity.world.rand.nextFloat() * entity.width * 2.0F - entity.width, 
+	          motionX, motionY, motionZ);
+	    
+	    Minecraft.getMinecraft().effectRenderer.addEffect(particleRunic);        
+	}
+	
+	public static void generateParticleFlamesNormal(Entity entity)
 	{
 		double motionX = entity.world.rand.nextGaussian() * 0.02D;
 	    double motionY = entity.world.rand.nextGaussian() * 0.02D;
@@ -134,21 +142,22 @@ public class InitParticlesVCRender {
 		motionX, motionY, motionZ, new int[0]);
 	}
 	
-	public static void generateColorFlameParticles(Entity entity)
+	public static void generateParticleFlamesColor(Entity entity)
 	{
 	    double motionX = entity.world.rand.nextGaussian() * 0.02D;
 	    double motionY = entity.world.rand.nextGaussian() * 0.02D;
 	    double motionZ = entity.world.rand.nextGaussian() * 0.02D;
 	    
-	    Particle particleColorFlame = new EntityColorFlameFX(
-	    	entity.world, 
-	    	entity.posX - (double)(MathHelper.sin(-entity.rotationYaw * 0.017453292F + 1) * 01.005F), 
-	    	entity.posY + 0.5D, 
-	        entity.posZ - (double)(MathHelper.cos(entity.rotationYaw * 0.017453292F - 1) * 01.005F), 
+	    Particle particleColorFlame = new EntityColorFlameFX(entity.world, 
+	    	entity.posX - (double)(MathHelper.sin(-entity.rotationYaw * 0.017453292F) * 0.9F), 
+	    	entity.posY + 0.4D, 
+	        entity.posZ - (double)(MathHelper.cos(entity.rotationYaw * 0.017453292F) * 0.9F), 
 	        motionX, motionY, motionZ);
 	    
 	    Minecraft.getMinecraft().effectRenderer.addEffect(particleColorFlame);        
 	}
+	
+	
 	
 	//=======================================================
 	

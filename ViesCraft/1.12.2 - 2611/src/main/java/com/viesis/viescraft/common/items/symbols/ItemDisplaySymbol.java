@@ -6,12 +6,14 @@ import java.util.stream.Stream;
 
 import com.viesis.viescraft.ViesCraft;
 import com.viesis.viescraft.api.EnumsVC;
+import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.common.items.ItemHelper;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -31,7 +33,17 @@ public class ItemDisplaySymbol extends Item {
 	@Override
 	public String getItemStackDisplayName(ItemStack stack)
     {
-		return ("Symbol - " + EnumsVC.MainDisplaySymbol.byId(this.getMetadata(stack)).getLocalizedName());
+		String itemName = "";
+		if(stack.getMetadata() == 0)
+        {
+        	itemName = References.Old_I18n.translateToLocalFormatted("None");
+        }
+        else
+        {
+        	itemName = EnumsVC.MainDisplaySymbol.byId(this.getMetadata(stack)).getLocalizedName();
+        }
+		
+		return itemName;
     }
 	
 	@SideOnly(Side.CLIENT)

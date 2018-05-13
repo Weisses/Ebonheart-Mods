@@ -1,12 +1,8 @@
 package com.viesis.viescraft.client.entity.render;
 
-import org.lwjgl.opengl.GL11;
-
-import com.viesis.viescraft.api.EnumsVC;
 import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.client.InitParticlesVCRender;
 import com.viesis.viescraft.client.entity.model.bomb.ModelBombBig;
-import com.viesis.viescraft.client.entity.model.v1.ModelAirshipV1Frame;
 import com.viesis.viescraft.common.entity.EntityBombBig;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipCore;
 

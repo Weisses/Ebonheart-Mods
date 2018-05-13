@@ -44,9 +44,9 @@ public class GuiCustomizeMenuCoreMain extends GuiContainerVC {
     	
     	GuiVC.button505 = new GuiButtonGeneral1VC(505, this.guiLeft + 125, this.guiTop + 177, 40, 14, References.localNameVC("vc.button.back"), 2);
     	
-    	GuiVC.buttonT1 = new GuiButtonGeneral1VC(11, this.guiLeft + 17, this.guiTop + startPlace - 4 + (22 * 0), 69, 14, References.localNameVC("Frame"), 0);
-		GuiVC.buttonT2 = new GuiButtonGeneral1VC(12, this.guiLeft + 17, this.guiTop + startPlace - 4 + (22 * 1), 69, 14, References.localNameVC("Engine"), 0);
-		GuiVC.buttonT3 = new GuiButtonGeneral1VC(13, this.guiLeft + 17, this.guiTop + startPlace - 4 + (22 * 2), 69, 14, References.localNameVC("Balloon"), 0);
+    	GuiVC.buttonT1 = new GuiButtonGeneral1VC(11, this.guiLeft + 17, this.guiTop + startPlace - 4 + (22 * 0), 69, 14, References.localNameVC("vc.main.frame"), 0);
+		GuiVC.buttonT2 = new GuiButtonGeneral1VC(12, this.guiLeft + 17, this.guiTop + startPlace - 4 + (22 * 1), 69, 14, References.localNameVC("vc.main.engine"), 0);
+		GuiVC.buttonT3 = new GuiButtonGeneral1VC(13, this.guiLeft + 17, this.guiTop + startPlace - 4 + (22 * 2), 69, 14, References.localNameVC("vc.main.balloon"), 0);
 		
     	this.buttonList.add(GuiVC.buttonMM1);
 		this.buttonList.add(GuiVC.buttonMM2);

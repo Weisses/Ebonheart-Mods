@@ -59,8 +59,8 @@ public class GuiCustomizeMenuChangeName extends GuiContainerVC {
         this.textName.setText(String.valueOf(this.textNameStorage));
     	this.textName.setFocused(false);
     	
-    	GuiVC.buttonA12 = new GuiButtonGeneral1VC(12, this.guiLeft + 22, this.guiTop + 58+12, 42, 14, "Apply", 1);
-		GuiVC.buttonA13 = new GuiButtonGeneral1VC(13, this.guiLeft + 112, this.guiTop + 58+12, 42, 14, "Back", 2);
+    	GuiVC.buttonA12 = new GuiButtonGeneral1VC(12, this.guiLeft + 22, this.guiTop + 58+12, 42, 14, References.localNameVC("vc.button.apply"), 1);
+		GuiVC.buttonA13 = new GuiButtonGeneral1VC(13, this.guiLeft + 112, this.guiTop + 58+12, 42, 14, References.localNameVC("vc.button.back"), 2);
 		
 		GuiVC.buttonA20 = new GuiButtonGeneral2VC(20, this.guiLeft + 148, this.guiTop + 33+4, 14, 14, "", 1);
 		

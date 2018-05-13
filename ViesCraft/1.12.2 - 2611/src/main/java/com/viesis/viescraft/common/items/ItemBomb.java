@@ -40,31 +40,31 @@ public class ItemBomb extends Item {
 		
 		if(stack.getMetadata() == 0)
 		{
-			tooltip.add(References.localNameVC("vc.item.tt.bomb.0.1"));
-			tooltip.add(References.localNameVC("vc.item.tt.bomb.0.2"));
+			tooltip.add(References.Old_I18n.translateToLocalFormatted("vc.item.tt.bomb.0.1"));
+			tooltip.add(References.Old_I18n.translateToLocalFormatted("vc.item.tt.bomb.0.2"));
 			tooltip.add("");
-			tooltip.add(References.localNameVC("vc.item.tt.bomb.0.3"));
+			tooltip.add(References.Old_I18n.translateToLocalFormatted("vc.item.tt.bomb.0.3"));
 		}
 		else if(stack.getMetadata() == 1)
 		{
-			tooltip.add(TextFormatting.GOLD + References.localNameVC("vc.item.tt.bomb.1.1"));
-			tooltip.add(TextFormatting.GOLD + References.localNameVC("vc.item.tt.bomb.1.2"));
+			tooltip.add(TextFormatting.GOLD + References.Old_I18n.translateToLocalFormatted("vc.item.tt.bomb.1.1"));
+			tooltip.add(TextFormatting.GOLD + References.Old_I18n.translateToLocalFormatted("vc.item.tt.bomb.1.2"));
 			tooltip.add("");
-			tooltip.add(TextFormatting.GOLD + References.localNameVC("vc.item.tt.bomb.1.3"));
+			tooltip.add(TextFormatting.GOLD + References.Old_I18n.translateToLocalFormatted("vc.item.tt.bomb.1.3"));
 		}
 		else if(stack.getMetadata() == 2)
 		{
-			tooltip.add(TextFormatting.GOLD + References.localNameVC("vc.item.tt.bomb.2.1"));
-			tooltip.add(TextFormatting.GOLD + References.localNameVC("vc.item.tt.bomb.2.2"));
+			tooltip.add(TextFormatting.GOLD + References.Old_I18n.translateToLocalFormatted("vc.item.tt.bomb.2.1"));
+			tooltip.add(TextFormatting.GOLD + References.Old_I18n.translateToLocalFormatted("vc.item.tt.bomb.2.2"));
 			tooltip.add("");
-			tooltip.add(TextFormatting.GOLD + References.localNameVC("vc.item.tt.bomb.2.3"));
+			tooltip.add(TextFormatting.GOLD + References.Old_I18n.translateToLocalFormatted("vc.item.tt.bomb.2.3"));
 		}
 		else if(stack.getMetadata() == 3)
 		{
-			tooltip.add(TextFormatting.GOLD + References.localNameVC("vc.item.tt.bomb.3.1"));
-			tooltip.add(TextFormatting.GOLD + References.localNameVC("vc.item.tt.bomb.3.2"));
+			tooltip.add(TextFormatting.GOLD + References.Old_I18n.translateToLocalFormatted("vc.item.tt.bomb.3.1"));
+			tooltip.add(TextFormatting.GOLD + References.Old_I18n.translateToLocalFormatted("vc.item.tt.bomb.3.2"));
 			tooltip.add("");
-			tooltip.add(TextFormatting.GOLD + References.localNameVC("vc.item.tt.bomb.3.3"));
+			tooltip.add(TextFormatting.GOLD + References.Old_I18n.translateToLocalFormatted("vc.item.tt.bomb.3.3"));
 		}
 		
 		tooltip.add(TextFormatting.DARK_GREEN + "================================");
@@ -73,20 +73,20 @@ public class ItemBomb extends Item {
 	@Override
 	public String getItemStackDisplayName(ItemStack stack)
     {
-		String colorName = TextFormatting.WHITE + References.localNameVC("item.vc:item_bomb_casing.name");
+		String colorName = TextFormatting.WHITE + References.Old_I18n.translateToLocalFormatted("item.vc:item_bomb_casing.name");
 		
 		switch(stack.getMetadata())
 		{
 			case 0:
-				return colorName = TextFormatting.WHITE + References.localNameVC("item.vc:item_bomb_casing.name");
+				return colorName = TextFormatting.WHITE + References.Old_I18n.translateToLocalFormatted("item.vc:item_bomb_casing.name");
 			case 1:
-				return colorName = TextFormatting.YELLOW + References.localNameVC("item.vc:item_bomb_small.name");
+				return colorName = TextFormatting.YELLOW + References.Old_I18n.translateToLocalFormatted("item.vc:item_bomb_small.name");
 			case 2:
-				return colorName = TextFormatting.YELLOW + References.localNameVC("item.vc:item_bomb_big.name");
+				return colorName = TextFormatting.YELLOW + References.Old_I18n.translateToLocalFormatted("item.vc:item_bomb_big.name");
 			case 3:
-				return colorName = TextFormatting.YELLOW + References.localNameVC("item.vc:item_bomb_scatter.name");
+				return colorName = TextFormatting.YELLOW + References.Old_I18n.translateToLocalFormatted("item.vc:item_bomb_scatter.name");
 			default:
-				return colorName = TextFormatting.WHITE + References.localNameVC("item.vc:item_bomb_casing.name");
+				return colorName = TextFormatting.WHITE + References.Old_I18n.translateToLocalFormatted("item.vc:item_bomb_casing.name");
 		}
     }
 	

@@ -1,12 +1,14 @@
 package com.viesis.viescraft.client.gui.guidebooks;
 
+import org.apache.commons.lang3.StringUtils;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
+import com.viesis.viescraft.api.ItemsVC;
 import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.api.util.Keybinds;
-import com.viesis.viescraft.client.gui.GuiButtonGuideBookVC;
 import com.viesis.viescraft.client.gui.buttons.GuiButtonGeneral1VC;
+import com.viesis.viescraft.client.gui.buttons.GuiButtonGuideBookVC;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 
 import net.minecraft.client.Minecraft;
@@ -14,20 +16,26 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class GuiGuidebookMainStrings extends GuiScreen {
 	
-    protected static final int bookTotalPages = 75;
+    protected static final int bookTotalPages = 77;
     protected static ResourceLocation[] bookPageTextures = new ResourceLocation[bookTotalPages];
     protected static String[] stringPageText = new String[bookTotalPages];
     
     protected static String[] stringPageTextLeftTitle = new String[bookTotalPages];
     protected static String[] stringPageTextLeft = new String[bookTotalPages];
+    protected static String[] stringPageTextLeftButtons = new String[bookTotalPages];
     protected static String[] stringPageTextRight = new String[bookTotalPages];
     protected static String[] stringPageTextRightTooltip = new String[bookTotalPages];
+    protected static String[] stringPageTextRightTooltipIngredient = new String[bookTotalPages];
     
     public GuiGuidebookMainStrings()
     {
@@ -56,476 +64,346 @@ public class GuiGuidebookMainStrings extends GuiScreen {
         bookPageTextures[22] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/main/page_22.png");
         bookPageTextures[23] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/main/page_23.png");
         bookPageTextures[24] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/main/page_24.png");
-        
-        
+        bookPageTextures[25] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/main/page_25.png");
         
 		//+ "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii"
         
-        
-        
         //Title
         stringPageTextLeftTitle[0] = 
-    		  "\n\n\n\n\n\n\n\n\n\n"
-    		+ "    " + "\u00A7l\u00A7nThe \'Vies\' Craft\u00A7r"
+    		  "\u00A7l\u00A7nThe \'Vies\' Craft\u00A7r"
     		+ "\n\n" 
-    		+ "          " + "\u00A7oby Viesis\u00A7r"
-    		+ "\n\n\n\n" 
-    		;
+    		+ "       " + "\u00A7oby Viesis\u00A7r"
+    		+ "\n\n\n\n";
         
-        stringPageTextLeft[0] = 
-  		  	  " "
-    		;
+        stringPageTextLeft[0] = " ";
+        stringPageTextLeftButtons[0] = " ";
         
         stringPageTextRight[0] = 
-    		  "\n\n\n"
-    		+ "    Nemanor said it wasn't possible! He "
-    		+ "always said players can only fly via "
-    		+ "the powers of the \"\u00A7ocreative\u00A7r\". Well "
-    		+ "today I prove him wrong. My airships "
-    		+ "will forever change how we explore "
-    		+ "our world. I now share my wisdom with "
-    		+ "you... "
+    		  "\n\n\n" 
+    		+ "    " + References.localNameVC("vc.guidebook.pg2.1")
+    		+ References.localNameVC("vc.guidebook.pg2.2")
+    		+ References.localNameVC("vc.guidebook.pg2.3")
+    		+ References.localNameVC("vc.guidebook.pg2.4")
+    		+ References.localNameVC("vc.guidebook.pg2.5")
     		+ "\n\n"
-    		+ "    In this guide, you will learn what "
-    		+ "you need to know to get the most out "
-    		+ "of your airships. This includes basic "
-    		+ "info on airship use, behavior, and "
-    		+ "various items/recipes, among other "
-    		+ "things.";
+    		+ "    " + References.localNameVC("vc.guidebook.pg2.6")
+    		+ References.localNameVC("vc.guidebook.pg2.7")
+    		+ "\n\n"
+    		+ "    " + References.localNameVC("vc.guidebook.pg2.8")
+    		+ References.localNameVC("vc.guidebook.pg2.9");
         
         //TODO Main Info
         stringPageTextLeft[1] = 
     		  "\n\n\n"
-    		+ "   Let's get into a few recipes to get "
-    		+ "you started. "
-    		+ "\n\n\n"
-    		+ "Select an item below to display basic "
-    		+ "information and crafting recipes."
-    		+ "\n\n"
-    		//+ "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii"
+    		+ "   " + References.localNameVC("vc.guidebook.pg3.1")
     		;
+        stringPageTextLeftButtons[1] = "\n\n\n\n\n\n\n" + References.localNameVC("vc.guidebook.generic.1");
         
         stringPageTextRight[1] = " ";
         
         //------------------------------------
         
         stringPageTextRightTooltip[1] = 
-    		  "Item Recipe:"
+        		References.localNameVC("vc.guidebook.generic.2") + " : "
     		+ "\n\n"
-    		+ "                 \u00A7l\u00A7nLogic Chip\u00A7r"
+    		+ "                 \u00A7l\u00A7n" + "Logic Chip" + "\u00A7r"
     		+ "\n\n"
-    		+ "   This sleek and compact chip is an "
-    		+ "item that will be used a lot when making "
-    		+ "airship parts, modules, upgrades... "
-    		+ "\n"
-    		+ "You name it! "
-    		+ "\n\n\n\n\n"
-    		+ "\u00A7o"
-    		+ "Ingredient list:"
-    		+ "\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Cobblestone, Redstone, Gold Nugget"
-    		+ "\u00A7r"
-    		;
-        
+    		+ "   " + References.localNameVC("vc.guidebook.pg4.1a");
+        stringPageTextRightTooltipIngredient[1] = 
+        		References.localNameVC("vc.guidebook.generic.4") + " : "
+    	    + "\n" + "\u00A7o\u00A7l"
+    	    + Blocks.COBBLESTONE.getLocalizedName() + ", " 
+    		+ References.localNameVC(Items.REDSTONE.getUnlocalizedName() + ".name") + ", " 
+    		+ References.localNameVC(Items.GOLD_NUGGET.getUnlocalizedName() + ".name") + "\u00A7r";
+        	
         stringPageTextRightTooltip[2] = 
-      		  "Block Recipe:"
+        		References.localNameVC("vc.guidebook.generic.3") + " : "
       		+ "\n\n"
       		+ "           \u00A7l\u00A7nAirship Workbench\u00A7r"
       		+ "\n\n"
-      		+ "   Items placed inside will stay upon "
-      		+ "leaving the workbench! As an added "
-      		+ "bonus, the items stored can be seen "
-      		+ "by anyone looking at the workbench "
-      		+ "itself."
-      		+ "\n\n\n\n"
-      		+ "\u00A7o"
-      		+ "Ingredient list:"
-      		+ "\u00A7r"
-      		+ "\n"
-      		+ "\u00A7o\u00A7l"
-      		+ "Crafting Table, Logic Chip"
-      		+ "\u00A7r"
-      		;
+      		+ "   " + References.localNameVC("vc.guidebook.pg4.1b");
+        stringPageTextRightTooltipIngredient[2] = 
+        		References.localNameVC("vc.guidebook.generic.4") + " : "
+    	    + "\n" + "\u00A7o\u00A7l"
+    	    + Blocks.CRAFTING_TABLE.getLocalizedName() + ", " 
+    		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name")+ "\u00A7r";
         
         stringPageTextRightTooltip[3] = 
-      		  "Item Recipe:"
+        		References.localNameVC("vc.guidebook.generic.2") + " : "
       		+ "\n\n"
       		+ "              \u00A7l\u00A7nAirship Balloon\u00A7r"
       		+ "\n\n"
-      		+ "   Leather that has been processed "
-      		+ "to create a durable balloon. Note that "
-      		+ "some airship types may require more "
-      		+ "than 1 balloon."
-      		+ "\n\n\n\n\n"
-      		+ "\u00A7o"
-      		+ "Ingredient list:"
-      		+ "\u00A7r"
-      		+ "\n"
-      		+ "\u00A7o\u00A7l"
-      		+ "Leather, String"
-      		+ "\u00A7r"
-      		;
+      		+ "   " + References.localNameVC("vc.guidebook.pg4.1c");
+        stringPageTextRightTooltipIngredient[3] = 
+        		References.localNameVC("vc.guidebook.generic.4") + " : "
+    	    + "\n" + "\u00A7o\u00A7l"
+    	    + References.localNameVC(Items.LEATHER.getUnlocalizedName() + ".name") + ", " 
+    		+ References.localNameVC(Items.STRING.getUnlocalizedName() + ".name") + "\u00A7r";
         
         stringPageTextRightTooltip[4] = 
-    		  "Item Recipe:"
+        		References.localNameVC("vc.guidebook.generic.2") + " : "
     		+ "\n\n"
     		+ "               \u00A7l\u00A7nAirship Frame\u00A7r"
     		+ "\n\n"
-    		+ "   A reinforced frame that all airship "
-    		+ "parts can connect to. This is a core "
-      		+ "component in all airships."
-    		+ "\n\n\n\n\n\n"
-    		+ "\u00A7o"
-    		+ "Ingredient list:"
-    		+ "\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Minecart, Iron Ingot, Logic Chip"
-    		+ "\u00A7r"
-    		;
+    		+ "   " + References.localNameVC("vc.guidebook.pg4.1d");
+        stringPageTextRightTooltipIngredient[4] = 
+        		References.localNameVC("vc.guidebook.generic.4") + " : "
+    	    + "\n" + "\u00A7o\u00A7l"
+    		+ References.localNameVC(Items.MINECART.getUnlocalizedName() + ".name") + ", " 
+    		+ References.localNameVC(Items.IRON_INGOT.getUnlocalizedName() + ".name") + ", " 
+    	    + References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + "\u00A7r";
         
         stringPageTextRightTooltip[5] = 
-        	  "Item Recipe:"
+        		References.localNameVC("vc.guidebook.generic.2") + " : "
             + "\n\n"
         	+ "              \u00A7l\u00A7nAirship Engine\u00A7r"
       		+ "\n\n"
-      		+ "   A special, light-weight engine "
-      		+ "designed for all airships. This is a "
-      		+ "core component in all airships."
-      		+ "\n\n\n\n\n\n"
-      		+ "\u00A7oIngredient list:\u00A7r"
-      		+ "\n"
-      		+ "\u00A7o\u00A7lIron Ingot, Iron Bars, Piston, "
-      		+ "Logic Chip"
-      		+ "\u00A7r"
-      		;
+      		+ "   " + References.localNameVC("vc.guidebook.pg4.1e");
+        stringPageTextRightTooltipIngredient[5] = 
+        		References.localNameVC("vc.guidebook.generic.4") + " : "
+    	    + "\n" + "\u00A7o\u00A7l"
+    	    + Blocks.PISTON.getLocalizedName() + ", " 
+    	    + Blocks.IRON_BARS.getLocalizedName() + ", " 
+    		+ References.localNameVC(Items.IRON_INGOT.getUnlocalizedName() + ".name") + ", " 
+    	    + References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + "\u00A7r";
+        
         stringPageTextRightTooltip[6] = 
-          	  "Item Recipe:"
+        		References.localNameVC("vc.guidebook.generic.2") + " : "
             + "\n\n"
           	+ "             \u00A7l\u00A7nAirship Ignition\u00A7r"
       		+ "\n\n"
-      		+ "   Converts fuel into energy that all "
-      		+ "airships can safely use. This is a core "
-      		+ "component in all airships."
-      		+ "\n\n\n\n\n\n"
-      		+ "\u00A7oIngredient list:\u00A7r"
-      		+ "\n"
-      		+ "\u00A7o\u00A7lIron Ingot, Iron Bars, Gold "
-      		+ "Ingot, Diamond, Magma Block, "
-      		+ "Logic Chip"
-      		+ "\u00A7r"
-      		;
+      		+ "   " + References.localNameVC("vc.guidebook.pg4.1f");
+        stringPageTextRightTooltipIngredient[6] = 
+        		References.localNameVC("vc.guidebook.generic.4") + " : "
+    	    + "\n" + "\u00A7o\u00A7l"
+    		+ References.localNameVC(Items.IRON_INGOT.getUnlocalizedName() + ".name") + ", " 
+    		+ Blocks.IRON_BARS.getLocalizedName() + ", " 
+    	    + References.localNameVC(Items.GOLD_INGOT.getUnlocalizedName() + ".name") + ", " 
+    	    + References.localNameVC(Items.DIAMOND.getUnlocalizedName() + ".name") + ", " 
+    		+ Blocks.MAGMA.getLocalizedName() + ", " 
+    	    + References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + "\u00A7r";
       
       //===========================================================
       
       stringPageTextLeft[2] = 
-  	  		"   It is now time to assemble our airships. "
-  	  		+ "There are \u00A7l4\u00A7r "
-			+ "airship types to choose from: "
-			+ "\n\n"
-			+ "The \u00A75\u00A7l\u00A7o"
-			+ "Viesdenburg"
-			+ "\u00A7r\u00A70. "
-			+ "\n"
-			+ "The \u00A75\u00A7l\u00A7o"
-			+ "Viesigible"
-			+ "\u00A7r\u00A70. "
-			+ "\n"
-			+ "The \u00A75\u00A7l\u00A7o"
-			+ "Viesepelin"
-			+ "\u00A7r\u00A70. "
-			+ "\n"
-			+ "The \u00A75\u00A7l\u00A7o"
-			+ "Viesakron"
-			+ "\u00A7r\u00A70. "
-			+ "\n\n"
-			+ "\u00A7o(Names can be changed in the config.)\u00A7r"
-  	  		+ "\n\n\n\n"
-	  	  	+ "Select an item below to display basic "
-			+ "information and crafting recipes."
-    		+ "\n"
-    		+ "\n"
-    		//+ "iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii"
-    		;
-        
+  	  		"   "
+  	  		+ References.localNameVC("vc.guidebook.pg5.1") 
+  	  		+ References.localNameVC("vc.guidebook.pg5.2")
+  	  		+ References.localNameVC("vc.guidebook.pg5.3");
+      stringPageTextLeftButtons[2] = " ";
+      
       stringPageTextRight[2] = " ";
-        
+      
       stringPageTextRightTooltip[7] = 
-    		  "V1 Airship Recipe:"
+    		  References.localNameVC("vc.guidebook.generic.2") + " : "
             + "\n\n"
-        	//+ "             \u00A7l\u00A7n" + ViesCraftConfig.v1AirshipName + " (V1)\u00A7r"
+        	+ "             \u00A7l\u00A7n" + "Airship" + "\u00A7r"
     		+ "\n\n"
-    		+ "   This is the classic airship style for classy people."
-    		+ "\n\n\n\n"
-    		+ "Versions "
-    		+ "\u00A7l"
-    		+ "DO NOT "
-    		+ "\u00A7r"
-    		+ "affect the speed, max altitude, or fuel efficiency."
-    		+ "\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Airship Balloon, Airship Frame, "
-    		+ "Airship Engine, Airship Ignition, "
-    		+ "Lead"
-    		+ "\u00A7r"
-    		;
-        		
-	  stringPageTextRightTooltip[8] = 
-    		  "V2 Airship Recipe:"
-            + "\n\n"
-        	//+ "               \u00A7l\u00A7n" + ViesCraftConfig.v2AirshipName + " (V2)\u00A7r"
-    		+ "\n\n"
-    		+ "   This is a unique twist on the airship design."
-    		+ "\n\n\n\n"
-    		+ "Versions "
-    		+ "\u00A7l"
-    		+ "DO NOT "
-    		+ "\u00A7r"
-    		+ "affect the speed, max altitude, or fuel efficiency."
-    		+ "\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Airship Balloon, Airship Frame, "
-    		+ "Airship Engine, Airship Ignition, "
-    		+ "Lead"
-    		+ "\u00A7r"
-    		;
-        		
-	  stringPageTextRightTooltip[9] = 
-    		  "V3 Airship Recipe:"
-            + "\n\n"
-        	//+ "              \u00A7l\u00A7n" + ViesCraftConfig.v3AirshipName + " (V3)\u00A7r"
-    		+ "\n\n"
-    		+ "   An airship made for enthusiasts, by airship enthusiasts."
-    		+ "\n\n\n\n"
-    		+ "Versions "
-    		+ "\u00A7l"
-    		+ "DO NOT "
-    		+ "\u00A7r"
-    		+ "affect the speed, max altitude, or fuel efficiency."
-    		+ "\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Airship Balloon, Airship Frame, "
-    		+ "Airship Engine, Airship Ignition, "
-    		+ "Lead"
-    		+ "\u00A7r"
-    		;
-        		
-	  stringPageTextRightTooltip[10] = 
-    		  "V4 Airship Recipe:"
-            + "\n\n"
-        	//+ "              \u00A7l\u00A7n" + ViesCraftConfig.v4AirshipName + " (V4)\u00A7r"
-    		+ "\n\n"
-    		+ "   Steampunk airship ingenuity at its finest. Modeled after V1 airships."
-    		+ "\n\n\n\n"
-    		+ "Versions "
-    		+ "\u00A7l"
-    		+ "DO NOT "
-    		+ "\u00A7r"
-    		+ "affect the speed, max altitude, or fuel efficiency."
-    		+ "\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Airship Balloon, Airship Frame, "
-    		+ "Airship Engine, Airship Ignition, "
-    		+ "Lead"
-    		+ "\u00A7r"
-    		;
+    		+ "   " + References.localNameVC("vc.guidebook.pg6.1a");
+      stringPageTextRightTooltipIngredient[7] = 
+      		References.localNameVC("vc.guidebook.generic.4") + " : "
+  	    + "\n" + "\u00A7o\u00A7l"
+  		+ References.localNameVC(ItemsVC.AIRSHIP_BALLOON.getUnlocalizedName() + ".name") + ", " 
+  		+ References.localNameVC(ItemsVC.AIRSHIP_FRAME.getUnlocalizedName() + ".name") + ", " 
+  	    + References.localNameVC(ItemsVC.AIRSHIP_ENGINE.getUnlocalizedName() + ".name") + ", " 
+  	    + References.localNameVC(ItemsVC.AIRSHIP_IGNITION.getUnlocalizedName() + ".name") + ", " 
+		+ References.localNameVC(Items.LEAD.getUnlocalizedName() + ".name") + "\u00A7r";
+    
 	  
 //===========================================================
       
       stringPageTextLeft[3] = 
-  	  		  "   Here are a few random items you can make, just for some extra utility. "
-  	  		+ "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
-	  	  	+ "Select an item below to display basic "
-			+ "information and crafting recipes."
-    		+ "\n"
-    		+ "\n"
-    		;
-        
+  	  		  "   " + References.localNameVC("vc.guidebook.pg7.1");
+      stringPageTextLeftButtons[3] = "\n\n\n\n" + References.localNameVC("vc.guidebook.generic.1");
+      
       stringPageTextRight[3] = " ";
         
       stringPageTextRightTooltip[11] = 
-    		  "Item Recipe:"
+    		  References.localNameVC("vc.guidebook.generic.2") + " : "
             + "\n\n"
         	+ "             \u00A7l\u00A7n" + "Viesoline Pellets" + "\u00A7r"
     		+ "\n\n"
-    		+ "   Redstone-infused fuel designed for "
-    		+ "all airship versions. You can use "
-    		+ "either Coal or Charcoal when making "
-    		+ "this fuel."
-    		+ "\n\n\n\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Coal/Charcoal, Redstone "
-    		+ "\u00A7r"
-    		;
-        		
+    		+ "   " + References.localNameVC("vc.guidebook.pg8.1a");
+      stringPageTextRightTooltipIngredient[11] = 
+	      		References.localNameVC("vc.guidebook.generic.4") + " : "
+	  	    + "\n" 
+	  		+ "\u00A7o\u00A7l"
+	  		+ References.localNameVC(Items.COAL.getUnlocalizedName() + ".name") + "/Charcoal, " 
+	  		+ References.localNameVC(Items.REDSTONE.getUnlocalizedName() + ".name") + "\u00A7r";
+      
+      
 	  stringPageTextRightTooltip[12] = 
-    		  "Item Recipe:"
+			  References.localNameVC("vc.guidebook.generic.2") + " : "
             + "\n\n"
         	+ "               \u00A7l\u00A7n" + "Dismounter" + "\u00A7r"
     		+ "\n\n"
-    		+ "   Left-Click on a mounted entity to "
-    		+ "safely dismount it. This does no "
-    		+ "damage, may cause laughter. Doesn't "
-    		+ "work on players."
-    		+ "\n\n\n\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Leather, Stick, Feather"
-    		+ "\u00A7r"
-    		;
+    		+ "   " + References.localNameVC("vc.guidebook.pg8.1b");
+	  stringPageTextRightTooltipIngredient[12] = 
+    		References.localNameVC("vc.guidebook.generic.4") + " : "
+	    + "\n" + "\u00A7o\u00A7l"
+		+ References.localNameVC(Items.LEATHER.getUnlocalizedName() + ".name") + ", " 
+	    + References.localNameVC(Items.STICK.getUnlocalizedName() + ".name") + ", " 
+	    + References.localNameVC(Items.FEATHER.getUnlocalizedName() + ".name") + "\u00A7r";
         		
 	  stringPageTextRightTooltip[13] = 
-    		  "Item Recipe:"
+			  References.localNameVC("vc.guidebook.generic.2") + " : "
             + "\n\n"
         	+ "         \u00A7l\u00A7n" + "Dismounter (Player)" + "\u00A7r"
     		+ "\n\n"
-    		+ "   This item works the same as the "
-    		+ "Dismounter, except it also dismounts "
-    		+ "players riding anything. This includes "
-    		+ "airships, minecarts, boats, animals, etc. "
+    		+ "    " + References.localNameVC("vc.guidebook.pg8.1c")
     		+ "\n\n"
-    		+ "This can be disabled via the configs."
-    		+ "\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Leather, Stick, Feather"
-    		+ "\u00A7r"
-    		;
-        		
+    		+ References.localNameVC("vc.guidebook.pg8.1d");
+	  stringPageTextRightTooltipIngredient[13] =  
+	    		References.localNameVC("vc.guidebook.generic.4") + " : "
+		    + "\n" + "\u00A7o\u00A7l"
+			+ References.localNameVC(Items.LEATHER.getUnlocalizedName() + ".name") + ", " 
+		    + References.localNameVC(Items.STICK.getUnlocalizedName() + ".name") + ", " 
+		    + References.localNameVC(Items.FEATHER.getUnlocalizedName() + ".name") + "\u00A7r";
+        	
+	  stringPageTextRightTooltip[71] = 
+	    		References.localNameVC("vc.guidebook.generic.2") + " : "
+	          + "\n\n"
+	      	+ "             \u00A7l\u00A7n" + "Bomb Casing" + "\u00A7r"
+	  		+ "\n\n"
+	  		+ "   " + References.localNameVC("vc.guidebook.pg8.1e");
+	    stringPageTextRightTooltipIngredient[71] = 
+        		References.localNameVC("vc.guidebook.generic.4") + " : "
+    	    + "\n" + "\u00A7o\u00A7l"
+    		+ References.localNameVC(Items.IRON_INGOT.getUnlocalizedName() + ".name") + ", " 
+    		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") +  ", "
+    	    + Blocks.COBBLESTONE.getLocalizedName() + "\u00A7r";
+	    
+	    stringPageTextRightTooltip[72] = 
+	    		References.localNameVC("vc.guidebook.generic.2") + " : "
+	          + "\n\n"
+	      	+ "             \u00A7l\u00A7n" + "Small Bomb" + "\u00A7r"
+	  		+ "\n\n"
+	  		+ "   " + References.localNameVC("vc.guidebook.pg8.1f");
+	    stringPageTextRightTooltipIngredient[72] = 
+        		References.localNameVC("vc.guidebook.generic.4") + " : "
+    	    + "\n" + "\u00A7o\u00A7l"
+    		+ References.localNameVC("item.vc:item_bomb_casing.name") + ", " 
+    		+ Blocks.TNT.getLocalizedName() + ", " 
+    	    + References.localNameVC(Items.STRING.getUnlocalizedName() + ".name") + ", " 
+    	    + References.localNameVC(Items.REDSTONE.getUnlocalizedName() + ".name") + "\u00A7r";
+	    
+	    stringPageTextRightTooltip[73] = 
+	    		References.localNameVC("vc.guidebook.generic.2") + " : "
+	          + "\n\n"
+	      	+ "             \u00A7l\u00A7n" + "Big Bomb" + "\u00A7r"
+	  		+ "\n\n"
+	  		+ "   " + References.localNameVC("vc.guidebook.pg8.1g");
+	    stringPageTextRightTooltipIngredient[73] = 
+        		References.localNameVC("vc.guidebook.generic.4") + " : "
+			+ "\n" + "\u00A7o\u00A7l"
+    		+ References.localNameVC("item.vc:item_bomb_casing.name") + ", " 
+    		+ Blocks.TNT.getLocalizedName() + ", " 
+    	    + References.localNameVC(Items.STRING.getUnlocalizedName() + ".name") + ", " 
+    	    + References.localNameVC(Items.REDSTONE.getUnlocalizedName() + ".name") + "\u00A7r";
+        
+	    stringPageTextRightTooltip[74] = 
+	    		References.localNameVC("vc.guidebook.generic.2") + " : "
+	          + "\n\n"
+	      	+ "             \u00A7l\u00A7n" + "Scatter Bomb" + "\u00A7r"
+	  		+ "\n\n"
+	  		+ "   " + References.localNameVC("vc.guidebook.pg8.1h");
+	    stringPageTextRightTooltipIngredient[74] = 
+        		References.localNameVC("vc.guidebook.generic.4") + " : "
+			+ "\n" + "\u00A7o\u00A7l"
+    		+ References.localNameVC("item.vc:item_bomb_casing.name") + ", " 
+    		+ Blocks.TNT.getLocalizedName() + ", " 
+    	    + References.localNameVC(Items.STRING.getUnlocalizedName() + ".name") + ", " 
+    	    + References.localNameVC(Items.REDSTONE.getUnlocalizedName() + ".name") + "\u00A7r";
+        
 	  //===================================
 	  
 	  //TODO Airship Interactions Strings
 	  stringPageTextLeft[4] = 
 			  "\n\n\n"
-			+ "   Now that we have our airships made, "
-			+ "it is time to use the item to spawn it. "
-			+ "With your airship in your main hand, "
-			+ "\u00A75[Hold Shift + Right Click]\u00A70 to throw "
-			+ "it! Upon impact, it will explode and spawn your airship."
+			+ "   " + References.localNameVC("vc.guidebook.pg9.1")
+			+ "\u00A75" + References.localNameVC("vc.guidebook.pg9.2") + "\u00A70"
+			+ References.localNameVC("vc.guidebook.pg9.3")
     		+ "\n\n"
-    		+ "   \u00A7o\u00A7l*These explosions are safe.*\u00A7r"
+    		+ "   \u00A7o\u00A7l " + References.localNameVC("vc.guidebook.pg9.4") + "\u00A7r"
     		+ "\n\n"
-    		+ "   To turn an airship back into an item, "
-    		+ "just hit it a few times empty handed. "
-    		+ "No need for any tools! I find that one "
-    		+ "shot with an arrow works quite well."
+    		+ "   " + References.localNameVC("vc.guidebook.pg9.5")
     		+ "\n\n\n\n\n\n\n"
-    		+ "   Once you have your airship out, "
-    		+ "\u00A75[Right Click]\u00A70 on it to begin riding. While "
-    		+ "in the airship, you will be able to see a "
-    		+ "HUD appear at the top of the screen. "
-    		+ "This will give you important information "
-    		+ "about the status of your airship."
+    		+ "   " + References.localNameVC("vc.guidebook.pg9.6")
+    		+ "\u00A75" + References.localNameVC("vc.guidebook.pg9.7") + "\u00A70"
+    		+ References.localNameVC("vc.guidebook.pg9.8")
     		;
-    		
+	  stringPageTextLeftButtons[4] = " ";
+	  
 	  stringPageTextRight[4] = 
 		    "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
 		    + "\u00A7l"
-		    + "      1.) On Indicator"
+		    + "      1.) " + References.localNameVC("vc.guidebook.pg10.1")
 		    + "\n\n"
-		    + "      2.) Current Altitude"
+		    + "      2.) " + References.localNameVC("vc.guidebook.pg10.2")
 		    + "\n\n"
-		    + "      3.) Current Module"
+		    + "      3.) " + References.localNameVC("vc.guidebook.pg10.3")
 		    + "\n\n"
-		    + "      4.) Max Altitude"
+		    + "      4.) " + References.localNameVC("vc.guidebook.pg10.4")
 		    + "\n\n"
-		    + "      5.) Total Fuel"
+		    + "      5.) " + References.localNameVC("vc.guidebook.pg10.5")
 		    + "\n\n"
-		    + "      6.) Active Fuel"
+		    + "      6.) " + References.localNameVC("vc.guidebook.pg10.6")
 		    + "\n\n"
-		    + "      7.) Fuel Timer"
+		    + "      7.) " + References.localNameVC("vc.guidebook.pg10.7")
 		    + "\u00A7r"
 		    ;
 	  
 	  stringPageTextLeft[5] = 
-		      "   Spawning your airship is only the "
-		    + "start. It doesn't do much good if you "
-		    + "don't know how to use it! "
+		      "   " + References.localNameVC("vc.guidebook.pg11.1")
 		    + "\n\n"
-		    + "   Interacting with your airship is quite easy. While riding in the airship, simply press the \u00A75["
+		    + "   " + References.localNameVC("vc.guidebook.pg11.2") + "\u00A75["
     		+ Keybinds.vcInventory.getDisplayName()
-    		+ " Key]\u00A70 to open the Main Menu of your airship."
+    		+ " Key]\u00A70 " + References.localNameVC("vc.guidebook.pg11.3")
     		+ "\n\n"
-    		+ " \u00A7l\u00A7o*Only drivers can use the GUI.*\u00A7r"
+    		+ " \u00A7l\u00A7o" + References.localNameVC("vc.guidebook.pg11.4") + "\u00A7r"
     		+ "\n\n\n\n"
-    		+ "   Your airship's Main Menu will look like the image on Page 12. Module info is covered in the Module section. "
+    		+ "   " + References.localNameVC("vc.guidebook.pg11.5")
     		+ "\n\n"
-    		+ "   \u00A7l1). \u00A7nMenu Navigation\u00A7r is how you "
-    		+ "will interact with various main menus "
-    		+ "available to your airships. The menu's "
-    		+ "button you are currently in will be "
-    		+ "grayed out."
+    		+ "   \u00A7l1). \u00A7n" + References.localNameVC("vc.guidebook.pg11.6") + "\u00A7r is how you "
+    		+  References.localNameVC("vc.guidebook.pg11.7")
     		+ "\n\n"
-    		+ "   \u00A7l2). \u00A7nStats Info\u00A7r will display your "
-    		+ "airships current stats. This includes "
-    		+ "Current Speed, Max Altitude, and Fuel "
-    		+ "Efficiency, along with any upgrades or "
-    		+ "enhancements already learned."
+    		+ "   \u00A7l2). \u00A7n" +  References.localNameVC("vc.guidebook.pg11.8") + "\u00A7r "
+    		+  References.localNameVC("vc.guidebook.pg11.9")
     		;
+	  stringPageTextLeftButtons[5] = " ";
 	  
 	  stringPageTextRight[5] = 
 		      "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
 		    + "\u00A7l"
-		    + "      1.) Menu Navigation"
+		    + "      1.) " + References.localNameVC("vc.guidebook.pg11.6")
 		    + "\n\n"
-		    + "      2.) Stats Info"
+		    + "      2.) " + References.localNameVC("vc.guidebook.pg11.8")
 		    + "\n\n"
-		    + "      3.) Fuel Interface"
+		    + "      3.) " + References.localNameVC("vc.guidebook.pg11.10")
 		    + "\n\n"
-		    + "      4.) Module Interface"
-		    + "\u00A7r"
-		    ;
+		    + "      4.) " + References.localNameVC("vc.guidebook.pg11.15")
+		    + "\u00A7r";
 	  
 	  stringPageTextLeft[6] = 
-			  "   \u00A7l3). \u00A7nFuel Interface\u00A7r will display "
-			+ "info on your airships current fuel. All "
-			+ "airships require fuel to fly. This does "
-			+ "include vanilla Minecraft fuels along "
-			+ "with most other mod's fuel."
-			+ "\n\n\n\n\n"
-			+ "   To add fuel, simply drag and drop "
-			+ "the fuel item into the fuel slot! When "
-			+ "this happens, the airship will consume "
-			+ "the item \u00A7o\u00A7l(only one at a time)\u00A7r and "
-			+ "start using it right away in the form of "
-			+ "\"Active Fuel\". "
+			  "   \u00A7l3). \u00A7n" + References.localNameVC("vc.guidebook.pg11.10") + "\u00A7r "
+			+ References.localNameVC("vc.guidebook.pg11.11")
+		    + "\n\n\n\n\n"
+			+ "   " + References.localNameVC("vc.guidebook.pg11.12")
 			+ "\n\n"
-			+ "   You can leave stacks of fuel "
-			+ "items in your fuel slot! Airships use only "
-			+ "one item at a time, only when there is "
-			+ "no \"Active Fuel\" left. No additional "
-			+ "items will be used without something "
-			+ "riding in the airship. "
+			+ "   "+ References.localNameVC("vc.guidebook.pg11.13")
 			+ "\n\n"
-			+ "   If the airship has \"Active Fuel\", it "
-			+ "will use it until it runs out, even if the "
-			+ "airship is empty. Don't leave animals in "
-			+ "your airships with fuel items! That is a "
-			+ "good way to waste your fuel...";
+			+ "   " + References.localNameVC("vc.guidebook.pg11.14")
 			;
+	  stringPageTextLeftButtons[6] = " ";
 	  
 	  stringPageTextRight[6] =  
 			  "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
 			+ "\u00A7l"
-			+ "      1.) Fuel Item Slot"
+			+ "      1.) " + References.localNameVC("vc.guidebook.pg14.1")
 			+ "\n\n"
-			+ "      2.) Active Fuel"
+			+ "      2.) " + References.localNameVC("vc.guidebook.pg14.2")
 			+ "\n\n"
-			+ "      3.) On Indicator"
+			+ "      3.) " + References.localNameVC("vc.guidebook.pg14.3")
 			+ "\u00A7r"
 			;
 	  
@@ -535,589 +413,524 @@ public class GuiGuidebookMainStrings extends GuiScreen {
 	  
 	  stringPageTextLeft[7] = 
 			  "\n\n\n"
-			+ "   The Upgrade system is a way for "
-			+ "players to enhance their base airship "
-			+ "stats. Currently there are "
-			+ "\u00A7l4 \u00A7r"
-			+ "types of "
-			+ "upgrades : "
+			+ "   " + References.localNameVC("vc.guidebook.pg15.1")
+			+ "\u00A7l 4 \u00A7r"
+			+ References.localNameVC("vc.guidebook.pg15.2")
+			+ " : "
 			+ "\n\n"
 			+ "\u00A75\u00A7l\u00A7o"
-			+ "- Frame"
+			+ "- " + References.localNameVC("vc.main.core")
 			+ "\n"
-			+ "- Core"
+			+ "- " + References.localNameVC("vc.main.frame")
 			+ "\n"
-			+ "- Engine"
+			+ "- " + References.localNameVC("vc.main.engine")
 			+ "\n"
-			+ "- Balloon"
+			+ "- " + References.localNameVC("vc.main.balloon")
 			+ "\u00A7r\u00A70"
 			+ "\n\n"
-			+ "The following pages will describe how "
-			+ "each upgrade affects your airships. "
+			+ References.localNameVC("vc.guidebook.pg15.3")
 			+ "\n\n\n\n\n\n\n\n\n\n\n"
-			+ "   Please note that you cannot skip "
-			+ "upgrade tiers! I.E.- You can't just "
-			+ "go right to the max tier!"
-			+ "\n\n "
-			+ "\n\n"
-			;
+			+ References.localNameVC("vc.guidebook.pg15.4")
+			+ "\n\n\n\n";
+	  stringPageTextLeftButtons[7] = " ";
+	  
 	  stringPageTextRight[7] = 
 		      "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
 		    + "\u00A7l"
-		    + "      1.) Menu Navigation"
+		    + "      1.) "+ References.localNameVC("vc.guidebook.pg11.6")
 		    + "\n\n"
-		    + "      2.) Installed Upgrade"
+		    + "      2.) "+ References.localNameVC("vc.guidebook.pg16.1")
 		    + "\n\n"
-		    + "      3.) Item Upgrade Slot"
+		    + "      3.) "+ References.localNameVC("vc.guidebook.pg16.2")
 		    + "\n\n"
-		    + "      4.) Accept Button"
-		    + "\u00A7r"
-		    ;
+		    + "      4.) "+ References.localNameVC("vc.guidebook.pg16.3")
+		    + "\u00A7r";
 	  
 	  stringPageTextLeft[8] = 
-			  "                    \u00A7l\u00A7nFrame\u00A7r "
+			  "                    \u00A7l\u00A7n" + References.localNameVC("vc.main.core") + "\u00A7r "
 		    + "\n\n"
-		    + "   This upgrade affects the max tier "
-		    + "an airship's Core, Engine, and Balloon "
-		    + "can have. Upgrading this will also "
-		    + "increase the overall rarity of the "
-		    + "airship. "
-		    + "\n\n"
-			;
-	  stringPageTextRight[8] = 
-			  " "
-			;
+		    + "   " + References.localNameVC("vc.guidebook.pg17.1");
+	  stringPageTextLeftButtons[8] = "\n\n\n\n\n\n\n" + References.localNameVC("vc.guidebook.generic.1");
+	  stringPageTextRight[8] = " ";
 	  
 	  stringPageTextLeft[9] = 
-			  "                    \u00A7l\u00A7nCore\u00A7r "
+			  "                    \u00A7l\u00A7n" + References.localNameVC("vc.main.frame") + "\u00A7r "
 		    + "\n\n"
-		    + "   This upgrade affects an airship's "
-		    + "base speed! The max Core tier is "
-		    + "dependant on the max Frame tier."
-		    + "\n\n"
-			;
-	  stringPageTextRight[9] = 
-			  " "
-			;
+		    + "   " + References.localNameVC("vc.guidebook.pg19.1");
+	  stringPageTextLeftButtons[9] = "\n\n\n\n\n\n\n" + References.localNameVC("vc.guidebook.generic.1");
+	  stringPageTextRight[9] = " ";
 	  
 	  stringPageTextLeft[10] = 
-			  "                    \u00A7l\u00A7nEngine\u00A7r "
+			  "                    \u00A7l\u00A7n" + References.localNameVC("vc.main.engine") + "\u00A7r "
 		    + "\n\n"
-		    + "   This upgrade affects an airship's "
-		    + "fuel efficiency. The max Engine tier is "
-		    + "dependant on the max Frame tier."
-		    + "\n\n"
-			;
-	  stringPageTextRight[10] = 
-			  " "
-			;
+		    + "   " + References.localNameVC("vc.guidebook.pg21.1");
+	  stringPageTextLeftButtons[10] = "\n\n\n\n\n\n\n" + References.localNameVC("vc.guidebook.generic.1");
+	  stringPageTextRight[10] = " ";
 	  
 	  stringPageTextLeft[11] = 
-			  "                    \u00A7l\u00A7nBalloon\u00A7r "
+			  "                    \u00A7l\u00A7n" + References.localNameVC("vc.main.balloon") + "\u00A7r "
 		    + "\n\n"
-		    + "   This upgrade affects an airship's "
-		    + "max altitude.  The max Balloon tier is "
-		    + "dependant on the max Frame tier."
-		    + "\n\n"
-			;
-	  stringPageTextRight[11] = 
-			  " "
-			;
-	  
-	  //--------------------------------------------------
-	  
-	  stringPageTextRightTooltip[14] = 
-    		  "Item Recipe:"
-            + "\n\n"
-        	+ "               \u00A7l\u00A7n" + "Frame Casing" + "\u00A7r"
-    		+ "\n\n"
-    		+ "   This casing has been upgraded with gold suitable for airship expansion. This is used in all Frame Tier upgrades."
-    		+ "\n\n\n\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Logic Chip, Iron Ingot, Gold Ingot, Iron Bar"
-    		+ "\u00A7r"
-    		;
-	  stringPageTextRightTooltip[15] = 
-    		  "Item Recipe:"
-            + "\n\n"
-        	+ "           \u00A7l\u00A7n" + "Frame Upgrade 1" + "\u00A7r"
-    		+ "\n\n"
-    		+ "   Allow airships to get upgrades! "
-    		+ "\n"
-    		+ "  This works in any airship version."
-    		+ "\n\n"
-    		+ "       \u00A7nUnlocks new frame visuals!\u00A7r"
-    		+ "\n\n"
-    		+ "           -=Base Upgrade=-"
-    		+ "\n"
-    		+ "Use in the airship's \"Upgrade\" menu."
-    		+ "\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Frame Casing, Logic Chip, Airship Frame "
-    		+ "\u00A7r"
-    		;
-	  stringPageTextRightTooltip[16] = 
-    		  "Item Recipe:"
-            + "\n\n"
-        	+ "           \u00A7l\u00A7n" + "Frame Upgrade 2" + "\u00A7r"
-    		+ "\n\n"
-    		+ "   Allow airships to get upgrades! "
-    		+ "\n"
-    		+ "  This works in any airship version."
-    		+ "\n\n"
-    		+ "       \u00A7nUnlocks new frame visuals!\u00A7r"
-    		+ "\n\n"
-    		+ "Must upgrade from a Tier 1 Frame."
-    		+ "\n"
-    		+ "Use in the airship's \"Upgrade\" menu."
-    		+ "\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Frame Casing, Logic Chip, Frame Upgrade 1"
-    		+ "\u00A7r"
-    		;
-	  stringPageTextRightTooltip[17] = 
-    		  "Item Recipe:"
-            + "\n\n"
-        	+ "           \u00A7l\u00A7n" + "Frame Upgrade 3" + "\u00A7r"
-    		+ "\n\n"
-    		+ "   Allow airships to get upgrades! "
-    		+ "\n"
-    		+ "  This works in any airship version."
-    		+ "\n\n"
-    		+ "       \u00A7nUnlocks new frame visuals!\u00A7r"
-    		+ "\n\n"
-    		+ "Must upgrade from a Tier 2 Frame."
-    		+ "\n"
-    		+ "Use in the airship's \"Upgrade\" menu."
-    		+ "\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Frame Casing, Logic Chip, Frame Upgrade 2"
-    		+ "\u00A7r"
-    		;
-	  stringPageTextRightTooltip[18] = 
-    		  "Item Recipe:"
-            + "\n\n"
-        	+ "           \u00A7l\u00A7n" + "Frame Upgrade 4" + "\u00A7r"
-    		+ "\n\n"
-    		+ "   Allow airships to get upgrades! "
-    		+ "\n"
-    		+ "  This works in any airship version."
-    		+ "\n\n"
-    		+ "       \u00A7nUnlocks new frame visuals!\u00A7r"
-    		+ "\n\n"
-    		+ "Must upgrade from a Tier 3 Frame."
-    		+ "\n"
-    		+ "Use in the airship's \"Upgrade\" menu."
-    		+ "\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Frame Casing, Logic Chip, Frame Upgrade 3"
-    		+ "\u00A7r"
-    		;
-	  stringPageTextRightTooltip[19] = 
-    		  "Item Recipe:"
-            + "\n\n"
-        	+ "           \u00A7l\u00A7n" + "Frame Upgrade 5" + "\u00A7r"
-    		+ "\n\n"
-    		+ "   Allow airships to get upgrades! "
-    		+ "\n"
-    		+ "  This works in any airship version."
-    		+ "\n\n"
-    		+ "       \u00A7nUnlocks new frame visuals!\u00A7r"
-    		+ "\n"
-    		+ "\u00A7nUnlocks Transparency and Coloring!\u00A7r"
-    		+ "\n"
-    		+ "Must upgrade from a Tier 4 Frame."
-    		+ "\n"
-    		+ "Use in the airship's \"Upgrade\" menu."
-    		+ "\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Frame Casing, Logic Chip, Frame Upgrade 4"
-    		+ "\u00A7r"
-    		;
+		    + "   " + References.localNameVC("vc.guidebook.pg23.1");
+	  stringPageTextLeftButtons[11] = "\n\n\n\n\n\n\n" + References.localNameVC("vc.guidebook.generic.1");
+	  stringPageTextRight[11] = " ";
 	  
 	  //-----------------------------------------
 	  
 	  stringPageTextRightTooltip[20] = 
-    		  "Item Recipe:"
+			  References.localNameVC("vc.guidebook.generic.2") + " : "
             + "\n\n"
-        	+ "                \u00A7l\u00A7n" + "Core Shard" + "\u00A7r"
+        	+ "                \u00A7l\u00A7n" + References.localNameVC("item.vc:item_core_shard.name") + "\u00A7r"
     		+ "\n\n"
-    		+ "   This shard is densely packed with a few logic chips. This is used in all Core Tier upgrades."
-    		+ "\n\n\n\n\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Logic Chip, Iron Ingot, Gold Ingot, Glass"
-    		+ "\u00A7r"
-    		;
+    		+ "   " + References.localNameVC("vc.guidebook.pg18.1a");
+	  stringPageTextRightTooltipIngredient[20] = 
+      		  References.localNameVC("vc.guidebook.generic.4") + " : "
+			+ "\n" + "\u00A7o\u00A7l"
+	  		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + ", " 
+	  		+ Blocks.GLASS.getLocalizedName() + ", " 
+	  	    + References.localNameVC(Items.IRON_INGOT.getUnlocalizedName() + ".name") + ", " 
+	  	    + References.localNameVC(Items.GOLD_INGOT.getUnlocalizedName() + ".name") + "\u00A7r";
+      
 	  stringPageTextRightTooltip[21] = 
-    		  "Item Recipe:"
+			  References.localNameVC("vc.guidebook.generic.2") + " : "
             + "\n\n"
-        	+ "            \u00A7l\u00A7n" + "Core Upgrade 1" + "\u00A7r"
+        	+ "            \u00A7l\u00A7n" + References.localNameVC("item.vc:item_core_upgrade.name") + " 1" + "\u00A7r"
     		+ "\n\n"
-    		+ "     Allow airships to move faster! "
+    		+ "            -=" + References.localNameVC("vc.guidebook.pg18.0") + "=-"
     		+ "\n"
-    		+ "  This works in any airship version."
-    		+ "\n\n"
-    		+ "   "
-    		+ "\n\n"
-    		+ "           -=Base Upgrade=-"
-    		+ "\n"
-    		+ "Use in the airship's \"Upgrade\" menu."
-    		+ "\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Core Shard, Logic Chip, Airship Ignition"
-    		+ "\u00A7r"
-    		;
+    		+ References.localNameVC("vc.guidebook.pg18.1c")
+		    + "\n\n"
+			+ "-" + References.localNameVC("vc.guidebook.pg18.1b");
+	  stringPageTextRightTooltipIngredient[21] = 
+	      	  References.localNameVC("vc.guidebook.generic.4") + " : "
+			+ "\n" + "\u00A7o\u00A7l"
+  	  		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + ", " 
+  	  	    + References.localNameVC("item.vc:item_core_shard.name") + ", " 
+  	  	    + References.localNameVC(ItemsVC.AIRSHIP_IGNITION.getUnlocalizedName() + ".name") + "\u00A7r";
+	      	      
 	  stringPageTextRightTooltip[22] = 
-    		  "Item Recipe:"
+			  References.localNameVC("vc.guidebook.generic.2") + " : "
             + "\n\n"
-        	+ "            \u00A7l\u00A7n" + "Core Upgrade 2" + "\u00A7r"
-    		+ "\n\n"
-    		+ "     Allow airships to move faster! "
+            + "            \u00A7l\u00A7n" + References.localNameVC("item.vc:item_core_upgrade.name") + " 2" + "\u00A7r"
+            + "\n\n"
+    		+ References.localNameVC("vc.guidebook.pg18.1d") + "1 " + References.localNameVC("vc.main.core") + "."
     		+ "\n"
-    		+ "  This works in any airship version."
-    		+ "\n\n"
-    		+ "   "
-    		+ "\n\n"
-    		+ "Must upgrade from a Tier 1 Core."
-    		+ "\n"
-    		+ "Use in the airship's \"Upgrade\" menu."
-    		+ "\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Core Shard, Logic Chip, Core Upgrade 1"
-    		+ "\u00A7r"
-    		;
+    		+ References.localNameVC("vc.guidebook.pg18.1c")
+		    + "\n\n"
+			+ "-" + References.localNameVC("vc.guidebook.pg18.1b");
+	  stringPageTextRightTooltipIngredient[22] = 
+	      	  References.localNameVC("vc.guidebook.generic.4") + " : "
+  			+ "\n" + "\u00A7o\u00A7l"
+  	  		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + ", "
+  	  	  	+ Blocks.GOLD_BLOCK.getLocalizedName() + ", "  
+  	  	    + References.localNameVC("item.vc:item_core_shard.name") + ", " 
+  	  	    + References.localNameVC("item.vc:item_core_upgrade.name") + " 1\u00A7r";
+	  
 	  stringPageTextRightTooltip[23] = 
-    		  "Item Recipe:"
+			  References.localNameVC("vc.guidebook.generic.2") + " : "
             + "\n\n"
-        	+ "            \u00A7l\u00A7n" + "Core Upgrade 3" + "\u00A7r"
-    		+ "\n\n"
-    		+ "     Allow airships to move faster! "
+            + "            \u00A7l\u00A7n" + References.localNameVC("item.vc:item_core_upgrade.name") + " 3" + "\u00A7r"
+            + "\n\n"
+    		+ References.localNameVC("vc.guidebook.pg18.1d") + "2 " + References.localNameVC("vc.main.core") + "."
     		+ "\n"
-    		+ "  This works in any airship version."
-    		+ "\n\n"
-    		+ "   "
-    		+ "\n\n"
-    		+ "Must upgrade from a Tier 2 Core."
-    		+ "\n"
-    		+ "Use in the airship's \"Upgrade\" menu."
-    		+ "\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Core Shard, Logic Chip, Core Upgrade 2"
-    		+ "\u00A7r"
-    		;
+    		+ References.localNameVC("vc.guidebook.pg18.1c")
+		    + "\n\n"
+			+ "-" + References.localNameVC("vc.guidebook.pg18.1b");
+	  stringPageTextRightTooltipIngredient[23] = 
+	      	  References.localNameVC("vc.guidebook.generic.4") + " : "
+  			+ "\n" + "\u00A7o\u00A7l"
+  	  		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + ", " 
+  	    	+ Blocks.DIAMOND_BLOCK.getLocalizedName() + ", " 
+  	  	    + References.localNameVC("item.vc:item_core_shard.name") + ", " 
+  	  	    + References.localNameVC("item.vc:item_core_upgrade.name") + " 2\u00A7r";
+	  
 	  stringPageTextRightTooltip[24] = 
-    		  "Item Recipe:"
+			  References.localNameVC("vc.guidebook.generic.2") + " : "
             + "\n\n"
-        	+ "            \u00A7l\u00A7n" + "Core Upgrade 4" + "\u00A7r"
-    		+ "\n\n"
-    		+ "     Allow airships to move faster! "
+            + "            \u00A7l\u00A7n" + References.localNameVC("item.vc:item_core_upgrade.name") + " 4" + "\u00A7r"
+            + "\n\n"
+    		+ References.localNameVC("vc.guidebook.pg18.1d") + "3 " + References.localNameVC("vc.main.core") + "."
     		+ "\n"
-    		+ "  This works in any airship version."
-    		+ "\n\n"
-    		+ "   "
-    		+ "\n\n"
-    		+ "Must upgrade from a Tier 3 Core."
-    		+ "\n"
-    		+ "Use in the airship's \"Upgrade\" menu."
-    		+ "\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Core Shard, Logic Chip, Core Upgrade 3"
-    		+ "\u00A7r"
-    		;
+    		+ References.localNameVC("vc.guidebook.pg18.1c")
+		    + "\n\n"
+			+ "-" + References.localNameVC("vc.guidebook.pg18.1b");
+	  stringPageTextRightTooltipIngredient[24] = 
+	      	  References.localNameVC("vc.guidebook.generic.4") + " : "
+  			+ "\n" + "\u00A7o\u00A7l"
+  	  		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + ", " 
+  	    	+ Blocks.EMERALD_BLOCK.getLocalizedName() + ", " 
+  	  	    + References.localNameVC("item.vc:item_core_shard.name") + ", " 
+  	  	    + References.localNameVC("item.vc:item_core_upgrade.name") + " 3\u00A7r";
+	  
 	  stringPageTextRightTooltip[25] = 
-    		  "Item Recipe:"
+			  References.localNameVC("vc.guidebook.generic.2") + " : "
             + "\n\n"
-        	+ "            \u00A7l\u00A7n" + "Core Upgrade 5" + "\u00A7r"
-    		+ "\n\n"
-    		+ "     Allow airships to move faster! "
+            + "            \u00A7l\u00A7n" + References.localNameVC("item.vc:item_core_upgrade.name") + " 5" + "\u00A7r"
+            + "\n\n"
+    		+ References.localNameVC("vc.guidebook.pg18.1d") + "4 " + References.localNameVC("vc.main.core") + "."
     		+ "\n"
-    		+ "  This works in any airship version."
+    		+ References.localNameVC("vc.guidebook.pg18.1c")
+		    + "\n\n"
+			+ "-" + References.localNameVC("vc.guidebook.pg18.1b")
+		    + "\n"
+			+ "-" + References.localNameVC("vc.guidebook.pg18.1f");
+	  stringPageTextRightTooltipIngredient[25] = 
+	      	  References.localNameVC("vc.guidebook.generic.4") + " : "
+			+ "\n" + "\u00A7o\u00A7l"
+  	  		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + ", " 
+  	  		+ References.localNameVC(Items.NETHER_STAR.getUnlocalizedName() + ".name") + ", " 
+  	  	    + References.localNameVC("item.vc:item_core_shard.name") + ", " 
+  	  	    + References.localNameVC("item.vc:item_core_upgrade.name") + " 4\u00A7r";
+	  
+	  //--------------------------------------------------
+	  
+	  stringPageTextRightTooltip[14] = 
+			  References.localNameVC("vc.guidebook.generic.2") + " : "
+            + "\n\n"
+        	+ "               \u00A7l\u00A7n" + References.localNameVC("item.vc:item_frame_casing.name") + "\u00A7r"
     		+ "\n\n"
-    		+ "   "
-    		+ "\n\n"
-    		+ "Must upgrade from a Tier 4 Core."
+    		+ "   " + References.localNameVC("vc.guidebook.pg20.1a");
+	  stringPageTextRightTooltipIngredient[14] = 
+      		  References.localNameVC("vc.guidebook.generic.4") + " : "
+			+ "\n" + "\u00A7o\u00A7l"
+	  		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + ", " 
+	  		+ Blocks.IRON_BARS.getLocalizedName() + ", " 
+	  	    + References.localNameVC(Items.IRON_INGOT.getUnlocalizedName() + ".name") + ", " 
+	  	    + References.localNameVC(Items.GOLD_INGOT.getUnlocalizedName() + ".name") + "\u00A7r";
+	  
+	  stringPageTextRightTooltip[15] = 
+			  References.localNameVC("vc.guidebook.generic.2") + " : "
+            + "\n\n"
+        	+ "           \u00A7l\u00A7n" + References.localNameVC("item.vc:item_frame_upgrade.name") + " 1" + "\u00A7r"
+        	+ "\n\n"
+    		+ "            -=" + References.localNameVC("vc.guidebook.pg18.0") + "=-"
     		+ "\n"
-    		+ "Use in the airship's \"Upgrade\" menu."
+    		+ References.localNameVC("vc.guidebook.pg20.1c")
+		    + "\n\n"
+			+ "-" + References.localNameVC("vc.guidebook.pg20.1b")
+		    + "\n"
+			+ "-" + References.localNameVC("vc.guidebook.pg20.1e");
+	  stringPageTextRightTooltipIngredient[15] = 
+	      	  References.localNameVC("vc.guidebook.generic.4") + " : "
+			+ "\n" + "\u00A7o\u00A7l"
+  	  		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + ", " 
+  	  	    + References.localNameVC("item.vc:item_frame_casing.name") + ", " 
+  	  	    + References.localNameVC(ItemsVC.AIRSHIP_FRAME.getUnlocalizedName() + ".name") + "\u00A7r";
+	  
+	  stringPageTextRightTooltip[16] = 
+			  References.localNameVC("vc.guidebook.generic.2") + " : "
+            + "\n\n"
+        	+ "           \u00A7l\u00A7n" + References.localNameVC("item.vc:item_frame_upgrade.name") + " 2" + "\u00A7r"
     		+ "\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
+    		+ References.localNameVC("vc.guidebook.pg20.1d") + "1 " + References.localNameVC("vc.main.frame") + "."
     		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Core Shard, Logic Chip, Core Upgrade 4"
-    		+ "\u00A7r"
-    		;
+    		+ References.localNameVC("vc.guidebook.pg20.1c")
+		    + "\n\n"
+			+ "-" + References.localNameVC("vc.guidebook.pg20.1b")
+		    + "\n"
+			+ "-" + References.localNameVC("vc.guidebook.pg20.1e");
+	  stringPageTextRightTooltipIngredient[16] = 
+	      	  References.localNameVC("vc.guidebook.generic.4") + " : "
+			+ "\n" + "\u00A7o\u00A7l"
+  	  		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + ", " 
+  	    	+ Blocks.GOLD_BLOCK.getLocalizedName() + ", "  
+  	  	    + References.localNameVC("item.vc:item_frame_casing.name") + ", " 
+  	  	    + References.localNameVC("item.vc:item_frame_upgrade.name") + " 1\u00A7r";
+	  
+	  stringPageTextRightTooltip[17] = 
+			  References.localNameVC("vc.guidebook.generic.2") + " : "
+            + "\n\n"
+        	+ "           \u00A7l\u00A7n" + References.localNameVC("item.vc:item_frame_upgrade.name") + " 3" + "\u00A7r"
+    		+ "\n\n"
+    		+ References.localNameVC("vc.guidebook.pg20.1d") + "2 " + References.localNameVC("vc.main.frame") + "."
+    		+ "\n"
+    		+ References.localNameVC("vc.guidebook.pg20.1c")
+		    + "\n\n"
+			+ "-" + References.localNameVC("vc.guidebook.pg20.1b")
+		    + "\n"
+			+ "-" + References.localNameVC("vc.guidebook.pg20.1e");
+	  stringPageTextRightTooltipIngredient[17] = 
+	      	  References.localNameVC("vc.guidebook.generic.4") + " : "
+			+ "\n" + "\u00A7o\u00A7l"
+  	  		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + ", " 
+  	    	+ Blocks.DIAMOND_BLOCK.getLocalizedName() + ", " 
+  	  	    + References.localNameVC("item.vc:item_frame_casing.name") + ", " 
+  	  	    + References.localNameVC("item.vc:item_frame_upgrade.name") + " 2\u00A7r";
+	  
+	  stringPageTextRightTooltip[18] = 
+			  References.localNameVC("vc.guidebook.generic.2") + " : "
+            + "\n\n"
+        	+ "           \u00A7l\u00A7n" + References.localNameVC("item.vc:item_frame_upgrade.name") + " 4" + "\u00A7r"
+    		+ "\n\n"
+    		+ References.localNameVC("vc.guidebook.pg20.1d") + "3 " + References.localNameVC("vc.main.frame") + "."
+    		+ "\n"
+    		+ References.localNameVC("vc.guidebook.pg20.1c")
+		    + "\n\n"
+			+ "-" + References.localNameVC("vc.guidebook.pg20.1b")
+		    + "\n"
+			+ "-" + References.localNameVC("vc.guidebook.pg20.1e");
+	  stringPageTextRightTooltipIngredient[18] = 
+	      	  References.localNameVC("vc.guidebook.generic.4") + " : "
+			+ "\n" + "\u00A7o\u00A7l"
+  	  		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + ", " 
+  	    	+ Blocks.EMERALD_BLOCK.getLocalizedName() + ", " 
+  	  	    + References.localNameVC("item.vc:item_frame_casing.name") + ", " 
+  	  	    + References.localNameVC("item.vc:item_frame_upgrade.name") + " 3\u00A7r";
+	  
+	  stringPageTextRightTooltip[19] = 
+			  References.localNameVC("vc.guidebook.generic.2") + " : "
+            + "\n\n"
+        	+ "           \u00A7l\u00A7n" + References.localNameVC("item.vc:item_frame_upgrade.name") + " 5" + "\u00A7r"
+    		+ "\n\n"
+    		+ References.localNameVC("vc.guidebook.pg20.1d") + "4 " + References.localNameVC("vc.main.frame") + "."
+    		+ "\n"
+    		+ References.localNameVC("vc.guidebook.pg20.1c")
+		    + "\n\n"
+			+ "-" + References.localNameVC("vc.guidebook.pg20.1b")
+		    + "\n"
+			+ "-" + References.localNameVC("vc.guidebook.pg20.1e")
+		    + "\n"
+			+ "-" + References.localNameVC("vc.guidebook.pg20.1f");
+	  stringPageTextRightTooltipIngredient[19] = 
+	      	  References.localNameVC("vc.guidebook.generic.4") + " : "
+			+ "\n" + "\u00A7o\u00A7l"
+  	  		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + ", " 
+  	    	+ References.localNameVC(Items.NETHER_STAR.getUnlocalizedName() + ".name") + ", " 
+  	  	    + References.localNameVC("item.vc:item_frame_casing.name") + ", " 
+  	  	    + References.localNameVC("item.vc:item_frame_upgrade.name") + " 4\u00A7r";
 	  
 	  //-----------------------------------------
 	  
 	  stringPageTextRightTooltip[26] = 
-    		  "Item Recipe:"
+			  References.localNameVC("vc.guidebook.generic.2") + " : "
             + "\n\n"
         	+ "            \u00A7l\u00A7n" + "Engine Fragment" + "\u00A7r"
     		+ "\n\n"
-    		+ "   A fragment of a super-charged blaze rod encrusted engine. This is used in all Engine Tier upgrades."
-    		+ "\n\n\n\n\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Logic Chip, Iron Ingot, Gold Ingot, Blaze Rod"
-    		+ "\u00A7r"
-    		;
+    		+ "   " + References.localNameVC("vc.guidebook.pg22.1a");
+	  stringPageTextRightTooltipIngredient[26] = 
+	      	  References.localNameVC("vc.guidebook.generic.4") + " : "
+			+ "\n" + "\u00A7o\u00A7l"
+  	  		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + ", " 
+  	  	    + References.localNameVC(Items.IRON_INGOT.getUnlocalizedName() + ".name") + ", " 
+  	    	+ References.localNameVC(Items.GOLD_INGOT.getUnlocalizedName() + ".name") + ", " 
+  	    	+ References.localNameVC(Items.BLAZE_ROD.getUnlocalizedName() + ".name") + "\u00A7r";
+	  
 	  stringPageTextRightTooltip[27] = 
-    		  "Item Recipe:"
+			  References.localNameVC("vc.guidebook.generic.2") + " : "
             + "\n\n"
-        	+ "           \u00A7l\u00A7n" + "Engine Upgrade 1" + "\u00A7r"
+        	+ "           \u00A7l\u00A7n" + References.localNameVC("item.vc:item_engine_upgrade.name") + " 1" + "\u00A7r"
     		+ "\n\n"
-    		+ "   Allow airships to burn less fuel! "
+    		+ "            -=" + References.localNameVC("vc.guidebook.pg18.0") + "=-"
     		+ "\n"
-    		+ "  This works in any airship version."
-    		+ "\n\n"
-    		+ "   "
-    		+ "\n\n"
-    		+ "           -=Base Upgrade=-"
-    		+ "\n"
-    		+ "Use in the airship's \"Upgrade\" menu."
-    		+ "\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Engine Fragment, Logic Chip, Airship Engine"
-    		+ "\u00A7r"
-    		;
+    		+ References.localNameVC("vc.guidebook.pg22.1c")
+		    + "\n\n"
+			+ "-" + References.localNameVC("vc.guidebook.pg22.1b")
+		    + "\n"
+			+ "-" + References.localNameVC("vc.guidebook.pg22.1e");
+	  stringPageTextRightTooltipIngredient[27] = 
+	      	  References.localNameVC("vc.guidebook.generic.4") + " : "
+			+ "\n" + "\u00A7o\u00A7l"
+  	  		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + ", " 
+  	  	    + References.localNameVC("item.vc:item_engine_fragment.name") + ", " 
+  	  	    + References.localNameVC(ItemsVC.AIRSHIP_ENGINE.getUnlocalizedName() + ".name") + "\u00A7r";
+	  
 	  stringPageTextRightTooltip[28] = 
-    		  "Item Recipe:"
+			  References.localNameVC("vc.guidebook.generic.2") + " : "
             + "\n\n"
-        	+ "           \u00A7l\u00A7n" + "Engine Upgrade 2" + "\u00A7r"
+        	+ "           \u00A7l\u00A7n" + References.localNameVC("item.vc:item_engine_upgrade.name") + " 2" + "\u00A7r"
     		+ "\n\n"
-    		+ "   Allow airships to get upgrades! "
+    		+ References.localNameVC("vc.guidebook.pg22.1d") + "1 " + References.localNameVC("vc.main.engine") + "."
     		+ "\n"
-    		+ "  This works in any airship version."
-    		+ "\n\n"
-    		+ "   "
-    		+ "\n\n"
-    		+ "Must upgrade from a Tier 1 Engine."
-    		+ "\n"
-    		+ "Use in the airship's \"Upgrade\" menu."
-    		+ "\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Engine Fragment, Logic Chip, Engine Upgrade 1"
-    		+ "\u00A7r"
-    		;
+    		+ References.localNameVC("vc.guidebook.pg22.1c")
+		    + "\n\n"
+			+ "-" + References.localNameVC("vc.guidebook.pg22.1b")
+		    + "\n"
+			+ "-" + References.localNameVC("vc.guidebook.pg22.1e");
+	  stringPageTextRightTooltipIngredient[28] = 
+	      	  References.localNameVC("vc.guidebook.generic.4") + " : "
+			+ "\n" + "\u00A7o\u00A7l"
+  	  		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + ", " 
+  	    	+ Blocks.GOLD_BLOCK.getLocalizedName() + ", " 
+  	  	    + References.localNameVC("item.vc:item_engine_fragment.name") + ", " 
+  	  	    + References.localNameVC("item.vc:item_engine_upgrade.name") + " 1\u00A7r";
+	  
 	  stringPageTextRightTooltip[29] = 
-    		  "Item Recipe:"
+			  References.localNameVC("vc.guidebook.generic.2") + " : "
             + "\n\n"
-        	+ "           \u00A7l\u00A7n" + "Engine Upgrade 3" + "\u00A7r"
+        	+ "           \u00A7l\u00A7n" + References.localNameVC("item.vc:item_engine_upgrade.name") + " 3" + "\u00A7r"
     		+ "\n\n"
-    		+ "   Allow airships to get upgrades! "
+    		+ References.localNameVC("vc.guidebook.pg22.1d") + "2 " + References.localNameVC("vc.main.engine") + "."
     		+ "\n"
-    		+ "  This works in any airship version."
-    		+ "\n\n"
-    		+ "   "
-    		+ "\n\n"
-    		+ "Must upgrade from a Tier 2 Engine."
-    		+ "\n"
-    		+ "Use in the airship's \"Upgrade\" menu."
-    		+ "\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Engine Fragment, Logic Chip, Engine Upgrade 2"
-    		+ "\u00A7r"
-    		;
+    		+ References.localNameVC("vc.guidebook.pg22.1c")
+		    + "\n\n"
+			+ "-" + References.localNameVC("vc.guidebook.pg22.1b")
+		    + "\n"
+			+ "-" + References.localNameVC("vc.guidebook.pg22.1e");
+	  stringPageTextRightTooltipIngredient[29] = 
+	      	  References.localNameVC("vc.guidebook.generic.4") + " : "
+			+ "\n" + "\u00A7o\u00A7l"
+  	  		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + ", " 
+  	    	+ Blocks.DIAMOND_BLOCK.getLocalizedName() + ", " 
+  	  	    + References.localNameVC("item.vc:item_engine_fragment.name") + ", " 
+  	  	    + References.localNameVC("item.vc:item_engine_upgrade.name") + " 2\u00A7r";
+	  
 	  stringPageTextRightTooltip[30] = 
-    		  "Item Recipe:"
+			  References.localNameVC("vc.guidebook.generic.2") + " : "
             + "\n\n"
-        	+ "           \u00A7l\u00A7n" + "Engine Upgrade 4" + "\u00A7r"
+        	+ "           \u00A7l\u00A7n" + References.localNameVC("item.vc:item_engine_upgrade.name") + " 4" + "\u00A7r"
     		+ "\n\n"
-    		+ "   Allow airships to get upgrades! "
+    		+ References.localNameVC("vc.guidebook.pg22.1d") + "3 " + References.localNameVC("vc.main.engine") + "."
     		+ "\n"
-    		+ "  This works in any airship version."
-    		+ "\n\n"
-    		+ "   "
-    		+ "\n\n"
-    		+ "Must upgrade from a Tier 3 Engine."
-    		+ "\n"
-    		+ "Use in the airship's \"Upgrade\" menu."
-    		+ "\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Engine Fragment, Logic Chip, Engine Upgrade 3"
-    		+ "\u00A7r"
-    		;
+    		+ References.localNameVC("vc.guidebook.pg22.1c")
+		    + "\n\n"
+			+ "-" + References.localNameVC("vc.guidebook.pg22.1b")
+		    + "\n"
+			+ "-" + References.localNameVC("vc.guidebook.pg22.1e");
+	  stringPageTextRightTooltipIngredient[30] = 
+	      	  References.localNameVC("vc.guidebook.generic.4") + " : "
+			+ "\n" + "\u00A7o\u00A7l"
+  	  		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + ", " 
+  	    	+ Blocks.EMERALD_BLOCK.getLocalizedName() + ", " 
+  	  	    + References.localNameVC("item.vc:item_engine_fragment.name") + ", " 
+  	  	    + References.localNameVC("item.vc:item_engine_upgrade.name") + " 3\u00A7r";
+	  
 	  stringPageTextRightTooltip[31] = 
-    		  "Item Recipe:"
+			  References.localNameVC("vc.guidebook.generic.2") + " : "
             + "\n\n"
-        	+ "           \u00A7l\u00A7n" + "Engine Upgrade 5" + "\u00A7r"
+        	+ "           \u00A7l\u00A7n" + References.localNameVC("item.vc:item_engine_upgrade.name") + " 5" + "\u00A7r"
     		+ "\n\n"
-    		+ "   Allow airships to get upgrades! "
+    		+ References.localNameVC("vc.guidebook.pg22.1d") + "4 " + References.localNameVC("vc.main.engine") + "."
     		+ "\n"
-    		+ "  This works in any airship version."
-    		+ "\n\n"
-    		+ "   "
-    		+ "\n\n"
-    		+ "Must upgrade from a Tier 4 Engine."
-    		+ "\n"
-    		+ "Use in the airship's \"Upgrade\" menu."
-    		+ "\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Engine Fragment, Logic Chip, Engine Upgrade 4"
-    		+ "\u00A7r"
-    		;
+    		+ References.localNameVC("vc.guidebook.pg22.1c")
+		    + "\n\n"
+			+ "-" + References.localNameVC("vc.guidebook.pg22.1b")
+		    + "\n"
+			+ "-" + References.localNameVC("vc.guidebook.pg22.1e")
+		    + "\n"
+			+ "-" + References.localNameVC("vc.guidebook.pg22.1f");
+	  stringPageTextRightTooltipIngredient[31] = 
+	      	  References.localNameVC("vc.guidebook.generic.4") + " : "
+			+ "\n" + "\u00A7o\u00A7l"
+  	  		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + ", " 
+  	    	+ References.localNameVC(Items.NETHER_STAR.getUnlocalizedName() + ".name") + ", " 
+  	  	    + References.localNameVC("item.vc:item_engine_fragment.name") + ", " 
+  	  	    + References.localNameVC("item.vc:item_engine_upgrade.name") + " 4\u00A7r";
 	  
 	  //-----------------------------------------
 	  
 	  stringPageTextRightTooltip[32] = 
-    		  "Item Recipe:"
+			  References.localNameVC("vc.guidebook.generic.2") + " : "
             + "\n\n"
-        	+ "             \u00A7l\u00A7n" + "Balloon Casing" + "\u00A7r"
+        	+ "             \u00A7l\u00A7n" + References.localNameVC("item.vc:item_balloon_remnant.name") + "\u00A7r"
     		+ "\n\n"
-    		+ "   This remnant has been infused with a light-weight treated leather. This is used in all Balloon Tier upgrades."
-    		+ "\n\n\n\n\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Coal/Charcoal, Redstone "
-    		+ "\u00A7r"
-    		;
+    		+ "   " + References.localNameVC("vc.guidebook.pg24.1a");
+	  stringPageTextRightTooltipIngredient[32] = 
+      		  References.localNameVC("vc.guidebook.generic.4") + " : "
+			+ "\n" + "\u00A7o\u00A7l"
+	  		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + ", " 
+	  		+ References.localNameVC(Items.LEATHER.getUnlocalizedName() + ".name") + ", " 
+	  	    + References.localNameVC(Items.IRON_INGOT.getUnlocalizedName() + ".name") + ", " 
+	  	    + References.localNameVC(Items.GOLD_INGOT.getUnlocalizedName() + ".name") + "\u00A7r";
+	  
 	  stringPageTextRightTooltip[33] = 
-    		  "Item Recipe:"
+			  References.localNameVC("vc.guidebook.generic.2") + " : "
             + "\n\n"
-        	+ "          \u00A7l\u00A7n" + "Balloon Upgrade 1" + "\u00A7r"
+        	+ "          \u00A7l\u00A7n" + References.localNameVC("item.vc:item_balloon_upgrade.name") + " 1" + "\u00A7r"
     		+ "\n\n"
-    		+ "     Allow airships to fly higher! "
+    		+ "            -=" + References.localNameVC("vc.guidebook.pg18.0") + "=-"
     		+ "\n"
-    		+ "  This works in any airship version."
-    		+ "\n\n"
-    		+ "      \u00A7nUnlocks new balloon visuals!\u00A7r"
-    		+ "\n\n"
-    		+ "           -=Base Upgrade=-"
-    		+ "\n"
-    		+ "Use in the airship's \"Upgrade\" menu."
-    		+ "\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Balloon Remnant, Logic Chip, Airship Balloon "
-    		+ "\u00A7r"
-    		;
+    		+ References.localNameVC("vc.guidebook.pg24.1c")
+		    + "\n\n"
+			+ "-" + References.localNameVC("vc.guidebook.pg24.1b")
+		    + "\n"
+			+ "-" + References.localNameVC("vc.guidebook.pg24.1e");
+	  stringPageTextRightTooltipIngredient[33] = 
+	      	  References.localNameVC("vc.guidebook.generic.4") + " : "
+			+ "\n" + "\u00A7o\u00A7l"
+  	  		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + ", " 
+  	  	    + References.localNameVC("item.vc:item_balloon_remnant.name") + ", " 
+  	  	    + References.localNameVC(ItemsVC.AIRSHIP_BALLOON.getUnlocalizedName() + ".name") + "\u00A7r";
+	  
 	  stringPageTextRightTooltip[34] = 
-    		  "Item Recipe:"
+			  References.localNameVC("vc.guidebook.generic.2") + " : "
             + "\n\n"
-        	+ "          \u00A7l\u00A7n" + "Balloon Upgrade 2" + "\u00A7r"
+        	+ "          \u00A7l\u00A7n" + References.localNameVC("item.vc:item_balloon_upgrade.name") + " 2" + "\u00A7r"
     		+ "\n\n"
-    		+ "     Allow airships to fly higher! "
+    		+ References.localNameVC("vc.guidebook.pg24.1d") + "1 " + References.localNameVC("vc.main.balloon") + "."
     		+ "\n"
-    		+ "  This works in any airship version."
-    		+ "\n\n"
-    		+ "      \u00A7nUnlocks new balloon visuals!\u00A7r"
-    		+ "\n\n"
-    		+ "Must upgrade from a Tier 1 Balloon."
-    		+ "\n"
-    		+ "Use in the airship's \"Upgrade\" menu."
-    		+ "\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Balloon Remnant, Logic Chip, Balloon Upgrade 1"
-    		+ "\u00A7r"
-    		;
+    		+ References.localNameVC("vc.guidebook.pg24.1c")
+		    + "\n\n"
+			+ "-" + References.localNameVC("vc.guidebook.pg24.1b")
+		    + "\n"
+			+ "-" + References.localNameVC("vc.guidebook.pg24.1e");
+	  stringPageTextRightTooltipIngredient[34] = 
+	      	  References.localNameVC("vc.guidebook.generic.4") + " : "
+			+ "\n" + "\u00A7o\u00A7l"
+  	  		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + ", " 
+  	    	+ Blocks.GOLD_BLOCK.getLocalizedName() + ", " 
+  	  	    + References.localNameVC("item.vc:item_balloon_remnant.name") + ", " 
+  	  	    + References.localNameVC("item.vc:item_balloon_upgrade.name") + " 1\u00A7r";
+	  
 	  stringPageTextRightTooltip[35] = 
-    		  "Item Recipe:"
+			  References.localNameVC("vc.guidebook.generic.2") + " : "
             + "\n\n"
-        	+ "          \u00A7l\u00A7n" + "Balloon Upgrade 3" + "\u00A7r"
+        	+ "          \u00A7l\u00A7n" + References.localNameVC("item.vc:item_balloon_upgrade.name") + " 3" + "\u00A7r"
     		+ "\n\n"
-    		+ "     Allow airships to fly higher! "
+    		+ References.localNameVC("vc.guidebook.pg24.1d") + "2 " + References.localNameVC("vc.main.balloon") + "."
     		+ "\n"
-    		+ "  This works in any airship version."
-    		+ "\n\n"
-    		+ "      \u00A7nUnlocks new balloon visuals!\u00A7r"
-    		+ "\n\n"
-    		+ "Must upgrade from a Tier 2 Balloon."
-    		+ "\n"
-    		+ "Use in the airship's \"Upgrade\" menu."
-    		+ "\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Balloon Remnant, Logic Chip, Balloon Upgrade 2"
-    		+ "\u00A7r"
-    		;
+    		+ References.localNameVC("vc.guidebook.pg24.1c")
+		    + "\n\n"
+			+ "-" + References.localNameVC("vc.guidebook.pg24.1b")
+		    + "\n"
+			+ "-" + References.localNameVC("vc.guidebook.pg24.1e");
+	  
+	  stringPageTextRightTooltipIngredient[35] = 
+	      	  References.localNameVC("vc.guidebook.generic.4") + " : "
+			+ "\n" + "\u00A7o\u00A7l"
+  	  		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + ", " 
+  	    	+ Blocks.DIAMOND_BLOCK.getLocalizedName() + ", " 
+  	  	    + References.localNameVC("item.vc:item_balloon_remnant.name") + ", " 
+  	  	    + References.localNameVC("item.vc:item_balloon_upgrade.name") + " 2\u00A7r";
+	  
 	  stringPageTextRightTooltip[36] = 
-    		  "Item Recipe:"
+			  References.localNameVC("vc.guidebook.generic.2") + " : "
             + "\n\n"
-        	+ "          \u00A7l\u00A7n" + "Balloon Upgrade 4" + "\u00A7r"
+        	+ "          \u00A7l\u00A7n" + References.localNameVC("item.vc:item_balloon_upgrade.name") + " 4" + "\u00A7r"
     		+ "\n\n"
-    		+ "     Allow airships to fly higher! "
+    		+ References.localNameVC("vc.guidebook.pg24.1d") + "3 " + References.localNameVC("vc.main.balloon") + "."
     		+ "\n"
-    		+ "  This works in any airship version."
-    		+ "\n\n"
-    		+ "      \u00A7nUnlocks new balloon visuals!\u00A7r"
-    		+ "\n\n"
-    		+ "Must upgrade from a Tier 3 Balloon."
-    		+ "\n"
-    		+ "Use in the airship's \"Upgrade\" menu."
-    		+ "\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Balloon Remnant, Logic Chip, Balloon Upgrade 3"
-    		+ "\u00A7r"
-    		;
+    		+ References.localNameVC("vc.guidebook.pg24.1c")
+		    + "\n\n"
+			+ "-" + References.localNameVC("vc.guidebook.pg24.1b")
+		    + "\n"
+			+ "-" + References.localNameVC("vc.guidebook.pg24.1e");
+	  
+	  stringPageTextRightTooltipIngredient[36] = 
+	      	  References.localNameVC("vc.guidebook.generic.4") + " : "
+			+ "\n" + "\u00A7o\u00A7l"
+  	  		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + ", " 
+  	    	+ Blocks.EMERALD_BLOCK.getLocalizedName() + ", "  
+  	  	    + References.localNameVC("item.vc:item_balloon_remnant.name") + ", " 
+  	  	    + References.localNameVC("item.vc:item_balloon_upgrade.name") + " 3\u00A7r";
+	  
 	  stringPageTextRightTooltip[37] = 
-    		  "Item Recipe:"
+			  References.localNameVC("vc.guidebook.generic.2") + " : "
             + "\n\n"
-        	+ "          \u00A7l\u00A7n" + "Balloon Upgrade 5" + "\u00A7r"
+        	+ "          \u00A7l\u00A7n" + References.localNameVC("item.vc:item_balloon_upgrade.name") + " 5" + "\u00A7r"
     		+ "\n\n"
-    		+ "     Allow airships to fly higher! "
+    		+ References.localNameVC("vc.guidebook.pg24.1d") + "4 " + References.localNameVC("vc.main.balloon") + "."
     		+ "\n"
-    		+ "  This works in any airship version."
-    		+ "\n\n"
-    		+ "      \u00A7nUnlocks new balloon visuals!\u00A7r"
-    		+ "\n"
-    		+ "\u00A7nUnlocks Transparency and Coloring!\u00A7r"
-    		+ "\n"
-    		+ "Must upgrade from a Tier 4 Balloon."
-    		+ "\n"
-    		+ "Use in the airship's \"Upgrade\" menu."
-    		+ "\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Balloon Remnant, Logic Chip, Balloon Upgrade 4"
-    		+ "\u00A7r"
-    		;
-	  
-	  
-	  
-	  
-	  
-	  
-	  
+    		+ References.localNameVC("vc.guidebook.pg24.1c")
+		    + "\n\n"
+			+ "-" + References.localNameVC("vc.guidebook.pg24.1b")
+		    + "\n"
+			+ "-" + References.localNameVC("vc.guidebook.pg24.1e");
+	  stringPageTextRightTooltipIngredient[37] = 
+	      	  References.localNameVC("vc.guidebook.generic.4") + " : "
+			+ "\n" + "\u00A7o\u00A7l"
+  	  		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + ", " 
+  	    	+ References.localNameVC(Items.NETHER_STAR.getUnlocalizedName() + ".name") + ", " 
+  	  	    + References.localNameVC("item.vc:item_balloon_remnant.name") + ", " 
+  	  	    + References.localNameVC("item.vc:item_balloon_upgrade.name") + " 4\u00A7r";
 	  
 	  
 	  //===================================
@@ -1126,560 +939,549 @@ public class GuiGuidebookMainStrings extends GuiScreen {
 	  
 	  stringPageTextLeft[12] = 
 			  "\n\n\n"
-			+ "   The Module system is another way "
-			+ "for players to enhance their airships "
-			+ "with special abilities. Modules are "
-			+ "learned by airships and are able to "
-			+ "be toggled on and off. Only one "
-			+ "module can be active at a time. "
+			+ "   " + References.localNameVC("vc.guidebook.pg25.1") + References.localNameVC("vc.guidebook.pg25.2") + References.localNameVC("vc.guidebook.pg25.3")
 			+ "\n\n"
-			+ "   There are currently "
-			+ "\u00A7l8 \u00A7r"
-			+ "types of "
-			+ "modules to choose from. Each module "
-			+ "is upgradeable. All modules have a "
-			+ "Lesser, Normal, and Greater version. "
-			+ "The better the version, the better the "
-			+ "benefits. "
+			+ "   " + References.localNameVC("vc.guidebook.pg25.4")
+			+ "\u00A7l"
+			+ "9 \u00A7r"
+			+ References.localNameVC("vc.guidebook.pg25.5") + References.localNameVC("vc.guidebook.pg25.6") + References.localNameVC("vc.guidebook.pg25.7")
 			+ "\n\n"
-			+ "   All modules must be upgraded in "
-			+ "sequence like the main Tiers. The "
-			+ "following pages will list all of the "
-			+ "module recipes."
-			;
+			+ "   " + References.localNameVC("vc.guidebook.pg25.8") + References.localNameVC("vc.guidebook.pg25.9");
+	  stringPageTextLeftButtons[12] = "";
+	  
 	  stringPageTextRight[12] = 
 		      "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
 		    + "\u00A7l"
-		    + "      1.) Menu Navigation"
+		    + "      1.) " + References.localNameVC("vc.guidebook.pg26.1")
 		    + "\n\n"
-		    + "      2.) Active Module"
+		    + "      2.) " + References.localNameVC("vc.guidebook.pg26.2")
 		    + "\n\n"
-		    + "      3.) Turned off Module"
+		    + "      3.) " + References.localNameVC("vc.guidebook.pg26.3")
 		    + "\n\n"
-		    + "      4.) Module Upgrade Slot"
-		    + "\u00A7r"
-			;
+		    + "      4.) " + References.localNameVC("vc.guidebook.pg26.4")
+		    + "\n\n"
+		    + "      5.) " + References.localNameVC("vc.guidebook.pg26.5")
+		    + "\u00A7r";
 	  
-	  stringPageTextLeft[13] = 
-			  "Select an item below to display basic "
-    		+ "information and crafting recipes."
-    		+ "\n\n"
-			;
+	  stringPageTextLeft[13] = "";
+	  stringPageTextLeftButtons[13] = "\n" + References.localNameVC("vc.guidebook.generic.1");
+	  stringPageTextRight[13] = "";
 	  
-	  stringPageTextRight[13] = 
-			  " "
-			;
+	  stringPageTextLeft[14] = "";
+	  stringPageTextLeftButtons[14] = "\n\n\n\n\n\n\n" + References.localNameVC("vc.guidebook.generic.1");
+	  stringPageTextRight[14] = "";
 	  
-	  stringPageTextLeft[14] = 
-			  "Select an item below to display basic "
-    		+ "information and crafting recipes."
-    		+ "\n\n"
-			;
+	  stringPageTextLeft[15] = "";
+	  stringPageTextLeftButtons[15] = "\n\n\n\n\n\n\n" + References.localNameVC("vc.guidebook.generic.1");
+	  stringPageTextRight[15] = "";
 	  
-	  stringPageTextRight[14] = 
-			  " "
-			;
+	  stringPageTextLeft[16] = "";
+	  stringPageTextLeftButtons[16] = "\n\n\n\n\n\n\n" + References.localNameVC("vc.guidebook.generic.1");
+	  stringPageTextRight[16] = "";
 	  
-	  stringPageTextLeft[15] = 
-			  "Select an item below to display basic "
-    		+ "information and crafting recipes."
-    		+ "\n\n"
-			;
-	  
-	  stringPageTextRight[15] = 
-			  " "
-			;
-	  
-	  stringPageTextLeft[16] = 
-			  "Select an item below to display basic "
-    		+ "information and crafting recipes."
-    		+ "\n\n"
-			;
-	  
-	  stringPageTextRight[16] = 
-			  " "
-			;
+	  stringPageTextLeft[17] = "";
+	  stringPageTextLeftButtons[17] = "\n\n\n\n\n\n\n" + References.localNameVC("vc.guidebook.generic.1");
+	  stringPageTextRight[17] = "";
 	  
 	  //--------------------------------------
 	  
 	  stringPageTextRightTooltip[38] = 
-    		  "Module Recipe:"
+			  References.localNameVC("vc.guidebook.generic.5") + " : "
             + "\n\n"
-        	+ "                \u00A7l\u00A7n" + "Module Chip" + "\u00A7r"
+        	+ "                \u00A7l\u00A7n" + References.localNameVC("item.vc:item_module_chip.name") + "\u00A7r"
     		+ "\n\n"
-    		+ "   A base module chip formatted for "
-    		+ "airship interfaces. This is use to make "
-    		+ "every module."
-    		+ "\n\n\n\n\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Logic Chip, Emerald"
-    		+ "\u00A7r"
-    		;
+    		+ "   " + References.localNameVC("vc.guidebook.pg28.1");
+	  stringPageTextRightTooltipIngredient[38] = 
+	      	  References.localNameVC("vc.guidebook.generic.4") + " : "
+			+ "\n" + "\u00A7o\u00A7l"
+  	  		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + ", " 
+  	    	+ References.localNameVC(Items.EMERALD.getUnlocalizedName() + ".name") + " \u00A7r";
 	  
+	  //========================================
+	  //Altitude
 	  stringPageTextRightTooltip[39] = 
-    		  "Module Recipe:"
+			  References.localNameVC("vc.guidebook.generic.5") + " : "
             + "\n\n"
-        	+ "             \u00A7l\u00A7n" + "Lesser Altitude" + "\u00A7r"
+        	+ "             \u00A7l\u00A7n" + References.localNameVC("vc.item.enum.module.1") + "\u00A7r"
     		+ "\n\n"
-    		+ "   This module gives airships the ability "
-    		+ "to fly higher beyond the normal Balloon Tier "
-    		+ "cap (225 height max). The speed that "
-    		+ "airships can ascend is slightly "
-    		+ "increased as well."
-    		+ "\n\n\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Logic Chip, Weighted Pressure "
-    		+ "Plate, Quartz, Glowstone Dust, "
-    		+ "Feather, Redstone Torch"
-    		+ "\u00A7r"
-    		;
+    		+ "   " + References.localNameVC("vc.guidebook.pg28.2");
+	  stringPageTextRightTooltipIngredient[39] = 
+	      	  References.localNameVC("vc.guidebook.generic.4") + " : "
+			+ "\n" + "\u00A7o\u00A7l"
+  	  		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + ", " 
+  	  		+ References.localNameVC("vc.guidebook.generic.6") + ", " 
+  	    	+ References.localNameVC(Items.QUARTZ.getUnlocalizedName() + ".name") + ", " 
+  	    	+ References.localNameVC(Items.GLOWSTONE_DUST.getUnlocalizedName() + ".name") + ", " 
+	    	+ References.localNameVC(Items.FEATHER.getUnlocalizedName() + ".name") + ", " 
+	    	+ Blocks.REDSTONE_TORCH.getLocalizedName() + "\u00A7r";
 	  
 	  stringPageTextRightTooltip[40] = 
-    		  "Module Recipe:"
+			  References.localNameVC("vc.guidebook.generic.5") + " : "
             + "\n\n"
-        	+ "                  \u00A7l\u00A7n" + "Altitude" + "\u00A7r"
+        	+ "                  \u00A7l\u00A7n" + References.localNameVC("vc.item.enum.module.2") + "\u00A7r"
     		+ "\n\n"
-    		+ "   This module gives airships the ability "
-    		+ "to fly higher beyond the normal Balloon Tier "
-    		+ "cap (250 height max). The speed that "
-    		+ "airships can ascend is moderately "
-    		+ "increased as well."
-    		+ "\n\n\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Logic Chip, Weighted Pressure "
-    		+ "Plate, Quartz, Diamond, "
-    		+ "Lesser Altitude Module"
-    		+ "\u00A7r"
-    		;
+    		+ "   " + References.localNameVC("vc.guidebook.pg28.3");
+	  stringPageTextRightTooltipIngredient[40] = 
+	      	  References.localNameVC("vc.guidebook.generic.4") + " : "
+			+ "\n" + "\u00A7o\u00A7l"
+  	  		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + ", " 
+  	  		+ References.localNameVC("vc.guidebook.generic.6") + ", " 
+  	    	+ References.localNameVC(Items.QUARTZ.getUnlocalizedName() + ".name") + ", " 
+  	    	+ References.localNameVC(Items.DIAMOND.getUnlocalizedName() + ".name") + ", " 
+  	    	+ References.localNameVC("vc.item.enum.module.1") + " " + References.localNameVC("vc.item.module.#") + "\u00A7r";
 	  
 	  stringPageTextRightTooltip[41] = 
-    		  "Module Recipe:"
+			  References.localNameVC("vc.guidebook.generic.5") + " : "
             + "\n\n"
-        	+ "             \u00A7l\u00A7n" + "Greater Altitude" + "\u00A7r"
+        	+ "             \u00A7l\u00A7n" + References.localNameVC("vc.item.enum.module.3") + "\u00A7r"
     		+ "\n\n"
-    		+ "   This module gives airships the ability "
-    		+ "to fly higher beyond the normal Balloon Tier "
-    		+ "cap (unlimited height max). The speed "
-    		+ "that airships can ascend is greatly "
-    		+ "increased as well."
-    		+ "\n\n\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Logic Chip, Weighted Pressure "
-    		+ "Plate, Quartz, Emerald, "
-    		+ "Altitude Module"
-    		+ "\u00A7r"
-    		;
+    		+ "   " + References.localNameVC("vc.guidebook.pg28.4");
+	  stringPageTextRightTooltipIngredient[41] = 
+	      	  References.localNameVC("vc.guidebook.generic.4") + " : "
+			+ "\n" + "\u00A7o\u00A7l"
+  	  		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + ", " 
+  	  		+ References.localNameVC("vc.guidebook.generic.6") + ", " 
+  	    	+ References.localNameVC(Items.QUARTZ.getUnlocalizedName() + ".name") + ", " 
+  	    	+ References.localNameVC(Items.EMERALD.getUnlocalizedName() + ".name") + ", " 
+  	    	+ References.localNameVC("vc.item.enum.module.2") + " " + References.localNameVC("vc.item.module.#") + "\u00A7r";
 	  
+	  //========================================
+	  //Speed
 	  stringPageTextRightTooltip[42] = 
-    		  "Module Recipe:"
+			  References.localNameVC("vc.guidebook.generic.5") + " : "
             + "\n\n"
-        	+ "              \u00A7l\u00A7n" + "Lesser Speed" + "\u00A7r"
+        	+ "              \u00A7l\u00A7n" + References.localNameVC("vc.item.enum.module.4") + "\u00A7r"
     		+ "\n\n"
-    		+ "   This module gives airships the ability "
-    		+ "to fly faster (+1 Speed Modifier). The speed that "
-    		+ "airships can turn is slightly "
-    		+ "increased as well."
-    		+ "\n\n\n\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Logic Chip, Weighted Pressure "
-    		+ "Plate, Quartz, Gunpowder, "
-    		+ "Flint, Fire Charge"
-    		+ "\u00A7r"
-    		;
+    		+ "   " + References.localNameVC("vc.guidebook.pg28.5");
+	  stringPageTextRightTooltipIngredient[42] = 
+	      	  References.localNameVC("vc.guidebook.generic.4") + " : "
+			+ "\n" + "\u00A7o\u00A7l"
+  	  		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + ", " 
+  	  		+ References.localNameVC("vc.guidebook.generic.6") + ", " 
+  	    	+ References.localNameVC(Items.QUARTZ.getUnlocalizedName() + ".name") + ", " 
+  	    	+ References.localNameVC(Items.GUNPOWDER.getUnlocalizedName() + ".name") + ", " 
+	    	+ References.localNameVC(Items.FLINT.getUnlocalizedName() + ".name") + ", " 
+	    	+ References.localNameVC(Items.FIRE_CHARGE.getUnlocalizedName() + ".name") + "\u00A7r";
 	  
 	  stringPageTextRightTooltip[43] = 
-    		  "Module Recipe:"
+			  References.localNameVC("vc.guidebook.generic.5") + " : "
             + "\n\n"
-        	+ "                 \u00A7l\u00A7n" + "Speed" + "\u00A7r"
+        	+ "                     \u00A7l\u00A7n" + References.localNameVC("vc.item.enum.module.5") + "\u00A7r"
     		+ "\n\n"
-    		+ "   This module gives airships the ability "
-    		+ "to fly faster (+2 Speed Modifier). The speed that "
-    		+ "airships can turn is moderately "
-    		+ "increased as well."
-    		+ "\n\n\n\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Logic Chip, Weighted Pressure "
-    		+ "Plate, Quartz, Diamond, "
-    		+ "Lesser Speed Module"
-    		+ "\u00A7r"
-    		;
+    		+ "   " + References.localNameVC("vc.guidebook.pg28.6");
+	  stringPageTextRightTooltipIngredient[43] = 
+	      	  References.localNameVC("vc.guidebook.generic.4") + " : "
+			+ "\n" + "\u00A7o\u00A7l"
+  	  		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + ", " 
+  	  		+ References.localNameVC("vc.guidebook.generic.6") + ", " 
+  	    	+ References.localNameVC(Items.QUARTZ.getUnlocalizedName() + ".name") + ", " 
+  	    	+ References.localNameVC(Items.DIAMOND.getUnlocalizedName() + ".name") + ", " 
+  	    	+ References.localNameVC("vc.item.enum.module.4") + " " + References.localNameVC("vc.item.module.#") + "\u00A7r";
 	  
 	  stringPageTextRightTooltip[44] = 
-    		  "Module Recipe:"
+			  References.localNameVC("vc.guidebook.generic.5") + " : "
             + "\n\n"
-        	+ "              \u00A7l\u00A7n" + "Greater Speed" + "\u00A7r"
+        	+ "              \u00A7l\u00A7n" + References.localNameVC("vc.item.enum.module.6") + "\u00A7r"
     		+ "\n\n"
-    		+ "   This module gives airships the ability "
-    		+ "to fly faster (+3 Speed Modifier). The speed that "
-    		+ "airships can turn is greatly "
-    		+ "increased as well."
-    		+ "\n\n\n\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Logic Chip, Weighted Pressure "
-    		+ "Plate, Quartz, Emerald, "
-    		+ "Speed Module"
-    		+ "\u00A7r"
-    		;
+    		+ "   " + References.localNameVC("vc.guidebook.pg28.7");
+	  stringPageTextRightTooltipIngredient[44] = 
+	      	  References.localNameVC("vc.guidebook.generic.4") + " : "
+			+ "\n" + "\u00A7o\u00A7l"
+  	  		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + ", " 
+  	  		+ References.localNameVC("vc.guidebook.generic.6") + ", " 
+  	    	+ References.localNameVC(Items.QUARTZ.getUnlocalizedName() + ".name") + ", " 
+  	    	+ References.localNameVC(Items.EMERALD.getUnlocalizedName() + ".name") + ", " 
+  	    	+ References.localNameVC("vc.item.enum.module.5") + " " + References.localNameVC("vc.item.module.#") + "\u00A7r";
 	  
+	  //========================================
+	  //Storage
 	  stringPageTextRightTooltip[45] = 
-    		  "Module Recipe:"
+			  References.localNameVC("vc.guidebook.generic.5") + " : "
             + "\n\n"
-        	+ "             \u00A7l\u00A7n" + "Lesser Storage" + "\u00A7r"
+        	+ "             \u00A7l\u00A7n" + References.localNameVC("vc.item.enum.module.7") + "\u00A7r"
     		+ "\n\n"
-    		+ "   This module gives airships the ability "
-    		+ "to store items (9 slots). There is a "
-    		+ "30% speed decrease due to the extra "
-    		+ "weight."
-    		+ "\n\n\n\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Logic Chip, Weighted Pressure "
-    		+ "Plate, Quartz, Tripwire Hook, "
-    		+ "Redstone, Chest"
-    		+ "\u00A7r"
-    		;
+    		+ "   " + References.localNameVC("vc.guidebook.pg30.1");
+	  stringPageTextRightTooltipIngredient[45] = 
+	      	  References.localNameVC("vc.guidebook.generic.4") + " : "
+			+ "\n" + "\u00A7o\u00A7l"
+  	  		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + ", " 
+  	  		+ References.localNameVC("vc.guidebook.generic.6") + ", " 
+  	    	+ References.localNameVC(Items.QUARTZ.getUnlocalizedName() + ".name") + ", " 
+  	    	+ Blocks.TRIPWIRE_HOOK.getLocalizedName() + ", " 
+	    	+ References.localNameVC(Items.REDSTONE.getUnlocalizedName() + ".name") + ", " 
+	    	+ Blocks.CHEST.getLocalizedName() + "\u00A7r";
 	  
 	  stringPageTextRightTooltip[46] = 
-    		  "Module Recipe:"
+			  References.localNameVC("vc.guidebook.generic.5") + " : "
             + "\n\n"
-        	+ "                 \u00A7l\u00A7n" + "Storage" + "\u00A7r"
+        	+ "                 \u00A7l\u00A7n" + References.localNameVC("vc.item.enum.module.8") + "\u00A7r"
     		+ "\n\n"
-    		+ "   This module gives airships the ability "
-    		+ "to store items (18 slots). There is a "
-    		+ "30% speed decrease due to the extra "
-    		+ "weight."
-    		+ "\n\n\n\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Logic Chip, Weighted Pressure "
-    		+ "Plate, Quartz, Diamond, "
-    		+ "Lesser Storage Module"
-    		+ "\u00A7r"
-    		;
+    		+ "   " + References.localNameVC("vc.guidebook.pg30.2");
+	  stringPageTextRightTooltipIngredient[46] = 
+	      	  References.localNameVC("vc.guidebook.generic.4") + " : "
+			+ "\n" + "\u00A7o\u00A7l"
+  	  		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + ", " 
+  	  		+ References.localNameVC("vc.guidebook.generic.6") + ", " 
+  	    	+ References.localNameVC(Items.QUARTZ.getUnlocalizedName() + ".name") + ", " 
+  	    	+ References.localNameVC(Items.DIAMOND.getUnlocalizedName() + ".name") + ", " 
+  	    	+ References.localNameVC("vc.item.enum.module.7") + " " + References.localNameVC("vc.item.module.#") + "\u00A7r";
 	  
 	  stringPageTextRightTooltip[47] = 
-    		  "Module Recipe:"
+			  References.localNameVC("vc.guidebook.generic.5") + " : "
             + "\n\n"
-        	+ "             \u00A7l\u00A7n" + "Greater Storage" + "\u00A7r"
+        	+ "             \u00A7l\u00A7n" + References.localNameVC("vc.item.enum.module.9") + "\u00A7r"
     		+ "\n\n"
-    		+ "   This module gives airships the ability "
-    		+ "to store items (27 slots). There is a "
-    		+ "30% speed decrease due to the extra "
-    		+ "weight."
-    		+ "\n\n\n\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Logic Chip, Weighted Pressure "
-    		+ "Plate, Quartz, Emerald, "
-    		+ "Storage Module"
-    		+ "\u00A7r"
-    		;
+    		+ "   " + References.localNameVC("vc.guidebook.pg30.3");
+	  stringPageTextRightTooltipIngredient[47] = 
+	      	  References.localNameVC("vc.guidebook.generic.4") + " : "
+			+ "\n" + "\u00A7o\u00A7l"
+  	  		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + ", " 
+  	  		+ References.localNameVC("vc.guidebook.generic.6") + ", " 
+  	    	+ References.localNameVC(Items.QUARTZ.getUnlocalizedName() + ".name") + ", " 
+  	    	+ References.localNameVC(Items.EMERALD.getUnlocalizedName() + ".name") + ", " 
+  	    	+ References.localNameVC("vc.item.enum.module.8") + " " + References.localNameVC("vc.item.module.#") + "\u00A7r";
 	  
+	  //========================================
+	  //Fuel Eff.
 	  stringPageTextRightTooltip[48] = 
-    		  "Module Recipe:"
+			  References.localNameVC("vc.guidebook.generic.5") + " : "
             + "\n\n"
-        	+ "               \u00A7l\u00A7n" + "Lesser Fuel" + "\u00A7r"
+        	+ "         \u00A7l\u00A7n" + References.localNameVC("vc.item.enum.module.10") + "\u00A7r"
     		+ "\n\n"
-    		+ "   This module gives airships the ability "
-    		+ "to burn fuel more efficiently (20% savings)."
-    		+ "\n\n\n\n\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Logic Chip, Weighted Pressure "
-    		+ "Plate, Quartz, Stone Pressure Plate, Blaze Powder, "
-    		+ "Fire Charge"
-    		+ "\u00A7r"
-    		;
+    		+ "   " + References.localNameVC("vc.guidebook.pg30.4");
+	  stringPageTextRightTooltipIngredient[48] = 
+	      	  References.localNameVC("vc.guidebook.generic.4") + " : "
+			+ "\n" + "\u00A7o\u00A7l"
+  	  		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + ", " 
+  	  		+ References.localNameVC("vc.guidebook.generic.6") + ", " 
+  	    	+ References.localNameVC(Items.QUARTZ.getUnlocalizedName() + ".name") + ", " 
+  	    	+ Blocks.STONE_PRESSURE_PLATE.getLocalizedName() + ", " 
+	    	+ References.localNameVC(Items.BLAZE_POWDER.getUnlocalizedName() + ".name") + "\u00A7r";
 	  
 	  stringPageTextRightTooltip[49] = 
-    		  "Module Recipe:"
+			  References.localNameVC("vc.guidebook.generic.5") + " : "
             + "\n\n"
-        	+ "                    \u00A7l\u00A7n" + "Fuel" + "\u00A7r"
+        	+ "                \u00A7l\u00A7n" + References.localNameVC("vc.item.enum.module.11") + "\u00A7r"
     		+ "\n\n"
-    		+ "   This module gives airships the ability "
-    		+ "to burn fuel more efficiently (40% savings)."
-    		+ "\n\n\n\n\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Logic Chip, Weighted Pressure "
-    		+ "Plate, Quartz, Diamond, "
-    		+ "Lesser Fuel Module"
-    		+ "\u00A7r"
-    		;
+    		+ "   " + References.localNameVC("vc.guidebook.pg30.5");
+	  stringPageTextRightTooltipIngredient[49] = 
+	      	  References.localNameVC("vc.guidebook.generic.4") + " : "
+			+ "\n" + "\u00A7o\u00A7l"
+  	  		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + ", " 
+  	  		+ References.localNameVC("vc.guidebook.generic.6") + ", " 
+  	    	+ References.localNameVC(Items.QUARTZ.getUnlocalizedName() + ".name") + ", " 
+  	    	+ References.localNameVC(Items.DIAMOND.getUnlocalizedName() + ".name") + ", " 
+  	    	+ References.localNameVC("vc.item.enum.module.10") + " " + References.localNameVC("vc.item.module.#") + "\u00A7r";
 	  
 	  stringPageTextRightTooltip[50] = 
-    		  "Module Recipe:"
+			  References.localNameVC("vc.guidebook.generic.5") + " : "
             + "\n\n"
-        	+ "               \u00A7l\u00A7n" + "Greater Fuel" + "\u00A7r"
+        	+ "        \u00A7l\u00A7n" + References.localNameVC("vc.item.enum.module.12") + "\u00A7r"
     		+ "\n\n"
-    		+ "   This module gives airships the ability "
-    		+ "to burn fuel more efficiently (60% savings)."
-    		+ "\n\n\n\n\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Logic Chip, Weighted Pressure "
-    		+ "Plate, Quartz, Emerald, "
-    		+ "Fuel Module"
-    		+ "\u00A7r"
-    		;
+    		+ "   " + References.localNameVC("vc.guidebook.pg30.6");
+	  stringPageTextRightTooltipIngredient[50] = 
+	      	  References.localNameVC("vc.guidebook.generic.4") + " : "
+			+ "\n" + "\u00A7o\u00A7l"
+  	  		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + ", " 
+  	  		+ References.localNameVC("vc.guidebook.generic.6") + ", " 
+  	    	+ References.localNameVC(Items.QUARTZ.getUnlocalizedName() + ".name") + ", " 
+  	    	+ References.localNameVC(Items.EMERALD.getUnlocalizedName() + ".name") + ", " 
+  	    	+ References.localNameVC("vc.item.enum.module.11") + " " + References.localNameVC("vc.item.module.#") + "\u00A7r";
 	  
+	  //========================================
+	  //Music
 	  stringPageTextRightTooltip[51] = 
-    		  "Module Recipe:"
+			  References.localNameVC("vc.guidebook.generic.5") + " : "
             + "\n\n"
-        	+ "              \u00A7l\u00A7n" + "Lesser Music" + "\u00A7r"
+        	+ "              \u00A7l\u00A7n" + References.localNameVC("vc.item.enum.module.13") + "\u00A7r"
     		+ "\n\n"
-    		+ "   This module gives airships the ability "
-    		+ "to play music (6 songs). This can be "
-    		+ "heard all around the airship."
-    		+ "\n\n\n\n\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Logic Chip, Weighted Pressure "
-    		+ "Plate, Quartz, Redstone, "
-    		+ "Note Block, Jukebox"
-    		+ "\u00A7r"
-    		;
+    		+ "   " + References.localNameVC("vc.guidebook.pg32.1");
+	  stringPageTextRightTooltipIngredient[51] = 
+	      	  References.localNameVC("vc.guidebook.generic.4") + " : "
+			+ "\n" + "\u00A7o\u00A7l"
+  	  		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + ", " 
+  	  		+ References.localNameVC("vc.guidebook.generic.6") + ", " 
+  	    	+ References.localNameVC(Items.QUARTZ.getUnlocalizedName() + ".name") + ", " 
+  	    	+ References.localNameVC(Items.REDSTONE.getUnlocalizedName() + ".name") + ", " 
+	    	+ Blocks.NOTEBLOCK.getLocalizedName() + ", " 
+	    	+ Blocks.JUKEBOX.getLocalizedName() + "\u00A7r";
 	  
 	  stringPageTextRightTooltip[52] = 
-    		  "Module Recipe:"
+			  References.localNameVC("vc.guidebook.generic.5") + " : "
             + "\n\n"
-        	+ "                 \u00A7l\u00A7n" + "Music" + "\u00A7r"
+        	+ "                   \u00A7l\u00A7n" + References.localNameVC("vc.item.enum.module.14") + "\u00A7r"
     		+ "\n\n"
-    		+ "   This module gives airships the ability "
-    		+ "to play music (12 songs). This can be "
-    		+ "heard all around the airship."
-    		+ "\n\n\n\n\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Logic Chip, Weighted Pressure "
-    		+ "Plate, Quartz, Diamond, "
-    		+ "Lesser Music Module"
-    		+ "\u00A7r"
-    		;
+    		+ "   " + References.localNameVC("vc.guidebook.pg32.2");
+	  stringPageTextRightTooltipIngredient[52] = 
+	      	  References.localNameVC("vc.guidebook.generic.4") + " : "
+			+ "\n" + "\u00A7o\u00A7l"
+  	  		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + ", " 
+  	  		+ References.localNameVC("vc.guidebook.generic.6") + ", " 
+  	    	+ References.localNameVC(Items.QUARTZ.getUnlocalizedName() + ".name") + ", " 
+  	    	+ References.localNameVC(Items.DIAMOND.getUnlocalizedName() + ".name") + ", " 
+  	    	+ References.localNameVC("vc.item.enum.module.13") + " " + References.localNameVC("vc.item.module.#") + "\u00A7r";
 	  
 	  stringPageTextRightTooltip[53] = 
-    		  "Module Recipe:"
+			  References.localNameVC("vc.guidebook.generic.5") + " : "
             + "\n\n"
-        	+ "              \u00A7l\u00A7n" + "Greater Music" + "\u00A7r"
+        	+ "              \u00A7l\u00A7n" + References.localNameVC("vc.item.enum.module.15") + "\u00A7r"
     		+ "\n\n"
-    		+ "   This module gives airships the ability "
-    		+ "to play music (18 songs). This can be "
-    		+ "heard all around the airship."
-    		+ "\n\n\n\n\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Logic Chip, Weighted Pressure "
-    		+ "Plate, Quartz, Emerald, "
-    		+ "Music Module"
-    		+ "\u00A7r"
-    		;
+    		+ "   " + References.localNameVC("vc.guidebook.pg32.3");
+	  stringPageTextRightTooltipIngredient[53] = 
+	      	  References.localNameVC("vc.guidebook.generic.4") + " : "
+			+ "\n" + "\u00A7o\u00A7l"
+  	  		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + ", " 
+  	  		+ References.localNameVC("vc.guidebook.generic.6") + ", " 
+  	    	+ References.localNameVC(Items.QUARTZ.getUnlocalizedName() + ".name") + ", " 
+  	    	+ References.localNameVC(Items.EMERALD.getUnlocalizedName() + ".name") + ", " 
+  	    	+ References.localNameVC("vc.item.enum.module.14") + " " + References.localNameVC("vc.item.module.#") + "\u00A7r";
 	  
+	  //========================================
+	  //Cruise
 	  stringPageTextRightTooltip[54] = 
-    		  "Module Recipe:"
+			  References.localNameVC("vc.guidebook.generic.5") + " : "
             + "\n\n"
-        	+ "             \u00A7l\u00A7n" + "Lesser Cruise" + "\u00A7r"
+        	+ "        \u00A7l\u00A7n" + References.localNameVC("vc.item.enum.module.16") + "\u00A7r"
     		+ "\n\n"
-    		+ "   This module gives airships the ability "
-    		+ "to Auto-Forward. This module applies a 66% speed decrease."
-    		+ "\n\n\n\n\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Logic Chip, Weighted Pressure "
-    		+ "Plate, Quartz, Lever, "
-    		+ "Glowstone Dust, Clock"
-    		+ "\u00A7r"
-    		;
+    		+ "   " + References.localNameVC("vc.guidebook.pg32.4");
+	  stringPageTextRightTooltipIngredient[54] = 
+	      	  References.localNameVC("vc.guidebook.generic.4") + " : "
+			+ "\n" + "\u00A7o\u00A7l"
+  	  		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + ", " 
+  	  		+ References.localNameVC("vc.guidebook.generic.6") + ", " 
+  	    	+ References.localNameVC(Items.QUARTZ.getUnlocalizedName() + ".name") + ", " 
+  	    	+ Blocks.LEVER.getLocalizedName() + ", " 
+	    	+ References.localNameVC(Items.CLOCK.getUnlocalizedName() + ".name") + ", " 
+	    	+ References.localNameVC(Items.GLOWSTONE_DUST.getUnlocalizedName() + ".name") + "\u00A7r";
 	  
 	  stringPageTextRightTooltip[55] = 
-    		  "Module Recipe:"
+			  References.localNameVC("vc.guidebook.generic.5") + " : "
             + "\n\n"
-        	+ "             \u00A7l\u00A7n" + "Cruise" + "\u00A7r"
+        	+ "             \u00A7l\u00A7n" + References.localNameVC("vc.item.enum.module.17") + "\u00A7r"
     		+ "\n\n"
-    		+ "   This module gives airships the ability "
-    		+ "to Auto-Forward. This module applies a 33% speed decrease."
-    		+ "\n\n\n\n\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Logic Chip, Weighted Pressure "
-    		+ "Plate, Quartz, Diamond, "
-    		+ "Lesser Cruise Module"
-    		+ "\u00A7r"
-    		;
+    		+ "   " + References.localNameVC("vc.guidebook.pg32.5");
+	  stringPageTextRightTooltipIngredient[55] = 
+	      	  References.localNameVC("vc.guidebook.generic.4") + " : "
+			+ "\n" + "\u00A7o\u00A7l"
+  	  		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + ", " 
+  	  		+ References.localNameVC("vc.guidebook.generic.6") + ", " 
+  	    	+ References.localNameVC(Items.QUARTZ.getUnlocalizedName() + ".name") + ", " 
+  	    	+ References.localNameVC(Items.DIAMOND.getUnlocalizedName() + ".name") + ", " 
+  	    	+ References.localNameVC("vc.item.enum.module.16") + " " + References.localNameVC("vc.item.module.#") + "\u00A7r";
 	  
 	  stringPageTextRightTooltip[56] = 
-    		  "Module Recipe:"
+			  References.localNameVC("vc.guidebook.generic.5") + " : "
             + "\n\n"
-        	+ "             \u00A7l\u00A7n" + "Greater Cruise" + "\u00A7r"
+        	+ "      \u00A7l\u00A7n" + References.localNameVC("vc.item.enum.module.18") + "\u00A7r"
     		+ "\n\n"
-    		+ "   This module gives airships the ability "
-    		+ "to Auto-Forward. This module applies no speed decrease."
-    		+ "\n\n\n\n\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Logic Chip, Weighted Pressure "
-    		+ "Plate, Quartz, Emerald, "
-    		+ "Cruise Module"
-    		+ "\u00A7r"
-    		;
+    		+ "   " + References.localNameVC("vc.guidebook.pg32.6");
+	  stringPageTextRightTooltipIngredient[56] = 
+	      	  References.localNameVC("vc.guidebook.generic.4") + " : "
+			+ "\n" + "\u00A7o\u00A7l"
+  	  		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + ", " 
+  	  		+ References.localNameVC("vc.guidebook.generic.6") + ", " 
+  	    	+ References.localNameVC(Items.QUARTZ.getUnlocalizedName() + ".name") + ", " 
+  	    	+ References.localNameVC(Items.EMERALD.getUnlocalizedName() + ".name") + ", " 
+  	    	+ References.localNameVC("vc.item.enum.module.17") + " " + References.localNameVC("vc.item.module.#") + "\u00A7r";
 	  
+	  //========================================
+	  //Water
 	  stringPageTextRightTooltip[57] = 
-    		  "Module Recipe:"
+			  References.localNameVC("vc.guidebook.generic.5") + " : "
             + "\n\n"
-        	+ "             \u00A7l\u00A7n" + "Lesser Water" + "\u00A7r"
+        	+ "             \u00A7l\u00A7n" + References.localNameVC("vc.item.enum.module.19") + "\u00A7r"
     		+ "\n\n"
-    		+ "   This module gives airships the ability "
-    		+ "to hover on water. Airship will no longer be damaged by water. Speed is slowed while on water."
-    		+ "\n\n\n\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Logic Chip, Weighted Pressure "
-    		+ "Plate, Quartz, Slimeball, "
-    		+ "Compass, Oak Boat"
-    		+ "\u00A7r"
-    		;
+    		+ "   " + References.localNameVC("vc.guidebook.pg34.1");
+	  stringPageTextRightTooltipIngredient[57] = 
+	      	  References.localNameVC("vc.guidebook.generic.4") + " : "
+			+ "\n" + "\u00A7o\u00A7l"
+  	  		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + ", " 
+  	  		+ References.localNameVC("vc.guidebook.generic.6") + ", " 
+  	    	+ References.localNameVC(Items.QUARTZ.getUnlocalizedName() + ".name") + ", " 
+  	    	+ References.localNameVC(Items.SLIME_BALL.getUnlocalizedName() + ".name") + ", " 
+	    	+ References.localNameVC(Items.COMPASS.getUnlocalizedName() + ".name") + ", " 
+	    	+ References.localNameVC(Items.BOAT.getUnlocalizedName() + ".name") + "\u00A7r";
 	  
 	  stringPageTextRightTooltip[58] = 
-    		  "Module Recipe:"
+			  References.localNameVC("vc.guidebook.generic.5") + " : "
             + "\n\n"
-        	+ "             \u00A7l\u00A7n" + "Water" + "\u00A7r"
+        	+ "             \u00A7l\u00A7n" + References.localNameVC("vc.item.enum.module.20") + "\u00A7r"
     		+ "\n\n"
-    		+ "   This module gives airships the ability "
-    		+ "to hover on water. Airship will no longer be damaged by water. Medium speed while on water."
-    		+ "\n\n\n\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Logic Chip, Weighted Pressure "
-    		+ "Plate, Quartz, Diamond, "
-    		+ "Lesser Water Module"
-    		+ "\u00A7r"
-    		;
+    		+ "   " + References.localNameVC("vc.guidebook.pg34.2");
+	  stringPageTextRightTooltipIngredient[58] = 
+	      	  References.localNameVC("vc.guidebook.generic.4") + " : "
+			+ "\n" + "\u00A7o\u00A7l"
+  	  		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + ", " 
+  	  		+ References.localNameVC("vc.guidebook.generic.6") + ", " 
+  	    	+ References.localNameVC(Items.QUARTZ.getUnlocalizedName() + ".name") + ", " 
+  	    	+ References.localNameVC(Items.DIAMOND.getUnlocalizedName() + ".name") + ", " 
+  	    	+ References.localNameVC("vc.item.enum.module.19") + " " + References.localNameVC("vc.item.module.#") + "\u00A7r";
 	  
 	  stringPageTextRightTooltip[59] = 
-    		  "Module Recipe:"
+			  References.localNameVC("vc.guidebook.generic.5") + " : "
             + "\n\n"
-        	+ "             \u00A7l\u00A7n" + "Greater Water" + "\u00A7r"
+        	+ "             \u00A7l\u00A7n" + References.localNameVC("vc.item.enum.module.21") + "\u00A7r"
     		+ "\n\n"
-    		+ "   This module gives airships the ability "
-    		+ "to hover on water. Airship will no longer be damaged by water. Fast speed while on water."
-    		+ "\n\n\n\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Logic Chip, Weighted Pressure "
-    		+ "Plate, Quartz, Emerald, "
-    		+ "Water Module"
-    		+ "\u00A7r"
-    		;
+    		+ "   " + References.localNameVC("vc.guidebook.pg34.3");
+	  stringPageTextRightTooltipIngredient[59] = 
+	      	  References.localNameVC("vc.guidebook.generic.4") + " : "
+			+ "\n" + "\u00A7o\u00A7l"
+  	  		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + ", " 
+  	  		+ References.localNameVC("vc.guidebook.generic.6") + ", " 
+  	    	+ References.localNameVC(Items.QUARTZ.getUnlocalizedName() + ".name") + ", " 
+  	    	+ References.localNameVC(Items.EMERALD.getUnlocalizedName() + ".name") + ", " 
+  	    	+ References.localNameVC("vc.item.enum.module.20") + " " + References.localNameVC("vc.item.module.#") + "\u00A7r";
 	  
+	  //========================================
+	  //Infinite Fuel
 	  stringPageTextRightTooltip[60] = 
-    		  "Module Recipe:"
+			  References.localNameVC("vc.guidebook.generic.5") + " : "
             + "\n\n"
-        	+ "             \u00A7l\u00A7n" + "Lesser Infinite Fuel" + "\u00A7r"
+        	+ "             \u00A7l\u00A7n" + References.localNameVC("vc.item.enum.module.22") + "\u00A7r"
     		+ "\n\n"
-    		+ "   This module gives airships the ability "
-    		+ "to fly without fuel. You don't get a lot of power making energy out of nothing. There is a 90% speed decrease."
-    		+ "\n\n\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Logic Chip, Weighted Pressure "
-    		+ "Plate, Quartz, Ender Pearl, "
-    		+ "Blaze Rod, Ghast Tear"
-    		+ "\u00A7r"
-    		;
+    		+ "   " + References.localNameVC("vc.guidebook.pg34.4");
+	  stringPageTextRightTooltipIngredient[60] = 
+	      	  References.localNameVC("vc.guidebook.generic.4") + " : "
+			+ "\n" + "\u00A7o\u00A7l"
+  	  		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + ", " 
+  	  		+ References.localNameVC("vc.guidebook.generic.6") + ", " 
+  	    	+ References.localNameVC(Items.QUARTZ.getUnlocalizedName() + ".name") + ", " 
+  	    	+ References.localNameVC(Items.ENDER_PEARL.getUnlocalizedName() + ".name") + ", " 
+	    	+ References.localNameVC(Items.BLAZE_ROD.getUnlocalizedName() + ".name") + ", " 
+	    	+ References.localNameVC(Items.GHAST_TEAR.getUnlocalizedName() + ".name") + "\u00A7r";
 	  
 	  stringPageTextRightTooltip[61] = 
-    		  "Module Recipe:"
+			  References.localNameVC("vc.guidebook.generic.5") + " : "
             + "\n\n"
-        	+ "             \u00A7l\u00A7n" + "Infinite Fuel" + "\u00A7r"
+        	+ "             \u00A7l\u00A7n" + References.localNameVC("vc.item.enum.module.23") + "\u00A7r"
     		+ "\n\n"
-    		+ "   This module gives airships the ability "
-    		+ "to fly without fuel. You don't get a lot of power making energy out of nothing. There is a 80% speed decrease."
-    		+ "\n\n\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Logic Chip, Weighted Pressure "
-    		+ "Plate, Quartz, Diamond, "
-    		+ "Lesser Inf. Fuel Module"
-    		+ "\u00A7r"
-    		;
+    		+ "   " + References.localNameVC("vc.guidebook.pg34.5");
+	  stringPageTextRightTooltipIngredient[61] = 
+	      	  References.localNameVC("vc.guidebook.generic.4") + " : "
+			+ "\n" + "\u00A7o\u00A7l"
+  	  		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + ", " 
+  	  		+ References.localNameVC("vc.guidebook.generic.6") + ", " 
+  	    	+ References.localNameVC(Items.QUARTZ.getUnlocalizedName() + ".name") + ", " 
+  	    	+ References.localNameVC(Items.DIAMOND.getUnlocalizedName() + ".name") + ", " 
+  	    	+ References.localNameVC("vc.item.enum.module.22") + " " + References.localNameVC("vc.item.module.#") + "\u00A7r";
 	  
 	  stringPageTextRightTooltip[62] = 
-    		  "Module Recipe:"
+			  References.localNameVC("vc.guidebook.generic.5") + " : "
             + "\n\n"
-        	+ "             \u00A7l\u00A7n" + "Greater Infinite Fuel" + "\u00A7r"
+        	+ "             \u00A7l\u00A7n" + References.localNameVC("vc.item.enum.module.24") + "\u00A7r"
     		+ "\n\n"
-    		+ "   This module gives airships the ability "
-    		+ "to fly without fuel. You don't get a lot of power making energy out of nothing. There is a 70% speed decrease."
-    		+ "\n\n\n\n"
-    		+ "\u00A7oIngredient list:\u00A7r"
-    		+ "\n"
-    		+ "\u00A7o\u00A7l"
-    		+ "Logic Chip, Weighted Pressure "
-    		+ "Plate, Quartz, Emerald, "
-    		+ "Inf. Fuel Module"
-    		+ "\u00A7r"
-    		;
+    		+ "   " + References.localNameVC("vc.guidebook.pg34.6");
+	  stringPageTextRightTooltipIngredient[62] = 
+	      	  References.localNameVC("vc.guidebook.generic.4") + " : "
+			+ "\n" + "\u00A7o\u00A7l"
+  	  		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + ", " 
+  	  		+ References.localNameVC("vc.guidebook.generic.6") + ", " 
+  	    	+ References.localNameVC(Items.QUARTZ.getUnlocalizedName() + ".name") + ", " 
+  	    	+ References.localNameVC(Items.EMERALD.getUnlocalizedName() + ".name") + ", " 
+  	    	+ References.localNameVC("vc.item.enum.module.23") + " " + References.localNameVC("vc.item.module.#") + "\u00A7r";
 	  
+	  //========================================
+	  //Bomb
+	  stringPageTextRightTooltip[63] = 
+			  References.localNameVC("vc.guidebook.generic.5") + " : "
+            + "\n\n"
+        	+ "             \u00A7l\u00A7n" + References.localNameVC("vc.item.enum.module.25") + "\u00A7r"
+    		+ "\n\n"
+    		+ "   " + References.localNameVC("vc.guidebook.pg36.1");
+	  stringPageTextRightTooltipIngredient[63] = 
+	      	  References.localNameVC("vc.guidebook.generic.4") + " : "
+			+ "\n" + "\u00A7o\u00A7l"
+  	  		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + ", " 
+  	  		+ References.localNameVC("vc.guidebook.generic.6") + ", " 
+  	    	+ References.localNameVC(Items.QUARTZ.getUnlocalizedName() + ".name") + ", " 
+  	    	+ References.localNameVC(Items.COMPASS.getUnlocalizedName() + ".name") + ", " 
+	    	+ Blocks.PISTON.getLocalizedName() + ", " 
+	    	+ Blocks.REDSTONE_TORCH.getLocalizedName() + "\u00A7r";
 	  
+	  stringPageTextRightTooltip[64] = 
+			  References.localNameVC("vc.guidebook.generic.5") + " : "
+            + "\n\n"
+        	+ "             \u00A7l\u00A7n" + References.localNameVC("vc.item.enum.module.26") + "\u00A7r"
+    		+ "\n\n"
+    		+ "   " + References.localNameVC("vc.guidebook.pg36.2");
+	  stringPageTextRightTooltipIngredient[64] = 
+	      	  References.localNameVC("vc.guidebook.generic.4") + " : "
+			+ "\n" + "\u00A7o\u00A7l"
+  	  		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + ", " 
+  	  		+ References.localNameVC("vc.guidebook.generic.6") + ", " 
+  	    	+ References.localNameVC(Items.QUARTZ.getUnlocalizedName() + ".name") + ", " 
+  	    	+ References.localNameVC(Items.DIAMOND.getUnlocalizedName() + ".name") + ", " 
+  	    	+ References.localNameVC("vc.item.enum.module.25") + " " + References.localNameVC("vc.item.module.#") + "\u00A7r";
 	  
+	  stringPageTextRightTooltip[65] = 
+			  References.localNameVC("vc.guidebook.generic.5") + " : "
+            + "\n\n"
+        	+ "             \u00A7l\u00A7n" + References.localNameVC("vc.item.enum.module.27") + "\u00A7r"
+    		+ "\n\n"
+    		+ "   " + References.localNameVC("vc.guidebook.pg36.3");
+	  stringPageTextRightTooltipIngredient[65] = 
+	      	  References.localNameVC("vc.guidebook.generic.4") + " : "
+			+ "\n" + "\u00A7o\u00A7l"
+  	  		+ References.localNameVC(ItemsVC.LOGIC_CHIP.getUnlocalizedName() + ".name") + ", " 
+  	  		+ References.localNameVC("vc.guidebook.generic.6") + ", " 
+  	    	+ References.localNameVC(Items.QUARTZ.getUnlocalizedName() + ".name") + ", " 
+  	    	+ References.localNameVC(Items.EMERALD.getUnlocalizedName() + ".name") + ", " 
+  	    	+ References.localNameVC("vc.item.enum.module.26") + " " + References.localNameVC("vc.item.module.#") + "\u00A7r";
 	  
+	  //===================================
+	  
+	  //TODO Stored Redstone Strings
+	  
+	  stringPageTextLeft[18] = 
+			  "\n\n\n"
+			+ "   " + References.localNameVC("vc.guidebook.pg37.1")
+			+ "\n\n"
+			+ "   " + References.localNameVC("vc.guidebook.pg37.2")
+			+ "\n\n"
+			+ "   " + References.localNameVC("vc.guidebook.pg37.3")
+			+ "\n\n";
+	  stringPageTextLeftButtons[18] = "";
+	  
+	  stringPageTextRight[18] = 
+		      "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+		    + "\u00A7l"
+		    + "      1.) " + References.localNameVC("vc.guidebook.pg38.1")
+		    + "\n\n"
+		    + "      2.) " + References.localNameVC("vc.guidebook.pg38.2")
+		    + "\n\n"
+		    + "      3.) " + References.localNameVC("vc.guidebook.pg38.3")
+		    + "\n\n"
+		    + "      4.) " + References.localNameVC("vc.guidebook.pg38.4")
+		    + "\n\n"
+		    + "      5.) " + References.localNameVC("vc.guidebook.pg38.5")
+		    + "\u00A7r";
+      
 	  //===================================
 	  
 	  //TODO Airship Behavior Strings
 	  
-	  stringPageTextLeft[17] = 
+	  stringPageTextLeft[19] = 
 			  "\n\n\n"
-			+ "   Interesting facts about airships:"
+			+ "   " + References.localNameVC("vc.guidebook.pg39.1")
 			+ "\n\n"
-    		+ "- Airships can hold 2 players, or 1 player and 1 animal. Monsters can also hop in your airship so keep a Dismounter handy! "
+    		+ "- " + References.localNameVC("vc.guidebook.pg39.2")
     		+ "\n\n"
-			+ "- Airships hate water! Once in water, you will begin to move very slowly. If you go deeper, your airship will begin to smoke. If you do not get out of the water in time, it will explode. Warning! It will hurt and destroy your airship."
-    		+ "\n\n"
-			;
+			+ "- " +References.localNameVC("vc.guidebook.pg39.3")
+    		+ "\n\n";
+	  stringPageTextLeftButtons[19] = "";
 	  
-	  stringPageTextRight[17] = 
-			  "Use the following keys "
-    		+ "to pilot airships: "
+	  stringPageTextRight[19] = 
+			  References.localNameVC("vc.guidebook.pg40.1")
     		+ "\n\n"
-    		+ "\u00A75[" + Keybinds.vcForward.getDisplayName() + "] \u00A70= Forward \n"
-    		+ "\u00A75[" + Keybinds.vcBack.getDisplayName() + "] \u00A70= Back \n"
-    		+ "\u00A75[" + Keybinds.vcLeft.getDisplayName() + "] \u00A70= Left \n"
-    		+ "\u00A75[" + Keybinds.vcRight.getDisplayName() + "] \u00A70= Right \n"
-    		+ "\u00A75[" + Keybinds.vcUp.getDisplayName() + "] \u00A70= Ascend \n"
-    		+ "\u00A75[" + Keybinds.vcDown.getDisplayName() + "] \u00A70= Descend "
+    		+ "\u00A75[" + Keybinds.vcForward.getDisplayName() + "] \u00A70= " + References.localNameVC("vc.key.moveForward") + " \n"
+    		+ "\u00A75[" + Keybinds.vcBack.getDisplayName() + "] \u00A70= " + References.localNameVC("vc.key.moveBack") + " \n"
+    		+ "\u00A75[" + Keybinds.vcLeft.getDisplayName() + "] \u00A70= " + References.localNameVC("vc.key.moveLeft") + " \n"
+    		+ "\u00A75[" + Keybinds.vcRight.getDisplayName() + "] \u00A70= " + References.localNameVC("vc.key.moveRight") + " \n"
+    		+ "\u00A75[" + Keybinds.vcUp.getDisplayName() + "] \u00A70= " + References.localNameVC("vc.key.moveUp") + " \n"
+    		+ "\u00A75[" + Keybinds.vcDown.getDisplayName() + "] \u00A70= " + References.localNameVC("vc.key.moveDown") + " "
 			+ "\n\n"
-			+ "*Based on current key bindings."
-			;
+			+ References.localNameVC("vc.guidebook.pg40.2");
+    
     }
 }
 

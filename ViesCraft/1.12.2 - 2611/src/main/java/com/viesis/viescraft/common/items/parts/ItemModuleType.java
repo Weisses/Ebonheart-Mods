@@ -9,6 +9,7 @@ import javax.annotation.Nullable;
 import com.viesis.viescraft.ViesCraft;
 import com.viesis.viescraft.api.EnumsVC;
 import com.viesis.viescraft.api.References;
+import com.viesis.viescraft.api.util.LogHelper;
 import com.viesis.viescraft.common.items.ItemHelper;
 
 import net.minecraft.client.Minecraft;
@@ -127,6 +128,7 @@ public class ItemModuleType extends Item {
 		}
 	}
 	
+	@Override
 	public EnumRarity getRarity(ItemStack stack)
     {
 		if(stack.getMetadata() == 0)
@@ -155,13 +157,14 @@ public class ItemModuleType extends Item {
 		
 		if(stack.getMetadata() == 0)
         {
-        	itemName = stringColorMain + References.localNameVC("item.vc:item_module_chip.name");
+        	itemName = stringColorMain + References.Old_I18n.translateToLocalFormatted("item.vc:item_module_chip.name");
         }
         else
         {
         	itemName = stringColorMain + EnumsVC.ModuleType.byId(this.getMetadata(stack)).getLocalizedName() 
-        			+ " " + TextFormatting.GRAY + "("
-        			+ TextFormatting.DARK_RED + References.localNameVC("vc.item.module.#")
+        			+ " " 
+        			+ TextFormatting.GRAY + "("
+        			+ TextFormatting.DARK_RED + References.Old_I18n.translateToLocalFormatted("vc.item.module.#")
         			+ TextFormatting.GRAY + ")";
         }
 		

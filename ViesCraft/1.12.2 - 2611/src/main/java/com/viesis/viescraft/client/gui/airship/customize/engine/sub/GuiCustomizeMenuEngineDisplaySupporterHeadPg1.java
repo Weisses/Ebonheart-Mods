@@ -40,8 +40,8 @@ public class GuiCustomizeMenuEngineDisplaySupporterHeadPg1 extends GuiCustomizeM
 		this.buttonList.add(GuiVC.button01);
 		this.buttonList.add(GuiVC.button02);
 		this.buttonList.add(GuiVC.button03);
-/**		this.buttonList.add(GuiVC.button04);
-		this.buttonList.add(GuiVC.button05);
+		this.buttonList.add(GuiVC.button04);
+/**		this.buttonList.add(GuiVC.button05);
 		this.buttonList.add(GuiVC.button06);
 		this.buttonList.add(GuiVC.button07);
 		this.buttonList.add(GuiVC.button08);

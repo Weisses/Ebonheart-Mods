@@ -13,12 +13,12 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class GuiGuidebookPaint extends GuiScreen {
+public class OLDGuiGuidebookSocket extends GuiScreen {
 	
     private final int bookImageHeight = 192;
     private final int bookImageWidth = 192;
     private int currPage = 0;
-    private static final int bookTotalPages = 16;
+    private static final int bookTotalPages = 15;
     private static ResourceLocation[] bookPageTextures = new ResourceLocation[bookTotalPages];
     private static String[] stringPageText = new String[bookTotalPages];
     
@@ -26,143 +26,168 @@ public class GuiGuidebookPaint extends GuiScreen {
     private NextPageButton buttonNextPage;
     private NextPageButton buttonPreviousPage;
     
-    public GuiGuidebookPaint()
+    public OLDGuiGuidebookSocket()
     {
-    	bookPageTextures[0] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/paint/page_0.png");
-        bookPageTextures[1] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/paint/page_1.png");
-        bookPageTextures[2] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/paint/page_2.png");
-        bookPageTextures[3] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/paint/page_3.png");
-        bookPageTextures[4] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/paint/page_4.png");
-        bookPageTextures[5] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/paint/page_5.png");
-        bookPageTextures[6] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/paint/page_6.png");
-        bookPageTextures[7] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/paint/page_7.png");
-        bookPageTextures[8] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/paint/page_8.png");
-        bookPageTextures[9] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/paint/page_9.png");
-        bookPageTextures[10] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/paint/page_10.png");
-        bookPageTextures[11] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/paint/page_11.png");
-        bookPageTextures[12] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/paint/page_12.png");
-        bookPageTextures[13] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/paint/page_13.png");
-        bookPageTextures[14] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/paint/page_14.png");
-        bookPageTextures[15] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/paint/page_15.png");
-
+    	bookPageTextures[0] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/socket/page_0.png");
+        bookPageTextures[1] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/socket/page_1.png");
+        bookPageTextures[2] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/socket/page_2.png");
+        bookPageTextures[3] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/socket/page_3.png");
+        bookPageTextures[4] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/socket/page_4.png");
+        bookPageTextures[5] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/socket/page_5.png");
+        bookPageTextures[6] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/socket/page_6.png");
+        bookPageTextures[7] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/socket/page_7.png");
+        bookPageTextures[8] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/socket/page_8.png");
+        bookPageTextures[9] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/socket/page_9.png");
+        bookPageTextures[10] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/socket/page_10.png");
+        bookPageTextures[11] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/socket/page_11.png");
+        bookPageTextures[12] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/socket/page_12.png");
+        bookPageTextures[13] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/socket/page_13.png");
+        bookPageTextures[14] = new ResourceLocation(References.MOD_ID + ":textures/gui/guides/socket/page_14.png");
+        
+        
         //Title
         stringPageText[0] = "\n\n\n\n\n\n\n"
-        		+ "    " + "\u00A7l\u00A7nFlaming Paint?!\u00A7r"
+        		+ "    " + "\u00A7l\u00A7nModules & You\u00A7r"
         		+ "\n\n" 
         		+ "         " + "\u00A7oby Viesis\u00A7r"
         		+ "\n\n\n\n" 
-        		+ "          " + References.MOD_VERSION;
-        
-        stringPageText[1] = "   Now that you built "
-        		+ "your airship and can "
-        		+ "pilot it like a pro, let's "
-        		+ "move on to customizing "
-        		+ "our airships... "
-        		+ "\n\n"
-        		+ "   Let's talk about the Balloon Colorizer and Balloon Patterns! "
+        		+ "          " + References.MOD_VERSION
         		;
         
-        stringPageText[2] = "   To use a colorizer, "
-        		+ "\u00A75[Shift] \u00A70+ \u00A75[Right-Click] "
-        		+ "\u00A70to open the GUI, pick your Red, Green, and Blue values, then accept it. "
-        		+ "\n\n"
-        		+ "   Once that is done, "
-        		+ "\u00A75[Shift] \u00A70+ \u00A75[Left-Click] "
-        		+ "\u00A70any airship to apply the color. "
-        		+ "The item will be used. ";
+        stringPageText[1] = "   The sky is within our "
+        		+ "reach, but what if you "
+        		+ "had a way to get more "
+        		+ "out of your airships? "
+        		+ "A way to do more..."
+        		+ "\n\n\n"
+        		+ "   I have developed a "
+        		+ "new system that will "
+        		+ "allow you to enhance "
+        		+ "your airships. This is "
+        		+ "called the module "
+        		+ "system. "
+        		;
         
-        stringPageText[3] = "Paint Recipe:"
+        stringPageText[2] = "\n\n\n\n\n\n"
+        		+ "   To navigate to your "
+        		+ "airship module slot, open the gui and "
+        		+ "click on the module button. "
         		+ "\n\n"
-        		+ "\u00A7l\u00A7nBalloon Colorizer\u00A7r"
+        		+ "*Only 1 module can be used at a time."
+        		;
+        
+        stringPageText[3] = "Module Recipe:"
+        		+ "\n\n"
+        		+ "\u00A7l\u00A7nLogic Chip\u00A70\u00A7r\u00A70"
         		+ "\n\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oUsed to paint an Airship's Balloons.\u00A7r";
-        
-        stringPageText[4] = "   To use a pattern, "
-        		+ "\u00A75[Shift] \u00A70+ \u00A75[Left-Click] "
-        		+ "\u00A70any airship to apply the pattern. "
-        		+ "The item will be used. "
+        		+ "\u00A7oBasic chip used to"
+        		+ "\nmake modules/items.\u00A7r"
+        		;
+        		
+        stringPageText[4] = "Module Recipe:"
         		+ "\n\n"
-        		+ "   Colorized patterns already have rgb colors on it, and can have random results with the colorizer.  Have fun!"
+        		+ "\u00A7l\u00A7nMinor Speed\nModule\u00A70\u00A7r\u00A70"
+        		+ "\n\n\n\n\n\n\n\n"
+        		+ "\u00A72 Speed +0.8"
+        		+ "\n\u00A7c None \u00A7r"
         		;
         
-        stringPageText[5] = "Pattern Recipe:"
+        stringPageText[5] = "Module Recipe:"
         		+ "\n\n"
-        		+ "\u00A7l\u00A7nPlain"
-        		+ "\nPattern\u00A7r"
+        		+ "\u00A7l\u00A7nMajor Speed\nModule\u00A70\u00A7r\u00A70"
         		+ "\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oDefault balloon pattern.\u00A7r";
+        		+ "\u00A72 Speed +1.6"
+        		+ "\n\u00A7c Fuel x2\u00A7r"
+        		;
         
-        stringPageText[6] = "Pattern Recipe:"
+        stringPageText[6] = "Module Recipe:"
         		+ "\n\n"
-        		+ "\u00A7l\u00A7nChecker"
-        		+ "\nPattern\u00A7r"
+        		+ "\u00A7l\u00A7nSmall Inventory\nModule\u00A70\u00A7r\u00A70"
         		+ "\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oGrayscaled pattern.\u00A7r";
+        		+ "\u00A72 9 slot inventory."
+        		+ "\n\u00A7c Speed -20%\u00A7r"
+        		;
         
-        stringPageText[7] = "Pattern Recipe:"
+        stringPageText[7] = "Module Recipe:"
         		+ "\n\n"
-        		+ "\u00A7l\u00A7nPolka Dot"
-        		+ "\nPattern\u00A7r"
+        		+ "\u00A7l\u00A7nLarge Inventory\nModule\u00A70\u00A7r\u00A70"
         		+ "\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oGrayscaled pattern.\u00A7r";
+        		+ "\u00A72 18 slot inventory."
+        		+ "\n\u00A7c Speed -30% & Fuel x2\u00A7r"
+        		;
         
-        stringPageText[8] = "Pattern Recipe:"
+        stringPageText[8] = "Module Recipe:"
         		+ "\n\n"
-        		+ "\u00A7l\u00A7nZigzag"
-        		+ "\nPattern\u00A7r"
+        		+ "\u00A7l\u00A7nInfinite Fuel\nModule\u00A70\u00A7r\u00A70"
         		+ "\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oGrayscaled pattern.\u00A7r";
+        		+ "\u00A72 No fuel needed."
+        		+ "\n\u00A7c Speed -50%\u00A7r"
+        		;
         
-        stringPageText[9] = "Pattern Recipe:"
+        stringPageText[9] = "Module Recipe:"
         		+ "\n\n"
-        		+ "\u00A7l\u00A7nCreeper"
-        		+ "\nPattern\u00A7r"
+        		+ "\u00A7l\u00A7nWater Landing\nModule\u00A70\u00A7r\u00A70"
         		+ "\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oGrayscaled pattern.\u00A7r";
+        		+ "\u00A72 Land on water."
+        		+ "\n\u00A7c None \u00A7r"
+        		;
         
-        stringPageText[10] = "Pattern Recipe:"
+        stringPageText[10] = "Module Recipe:"
         		+ "\n\n"
-        		+ "\u00A7l\u00A7nWater"
-        		+ "\nPattern\u00A7r"
+        		+ "\u00A7l\u00A7nMax Altitude\nModule\u00A70\u00A7r\u00A70"
         		+ "\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oGrayscaled pattern.\u00A7r";
+        		+ "\u00A72 Unlimited max altitude."
+        		+ "\n\u00A7c None \u00A7r"
+        		;
         
-        stringPageText[11] = "Pattern Recipe:"
+        stringPageText[11] = "Module Recipe:"
         		+ "\n\n"
-        		+ "\u00A7l\u00A7nLava"
-        		+ "\nPattern\u00A7r"
+        		+ "\u00A7l\u00A7nMinor Efficiency\nModule\u00A70\u00A7r\u00A70"
         		+ "\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oGrayscaled pattern.\u00A7r";
+        		+ "\u00A72 Fuel burn +25%"
+        		+ "\n\u00A7c None \u00A7r"
+        		;
         
-        stringPageText[12] = "Pattern Recipe:"
+        stringPageText[12] = "Module Recipe:"
         		+ "\n\n"
-        		+ "\u00A7l\u00A7nEnder"
-        		+ "\nPattern\u00A7r"
+        		+ "\u00A7l\u00A7nMajor Efficiency\nModule\u00A70\u00A7r\u00A70"
         		+ "\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oGrayscaled pattern.\u00A7r";
+        		+ "\u00A72 Fuel burn +50%"
+        		+ "\n\u00A7c Speed -25%\u00A7r"
+        		;//Really 30%
         
-        stringPageText[13] = "Pattern Recipe:"
+        stringPageText[13] = "Module Recipe:"
         		+ "\n\n"
-        		+ "\u00A7l\u00A7nTools"
-        		+ "\nPattern\u00A7r"
+        		+ "\u00A7l\u00A7nJukebox\nModule\u00A70\u00A7r\u00A70"
         		+ "\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oGrayscaled pattern.\u00A7r";
+        		+ "\u00A72 Play music."
+        		+ "\n\u00A7c None \u00A7r"
+        		;
         
-        stringPageText[14] = "Pattern Recipe:"
+        stringPageText[14] = "Module Recipe:"
         		+ "\n\n"
-        		+ "\u00A7l\u00A7nColorized"
-        		+ "\nPattern\u00A7r"
+        		+ "\u00A7l\u00A7nCruise Control\nModule\u00A70\u00A7r\u00A70"
         		+ "\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oPattern with color.\u00A7r";
+        		+ "\u00A72 Auto-Forward."
+        		+ "\n\u00A7c None \u00A7r"
+        		;
         
-        stringPageText[15] = "Pattern Recipe:"
+        /**
+        stringPageText[8] = "Module Recipe:"
         		+ "\n\n"
-        		+ "\u00A7l\u00A7nPhantom"
-        		+ "\nPattern\u00A7r"
+        		+ "\u00A7l\u00A7nStealth Module\u00A70\u00A7r\u00A70"
         		+ "\n\n\n\n\n\n\n\n"
-        		+ "\u00A7oSemi-transparent with color.\u00A7r";
+        		+ "\u00A7oVanish for 18s."
+        		+ "\nCooldown = 2m.\u00A7r";
         
- }
+        stringPageText[9] = "Module Recipe:"
+        		+ "\n\n"
+        		+ "\u00A7l\u00A7nDash Module\u00A70\u00A7r\u00A70"
+        		+ "\n\n\n\n\n\n\n\n"
+        		+ "\u00A7o400% speed for 5s."
+        		+ "\nCooldown = 1m.\u00A7r";
+        */
+    }
 
     /**
      * Adds the buttons (and other controls) to the screen in question.
@@ -264,11 +289,6 @@ public class GuiGuidebookPaint extends GuiScreen {
         {
         	mc.getTextureManager().bindTexture(bookPageTextures[14]);
         }
-        if (currPage == 15)
-        {
-        	mc.getTextureManager().bindTexture(bookPageTextures[15]);
-        }
-        
         //else
         //{
         // mc.getTextureManager().bindTexture(bookPageTextures[2]);

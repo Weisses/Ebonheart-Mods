@@ -119,6 +119,7 @@ public class ItemUpgradeEngine extends Item {
 		tooltip.add(TextFormatting.DARK_GREEN + "================================");
 	}
 	
+	@Override
 	public EnumRarity getRarity(ItemStack stack)
     {
 		if(stack.getMetadata() == 0)
@@ -158,34 +159,34 @@ public class ItemUpgradeEngine extends Item {
 		{
 			case 0:
 				return colorName = TextFormatting.WHITE 
-				+ References.localNameVC("item.vc:item_engine_fragment.name");
+				+ References.Old_I18n.translateToLocalFormatted("item.vc:item_engine_fragment.name");
 			case 1:
 				return colorName = TextFormatting.WHITE 
-				+ References.localNameVC("item.vc:item_engine_upgrade.name") + " "
+				+ References.Old_I18n.translateToLocalFormatted("item.vc:item_engine_upgrade.name") + " "
 				+ TextFormatting.GRAY + "("
 				+ TextFormatting.WHITE + EnumsVC.MainTierEngine.byId(this.getMetadata(stack)).getLocalizedName()
 				+ TextFormatting.GRAY + ")";
 			case 2:
 				return colorName = TextFormatting.YELLOW 
-				+ References.localNameVC("item.vc:item_engine_upgrade.name") + " "
+				+ References.Old_I18n.translateToLocalFormatted("item.vc:item_engine_upgrade.name") + " "
 				+ TextFormatting.GRAY + "("
 				+ TextFormatting.YELLOW + EnumsVC.MainTierEngine.byId(this.getMetadata(stack)).getLocalizedName()
 				+ TextFormatting.GRAY + ")";
 			case 3:
 				return colorName = TextFormatting.AQUA 
-				+ References.localNameVC("item.vc:item_engine_upgrade.name") + " "
+				+ References.Old_I18n.translateToLocalFormatted("item.vc:item_engine_upgrade.name") + " "
 				+ TextFormatting.GRAY + "("
 				+ TextFormatting.AQUA + EnumsVC.MainTierEngine.byId(this.getMetadata(stack)).getLocalizedName()
 				+ TextFormatting.GRAY + ")";
 			case 4:
 				return colorName = TextFormatting.LIGHT_PURPLE 
-				+ References.localNameVC("item.vc:item_engine_upgrade.name") + " "
+				+ References.Old_I18n.translateToLocalFormatted("item.vc:item_engine_upgrade.name") + " "
 				+ TextFormatting.GRAY + "("
 				+ TextFormatting.LIGHT_PURPLE + EnumsVC.MainTierEngine.byId(this.getMetadata(stack)).getLocalizedName()
 				+ TextFormatting.GRAY + ")";
 			case 5:
 				return colorName = TextFormatting.RED 
-				+ References.localNameVC("item.vc:item_engine_upgrade.name") + " "
+				+ References.Old_I18n.translateToLocalFormatted("item.vc:item_engine_upgrade.name") + " "
 				+ TextFormatting.GRAY + "("
 				+ TextFormatting.RED + EnumsVC.MainTierEngine.byId(this.getMetadata(stack)).getLocalizedName()
 				+ TextFormatting.GRAY + ")";

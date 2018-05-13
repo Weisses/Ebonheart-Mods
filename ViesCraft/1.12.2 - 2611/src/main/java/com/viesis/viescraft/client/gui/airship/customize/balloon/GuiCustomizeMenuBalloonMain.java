@@ -95,26 +95,31 @@ public class GuiCustomizeMenuBalloonMain extends GuiContainerVC {
 		GuiVC.buttonT4.visible = false;
 		GuiVC.buttonT5.visible = false;
 		
-		//if(this.airship.getMainTierBalloon() > 0)
-        //{
+		GuiVC.button16.visible = false;
+		GuiVC.button17.visible = false;
+		
+		if(this.airship.getMainTierBalloon() > 0)
+        {
 			GuiVC.buttonT1.visible = true;
-        //}
-        //if(this.airship.getMainTierBalloon() > 1)
-        //{
+        }
+        if(this.airship.getMainTierBalloon() > 1)
+        {
         	GuiVC.buttonT2.visible = true;
-        //}
-        //if(this.airship.getMainTierBalloon() > 2)
-        //{
+        }
+        if(this.airship.getMainTierBalloon() > 2)
+        {
         	GuiVC.buttonT3.visible = true;
-        //}
-        //if(this.airship.getMainTierBalloon() > 3)
-        //{
+        }
+        if(this.airship.getMainTierBalloon() > 3)
+        {
         	GuiVC.buttonT4.visible = true;
-        //}
-        //if(this.airship.getMainTierBalloon() > 4)
-        ///{
+        }
+        if(this.airship.getMainTierBalloon() > 4)
+        {
         	GuiVC.buttonT5.visible = true;
-        //}
+        	GuiVC.button16.visible = true;
+    		GuiVC.button17.visible = true;
+        }
         	
     	if(this.airship.getBalloonPatternTransparent())
 		{
@@ -259,96 +264,99 @@ public class GuiCustomizeMenuBalloonMain extends GuiContainerVC {
 		}
 		GlStateManager.popMatrix();
 		
-		if(GuiVC.button16.enabled)
-		{
-			//Logic for mouse-over Color Cost tooltip
-			if(mouseX >= this.guiLeft + 21 && mouseX <= this.guiLeft + 80
-			&& mouseY >= this.guiTop + 160 && mouseY <= this.guiTop + 173)
+		if(this.airship.getMainTierBalloon() > 4)
+        {
+			if(GuiVC.button16.enabled)
 			{
-				List<String> text = new ArrayList<String>();
-				
-				text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("Costs " + CostsVC.BALLOON_PATTERN_COLOR_COST + " Redstone"));
-				
-				FontRenderer fontrenderer = this.getFontRenderer();
-				
-				GlStateManager.pushMatrix();
+/**				//Logic for mouse-over Color Cost tooltip
+				if(mouseX >= this.guiLeft + 21 && mouseX <= this.guiLeft + 80
+				&& mouseY >= this.guiTop + 160 && mouseY <= this.guiTop + 173)
 				{
-					GlStateManager.translate(mouseX - this.guiLeft - 28, mouseY - this.guiTop - 8, 0);
-					GlStateManager.scale(0.5, 0.5, 0.5);
+					List<String> text = new ArrayList<String>();
 					
-					this.drawHoveringText(text, 0, 0);
-				}
-				GlStateManager.popMatrix();
+					text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("Costs " + CostsVC.BALLOON_PATTERN_COLOR_COST + " Redstone"));
+					
+					FontRenderer fontrenderer = this.getFontRenderer();
+					
+					GlStateManager.pushMatrix();
+					{
+						GlStateManager.translate(mouseX - this.guiLeft - 28, mouseY - this.guiTop - 8, 0);
+						GlStateManager.scale(0.5, 0.5, 0.5);
+						
+						this.drawHoveringText(text, 0, 0);
+					}
+					GlStateManager.popMatrix();
+				}*/
 			}
-		}
-		
-		if(GuiVC.button17.enabled)
-		{
-			//Logic for mouse-over Transparency Cost tooltip
-			if(mouseX >= this.guiLeft + 21 && mouseX <= this.guiLeft + 80
-			&& mouseY >= this.guiTop + 180 && mouseY <= this.guiTop + 193)
+			
+			if(GuiVC.button17.enabled)
 			{
-				List<String> text = new ArrayList<String>();
-				
-				text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("Costs " + CostsVC.BALLOON_PATTERN_TRANSPARENCY_COST + " Redstone"));
-				
-				FontRenderer fontrenderer = this.getFontRenderer();
-				
-				GlStateManager.pushMatrix();
+				//Logic for mouse-over Transparency Cost tooltip
+				if(mouseX >= this.guiLeft + 21 && mouseX <= this.guiLeft + 80
+				&& mouseY >= this.guiTop + 180 && mouseY <= this.guiTop + 193)
 				{
-					GlStateManager.translate(mouseX - this.guiLeft - 28, mouseY - this.guiTop - 8, 0);
-					GlStateManager.scale(0.5, 0.5, 0.5);
+					List<String> text = new ArrayList<String>();
 					
-					this.drawHoveringText(text, 0, 0);
+					text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("Costs " + CostsVC.BALLOON_PATTERN_TRANSPARENCY_COST + " Redstone"));
+					
+					FontRenderer fontrenderer = this.getFontRenderer();
+					
+					GlStateManager.pushMatrix();
+					{
+						GlStateManager.translate(mouseX - this.guiLeft - 28, mouseY - this.guiTop - 8, 0);
+						GlStateManager.scale(0.5, 0.5, 0.5);
+						
+						this.drawHoveringText(text, 0, 0);
+					}
+					GlStateManager.popMatrix();
 				}
-				GlStateManager.popMatrix();
 			}
-		}
-		
-		if(GuiVC.button18.enabled)
-		{
-			//Logic for mouse-over 0 Cost tooltip
-			if(mouseX >= this.guiLeft + 81 && mouseX <= this.guiLeft + 94
-			&& mouseY >= this.guiTop + 160 && mouseY <= this.guiTop + 173)
+			
+			if(GuiVC.button18.enabled)
 			{
-				List<String> text = new ArrayList<String>();
-				
-				text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("Costs 0 Redstone"));
-				
-				FontRenderer fontrenderer = this.getFontRenderer();
-				
-				GlStateManager.pushMatrix();
+				//Logic for mouse-over 0 Cost tooltip
+				if(mouseX >= this.guiLeft + 81 && mouseX <= this.guiLeft + 94
+				&& mouseY >= this.guiTop + 160 && mouseY <= this.guiTop + 173)
 				{
-					GlStateManager.translate(mouseX - this.guiLeft - 28, mouseY - this.guiTop - 8, 0);
-					GlStateManager.scale(0.5, 0.5, 0.5);
+					List<String> text = new ArrayList<String>();
 					
-					this.drawHoveringText(text, 0, 0);
+					text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("Costs 0 Redstone"));
+					
+					FontRenderer fontrenderer = this.getFontRenderer();
+					
+					GlStateManager.pushMatrix();
+					{
+						GlStateManager.translate(mouseX - this.guiLeft - 28, mouseY - this.guiTop - 8, 0);
+						GlStateManager.scale(0.5, 0.5, 0.5);
+						
+						this.drawHoveringText(text, 0, 0);
+					}
+					GlStateManager.popMatrix();
 				}
-				GlStateManager.popMatrix();
 			}
-		}
-		
-		if(GuiVC.button19.enabled)
-		{
-			//Logic for mouse-over 0 Cost tooltip
-			if(mouseX >= this.guiLeft + 81 && mouseX <= this.guiLeft + 94
-			&& mouseY >= this.guiTop + 180 && mouseY <= this.guiTop + 193)
+			
+			if(GuiVC.button19.enabled)
 			{
-				List<String> text = new ArrayList<String>();
-				
-				text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("Costs 0 Redstone"));
-				
-				FontRenderer fontrenderer = this.getFontRenderer();
-				
-				GlStateManager.pushMatrix();
+				//Logic for mouse-over 0 Cost tooltip
+				if(mouseX >= this.guiLeft + 81 && mouseX <= this.guiLeft + 94
+				&& mouseY >= this.guiTop + 180 && mouseY <= this.guiTop + 193)
 				{
-					GlStateManager.translate(mouseX - this.guiLeft - 28, mouseY - this.guiTop - 8, 0);
-					GlStateManager.scale(0.5, 0.5, 0.5);
+					List<String> text = new ArrayList<String>();
 					
-					this.drawHoveringText(text, 0, 0);
+					text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("Costs 0 Redstone"));
+					
+					FontRenderer fontrenderer = this.getFontRenderer();
+					
+					GlStateManager.pushMatrix();
+					{
+						GlStateManager.translate(mouseX - this.guiLeft - 28, mouseY - this.guiTop - 8, 0);
+						GlStateManager.scale(0.5, 0.5, 0.5);
+						
+						this.drawHoveringText(text, 0, 0);
+					}
+					GlStateManager.popMatrix();
 				}
-				GlStateManager.popMatrix();
 			}
-		}
+        }
     }
 }

@@ -9,6 +9,7 @@ import org.lwjgl.opengl.GL11;
 import com.viesis.viescraft.api.GuiVC;
 import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.api.util.Keybinds;
+import com.viesis.viescraft.client.InitParticlesVCRender;
 import com.viesis.viescraft.client.gui.buttons.GuiButtonMenuCustomizeVC;
 import com.viesis.viescraft.client.gui.buttons.GuiButtonMenuMainVC;
 import com.viesis.viescraft.client.gui.buttons.GuiButtonMenuModuleVC;
@@ -467,7 +468,7 @@ public class GuiContainerVC extends GuiContainer {
 	        
 	        //This is the non-multipass rendering way to render an entity.
 	        //rendermanager.renderEntity(entityIn, 0.0D, 0.0D, 0.0D, 0.0F, 1.0F, false);
-	        
+	        //rendermanager.world.spa
 	        rendermanager.renderEntityStatic(entityIn, 0, false);
 	        rendermanager.renderMultipass(entityIn, 0F);
 	        

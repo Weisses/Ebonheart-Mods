@@ -12,7 +12,7 @@ public class CostsVC {
 	public static int FRAME_SKIN_TRANSPARENCY_COST = 25;
 	public static int FRAME_SKIN_COLOR_COST = 30;
 	
-	public static int ENGINE_PARTICLES_COST = 20;
+	public static int ENGINE_PARTICLES_COST = 75;
 	public static int ENGINE_DISPLAY_SYMBOL_COST = 25;
 	
 	public static int BALLOON_PATTERN_TEXTURE_COST = 20;

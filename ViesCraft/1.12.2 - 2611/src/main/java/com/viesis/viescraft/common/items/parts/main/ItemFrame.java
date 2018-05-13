@@ -46,16 +46,9 @@ public class ItemFrame extends Item {
 		tooltip.add(TextFormatting.DARK_GREEN + "================================");
 	}
 	
+	@Override
 	public EnumRarity getRarity(ItemStack stack)
     {
 		return EnumRarity.COMMON;
-    }
-	
-	@Override
-	public String getItemStackDisplayName(ItemStack stack)
-    {
-        String colorName = TextFormatting.WHITE + References.localNameVC("item.vc:item_airship_frame.name");
-		
-		return colorName;
     }
 }

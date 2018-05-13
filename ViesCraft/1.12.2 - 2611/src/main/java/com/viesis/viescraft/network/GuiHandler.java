@@ -21,6 +21,7 @@ import com.viesis.viescraft.client.gui.airship.customize.engine.sub.GuiCustomize
 import com.viesis.viescraft.client.gui.airship.customize.engine.sub.GuiCustomizeMenuEngineDisplayHeadPg1;
 import com.viesis.viescraft.client.gui.airship.customize.engine.sub.GuiCustomizeMenuEngineDisplaySupporterHeadPg1;
 import com.viesis.viescraft.client.gui.airship.customize.engine.sub.GuiCustomizeMenuEngineDisplaySymbolPg1;
+import com.viesis.viescraft.client.gui.airship.customize.engine.sub.GuiCustomizeMenuEngineParticlePg1;
 import com.viesis.viescraft.client.gui.airship.customize.frame.GuiCustomizeMenuFrameColor;
 import com.viesis.viescraft.client.gui.airship.customize.frame.GuiCustomizeMenuFrameMain;
 import com.viesis.viescraft.client.gui.airship.customize.frame.sub.GuiCustomizeMenuFrameTier1Pg1;
@@ -37,7 +38,6 @@ import com.viesis.viescraft.client.gui.airship.upgrade.GuiUpgradeMenu;
 import com.viesis.viescraft.client.gui.pouch.GuiPouchAll;
 import com.viesis.viescraft.client.gui.pouch.GuiPouchModule;
 import com.viesis.viescraft.client.gui.pouch.InventoryPouch;
-import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipCore;
 import com.viesis.viescraft.common.entity.airships.containers.all.ContainerCustomizeEngineBlock;
 import com.viesis.viescraft.common.entity.airships.containers.all.ContainerCustomizeMenu;
@@ -96,6 +96,7 @@ public class GuiHandler implements IGuiHandler {
 	public static final int GUI_APPEARANCE_MENU_ENGINE_BLOCKITEM = 304;
 	public static final int GUI_APPEARANCE_MENU_ENGINE_HEADS = 306;
 	public static final int GUI_APPEARANCE_MENU_ENGINE_SUPPORTER_HEADS = 307;
+	public static final int GUI_APPEARANCE_MENU_ENGINE_PARTICLE = 308;
 	
 	public static final int GUI_APPEARANCE_MENU_BALLOON_MAIN = 202;
 	public static final int GUI_APPEARANCE_MENU_BALLOON_COLOR = 209;
@@ -240,6 +241,10 @@ public class GuiHandler implements IGuiHandler {
 			return new ContainerCustomizeMenu(player.inventory, (EntityAirshipCore)player.getRidingEntity());
 		}
 		if (ID == GUI_APPEARANCE_MENU_ENGINE_SUPPORTER_HEADS)
+		{
+			return new ContainerCustomizeMenu(player.inventory, (EntityAirshipCore)player.getRidingEntity());
+		}
+		if (ID == GUI_APPEARANCE_MENU_ENGINE_PARTICLE)
 		{
 			return new ContainerCustomizeMenu(player.inventory, (EntityAirshipCore)player.getRidingEntity());
 		}
@@ -431,6 +436,10 @@ public class GuiHandler implements IGuiHandler {
 		if (ID == GUI_APPEARANCE_MENU_ENGINE_SUPPORTER_HEADS)
 		{
 			return new GuiCustomizeMenuEngineDisplaySupporterHeadPg1(player.inventory, (EntityAirshipCore)player.getRidingEntity());
+		}
+		if (ID == GUI_APPEARANCE_MENU_ENGINE_PARTICLE)
+		{
+			return new GuiCustomizeMenuEngineParticlePg1(player.inventory, (EntityAirshipCore)player.getRidingEntity());
 		}
 		
 		

@@ -52,7 +52,7 @@ public class ItemModuleCreative extends Item {
 	@Override
 	public String getItemStackDisplayName(ItemStack stack)
     {
-		String colorName = TextFormatting.GOLD + "" + TextFormatting.BOLD +  References.localNameVC("item.vc:item_module_creative.name");
+		String colorName = TextFormatting.GOLD + "" + TextFormatting.BOLD +  References.Old_I18n.translateToLocalFormatted("item.vc:item_module_creative.name");
 		
 		return colorName 
 				+ TextFormatting.DARK_RED + "" + TextFormatting.BOLD

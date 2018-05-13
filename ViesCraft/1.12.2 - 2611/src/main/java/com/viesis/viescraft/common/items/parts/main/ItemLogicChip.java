@@ -48,6 +48,7 @@ public class ItemLogicChip extends Item {
 		tooltip.add(TextFormatting.DARK_GREEN + "================================");
 	}
 	
+	@Override
 	public EnumRarity getRarity(ItemStack stack)
     {
 		return EnumRarity.COMMON;
@@ -83,12 +84,4 @@ public class ItemLogicChip extends Item {
         return false;
     }
 	*/
-	
-	@Override
-	public String getItemStackDisplayName(ItemStack stack)
-    {
-        String colorName = TextFormatting.WHITE + References.localNameVC("item.vc:item_logic_chip.name");
-		
-		return colorName;
-    }
 }

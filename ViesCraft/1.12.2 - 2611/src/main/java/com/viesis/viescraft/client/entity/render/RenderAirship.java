@@ -6,22 +6,17 @@ import com.viesis.viescraft.api.EnumsVC;
 import com.viesis.viescraft.api.ItemsVC;
 import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.api.util.LogHelper;
-import com.viesis.viescraft.client.InitParticlesVCRender;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipCore;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
-import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.EntityRenderer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms.TransformType;
 import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
-import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.scoreboard.Scoreboard;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.text.TextFormatting;
@@ -86,11 +81,11 @@ public class RenderAirship extends RenderAirshipBase {
     	
     	scoreboard.addPlayerToTeam(entity.getCachedUniqueIdString(), "VCAirshipTier" + entity.getMainTierCore());
     	
-    	
     	LogHelper.info(entity.getTeam().getName());
 		*/	
-    			
-    			
+    	
+    	
+    	
         GL11.glEnable(GL11.GL_CULL_FACE);
         
         this.setupTranslation(x, y, z);
@@ -99,7 +94,9 @@ public class RenderAirship extends RenderAirshipBase {
         
         this.getCurrentModel(entity);
         
+        //this.selectedModelViewWindow(entity, partialTicks);
         this.selectedModelControlPanel(entity, partialTicks);
+        
     	this.selectedModelMainFrame(entity, partialTicks);
     	this.selectedModelMainEngine(entity, partialTicks);
     	this.selectedModelMainBalloonF(entity, partialTicks);
@@ -113,10 +110,11 @@ public class RenderAirship extends RenderAirshipBase {
     	
     	GL11.glDisable(GL11.GL_CULL_FACE);
     	
-    	//Renders the Display Symbol
+    	//Renders the Display Symbol System
     	this.renderEngineDisplaySymbol(entity, partialTicks);
     	
-    	//this.renderEngineSmokeParticles(entity, entity.coreModelVisualEngine);
+    	//Renders the Particle System
+    	this.renderEngineParticles(entity, entity.engineParticleVisual);
     	
     	//if(Minecraft.getMinecraft().objectMouseOver.entityHit == entity)
     	//{
@@ -129,8 +127,7 @@ public class RenderAirship extends RenderAirshipBase {
     	
     	if(ViesCraftConfig.renderNameplates)
     	{
-    		
-	        if(entity.isBeingRidden())
+    		if(entity.isBeingRidden())
 	        {
 	        	
 	        }
@@ -774,6 +771,22 @@ public class RenderAirship extends RenderAirshipBase {
         }
         
     }
+    
+    /**
+     * This is the View Window Model for the Main Render Method.
+     */
+    private void selectedModelViewWindow(EntityAirshipCore airshipIn, float partialTicks)
+    {
+    	//Draws the Main Control Panel Screen
+    	this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/model_airship_view_window.png"));
+    	
+    	if(airshipIn.moduleActiveSlot1 == EnumsVC.ModuleType.BOMB_LESSER.getMetadata()
+    	|| airshipIn.moduleActiveSlot1 == EnumsVC.ModuleType.BOMB_NORMAL.getMetadata()
+    	|| airshipIn.moduleActiveSlot1 == EnumsVC.ModuleType.BOMB_GREATER.getMetadata())
+    	{
+    		this.modelViewWindow.render(airshipIn, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
+    	}
+    }
 
 	/**
 	 * This is the Propeller Model for the Main Render Method.
@@ -1139,69 +1152,4 @@ public class RenderAirship extends RenderAirshipBase {
 	        
         GlStateManager.popMatrix();
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/**
-
-
-
-else if(entity.getModuleSpeedMinor())
-{
-	this.moduleNumber = 3;
-	
-    //int randomTick = Reference.random.nextInt(100) + 1;
-		
-	//if(randomTick < 30)
-	//{
-		//InitParticlesVCRender.generateRunicParticles(entity);
-	//	InitParticlesVCRender.generateColorFlameParticles(entity);
-	//}
-}
-else if(entity.getModuleSpeedMajor())
-{
-	this.moduleNumber = 4;
-	
-	//if(randomTick < 25)
-	//{
-	//	InitParticlesVCRender.generateFlameParticles(entity);
-	//}
-}
- */
