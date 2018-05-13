@@ -401,7 +401,7 @@ public class RenderAirship extends RenderAirshipBase {
         }
         
         //Frame Logic
-        if(airshipIn.getFrameSkinTransparent())
+        if(airshipIn.frameSkinTransparent)
         {
         	GlStateManager.enableBlend();
         	GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
@@ -409,7 +409,14 @@ public class RenderAirship extends RenderAirshipBase {
         
         GlStateManager.color(frameRed, frameGreen, frameBlue, 1F);
         
-    	this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/frames/bg_" + EnumsVC.VisualFrameSkinBackground.byId(airshipIn.frameSkinTexture).getRegistryName() + ".png"));
+        if(airshipIn.frameSkinColor)
+        {
+        	this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/frames/grayscale_bg_" + EnumsVC.VisualFrameSkinBackground.byId(airshipIn.frameSkinTexture).getRegistryName() + ".png"));
+        }
+        else
+        {
+        	this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/frames/bg_" + EnumsVC.VisualFrameSkinBackground.byId(airshipIn.frameSkinTexture).getRegistryName() + ".png"));
+        }
     	currentModelFrame.render(airshipIn, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
     	
     	GlStateManager.color(1F, 1F, 1F, 1F);
@@ -422,7 +429,7 @@ public class RenderAirship extends RenderAirshipBase {
     private void selectedModelMultiFrame(EntityAirshipCore airshipIn, float partialTicks)
     {
     	//Frame Logic
-        if(airshipIn.getFrameSkinTransparent())
+        if(airshipIn.frameSkinTransparent)
         {
         	GlStateManager.enableBlend();
         	GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
@@ -475,7 +482,7 @@ public class RenderAirship extends RenderAirshipBase {
         }
         
         //Frame Logic
-        if(airshipIn.getFrameSkinTransparent())
+        if(airshipIn.frameSkinTransparent)
         {
         	GlStateManager.enableBlend();
         	GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
@@ -483,7 +490,14 @@ public class RenderAirship extends RenderAirshipBase {
         
         GlStateManager.color(frameRed, frameGreen, frameBlue, 1F);
         
-    	this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/frames/bg_" + EnumsVC.VisualFrameSkinBackground.byId(airshipIn.frameSkinTexture).getRegistryName() + ".png"));
+        if(airshipIn.frameSkinColor)
+        {
+        	this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/frames/grayscale_bg_" + EnumsVC.VisualFrameSkinBackground.byId(airshipIn.frameSkinTexture).getRegistryName() + ".png"));
+        }
+        else
+        {
+        	this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/frames/bg_" + EnumsVC.VisualFrameSkinBackground.byId(airshipIn.frameSkinTexture).getRegistryName() + ".png"));
+        }
     	currentModelEngine.render(airshipIn, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
         
         GlStateManager.color(1F, 1F, 1F, 1F);
@@ -496,7 +510,7 @@ public class RenderAirship extends RenderAirshipBase {
     private void selectedModelMultiEngine(EntityAirshipCore airshipIn, float partialTicks)
     {
     	//Balloon Logic
-        if(airshipIn.getBalloonPatternTransparent())
+        if(airshipIn.balloonPatternTransparent)
         {
         	GlStateManager.enableBlend();
         	GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
@@ -547,7 +561,7 @@ public class RenderAirship extends RenderAirshipBase {
         }
         
         //Frame Logic
-        if(airshipIn.getFrameSkinTransparent())
+        if(airshipIn.frameSkinTransparent)
         {
         	GlStateManager.enableBlend();
         	GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
@@ -555,7 +569,14 @@ public class RenderAirship extends RenderAirshipBase {
         
         GlStateManager.color(frameRed, frameGreen, frameBlue, 1F);
         
-    	this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/frames/bg_" + EnumsVC.VisualFrameSkinBackground.byId(airshipIn.frameSkinTexture).getRegistryName() + ".png"));
+        if(airshipIn.frameSkinColor)
+        {
+        	this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/frames/grayscale_bg_" + EnumsVC.VisualFrameSkinBackground.byId(airshipIn.frameSkinTexture).getRegistryName() + ".png"));
+        }
+        else
+        {
+        	this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/frames/bg_" + EnumsVC.VisualFrameSkinBackground.byId(airshipIn.frameSkinTexture).getRegistryName() + ".png"));
+        }
     	currentModelBalloonF.render(airshipIn, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
     	
     	GlStateManager.color(1F, 1F, 1F, 1F);
@@ -568,7 +589,7 @@ public class RenderAirship extends RenderAirshipBase {
     private void selectedModelMultiBalloonF(EntityAirshipCore airshipIn, float partialTicks)
     {
     	//Frame Logic
-        if(airshipIn.getFrameSkinTransparent())
+        if(airshipIn.frameSkinTransparent)
         {
         	GlStateManager.enableBlend();
         	GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
@@ -617,7 +638,7 @@ public class RenderAirship extends RenderAirshipBase {
         }
         
         //Frame Logic
-        if(airshipIn.getFrameSkinTransparent())
+        if(airshipIn.frameSkinTransparent)
         {
         	GlStateManager.enableBlend();
         	GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
@@ -625,7 +646,14 @@ public class RenderAirship extends RenderAirshipBase {
         
         GlStateManager.color(frameRed, frameGreen, frameBlue, 1F);
         
-    	this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/frames/bg_" + EnumsVC.VisualFrameSkinBackground.byId(airshipIn.frameSkinTexture).getRegistryName() + ".png"));
+        if(airshipIn.frameSkinColor)
+        {
+        	this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/frames/grayscale_bg_" + EnumsVC.VisualFrameSkinBackground.byId(airshipIn.frameSkinTexture).getRegistryName() + ".png"));
+        }
+        else
+        {
+        	this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/frames/bg_" + EnumsVC.VisualFrameSkinBackground.byId(airshipIn.frameSkinTexture).getRegistryName() + ".png"));
+        }
     	currentModelBalloonDS.render(airshipIn, partialTicks, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
     	
     	GlStateManager.color(1F, 1F, 1F, 1F);
@@ -638,7 +666,7 @@ public class RenderAirship extends RenderAirshipBase {
     private void selectedModelMultiBalloonDS(EntityAirshipCore airshipIn, float partialTicks)
     {
     	//Frame Logic
-        if(airshipIn.getFrameSkinTransparent())
+        if(airshipIn.frameSkinTransparent)
         {
         	GlStateManager.enableBlend();
         	GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
@@ -689,7 +717,7 @@ public class RenderAirship extends RenderAirshipBase {
         }
         
         //Balloon Logic
-        if(airshipIn.getBalloonPatternTransparent())
+        if(airshipIn.balloonPatternTransparent)
         {
         	GlStateManager.enableBlend();
         	GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
@@ -697,7 +725,14 @@ public class RenderAirship extends RenderAirshipBase {
         
         GlStateManager.color(balloonRed, balloonGreen, balloonBlue, 1F);
     	
-    	this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/balloons/bg_" + EnumsVC.VisualBalloonPattern.byId(airshipIn.balloonPatternTexture).getRegistryName() + ".png"));
+        if(airshipIn.balloonPatternColor)
+        {
+        	this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/balloons/grayscale_bg_" + EnumsVC.VisualBalloonPattern.byId(airshipIn.balloonPatternTexture).getRegistryName() + ".png"));
+        }
+        else
+        {
+        	this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/balloons/bg_" + EnumsVC.VisualBalloonPattern.byId(airshipIn.balloonPatternTexture).getRegistryName() + ".png"));
+        }
     	currentModelBalloonB.render(airshipIn, 0.0F, 0.0F, 0F, 0.0F, 0.0F, 0.0625F);
         
         GlStateManager.color(1F, 1F, 1F, 1F);
@@ -710,7 +745,7 @@ public class RenderAirship extends RenderAirshipBase {
     private void selectedModelMultiBalloonB(EntityAirshipCore airshipIn, float partialTicks)
     {
     	//Balloon Logic
-        if(airshipIn.getBalloonPatternTransparent())
+        if(airshipIn.balloonPatternTransparent)
         {
         	GlStateManager.enableBlend();
         	GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
@@ -800,8 +835,15 @@ public class RenderAirship extends RenderAirshipBase {
 	        GlStateManager.enableRescaleNormal();
 	        GlStateManager.enableAlpha();
 	        
-	        this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/frames/bg_" + EnumsVC.VisualFrameSkinBackground.byId(airshipIn.frameSkinTexture).getRegistryName() + ".png"));
-        	
+	        if(airshipIn.frameSkinColor)
+	        {
+	        	this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/frames/grayscale_bg_" + EnumsVC.VisualFrameSkinBackground.byId(airshipIn.frameSkinTexture).getRegistryName() + ".png"));
+	        }
+	        else
+	        {
+	        	this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/frames/bg_" + EnumsVC.VisualFrameSkinBackground.byId(airshipIn.frameSkinTexture).getRegistryName() + ".png"));
+	        }
+	        
 	        boolean powered = airshipIn.getStoredFuel() > 0;
 	        float baseitemSpin = (((float)Minecraft.getMinecraft().player.getEntityWorld().getTotalWorldTime() + 1) / 20.0F) * (180F / (float)Math.PI);
 	        float itemSpin = baseitemSpin * 9;
@@ -838,7 +880,7 @@ public class RenderAirship extends RenderAirshipBase {
 	        }
 	        
 	        //Frame Logic
-	        if(airshipIn.getFrameSkinTransparent())
+	        if(airshipIn.frameSkinTransparent)
 	        {
 	        	GlStateManager.enableBlend();
 	        	GlStateManager.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);

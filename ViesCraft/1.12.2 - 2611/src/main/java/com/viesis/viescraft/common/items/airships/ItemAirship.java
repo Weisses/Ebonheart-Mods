@@ -66,6 +66,7 @@ public class ItemAirship extends ItemAirshipBase {
 		
 		this.frameSkinTexture = 0;
 		this.frameSkinTransparent = false;
+		this.frameSkinColor = false;
 		this.frameSkinColorRed = 255;
 		this.frameSkinColorGreen = 255;
 		this.frameSkinColorBlue = 255;
@@ -80,6 +81,7 @@ public class ItemAirship extends ItemAirshipBase {
 		
 		this.balloonPatternTexture = 0;
 		this.balloonPatternTransparent = false;
+		this.balloonPatternColor = false;
 		this.balloonPatternColorRed = 200;
 		this.balloonPatternColorGreen = 180;
 		this.balloonPatternColorBlue = 140;
@@ -135,6 +137,7 @@ public class ItemAirship extends ItemAirshipBase {
         		
         		this.frameSkinTexture = itemstack.getTagCompound().getInteger(rf.FRAME_SKIN_TEXTURE_TAG);
         		this.frameSkinTransparent = itemstack.getTagCompound().getBoolean(rf.FRAME_SKIN_TRANSPARENT_TAG);
+        		this.frameSkinColor = itemstack.getTagCompound().getBoolean(rf.FRAME_SKIN_COLOR_TAG);
         		this.frameSkinColorRed = itemstack.getTagCompound().getInteger(rf.FRAME_SKIN_COLOR_RED_TAG);
         		this.frameSkinColorGreen = itemstack.getTagCompound().getInteger(rf.FRAME_SKIN_COLOR_GREEN_TAG);
         		this.frameSkinColorBlue = itemstack.getTagCompound().getInteger(rf.FRAME_SKIN_COLOR_BLUE_TAG);
@@ -149,6 +152,7 @@ public class ItemAirship extends ItemAirshipBase {
         		
         		this.balloonPatternTexture = itemstack.getTagCompound().getInteger(rf.BALLOON_PATTERN_TEXTURE_TAG);
         		this.balloonPatternTransparent = itemstack.getTagCompound().getBoolean(rf.BALLOON_PATTERN_TRANSPARENT_TAG);
+        		this.balloonPatternColor = itemstack.getTagCompound().getBoolean(rf.BALLOON_PATTERN_COLOR_TAG);
         		this.balloonPatternColorRed = itemstack.getTagCompound().getInteger(rf.BALLOON_PATTERN_COLOR_RED_TAG);
         		this.balloonPatternColorGreen = itemstack.getTagCompound().getInteger(rf.BALLOON_PATTERN_COLOR_GREEN_TAG);
         		this.balloonPatternColorBlue = itemstack.getTagCompound().getInteger(rf.BALLOON_PATTERN_COLOR_BLUE_TAG);
@@ -198,6 +202,7 @@ public class ItemAirship extends ItemAirshipBase {
 	    		
 	    		this.frameSkinTexture, 
 	    		this.frameSkinTransparent, 
+	    		this.frameSkinColor, 
 	    		this.frameSkinColorRed, this.frameSkinColorGreen, this.frameSkinColorBlue, 
 	    		
 	    		this.engineParticleVisual, 
@@ -209,6 +214,7 @@ public class ItemAirship extends ItemAirshipBase {
 	    		
 	    		this.balloonPatternTexture, 
 	    		this.balloonPatternTransparent, 
+	    		this.balloonPatternColor, 
 	    		this.balloonPatternColorRed, this.balloonPatternColorGreen, this.balloonPatternColorBlue, 
 	    		
 	    		this.learnedModuleAltitude, this.selectedModuleAltitude, 

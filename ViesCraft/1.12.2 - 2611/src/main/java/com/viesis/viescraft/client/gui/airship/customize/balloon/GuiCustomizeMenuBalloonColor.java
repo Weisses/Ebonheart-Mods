@@ -487,16 +487,19 @@ public class GuiCustomizeMenuBalloonColor extends GuiContainerVC {
 	@Override
     protected void drawEntityOnScreen(int posX, int posY, int scale, EntityAirshipCore entityIn)
     {
+		boolean currentColor = entityIn.balloonPatternColor;
     	int currentR = entityIn.balloonPatternColorRed;
     	int currentG = entityIn.balloonPatternColorGreen;
     	int currentB = entityIn.balloonPatternColorBlue;
     	
-        entityIn.balloonPatternColorRed = this.textRedNumber;
+    	entityIn.balloonPatternColor = true;
+    	entityIn.balloonPatternColorRed = this.textRedNumber;
         entityIn.balloonPatternColorGreen = this.textGreenNumber;
         entityIn.balloonPatternColorBlue = this.textBlueNumber;
         
         super.drawEntityOnScreen(posX, posY, scale, entityIn);
     	
+        entityIn.balloonPatternColor = currentColor;
         entityIn.balloonPatternColorRed = currentR;
         entityIn.balloonPatternColorGreen = currentG;
         entityIn.balloonPatternColorBlue = currentB;

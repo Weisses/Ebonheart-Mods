@@ -36,6 +36,7 @@ public class References {
 	
 	public static final String FRAME_SKIN_TEXTURE_TAG = "FrameSkinTexture";
 	public static final String FRAME_SKIN_TRANSPARENT_TAG = "FrameSkinTransparent";
+	public static final String FRAME_SKIN_COLOR_TAG = "FrameSkinColor";
 	public static final String FRAME_SKIN_COLOR_RED_TAG = "FrameSkinColorRed";
 	public static final String FRAME_SKIN_COLOR_GREEN_TAG = "FrameSkinColorGreen";
 	public static final String FRAME_SKIN_COLOR_BLUE_TAG = "FrameSkinColorBlue";
@@ -50,6 +51,7 @@ public class References {
 	
 	public static final String BALLOON_PATTERN_TEXTURE_TAG = "BalloonPatternTexture";
 	public static final String BALLOON_PATTERN_TRANSPARENT_TAG = "BalloonPatternTransparent";
+	public static final String BALLOON_PATTERN_COLOR_TAG = "BalloonPatternColor";
 	public static final String BALLOON_PATTERN_COLOR_RED_TAG = "BalloonPatternColorRed";
 	public static final String BALLOON_PATTERN_COLOR_GREEN_TAG = "BalloonPatternColorGreen";
 	public static final String BALLOON_PATTERN_COLOR_BLUE_TAG = "BalloonPatternColorBlue";

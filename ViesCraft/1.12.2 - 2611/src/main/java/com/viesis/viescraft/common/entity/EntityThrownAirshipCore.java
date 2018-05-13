@@ -32,6 +32,7 @@ public class EntityThrownAirshipCore extends EntityThrowable {
 	
 	protected int frameSkinTexture;
 	protected boolean frameSkinTransparent;
+	protected boolean frameSkinColor;
 	protected int frameSkinColorRed;
 	protected int frameSkinColorGreen;
 	protected int frameSkinColorBlue;
@@ -46,6 +47,7 @@ public class EntityThrownAirshipCore extends EntityThrowable {
 	
 	protected int balloonPatternTexture;
 	protected boolean balloonPatternTransparent;
+	protected boolean balloonPatternColor;
 	protected int balloonPatternColorRed;
 	protected int balloonPatternColorGreen;
 	protected int balloonPatternColorBlue;

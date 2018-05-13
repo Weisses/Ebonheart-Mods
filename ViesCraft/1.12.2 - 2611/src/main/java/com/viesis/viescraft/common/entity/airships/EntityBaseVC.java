@@ -12,6 +12,7 @@ import net.minecraft.block.BlockLiquid;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.MoverType;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -99,6 +100,7 @@ public class EntityBaseVC extends Entity {
     		
     		int frameSkinTextureIn, 
     		boolean frameSkinTransparentIn, 
+    		boolean frameSkinColorIn, 
     		int frameSkinColorRedIn, int frameSkinColorGreenIn, int frameSkinColorBlueIn,
     		
     		int engineParticleVisualIn, 
@@ -107,10 +109,10 @@ public class EntityBaseVC extends Entity {
     		int engineDisplayHeadVisualIn, 
     		int engineDisplaySupporterHeadVisualIn, 
     		int engineDisplayHolidayVisualIn, 
-
     		
     		int balloonPatternTextureIn, 
     		boolean balloonPatternTransparentIn, 
+    		boolean balloonPatternColorIn, 
     		int balloonPatternColorRedIn, int balloonPatternColorGreenIn, int balloonPatternColorBlueIn, 
     		
     		boolean learnedModuleAltitudeIn, int selectedModuleAltitudeIn, 
@@ -715,7 +717,7 @@ public class EntityBaseVC extends Entity {
         ON_LAND,
         IN_AIR;
     }
-    
+
     
     
     //==================================//

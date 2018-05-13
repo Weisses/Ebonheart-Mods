@@ -33,6 +33,7 @@ public class MessageHelperGuiCustomizeMenuFrameColorDefault extends MessageBase<
 	{
 		EntityAirshipBaseVC airship = (EntityAirshipBaseVC) player.getRidingEntity();
 		
+		airship.frameSkinColor = false;
 		airship.frameSkinColorRed = 255;
 		airship.frameSkinColorGreen = 255;
 		airship.frameSkinColorBlue = 255;

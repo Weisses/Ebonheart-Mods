@@ -59,6 +59,7 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
     //Frame system
     protected static final DataParameter<Integer> FRAME_SKIN_TEXTURE_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
     protected static final DataParameter<Boolean> FRAME_SKIN_TRANSPARENT_DM = EntityDataManager.<Boolean>createKey(EntityAirshipBaseVC.class, DataSerializers.BOOLEAN);
+    protected static final DataParameter<Boolean> FRAME_SKIN_COLOR_DM = EntityDataManager.<Boolean>createKey(EntityAirshipBaseVC.class, DataSerializers.BOOLEAN);
     protected static final DataParameter<Integer> FRAME_SKIN_COLOR_RED_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
     protected static final DataParameter<Integer> FRAME_SKIN_COLOR_GREEN_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
     protected static final DataParameter<Integer> FRAME_SKIN_COLOR_BLUE_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
@@ -75,6 +76,7 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
     //Balloon system
     protected static final DataParameter<Integer> BALLOON_PATTERN_TEXTURE_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
     protected static final DataParameter<Boolean> BALLOON_PATTERN_TRANSPARENT_DM = EntityDataManager.<Boolean>createKey(EntityAirshipBaseVC.class, DataSerializers.BOOLEAN);
+    protected static final DataParameter<Boolean> BALLOON_PATTERN_COLOR_DM = EntityDataManager.<Boolean>createKey(EntityAirshipBaseVC.class, DataSerializers.BOOLEAN);
     protected static final DataParameter<Integer> BALLOON_PATTERN_COLOR_RED_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
     protected static final DataParameter<Integer> BALLOON_PATTERN_COLOR_GREEN_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
     protected static final DataParameter<Integer> BALLOON_PATTERN_COLOR_BLUE_DM = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
@@ -154,6 +156,7 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
 	
 	public int frameSkinTexture;
 	public boolean frameSkinTransparent;
+	public boolean frameSkinColor;
 	public int frameSkinColorRed;
 	public int frameSkinColorGreen;
 	public int frameSkinColorBlue;
@@ -168,6 +171,7 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
 	
 	public int balloonPatternTexture;
 	public boolean balloonPatternTransparent;
+	public boolean balloonPatternColor;
 	public int balloonPatternColorRed;
 	public int balloonPatternColorGreen;
 	public int balloonPatternColorBlue;
@@ -254,6 +258,7 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
     		
     		int frameSkinTextureIn, 
     		boolean frameSkinTransparentIn, 
+    		boolean frameSkinColorIn, 
     		int frameSkinColorRedIn, int frameSkinColorGreenIn, int frameSkinColorBlueIn,
     		
     		int engineParticleVisualIn, 
@@ -265,6 +270,7 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
     		
     		int balloonPatternTextureIn, 
     		boolean balloonPatternTransparentIn, 
+    		boolean balloonPatternColorIn, 
     		int balloonPatternColorRedIn, int balloonPatternColorGreenIn, int balloonPatternColorBlueIn, 
     		
     		boolean learnedModuleAltitudeIn, int selectedModuleAltitudeIn, 
@@ -315,6 +321,7 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
         
         this.dataManager.register(FRAME_SKIN_TEXTURE_DM, Integer.valueOf(this.frameSkinTexture));
         this.dataManager.register(FRAME_SKIN_TRANSPARENT_DM, Boolean.valueOf(this.frameSkinTransparent));
+        this.dataManager.register(FRAME_SKIN_COLOR_DM, Boolean.valueOf(this.frameSkinColor));
         this.dataManager.register(FRAME_SKIN_COLOR_RED_DM, Integer.valueOf(this.frameSkinColorRed));
         this.dataManager.register(FRAME_SKIN_COLOR_GREEN_DM, Integer.valueOf(this.frameSkinColorGreen));
         this.dataManager.register(FRAME_SKIN_COLOR_BLUE_DM, Integer.valueOf(this.frameSkinColorBlue));
@@ -329,6 +336,7 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
         
         this.dataManager.register(BALLOON_PATTERN_TEXTURE_DM, Integer.valueOf(this.balloonPatternTexture));
         this.dataManager.register(BALLOON_PATTERN_TRANSPARENT_DM, Boolean.valueOf(this.balloonPatternTransparent));
+        this.dataManager.register(BALLOON_PATTERN_COLOR_DM, Boolean.valueOf(this.balloonPatternColor));
         this.dataManager.register(BALLOON_PATTERN_COLOR_RED_DM, Integer.valueOf(this.balloonPatternColorRed));
         this.dataManager.register(BALLOON_PATTERN_COLOR_GREEN_DM, Integer.valueOf(this.balloonPatternColorGreen));
         this.dataManager.register(BALLOON_PATTERN_COLOR_BLUE_DM, Integer.valueOf(this.balloonPatternColorBlue));
@@ -416,6 +424,7 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
     	
     	compound.setInteger(rf.FRAME_SKIN_TEXTURE_TAG, this.frameSkinTexture);
     	compound.setBoolean(rf.FRAME_SKIN_TRANSPARENT_TAG, this.frameSkinTransparent);
+    	compound.setBoolean(rf.FRAME_SKIN_COLOR_TAG, this.frameSkinColor);
     	compound.setInteger(rf.FRAME_SKIN_COLOR_RED_TAG, this.frameSkinColorRed);
     	compound.setInteger(rf.FRAME_SKIN_COLOR_GREEN_TAG, this.frameSkinColorGreen);
     	compound.setInteger(rf.FRAME_SKIN_COLOR_BLUE_TAG, this.frameSkinColorBlue);
@@ -430,6 +439,7 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
     	
     	compound.setInteger(rf.BALLOON_PATTERN_TEXTURE_TAG, this.balloonPatternTexture);
     	compound.setBoolean(rf.BALLOON_PATTERN_TRANSPARENT_TAG, this.balloonPatternTransparent);
+    	compound.setBoolean(rf.BALLOON_PATTERN_COLOR_TAG, this.balloonPatternColor);
     	compound.setInteger(rf.BALLOON_PATTERN_COLOR_RED_TAG, this.balloonPatternColorRed);
     	compound.setInteger(rf.BALLOON_PATTERN_COLOR_GREEN_TAG, this.balloonPatternColorGreen);
     	compound.setInteger(rf.BALLOON_PATTERN_COLOR_BLUE_TAG, this.balloonPatternColorBlue);
@@ -491,6 +501,7 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
     	
     	this.frameSkinTexture = compound.getInteger(rf.FRAME_SKIN_TEXTURE_TAG);
     	this.frameSkinTransparent = compound.getBoolean(rf.FRAME_SKIN_TRANSPARENT_TAG);
+    	this.frameSkinColor = compound.getBoolean(rf.FRAME_SKIN_COLOR_TAG);
     	this.frameSkinColorRed = compound.getInteger(rf.FRAME_SKIN_COLOR_RED_TAG);
     	this.frameSkinColorGreen = compound.getInteger(rf.FRAME_SKIN_COLOR_GREEN_TAG);
     	this.frameSkinColorBlue = compound.getInteger(rf.FRAME_SKIN_COLOR_BLUE_TAG);
@@ -505,6 +516,7 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
     	
     	this.balloonPatternTexture = compound.getInteger(rf.BALLOON_PATTERN_TEXTURE_TAG);
     	this.balloonPatternTransparent = compound.getBoolean(rf.BALLOON_PATTERN_TRANSPARENT_TAG);
+    	this.balloonPatternColor = compound.getBoolean(rf.BALLOON_PATTERN_COLOR_TAG);
     	this.balloonPatternColorRed = compound.getInteger(rf.BALLOON_PATTERN_COLOR_RED_TAG);
     	this.balloonPatternColorGreen = compound.getInteger(rf.BALLOON_PATTERN_COLOR_GREEN_TAG);
     	this.balloonPatternColorBlue = compound.getInteger(rf.BALLOON_PATTERN_COLOR_BLUE_TAG);
@@ -1349,6 +1361,7 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
         	
             this.frameSkinTexture = this.getFrameSkinTexture();
             this.frameSkinTransparent = this.getFrameSkinTransparent();
+            this.frameSkinColor = this.getFrameSkinColor();
             this.frameSkinColorRed = this.getFrameSkinColorRed();
             this.frameSkinColorGreen = this.getFrameSkinColorGreen();
             this.frameSkinColorBlue = this.getFrameSkinColorBlue();
@@ -1363,6 +1376,7 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
             
             this.balloonPatternTexture = this.getBalloonPatternTexture();
             this.balloonPatternTransparent = this.getBalloonPatternTransparent();
+            this.balloonPatternColor = this.getBalloonPatternColor();
             this.balloonPatternColorRed = this.getBalloonPatternColorRed();
             this.balloonPatternColorGreen = this.getBalloonPatternColorGreen();
             this.balloonPatternColorBlue = this.getBalloonPatternColorBlue();
@@ -1419,6 +1433,7 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
             
             this.setFrameSkinTexture(this.frameSkinTexture);
             this.setFrameSkinTransparent(this.frameSkinTransparent);
+            this.setFrameSkinColor(this.frameSkinColor);
             this.setFrameSkinColorRed(this.frameSkinColorRed);
             this.setFrameSkinColorGreen(this.frameSkinColorGreen);
             this.setFrameSkinColorBlue(this.frameSkinColorBlue);
@@ -1433,6 +1448,7 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
             
             this.setBalloonPatternTexture(this.balloonPatternTexture);
             this.setBalloonPatternTransparent(this.balloonPatternTransparent);
+            this.setBalloonPatternColor(this.balloonPatternColor);
             this.setBalloonPatternColorRed(this.balloonPatternColorRed);
             this.setBalloonPatternColorGreen(this.balloonPatternColorGreen);
             this.setBalloonPatternColorBlue(this.balloonPatternColorBlue);
@@ -1622,6 +1638,20 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
     }
     
     /**
+     * Sets the Visual Frame Skin Color boolean.
+     */
+    public void setFrameSkinColor(boolean booleanIn)
+    {
+        this.dataManager.set(FRAME_SKIN_COLOR_DM, Boolean.valueOf(booleanIn));
+    }
+    /**
+     * Gets the Visual Frame Skin Color boolean.
+     */
+    public boolean getFrameSkinColor()
+    {
+        return ((Boolean)this.dataManager.get(FRAME_SKIN_COLOR_DM)).booleanValue();
+    }
+    /**
      * Sets the Visual Frame Skin Color Red.
      */
     public void setFrameSkinColorRed(int intIn)
@@ -1796,6 +1826,20 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
         return ((Boolean)this.dataManager.get(BALLOON_PATTERN_TRANSPARENT_DM)).booleanValue();
     }
     
+    /**
+     * Sets the Visual Balloon Pattern Color boolean.
+     */
+    public void setBalloonPatternColor(boolean booleanIn)
+    {
+        this.dataManager.set(BALLOON_PATTERN_COLOR_DM, Boolean.valueOf(booleanIn));
+    }
+    /**
+     * Gets the Visual Balloon Pattern Color boolean.
+     */
+    public boolean getBalloonPatternColor()
+    {
+        return ((Boolean)this.dataManager.get(BALLOON_PATTERN_COLOR_DM)).booleanValue();
+    }
     /**
      * Sets the Visual Balloon Pattern Color Red.
      */

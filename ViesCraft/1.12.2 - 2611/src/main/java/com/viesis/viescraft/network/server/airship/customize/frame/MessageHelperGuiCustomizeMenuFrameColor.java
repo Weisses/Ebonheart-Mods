@@ -51,6 +51,7 @@ public class MessageHelperGuiCustomizeMenuFrameColor extends MessageBase<Message
 		{
 			if(airship.getStoredRedstone() >= CostsVC.FRAME_SKIN_COLOR_COST)
 			{
+				airship.frameSkinColor = true;
 				airship.frameSkinColorRed = message.metaFrameRed;
 				airship.frameSkinColorGreen = message.metaFrameGreen;
 				airship.frameSkinColorBlue = message.metaFrameBlue;

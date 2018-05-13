@@ -646,12 +646,12 @@ public class EnumsVC {
     	
     	//Common
     	//Tier 1 - 18
-    	SPECKLEDCOLORED(1, "speckled_colored", References.Old_I18n.translateToLocalFormatted("vc.enum.visualballoon.1")),
-    	SPECKLEDINVERTED(2, "speckled_inverted", References.Old_I18n.translateToLocalFormatted("vc.enum.visualballoon.2")),
-    	CRUMPLEDCOLORED(3, "crumpled_colored", References.Old_I18n.translateToLocalFormatted("vc.enum.visualballoon.5")),
-    	CRUMPLEDINVERTED(4, "crumpled_inverted", References.Old_I18n.translateToLocalFormatted("vc.enum.visualballoon.6")),
-    	CHECKERCOLORED(5, "checker_colored", References.Old_I18n.translateToLocalFormatted("vc.enum.visualballoon.3")),
-    	CHECKERINVERTED(6, "checker_inverted", References.Old_I18n.translateToLocalFormatted("vc.enum.visualballoon.4")),
+    	SPECKLED(1, "speckled", References.Old_I18n.translateToLocalFormatted("vc.enum.visualballoon.1")),
+    	CRUMPLED(2, "crumpled", References.Old_I18n.translateToLocalFormatted("vc.enum.visualballoon.2")),
+    	CHECKER(3, "checker", References.Old_I18n.translateToLocalFormatted("vc.enum.visualballoon.5")),
+    	A11(4, "crumpled_inverted", References.Old_I18n.translateToLocalFormatted("vc.enum.visualballoon.6")),
+    	A12(5, "checker_colored", References.Old_I18n.translateToLocalFormatted("vc.enum.visualballoon.3")),
+    	A13(6, "checker_inverted", References.Old_I18n.translateToLocalFormatted("vc.enum.visualballoon.4")),
     	
         A1COLORED(7, "a1_colored", References.Old_I18n.translateToLocalFormatted("vc.enum.visualballoon.7")),
         A1INVERTED(8, "a1_inverted", References.Old_I18n.translateToLocalFormatted("vc.enum.visualballoon.8")),
@@ -669,10 +669,10 @@ public class EnumsVC {
         
         //Uncommon
         //Tier 2 - 12
-    	POLKADOTCOLORED(19, "polkadot_colored", References.Old_I18n.translateToLocalFormatted("vc.enum.visualballoon.19")),
-    	POLKADOTINVERTED(20, "polkadot_inverted", References.Old_I18n.translateToLocalFormatted("vc.enum.visualballoon.20")),
-    	BASKETWEAVECOLORED(21, "basketweave_colored", References.Old_I18n.translateToLocalFormatted("vc.enum.visualballoon.21")),
-    	BASKETWEAVEINVERTED(22, "basketweave_inverted", References.Old_I18n.translateToLocalFormatted("vc.enum.visualballoon.22")),
+    	POLKADOTCOLORED(19, "polkadot", References.Old_I18n.translateToLocalFormatted("vc.enum.visualballoon.19")),
+    	BASKETWEAVE(20, "basketweave", References.Old_I18n.translateToLocalFormatted("vc.enum.visualballoon.20")),
+    	B11(21, "basketweave_colored", References.Old_I18n.translateToLocalFormatted("vc.enum.visualballoon.21")),
+    	B12(22, "basketweave_inverted", References.Old_I18n.translateToLocalFormatted("vc.enum.visualballoon.22")),
         B1COLORED(23, "b1_colored", References.Old_I18n.translateToLocalFormatted("vc.enum.visualballoon.23")),
         B1INVERTED(24, "b1_inverted", References.Old_I18n.translateToLocalFormatted("vc.enum.visualballoon.24")),
         
@@ -685,8 +685,8 @@ public class EnumsVC {
         
         //Rare
         //Tier 3 - 12
-        ZIGZAGCOLORED(31, "zigzag_colored", References.Old_I18n.translateToLocalFormatted("vc.enum.visualballoon.31")),
-        ZIGZAGINVERTED(32, "zigzag_inverted", References.Old_I18n.translateToLocalFormatted("vc.enum.visualballoon.32")),
+        ZIGZAG(31, "zigzag", References.Old_I18n.translateToLocalFormatted("vc.enum.visualballoon.31")),
+        C11ZIGZAGINVERTED(32, "zigzag_inverted", References.Old_I18n.translateToLocalFormatted("vc.enum.visualballoon.32")),
         C1COLORED(33, "c1_colored", References.Old_I18n.translateToLocalFormatted("vc.enum.visualballoon.33")),
         C1INVERTED(34, "c1_inverted", References.Old_I18n.translateToLocalFormatted("vc.enum.visualballoon.34")),
         C2COLORED(35, "c2_colored", References.Old_I18n.translateToLocalFormatted("vc.enum.visualballoon.35")),
@@ -701,8 +701,8 @@ public class EnumsVC {
         
         //Epic
         //Tier 4 - 12
-        CREEPERCOLORED(43, "creeper_colored", References.Old_I18n.translateToLocalFormatted("vc.enum.visualballoon.43")),
-        CREEPERINVERTED(44, "creeper_inverted", References.Old_I18n.translateToLocalFormatted("vc.enum.visualballoon.44")),
+        CREEPER(43, "creeper", References.Old_I18n.translateToLocalFormatted("vc.enum.visualballoon.43")),
+        D1CREEPERINVERTED(44, "creeper_inverted", References.Old_I18n.translateToLocalFormatted("vc.enum.visualballoon.44")),
         D1COLORED(45, "d1_colored", References.Old_I18n.translateToLocalFormatted("vc.enum.visualballoon.45")),
         D1INVERTED(46, "d1_inverted", References.Old_I18n.translateToLocalFormatted("vc.enum.visualballoon.46")),
         D2COLORED(47, "d2_colored", References.Old_I18n.translateToLocalFormatted("vc.enum.visualballoon.47")),
@@ -717,9 +717,9 @@ public class EnumsVC {
         
         //Legendary
     	//Tier 5 - 10
-        WATER(55, "water_colored", References.Old_I18n.translateToLocalFormatted("vc.enum.visualballoon.55")),
-        LAVA(56, "lava_colored", References.Old_I18n.translateToLocalFormatted("vc.enum.visualballoon.56")),
-        ENDER(57, "ender_colored", References.Old_I18n.translateToLocalFormatted("vc.enum.visualballoon.57")),
+        WATER(55, "water", References.Old_I18n.translateToLocalFormatted("vc.enum.visualballoon.55")),
+        LAVA(56, "lava", References.Old_I18n.translateToLocalFormatted("vc.enum.visualballoon.56")),
+        ENDER(57, "ender", References.Old_I18n.translateToLocalFormatted("vc.enum.visualballoon.57")),
         E1(58, "e1_colored", References.Old_I18n.translateToLocalFormatted("vc.enum.visualballoon.58")),
         E2(59, "e2_colored", References.Old_I18n.translateToLocalFormatted("vc.enum.visualballoon.59")),
         E3(60, "e3_colored", References.Old_I18n.translateToLocalFormatted("vc.enum.visualballoon.60")),

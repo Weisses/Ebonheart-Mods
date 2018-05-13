@@ -52,6 +52,7 @@ public class EntityAirshipCore extends EntityAirshipBaseVC {
     		
     		int frameSkinTextureIn, 
     		boolean frameSkinTransparentIn, 
+    		boolean frameSkinColorIn, 
     		int frameSkinColorRedIn, int frameSkinColorGreenIn, int frameSkinColorBlueIn,
     		
     		int engineParticleVisualIn, 
@@ -63,6 +64,7 @@ public class EntityAirshipCore extends EntityAirshipBaseVC {
     		
     		int balloonPatternTextureIn, 
     		boolean balloonPatternTransparentIn, 
+    		boolean balloonPatternColorIn, 
     		int balloonPatternColorRedIn, int balloonPatternColorGreenIn, int balloonPatternColorBlueIn, 
     		
     		boolean learnedModuleAltitudeIn, int selectedModuleAltitudeIn, 
@@ -103,6 +105,7 @@ public class EntityAirshipCore extends EntityAirshipBaseVC {
         
         this.frameSkinTexture = frameSkinTextureIn;
         this.frameSkinTransparent = frameSkinTransparentIn;
+        this.frameSkinColor = frameSkinColorIn;
         this.frameSkinColorRed = frameSkinColorRedIn;
         this.frameSkinColorGreen = frameSkinColorGreenIn;
         this.frameSkinColorBlue = frameSkinColorBlueIn;
@@ -117,6 +120,7 @@ public class EntityAirshipCore extends EntityAirshipBaseVC {
         
         this.balloonPatternTexture = balloonPatternTextureIn;
         this.balloonPatternTransparent = balloonPatternTransparentIn;
+        this.balloonPatternColor = balloonPatternColorIn;
         this.balloonPatternColorRed = balloonPatternColorRedIn;
         this.balloonPatternColorGreen = balloonPatternColorGreenIn;
         this.balloonPatternColorBlue = balloonPatternColorBlueIn;
@@ -182,6 +186,7 @@ public class EntityAirshipCore extends EntityAirshipBaseVC {
     	
     	stack.getTagCompound().setInteger(rf.FRAME_SKIN_TEXTURE_TAG, this.frameSkinTexture);
     	stack.getTagCompound().setBoolean(rf.FRAME_SKIN_TRANSPARENT_TAG, this.frameSkinTransparent);
+    	stack.getTagCompound().setBoolean(rf.FRAME_SKIN_COLOR_TAG, this.frameSkinColor);
     	stack.getTagCompound().setInteger(rf.FRAME_SKIN_COLOR_RED_TAG, this.frameSkinColorRed);
     	stack.getTagCompound().setInteger(rf.FRAME_SKIN_COLOR_GREEN_TAG, this.frameSkinColorGreen);
     	stack.getTagCompound().setInteger(rf.FRAME_SKIN_COLOR_BLUE_TAG, this.frameSkinColorBlue);
@@ -196,6 +201,7 @@ public class EntityAirshipCore extends EntityAirshipBaseVC {
     	
     	stack.getTagCompound().setInteger(rf.BALLOON_PATTERN_TEXTURE_TAG, this.balloonPatternTexture);
     	stack.getTagCompound().setBoolean(rf.BALLOON_PATTERN_TRANSPARENT_TAG, this.balloonPatternTransparent);
+    	stack.getTagCompound().setBoolean(rf.BALLOON_PATTERN_COLOR_TAG, this.balloonPatternColor);
     	stack.getTagCompound().setInteger(rf.BALLOON_PATTERN_COLOR_RED_TAG, this.balloonPatternColorRed);
     	stack.getTagCompound().setInteger(rf.BALLOON_PATTERN_COLOR_GREEN_TAG, this.balloonPatternColorGreen);
     	stack.getTagCompound().setInteger(rf.BALLOON_PATTERN_COLOR_BLUE_TAG, this.balloonPatternColorBlue);

@@ -488,16 +488,19 @@ public class GuiCustomizeMenuFrameColor extends GuiContainerVC {
 	@Override
     protected void drawEntityOnScreen(int posX, int posY, int scale, EntityAirshipCore entityIn)
     {
+		boolean currentColor = entityIn.frameSkinColor;
     	int currentR = entityIn.frameSkinColorRed;
     	int currentG = entityIn.frameSkinColorGreen;
     	int currentB = entityIn.frameSkinColorBlue;
     	
-        entityIn.frameSkinColorRed = this.textRedNumber;
+    	entityIn.frameSkinColor = true;
+    	entityIn.frameSkinColorRed = this.textRedNumber;
         entityIn.frameSkinColorGreen = this.textGreenNumber;
         entityIn.frameSkinColorBlue = this.textBlueNumber;
         
         super.drawEntityOnScreen(posX, posY, scale, entityIn);
     	
+        entityIn.frameSkinColor = currentColor;
         entityIn.frameSkinColorRed = currentR;
         entityIn.frameSkinColorGreen = currentG;
         entityIn.frameSkinColorBlue = currentB;

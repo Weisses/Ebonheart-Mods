@@ -33,6 +33,7 @@ public class MessageHelperGuiCustomizeMenuBalloonColorDefault extends MessageBas
 	{
 		EntityAirshipBaseVC airship = (EntityAirshipBaseVC) player.getRidingEntity();
 		
+		airship.balloonPatternColor = false;
 		airship.balloonPatternColorRed = 200;
 		airship.balloonPatternColorGreen = 180;
 		airship.balloonPatternColorBlue = 140;

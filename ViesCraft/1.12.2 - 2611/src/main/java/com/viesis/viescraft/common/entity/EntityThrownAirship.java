@@ -29,6 +29,7 @@ public class EntityThrownAirship extends EntityThrownAirshipCore {
     		
     		int frameSkinTextureIn, 
     		boolean frameSkinTransparentIn, 
+    		boolean frameSkinColorIn,
     		int frameSkinColorRedIn, int frameSkinColorGreenIn, int frameSkinColorBlueIn,
     		
     		int engineParticleVisualIn, 
@@ -40,6 +41,7 @@ public class EntityThrownAirship extends EntityThrownAirshipCore {
     		
     		int balloonPatternTextureIn, 
     		boolean balloonPatternTransparentIn, 
+    		boolean balloonPatternColorIn, 
     		int balloonPatternColorRedIn, int balloonPatternColorGreenIn, int balloonPatternColorBlueIn, 
     		
     		boolean learnedModuleAltitudeIn, int selectedModuleAltitudeIn, 
@@ -80,6 +82,7 @@ public class EntityThrownAirship extends EntityThrownAirshipCore {
         
         this.frameSkinTexture = frameSkinTextureIn;
         this.frameSkinTransparent = frameSkinTransparentIn;
+        this.frameSkinColor = frameSkinColorIn;
         this.frameSkinColorRed = frameSkinColorRedIn;
         this.frameSkinColorGreen = frameSkinColorGreenIn;
         this.frameSkinColorBlue = frameSkinColorBlueIn;
@@ -94,6 +97,7 @@ public class EntityThrownAirship extends EntityThrownAirshipCore {
         
         this.balloonPatternTexture = balloonPatternTextureIn;
         this.balloonPatternTransparent = balloonPatternTransparentIn;
+        this.balloonPatternColor = balloonPatternColorIn;
         this.balloonPatternColorRed = balloonPatternColorRedIn;
         this.balloonPatternColorGreen = balloonPatternColorGreenIn;
         this.balloonPatternColorBlue = balloonPatternColorBlueIn;
@@ -143,6 +147,7 @@ public class EntityThrownAirship extends EntityThrownAirshipCore {
 		    		
 		    		this.frameSkinTexture, 
 		    		this.frameSkinTransparent, 
+		    		this.frameSkinColor,
 		    		this.frameSkinColorRed, this.frameSkinColorGreen, this.frameSkinColorBlue, 
 		    		
 		    		this.engineParticleVisual, 
@@ -154,6 +159,7 @@ public class EntityThrownAirship extends EntityThrownAirshipCore {
 		    		
 		    		this.balloonPatternTexture, 
 		    		this.balloonPatternTransparent, 
+		    		this.balloonPatternColor,
 		    		this.balloonPatternColorRed, this.balloonPatternColorGreen, this.balloonPatternColorBlue, 
 		    		
 		    		this.learnedModuleAltitude, this.selectedModuleAltitude, 

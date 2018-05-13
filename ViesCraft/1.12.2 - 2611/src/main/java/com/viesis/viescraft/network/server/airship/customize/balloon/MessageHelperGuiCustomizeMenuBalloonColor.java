@@ -51,6 +51,7 @@ public class MessageHelperGuiCustomizeMenuBalloonColor extends MessageBase<Messa
 		{
 			if(airship.getStoredRedstone() >= CostsVC.BALLOON_PATTERN_COLOR_COST)
 			{
+				airship.balloonPatternColor = true;
 				airship.balloonPatternColorRed = message.metaBalloonRed;
 				airship.balloonPatternColorGreen = message.metaBalloonGreen;
 				airship.balloonPatternColorBlue = message.metaBalloonBlue;
