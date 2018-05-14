@@ -3,7 +3,7 @@
   "group": "vc:upgrades/item_upgrade_airship_balloon",
   "pattern": [
     "FLF",
-    "L#L",
+    "A#A",
     "FLF"
   ],
   "key": {
@@ -16,6 +16,9 @@
     },
     "#": {
       "item": "vc:item_airship_balloon"
+    },
+    "A": {
+      "item": "minecraft:iron_ingot"
     }
   },
   "result": {

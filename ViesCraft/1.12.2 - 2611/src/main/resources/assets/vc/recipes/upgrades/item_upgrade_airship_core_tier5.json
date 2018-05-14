@@ -3,7 +3,7 @@
   "group": "vc:upgrades/item_upgrade_airship_core",
   "pattern": [
     "FLF",
-    "L#L",
+    "A#A",
     "FLF"
   ],
   "key": {
@@ -15,8 +15,10 @@
       "item": "vc:item_logic_chip"
     },
     "#": {
-      "item": "vc:upgrades/item_upgrade_airship_core",
-      "data": 4
+      "item": "vc:item_airship_ignition"
+    },
+    "A": {
+      "item": "minecraft:ender_eye"
     }
   },
   "result": {

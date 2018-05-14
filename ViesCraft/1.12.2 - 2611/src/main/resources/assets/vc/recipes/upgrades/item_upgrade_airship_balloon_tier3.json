@@ -3,7 +3,7 @@
   "group": "vc:upgrades/item_upgrade_airship_balloon",
   "pattern": [
     "FLF",
-    "L#L",
+    "A#A",
     "FLF"
   ],
   "key": {
@@ -15,8 +15,10 @@
       "item": "vc:item_logic_chip"
     },
     "#": {
-      "item": "vc:upgrades/item_upgrade_airship_balloon",
-      "data": 2
+      "item": "vc:item_airship_balloon"
+    },
+    "A": {
+      "item": "minecraft:diamond"
     }
   },
   "result": {

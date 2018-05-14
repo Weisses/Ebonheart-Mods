@@ -3,7 +3,7 @@
   "group": "vc:upgrades/item_upgrade_airship_core",
   "pattern": [
     "FLF",
-    "L#L",
+    "A#A",
     "FLF"
   ],
   "key": {
@@ -16,6 +16,9 @@
     },
     "#": {
       "item": "vc:item_airship_ignition"
+    },
+    "A": {
+      "item": "minecraft:iron_ingot"
     }
   },
   "result": {

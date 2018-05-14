@@ -216,7 +216,7 @@ public class RenderAirship extends RenderAirshipBase {
 	        }
     	}
     	
-    	if(baseitemSpin >= 180)
+    	if(baseitemSpin >= 360)
         {
         	baseitemSpin = 0;
         }
