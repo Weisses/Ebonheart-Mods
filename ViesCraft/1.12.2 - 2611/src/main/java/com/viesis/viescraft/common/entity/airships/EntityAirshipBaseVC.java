@@ -581,6 +581,11 @@ public class EntityAirshipBaseVC extends EntityBaseVC {
     	this.updateAirshipMeta();
     	this.getAirshipFuelTick();
     	this.noInventoryModuleDropItems();
+    	
+    	if(this.storedRedstoneTotal != EnumsVC.MainTierCore.byId(this.mainTierCore).getStoredRedstone())
+    	{
+    		this.storedRedstoneTotal = EnumsVC.MainTierCore.byId(this.mainTierCore).getStoredRedstone();
+    	}
     }
     
     

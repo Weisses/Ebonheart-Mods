@@ -324,7 +324,7 @@ public class RenderAirshipBase extends Render<EntityAirshipCore> {
 	    	//float itemSpin = (((float)Minecraft.getMinecraft().player.getEntityWorld().getTotalWorldTime() + 1) / 20.0F) * (180F / (float)Math.PI);
 	        
 	        //Spins Item
-	        GlStateManager.rotate(this.baseitemSpin, 0F, 1F, 0F);
+	        GlStateManager.rotate(this.baseitemSpin*5, 0F, 1F, 0F);
 	        
 	        Minecraft.getMinecraft().getRenderItem().renderItem(itemstackIn, TransformType.GROUND);
 	        
@@ -591,7 +591,7 @@ public class RenderAirshipBase extends Render<EntityAirshipCore> {
 	    	//float itemSpin = (((float)Minecraft.getMinecraft().player.getEntityWorld().getTotalWorldTime() + 1) / 20.0F) * (180F / (float)Math.PI);
 	    	
 	        //Spins Item
-	        GlStateManager.rotate(this.baseitemSpin, 0F, 1F, 0F);
+	        GlStateManager.rotate(this.baseitemSpin*5, 0F, 1F, 0F);
 	        
 	        Minecraft.getMinecraft().getRenderItem().renderItem(itemstackIn, TransformType.GROUND);
 	        
@@ -836,7 +836,7 @@ public class RenderAirshipBase extends Render<EntityAirshipCore> {
 	    	GlStateManager.scale(0.25F, 0.25F, 0.25F);
 	        
 	        //Spins Item
-	        GlStateManager.rotate(-this.baseitemSpin, 0F, 1F, 0F);
+	        GlStateManager.rotate(-this.baseitemSpin*5, 0F, 1F, 0F);
 	        
 	        modelbase.render((Entity)null, 0, 0.0F, 0.0F, 0, 0.0F, 0.0625F);
 	        
@@ -994,7 +994,7 @@ public class RenderAirshipBase extends Render<EntityAirshipCore> {
 	    	GlStateManager.scale(0.25F, 0.25F, 0.25F);
 	        
 	        //Spins Item
-	        GlStateManager.rotate(-this.baseitemSpin, 0F, 1F, 0F);
+	        GlStateManager.rotate(-this.baseitemSpin*5, 0F, 1F, 0F);
 	        
 	        modelbase.render((Entity)null, 0, 0.0F, 0.0F, 0, 0.0F, 0.0625F);
 	        

@@ -1075,12 +1075,12 @@ public class RenderAirship extends RenderAirshipBase {
 	        {
 	        	if(Minecraft.getMinecraft().player.getRidingEntity() instanceof EntityAirshipCore)
 	        	{
-	        		itemSpin = (baseitemSpin * 15);
+	        		itemSpin = (baseitemSpin * 100);
 	        	}
 	        }
 	        else
 	        {
-	        	itemSpin = (baseitemSpin * 1);
+	        	itemSpin = (baseitemSpin * 10);
 	        }
 	        
 	        //Default
