@@ -101,7 +101,7 @@ public class RenderAirship extends RenderAirshipBase {
     	this.selectedModelMainEngine(entity, partialTicks);
     	this.selectedModelMainBalloonF(entity, partialTicks);
     	this.selectedModelMainBalloonB(entity, partialTicks);
-    	this.selectedModelMainPropeller(entity, partialTicks, entity.coreModelVisualBalloon);
+    	//this.selectedModelMainPropeller(entity, partialTicks, entity.coreModelVisualBalloon);
     	
     	if(entity.getEngineDisplayTypeVisual() != 0)
     	{
@@ -215,6 +215,15 @@ public class RenderAirship extends RenderAirshipBase {
 	    		}
 	        }
     	}
+    	
+    	if(baseitemSpin >= 360)
+        {
+        	baseitemSpin = 0;
+        }
+        else
+        {
+        	baseitemSpin = baseitemSpin + 0.1F;
+        }
     	
     	
     	
@@ -809,6 +818,7 @@ public class RenderAirship extends RenderAirshipBase {
     
     /**
      * This is the View Window Model for the Main Render Method.
+     * NOT USED ATM.
      */
     private void selectedModelViewWindow(EntityAirshipCore airshipIn, float partialTicks)
     {
@@ -825,6 +835,7 @@ public class RenderAirship extends RenderAirshipBase {
 
 	/**
 	 * This is the Propeller Model for the Main Render Method.
+	 * NOT USED ATM.
 	 */
     private void selectedModelMainPropeller(EntityAirshipCore airshipIn, float partialTicks, int locationIn)
     {
@@ -845,9 +856,12 @@ public class RenderAirship extends RenderAirshipBase {
 	        }
 	        
 	        boolean powered = airshipIn.getStoredFuel() > 0;
-	        float baseitemSpin = (((float)Minecraft.getMinecraft().player.getEntityWorld().getTotalWorldTime() + 1) / 20.0F) * (180F / (float)Math.PI);
-	        float itemSpin = baseitemSpin * 9;
-	        		
+	        //float baseitemSpin = (((float)Minecraft.getMinecraft().player.getEntityWorld().getTotalWorldTime() + 1) / 20.0F) * (180F / (float)Math.PI);
+	        //float itemSpin = baseitemSpin * 9;
+	        
+	        
+	        float itemSpin = baseitemSpin;// * 9;	
+	        
 	        //Get Colors
 	        float frameRed;
 	        float frameGreen;
@@ -1049,8 +1063,23 @@ public class RenderAirship extends RenderAirshipBase {
 	        this.bindTexture(new ResourceLocation(References.MOD_ID, "textures/models/frames/overlay.png"));
         	
 	        boolean powered = airshipIn.getStoredFuel() > 0;
-	        float baseitemSpin = (((float)Minecraft.getMinecraft().player.getEntityWorld().getTotalWorldTime() + 1) / 20.0F) * (180F / (float)Math.PI);
-	        float itemSpin = baseitemSpin * 9;
+	        //float baseitemSpin = (((float)Minecraft.getMinecraft().player.getEntityWorld().getTotalWorldTime() + 1) / 20.0F) * (180F / (float)Math.PI);
+	        //float baseitemSpin = (((float)System.currentTimeMillis()//Minecraft.getMinecraft().player.getEntityWorld().getTotalWorldTime() + 1) / 20.0F) * (180F / (float)Math.PI);
+	        float itemSpin;
+	        
+	        if(airshipIn.forwardInputDown
+	        || airshipIn.backInputDown
+	        || airshipIn.leftInputDown
+	        || airshipIn.rightInputDown)
+	        {
+	        	itemSpin = baseitemSpin * 7;
+	        }
+	        else
+	        {
+	        	itemSpin = baseitemSpin * 1;
+	        }
+	        
+	        // * 9;
 	        
 	        //Default
 	        if(locationIn == 0)

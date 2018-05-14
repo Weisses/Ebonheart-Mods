@@ -28,7 +28,7 @@ public class EntityBombScatter extends EntityThrowable {
     
     protected float getGravityVelocity()
     {
-        return 0.005F;
+        return 0.01F;
     }
     
     protected float getVelocity()

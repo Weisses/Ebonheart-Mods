@@ -99,8 +99,6 @@ public class RenderAirshipBase extends Render<EntityAirshipCore> {
   	protected ModelBase modelBalloonB4 = new ModelBalloonBalloon4();
   	protected ModelBase modelBalloonDS4 = new ModelBalloonDisplaySymbol4();
   	
-  	
-  	
   	/** Instance of View Window Model for rendering. 
   	 * NOT USED YET
   	 * */
@@ -112,15 +110,11 @@ public class RenderAirshipBase extends Render<EntityAirshipCore> {
   	/** Instance of Propeller Model for rendering. */
   	protected ModelBase modelAirshipPropeller = new ModelAirshipPropeller();
   	
-  	
-  	
   	protected ModelBase currentModelFrame;
   	protected ModelBase currentModelEngine;
   	protected ModelBase currentModelBalloonF;
   	protected ModelBase currentModelBalloonB;
   	protected ModelBase currentModelBalloonDS;
-  	
-  	
   	
   	public static final ResourceLocation STEVE_TEXTURES = new ResourceLocation("textures/entity/steve.png");
     public static final ResourceLocation ALEX_TEXTURES = new ResourceLocation("textures/entity/alex.png");
@@ -134,8 +128,6 @@ public class RenderAirshipBase extends Render<EntityAirshipCore> {
     public static final ResourceLocation WITHER_SKELETON_TEXTURES = new ResourceLocation("textures/entity/skeleton/wither_skeleton.png");
     public static final ResourceLocation DRAGON_TEXTURES = new ResourceLocation("textures/entity/enderdragon/dragon.png");
     public static final ResourceLocation HEROBRINE_TEXTURES = new ResourceLocation(References.MOD_ID + ":" + "textures/models/heads/herobrine.png");
-    
-    
     
     private static final ResourceLocation SUPPORTER_VIES_TEXTURES = new ResourceLocation(References.MOD_ID + ":" + "textures/models/heads/supporters/vies.png");
     private static final ResourceLocation SUPPORTER_SOULFORGE7_TEXTURES = new ResourceLocation(References.MOD_ID + ":" + "textures/models/heads/supporters/soulforge7.png");
@@ -152,12 +144,10 @@ public class RenderAirshipBase extends Render<EntityAirshipCore> {
     private final ModelCowHead cowHead = new ModelCowHead();
     private final ModelSpiderHead spiderHead = new ModelSpiderHead();
     
-    
-    
-    
     private static final ModelSkeletonHead humanoidHead1 = new ModelHumanoidHead();
     
-    
+	protected float baseitemSpin;
+	
     public RenderAirshipBase(RenderManager renderManagerIn)
     {
         super(renderManagerIn);
@@ -331,10 +321,10 @@ public class RenderAirshipBase extends Render<EntityAirshipCore> {
             //Flips on the Y axis
             GlStateManager.rotate(270, 0.0F, 1.0F, 0.0F);
 	    	
-	    	float itemSpin = (((float)Minecraft.getMinecraft().player.getEntityWorld().getTotalWorldTime() + 1) / 20.0F) * (180F / (float)Math.PI);
+	    	//float itemSpin = (((float)Minecraft.getMinecraft().player.getEntityWorld().getTotalWorldTime() + 1) / 20.0F) * (180F / (float)Math.PI);
 	        
 	        //Spins Item
-	        GlStateManager.rotate(itemSpin * 2, 0F, 1F, 0F);
+	        GlStateManager.rotate(this.baseitemSpin, 0F, 1F, 0F);
 	        
 	        Minecraft.getMinecraft().getRenderItem().renderItem(itemstackIn, TransformType.GROUND);
 	        
@@ -598,10 +588,10 @@ public class RenderAirshipBase extends Render<EntityAirshipCore> {
             //Flips on the Y axis
             GlStateManager.rotate(270, 0.0F, 1.0F, 0.0F);
 	    	
-	    	float itemSpin = (((float)Minecraft.getMinecraft().player.getEntityWorld().getTotalWorldTime() + 1) / 20.0F) * (180F / (float)Math.PI);
-	        
+	    	//float itemSpin = (((float)Minecraft.getMinecraft().player.getEntityWorld().getTotalWorldTime() + 1) / 20.0F) * (180F / (float)Math.PI);
+	    	
 	        //Spins Item
-	        GlStateManager.rotate(itemSpin * 2, 0F, 1F, 0F);
+	        GlStateManager.rotate(this.baseitemSpin, 0F, 1F, 0F);
 	        
 	        Minecraft.getMinecraft().getRenderItem().renderItem(itemstackIn, TransformType.GROUND);
 	        
@@ -834,7 +824,7 @@ public class RenderAirshipBase extends Render<EntityAirshipCore> {
 	        //Spinning
 	        GlStateManager.pushMatrix();
 	    	
-	    	float itemSpin = (((float)Minecraft.getMinecraft().player.getEntityWorld().getTotalWorldTime() + 1) / 20.0F) * (180F / (float)Math.PI);
+	    	//float itemSpin = (((float)Minecraft.getMinecraft().player.getEntityWorld().getTotalWorldTime() + 1) / 20.0F) * (180F / (float)Math.PI);
 	        
 	    	//Dragon
 	    	if(skullType == 11)
@@ -846,7 +836,7 @@ public class RenderAirshipBase extends Render<EntityAirshipCore> {
 	    	GlStateManager.scale(0.25F, 0.25F, 0.25F);
 	        
 	        //Spins Item
-	        GlStateManager.rotate(-itemSpin * 2, 0F, 1F, 0F);
+	        GlStateManager.rotate(-this.baseitemSpin, 0F, 1F, 0F);
 	        
 	        modelbase.render((Entity)null, 0, 0.0F, 0.0F, 0, 0.0F, 0.0625F);
 	        
@@ -998,13 +988,13 @@ public class RenderAirshipBase extends Render<EntityAirshipCore> {
 	        //Spinning
 	        GlStateManager.pushMatrix();
 	    	
-	    	float itemSpin = (((float)Minecraft.getMinecraft().player.getEntityWorld().getTotalWorldTime() + 1) / 20.0F) * (180F / (float)Math.PI);
+	    	//float itemSpin = (((float)Minecraft.getMinecraft().player.getEntityWorld().getTotalWorldTime() + 1) / 20.0F) * (180F / (float)Math.PI);
 	        
 	    	GlStateManager.translate(-0.375F, -0.03F, -0.8125F);
 	    	GlStateManager.scale(0.25F, 0.25F, 0.25F);
 	        
 	        //Spins Item
-	        GlStateManager.rotate(-itemSpin * 2, 0F, 1F, 0F);
+	        GlStateManager.rotate(-this.baseitemSpin, 0F, 1F, 0F);
 	        
 	        modelbase.render((Entity)null, 0, 0.0F, 0.0F, 0, 0.0F, 0.0625F);
 	        
