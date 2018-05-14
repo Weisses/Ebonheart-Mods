@@ -216,7 +216,7 @@ public class RenderAirship extends RenderAirshipBase {
 	        }
     	}
     	
-    	if(baseitemSpin >= 360)
+    	if(baseitemSpin >= 180)
         {
         	baseitemSpin = 0;
         }
@@ -1065,21 +1065,23 @@ public class RenderAirship extends RenderAirshipBase {
 	        boolean powered = airshipIn.getStoredFuel() > 0;
 	        //float baseitemSpin = (((float)Minecraft.getMinecraft().player.getEntityWorld().getTotalWorldTime() + 1) / 20.0F) * (180F / (float)Math.PI);
 	        //float baseitemSpin = (((float)System.currentTimeMillis()//Minecraft.getMinecraft().player.getEntityWorld().getTotalWorldTime() + 1) / 20.0F) * (180F / (float)Math.PI);
-	        float itemSpin;
+	        
+	        float itemSpin = baseitemSpin * 1;
 	        
 	        if(airshipIn.forwardInputDown
 	        || airshipIn.backInputDown
 	        || airshipIn.leftInputDown
 	        || airshipIn.rightInputDown)
 	        {
-	        	itemSpin = baseitemSpin * 7;
+	        	if(Minecraft.getMinecraft().player.getRidingEntity() instanceof EntityAirshipCore)
+	        	{
+	        		itemSpin = (baseitemSpin * 15);
+	        	}
 	        }
 	        else
 	        {
-	        	itemSpin = baseitemSpin * 1;
+	        	itemSpin = (baseitemSpin * 1);
 	        }
-	        
-	        // * 9;
 	        
 	        //Default
 	        if(locationIn == 0)
