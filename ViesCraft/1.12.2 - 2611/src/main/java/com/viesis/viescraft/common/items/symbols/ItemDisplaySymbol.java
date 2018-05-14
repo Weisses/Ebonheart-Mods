@@ -27,7 +27,7 @@ public class ItemDisplaySymbol extends Item {
 		ItemHelper.setItemName(this, "symbols/item_display_symbol");
 		
 		this.setMaxStackSize(1);
-		this.setCreativeTab(ViesCraft.tabViesCraftBlocks);
+		//this.setCreativeTab(ViesCraft.tabViesCraftBlocks);
 	}
 	
 	@Override

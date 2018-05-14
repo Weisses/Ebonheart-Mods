@@ -98,30 +98,30 @@ public class GuiCustomizeMenuBalloonMain extends GuiContainerVC {
 		GuiVC.button16.visible = false;
 		GuiVC.button17.visible = false;
 		
-		if(this.airship.getMainTierBalloon() > 0)
+		if(this.airship.mainTierBalloon > 0)
         {
 			GuiVC.buttonT1.visible = true;
         }
-        if(this.airship.getMainTierBalloon() > 1)
+        if(this.airship.mainTierBalloon > 1)
         {
         	GuiVC.buttonT2.visible = true;
         }
-        if(this.airship.getMainTierBalloon() > 2)
+        if(this.airship.mainTierBalloon > 2)
         {
         	GuiVC.buttonT3.visible = true;
         }
-        if(this.airship.getMainTierBalloon() > 3)
+        if(this.airship.mainTierBalloon > 3)
         {
         	GuiVC.buttonT4.visible = true;
         }
-        if(this.airship.getMainTierBalloon() > 4)
+        if(this.airship.mainTierBalloon > 4)
         {
         	GuiVC.buttonT5.visible = true;
         	GuiVC.button16.visible = true;
     		GuiVC.button17.visible = true;
         }
         	
-    	if(this.airship.getBalloonPatternTransparent())
+    	if(this.airship.balloonPatternTransparent)
 		{
 			GuiVC.button17.enabled = false;
 			GuiVC.button19.enabled = true;
@@ -211,7 +211,7 @@ public class GuiCustomizeMenuBalloonMain extends GuiContainerVC {
 		this.drawRect(this.guiLeft + 50, this.guiTop - 16, this.guiLeft + 126, this.guiTop, Color.LIGHT_GRAY.getRGB());
 		this.drawRect(this.guiLeft + 52, this.guiTop - 14, this.guiLeft + 124, this.guiTop, Color.BLACK.getRGB());
 		
-		if(this.airship.getBalloonPatternTransparent())
+		if(this.airship.balloonPatternTransparent)
 		{
 			GuiVC.button17.enabled = false;
 			GuiVC.button19.enabled = true;
@@ -264,11 +264,11 @@ public class GuiCustomizeMenuBalloonMain extends GuiContainerVC {
 		}
 		GlStateManager.popMatrix();
 		
-		if(this.airship.getMainTierBalloon() > 4)
+		if(this.airship.mainTierBalloon > 4)
         {
 			if(GuiVC.button16.enabled)
 			{
-/**				//Logic for mouse-over Color Cost tooltip
+				//Logic for mouse-over Color Cost tooltip
 				if(mouseX >= this.guiLeft + 21 && mouseX <= this.guiLeft + 80
 				&& mouseY >= this.guiTop + 160 && mouseY <= this.guiTop + 173)
 				{
@@ -286,7 +286,7 @@ public class GuiCustomizeMenuBalloonMain extends GuiContainerVC {
 						this.drawHoveringText(text, 0, 0);
 					}
 					GlStateManager.popMatrix();
-				}*/
+				}
 			}
 			
 			if(GuiVC.button17.enabled)

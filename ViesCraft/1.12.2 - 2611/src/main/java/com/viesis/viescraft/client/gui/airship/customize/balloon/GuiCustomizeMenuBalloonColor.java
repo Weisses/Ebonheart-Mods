@@ -110,10 +110,10 @@ public class GuiCustomizeMenuBalloonColor extends GuiContainerVC {
     	
     	//Crimson
     	GuiVC.button10 = new GuiButtonGeneral1VC(210, this.guiLeft + 6, this.guiTop + buttonStart + (14 * 3), 32, 14, References.localNameVC("vc.item.color.20"), 0);
-    	//Gold
-    	GuiVC.button11 = new GuiButtonGeneral1VC(211, this.guiLeft + 38, this.guiTop + buttonStart + (14 * 3), 32, 14, References.localNameVC("vc.item.color.49"), 0);
-    	//Violet
-    	GuiVC.button12 = new GuiButtonGeneral1VC(212, this.guiLeft + 70, this.guiTop + buttonStart + (14 * 3), 32, 14, References.localNameVC("vc.item.color.135"), 0);
+    	//Black
+    	GuiVC.button11 = new GuiButtonGeneral1VC(211, this.guiLeft + 38, this.guiTop + buttonStart + (14 * 3), 32, 14, References.localNameVC("vc.item.color.8"), 0);
+    	//White
+    	GuiVC.button12 = new GuiButtonGeneral1VC(212, this.guiLeft + 70, this.guiTop + buttonStart + (14 * 3), 32, 14, References.localNameVC("vc.item.color.137"), 0);
     	
     	this.buttonList.add(GuiVC.buttonMM1);
 		this.buttonList.add(GuiVC.buttonMM2);
@@ -229,15 +229,15 @@ public class GuiCustomizeMenuBalloonColor extends GuiContainerVC {
 	    }
 		if (parButton.id == 211)
 	    {
-			this.textRedNumber = 255;
-			this.textGreenNumber = 215;
+			this.textRedNumber = 0;
+			this.textGreenNumber = 0;
 			this.textBlueNumber = 0;
 	    }
 		if (parButton.id == 212)
 	    {
-			this.textRedNumber = 238;
-			this.textGreenNumber = 130;
-			this.textBlueNumber = 238;
+			this.textRedNumber = 255;
+			this.textGreenNumber = 255;
+			this.textBlueNumber = 255;
 	    }
 		
         this.buttonList.clear();

@@ -61,11 +61,11 @@ public class GuiCustomizeMenuFrameMain extends GuiContainerVC {
 		GuiVC.buttonT4 = new GuiButtonGeneral1VC(14, this.guiLeft + 17, this.guiTop + startPlace - 4 + (15 * 3), 69, 14, References.localNameVC("vc.main.skins") + " - " + References.localNameVC("vc.enum.tier.4"), 0);
 		GuiVC.buttonT5 = new GuiButtonGeneral1VC(15, this.guiLeft + 17, this.guiTop + startPlace - 4 + (15 * 4), 69, 14, References.localNameVC("vc.main.skins") + " - " + References.localNameVC("vc.enum.tier.5"), 0);
 		
-		GuiVC.buttonA16 = new GuiButtonGeneral1VC(16, this.guiLeft + 21, this.guiTop + startPlace + 117, 60, 14, References.localNameVC("vc.main.setcolor"), 0);
-		GuiVC.buttonA17 = new GuiButtonGeneral1VC(17, this.guiLeft + 21, this.guiTop + startPlace + 137, 60, 14, References.localNameVC("vc.main.transparent"), 0);
+		GuiVC.button16 = new GuiButtonGeneral1VC(16, this.guiLeft + 21, this.guiTop + startPlace + 117, 60, 14, References.localNameVC("vc.main.setcolor"), 0);
+		GuiVC.button17 = new GuiButtonGeneral1VC(17, this.guiLeft + 21, this.guiTop + startPlace + 137, 60, 14, References.localNameVC("vc.main.transparent"), 0);
 		
-		GuiVC.buttonA18 = new GuiButtonGeneral2VC(18, this.guiLeft + 81, this.guiTop + startPlace + 117, 14, 14, "", 1);
-		GuiVC.buttonA19 = new GuiButtonGeneral2VC(19, this.guiLeft + 81, this.guiTop + startPlace + 137, 14, 14, "", 1);
+		GuiVC.button18 = new GuiButtonGeneral2VC(18, this.guiLeft + 81, this.guiTop + startPlace + 117, 14, 14, "", 1);
+		GuiVC.button19 = new GuiButtonGeneral2VC(19, this.guiLeft + 81, this.guiTop + startPlace + 137, 14, 14, "", 1);
 		
     	this.buttonList.add(GuiVC.buttonMM1);
 		this.buttonList.add(GuiVC.buttonMM2);
@@ -81,11 +81,11 @@ public class GuiCustomizeMenuFrameMain extends GuiContainerVC {
 		this.buttonList.add(GuiVC.buttonT4);
 		this.buttonList.add(GuiVC.buttonT5);
 		
-		this.buttonList.add(GuiVC.buttonA16);
-		this.buttonList.add(GuiVC.buttonA17);
+		this.buttonList.add(GuiVC.button16);
+		this.buttonList.add(GuiVC.button17);
 		
-		this.buttonList.add(GuiVC.buttonA18);
-		this.buttonList.add(GuiVC.buttonA19);
+		this.buttonList.add(GuiVC.button18);
+		this.buttonList.add(GuiVC.button19);
 		
 		GuiVC.buttonMM3.enabled = false;
 		
@@ -95,37 +95,41 @@ public class GuiCustomizeMenuFrameMain extends GuiContainerVC {
 		GuiVC.buttonT4.visible = false;
 		GuiVC.buttonT5.visible = false;
 		
+		GuiVC.button16.visible = false;
+		GuiVC.button17.visible = false;
 		
-		//if(this.airship.getMainTierFrame() > 0)
-        //{
+		if(this.airship.mainTierFrame > 0)
+        {
 			GuiVC.buttonT1.visible = true;
-        //}
-        //if(this.airship.getMainTierFrame() > 1)
-        //{
+        }
+        if(this.airship.mainTierFrame > 1)
+        {
         	GuiVC.buttonT2.visible = true;
-        //}
-        //if(this.airship.getMainTierFrame() > 2)
-        //{
+        }
+        if(this.airship.mainTierFrame > 2)
+        {
         	GuiVC.buttonT3.visible = true;
-        //}
-        //if(this.airship.getMainTierFrame() > 3)
-        //{
+        }
+        if(this.airship.mainTierFrame > 3)
+        {
         	GuiVC.buttonT4.visible = true;
-        //}
-        //if(this.airship.getMainTierFrame() > 4)
-        ///{
+        }
+        if(this.airship.mainTierFrame > 4)
+        {
         	GuiVC.buttonT5.visible = true;
-        //}
+        	GuiVC.button16.visible = true;
+    		GuiVC.button17.visible = true;
+        }
         	
-    	if(this.airship.getFrameSkinTransparent())
+    	if(this.airship.frameSkinTransparent)
 		{
-			GuiVC.buttonA17.enabled = false;
-			GuiVC.buttonA19.enabled = true;
+			GuiVC.button17.enabled = false;
+			GuiVC.button19.enabled = true;
 		}
 		else
 		{
-			GuiVC.buttonA17.enabled = true;
-			GuiVC.buttonA19.enabled = false;
+			GuiVC.button17.enabled = true;
+			GuiVC.button19.enabled = false;
 		}
     }
     
@@ -207,26 +211,26 @@ public class GuiCustomizeMenuFrameMain extends GuiContainerVC {
 		this.drawRect(this.guiLeft + 50, this.guiTop - 16, this.guiLeft + 126, this.guiTop, Color.LIGHT_GRAY.getRGB());
 		this.drawRect(this.guiLeft + 52, this.guiTop - 14, this.guiLeft + 124, this.guiTop, Color.BLACK.getRGB());
 		
-		if(this.airship.getFrameSkinTransparent())
+		if(this.airship.frameSkinTransparent)
 		{
-			GuiVC.buttonA17.enabled = false;
-			GuiVC.buttonA19.enabled = true;
+			GuiVC.button17.enabled = false;
+			GuiVC.button19.enabled = true;
 		}
 		else
 		{
-			GuiVC.buttonA17.enabled = true;
-			GuiVC.buttonA19.enabled = false;
+			GuiVC.button17.enabled = true;
+			GuiVC.button19.enabled = false;
 		}
     	
 		if(airship.frameSkinColorRed == 255
 		&& airship.frameSkinColorGreen == 255
 		&& airship.frameSkinColorBlue == 255)
 		{
-			GuiVC.buttonA18.enabled = false;
+			GuiVC.button18.enabled = false;
 		}
 		else
 		{
-			GuiVC.buttonA18.enabled = true;
+			GuiVC.button18.enabled = true;
 		}
 		
 		this.drawEntityOnScreen(this.guiLeft + 134, this.guiTop + 100, 13, this.airship);
@@ -260,96 +264,99 @@ public class GuiCustomizeMenuFrameMain extends GuiContainerVC {
 		}
 		GlStateManager.popMatrix();
 		
-		if(GuiVC.buttonA16.enabled)
-		{
-			//Logic for mouse-over Color Cost tooltip
-			if(mouseX >= this.guiLeft + 21 && mouseX <= this.guiLeft + 80
-			&& mouseY >= this.guiTop + 160 && mouseY <= this.guiTop + 173)
+		if(this.airship.mainTierFrame > 4)
+        {
+			if(GuiVC.button16.enabled)
 			{
-				List<String> text = new ArrayList<String>();
-				
-				text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("Costs " + CostsVC.FRAME_SKIN_COLOR_COST + " Redstone"));
-				
-				FontRenderer fontrenderer = this.getFontRenderer();
-				
-				GlStateManager.pushMatrix();
+				//Logic for mouse-over Color Cost tooltip
+				if(mouseX >= this.guiLeft + 21 && mouseX <= this.guiLeft + 80
+				&& mouseY >= this.guiTop + 160 && mouseY <= this.guiTop + 173)
 				{
-					GlStateManager.translate(mouseX - this.guiLeft - 28, mouseY - this.guiTop - 8, 0);
-					GlStateManager.scale(0.5, 0.5, 0.5);
+					List<String> text = new ArrayList<String>();
 					
-					this.drawHoveringText(text, 0, 0);
+					text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("Costs " + CostsVC.FRAME_SKIN_COLOR_COST + " Redstone"));
+					
+					FontRenderer fontrenderer = this.getFontRenderer();
+					
+					GlStateManager.pushMatrix();
+					{
+						GlStateManager.translate(mouseX - this.guiLeft - 28, mouseY - this.guiTop - 8, 0);
+						GlStateManager.scale(0.5, 0.5, 0.5);
+						
+						this.drawHoveringText(text, 0, 0);
+					}
+					GlStateManager.popMatrix();
 				}
-				GlStateManager.popMatrix();
 			}
-		}
-		
-		if(GuiVC.buttonA17.enabled)
-		{
-			//Logic for mouse-over Transparency Cost tooltip
-			if(mouseX >= this.guiLeft + 21 && mouseX <= this.guiLeft + 80
-			&& mouseY >= this.guiTop + 180 && mouseY <= this.guiTop + 193)
+			
+			if(GuiVC.button17.enabled)
 			{
-				List<String> text = new ArrayList<String>();
-				
-				text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("Costs " + CostsVC.FRAME_SKIN_TRANSPARENCY_COST + " Redstone"));
-				
-				FontRenderer fontrenderer = this.getFontRenderer();
-				
-				GlStateManager.pushMatrix();
+				//Logic for mouse-over Transparency Cost tooltip
+				if(mouseX >= this.guiLeft + 21 && mouseX <= this.guiLeft + 80
+				&& mouseY >= this.guiTop + 180 && mouseY <= this.guiTop + 193)
 				{
-					GlStateManager.translate(mouseX - this.guiLeft - 28, mouseY - this.guiTop - 8, 0);
-					GlStateManager.scale(0.5, 0.5, 0.5);
+					List<String> text = new ArrayList<String>();
 					
-					this.drawHoveringText(text, 0, 0);
+					text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("Costs " + CostsVC.FRAME_SKIN_TRANSPARENCY_COST + " Redstone"));
+					
+					FontRenderer fontrenderer = this.getFontRenderer();
+					
+					GlStateManager.pushMatrix();
+					{
+						GlStateManager.translate(mouseX - this.guiLeft - 28, mouseY - this.guiTop - 8, 0);
+						GlStateManager.scale(0.5, 0.5, 0.5);
+						
+						this.drawHoveringText(text, 0, 0);
+					}
+					GlStateManager.popMatrix();
 				}
-				GlStateManager.popMatrix();
 			}
-		}
-		
-		if(GuiVC.buttonA18.enabled)
-		{
-			//Logic for mouse-over 0 Cost tooltip
-			if(mouseX >= this.guiLeft + 81 && mouseX <= this.guiLeft + 94
-			&& mouseY >= this.guiTop + 160 && mouseY <= this.guiTop + 173)
+			
+			if(GuiVC.button18.enabled)
 			{
-				List<String> text = new ArrayList<String>();
-				
-				text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("Costs 0 Redstone"));
-				
-				FontRenderer fontrenderer = this.getFontRenderer();
-				
-				GlStateManager.pushMatrix();
+				//Logic for mouse-over 0 Cost tooltip
+				if(mouseX >= this.guiLeft + 81 && mouseX <= this.guiLeft + 94
+				&& mouseY >= this.guiTop + 160 && mouseY <= this.guiTop + 173)
 				{
-					GlStateManager.translate(mouseX - this.guiLeft - 28, mouseY - this.guiTop - 8, 0);
-					GlStateManager.scale(0.5, 0.5, 0.5);
+					List<String> text = new ArrayList<String>();
 					
-					this.drawHoveringText(text, 0, 0);
+					text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("Costs 0 Redstone"));
+					
+					FontRenderer fontrenderer = this.getFontRenderer();
+					
+					GlStateManager.pushMatrix();
+					{
+						GlStateManager.translate(mouseX - this.guiLeft - 28, mouseY - this.guiTop - 8, 0);
+						GlStateManager.scale(0.5, 0.5, 0.5);
+						
+						this.drawHoveringText(text, 0, 0);
+					}
+					GlStateManager.popMatrix();
 				}
-				GlStateManager.popMatrix();
 			}
-		}
-		
-		if(GuiVC.buttonA19.enabled)
-		{
-			//Logic for mouse-over 0 Cost tooltip
-			if(mouseX >= this.guiLeft + 81 && mouseX <= this.guiLeft + 94
-			&& mouseY >= this.guiTop + 180 && mouseY <= this.guiTop + 193)
+			
+			if(GuiVC.button19.enabled)
 			{
-				List<String> text = new ArrayList<String>();
-				
-				text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("Costs 0 Redstone"));
-				
-				FontRenderer fontrenderer = this.getFontRenderer();
-				
-				GlStateManager.pushMatrix();
+				//Logic for mouse-over 0 Cost tooltip
+				if(mouseX >= this.guiLeft + 81 && mouseX <= this.guiLeft + 94
+				&& mouseY >= this.guiTop + 180 && mouseY <= this.guiTop + 193)
 				{
-					GlStateManager.translate(mouseX - this.guiLeft - 28, mouseY - this.guiTop - 8, 0);
-					GlStateManager.scale(0.5, 0.5, 0.5);
+					List<String> text = new ArrayList<String>();
 					
-					this.drawHoveringText(text, 0, 0);
+					text.add(TextFormatting.LIGHT_PURPLE + References.localNameVC("Costs 0 Redstone"));
+					
+					FontRenderer fontrenderer = this.getFontRenderer();
+					
+					GlStateManager.pushMatrix();
+					{
+						GlStateManager.translate(mouseX - this.guiLeft - 28, mouseY - this.guiTop - 8, 0);
+						GlStateManager.scale(0.5, 0.5, 0.5);
+						
+						this.drawHoveringText(text, 0, 0);
+					}
+					GlStateManager.popMatrix();
 				}
-				GlStateManager.popMatrix();
 			}
-		}
+        }
     }
 }
