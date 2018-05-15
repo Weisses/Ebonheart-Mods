@@ -222,10 +222,25 @@ public class RenderAirship extends RenderAirshipBase {
         }
         else
         {
-        	baseitemSpin = baseitemSpin + 0.1F;
+        	//float test = Minecraft.getMinecraft().player.rotationYawHead % 360;
+        	//Minecraft.getMinecraft().player.rotationYawHead = 0;
+        	baseitemSpin = 
+        			
+        			//(baseitemSpin % Minecraft.getMinecraft().player.rotationYawHead)
+        			//(Minecraft.getMinecraft().player.rotationYawHead % (baseitemSpin +1))
+        			//+
+        			(baseitemSpin + 0.1F) 
+        			 ;
+        			
+        			//+ 
+        			//(Minecraft.getMinecraft().player.rotationYawHead  % 360);
+        	
+        	//Minecraft.getMinecraft().player.rotationYawHead = test;
         }
     	
     	
+    	
+    	//LogHelper.info(Minecraft.getMinecraft().player.rotationYawHead % 360);
     	
         GlStateManager.popMatrix();
         
