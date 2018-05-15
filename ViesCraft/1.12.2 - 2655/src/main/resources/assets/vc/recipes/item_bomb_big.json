@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ISI",
+    "#C#",
+    "ICI"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:tnt"
+    },
+    "C": {
+      "item": "minecraft:redstone"
+    },
+    "S": {
+      "item": "minecraft:string"
+    },
+    "I": {
+      "item": "vc:item_bomb",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "vc:item_bomb",
+    "data": 2,
+    "count": 4
+  }
+}
