@@ -293,9 +293,11 @@ public class GuiContainerVC extends GuiContainer {
 			{
 	        	GlStateManager.rotate(25.0F, 1.0F, 0.0F, 0.0F);
 	        	GlStateManager.translate(posXIn, posYIn, 0F);
-            	GlStateManager.translate(0F, -5.0F, 0F);
+            	GlStateManager.translate(0F, 15.0F, 0F);
             	GlStateManager.scale(50, 50, 50);
             	
+            	GlStateManager.rotate(180.0F, 0.0F, 0.0F, 1.0F);
+	            
             	//Spins Item
     	        GlStateManager.rotate(itemSpin * 1, 0F, 1F, 0F);
 			}

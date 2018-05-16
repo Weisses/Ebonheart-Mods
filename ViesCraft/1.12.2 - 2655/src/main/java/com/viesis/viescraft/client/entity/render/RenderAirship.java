@@ -6,6 +6,7 @@ import com.viesis.viescraft.api.EnumsVC;
 import com.viesis.viescraft.api.ItemsVC;
 import com.viesis.viescraft.api.References;
 import com.viesis.viescraft.api.util.LogHelper;
+import com.viesis.viescraft.common.entity.airships.EntityAirshipBaseVC;
 import com.viesis.viescraft.common.entity.airships.EntityAirshipCore;
 import com.viesis.viescraft.configs.ViesCraftConfig;
 
@@ -153,6 +154,12 @@ public class RenderAirship extends RenderAirshipBase {
 	    		if(entity.getModuleActiveSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_LESSER.getMetadata()
 				|| entity.getModuleActiveSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_NORMAL.getMetadata()
 				|| entity.getModuleActiveSlot1() == EnumsVC.ModuleType.INFINITE_FUEL_GREATER.getMetadata())
+	    		{
+	    			
+	    		}
+	    		else if(entity.getModuleActiveSlot1() == EnumsVC.ModuleType.WATER_LESSER.getMetadata()
+    				 || entity.getModuleActiveSlot1() == EnumsVC.ModuleType.WATER_NORMAL.getMetadata()
+    				 || entity.getModuleActiveSlot1() == EnumsVC.ModuleType.WATER_GREATER.getMetadata())
 	    		{
 	    			
 	    		}

@@ -52,6 +52,10 @@ public class GuiCustomizeMenuFrameTier5Pg1 extends GuiCustomizeMenuFrameTierVC {
 		this.buttonList.add(GuiVC.button66);
 		
 		GuiVC.buttonMM3.enabled = false;
+		
+		GuiVC.button64.visible = false;
+		GuiVC.button65.visible = false;
+		GuiVC.button66.visible = false;
     }
     
     @Override

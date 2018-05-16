@@ -559,12 +559,12 @@ public class EnumsVC {
         PURPUR(59, "purpur", References.Old_I18n.translateToLocalFormatted("vc.enum.visualframe.59")),
     	NETHERSTAR(60, "netherstar", References.Old_I18n.translateToLocalFormatted("vc.enum.visualframe.60")),
     	
-    	MYTHIC(61, "mythic", References.Old_I18n.translateToLocalFormatted("vc.enum.visualframe.61")),
-    	WATER(62, "water", References.Old_I18n.translateToLocalFormatted("vc.enum.visualframe.62")), 
-    	LAVA(63, "lava", References.Old_I18n.translateToLocalFormatted("vc.enum.visualframe.63")), 
-    	ENDER(64, "ender", References.Old_I18n.translateToLocalFormatted("vc.enum.visualframe.64")), 
-    	ENDER1(65, "ender1", References.Old_I18n.translateToLocalFormatted("vc.enum.visualframe.65")), 
-    	ENDER2(66, "ender2", References.Old_I18n.translateToLocalFormatted("vc.enum.visualframe.66"))//,
+    	WATER(61, "water", References.Old_I18n.translateToLocalFormatted("vc.enum.visualframe.61")), 
+    	LAVA(62, "lava", References.Old_I18n.translateToLocalFormatted("vc.enum.visualframe.62")), 
+    	ENDER(63, "ender", References.Old_I18n.translateToLocalFormatted("vc.enum.visualframe.63")), 
+    	ENDER1(64, "ender1", References.Old_I18n.translateToLocalFormatted("vc.enum.visualframe.64")), 
+    	ENDER2(65, "ender2", References.Old_I18n.translateToLocalFormatted("vc.enum.visualframe.65")),//,
+    	ENDER3(66, "ender3", References.Old_I18n.translateToLocalFormatted("vc.enum.visualframe.66"))//,
     	
     	//Holiday
     	//New Years
