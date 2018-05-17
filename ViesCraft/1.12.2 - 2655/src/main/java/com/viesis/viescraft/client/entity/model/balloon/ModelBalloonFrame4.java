@@ -24,8 +24,6 @@ public class ModelBalloonFrame4 extends ModelBase
     ModelRenderer Anchor_2b;
     ModelRenderer Anchor_2c;
     ModelRenderer Anchor_2d;
-    ModelRenderer Rope_1c;
-    ModelRenderer Rope_1c1;
     ModelRenderer Engine_R1;
     ModelRenderer Engine_R2a;
     ModelRenderer Engine_L1;
@@ -144,14 +142,6 @@ public class ModelBalloonFrame4 extends ModelBase
         Anchor_2d.setTextureSize( 128, 128 );
         Anchor_2d.addBox( 0F, 0F, 0F, 3, 3, 3);
         Anchor_2d.setRotationPoint( 11F, -22F, 11F );
-        Rope_1c = new ModelRenderer( this, 40, 4 );
-        Rope_1c.setTextureSize( 128, 128 );
-        Rope_1c.addBox( 0F, 0F, 0F, 1, 23, 1);
-        Rope_1c.setRotationPoint( -13.5F, -21F, 12.5F );
-        Rope_1c1 = new ModelRenderer( this, 40, 4 );
-        Rope_1c1.setTextureSize( 128, 128 );
-        Rope_1c1.addBox( -1F, 0F, 0F, 1, 23, 1);
-        Rope_1c1.setRotationPoint( 13.5F, -21F, 12.5F );
         Engine_R1 = new ModelRenderer( this, 0, 54 );
         Engine_R1.setTextureSize( 128, 128 );
         Engine_R1.addBox( 0F, 0F, 0F, 4, 6, 6);
@@ -397,16 +387,6 @@ public class ModelBalloonFrame4 extends ModelBase
         Anchor_2d.rotateAngleY = 0F;
         Anchor_2d.rotateAngleZ = 0F;
         Anchor_2d.renderWithRotation(par7);
-
-        Rope_1c.rotateAngleX = -0.1876229F;
-        Rope_1c.rotateAngleY = 1.794455E-09F;
-        Rope_1c.rotateAngleZ = -0.2094395F;
-        Rope_1c.renderWithRotation(par7);
-
-        Rope_1c1.rotateAngleX = -0.1876229F;
-        Rope_1c1.rotateAngleY = -1.794455E-09F;
-        Rope_1c1.rotateAngleZ = 0.2094395F;
-        Rope_1c1.renderWithRotation(par7);
 
         Engine_R1.rotateAngleX = 0F;
         Engine_R1.rotateAngleY = 0F;

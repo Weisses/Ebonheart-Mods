@@ -16,6 +16,8 @@ public class ModelBalloonBalloon4 extends ModelBase
     ModelRenderer BalloonFinFlatR;
     ModelRenderer RopeR;
     ModelRenderer Floor_Top;
+    ModelRenderer Rope_1c;
+    ModelRenderer Rope_1c1;
 
     public ModelBalloonBalloon4()
     {
@@ -64,6 +66,14 @@ public class ModelBalloonBalloon4 extends ModelBase
         Floor_Top.setTextureSize( 256, 256 );
         Floor_Top.addBox( 0F, 0.5F, 0F, 14, 1, 24);
         Floor_Top.setRotationPoint( -7F, 4.5F, -12F );
+        Rope_1c = new ModelRenderer( this, 40, 4 );
+        Rope_1c.setTextureSize( 128, 128 );
+        Rope_1c.addBox( 0F, 0F, 0F, 1, 23, 1);
+        Rope_1c.setRotationPoint( -13.5F, -21F, 12.5F );
+        Rope_1c1 = new ModelRenderer( this, 40, 4 );
+        Rope_1c1.setTextureSize( 128, 128 );
+        Rope_1c1.addBox( -1F, 0F, 0F, 1, 23, 1);
+        Rope_1c1.setRotationPoint( 13.5F, -21F, 12.5F );
     }
 
    public void render(Entity par1Entity, float par2, float par3, float par4, float par5, float par6, float par7)
@@ -117,6 +127,16 @@ public class ModelBalloonBalloon4 extends ModelBase
         Floor_Top.rotateAngleY = 0F;
         Floor_Top.rotateAngleZ = 0F;
         Floor_Top.renderWithRotation(par7);
+
+        Rope_1c.rotateAngleX = -0.1876229F;
+        Rope_1c.rotateAngleY = 1.794455E-09F;
+        Rope_1c.rotateAngleZ = -0.2094395F;
+        Rope_1c.renderWithRotation(par7);
+
+        Rope_1c1.rotateAngleX = -0.1876229F;
+        Rope_1c1.rotateAngleY = -1.794455E-09F;
+        Rope_1c1.rotateAngleZ = 0.2094395F;
+        Rope_1c1.renderWithRotation(par7);
 
     }
 
