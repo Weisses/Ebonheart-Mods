@@ -36,7 +36,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 /**
  * Base Airship Logic mainly from Boats
  */
-public class EntityBaseVCTEST extends EntityLiving {
+public class EntityBaseVCExtendsLivingEntity extends EntityLiving {
 	
 	//General
     protected static final DataParameter<Integer> AIRSHIP_TIME_SINCE_HIT = EntityDataManager.<Integer>createKey(EntityAirshipBaseVC.class, DataSerializers.VARINT);
@@ -78,7 +78,7 @@ public class EntityBaseVCTEST extends EntityLiving {
     protected float bombDropTimer;
     public boolean canDropBomb;
     
-    public EntityBaseVCTEST(World worldIn)
+    public EntityBaseVCExtendsLivingEntity(World worldIn)
     {
         super(worldIn);
 
@@ -90,7 +90,7 @@ public class EntityBaseVCTEST extends EntityLiving {
         this.setSize(0.9F, 0.4F);
     }
     
-    public EntityBaseVCTEST(World worldIn, double x, double y, double z, 
+    public EntityBaseVCExtendsLivingEntity(World worldIn, double x, double y, double z, 
     		int coreTierIn, int frameTierIn, int engineTierIn, int balloonTierIn, 
     		int moduleSlot1In, 
     		int fuelIn, int fuelTotalIn, int redstoneIn, int redstoneTotalIn,
