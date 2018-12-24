@@ -1,0 +1,9 @@
+{
+    "variants": {
+        "facing=up": { "model": "viesmachines:block_lava_torch" },
+        "facing=east": { "model": "viesmachines:block_lava_torch_wall" },
+        "facing=south": { "model": "viesmachines:block_lava_torch_wall", "y": 90 },
+        "facing=west": { "model": "viesmachines:block_lava_torch_wall", "y": 180 },
+        "facing=north": { "model": "viesmachines:block_lava_torch_wall", "y": 270 }
+    }
+}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "RXR"
+  ],
+  "key": {
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "X": {
+      "item": "viesmachines:item_circuit_logic"
+    }
+  },
+  "result": {
+    "item": "viesmachines:item_circuit_adaptive",
+    "count": 1
+  }
+}

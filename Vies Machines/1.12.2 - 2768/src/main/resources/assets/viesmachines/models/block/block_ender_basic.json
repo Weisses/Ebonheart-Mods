@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "particle": "viesmachines:blocks/block_ender_basic",
+        "down": "viesmachines:blocks/block_ender_basic",
+        "up": "viesmachines:blocks/block_ender_basic",
+        "north": "viesmachines:blocks/block_ender_basic",
+        "east": "viesmachines:blocks/block_ender_basic",
+        "south": "viesmachines:blocks/block_ender_basic",
+        "west": "viesmachines:blocks/block_ender_basic"
+    }
+}

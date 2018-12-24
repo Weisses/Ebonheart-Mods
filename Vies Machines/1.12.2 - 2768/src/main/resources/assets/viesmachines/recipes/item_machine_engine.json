@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ILI",
+    "P#P",
+    "ILI"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:redstone_block"
+    },
+    "L": {
+      "item": "viesmachines:item_circuit_logic"
+    },
+    "I": {
+      "item": "viesmachines:item_xegonite"
+    },
+    "P": {
+      "item": "minecraft:piston"
+    }
+  },
+  "result": {
+    "item": "viesmachines:item_machine_engine",
+    "count": 1
+  }
+}

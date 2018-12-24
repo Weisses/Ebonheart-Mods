@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  F",
+    " X ",
+    "L  "
+  ],
+  "key": {
+    "F": {
+      "item": "minecraft:feather"
+    },
+    "X": {
+      "item": "viesmachines:item_xegonite"
+    },
+    "L": {
+      "item": "minecraft:leather"
+    }
+  },
+  "result": {
+    "item": "viesmachines:item_tool_dismounter",
+    "count": 1
+  }
+}

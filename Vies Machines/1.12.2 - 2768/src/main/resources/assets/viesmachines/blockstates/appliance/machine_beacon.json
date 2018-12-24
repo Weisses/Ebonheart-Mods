@@ -1,0 +1,9 @@
+{
+    "variants": 
+    {
+        "facing=north": { "model": "viesmachines:appliance/machine_beacon" },
+        "facing=south": { "model": "viesmachines:appliance/machine_beacon", "y": 180 },
+        "facing=west":  { "model": "viesmachines:appliance/machine_beacon", "y": 270 },
+        "facing=east":  { "model": "viesmachines:appliance/machine_beacon", "y": 90 }
+    }
+}

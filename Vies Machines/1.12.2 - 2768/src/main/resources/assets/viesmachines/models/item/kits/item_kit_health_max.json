@@ -1,0 +1,6 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "viesmachines:items/kits/item_kit_health_max"
+    }
+}

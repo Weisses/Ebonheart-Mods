@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "axis=none":  { "model": "viesmachines:block_lava_pillar" },
+        "axis=y":   { "model": "viesmachines:block_lava_pillar" },
+        "axis=z":   { "model": "viesmachines:block_lava_pillar", "x": 90 },
+        "axis=x":   { "model": "viesmachines:block_lava_pillar", "x": 90, "y": 90 }
+    }
+}

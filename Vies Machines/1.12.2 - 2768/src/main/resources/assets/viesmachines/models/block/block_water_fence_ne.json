@@ -1,0 +1,6 @@
+{
+	"parent": "block/fence_ne",
+	"textures": {
+		"texture": "viesmachines:blocks/block_water_fence"
+	}
+}

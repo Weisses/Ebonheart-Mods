@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ILI",
+    "GLG",
+    "I#I"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:diamond"
+    },
+    "L": {
+      "item": "viesmachines:item_circuit_logic"
+    },
+    "I": {
+      "item": "viesmachines:item_xegonite"
+    },
+    "G": {
+      "item": "minecraft:gold_ingot"
+    }
+  },
+  "result": {
+    "item": "viesmachines:item_machine_component_water",
+    "count": 1
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "IEI",
+    "E#E",
+    "ILI"
+  ],
+  "key": {
+    "#": {
+      "item": "viesmachines:item_machine_engine"
+    },
+    "L": {
+      "item": "viesmachines:item_circuit_logic"
+    },
+    "I": {
+      "item": "viesmachines:item_xegonite"
+    },
+    "E": {
+      "item": "minecraft:end_crystal"
+    }
+  },
+  "result": {
+    "item": "viesmachines:upgrades/item_upgrade_engine_tier3",
+    "count": 1
+  }
+}

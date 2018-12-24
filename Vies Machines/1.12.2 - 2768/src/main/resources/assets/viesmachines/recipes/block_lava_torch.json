@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "C",
+    "D"
+  ],
+  "key": {
+    "C": {
+      "item": "minecraft:coal",
+      "data": 32767
+    },
+    "D": {
+      "item": "viesmachines:item_xegonite_lava"
+    }
+  },
+  "result": {
+    "item": "viesmachines:block_lava_torch",
+    "count": 4
+  }
+}

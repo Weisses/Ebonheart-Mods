@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " I ",
+    "L#I",
+    " I "
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:glass_pane"
+    },
+    "L": {
+      "item": "viesmachines:item_circuit_logic"
+    },
+    "I": {
+      "item": "viesmachines:item_xegonite"
+    }
+  },
+  "result": {
+    "item": "viesmachines:kits/item_kit_blank",
+    "count": 1
+  }
+}

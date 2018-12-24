@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "DDD",
+    "DDD"
+  ],
+  "key": {
+    "D": {
+      "item": "viesmachines:block_lava_basic"
+    }
+  },
+  "result": {
+    "item": "viesmachines:block_lava_wall",
+    "count": 3
+  }
+}

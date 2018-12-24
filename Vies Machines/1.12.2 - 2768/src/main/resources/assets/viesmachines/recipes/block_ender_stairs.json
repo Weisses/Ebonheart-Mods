@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "viesmachines:block_ender_basic"
+    }
+  },
+  "result": {
+    "item": "viesmachines:block_ender_stairs",
+    "count": 4
+  }
+}

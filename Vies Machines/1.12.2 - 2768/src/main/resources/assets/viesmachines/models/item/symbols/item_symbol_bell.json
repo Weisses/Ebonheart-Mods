@@ -1,0 +1,6 @@
+{
+    "parent": "item/generated",
+    "textures": {
+        "layer0": "viesmachines:items/symbols/item_symbol_bell"
+    }
+}

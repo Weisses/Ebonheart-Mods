@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "viesmachines:item_xegonite_lava"
+    }
+  },
+  "result": {
+    "item": "viesmachines:block_lava_basic",
+    "count": 1
+  }
+}

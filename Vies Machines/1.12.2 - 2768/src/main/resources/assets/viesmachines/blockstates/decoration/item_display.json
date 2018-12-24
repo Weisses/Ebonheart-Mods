@@ -1,0 +1,10 @@
+{
+    "variants": 
+    {
+        "facing=north": { "model": "viesmachines:decoration/item_display" },
+        "facing=south": { "model": "viesmachines:decoration/item_display", "y": 180 },
+        "facing=west":  { "model": "viesmachines:decoration/item_display", "y": 270 },
+        "facing=east":  { "model": "viesmachines:decoration/item_display", "y": 90 },
+        "normal": { "model": "viesmachines:decoration/item_display" }
+    }
+}

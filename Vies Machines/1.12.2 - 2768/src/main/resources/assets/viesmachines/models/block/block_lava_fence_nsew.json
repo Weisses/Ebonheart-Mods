@@ -1,0 +1,6 @@
+{
+	"parent": "block/fence_nsew",
+	"textures": {
+		"texture": "viesmachines:blocks/block_lava_fence"
+	}
+}

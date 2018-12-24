@@ -1,0 +1,34 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "IGI",
+    "G#G",
+    "ILI"
+  ],
+  "key": {
+    "#": [
+      {
+        "item": "viesmachines:item_machine_component_ground"
+      },
+      {
+        "item": "viesmachines:item_machine_component_water"
+      },
+      {
+        "item": "viesmachines:item_machine_component_flying"
+      }
+    ],
+    "L": {
+      "item": "viesmachines:item_circuit_logic"
+    },
+    "I": {
+      "item": "viesmachines:item_xegonite"
+    },
+    "G": {
+      "item": "minecraft:gold_block"
+    }
+  },
+  "result": {
+    "item": "viesmachines:upgrades/item_upgrade_component_tier1",
+    "count": 1
+  }
+}

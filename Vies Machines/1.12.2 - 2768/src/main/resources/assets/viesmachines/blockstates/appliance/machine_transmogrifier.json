@@ -1,0 +1,9 @@
+{
+    "variants": 
+    {
+        "facing=north": { "model": "viesmachines:appliance/machine_transmogrifier" },
+        "facing=south": { "model": "viesmachines:appliance/machine_transmogrifier", "y": 180 },
+        "facing=west":  { "model": "viesmachines:appliance/machine_transmogrifier", "y": 270 },
+        "facing=east":  { "model": "viesmachines:appliance/machine_transmogrifier", "y": 90 }
+    }
+}

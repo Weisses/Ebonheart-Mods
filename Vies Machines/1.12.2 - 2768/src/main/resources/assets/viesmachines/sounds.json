@@ -1,0 +1,83 @@
+{
+    "record.bramble": {
+        "category": "record",
+        "sounds": [
+            {
+            "name": "viesmachines:records/bramble",
+            "stream": true
+            }
+        ]
+    },
+    "record.castle": {
+        "category": "record",
+        "sounds": [
+            {
+            "name": "viesmachines:records/castle",
+            "stream": true
+            }
+        ]
+    },
+    "record.jungle": {
+        "category": "record",
+        "sounds": [
+            {
+            "name": "viesmachines:records/jungle",
+            "stream": true
+            }
+        ]
+    },
+    "record.dire": {
+        "category": "record",
+        "sounds": [
+            {
+            "name": "viesmachines:records/dire",
+            "stream": true
+            }
+        ]
+    },
+    "record.storms": {
+        "category": "record",
+        "sounds": [
+            {
+            "name": "viesmachines:records/storms",
+            "stream": true
+            }
+        ]
+    },
+    "record.timescar": {
+        "category": "record",
+        "sounds": [
+            {
+            "name": "viesmachines:records/timescar",
+            "stream": true
+            }
+        ]
+    },
+    "sound.engineon": {
+        "category": "sound",
+        "sounds": [
+            {
+            "name": "viesmachines:engineon",
+            "stream": false
+            }
+        ]
+    },
+    "sound.upgrade": {
+        "category": "sound",
+        "sounds": [
+            {
+            "name": "viesmachines:upgrade",
+            "stream": false
+            }
+        ]
+    },
+    "sound.heal": {
+        "category": "sound",
+        "sounds": [
+            {
+            "name": "viesmachines:heal",
+            "stream": false
+            }
+        ]
+    }
+}

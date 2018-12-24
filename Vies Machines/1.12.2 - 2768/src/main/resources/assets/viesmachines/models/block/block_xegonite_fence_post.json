@@ -1,0 +1,6 @@
+{
+	"parent": "block/fence_post",
+	"textures": {
+		"texture": "viesmachines:blocks/block_xegonite_fence"
+	}
+}

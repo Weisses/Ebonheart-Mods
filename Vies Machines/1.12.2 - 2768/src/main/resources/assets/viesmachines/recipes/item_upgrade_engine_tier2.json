@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "IDI",
+    "D#D",
+    "ILI"
+  ],
+  "key": {
+    "#": {
+      "item": "viesmachines:item_machine_engine"
+    },
+    "L": {
+      "item": "viesmachines:item_circuit_logic"
+    },
+    "I": {
+      "item": "viesmachines:item_xegonite"
+    },
+    "D": {
+      "item": "minecraft:diamond_block"
+    }
+  },
+  "result": {
+    "item": "viesmachines:upgrades/item_upgrade_engine_tier2",
+    "count": 1
+  }
+}

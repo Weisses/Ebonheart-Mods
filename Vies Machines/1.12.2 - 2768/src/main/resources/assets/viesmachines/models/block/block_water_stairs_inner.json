@@ -1,0 +1,8 @@
+{
+    "parent": "block/inner_stairs",
+    "textures": {
+        "bottom": "viesmachines:blocks/block_water_stairs",
+        "top": "viesmachines:blocks/block_water_stairs",
+        "side": "viesmachines:blocks/block_water_stairs"
+    }
+}

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "C#C",
+    "XXX"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:redstone"
+    },
+    "C": {
+      "item": "minecraft:cobblestone"
+    },
+    "X": {
+      "item": "viesmachines:item_xegonite"
+    }
+  },
+  "result": {
+    "item": "viesmachines:item_circuit_logic",
+    "count": 1
+  }
+}

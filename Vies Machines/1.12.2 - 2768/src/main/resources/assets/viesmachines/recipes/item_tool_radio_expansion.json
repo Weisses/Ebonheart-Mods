@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BXB",
+    "BCB"
+  ],
+  "key": {
+    "X": {
+      "item": "viesmachines:item_xegonite"
+    },
+    "C": {
+      "item": "viesmachines:item_circuit_logic"
+    },
+    "B": {
+      "item": "minecraft:stone_button"
+    }
+  },
+  "result": {
+    "item": "viesmachines:item_tool_radio_expansion",
+    "count": 1
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "D#D",
+    "D#D"
+  ],
+  "key": {
+    "#": {
+      "item": "viesmachines:item_xegonite"
+    },
+    "D": {
+      "item": "viesmachines:block_xegonite_basic"
+    }
+  },
+  "result": {
+    "item": "viesmachines:block_xegonite_fence",
+    "count": 3
+  }
+}

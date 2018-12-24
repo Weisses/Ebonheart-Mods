@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "X#X",
+    "XXX"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:lava_bucket"
+    },
+    "X": {
+      "item": "viesmachines:item_xegonite"
+    }
+  },
+  "result": {
+    "item": "viesmachines:item_xegonite_lava",
+    "count": 9
+  }
+}

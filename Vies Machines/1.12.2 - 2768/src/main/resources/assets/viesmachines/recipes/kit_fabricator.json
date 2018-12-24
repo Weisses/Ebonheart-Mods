@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CCC",
+    "RGR",
+    "C#C"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:furnace"
+    },
+    "G": {
+      "item": "minecraft:glass_pane"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "C": {
+      "item": "viesmachines:item_xegonite"
+    }
+  },
+  "result": {
+    "item": "viesmachines:appliance/kit_fabricator",
+    "count": 1
+  }
+}

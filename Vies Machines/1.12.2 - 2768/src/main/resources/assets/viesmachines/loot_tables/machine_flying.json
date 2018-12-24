@@ -1,0 +1,73 @@
+//Created with https://amaury.carrade.eu/minecraft/loot_tables
+{
+    "pools": [
+        {
+            "name": "MachineParts",
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "weight": 75,
+                    "name": "viesmachines:item_machine_frame",
+                    "functions": [
+                        {
+                            "function": "set_count",
+                            "count": {
+                                "min": 0,
+                                "max": 1
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "weight": 75,
+                    "name": "viesmachines:item_machine_engine",
+                    "functions": [
+                        {
+                            "function": "set_count",
+                            "count": {
+                                "min": 0,
+                                "max": 2
+                            }
+                        }
+                    ]
+                },
+                {
+                    "type": "item",
+                    "weight": 50,
+                    "name": "viesmachines:item_machine_component_flying",
+                    "functions": [
+                        {
+                            "function": "set_count",
+                            "count": {
+                                "min": 0,
+                                "max": 1
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "XegoniteDrops",
+            "rolls": 1,
+            "entries": [
+                {
+                    "type": "item",
+                    "weight": 100,
+                    "name": "viesmachines:item_xegonite",
+                    "functions": [
+                        {
+                            "function": "set_count",
+                            "count": {
+                                "min": 3,
+                                "max": 12
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,6 @@
+{
+	"parent": "block/fence_inventory",
+	"textures": {
+		"texture": "viesmachines:blocks/block_water_chiseled"
+	}
+}

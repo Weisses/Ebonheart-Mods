@@ -1,0 +1,6 @@
+{
+	"parent": "block/fence_ns",
+	"textures": {
+		"texture": "viesmachines:blocks/block_ender_fence"
+	}
+}

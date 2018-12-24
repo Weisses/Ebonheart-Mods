@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "viesmachines:item_xegonite"
+    },
+    {
+      "item": "minecraft:coal",
+      "data": 32767
+    }
+  ],
+  "result": {
+    "item": "viesmachines:item_machine_pellets",
+    "count": 2
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ILI",
+    "L#L",
+    "ILI"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:minecart"
+    },
+    "L": {
+      "item": "viesmachines:item_circuit_logic"
+    },
+    "I": {
+      "item": "viesmachines:item_xegonite"
+    }
+  },
+  "result": {
+    "item": "viesmachines:item_machine_frame",
+    "count": 1
+  }
+}

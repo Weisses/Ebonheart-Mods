@@ -1,0 +1,9 @@
+{
+    "variants": 
+    {
+        "facing=north": { "model": "viesmachines:appliance/kit_fabricator" },
+        "facing=south": { "model": "viesmachines:appliance/kit_fabricator", "y": 180 },
+        "facing=west":  { "model": "viesmachines:appliance/kit_fabricator", "y": 270 },
+        "facing=east":  { "model": "viesmachines:appliance/kit_fabricator", "y": 90 }
+    }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "DD",
+    "DD"
+  ],
+  "key": {
+    "D": {
+      "item": "viesmachines:block_lava_basic"
+    }
+  },
+  "result": {
+    "item": "viesmachines:block_lava_chiseled",
+    "count": 4
+  }
+}
