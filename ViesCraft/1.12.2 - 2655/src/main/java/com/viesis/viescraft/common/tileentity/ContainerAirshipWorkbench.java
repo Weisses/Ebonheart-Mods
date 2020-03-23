@@ -63,6 +63,9 @@ public class ContainerAirshipWorkbench extends Container {
         
         this.onCraftMatrixChanged(this.craftMatrix);
         
+
+        this.saveCraftingMatrix();
+        
     }
     
     /**
@@ -71,8 +74,14 @@ public class ContainerAirshipWorkbench extends Container {
     public void onCraftMatrixChanged(IInventory inventoryIn)
     {
     	this.slotChangedCraftingGrid(this.world, this.player, this.craftMatrix, (InventoryCraftResult) this.craftResult);
-    	
+
+		
+		// This updates the Tile Entity for everyone else in the world.
+		this.player.world.notifyBlockUpdate(this.airship.getPos(), this.airship.getBlockType().getDefaultState(), this.airship.getBlockType().getDefaultState(), 0);
     	//this.craftResult.setInventorySlotContents(0, CraftingManagerVC.findMatchingRecipe(this.craftMatrix, this.world));
+
+        
+        this.saveCraftingMatrix();
     }
     
     /**
@@ -82,7 +91,7 @@ public class ContainerAirshipWorkbench extends Container {
     {
         super.onContainerClosed(playerIn);
         
-        saveCraftingMatrix();
+        this.saveCraftingMatrix();
     }
     
     /**
@@ -94,6 +103,9 @@ public class ContainerAirshipWorkbench extends Container {
     	{
     		this.craftMatrix.setInventorySlotContents(i, this.airship.inventory.getStackInSlot(i));
     	}
+    	// This updates the Tile Entity for everyone else in the world.
+    			this.player.world.notifyBlockUpdate(this.airship.getPos(), this.airship.getBlockType().getDefaultState(), this.airship.getBlockType().getDefaultState(), 0);
+    	    	
     }
     
     /**
@@ -105,6 +117,9 @@ public class ContainerAirshipWorkbench extends Container {
     	{
     		this.airship.inventory.setStackInSlot(i, this.craftMatrix.getStackInSlot(i));
     	}
+	 // This updates the Tile Entity for everyone else in the world.
+	 		this.player.world.notifyBlockUpdate(this.airship.getPos(), this.airship.getBlockType().getDefaultState(), this.airship.getBlockType().getDefaultState(), 0);
+	     	
     }
     
     /**
@@ -198,5 +213,8 @@ public class ContainerAirshipWorkbench extends Container {
         super.detectAndSendChanges();
         
         saveCraftingMatrix();
+     // This updates the Tile Entity for everyone else in the world.
+     		this.player.world.notifyBlockUpdate(this.airship.getPos(), this.airship.getBlockType().getDefaultState(), this.airship.getBlockType().getDefaultState(), 0);
+         	
     }
 }
