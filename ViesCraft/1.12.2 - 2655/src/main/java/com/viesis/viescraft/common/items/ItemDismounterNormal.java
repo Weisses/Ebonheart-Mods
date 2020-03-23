@@ -9,6 +9,7 @@ import com.viesis.viescraft.api.References;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
@@ -39,17 +40,18 @@ public class ItemDismounterNormal extends Item {
 	@Override
     public boolean itemInteractionForEntity(ItemStack itemstack, net.minecraft.entity.player.EntityPlayer player, EntityLivingBase entity, net.minecraft.util.EnumHand hand)
     {
-        if(entity.world.isRemote)
+		Entity tentity = (Entity) entity;
+        if(tentity.world.isRemote)
         {
             return false;
         }
         
-        if(entity.getRidingEntity() != null
-        &&(entity.getRidingEntity() != null))
+        if(tentity.getRidingEntity() != null
+        &&(tentity.getRidingEntity() != null))
         {
         	itemstack.damageItem(1, entity);
         	
-        	entity.dismountRidingEntity();
+        	tentity.dismountRidingEntity();
         	
             return true;
         }
