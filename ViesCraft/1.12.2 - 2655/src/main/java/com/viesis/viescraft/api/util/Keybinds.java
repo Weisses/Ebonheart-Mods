@@ -3,6 +3,7 @@ package com.viesis.viescraft.api.util;
 import org.lwjgl.input.Keyboard;
 
 import net.minecraft.client.settings.KeyBinding;
+import net.minecraftforge.client.settings.IKeyConflictContext;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 
 public class Keybinds {
@@ -30,7 +31,7 @@ public class Keybinds {
 		vcInventory = new KeyBinding("vc.key.openInventory", Keyboard.KEY_R, "vc.key.viescraft");
 		vcDropBomb = new KeyBinding("vc.key.dropbomb", Keyboard.KEY_C, "vc.key.viescraft");
 		///vcModule = new KeyBinding("vc.key.useModule", Keyboard.KEY_C, "vc.key.viescraft");
-	    
+		//IKeyConflictContext
 		//Register KeyBingings
 		ClientRegistry.registerKeyBinding(vcForward);
 		ClientRegistry.registerKeyBinding(vcBack);
