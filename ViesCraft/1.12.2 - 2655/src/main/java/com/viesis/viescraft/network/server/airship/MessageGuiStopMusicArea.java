@@ -10,19 +10,20 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.ISoundEventListener;
 import net.minecraft.client.audio.SoundHandler;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.util.SoundCategory;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class MessageGuiStopMusicArea extends MessageBase<MessageGuiStopMusicArea> {
 	
-	private int airshipId;
+	private int airshipIdArea;
 	private EntityAirshipBaseVC airship;
 	
 	@Override
 	public void fromBytes(ByteBuf buf) 
 	{
-		airshipId = buf.readInt();
+		this.airshipIdArea = buf.readInt();
 	}
 	
 	@Override
@@ -35,12 +36,12 @@ public class MessageGuiStopMusicArea extends MessageBase<MessageGuiStopMusicArea
 	@Override
 	public void handleClientSide(MessageGuiStopMusicArea message, EntityPlayer player) 
 	{
-		message.airship = (EntityAirshipBaseVC) Minecraft.getMinecraft().world.getEntityByID(message.airshipId);
+		message.airship = (EntityAirshipBaseVC) Minecraft.getMinecraft().world.getEntityByID(message.airshipIdArea);
 		
 		SoundHandler soundHandler = Minecraft.getMinecraft().getSoundHandler();
 		soundHandler.stopSounds();
 		
-		soundHandler.playSound(new JukeboxMovingSoundVC(message.airship, EnumsVC.AirshipSong.byId(0).getSong()));
+		//soundHandler.playSound(new JukeboxMovingSoundVC(message.airship, SoundEvents.UI_BUTTON_CLICK));
 	}
 	
 	@SideOnly(Side.CLIENT)

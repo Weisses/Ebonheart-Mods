@@ -74,7 +74,6 @@ public class JukeboxMovingSoundVC extends MovingSound {
             
             if(Minecraft.getMinecraft().gameSettings.getSoundLevel(SoundCategory.MUSIC) != 0.0F)
             {
-            	//LogHelper.info("Set to 0 - David.");
             	Minecraft.getMinecraft().gameSettings.setSoundLevel(SoundCategory.MUSIC, 0.0F);
             }
         }

@@ -13,20 +13,17 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 public class MessageGuiStopMusic extends MessageBase<MessageGuiStopMusic> implements IMessage {
 	
 	static int airshipId;
-	static int selectedSong;
 	
 	@Override
 	public void fromBytes(ByteBuf buf) 
 	{
-		airshipId = buf.readInt();
-		selectedSong = buf.readInt();
+		this.airshipId = buf.readInt();
 	}
 	
 	@Override
 	public void toBytes(ByteBuf buf) 
 	{
 		buf.writeInt(GuiMainMenu.airshipId);
-		buf.writeInt(GuiMainMenu.selectedSong);
 	}
 	
 	@Override
@@ -40,7 +37,6 @@ public class MessageGuiStopMusic extends MessageBase<MessageGuiStopMusic> implem
 	{
 		EntityAirshipBaseVC airship = (EntityAirshipBaseVC) player.getRidingEntity();
 		
-		NetworkHandler.sendToAllAround(new MessageGuiStopMusicArea(), 
-    	new TargetPoint(airship.dimension, airship.posX, airship.posY, airship.posZ, 30));
+		NetworkHandler.sendToAllAround(new MessageGuiStopMusicArea(), new TargetPoint(airship.dimension, airship.posX, airship.posY, airship.posZ, 32));
 	}
 }

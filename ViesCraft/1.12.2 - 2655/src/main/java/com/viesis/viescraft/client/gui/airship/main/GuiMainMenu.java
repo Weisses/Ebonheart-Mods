@@ -126,7 +126,7 @@ public class GuiMainMenu extends GuiContainerVC {
 	    }
 		if (parButton.id == 7)
 	    {
-			airshipId = this.airship.getEntityId();
+			this.airshipId = this.airship.getEntityId();
 			NetworkHandler.sendToServer(new MessageGuiStopMusic());
 	    }
 		if (parButton.id == 8)

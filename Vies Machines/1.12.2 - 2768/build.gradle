@@ -20,6 +20,9 @@ repositories {
     // location of the maven that hosts TESLA files
     url 'http://maven.epoxide.org/net/darkhax'
   }
+  flatDir {
+        dirs "zexternalmods"
+  }
 }
 
 version = "1.12.2-1.0.0"
@@ -44,14 +47,7 @@ minecraft {
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
 }
 
-repositories {
-    
-    maven { url 'http://maven.epoxide.org' }
 
-flatDir {
-        dirs "zexternalmods"
-    }
-}
 
 dependencies {
     // compile against the JEI API
