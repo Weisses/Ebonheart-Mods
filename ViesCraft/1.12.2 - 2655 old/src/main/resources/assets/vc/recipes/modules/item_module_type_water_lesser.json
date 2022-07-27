@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "vc:modules/item_module_type",
+  "pattern": [
+    "SFS",
+    "Q#Q",
+    "MPM"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:boat"
+    },
+    "S": {
+      "item": "minecraft:slime_ball"
+    },
+    "F": {
+      "item": "minecraft:compass"
+    },
+    "Q": {
+      "item": "minecraft:quartz"
+    },
+    "P": {
+      "item": "minecraft:heavy_weighted_pressure_plate"
+    },
+    "M": {
+      "item": "vc:modules/item_module_type",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "vc:modules/item_module_type",
+    "data": 19,
+    "count": 1
+  }
+}
