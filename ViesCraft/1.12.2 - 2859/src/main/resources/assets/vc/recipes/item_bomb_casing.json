@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "C#C",
+    "III"
+  ],
+  "key": {
+    "#": {
+      "item": "vc:item_logic_chip"
+    },
+    "C": {
+      "item": "minecraft:cobblestone"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "vc:item_bomb",
+    "data": 0,
+    "count": 4
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "vc:upgrades/item_upgrade_airship_engine",
+  "pattern": [
+    "FLF",
+    "A#A",
+    "FLF"
+  ],
+  "key": {
+    "F": {
+      "item": "vc:upgrades/item_upgrade_airship_engine",
+      "data": 0
+    },
+    "L": {
+      "item": "vc:item_logic_chip"
+    },
+    "#": {
+      "item": "vc:item_airship_engine"
+    },
+    "A": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "result": {
+    "item": "vc:upgrades/item_upgrade_airship_engine",
+    "data": 3,
+    "count": 1
+  }
+}
