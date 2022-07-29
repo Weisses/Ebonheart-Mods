@@ -1,0 +1,16 @@
+[
+{
+  "modid": "vc",
+  "name": "ViesCraft",
+  "description": "Airships through the eyes of Vies!",
+  "version": "5.9.16",
+  "mcversion": "1.12.2",
+  "url": " TBD ",
+  "updateUrl": "",
+  "authorList": ["Vies"],
+  "credits": "ViesCraft is a trademark of Vies!",
+  "logoFile": "assets/vc/textures/logo.png",
+  "screenshots": [],
+  "dependencies": []
+}
+]

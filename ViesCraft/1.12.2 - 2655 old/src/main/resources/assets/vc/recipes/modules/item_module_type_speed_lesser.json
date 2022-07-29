@@ -1,0 +1,35 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "vc:modules/item_module_type",
+  "pattern": [
+    "GFG",
+    "Q#Q",
+    "MPM"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:fire_charge"
+    },
+    "G": {
+      "item": "minecraft:gunpowder"
+    },
+    "F": {
+      "item": "minecraft:flint"
+    },
+    "Q": {
+      "item": "minecraft:quartz"
+    },
+    "P": {
+      "item": "minecraft:heavy_weighted_pressure_plate"
+    },
+    "M": {
+      "item": "vc:modules/item_module_type",
+      "data": 0
+    }
+  },
+  "result": {
+    "item": "vc:modules/item_module_type",
+    "data": 4,
+    "count": 1
+  }
+}
